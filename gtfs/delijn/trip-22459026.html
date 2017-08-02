@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - As - Neeroeteren - Maaseik - 22459026</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - As - Neeroeteren - Maaseik - 22459026</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-33097.html">33097</a> - Maaseik Van Eycklaan 16:41</li><li><a href="stop-32298.html">32298</a> - Maaseik Verloren Kost 16:45</li><li><a href="stop-123130.html">123130</a> - Maaseik Pieter Geunsstraat 16:47</li><li><a href="stop-123082.html">123082</a> - Maaseik Campus H en R 16:49</li><li><a href="stop-32296.html">32296</a> - Maaseik Venweg 16:50</li><li><a href="stop-32292.html">32292</a> - Maaseik 't Gremelslo 16:51</li><li><a href="stop-31008.html">31008</a> - Ophoven Jettenweg 16:54</li><li><a href="stop-30960.html">30960</a> - Kinrooi Leuerbroek 16:55</li><li><a href="stop-30907.html">30907</a> - Kinrooi H. Grafinstituut 16:58</li><li><a href="stop-30897.html">30897</a> - Kinrooi Bettestraat 16:59</li><li><a href="stop-31016.html">31016</a> - Kinrooi Slichtenhof 17:00</li><li><a href="stop-32247.html">32247</a> - Neeroeteren Oude Kuil 17:02</li><li><a href="stop-125529.html">125529</a> - Voorshoven Meershoven 17:04</li><li><a href="stop-32251.html">32251</a> - Neeroeteren Tip 17:06</li><li><a href="stop-91233.html">91233</a> - Neeroeteren Kanaalstraat 17:07</li><li><a href="stop-32226.html">32226</a> - Neeroeteren Brugstraat 17:08</li><li><a href="stop-32246.html">32246</a> - Neeroeteren Op den Berg 17:09</li><li><a href="stop-32271.html">32271</a> - Opoeteren Roeren 17:11</li><li><a href="stop-32274.html">32274</a> - Opoeteren Roosterberg 17:12</li><li><a href="stop-32270.html">32270</a> - Opoeteren Neeroeterenstraat 17:13</li><li><a href="stop-32264.html">32264</a> - Opoeteren Kabienstraat 17:14</li><li><a href="stop-32321.html">32321</a> - Opoeteren Dorp 17:14</li><li><a href="stop-32266.html">32266</a> - Opoeteren Kerkstraat 17:15</li><li><a href="stop-32268.html">32268</a> - Opoeteren Mariapark 17:16</li><li><a href="stop-32260.html">32260</a> - Opoeteren Wouterbron 17:18</li><li><a href="stop-32258.html">32258</a> - Opoeteren Berg 17:19</li><li><a href="stop-32256.html">32256</a> - Opoeteren Dorne 17:20</li><li><a href="stop-32262.html">32262</a> - Opoeteren Dorne Zonneheim 17:21</li><li><a href="stop-26548.html">26548</a> - Niel-bij-As Kapelstraat 17:23</li><li><a href="stop-26546.html">26546</a> - Niel-bij-As Grotstraat 17:24</li><li><a href="stop-93782.html">93782</a> - Niel-bij-As Centrum 17:25</li><li><a href="stop-92404.html">92404</a> - As Onze Lieve Vrouwstraat 17:27</li><li><a href="stop-26552.html">26552</a> - As Nielerbaan 17:28</li><li><a href="stop-26559.html">26559</a> - As Station 17:29</li><li><a href="stop-91112.html">91112</a> - As Drieschaar 17:30</li><li><a href="stop-93473.html">93473</a> - As Gemeentehuis 17:31</li><li><a href="stop-88444.html">88444</a> - As Kerkhof 17:31</li><li><a href="stop-26564.html">26564</a> - As Zavelstraat 17:32</li><li><a href="stop-26526.html">26526</a> - As Bilzerweg 17:33</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4491.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

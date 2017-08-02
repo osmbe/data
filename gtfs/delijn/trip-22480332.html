@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Wellen - Borgloon - Heers - 22480332</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Wellen - Borgloon - Heers - 22480332</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-43810.html">43810</a> - Heers Weg naar Waremme 07:53</li><li><a href="stop-30007.html">30007</a> - Heers Sporthal 07:54</li><li><a href="stop-97018.html">97018</a> - Veulen Kerk 07:55</li><li><a href="stop-97020.html">97020</a> - Veulen Nieuwe Steenweg 07:56</li><li><a href="stop-105224.html">105224</a> - Gutschoven Kerk 07:58</li><li><a href="stop-96985.html">96985</a> - Gutschoven Wijngaard 07:59</li><li><a href="stop-96988.html">96988</a> - Horpmaal Jacobslaan 08:01</li><li><a href="stop-96990.html">96990</a> - Horpmaal Kerk 08:02</li><li><a href="stop-97002.html">97002</a> - Horpmaal Cartuyvelstraat 08:03</li><li><a href="stop-105226.html">105226</a> - Horpmaal Overhemsestraat 08:03</li><li><a href="stop-96996.html">96996</a> - Horpmaal Tomberg 08:04</li><li><a href="stop-96986.html">96986</a> - Gutschoven Wijngaard 08:06</li><li><a href="stop-105225.html">105225</a> - Gutschoven Kerk 08:06</li><li><a href="stop-96979.html">96979</a> - Gutschoven Gutschovenstraat 08:07</li><li><a href="stop-27342.html">27342</a> - Broekom Herkebeek 08:09</li><li><a href="stop-27338.html">27338</a> - Broekom Kerk 08:09</li><li><a href="stop-27336.html">27336</a> - Broekom Broekomstraat 08:10</li><li><a href="stop-27340.html">27340</a> - Broekom Romeinse Weg 08:10</li><li><a href="stop-27447.html">27447</a> - Borgloon Nerem 08:11</li><li><a href="stop-92834.html">92834</a> - Borgloon College 08:13</li><li><a href="stop-123246.html">123246</a> - Borgloon Grootloonstraat 08:13</li><li><a href="stop-27463.html">27463</a> - Borgloon Tongersepoort 08:14</li><li><a href="stop-93787.html">93787</a> - Borgloon Kanunnik Darisstraat 08:15</li><li><a href="stop-27473.html">27473</a> - Borgloon Walstraat 08:15</li><li><a href="stop-27450.html">27450</a> - Borgloon De Linde 08:16</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4755.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

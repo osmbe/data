@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge Torhout Lichtervelde Roeselare - 22137380</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge Torhout Lichtervelde Roeselare - 22137380</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126347.html">126347</a> - Torhout Station perron 2 15:05</li><li><a href="stop-37137.html">37137</a> - Torhout Brildam 15:06</li><li><a href="stop-37157.html">37157</a> - Torhout Spoorweg 15:06</li><li><a href="stop-37345.html">37345</a> - Torhout Rubens 15:07</li><li><a href="stop-37145.html">37145</a> - Torhout Keibergstraat 15:09</li><li><a href="stop-37152.html">37152</a> - Torhout Maria Assumpta 15:10</li><li><a href="stop-37337.html">37337</a> - Torhout Rozeveldstraat 15:11</li><li><a href="stop-37339.html">37339</a> - Veldegem Marmiete 15:14</li><li><a href="stop-37175.html">37175</a> - Veldegem Steenovenstraat 15:15</li><li><a href="stop-37173.html">37173</a> - Veldegem Korenbloemstraat 15:17</li><li><a href="stop-37171.html">37171</a> - Veldegem Plaats 15:19</li><li><a href="stop-37172.html">37172</a> - Veldegem Koning Albertstraat 15:20</li><li><a href="stop-37174.html">37174</a> - Veldegem Station 15:21</li><li><a href="stop-37176.html">37176</a> - Veldegem Weg Op Veldegem 15:22</li><li><a href="stop-37198.html">37198</a> - Zedelgem De Leeuw 15:24</li><li><a href="stop-37206.html">37206</a> - Zedelgem Zuidwege 15:25</li><li><a href="stop-37197.html">37197</a> - Zedelgem De Arend 15:26</li><li><a href="stop-104708.html">104708</a> - Zedelgem Ter Loo 15:28</li><li><a href="stop-36920.html">36920</a> - Loppem Heidelberg 15:29</li><li><a href="stop-36923.html">36923</a> - Loppem Vijverkasteel 15:30</li><li><a href="stop-36922.html">36922</a> - Loppem Station 15:31</li><li><a href="stop-90322.html">90322</a> - Loppem Dorp 15:32</li><li><a href="stop-37307.html">37307</a> - Loppem Sportcentrum 15:33</li><li><a href="stop-36921.html">36921</a> - Loppem Smisje 15:33</li><li><a href="stop-41153.html">41153</a> - Sint-Michiels Zonnebloem 15:36</li><li><a href="stop-41143.html">41143</a> - Sint-Michiels Jagersstraat 15:37</li><li><a href="stop-122911.html">122911</a> - Sint-Michiels Park De Rode Poort 15:37</li><li><a href="stop-37100.html">37100</a> - Sint-Michiels Kerk 15:38</li><li><a href="stop-41147.html">41147</a> - Sint-Michiels Rijselsestraat 15:39</li><li><a href="stop-121699.html">121699</a> - Sint-Michiels Station West 15:41</li><li><a href="stop-126319.html">126319</a> - Brugge 'T Zand perron 9 15:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3971.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

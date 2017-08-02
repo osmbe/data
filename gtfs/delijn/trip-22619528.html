@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Menen Station-St.Jozef \Ter Beke\Nieuwe Tijnwijk - 22619528</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Menen Station-St.Jozef \Ter Beke\Nieuwe Tijnwijk - 22619528</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-39117.html">39117</a> - Menen Voorzorgstraat 11:57</li><li><a href="stop-100918.html">100918</a> - Menen Sint-Jozefkerk 11:58</li><li><a href="stop-41920.html">41920</a> - Menen Koninginnestraat 12:00</li><li><a href="stop-41905.html">41905</a> - Menen Barakken 12:01</li><li><a href="stop-41925.html">41925</a> - Menen Nieuwe Brug 12:02</li><li><a href="stop-41919.html">41919</a> - Menen Ontmoetingscentrum 12:03</li><li><a href="stop-41932.html">41932</a> - Menen Leopoldplein 12:04</li><li><a href="stop-88078.html">88078</a> - Menen Markt 12:05</li><li><a href="stop-37977.html">37977</a> - Menen Weststraat 12:06</li><li><a href="stop-41937.html">41937</a> - Menen Wahisstraat 12:07</li><li><a href="stop-37944.html">37944</a> - Menen Hof Ter Linden 12:09</li><li><a href="stop-41907.html">41907</a> - Menen Bruggepoort 12:10</li><li><a href="stop-41914.html">41914</a> - Menen Groenhof 12:11</li><li><a href="stop-41918.html">41918</a> - Menen Kliniek 12:12</li><li><a href="stop-37971.html">37971</a> - Menen Ter Beke 12:14</li><li><a href="stop-37952.html">37952</a> - Menen Nieuw Kerkhof 12:16</li><li><a href="stop-37957.html">37957</a> - Menen Ons Dorp 12:18</li><li><a href="stop-37964.html">37964</a> - Menen Sint-Jan Baptistkerk 12:19</li><li><a href="stop-37960.html">37960</a> - Menen Rode Campagne 12:19</li><li><a href="stop-37942.html">37942</a> - Menen Gen.Lemanstraat 12:20</li><li><a href="stop-37955.html">37955</a> - Menen Nieuwe Tuinwijk 12:21</li><li><a href="stop-88509.html">88509</a> - Menen Wilde Rozenlaan 12:22</li><li><a href="stop-37972.html">37972</a> - Menen Tulpenlaan 12:23</li><li><a href="stop-37950.html">37950</a> - Menen Krokussenlaan 12:24</li><li><a href="stop-37946.html">37946</a> - Menen Keizer Karelstraat 12:25</li><li><a href="stop-37956.html">37956</a> - Menen Olmenlaan 12:27</li><li><a href="stop-37939.html">37939</a> - Menen Engelandstraat 12:28</li><li><a href="stop-37959.html">37959</a> - Menen Rode Campagne 12:29</li><li><a href="stop-87923.html">87923</a> - Menen Station perron 2 afstaphalte 12:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4041.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

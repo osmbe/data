@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - As - Lanklaar - Dilsen - Maasmechelen - 22473218</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - As - Lanklaar - Dilsen - Maasmechelen - 22473218</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-43780.html">43780</a> - Genk Station perron 8 12:17</li><li><a href="stop-28345.html">28345</a> - Genk Shopping Center perron 1 12:20</li><li><a href="stop-94950.html">94950</a> - Genk Hospitaalstraat 12:22</li><li><a href="stop-88460.html">88460</a> - Genk Bretheistraat 12:22</li><li><a href="stop-43835.html">43835</a> - Genk College 12:23</li><li><a href="stop-28512.html">28512</a> - Genk Mispelaarstraat 12:25</li><li><a href="stop-96693.html">96693</a> - Waterschei Waterbleekstraat 12:25</li><li><a href="stop-96695.html">96695</a> - Waterschei Bascule 12:27</li><li><a href="stop-96647.html">96647</a> - Waterschei Geenhornstraat 12:28</li><li><a href="stop-96708.html">96708</a> - Waterschei Springstraat 12:29</li><li><a href="stop-26553.html">26553</a> - As Oeleinde 12:31</li><li><a href="stop-26525.html">26525</a> - As Bilzerweg 12:32</li><li><a href="stop-26563.html">26563</a> - As Zavelstraat 12:33</li><li><a href="stop-88443.html">88443</a> - As Kerkhof 12:33</li><li><a href="stop-93474.html">93474</a> - As Gemeentehuis 12:34</li><li><a href="stop-91111.html">91111</a> - As Drieschaar 12:34</li><li><a href="stop-99151.html">99151</a> - As Station 12:35</li><li><a href="stop-32462.html">32462</a> - Maasmechelen Werkhuizen Bleichert 12:37</li><li><a href="stop-32464.html">32464</a> - Maasmechelen Werkhuizen Kroon Group 12:38</li><li><a href="stop-32384.html">32384</a> - Maasmechelen Home Fabiola 12:42</li><li><a href="stop-88059.html">88059</a> - Maasmechelen T. Boslaan 12:42</li><li><a href="stop-125533.html">125533</a> - Maasmechelen Tuinwijk 12:43</li><li><a href="stop-32600.html">32600</a> - Maasmechelen Apotheek 12:44</li><li><a href="stop-125532.html">125532</a> - Maasmechelen Centrum 12:45</li><li><a href="stop-100204.html">100204</a> - Maasmechelen College 12:46</li><li><a href="stop-100203.html">100203</a> - Maasmechelen Rijksweg 12:47</li><li><a href="stop-92433.html">92433</a> - Eisden Berensheuvel 12:49</li><li><a href="stop-123085.html">123085</a> - Eisden Bloemenlaan 12:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5416.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Leopoldsburg - Bree - Maaseik - 22485811</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Leopoldsburg - Bree - Maaseik - 22485811</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-31792.html">31792</a> - Leopoldsburg Station 07:32</li><li><a href="stop-31781.html">31781</a> - Leopoldsburg Militair Hospitaal 07:33</li><li><a href="stop-31775.html">31775</a> - Leopoldsburg Infanterie 07:34</li><li><a href="stop-29870.html">29870</a> - Hechtel Vliegplein 07:36</li><li><a href="stop-30783.html">30783</a> - Hechtel Oefenplein 07:38</li><li><a href="stop-29840.html">29840</a> - Hechtel Kamperbaan 07:40</li><li><a href="stop-29860.html">29860</a> - Hechtel Sint-Lambertusstraat 07:41</li><li><a href="stop-93457.html">93457</a> - Hechtel Welsh Guardplein 07:42</li><li><a href="stop-29854.html">29854</a> - Hechtel Peerderbaan 1 07:44</li><li><a href="stop-29856.html">29856</a> - Hechtel Peerderbaan 2 07:44</li><li><a href="stop-33583.html">33583</a> - Wijchmaal Station 07:46</li><li><a href="stop-110490.html">110490</a> - Wijchmaal Sint-Trudostraat 07:47</li><li><a href="stop-33559.html">33559</a> - Wijchmaal Dijkerstraat 07:49</li><li><a href="stop-128989.html">128989</a> - Peer Kerk 07:52</li><li><a href="stop-32895.html">32895</a> - Peer Agnetendal 07:52</li><li><a href="stop-33544.html">33544</a> - Peer Pol KIP 07:53</li><li><a href="stop-33503.html">33503</a> - Peer KMO Panhoven 07:54</li><li><a href="stop-33528.html">33528</a> - Peer Kloosterbos 07:55</li><li><a href="stop-110466.html">110466</a> - Grote-Brogel Smeetshof 07:57</li><li><a href="stop-93811.html">93811</a> - Grote-Brogel Laarheide 07:58</li><li><a href="stop-32713.html">32713</a> - Ellikom Grote Baan 08:00</li><li><a href="stop-105301.html">105301</a> - Ellikom Heikantstraat 08:01</li><li><a href="stop-105164.html">105164</a> - Reppel Fabriek 08:02</li><li><a href="stop-93419.html">93419</a> - Gerdingen Industrieterrein 08:03</li><li><a href="stop-93416.html">93416</a> - Gerdingen Barrierstraat 08:04</li><li><a href="stop-93420.html">93420</a> - Bree Peerderkiezel 08:06</li><li><a href="stop-94945.html">94945</a> - Bree Nieuwstad 08:07</li><li><a href="stop-123468.html">123468</a> - Bree Busstation Perron 6 08:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4828.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

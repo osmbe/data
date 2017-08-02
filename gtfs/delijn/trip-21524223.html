@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Silsburg - Schoonselhof - 21524223</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Silsburg - Schoonselhof - 21524223</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108829.html">108829</a> - Hoboken Zwaantjes 05:14</li><li><a href="stop-107756.html">107756</a> - Antwerpen Grens Kiel 05:16</li><li><a href="stop-107352.html">107352</a> - Antwerpen Abdijstraat 05:17</li><li><a href="stop-107995.html">107995</a> - Antwerpen Kielpark 05:18</li><li><a href="stop-108011.html">108011</a> - Antwerpen Generaal Armstrong 05:19</li><li><a href="stop-108013.html">108013</a> - Antwerpen Kolonel Silvertop 05:20</li><li><a href="stop-21154.html">21154</a> - Antwerpen Station Zuid 05:21</li><li><a href="stop-128309.html">128309</a> - Antwerpen Brussel 05:22</li><li><a href="stop-19328.html">19328</a> - Antwerpen Broedermin 05:23</li><li><a href="stop-18945.html">18945</a> - Antwerpen Bestorming 05:24</li><li><a href="stop-107469.html">107469</a> - Antwerpen Bres 05:25</li><li><a href="stop-110994.html">110994</a> - Antwerpen Kasteelplein 05:26</li><li><a href="stop-108176.html">108176</a> - Antwerpen Nationale Bank 05:28</li><li><a href="stop-108103.html">108103</a> - Antwerpen Stadspark 05:29</li><li><a href="stop-125240.html">125240</a> - Antwerpen F. Rooseveltplaats perron 52 05:32</li><li><a href="stop-107738.html">107738</a> - Antwerpen Centraal Station perron 2 05:33</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2763.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

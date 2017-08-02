@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Budingen - Geetbets - Halen - HerkdeStad - 21149398</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Budingen - Geetbets - Halen - HerkdeStad - 21149398</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128911.html">128911</a> - Budingen Garage Van Mullem 08:11</li><li><a href="stop-14253.html">14253</a> - Budingen Gemeentehuis 08:11</li><li><a href="stop-14273.html">14273</a> - Budingen Stationswijk 08:12</li><li><a href="stop-14271.html">14271</a> - Budingen Roel 08:12</li><li><a href="stop-10675.html">10675</a> - Geetbets De Plakker 08:13</li><li><a href="stop-10689.html">10689</a> - Geetbets Hogen Kerk 08:15</li><li><a href="stop-10716.html">10716</a> - Geetbets Zusterschool 08:15</li><li><a href="stop-10702.html">10702</a> - Geetbets Meubelwinkel 08:16</li><li><a href="stop-16337.html">16337</a> - Geetbets Hogenstraat 08:17</li><li><a href="stop-16339.html">16339</a> - Geetbets Rhodestraat 08:17</li><li><a href="stop-10688.html">10688</a> - Geetbets Heirbaan 08:19</li><li><a href="stop-10712.html">10712</a> - Geetbets Hettelbergweg 08:20</li><li><a href="stop-10696.html">10696</a> - Geetbets Kolkstraat 08:21</li><li><a href="stop-10704.html">10704</a> - Geetbets Nieuwdorpstraat 08:22</li><li><a href="stop-10698.html">10698</a> - Geetbets Kruispunt 08:23</li><li><a href="stop-10693.html">10693</a> - Geetbets Hulsbeekstraat 08:24</li><li><a href="stop-17045.html">17045</a> - Geetbets Hulsbeekstraat 103 08:24</li><li><a href="stop-10700.html">10700</a> - Geetbets Kwadestraat 08:25</li><li><a href="stop-10711.html">10711</a> - Geetbets Voetbalveld 08:26</li><li><a href="stop-16336.html">16336</a> - Geetbets Kasteellaan 08:26</li><li><a href="stop-10673.html">10673</a> - Geetbets Café Borgers 08:27</li><li><a href="stop-10667.html">10667</a> - Geetbets Borgloonstraat 08:28</li><li><a href="stop-10685.html">10685</a> - Geetbets Groten Bos 08:29</li><li><a href="stop-14826.html">14826</a> - Geetbets Maalderij 08:30</li><li><a href="stop-102631.html">102631</a> - Halen Verbindingsweg 08:30</li><li><a href="stop-102629.html">102629</a> - Halen In den Haan 08:30</li><li><a href="stop-127418.html">127418</a> - Halen Holakenstraat 08:31</li><li><a href="stop-100255.html">100255</a> - Halen Ertsenrijk 36 08:31</li><li><a href="stop-29102.html">29102</a> - Halen Ertsenrijkstraat 22 08:32</li><li><a href="stop-14566.html">14566</a> - Halen Sint-Barbaraplein 08:33</li><li><a href="stop-30141.html">30141</a> - Herk-de-Stad Klooster 08:38</li><li><a href="stop-30153.html">30153</a> - Herk-de-Stad Gemeenschapsschool 08:39</li><li><a href="stop-105230.html">105230</a> - Herk-de-Stad College 08:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2447.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

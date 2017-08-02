@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diksmuide-Houthulst-Roeselare - 22639866</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diksmuide-Houthulst-Roeselare - 22639866</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126289.html">126289</a> - Diksmuide Station perron 10 18:05</li><li><a href="stop-37548.html">37548</a> - Diksmuide Markt 18:06</li><li><a href="stop-37558.html">37558</a> - Diksmuide Steenweg Op Woumen 18:07</li><li><a href="stop-37549.html">37549</a> - Diksmuide Nijverheidsstraat 18:08</li><li><a href="stop-98115.html">98115</a> - Esen Kasteel 18:09</li><li><a href="stop-38984.html">38984</a> - Woumen Zwarte Dreef 18:12</li><li><a href="stop-38981.html">38981</a> - Woumen Warande 18:14</li><li><a href="stop-38976.html">38976</a> - Woumen Plaats 18:15</li><li><a href="stop-104824.html">104824</a> - Woumen Station 18:16</li><li><a href="stop-38977.html">38977</a> - Woumen Serpenthoek 18:16</li><li><a href="stop-38974.html">38974</a> - Woumen Korte Wandeling 18:17</li><li><a href="stop-38975.html">38975</a> - Woumen Ooievaar 18:18</li><li><a href="stop-38591.html">38591</a> - Klerken Dorp 18:19</li><li><a href="stop-38593.html">38593</a> - Klerken Klooster 18:20</li><li><a href="stop-38592.html">38592</a> - Klerken Drieweg 18:20</li><li><a href="stop-38594.html">38594</a> - Klerken Welkom 18:21</li><li><a href="stop-38590.html">38590</a> - Klerken Cafe De Haan 18:22</li><li><a href="stop-39034.html">39034</a> - Klerken Schoolstraat 18:23</li><li><a href="stop-100945.html">100945</a> - Houthulst Jagershof 18:24</li><li><a href="stop-38508.html">38508</a> - Houthulst Nieuw Kerkhof 18:24</li><li><a href="stop-38513.html">38513</a> - Houthulst Vijverstraat 18:25</li><li><a href="stop-38514.html">38514</a> - Houthulst Zegestraat 18:26</li><li><a href="stop-38502.html">38502</a> - Houthulst Brouwershof 18:26</li><li><a href="stop-125717.html">125717</a> - Houthulst Plaats 18:27</li><li><a href="stop-38503.html">38503</a> - Houthulst Fabrieksput 18:28</li><li><a href="stop-38190.html">38190</a> - Staden Reke 18:29</li><li><a href="stop-38192.html">38192</a> - Staden Soetestraat 18:30</li><li><a href="stop-38193.html">38193</a> - Staden Stampkotstraat 18:31</li><li><a href="stop-39116.html">39116</a> - Staden Houthulststraat 56 18:32</li><li><a href="stop-38189.html">38189</a> - Staden Mortelbak 18:32</li><li><a href="stop-42147.html">42147</a> - Staden Dorp 18:33</li><li><a href="stop-104757.html">104757</a> - Staden Voorstad 18:34</li><li><a href="stop-104756.html">104756</a> - Staden Lindeken 18:35</li><li><a href="stop-123609.html">123609</a> - Staden Kristus Koning 18:37</li><li><a href="stop-36852.html">36852</a> - Hooglede Sleyhage 18:38</li><li><a href="stop-41706.html">41706</a> - Hooglede Meiboomstraat 18:39</li><li><a href="stop-36855.html">36855</a> - Hooglede Vergeldermolen 18:40</li><li><a href="stop-38095.html">38095</a> - Roeselare Hellestraat 18:40</li><li><a href="stop-123585.html">123585</a> - Roeselare Schiervelde 18:41</li><li><a href="stop-38093.html">38093</a> - Roeselare Hallen 18:42</li><li><a href="stop-38106.html">38106</a> - Roeselare Koortskapel 18:43</li><li><a href="stop-100923.html">100923</a> - Roeselare Boldershof 18:45</li><li><a href="stop-38120.html">38120</a> - Roeselare Sint-Michielskerk 18:46</li><li><a href="stop-38115.html">38115</a> - Roeselare Polenplein 18:48</li><li><a href="stop-126367.html">126367</a> - Roeselare Station perron 6 18:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4262.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

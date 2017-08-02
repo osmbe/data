@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortenbos-Zepperen-St-Truiden-Nieuwerkerken-Kozen - 22494002</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortenbos-Zepperen-St-Truiden-Nieuwerkerken-Kozen - 22494002</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-95078.html">95078</a> - Kozen Ter Cose 18:49</li><li><a href="stop-33145.html">33145</a> - Kozen Kerk 18:49</li><li><a href="stop-33133.html">33133</a> - Kozen Bergstraat 1 18:50</li><li><a href="stop-33135.html">33135</a> - Kozen Bergstraat 2 18:51</li><li><a href="stop-97543.html">97543</a> - Kortenbos Basiliekstraat 18:52</li><li><a href="stop-97565.html">97565</a> - Kortenbos Heide 18:54</li><li><a href="stop-32864.html">32864</a> - Nieuwerkerken Bornestraat 18:57</li><li><a href="stop-33193.html">33193</a> - Nieuwerkerken Driesstraat 18:57</li><li><a href="stop-33189.html">33189</a> - Nieuwerkerken Mouveld I 18:58</li><li><a href="stop-33159.html">33159</a> - Nieuwerkerken Rusthuis 18:59</li><li><a href="stop-33175.html">33175</a> - Nieuwerkerken Kasteelstraat 18:59</li><li><a href="stop-33173.html">33173</a> - Nieuwerkerken Manisbos 19:01</li><li><a href="stop-33127.html">33127</a> - Nieuwerkerken Kerk 19:02</li><li><a href="stop-33188.html">33188</a> - Nieuwerkerken Mouveld I 19:03</li><li><a href="stop-33130.html">33130</a> - Nieuwerkerken Kerkstraat 19:04</li><li><a href="stop-97656.html">97656</a> - Metsteren Metserenweg 19:07</li><li><a href="stop-97601.html">97601</a> - Metsteren Molen 19:08</li><li><a href="stop-97651.html">97651</a> - Metsteren Rummenweg 19:08</li><li><a href="stop-34101.html">34101</a> - Sint-Truiden Zonnebloemlaan 19:11</li><li><a href="stop-33923.html">33923</a> - Sint-Truiden Houtstraat 19:12</li><li><a href="stop-34003.html">34003</a> - Sint-Truiden Rummenweg 19:13</li><li><a href="stop-105369.html">105369</a> - Sint-Truiden Sint-Trudo Ziekenhuis Rummenweg 19:14</li><li><a href="stop-33847.html">33847</a> - Sint-Truiden Diesterpoort 19:16</li><li><a href="stop-127435.html">127435</a> - Sint-Truiden Station perron 2 19:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5392.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

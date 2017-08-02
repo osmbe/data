@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Meerle - Hoogstraten-Antwerpen via Schoten Centrum - 22540767</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Meerle - Hoogstraten-Antwerpen via Schoten Centrum - 22540767</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-19307.html">19307</a> - Schoten Industriepark Brechtsebaan 06:30</li><li><a href="stop-108572.html">108572</a> - Schoten Eksterdreef 06:31</li><li><a href="stop-108571.html">108571</a> - Schoten Bloemendaal 06:32</li><li><a href="stop-108569.html">108569</a> - Schoten Blangenoisstraat 06:33</li><li><a href="stop-21985.html">21985</a> - Schoten Th. V. Cauwenberghslei 06:34</li><li><a href="stop-25984.html">25984</a> - Schoten Gemeentehuis 06:34</li><li><a href="stop-108564.html">108564</a> - Schoten Kasteeldreef 06:35</li><li><a href="stop-108562.html">108562</a> - Schoten Borkelstraat 06:36</li><li><a href="stop-108561.html">108561</a> - Schoten Borgeind 06:36</li><li><a href="stop-109280.html">109280</a> - Schoten De Lek 06:38</li><li><a href="stop-109712.html">109712</a> - Schoten E. Steursstraat 06:39</li><li><a href="stop-109198.html">109198</a> - Schoten Boekenborglei 06:40</li><li><a href="stop-109452.html">109452</a> - Schoten Irislei 06:40</li><li><a href="stop-107607.html">107607</a> - Merksem Oudebareel 06:42</li><li><a href="stop-108695.html">108695</a> - Merksem Barnkracht 06:44</li><li><a href="stop-107760.html">107760</a> - Merksem Burgemeester Nolf 06:45</li><li><a href="stop-107723.html">107723</a> - Merksem Bredabaan 06:46</li><li><a href="stop-108057.html">108057</a> - Merksem Lambrechtshoeken 06:48</li><li><a href="stop-107645.html">107645</a> - Antwerpen Station Luchtbal 06:51</li><li><a href="stop-88426.html">88426</a> - Antwerpen Noorderlaan 06:52</li><li><a href="stop-87335.html">87335</a> - Antwerpen Straatsburgdok 06:53</li><li><a href="stop-107870.html">107870</a> - Antwerpen Noorderbrug 06:53</li><li><a href="stop-121167.html">121167</a> - Antwerpen IJzerlaan 06:54</li><li><a href="stop-108192.html">108192</a> - Antwerpen Noorderplaats 06:57</li><li><a href="stop-108466.html">108466</a> - Antwerpen Sint-Jansplein 06:59</li><li><a href="stop-125280.html">125280</a> - Antwerpen F. Rooseveltplaats perron 32 07:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5739.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

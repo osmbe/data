@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Leerbeek - Gaasbeek - Brussel - 21127169</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Leerbeek - Gaasbeek - Brussel - 21127169</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-10872.html">10872</a> - Leerbeek Stelplaats Kaai 1 08:20</li><li><a href="stop-14821.html">14821</a> - Gooik Meintjes 08:21</li><li><a href="stop-10816.html">10816</a> - Gooik Kwakenbeek 08:21</li><li><a href="stop-10832.html">10832</a> - Gooik Wijngaardstraat 08:22</li><li><a href="stop-10820.html">10820</a> - Gooik Oplombeek 08:23</li><li><a href="stop-13349.html">13349</a> - Sint-Kwintens-Lennik Zwartenbroek 08:24</li><li><a href="stop-13343.html">13343</a> - Sint-Kwintens-Lennik Saffelberg 08:24</li><li><a href="stop-9277.html">9277</a> - Sint-Kwintens-Lennik Negenbunderstraat 08:25</li><li><a href="stop-15917.html">15917</a> - Sint-Kwintens-Lennik Zonnestraal 08:26</li><li><a href="stop-13334.html">13334</a> - Sint-Kwintens-Lennik Marktplein 08:28</li><li><a href="stop-13345.html">13345</a> - Sint-Kwintens-Lennik Gustaaf Van Der Steenstraat 08:30</li><li><a href="stop-13337.html">13337</a> - Sint-Kwintens-Lennik Nederkouter 08:31</li><li><a href="stop-13327.html">13327</a> - Sint-Kwintens-Lennik Groot Vijversele 08:32</li><li><a href="stop-13319.html">13319</a> - Sint-Kwintens-Lennik De Westhoek 08:33</li><li><a href="stop-13307.html">13307</a> - Gaasbeek Wegwijzer 08:34</li><li><a href="stop-13299.html">13299</a> - Gaasbeek Dorp 08:35</li><li><a href="stop-13303.html">13303</a> - Gaasbeek Onderstraat 08:36</li><li><a href="stop-13301.html">13301</a> - Gaasbeek Kasteel 08:37</li><li><a href="stop-13305.html">13305</a> - Vlezenbeek Vijfhoek 08:38</li><li><a href="stop-87249.html">87249</a> - Vlezenbeek Heilige Geest 08:40</li><li><a href="stop-44129.html">44129</a> - Vlezenbeek Ziekenhuis Inkendaal 08:41</li><li><a href="stop-11021.html">11021</a> - Vlezenbeek Kamstraat 08:42</li><li><a href="stop-13482.html">13482</a> - Vlezenbeek Gemeenteplein 08:43</li><li><a href="stop-9343.html">9343</a> - Vlezenbeek Kapelleke 08:44</li><li><a href="stop-13488.html">13488</a> - Vlezenbeek Klein Nederstraat 08:46</li><li><a href="stop-13494.html">13494</a> - Vlezenbeek School Max 08:48</li><li><a href="stop-9280.html">9280</a> - Vlezenbeek Steenbergstraat 08:50</li><li><a href="stop-14724.html">14724</a> - Anderlecht Yzerkruis 08:51</li><li><a href="stop-10008.html">10008</a> - Anderlecht Erasmus 08:53</li><li><a href="stop-10029.html">10029</a> - Anderlecht Meylemeersch 08:54</li><li><a href="stop-9999.html">9999</a> - Anderlecht Eddy Merckx 08:55</li><li><a href="stop-127201.html">127201</a> - Anderlecht Leemans - Eddy Merckx 08:56</li><li><a href="stop-10041.html">10041</a> - Anderlecht Sint-Niklaas 08:57</li><li><a href="stop-10047.html">10047</a> - Anderlecht Coovi 08:59</li><li><a href="stop-10018.html">10018</a> - Anderlecht Het Rad 09:02</li><li><a href="stop-9995.html">9995</a> - Anderlecht Bizet 09:04</li><li><a href="stop-127387.html">127387</a> - Anderlecht Veeweyde 09:05</li><li><a href="stop-9987.html">9987</a> - Anderlecht Aristide Briand 09:05</li><li><a href="stop-10004.html">10004</a> - Anderlecht Democratie 09:07</li><li><a href="stop-9991.html">9991</a> - Anderlecht Biestebroek 09:08</li><li><a href="stop-10043.html">10043</a> - Anderlecht Vaartbrug 09:10</li><li><a href="stop-10014.html">10014</a> - Anderlecht Grondel 09:12</li><li><a href="stop-10016.html">10016</a> - Anderlecht Oude Stelplaats 09:13</li><li><a href="stop-15707.html">15707</a> - Brussel Zuid Perron 6 09:16</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1611.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

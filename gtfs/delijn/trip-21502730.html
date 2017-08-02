@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hemiksem - Hoboken - Eilandje - 21502730</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hemiksem - Hoboken - Eilandje - 21502730</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-19667.html">19667</a> - Hemiksem Nijverheidsstraat 12:38</li><li><a href="stop-108788.html">108788</a> - Hemiksem Delvauxstraat 12:39</li><li><a href="stop-107357.html">107357</a> - Hemiksem Station 12:39</li><li><a href="stop-107356.html">107356</a> - Hemiksem Atletiekstraat 12:40</li><li><a href="stop-107353.html">107353</a> - Hemiksem Bouwerijstraat 12:41</li><li><a href="stop-18913.html">18913</a> - Hemiksem Beukenlaan 12:42</li><li><a href="stop-18911.html">18911</a> - Hemiksem Kerkstraat 12:42</li><li><a href="stop-18908.html">18908</a> - Hemiksem Gemeenteplaats 12:43</li><li><a href="stop-18906.html">18906</a> - Hemiksem Landbouwweg 12:44</li><li><a href="stop-18904.html">18904</a> - Hemiksem Heiligstraat 12:45</li><li><a href="stop-18900.html">18900</a> - Hemiksem Irisweg 12:46</li><li><a href="stop-18899.html">18899</a> - Hemiksem Werkplaatsen 12:47</li><li><a href="stop-25292.html">25292</a> - Hoboken Warschaustraat 12:48</li><li><a href="stop-128333.html">128333</a> - Hoboken Klaverbladdreef 12:49</li><li><a href="stop-18850.html">18850</a> - Hoboken Verenigde Natieslaan 12:51</li><li><a href="stop-107731.html">107731</a> - Hoboken Sporthal Sorgvliet 12:52</li><li><a href="stop-108773.html">108773</a> - Hoboken Moretusstraat 12:53</li><li><a href="stop-21260.html">21260</a> - Hoboken P. H. Spaaklaan 12:53</li><li><a href="stop-107528.html">107528</a> - Hoboken Kapelstraat 12:55</li><li><a href="stop-107955.html">107955</a> - Hoboken Kioskplaats 12:56</li><li><a href="stop-20380.html">20380</a> - Hoboken Berkenrodelei 12:57</li><li><a href="stop-107852.html">107852</a> - Hoboken Hoge Beuken 12:58</li><li><a href="stop-108050.html">108050</a> - Hoboken Atlasstraat 12:59</li><li><a href="stop-22449.html">22449</a> - Hoboken Waaslandstraat 13:00</li><li><a href="stop-107832.html">107832</a> - Hoboken Lageweg 13:02</li><li><a href="stop-107777.html">107777</a> - Antwerpen Groothandelsmarkt 13:03</li><li><a href="stop-108511.html">108511</a> - Antwerpen Stedelijke Sporthal 13:04</li><li><a href="stop-108206.html">108206</a> - Antwerpen Station Zuid 13:07</li><li><a href="stop-19328.html">19328</a> - Antwerpen Broedermin 13:08</li><li><a href="stop-18945.html">18945</a> - Antwerpen Bestorming 13:09</li><li><a href="stop-107469.html">107469</a> - Antwerpen Bres 13:10</li><li><a href="stop-110994.html">110994</a> - Antwerpen Kasteelplein 13:12</li><li><a href="stop-108176.html">108176</a> - Antwerpen Nationale Bank 13:13</li><li><a href="stop-108103.html">108103</a> - Antwerpen Stadspark 13:15</li><li><a href="stop-125244.html">125244</a> - Antwerpen F. Rooseveltplaats perron 37 13:20</li><li><a href="stop-108767.html">108767</a> - Antwerpen Paardenmarkt 13:23</li><li><a href="stop-126921.html">126921</a> - Antwerpen Tunnelplaats 13:24</li><li><a href="stop-108218.html">108218</a> - Antwerpen Noorderplaats 13:25</li><li><a href="stop-108101.html">108101</a> - Antwerpen Londenstraat 13:26</li><li><a href="stop-107804.html">107804</a> - Antwerpen Cadixstraat 13:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2645.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

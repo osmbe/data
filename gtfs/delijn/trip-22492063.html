@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Lummen - Tessenderlo - Hulst - 22492063</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Lummen - Tessenderlo - Hulst - 22492063</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-34234.html">34234</a> - Hulst Kerk 07:54</li><li><a href="stop-34242.html">34242</a> - Hulst Hulsterweg 07:56</li><li><a href="stop-34357.html">34357</a> - Tessenderlo Zandstraat 07:57</li><li><a href="stop-34327.html">34327</a> - Tessenderlo Station 07:57</li><li><a href="stop-34247.html">34247</a> - Tessenderlo Kerk 08:00</li><li><a href="stop-125572.html">125572</a> - Tessenderlo Broedersschool 08:01</li><li><a href="stop-34265.html">34265</a> - Tessenderlo Lichtveld 08:03</li><li><a href="stop-99697.html">99697</a> - Tessenderlo Molenstraat I 08:04</li><li><a href="stop-34350.html">34350</a> - Tessenderlo Weg op Lummen 08:05</li><li><a href="stop-27937.html">27937</a> - Deurne Overweg 08:07</li><li><a href="stop-27942.html">27942</a> - Deurne Schomstraat 08:07</li><li><a href="stop-128849.html">128849</a> - Deurne Gemeentehuis 08:08</li><li><a href="stop-16601.html">16601</a> - Deurne Hasseltsebaan 08:08</li><li><a href="stop-16600.html">16600</a> - Deurne Genevenne 08:09</li><li><a href="stop-93789.html">93789</a> - Schaffen Vleugt Baanhuisstraat 08:12</li><li><a href="stop-32146.html">32146</a> - Meldert Zwarte Ring 08:13</li><li><a href="stop-32140.html">32140</a> - Meldert Melkerij 08:14</li><li><a href="stop-32136.html">32136</a> - Meldert Centrum 08:15</li><li><a href="stop-32184.html">32184</a> - Lummen Mellaar Sint-Annakapel 08:17</li><li><a href="stop-123077.html">123077</a> - Lummen Dikke Eikstraat 08:17</li><li><a href="stop-32116.html">32116</a> - Lummen Kapel 08:19</li><li><a href="stop-32175.html">32175</a> - Lummen Weg op Linkhout 08:20</li><li><a href="stop-32095.html">32095</a> - Lummen Frederickxstraat 08:25</li><li><a href="stop-32113.html">32113</a> - Lummen Kanadastraat 08:26</li><li><a href="stop-32090.html">32090</a> - Lummen Claeshoekstraat 08:27</li><li><a href="stop-32158.html">32158</a> - Lummen Opworpstraat 08:29</li><li><a href="stop-32167.html">32167</a> - Lummen Thiewinkel 08:30</li><li><a href="stop-32165.html">32165</a> - Lummen Stokrooiestraat 08:30</li><li><a href="stop-32170.html">32170</a> - Lummen Thiewinkelstraat 08:31</li><li><a href="stop-29542.html">29542</a> - Spalbeek Veldekensmolen 08:31</li><li><a href="stop-29535.html">29535</a> - Spalbeek Holrakkerstraat 08:32</li><li><a href="stop-29204.html">29204</a> - Spalbeek De Gaer 08:32</li><li><a href="stop-29533.html">29533</a> - Spalbeek Centrum 08:33</li><li><a href="stop-29367.html">29367</a> - Kermt Hommelbergstraat 08:34</li><li><a href="stop-29368.html">29368</a> - Kermt Meistraat 08:35</li><li><a href="stop-29363.html">29363</a> - Kermt De Willeman 08:36</li><li><a href="stop-29361.html">29361</a> - Kermt Centrum 08:37</li><li><a href="stop-29358.html">29358</a> - Kermt Heerstraat 08:38</li><li><a href="stop-29570.html">29570</a> - Kermt Asfaltfabriek 08:38</li><li><a href="stop-29378.html">29378</a> - Kermt Station 08:40</li><li><a href="stop-94959.html">94959</a> - Kuringen Stevoortse Kiezel 08:41</li><li><a href="stop-29448.html">29448</a> - Kuringen McDonald's 08:44</li><li><a href="stop-29282.html">29282</a> - Hasselt Crutzenstraat 08:44</li><li><a href="stop-128974.html">128974</a> - Hasselt Station perron 13 08:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5072.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

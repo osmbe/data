@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortenbos-Zepperen-St-Truiden-Nieuwerkerken-Kozen - 22464246</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortenbos-Zepperen-St-Truiden-Nieuwerkerken-Kozen - 22464246</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127435.html">127435</a> - Sint-Truiden Station perron 2 08:08</li><li><a href="stop-34027.html">34027</a> - Sint-Truiden Stationsstraat 08:09</li><li><a href="stop-34066.html">34066</a> - Sint-Truiden Zwembad 08:11</li><li><a href="stop-33975.html">33975</a> - Sint-Truiden Naamsepoort 08:12</li><li><a href="stop-105351.html">105351</a> - Sint-Truiden Europaplein 08:13</li><li><a href="stop-33929.html">33929</a> - Sint-Truiden Kattenstraat 08:14</li><li><a href="stop-33925.html">33925</a> - Sint-Truiden Industriepark 08:17</li><li><a href="stop-33806.html">33806</a> - Sint-Truiden Bernissem 08:18</li><li><a href="stop-33890.html">33890</a> - Sint-Truiden Groenstraat 08:19</li><li><a href="stop-33804.html">33804</a> - Sint-Truiden Bautershoven 08:19</li><li><a href="stop-33950.html">33950</a> - Sint-Truiden Kruispunt Expresweg 08:20</li><li><a href="stop-34379.html">34379</a> - Zepperen Kerkveldstraat 08:21</li><li><a href="stop-34078.html">34078</a> - Zepperen Kerk 08:22</li><li><a href="stop-34115.html">34115</a> - Zepperen Kogelstraat 08:23</li><li><a href="stop-125565.html">125565</a> - Zepperen d'Oyestraat 08:23</li><li><a href="stop-34077.html">34077</a> - Zepperen Kasteelstraat 08:24</li><li><a href="stop-95005.html">95005</a> - Zepperen Campus Sint-Aloysius 08:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5393.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

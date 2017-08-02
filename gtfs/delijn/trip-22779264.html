@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tienen - Budingen - Diest - 22779264</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tienen - Budingen - Diest - 22779264</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-93366.html">93366</a> - Geetbets Stationswijk 04:57</li><li><a href="stop-10678.html">10678</a> - Geetbets Dorp 04:58</li><li><a href="stop-10707.html">10707</a> - Geetbets Overbeek 04:58</li><li><a href="stop-10682.html">10682</a> - Geetbets Garage Van Mullem 04:59</li><li><a href="stop-10684.html">10684</a> - Geetbets Glabbeek 05:00</li><li><a href="stop-10672.html">10672</a> - Geetbets Café Bij de Boer 05:00</li><li><a href="stop-10676.html">10676</a> - Geetbets De Plakker 05:01</li><li><a href="stop-14272.html">14272</a> - Budingen Roel 05:02</li><li><a href="stop-14274.html">14274</a> - Budingen Stationswijk 05:03</li><li><a href="stop-14254.html">14254</a> - Budingen Gemeentehuis 05:04</li><li><a href="stop-128912.html">128912</a> - Budingen Garage Van Mullem 05:05</li><li><a href="stop-14260.html">14260</a> - Budingen Linterseweg 56 05:06</li><li><a href="stop-14250.html">14250</a> - Budingen Café David 05:07</li><li><a href="stop-95647.html">95647</a> - Drieslinter Rattenstraat 05:08</li><li><a href="stop-95639.html">95639</a> - Drieslinter Grote Steenweg 420 05:08</li><li><a href="stop-95649.html">95649</a> - Drieslinter Stationsstraat 05:09</li><li><a href="stop-95643.html">95643</a> - Drieslinter Molenstraat 05:10</li><li><a href="stop-95641.html">95641</a> - Drieslinter Kapelleke 05:11</li><li><a href="stop-95668.html">95668</a> - Neerlinter Ransbergsteenweg 05:12</li><li><a href="stop-95661.html">95661</a> - Neerlinter Dorp 05:13</li><li><a href="stop-12425.html">12425</a> - Oplinter Kwadeplas 05:14</li><li><a href="stop-13816.html">13816</a> - Oplinter Hoeve De Ronde 05:15</li><li><a href="stop-13828.html">13828</a> - Oplinter Kummenbaan 05:16</li><li><a href="stop-13824.html">13824</a> - Oplinter Sint-Genovevaplein 05:16</li><li><a href="stop-13812.html">13812</a> - Oplinter Oplintersesteenweg 05:17</li><li><a href="stop-13818.html">13818</a> - Oplinter Halverwege 05:17</li><li><a href="stop-13820.html">13820</a> - Oplinter Huiskensstraat 05:18</li><li><a href="stop-13826.html">13826</a> - Oplinter Militair Kerkhof 05:20</li><li><a href="stop-13919.html">13919</a> - Tienen Villapark 05:20</li><li><a href="stop-13882.html">13882</a> - Tienen Hamelendreef 05:21</li><li><a href="stop-13911.html">13911</a> - Tienen Het Rond Punt 05:22</li><li><a href="stop-127862.html">127862</a> - Tienen Oplintersepoort 05:22</li><li><a href="stop-13913.html">13913</a> - Tienen Waaibergstraat 05:23</li><li><a href="stop-99268.html">99268</a> - Tienen Atheneum 05:24</li><li><a href="stop-127857.html">127857</a> - Tienen Kabbeeksepoort 05:25</li><li><a href="stop-13880.html">13880</a> - Tienen Kerk Heilig Hart 05:26</li><li><a href="stop-13886.html">13886</a> - Tienen Leuvenselaan 05:27</li><li><a href="stop-13861.html">13861</a> - Tienen 4de Lansierslaan 05:28</li><li><a href="stop-13909.html">13909</a> - Tienen Station Perron 7 05:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2105.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

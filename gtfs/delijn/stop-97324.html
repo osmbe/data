@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genenbos Nieuwstraat</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Genenbos Nieuwstraat</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-22459084.html">22459084</a> - 22459084 - Sint-Truiden - Herk-de-Stad - Lummen - Beringen</li><li><a href="trip-22473296.html">22473296</a> - 22473296 - Sint-Truiden - Herk-de-Stad - Lummen - Beringen</li><li><a href="trip-22479766.html">22479766</a> - 22479766 - Sint-Truiden - Herk-de-Stad - Lummen - Beringen</li><li><a href="trip-22479771.html">22479771</a> - 22479771 - Sint-Truiden - Herk-de-Stad - Lummen - Beringen</li><li><a href="trip-22490871.html">22490871</a> - 22490871 - Sint-Truiden - Herk-de-Stad - Lummen - Beringen</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([51.0083460870574, 5.22534058153868], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([51.0083460870574, 5.22534058153868]).addTo(map);
+    </script>
+</body>
+
+</html>

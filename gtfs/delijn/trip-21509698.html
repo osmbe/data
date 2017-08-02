@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Mortsel - Sint-Pietersvliet - 21509698</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mortsel - Sint-Pietersvliet - 21509698</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-107552.html">107552</a> - Mortsel Gemeenteplein 07:16</li><li><a href="stop-107718.html">107718</a> - Mortsel Vredebaan 07:17</li><li><a href="stop-108040.html">108040</a> - Mortsel Gevaert 07:18</li><li><a href="stop-120802.html">120802</a> - Mortsel Kuijpers 07:19</li><li><a href="stop-107714.html">107714</a> - Berchem Fruithoflaan 07:20</li><li><a href="stop-120809.html">120809</a> - Berchem Pulhof 07:21</li><li><a href="stop-107901.html">107901</a> - Berchem Jan Moorkens 07:21</li><li><a href="stop-108017.html">108017</a> - Berchem Koninklijkelaan 07:22</li><li><a href="stop-120813.html">120813</a> - Berchem Sint-Willibrordus 07:24</li><li><a href="stop-107625.html">107625</a> - Berchem Driekoningen 07:25</li><li><a href="stop-120799.html">120799</a> - Berchem De Merode 07:26</li><li><a href="stop-120804.html">120804</a> - Antwerpen Harmonie 07:27</li><li><a href="stop-20188.html">20188</a> - Antwerpen Gounod 07:29</li><li><a href="stop-107490.html">107490</a> - Antwerpen Van Bree 07:30</li><li><a href="stop-108183.html">108183</a> - Antwerpen Nationale Bank 07:31</li><li><a href="stop-21000.html">21000</a> - Antwerpen Mechelseplein 07:33</li><li><a href="stop-21247.html">21247</a> - Antwerpen Oudaan 07:34</li><li><a href="stop-108138.html">108138</a> - Antwerpen Meirbrug 07:35</li><li><a href="stop-20580.html">20580</a> - Antwerpen Keizerstraat 07:36</li><li><a href="stop-20682.html">20682</a> - Antwerpen Klapdorp 07:37</li><li><a href="stop-121742.html">121742</a> - Antwerpen Sint-Pietersvliet 07:37</li><li><a href="stop-22047.html">22047</a> - Antwerpen Sint-Pietersvliet 07:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2689.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

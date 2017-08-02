@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Berchem - Broechem - Viersel - Zandhoven - 22524479</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Berchem - Broechem - Viersel - Zandhoven - 22524479</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-92390.html">92390</a> - Broechem Stelplaats 18:50</li><li><a href="stop-91991.html">91991</a> - Broechem Gemeentehuis 18:51</li><li><a href="stop-22897.html">22897</a> - Broechem Van Den Nestlaan 18:52</li><li><a href="stop-22895.html">22895</a> - Broechem Achterlo 18:53</li><li><a href="stop-22893.html">22893</a> - Ranst Processieweg 18:54</li><li><a href="stop-22891.html">22891</a> - Ranst Lieve Vrouwestraat 18:55</li><li><a href="stop-108941.html">108941</a> - Ranst Gasthuisstraat 18:55</li><li><a href="stop-21294.html">21294</a> - Ranst Kastanjelaan 18:56</li><li><a href="stop-22887.html">22887</a> - Ranst Zevenbergen 18:57</li><li><a href="stop-93174.html">93174</a> - Wommelgem Schawijkstraat 18:58</li><li><a href="stop-93172.html">93172</a> - Wommelgem Vremdesteenweg 18:59</li><li><a href="stop-108940.html">108940</a> - Wommelgem Dorp 19:01</li><li><a href="stop-107483.html">107483</a> - Wommelgem Echelveldstraat 19:02</li><li><a href="stop-107484.html">107484</a> - Wommelgem Rollebeekstraat 19:03</li><li><a href="stop-107485.html">107485</a> - Wommelgem Guddegemstraat 19:04</li><li><a href="stop-109004.html">109004</a> - Wommelgem Nijverheidsstraat 19:06</li><li><a href="stop-109002.html">109002</a> - Wommelgem Draaiboomstraat 19:06</li><li><a href="stop-109000.html">109000</a> - Wommelgem Oude Baan 19:08</li><li><a href="stop-108998.html">108998</a> - Wommelgem Fort II-straat 19:09</li><li><a href="stop-100374.html">100374</a> - Wommelgem Silsburg 19:10</li><li><a href="stop-100373.html">100373</a> - Deurne Peter Benoitlaan 19:12</li><li><a href="stop-100372.html">100372</a> - Deurne Ruggeveldlaan Zuid 19:13</li><li><a href="stop-100371.html">100371</a> - Deurne Esdoorndreef 19:14</li><li><a href="stop-100370.html">100370</a> - Deurne Sterckshoflei 19:15</li><li><a href="stop-109586.html">109586</a> - Deurne Mestputteke 19:16</li><li><a href="stop-107936.html">107936</a> - Deurne Muggenberg 19:17</li><li><a href="stop-107946.html">107946</a> - Borgerhout Morckhoven 19:18</li><li><a href="stop-108111.html">108111</a> - Borgerhout Luitenant Lippenslaan 19:19</li><li><a href="stop-108444.html">108444</a> - Borgerhout Sint-Erasmusziekenhuis 19:20</li><li><a href="stop-108235.html">108235</a> - Borgerhout Station Oost 19:21</li><li><a href="stop-107837.html">107837</a> - Berchem Station perron 1 19:24</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3240.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

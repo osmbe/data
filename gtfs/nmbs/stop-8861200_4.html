@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Gembloux</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Gembloux</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-IC212210551.html">IC212210551</a> - IC212210551 - Brussel-Zuid - Jemelle</li><li><a href="trip-IC212335271.html">IC212335271</a> - IC212335271 - Brussel-Zuid - Namen</li><li><a href="trip-IC240611521.html">IC240611521</a> - IC240611521 - Brussel-Zuid - Luik-Paleis</li><li><a href="trip-IC240841031.html">IC240841031</a> - IC240841031 - Brussel-Zuid - Luik-Paleis</li><li><a href="trip-IC240911531.html">IC240911531</a> - IC240911531 - Brussel-Zuid - Luik-Paleis</li><li><a href="trip-IC241011541.html">IC241011541</a> - IC241011541 - Brussel-Zuid - Luik-Paleis</li><li><a href="trip-IC241111551.html">IC241111551</a> - IC241111551 - Brussel-Zuid - Luik-Paleis</li><li><a href="trip-IC241211561.html">IC241211561</a> - IC241211561 - Brussel-Zuid - Luik-Paleis</li><li><a href="trip-IC241311571.html">IC241311571</a> - IC241311571 - Brussel-Zuid - Luik-Paleis</li><li><a href="trip-IC241411581.html">IC241411581</a> - IC241411581 - Brussel-Zuid - Luik-Paleis</li><li><a href="trip-IC241511591.html">IC241511591</a> - IC241511591 - Brussel-Zuid - Luik-Paleis</li><li><a href="trip-IC241611601.html">IC241611601</a> - IC241611601 - Brussel-Zuid - Luik-Paleis</li><li><a href="trip-IC241711611.html">IC241711611</a> - IC241711611 - Brussel-Zuid - Luik-Paleis</li><li><a href="trip-IC241811621.html">IC241811621</a> - IC241811621 - Brussel-Zuid - Luik-Paleis</li><li><a href="trip-IC241911631.html">IC241911631</a> - IC241911631 - Brussel-Zuid - Luik-Paleis</li><li><a href="trip-IC242011641.html">IC242011641</a> - IC242011641 - Brussel-Zuid - Luik-Paleis</li><li><a href="trip-IC250611861.html">IC250611861</a> - IC250611861 - Brussels Airport - Zaventem - Dinant</li><li><a href="trip-IC250711871.html">IC250711871</a> - IC250711871 - Brussels Airport - Zaventem - Dinant</li><li><a href="trip-IC250811881.html">IC250811881</a> - IC250811881 - Brussels Airport - Zaventem - Dinant</li><li><a href="trip-IC250911891.html">IC250911891</a> - IC250911891 - Brussels Airport - Zaventem - Dinant</li><li><a href="trip-IC251011901.html">IC251011901</a> - IC251011901 - Brussels Airport - Zaventem - Dinant</li><li><a href="trip-IC251111911.html">IC251111911</a> - IC251111911 - Brussels Airport - Zaventem - Dinant</li><li><a href="trip-IC251211921.html">IC251211921</a> - IC251211921 - Brussels Airport - Zaventem - Dinant</li><li><a href="trip-IC251311931.html">IC251311931</a> - IC251311931 - Brussels Airport - Zaventem - Dinant</li><li><a href="trip-IC251411941.html">IC251411941</a> - IC251411941 - Brussels Airport - Zaventem - Dinant</li><li><a href="trip-IC251511951.html">IC251511951</a> - IC251511951 - Brussels Airport - Zaventem - Dinant</li><li><a href="trip-IC251611961.html">IC251611961</a> - IC251611961 - Brussels Airport - Zaventem - Dinant</li><li><a href="trip-IC251711971.html">IC251711971</a> - IC251711971 - Brussels Airport - Zaventem - Dinant</li><li><a href="trip-IC251811981.html">IC251811981</a> - IC251811981 - Brussels Airport - Zaventem - Dinant</li><li><a href="trip-IC251911991.html">IC251911991</a> - IC251911991 - Brussels Airport - Zaventem - Dinant</li><li><a href="trip-IC252012001.html">IC252012001</a> - IC252012001 - Brussels Airport - Zaventem - Dinant</li><li><a href="trip-IC252112011.html">IC252112011</a> - IC252112011 - Brussels Airport - Zaventem - Dinant</li><li><a href="trip-IC252235281.html">IC252235281</a> - IC252235281 - Brussel-Zuid - Namen</li><li><a href="trip-P751230691.html">P751230691</a> - P751230691 - Doornik - Luik-Paleis</li><li><a href="trip-P751430711.html">P751430711</a> - P751430711 - Doornik - Luik-Paleis</li><li><a href="trip-P765330971.html">P765330971</a> - P765330971 - Ottignies - Namen</li><li><a href="trip-P860033001.html">P860033001</a> - P860033001 - Brussel-Zuid - Dinant</li><li><a href="trip-P860233021.html">P860233021</a> - P860233021 - Brussel-Zuid - Namen</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.570489, 4.691497], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.570489, 4.691497]).addTo(map);
+    </script>
+</body>
+
+</html>

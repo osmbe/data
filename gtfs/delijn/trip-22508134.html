@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kontich Scholen - Aartselaar - Schelle - 22508134</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kontich Scholen - Aartselaar - Schelle - 22508134</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108798.html">108798</a> - Schelle Tolhuisstraat 07:20</li><li><a href="stop-108796.html">108796</a> - Schelle Kapelstraat 07:21</li><li><a href="stop-108794.html">108794</a> - Schelle Peperstraat 07:22</li><li><a href="stop-108792.html">108792</a> - Schelle Kerk 07:22</li><li><a href="stop-108790.html">108790</a> - Hemiksem Bosstraat 07:23</li><li><a href="stop-108788.html">108788</a> - Hemiksem Delvauxstraat 07:24</li><li><a href="stop-107375.html">107375</a> - Hemiksem Steenbakkerijstraat 07:24</li><li><a href="stop-108786.html">108786</a> - Hemiksem Scheldestraat 07:25</li><li><a href="stop-108784.html">108784</a> - Hemiksem Callebeekstraat 07:26</li><li><a href="stop-108782.html">108782</a> - Hemiksem Terlochtweg 07:28</li><li><a href="stop-23580.html">23580</a> - Hemiksem Notelaar 07:29</li><li><a href="stop-23592.html">23592</a> - Hemiksem Gemeenteplaats 07:30</li><li><a href="stop-20315.html">20315</a> - Hemiksem Beukenlaan 07:31</li><li><a href="stop-109219.html">109219</a> - Hemiksem Sanderslaan 07:32</li><li><a href="stop-23633.html">23633</a> - Aartselaar Helststraat 07:35</li><li><a href="stop-23635.html">23635</a> - Aartselaar Antwerpsesteenweg 07:36</li><li><a href="stop-23230.html">23230</a> - Aartselaar J. Stobbaertslaan 07:37</li><li><a href="stop-23232.html">23232</a> - Aartselaar Dijkstraat 07:39</li><li><a href="stop-43325.html">43325</a> - Aartselaar Wouwersveld 07:40</li><li><a href="stop-23234.html">23234</a> - Aartselaar Barones de Borrekenslaan 07:41</li><li><a href="stop-23236.html">23236</a> - Aartselaar Gemeentehuis 07:42</li><li><a href="stop-21650.html">21650</a> - Aartselaar Dokter Cuypersstraat 07:43</li><li><a href="stop-109075.html">109075</a> - Aartselaar S. Streuvelslaan 07:43</li><li><a href="stop-23240.html">23240</a> - Aartselaar J. Davidlaan 07:45</li><li><a href="stop-94573.html">94573</a> - Aartselaar Oever 07:46</li><li><a href="stop-23331.html">23331</a> - Kontich Keizershoek 07:50</li><li><a href="stop-23335.html">23335</a> - Kontich Pannebossen 07:51</li><li><a href="stop-109114.html">109114</a> - Kontich Mandoersebeek 07:52</li><li><a href="stop-23339.html">23339</a> - Kontich Sint-Ritakerk 07:54</li><li><a href="stop-108340.html">108340</a> - Kontich VTI 07:58</li><li><a href="stop-108088.html">108088</a> - Kontich De Villermontstraat 07:59</li><li><a href="stop-109243.html">109243</a> - Kontich Edegemsesteenweg 08:01</li><li><a href="stop-109120.html">109120</a> - Kontich Kerk 08:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2872.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diest - Mol / Leopoldsburg - 22461368</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diest - Mol / Leopoldsburg - 22461368</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-27962.html">27962</a> - Diest Station perron 3 06:32</li><li><a href="stop-16507.html">16507</a> - Schaffen Schoonaarde 06:34</li><li><a href="stop-128838.html">128838</a> - Schaffen Weg op Tessenderlo 06:35</li><li><a href="stop-16551.html">16551</a> - Schaffen Vliegplein 06:36</li><li><a href="stop-127873.html">127873</a> - Schaffen Engelbeekstraat 06:38</li><li><a href="stop-34261.html">34261</a> - Tessenderlo Lapseheide kruispunt 06:39</li><li><a href="stop-97615.html">97615</a> - Engsbergen Steenovenstraat 06:40</li><li><a href="stop-97616.html">97616</a> - Engsbergen Vlassen 06:40</li><li><a href="stop-97608.html">97608</a> - Engsbergen Kruispunt 06:41</li><li><a href="stop-97602.html">97602</a> - Engsbergen Eggers 06:42</li><li><a href="stop-97604.html">97604</a> - Engsbergen Eggers 15 06:43</li><li><a href="stop-16577.html">16577</a> - Deurne Steenweg op Engsbergen 06:45</li><li><a href="stop-125454.html">125454</a> - Deurne Stationstraat 06:45</li><li><a href="stop-128847.html">128847</a> - Deurne Hostestraat 06:46</li><li><a href="stop-34351.html">34351</a> - Tessenderlo Weg op Lummen 06:48</li><li><a href="stop-99698.html">99698</a> - Tessenderlo Molenstraat I 06:49</li><li><a href="stop-34266.html">34266</a> - Tessenderlo Lichtveld 06:50</li><li><a href="stop-34247.html">34247</a> - Tessenderlo Kerk 06:51</li><li><a href="stop-125572.html">125572</a> - Tessenderlo Broedersschool 06:52</li><li><a href="stop-34280.html">34280</a> - Tessenderlo Rode Heide 06:53</li><li><a href="stop-93821.html">93821</a> - Tessenderlo Groenstraat 06:53</li><li><a href="stop-34353.html">34353</a> - Tessenderlo Weg op Vorst 06:54</li><li><a href="stop-96811.html">96811</a> - Genendijk Kerk 06:56</li><li><a href="stop-29008.html">29008</a> - Kwaadmechelen Vlinderstraat 06:57</li><li><a href="stop-28986.html">28986</a> - Kwaadmechelen Autosnelweg 06:58</li><li><a href="stop-29004.html">29004</a> - Kwaadmechelen Processiestraat 07:00</li><li><a href="stop-28994.html">28994</a> - Kwaadmechelen Kerk 07:01</li><li><a href="stop-29010.html">29010</a> - Kwaadmechelen Waterstraat 07:01</li><li><a href="stop-29000.html">29000</a> - Kwaadmechelen Mastentopstraat 07:02</li><li><a href="stop-29029.html">29029</a> - Oostham Weg op Station 07:03</li><li><a href="stop-29031.html">29031</a> - Oostham Schoolstraat 07:04</li><li><a href="stop-29019.html">29019</a> - Oostham Heppensesteenweg 07:05</li><li><a href="stop-29035.html">29035</a> - Oostham Warande 07:07</li><li><a href="stop-31768.html">31768</a> - Heppen Voetbalveldweg 07:09</li><li><a href="stop-31748.html">31748</a> - Heppen Hamsesteenweg 07:10</li><li><a href="stop-31757.html">31757</a> - Heppen Kerk 07:11</li><li><a href="stop-31750.html">31750</a> - Heppen Diestersteenweg 07:12</li><li><a href="stop-31742.html">31742</a> - Leopoldsburg De Vrachtkar 07:13</li><li><a href="stop-31792.html">31792</a> - Leopoldsburg Station 07:15</li><li><a href="stop-31770.html">31770</a> - Leopoldsburg Hoek Ijzerlei 07:16</li><li><a href="stop-98916.html">98916</a> - Leopoldsburg Atheneum 07:19</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5113.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Charleroi-Sud</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Charleroi-Sud</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-IC199588071.html">IC199588071</a> - IC199588071 - Namen - Lille Flandres(f)</li><li><a href="trip-IC382615871.html">IC382615871</a> - IC382615871 - Namen - Bergen</li><li><a href="trip-IC382715881.html">IC382715881</a> - IC382715881 - Luik-Paleis - Bergen</li><li><a href="trip-IC382815891.html">IC382815891</a> - IC382815891 - Luik-Paleis - Bergen</li><li><a href="trip-IC382915901.html">IC382915901</a> - IC382915901 - Luik-Paleis - Bergen</li><li><a href="trip-IC383015911.html">IC383015911</a> - IC383015911 - Luik-Paleis - Bergen</li><li><a href="trip-IC383815991.html">IC383815991</a> - IC383815991 - Luik-Paleis - Bergen</li><li><a href="trip-IC383916001.html">IC383916001</a> - IC383916001 - Luik-Paleis - Bergen</li><li><a href="trip-IC384016011.html">IC384016011</a> - IC384016011 - Luik-Paleis - Bergen</li><li><a href="trip-IC384116021.html">IC384116021</a> - IC384116021 - Luik-Paleis - Bergen</li><li><a href="trip-IC384216031.html">IC384216031</a> - IC384216031 - Luik-Paleis - Bergen</li><li><a href="trip-IC400616361.html">IC400616361</a> - IC400616361 - Charleroi-Zuid - Brussels Airport - Zaventem</li><li><a href="trip-IC400716371.html">IC400716371</a> - IC400716371 - Charleroi-Zuid - Brussels Airport - Zaventem</li><li><a href="trip-IC401716471.html">IC401716471</a> - IC401716471 - Charleroi-Zuid - Brussels Airport - Zaventem</li><li><a href="trip-IC401816481.html">IC401816481</a> - IC401816481 - Charleroi-Zuid - Brussels Airport - Zaventem</li><li><a href="trip-IC401916491.html">IC401916491</a> - IC401916491 - Charleroi-Zuid - Brussels Airport - Zaventem</li><li><a href="trip-IC402016501.html">IC402016501</a> - IC402016501 - Charleroi-Zuid - Brussels Airport - Zaventem</li><li><a href="trip-IC402116511.html">IC402116511</a> - IC402116511 - Charleroi-Zuid - Brussels Airport - Zaventem</li><li><a href="trip-IC402716521.html">IC402716521</a> - IC402716521 - Brussels Airport - Zaventem - Charleroi-Zuid</li><li><a href="trip-IC402816531.html">IC402816531</a> - IC402816531 - Brussels Airport - Zaventem - Charleroi-Zuid</li><li><a href="trip-IC403716621.html">IC403716621</a> - IC403716621 - Brussels Airport - Zaventem - Charleroi-Zuid</li><li><a href="trip-IC403816631.html">IC403816631</a> - IC403816631 - Brussels Airport - Zaventem - Charleroi-Zuid</li><li><a href="trip-IC403916641.html">IC403916641</a> - IC403916641 - Brussels Airport - Zaventem - Charleroi-Zuid</li><li><a href="trip-IC404016651.html">IC404016651</a> - IC404016651 - Brussels Airport - Zaventem - Charleroi-Zuid</li><li><a href="trip-IC404116661.html">IC404116661</a> - IC404116661 - Brussels Airport - Zaventem - Charleroi-Zuid</li><li><a href="trip-IC9277971.html">IC9277971</a> - IC9277971 - Namen - Lille Flandres(f)</li><li><a href="trip-IC9287981.html">IC9287981</a> - IC9287981 - Namen - Doornik</li><li><a href="trip-IC9338031.html">IC9338031</a> - IC9338031 - Namen - Lille Flandres(f)</li><li><a href="trip-IC9348041.html">IC9348041</a> - IC9348041 - Namen - Doornik</li><li><a href="trip-IC9358051.html">IC9358051</a> - IC9358051 - Namen - Lille Flandres(f)</li><li><a href="trip-IC9368061.html">IC9368061</a> - IC9368061 - Namen - Lille Flandres(f)</li><li><a href="trip-IC9378081.html">IC9378081</a> - IC9378081 - Namen - Moeskroen</li><li><a href="trip-IC9388091.html">IC9388091</a> - IC9388091 - Namen - Moeskroen</li><li><a href="trip-IC9398101.html">IC9398101</a> - IC9398101 - Namen - Lille Flandres(f)</li><li><a href="trip-IC9408111.html">IC9408111</a> - IC9408111 - Namen - Doornik</li><li><a href="trip-IC9418121.html">IC9418121</a> - IC9418121 - Namen - Doornik</li><li><a href="trip-IC9428131.html">IC9428131</a> - IC9428131 - Namen - Doornik</li><li><a href="trip-IC94334781.html">IC94334781</a> - IC94334781 - Namen - Doornik</li><li><a href="trip-P779331581.html">P779331581</a> - P779331581 - Charleroi-Zuid - Luttre</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.40471, 4.438567], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.40471, 4.438567]).addTo(map);
+    </script>
+</body>
+
+</html>

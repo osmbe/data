@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Lier - Nijlen - Herenthout - 22509945</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Lier - Nijlen - Herenthout - 22509945</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-24493.html">24493</a> - Herenthout Markt 06:50</li><li><a href="stop-109194.html">109194</a> - Herenthout Keulemansstraat 06:51</li><li><a href="stop-109193.html">109193</a> - Herenthout Verbistlaan 06:51</li><li><a href="stop-23541.html">23541</a> - Herenthout Otterloop 06:53</li><li><a href="stop-23538.html">23538</a> - Herenthout Prinsenhoek 06:53</li><li><a href="stop-23536.html">23536</a> - Herenthout Niemandshoek 06:54</li><li><a href="stop-23533.html">23533</a> - Bevel Steynhoven 06:55</li><li><a href="stop-23531.html">23531</a> - Bevel Heik 06:56</li><li><a href="stop-109191.html">109191</a> - Bevel Itegemsesteenweg 06:57</li><li><a href="stop-23527.html">23527</a> - Bevel Kerk 06:58</li><li><a href="stop-109189.html">109189</a> - Bevel Binnenhof 06:59</li><li><a href="stop-109188.html">109188</a> - Bevel Kontersland 07:01</li><li><a href="stop-109187.html">109187</a> - Nijlen Lege Baan 07:02</li><li><a href="stop-109186.html">109186</a> - Nijlen Retsestraat 07:05</li><li><a href="stop-23468.html">23468</a> - Nijlen Kerk 07:07</li><li><a href="stop-109168.html">109168</a> - Nijlen Station 07:09</li><li><a href="stop-23463.html">23463</a> - Nijlen Goorstraat 07:10</li><li><a href="stop-23461.html">23461</a> - Kessel Jagershuis 07:12</li><li><a href="stop-23458.html">23458</a> - Kessel Hoenderstraat 07:13</li><li><a href="stop-23456.html">23456</a> - Kessel Smoutmolendreef 07:15</li><li><a href="stop-109164.html">109164</a> - Kessel Gemeentehuis 07:16</li><li><a href="stop-109162.html">109162</a> - Kessel Stationssteenweg 07:17</li><li><a href="stop-19590.html">19590</a> - Kessel Vorst 07:18</li><li><a href="stop-23449.html">23449</a> - Kessel Salvatorbaan 07:18</li><li><a href="stop-23447.html">23447</a> - Lier Kerkhof 07:20</li><li><a href="stop-23444.html">23444</a> - Lier Marnixdreef 07:21</li><li><a href="stop-23442.html">23442</a> - Lier Maasfortbaan 07:23</li><li><a href="stop-23740.html">23740</a> - Lier Veemarkt perron 1 07:24</li><li><a href="stop-109282.html">109282</a> - Lier Kluizenplein 07:26</li><li><a href="stop-109281.html">109281</a> - Lier Markt 07:28</li><li><a href="stop-109279.html">109279</a> - Lier Rolwagenstraat 07:32</li><li><a href="stop-109940.html">109940</a> - Lier Station perron 11 07:33</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2903.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

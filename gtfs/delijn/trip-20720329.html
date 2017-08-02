@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent - Nazareth - Oudenaarde - 20720329</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent - Nazareth - Oudenaarde - 20720329</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-119356.html">119356</a> - Oudenaarde Tacambaro 12:21</li><li><a href="stop-126756.html">126756</a> - Oudenaarde Station perron 1 12:23</li><li><a href="stop-119359.html">119359</a> - Oudenaarde Sportcentrum 12:27</li><li><a href="stop-121649.html">121649</a> - Oudenaarde V.T.I. 12:31</li><li><a href="stop-119520.html">119520</a> - Oudenaarde Bulkendreef 12:32</li><li><a href="stop-119519.html">119519</a> - Oudenaarde Drijf 12:34</li><li><a href="stop-119518.html">119518</a> - Oudenaarde Paterstraat 12:35</li><li><a href="stop-119517.html">119517</a> - Eine Akkerstraat 12:37</li><li><a href="stop-119516.html">119516</a> - Eine Fabriekstraat 12:38</li><li><a href="stop-119515.html">119515</a> - Eine Grimbergenstraat 12:40</li><li><a href="stop-119514.html">119514</a> - Heurne Kerk 12:41</li><li><a href="stop-119513.html">119513</a> - Heurne Amandusstraat 12:42</li><li><a href="stop-119512.html">119512</a> - Zingem Kouterstraat 12:45</li><li><a href="stop-119511.html">119511</a> - Zingem Nederzwalmsesteenweg 12:45</li><li><a href="stop-119510.html">119510</a> - Zingem Dorp 12:46</li><li><a href="stop-119509.html">119509</a> - Zingem Tuinwijk 12:47</li><li><a href="stop-119508.html">119508</a> - Zingem Bekestraat 12:48</li><li><a href="stop-119507.html">119507</a> - Huise Heulestraat 12:49</li><li><a href="stop-119506.html">119506</a> - Huise Peerdeken 12:51</li><li><a href="stop-119624.html">119624</a> - Ouwegem Beertegemstraat 12:53</li><li><a href="stop-119503.html">119503</a> - Ouwegem Dorp 12:54</li><li><a href="stop-119502.html">119502</a> - Ouwegem Pluimke 12:55</li><li><a href="stop-119501.html">119501</a> - Lozer Kloosterstraat 12:57</li><li><a href="stop-127624.html">127624</a> - Lozer Kasteelstraat 12:58</li><li><a href="stop-119499.html">119499</a> - Lozer Geldstraat 12:59</li><li><a href="stop-119498.html">119498</a> - Lozer Neerrechemstraat 12:59</li><li><a href="stop-119497.html">119497</a> - Lozer Goedlevenstraat 13:00</li><li><a href="stop-120029.html">120029</a> - Nazareth Plezierstraat 13:01</li><li><a href="stop-119496.html">119496</a> - Nazareth Boeregemstraat 13:02</li><li><a href="stop-119934.html">119934</a> - Nazareth Steenweg Op Deinze 13:03</li><li><a href="stop-111557.html">111557</a> - Nazareth Oude Melkerij 13:04</li><li><a href="stop-119933.html">119933</a> - Nazareth Warandestraat 13:05</li><li><a href="stop-119932.html">119932</a> - Nazareth Dorp 13:06</li><li><a href="stop-119931.html">119931</a> - Nazareth Drapstraat 13:07</li><li><a href="stop-112184.html">112184</a> - Nazareth Sporthal 13:08</li><li><a href="stop-119930.html">119930</a> - Nazareth Oudenaardse Heerweg 13:09</li><li><a href="stop-119929.html">119929</a> - Eke Station 13:10</li><li><a href="stop-119525.html">119525</a> - Eke De Biesten 13:11</li><li><a href="stop-119928.html">119928</a> - Eke De Lichterveldestraat 13:12</li><li><a href="stop-119524.html">119524</a> - Eke Dorp 13:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1413.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

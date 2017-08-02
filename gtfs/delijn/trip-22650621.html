@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oostende-Zandv.-Oudenburg-Eernegem - 22650621</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oostende-Zandv.-Oudenburg-Eernegem - 22650621</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-125679.html">125679</a> - Oostende Station perron 8 12:20</li><li><a href="stop-36263.html">36263</a> - Oostende Kapellestraat 12:22</li><li><a href="stop-36287.html">36287</a> - Oostende Ravelijnstraat 12:25</li><li><a href="stop-36427.html">36427</a> - Oostende Gouwelozestraat 12:28</li><li><a href="stop-93900.html">93900</a> - Oostende Az Damiaan-Gouwelozestraat 12:30</li><li><a href="stop-36227.html">36227</a> - Oostende Conterdam Bareel 12:30</li><li><a href="stop-36222.html">36222</a> - Oostende Brouwerijstraat 12:31</li><li><a href="stop-36264.html">36264</a> - Oostende Koebrugstraat 12:31</li><li><a href="stop-36311.html">36311</a> - Oostende Waterzuiveringsstation 12:32</li><li><a href="stop-36306.html">36306</a> - Oostende Vesuvius 12:33</li><li><a href="stop-105050.html">105050</a> - Zandvoorde Verbrandingsoven 12:34</li><li><a href="stop-97949.html">97949</a> - Zandvoorde Stationsstraat 12:35</li><li><a href="stop-97947.html">97947</a> - Zandvoorde Markt 12:37</li><li><a href="stop-97946.html">97946</a> - Zandvoorde Kalkoenlaan 12:39</li><li><a href="stop-97951.html">97951</a> - Zandvoorde Zonnebloem 12:40</li><li><a href="stop-123525.html">123525</a> - Zandvoorde De Zwaan 12:41</li><li><a href="stop-100789.html">100789</a> - Zandvoorde Spiegelaere 12:41</li><li><a href="stop-36317.html">36317</a> - Oudenburg Caelfstraat 12:43</li><li><a href="stop-36324.html">36324</a> - Oudenburg Zwinhoekje 12:44</li><li><a href="stop-36323.html">36323</a> - Oudenburg Zandvoordebrug 12:46</li><li><a href="stop-36320.html">36320</a> - Oudenburg Sint-Pietersstraat 12:47</li><li><a href="stop-43614.html">43614</a> - Oudenburg Plaats 12:47</li><li><a href="stop-36318.html">36318</a> - Oudenburg Cottemweg 12:48</li><li><a href="stop-36322.html">36322</a> - Oudenburg Vrijboom 12:49</li><li><a href="stop-36061.html">36061</a> - Ettelgem Gemeentehuis 12:50</li><li><a href="stop-35876.html">35876</a> - Ettelgem Markt 12:51</li><li><a href="stop-129048.html">129048</a> - Westkerke Kerk Vervanginshalte 12:59</li><li><a href="stop-36397.html">36397</a> - Westkerke Pardoenstraat 13:00</li><li><a href="stop-36392.html">36392</a> - Westkerke Eernegemstraat 13:00</li><li><a href="stop-104611.html">104611</a> - Eernegem Bourgogne 13:01</li><li><a href="stop-36047.html">36047</a> - Eernegem Brouwerij 13:01</li><li><a href="stop-36050.html">36050</a> - Eernegem Constantinopel 13:02</li><li><a href="stop-36058.html">36058</a> - Eernegem Populierenlaan 13:02</li><li><a href="stop-122895.html">122895</a> - Eernegem Kerk Afstaphalte 13:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6199.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

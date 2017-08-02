@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Boom - Puurs - Dendermonde - 22514775</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boom - Puurs - Dendermonde - 22514775</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109447.html">109447</a> - Puurs Station 17:05</li><li><a href="stop-107716.html">107716</a> - Puurs Markt 17:06</li><li><a href="stop-110004.html">110004</a> - Puurs Hooiveld 17:07</li><li><a href="stop-128655.html">128655</a> - Puurs Hof Ten Berg 17:08</li><li><a href="stop-21180.html">21180</a> - Puurs Zeutestraat 17:09</li><li><a href="stop-109445.html">109445</a> - Oppuurs Kerkhof 17:11</li><li><a href="stop-109444.html">109444</a> - Oppuurs Oppuurs Station 17:12</li><li><a href="stop-109442.html">109442</a> - Oppuurs Schoolstraat 17:13</li><li><a href="stop-24146.html">24146</a> - Oppuurs Schaddekensdries 17:14</li><li><a href="stop-109440.html">109440</a> - Oppuurs Pandgatheide 17:16</li><li><a href="stop-109439.html">109439</a> - Sint-Amands Heidestraat 17:19</li><li><a href="stop-24140.html">24140</a> - Sint-Amands Buisstraat 17:20</li><li><a href="stop-24137.html">24137</a> - Sint-Amands Station 17:21</li><li><a href="stop-109435.html">109435</a> - Sint-Amands De Valk 17:22</li><li><a href="stop-107772.html">107772</a> - Sint-Amands Boonhof 17:23</li><li><a href="stop-24132.html">24132</a> - Sint-Amands Dorekensstraat 17:24</li><li><a href="stop-109431.html">109431</a> - Sint-Amands Fok 17:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3013.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

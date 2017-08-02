@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolb. Leefdaal - Duisburg - Sint-Pieters-Woluwe - 22789984</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolb. Leefdaal - Duisburg - Sint-Pieters-Woluwe - 22789984</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-9773.html">9773</a> - Leefdaal Biesstraat 07:12</li><li><a href="stop-9799.html">9799</a> - Leefdaal Voerhoekstraat 07:13</li><li><a href="stop-9797.html">9797</a> - Leefdaal Veiling 07:14</li><li><a href="stop-9788.html">9788</a> - Leefdaal Kerk 07:15</li><li><a href="stop-9778.html">9778</a> - Leefdaal Centrum 07:16</li><li><a href="stop-9776.html">9776</a> - Leefdaal Bronstraat 07:17</li><li><a href="stop-16232.html">16232</a> - Leefdaal Heggestraat 07:18</li><li><a href="stop-13638.html">13638</a> - Vossem Flosstraat 07:19</li><li><a href="stop-13641.html">13641</a> - Vossem Lindenberg 07:20</li><li><a href="stop-13639.html">13639</a> - Vossem Kouterstraat 07:20</li><li><a href="stop-14701.html">14701</a> - Vossem Sint-Pauluslaan 07:21</li><li><a href="stop-14902.html">14902</a> - Vossem Stationsstraat 07:23</li><li><a href="stop-13643.html">13643</a> - Vossem Oud Station 07:24</li><li><a href="stop-13633.html">13633</a> - Vossem Pastorieplein 07:25</li><li><a href="stop-13645.html">13645</a> - Vossem Voerhoek 07:27</li><li><a href="stop-13649.html">13649</a> - Vossem Steenweg naar Duisburg 07:28</li><li><a href="stop-13635.html">13635</a> - Vossem Duisburgstraat 51 07:31</li><li><a href="stop-13588.html">13588</a> - Duisburg Oud Station 07:34</li><li><a href="stop-106408.html">106408</a> - Duisburg Kerkplaats 07:35</li><li><a href="stop-13587.html">13587</a> - Duisburg Molenweg 07:37</li><li><a href="stop-13591.html">13591</a> - Duisburg Beeldekensgatstraat 07:38</li><li><a href="stop-13583.html">13583</a> - Duisburg Hertswegenstraat 07:39</li><li><a href="stop-13607.html">13607</a> - Tervuren Kerkhof 07:40</li><li><a href="stop-13613.html">13613</a> - Tervuren Ringl./Jachtl. 07:41</li><li><a href="stop-13605.html">13605</a> - Tervuren Jachtl./Duisburgsestg 07:42</li><li><a href="stop-13626.html">13626</a> - Tervuren Kerk 07:43</li><li><a href="stop-13618.html">13618</a> - Tervuren G.I.T.O. 07:45</li><li><a href="stop-16896.html">16896</a> - Tervuren Atheneum 07:46</li><li><a href="stop-15531.html">15531</a> - Tervuren H. Hartcollege 07:49</li><li><a href="stop-92556.html">92556</a> - Tervuren Oppemstraat 07:50</li><li><a href="stop-106406.html">106406</a> - Tervuren Stg.op Brussel/Albert 07:52</li><li><a href="stop-11987.html">11987</a> - Kraainem Bechetlaan 07:53</li><li><a href="stop-14699.html">14699</a> - Kraainem Middenlaan 07:54</li><li><a href="stop-11999.html">11999</a> - Kraainem Kastanjeslaan 07:55</li><li><a href="stop-17199.html">17199</a> - Kraainem Heidekruidlaan 07:57</li><li><a href="stop-10335.html">10335</a> - Sint-Pieters-Woluwe Mater Dei 08:00</li><li><a href="stop-90815.html">90815</a> - Sint-Pieters-Woluwe Sint-Jozef 08:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2431.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

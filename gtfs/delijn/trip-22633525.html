@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Ieper-Poperinge-Roesbrugge-Veurne - 22633525</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ieper-Poperinge-Roesbrugge-Veurne - 22633525</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126400.html">126400</a> - Poperinge Station perron 3 17:18</li><li><a href="stop-104528.html">104528</a> - Poperinge Markt 17:21</li><li><a href="stop-42840.html">42840</a> - Poperinge Hondstraat 17:21</li><li><a href="stop-38789.html">38789</a> - Poperinge Werkman 17:24</li><li><a href="stop-38778.html">38778</a> - Poperinge Papegaai 17:25</li><li><a href="stop-104804.html">104804</a> - Poperinge Peselhoek 17:26</li><li><a href="stop-38790.html">38790</a> - Poperinge Woestensteenweg Nr.12 17:27</li><li><a href="stop-38764.html">38764</a> - Poperinge Groene Jacht 17:29</li><li><a href="stop-38791.html">38791</a> - Poperinge Woestensteenweg Nr.28 17:29</li><li><a href="stop-38770.html">38770</a> - Poperinge Koppernolle 17:31</li><li><a href="stop-38447.html">38447</a> - Elverdinge De Wuppe 17:32</li><li><a href="stop-38890.html">38890</a> - Woesten Kapel 17:32</li><li><a href="stop-38961.html">38961</a> - Woesten De Engel 17:33</li><li><a href="stop-38968.html">38968</a> - Woesten Warandestraat 17:33</li><li><a href="stop-38966.html">38966</a> - Woesten Poperingestraat 17:34</li><li><a href="stop-38963.html">38963</a> - Woesten Elverdingestraat Nr.5 17:35</li><li><a href="stop-38450.html">38450</a> - Elverdinge Leegte 17:35</li><li><a href="stop-38451.html">38451</a> - Elverdinge Wandeling 17:37</li><li><a href="stop-94473.html">94473</a> - Elverdinge Kemmelbeek 17:37</li><li><a href="stop-38449.html">38449</a> - Elverdinge Kerk 17:38</li><li><a href="stop-38446.html">38446</a> - Elverdinge Brouwerij 17:39</li><li><a href="stop-98141.html">98141</a> - Brielen De Krikke 17:40</li><li><a href="stop-98144.html">98144</a> - Brielen Smidse 17:41</li><li><a href="stop-98142.html">98142</a> - Brielen Dorp 17:42</li><li><a href="stop-98143.html">98143</a> - Brielen Omloopstraat 17:43</li><li><a href="stop-104778.html">104778</a> - Ieper Hoekje 17:46</li><li><a href="stop-104782.html">104782</a> - Ieper Stelplaats 17:47</li><li><a href="stop-126343.html">126343</a> - Ieper Station perron 2 17:49</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6083.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

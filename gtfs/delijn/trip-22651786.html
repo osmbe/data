@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge - Blankenberge - 22651786</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge - Blankenberge - 22651786</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126310.html">126310</a> - Blankenberge Station perron 3 13:22</li><li><a href="stop-40169.html">40169</a> - Blankenberge Oude Steenweg 13:24</li><li><a href="stop-40174.html">40174</a> - Blankenberge Sint-Amanduskerk 13:26</li><li><a href="stop-40167.html">40167</a> - Blankenberge Autokerkhof 13:27</li><li><a href="stop-40172.html">40172</a> - Blankenberge Riga 13:28</li><li><a href="stop-40176.html">40176</a> - Blankenberge Veldbloem 13:29</li><li><a href="stop-40554.html">40554</a> - Zuienkerke Vierwegen 13:30</li><li><a href="stop-40550.html">40550</a> - Zuienkerke Assestraat 13:31</li><li><a href="stop-40551.html">40551</a> - Zuienkerke Kruiskalsijde 13:32</li><li><a href="stop-40553.html">40553</a> - Zuienkerke Nele 13:33</li><li><a href="stop-40557.html">40557</a> - Zuienkerke Dudzele Kalsijde 13:34</li><li><a href="stop-40202.html">40202</a> - Brugge Halve Maan 13:34</li><li><a href="stop-123624.html">123624</a> - Brugge Blauwe Toren 13:36</li><li><a href="stop-90518.html">90518</a> - Brugge Rondpunt 13:36</li><li><a href="stop-40201.html">40201</a> - Brugge De Kolve 13:37</li><li><a href="stop-40822.html">40822</a> - Brugge Blauwe Poort 13:39</li><li><a href="stop-40870.html">40870</a> - Brugge Sint-Pieterskerk 13:40</li><li><a href="stop-40875.html">40875</a> - Brugge Tempelhof 13:41</li><li><a href="stop-40876.html">40876</a> - Brugge Tuinwijk 13:42</li><li><a href="stop-41259.html">41259</a> - Brugge Scheepsdale 13:42</li><li><a href="stop-40831.html">40831</a> - Brugge Electrabel 13:44</li><li><a href="stop-40849.html">40849</a> - Brugge Keizer Karel 13:45</li><li><a href="stop-40821.html">40821</a> - Brugge Beenhouwerstraat 13:46</li><li><a href="stop-41337.html">41337</a> - Brugge Hoefijzer 13:48</li><li><a href="stop-126411.html">126411</a> - Brugge 'T Zand perron 6 13:49</li><li><a href="stop-128948.html">128948</a> - Brugge Station perron 8 13:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6206.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

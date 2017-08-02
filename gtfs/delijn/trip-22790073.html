@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Kortenaken - Waanrode - Halen - HerkdeSt - 22790073</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Kortenaken - Waanrode - Halen - HerkdeSt - 22790073</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-105229.html">105229</a> - Herk-de-Stad College 17:05</li><li><a href="stop-30195.html">30195</a> - Herk-de-Stad Markt 17:06</li><li><a href="stop-30140.html">30140</a> - Herk-de-Stad Klooster 17:07</li><li><a href="stop-28940.html">28940</a> - Halen Kerk 17:15</li><li><a href="stop-28944.html">28944</a> - Halen Singellaan 17:15</li><li><a href="stop-28937.html">28937</a> - Halen Diestersteenweg 17:16</li><li><a href="stop-90871.html">90871</a> - Halen Liebroekstraat 17:17</li><li><a href="stop-120573.html">120573</a> - Loksbergen Zelkstraat 17:17</li><li><a href="stop-127422.html">127422</a> - Loksbergen Rozenstraat 17:18</li><li><a href="stop-100261.html">100261</a> - Loksbergen Kauwplasstraat II 17:20</li><li><a href="stop-127419.html">127419</a> - Loksbergen Kerk 17:20</li><li><a href="stop-120569.html">120569</a> - Loksbergen Dorpstraat 17:20</li><li><a href="stop-14568.html">14568</a> - Loksbergen De Kluis 17:21</li><li><a href="stop-15569.html">15569</a> - Assent Weg naar Loksbergen 17:22</li><li><a href="stop-9684.html">9684</a> - Assent Kabien 17:22</li><li><a href="stop-93360.html">93360</a> - Waanrode Rijnrode Huis 79 17:23</li><li><a href="stop-11897.html">11897</a> - Waanrode Waanveld 17:25</li><li><a href="stop-11893.html">11893</a> - Waanrode Sint-Annaveld 17:25</li><li><a href="stop-11878.html">11878</a> - Waanrode Kerk 17:26</li><li><a href="stop-11886.html">11886</a> - Waanrode Nieuwe Wijk 17:26</li><li><a href="stop-11860.html">11860</a> - Waanrode Boterbergstraat 17:27</li><li><a href="stop-11858.html">11858</a> - Waanrode Boterberg 17:27</li><li><a href="stop-11880.html">11880</a> - Waanrode Klipgaardestraat 17:28</li><li><a href="stop-11873.html">11873</a> - Waanrode Hoek 17:29</li><li><a href="stop-11875.html">11875</a> - Waanrode Hoeve 17:30</li><li><a href="stop-87234.html">87234</a> - Kersbeek-Miskom Wittebos 17:31</li><li><a href="stop-11797.html">11797</a> - Kersbeek-Miskom Miskom School 17:32</li><li><a href="stop-11791.html">11791</a> - Kersbeek-Miskom Kazemelkstraat 17:32</li><li><a href="stop-11779.html">11779</a> - Kersbeek-Miskom Aldra 17:33</li><li><a href="stop-11889.html">11889</a> - Kersbeek-Miskom Reyserevroente 17:34</li><li><a href="stop-11871.html">11871</a> - Waanrode Borgelke 17:34</li><li><a href="stop-11885.html">11885</a> - Waanrode Kruispunt 17:35</li><li><a href="stop-11857.html">11857</a> - Waanrode Blijstraat 17:36</li><li><a href="stop-11891.html">11891</a> - Waanrode Schipbroek 17:36</li><li><a href="stop-11883.html">11883</a> - Kortenaken Lapstraat 17:37</li><li><a href="stop-11837.html">11837</a> - Kortenaken Verfwinkel 17:38</li><li><a href="stop-11829.html">11829</a> - Kortenaken Molen 17:38</li><li><a href="stop-11839.html">11839</a> - Kortenaken Voetbalplein 17:39</li><li><a href="stop-11827.html">11827</a> - Kortenaken Krawatenstraat 17:40</li><li><a href="stop-11810.html">11810</a> - Kortenaken Dorp 17:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2442.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

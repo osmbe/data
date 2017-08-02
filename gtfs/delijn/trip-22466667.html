@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - As - Lanklaar - Dilsen - Maasmechelen - 22466667</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - As - Lanklaar - Dilsen - Maasmechelen - 22466667</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-43780.html">43780</a> - Genk Station perron 8 16:37</li><li><a href="stop-28345.html">28345</a> - Genk Shopping Center perron 1 16:40</li><li><a href="stop-94950.html">94950</a> - Genk Hospitaalstraat 16:42</li><li><a href="stop-88460.html">88460</a> - Genk Bretheistraat 16:43</li><li><a href="stop-43835.html">43835</a> - Genk College 16:44</li><li><a href="stop-28512.html">28512</a> - Genk Mispelaarstraat 16:45</li><li><a href="stop-96693.html">96693</a> - Waterschei Waterbleekstraat 16:46</li><li><a href="stop-96695.html">96695</a> - Waterschei Bascule 16:48</li><li><a href="stop-96647.html">96647</a> - Waterschei Geenhornstraat 16:49</li><li><a href="stop-96708.html">96708</a> - Waterschei Springstraat 16:50</li><li><a href="stop-26553.html">26553</a> - As Oeleinde 16:52</li><li><a href="stop-26525.html">26525</a> - As Bilzerweg 16:54</li><li><a href="stop-26563.html">26563</a> - As Zavelstraat 16:55</li><li><a href="stop-88443.html">88443</a> - As Kerkhof 16:55</li><li><a href="stop-93474.html">93474</a> - As Gemeentehuis 16:56</li><li><a href="stop-91111.html">91111</a> - As Drieschaar 16:56</li><li><a href="stop-99151.html">99151</a> - As Station 16:57</li><li><a href="stop-28108.html">28108</a> - Lanklaar Homo 17:00</li><li><a href="stop-28104.html">28104</a> - Lanklaar Heideweelde 17:00</li><li><a href="stop-105184.html">105184</a> - Lanklaar Nijverheidslaan 17:06</li><li><a href="stop-28113.html">28113</a> - Lanklaar Kruispunt 17:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4793.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

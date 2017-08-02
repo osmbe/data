@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Snelbus Leerbeek - Brussel - 22755920</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Snelbus Leerbeek - Brussel - 22755920</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-15704.html">15704</a> - Brussel Zuid Perron 3 16:20</li><li><a href="stop-10015.html">10015</a> - Anderlecht Oude Stelplaats 16:23</li><li><a href="stop-10013.html">10013</a> - Anderlecht Grondel 16:25</li><li><a href="stop-14639.html">14639</a> - Anderlecht Kuregem 16:28</li><li><a href="stop-10030.html">10030</a> - Anderlecht Sint-Guido 16:34</li><li><a href="stop-10025.html">10025</a> - Anderlecht Meir 16:35</li><li><a href="stop-10000.html">10000</a> - Anderlecht De Linde Plein 16:38</li><li><a href="stop-89575.html">89575</a> - Sint-Kwintens-Lennik Eizeringen kruispunt 16:54</li><li><a href="stop-87428.html">87428</a> - Sint-Kwintens-Lennik Eizeringen Bron 16:55</li><li><a href="stop-13324.html">13324</a> - Sint-Kwintens-Lennik Eizeringen School 16:56</li><li><a href="stop-13312.html">13312</a> - Sint-Kwintens-Lennik 't Nelleken 16:56</li><li><a href="stop-13315.html">13315</a> - Sint-Kwintens-Lennik Bareel 16:58</li><li><a href="stop-16100.html">16100</a> - Gooik Oplombeek 17:00</li><li><a href="stop-10831.html">10831</a> - Gooik Wijngaardstraat 17:00</li><li><a href="stop-10815.html">10815</a> - Gooik Kwakenbeek 17:01</li><li><a href="stop-14781.html">14781</a> - Gooik Meintjes 17:02</li><li><a href="stop-11102.html">11102</a> - Leerbeek Stelplaats Kaai 2 17:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1598.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

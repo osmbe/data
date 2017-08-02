@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge Station-Assebroek Peerdeke-St.Kruis kerk - 22605213</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge Station-Assebroek Peerdeke-St.Kruis kerk - 22605213</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-98052.html">98052</a> - Sint-Kruis Kerk 06:24</li><li><a href="stop-98046.html">98046</a> - Sint-Kruis Brieversweg 06:25</li><li><a href="stop-98047.html">98047</a> - Sint-Kruis Mexico 06:26</li><li><a href="stop-98048.html">98048</a> - Sint-Kruis Doornhut 06:26</li><li><a href="stop-100855.html">100855</a> - Sint-Kruis Beukenlaan 06:27</li><li><a href="stop-98076.html">98076</a> - Sint-Kruis Ter Lo 06:28</li><li><a href="stop-98087.html">98087</a> - Sint-Kruis Ter Heide 06:29</li><li><a href="stop-97997.html">97997</a> - Sint-Kruis Paalbos 06:30</li><li><a href="stop-37090.html">37090</a> - Assebroek Zuiderakker 06:31</li><li><a href="stop-36707.html">36707</a> - Assebroek Vossenslag 06:32</li><li><a href="stop-100449.html">100449</a> - Assebroek Zevecote Dreef 06:33</li><li><a href="stop-105065.html">105065</a> - Assebroek Oude Stelplaats 06:34</li><li><a href="stop-40788.html">40788</a> - Assebroek Peerdeke 06:34</li><li><a href="stop-40784.html">40784</a> - Assebroek Kruisboog 06:35</li><li><a href="stop-40779.html">40779</a> - Assebroek Daverlostraat 06:35</li><li><a href="stop-40835.html">40835</a> - Brugge Gentpoort 06:36</li><li><a href="stop-40847.html">40847</a> - Brugge Katelijnepoort 06:37</li><li><a href="stop-128941.html">128941</a> - Brugge Station perron 1 06:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5789.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

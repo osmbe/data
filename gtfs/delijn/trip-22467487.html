@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Beringen - Lommel - 22467487</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Beringen - Lommel - 22467487</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-31792.html">31792</a> - Leopoldsburg Station 07:02</li><li><a href="stop-31743.html">31743</a> - Leopoldsburg De Vrachtkar 07:04</li><li><a href="stop-31751.html">31751</a> - Heppen Diestersteenweg 07:06</li><li><a href="stop-31756.html">31756</a> - Heppen Kerk 07:07</li><li><a href="stop-31746.html">31746</a> - Heppen Binnenveld 07:08</li><li><a href="stop-125436.html">125436</a> - Beverlo Braamstraat 07:09</li><li><a href="stop-26837.html">26837</a> - Beverlo Kerkhof 07:10</li><li><a href="stop-26829.html">26829</a> - Beverlo Centrum 07:11</li><li><a href="stop-26841.html">26841</a> - Beverlo Ringlaan 07:13</li><li><a href="stop-26843.html">26843</a> - Beverlo Tuinwijk 07:14</li><li><a href="stop-26840.html">26840</a> - Beverlo Kerkstraat 07:15</li><li><a href="stop-105127.html">105127</a> - Koersel Beringen Mijnen 07:16</li><li><a href="stop-88445.html">88445</a> - Koersel Posthoorn 07:18</li><li><a href="stop-123258.html">123258</a> - Beringen Bogaersveld perron 1 07:21</li><li><a href="stop-26853.html">26853</a> - Beringen Graaf van Loonstraat 07:22</li><li><a href="stop-26955.html">26955</a> - Beringen Schutterstraat 07:23</li><li><a href="stop-98776.html">98776</a> - Beringen Station Perron 3 07:24</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5014.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

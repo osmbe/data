@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hamme - Temse - Antwerpen L.O. (sneldienst) - 20722931</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hamme - Temse - Antwerpen L.O. (sneldienst) - 20722931</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127598.html">127598</a> - Antwerpen Van Eedenplein perron 2 13:49</li><li><a href="stop-108123.html">108123</a> - Antwerpen Halewijn 13:51</li><li><a href="stop-115398.html">115398</a> - Burcht Kaai 13:57</li><li><a href="stop-115399.html">115399</a> - Burcht Kerkplein 13:58</li><li><a href="stop-115412.html">115412</a> - Burcht Kampstraat 14:00</li><li><a href="stop-115420.html">115420</a> - Kruibeke Scheldelei 14:06</li><li><a href="stop-115421.html">115421</a> - Kruibeke Dorp 14:08</li><li><a href="stop-115427.html">115427</a> - Bazel Dorp 14:13</li><li><a href="stop-115434.html">115434</a> - Steendorp Hemelrijkstraat 14:16</li><li><a href="stop-115435.html">115435</a> - Steendorp Sterstraat 14:17</li><li><a href="stop-115439.html">115439</a> - Temse Prinsenlaan 14:21</li><li><a href="stop-115601.html">115601</a> - Temse Vrijheidstraat 14:22</li><li><a href="stop-115441.html">115441</a> - Temse Gasthuisstraat 14:23</li><li><a href="stop-115442.html">115442</a> - Temse Schoolstraat 14:24</li><li><a href="stop-115443.html">115443</a> - Temse Tinelplaats 14:25</li><li><a href="stop-116252.html">116252</a> - Temse Sint-Amelbergalaan 14:25</li><li><a href="stop-116253.html">116253</a> - Temse Benoitstraat 14:27</li><li><a href="stop-116254.html">116254</a> - Tielrode Huis Ten Halven 14:28</li><li><a href="stop-116255.html">116255</a> - Tielrode Ruisstraat 14:28</li><li><a href="stop-116256.html">116256</a> - Tielrode Molenstraat 14:29</li><li><a href="stop-116257.html">116257</a> - Tielrode Kerkstraat 14:30</li><li><a href="stop-116258.html">116258</a> - Tielrode Hofstraat 14:31</li><li><a href="stop-116259.html">116259</a> - Tielrode Appelsvoorde 14:32</li><li><a href="stop-116260.html">116260</a> - Elversele Legen Heirweg 14:32</li><li><a href="stop-116261.html">116261</a> - Elversele Burggravestraat 14:33</li><li><a href="stop-115781.html">115781</a> - Elversele Duivenhoek 14:34</li><li><a href="stop-115783.html">115783</a> - Hamme Roodkruisstraat 14:37</li><li><a href="stop-115784.html">115784</a> - Hamme Tweebruggenplein 14:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1507.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

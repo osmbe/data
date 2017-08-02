@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge Centrum -Station-AZ St.Lucas-Assebroek - 22601264</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge Centrum -Station-AZ St.Lucas-Assebroek - 22601264</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-99068.html">99068</a> - Brugge Markt 08:36</li><li><a href="stop-100725.html">100725</a> - Brugge Stadsschouwburg 08:37</li><li><a href="stop-37226.html">37226</a> - Brugge Kipstraat 08:38</li><li><a href="stop-36792.html">36792</a> - Brugge Poitevinstraat 08:39</li><li><a href="stop-90316.html">90316</a> - Brugge Howest 08:40</li><li><a href="stop-36783.html">36783</a> - Brugge N.Gombertstraat 08:41</li><li><a href="stop-37271.html">37271</a> - Brugge N. Gombertstraat 08:42</li><li><a href="stop-98660.html">98660</a> - Brugge Ezelpoort 08:43</li><li><a href="stop-40821.html">40821</a> - Brugge Beenhouwerstraat 08:44</li><li><a href="stop-41337.html">41337</a> - Brugge Hoefijzer 08:46</li><li><a href="stop-126412.html">126412</a> - Brugge 'T Zand perron 4 08:47</li><li><a href="stop-128942.html">128942</a> - Brugge Station perron 2 08:49</li><li><a href="stop-36770.html">36770</a> - Brugge Katelijneparking 08:52</li><li><a href="stop-36684.html">36684</a> - Assebroek Boldershof 08:53</li><li><a href="stop-36708.html">36708</a> - Assebroek Wantestraat 08:54</li><li><a href="stop-36700.html">36700</a> - Assebroek Sint-Katharina 08:55</li><li><a href="stop-37256.html">37256</a> - Assebroek De Lelie 08:56</li><li><a href="stop-37257.html">37257</a> - Assebroek Weidestraat 08:57</li><li><a href="stop-37258.html">37258</a> - Assebroek Odegem 08:58</li><li><a href="stop-36712.html">36712</a> - Assebroek Zeventorentjes 08:59</li><li><a href="stop-123641.html">123641</a> - Assebroek Leenhof 09:00</li><li><a href="stop-90669.html">90669</a> - Assebroek Az Sint-Lucas (Op Terrein) 09:01</li><li><a href="stop-90303.html">90303</a> - Assebroek Rusthuis 09:01</li><li><a href="stop-36690.html">36690</a> - Assebroek Den Brem 09:03</li><li><a href="stop-100828.html">100828</a> - Assebroek Daverlopark 09:04</li><li><a href="stop-36682.html">36682</a> - Assebroek Berkenhof 09:05</li><li><a href="stop-104585.html">104585</a> - Assebroek Raboudenburg 09:06</li><li><a href="stop-87644.html">87644</a> - Assebroek Zomerstraat 09:07</li><li><a href="stop-100449.html">100449</a> - Assebroek Zevecote Dreef 09:08</li><li><a href="stop-105065.html">105065</a> - Assebroek Oude Stelplaats 09:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5765.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Zottegem</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Zottegem</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-L187320951.html">L187320951</a> - L187320951 - Gent-Sint-Pieters - Geraardsbergen</li><li><a href="trip-P795231791.html">P795231791</a> - P795231791 - Kortrijk - Schaarbeek</li><li><a href="trip-P796131851.html">P796131851</a> - P796131851 - Ronse - Geraardsbergen</li><li><a href="trip-P796231861.html">P796231861</a> - P796231861 - Ronse - Geraardsbergen</li><li><a href="trip-P896633891.html">P896633891</a> - P896633891 - Gent-Sint-Pieters - Geraardsbergen</li><li><a href="trip-P896833911.html">P896833911</a> - P896833911 - Gent-Sint-Pieters - Geraardsbergen</li><li><a href="trip-S322551311.html">S322551311</a> - S322551311 - Oudenaarde - Dendermonde</li><li><a href="trip-S322561321.html">S322561321</a> - S322561321 - Oudenaarde - Dendermonde</li><li><a href="trip-S322571331.html">S322571331</a> - S322571331 - Oudenaarde - Dendermonde</li><li><a href="trip-S322651411.html">S322651411</a> - S322651411 - Oudenaarde - Dendermonde</li><li><a href="trip-S322681441.html">S322681441</a> - S322681441 - Oudenaarde - Dendermonde</li><li><a href="trip-S322691451.html">S322691451</a> - S322691451 - Oudenaarde - Dendermonde</li><li><a href="trip-S322701461.html">S322701461</a> - S322701461 - Oudenaarde - Dendermonde</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.869102, 3.81441], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.869102, 3.81441]).addTo(map);
+    </script>
+</body>
+
+</html>

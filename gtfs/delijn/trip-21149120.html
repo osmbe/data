@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus  Mechelen - Keerbergen - 21149120</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus  Mechelen - Keerbergen - 21149120</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-14409.html">14409</a> - Mechelen Station perron 14 06:56</li><li><a href="stop-14419.html">14419</a> - Mechelen Stenenmolenstraat 07:00</li><li><a href="stop-14421.html">14421</a> - Mechelen Wilgenstraat 07:01</li><li><a href="stop-14423.html">14423</a> - Mechelen Jubellaan 07:02</li><li><a href="stop-94871.html">94871</a> - Mechelen Lindestraat 07:03</li><li><a href="stop-94869.html">94869</a> - Mechelen Geerdegemstraat 07:04</li><li><a href="stop-14230.html">14230</a> - Hofstade t Steppeke 07:05</li><li><a href="stop-14234.html">14234</a> - Hofstade Kerk 07:06</li><li><a href="stop-128910.html">128910</a> - Hofstade Station 07:07</li><li><a href="stop-14238.html">14238</a> - Hofstade Zavellaan 07:07</li><li><a href="stop-14236.html">14236</a> - Elewijt Hofstade Strand 07:08</li><li><a href="stop-14216.html">14216</a> - Elewijt Solarium 07:09</li><li><a href="stop-15954.html">15954</a> - Elewijt Villadreef 07:11</li><li><a href="stop-14215.html">14215</a> - Elewijt Solarium 07:13</li><li><a href="stop-14514.html">14514</a> - Hever Schiplaken Consciencelaan 07:16</li><li><a href="stop-14516.html">14516</a> - Hever Schiplaken Kerk 07:18</li><li><a href="stop-14518.html">14518</a> - Hever Schiplaken Goorweg 07:20</li><li><a href="stop-14520.html">14520</a> - Hever Schiplaken Kapel 07:21</li><li><a href="stop-14522.html">14522</a> - Hever Schiplaken Oud-België 07:22</li><li><a href="stop-14524.html">14524</a> - Hever Tip 07:24</li><li><a href="stop-9932.html">9932</a> - Hever Station 07:26</li><li><a href="stop-9924.html">9924</a> - Hever P. Benoitstraat 07:28</li><li><a href="stop-17303.html">17303</a> - Hever Rusthuis 07:28</li><li><a href="stop-9926.html">9926</a> - Hever Postweg 07:29</li><li><a href="stop-9920.html">9920</a> - Hever Dorp 07:30</li><li><a href="stop-9930.html">9930</a> - Hever Sint-Antoniusstraat 07:31</li><li><a href="stop-9894.html">9894</a> - Boortmeerbeek Berg 07:32</li><li><a href="stop-9892.html">9892</a> - Boortmeerbeek Bareel 07:33</li><li><a href="stop-9898.html">9898</a> - Boortmeerbeek Dorp 07:34</li><li><a href="stop-9916.html">9916</a> - Boortmeerbeek Puttekensweg 07:35</li><li><a href="stop-9904.html">9904</a> - Boortmeerbeek Hollestraat 07:36</li><li><a href="stop-9900.html">9900</a> - Boortmeerbeek Genninckstraat 07:37</li><li><a href="stop-9890.html">9890</a> - Boortmeerbeek Anderveldstraat 07:39</li><li><a href="stop-9912.html">9912</a> - Boortmeerbeek Paepenstraat 07:40</li><li><a href="stop-9902.html">9902</a> - Boortmeerbeek Halve Steen 07:41</li><li><a href="stop-11041.html">11041</a> - Haacht Don Bosco 07:47</li><li><a href="stop-120524.html">120524</a> - Keerbergen Atheneum 07:57</li><li><a href="stop-127068.html">127068</a> - Keerbergen Stationsstraat 08:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2317.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

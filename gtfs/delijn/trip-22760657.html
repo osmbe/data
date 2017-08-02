@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Sint-Pieters-Leeuw - Halle - 22760657</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Sint-Pieters-Leeuw - Halle - 22760657</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-15683.html">15683</a> - Halle Station Perron 1 19:03</li><li><a href="stop-15634.html">15634</a> - Halle Park 19:05</li><li><a href="stop-15656.html">15656</a> - Halle Arkenvest 19:06</li><li><a href="stop-15655.html">15655</a> - Halle Bergense Poort 19:07</li><li><a href="stop-14834.html">14834</a> - Halle Ziekenhuislaan 19:08</li><li><a href="stop-11195.html">11195</a> - Halle Ninoofse Poort 19:10</li><li><a href="stop-127399.html">127399</a> - Halle Brusselpoort 19:11</li><li><a href="stop-43996.html">43996</a> - Halle Stroppen 19:12</li><li><a href="stop-14536.html">14536</a> - Halle Côte d' Or 19:12</li><li><a href="stop-44029.html">44029</a> - Halle Stwg naar Alsemberg 19:13</li><li><a href="stop-13470.html">13470</a> - Sint-Pieters-Leeuw Witte Roos 19:14</li><li><a href="stop-13398.html">13398</a> - Sint-Pieters-Leeuw Europalaan 19:15</li><li><a href="stop-44016.html">44016</a> - Sint-Pieters-Leeuw Impeleer 19:16</li><li><a href="stop-13415.html">13415</a> - Sint-Pieters-Leeuw Henisdal 19:16</li><li><a href="stop-13449.html">13449</a> - Sint-Pieters-Leeuw Oud Station 19:17</li><li><a href="stop-44025.html">44025</a> - Sint-Pieters-Leeuw Kerk 19:18</li><li><a href="stop-13413.html">13413</a> - Sint-Pieters-Leeuw Gemeentehuis 19:19</li><li><a href="stop-14694.html">14694</a> - Sint-Pieters-Leeuw Den Huysman 19:20</li><li><a href="stop-13468.html">13468</a> - Sint-Pieters-Leeuw Coloma 19:21</li><li><a href="stop-13393.html">13393</a> - Sint-Pieters-Leeuw Begraafplaats Zuun 19:23</li><li><a href="stop-13407.html">13407</a> - Sint-Pieters-Leeuw Dikke Linde 19:24</li><li><a href="stop-13387.html">13387</a> - Sint-Pieters-Leeuw A.Quintusstraat 19:25</li><li><a href="stop-13475.html">13475</a> - Sint-Pieters-Leeuw Zuun 19:26</li><li><a href="stop-13425.html">13425</a> - Sint-Pieters-Leeuw J.Vanderstraetenstr. 19:27</li><li><a href="stop-13472.html">13472</a> - Sint-Pieters-Leeuw E. Ghijsstraat 19:29</li><li><a href="stop-13440.html">13440</a> - Sint-Pieters-Leeuw Negenmanneke 19:30</li><li><a href="stop-10040.html">10040</a> - Anderlecht IKEA 19:31</li><li><a href="stop-10047.html">10047</a> - Anderlecht Coovi 19:32</li><li><a href="stop-10018.html">10018</a> - Anderlecht Het Rad 19:34</li><li><a href="stop-9995.html">9995</a> - Anderlecht Bizet 19:36</li><li><a href="stop-127387.html">127387</a> - Anderlecht Veeweyde 19:37</li><li><a href="stop-9987.html">9987</a> - Anderlecht Aristide Briand 19:37</li><li><a href="stop-10004.html">10004</a> - Anderlecht Democratie 19:39</li><li><a href="stop-9991.html">9991</a> - Anderlecht Biestebroek 19:40</li><li><a href="stop-10043.html">10043</a> - Anderlecht Vaartbrug 19:42</li><li><a href="stop-10014.html">10014</a> - Anderlecht Grondel 19:44</li><li><a href="stop-10016.html">10016</a> - Anderlecht Oude Stelplaats 19:45</li><li><a href="stop-15707.html">15707</a> - Brussel Zuid Perron 6 19:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1804.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

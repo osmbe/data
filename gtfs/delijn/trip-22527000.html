@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oostmalle - Brecht - 22527000</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oostmalle - Brecht - 22527000</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-107662.html">107662</a> - Brecht Station Noorderkempen per 3 07:05</li><li><a href="stop-107798.html">107798</a> - Brecht Bethovenstraat 07:08</li><li><a href="stop-107671.html">107671</a> - Brecht Gemeentehuis 07:09</li><li><a href="stop-107757.html">107757</a> - Brecht H. Schoofsstraat 07:09</li><li><a href="stop-109154.html">109154</a> - Brecht Duivelstraatje 07:10</li><li><a href="stop-88769.html">88769</a> - Brecht Kanaallaan 07:11</li><li><a href="stop-20207.html">20207</a> - Sint-Lenaarts Bremstraat 07:12</li><li><a href="stop-23187.html">23187</a> - Sint-Lenaarts Wijkschool Klein Veerle 07:13</li><li><a href="stop-108885.html">108885</a> - Sint-Lenaarts Kruispunt Klein Veerle 07:14</li><li><a href="stop-22720.html">22720</a> - Sint-Lenaarts Groot Veerle 07:15</li><li><a href="stop-23668.html">23668</a> - Sint-Lenaarts Paaltjesdreef 07:16</li><li><a href="stop-22718.html">22718</a> - Westmalle Oude Molenstraat 07:18</li><li><a href="stop-19844.html">19844</a> - Westmalle Mariënhove 07:20</li><li><a href="stop-107658.html">107658</a> - Westmalle Rerum Novarumlaan 07:21</li><li><a href="stop-108841.html">108841</a> - Westmalle Schaggeleweg 07:22</li><li><a href="stop-108842.html">108842</a> - Westmalle Zandstraat 07:23</li><li><a href="stop-108843.html">108843</a> - Westmalle Kapelstraat 07:24</li><li><a href="stop-127744.html">127744</a> - Oostmalle Steenovenstraat 07:25</li><li><a href="stop-108846.html">108846</a> - Oostmalle Maris Stella 07:26</li><li><a href="stop-93414.html">93414</a> - Oostmalle Busstation perron 1 07:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3332.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

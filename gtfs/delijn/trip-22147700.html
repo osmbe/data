@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Zwevegem-Otegem-Avelgem - 22147700</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Zwevegem-Otegem-Avelgem - 22147700</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126381.html">126381</a> - Kortrijk Station perron 5 18:56</li><li><a href="stop-37777.html">37777</a> - Kortrijk Spoorweglaan 18:58</li><li><a href="stop-104741.html">104741</a> - Kortrijk Rijkswacht 18:59</li><li><a href="stop-37841.html">37841</a> - Kortrijk Howest / VTI 19:01</li><li><a href="stop-37826.html">37826</a> - Kortrijk Soetens Molen 19:02</li><li><a href="stop-100905.html">100905</a> - Kortrijk Autosnelweg E17 19:03</li><li><a href="stop-38302.html">38302</a> - Zwevegem Losschaert 19:06</li><li><a href="stop-38365.html">38365</a> - Zwevegem Ter Winckele 19:06</li><li><a href="stop-38289.html">38289</a> - Zwevegem Cafe De Uil 19:07</li><li><a href="stop-38297.html">38297</a> - Zwevegem Kerk 19:08</li><li><a href="stop-38293.html">38293</a> - Zwevegem Gemeentehuis 19:09</li><li><a href="stop-38305.html">38305</a> - Zwevegem Station 19:10</li><li><a href="stop-123586.html">123586</a> - Zwevegem Vaart 19:11</li><li><a href="stop-38304.html">38304</a> - Zwevegem Slijpe 19:12</li><li><a href="stop-38295.html">38295</a> - Zwevegem Kappaert 19:13</li><li><a href="stop-38540.html">38540</a> - Zwevegem Wulfsbergstraat 19:14</li><li><a href="stop-37522.html">37522</a> - Deerlijk Koevoet 19:15</li><li><a href="stop-38068.html">38068</a> - Otegem Wisse 19:17</li><li><a href="stop-38063.html">38063</a> - Otegem Bouw 19:19</li><li><a href="stop-90414.html">90414</a> - Otegem Sint-Annastraat 19:20</li><li><a href="stop-38065.html">38065</a> - Otegem Plaats 19:20</li><li><a href="stop-38066.html">38066</a> - Otegem Brouwerijstraat 19:21</li><li><a href="stop-38064.html">38064</a> - Otegem Casino 19:22</li><li><a href="stop-37451.html">37451</a> - Avelgem Knobbelstraat 19:23</li><li><a href="stop-37450.html">37450</a> - Avelgem Kapelleke 19:24</li><li><a href="stop-37454.html">37454</a> - Avelgem Rijkswacht 19:24</li><li><a href="stop-127285.html">127285</a> - Avelgem Plaats 19:25</li><li><a href="stop-98687.html">98687</a> - Avelgem Station 19:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4126.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

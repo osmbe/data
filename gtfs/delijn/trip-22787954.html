@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Snelbus Brussel - Londerzeel - Boom - 22787954</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Snelbus Brussel - Londerzeel - Boom - 22787954</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-14576.html">14576</a> - Brussel Noord Perron 9 16:49</li><li><a href="stop-99470.html">99470</a> - Brussel Rogier 16:51</li><li><a href="stop-90799.html">90799</a> - Sint-Jans-Molenbeek Ribaucourt 16:59</li><li><a href="stop-10055.html">10055</a> - Brussel Bockstael 17:05</li><li><a href="stop-90784.html">90784</a> - Brussel Bockstael B 17:05</li><li><a href="stop-10075.html">10075</a> - Brussel Karel Bogaerd 17:06</li><li><a href="stop-15513.html">15513</a> - Londerzeel Kerkhofstraat/A12 17:27</li><li><a href="stop-12470.html">12470</a> - Londerzeel Acacialaan 17:28</li><li><a href="stop-12503.html">12503</a> - Londerzeel Rustoord 17:28</li><li><a href="stop-12484.html">12484</a> - Londerzeel Brandweer 17:29</li><li><a href="stop-12478.html">12478</a> - Londerzeel Chrysantenlaan 17:29</li><li><a href="stop-128776.html">128776</a> - Londerzeel Station 17:30</li><li><a href="stop-15604.html">15604</a> - Londerzeel Egmont & Hoorn 17:31</li><li><a href="stop-15605.html">15605</a> - Londerzeel Zwembad 17:32</li><li><a href="stop-15606.html">15606</a> - Londerzeel Politiehuis 17:33</li><li><a href="stop-12486.html">12486</a> - Londerzeel De Maiter 17:34</li><li><a href="stop-12492.html">12492</a> - Londerzeel Duifke 17:35</li><li><a href="stop-12499.html">12499</a> - Londerzeel Molenhoek 17:36</li><li><a href="stop-12497.html">12497</a> - Londerzeel Marie Planché 17:37</li><li><a href="stop-14431.html">14431</a> - Breendonk Veurt 76 17:38</li><li><a href="stop-14433.html">14433</a> - Breendonk Vijfhoek 17:39</li><li><a href="stop-88050.html">88050</a> - Breendonk Gemeentehuis 17:40</li><li><a href="stop-16958.html">16958</a> - Breendonk Vrijhals 17:41</li><li><a href="stop-16956.html">16956</a> - Breendonk Schaafstraat 17:42</li><li><a href="stop-16954.html">16954</a> - Breendonk Rijweg 17:43</li><li><a href="stop-16952.html">16952</a> - Breendonk Eigenaarsstraat 17:44</li><li><a href="stop-128893.html">128893</a> - Willebroek Fort van Breendonk 17:46</li><li><a href="stop-15961.html">15961</a> - Willebroek Bosbeek 17:48</li><li><a href="stop-128898.html">128898</a> - Willebroek Bibliotheek 17:50</li><li><a href="stop-127792.html">127792</a> - Willebroek Veert 17:52</li><li><a href="stop-109336.html">109336</a> - Willebroek Vaartstraat 17:53</li><li><a href="stop-106077.html">106077</a> - Willebroek Klein Willebroek 17:58</li><li><a href="stop-108714.html">108714</a> - Boom E. Vanderveldestraat 18:01</li><li><a href="stop-44118.html">44118</a> - Boom Markt 18:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2298.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

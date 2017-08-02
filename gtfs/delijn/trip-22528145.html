@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tilburg - Poppel - Turnhout - 22528145</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tilburg - Poppel - Turnhout - 22528145</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-25906.html">25906</a> - Turnhout Station perron 4 18:45</li><li><a href="stop-108880.html">108880</a> - Turnhout Zeshoek 18:47</li><li><a href="stop-109200.html">109200</a> - Turnhout Markt perron 6 18:49</li><li><a href="stop-23140.html">23140</a> - Turnhout Theobalduskapel 18:50</li><li><a href="stop-109019.html">109019</a> - Turnhout Drieskensstraat 18:51</li><li><a href="stop-109020.html">109020</a> - Turnhout Meirgoren 18:52</li><li><a href="stop-109021.html">109021</a> - Turnhout Van Solmstraat 18:52</li><li><a href="stop-23069.html">23069</a> - Oud-Turnhout Polderstraat 18:53</li><li><a href="stop-23071.html">23071</a> - Oud-Turnhout Kuiltjesstraat 18:54</li><li><a href="stop-125828.html">125828</a> - Oud-Turnhout Werkendam 18:55</li><li><a href="stop-23075.html">23075</a> - Oud-Turnhout Heidehuisjes 18:55</li><li><a href="stop-23077.html">23077</a> - Oud-Turnhout Leeuwerkstraat 18:56</li><li><a href="stop-23079.html">23079</a> - Ravels Kanaaldijk 18:56</li><li><a href="stop-109502.html">109502</a> - Ravels Vaartstraat 18:57</li><li><a href="stop-109024.html">109024</a> - Ravels Berkenlaan 18:57</li><li><a href="stop-109026.html">109026</a> - Ravels Onze-Lieve-Vrouwstraat 18:58</li><li><a href="stop-109027.html">109027</a> - Ravels Kerk 18:58</li><li><a href="stop-23087.html">23087</a> - Ravels Molenzicht 18:59</li><li><a href="stop-23089.html">23089</a> - Ravels Warandestraat 19:00</li><li><a href="stop-109028.html">109028</a> - Ravels Arendonksesteenweg 19:01</li><li><a href="stop-23093.html">23093</a> - Ravels Eel Kerk 19:02</li><li><a href="stop-23095.html">23095</a> - Ravels Broekstraat 19:03</li><li><a href="stop-104579.html">104579</a> - Weelde Moleneinde 19:04</li><li><a href="stop-23099.html">23099</a> - Weelde Gemeentehuis 19:05</li><li><a href="stop-109032.html">109032</a> - Weelde Weeldestraat 19:06</li><li><a href="stop-109034.html">109034</a> - Weelde Hegge 19:07</li><li><a href="stop-23108.html">23108</a> - Weelde Noord Heikant 19:07</li><li><a href="stop-25863.html">25863</a> - Weelde Prinsenlaan 19:08</li><li><a href="stop-23110.html">23110</a> - Weelde Rustoord Emmaus 19:09</li><li><a href="stop-23112.html">23112</a> - Poppel Verbindingsweg 19:10</li><li><a href="stop-23114.html">23114</a> - Poppel Grote Vond 19:11</li><li><a href="stop-109036.html">109036</a> - Poppel Vondstraat 19:11</li><li><a href="stop-109038.html">109038</a> - Poppel Dorp 19:12</li><li><a href="stop-93200.html">93200</a> - Poppel Trierstraat 19:13</li><li><a href="stop-23122.html">23122</a> - Poppel Maarle 19:14</li><li><a href="stop-23124.html">23124</a> - Poppel Politie 19:15</li><li><a href="stop-23126.html">23126</a> - Poppel Grens 19:16</li><li><a href="stop-105943.html">105943</a> - Goirle Natuurpoort Roovertsche Leij 19:18</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3378.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

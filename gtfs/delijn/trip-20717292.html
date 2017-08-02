@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Geraardsbergen-Moerbeke-Viane-Bever/Biévène - 20717292</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Geraardsbergen-Moerbeke-Viane-Bever/Biévène - 20717292</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126775.html">126775</a> - Geraardsbergen Station perron 6 16:30</li><li><a href="stop-118905.html">118905</a> - Geraardsbergen Gasthuisstraat 16:31</li><li><a href="stop-117213.html">117213</a> - Geraardsbergen Ziekenhuis 16:32</li><li><a href="stop-118906.html">118906</a> - Geraardsbergen Post 16:33</li><li><a href="stop-118937.html">118937</a> - Geraardsbergen Administratief Centrum 16:35</li><li><a href="stop-120339.html">120339</a> - Geraardsbergen Zonnebloemstraat 16:36</li><li><a href="stop-117368.html">117368</a> - Geraardsbergen Denderland 16:36</li><li><a href="stop-118907.html">118907</a> - Onkerzele Edingseweg 16:37</li><li><a href="stop-117367.html">117367</a> - Onkerzele Oudenberg 16:37</li><li><a href="stop-118908.html">118908</a> - Onkerzele Dreef 16:39</li><li><a href="stop-118909.html">118909</a> - Moerbeke Atembekestraat 16:41</li><li><a href="stop-118950.html">118950</a> - Moerbeke Station 16:42</li><li><a href="stop-115662.html">115662</a> - Moerbeke Meirbroekstraat 16:43</li><li><a href="stop-118894.html">118894</a> - Viane Plein 16:44</li><li><a href="stop-118896.html">118896</a> - Viane Amandusplein 16:45</li><li><a href="stop-118897.html">118897</a> - Viane Embeke 16:46</li><li><a href="stop-118942.html">118942</a> - Tollembeek Herhout 16:48</li><li><a href="stop-118943.html">118943</a> - Tollembeek Pijpestraat 16:49</li><li><a href="stop-128511.html">128511</a> - Bever Kamstraat 16:50</li><li><a href="stop-16031.html">16031</a> - Bever Gemeentehuis 16:51</li><li><a href="stop-128512.html">128512</a> - Bever Burght 16:51</li><li><a href="stop-128513.html">128513</a> - Bever Kerkhove 16:52</li><li><a href="stop-128514.html">128514</a> - Bever Broeck 16:52</li><li><a href="stop-128515.html">128515</a> - Bever Commijn 16:52</li><li><a href="stop-128516.html">128516</a> - Bever Muydt 16:53</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1256.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Merchtem - Grimbergen - Vilvoorde - Zaventem - 21156094</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Merchtem - Grimbergen - Vilvoorde - Zaventem - 21156094</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-121667.html">121667</a> - Merchtem Mieregem 08:44</li><li><a href="stop-12859.html">12859</a> - Merchtem Varkensmarkt 08:45</li><li><a href="stop-12838.html">12838</a> - Merchtem Bleukenberg 08:46</li><li><a href="stop-12848.html">12848</a> - Merchtem Langeveldstraat 08:47</li><li><a href="stop-12842.html">12842</a> - Merchtem Doornenstraat 08:48</li><li><a href="stop-12862.html">12862</a> - Merchtem Wolvertemsestg.196 08:49</li><li><a href="stop-12844.html">12844</a> - Merchtem Kleystraat 08:50</li><li><a href="stop-12817.html">12817</a> - Wolvertem Windmolenkouter 08:51</li><li><a href="stop-12788.html">12788</a> - Wolvertem Meuzegemstraat 08:52</li><li><a href="stop-99099.html">99099</a> - Wolvertem Driesstraat 08:53</li><li><a href="stop-12773.html">12773</a> - Wolvertem Gemeenteplein 08:54</li><li><a href="stop-12706.html">12706</a> - Wolvertem Brussegemse Stwg. 08:55</li><li><a href="stop-12712.html">12712</a> - Wolvertem Oppemse Hoeve 08:56</li><li><a href="stop-99451.html">99451</a> - Meise Oppem Kerk 08:57</li><li><a href="stop-12708.html">12708</a> - Meise Klepperstraat 08:58</li><li><a href="stop-12745.html">12745</a> - Meise Oppem-Hasselt 09:00</li><li><a href="stop-12757.html">12757</a> - Meise Van Dievoetlaan 09:01</li><li><a href="stop-14530.html">14530</a> - Meise De Donderstraat 09:01</li><li><a href="stop-12746.html">12746</a> - Meise Oratorienlaan 09:02</li><li><a href="stop-12742.html">12742</a> - Meise Limbos 09:03</li><li><a href="stop-12724.html">12724</a> - Meise Dreef 09:04</li><li><a href="stop-10913.html">10913</a> - Grimbergen Biesthoek 09:05</li><li><a href="stop-10972.html">10972</a> - Grimbergen Waardbeek 09:06</li><li><a href="stop-10962.html">10962</a> - Grimbergen Stelplaats 09:07</li><li><a href="stop-10928.html">10928</a> - Grimbergen Hoge Steenweg 09:09</li><li><a href="stop-10957.html">10957</a> - Grimbergen Klont 09:11</li><li><a href="stop-14449.html">14449</a> - Grimbergen Delhaize 09:12</li><li><a href="stop-10951.html">10951</a> - Grimbergen Oude Schapenbaan 09:13</li><li><a href="stop-13932.html">13932</a> - Vilvoorde Breemput 09:15</li><li><a href="stop-99636.html">99636</a> - Vilvoorde Vlierkens 09:16</li><li><a href="stop-13969.html">13969</a> - Vilvoorde Kerk 09:17</li><li><a href="stop-13949.html">13949</a> - Vilvoorde Heldenplein 09:18</li><li><a href="stop-127954.html">127954</a> - Vilvoorde Station Perron 3 09:20</li><li><a href="stop-13948.html">13948</a> - Vilvoorde Heldenplein 09:22</li><li><a href="stop-16986.html">16986</a> - Vilvoorde Leuvensestraat 09:24</li><li><a href="stop-14007.html">14007</a> - Vilvoorde Nowélei 09:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2629.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

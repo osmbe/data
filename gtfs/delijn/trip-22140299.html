@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk Station-Bellegem-Rollegem - 22140299</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk Station-Bellegem-Rollegem - 22140299</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126379.html">126379</a> - Kortrijk Station perron 1 13:40</li><li><a href="stop-37777.html">37777</a> - Kortrijk Spoorweglaan 13:42</li><li><a href="stop-37818.html">37818</a> - Kortrijk Zwevegemsepoort 13:42</li><li><a href="stop-41751.html">41751</a> - Kortrijk Doorniksepoort 13:43</li><li><a href="stop-37780.html">37780</a> - Kortrijk Doornikwijk 13:43</li><li><a href="stop-37835.html">37835</a> - Kortrijk Sint-Rochuskerk 13:44</li><li><a href="stop-90395.html">90395</a> - Kortrijk Kanon 13:45</li><li><a href="stop-37812.html">37812</a> - Kortrijk Nieuwpoortstraat 13:46</li><li><a href="stop-37774.html">37774</a> - Kortrijk Halve Jan 13:48</li><li><a href="stop-89706.html">89706</a> - Kortrijk Kinepolis Xpo 13:49</li><li><a href="stop-106859.html">106859</a> - Kortrijk Beneluxpark 13:51</li><li><a href="stop-42868.html">42868</a> - Kortrijk Bekaert 13:51</li><li><a href="stop-100910.html">100910</a> - Kortrijk Konvert 13:52</li><li><a href="stop-37792.html">37792</a> - Kortrijk Nationale Bank 13:52</li><li><a href="stop-42869.html">42869</a> - Kortrijk Leiedal 13:52</li><li><a href="stop-126271.html">126271</a> - Kortrijk AZ Groeninge 13:53</li><li><a href="stop-37806.html">37806</a> - Kortrijk Marionetten 13:54</li><li><a href="stop-42870.html">42870</a> - Rollegem Eikendreef 13:55</li><li><a href="stop-42871.html">42871</a> - Rollegem Groene Dreef 13:56</li><li><a href="stop-42872.html">42872</a> - Rollegem Segersweg 13:56</li><li><a href="stop-42873.html">42873</a> - Rollegem Containerpark 13:57</li><li><a href="stop-42093.html">42093</a> - Rollegem Kannestraat 13:58</li><li><a href="stop-42097.html">42097</a> - Rollegem Waterval 13:59</li><li><a href="stop-41468.html">41468</a> - Bellegem Plaats 14:00</li><li><a href="stop-41470.html">41470</a> - Bellegem Voetbalplein 14:01</li><li><a href="stop-90902.html">90902</a> - Bellegem Manpadstraat 14:02</li><li><a href="stop-90901.html">90901</a> - Bellegem Volksberg 14:02</li><li><a href="stop-90899.html">90899</a> - Bellegem Groenweg 14:03</li><li><a href="stop-41564.html">41564</a> - Bellegem Sint-Amandsdreef 14:03</li><li><a href="stop-95221.html">95221</a> - Rollegem Kwabrugstraat 14:06</li><li><a href="stop-42094.html">42094</a> - Rollegem Kwade Brug 14:07</li><li><a href="stop-42092.html">42092</a> - Rollegem Beekstraat 14:08</li><li><a href="stop-42095.html">42095</a> - Rollegem Plaats 14:09</li><li><a href="stop-42091.html">42091</a> - Rollegem Aalbekestraat 14:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4020.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

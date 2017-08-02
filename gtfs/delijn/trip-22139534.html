@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk Station-Bissegem-Heule-Shopping Center - 22139534</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk Station-Bissegem-Heule-Shopping Center - 22139534</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-90904.html">90904</a> - Heule Shopping Center 17:23</li><li><a href="stop-101095.html">101095</a> - Heule Watermolenkerk 17:25</li><li><a href="stop-88626.html">88626</a> - Heule Bozestraat 17:26</li><li><a href="stop-90895.html">90895</a> - Heule Blauwpoort 17:27</li><li><a href="stop-42862.html">42862</a> - Heule R. Declercqlaan 17:28</li><li><a href="stop-42863.html">42863</a> - Heule Warande 17:28</li><li><a href="stop-37659.html">37659</a> - Heule Leiaarde 17:29</li><li><a href="stop-37651.html">37651</a> - Heule Cinema 17:29</li><li><a href="stop-37661.html">37661</a> - Heule Markt 17:30</li><li><a href="stop-37674.html">37674</a> - Heule Goethalslaan 17:31</li><li><a href="stop-37668.html">37668</a> - Heule Revalidatiecentrum 17:33</li><li><a href="stop-37679.html">37679</a> - Heule Winterland 17:34</li><li><a href="stop-37680.html">37680</a> - Heule Zomertij 17:34</li><li><a href="stop-41648.html">41648</a> - Heule Lenteleven 17:35</li><li><a href="stop-41481.html">41481</a> - Bissegem Dr. Dumortierlaan 17:37</li><li><a href="stop-41489.html">41489</a> - Bissegem Tientjesstraat 17:37</li><li><a href="stop-41483.html">41483</a> - Bissegem Heulsestraat 17:38</li><li><a href="stop-41486.html">41486</a> - Bissegem Molenstraat 17:39</li><li><a href="stop-41641.html">41641</a> - Heule De Jaegher'S Fabriek 17:40</li><li><a href="stop-41655.html">41655</a> - Heule Overweg 17:41</li><li><a href="stop-123672.html">123672</a> - Kortrijk Stadion 17:42</li><li><a href="stop-41780.html">41780</a> - Kortrijk Meensepoort 17:43</li><li><a href="stop-41785.html">41785</a> - Kortrijk O.L.V. Hospitaal 17:45</li><li><a href="stop-42866.html">42866</a> - Kortrijk Markt 17:46</li><li><a href="stop-125732.html">125732</a> - Kortrijk L. Robbeplein 17:46</li><li><a href="stop-126439.html">126439</a> - Kortrijk Station perron 2 17:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4011.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

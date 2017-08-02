@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Overboelare - Geraardsbergen - Everbeek - Brakel - 20717599</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Overboelare - Geraardsbergen - Everbeek - Brakel - 20717599</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-118888.html">118888</a> - Overboelare Denderoord 15:58</li><li><a href="stop-118903.html">118903</a> - Overboelare Boelarebos 16:00</li><li><a href="stop-117200.html">117200</a> - Geraardsbergen Kerk Hoge Buizemont 16:01</li><li><a href="stop-117374.html">117374</a> - Geraardsbergen Schillebeeksevoetweg 16:02</li><li><a href="stop-117201.html">117201</a> - Geraardsbergen Baljuwstraat 16:03</li><li><a href="stop-117202.html">117202</a> - Geraardsbergen Halleweg 16:04</li><li><a href="stop-118304.html">118304</a> - Onkerzele Oudenberg 16:04</li><li><a href="stop-119774.html">119774</a> - Onkerzele Edingseweg 16:05</li><li><a href="stop-118305.html">118305</a> - Geraardsbergen Denderland 16:05</li><li><a href="stop-120384.html">120384</a> - Geraardsbergen Zonnebloemstraat 16:06</li><li><a href="stop-119805.html">119805</a> - Geraardsbergen Administratief Centrum 16:07</li><li><a href="stop-119773.html">119773</a> - Geraardsbergen Post 16:07</li><li><a href="stop-114853.html">114853</a> - Geraardsbergen Ziekenhuis 16:08</li><li><a href="stop-119772.html">119772</a> - Geraardsbergen Gasthuisstraat 16:09</li><li><a href="stop-126776.html">126776</a> - Geraardsbergen Station perron 5 16:11</li><li><a href="stop-118405.html">118405</a> - Geraardsbergen Adamstraat 16:12</li><li><a href="stop-112004.html">112004</a> - Goeferdinge Oudenaardsestraat 16:14</li><li><a href="stop-117203.html">117203</a> - Goeferdinge Dutskouter 16:15</li><li><a href="stop-118395.html">118395</a> - Goeferdinge Marktweg 16:16</li><li><a href="stop-118394.html">118394</a> - Goeferdinge Eersbekeweg 16:17</li><li><a href="stop-118393.html">118393</a> - Goeferdinge Elzenstraat 16:18</li><li><a href="stop-118392.html">118392</a> - Goeferdinge Kerk 16:19</li><li><a href="stop-118391.html">118391</a> - Zarlardinge Kerk 16:20</li><li><a href="stop-118390.html">118390</a> - Zarlardinge Torenstraat 16:21</li><li><a href="stop-118379.html">118379</a> - Zarlardinge Mierenhoek 16:22</li><li><a href="stop-118389.html">118389</a> - Everbeek Plaats Beneden 16:23</li><li><a href="stop-118381.html">118381</a> - Everbeek Plaatsbeek 16:25</li><li><a href="stop-118376.html">118376</a> - Everbeek Plankkouter 16:27</li><li><a href="stop-118375.html">118375</a> - Everbeek Priemstraat 16:28</li><li><a href="stop-124959.html">124959</a> - Everbeek Steenberg 16:29</li><li><a href="stop-118373.html">118373</a> - Everbeek Muiterij 16:30</li><li><a href="stop-118378.html">118378</a> - Everbeek Nieuwpoort 16:30</li><li><a href="stop-118372.html">118372</a> - Everbeek Maandagstraat 16:31</li><li><a href="stop-118371.html">118371</a> - Everbeek Oolstraat 16:32</li><li><a href="stop-118370.html">118370</a> - Everbeek Steneplein 16:33</li><li><a href="stop-118369.html">118369</a> - Everbeek Kroonstraat 16:33</li><li><a href="stop-118368.html">118368</a> - Everbeek Hoogbos 16:34</li><li><a href="stop-118367.html">118367</a> - Everbeek Hayestraat 16:35</li><li><a href="stop-118366.html">118366</a> - Nederbrakel Evensveldstraat 16:36</li><li><a href="stop-118365.html">118365</a> - Nederbrakel Termergelstraat 16:37</li><li><a href="stop-118456.html">118456</a> - Nederbrakel Spoorwegstraat 16:38</li><li><a href="stop-119335.html">119335</a> - Nederbrakel Station 16:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1269.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

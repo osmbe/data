@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Boom - Puurs - Dendermonde - 22514850</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boom - Puurs - Dendermonde - 22514850</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-43022.html">43022</a> - Dendermonde Nachtegaalstraat 16:05</li><li><a href="stop-107816.html">107816</a> - Dendermonde Veerstraat 16:09</li><li><a href="stop-107814.html">107814</a> - Dendermonde Oude Vest 16:12</li><li><a href="stop-107813.html">107813</a> - Dendermonde Brusselsestraat 16:14</li><li><a href="stop-43017.html">43017</a> - Dendermonde Station perron 5 16:15</li><li><a href="stop-116752.html">116752</a> - Dendermonde Brusselsestraat 16:18</li><li><a href="stop-126711.html">126711</a> - Dendermonde Oude Vest 16:18</li><li><a href="stop-127105.html">127105</a> - Dendermonde Kroonveldlaan 16:19</li><li><a href="stop-117319.html">117319</a> - Dendermonde Korte Dijkstraat 16:21</li><li><a href="stop-126715.html">126715</a> - Dendermonde Industrieweg 16:22</li><li><a href="stop-126716.html">126716</a> - Baasrode Weg Naar Vlassenbroek 16:23</li><li><a href="stop-117322.html">117322</a> - Baasrode Broekstraat 16:25</li><li><a href="stop-126717.html">126717</a> - Baasrode Broekkouter 16:26</li><li><a href="stop-126718.html">126718</a> - Baasrode Rosstraat 16:27</li><li><a href="stop-117325.html">117325</a> - Baasrode Scheepswerfstraat 16:28</li><li><a href="stop-117326.html">117326</a> - Baasrode Vermijlenstraat 16:29</li><li><a href="stop-126719.html">126719</a> - Baasrode Noord Station 16:31</li><li><a href="stop-118110.html">118110</a> - Buggenhout Diepmeerstraat 16:32</li><li><a href="stop-118075.html">118075</a> - Buggenhout Brielstraat 16:34</li><li><a href="stop-118074.html">118074</a> - Buggenhout Van Praet 16:34</li><li><a href="stop-118073.html">118073</a> - Buggenhout Weide 16:35</li><li><a href="stop-24129.html">24129</a> - Sint-Amands Fok 16:37</li><li><a href="stop-109432.html">109432</a> - Sint-Amands Dorekensstraat 16:38</li><li><a href="stop-107773.html">107773</a> - Sint-Amands Boonhof 16:39</li><li><a href="stop-109433.html">109433</a> - Sint-Amands De Valk 16:40</li><li><a href="stop-109436.html">109436</a> - Sint-Amands Station 16:41</li><li><a href="stop-24138.html">24138</a> - Sint-Amands Buisstraat 16:42</li><li><a href="stop-109438.html">109438</a> - Sint-Amands Heidestraat 16:43</li><li><a href="stop-24143.html">24143</a> - Oppuurs Pandgatheide 16:46</li><li><a href="stop-24145.html">24145</a> - Oppuurs Schaddekensdries 16:48</li><li><a href="stop-24147.html">24147</a> - Oppuurs Schoolstraat 16:49</li><li><a href="stop-109443.html">109443</a> - Oppuurs Oppuurs Station 16:50</li><li><a href="stop-24152.html">24152</a> - Oppuurs Kerkhof 16:51</li><li><a href="stop-21181.html">21181</a> - Puurs Zeutestraat 16:53</li><li><a href="stop-100252.html">100252</a> - Puurs Hof Ten Berg 16:54</li><li><a href="stop-107753.html">107753</a> - Puurs Markt 16:55</li><li><a href="stop-21688.html">21688</a> - Puurs Station 16:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3009.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Turnhout-Beerse-Rijkevorsel-Hoogstraten - 22526792</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Turnhout-Beerse-Rijkevorsel-Hoogstraten - 22526792</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109930.html">109930</a> - Hoogstraten 't Spijker perron 1 12:15</li><li><a href="stop-25733.html">25733</a> - Hoogstraten K. Boomstraat 12:18</li><li><a href="stop-109963.html">109963</a> - Hoogstraten VITO 12:20</li><li><a href="stop-22117.html">22117</a> - Hoogstraten Seminarie 12:22</li><li><a href="stop-108640.html">108640</a> - Hoogstraten Loenhoutseweg 12:22</li><li><a href="stop-108637.html">108637</a> - Hoogstraten Veiling 12:23</li><li><a href="stop-22107.html">22107</a> - Hoogstraten Leemputten 12:23</li><li><a href="stop-108633.html">108633</a> - Rijkevorsel Achtelsteenweg 12:24</li><li><a href="stop-22093.html">22093</a> - Rijkevorsel Rovana 12:26</li><li><a href="stop-22091.html">22091</a> - Rijkevorsel Angelicadreef 12:26</li><li><a href="stop-108628.html">108628</a> - Rijkevorsel Kleine Gammel 12:27</li><li><a href="stop-22086.html">22086</a> - Rijkevorsel Vonderstraat 12:28</li><li><a href="stop-22083.html">22083</a> - Rijkevorsel Sint-Luciestraat 12:29</li><li><a href="stop-107560.html">107560</a> - Rijkevorsel Kerk 12:29</li><li><a href="stop-108905.html">108905</a> - Rijkevorsel Driehoek 12:30</li><li><a href="stop-92247.html">92247</a> - Rijkevorsel De Parre 12:32</li><li><a href="stop-22787.html">22787</a> - Rijkevorsel Sint-Jozef Brug 12:33</li><li><a href="stop-22785.html">22785</a> - Rijkevorsel Sint-Jozef Kerk 12:34</li><li><a href="stop-108911.html">108911</a> - Rijkevorsel Hoogstraat 12:35</li><li><a href="stop-108909.html">108909</a> - Rijkevorsel Zwartvenstraat 12:36</li><li><a href="stop-120663.html">120663</a> - Beerse Blakheide 12:37</li><li><a href="stop-22779.html">22779</a> - Beerse Lange Kwikstraat 12:38</li><li><a href="stop-108907.html">108907</a> - Beerse Heidestraat 12:40</li><li><a href="stop-26001.html">26001</a> - Beerse Den Hout kerk 12:42</li><li><a href="stop-110001.html">110001</a> - Beerse Kapel 12:43</li><li><a href="stop-25998.html">25998</a> - Beerse Larenstraat 12:44</li><li><a href="stop-109998.html">109998</a> - Beerse Smisstraat 12:45</li><li><a href="stop-108891.html">108891</a> - Beerse Dorp 12:46</li><li><a href="stop-107584.html">107584</a> - Beerse Gemeentehuis 12:47</li><li><a href="stop-108870.html">108870</a> - Beerse Gierleseweg 12:49</li><li><a href="stop-22693.html">22693</a> - Beerse Heibergstraat 12:50</li><li><a href="stop-108873.html">108873</a> - Vosselaar Dennendreef 12:51</li><li><a href="stop-108875.html">108875</a> - Vosselaar Dorp 12:52</li><li><a href="stop-22699.html">22699</a> - Vosselaar Bergeneinde 12:53</li><li><a href="stop-22701.html">22701</a> - Vosselaar Jagerslaan 12:54</li><li><a href="stop-22703.html">22703</a> - Turnhout Galgenbeekweg 12:56</li><li><a href="stop-22705.html">22705</a> - Turnhout Lokerenstraat 12:57</li><li><a href="stop-22707.html">22707</a> - Turnhout Stelplaats 12:58</li><li><a href="stop-108879.html">108879</a> - Turnhout Station perron 6 12:59</li><li><a href="stop-108880.html">108880</a> - Turnhout Zeshoek 13:00</li><li><a href="stop-107830.html">107830</a> - Turnhout Warande 13:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3314.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

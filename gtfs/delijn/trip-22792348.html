@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Pamel - Liedekerke - Essene - 22792348</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Pamel - Liedekerke - Essene - 22792348</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-17042.html">17042</a> - Essene Paddeput 07:30</li><li><a href="stop-9433.html">9433</a> - Essene Lombeekstraat 07:31</li><li><a href="stop-17129.html">17129</a> - Essene OLV-Kerk 07:33</li><li><a href="stop-10431.html">10431</a> - Essene Mouterij 07:34</li><li><a href="stop-10448.html">10448</a> - Essene Koudenberg 07:37</li><li><a href="stop-93357.html">93357</a> - Hekelgem Bleregem 07:38</li><li><a href="stop-9437.html">9437</a> - Hekelgem Den Beer 07:39</li><li><a href="stop-10446.html">10446</a> - Hekelgem Fosselbaan 07:40</li><li><a href="stop-10444.html">10444</a> - Hekelgem Sint-Michielskerk 07:42</li><li><a href="stop-10442.html">10442</a> - Hekelgem Buikouter 07:43</li><li><a href="stop-10440.html">10440</a> - Hekelgem Haezenweg 07:44</li><li><a href="stop-10438.html">10438</a> - Hekelgem Bellekouter 07:45</li><li><a href="stop-93946.html">93946</a> - Teralfene Kapelleweg 07:47</li><li><a href="stop-15212.html">15212</a> - Teralfene Sint-Janskerk 07:48</li><li><a href="stop-15210.html">15210</a> - Teralfene Portugeesstraat 07:49</li><li><a href="stop-15208.html">15208</a> - Liedekerke Station 07:51</li><li><a href="stop-44046.html">44046</a> - Liedekerke Affligemstraat 07:53</li><li><a href="stop-44044.html">44044</a> - Liedekerke K.T.A. 07:54</li><li><a href="stop-44038.html">44038</a> - Liedekerke Boerenkrijg 07:55</li><li><a href="stop-15168.html">15168</a> - Liedekerke Velodroom 07:55</li><li><a href="stop-15166.html">15166</a> - Liedekerke Sint-Gabriël 07:56</li><li><a href="stop-15164.html">15164</a> - Liedekerke Sportlaan 07:57</li><li><a href="stop-10331.html">10331</a> - Liedekerke Sport 07:58</li><li><a href="stop-15173.html">15173</a> - Liedekerke Houtmarkt 07:58</li><li><a href="stop-15175.html">15175</a> - Liedekerke Impegem 07:59</li><li><a href="stop-16281.html">16281</a> - Liedekerke Boucht 08:00</li><li><a href="stop-15177.html">15177</a> - Liedekerke Dries 08:00</li><li><a href="stop-95702.html">95702</a> - Pamel Nieuwkaai 08:01</li><li><a href="stop-95607.html">95607</a> - Pamel Denderbocht 08:02</li><li><a href="stop-95605.html">95605</a> - Pamel Oud Pamel 08:03</li><li><a href="stop-95692.html">95692</a> - Pamel De Scheper 08:03</li><li><a href="stop-95694.html">95694</a> - Pamel Kerk 08:04</li><li><a href="stop-95696.html">95696</a> - Pamel Kleiberg 08:05</li><li><a href="stop-95698.html">95698</a> - Pamel Ledeberg Plein - IMI 08:06</li><li><a href="stop-95700.html">95700</a> - Pamel Den Dikke van Pamel 08:07</li><li><a href="stop-95711.html">95711</a> - Pamel Schoon Verbond 08:09</li><li><a href="stop-95688.html">95688</a> - O.L.V.-Lombeek Molenkouter 08:11</li><li><a href="stop-95603.html">95603</a> - O.L.V.-Lombeek Daalbeek 08:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2499.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

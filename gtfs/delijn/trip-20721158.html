@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oudenaarde - Schorisse - Ronse/Renaix - 20721158</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oudenaarde - Schorisse - Ronse/Renaix - 20721158</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128498.html">128498</a> - Ronse Station perron 4 18:49</li><li><a href="stop-128481.html">128481</a> - Ronse Olifantstraat 18:51</li><li><a href="stop-128480.html">128480</a> - Ronse Veemarkt 18:52</li><li><a href="stop-128479.html">128479</a> - Ronse Canfijnstraat 18:53</li><li><a href="stop-128478.html">128478</a> - Ronse Hospitaal 18:54</li><li><a href="stop-128522.html">128522</a> - Ronse Lindestraat 18:55</li><li><a href="stop-128492.html">128492</a> - Ronse Beekstraat 18:56</li><li><a href="stop-128491.html">128491</a> - Ronse Populierstraat 18:56</li><li><a href="stop-128490.html">128490</a> - Ronse Ten Bergestraat 18:57</li><li><a href="stop-128489.html">128489</a> - Ronse Veldekensstraat 18:57</li><li><a href="stop-118707.html">118707</a> - Nukerke Kafhoekstraat 18:58</li><li><a href="stop-118706.html">118706</a> - Nukerke Ommegangstraat 18:58</li><li><a href="stop-128488.html">128488</a> - Ronse Rijkswachtlaan 18:59</li><li><a href="stop-118704.html">118704</a> - Etikhove Louise-Marie Kerk 18:59</li><li><a href="stop-128487.html">128487</a> - Ronse Sint-Pieters Bosstraat 18:59</li><li><a href="stop-128486.html">128486</a> - Ronse Steenweg Op Schorisse 19:00</li><li><a href="stop-128485.html">128485</a> - Ronse Koekamerstraat 19:01</li><li><a href="stop-118177.html">118177</a> - Schorisse Gielestraat 19:01</li><li><a href="stop-118700.html">118700</a> - Schorisse Waardebroeken 19:02</li><li><a href="stop-118699.html">118699</a> - Schorisse Neutenstraat 19:03</li><li><a href="stop-118698.html">118698</a> - Schorisse Leideveld 19:03</li><li><a href="stop-118697.html">118697</a> - Schorisse Schoolstraat 19:04</li><li><a href="stop-118696.html">118696</a> - Schorisse Dorp 19:05</li><li><a href="stop-118695.html">118695</a> - Maarke-Kerkem Kabuizestraat 19:07</li><li><a href="stop-118694.html">118694</a> - Maarke-Kerkem Wijmierstraat 19:07</li><li><a href="stop-118693.html">118693</a> - Maarke-Kerkem Dorp 19:08</li><li><a href="stop-118692.html">118692</a> - Etikhove Ellestraat 19:09</li><li><a href="stop-118691.html">118691</a> - Etikhove Gieterijstraat 19:11</li><li><a href="stop-118690.html">118690</a> - Etikhove Ladeuze 19:12</li><li><a href="stop-118689.html">118689</a> - Etikhove Geitenhoek 19:13</li><li><a href="stop-118688.html">118688</a> - Leupegem Schorisseweg 19:14</li><li><a href="stop-118687.html">118687</a> - Leupegem Wolfabriekstraat 19:14</li><li><a href="stop-128734.html">128734</a> - Leupegem Kerk 19:15</li><li><a href="stop-118476.html">118476</a> - Oudenaarde Casteleinstraat 19:16</li><li><a href="stop-120381.html">120381</a> - Oudenaarde Smallendam 19:18</li><li><a href="stop-119355.html">119355</a> - Oudenaarde Markt 19:19</li><li><a href="stop-119356.html">119356</a> - Oudenaarde Tacambaro 19:21</li><li><a href="stop-126760.html">126760</a> - Oudenaarde Station perron 4 19:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1431.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

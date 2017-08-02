@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sledderlo - Genk Station - Waterschei - 22462654</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sledderlo - Genk Station - Waterschei - 22462654</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-28574.html">28574</a> - Genk Steenbergstraat 12:02</li><li><a href="stop-105198.html">105198</a> - Genk Hazenstraat 12:03</li><li><a href="stop-105199.html">105199</a> - Genk Muggenberg 12:04</li><li><a href="stop-28432.html">28432</a> - Genk Boshoekstraat I 12:05</li><li><a href="stop-28433.html">28433</a> - Genk Boshoekstraat II 12:06</li><li><a href="stop-105200.html">105200</a> - Genk Wintergroenstraat 12:06</li><li><a href="stop-96689.html">96689</a> - Sledderlo Kerk 12:09</li><li><a href="stop-125469.html">125469</a> - Genk Krelstraat 12:10</li><li><a href="stop-28550.html">28550</a> - Genk Smeilstraat 12:11</li><li><a href="stop-28506.html">28506</a> - Genk Lousbeekstraat 12:12</li><li><a href="stop-28446.html">28446</a> - Genk Daalstraat 12:13</li><li><a href="stop-28479.html">28479</a> - Genk Hondsbos 12:14</li><li><a href="stop-28724.html">28724</a> - Genk Inhamstraat 12:15</li><li><a href="stop-88849.html">88849</a> - Genk Hommelheidestraat 12:16</li><li><a href="stop-91953.html">91953</a> - Genk Vlierstraat 12:17</li><li><a href="stop-125468.html">125468</a> - Genk Kolderbos 12:17</li><li><a href="stop-28378.html">28378</a> - Genk d' Ierd 12:19</li><li><a href="stop-28588.html">28588</a> - Genk Vooruitzichtlaan 12:20</li><li><a href="stop-28373.html">28373</a> - Genk Zonneweeldelaan 12:21</li><li><a href="stop-88467.html">88467</a> - Genk Stadhuis 12:23</li><li><a href="stop-43787.html">43787</a> - Genk Station perron 1 12:30</li><li><a href="stop-29002.html">29002</a> - Genk Shopping Center perron 2 12:33</li><li><a href="stop-94950.html">94950</a> - Genk Hospitaalstraat 12:34</li><li><a href="stop-88460.html">88460</a> - Genk Bretheistraat 12:35</li><li><a href="stop-43835.html">43835</a> - Genk College 12:36</li><li><a href="stop-43836.html">43836</a> - Genk Campus Bret 12:39</li><li><a href="stop-28720.html">28720</a> - Genk Motruine 12:41</li><li><a href="stop-28452.html">28452</a> - Genk Diernastraat 12:41</li><li><a href="stop-99187.html">99187</a> - Waterschei Blookstraat 12:43</li><li><a href="stop-96776.html">96776</a> - Waterschei Brentjesstraat 12:44</li><li><a href="stop-99183.html">99183</a> - Waterschei Hermesdijkstraat 12:44</li><li><a href="stop-99181.html">99181</a> - Waterschei Haneveldstraat 12:45</li><li><a href="stop-110916.html">110916</a> - Waterschei Thorpark 12:47</li><li><a href="stop-105193.html">105193</a> - Waterschei Mijn 12:47</li><li><a href="stop-96703.html">96703</a> - Waterschei Kring 12:49</li><li><a href="stop-96710.html">96710</a> - Waterschei Stalenstraat 12:49</li><li><a href="stop-96714.html">96714</a> - Waterschei Onafhankelijkheidslaan 12:50</li><li><a href="stop-96774.html">96774</a> - Waterschei Mezenstraat 12:51</li><li><a href="stop-96772.html">96772</a> - Waterschei Goudvinkstraat 12:52</li><li><a href="stop-96770.html">96770</a> - Waterschei Madeliefjesstraat 12:53</li><li><a href="stop-96684.html">96684</a> - Waterschei Nieuw Texas 12:55</li><li><a href="stop-105436.html">105436</a> - Waterschei Kerkhof 12:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5338.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

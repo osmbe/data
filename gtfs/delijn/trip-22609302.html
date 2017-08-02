@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge-Zwevezele-Tielt - 22609302</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge-Zwevezele-Tielt - 22609302</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126345.html">126345</a> - Zwevezele Hille 14:12</li><li><a href="stop-41265.html">41265</a> - Zwevezele Lostraat 14:13</li><li><a href="stop-101065.html">101065</a> - Zwevezele De Eikel 14:14</li><li><a href="stop-41247.html">41247</a> - Zwevezele Cafe Breughel 14:14</li><li><a href="stop-101048.html">101048</a> - Ruddervoorde Muinkendreef 14:16</li><li><a href="stop-41077.html">41077</a> - Ruddervoorde Robaardstraat 14:17</li><li><a href="stop-41068.html">41068</a> - Ruddervoorde Sint-Hubert 14:19</li><li><a href="stop-41336.html">41336</a> - Ruddervoorde Zandstraat 14:19</li><li><a href="stop-37009.html">37009</a> - Ruddervoorde Kruiskalsijde 14:21</li><li><a href="stop-37016.html">37016</a> - Ruddervoorde Station 14:22</li><li><a href="stop-37002.html">37002</a> - Ruddervoorde Dorp 14:23</li><li><a href="stop-41069.html">41069</a> - Ruddervoorde Station 14:25</li><li><a href="stop-41061.html">41061</a> - Ruddervoorde Kruiskalsijde 14:26</li><li><a href="stop-41216.html">41216</a> - Waardamme Beernemstraat 14:27</li><li><a href="stop-41217.html">41217</a> - Waardamme Dorp 14:28</li><li><a href="stop-41218.html">41218</a> - Waardamme Drie Koningen 14:28</li><li><a href="stop-41219.html">41219</a> - Waardamme Lariksdreef 14:29</li><li><a href="stop-41022.html">41022</a> - Oostkamp Breideldreef 14:30</li><li><a href="stop-41038.html">41038</a> - Oostkamp Wapens 14:32</li><li><a href="stop-41360.html">41360</a> - Oostkamp Palfijn 14:32</li><li><a href="stop-41359.html">41359</a> - Oostkamp Abraham 14:33</li><li><a href="stop-41023.html">41023</a> - Oostkamp Cardijnplein 14:34</li><li><a href="stop-41028.html">41028</a> - Oostkamp Nelestraat 14:35</li><li><a href="stop-41036.html">41036</a> - Oostkamp Tijl Uilenspiegel 14:35</li><li><a href="stop-41024.html">41024</a> - Oostkamp Daele 14:36</li><li><a href="stop-41034.html">41034</a> - Oostkamp Siemenslaan 14:38</li><li><a href="stop-41031.html">41031</a> - Oostkamp Rijkswacht 14:39</li><li><a href="stop-41030.html">41030</a> - Oostkamp Centrum 14:40</li><li><a href="stop-41032.html">41032</a> - Oostkamp Rustoordstraat 14:41</li><li><a href="stop-41041.html">41041</a> - Oostkamp Zwarte Gat 14:41</li><li><a href="stop-41029.html">41029</a> - Oostkamp Rampe 14:43</li><li><a href="stop-41039.html">41039</a> - Oostkamp Gaston Roelandtstraat 14:44</li><li><a href="stop-41027.html">41027</a> - Oostkamp Sint-Michielsstraat 14:44</li><li><a href="stop-101052.html">101052</a> - Assebroek Park & Ride Steenbrugge 14:45</li><li><a href="stop-40794.html">40794</a> - Assebroek Abdij Steenbrugge 14:46</li><li><a href="stop-40772.html">40772</a> - Assebroek Benedictijnen 14:47</li><li><a href="stop-40795.html">40795</a> - Assebroek Tir 14:47</li><li><a href="stop-101032.html">101032</a> - Assebroek Brugs Kerkhofstraat 14:48</li><li><a href="stop-40797.html">40797</a> - Assebroek Wantestraat 14:49</li><li><a href="stop-40847.html">40847</a> - Brugge Katelijnepoort 14:50</li><li><a href="stop-128946.html">128946</a> - Brugge Station perron 6 14:52</li><li><a href="stop-126317.html">126317</a> - Brugge 'T Zand perron 8 14:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5811.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

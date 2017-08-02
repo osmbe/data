@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Torhout-Kortemark-Ieper - 22632232</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Torhout-Kortemark-Ieper - 22632232</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126348.html">126348</a> - Torhout Station perron 4 16:32</li><li><a href="stop-41185.html">41185</a> - Torhout Kortemarkstraat 16:33</li><li><a href="stop-41187.html">41187</a> - Torhout Kruispunt 16:34</li><li><a href="stop-37361.html">37361</a> - Torhout Garage 16:35</li><li><a href="stop-37149.html">37149</a> - Torhout Kruisken 16:36</li><li><a href="stop-37155.html">37155</a> - Torhout Slarin 16:37</li><li><a href="stop-37140.html">37140</a> - Torhout De Uil 16:39</li><li><a href="stop-37753.html">37753</a> - Kortemark Ma Campagne 16:40</li><li><a href="stop-37750.html">37750</a> - Kortemark Cafe Kanon 16:42</li><li><a href="stop-100904.html">100904</a> - Kortemark Plaats 16:43</li><li><a href="stop-39204.html">39204</a> - Kortemark Station 16:44</li><li><a href="stop-37758.html">37758</a> - Kortemark Steenbakkerij 16:45</li><li><a href="stop-37759.html">37759</a> - Kortemark Vliegend Paard 16:46</li><li><a href="stop-37752.html">37752</a> - Kortemark Huis Maes 16:48</li><li><a href="stop-36843.html">36843</a> - Hooglede De Geite 16:49</li><li><a href="stop-39233.html">39233</a> - Hooglede Geitestraat 16:50</li><li><a href="stop-100837.html">100837</a> - Hooglede Hazewind 16:51</li><li><a href="stop-123544.html">123544</a> - Staden Stroveldkruis 16:52</li><li><a href="stop-38319.html">38319</a> - Staden Sporthal 16:53</li><li><a href="stop-38184.html">38184</a> - Staden Dorp 16:54</li><li><a href="stop-42152.html">42152</a> - Staden Mortelbak 16:55</li><li><a href="stop-41933.html">41933</a> - Staden Houthulststraat 56 16:55</li><li><a href="stop-42156.html">42156</a> - Staden Stampkotstraat 16:56</li><li><a href="stop-42155.html">42155</a> - Staden Soetestraat 16:57</li><li><a href="stop-42153.html">42153</a> - Staden Reke 16:58</li><li><a href="stop-42435.html">42435</a> - Houthulst Fabrieksput 17:00</li><li><a href="stop-125717.html">125717</a> - Houthulst Plaats 17:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6065.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

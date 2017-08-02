@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Avondlijn Brugge-Veldegem - 22615628</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Avondlijn Brugge-Veldegem - 22615628</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128949.html">128949</a> - Brugge Station perron 9 25:10</li><li><a href="stop-110599.html">110599</a> - Sint-Michiels Station West 25:12</li><li><a href="stop-41319.html">41319</a> - Sint-Michiels Spoorwegstraat 25:14</li><li><a href="stop-41314.html">41314</a> - Sint-Michiels Brembos 25:19</li><li><a href="stop-40974.html">40974</a> - Loppem Smisje 25:22</li><li><a href="stop-41329.html">41329</a> - Loppem Sportcentrum 25:23</li><li><a href="stop-90683.html">90683</a> - Loppem Dorp 25:24</li><li><a href="stop-40975.html">40975</a> - Loppem Station 25:25</li><li><a href="stop-40976.html">40976</a> - Loppem Vijverkasteel 25:25</li><li><a href="stop-40973.html">40973</a> - Loppem Heidelberg 25:26</li><li><a href="stop-104965.html">104965</a> - Zedelgem Ter Loo 25:27</li><li><a href="stop-41233.html">41233</a> - Zedelgem De Arend 25:29</li><li><a href="stop-37291.html">37291</a> - Zedelgem Groenhove 25:30</li><li><a href="stop-101070.html">101070</a> - Zedelgem Station 25:31</li><li><a href="stop-41321.html">41321</a> - Zedelgem Hamersvelde 25:32</li><li><a href="stop-104707.html">104707</a> - Zedelgem Pierlapont 25:32</li><li><a href="stop-37300.html">37300</a> - Zedelgem Merkemveld 25:33</li><li><a href="stop-37288.html">37288</a> - Veldegem Ruddervoordsestraat 25:36</li><li><a href="stop-99919.html">99919</a> - Veldegem Vlassaard 25:37</li><li><a href="stop-99949.html">99949</a> - Veldegem Lanestraat 25:38</li><li><a href="stop-37172.html">37172</a> - Veldegem Koning Albertstraat 25:39</li><li><a href="stop-37174.html">37174</a> - Veldegem Station 25:39</li><li><a href="stop-37176.html">37176</a> - Veldegem Weg Op Veldegem 25:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5956.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

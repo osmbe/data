@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Knokke-Heist-Ramskapelle - 22645190</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Knokke-Heist-Ramskapelle - 22645190</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-101018.html">101018</a> - Ramskapelle Aaishove 10:00</li><li><a href="stop-123638.html">123638</a> - Ramskapelle Oud Gemeentehuis 10:00</li><li><a href="stop-98293.html">98293</a> - Ramskapelle Kerk 10:01</li><li><a href="stop-97979.html">97979</a> - Ramskapelle Sasstraat 10:02</li><li><a href="stop-90274.html">90274</a> - Heist Speelman 10:06</li><li><a href="stop-90264.html">90264</a> - Heist sociaal Huis 10:07</li><li><a href="stop-92222.html">92222</a> - Heist Rustoord 10:08</li><li><a href="stop-90275.html">90275</a> - Heist De Klinker 10:10</li><li><a href="stop-90267.html">90267</a> - Heist Dijk 10:11</li><li><a href="stop-88894.html">88894</a> - Heist Sint-Antoniuskerk 10:12</li><li><a href="stop-104663.html">104663</a> - Heist Markt 10:13</li><li><a href="stop-90278.html">90278</a> - Heist Noordstraat 10:13</li><li><a href="stop-90279.html">90279</a> - Heist F. Timmermansstraat 10:14</li><li><a href="stop-90280.html">90280</a> - Heist Polderstraat 10:16</li><li><a href="stop-90281.html">90281</a> - Heist Krommedijk 10:17</li><li><a href="stop-100813.html">100813</a> - Duinbergen Station 10:18</li><li><a href="stop-98235.html">98235</a> - Knokke Haagwinde 10:19</li><li><a href="stop-104662.html">104662</a> - Knokke Zwembad 10:20</li><li><a href="stop-104676.html">104676</a> - Knokke Duinenwater 10:21</li><li><a href="stop-126294.html">126294</a> - Knokke Station perron 1 10:22</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4304.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

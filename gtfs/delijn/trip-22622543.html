@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Deinze-Tielt - 22622543</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Deinze-Tielt - 22622543</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126618.html">126618</a> - Deinze Station perron 3 17:15</li><li><a href="stop-113141.html">113141</a> - Deinze Gezellelaan 17:16</li><li><a href="stop-113142.html">113142</a> - Deinze Gentpoortstraat Grammat 17:17</li><li><a href="stop-113251.html">113251</a> - Deinze Kerkhof 17:18</li><li><a href="stop-113250.html">113250</a> - Deinze Biesbulck 17:21</li><li><a href="stop-113249.html">113249</a> - Deinze Kouter 17:23</li><li><a href="stop-126552.html">126552</a> - Deinze Weg Op Grammene 17:29</li><li><a href="stop-111532.html">111532</a> - Grammene Station 17:32</li><li><a href="stop-111531.html">111531</a> - Grammene Dorp 17:32</li><li><a href="stop-128660.html">128660</a> - Gottem Kerk 17:35</li><li><a href="stop-111671.html">111671</a> - Gottem Heirbaan 17:36</li><li><a href="stop-104836.html">104836</a> - Oeselgem Vierschaar 17:38</li><li><a href="stop-39216.html">39216</a> - Dentergem Baljuwstraat 17:41</li><li><a href="stop-100966.html">100966</a> - Dentergem Wontergemstraat 17:42</li><li><a href="stop-111623.html">111623</a> - Wontergem Kerk 17:44</li><li><a href="stop-111624.html">111624</a> - Wontergem Station 17:44</li><li><a href="stop-128661.html">128661</a> - Wontergem Weg Op Wontergem 17:46</li><li><a href="stop-111622.html">111622</a> - Wontergem Dosweg 17:47</li><li><a href="stop-41340.html">41340</a> - Aarsele De Put 17:48</li><li><a href="stop-37427.html">37427</a> - Aarsele 'T Hoge 17:49</li><li><a href="stop-37432.html">37432</a> - Aarsele Sterrestraat 17:50</li><li><a href="stop-37430.html">37430</a> - Aarsele Snephoekstraat 17:52</li><li><a href="stop-37124.html">37124</a> - Tielt Het Winkeltje 17:53</li><li><a href="stop-37130.html">37130</a> - Tielt Metaalconstructie Goossens 17:54</li><li><a href="stop-37123.html">37123</a> - Tielt Familiezorg 17:56</li><li><a href="stop-37118.html">37118</a> - Tielt De Bek 17:57</li><li><a href="stop-43737.html">43737</a> - Tielt VTI 17:58</li><li><a href="stop-41173.html">41173</a> - Tielt Vierhoek 17:58</li><li><a href="stop-126337.html">126337</a> - Tielt Station perron 5 17:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6009.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

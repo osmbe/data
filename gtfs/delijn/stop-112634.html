@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gottem Heirbaan</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Gottem Heirbaan</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-22622524.html">22622524</a> - 22622524 - Deinze-Tielt</li><li><a href="trip-22622527.html">22622527</a> - 22622527 - Deinze-Tielt</li><li><a href="trip-22622529.html">22622529</a> - 22622529 - Deinze-Tielt</li><li><a href="trip-22622531.html">22622531</a> - 22622531 - Deinze-Tielt</li><li><a href="trip-22622534.html">22622534</a> - 22622534 - Deinze-Tielt</li><li><a href="trip-22622537.html">22622537</a> - 22622537 - Deinze-Tielt</li><li><a href="trip-22622539.html">22622539</a> - 22622539 - Deinze-Tielt</li><li><a href="trip-22622541.html">22622541</a> - 22622541 - Deinze-Tielt</li><li><a href="trip-22622544.html">22622544</a> - 22622544 - Deinze-Tielt</li><li><a href="trip-22622547.html">22622547</a> - 22622547 - Deinze-Tielt</li><li><a href="trip-22622549.html">22622549</a> - 22622549 - Deinze-Tielt</li><li><a href="trip-22622551.html">22622551</a> - 22622551 - Deinze-Tielt</li><li><a href="trip-22622554.html">22622554</a> - 22622554 - Deinze-Tielt</li><li><a href="trip-22622557.html">22622557</a> - 22622557 - Deinze-Tielt</li><li><a href="trip-22622559.html">22622559</a> - 22622559 - Deinze-Tielt</li><li><a href="trip-22622561.html">22622561</a> - 22622561 - Deinze-Tielt</li><li><a href="trip-22622564.html">22622564</a> - 22622564 - Deinze-Tielt</li><li><a href="trip-22622567.html">22622567</a> - 22622567 - Deinze-Tielt</li><li><a href="trip-22622569.html">22622569</a> - 22622569 - Deinze-Tielt</li><li><a href="trip-22622571.html">22622571</a> - 22622571 - Deinze-Tielt</li><li><a href="trip-22622573.html">22622573</a> - 22622573 - Deinze-Tielt</li><li><a href="trip-22622575.html">22622575</a> - 22622575 - Deinze-Tielt</li><li><a href="trip-22622577.html">22622577</a> - 22622577 - Deinze-Tielt</li><li><a href="trip-22622579.html">22622579</a> - 22622579 - Deinze-Tielt</li><li><a href="trip-22622581.html">22622581</a> - 22622581 - Deinze-Tielt</li><li><a href="trip-22622584.html">22622584</a> - 22622584 - Deinze-Tielt</li><li><a href="trip-22622587.html">22622587</a> - 22622587 - Deinze-Tielt</li><li><a href="trip-22622589.html">22622589</a> - 22622589 - Deinze-Tielt</li><li><a href="trip-22622591.html">22622591</a> - 22622591 - Deinze-Tielt</li><li><a href="trip-22622594.html">22622594</a> - 22622594 - Deinze-Tielt</li><li><a href="trip-22622597.html">22622597</a> - 22622597 - Deinze-Tielt</li><li><a href="trip-22622599.html">22622599</a> - 22622599 - Deinze-Tielt</li><li><a href="trip-22622601.html">22622601</a> - 22622601 - Deinze-Tielt</li><li><a href="trip-22622604.html">22622604</a> - 22622604 - Deinze-Tielt</li><li><a href="trip-22622607.html">22622607</a> - 22622607 - Deinze-Tielt</li><li><a href="trip-22622609.html">22622609</a> - 22622609 - Deinze-Tielt</li><li><a href="trip-22622611.html">22622611</a> - 22622611 - Deinze-Tielt</li><li><a href="trip-22622614.html">22622614</a> - 22622614 - Deinze-Tielt</li><li><a href="trip-22622617.html">22622617</a> - 22622617 - Deinze-Tielt</li><li><a href="trip-22622619.html">22622619</a> - 22622619 - Deinze-Tielt</li><li><a href="trip-22622621.html">22622621</a> - 22622621 - Deinze-Tielt</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.9572891745994, 3.45414403433742], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.9572891745994, 3.45414403433742]).addTo(map);
+    </script>
+</body>
+
+</html>

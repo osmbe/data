@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Lebbeke</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Lebbeke</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-S1038554951.html">S1038554951</a> - S1038554951 - Dendermonde - Aalst</li><li><a href="trip-S1038564961.html">S1038564961</a> - S1038564961 - Dendermonde - Aalst</li><li><a href="trip-S1038574971.html">S1038574971</a> - S1038574971 - Dendermonde - Aalst</li><li><a href="trip-S1038584981.html">S1038584981</a> - S1038584981 - Dendermonde - Aalst</li><li><a href="trip-S1038594991.html">S1038594991</a> - S1038594991 - Dendermonde - Aalst</li><li><a href="trip-S1038605001.html">S1038605001</a> - S1038605001 - Dendermonde - Aalst</li><li><a href="trip-S1038615011.html">S1038615011</a> - S1038615011 - Dendermonde - Aalst</li><li><a href="trip-S1038625021.html">S1038625021</a> - S1038625021 - Dendermonde - Aalst</li><li><a href="trip-S1038635031.html">S1038635031</a> - S1038635031 - Dendermonde - Aalst</li><li><a href="trip-S1038645041.html">S1038645041</a> - S1038645041 - Dendermonde - Aalst</li><li><a href="trip-S1038655051.html">S1038655051</a> - S1038655051 - Dendermonde - Aalst</li><li><a href="trip-S1038665061.html">S1038665061</a> - S1038665061 - Dendermonde - Aalst</li><li><a href="trip-S1038675071.html">S1038675071</a> - S1038675071 - Dendermonde - Aalst</li><li><a href="trip-S1038685081.html">S1038685081</a> - S1038685081 - Dendermonde - Aalst</li><li><a href="trip-S10386935131.html">S10386935131</a> - S10386935131 - Dendermonde - Denderleeuw</li><li><a href="trip-S10387035141.html">S10387035141</a> - S10387035141 - Dendermonde - Denderleeuw</li><li><a href="trip-S10387135151.html">S10387135151</a> - S10387135151 - Dendermonde - Denderleeuw</li><li><a href="trip-S10387235161.html">S10387235161</a> - S10387235161 - Dendermonde - Denderleeuw</li><li><a href="trip-S322771471.html">S322771471</a> - S322771471 - Dendermonde - Oudenaarde</li><li><a href="trip-S322781481.html">S322781481</a> - S322781481 - Dendermonde - Oudenaarde</li><li><a href="trip-S322791491.html">S322791491</a> - S322791491 - Dendermonde - Oudenaarde</li><li><a href="trip-S322801501.html">S322801501</a> - S322801501 - Dendermonde - Oudenaarde</li><li><a href="trip-S322811511.html">S322811511</a> - S322811511 - Dendermonde - Oudenaarde</li><li><a href="trip-S322821521.html">S322821521</a> - S322821521 - Dendermonde - Oudenaarde</li><li><a href="trip-S322831531.html">S322831531</a> - S322831531 - Dendermonde - Oudenaarde</li><li><a href="trip-S322841541.html">S322841541</a> - S322841541 - Dendermonde - Oudenaarde</li><li><a href="trip-S322851551.html">S322851551</a> - S322851551 - Dendermonde - Oudenaarde</li><li><a href="trip-S322861561.html">S322861561</a> - S322861561 - Dendermonde - Oudenaarde</li><li><a href="trip-S322871571.html">S322871571</a> - S322871571 - Dendermonde - Oudenaarde</li><li><a href="trip-S322881581.html">S322881581</a> - S322881581 - Dendermonde - Oudenaarde</li><li><a href="trip-S322891591.html">S322891591</a> - S322891591 - Dendermonde - Oudenaarde</li><li><a href="trip-S322901601.html">S322901601</a> - S322901601 - Dendermonde - Oudenaarde</li><li><a href="trip-S322911611.html">S322911611</a> - S322911611 - Dendermonde - Oudenaarde</li><li><a href="trip-S322921621.html">S322921621</a> - S322921621 - Dendermonde - Oudenaarde</li><li><a href="trip-S322931631.html">S322931631</a> - S322931631 - Dendermonde - Oudenaarde</li><li><a href="trip-S370921651.html">S370921651</a> - S370921651 - Dendermonde - Brussel-Zuid</li><li><a href="trip-S370941661.html">S370941661</a> - S370941661 - Dendermonde - Brussel-Zuid</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([51.005009, 4.134372], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([51.005009, 4.134372]).addTo(map);
+    </script>
+</body>
+
+</html>

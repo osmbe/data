@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Dilbeek - Jette - Vilvoorde - Zaventem - 22798518</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Dilbeek - Jette - Vilvoorde - Zaventem - 22798518</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-10185.html">10185</a> - Jette UZ Brussel Hospitaal 05:57</li><li><a href="stop-10186.html">10186</a> - Jette UZ Brussel Hospitaal 05:57</li><li><a href="stop-17233.html">17233</a> - Jette UZ Brussel Laarbeek 05:58</li><li><a href="stop-10188.html">10188</a> - Jette UZ Brussel Brandweer 05:59</li><li><a href="stop-10190.html">10190</a> - Jette Dikke Beuk - Heymbosch 06:00</li><li><a href="stop-14092.html">14092</a> - Wemmel Kon. Astridlaan 06:01</li><li><a href="stop-110755.html">110755</a> - Brussel Onyx 06:02</li><li><a href="stop-110757.html">110757</a> - Brussel Panoramastraat 06:04</li><li><a href="stop-10066.html">10066</a> - Brussel Expo 06:05</li><li><a href="stop-10080.html">10080</a> - Brussel Madelon 06:06</li><li><a href="stop-11023.html">11023</a> - Strombeek-Bever Nieuwelaan 06:07</li><li><a href="stop-11014.html">11014</a> - Strombeek-Bever Gemeenteplein 06:08</li><li><a href="stop-11020.html">11020</a> - Strombeek-Bever Kerk 06:10</li><li><a href="stop-92839.html">92839</a> - Strombeek-Bever Pierebad 06:11</li><li><a href="stop-14017.html">14017</a> - Strombeek-Bever Ringlaan 06:13</li><li><a href="stop-13981.html">13981</a> - Vilvoorde Koekoekstraat 06:13</li><li><a href="stop-99458.html">99458</a> - Vilvoorde Het Voor 06:14</li><li><a href="stop-14040.html">14040</a> - Vilvoorde Zangrije 06:15</li><li><a href="stop-14023.html">14023</a> - Vilvoorde Steenstraat 06:16</li><li><a href="stop-13975.html">13975</a> - Vilvoorde Kerkweg 06:17</li><li><a href="stop-14461.html">14461</a> - Vilvoorde Living Tomorrow 06:18</li><li><a href="stop-13999.html">13999</a> - Vilvoorde Militair Hospitaal 06:19</li><li><a href="stop-14463.html">14463</a> - Vilvoorde V.T.M. 06:21</li><li><a href="stop-13934.html">13934</a> - Vilvoorde Twee Leeuwenweg 06:22</li><li><a href="stop-13939.html">13939</a> - Vilvoorde Ennepetal 06:24</li><li><a href="stop-14001.html">14001</a> - Vilvoorde Minnemolen 06:24</li><li><a href="stop-99636.html">99636</a> - Vilvoorde Vlierkens 06:25</li><li><a href="stop-13969.html">13969</a> - Vilvoorde Kerk 06:27</li><li><a href="stop-13949.html">13949</a> - Vilvoorde Heldenplein 06:28</li><li><a href="stop-127954.html">127954</a> - Vilvoorde Station Perron 3 06:29</li><li><a href="stop-127067.html">127067</a> - Vilvoorde Fabrieksstraat 06:31</li><li><a href="stop-95284.html">95284</a> - Vilvoorde Levis 06:31</li><li><a href="stop-12686.html">12686</a> - Machelen Heirbaan 06:32</li><li><a href="stop-127845.html">127845</a> - Machelen Cargo Discount P1 06:35</li><li><a href="stop-91148.html">91148</a> - Machelen Cargo 706 06:35</li><li><a href="stop-91150.html">91150</a> - Machelen Cargo Post 06:36</li><li><a href="stop-94878.html">94878</a> - Machelen Korenberg 06:40</li><li><a href="stop-14166.html">14166</a> - Zaventem B-House 06:41</li><li><a href="stop-14168.html">14168</a> - Zaventem Gebouw 9 06:42</li><li><a href="stop-14188.html">14188</a> - Zaventem Loodsen 06:42</li><li><a href="stop-14187.html">14187</a> - Zaventem Technics Zuid 06:44</li><li><a href="stop-14189.html">14189</a> - Zaventem Luchthaven Perron A 06:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2607.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

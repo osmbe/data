@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Henegauwberg - ziekenhuizen -Hasselt station-Kermt - 22480077</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Henegauwberg - ziekenhuizen -Hasselt station-Kermt - 22480077</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-29505.html">29505</a> - Hasselt Jessaziekenhuis Campus Salvator 16:30</li><li><a href="stop-29792.html">29792</a> - Hasselt KHLIM Oude Luikerbaan 16:34</li><li><a href="stop-29774.html">29774</a> - Hasselt Toekomststraat 16:36</li><li><a href="stop-29459.html">29459</a> - Hasselt Leopoldplein 16:37</li><li><a href="stop-29291.html">29291</a> - Hasselt Diesterpoort 16:38</li><li><a href="stop-128982.html">128982</a> - Hasselt Station perron 5 16:43</li><li><a href="stop-29453.html">29453</a> - Hasselt Lazarijstraat 16:44</li><li><a href="stop-29395.html">29395</a> - Hasselt Kuringersteenweg 16:45</li><li><a href="stop-29302.html">29302</a> - Hasselt GB 16:47</li><li><a href="stop-31133.html">31133</a> - Kuringen Brug spoorweg 16:48</li><li><a href="stop-29680.html">29680</a> - Kuringen Sporthal 16:49</li><li><a href="stop-29603.html">29603</a> - Kuringen Van Groesbeekstraat 16:49</li><li><a href="stop-29417.html">29417</a> - Kuringen Diepstraat 16:50</li><li><a href="stop-30080.html">30080</a> - Kuringen Kuringenstraat 16:50</li><li><a href="stop-94958.html">94958</a> - Kuringen Stevoortse Kiezel 16:53</li><li><a href="stop-29668.html">29668</a> - Kuringen Herckenrodedreef 16:55</li><li><a href="stop-29625.html">29625</a> - Kuringen Heerstraat 16:56</li><li><a href="stop-96888.html">96888</a> - Tuilt Pelgrimstraat 16:56</li><li><a href="stop-96849.html">96849</a> - Tuilt Lammerweg 16:57</li><li><a href="stop-96851.html">96851</a> - Tuilt Rijkelstraat 16:58</li><li><a href="stop-96886.html">96886</a> - Tuilt Sint-Jozefsplein 16:59</li><li><a href="stop-96854.html">96854</a> - Tuilt Schouterveldstraat 17:00</li><li><a href="stop-96882.html">96882</a> - Tuilt Tuilterstraat 17:01</li><li><a href="stop-29432.html">29432</a> - Kermt Dahliastraat 17:02</li><li><a href="stop-29597.html">29597</a> - Kermt Regenbooglaan 17:03</li><li><a href="stop-128074.html">128074</a> - Kermt Overweg 17:04</li><li><a href="stop-94967.html">94967</a> - Kermt Oud Gemeentehuis 17:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4740.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

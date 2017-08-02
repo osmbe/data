@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Herentals-Hulshout-Westmeerbeek-Ramsel-Aarschot - 22513925</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Herentals-Hulshout-Westmeerbeek-Ramsel-Aarschot - 22513925</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-22971.html">22971</a> - Herentals Station perron 8 14:42</li><li><a href="stop-108972.html">108972</a> - Herentals Belgiëlaan 14:43</li><li><a href="stop-109184.html">109184</a> - Herentals Markt - Grote Markt 14:44</li><li><a href="stop-19653.html">19653</a> - Herentals Kerkstraat 14:45</li><li><a href="stop-25466.html">25466</a> - Herentals E. Claesstraat 14:46</li><li><a href="stop-109843.html">109843</a> - Herentals Dikberd 14:48</li><li><a href="stop-123333.html">123333</a> - Herentals De Duinen 14:49</li><li><a href="stop-25848.html">25848</a> - Olen Industrielaan 14:50</li><li><a href="stop-25475.html">25475</a> - Olen Herentalseweg 14:51</li><li><a href="stop-109850.html">109850</a> - Noorderwijk Kijnigestraat 14:53</li><li><a href="stop-109852.html">109852</a> - Noorderwijk Gemeentehuis 14:54</li><li><a href="stop-25480.html">25480</a> - Noorderwijk Venheide 14:55</li><li><a href="stop-109854.html">109854</a> - Noorderwijk Hoogton 14:56</li><li><a href="stop-109855.html">109855</a> - Morkhoven Station 14:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2987.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

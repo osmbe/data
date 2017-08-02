@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent - Nazareth - Oudenaarde - 20720316</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent - Nazareth - Oudenaarde - 20720316</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-119977.html">119977</a> - Eke Dorp 07:14</li><li><a href="stop-118647.html">118647</a> - Eke De Lichterveldestraat 07:14</li><li><a href="stop-118648.html">118648</a> - Eke De Biesten 07:15</li><li><a href="stop-119063.html">119063</a> - Eke Station 07:16</li><li><a href="stop-119064.html">119064</a> - Nazareth Oudenaardse Heerweg 07:17</li><li><a href="stop-111266.html">111266</a> - Nazareth Sporthal 07:18</li><li><a href="stop-119065.html">119065</a> - Nazareth Drapstraat 07:18</li><li><a href="stop-119066.html">119066</a> - Nazareth Dorp 07:19</li><li><a href="stop-119067.html">119067</a> - Nazareth Warandestraat 07:21</li><li><a href="stop-112474.html">112474</a> - Nazareth Oude Melkerij 07:22</li><li><a href="stop-119068.html">119068</a> - Nazareth Steenweg Op Deinze 07:23</li><li><a href="stop-118619.html">118619</a> - Nazareth Boeregemstraat 07:25</li><li><a href="stop-119174.html">119174</a> - Nazareth Plezierstraat 07:26</li><li><a href="stop-118620.html">118620</a> - Lozer Goedlevenstraat 07:27</li><li><a href="stop-118621.html">118621</a> - Lozer Neerrechemstraat 07:28</li><li><a href="stop-118622.html">118622</a> - Lozer Geldstraat 07:28</li><li><a href="stop-127621.html">127621</a> - Lozer Kasteelstraat 07:29</li><li><a href="stop-118624.html">118624</a> - Lozer Kloosterstraat 07:30</li><li><a href="stop-118625.html">118625</a> - Ouwegem Pluimke 07:31</li><li><a href="stop-118626.html">118626</a> - Ouwegem Dorp 07:32</li><li><a href="stop-118750.html">118750</a> - Ouwegem Beertegemstraat 07:33</li><li><a href="stop-119561.html">119561</a> - Huise Peerdeken 07:36</li><li><a href="stop-118629.html">118629</a> - Huise Peerdeken 07:36</li><li><a href="stop-118630.html">118630</a> - Huise Heulestraat 07:38</li><li><a href="stop-118631.html">118631</a> - Zingem Bekestraat 07:39</li><li><a href="stop-118632.html">118632</a> - Zingem Tuinwijk 07:40</li><li><a href="stop-118633.html">118633</a> - Zingem Dorp 07:41</li><li><a href="stop-118634.html">118634</a> - Zingem Nederzwalmsesteenweg 07:42</li><li><a href="stop-118635.html">118635</a> - Zingem Kouterstraat 07:43</li><li><a href="stop-118636.html">118636</a> - Heurne Amandusstraat 07:45</li><li><a href="stop-118637.html">118637</a> - Heurne Kerk 07:47</li><li><a href="stop-118638.html">118638</a> - Eine Grimbergenstraat 07:49</li><li><a href="stop-118639.html">118639</a> - Eine Fabriekstraat 07:51</li><li><a href="stop-118640.html">118640</a> - Eine Akkerstraat 07:52</li><li><a href="stop-118641.html">118641</a> - Oudenaarde Paterstraat 07:53</li><li><a href="stop-118642.html">118642</a> - Oudenaarde Drijf 07:54</li><li><a href="stop-118643.html">118643</a> - Oudenaarde Bulkendreef 07:56</li><li><a href="stop-121648.html">121648</a> - Oudenaarde V.T.I. 07:57</li><li><a href="stop-118481.html">118481</a> - Oudenaarde Sportcentrum 08:00</li><li><a href="stop-126756.html">126756</a> - Oudenaarde Station perron 1 08:04</li><li><a href="stop-118478.html">118478</a> - Oudenaarde Tacambaro 08:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1415.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

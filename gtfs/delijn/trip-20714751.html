@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Denderleeuw - Ninove - 20714751</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Denderleeuw - Ninove - 20714751</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-116546.html">116546</a> - Ninove Centrum 12:04</li><li><a href="stop-116547.html">116547</a> - Ninove Graanmarkt 12:06</li><li><a href="stop-120321.html">120321</a> - Ninove Station Perron 3 12:08</li><li><a href="stop-116548.html">116548</a> - Ninove Stationsstraat 12:09</li><li><a href="stop-116549.html">116549</a> - Ninove College 12:10</li><li><a href="stop-116550.html">116550</a> - Ninove Bloemenwijk 12:11</li><li><a href="stop-116551.html">116551</a> - Ninove Lindendreef 12:12</li><li><a href="stop-116552.html">116552</a> - Ninove Wilgenlaan 12:13</li><li><a href="stop-116553.html">116553</a> - Denderhoutem Poelier 12:15</li><li><a href="stop-116554.html">116554</a> - Denderhoutem Bareelstraat 12:15</li><li><a href="stop-116555.html">116555</a> - Denderhoutem Dorp 12:16</li><li><a href="stop-116556.html">116556</a> - Denderhoutem Kerk 12:17</li><li><a href="stop-116557.html">116557</a> - Denderhoutem Zonnestraat 12:18</li><li><a href="stop-116558.html">116558</a> - Denderhoutem Eigenstraat 12:19</li><li><a href="stop-116559.html">116559</a> - Denderhoutem Iddergemsesteenweg 12:20</li><li><a href="stop-116560.html">116560</a> - Iddergem Rijksweg N45 12:21</li><li><a href="stop-116561.html">116561</a> - Iddergem Leliestraat 12:23</li><li><a href="stop-116562.html">116562</a> - Iddergem Klarestraat 12:24</li><li><a href="stop-116563.html">116563</a> - Iddergem Strokapel 12:25</li><li><a href="stop-117359.html">117359</a> - Iddergem Huissegem Kerk 12:26</li><li><a href="stop-117276.html">117276</a> - Iddergem Station 12:27</li><li><a href="stop-117275.html">117275</a> - Denderleeuw Bibliotheek 12:28</li><li><a href="stop-117274.html">117274</a> - Denderleeuw Brandweer 12:30</li><li><a href="stop-117273.html">117273</a> - Denderleeuw Middenstraat 12:31</li><li><a href="stop-116567.html">116567</a> - Denderleeuw Boomgaardstraat 12:33</li><li><a href="stop-116587.html">116587</a> - Denderleeuw Koopwarenstraat 12:34</li><li><a href="stop-120305.html">120305</a> - Denderleeuw Station (Achterzijde) 12:37</li><li><a href="stop-128619.html">128619</a> - Denderleeuw OCMW 12:40</li><li><a href="stop-116570.html">116570</a> - Welle Steenveldlaan 12:42</li><li><a href="stop-116572.html">116572</a> - Welle Kapel Langestraat 12:43</li><li><a href="stop-117334.html">117334</a> - Welle Dorp 12:45</li><li><a href="stop-116574.html">116574</a> - Welle Overweg 12:46</li><li><a href="stop-116575.html">116575</a> - Welle Meersemstraat 12:47</li><li><a href="stop-116589.html">116589</a> - Erembodegem Autostradelaan 12:48</li><li><a href="stop-116620.html">116620</a> - Erembodegem D'Uitseweg 12:49</li><li><a href="stop-117241.html">117241</a> - Erembodegem Orangeriestraat 12:50</li><li><a href="stop-116581.html">116581</a> - Erembodegem Villalaan 12:51</li><li><a href="stop-116582.html">116582</a> - Erembodegem Ninovesteenweg 12:51</li><li><a href="stop-116583.html">116583</a> - Aalst De Haring 12:52</li><li><a href="stop-116584.html">116584</a> - Aalst Blanckaertdreef 12:53</li><li><a href="stop-116537.html">116537</a> - Aalst Houtmarkt 12:55</li><li><a href="stop-116541.html">116541</a> - Aalst Oude Vismarkt 12:56</li><li><a href="stop-126679.html">126679</a> - Aalst Station perron 3 12:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1110.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

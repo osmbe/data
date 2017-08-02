@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Boechout - Linkeroever - 21518046</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boechout - Linkeroever - 21518046</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127460.html">127460</a> - Boechout P+R Boechout 13:19</li><li><a href="stop-120814.html">120814</a> - Mortsel Hof Savelkoul 13:22</li><li><a href="stop-120817.html">120817</a> - Mortsel Kaphaan 13:24</li><li><a href="stop-120819.html">120819</a> - Mortsel Kerkstraat 13:26</li><li><a href="stop-120820.html">120820</a> - Mortsel Station Oude God 13:26</li><li><a href="stop-107552.html">107552</a> - Mortsel Gemeenteplein 13:28</li><li><a href="stop-107718.html">107718</a> - Mortsel Vredebaan 13:30</li><li><a href="stop-108040.html">108040</a> - Mortsel Gevaert 13:31</li><li><a href="stop-120802.html">120802</a> - Mortsel Kuijpers 13:32</li><li><a href="stop-107714.html">107714</a> - Berchem Fruithoflaan 13:33</li><li><a href="stop-120809.html">120809</a> - Berchem Pulhof 13:34</li><li><a href="stop-107901.html">107901</a> - Berchem Jan Moorkens 13:35</li><li><a href="stop-108017.html">108017</a> - Berchem Koninklijkelaan 13:36</li><li><a href="stop-120813.html">120813</a> - Berchem Sint-Willibrordus 13:38</li><li><a href="stop-107625.html">107625</a> - Berchem Driekoningen 13:39</li><li><a href="stop-120799.html">120799</a> - Berchem De Merode 13:40</li><li><a href="stop-120804.html">120804</a> - Antwerpen Harmonie 13:41</li><li><a href="stop-120806.html">120806</a> - Antwerpen Lange Leemstraat 13:43</li><li><a href="stop-120895.html">120895</a> - Antwerpen Premetrostation Plantin 13:45</li><li><a href="stop-120881.html">120881</a> - Antwerpen Premetrostation Diamant 13:47</li><li><a href="stop-120886.html">120886</a> - Antwerpen Premetrostation Meir 13:51</li><li><a href="stop-121183.html">121183</a> - Antwerpen Premetrostation Groenplaats 13:52</li><li><a href="stop-121191.html">121191</a> - Antwerpen Premetrostation Van Eeden 13:55</li><li><a href="stop-120803.html">120803</a> - Antwerpen Halewijn 13:56</li><li><a href="stop-120798.html">120798</a> - Antwerpen A. Van Cauwelaert 13:57</li><li><a href="stop-120810.html">120810</a> - Antwerpen Sporthal 13:57</li><li><a href="stop-120807.html">120807</a> - Antwerpen P+R Linkeroever 13:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2714.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

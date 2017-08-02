@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Tienen - Wommersom - Zoutleeuw - 21149381</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Tienen - Wommersom - Zoutleeuw - 21149381</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-14828.html">14828</a> - Zoutleeuw Zusterschool 16:25</li><li><a href="stop-14340.html">14340</a> - Zoutleeuw Post 16:28</li><li><a href="stop-14332.html">14332</a> - Zoutleeuw Kerk 16:28</li><li><a href="stop-14352.html">14352</a> - Zoutleeuw Leeuwerweg 16:30</li><li><a href="stop-99449.html">99449</a> - Helen-Bos Oude Kassei 16:32</li><li><a href="stop-99476.html">99476</a> - Helen-Bos Kruispunt Bos 16:33</li><li><a href="stop-99478.html">99478</a> - Helen-Bos Spoorwegstraat 16:35</li><li><a href="stop-99472.html">99472</a> - Helen-Bos Dorp 16:35</li><li><a href="stop-99474.html">99474</a> - Helen-Bos Kapel 16:36</li><li><a href="stop-95653.html">95653</a> - Melkwezer Galerijstraat 16:36</li><li><a href="stop-95655.html">95655</a> - Melkwezer Groenstraat 16:37</li><li><a href="stop-95657.html">95657</a> - Melkwezer Hazenbergstraat 16:38</li><li><a href="stop-95659.html">95659</a> - Melkwezer Kerk 16:38</li><li><a href="stop-95651.html">95651</a> - Melkwezer Dorpstraat 16:39</li><li><a href="stop-95672.html">95672</a> - Melkwezer Walsbergen 16:40</li><li><a href="stop-12465.html">12465</a> - Wommersom Melkwezerstraat 16:42</li><li><a href="stop-12463.html">12463</a> - Wommersom Klein Broekstraat 16:43</li><li><a href="stop-92640.html">92640</a> - Wommersom Kerk 16:43</li><li><a href="stop-12469.html">12469</a> - Wommersom Kouterstraat 16:44</li><li><a href="stop-12459.html">12459</a> - Wommersom Bergdries 16:45</li><li><a href="stop-13834.html">13834</a> - Oplinter Kanadaweg 16:47</li><li><a href="stop-13842.html">13842</a> - Oplinter Maagdendal 16:49</li><li><a href="stop-13830.html">13830</a> - Oplinter Melkweg 16:50</li><li><a href="stop-13840.html">13840</a> - Oplinter Kloosterstraat 16:50</li><li><a href="stop-13820.html">13820</a> - Oplinter Huiskensstraat 16:52</li><li><a href="stop-13826.html">13826</a> - Oplinter Militair Kerkhof 16:54</li><li><a href="stop-13919.html">13919</a> - Tienen Villapark 16:55</li><li><a href="stop-13882.html">13882</a> - Tienen Hamelendreef 16:56</li><li><a href="stop-13911.html">13911</a> - Tienen Het Rond Punt 16:56</li><li><a href="stop-127862.html">127862</a> - Tienen Oplintersepoort 16:57</li><li><a href="stop-13913.html">13913</a> - Tienen Waaibergstraat 16:59</li><li><a href="stop-99268.html">99268</a> - Tienen Atheneum 16:59</li><li><a href="stop-127857.html">127857</a> - Tienen Kabbeeksepoort 17:00</li><li><a href="stop-13880.html">13880</a> - Tienen Kerk Heilig Hart 17:02</li><li><a href="stop-13886.html">13886</a> - Tienen Leuvenselaan 17:03</li><li><a href="stop-13861.html">13861</a> - Tienen 4de Lansierslaan 17:04</li><li><a href="stop-13901.html">13901</a> - Tienen Station Perron 8 17:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2440.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Avondlijn Brugge-Hertsberge - 22615286</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Avondlijn Brugge-Hertsberge - 22615286</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-99254.html">99254</a> - Hertsberge Smisje 23:42</li><li><a href="stop-40892.html">40892</a> - Hertsberge Kerk 23:43</li><li><a href="stop-40890.html">40890</a> - Hertsberge Beukendreef 23:44</li><li><a href="stop-123647.html">123647</a> - Hertsberge Loca Labora 23:44</li><li><a href="stop-40894.html">40894</a> - Hertsberge Lodi 23:45</li><li><a href="stop-41339.html">41339</a> - Hertsberge Huis Nr 109 23:46</li><li><a href="stop-40895.html">40895</a> - Hertsberge Nachtegaal 23:47</li><li><a href="stop-41025.html">41025</a> - Oostkamp De Stuivers 23:48</li><li><a href="stop-41040.html">41040</a> - Oostkamp Wollestraat 23:49</li><li><a href="stop-99231.html">99231</a> - Oostkamp Autostrade 23:50</li><li><a href="stop-123652.html">123652</a> - Oostkamp Siemensfabriek 23:51</li><li><a href="stop-41034.html">41034</a> - Oostkamp Siemenslaan 23:52</li><li><a href="stop-41031.html">41031</a> - Oostkamp Rijkswacht 23:52</li><li><a href="stop-41030.html">41030</a> - Oostkamp Centrum 23:53</li><li><a href="stop-41032.html">41032</a> - Oostkamp Rustoordstraat 23:53</li><li><a href="stop-41026.html">41026</a> - Oostkamp A. Rodenbachstraat 23:54</li><li><a href="stop-123653.html">123653</a> - Oostkamp Valkaart 23:55</li><li><a href="stop-98314.html">98314</a> - Moerbrugge Post 23:56</li><li><a href="stop-98310.html">98310</a> - Moerbrugge Rivierstraat 23:57</li><li><a href="stop-98311.html">98311</a> - Moerbrugge Brug 23:57</li><li><a href="stop-98312.html">98312</a> - Moerbrugge Kerk 23:58</li><li><a href="stop-98316.html">98316</a> - Moerbrugge Veldstraat 23:59</li><li><a href="stop-98313.html">98313</a> - Moerbrugge Lieverstede 24:00</li><li><a href="stop-98315.html">98315</a> - Moerbrugge Scheepswerven 24:01</li><li><a href="stop-101046.html">101046</a> - Oostkamp Olmenstraat 24:02</li><li><a href="stop-40786.html">40786</a> - Assebroek Meulestede 24:03</li><li><a href="stop-40794.html">40794</a> - Assebroek Abdij Steenbrugge 24:03</li><li><a href="stop-40772.html">40772</a> - Assebroek Benedictijnen 24:04</li><li><a href="stop-40795.html">40795</a> - Assebroek Tir 24:04</li><li><a href="stop-101032.html">101032</a> - Assebroek Brugs Kerkhofstraat 24:05</li><li><a href="stop-40797.html">40797</a> - Assebroek Wantestraat 24:05</li><li><a href="stop-40847.html">40847</a> - Brugge Katelijnepoort 24:06</li><li><a href="stop-128946.html">128946</a> - Brugge Station perron 6 24:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5946.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

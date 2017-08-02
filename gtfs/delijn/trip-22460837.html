@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Boekt - Beringen - 22460837</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Boekt - Beringen - 22460837</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-26904.html">26904</a> - Beringen Oude Lummenseweg 06:43</li><li><a href="stop-32104.html">32104</a> - Gestel Hegstraat 06:44</li><li><a href="stop-127941.html">127941</a> - Lummen Gestel Kerk 06:45</li><li><a href="stop-32159.html">32159</a> - Lummen Oude Straat 06:47</li><li><a href="stop-123080.html">123080</a> - Lummen Groenlarenstraat 06:47</li><li><a href="stop-32111.html">32111</a> - Lummen Hoogstraat 06:49</li><li><a href="stop-32174.html">32174</a> - Lummen Weg naar Klooster 06:51</li><li><a href="stop-32095.html">32095</a> - Lummen Frederickxstraat 06:51</li><li><a href="stop-32091.html">32091</a> - Lummen De Steenberg 06:53</li><li><a href="stop-32149.html">32149</a> - Lummen Molem Kabien 06:54</li><li><a href="stop-32147.html">32147</a> - Lummen Molem 06:54</li><li><a href="stop-97322.html">97322</a> - Molem Schutterstraat 06:55</li><li><a href="stop-97318.html">97318</a> - Genenbos Voetballokaal 06:56</li><li><a href="stop-97316.html">97316</a> - Genenbos Schipperstraat 06:57</li><li><a href="stop-97314.html">97314</a> - Genenbos Kanaalbrug 06:59</li><li><a href="stop-97122.html">97122</a> - Eversel Everselkiezel 07:00</li><li><a href="stop-97121.html">97121</a> - Eversel Kerk 07:01</li><li><a href="stop-97119.html">97119</a> - Eversel Bavostraat 07:02</li><li><a href="stop-30371.html">30371</a> - Heusden Kapelstraat 07:04</li><li><a href="stop-30374.html">30374</a> - Heusden Kapelstraat 07:04</li><li><a href="stop-99403.html">99403</a> - Heusden Weg naar Genebos 07:06</li><li><a href="stop-97094.html">97094</a> - Boekt Kruispunt 07:09</li><li><a href="stop-30420.html">30420</a> - Zolder Heikant 07:10</li><li><a href="stop-30454.html">30454</a> - Zolder Vogelzang 07:13</li><li><a href="stop-43871.html">43871</a> - Zonhoven Nachtegalenstraat 07:14</li><li><a href="stop-35193.html">35193</a> - Zonhoven Halveweg 07:15</li><li><a href="stop-91084.html">91084</a> - Zonhoven Station 07:16</li><li><a href="stop-35180.html">35180</a> - Zonhoven Donk 07:17</li><li><a href="stop-35226.html">35226</a> - Zonhoven Nieuwveldstraat 07:18</li><li><a href="stop-99410.html">99410</a> - Zonhoven Bremstraat 07:19</li><li><a href="stop-96901.html">96901</a> - Kiewit Luchtvaartstraat 07:20</li><li><a href="stop-96899.html">96899</a> - Kiewit Kerk 07:21</li><li><a href="stop-96833.html">96833</a> - Kiewit Europalaan 07:22</li><li><a href="stop-97724.html">97724</a> - Kiewit Station 07:23</li><li><a href="stop-29243.html">29243</a> - Hasselt Banneuxwijk 07:24</li><li><a href="stop-29627.html">29627</a> - Hasselt Weg naar Genk 07:25</li><li><a href="stop-93426.html">93426</a> - Hasselt Handelsschool 07:27</li><li><a href="stop-29645.html">29645</a> - Hasselt Zwembad 07:28</li><li><a href="stop-29267.html">29267</a> - Hasselt Dusartplein 07:29</li><li><a href="stop-29356.html">29356</a> - Hasselt Molenpoort afstaphalte 07:31</li><li><a href="stop-128980.html">128980</a> - Hasselt Station perron 7 07:33</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5010.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

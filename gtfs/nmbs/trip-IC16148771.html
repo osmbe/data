@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Knokke - Genk - IC16148771</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Knokke - Genk - IC16148771</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8891660_2.html">8891660:2</a> - Knokke 14:36</li><li><a href="stop-8891652_2.html">8891652:2</a> - Duinbergen 14:40</li><li><a href="stop-8891645_2.html">8891645:2</a> - Heist 14:43</li><li><a href="stop-8891009_0.html">8891009:0</a> - Brugge 15:08</li><li><a href="stop-8891140_0.html">8891140:0</a> - Aalter 15:23</li><li><a href="stop-8892007_0.html">8892007:0</a> - Gent-Sint-Pieters 15:40</li><li><a href="stop-8814001_0.html">8814001:0</a> - Brussel-Zuid/Bruxelles-Midi 16:12</li><li><a href="stop-8813003_0.html">8813003:0</a> - Brussel-Centraal/Bruxelles-Central 16:16</li><li><a href="stop-8812005_0.html">8812005:0</a> - Brussel-Noord/Bruxelles-Nord 16:22</li><li><a href="stop-8833001_0.html">8833001:0</a> - Leuven 16:43</li><li><a href="stop-8833308_0.html">8833308:0</a> - Tienen 16:55</li><li><a href="stop-8833605_0.html">8833605:0</a> - Landen 17:07</li><li><a href="stop-8831807_0.html">8831807:0</a> - Sint-Truiden 17:16</li><li><a href="stop-8831039_0.html">8831039:0</a> - Alken 17:24</li><li><a href="stop-8831005_0.html">8831005:0</a> - Hasselt 17:36</li><li><a href="stop-8832375_0.html">8832375:0</a> - Kiewit 17:43</li><li><a href="stop-8831781_0.html">8831781:0</a> - Bokrijk 17:47</li><li><a href="stop-8831765_0.html">8831765:0</a> - Genk 17:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./76.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

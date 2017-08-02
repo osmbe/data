@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Erpe Vijfhuizen-Impe-Oordegem-Melle-Gent - 20718631</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Erpe Vijfhuizen-Impe-Oordegem-Melle-Gent - 20718631</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-117005.html">117005</a> - Massemen Strop 06:45</li><li><a href="stop-117392.html">117392</a> - Westrem Dorpsstraat 06:46</li><li><a href="stop-117004.html">117004</a> - Oordegem Molen 06:47</li><li><a href="stop-117003.html">117003</a> - Oordegem Stichelendries 06:48</li><li><a href="stop-117002.html">117002</a> - Oordegem Grote Steenweg 06:49</li><li><a href="stop-117261.html">117261</a> - Oordegem Dorp 06:50</li><li><a href="stop-117014.html">117014</a> - Oordegem Rodtstraat 06:51</li><li><a href="stop-117013.html">117013</a> - Smetlede Kapelleweg 06:52</li><li><a href="stop-119361.html">119361</a> - Smetlede Pontweg 06:54</li><li><a href="stop-117012.html">117012</a> - Smetlede Kerk 06:55</li><li><a href="stop-117011.html">117011</a> - Impe Serskampstraat 06:56</li><li><a href="stop-117010.html">117010</a> - Impe Hofsmeer 06:57</li><li><a href="stop-117009.html">117009</a> - Impe Dorp 06:58</li><li><a href="stop-117008.html">117008</a> - Impe Molenstraat 06:59</li><li><a href="stop-117007.html">117007</a> - Impe Putbosstraat 07:00</li><li><a href="stop-116998.html">116998</a> - Impe Papegem Kapel 07:01</li><li><a href="stop-116997.html">116997</a> - Erondegem Kuilstraat 07:04</li><li><a href="stop-116996.html">116996</a> - Erondegem Halfbunder 07:05</li><li><a href="stop-117354.html">117354</a> - Erpe Watertoren 07:07</li><li><a href="stop-116995.html">116995</a> - Erpe Overweg 07:08</li><li><a href="stop-119317.html">119317</a> - Erpe Vijfhuizen 07:09</li><li><a href="stop-120306.html">120306</a> - Aalst Erpestraat 07:09</li><li><a href="stop-120307.html">120307</a> - Aalst Sint-Apoloniastraat 07:10</li><li><a href="stop-120308.html">120308</a> - Aalst Kreupelveldstraat 07:11</li><li><a href="stop-116961.html">116961</a> - Aalst Welvaartstraat 07:11</li><li><a href="stop-116960.html">116960</a> - Aalst Sinte Annalaan 07:12</li><li><a href="stop-116959.html">116959</a> - Aalst Verastenstraat 07:13</li><li><a href="stop-116490.html">116490</a> - Aalst Meuleschettekapel 07:15</li><li><a href="stop-120301.html">120301</a> - Aalst Esplanade 07:17</li><li><a href="stop-126679.html">126679</a> - Aalst Station perron 3 07:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1322.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Spiere-Avelgem-Anzegem-Waregem - 22628020</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Spiere-Avelgem-Anzegem-Waregem - 22628020</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127902.html">127902</a> - Spiere Kerk 06:22</li><li><a href="stop-41634.html">41634</a> - Spiere Gemeentehuis 06:23</li><li><a href="stop-41635.html">41635</a> - Helkijn Suikerfabriek 06:25</li><li><a href="stop-41633.html">41633</a> - Helkijn Centrum 06:26</li><li><a href="stop-39664.html">39664</a> - Helkijn Kasteeldreef 06:27</li><li><a href="stop-90510.html">90510</a> - Bossuit Doornikstw.  Hoek 06:28</li><li><a href="stop-90771.html">90771</a> - Bossuit Kasteel 06:30</li><li><a href="stop-41426.html">41426</a> - Bossuit Dorp 06:30</li><li><a href="stop-17603.html">17603</a> - Outrijve Weg Op Bossuit 06:30</li><li><a href="stop-42029.html">42029</a> - Outrijve Dorp 06:32</li><li><a href="stop-42028.html">42028</a> - Outrijve Beiaarddreef 06:33</li><li><a href="stop-42030.html">42030</a> - Outrijve Gibraltar 06:34</li><li><a href="stop-41445.html">41445</a> - Avelgem Sportcentrum 06:35</li><li><a href="stop-98688.html">98688</a> - Avelgem Station 06:36</li><li><a href="stop-127334.html">127334</a> - Avelgem Plaats 06:38</li><li><a href="stop-100892.html">100892</a> - Avelgem Toekomststraat 06:39</li><li><a href="stop-104731.html">104731</a> - Avelgem Langestraat 06:40</li><li><a href="stop-17604.html">17604</a> - Avelgem Den Ast 06:42</li><li><a href="stop-100931.html">100931</a> - Waarmaarde Sint-Elooi 06:44</li><li><a href="stop-37743.html">37743</a> - Kerkhove Kerk 06:46</li><li><a href="stop-90426.html">90426</a> - Kerkhove Baarmstraat 06:47</li><li><a href="stop-37742.html">37742</a> - Kaster Dorp 06:48</li><li><a href="stop-38595.html">38595</a> - Kaster Gaverstraat 06:50</li><li><a href="stop-37445.html">37445</a> - Anzegem Station 06:51</li><li><a href="stop-37435.html">37435</a> - Anzegem De Linde 06:53</li><li><a href="stop-41428.html">41428</a> - Anzegem Kerk 06:55</li><li><a href="stop-41432.html">41432</a> - Anzegem Sint-Vincentiusinstituut 06:57</li><li><a href="stop-17605.html">17605</a> - Anzegem Kruisweg 06:59</li><li><a href="stop-41431.html">41431</a> - Anzegem Oude Steenbrug 07:02</li><li><a href="stop-41424.html">41424</a> - Anzegem De Predikheer 07:05</li><li><a href="stop-101120.html">101120</a> - Waregem Steenovenstraat 07:08</li><li><a href="stop-38737.html">38737</a> - Waregem Carpool 07:11</li><li><a href="stop-42199.html">42199</a> - Waregem Mexico 07:12</li><li><a href="stop-42202.html">42202</a> - Waregem Renbaan 07:15</li><li><a href="stop-104760.html">104760</a> - Waregem Markt 07:18</li><li><a href="stop-100932.html">100932</a> - Waregem College 07:20</li><li><a href="stop-126438.html">126438</a> - Waregem Station perron 4 07:22</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4122.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

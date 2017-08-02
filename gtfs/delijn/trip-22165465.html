@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge-Breskens - 22165465</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge-Breskens - 22165465</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-39781.html">39781</a> - Breskens Veerhaven 10:17</li><li><a href="stop-39782.html">39782</a> - Breskens Bejaardentehuis 10:18</li><li><a href="stop-39785.html">39785</a> - Breskens Langeweg 10:18</li><li><a href="stop-99604.html">99604</a> - Breskens Boulevard 10:19</li><li><a href="stop-39786.html">39786</a> - Breskens Vogelenzang 10:20</li><li><a href="stop-39784.html">39784</a> - Breskens Kruisdijk 10:23</li><li><a href="stop-104869.html">104869</a> - Schoondijke Damstraat 10:26</li><li><a href="stop-39804.html">39804</a> - Schoondijke Rotonde 10:27</li><li><a href="stop-39799.html">39799</a> - Schoondijke De Molen 10:27</li><li><a href="stop-90928.html">90928</a> - Oostburg Watertoren 10:35</li><li><a href="stop-39788.html">39788</a> - Oostburg Bredestraat 10:36</li><li><a href="stop-39792.html">39792</a> - Oostburg Ledelplein 10:38</li><li><a href="stop-39796.html">39796</a> - Oostburg Ziekenhuis 10:42</li><li><a href="stop-39793.html">39793</a> - Oostburg Brugse Vaart 10:43</li><li><a href="stop-91116.html">91116</a> - Draaibrug Draaibrugseweg 10:48</li><li><a href="stop-17641.html">17641</a> - Sluis Toversluis 10:53</li><li><a href="stop-39801.html">39801</a> - Sluis Ridderstraat 10:55</li><li><a href="stop-39803.html">39803</a> - Sluis Sint-Annastraat 10:57</li><li><a href="stop-127930.html">127930</a> - Sluis Havenstraat 11:00</li><li><a href="stop-39800.html">39800</a> - Sluis Grens 11:01</li><li><a href="stop-98275.html">98275</a> - Westkapelle Schapenbrug 11:06</li><li><a href="stop-104667.html">104667</a> - Westkapelle Koekoekstraat 11:07</li><li><a href="stop-97955.html">97955</a> - Westkapelle Dorp 11:10</li><li><a href="stop-98300.html">98300</a> - Westkapelle Herenweg 11:11</li><li><a href="stop-98274.html">98274</a> - Westkapelle Pelikaan 11:14</li><li><a href="stop-100983.html">100983</a> - Dudzele Zelzatebrug 11:15</li><li><a href="stop-98221.html">98221</a> - Dudzele Zonnebloem 11:18</li><li><a href="stop-98290.html">98290</a> - Dudzele Kasteelstraat 11:19</li><li><a href="stop-98224.html">98224</a> - Dudzele Wissel 7 11:19</li><li><a href="stop-98220.html">98220</a> - Dudzele Dorp 11:20</li><li><a href="stop-98222.html">98222</a> - Dudzele Melkerij 11:21</li><li><a href="stop-98219.html">98219</a> - Dudzele 'T Apertje 11:21</li><li><a href="stop-98223.html">98223</a> - Dudzele Ter Bolle 11:24</li><li><a href="stop-104896.html">104896</a> - Brugge Kruisabele 11:25</li><li><a href="stop-104895.html">104895</a> - Brugge 'T Boompje 11:26</li><li><a href="stop-40205.html">40205</a> - Brugge Ten Berge 11:27</li><li><a href="stop-101037.html">101037</a> - Brugge Sint-Jozef Landjuwelenstraat 11:29</li><li><a href="stop-127308.html">127308</a> - Brugge Waterweelde 11:29</li><li><a href="stop-40841.html">40841</a> - Brugge Haven 11:30</li><li><a href="stop-87572.html">87572</a> - Brugge Komvest 11:31</li><li><a href="stop-36802.html">36802</a> - Brugge De Veste 11:32</li><li><a href="stop-37271.html">37271</a> - Brugge N. Gombertstraat 11:33</li><li><a href="stop-98660.html">98660</a> - Brugge Ezelpoort 11:34</li><li><a href="stop-40821.html">40821</a> - Brugge Beenhouwerstraat 11:35</li><li><a href="stop-41337.html">41337</a> - Brugge Hoefijzer 11:37</li><li><a href="stop-126411.html">126411</a> - Brugge 'T Zand perron 6 11:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4343.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

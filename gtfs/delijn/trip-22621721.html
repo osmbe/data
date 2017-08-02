@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Izegem-Ardooie - 22621721</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Izegem-Ardooie - 22621721</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126441.html">126441</a> - Kortrijk Station perron 11 07:11</li><li><a href="stop-37799.html">37799</a> - Kortrijk L. Robbeplein 07:14</li><li><a href="stop-91310.html">91310</a> - Kortrijk De Appel 07:15</li><li><a href="stop-37808.html">37808</a> - Kortrijk Meensepoort 07:17</li><li><a href="stop-37798.html">37798</a> - Kortrijk Kerkhof 07:18</li><li><a href="stop-37776.html">37776</a> - Kortrijk De Mol 07:19</li><li><a href="stop-37496.html">37496</a> - Bissegem Land Van Belofte 07:20</li><li><a href="stop-37498.html">37498</a> - Bissegem Plaats 07:21</li><li><a href="stop-100895.html">100895</a> - Bissegem Station 07:22</li><li><a href="stop-37495.html">37495</a> - Bissegem Jagerstraat 07:23</li><li><a href="stop-37585.html">37585</a> - Gullegem Kruisstraat 07:24</li><li><a href="stop-37583.html">37583</a> - Gullegem Grote Ieperstraat 07:26</li><li><a href="stop-37591.html">37591</a> - Gullegem Ponseelestraat 07:26</li><li><a href="stop-37596.html">37596</a> - Gullegem Wevelgemstraat 07:27</li><li><a href="stop-37590.html">37590</a> - Gullegem Plaats 07:28</li><li><a href="stop-37588.html">37588</a> - Gullegem Meiweg 07:29</li><li><a href="stop-37587.html">37587</a> - Gullegem Kwadries 07:30</li><li><a href="stop-37584.html">37584</a> - Gullegem Ijspiste 07:31</li><li><a href="stop-37579.html">37579</a> - Gullegem Ballingbos 07:32</li><li><a href="stop-37593.html">37593</a> - Gullegem Oostlaan 07:33</li><li><a href="stop-37582.html">37582</a> - Gullegem Drie Masten 07:34</li><li><a href="stop-38178.html">38178</a> - Sint-Eloois-Winkel Kruisstraat 07:36</li><li><a href="stop-38180.html">38180</a> - Sint-Eloois-Winkel Smis 07:37</li><li><a href="stop-38177.html">38177</a> - Sint-Eloois-Winkel Kerk 07:38</li><li><a href="stop-38176.html">38176</a> - Sint-Eloois-Winkel Kasteelstraat 07:39</li><li><a href="stop-38173.html">38173</a> - Sint-Eloois-Winkel Groene Dreef 07:40</li><li><a href="stop-37727.html">37727</a> - Izegem Vlasnijverheid 07:42</li><li><a href="stop-37963.html">37963</a> - Izegem Bosmolens 07:43</li><li><a href="stop-123572.html">123572</a> - Izegem H. Familiekerk 07:44</li><li><a href="stop-37720.html">37720</a> - Izegem Gapaardstraat 07:45</li><li><a href="stop-37722.html">37722</a> - Izegem Maria Rustoord 07:46</li><li><a href="stop-37711.html">37711</a> - Izegem Ten Bos 07:47</li><li><a href="stop-37716.html">37716</a> - Izegem College 07:49</li><li><a href="stop-39202.html">39202</a> - Izegem Papestraat 07:51</li><li><a href="stop-37719.html">37719</a> - Izegem Dirk Martenslaan 07:52</li><li><a href="stop-126362.html">126362</a> - Izegem Station perron 3 07:53</li><li><a href="stop-36825.html">36825</a> - Emelgem Vijfwegen 07:55</li><li><a href="stop-41543.html">41543</a> - Emelgem Egaalstraat 07:57</li><li><a href="stop-37561.html">37561</a> - Emelgem De Jager 07:58</li><li><a href="stop-36671.html">36671</a> - Ardooie Kruipendaarde 07:59</li><li><a href="stop-99348.html">99348</a> - Ardooie Huis Nr. 62 08:00</li><li><a href="stop-36676.html">36676</a> - Ardooie Sterre 08:01</li><li><a href="stop-39102.html">39102</a> - Ardooie Cloetbergstraat 08:01</li><li><a href="stop-100824.html">100824</a> - Ardooie Wissel 08:03</li><li><a href="stop-36667.html">36667</a> - Ardooie Polenplein 08:05</li><li><a href="stop-40761.html">40761</a> - Ardooie Kerkhof 08:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5993.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

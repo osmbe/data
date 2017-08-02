@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tongeren - Vroenhoven - Maastricht - 22467584</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tongeren - Vroenhoven - Maastricht - 22467584</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-33652.html">33652</a> - Kanne Rijkswacht 07:31</li><li><a href="stop-33650.html">33650</a> - Kanne Statieplein 07:33</li><li><a href="stop-33649.html">33649</a> - Kanne Muizenberg 07:35</li><li><a href="stop-33726.html">33726</a> - Vroenhoven Krijtstraat 07:38</li><li><a href="stop-33729.html">33729</a> - Vroenhoven Lafelterweg 07:39</li><li><a href="stop-92468.html">92468</a> - Vroenhoven Burgemeester Marresbaan 07:39</li><li><a href="stop-33724.html">33724</a> - Vroenhoven Busstation perron 4 07:40</li><li><a href="stop-33667.html">33667</a> - Riemst Maastrichtersteenweg 07:41</li><li><a href="stop-128993.html">128993</a> - Riemst Klein Lafeltstraat 07:43</li><li><a href="stop-89053.html">89053</a> - Riemst Busstation perron 2 07:46</li><li><a href="stop-88863.html">88863</a> - Tongeren Station 08:00</li><li><a href="stop-34507.html">34507</a> - Tongeren Koemarkt 08:01</li><li><a href="stop-34448.html">34448</a> - Tongeren Bilzerpoort 08:02</li><li><a href="stop-34537.html">34537</a> - Tongeren Legioenenlaan 08:06</li><li><a href="stop-34612.html">34612</a> - Tongeren Rode Kruislaan 08:07</li><li><a href="stop-34575.html">34575</a> - Tongeren TIO 08:08</li><li><a href="stop-91238.html">91238</a> - Tongeren Sint-Truiderpoort 08:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5033.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

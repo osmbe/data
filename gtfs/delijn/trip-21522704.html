@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - UZA - Valaar - Groenplaats - 21522704</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: UZA - Valaar - Groenplaats - 21522704</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-88757.html">88757</a> - Edegem Universitair Ziekenhuis p. 3 17:00</li><li><a href="stop-110681.html">110681</a> - Edegem Wilrijkstraat 17:01</li><li><a href="stop-107332.html">107332</a> - Wilrijk Wilsonweg 17:03</li><li><a href="stop-107334.html">107334</a> - Wilrijk Dr. Donnyplein 17:05</li><li><a href="stop-107337.html">107337</a> - Wilrijk Klaproosstraat 17:05</li><li><a href="stop-107599.html">107599</a> - Wilrijk Hulststraat 17:07</li><li><a href="stop-108435.html">108435</a> - Wilrijk Kerkhofstraat 17:07</li><li><a href="stop-108483.html">108483</a> - Wilrijk Sint-Sebastiaanstraat 17:08</li><li><a href="stop-107827.html">107827</a> - Wilrijk Bist 17:09</li><li><a href="stop-108077.html">108077</a> - Wilrijk Boomsesteenweg 17:11</li><li><a href="stop-108020.html">108020</a> - Wilrijk Koornbloemstraat 17:11</li><li><a href="stop-108653.html">108653</a> - Wilrijk Valaardreef 17:13</li><li><a href="stop-108656.html">108656</a> - Wilrijk Valaardreef Kerk 17:13</li><li><a href="stop-108312.html">108312</a> - Wilrijk Ridderveld 17:14</li><li><a href="stop-21296.html">21296</a> - Wilrijk Pastoor Bauwenslaan 17:15</li><li><a href="stop-107882.html">107882</a> - Wilrijk J. De Geyterstraat 17:15</li><li><a href="stop-107561.html">107561</a> - Antwerpen De Bosschaert 17:16</li><li><a href="stop-107886.html">107886</a> - Antwerpen Olympiade 17:18</li><li><a href="stop-107324.html">107324</a> - Antwerpen J. De Voslei 17:18</li><li><a href="stop-108751.html">108751</a> - Antwerpen Tentoonstellingslaan 17:19</li><li><a href="stop-108314.html">108314</a> - Antwerpen Generaal Cabrastraat 17:20</li><li><a href="stop-107457.html">107457</a> - Antwerpen Antwerp Expo 17:21</li><li><a href="stop-107588.html">107588</a> - Antwerpen deSingel 17:23</li><li><a href="stop-108133.html">108133</a> - Antwerpen Markgravelei 17:26</li><li><a href="stop-107812.html">107812</a> - Antwerpen Lokkaardstraat 17:26</li><li><a href="stop-108701.html">108701</a> - Antwerpen Van Schoonbekestraat 17:28</li><li><a href="stop-108748.html">108748</a> - Antwerpen Ballaarstraat 17:29</li><li><a href="stop-21541.html">21541</a> - Antwerpen Sanderusstraat 17:29</li><li><a href="stop-107391.html">107391</a> - Antwerpen Begijnenvest 17:30</li><li><a href="stop-108037.html">108037</a> - Antwerpen Kronenburgstraat 17:32</li><li><a href="stop-90976.html">90976</a> - Antwerpen Tropisch Instituut 17:33</li><li><a href="stop-108557.html">108557</a> - Antwerpen Sint-Andries 17:35</li><li><a href="stop-91989.html">91989</a> - Antwerpen Groenplaats 17:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2746.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

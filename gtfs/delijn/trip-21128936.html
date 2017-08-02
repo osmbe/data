@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Leerbeek - Herne - Edingen - 21128936</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Leerbeek - Herne - Edingen - 21128936</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-10871.html">10871</a> - Leerbeek Stelplaats Kaai 5 15:05</li><li><a href="stop-10864.html">10864</a> - Leerbeek Kruispunt Hogenberg 15:06</li><li><a href="stop-14668.html">14668</a> - Leerbeek Sint-Pietersplein 15:06</li><li><a href="stop-10849.html">10849</a> - Kester Utveld 15:07</li><li><a href="stop-10847.html">10847</a> - Kester In 't Jagershof 15:08</li><li><a href="stop-10855.html">10855</a> - Kester Plaats 15:08</li><li><a href="stop-10853.html">10853</a> - Kester Oud Station 15:09</li><li><a href="stop-10839.html">10839</a> - Kester Kesterbrugge 15:09</li><li><a href="stop-11325.html">11325</a> - Herfelingen Molen Vonkhout 15:11</li><li><a href="stop-110694.html">110694</a> - Herfelingen Klooster 15:12</li><li><a href="stop-11317.html">11317</a> - Herfelingen Centrum 15:12</li><li><a href="stop-11319.html">11319</a> - Herfelingen Kapellestraat 15:13</li><li><a href="stop-11315.html">11315</a> - Herfelingen Beeldekensweg 15:14</li><li><a href="stop-11330.html">11330</a> - Herfelingen Vier Armen 15:15</li><li><a href="stop-11313.html">11313</a> - Herfelingen Barakkenbergstraat 15:17</li><li><a href="stop-11351.html">11351</a> - Herne Nattendries 15:18</li><li><a href="stop-11343.html">11343</a> - Herne Kapelleke 15:19</li><li><a href="stop-11335.html">11335</a> - Herne Druimerenstraat 15:21</li><li><a href="stop-11337.html">11337</a> - Herne Ekkelbergstraat 15:22</li><li><a href="stop-11349.html">11349</a> - Herne Maalderij 15:24</li><li><a href="stop-11345.html">11345</a> - Herne Kapellestraat 15:25</li><li><a href="stop-14792.html">14792</a> - Herne Heldenplein 15:25</li><li><a href="stop-15964.html">15964</a> - Herne Sint-Felix 15:26</li><li><a href="stop-15966.html">15966</a> - Herne Hekstraat 15:27</li><li><a href="stop-15967.html">15967</a> - Herne Ranckhove 15:30</li><li><a href="stop-15559.html">15559</a> - Herne Hof Tembroek 15:32</li><li><a href="stop-16478.html">16478</a> - Herne Jules Kwadrant 15:34</li><li><a href="stop-11347.html">11347</a> - Herne Kokejane 15:35</li><li><a href="stop-11339.html">11339</a> - Herne Groenstraat 15:36</li><li><a href="stop-10638.html">10638</a> - Lettelingen Handel 15:37</li><li><a href="stop-10634.html">10634</a> - Lettelingen Achterkant Station 15:37</li><li><a href="stop-10636.html">10636</a> - Lettelingen Brug 15:38</li><li><a href="stop-10632.html">10632</a> - Edingen Station 15:38</li><li><a href="stop-10630.html">10630</a> - Edingen Oude Markt 15:39</li><li><a href="stop-10629.html">10629</a> - Edingen Koningin Astrid 15:39</li><li><a href="stop-10625.html">10625</a> - Edingen Buurtspoorwegstation 15:40</li><li><a href="stop-15505.html">15505</a> - Edingen Dodane 15:41</li><li><a href="stop-15971.html">15971</a> - Edingen Saint-Augustin 15:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1738.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

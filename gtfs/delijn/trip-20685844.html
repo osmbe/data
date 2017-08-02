@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Drongen Station - P+R Oostakker - 20685844</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Drongen Station - P+R Oostakker - 20685844</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-112219.html">112219</a> - Drongen Heilighuisdreef 08:18</li><li><a href="stop-112215.html">112215</a> - Drongen Station 08:20</li><li><a href="stop-127089.html">127089</a> - Drongen Oude Wee 08:22</li><li><a href="stop-112205.html">112205</a> - Drongen Varendrieskouter 08:23</li><li><a href="stop-112265.html">112265</a> - Drongen Bollewerkstraat 08:24</li><li><a href="stop-112074.html">112074</a> - Drongen Elshout 08:25</li><li><a href="stop-111288.html">111288</a> - Drongen Rozenlaan 08:27</li><li><a href="stop-112206.html">112206</a> - Drongen Congregatiestraat 08:29</li><li><a href="stop-111281.html">111281</a> - Drongen Klaverdries 08:30</li><li><a href="stop-111280.html">111280</a> - Drongen Drongenplein 08:31</li><li><a href="stop-115642.html">115642</a> - Drongen Rotonde 08:32</li><li><a href="stop-111277.html">111277</a> - Drongen Watersportbaan 08:35</li><li><a href="stop-111276.html">111276</a> - Drongen Halfweg 08:36</li><li><a href="stop-111275.html">111275</a> - Drongen Brughuis 08:38</li><li><a href="stop-111274.html">111274</a> - Gent Malemstraat 08:39</li><li><a href="stop-112192.html">112192</a> - Gent Geitstraat 08:41</li><li><a href="stop-112191.html">112191</a> - Gent Weversstraat 08:44</li><li><a href="stop-112167.html">112167</a> - Gent Brugsepoort 08:46</li><li><a href="stop-112165.html">112165</a> - Gent Poel 08:50</li><li><a href="stop-126563.html">126563</a> - Gent Korenmarkt perron 2 08:52</li><li><a href="stop-112263.html">112263</a> - Gent Sint-Jacobs 08:54</li><li><a href="stop-111366.html">111366</a> - Gent Reep 08:56</li><li><a href="stop-112246.html">112246</a> - Gent Van Eyckstraat 08:57</li><li><a href="stop-112245.html">112245</a> - Gent Puinstraat 08:59</li><li><a href="stop-112244.html">112244</a> - Gent Lousbergsbrug 09:00</li><li><a href="stop-112243.html">112243</a> - Gent Eendrachtstraat 09:01</li><li><a href="stop-112242.html">112242</a> - Gent Veemarkt 09:02</li><li><a href="stop-126587.html">126587</a> - Gent Dampoort perron 10 09:03</li><li><a href="stop-126587.html">126587</a> - Gent Dampoort perron 10 09:03</li><li><a href="stop-112318.html">112318</a> - Gent Van Arenbergstraat 09:04</li><li><a href="stop-112317.html">112317</a> - Gent Schoolstraat 09:05</li><li><a href="stop-112277.html">112277</a> - Sint-Amandsberg Rozebroekstraat 09:07</li><li><a href="stop-112276.html">112276</a> - Sint-Amandsberg Jef Crickstraat 09:08</li><li><a href="stop-112278.html">112278</a> - Sint-Amandsberg Nachtegaaldreef 09:09</li><li><a href="stop-112314.html">112314</a> - Sint-Amandsberg Koerspleinstraat 09:10</li><li><a href="stop-112313.html">112313</a> - Sint-Amandsberg Vinkenlaan 09:11</li><li><a href="stop-112328.html">112328</a> - Sint-Amandsberg Schuurstraat 09:12</li><li><a href="stop-112149.html">112149</a> - Sint-Amandsberg Oudebareelstraat 09:13</li><li><a href="stop-128668.html">128668</a> - Sint-Amandsberg P+R Oostakker 09:13</li><li><a href="stop-112311.html">112311</a> - Sint-Amandsberg Achtenkouterstraat 09:14</li><li><a href="stop-114041.html">114041</a> - Oostakker Teirlinckstraat 09:15</li><li><a href="stop-112629.html">112629</a> - Oostakker Volvo Truck 09:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./127.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

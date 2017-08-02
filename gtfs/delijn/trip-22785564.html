@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Leuven - Tielt - Diest - 22785564</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Leuven - Tielt - Diest - 22785564</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-13747.html">13747</a> - Tielt-Winge Stelplaats Perron 2 15:37</li><li><a href="stop-13734.html">13734</a> - Tielt-Winge Kiekenbos 15:39</li><li><a href="stop-13701.html">13701</a> - Sint-Joris-Winge Hoek 15:40</li><li><a href="stop-13699.html">13699</a> - Sint-Joris-Winge Glabbeeksestwg 15:41</li><li><a href="stop-13697.html">13697</a> - Sint-Joris-Winge Dorp 15:42</li><li><a href="stop-13703.html">13703</a> - Sint-Joris-Winge Oude Aarschotsebaan 15:43</li><li><a href="stop-13705.html">13705</a> - Sint-Joris-Winge Tweevijverstraat 15:45</li><li><a href="stop-12604.html">12604</a> - Lubbeek Schubbeek 15:46</li><li><a href="stop-12614.html">12614</a> - Lubbeek Vosken 15:47</li><li><a href="stop-12618.html">12618</a> - Lubbeek Weg naar Lubbeek 15:48</li><li><a href="stop-12591.html">12591</a> - Lubbeek Kraaiwinkelstraat 15:49</li><li><a href="stop-12599.html">12599</a> - Lubbeek Melkerij 15:50</li><li><a href="stop-12595.html">12595</a> - Lubbeek Ledigheid 15:51</li><li><a href="stop-12585.html">12585</a> - Lubbeek Houwaartseweg 15:52</li><li><a href="stop-90868.html">90868</a> - Pellenberg Lindestraat 15:53</li><li><a href="stop-12555.html">12555</a> - Linden Galgenstraat 15:54</li><li><a href="stop-12572.html">12572</a> - Linden Wolvendreef 15:55</li><li><a href="stop-12570.html">12570</a> - Linden Raychem 15:56</li><li><a href="stop-12559.html">12559</a> - Linden J.Davidtsstraat 15:57</li><li><a href="stop-93374.html">93374</a> - Kessel-Lo Klooster 15:57</li><li><a href="stop-14816.html">14816</a> - Kessel-Lo Heidebergstraat 15:58</li><li><a href="stop-12174.html">12174</a> - Kessel-Lo Park Heuvelhof 16:00</li><li><a href="stop-12184.html">12184</a> - Kessel-Lo Valvekensstraat 16:02</li><li><a href="stop-12141.html">12141</a> - Kessel-Lo H.Hartkerk 16:04</li><li><a href="stop-12284.html">12284</a> - Leuven Station Perron 2 16:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2246.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

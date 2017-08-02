@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent Zuid - Merelbeke - Bottelare- Baaigem - 20694192</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent Zuid - Merelbeke - Bottelare- Baaigem - 20694192</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-113834.html">113834</a> - Baaigem Bosstraat 13:11</li><li><a href="stop-113833.html">113833</a> - Munte Torrekensweg 13:12</li><li><a href="stop-113832.html">113832</a> - Munte Biest 13:13</li><li><a href="stop-113831.html">113831</a> - Bottelare Muntestok 13:15</li><li><a href="stop-113830.html">113830</a> - Bottelare Kon. Astridlaan 13:16</li><li><a href="stop-113829.html">113829</a> - Bottelare Dorp 13:17</li><li><a href="stop-113828.html">113828</a> - Bottelare Pontstraat 13:18</li><li><a href="stop-111676.html">111676</a> - Bottelare Adagio 13:18</li><li><a href="stop-113827.html">113827</a> - Merelbeke Motsenstraat 13:19</li><li><a href="stop-121074.html">121074</a> - Merelbeke Veldstraat 13:21</li><li><a href="stop-114773.html">114773</a> - Merelbeke Kwenenbos 13:22</li><li><a href="stop-114787.html">114787</a> - Merelbeke Wielewaalstraat 13:23</li><li><a href="stop-112019.html">112019</a> - Merelbeke Sallemeulekouter 13:23</li><li><a href="stop-113824.html">113824</a> - Merelbeke Volckaertdreef 13:24</li><li><a href="stop-113823.html">113823</a> - Merelbeke Schellebellepontweg 13:25</li><li><a href="stop-114706.html">114706</a> - Merelbeke Molenhoek 13:26</li><li><a href="stop-114682.html">114682</a> - Merelbeke Kerk 13:28</li><li><a href="stop-113815.html">113815</a> - Merelbeke Hebbelynckstraat 13:29</li><li><a href="stop-113814.html">113814</a> - Merelbeke Waterstraat 13:31</li><li><a href="stop-112015.html">112015</a> - Merelbeke Plataan 13:32</li><li><a href="stop-113812.html">113812</a> - Merelbeke Nachtegaaldreef 13:35</li><li><a href="stop-113811.html">113811</a> - Merelbeke Ginstdreef 13:36</li><li><a href="stop-113810.html">113810</a> - Merelbeke Kon. Elisabethlaan 13:37</li><li><a href="stop-116466.html">116466</a> - Melle Vijverwegel 13:38</li><li><a href="stop-111685.html">111685</a> - Gentbrugge Merelbeke Station 13:39</li><li><a href="stop-113809.html">113809</a> - Merelbeke Kerk Flora 13:40</li><li><a href="stop-113806.html">113806</a> - Merelbeke Van Goethemstraat 13:41</li><li><a href="stop-113805.html">113805</a> - Merelbeke Benoitstraat 13:42</li><li><a href="stop-113804.html">113804</a> - Merelbeke Koestraat 13:42</li><li><a href="stop-113803.html">113803</a> - Ledeberg Eindeke 13:43</li><li><a href="stop-113802.html">113802</a> - Ledeberg Botermarkt 13:45</li><li><a href="stop-112472.html">112472</a> - Ledeberg Eggermontstraat 13:47</li><li><a href="stop-111199.html">111199</a> - Ledeberg Hundelgemsesteenweg 13:47</li><li><a href="stop-111200.html">111200</a> - Gent Sint-Lievenspoort 13:48</li><li><a href="stop-111201.html">111201</a> - Gent Sint-Lievensdoorgang 13:49</li><li><a href="stop-111171.html">111171</a> - Gent Vijfwindgatenstraat 13:50</li><li><a href="stop-126534.html">126534</a> - Gent Zuid perron 5 13:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./263.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

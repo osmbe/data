@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus  Eppegem - Boortmeerbeek - Haacht - 22789228</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus  Eppegem - Boortmeerbeek - Haacht - 22789228</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-14211.html">14211</a> - Elewijt Diependaalstraat 07:43</li><li><a href="stop-14209.html">14209</a> - Elewijt Café Matthijs 07:44</li><li><a href="stop-14215.html">14215</a> - Elewijt Solarium 07:45</li><li><a href="stop-14514.html">14514</a> - Hever Schiplaken Consciencelaan 07:47</li><li><a href="stop-14516.html">14516</a> - Hever Schiplaken Kerk 07:49</li><li><a href="stop-15240.html">15240</a> - Hever Schiplaken Blokstraat 07:51</li><li><a href="stop-110741.html">110741</a> - Schiplaken Vaart 07:52</li><li><a href="stop-9908.html">9908</a> - Boortmeerbeek Kallebeekstraat 07:55</li><li><a href="stop-93949.html">93949</a> - Boortmeerbeek Schippersbos 07:56</li><li><a href="stop-15242.html">15242</a> - Boortmeerbeek Heikestraat 07:57</li><li><a href="stop-9898.html">9898</a> - Boortmeerbeek Dorp 07:58</li><li><a href="stop-9916.html">9916</a> - Boortmeerbeek Puttekensweg 07:59</li><li><a href="stop-9904.html">9904</a> - Boortmeerbeek Hollestraat 08:00</li><li><a href="stop-9900.html">9900</a> - Boortmeerbeek Genninckstraat 08:01</li><li><a href="stop-9890.html">9890</a> - Boortmeerbeek Anderveldstraat 08:03</li><li><a href="stop-9912.html">9912</a> - Boortmeerbeek Paepenstraat 08:04</li><li><a href="stop-9902.html">9902</a> - Boortmeerbeek Halve Steen 08:05</li><li><a href="stop-11061.html">11061</a> - Haacht Station 08:06</li><li><a href="stop-11059.html">11059</a> - Haacht Spoorwegstraat 08:07</li><li><a href="stop-11046.html">11046</a> - Haacht Jennekensstraat 08:10</li><li><a href="stop-11041.html">11041</a> - Haacht Don Bosco 08:11</li><li><a href="stop-93389.html">93389</a> - Wespelaar Sporthal 08:16</li><li><a href="stop-11072.html">11072</a> - Tildonk Sint-Angela 08:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2329.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

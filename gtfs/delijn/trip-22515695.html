@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Boom - Willebroek - Heindonk - Mechelen - 22515695</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boom - Willebroek - Heindonk - Mechelen - 22515695</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108454.html">108454</a> - Mechelen Veemarkt 16:15</li><li><a href="stop-109723.html">109723</a> - Mechelen Bleekstraat 16:18</li><li><a href="stop-25092.html">25092</a> - Mechelen Zandpoortvest 16:19</li><li><a href="stop-108413.html">108413</a> - Mechelen Raghenoplein 16:20</li><li><a href="stop-21781.html">21781</a> - Mechelen Station perron 17 16:22</li><li><a href="stop-108451.html">108451</a> - Mechelen Oude Brusselsestraat 16:23</li><li><a href="stop-108452.html">108452</a> - Mechelen Louizastraat 16:24</li><li><a href="stop-127008.html">127008</a> - Mechelen Brusselpoort 16:25</li><li><a href="stop-109905.html">109905</a> - Mechelen Korte Pennincstraat 16:26</li><li><a href="stop-109906.html">109906</a> - Mechelen Adegempoort 16:27</li><li><a href="stop-108436.html">108436</a> - Mechelen Polderstraat 16:28</li><li><a href="stop-108437.html">108437</a> - Mechelen Boetestraat 16:29</li><li><a href="stop-108440.html">108440</a> - Mechelen Landweg 16:30</li><li><a href="stop-108442.html">108442</a> - Mechelen Transportzone E19 16:31</li><li><a href="stop-109353.html">109353</a> - Mechelen Leestsesteenweg 16:33</li><li><a href="stop-109351.html">109351</a> - Mechelen Mechelbaan 16:35</li><li><a href="stop-24124.html">24124</a> - Heffen Centrum 16:38</li><li><a href="stop-109360.html">109360</a> - Heffen Brouwerijstraat 16:39</li><li><a href="stop-23929.html">23929</a> - Heffen Ten Doorn 16:40</li><li><a href="stop-21183.html">21183</a> - Heindonk Hazewinkel 16:42</li><li><a href="stop-23927.html">23927</a> - Heindonk Kerk 16:43</li><li><a href="stop-109357.html">109357</a> - Heindonk Oude Broekstraat 16:44</li><li><a href="stop-109355.html">109355</a> - Heindonk Stuyvenbergbaan 16:47</li><li><a href="stop-23920.html">23920</a> - Blaasveld Heindonksteenweg 16:48</li><li><a href="stop-23918.html">23918</a> - Blaasveld Fonteinstraat 16:49</li><li><a href="stop-23915.html">23915</a> - Blaasveld Kasteelstraat 16:50</li><li><a href="stop-21227.html">21227</a> - Blaasveld Verbindingsstraat 16:51</li><li><a href="stop-21225.html">21225</a> - Blaasveld Station 16:52</li><li><a href="stop-23896.html">23896</a> - Blaasveld Hinxelaar 16:54</li><li><a href="stop-109343.html">109343</a> - Blaasveld Kerk 16:55</li><li><a href="stop-109341.html">109341</a> - Willebroek Spaarzaamheidstraat 16:57</li><li><a href="stop-107911.html">107911</a> - Willebroek Van Landeghemplein 16:59</li><li><a href="stop-128895.html">128895</a> - Willebroek Eendrachtstraat 16:59</li><li><a href="stop-21270.html">21270</a> - Willebroek Ziekenhuis 17:01</li><li><a href="stop-125238.html">125238</a> - Willebroek Ziekenhuis Dodoens 17:01</li><li><a href="stop-21217.html">21217</a> - Willebroek Res. Schoondonk 17:03</li><li><a href="stop-21215.html">21215</a> - Willebroek Dahliastraat 17:04</li><li><a href="stop-21213.html">21213</a> - Willebroek Beukenlaan 17:06</li><li><a href="stop-21211.html">21211</a> - Willebroek Leeuwerikstraat 17:08</li><li><a href="stop-128892.html">128892</a> - Willebroek Fort van Breendonk 17:10</li><li><a href="stop-21206.html">21206</a> - Willebroek Schalkstraat 17:10</li><li><a href="stop-21187.html">21187</a> - Willebroek Denderlaan 17:11</li><li><a href="stop-128891.html">128891</a> - Willebroek Acacialei 17:12</li><li><a href="stop-21199.html">21199</a> - Willebroek H. Vosstraat 17:13</li><li><a href="stop-107567.html">107567</a> - Willebroek Station 17:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3051.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

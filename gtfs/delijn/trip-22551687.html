@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Mol - Rauw - 22551687</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mol - Rauw - 22551687</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-106633.html">106633</a> - Mol Sportcentrum Den Uyt 20:02</li><li><a href="stop-127480.html">127480</a> - Mol Kerk 20:04</li><li><a href="stop-109395.html">109395</a> - Mol Laar 20:05</li><li><a href="stop-24035.html">24035</a> - Mol Rozenbergschool 20:06</li><li><a href="stop-24034.html">24034</a> - Mol Bergstraat 20:06</li><li><a href="stop-109424.html">109424</a> - Mol Gemeenschapsschool 20:07</li><li><a href="stop-109393.html">109393</a> - Mol Station perron 6 20:08</li><li><a href="stop-109406.html">109406</a> - Mol Overweg 78 20:12</li><li><a href="stop-125294.html">125294</a> - Mol Ginderbuiten Kerk 20:13</li><li><a href="stop-106813.html">106813</a> - Mol Zavelstraat 20:13</li><li><a href="stop-109409.html">109409</a> - Mol Den Brand 20:14</li><li><a href="stop-106773.html">106773</a> - Mol Aardbemden 20:14</li><li><a href="stop-106775.html">106775</a> - Mol Boerestraat 20:15</li><li><a href="stop-106653.html">106653</a> - Mol Draaiboomstraat 20:15</li><li><a href="stop-106654.html">106654</a> - Mol Meergorenbaan 20:16</li><li><a href="stop-106656.html">106656</a> - Mol Sluis nr. 356 20:16</li><li><a href="stop-106805.html">106805</a> - Mol Zilvermeer 20:18</li><li><a href="stop-106619.html">106619</a> - Mol Zilvermeerhaven 20:19</li><li><a href="stop-106806.html">106806</a> - Mol Ecocentrum 20:21</li><li><a href="stop-106659.html">106659</a> - Mol Sun Parks 1 20:21</li><li><a href="stop-106817.html">106817</a> - Mol Kruispunt Roscam 20:22</li><li><a href="stop-110136.html">110136</a> - Mol Hulststraat 20:23</li><li><a href="stop-110128.html">110128</a> - Mol Distelstraat 20:24</li><li><a href="stop-106887.html">106887</a> - Mol Hovenierstraat 20:25</li><li><a href="stop-106664.html">106664</a> - Mol Sun Parks Kiezelweg 20:26</li><li><a href="stop-106815.html">106815</a> - Mol Sprietstraat 20:27</li><li><a href="stop-106889.html">106889</a> - Mol Rauw 20:28</li><li><a href="stop-106665.html">106665</a> - Mol Rauw Kerk 20:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3813.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

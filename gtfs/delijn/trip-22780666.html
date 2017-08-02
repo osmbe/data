@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aarschot - Rillaar - Scherpenheuvel - Diest - 22780666</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aarschot - Rillaar - Scherpenheuvel - Diest - 22780666</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127037.html">127037</a> - Aarschot Station perron 9 20:30</li><li><a href="stop-9313.html">9313</a> - Aarschot Gilsonplein 20:30</li><li><a href="stop-94823.html">94823</a> - Aarschot Sancta Maria 20:31</li><li><a href="stop-128901.html">128901</a> - Aarschot Kerk 20:32</li><li><a href="stop-9323.html">9323</a> - Aarschot Moederhuis 20:33</li><li><a href="stop-128816.html">128816</a> - Aarschot Sint-Jozefscollege 20:33</li><li><a href="stop-93860.html">93860</a> - Aarschot Bekaf 20:35</li><li><a href="stop-16141.html">16141</a> - Aarschot Demervallei 20:38</li><li><a href="stop-9331.html">9331</a> - Aarschot Schoonhoven Vijvers 20:40</li><li><a href="stop-9329.html">9329</a> - Aarschot Schoonhoven 20:41</li><li><a href="stop-9412.html">9412</a> - Rillaar Nopstal 20:42</li><li><a href="stop-9408.html">9408</a> - Rillaar Molenstraat 20:43</li><li><a href="stop-9406.html">9406</a> - Rillaar Kerk 20:44</li><li><a href="stop-9410.html">9410</a> - Rillaar Motteveld 20:44</li><li><a href="stop-9398.html">9398</a> - Rillaar Rusthuis 20:45</li><li><a href="stop-9418.html">9418</a> - Rillaar Weg op Montenaken 20:45</li><li><a href="stop-9394.html">9394</a> - Rillaar Café Matheus 20:46</li><li><a href="stop-9396.html">9396</a> - Messelbroek Tieltsebaan 20:47</li><li><a href="stop-13222.html">13222</a> - Scherpenheuvel Mannenberg 20:48</li><li><a href="stop-13220.html">13220</a> - Schoonderbuken Koestraat 5 20:49</li><li><a href="stop-13214.html">13214</a> - Schoonderbuken Groenhove 20:50</li><li><a href="stop-13216.html">13216</a> - Schoonderbuken Hoensberg 20:51</li><li><a href="stop-107028.html">107028</a> - Schoonderbuken Miskruis 20:51</li><li><a href="stop-13242.html">13242</a> - Schoonderbuken Kerk 20:52</li><li><a href="stop-13236.html">13236</a> - Scherpenheuvel Valvoortstraat 20:53</li><li><a href="stop-13218.html">13218</a> - Scherpenheuvel Kapelleke 20:54</li><li><a href="stop-13230.html">13230</a> - Scherpenheuvel Oude Tiensestraat 20:54</li><li><a href="stop-13224.html">13224</a> - Scherpenheuvel Merellaan 20:55</li><li><a href="stop-13240.html">13240</a> - Scherpenheuvel Witte Hoeve 20:56</li><li><a href="stop-13238.html">13238</a> - Scherpenheuvel Weg op Keiberg 20:57</li><li><a href="stop-13234.html">13234</a> - Scherpenheuvel Station 20:58</li><li><a href="stop-127054.html">127054</a> - Scherpenheuvel Gemeentehuis 20:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2147.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

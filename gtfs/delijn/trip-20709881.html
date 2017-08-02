@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Antwerpen L.O. - Burcht - Zwijndrecht - 20709881</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Antwerpen L.O. - Burcht - Zwijndrecht - 20709881</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127606.html">127606</a> - Zwijndrecht P+R Melsele perron 6 10:03</li><li><a href="stop-108214.html">108214</a> - Zwijndrecht Hof Ter Rijen 10:04</li><li><a href="stop-115925.html">115925</a> - Zwijndrecht Dorp 10:05</li><li><a href="stop-115972.html">115972</a> - Zwijndrecht Regenbooglaan 10:06</li><li><a href="stop-128695.html">128695</a> - Zwijndrecht Station 10:07</li><li><a href="stop-115971.html">115971</a> - Zwijndrecht Elsschotstraat 10:08</li><li><a href="stop-116217.html">116217</a> - Burcht Zwijndrechtsestraat 10:10</li><li><a href="stop-115410.html">115410</a> - Burcht Boomgaardstraat 10:11</li><li><a href="stop-115411.html">115411</a> - Burcht Kloosterstraat 10:11</li><li><a href="stop-116207.html">116207</a> - Burcht Kerkplein 10:12</li><li><a href="stop-116206.html">116206</a> - Burcht Kaai 10:13</li><li><a href="stop-116205.html">116205</a> - Burcht Koningin Astridlaan 10:14</li><li><a href="stop-116204.html">116204</a> - Antwerpen Burchtse Weel 10:15</li><li><a href="stop-116203.html">116203</a> - Antwerpen Galgenweel 10:17</li><li><a href="stop-116202.html">116202</a> - Antwerpen Vlaams Hoofdlaan 10:18</li><li><a href="stop-116201.html">116201</a> - Antwerpen Pluvierstraat 10:18</li><li><a href="stop-126964.html">126964</a> - Antwerpen Halewijn 10:19</li><li><a href="stop-21124.html">21124</a> - Antwerpen Van Eedenplein 10:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./909.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Meeuwen - Peer - Neerpelt - 22480838</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Meeuwen - Peer - Neerpelt - 22480838</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-43779.html">43779</a> - Genk Station perron 9 06:00</li><li><a href="stop-96699.html">96699</a> - Waterschei Hoevenzavel 06:09</li><li><a href="stop-96737.html">96737</a> - Zwartberg Cité 06:09</li><li><a href="stop-96739.html">96739</a> - Zwartberg Cockerillplaats 06:10</li><li><a href="stop-96745.html">96745</a> - Zwartberg Luikerwijk 06:11</li><li><a href="stop-96749.html">96749</a> - Zwartberg Torenlaan 06:11</li><li><a href="stop-94149.html">94149</a> - Opglabbeek Weg naar Meeuwen 06:13</li><li><a href="stop-32835.html">32835</a> - Wijshagen Molenheide 06:15</li><li><a href="stop-32820.html">32820</a> - Wijshagen Donderslag 06:17</li><li><a href="stop-99407.html">99407</a> - Wijshagen Plockroy school 06:18</li><li><a href="stop-32796.html">32796</a> - Meeuwen Vliegeneinde 06:19</li><li><a href="stop-105308.html">105308</a> - Meeuwen Tulpenstraat 06:19</li><li><a href="stop-32766.html">32766</a> - Meeuwen Genits 06:20</li><li><a href="stop-95298.html">95298</a> - Meeuwen Kerk 06:22</li><li><a href="stop-32799.html">32799</a> - Meeuwen Weg naar Helchteren 06:23</li><li><a href="stop-32682.html">32682</a> - Meeuwen Elzenstraat 06:24</li><li><a href="stop-125540.html">125540</a> - Meeuwen Eikenstraat 06:25</li><li><a href="stop-105374.html">105374</a> - Peer Deusterstraat 06:26</li><li><a href="stop-105298.html">105298</a> - Peer Stevensweg 06:27</li><li><a href="stop-123104.html">123104</a> - Peer Snow Valley 06:28</li><li><a href="stop-32677.html">32677</a> - Peer Kraanbergstraat 06:29</li><li><a href="stop-33545.html">33545</a> - Peer Pol KIP 06:30</li><li><a href="stop-33540.html">33540</a> - Peer Rijksbasisschool 06:30</li><li><a href="stop-33531.html">33531</a> - Peer Noordervest 06:31</li><li><a href="stop-33432.html">33432</a> - Peer Bokterstraat 06:31</li><li><a href="stop-33470.html">33470</a> - Kleine-Brogel Spotters Corner 06:33</li><li><a href="stop-93813.html">93813</a> - Kleine-Brogel Kruispunt 06:36</li><li><a href="stop-93833.html">93833</a> - Kleine-Brogel Dommellaan 06:37</li><li><a href="stop-88314.html">88314</a> - Kleine-Brogel Groenewoudstraat 06:38</li><li><a href="stop-33407.html">33407</a> - Overpelt Sint-Oda 06:40</li><li><a href="stop-33413.html">33413</a> - Overpelt Steenovenstraat 06:42</li><li><a href="stop-33358.html">33358</a> - Overpelt Dalakkerstraat 06:42</li><li><a href="stop-33409.html">33409</a> - Overpelt Spoorwegstraat 06:43</li><li><a href="stop-89653.html">89653</a> - Overpelt Breugelweg 06:43</li><li><a href="stop-91059.html">91059</a> - Overpelt Kiosk 06:45</li><li><a href="stop-123110.html">123110</a> - Overpelt Ziekenhuis 06:48</li><li><a href="stop-123164.html">123164</a> - Overpelt Hofweg 06:50</li><li><a href="stop-91082.html">91082</a> - Overpelt Atheneum 06:51</li><li><a href="stop-33011.html">33011</a> - Neerpelt Centrum 06:53</li><li><a href="stop-123120.html">123120</a> - Neerpelt College 06:53</li><li><a href="stop-33046.html">33046</a> - Neerpelt Station 06:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4921.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

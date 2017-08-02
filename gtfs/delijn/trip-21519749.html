@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - UZA - Centraal Station - Rijnkaai - 21519749</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: UZA - Centraal Station - Rijnkaai - 21519749</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-88758.html">88758</a> - Edegem Universitair Ziekenhuis p. 4 14:45</li><li><a href="stop-110681.html">110681</a> - Edegem Wilrijkstraat 14:46</li><li><a href="stop-22526.html">22526</a> - Wilrijk Wilsonweg 14:47</li><li><a href="stop-108632.html">108632</a> - Wilrijk UA Campus 14:48</li><li><a href="stop-108642.html">108642</a> - Wilrijk Universiteitsplein 14:49</li><li><a href="stop-20790.html">20790</a> - Wilrijk Krijgslaan 14:50</li><li><a href="stop-18848.html">18848</a> - Wilrijk A. Chantrainestraat 14:50</li><li><a href="stop-108242.html">108242</a> - Wilrijk Oudestraat 14:51</li><li><a href="stop-19207.html">19207</a> - Wilrijk Boekstraat 14:52</li><li><a href="stop-107829.html">107829</a> - Wilrijk Bist 14:55</li><li><a href="stop-107328.html">107328</a> - Wilrijk L. Kieboomsstraat 14:57</li><li><a href="stop-107327.html">107327</a> - Wilrijk Rozenkransplein 14:58</li><li><a href="stop-88551.html">88551</a> - Wilrijk Kruishof 14:58</li><li><a href="stop-107634.html">107634</a> - Wilrijk Eglantierlaan 14:59</li><li><a href="stop-19592.html">19592</a> - Antwerpen Della Faillelaan 14:59</li><li><a href="stop-19119.html">19119</a> - Antwerpen Beukenlaan - Dikke Mee 15:00</li><li><a href="stop-107543.html">107543</a> - Antwerpen G. Le Grellelaan 15:01</li><li><a href="stop-107416.html">107416</a> - Antwerpen Desguinlei 15:03</li><li><a href="stop-107920.html">107920</a> - Antwerpen Markgravelei 15:04</li><li><a href="stop-107824.html">107824</a> - Antwerpen Provinciehuis 15:06</li><li><a href="stop-107800.html">107800</a> - Antwerpen Harmonie 15:08</li><li><a href="stop-108068.html">108068</a> - Antwerpen Lange Leemstraat 15:10</li><li><a href="stop-108665.html">108665</a> - Antwerpen Mercatorstraat 15:12</li><li><a href="stop-108062.html">108062</a> - Antwerpen Lange Kievitstraat 15:13</li><li><a href="stop-107519.html">107519</a> - Antwerpen Centraal Station perron 10 15:15</li><li><a href="stop-125233.html">125233</a> - Antwerpen F. Rooseveltplaats perron 25 15:19</li><li><a href="stop-107365.html">107365</a> - Antwerpen Sint-Jansplein 15:23</li><li><a href="stop-21283.html">21283</a> - Antwerpen Rodestraat 15:24</li><li><a href="stop-20366.html">20366</a> - Antwerpen Hessenbrug 15:24</li><li><a href="stop-107615.html">107615</a> - Antwerpen Felixarchief 15:25</li><li><a href="stop-108698.html">108698</a> - Antwerpen Van Schoonbekeplein 15:26</li><li><a href="stop-108559.html">108559</a> - Antwerpen Tavernierkaai 15:26</li><li><a href="stop-107725.html">107725</a> - Antwerpen Rijnkaai 15:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2720.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

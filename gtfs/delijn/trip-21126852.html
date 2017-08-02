@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Leerbeek - Lennik - Brussel - 21126852</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Leerbeek - Lennik - Brussel - 21126852</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-10872.html">10872</a> - Leerbeek Stelplaats Kaai 1 05:05</li><li><a href="stop-14821.html">14821</a> - Gooik Meintjes 05:06</li><li><a href="stop-10816.html">10816</a> - Gooik Kwakenbeek 05:06</li><li><a href="stop-10832.html">10832</a> - Gooik Wijngaardstraat 05:07</li><li><a href="stop-10820.html">10820</a> - Gooik Oplombeek 05:08</li><li><a href="stop-13349.html">13349</a> - Sint-Kwintens-Lennik Zwartenbroek 05:09</li><li><a href="stop-13343.html">13343</a> - Sint-Kwintens-Lennik Saffelberg 05:09</li><li><a href="stop-9277.html">9277</a> - Sint-Kwintens-Lennik Negenbunderstraat 05:10</li><li><a href="stop-15917.html">15917</a> - Sint-Kwintens-Lennik Zonnestraal 05:11</li><li><a href="stop-13334.html">13334</a> - Sint-Kwintens-Lennik Marktplein 05:13</li><li><a href="stop-13345.html">13345</a> - Sint-Kwintens-Lennik Gustaaf Van Der Steenstraat 05:15</li><li><a href="stop-14726.html">14726</a> - Sint-Kwintens-Lennik Sporthal 05:15</li><li><a href="stop-11139.html">11139</a> - Sint-Martens-Lennik Postberg 05:16</li><li><a href="stop-13355.html">13355</a> - Sint-Martens-Lennik Dorp 05:16</li><li><a href="stop-13361.html">13361</a> - Sint-Martens-Lennik Oud Station 05:17</li><li><a href="stop-13363.html">13363</a> - Sint-Martens-Lennik Weg naar Gaasbeek 05:19</li><li><a href="stop-13357.html">13357</a> - Sint-Martens-Lennik Groenenberg 05:20</li><li><a href="stop-13359.html">13359</a> - Sint-Martens-Lennik Brouwerij Lindemans 05:20</li><li><a href="stop-13496.html">13496</a> - Vlezenbeek Pedestraat 05:21</li><li><a href="stop-13478.html">13478</a> - Vlezenbeek De Linde 05:22</li><li><a href="stop-98470.html">98470</a> - Itterbeek Nachtegaal 05:23</li><li><a href="stop-9278.html">9278</a> - Vlezenbeek Veldekensstraat 05:24</li><li><a href="stop-14722.html">14722</a> - Anderlecht Multipharma 05:25</li><li><a href="stop-10008.html">10008</a> - Anderlecht Erasmus 05:25</li><li><a href="stop-10029.html">10029</a> - Anderlecht Meylemeersch 05:26</li><li><a href="stop-9999.html">9999</a> - Anderlecht Eddy Merckx 05:27</li><li><a href="stop-127201.html">127201</a> - Anderlecht Leemans - Eddy Merckx 05:27</li><li><a href="stop-10041.html">10041</a> - Anderlecht Sint-Niklaas 05:28</li><li><a href="stop-10047.html">10047</a> - Anderlecht Coovi 05:29</li><li><a href="stop-10018.html">10018</a> - Anderlecht Het Rad 05:31</li><li><a href="stop-9995.html">9995</a> - Anderlecht Bizet 05:32</li><li><a href="stop-127387.html">127387</a> - Anderlecht Veeweyde 05:33</li><li><a href="stop-9987.html">9987</a> - Anderlecht Aristide Briand 05:33</li><li><a href="stop-10004.html">10004</a> - Anderlecht Democratie 05:35</li><li><a href="stop-9991.html">9991</a> - Anderlecht Biestebroek 05:36</li><li><a href="stop-10043.html">10043</a> - Anderlecht Vaartbrug 05:37</li><li><a href="stop-10014.html">10014</a> - Anderlecht Grondel 05:39</li><li><a href="stop-10016.html">10016</a> - Anderlecht Oude Stelplaats 05:40</li><li><a href="stop-15707.html">15707</a> - Brussel Zuid Perron 6 05:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1601.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

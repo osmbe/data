@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Antwerpen L.O. - Kallo - Kieldrecht - 20709897</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Antwerpen L.O. - Kallo - Kieldrecht - 20709897</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-114881.html">114881</a> - Kieldrecht Kouterstraat 06:46</li><li><a href="stop-115347.html">115347</a> - Kieldrecht Molenstraat 06:47</li><li><a href="stop-115346.html">115346</a> - Kieldrecht Singel 06:48</li><li><a href="stop-115692.html">115692</a> - Kieldrecht Sportpleinstraat 06:49</li><li><a href="stop-114883.html">114883</a> - Kieldrecht Kerk 06:50</li><li><a href="stop-114884.html">114884</a> - Kieldrecht Kreek 06:50</li><li><a href="stop-114885.html">114885</a> - Kieldrecht Lange Nieuwstraat 06:52</li><li><a href="stop-114886.html">114886</a> - Kieldrecht Gemenestraat 06:53</li><li><a href="stop-114887.html">114887</a> - Verrebroek Bralstraat 06:53</li><li><a href="stop-114888.html">114888</a> - Verrebroek Rijkstraat 06:55</li><li><a href="stop-114889.html">114889</a> - Verrebroek Dorp 06:56</li><li><a href="stop-114890.html">114890</a> - Verrebroek Aven Ackers 06:57</li><li><a href="stop-115969.html">115969</a> - Verrebroek Haandorpweg 07:01</li><li><a href="stop-115968.html">115968</a> - Kallo Land Van Waaslaan 07:03</li><li><a href="stop-115967.html">115967</a> - Kallo Kruipin 07:06</li><li><a href="stop-116118.html">116118</a> - Kallo Dijkgravenstraat 07:09</li><li><a href="stop-116117.html">116117</a> - Kallo Fabriekstraat 07:09</li><li><a href="stop-116410.html">116410</a> - Kallo Dorp 07:11</li><li><a href="stop-116119.html">116119</a> - Kallo Ebeslaan 07:12</li><li><a href="stop-116120.html">116120</a> - Zwijndrecht Electrabel 07:13</li><li><a href="stop-115097.html">115097</a> - Zwijndrecht Deme 07:17</li><li><a href="stop-115918.html">115918</a> - Zwijndrecht Scheldedijk 07:20</li><li><a href="stop-116106.html">116106</a> - Zwijndrecht Lanxess/Exxon 07:21</li><li><a href="stop-116104.html">116104</a> - Zwijndrecht Canadastraat 07:21</li><li><a href="stop-128654.html">128654</a> - Antwerpen Waaslandtunnel 07:28</li><li><a href="stop-126966.html">126966</a> - Antwerpen Gijsselsstraat 07:28</li><li><a href="stop-126964.html">126964</a> - Antwerpen Halewijn 07:29</li><li><a href="stop-21124.html">21124</a> - Antwerpen Van Eedenplein 07:31</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./911.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

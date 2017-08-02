@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Menen-Komen - 22619491</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Menen-Komen - 22619491</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-41919.html">41919</a> - Menen Ontmoetingscentrum 14:31</li><li><a href="stop-41932.html">41932</a> - Menen Leopoldplein 14:32</li><li><a href="stop-88078.html">88078</a> - Menen Markt 14:33</li><li><a href="stop-37977.html">37977</a> - Menen Weststraat 14:34</li><li><a href="stop-37975.html">37975</a> - Menen Wahisstraat 14:35</li><li><a href="stop-126373.html">126373</a> - Menen Station perron 3 14:37</li><li><a href="stop-42536.html">42536</a> - Menen Legeweg 14:38</li><li><a href="stop-42282.html">42282</a> - Menen Ropswalle 14:39</li><li><a href="stop-42535.html">42535</a> - Menen De Riemeersch 14:40</li><li><a href="stop-42748.html">42748</a> - Wervik Roterij 14:41</li><li><a href="stop-42739.html">42739</a> - Wervik Basse Flandre 14:41</li><li><a href="stop-42745.html">42745</a> - Wervik Huis Nr 288 14:42</li><li><a href="stop-42740.html">42740</a> - Wervik Cafe 'T Voske 14:43</li><li><a href="stop-42743.html">42743</a> - Wervik Cafe Safferkruis 14:43</li><li><a href="stop-42742.html">42742</a> - Wervik Cafe Prins 14:44</li><li><a href="stop-42741.html">42741</a> - Wervik Cafe Loskaai 14:44</li><li><a href="stop-42749.html">42749</a> - Wervik Station 14:45</li><li><a href="stop-42750.html">42750</a> - Wervik Steenakker 14:46</li><li><a href="stop-42744.html">42744</a> - Wervik Damier 14:47</li><li><a href="stop-42746.html">42746</a> - Wervik Kerkhof 14:47</li><li><a href="stop-42965.html">42965</a> - Komen Hoge Plank 14:48</li><li><a href="stop-42506.html">42506</a> - Komen Werviksesteenweg 14:49</li><li><a href="stop-42505.html">42505</a> - Komen Godshuis 14:50</li><li><a href="stop-42963.html">42963</a> - Komen Leieboorden 14:51</li><li><a href="stop-42508.html">42508</a> - Komen Overwinningsstraat 14:51</li><li><a href="stop-42509.html">42509</a> - Komen Sint-Annaplein 14:53</li><li><a href="stop-38605.html">38605</a> - Komen Station 14:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4038.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

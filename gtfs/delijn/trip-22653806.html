@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oostende-Gistel-Eernegem-Torhout - 22653806</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oostende-Gistel-Eernegem-Torhout - 22653806</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-125678.html">125678</a> - Oostende Station perron 9 19:30</li><li><a href="stop-36263.html">36263</a> - Oostende Kapellestraat 19:32</li><li><a href="stop-36256.html">36256</a> - Oostende Stadhuis 19:33</li><li><a href="stop-100775.html">100775</a> - Oostende Sint-Jozefskerk 19:34</li><li><a href="stop-95209.html">95209</a> - Oostende Petit Paris 19:36</li><li><a href="stop-36254.html">36254</a> - Oostende Mac Leodplein 19:37</li><li><a href="stop-36315.html">36315</a> - Oostende Zwaluwenstraat 19:39</li><li><a href="stop-36251.html">36251</a> - Oostende Elisabethlaan 19:40</li><li><a href="stop-36270.html">36270</a> - Oostende Mariakerkelaan 19:41</li><li><a href="stop-97929.html">97929</a> - Stene Hoge Bareel 19:42</li><li><a href="stop-97927.html">97927</a> - Stene Duinkerkseweg 19:43</li><li><a href="stop-97928.html">97928</a> - Stene Esperanto 19:44</li><li><a href="stop-97931.html">97931</a> - Stene Top Center 19:44</li><li><a href="stop-99240.html">99240</a> - Oostende Rolbaanstraat 19:45</li><li><a href="stop-36154.html">36154</a> - Leffinge Noordhoek 19:46</li><li><a href="stop-104623.html">104623</a> - Leffinge Molenhuis 19:47</li><li><a href="stop-36340.html">36340</a> - Snaaskerke Brug 19:49</li><li><a href="stop-36347.html">36347</a> - Snaaskerke Zwarte Weg 19:51</li><li><a href="stop-36344.html">36344</a> - Snaaskerke Oprit 19:51</li><li><a href="stop-36065.html">36065</a> - Gistel Koolaerd 19:53</li><li><a href="stop-36063.html">36063</a> - Gistel Het Schoonhof 19:54</li><li><a href="stop-36071.html">36071</a> - Gistel Stadhuis 19:55</li><li><a href="stop-123625.html">123625</a> - Gistel Kruiskalsijde 19:56</li><li><a href="stop-97920.html">97920</a> - Moere Moerdijk 20:00</li><li><a href="stop-36051.html">36051</a> - Eernegem Dewaele 20:01</li><li><a href="stop-36052.html">36052</a> - Eernegem Halve Bareel 20:02</li><li><a href="stop-36046.html">36046</a> - Eernegem Boussemaere 20:03</li><li><a href="stop-90158.html">90158</a> - Eernegem Station 20:04</li><li><a href="stop-36053.html">36053</a> - Eernegem Kerk 20:06</li><li><a href="stop-36049.html">36049</a> - Eernegem Cafe Garage 20:07</li><li><a href="stop-36057.html">36057</a> - Eernegem Molendorp 20:08</li><li><a href="stop-36055.html">36055</a> - Eernegem Lievens 20:08</li><li><a href="stop-36056.html">36056</a> - Eernegem Lijsterweg 20:09</li><li><a href="stop-36866.html">36866</a> - Ichtegem Mitswege 20:10</li><li><a href="stop-36870.html">36870</a> - Ichtegem Station 20:11</li><li><a href="stop-36860.html">36860</a> - Ichtegem De Engel 20:12</li><li><a href="stop-36858.html">36858</a> - Ichtegem Bergenhof 20:14</li><li><a href="stop-100838.html">100838</a> - Ichtegem Schoolstraat 20:15</li><li><a href="stop-126333.html">126333</a> - Torhout Kasteel Wijnendale 20:16</li><li><a href="stop-100862.html">100862</a> - Torhout Cambrinus 20:17</li><li><a href="stop-37151.html">37151</a> - Torhout Maagdeveld 20:18</li><li><a href="stop-37143.html">37143</a> - Torhout Hof Van Engeland 20:19</li><li><a href="stop-37150.html">37150</a> - Torhout Kruispunt 20:21</li><li><a href="stop-37148.html">37148</a> - Torhout Kortemarkstraat 20:22</li><li><a href="stop-126334.html">126334</a> - Torhout Station perron 1 20:22</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4366.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

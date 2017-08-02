@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diest - Geel / Tessenderlo - 22479725</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diest - Geel / Tessenderlo - 22479725</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126875.html">126875</a> - Geel Station perron 2 16:05</li><li><a href="stop-107517.html">107517</a> - Geel Stadspark 16:08</li><li><a href="stop-109754.html">109754</a> - Geel Markt 16:10</li><li><a href="stop-127001.html">127001</a> - Geel P. Van Neylenstraat 16:12</li><li><a href="stop-109757.html">109757</a> - Geel AZ Sint-Dimpna 16:15</li><li><a href="stop-25810.html">25810</a> - Geel Diestseweg 16:16</li><li><a href="stop-109948.html">109948</a> - Geel Brukel 16:17</li><li><a href="stop-25799.html">25799</a> - Geel Seppendijk 16:18</li><li><a href="stop-127009.html">127009</a> - Winkelomheide Punt 16:19</li><li><a href="stop-97658.html">97658</a> - Winkelomheide Winkelomseheide 16:20</li><li><a href="stop-25790.html">25790</a> - Geel Djepstraat 16:21</li><li><a href="stop-110937.html">110937</a> - Geel Winkelomheide Dorp 16:22</li><li><a href="stop-25782.html">25782</a> - Geel Dennenstraat 16:23</li><li><a href="stop-25764.html">25764</a> - Geel Spikkewaverdijk 16:24</li><li><a href="stop-88094.html">88094</a> - Eindhout Kruispunt 16:26</li><li><a href="stop-126927.html">126927</a> - Eindhout Dorp 16:27</li><li><a href="stop-31211.html">31211</a> - Eindhout Oude Tramlijn 16:28</li><li><a href="stop-31209.html">31209</a> - Eindhout Meir 16:28</li><li><a href="stop-31215.html">31215</a> - Eindhout Poeleinde 16:30</li><li><a href="stop-31200.html">31200</a> - Eindhout Bergske 16:31</li><li><a href="stop-31242.html">31242</a> - Veerle Grote Laak 16:32</li><li><a href="stop-31238.html">31238</a> - Veerle Eindhoutseweg 16:33</li><li><a href="stop-31270.html">31270</a> - Veerle Zand 16:34</li><li><a href="stop-31236.html">31236</a> - Veerle Dorp 16:34</li><li><a href="stop-31253.html">31253</a> - Veerle Kerk 16:34</li><li><a href="stop-31257.html">31257</a> - Veerle Pastorijstraat 16:35</li><li><a href="stop-31264.html">31264</a> - Veerle Rode Laakstraat 16:37</li><li><a href="stop-31246.html">31246</a> - Veerle Heieinde 16:39</li><li><a href="stop-31244.html">31244</a> - Veerle Heide 16:40</li><li><a href="stop-31232.html">31232</a> - Veerle Boshuis 16:41</li><li><a href="stop-125516.html">125516</a> - Veerle Weg naar Averbode 16:43</li><li><a href="stop-34335.html">34335</a> - Tessenderlo Turnhoutsebaan 16:44</li><li><a href="stop-34226.html">34226</a> - Tessenderlo Heggenbossenweg 16:48</li><li><a href="stop-34167.html">34167</a> - Okselaar Achterheide 16:49</li><li><a href="stop-33789.html">33789</a> - Okselaar Tessenderlosebaan 16:50</li><li><a href="stop-33783.html">33783</a> - Okselaar Brabantsebaan 16:51</li><li><a href="stop-33791.html">33791</a> - Okselaar Reppelsebaan 16:52</li><li><a href="stop-16642.html">16642</a> - Molenstede Herrestraat 16:53</li><li><a href="stop-16063.html">16063</a> - Molenstede Dorp 16:55</li><li><a href="stop-27977.html">27977</a> - Molenstede Kerkhof 16:56</li><li><a href="stop-125456.html">125456</a> - Molenstede Weg naar Veerle 16:57</li><li><a href="stop-127875.html">127875</a> - Molenstede Nieuwe Steenweg 17:00</li><li><a href="stop-14510.html">14510</a> - Diest Fort Leopoldlaan 17:01</li><li><a href="stop-27960.html">27960</a> - Diest Station perron 1 17:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4517.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

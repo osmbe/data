@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Leuven - Boutersem - Tienen - 22786453</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Leuven - Boutersem - Tienen - 22786453</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-9946.html">9946</a> - Boutersem Rijkswacht 06:42</li><li><a href="stop-9944.html">9944</a> - Boutersem Stationsstraat 06:43</li><li><a href="stop-95587.html">95587</a> - Roosbeek Groenstraat 06:44</li><li><a href="stop-95585.html">95585</a> - Roosbeek Oude Baan 06:45</li><li><a href="stop-95589.html">95589</a> - Roosbeek Statiestr. Roosbeek 06:46</li><li><a href="stop-95583.html">95583</a> - Roosbeek Berg 06:46</li><li><a href="stop-13783.html">13783</a> - Kumtich Castel Pic 06:47</li><li><a href="stop-13791.html">13791</a> - Kumtich Groenhofstraat 06:48</li><li><a href="stop-13785.html">13785</a> - Kumtich Kumtichstraat 06:49</li><li><a href="stop-13790.html">13790</a> - Kumtich Centrum 06:50</li><li><a href="stop-16663.html">16663</a> - Kumtich Vondelstraat 06:51</li><li><a href="stop-13781.html">13781</a> - Kumtich Vogelzang 06:52</li><li><a href="stop-13787.html">13787</a> - Tienen Bowling 06:53</li><li><a href="stop-13865.html">13865</a> - Tienen Bareelken 06:54</li><li><a href="stop-13869.html">13869</a> - Tienen De Brouwerstraat 06:54</li><li><a href="stop-13922.html">13922</a> - Tienen Zijdelingsestraat 06:55</li><li><a href="stop-13908.html">13908</a> - Tienen Station Perron 3 06:56</li><li><a href="stop-13862.html">13862</a> - Tienen 4de Lansierslaan 06:57</li><li><a href="stop-13878.html">13878</a> - Tienen Grote Markt 06:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2262.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

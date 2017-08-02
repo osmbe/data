@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Leuven - Bertem - Leefdaal - Tervuren - 22790001</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Leuven - Bertem - Leefdaal - Tervuren - 22790001</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-110165.html">110165</a> - Leuven Station Perron 14 07:15</li><li><a href="stop-16800.html">16800</a> - Leuven Provinciehuis 07:17</li><li><a href="stop-94825.html">94825</a> - Leuven Tiensepoort 07:18</li><li><a href="stop-12251.html">12251</a> - Leuven Parkpoort 07:20</li><li><a href="stop-94831.html">94831</a> - Leuven Naamsepoort 07:21</li><li><a href="stop-127208.html">127208</a> - Leuven Sportcentrum 07:22</li><li><a href="stop-128827.html">128827</a> - Leuven Ijzerenmolenstraat 07:23</li><li><a href="stop-94832.html">94832</a> - Leuven Tervuursepoort 07:25</li><li><a href="stop-98795.html">98795</a> - Heverlee Egenhovenweg 07:26</li><li><a href="stop-12048.html">12048</a> - Heverlee Berg Tabor 07:27</li><li><a href="stop-15528.html">15528</a> - Heverlee Berg Tabor 07:27</li><li><a href="stop-12073.html">12073</a> - Heverlee Ter Elst 07:28</li><li><a href="stop-14796.html">14796</a> - Heverlee Populierenlaan 07:29</li><li><a href="stop-12137.html">12137</a> - Heverlee Groeneweg 07:29</li><li><a href="stop-12115.html">12115</a> - Heverlee Veldstraat 07:30</li><li><a href="stop-12064.html">12064</a> - Heverlee Egenhoven 07:31</li><li><a href="stop-14913.html">14913</a> - Heverlee Toverberg 07:32</li><li><a href="stop-9744.html">9744</a> - Heverlee Doleeg 07:33</li><li><a href="stop-9749.html">9749</a> - Bertem Rond-Punt 07:34</li><li><a href="stop-15561.html">15561</a> - Bertem Ginisstraat 07:34</li><li><a href="stop-9752.html">9752</a> - Bertem Gerzenstraat 07:35</li><li><a href="stop-9746.html">9746</a> - Bertem Dottermansstraat 07:36</li><li><a href="stop-14686.html">14686</a> - Bertem Blokkestraat 07:37</li><li><a href="stop-9795.html">9795</a> - Leefdaal Vanhoofstraat 07:38</li><li><a href="stop-9790.html">9790</a> - Leefdaal Kuiperberg 07:39</li><li><a href="stop-9773.html">9773</a> - Leefdaal Biesstraat 07:40</li><li><a href="stop-9799.html">9799</a> - Leefdaal Voerhoekstraat 07:41</li><li><a href="stop-9797.html">9797</a> - Leefdaal Veiling 07:42</li><li><a href="stop-43371.html">43371</a> - Leefdaal Boskee 07:42</li><li><a href="stop-9786.html">9786</a> - Leefdaal Kasteel 07:44</li><li><a href="stop-9793.html">9793</a> - Leefdaal Oud Station 07:45</li><li><a href="stop-9784.html">9784</a> - Leefdaal Hammeveld 07:46</li><li><a href="stop-13632.html">13632</a> - Vossem Coigesteenweg 07:48</li><li><a href="stop-13648.html">13648</a> - Vossem Stationsstraat 07:50</li><li><a href="stop-13624.html">13624</a> - Tervuren Vier Winden 07:53</li><li><a href="stop-13601.html">13601</a> - Tervuren Gordaallaan 07:54</li><li><a href="stop-13611.html">13611</a> - Tervuren O.Leuvense Baan 07:55</li><li><a href="stop-16235.html">16235</a> - Tervuren Terminus tram 44 07:57</li><li><a href="stop-13618.html">13618</a> - Tervuren G.I.T.O. 08:01</li><li><a href="stop-16896.html">16896</a> - Tervuren Atheneum 08:02</li><li><a href="stop-15531.html">15531</a> - Tervuren H. Hartcollege 08:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2433.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

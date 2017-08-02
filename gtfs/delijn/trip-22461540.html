@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Bilzen - Maastricht/Lanaken - Rekem - 22461540</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Bilzen - Maastricht/Lanaken - Rekem - 22461540</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-110387.html">110387</a> - Rekem Daelwezeth 06:41</li><li><a href="stop-31432.html">31432</a> - Rekem Populierenlaan 06:42</li><li><a href="stop-31418.html">31418</a> - Rekem Bovenwezet 06:43</li><li><a href="stop-31398.html">31398</a> - Neerharen Steenweg 06:44</li><li><a href="stop-31406.html">31406</a> - Neerharen Verbindingslaan 06:45</li><li><a href="stop-31452.html">31452</a> - Lanaken Tournebride 06:45</li><li><a href="stop-97214.html">97214</a> - Smeermaas Maaseikersteenweg 06:47</li><li><a href="stop-97217.html">97217</a> - Smeermaas Veugenlaan 06:47</li><li><a href="stop-97211.html">97211</a> - Smeermaas Jeugdpark 06:48</li><li><a href="stop-97213.html">97213</a> - Smeermaas Kruispunt 06:48</li><li><a href="stop-97206.html">97206</a> - Smeermaas Nijverheidslaan 06:49</li><li><a href="stop-97204.html">97204</a> - Smeermaas Industrieterrein 06:50</li><li><a href="stop-31435.html">31435</a> - Lanaken Atheneum Alicebourg 06:51</li><li><a href="stop-31378.html">31378</a> - Lanaken Gemeentehuis 06:51</li><li><a href="stop-31394.html">31394</a> - Lanaken Cultureel Centrum 06:52</li><li><a href="stop-123170.html">123170</a> - Lanaken College 06:54</li><li><a href="stop-31352.html">31352</a> - Lanaken Commandant Giddelostraat 06:54</li><li><a href="stop-31371.html">31371</a> - Gellik Kruispunt Zavelstraat 06:56</li><li><a href="stop-31364.html">31364</a> - Gellik Kerk 06:57</li><li><a href="stop-87777.html">87777</a> - Gellik Kruispunt Dorpsstraat 06:58</li><li><a href="stop-27047.html">27047</a> - Eigenbilzen Berenbroek 06:59</li><li><a href="stop-27049.html">27049</a> - Eigenbilzen Brug Albertkanaal 07:00</li><li><a href="stop-27057.html">27057</a> - Eigenbilzen Litsebeekstraat 07:02</li><li><a href="stop-27061.html">27061</a> - Eigenbilzen Lochtstraat 07:02</li><li><a href="stop-27062.html">27062</a> - Eigenbilzen Molendriesstraat 07:03</li><li><a href="stop-27053.html">27053</a> - Eigenbilzen Kerk 07:04</li><li><a href="stop-27055.html">27055</a> - Eigenbilzen Kruising 07:06</li><li><a href="stop-27194.html">27194</a> - Mopertingen Mopertingenstraat 07:07</li><li><a href="stop-43883.html">43883</a> - Mopertingen Annastraat 07:09</li><li><a href="stop-43885.html">43885</a> - Waltwilder Maastrichterstraat 07:11</li><li><a href="stop-110210.html">110210</a> - Waltwilder Sint-Remigiusstraat 07:12</li><li><a href="stop-120443.html">120443</a> - Waltwilder Sportveldstraat 07:12</li><li><a href="stop-27203.html">27203</a> - Waltwilder Gabrig 07:13</li><li><a href="stop-27112.html">27112</a> - Bilzen Maastrichterpoort 07:14</li><li><a href="stop-27154.html">27154</a> - Bilzen Parklaan 07:15</li><li><a href="stop-105147.html">105147</a> - Bilzen Station perron 1 07:17</li><li><a href="stop-27105.html">27105</a> - Bilzen Hospitaal Sint-Martinus 07:18</li><li><a href="stop-43768.html">43768</a> - Hasselt Het Dorlik 07:33</li><li><a href="stop-128880.html">128880</a> - Hasselt Rijksadministratief Centrum 07:34</li><li><a href="stop-29713.html">29713</a> - Hasselt Kapermolen 07:35</li><li><a href="stop-29267.html">29267</a> - Hasselt Dusartplein 07:37</li><li><a href="stop-29356.html">29356</a> - Hasselt Molenpoort afstaphalte 07:39</li><li><a href="stop-128977.html">128977</a> - Hasselt Station perron 10 07:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5177.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

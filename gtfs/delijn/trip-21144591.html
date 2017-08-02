@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Herrmann-Debroux - Hoeilaart - Waver - 21144591</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Herrmann-Debroux - Hoeilaart - Waver - 21144591</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-92565.html">92565</a> - Waver Station 12:09</li><li><a href="stop-14060.html">14060</a> - Bierges Rue Th.Piat 12:10</li><li><a href="stop-14052.html">14052</a> - Bierges Pont Autoroute 12:11</li><li><a href="stop-14048.html">14048</a> - Bierges Eglise 12:13</li><li><a href="stop-14054.html">14054</a> - Bierges Rue de la Roche 12:14</li><li><a href="stop-14050.html">14050</a> - Bierges Point du Jour 12:15</li><li><a href="stop-14046.html">14046</a> - Bierges Chem. d Angoussart 12:16</li><li><a href="stop-14056.html">14056</a> - Bierges Rue de Wavre 12:17</li><li><a href="stop-14042.html">14042</a> - Bierges Café Francis 12:18</li><li><a href="stop-14044.html">14044</a> - Bierges Champles Cabine Electrique 12:19</li><li><a href="stop-14058.html">14058</a> - Bierges Rue des Templiers 12:21</li><li><a href="stop-13063.html">13063</a> - Rosières Eglise 12:21</li><li><a href="stop-13070.html">13070</a> - Rosières Place du Monument 12:22</li><li><a href="stop-13068.html">13068</a> - Rosières Place de la Chapelle 12:23</li><li><a href="stop-13066.html">13066</a> - Rosières Ferme Englebert 12:24</li><li><a href="stop-87422.html">87422</a> - Overijse Boslaan 12:26</li><li><a href="stop-12934.html">12934</a> - Overijse Geitenhoek 12:27</li><li><a href="stop-90886.html">90886</a> - Overijse Maleizen Kerk 12:28</li><li><a href="stop-12957.html">12957</a> - Overijse Lange Weg 12:29</li><li><a href="stop-12932.html">12932</a> - Overijse Fél. Bergiersstraat 12:30</li><li><a href="stop-12953.html">12953</a> - Overijse Koninginnelaan 12:31</li><li><a href="stop-127848.html">127848</a> - Overijse Bakenbos Linde 12:32</li><li><a href="stop-11444.html">11444</a> - Hoeilaart Veldstraat 12:33</li><li><a href="stop-11434.html">11434</a> - Hoeilaart Hoeilaartseweg 12:34</li><li><a href="stop-11438.html">11438</a> - Hoeilaart J.B.Denayerstraat 12:35</li><li><a href="stop-11416.html">11416</a> - Hoeilaart A.Rowiestraat 12:36</li><li><a href="stop-11422.html">11422</a> - Hoeilaart D. Vander Vaerenstr. 12:37</li><li><a href="stop-10111.html">10111</a> - Hoeilaart Nero 12:38</li><li><a href="stop-11439.html">11439</a> - Hoeilaart Kerk 12:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2183.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Ieper-Veurne - 22151379</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ieper-Veurne - 22151379</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-38857.html">38857</a> - Veurne Station 12:03</li><li><a href="stop-38852.html">38852</a> - Veurne Lindendreef 12:05</li><li><a href="stop-42708.html">42708</a> - Veurne Voorstad 12:06</li><li><a href="stop-42707.html">42707</a> - Veurne Technische School Sint-Idesbald 12:07</li><li><a href="stop-42702.html">42702</a> - Veurne Ziekenhuis 12:08</li><li><a href="stop-38844.html">38844</a> - Steenkerke Brug 12:11</li><li><a href="stop-38845.html">38845</a> - Steenkerke Presende 12:12</li><li><a href="stop-38990.html">38990</a> - Wulveringem Weg Naar Dorp 12:14</li><li><a href="stop-38868.html">38868</a> - Vinkem Zwart Peerd 12:15</li><li><a href="stop-38381.html">38381</a> - Alveringem Nieuwe Herberg 12:16</li><li><a href="stop-38835.html">38835</a> - Sint-Rijkers Kruisstraat 12:18</li><li><a href="stop-38486.html">38486</a> - Hoogstade Weg Op Sint-Rijkers 12:18</li><li><a href="stop-38483.html">38483</a> - Hoogstade Dorp 12:19</li><li><a href="stop-38752.html">38752</a> - Pollinkhove Gapaard 12:20</li><li><a href="stop-38485.html">38485</a> - Hoogstade Rustoord Clep 12:21</li><li><a href="stop-104831.html">104831</a> - Hoogstade Linde 12:22</li><li><a href="stop-38707.html">38707</a> - Oostvleteren Elzendamme 12:24</li><li><a href="stop-38709.html">38709</a> - Oostvleteren Kapelhof 12:24</li><li><a href="stop-38705.html">38705</a> - Oostvleteren De Lelie 12:25</li><li><a href="stop-38712.html">38712</a> - Oostvleteren Station 12:27</li><li><a href="stop-38704.html">38704</a> - Oostvleteren Comte De Flandre 12:28</li><li><a href="stop-38710.html">38710</a> - Oostvleteren Lion Belge 12:30</li><li><a href="stop-38965.html">38965</a> - Woesten Meiboom 12:32</li><li><a href="stop-38964.html">38964</a> - Woesten Far-West 12:32</li><li><a href="stop-38967.html">38967</a> - Woesten Stadion 12:33</li><li><a href="stop-38962.html">38962</a> - Woesten Dorp 12:34</li><li><a href="stop-38963.html">38963</a> - Woesten Elverdingestraat Nr.5 12:35</li><li><a href="stop-38450.html">38450</a> - Elverdinge Leegte 12:35</li><li><a href="stop-38451.html">38451</a> - Elverdinge Wandeling 12:37</li><li><a href="stop-94473.html">94473</a> - Elverdinge Kemmelbeek 12:37</li><li><a href="stop-38449.html">38449</a> - Elverdinge Kerk 12:37</li><li><a href="stop-38446.html">38446</a> - Elverdinge Brouwerij 12:38</li><li><a href="stop-98141.html">98141</a> - Brielen De Krikke 12:39</li><li><a href="stop-98144.html">98144</a> - Brielen Smidse 12:40</li><li><a href="stop-98142.html">98142</a> - Brielen Dorp 12:41</li><li><a href="stop-98143.html">98143</a> - Brielen Omloopstraat 12:42</li><li><a href="stop-104778.html">104778</a> - Ieper Hoekje 12:45</li><li><a href="stop-104782.html">104782</a> - Ieper Stelplaats 12:46</li><li><a href="stop-126390.html">126390</a> - Ieper Station perron 3 12:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4172.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

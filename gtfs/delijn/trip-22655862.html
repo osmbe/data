@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Avondlijn Oostende-Gistel - 22655862</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Avondlijn Oostende-Gistel - 22655862</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-125678.html">125678</a> - Oostende Station perron 9 21:33</li><li><a href="stop-127267.html">127267</a> - Oostende Marie Joseplein perron 3 21:37</li><li><a href="stop-97928.html">97928</a> - Stene Esperanto 21:41</li><li><a href="stop-97931.html">97931</a> - Stene Top Center 21:42</li><li><a href="stop-99240.html">99240</a> - Oostende Rolbaanstraat 21:42</li><li><a href="stop-36154.html">36154</a> - Leffinge Noordhoek 21:43</li><li><a href="stop-104623.html">104623</a> - Leffinge Molenhuis 21:44</li><li><a href="stop-36432.html">36432</a> - Snaaskerke Brug 21:46</li><li><a href="stop-36347.html">36347</a> - Snaaskerke Zwarte Weg 21:49</li><li><a href="stop-36344.html">36344</a> - Snaaskerke Oprit 21:49</li><li><a href="stop-36346.html">36346</a> - Snaaskerke Vaartstraat 21:52</li><li><a href="stop-36342.html">36342</a> - Snaaskerke Kerk 21:53</li><li><a href="stop-36345.html">36345</a> - Snaaskerke Station 21:54</li><li><a href="stop-36343.html">36343</a> - Snaaskerke Lithobeton 21:54</li><li><a href="stop-36341.html">36341</a> - Snaaskerke Hagebrug 21:56</li><li><a href="stop-36446.html">36446</a> - Gistel Wittebrug 21:57</li><li><a href="stop-36070.html">36070</a> - Gistel Sporthal 21:58</li><li><a href="stop-40248.html">40248</a> - Gistel Dageraad 22:01</li><li><a href="stop-40254.html">40254</a> - Gistel Oude Post 22:02</li><li><a href="stop-93315.html">93315</a> - Gistel Markt 22:03</li><li><a href="stop-40249.html">40249</a> - Gistel Het Schoonhof 22:03</li><li><a href="stop-36065.html">36065</a> - Gistel Koolaerd 22:05</li><li><a href="stop-123506.html">123506</a> - Gistel Kruiskalsijde 22:07</li><li><a href="stop-104899.html">104899</a> - Gistel Stadhuis 22:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4391.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hoboken - Wilrijk - Merksem - Ekeren - 21528332</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hoboken - Wilrijk - Merksem - Ekeren - 21528332</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108766.html">108766</a> - Merksem Volkstuinlei 24:53</li><li><a href="stop-109529.html">109529</a> - Merksem Kwadevelden 24:54</li><li><a href="stop-108047.html">108047</a> - Merksem Laaglandlaan 24:54</li><li><a href="stop-107907.html">107907</a> - Merksem J. Palfijnziekenhuis 24:55</li><li><a href="stop-108039.html">108039</a> - Merksem Kroonplein 24:57</li><li><a href="stop-107607.html">107607</a> - Merksem Oudebareel 24:59</li><li><a href="stop-108433.html">108433</a> - Merksem Sint-Bartholomeusstraat 25:01</li><li><a href="stop-93268.html">93268</a> - Deurne Deurnebaan Albertkanaal 25:03</li><li><a href="stop-108053.html">108053</a> - Deurne Lakborslei 25:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2795.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

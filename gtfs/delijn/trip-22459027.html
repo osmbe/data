@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Meeuwen - Grote Brogel - Bocholt - 22459027</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Meeuwen - Grote Brogel - Bocholt - 22459027</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-30630.html">30630</a> - Helchteren Technische School 15:35</li><li><a href="stop-30603.html">30603</a> - Helchteren Kruispunt 15:38</li><li><a href="stop-30607.html">30607</a> - Helchteren 8 Septemberlaan 15:39</li><li><a href="stop-30618.html">30618</a> - Helchteren Kazerne 2a 15:39</li><li><a href="stop-30612.html">30612</a> - Helchteren Eynderweg 15:41</li><li><a href="stop-30626.html">30626</a> - Helchteren Sonnis 15:42</li><li><a href="stop-30623.html">30623</a> - Helchteren Oude Postbaan 15:43</li><li><a href="stop-125559.html">125559</a> - Peer Bovenlinde 15:45</li><li><a href="stop-33546.html">33546</a> - Peer Wauberg 15:47</li><li><a href="stop-97478.html">97478</a> - Wauberg School 15:48</li><li><a href="stop-97476.html">97476</a> - Wauberg Overes 15:48</li><li><a href="stop-32790.html">32790</a> - Meeuwen Meeuweneinde 15:50</li><li><a href="stop-105310.html">105310</a> - Meeuwen Wilgenstraat 15:51</li><li><a href="stop-110434.html">110434</a> - Meeuwen Broekkant 15:52</li><li><a href="stop-32798.html">32798</a> - Meeuwen Weg naar Helchteren 15:53</li><li><a href="stop-32753.html">32753</a> - Meeuwen Bergstraat 15:54</li><li><a href="stop-32785.html">32785</a> - Meeuwen Lierstraat 15:55</li><li><a href="stop-32854.html">32854</a> - Meeuwen Luttelmeeuwen 15:56</li><li><a href="stop-32711.html">32711</a> - Ellikom Ellikommerbaan 15:57</li><li><a href="stop-32717.html">32717</a> - Ellikom Hellestraat 15:58</li><li><a href="stop-32719.html">32719</a> - Ellikom Kerk 15:59</li><li><a href="stop-105299.html">105299</a> - Ellikom Schoolstraat 16:00</li><li><a href="stop-32723.html">32723</a> - Ellikom Schutterslaan 16:01</li><li><a href="stop-32714.html">32714</a> - Ellikom Grote Baan 16:02</li><li><a href="stop-93812.html">93812</a> - Grote-Brogel Laarheide 16:04</li><li><a href="stop-89661.html">89661</a> - Grote-Brogel Bedrijfsstraat 16:05</li><li><a href="stop-33455.html">33455</a> - Grote-Brogel Laarderweg 16:06</li><li><a href="stop-33606.html">33606</a> - Grote-Brogel Dorpsstraat 16:07</li><li><a href="stop-33479.html">33479</a> - Grote-Brogel Kerk 16:08</li><li><a href="stop-110464.html">110464</a> - Grote-Brogel Kiosk 16:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4492.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

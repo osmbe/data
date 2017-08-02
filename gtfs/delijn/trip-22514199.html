@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Herentals-Hulshout-Westmeerbeek-Ramsel-Aarschot - 22514199</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Herentals-Hulshout-Westmeerbeek-Ramsel-Aarschot - 22514199</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109865.html">109865</a> - Aarschot Station perron 1 07:43</li><li><a href="stop-94823.html">94823</a> - Aarschot Sancta Maria 07:44</li><li><a href="stop-109912.html">109912</a> - Aarschot Kerk 07:45</li><li><a href="stop-9323.html">9323</a> - Aarschot Moederhuis 07:46</li><li><a href="stop-128816.html">128816</a> - Aarschot Sint-Jozefscollege 07:47</li><li><a href="stop-15898.html">15898</a> - Aarschot Heilaakstraat 07:48</li><li><a href="stop-128921.html">128921</a> - Aarschot Bareel 07:49</li><li><a href="stop-15894.html">15894</a> - Aarschot Lindekensstraat 07:50</li><li><a href="stop-15892.html">15892</a> - Aarschot Oude Mechelsebaan 07:52</li><li><a href="stop-25513.html">25513</a> - Ramsel Madestraat 07:53</li><li><a href="stop-25511.html">25511</a> - Ramsel Truitseinde Vandenheuvelstr. 07:54</li><li><a href="stop-25509.html">25509</a> - Ramsel Roteinde 07:56</li><li><a href="stop-25507.html">25507</a> - Ramsel Bergstraat 07:57</li><li><a href="stop-109863.html">109863</a> - Ramsel Kerk Westmeerbeeksestwg. 07:59</li><li><a href="stop-25503.html">25503</a> - Ramsel Visvijverstraat 08:00</li><li><a href="stop-25501.html">25501</a> - Ramsel Harmoniestraat 08:01</li><li><a href="stop-25499.html">25499</a> - Ramsel Vosdonken 08:02</li><li><a href="stop-25777.html">25777</a> - Westmeerbeek Veldstraat 08:03</li><li><a href="stop-25497.html">25497</a> - Westmeerbeek Beekstraat 08:04</li><li><a href="stop-107594.html">107594</a> - Westmeerbeek Kerk Ramselsesteenweg 08:05</li><li><a href="stop-109590.html">109590</a> - Westmeerbeek Kerk Netestraat 08:05</li><li><a href="stop-95503.html">95503</a> - Heultje Netestraat 08:06</li><li><a href="stop-109593.html">109593</a> - Heultje Hoog Heultje 08:07</li><li><a href="stop-25548.html">25548</a> - Hulshout Station 08:09</li><li><a href="stop-109873.html">109873</a> - Hulshout Heibergstraat 08:10</li><li><a href="stop-109871.html">109871</a> - Hulshout Hooistraat 08:11</li><li><a href="stop-107586.html">107586</a> - Hulshout Kapelstraat 08:12</li><li><a href="stop-24548.html">24548</a> - Hulshout Gemeentehuis 08:13</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2984.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

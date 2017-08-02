@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Mechelen - Londerzeel - 22772581</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mechelen - Londerzeel - 22772581</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128775.html">128775</a> - Londerzeel Station 10:09</li><li><a href="stop-12479.html">12479</a> - Londerzeel Chrysantenlaan 10:10</li><li><a href="stop-15645.html">15645</a> - Londerzeel Lode Meeusplein 10:11</li><li><a href="stop-12485.html">12485</a> - Londerzeel Brandweer 10:12</li><li><a href="stop-12506.html">12506</a> - Londerzeel Sint-Christoffelstraat 10:12</li><li><a href="stop-12473.html">12473</a> - Londerzeel Autosnelweg 10:13</li><li><a href="stop-12481.html">12481</a> - Londerzeel Berg 10:15</li><li><a href="stop-16214.html">16214</a> - Londerzeel Sporthuis 10:16</li><li><a href="stop-11737.html">11737</a> - Ramsdonk Hagelboom 10:16</li><li><a href="stop-11735.html">11735</a> - Ramsdonk Grotstraat 10:17</li><li><a href="stop-11733.html">11733</a> - Ramsdonk Dreef 10:18</li><li><a href="stop-11712.html">11712</a> - Kapelle-op-den-Bos Mechelbaan 67 10:20</li><li><a href="stop-127043.html">127043</a> - Kapelle-op-den-Bos Kerk 10:21</li><li><a href="stop-14448.html">14448</a> - Kapelle-op-den-Bos Oudstrijders 10:22</li><li><a href="stop-127047.html">127047</a> - Kapelle-op-den-Bos Station 10:23</li><li><a href="stop-127045.html">127045</a> - Kapelle-op-den-Bos Larockstraat 10:24</li><li><a href="stop-11704.html">11704</a> - Kapelle-op-den-Bos Echelputstraat 10:25</li><li><a href="stop-14372.html">14372</a> - Leest Biststraat 10:25</li><li><a href="stop-14370.html">14370</a> - Leest Spoorwegtunnel 10:27</li><li><a href="stop-14368.html">14368</a> - Hombeek Bosstraat 10:28</li><li><a href="stop-14366.html">14366</a> - Hombeek Schuurken 10:29</li><li><a href="stop-14364.html">14364</a> - Hombeek Plein 10:30</li><li><a href="stop-14362.html">14362</a> - Hombeek Huis ten Halve 10:31</li><li><a href="stop-14360.html">14360</a> - Hombeek Kattestraat 10:32</li><li><a href="stop-14358.html">14358</a> - Hombeek Kapelleke 10:33</li><li><a href="stop-14356.html">14356</a> - Hombeek Station 10:34</li><li><a href="stop-25902.html">25902</a> - Hombeek Dorp 10:35</li><li><a href="stop-25899.html">25899</a> - Mechelen Procter & Gamble 10:38</li><li><a href="stop-91120.html">91120</a> - Mechelen Fortuinstraat 10:40</li><li><a href="stop-91122.html">91122</a> - Mechelen Dodoens 10:41</li><li><a href="stop-126972.html">126972</a> - Mechelen Brusselpoort 10:42</li><li><a href="stop-109099.html">109099</a> - Mechelen Oude Brusselsestraat 10:44</li><li><a href="stop-14411.html">14411</a> - Mechelen Station perron 18 10:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2016.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Marktbus Hakendover - Tienen - 22793629</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Marktbus Hakendover - Tienen - 22793629</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-15401.html">15401</a> - Hakendover Oude Heerweg 08:30</li><li><a href="stop-15402.html">15402</a> - Hakendover Hollestraat 08:31</li><li><a href="stop-15404.html">15404</a> - Hakendover Breemdstraat 08:32</li><li><a href="stop-15406.html">15406</a> - Hakendover Bosveldstraat 52 08:32</li><li><a href="stop-15408.html">15408</a> - Hakendover Van Audenhovenstraat 71 08:33</li><li><a href="stop-15412.html">15412</a> - Hakendover Overweg 08:34</li><li><a href="stop-15414.html">15414</a> - Tienen Oostelijke Ring 08:35</li><li><a href="stop-15416.html">15416</a> - Tienen Grimde Kerk 08:37</li><li><a href="stop-13915.html">13915</a> - Tienen Suikerraffinaderij 08:38</li><li><a href="stop-13875.html">13875</a> - Tienen Goossensvest 08:40</li><li><a href="stop-13906.html">13906</a> - Tienen Station Perron 4 08:43</li><li><a href="stop-13862.html">13862</a> - Tienen 4de Lansierslaan 08:45</li><li><a href="stop-13878.html">13878</a> - Tienen Grote Markt 08:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2516.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

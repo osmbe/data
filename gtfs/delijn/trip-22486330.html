@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Universiteit - Genk - Maaseik/Maastricht - 22486330</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Universiteit - Genk - Maaseik/Maastricht - 22486330</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-31452.html">31452</a> - Lanaken Tournebride 06:42</li><li><a href="stop-97214.html">97214</a> - Smeermaas Maaseikersteenweg 06:44</li><li><a href="stop-97217.html">97217</a> - Smeermaas Veugenlaan 06:45</li><li><a href="stop-97213.html">97213</a> - Smeermaas Kruispunt 06:46</li><li><a href="stop-97206.html">97206</a> - Smeermaas Nijverheidslaan 06:47</li><li><a href="stop-97204.html">97204</a> - Smeermaas Industrieterrein 06:48</li><li><a href="stop-31392.html">31392</a> - Lanaken Cultureel Centrum 06:50</li><li><a href="stop-125519.html">125519</a> - Lanaken Gemeentehuis 06:52</li><li><a href="stop-31436.html">31436</a> - Lanaken Atheneum Alicebourg 06:53</li><li><a href="stop-31481.html">31481</a> - Lanaken Wijngaardstraat 06:55</li><li><a href="stop-123052.html">123052</a> - Lanaken Kapel 06:56</li><li><a href="stop-31353.html">31353</a> - Lanaken Eikelenweg 06:57</li><li><a href="stop-31381.html">31381</a> - Lanaken Heide 06:57</li><li><a href="stop-31447.html">31447</a> - Lanaken Sparrendal 06:58</li><li><a href="stop-123239.html">123239</a> - Lanaken ZOL Campus Sint-Barbara 07:01</li><li><a href="stop-31408.html">31408</a> - Lanaken Oud Kantoorstraat 07:03</li><li><a href="stop-35312.html">35312</a> - Zutendaal Bessemer 07:04</li><li><a href="stop-35296.html">35296</a> - Zutendaal Trichterweg 07:05</li><li><a href="stop-35272.html">35272</a> - Zutendaal Gewaai 07:07</li><li><a href="stop-35262.html">35262</a> - Zutendaal 15 Augustusstraat 07:08</li><li><a href="stop-88494.html">88494</a> - Zutendaal Kerk 07:09</li><li><a href="stop-35274.html">35274</a> - Zutendaal Hoogstraat 07:10</li><li><a href="stop-35298.html">35298</a> - Zutendaal Weg naar As 07:11</li><li><a href="stop-35282.html">35282</a> - Zutendaal Papendaal 07:12</li><li><a href="stop-28580.html">28580</a> - Genk Terboekt 07:14</li><li><a href="stop-28375.html">28375</a> - Genk Lijkweg 07:15</li><li><a href="stop-28495.html">28495</a> - Genk Kamerlo 07:16</li><li><a href="stop-28621.html">28621</a> - Genk Weg naar Sledderlo 07:17</li><li><a href="stop-28743.html">28743</a> - Genk Kerkhof 07:17</li><li><a href="stop-28584.html">28584</a> - Genk Vlakveld 07:18</li><li><a href="stop-28386.html">28386</a> - Genk Berglaan 07:19</li><li><a href="stop-88467.html">88467</a> - Genk Stadhuis 07:19</li><li><a href="stop-125473.html">125473</a> - Genk Station perron 12 07:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4983.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

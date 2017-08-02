@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Vilvoorde - Zaventem - 22792032</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Vilvoorde - Zaventem - 22792032</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-14189.html">14189</a> - Zaventem Luchthaven Perron A 06:50</li><li><a href="stop-17026.html">17026</a> - Zaventem Technics Noord 06:52</li><li><a href="stop-43266.html">43266</a> - Zaventem Gebouw 9 06:53</li><li><a href="stop-14185.html">14185</a> - Zaventem Olmenstraat 06:55</li><li><a href="stop-98473.html">98473</a> - Zaventem Da Vinci 06:56</li><li><a href="stop-17028.html">17028</a> - Zaventem Maalbeekweg 06:57</li><li><a href="stop-17164.html">17164</a> - Zaventem Hoogstraat 06:58</li><li><a href="stop-14176.html">14176</a> - Zaventem Henneau/Excelsior 07:00</li><li><a href="stop-14191.html">14191</a> - Zaventem Minerva 07:01</li><li><a href="stop-16370.html">16370</a> - Diegem Grensstraat 07:01</li><li><a href="stop-12660.html">12660</a> - Diegem Kouterveld 07:02</li><li><a href="stop-12654.html">12654</a> - Diegem Kennedy 07:03</li><li><a href="stop-12646.html">12646</a> - Diegem De Kleetlaan 07:03</li><li><a href="stop-93382.html">93382</a> - Diegem Mommaerts 07:04</li><li><a href="stop-17131.html">17131</a> - Diegem Woluwelaan 07:06</li><li><a href="stop-87971.html">87971</a> - Machelen Makro 07:11</li><li><a href="stop-127953.html">127953</a> - Vilvoorde Station Perron 2 07:13</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2492.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

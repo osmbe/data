@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tongeren - Val-Meer - Kanne - Vroenhoven - 22479819</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tongeren - Val-Meer - Kanne - Vroenhoven - 22479819</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-34537.html">34537</a> - Tongeren Legioenenlaan 12:06</li><li><a href="stop-34612.html">34612</a> - Tongeren Rode Kruislaan 12:07</li><li><a href="stop-34575.html">34575</a> - Tongeren TIO 12:08</li><li><a href="stop-91238.html">91238</a> - Tongeren Sint-Truiderpoort 12:10</li><li><a href="stop-34447.html">34447</a> - Tongeren Bilzerpoort 12:12</li><li><a href="stop-93475.html">93475</a> - Tongeren Koemarkt 12:13</li><li><a href="stop-88863.html">88863</a> - Tongeren Station 12:14</li><li><a href="stop-34604.html">34604</a> - Tongeren Rijkswacht 12:17</li><li><a href="stop-34473.html">34473</a> - Tongeren Hommelenberg 12:18</li><li><a href="stop-34443.html">34443</a> - Berg Molenweg 12:19</li><li><a href="stop-34446.html">34446</a> - Berg Viseweg 12:19</li><li><a href="stop-34505.html">34505</a> - Tongeren Ketsingen 12:20</li><li><a href="stop-120460.html">120460</a> - Tongeren Industrie Oost 12:21</li><li><a href="stop-33690.html">33690</a> - Millen Weg naar Genoelselderen 12:22</li><li><a href="stop-91070.html">91070</a> - Millen Steenweg 12:23</li><li><a href="stop-33688.html">33688</a> - Millen Voetbalveld 12:24</li><li><a href="stop-33675.html">33675</a> - Millen Genendries 12:25</li><li><a href="stop-33687.html">33687</a> - Millen Trinellestraat 12:26</li><li><a href="stop-123147.html">123147</a> - Millen Sluizerweg 12:26</li><li><a href="stop-33678.html">33678</a> - Millen Langstraat 12:27</li><li><a href="stop-33700.html">33700</a> - Val-Meer Merestraat 12:29</li><li><a href="stop-123253.html">123253</a> - Val-Meer Hoogstraat 12:30</li><li><a href="stop-94690.html">94690</a> - Val-Meer Bergstraat 12:31</li><li><a href="stop-33702.html">33702</a> - Val-Meer Haselinde 12:32</li><li><a href="stop-33609.html">33609</a> - Bolder Bolderstraat 12:33</li><li><a href="stop-33615.html">33615</a> - Bolder Hoeve de Mean 12:34</li><li><a href="stop-33614.html">33614</a> - Bolder Kleinveldstraat 12:35</li><li><a href="stop-33611.html">33611</a> - Bolder Dorp 12:35</li><li><a href="stop-33762.html">33762</a> - Zichen Kerk 12:36</li><li><a href="stop-33764.html">33764</a> - Zichen Mennestraat 12:37</li><li><a href="stop-35671.html">35671</a> - Zussen Weg naar Zussen 12:37</li><li><a href="stop-33768.html">33768</a> - Zussen Misweg 12:38</li><li><a href="stop-35625.html">35625</a> - Zussen Hennestraat 12:38</li><li><a href="stop-35674.html">35674</a> - Zussen Burchtstraat 12:39</li><li><a href="stop-33761.html">33761</a> - Zichen Visesteenweg 12:39</li><li><a href="stop-33757.html">33757</a> - Zichen Apotheek 12:40</li><li><a href="stop-33620.html">33620</a> - Zichen Weg naar Eben-Emael 12:41</li><li><a href="stop-33617.html">33617</a> - Riemst Vroenhovenweg 12:41</li><li><a href="stop-43860.html">43860</a> - Riemst Weg naar Heukelom 12:42</li><li><a href="stop-97867.html">97867</a> - Heukelom Toekomststraat 12:43</li><li><a href="stop-97494.html">97494</a> - Heukelom Dorp 12:44</li><li><a href="stop-97498.html">97498</a> - Heukelom Holstraat 12:45</li><li><a href="stop-97496.html">97496</a> - Heukelom Heukelommerweg 12:45</li><li><a href="stop-33722.html">33722</a> - Vroenhoven Busstation perron 2 12:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4949.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

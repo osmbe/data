@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent Rabot</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Gent Rabot</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-20723528.html">20723528</a> - 20723528 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723530.html">20723530</a> - 20723530 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723531.html">20723531</a> - 20723531 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723533.html">20723533</a> - 20723533 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723534.html">20723534</a> - 20723534 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723536.html">20723536</a> - 20723536 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723537.html">20723537</a> - 20723537 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723539.html">20723539</a> - 20723539 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723540.html">20723540</a> - 20723540 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723542.html">20723542</a> - 20723542 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723548.html">20723548</a> - 20723548 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723550.html">20723550</a> - 20723550 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723551.html">20723551</a> - 20723551 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723553.html">20723553</a> - 20723553 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723554.html">20723554</a> - 20723554 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723556.html">20723556</a> - 20723556 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723557.html">20723557</a> - 20723557 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723559.html">20723559</a> - 20723559 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723560.html">20723560</a> - 20723560 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723562.html">20723562</a> - 20723562 - Gent Sint-Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723564.html">20723564</a> - 20723564 - Gent Sint Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723566.html">20723566</a> - 20723566 - Gent Sint Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723568.html">20723568</a> - 20723568 - Gent Sint Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723570.html">20723570</a> - 20723570 - Gent Sint Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723572.html">20723572</a> - 20723572 - Gent Sint Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723574.html">20723574</a> - 20723574 - Gent Sint Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723576.html">20723576</a> - 20723576 - Gent Sint Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723578.html">20723578</a> - 20723578 - Gent Sint Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723580.html">20723580</a> - 20723580 - Gent Sint Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723582.html">20723582</a> - 20723582 - Gent Sint Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723584.html">20723584</a> - 20723584 - Gent Sint Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723586.html">20723586</a> - 20723586 - Gent Sint Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723588.html">20723588</a> - 20723588 - Gent Sint Pietersstation - Gentbrugge Moscou</li><li><a href="trip-20723590.html">20723590</a> - 20723590 - Gent Sint Pietersstation - Gentbrugge Moscou</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([51.0599703323443, 3.71185873476459], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([51.0599703323443, 3.71185873476459]).addTo(map);
+    </script>
+</body>
+
+</html>

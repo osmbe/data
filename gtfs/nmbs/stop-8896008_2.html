@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Kortrijk</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Kortrijk</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-IC1272339201.html">IC1272339201</a> - IC1272339201 - Deinze - Kortrijk</li><li><a href="trip-IC1272439211.html">IC1272439211</a> - IC1272439211 - Deinze - Kortrijk</li><li><a href="trip-IC1272736601.html">IC1272736601</a> - IC1272736601 - Poperinge - Deinze</li><li><a href="trip-IC1272836611.html">IC1272836611</a> - IC1272836611 - Poperinge - Deinze</li><li><a href="trip-IC1272936621.html">IC1272936621</a> - IC1272936621 - Poperinge - Deinze</li><li><a href="trip-IC1273036631.html">IC1273036631</a> - IC1273036631 - Poperinge - Deinze</li><li><a href="trip-IC1273136641.html">IC1273136641</a> - IC1273136641 - Poperinge - Deinze</li><li><a href="trip-IC1273236651.html">IC1273236651</a> - IC1273236651 - Poperinge - Deinze</li><li><a href="trip-IC1273336661.html">IC1273336661</a> - IC1273336661 - Poperinge - Deinze</li><li><a href="trip-IC1273436671.html">IC1273436671</a> - IC1273436671 - Poperinge - Deinze</li><li><a href="trip-IC1273536681.html">IC1273536681</a> - IC1273536681 - Poperinge - Deinze</li><li><a href="trip-IC1273636691.html">IC1273636691</a> - IC1273636691 - Poperinge - Deinze</li><li><a href="trip-IC1273736701.html">IC1273736701</a> - IC1273736701 - Poperinge - Deinze</li><li><a href="trip-IC1273836711.html">IC1273836711</a> - IC1273836711 - Poperinge - Deinze</li><li><a href="trip-IC1273936721.html">IC1273936721</a> - IC1273936721 - Poperinge - Deinze</li><li><a href="trip-IC1274036731.html">IC1274036731</a> - IC1274036731 - Poperinge - Deinze</li><li><a href="trip-IC1274136741.html">IC1274136741</a> - IC1274136741 - Poperinge - Deinze</li><li><a href="trip-IC1274236751.html">IC1274236751</a> - IC1274236751 - Poperinge - Deinze</li><li><a href="trip-IC1274336761.html">IC1274336761</a> - IC1274336761 - Poperinge - Deinze</li><li><a href="trip-IC234211471.html">IC234211471</a> - IC234211471 - Brussels Airport - Zaventem - Kortrijk</li><li><a href="trip-IC234411491.html">IC234411491</a> - IC234411491 - Brussels Airport - Zaventem - Kortrijk</li><li><a href="trip-IC4055991.html">IC4055991</a> - IC4055991 - Kortrijk - Welkenraedt</li><li><a href="trip-IC4186121.html">IC4186121</a> - IC4186121 - Kortrijk - Schaarbeek</li><li><a href="trip-IC4206141.html">IC4206141</a> - IC4206141 - Kortrijk - Schaarbeek</li><li><a href="trip-IC8077561.html">IC8077561</a> - IC8077561 - Oostende - Kortrijk</li><li><a href="trip-IC8167651.html">IC8167651</a> - IC8167651 - Brugge - Kortrijk</li><li><a href="trip-IC8327781.html">IC8327781</a> - IC8327781 - Kortrijk - Brugge</li><li><a href="trip-IC8387841.html">IC8387841</a> - IC8387841 - Kortrijk - Oostende</li><li><a href="trip-IC8417871.html">IC8417871</a> - IC8417871 - Kortrijk - Brugge</li><li><a href="trip-L1272138981.html">L1272138981</a> - L1272138981 - Deinze - Poperinge</li><li><a href="trip-L1272238991.html">L1272238991</a> - L1272238991 - Deinze - Poperinge</li><li><a href="trip-L1272639001.html">L1272639001</a> - L1272639001 - Kortrijk - Deinze</li><li><a href="trip-L89339701.html">L89339701</a> - L89339701 - Gent-Sint-Pieters - Kortrijk</li><li><a href="trip-P790131721.html">P790131721</a> - P790131721 - Kortrijk - Schaarbeek</li><li><a href="trip-P790231731.html">P790231731</a> - P790231731 - Kortrijk - Schaarbeek</li><li><a href="trip-P799832151.html">P799832151</a> - P799832151 - Kortrijk - Gent-Sint-Pieters</li><li><a href="trip-P895833821.html">P895833821</a> - P895833821 - Kortrijk - Zottegem</li><li><a href="trip-P899234021.html">P899234021</a> - P899234021 - Brugge - Kortrijk</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.824506, 3.264549], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.824506, 3.264549]).addTo(map);
+    </script>
+</body>
+
+</html>

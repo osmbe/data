@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Overpelt - 22459002</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Overpelt - 22459002</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-123464.html">123464</a> - Bree Busstation Perron 2 15:53</li><li><a href="stop-27699.html">27699</a> - Bree Verloren Koststraat 15:55</li><li><a href="stop-27701.html">27701</a> - Bree Vostaert 15:56</li><li><a href="stop-27565.html">27565</a> - Bree Eetseveldstraat 15:57</li><li><a href="stop-27711.html">27711</a> - Bree Muizendijk 71 15:59</li><li><a href="stop-32726.html">32726</a> - Gruitrode Boshoven 16:00</li><li><a href="stop-110433.html">110433</a> - Gruitrode Neerhovenstraat 16:02</li><li><a href="stop-123018.html">123018</a> - Gruitrode Royerplein 16:04</li><li><a href="stop-32749.html">32749</a> - Gruitrode W/N Opoeteren I 16:05</li><li><a href="stop-32815.html">32815</a> - Neerglabbeek Weg naar Opitter 16:07</li><li><a href="stop-32807.html">32807</a> - Neerglabbeek Heyweg 16:07</li><li><a href="stop-32748.html">32748</a> - Neerglabbeek W/N Opoeteren II 16:08</li><li><a href="stop-32281.html">32281</a> - Opoeteren Pexhof 16:10</li><li><a href="stop-32216.html">32216</a> - Opoeteren Gruitrodelaan 16:11</li><li><a href="stop-32321.html">32321</a> - Opoeteren Dorp 16:12</li><li><a href="stop-32266.html">32266</a> - Opoeteren Kerkstraat 16:13</li><li><a href="stop-32268.html">32268</a> - Opoeteren Mariapark 16:14</li><li><a href="stop-97418.html">97418</a> - Louwel Weg naar Aartschouw 16:16</li><li><a href="stop-97420.html">97420</a> - Louwel Weg naar Dorne 16:17</li><li><a href="stop-97416.html">97416</a> - Louwel Kerk 16:18</li><li><a href="stop-33259.html">33259</a> - Opglabbeek Heerstraat 16:19</li><li><a href="stop-92466.html">92466</a> - Opglabbeek Lindeboomke 16:20</li><li><a href="stop-123251.html">123251</a> - Opglabbeek Bieskensveld 16:21</li><li><a href="stop-91056.html">91056</a> - Opglabbeek Dorpsplein 16:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4469.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

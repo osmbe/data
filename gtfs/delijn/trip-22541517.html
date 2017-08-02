@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brecht - Wuustwezel - Brasschaat - Antwerpen - 22541517</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brecht - Wuustwezel - Brasschaat - Antwerpen - 22541517</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108728.html">108728</a> - Wuustwezel Dorp 06:53</li><li><a href="stop-22316.html">22316</a> - Wuustwezel G. Gezellelaan 06:54</li><li><a href="stop-108731.html">108731</a> - Wuustwezel Voetbalplein 06:55</li><li><a href="stop-22321.html">22321</a> - Wuustwezel Stelplaats 06:57</li><li><a href="stop-108734.html">108734</a> - Loenhout Donkweg 06:59</li><li><a href="stop-108736.html">108736</a> - Loenhout Stwg. Neerven 07:00</li><li><a href="stop-22333.html">22333</a> - Loenhout Bareelstraat 07:01</li><li><a href="stop-22334.html">22334</a> - Loenhout Kerk 07:02</li><li><a href="stop-19839.html">19839</a> - Loenhout Begraafplaats 07:03</li><li><a href="stop-20270.html">20270</a> - Loenhout Weehagenweg 07:06</li><li><a href="stop-20212.html">20212</a> - Brecht Sint-Lenaartsebaan 07:07</li><li><a href="stop-19859.html">19859</a> - Brecht Oude Veldstraat 07:09</li><li><a href="stop-107670.html">107670</a> - Brecht Wemersweg 07:10</li><li><a href="stop-108607.html">108607</a> - Brecht Biest 07:10</li><li><a href="stop-107797.html">107797</a> - Brecht Bethovenstraat 07:15</li><li><a href="stop-107661.html">107661</a> - Brecht Station Noorderkempen per 2 07:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3680.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

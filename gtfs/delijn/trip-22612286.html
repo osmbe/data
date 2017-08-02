@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge-Jabbeke-Gistel-Oostende - 22612286</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge-Jabbeke-Gistel-Oostende - 22612286</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128945.html">128945</a> - Brugge Station perron 5 12:13</li><li><a href="stop-126316.html">126316</a> - Brugge 'T Zand perron 7 12:15</li><li><a href="stop-98039.html">98039</a> - Sint-Andries Sint-Lodewijk 12:17</li><li><a href="stop-98010.html">98010</a> - Sint-Andries Hertogen 12:19</li><li><a href="stop-100866.html">100866</a> - Sint-Andries De Klokke 12:20</li><li><a href="stop-98074.html">98074</a> - Sint-Andries Farao 12:21</li><li><a href="stop-98073.html">98073</a> - Sint-Andries Hemelvaart 12:21</li><li><a href="stop-98017.html">98017</a> - Sint-Andries De Nieulant 12:23</li><li><a href="stop-98012.html">98012</a> - Sint-Andries Boeverbos 12:24</li><li><a href="stop-98026.html">98026</a> - Sint-Andries Kerk 12:25</li><li><a href="stop-98032.html">98032</a> - Sint-Andries Molendorp 12:26</li><li><a href="stop-100850.html">100850</a> - Sint-Andries Cosy-Corner 12:26</li><li><a href="stop-37166.html">37166</a> - Varsenare De Manlaan 12:27</li><li><a href="stop-37170.html">37170</a> - Varsenare Zeeweg 12:28</li><li><a href="stop-37167.html">37167</a> - Varsenare Dorp 12:29</li><li><a href="stop-37169.html">37169</a> - Varsenare Velddreef 12:30</li><li><a href="stop-37168.html">37168</a> - Varsenare Lijsterdreef 12:31</li><li><a href="stop-37023.html">37023</a> - Snellegem Halfweghuis 12:32</li><li><a href="stop-36874.html">36874</a> - Jabbeke Isenbaertstraat 12:34</li><li><a href="stop-36875.html">36875</a> - Jabbeke Museum Permeke 12:36</li><li><a href="stop-36872.html">36872</a> - Jabbeke Dorp 12:37</li><li><a href="stop-36873.html">36873</a> - Jabbeke Garage Cools 12:38</li><li><a href="stop-36876.html">36876</a> - Jabbeke Zevecote 12:39</li><li><a href="stop-37210.html">37210</a> - Zerkegem Pelikaan 12:40</li><li><a href="stop-37209.html">37209</a> - Zerkegem Kruiskalsijde 12:41</li><li><a href="stop-37208.html">37208</a> - Zerkegem Kerk 12:43</li><li><a href="stop-37207.html">37207</a> - Zerkegem Kapel 12:45</li><li><a href="stop-36726.html">36726</a> - Bekegem Doornhoekstraat 12:46</li><li><a href="stop-36727.html">36727</a> - Bekegem Dorp 12:47</li><li><a href="stop-36728.html">36728</a> - Bekegem Zilverstraat 12:48</li><li><a href="stop-37366.html">37366</a> - Bekegem Molen 12:49</li><li><a href="stop-104698.html">104698</a> - Roksem Dorp 12:50</li><li><a href="stop-40561.html">40561</a> - Westkerke Kerk 12:52</li><li><a href="stop-104930.html">104930</a> - Westkerke Gemeentehuis 12:53</li><li><a href="stop-40526.html">40526</a> - Westkerke Brug 12:55</li><li><a href="stop-40248.html">40248</a> - Gistel Dageraad 12:56</li><li><a href="stop-40254.html">40254</a> - Gistel Oude Post 12:57</li><li><a href="stop-93315.html">93315</a> - Gistel Markt 12:59</li><li><a href="stop-36071.html">36071</a> - Gistel Stadhuis 13:00</li><li><a href="stop-123625.html">123625</a> - Gistel Kruiskalsijde 13:02</li><li><a href="stop-40250.html">40250</a> - Gistel Klokkenhof 13:05</li><li><a href="stop-98284.html">98284</a> - Zevekote Dorp 13:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5867.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

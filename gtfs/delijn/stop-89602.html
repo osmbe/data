@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kerniel Groenstraat</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Kerniel Groenstraat</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-22458799.html">22458799</a> - 22458799 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22459275.html">22459275</a> - 22459275 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22459780.html">22459780</a> - 22459780 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22459792.html">22459792</a> - 22459792 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22461714.html">22461714</a> - 22461714 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22461716.html">22461716</a> - 22461716 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22461717.html">22461717</a> - 22461717 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22461718.html">22461718</a> - 22461718 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22468348.html">22468348</a> - 22468348 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22468350.html">22468350</a> - 22468350 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22468351.html">22468351</a> - 22468351 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22468352.html">22468352</a> - 22468352 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22473102.html">22473102</a> - 22473102 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22473481.html">22473481</a> - 22473481 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22473482.html">22473482</a> - 22473482 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22475767.html">22475767</a> - 22475767 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22475769.html">22475769</a> - 22475769 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22479448.html">22479448</a> - 22479448 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22479560.html">22479560</a> - 22479560 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22480025.html">22480025</a> - 22480025 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22480029.html">22480029</a> - 22480029 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22480245.html">22480245</a> - 22480245 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22480253.html">22480253</a> - 22480253 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22482169.html">22482169</a> - 22482169 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22482171.html">22482171</a> - 22482171 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22482172.html">22482172</a> - 22482172 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22482173.html">22482173</a> - 22482173 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22487399.html">22487399</a> - 22487399 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22487401.html">22487401</a> - 22487401 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22487402.html">22487402</a> - 22487402 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22487403.html">22487403</a> - 22487403 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22490705.html">22490705</a> - 22490705 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22491056.html">22491056</a> - 22491056 - Sint-Truiden - Tongeren (bediening Wellen)</li><li><a href="trip-22491057.html">22491057</a> - 22491057 - Sint-Truiden - Tongeren (bediening Wellen)</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.812860815365, 5.36921437816023], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.812860815365, 5.36921437816023]).addTo(map);
+    </script>
+</body>
+
+</html>

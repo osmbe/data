@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diepenbeek Universiteit - Kortessem - 22487634</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diepenbeek Universiteit - Kortessem - 22487634</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-110215.html">110215</a> - Diepenbeek Universiteit 16:35</li><li><a href="stop-120580.html">120580</a> - Diepenbeek Agoralaan 16:36</li><li><a href="stop-27751.html">27751</a> - Diepenbeek De Bokkenrijer 16:38</li><li><a href="stop-27813.html">27813</a> - Diepenbeek Peperstraat 16:40</li><li><a href="stop-27815.html">27815</a> - Diepenbeek Peperstraat huis 77 16:41</li><li><a href="stop-27740.html">27740</a> - Diepenbeek 't Peperke 16:41</li><li><a href="stop-27849.html">27849</a> - Diepenbeek Waardestraat 16:43</li><li><a href="stop-27837.html">27837</a> - Diepenbeek Spoorstraat 16:44</li><li><a href="stop-27840.html">27840</a> - Diepenbeek Station 16:45</li><li><a href="stop-27867.html">27867</a> - Diepenbeek Crijt 16:53</li><li><a href="stop-27870.html">27870</a> - Diepenbeek Houbrichtstraat 16:55</li><li><a href="stop-31144.html">31144</a> - Kortessem Reeweg 16:56</li><li><a href="stop-31049.html">31049</a> - Kortessem Daaleindestraat 16:57</li><li><a href="stop-31164.html">31164</a> - Kortessem Tapstraat 16:58</li><li><a href="stop-31068.html">31068</a> - Kortessem Kapelstraat 16:59</li><li><a href="stop-87370.html">87370</a> - Kortessem Oorsprongstraat 17:00</li><li><a href="stop-31047.html">31047</a> - Kortessem Aseindestraat 17:00</li><li><a href="stop-31051.html">31051</a> - Kortessem Graafbeemden 17:01</li><li><a href="stop-31080.html">31080</a> - Kortessem Oud Tramstation 17:02</li><li><a href="stop-31155.html">31155</a> - Kortessem Weg naar Wellen 17:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5292.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oostende-Nieuwpoort-Koksijde(Sint Idesbald)-Veurne - 22167642</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oostende-Nieuwpoort-Koksijde(Sint Idesbald)-Veurne - 22167642</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-38851.html">38851</a> - Veurne Ziekenhuis 19:10</li><li><a href="stop-38858.html">38858</a> - Veurne Technische School Sint-Idesbald 19:11</li><li><a href="stop-38859.html">38859</a> - Veurne Voorstad 19:12</li><li><a href="stop-42703.html">42703</a> - Veurne Lindendreef 19:13</li><li><a href="stop-38857.html">38857</a> - Veurne Station 19:15</li><li><a href="stop-42705.html">42705</a> - Veurne Rozendal 19:16</li><li><a href="stop-42704.html">42704</a> - Veurne Pannestraat 19:19</li><li><a href="stop-42712.html">42712</a> - Veurne Weg Op Sint-Idesbald 19:20</li><li><a href="stop-36139.html">36139</a> - Koksijde Station 19:22</li><li><a href="stop-40319.html">40319</a> - Koksijde Vliegveld 19:24</li><li><a href="stop-104903.html">104903</a> - Koksijde Grote Bogaerde 19:25</li><li><a href="stop-90664.html">90664</a> - Koksijde Zeepanne 19:27</li><li><a href="stop-90666.html">90666</a> - Koksijde Zonstraat 19:28</li><li><a href="stop-90662.html">90662</a> - Koksijde Geushoek 19:29</li><li><a href="stop-90661.html">90661</a> - Koksijde Strandlaan 19:29</li><li><a href="stop-40724.html">40724</a> - Koksijde Koninginnelaan 19:30</li><li><a href="stop-43398.html">43398</a> - Koksijde Ster Der Zee 19:31</li><li><a href="stop-94493.html">94493</a> - Koksijde Sociaal Huis 19:32</li><li><a href="stop-94491.html">94491</a> - Koksijde A.Bliecklaan 19:34</li><li><a href="stop-100752.html">100752</a> - Koksijde Terrasse 19:35</li><li><a href="stop-36136.html">36136</a> - Koksijde Middenlaan 19:36</li><li><a href="stop-100751.html">100751</a> - Koksijde Oud Gemeentehuis 19:38</li><li><a href="stop-104935.html">104935</a> - Koksijde Galloper 19:40</li><li><a href="stop-40662.html">40662</a> - Oostduinkerke West Hinder 19:41</li><li><a href="stop-40661.html">40661</a> - Oostduinkerke Ammanswalle 19:42</li><li><a href="stop-100996.html">100996</a> - Oostduinkerke Visserijmuseum 19:43</li><li><a href="stop-40725.html">40725</a> - Oostduinkerke Farazijnstraat 19:44</li><li><a href="stop-40726.html">40726</a> - Oostduinkerke Polderstraat 19:45</li><li><a href="stop-110606.html">110606</a> - Oostduinkerke Sunparks Polderstraat 19:47</li><li><a href="stop-40368.html">40368</a> - Nieuwpoort Dudenhofenlaan 19:50</li><li><a href="stop-40373.html">40373</a> - Nieuwpoort Roger Vyveystraat 19:51</li><li><a href="stop-40383.html">40383</a> - Nieuwpoort Zwembad 19:52</li><li><a href="stop-101027.html">101027</a> - Nieuwpoort Parklaan 19:53</li><li><a href="stop-40380.html">40380</a> - Nieuwpoort Vismijn 19:54</li><li><a href="stop-40377.html">40377</a> - Nieuwpoort Stad 19:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4382.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

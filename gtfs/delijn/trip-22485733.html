@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Tongeren - 22485733</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Tongeren - 22485733</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-97726.html">97726</a> - Wiemesmeer Kerk 07:51</li><li><a href="stop-35297.html">35297</a> - Zutendaal Weg naar As 07:54</li><li><a href="stop-35273.html">35273</a> - Zutendaal Hoogstraat 07:55</li><li><a href="stop-88495.html">88495</a> - Zutendaal Kerk 07:56</li><li><a href="stop-35291.html">35291</a> - Zutendaal Smitsstraat 07:58</li><li><a href="stop-35303.html">35303</a> - Zutendaal Wit Paard 08:01</li><li><a href="stop-27151.html">27151</a> - Munsterbilzen Taunusweg 08:03</li><li><a href="stop-110206.html">110206</a> - Munsterbilzen Sint-Amorplein 08:04</li><li><a href="stop-27143.html">27143</a> - Munsterbilzen Oude Beekstraat 08:05</li><li><a href="stop-27135.html">27135</a> - Munsterbilzen Centrum 08:07</li><li><a href="stop-27153.html">27153</a> - Munsterbilzen Zavelstraat 08:08</li><li><a href="stop-27145.html">27145</a> - Munsterbilzen Schietboomstraat 08:09</li><li><a href="stop-27121.html">27121</a> - Bilzen Meershoven 08:11</li><li><a href="stop-27178.html">27178</a> - Bilzen Schuurhoven 08:12</li><li><a href="stop-27016.html">27016</a> - Bilzen Broedersschool 08:13</li><li><a href="stop-27104.html">27104</a> - Bilzen Hospitaal Sint-Martinus 08:14</li><li><a href="stop-105150.html">105150</a> - Bilzen Station perron 4 08:17</li><li><a href="stop-30528.html">30528</a> - Hoeselt Klooster 08:23</li><li><a href="stop-30521.html">30521</a> - Hoeselt Grot 08:24</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4802.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

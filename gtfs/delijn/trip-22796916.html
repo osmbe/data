@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Marktbus Honsem - Kumtich - Tienen - 22796916</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Marktbus Honsem - Kumtich - Tienen - 22796916</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-13878.html">13878</a> - Tienen Grote Markt 10:55</li><li><a href="stop-13908.html">13908</a> - Tienen Station Perron 3 10:58</li><li><a href="stop-13862.html">13862</a> - Tienen 4de Lansierslaan 10:59</li><li><a href="stop-13887.html">13887</a> - Tienen Leuvenselaan 10:59</li><li><a href="stop-15567.html">15567</a> - Tienen Zijdelingsestraat 11:00</li><li><a href="stop-13870.html">13870</a> - Tienen De Brouwerstraat 11:00</li><li><a href="stop-13866.html">13866</a> - Tienen Bareelken 11:01</li><li><a href="stop-13788.html">13788</a> - Tienen Bowling 11:02</li><li><a href="stop-13782.html">13782</a> - Kumtich Vogelzang 11:03</li><li><a href="stop-16664.html">16664</a> - Kumtich Vondelstraat 11:04</li><li><a href="stop-16326.html">16326</a> - Kumtich Centrum 11:05</li><li><a href="stop-13794.html">13794</a> - Kumtich Spoorwegstraat 11:06</li><li><a href="stop-9983.html">9983</a> - Willebringen Willebringsestr. 94 11:12</li><li><a href="stop-9979.html">9979</a> - Willebringen Kerk 11:13</li><li><a href="stop-9985.html">9985</a> - Willebringen Windmolenveld 15 11:14</li><li><a href="stop-9981.html">9981</a> - Willebringen Kerkhof 11:15</li><li><a href="stop-15536.html">15536</a> - Honsem Kapel 11:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2573.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

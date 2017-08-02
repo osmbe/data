@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Wijgmaal Remy - Haasrode Brabanthal - 22792942</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Wijgmaal Remy - Haasrode Brabanthal - 22792942</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-12329.html">12329</a> - Wijgmaal Station 14:16</li><li><a href="stop-43687.html">43687</a> - Wijgmaal Ymeria 14:17</li><li><a href="stop-10399.html">10399</a> - Wilsele Elzasstraat 14:18</li><li><a href="stop-100234.html">100234</a> - Wilsele Weggevoerdenstr. 14:19</li><li><a href="stop-12348.html">12348</a> - Wilsele L.Woutersstraat 14:20</li><li><a href="stop-12354.html">12354</a> - Wilsele Pleinstraat 14:22</li><li><a href="stop-12342.html">12342</a> - Wilsele Gemeentehuis 14:23</li><li><a href="stop-12364.html">12364</a> - Wilsele Viadukt A2 14:24</li><li><a href="stop-127223.html">127223</a> - Wilsele Ecowerf 14:25</li><li><a href="stop-12311.html">12311</a> - Wilsele Zwaaikom 14:26</li><li><a href="stop-93378.html">93378</a> - Leuven Dijledreef 14:26</li><li><a href="stop-12305.html">12305</a> - Leuven Vaartvest 14:27</li><li><a href="stop-44007.html">44007</a> - Leuven O.L.V.Middelareskerk 14:29</li><li><a href="stop-12287.html">12287</a> - Leuven Station Perron 5 14:30</li><li><a href="stop-16800.html">16800</a> - Leuven Provinciehuis 14:32</li><li><a href="stop-94825.html">94825</a> - Leuven Tiensepoort 14:34</li><li><a href="stop-12070.html">12070</a> - Heverlee Paul Van Ostaijenlaan 14:37</li><li><a href="stop-12056.html">12056</a> - Heverlee Broekstraat 14:39</li><li><a href="stop-11144.html">11144</a> - Heverlee Milseweg 14:40</li><li><a href="stop-17057.html">17057</a> - Heverlee Petrusberg 14:43</li><li><a href="stop-10784.html">10784</a> - Heverlee Sint-Albertus College 14:43</li><li><a href="stop-125634.html">125634</a> - Haasrode VDAB 14:46</li><li><a href="stop-125636.html">125636</a> - Haasrode UCLL 14:46</li><li><a href="stop-125627.html">125627</a> - Haasrode Terumo 14:47</li><li><a href="stop-14629.html">14629</a> - Haasrode Ridgid 14:48</li><li><a href="stop-127688.html">127688</a> - Haasrode Siemens 14:49</li><li><a href="stop-14631.html">14631</a> - Haasrode Philips 14:50</li><li><a href="stop-14633.html">14633</a> - Haasrode Donaldson 14:50</li><li><a href="stop-14634.html">14634</a> - Haasrode Brabanthal 14:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2509.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

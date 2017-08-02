@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diksmuide-OostVleteren-Poperinge - 22631342</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diksmuide-OostVleteren-Poperinge - 22631342</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-38712.html">38712</a> - Oostvleteren Station 17:55</li><li><a href="stop-38708.html">38708</a> - Oostvleteren Hogebrugstraat 17:56</li><li><a href="stop-38945.html">38945</a> - Westvleteren Kerk 17:59</li><li><a href="stop-38948.html">38948</a> - Westvleteren Station 18:00</li><li><a href="stop-38950.html">38950</a> - Westvleteren Vijverhoek 18:00</li><li><a href="stop-38946.html">38946</a> - Westvleteren Kruisdreef 18:02</li><li><a href="stop-38611.html">38611</a> - Krombeke Dorp 18:03</li><li><a href="stop-38613.html">38613</a> - Krombeke Hoeve Parret 18:04</li><li><a href="stop-38616.html">38616</a> - Krombeke Leeuwerik 18:04</li><li><a href="stop-38949.html">38949</a> - Westvleteren Tour Du Monde 18:05</li><li><a href="stop-38944.html">38944</a> - Westvleteren Jagershof 18:06</li><li><a href="stop-38772.html">38772</a> - Poperinge Lovie 18:07</li><li><a href="stop-38767.html">38767</a> - Poperinge Kerselaar 18:09</li><li><a href="stop-38793.html">38793</a> - Poperinge Zweerdhof 18:10</li><li><a href="stop-38768.html">38768</a> - Poperinge Klimop 18:11</li><li><a href="stop-38780.html">38780</a> - Poperinge Pottestraat 18:12</li><li><a href="stop-92881.html">92881</a> - Poperinge Markt afstaphalte 18:13</li><li><a href="stop-42655.html">42655</a> - Poperinge Zwembad 18:15</li><li><a href="stop-126399.html">126399</a> - Poperinge Station perron 1 18:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6056.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Maaseik - Kinrooi - Meeuwen-Gruitrode - Hasselt - 22480241</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Maaseik - Kinrooi - Meeuwen-Gruitrode - Hasselt - 22480241</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-33097.html">33097</a> - Maaseik Van Eycklaan 20:59</li><li><a href="stop-123118.html">123118</a> - Maaseik Plantage 21:01</li><li><a href="stop-32289.html">32289</a> - Maaseik Stationsstraat 21:02</li><li><a href="stop-32298.html">32298</a> - Maaseik Verloren Kost 21:03</li><li><a href="stop-123130.html">123130</a> - Maaseik Pieter Geunsstraat 21:03</li><li><a href="stop-123082.html">123082</a> - Maaseik Campus H en R 21:04</li><li><a href="stop-32296.html">32296</a> - Maaseik Venweg 21:05</li><li><a href="stop-32292.html">32292</a> - Maaseik 't Gremelslo 21:06</li><li><a href="stop-31008.html">31008</a> - Ophoven Jettenweg 21:08</li><li><a href="stop-30960.html">30960</a> - Kinrooi Leuerbroek 21:10</li><li><a href="stop-123048.html">123048</a> - Kinrooi Dorpsplein 21:11</li><li><a href="stop-30908.html">30908</a> - Kinrooi H. Grafinstituut 21:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4745.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Boom - Puurs - Lippelo - Dendermonde - 22514902</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boom - Puurs - Lippelo - Dendermonde - 22514902</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-100311.html">100311</a> - Boom RMS 1 15:55</li><li><a href="stop-109909.html">109909</a> - Boom RMS 2 15:55</li><li><a href="stop-109103.html">109103</a> - Boom G. Gezellestraat 15:57</li><li><a href="stop-109927.html">109927</a> - Boom Conscienceplein 15:58</li><li><a href="stop-109068.html">109068</a> - Boom Advokaatstraat 16:03</li><li><a href="stop-43023.html">43023</a> - Boom E. Vanderveldestraat 16:04</li><li><a href="stop-23212.html">23212</a> - Boom Markt 16:05</li><li><a href="stop-106076.html">106076</a> - Willebroek Klein Willebroek 16:08</li><li><a href="stop-109482.html">109482</a> - Ruisbroek Prod. Chimique 16:10</li><li><a href="stop-109481.html">109481</a> - Ruisbroek Oud-Gemeentehuis 16:11</li><li><a href="stop-108318.html">108318</a> - Ruisbroek Beemdstraat 16:12</li><li><a href="stop-109476.html">109476</a> - Ruisbroek J. De Donckerlaan 16:13</li><li><a href="stop-107732.html">107732</a> - Puurs Kapelstraat 16:14</li><li><a href="stop-24165.html">24165</a> - Puurs Moerplas 16:15</li><li><a href="stop-109451.html">109451</a> - Puurs Hof Van Coolhem 16:16</li><li><a href="stop-109450.html">109450</a> - Puurs Kalfortdorp 16:18</li><li><a href="stop-109449.html">109449</a> - Puurs Merkenveld 16:19</li><li><a href="stop-109447.html">109447</a> - Puurs Station 16:29</li><li><a href="stop-107716.html">107716</a> - Puurs Markt 16:30</li><li><a href="stop-110005.html">110005</a> - Puurs Hooiveld 16:31</li><li><a href="stop-26010.html">26010</a> - Liezele Heide 16:32</li><li><a href="stop-26005.html">26005</a> - Liezele Dorp 16:33</li><li><a href="stop-127013.html">127013</a> - Liezele Kerk 16:33</li><li><a href="stop-109488.html">109488</a> - Liezele Weg Op Lippelo 16:34</li><li><a href="stop-24264.html">24264</a> - Liezele Schemelberthof 16:34</li><li><a href="stop-24266.html">24266</a> - Liezele Wolfstraat 16:35</li><li><a href="stop-21232.html">21232</a> - Liezele Steentjesstraat 16:36</li><li><a href="stop-21233.html">21233</a> - Liezele Patattestraat 16:37</li><li><a href="stop-21236.html">21236</a> - Liezele Hof Ter Bollen 16:38</li><li><a href="stop-20258.html">20258</a> - Lippelo 's-Gravenkasteel 16:39</li><li><a href="stop-109485.html">109485</a> - Lippelo Dorp 16:40</li><li><a href="stop-109483.html">109483</a> - Lippelo Breutheide 16:41</li><li><a href="stop-24251.html">24251</a> - Lippelo Oude Heirbaan 16:41</li><li><a href="stop-21240.html">21240</a> - Sint-Amands Keten 16:43</li><li><a href="stop-21242.html">21242</a> - Sint-Amands Fierkensstraat 16:44</li><li><a href="stop-108239.html">108239</a> - Sint-Amands J. Cardijnlaan 16:46</li><li><a href="stop-24137.html">24137</a> - Sint-Amands Station 16:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3017.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

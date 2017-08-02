@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Knokke-Westkapelle - 22652996</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Knokke-Westkapelle - 22652996</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-97982.html">97982</a> - Westkapelle Rustoord 15:13</li><li><a href="stop-97983.html">97983</a> - Westkapelle Herenweg 15:14</li><li><a href="stop-98286.html">98286</a> - Westkapelle Dorp 15:16</li><li><a href="stop-97933.html">97933</a> - Westkapelle Sacramentstraat 15:17</li><li><a href="stop-97985.html">97985</a> - Westkapelle Hazelaarsdreef 15:18</li><li><a href="stop-97981.html">97981</a> - Westkapelle Dennendreef 15:19</li><li><a href="stop-97938.html">97938</a> - Westkapelle Kragendijk 15:20</li><li><a href="stop-97937.html">97937</a> - Westkapelle Korenbloemdreef 15:22</li><li><a href="stop-97984.html">97984</a> - Knokke Driewegen 15:23</li><li><a href="stop-97894.html">97894</a> - Knokke J. Devischstraat 15:24</li><li><a href="stop-97898.html">97898</a> - Knokke Kliniek Ter Linden 15:25</li><li><a href="stop-97908.html">97908</a> - Knokke Vogelzang 15:26</li><li><a href="stop-123507.html">123507</a> - Knokke Gemeenteplein 15:27</li><li><a href="stop-126311.html">126311</a> - Knokke Station perron 4 15:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4356.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

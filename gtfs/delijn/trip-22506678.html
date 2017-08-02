@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Berchem Station - Mortsel - Waarloos - 22506678</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Berchem Station - Mortsel - Waarloos - 22506678</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126941.html">126941</a> - Berchem Station perron 3 22:25</li><li><a href="stop-108325.html">108325</a> - Berchem Station perron 22 22:26</li><li><a href="stop-108279.html">108279</a> - Berchem Posthofbrug 22:28</li><li><a href="stop-89167.html">89167</a> - Berchem K. Coggestraat 22:29</li><li><a href="stop-107873.html">107873</a> - Berchem Roderveldlaan 22:29</li><li><a href="stop-100056.html">100056</a> - Berchem Jos Ratinckxstraat 22:32</li><li><a href="stop-100151.html">100151</a> - Berchem Berchemboslaan 22:33</li><li><a href="stop-100244.html">100244</a> - Berchem Grotesteenweg 22:33</li><li><a href="stop-108232.html">108232</a> - Mortsel Kuijpers 22:35</li><li><a href="stop-107592.html">107592</a> - Mortsel Gevaert 22:36</li><li><a href="stop-108770.html">108770</a> - Mortsel Vredebaan 22:37</li><li><a href="stop-107553.html">107553</a> - Mortsel Gemeenteplein 22:38</li><li><a href="stop-20049.html">20049</a> - Mortsel Gemeenteplein 22:38</li><li><a href="stop-108137.html">108137</a> - Mortsel Floralaan 22:39</li><li><a href="stop-19792.html">19792</a> - Mortsel Molenlei 22:40</li><li><a href="stop-109610.html">109610</a> - Mortsel Haleblok 22:40</li><li><a href="stop-109416.html">109416</a> - Mortsel Grijpegemplein 22:41</li><li><a href="stop-109601.html">109601</a> - Mortsel Abelenstraat 22:42</li><li><a href="stop-109597.html">109597</a> - Edegem Terlindenlaan 22:42</li><li><a href="stop-24760.html">24760</a> - Edegem P. Pletinckxstraat 22:43</li><li><a href="stop-107866.html">107866</a> - Edegem Gemeentehuis 22:44</li><li><a href="stop-109559.html">109559</a> - Edegem Lourdeslaan 22:44</li><li><a href="stop-109207.html">109207</a> - Edegem Boniverlei 22:45</li><li><a href="stop-109582.html">109582</a> - Edegem Mechelsesteenweg 22:45</li><li><a href="stop-109234.html">109234</a> - Hove Buizegemlei 22:46</li><li><a href="stop-109233.html">109233</a> - Hove Sterrenregen 22:47</li><li><a href="stop-109235.html">109235</a> - Hove Vredestraat 22:47</li><li><a href="stop-109236.html">109236</a> - Kontich Eikenstraat 22:48</li><li><a href="stop-109238.html">109238</a> - Kontich Wipstraat 22:49</li><li><a href="stop-109241.html">109241</a> - Kontich Altenastraat 22:50</li><li><a href="stop-109243.html">109243</a> - Kontich Edegemsesteenweg 22:51</li><li><a href="stop-109120.html">109120</a> - Kontich Kerk 22:51</li><li><a href="stop-109119.html">109119</a> - Kontich Kruisstraat 22:52</li><li><a href="stop-23656.html">23656</a> - Kontich Kruisschanslei 22:53</li><li><a href="stop-109245.html">109245</a> - Kontich Lijsterbolstraat 22:54</li><li><a href="stop-23660.html">23660</a> - Kontich Reepkenslei 22:55</li><li><a href="stop-109246.html">109246</a> - Kontich Tulpenlaan 22:56</li><li><a href="stop-23664.html">23664</a> - Kontich Irislaan 22:57</li><li><a href="stop-109248.html">109248</a> - Waarloos Wildemansstraat 22:59</li><li><a href="stop-23306.html">23306</a> - Waarloos Oude Baan 23:00</li><li><a href="stop-109101.html">109101</a> - Waarloos Kerkelei 23:01</li><li><a href="stop-109102.html">109102</a> - Waarloos Kerk 23:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2842.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

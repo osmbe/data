@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Knokke-Heist-Ramskapelle - 22645097</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Knokke-Heist-Ramskapelle - 22645097</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126294.html">126294</a> - Knokke Station perron 1 11:32</li><li><a href="stop-104677.html">104677</a> - Knokke Duinenwater 11:34</li><li><a href="stop-104678.html">104678</a> - Knokke Zwembad 11:36</li><li><a href="stop-98234.html">98234</a> - Knokke Haagwinde 11:37</li><li><a href="stop-101017.html">101017</a> - Duinbergen Station 11:38</li><li><a href="stop-90638.html">90638</a> - Heist Krommedijk 11:39</li><li><a href="stop-90637.html">90637</a> - Heist Polderstraat 11:40</li><li><a href="stop-90636.html">90636</a> - Heist F. Timmermansstraat 11:41</li><li><a href="stop-90635.html">90635</a> - Heist Noordstraat 11:42</li><li><a href="stop-104934.html">104934</a> - Heist Markt 11:43</li><li><a href="stop-88895.html">88895</a> - Heist Sint-Antoniuskerk 11:44</li><li><a href="stop-90624.html">90624</a> - Heist Dijk 11:45</li><li><a href="stop-90632.html">90632</a> - Heist De Klinker 11:46</li><li><a href="stop-88281.html">88281</a> - Heist Rustoord 11:47</li><li><a href="stop-88660.html">88660</a> - Heist sociaal Huis 11:47</li><li><a href="stop-90631.html">90631</a> - Heist Speelman 11:48</li><li><a href="stop-98297.html">98297</a> - Ramskapelle Sasstraat 11:50</li><li><a href="stop-101018.html">101018</a> - Ramskapelle Aaishove 11:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4303.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

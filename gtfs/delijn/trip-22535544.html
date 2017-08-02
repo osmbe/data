@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Geel Industrie  - Olen - Herentals - 22535544</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Geel Industrie  - Olen - Herentals - 22535544</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-92502.html">92502</a> - Geel Janssen Pharmaceutica 16:05</li><li><a href="stop-88740.html">88740</a> - Geel TBP 16:07</li><li><a href="stop-20191.html">20191</a> - Oevel Liesdonk 16:08</li><li><a href="stop-100049.html">100049</a> - Oevel Hotelstraat 16:09</li><li><a href="stop-25303.html">25303</a> - Oevel Meulenberg Nijverheidsstraat 16:10</li><li><a href="stop-20187.html">20187</a> - Oevel Nijverheidsstraat 7 16:10</li><li><a href="stop-25305.html">25305</a> - Oevel Sobemi 16:11</li><li><a href="stop-92395.html">92395</a> - Oevel E. Lauder 16:12</li><li><a href="stop-25309.html">25309</a> - Oevel Onze-Lieve-Vrouwstraat 16:13</li><li><a href="stop-25312.html">25312</a> - Oevel NV Ober 16:13</li><li><a href="stop-25314.html">25314</a> - Oevel Moleneindestraat 16:14</li><li><a href="stop-109689.html">109689</a> - Oevel Kapelleke 16:15</li><li><a href="stop-24970.html">24970</a> - Olen Hoogbuul 16:16</li><li><a href="stop-107591.html">107591</a> - Olen Brug over E313 16:17</li><li><a href="stop-109687.html">109687</a> - Olen Bulestraat 16:19</li><li><a href="stop-109682.html">109682</a> - Olen Dorp 16:20</li><li><a href="stop-24938.html">24938</a> - Olen Kleine Landeigendom 16:21</li><li><a href="stop-109848.html">109848</a> - Herentals Industrielaan 16:23</li><li><a href="stop-123334.html">123334</a> - Herentals De Duinen 16:24</li><li><a href="stop-109844.html">109844</a> - Herentals Dikberd 16:25</li><li><a href="stop-109842.html">109842</a> - Herentals E. Claesstraat 16:27</li><li><a href="stop-107597.html">107597</a> - Herentals Kerkstraat 16:28</li><li><a href="stop-109183.html">109183</a> - Herentals Markt - Grote Markt 16:28</li><li><a href="stop-108973.html">108973</a> - Herentals Belgiëlaan 16:29</li><li><a href="stop-25785.html">25785</a> - Herentals Station afstaphalte 16:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3565.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

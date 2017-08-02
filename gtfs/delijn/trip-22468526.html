@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Diest / Tessenderlo - 22468526</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Diest / Tessenderlo - 22468526</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-27963.html">27963</a> - Diest Station perron 4 08:01</li><li><a href="stop-16507.html">16507</a> - Schaffen Schoonaarde 08:03</li><li><a href="stop-128838.html">128838</a> - Schaffen Weg op Tessenderlo 08:03</li><li><a href="stop-16512.html">16512</a> - Schaffen Groenstraat 08:04</li><li><a href="stop-127870.html">127870</a> - Schaffen Sparrenlaan 08:05</li><li><a href="stop-28951.html">28951</a> - Zelem Geesthuis 08:06</li><li><a href="stop-28952.html">28952</a> - Zelem Gennepstraat 08:07</li><li><a href="stop-28957.html">28957</a> - Zelem Kolenbergstraat 08:08</li><li><a href="stop-28970.html">28970</a> - Zelem Thibautstraat 08:10</li><li><a href="stop-28965.html">28965</a> - Zelem Schans kapel 08:10</li><li><a href="stop-28969.html">28969</a> - Zelem Stationstraat 08:11</li><li><a href="stop-28966.html">28966</a> - Zelem Station 08:12</li><li><a href="stop-28960.html">28960</a> - Zelem Linkhoutseweg 08:13</li><li><a href="stop-28959.html">28959</a> - Zelem Kruisstraat 08:14</li><li><a href="stop-28955.html">28955</a> - Zelem Heidestraat 08:15</li><li><a href="stop-32180.html">32180</a> - Linkhout Vlootbrug 08:16</li><li><a href="stop-32125.html">32125</a> - Linkhout Linkhoutstraat 08:16</li><li><a href="stop-32130.html">32130</a> - Linkhout Plein 08:17</li><li><a href="stop-32123.html">32123</a> - Linkhout Kerk 08:18</li><li><a href="stop-32131.html">32131</a> - Linkhout Schansstraat 08:19</li><li><a href="stop-32122.html">32122</a> - Linkhout Boogbosstraat 08:19</li><li><a href="stop-32128.html">32128</a> - Linkhout Overweg 08:20</li><li><a href="stop-32164.html">32164</a> - Lummen Schalbroekstraat 08:22</li><li><a href="stop-32108.html">32108</a> - Lummen Hamelstraat 08:23</li><li><a href="stop-32110.html">32110</a> - Lummen Hemelrijkstraat 08:24</li><li><a href="stop-32175.html">32175</a> - Lummen Weg op Linkhout 08:25</li><li><a href="stop-32117.html">32117</a> - Lummen Kruispunt 08:27</li><li><a href="stop-32095.html">32095</a> - Lummen Frederickxstraat 08:27</li><li><a href="stop-32161.html">32161</a> - Lummen Pastoor Winterstraat 08:29</li><li><a href="stop-30186.html">30186</a> - Schulen Station 08:32</li><li><a href="stop-30179.html">30179</a> - Schulen Neerstraat 08:33</li><li><a href="stop-30172.html">30172</a> - Schulen Kerk 08:34</li><li><a href="stop-30183.html">30183</a> - Schulen Sint-Jansstraat 08:35</li><li><a href="stop-30194.html">30194</a> - Schulen Weg op Beringen 08:37</li><li><a href="stop-105229.html">105229</a> - Herk-de-Stad College 08:40</li><li><a href="stop-30195.html">30195</a> - Herk-de-Stad Markt 08:43</li><li><a href="stop-30140.html">30140</a> - Herk-de-Stad Klooster 08:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5265.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

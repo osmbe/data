@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Hofstade - Lede - Serskamp - Wetteren - 20716990</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Hofstade - Lede - Serskamp - Wetteren - 20716990</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126678.html">126678</a> - Aalst Station perron 2 19:09</li><li><a href="stop-120315.html">120315</a> - Aalst Sint-Annabrug 19:10</li><li><a href="stop-120314.html">120314</a> - Aalst Tramstraat 19:11</li><li><a href="stop-118267.html">118267</a> - Aalst Tragel Sport 19:11</li><li><a href="stop-118282.html">118282</a> - Aalst Viaduct 19:12</li><li><a href="stop-118268.html">118268</a> - Aalst J. De Nul 19:13</li><li><a href="stop-117656.html">117656</a> - Hofstade Consciencestraat 19:14</li><li><a href="stop-117655.html">117655</a> - Hofstade Blektestraat 19:15</li><li><a href="stop-118283.html">118283</a> - Hofstade Mottantstraat 19:16</li><li><a href="stop-117683.html">117683</a> - Hofstade K. Van Der Slotenstraat 19:16</li><li><a href="stop-117654.html">117654</a> - Hofstade Doriksveld 19:17</li><li><a href="stop-117653.html">117653</a> - Hofstade Vijverstraat 19:17</li><li><a href="stop-117652.html">117652</a> - Hofstade Noenstraat 19:18</li><li><a href="stop-117651.html">117651</a> - Lede Sasstraat 19:19</li><li><a href="stop-117650.html">117650</a> - Lede Bosstraat 19:20</li><li><a href="stop-118197.html">118197</a> - Lede Voetgangersbrug 19:21</li><li><a href="stop-118198.html">118198</a> - Lede Station 19:24</li><li><a href="stop-117649.html">117649</a> - Lede Kleine Ommegangweg 19:25</li><li><a href="stop-117648.html">117648</a> - Lede Pastorijstraat 19:26</li><li><a href="stop-117967.html">117967</a> - Lede Ziekenhuis 19:28</li><li><a href="stop-118210.html">118210</a> - Lede Damstraat 19:29</li><li><a href="stop-117968.html">117968</a> - Lede Guchtstraat 19:29</li><li><a href="stop-117969.html">117969</a> - Wanzele Processieweg 19:31</li><li><a href="stop-117970.html">117970</a> - Wanzele Kerk 19:31</li><li><a href="stop-117971.html">117971</a> - Wanzele Wanzelesteenweg 19:32</li><li><a href="stop-117972.html">117972</a> - Serskamp Smetledestraat 19:34</li><li><a href="stop-118313.html">118313</a> - Serskamp Heidestraat 19:34</li><li><a href="stop-117973.html">117973</a> - Serskamp Kerk 19:35</li><li><a href="stop-118312.html">118312</a> - Serskamp Biesakker 19:36</li><li><a href="stop-117974.html">117974</a> - Serskamp Nieuwstraat 19:36</li><li><a href="stop-114138.html">114138</a> - Serskamp Boskantstraat 19:37</li><li><a href="stop-112108.html">112108</a> - Wetteren Peyzershoek 19:38</li><li><a href="stop-114139.html">114139</a> - Wetteren Serskampstraat 19:39</li><li><a href="stop-124357.html">124357</a> - Wetteren Buyssestraat 19:40</li><li><a href="stop-126623.html">126623</a> - Wetteren Station perron 3 19:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1233.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

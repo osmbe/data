@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Kortenberg - Everberg - Leuven - 21145233</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Kortenberg - Everberg - Leuven - 21145233</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-11968.html">11968</a> - Kortenberg Staca 15:28</li><li><a href="stop-11958.html">11958</a> - Kortenberg Kapelleke 15:30</li><li><a href="stop-15920.html">15920</a> - Kortenberg Gemeentehuis 15:31</li><li><a href="stop-11944.html">11944</a> - Kortenberg Beekstraat 15:32</li><li><a href="stop-11952.html">11952</a> - Kortenberg Café Jamar 15:33</li><li><a href="stop-11976.html">11976</a> - Kortenberg Vaan 15:34</li><li><a href="stop-11936.html">11936</a> - Everberg Dries 15:35</li><li><a href="stop-11948.html">11948</a> - Everberg Zavelstraat 15:36</li><li><a href="stop-11946.html">11946</a> - Everberg Winkelstraat 15:37</li><li><a href="stop-11940.html">11940</a> - Everberg Pachthof Hogeras 15:38</li><li><a href="stop-11942.html">11942</a> - Everberg Steenhof 15:39</li><li><a href="stop-11938.html">11938</a> - Everberg Kerk 15:40</li><li><a href="stop-11934.html">11934</a> - Everberg Aan de Leeuwen 15:41</li><li><a href="stop-16248.html">16248</a> - Everberg Hof van Graven 15:42</li><li><a href="stop-11982.html">11982</a> - Meerbeek Burcht 15:43</li><li><a href="stop-15909.html">15909</a> - Meerbeek Anastasia 15:43</li><li><a href="stop-11984.html">11984</a> - Meerbeek Gemeentehuis 15:44</li><li><a href="stop-87966.html">87966</a> - Meerbeek Goedestraat 15:45</li><li><a href="stop-17149.html">17149</a> - Meerbeek Bosveldfarm 15:47</li><li><a href="stop-11275.html">11275</a> - Veltem-Beisem Kluis 15:48</li><li><a href="stop-11279.html">11279</a> - Veltem-Beisem Radioweg 15:48</li><li><a href="stop-11283.html">11283</a> - Veltem-Beisem Veltem Steenweg 15:49</li><li><a href="stop-11305.html">11305</a> - Winksele Toverberg 15:50</li><li><a href="stop-11299.html">11299</a> - Winksele Schoonzicht 15:51</li><li><a href="stop-11289.html">11289</a> - Winksele IJzerenberg 15:52</li><li><a href="stop-93537.html">93537</a> - Herent Grote Molenweg 15:53</li><li><a href="stop-11219.html">11219</a> - Herent Diependaal 15:54</li><li><a href="stop-127222.html">127222</a> - Leuven KBC 15:55</li><li><a href="stop-94826.html">94826</a> - Leuven Brusselsepoort 15:57</li><li><a href="stop-12211.html">12211</a> - Leuven Goudsbloemstraat 15:58</li><li><a href="stop-14836.html">14836</a> - Leuven Sint-Jacobsplein 15:59</li><li><a href="stop-12281.html">12281</a> - Leuven Sint-Rafaelkliniek 16:00</li><li><a href="stop-12274.html">12274</a> - Leuven Sint-Pieterskliniek 16:01</li><li><a href="stop-12259.html">12259</a> - Leuven Dirk Boutslaan 16:03</li><li><a href="stop-89195.html">89195</a> - Leuven Rector De Somerplein zone A 16:04</li><li><a href="stop-12231.html">12231</a> - Leuven J.Stasstraat 16:06</li><li><a href="stop-110186.html">110186</a> - Leuven Station Perron 1 16:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2207.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

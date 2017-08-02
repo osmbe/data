@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - (Erpestraat) - ASZ - Station - Oude Abdijstraat - 20711570</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: (Erpestraat) - ASZ - Station - Oude Abdijstraat - 20711570</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-116482.html">116482</a> - Aalst Stedelijk Ziekenhuis 12:43</li><li><a href="stop-117304.html">117304</a> - Aalst Sinte Annalaan 12:45</li><li><a href="stop-116489.html">116489</a> - Aalst V.T.I. 12:46</li><li><a href="stop-116722.html">116722</a> - Aalst Ledebaan 12:47</li><li><a href="stop-117468.html">117468</a> - Aalst Meuleschettestraat 12:47</li><li><a href="stop-116490.html">116490</a> - Aalst Meuleschettekapel 12:48</li><li><a href="stop-120301.html">120301</a> - Aalst Esplanade 12:50</li><li><a href="stop-126677.html">126677</a> - Aalst Station perron 1 12:56</li><li><a href="stop-117486.html">117486</a> - Aalst Oude Vismarkt 12:59</li><li><a href="stop-117480.html">117480</a> - Aalst Houtmarkt 13:00</li><li><a href="stop-118298.html">118298</a> - Aalst Zwembadlaan 13:03</li><li><a href="stop-124930.html">124930</a> - Aalst Zwembad (OVL) 13:04</li><li><a href="stop-118244.html">118244</a> - Aalst Wijngaardstraat 13:05</li><li><a href="stop-118270.html">118270</a> - Aalst Langestraat 13:05</li><li><a href="stop-120627.html">120627</a> - Aalst Hof Ten Berg 13:06</li><li><a href="stop-117455.html">117455</a> - Aalst Beekstraat 13:07</li><li><a href="stop-116674.html">116674</a> - Aalst Achterweg 13:08</li><li><a href="stop-117664.html">117664</a> - Aalst Doornstraat 13:10</li><li><a href="stop-118245.html">118245</a> - Aalst Fonteinstraat 13:11</li><li><a href="stop-117462.html">117462</a> - Aalst Rozendreef 13:11</li><li><a href="stop-117303.html">117303</a> - Aalst Oude Abdijstraat 13:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./998.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

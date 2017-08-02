@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Roeselare Station-Wijnendale-Beveren-Kapelhoek - 22636802</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Roeselare Station-Wijnendale-Beveren-Kapelhoek - 22636802</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-123610.html">123610</a> - Beveren Sportpark 11:18</li><li><a href="stop-123567.html">123567</a> - Beveren Plaats 11:20</li><li><a href="stop-88501.html">88501</a> - Beveren Linde 11:21</li><li><a href="stop-88577.html">88577</a> - Beveren Hof van Dynze 11:22</li><li><a href="stop-88682.html">88682</a> - Beveren Bollaard 11:23</li><li><a href="stop-39241.html">39241</a> - Beveren Bc Components 11:23</li><li><a href="stop-39257.html">39257</a> - Beveren Station 11:24</li><li><a href="stop-123667.html">123667</a> - Beveren Wijnendale 11:25</li><li><a href="stop-41471.html">41471</a> - Beveren De Leye 11:25</li><li><a href="stop-42046.html">42046</a> - Roeselare De Rots 11:26</li><li><a href="stop-39236.html">39236</a> - Roeselare Mammoet 3 11:27</li><li><a href="stop-93336.html">93336</a> - Roeselare LeopoldIII-Laan 11:28</li><li><a href="stop-42090.html">42090</a> - Roeselare Waterdam 11:29</li><li><a href="stop-38099.html">38099</a> - Roeselare Hospitaal 11:30</li><li><a href="stop-39240.html">39240</a> - Roeselare Gaaipersstraat 11:31</li><li><a href="stop-17661.html">17661</a> - Roeselare Sint-Amandsstraat 11:33</li><li><a href="stop-38120.html">38120</a> - Roeselare Sint-Michielskerk 11:34</li><li><a href="stop-38115.html">38115</a> - Roeselare Polenplein 11:36</li><li><a href="stop-126376.html">126376</a> - Roeselare Station perron 11 11:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4255.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

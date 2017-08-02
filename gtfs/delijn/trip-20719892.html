@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Zottegem-Erwetegem-StMariaOudenhove-Ronse/Renaix - 20719892</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Zottegem-Erwetegem-StMariaOudenhove-Ronse/Renaix - 20719892</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128542.html">128542</a> - Sint-Maria-Oudenhove Dorp 06:18</li><li><a href="stop-119304.html">119304</a> - Sint-Maria-Oudenhove Faliestraat 06:19</li><li><a href="stop-128541.html">128541</a> - Sint-Maria-Oudenhove Pijperzelestraat 06:20</li><li><a href="stop-119740.html">119740</a> - Sint-Maria-Oudenhove Pijperzele 06:21</li><li><a href="stop-128544.html">128544</a> - Sint-Maria-Oudenhove Pendelstraat 06:21</li><li><a href="stop-118510.html">118510</a> - Erwetegem Jempelkouterbeek 06:22</li><li><a href="stop-118509.html">118509</a> - Erwetegem Klemhoutstraat 06:24</li><li><a href="stop-118551.html">118551</a> - Erwetegem Station 06:25</li><li><a href="stop-118505.html">118505</a> - Erwetegem Gaverland 06:26</li><li><a href="stop-118504.html">118504</a> - Erwetegem Ragestraat 06:27</li><li><a href="stop-118503.html">118503</a> - Erwetegem Klooster 06:27</li><li><a href="stop-118502.html">118502</a> - Erwetegem Kerk 06:28</li><li><a href="stop-118501.html">118501</a> - Strijpen Meerlaan 06:29</li><li><a href="stop-119315.html">119315</a> - Zottegem Atheneum 06:30</li><li><a href="stop-126749.html">126749</a> - Zottegem Station perron 2 06:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1385.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Bilzen - Maastricht/Lanaken - Rekem - 22461607</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Bilzen - Maastricht/Lanaken - Rekem - 22461607</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-105147.html">105147</a> - Bilzen Station perron 1 13:27</li><li><a href="stop-96552.html">96552</a> - Merem Meremweg 13:29</li><li><a href="stop-122984.html">122984</a> - Merem Klooster 13:30</li><li><a href="stop-127528.html">127528</a> - Hoeselt Nederstraat Kerk 13:32</li><li><a href="stop-30520.html">30520</a> - Hoeselt Groenstraat 13:32</li><li><a href="stop-123045.html">123045</a> - Hoeselt Daalstraat 13:33</li><li><a href="stop-30526.html">30526</a> - Hoeselt Heibrikstraat 13:34</li><li><a href="stop-30557.html">30557</a> - Hoeselt Klooster 13:35</li><li><a href="stop-30521.html">30521</a> - Hoeselt Grot 13:35</li><li><a href="stop-30524.html">30524</a> - Hoeselt Heibrikplein 13:37</li><li><a href="stop-97159.html">97159</a> - Romershoven Weg op Schalkhoven 13:38</li><li><a href="stop-97160.html">97160</a> - Romershoven Winkelstraat 13:39</li><li><a href="stop-110375.html">110375</a> - Romershoven Kerk 13:40</li><li><a href="stop-97157.html">97157</a> - Romershoven Sitsingenstraat 13:41</li><li><a href="stop-97155.html">97155</a> - Romershoven Romershovenstraat 13:42</li><li><a href="stop-97151.html">97151</a> - Romershoven Hanterstraat 13:43</li><li><a href="stop-97149.html">97149</a> - Romershoven Aanlofstraat 13:44</li><li><a href="stop-27826.html">27826</a> - Diepenbeek Reitje brug 13:46</li><li><a href="stop-27824.html">27824</a> - Diepenbeek Reitje 13:47</li><li><a href="stop-27787.html">27787</a> - Diepenbeek Kruispunt Keistraat 13:47</li><li><a href="stop-27805.html">27805</a> - Diepenbeek Oude Baan 13:48</li><li><a href="stop-27858.html">27858</a> - Diepenbeek Weg op Reitje 13:49</li><li><a href="stop-91030.html">91030</a> - Diepenbeek Molenstraat 13:50</li><li><a href="stop-27828.html">27828</a> - Diepenbeek Rijkswacht 13:51</li><li><a href="stop-27879.html">27879</a> - Diepenbeek Marktplein 13:52</li><li><a href="stop-27838.html">27838</a> - Diepenbeek Spoorstraat 13:52</li><li><a href="stop-27850.html">27850</a> - Diepenbeek Waardestraat 13:53</li><li><a href="stop-27803.html">27803</a> - Diepenbeek Nierstraat 13:55</li><li><a href="stop-27781.html">27781</a> - Diepenbeek Kerselaerstraat 13:56</li><li><a href="stop-96866.html">96866</a> - Godsheide Pietelbeekstraat 13:58</li><li><a href="stop-43768.html">43768</a> - Hasselt Het Dorlik 14:00</li><li><a href="stop-128880.html">128880</a> - Hasselt Rijksadministratief Centrum 14:01</li><li><a href="stop-29713.html">29713</a> - Hasselt Kapermolen 14:02</li><li><a href="stop-29267.html">29267</a> - Hasselt Dusartplein 14:04</li><li><a href="stop-29356.html">29356</a> - Hasselt Molenpoort afstaphalte 14:06</li><li><a href="stop-128977.html">128977</a> - Hasselt Station perron 10 14:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5209.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

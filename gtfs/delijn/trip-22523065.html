@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Berchem - Broechem - Massenhoven - Herentals - 22523065</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Berchem - Broechem - Massenhoven - Herentals - 22523065</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-22947.html">22947</a> - Vorselaar Dorp 12:20</li><li><a href="stop-108963.html">108963</a> - Vorselaar Goorbergenlaan 12:21</li><li><a href="stop-93197.html">93197</a> - Grobbendonk  Hildering 12:22</li><li><a href="stop-22941.html">22941</a> - Grobbendonk Watermolenweg 12:23</li><li><a href="stop-108961.html">108961</a> - Grobbendonk Beukenlaan 12:24</li><li><a href="stop-108959.html">108959</a> - Grobbendonk Dorp 12:25</li><li><a href="stop-108957.html">108957</a> - Grobbendonk Nijverheidsstraat 12:26</li><li><a href="stop-108955.html">108955</a> - Grobbendonk Kretbosstraat 12:27</li><li><a href="stop-22931.html">22931</a> - Grobbendonk Vierselsebaan 12:28</li><li><a href="stop-108953.html">108953</a> - Pulle Keulsebaan 12:29</li><li><a href="stop-108952.html">108952</a> - Pulle Dorp 12:30</li><li><a href="stop-22925.html">22925</a> - Pulle Dorpstraat 12:31</li><li><a href="stop-108951.html">108951</a> - Pulderbos Draaiboom 12:32</li><li><a href="stop-108949.html">108949</a> - Pulderbos Dorp 12:33</li><li><a href="stop-22919.html">22919</a> - Pulderbos Roosten 12:34</li><li><a href="stop-20858.html">20858</a> - Zandhoven Goormansstraat 12:36</li><li><a href="stop-108853.html">108853</a> - Zandhoven Heikant 12:36</li><li><a href="stop-108851.html">108851</a> - Zandhoven Hallebaan 12:37</li><li><a href="stop-108947.html">108947</a> - Zandhoven Rijkswacht 12:38</li><li><a href="stop-22915.html">22915</a> - Zandhoven Dorp perron 1 12:40</li><li><a href="stop-110950.html">110950</a> - Zandhoven Liersebaan 12:41</li><li><a href="stop-22911.html">22911</a> - Massenhoven Gebroken Loop 12:42</li><li><a href="stop-22909.html">22909</a> - Massenhoven Kerkstraat 12:43</li><li><a href="stop-22907.html">22907</a> - Massenhoven Kanaalstraat 12:45</li><li><a href="stop-108943.html">108943</a> - Massenhoven Lammerenberg 12:47</li><li><a href="stop-22903.html">22903</a> - Broechem Beemdenstraat 12:47</li><li><a href="stop-22901.html">22901</a> - Broechem Massenhovensesteenweg 12:49</li><li><a href="stop-92390.html">92390</a> - Broechem Stelplaats 12:50</li><li><a href="stop-91991.html">91991</a> - Broechem Gemeentehuis 12:51</li><li><a href="stop-22897.html">22897</a> - Broechem Van Den Nestlaan 12:52</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3229.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

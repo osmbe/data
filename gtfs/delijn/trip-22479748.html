@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Lanaken - Boorsem - Maasmechelen - 22479748</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Lanaken - Boorsem - Maasmechelen - 22479748</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-31393.html">31393</a> - Lanaken Cultureel Centrum 16:59</li><li><a href="stop-125519.html">125519</a> - Lanaken Gemeentehuis 17:00</li><li><a href="stop-31436.html">31436</a> - Lanaken Atheneum Alicebourg 17:01</li><li><a href="stop-97203.html">97203</a> - Smeermaas Industrieterrein 17:03</li><li><a href="stop-97205.html">97205</a> - Smeermaas Nijverheidslaan 17:04</li><li><a href="stop-97212.html">97212</a> - Smeermaas Kruispunt 17:05</li><li><a href="stop-97210.html">97210</a> - Smeermaas Jeugdpark 17:05</li><li><a href="stop-97216.html">97216</a> - Smeermaas Veugenlaan 17:06</li><li><a href="stop-97215.html">97215</a> - Smeermaas Maaseikersteenweg 17:07</li><li><a href="stop-31451.html">31451</a> - Lanaken Tournebride 17:09</li><li><a href="stop-31405.html">31405</a> - Neerharen Verbindingslaan 17:10</li><li><a href="stop-31397.html">31397</a> - Neerharen Steenweg 17:11</li><li><a href="stop-31417.html">31417</a> - Rekem Bovenwezet 17:13</li><li><a href="stop-31431.html">31431</a> - Rekem Populierenlaan 17:14</li><li><a href="stop-31425.html">31425</a> - Rekem Kerk 17:16</li><li><a href="stop-31419.html">31419</a> - Rekem Brug 17:17</li><li><a href="stop-125534.html">125534</a> - Uikhoven Pastoor Goossenslaan 17:19</li><li><a href="stop-32451.html">32451</a> - Uikhoven Kerk 17:20</li><li><a href="stop-32457.html">32457</a> - Uikhoven Schoorstraat 17:21</li><li><a href="stop-32449.html">32449</a> - Uikhoven Daaluikhoven kapel 17:22</li><li><a href="stop-32453.html">32453</a> - Uikhoven Lange Weidestraat 17:23</li><li><a href="stop-32338.html">32338</a> - Boorsem Spekstraat 17:24</li><li><a href="stop-100084.html">100084</a> - Boorsem Kerk 17:25</li><li><a href="stop-32332.html">32332</a> - Boorsem Bampstraat 17:26</li><li><a href="stop-123083.html">123083</a> - Boorsem Beek 17:28</li><li><a href="stop-97337.html">97337</a> - Kotem Kerk 17:29</li><li><a href="stop-105291.html">105291</a> - Kotem Weertveld 17:30</li><li><a href="stop-123087.html">123087</a> - Kotem Hoeve 17:31</li><li><a href="stop-32403.html">32403</a> - Maasmechelen Maasweg 17:33</li><li><a href="stop-32407.html">32407</a> - Maasmechelen Meelstraat 17:34</li><li><a href="stop-32342.html">32342</a> - Maasmechelen Parklaan 17:35</li><li><a href="stop-125532.html">125532</a> - Maasmechelen Centrum 17:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4532.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

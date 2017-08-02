@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sint-Niklaas-Hamme-Moerzeke- D'monde-Lebbeke-Aalst - 20710289</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Niklaas-Hamme-Moerzeke- D'monde-Lebbeke-Aalst - 20710289</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126684.html">126684</a> - Sint-Niklaas Station perron 1 05:50</li><li><a href="stop-116306.html">116306</a> - Sint-Niklaas Uitgang Noordlaan 05:51</li><li><a href="stop-115674.html">115674</a> - Sint-Niklaas Hofstraat 05:53</li><li><a href="stop-115762.html">115762</a> - Sint-Niklaas Markt 05:55</li><li><a href="stop-115763.html">115763</a> - Sint-Niklaas Park 05:56</li><li><a href="stop-114859.html">114859</a> - Sint-Niklaas Atheneum/Zwembad 05:57</li><li><a href="stop-127595.html">127595</a> - Sint-Niklaas Waasland Shopping perron 2 05:59</li><li><a href="stop-115768.html">115768</a> - Sint-Niklaas Kapelstraat 06:00</li><li><a href="stop-115769.html">115769</a> - Sint-Niklaas Burrelstraat 06:01</li><li><a href="stop-115770.html">115770</a> - Sint-Niklaas Kiemerstraat 06:02</li><li><a href="stop-115777.html">115777</a> - Sint-Niklaas Industriepark West 06:03</li><li><a href="stop-115778.html">115778</a> - Sint-Niklaas Kettermuit 06:04</li><li><a href="stop-115779.html">115779</a> - Elversele Oprit E17 06:05</li><li><a href="stop-115780.html">115780</a> - Elversele Nieuwe Steenweg 06:07</li><li><a href="stop-115781.html">115781</a> - Elversele Duivenhoek 06:08</li><li><a href="stop-125194.html">125194</a> - Hamme Marktplein 06:12</li><li><a href="stop-115783.html">115783</a> - Hamme Roodkruisstraat 06:13</li><li><a href="stop-115784.html">115784</a> - Hamme Tweebruggenplein 06:14</li><li><a href="stop-115785.html">115785</a> - Hamme Hospitaalstraat 06:15</li><li><a href="stop-115787.html">115787</a> - Hamme Damstraat 06:15</li><li><a href="stop-115788.html">115788</a> - Hamme Hooirt 06:16</li><li><a href="stop-115792.html">115792</a> - Hamme Spurt 06:17</li><li><a href="stop-115793.html">115793</a> - Hamme Neerstraat 06:18</li><li><a href="stop-115794.html">115794</a> - Moerzeke Hammestraat 06:20</li><li><a href="stop-115795.html">115795</a> - Moerzeke Bloemenstraat 06:21</li><li><a href="stop-115797.html">115797</a> - Moerzeke Aubroekstraat 06:25</li><li><a href="stop-124423.html">124423</a> - Moerzeke Braakstraat 06:27</li><li><a href="stop-114986.html">114986</a> - Moerzeke Bernarduswijk 06:28</li><li><a href="stop-124422.html">124422</a> - Moerzeke Kastel 06:29</li><li><a href="stop-114981.html">114981</a> - Moerzeke Aubroekstraat 06:30</li><li><a href="stop-115796.html">115796</a> - Moerzeke Dorp 06:33</li><li><a href="stop-115799.html">115799</a> - Moerzeke D'Hebbe 06:34</li><li><a href="stop-115800.html">115800</a> - Moerzeke Hebbestraat 06:35</li><li><a href="stop-118016.html">118016</a> - Grembergen Zijdijk 06:36</li><li><a href="stop-118015.html">118015</a> - Grembergen Oude Molenstraat 06:38</li><li><a href="stop-118013.html">118013</a> - Grembergen Gaverstraat 06:39</li><li><a href="stop-118012.html">118012</a> - Grembergen Dorp 06:40</li><li><a href="stop-118014.html">118014</a> - Grembergen Sportpleinstraat 06:42</li><li><a href="stop-118010.html">118010</a> - Grembergen Scheldedreef 06:44</li><li><a href="stop-127113.html">127113</a> - Dendermonde Oude Vest 06:46</li><li><a href="stop-117692.html">117692</a> - Dendermonde Brusselsestraat 06:49</li><li><a href="stop-126709.html">126709</a> - Dendermonde Station perron 7 06:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./940.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

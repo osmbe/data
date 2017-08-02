@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Heverlee Campus - Leuven - Kessel-Lo Hulsberg - 22774023</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Heverlee Campus - Leuven - Kessel-Lo Hulsberg - 22774023</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-12147.html">12147</a> - Kessel-Lo Hulsberg 21:14</li><li><a href="stop-12153.html">12153</a> - Kessel-Lo Kesseldallaan 21:15</li><li><a href="stop-14803.html">14803</a> - Kessel-Lo Kesselsteinplein 21:16</li><li><a href="stop-12151.html">12151</a> - Kessel-Lo Kesselbergplein 21:17</li><li><a href="stop-12182.html">12182</a> - Kessel-Lo Sparrenboslaan 21:18</li><li><a href="stop-12123.html">12123</a> - Kessel-Lo Domeinstraat 21:18</li><li><a href="stop-12135.html">12135</a> - Kessel-Lo Genadedal 21:19</li><li><a href="stop-12188.html">12188</a> - Kessel-Lo Wilselesteenweg 21:20</li><li><a href="stop-12180.html">12180</a> - Kessel-Lo Prov. Recreatiecentr. 21:22</li><li><a href="stop-12133.html">12133</a> - Kessel-Lo Gemeenteplein 21:23</li><li><a href="stop-12159.html">12159</a> - Kessel-Lo L.Ruelensstraat 21:24</li><li><a href="stop-12186.html">12186</a> - Kessel-Lo Van Rodestraat 21:25</li><li><a href="stop-12149.html">12149</a> - Kessel-Lo Kerkstraat 21:26</li><li><a href="stop-12127.html">12127</a> - Kessel-Lo De Becker Remypl. 21:27</li><li><a href="stop-12288.html">12288</a> - Leuven Station Perron 6 21:30</li><li><a href="stop-12232.html">12232</a> - Leuven J.Stasstraat 21:32</li><li><a href="stop-89197.html">89197</a> - Leuven Rector De Somerplein zone C 21:34</li><li><a href="stop-12310.html">12310</a> - Leuven Zeelstraat 21:35</li><li><a href="stop-12279.html">12279</a> - Leuven Sint-Michielskerk 21:36</li><li><a href="stop-12212.html">12212</a> - Leuven H.Hartkliniek 21:37</li><li><a href="stop-12277.html">12277</a> - Leuven Sint-Kwintenskerk 21:39</li><li><a href="stop-94828.html">94828</a> - Leuven Naamsepoort 21:40</li><li><a href="stop-110153.html">110153</a> - Heverlee Groenstraat 21:42</li><li><a href="stop-12113.html">12113</a> - Heverlee Station 21:44</li><li><a href="stop-44000.html">44000</a> - Heverlee H.Hartinstituut 21:46</li><li><a href="stop-44002.html">44002</a> - Heverlee Leopold-III laan 21:47</li><li><a href="stop-12376.html">12376</a> - Heverlee Middelweg 21:48</li><li><a href="stop-12378.html">12378</a> - Heverlee Waversebaan 21:48</li><li><a href="stop-12374.html">12374</a> - Heverlee Kantineplein 21:49</li><li><a href="stop-99114.html">99114</a> - Heverlee Kasteel Arenberg 21:50</li><li><a href="stop-93664.html">93664</a> - Heverlee Celestijnenlaan 21:52</li><li><a href="stop-99889.html">99889</a> - Heverlee Campus Arenberg 21:53</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2024.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

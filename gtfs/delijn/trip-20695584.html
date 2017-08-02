@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent Zuid - Gavere - Dikkelvenne/Beerlegem - 20695584</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent Zuid - Gavere - Dikkelvenne/Beerlegem - 20695584</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-118778.html">118778</a> - Beerlegem Kerk 15:27</li><li><a href="stop-120328.html">120328</a> - Dikkelvenne Saksenboomstraat 15:29</li><li><a href="stop-120329.html">120329</a> - Dikkelvenne Vossenholstraat 15:30</li><li><a href="stop-113751.html">113751</a> - Dikkelvenne Kerk 15:31</li><li><a href="stop-113750.html">113750</a> - Dikkelvenne Diepestraat 15:32</li><li><a href="stop-113749.html">113749</a> - Dikkelvenne Sint-Christianastraat 15:33</li><li><a href="stop-113748.html">113748</a> - Gavere Kamp 15:34</li><li><a href="stop-126781.html">126781</a> - Gavere Warande perron 3 15:35</li><li><a href="stop-113747.html">113747</a> - Gavere Scheldestraat 15:37</li><li><a href="stop-128625.html">128625</a> - Gavere Brandweer 15:38</li><li><a href="stop-113746.html">113746</a> - Gavere Grotenbroek 15:40</li><li><a href="stop-113745.html">113745</a> - Semmerzake Opperweg 15:41</li><li><a href="stop-128624.html">128624</a> - Semmerzake Dorp 15:43</li><li><a href="stop-120844.html">120844</a> - Vurste Gentweg 15:45</li><li><a href="stop-113740.html">113740</a> - Melsen Melsenstraat 15:47</li><li><a href="stop-120843.html">120843</a> - Melsen Meersstraat 15:48</li><li><a href="stop-113738.html">113738</a> - Melsen Warandestraat 15:48</li><li><a href="stop-113737.html">113737</a> - Schelderode Kerk 15:50</li><li><a href="stop-120348.html">120348</a> - Merelbeke Hoorndriesstraat 15:51</li><li><a href="stop-113736.html">113736</a> - Merelbeke Sint-Elooistraat 15:52</li><li><a href="stop-113820.html">113820</a> - Merelbeke Notelaarstraat 15:53</li><li><a href="stop-113819.html">113819</a> - Merelbeke Populierenhof 15:54</li><li><a href="stop-113818.html">113818</a> - Merelbeke Kastanjestraat 15:55</li><li><a href="stop-114768.html">114768</a> - Merelbeke Polderstraat 15:55</li><li><a href="stop-114706.html">114706</a> - Merelbeke Molenhoek 15:56</li><li><a href="stop-114682.html">114682</a> - Merelbeke Kerk 15:58</li><li><a href="stop-113815.html">113815</a> - Merelbeke Hebbelynckstraat 15:59</li><li><a href="stop-113814.html">113814</a> - Merelbeke Waterstraat 16:00</li><li><a href="stop-112015.html">112015</a> - Merelbeke Plataan 16:01</li><li><a href="stop-113812.html">113812</a> - Merelbeke Nachtegaaldreef 16:03</li><li><a href="stop-113811.html">113811</a> - Merelbeke Ginstdreef 16:04</li><li><a href="stop-113810.html">113810</a> - Merelbeke Kon. Elisabethlaan 16:05</li><li><a href="stop-116466.html">116466</a> - Melle Vijverwegel 16:06</li><li><a href="stop-111685.html">111685</a> - Gentbrugge Merelbeke Station 16:06</li><li><a href="stop-113809.html">113809</a> - Merelbeke Kerk Flora 16:07</li><li><a href="stop-113806.html">113806</a> - Merelbeke Van Goethemstraat 16:08</li><li><a href="stop-113805.html">113805</a> - Merelbeke Benoitstraat 16:09</li><li><a href="stop-113804.html">113804</a> - Merelbeke Koestraat 16:09</li><li><a href="stop-113803.html">113803</a> - Ledeberg Eindeke 16:10</li><li><a href="stop-113802.html">113802</a> - Ledeberg Botermarkt 16:12</li><li><a href="stop-112472.html">112472</a> - Ledeberg Eggermontstraat 16:13</li><li><a href="stop-111200.html">111200</a> - Gent Sint-Lievenspoort 16:15</li><li><a href="stop-111201.html">111201</a> - Gent Sint-Lievensdoorgang 16:16</li><li><a href="stop-111171.html">111171</a> - Gent Vijfwindgatenstraat 16:16</li><li><a href="stop-126534.html">126534</a> - Gent Zuid perron 5 16:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./295.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

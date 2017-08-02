@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - S-M-Leerne/De Pinte-Latem-Gent-Zele - 20691275</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: S-M-Leerne/De Pinte-Latem-Gent-Zele - 20691275</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-113444.html">113444</a> - Kalken Kerk 08:06</li><li><a href="stop-113443.html">113443</a> - Kalken Bieststraat 08:07</li><li><a href="stop-113442.html">113442</a> - Kalken Steenbeekstraat 08:08</li><li><a href="stop-113441.html">113441</a> - Kalken Belindestraat 08:09</li><li><a href="stop-113440.html">113440</a> - Kalken Colmanstraat 08:10</li><li><a href="stop-113439.html">113439</a> - Laarne Steentjesstraat 08:12</li><li><a href="stop-113438.html">113438</a> - Laarne Kerkstraat 08:13</li><li><a href="stop-113437.html">113437</a> - Laarne Ascopstraat 08:13</li><li><a href="stop-113436.html">113436</a> - Laarne Bergstraat 08:14</li><li><a href="stop-113435.html">113435</a> - Laarne Breestraat 08:15</li><li><a href="stop-113434.html">113434</a> - Laarne Groenstraat 08:15</li><li><a href="stop-113433.html">113433</a> - Destelbergen Meersakkerstraat 08:16</li><li><a href="stop-113432.html">113432</a> - Destelbergen Palingstraat 08:17</li><li><a href="stop-113431.html">113431</a> - Destelbergen Damvalleistraat 08:18</li><li><a href="stop-113430.html">113430</a> - Destelbergen Ring R4 08:20</li><li><a href="stop-113429.html">113429</a> - Destelbergen Sint-Pietershofstraat 08:21</li><li><a href="stop-113408.html">113408</a> - Destelbergen Kerk 08:22</li><li><a href="stop-113379.html">113379</a> - Destelbergen Ter Ramen 08:23</li><li><a href="stop-113378.html">113378</a> - Destelbergen Zenderstraat 08:24</li><li><a href="stop-113377.html">113377</a> - Destelbergen Admiraalstraat 08:25</li><li><a href="stop-113376.html">113376</a> - Destelbergen Stelplaats 08:26</li><li><a href="stop-113375.html">113375</a> - Destelbergen Lossystraat 08:28</li><li><a href="stop-113374.html">113374</a> - Sint-Amandsberg Baeyensstraat 08:29</li><li><a href="stop-111237.html">111237</a> - Sint-Amandsberg Heernisplein 08:30</li><li><a href="stop-111238.html">111238</a> - Gent Banierstraat 08:31</li><li><a href="stop-111239.html">111239</a> - Gent Nieuwhof 08:32</li><li><a href="stop-126622.html">126622</a> - Gent Dampoort perron 4 08:34</li><li><a href="stop-111323.html">111323</a> - Gent Veemarkt 08:36</li><li><a href="stop-113064.html">113064</a> - Gent Forelstraat 08:38</li><li><a href="stop-113063.html">113063</a> - Gent Vlaamse Kaai 08:39</li><li><a href="stop-113062.html">113062</a> - Gent Keizerpoort 08:41</li><li><a href="stop-112936.html">112936</a> - Gent Terplatenbrug 08:44</li><li><a href="stop-111370.html">111370</a> - Gent Heuvelpoort 08:45</li><li><a href="stop-111371.html">111371</a> - Gent Ledeganckstraat 08:46</li><li><a href="stop-111372.html">111372</a> - Gent Fortlaan 08:47</li><li><a href="stop-112021.html">112021</a> - Gent Parkplein 08:48</li><li><a href="stop-126671.html">126671</a> - Gent Sint-Pietersstation perron 4 08:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./223.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

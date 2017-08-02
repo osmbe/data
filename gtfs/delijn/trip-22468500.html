@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Bilzen - Tongeren - 22468500</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bilzen - Tongeren - 22468500</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-88863.html">88863</a> - Tongeren Station 07:48</li><li><a href="stop-34641.html">34641</a> - Tongeren Het Kruis 07:50</li><li><a href="stop-34551.html">34551</a> - Tongeren Meulemanslaan 07:51</li><li><a href="stop-34452.html">34452</a> - Tongeren Treurenberg 07:52</li><li><a href="stop-97679.html">97679</a> - 's Herenelderen Waterkuilstraat 07:54</li><li><a href="stop-97675.html">97675</a> - 's Herenelderen Bavershoeve 07:55</li><li><a href="stop-97678.html">97678</a> - 's Herenelderen Lindebornstraat 07:56</li><li><a href="stop-27165.html">27165</a> - Rijkhoven Weg naar Rijkhoven 07:59</li><li><a href="stop-27162.html">27162</a> - Rijkhoven Bammestraat 08:01</li><li><a href="stop-27158.html">27158</a> - Rijkhoven Weerterveld 08:02</li><li><a href="stop-27163.html">27163</a> - Rijkhoven Pleinstraat 08:03</li><li><a href="stop-27161.html">27161</a> - Rijkhoven Bammestraat 08:05</li><li><a href="stop-97145.html">97145</a> - Alt-Hoeselt Overweg 08:06</li><li><a href="stop-97147.html">97147</a> - Alt-Hoeselt Terpoortenlaan 08:07</li><li><a href="stop-97142.html">97142</a> - Alt-Hoeselt Molenstraat 08:07</li><li><a href="stop-30536.html">30536</a> - Hoeselt Molenbroek 08:09</li><li><a href="stop-30532.html">30532</a> - Hoeselt Lindekapel 08:10</li><li><a href="stop-30516.html">30516</a> - Hoeselt Europalaan 08:11</li><li><a href="stop-30529.html">30529</a> - Hoeselt Kruispunt 08:12</li><li><a href="stop-30518.html">30518</a> - Hoeselt Gansterenstraat 08:13</li><li><a href="stop-27023.html">27023</a> - Bilzen Autosnelweg 08:15</li><li><a href="stop-122990.html">122990</a> - Bilzen Tongersestraat 08:16</li><li><a href="stop-105153.html">105153</a> - Bilzen Station perron 7 08:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5258.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

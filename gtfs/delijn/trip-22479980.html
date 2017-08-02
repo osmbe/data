@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kwaadmechelen - Westerlo - 22479980</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kwaadmechelen - Westerlo - 22479980</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109934.html">109934</a> - Westerlo de Merodedreef 17:00</li><li><a href="stop-109938.html">109938</a> - Westerlo Dorp 17:01</li><li><a href="stop-25208.html">25208</a> - Westerlo Standbeeld PD Ligne 17:04</li><li><a href="stop-125842.html">125842</a> - Zammel Kruispunt 17:05</li><li><a href="stop-125464.html">125464</a> - Zammel Netebrug 17:06</li><li><a href="stop-31228.html">31228</a> - Varendonk Grote Steenweg 17:08</li><li><a href="stop-31229.html">31229</a> - Varendonk Varendonksebaan 17:08</li><li><a href="stop-31247.html">31247</a> - Veerle Hulstsestraat 17:09</li><li><a href="stop-125513.html">125513</a> - Veerle Geelsebaan 17:10</li><li><a href="stop-31257.html">31257</a> - Veerle Pastorijstraat 17:11</li><li><a href="stop-31264.html">31264</a> - Veerle Rode Laakstraat 17:12</li><li><a href="stop-31246.html">31246</a> - Veerle Heieinde 17:13</li><li><a href="stop-31244.html">31244</a> - Veerle Heide 17:13</li><li><a href="stop-128828.html">128828</a> - Averbode Abdij 17:16</li><li><a href="stop-33780.html">33780</a> - Averbode Wezelbaan 17:16</li><li><a href="stop-125563.html">125563</a> - Tessenderlo Abdijstraat 17:17</li><li><a href="stop-31232.html">31232</a> - Veerle Boshuis 17:20</li><li><a href="stop-125516.html">125516</a> - Veerle Weg naar Averbode 17:20</li><li><a href="stop-31262.html">31262</a> - Veerle Pompert 17:22</li><li><a href="stop-31235.html">31235</a> - Veerle Dorp 17:22</li><li><a href="stop-31269.html">31269</a> - Veerle Zand 17:22</li><li><a href="stop-31237.html">31237</a> - Veerle Eindhoutseweg 17:23</li><li><a href="stop-31241.html">31241</a> - Veerle Grote Laak 17:24</li><li><a href="stop-31199.html">31199</a> - Eindhout Bergske 17:25</li><li><a href="stop-31216.html">31216</a> - Eindhout Poeleinde 17:26</li><li><a href="stop-125510.html">125510</a> - Eindhout Meir 17:28</li><li><a href="stop-31212.html">31212</a> - Eindhout Oude Tramlijn 17:28</li><li><a href="stop-126928.html">126928</a> - Eindhout Dorp 17:29</li><li><a href="stop-20150.html">20150</a> - Eindhout Sint-Jozefstraat 17:32</li><li><a href="stop-20146.html">20146</a> - Eindhout Paviljoen 17:33</li><li><a href="stop-20144.html">20144</a> - Vorst Rode Kruisstraat 17:35</li><li><a href="stop-126518.html">126518</a> - Vorst Markt 17:35</li><li><a href="stop-20140.html">20140</a> - Vorst Hospestraat 17:36</li><li><a href="stop-126923.html">126923</a> - Vorst Smissestraat 17:36</li><li><a href="stop-126922.html">126922</a> - Vorst Borgtstraat 17:37</li><li><a href="stop-20132.html">20132</a> - Vorst Zijstraat 17:38</li><li><a href="stop-31290.html">31290</a> - Vorst Oranjestraat 17:39</li><li><a href="stop-31305.html">31305</a> - Vorst Willekerstraat 17:39</li><li><a href="stop-31304.html">31304</a> - Vorst Wiezestraat 17:40</li><li><a href="stop-31276.html">31276</a> - Vorst De Locht 17:40</li><li><a href="stop-31287.html">31287</a> - Vorst Meerhoutstraat 17:41</li><li><a href="stop-31279.html">31279</a> - Vorst Heistraat 17:41</li><li><a href="stop-20128.html">20128</a> - Klein Vorst Kerk 17:42</li><li><a href="stop-34169.html">34169</a> - Tessenderlo Baal 17:43</li><li><a href="stop-34172.html">34172</a> - Tessenderlo Baalbergstraat 17:44</li><li><a href="stop-34278.html">34278</a> - Tessenderlo Rijt 17:45</li><li><a href="stop-34247.html">34247</a> - Tessenderlo Kerk 17:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4674.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

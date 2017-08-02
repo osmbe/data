@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Halle - Mechelen - S734623121</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Halle - Mechelen - S734623121</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8814308_1.html">8814308:1</a> - Halle 12:35</li><li><a href="stop-8814415_2.html">8814415:2</a> - Huizingen 12:39</li><li><a href="stop-8814423_2.html">8814423:2</a> - Beersel 12:43</li><li><a href="stop-8814431_2.html">8814431:2</a> - Moensberg 12:46</li><li><a href="stop-8814449_2.html">8814449:2</a> - Sint-Job 12:50</li><li><a href="stop-8814464_2.html">8814464:2</a> - Diesdelle/Vivier d'Oie 12:53</li><li><a href="stop-8814456_2.html">8814456:2</a> - Boondaal/Boondael 12:56</li><li><a href="stop-8811205_2.html">8811205:2</a> - Delta 12:59</li><li><a href="stop-8811197_1.html">8811197:1</a> - Merode 13:03</li><li><a href="stop-8811171_1.html">8811171:1</a> - Meiser 13:06</li><li><a href="stop-8811106_1.html">8811106:1</a> - Evere 13:10</li><li><a href="stop-8811163_1.html">8811163:1</a> - Bordet 13:13</li><li><a href="stop-8811155_1.html">8811155:1</a> - Haren 13:16</li><li><a href="stop-8811189_3.html">8811189:3</a> - Vilvoorde 13:23</li><li><a href="stop-8822269_3.html">8822269:3</a> - Eppegem 13:27</li><li><a href="stop-8822277_1.html">8822277:1</a> - Hofstade 13:32</li><li><a href="stop-8822426_4.html">8822426:4</a> - Muizen 13:37</li><li><a href="stop-8822004_6.html">8822004:6</a> - Mechelen 13:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1825.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

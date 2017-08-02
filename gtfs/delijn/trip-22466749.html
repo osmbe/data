@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Meeuwen - Grote Brogel - Bocholt - 22466749</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Meeuwen - Grote Brogel - Bocholt - 22466749</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128973.html">128973</a> - Hasselt Station perron 14 08:40</li><li><a href="stop-29268.html">29268</a> - Hasselt Dusartplein 08:48</li><li><a href="stop-29647.html">29647</a> - Hasselt Zwembad perron 2 08:50</li><li><a href="stop-94957.html">94957</a> - Hasselt Handelsschool 08:51</li><li><a href="stop-29626.html">29626</a> - Hasselt Weg naar Genk 08:53</li><li><a href="stop-29242.html">29242</a> - Hasselt Banneuxwijk 08:54</li><li><a href="stop-97723.html">97723</a> - Kiewit Station 08:55</li><li><a href="stop-96832.html">96832</a> - Kiewit Europalaan 08:56</li><li><a href="stop-96898.html">96898</a> - Kiewit Kerk 08:58</li><li><a href="stop-96900.html">96900</a> - Kiewit Luchtvaartstraat 08:59</li><li><a href="stop-35235.html">35235</a> - Zonhoven Vertakking 09:00</li><li><a href="stop-125591.html">125591</a> - Zonhoven Heuveneinde 09:01</li><li><a href="stop-35199.html">35199</a> - Zonhoven Heuven 09:02</li><li><a href="stop-35183.html">35183</a> - Zonhoven Dorp 09:03</li><li><a href="stop-123219.html">123219</a> - Zonhoven Dorpsplein 09:05</li><li><a href="stop-35169.html">35169</a> - Zonhoven Berkenenstraat 09:07</li><li><a href="stop-30733.html">30733</a> - Houthalen Park & Ride 09:09</li><li><a href="stop-30693.html">30693</a> - Houthalen Koolmijnlaan 09:10</li><li><a href="stop-30724.html">30724</a> - Houthalen Mijn 09:10</li><li><a href="stop-93625.html">93625</a> - Houthalen Centrum 09:12</li><li><a href="stop-30702.html">30702</a> - Houthalen Laak 09:14</li><li><a href="stop-120574.html">120574</a> - Helchteren Technische Schoolstraat 09:16</li><li><a href="stop-30603.html">30603</a> - Helchteren Kruispunt 09:17</li><li><a href="stop-30607.html">30607</a> - Helchteren 8 Septemberlaan 09:17</li><li><a href="stop-30618.html">30618</a> - Helchteren Kazerne 2a 09:18</li><li><a href="stop-30612.html">30612</a> - Helchteren Eynderweg 09:20</li><li><a href="stop-30626.html">30626</a> - Helchteren Sonnis 09:20</li><li><a href="stop-30623.html">30623</a> - Helchteren Oude Postbaan 09:22</li><li><a href="stop-125559.html">125559</a> - Peer Bovenlinde 09:23</li><li><a href="stop-33546.html">33546</a> - Peer Wauberg 09:25</li><li><a href="stop-97478.html">97478</a> - Wauberg School 09:25</li><li><a href="stop-97476.html">97476</a> - Wauberg Overes 09:26</li><li><a href="stop-32790.html">32790</a> - Meeuwen Meeuweneinde 09:27</li><li><a href="stop-105310.html">105310</a> - Meeuwen Wilgenstraat 09:28</li><li><a href="stop-110434.html">110434</a> - Meeuwen Broekkant 09:29</li><li><a href="stop-32798.html">32798</a> - Meeuwen Weg naar Helchteren 09:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4821.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

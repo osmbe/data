@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Geraardsbergen-Waarbeke-Denderwindeke - 20717431</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Geraardsbergen-Waarbeke-Denderwindeke - 20717431</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-117993.html">117993</a> - Nieuwenhove Kerk 07:25</li><li><a href="stop-112914.html">112914</a> - Nieuwenhove Heidestraat 07:26</li><li><a href="stop-118002.html">118002</a> - Waarbeke Wolvenhoek 07:28</li><li><a href="stop-118003.html">118003</a> - Waarbeke Kerk 07:29</li><li><a href="stop-118004.html">118004</a> - Waarbeke Dorekensstraat 07:30</li><li><a href="stop-118005.html">118005</a> - Galmaarden Hoogstraat 07:31</li><li><a href="stop-118006.html">118006</a> - Galmaarden Bruynbroekstraat 07:32</li><li><a href="stop-118007.html">118007</a> - Galmaarden Veldstraat 07:33</li><li><a href="stop-118008.html">118008</a> - Galmaarden Waterschaapstraat 07:33</li><li><a href="stop-118009.html">118009</a> - Galmaarden Bosberg 07:34</li><li><a href="stop-119861.html">119861</a> - Atembeke Kapellestraat 07:36</li><li><a href="stop-119824.html">119824</a> - Atembeke Kerk 07:37</li><li><a href="stop-119825.html">119825</a> - Atembeke Brusselsestraat 07:38</li><li><a href="stop-119775.html">119775</a> - Onkerzele Dreef 07:39</li><li><a href="stop-118304.html">118304</a> - Onkerzele Oudenberg 07:41</li><li><a href="stop-119774.html">119774</a> - Onkerzele Edingseweg 07:41</li><li><a href="stop-118305.html">118305</a> - Geraardsbergen Denderland 07:42</li><li><a href="stop-120384.html">120384</a> - Geraardsbergen Zonnebloemstraat 07:42</li><li><a href="stop-119805.html">119805</a> - Geraardsbergen Administratief Centrum 07:43</li><li><a href="stop-119773.html">119773</a> - Geraardsbergen Post 07:45</li><li><a href="stop-114853.html">114853</a> - Geraardsbergen Ziekenhuis 07:46</li><li><a href="stop-119772.html">119772</a> - Geraardsbergen Gasthuisstraat 07:47</li><li><a href="stop-126608.html">126608</a> - Geraardsbergen Station perron 9 07:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1262.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

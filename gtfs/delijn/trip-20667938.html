@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Melle Leeuw - Zwijnaarde - 20667938</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Melle Leeuw - Zwijnaarde - 20667938</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-111158.html">111158</a> - Melle Leeuw 09:16</li><li><a href="stop-111159.html">111159</a> - Gentbrugge Pecherstraat 09:17</li><li><a href="stop-111160.html">111160</a> - Gentbrugge Tennisstraat 09:18</li><li><a href="stop-111161.html">111161</a> - Gentbrugge Schooldreef 09:19</li><li><a href="stop-120168.html">120168</a> - Gentbrugge P&R 09:21</li><li><a href="stop-111167.html">111167</a> - Gentbrugge Stelplaats 09:23</li><li><a href="stop-111167.html">111167</a> - Gentbrugge Stelplaats 09:23</li><li><a href="stop-111168.html">111168</a> - Ledeberg Van Lokerenstraat 09:25</li><li><a href="stop-111169.html">111169</a> - Gent Keizerpoort 09:26</li><li><a href="stop-111171.html">111171</a> - Gent Vijfwindgatenstraat 09:28</li><li><a href="stop-126533.html">126533</a> - Gent Zuid perron 1 09:30</li><li><a href="stop-126533.html">126533</a> - Gent Zuid perron 1 09:30</li><li><a href="stop-111193.html">111193</a> - Gent Lippensplein 09:32</li><li><a href="stop-111174.html">111174</a> - Gent Vogelmarkt 09:33</li><li><a href="stop-111176.html">111176</a> - Gent Zonnestraat 09:35</li><li><a href="stop-111177.html">111177</a> - Gent Oude Houtlei 09:36</li><li><a href="stop-111178.html">111178</a> - Gent Galgenberg 09:37</li><li><a href="stop-111179.html">111179</a> - Gent Rozemarijnbrug 09:38</li><li><a href="stop-111180.html">111180</a> - Gent Bernard Spaelaan 09:39</li><li><a href="stop-111181.html">111181</a> - Gent Bijlokehof 09:40</li><li><a href="stop-111182.html">111182</a> - Gent Koning Albertbrug 09:42</li><li><a href="stop-111183.html">111183</a> - Gent Meersstraat 09:44</li><li><a href="stop-126577.html">126577</a> - Gent Sint-Pietersstation perron 17 09:45</li><li><a href="stop-126577.html">126577</a> - Gent Sint-Pietersstation perron 17 09:45</li><li><a href="stop-111423.html">111423</a> - Gent Sint-Denijslaan 09:47</li><li><a href="stop-111424.html">111424</a> - Gent Sint-Pietersaalststraat 09:49</li><li><a href="stop-111425.html">111425</a> - Gent Krijgslaan 09:50</li><li><a href="stop-111426.html">111426</a> - Gent De Pintelaan 09:51</li><li><a href="stop-111427.html">111427</a> - Gent Rerum Novarumplein 09:52</li><li><a href="stop-127197.html">127197</a> - Zwijnaarde Gestichtstraat 09:54</li><li><a href="stop-120629.html">120629</a> - Zwijnaarde Klaartestraat 09:57</li><li><a href="stop-120181.html">120181</a> - Zwijnaarde Molen 09:58</li><li><a href="stop-126818.html">126818</a> - Zwijnaarde Bibliotheek 09:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./31.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Bilzen - Maastricht/Lanaken - Rekem - 22459257</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Bilzen - Maastricht/Lanaken - Rekem - 22459257</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-105149.html">105149</a> - Bilzen Station perron 3 15:50</li><li><a href="stop-93786.html">93786</a> - Bilzen Parklaan 15:51</li><li><a href="stop-27113.html">27113</a> - Bilzen Maastrichterpoort 15:53</li><li><a href="stop-27202.html">27202</a> - Waltwilder Gabrig 15:54</li><li><a href="stop-120442.html">120442</a> - Waltwilder Sportveldstraat 15:56</li><li><a href="stop-110209.html">110209</a> - Waltwilder Sint-Remigiusstraat 15:57</li><li><a href="stop-43884.html">43884</a> - Waltwilder Maastrichterstraat 15:58</li><li><a href="stop-27099.html">27099</a> - Hoelbeek Hoelbeekstraat 16:01</li><li><a href="stop-110198.html">110198</a> - Hoelbeek Kruispunt Jonckholstraat 16:03</li><li><a href="stop-27058.html">27058</a> - Eigenbilzen Lochtstraat 16:07</li><li><a href="stop-27062.html">27062</a> - Eigenbilzen Molendriesstraat 16:08</li><li><a href="stop-27053.html">27053</a> - Eigenbilzen Kerk 16:11</li><li><a href="stop-27055.html">27055</a> - Eigenbilzen Kruising 16:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4690.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

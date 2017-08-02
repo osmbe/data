@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Sint-Niklaas - Kortrijk - IC323214041</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Niklaas - Kortrijk - IC323214041</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8894508_3.html">8894508:3</a> - Sint-Niklaas 09:24</li><li><a href="stop-8894433_2.html">8894433:2</a> - Belsele 09:29</li><li><a href="stop-8894425_2.html">8894425:2</a> - Sinaai 09:32</li><li><a href="stop-8894201_1.html">8894201:1</a> - Lokeren 09:39</li><li><a href="stop-8894235_1.html">8894235:1</a> - Zele 09:47</li><li><a href="stop-8893401_1.html">8893401:1</a> - Dendermonde 10:04</li><li><a href="stop-8812047_4.html">8812047:4</a> - Jette 10:25</li><li><a href="stop-8812005_2.html">8812005:2</a> - Brussel-Noord/Bruxelles-Nord 10:34</li><li><a href="stop-8813003_2.html">8813003:2</a> - Brussel-Centraal/Bruxelles-Central 10:38</li><li><a href="stop-8814001_8.html">8814001:8</a> - Brussel-Zuid/Bruxelles-Midi 10:45</li><li><a href="stop-8814308_3.html">8814308:3</a> - Halle 10:58</li><li><a href="stop-8883311_3.html">8883311:3</a> - Enghien 11:10</li><li><a href="stop-8883436_2.html">8883436:2</a> - Silly 11:17</li><li><a href="stop-8886009_2.html">8886009:2</a> - Ath 11:29</li><li><a href="stop-8886348_1.html">8886348:1</a> - Leuze 11:38</li><li><a href="stop-8885001_3.html">8885001:3</a> - Tournai 11:53</li><li><a href="stop-8885068_1.html">8885068:1</a> - Froyennes 11:57</li><li><a href="stop-8885753_2.html">8885753:2</a> - Herseaux 12:07</li><li><a href="stop-8885704_3.html">8885704:3</a> - Mouscron 12:12</li><li><a href="stop-8896008_7.html">8896008:7</a> - Kortrijk 12:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./424.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

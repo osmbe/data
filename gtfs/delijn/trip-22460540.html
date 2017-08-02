@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Landen - Montenaken - Sint-Truiden - 22460540</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Landen - Montenaken - Sint-Truiden - 22460540</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-88392.html">88392</a> - Landen Station perron 2 13:10</li><li><a href="stop-12029.html">12029</a> - Landen Overweg 13:12</li><li><a href="stop-31640.html">31640</a> - Walsbets Kerk 13:13</li><li><a href="stop-91937.html">91937</a> - Wezeren School 13:14</li><li><a href="stop-31664.html">31664</a> - Wezeren Wezerenstraat 13:15</li><li><a href="stop-31675.html">31675</a> - Wezeren Kerk 13:15</li><li><a href="stop-28888.html">28888</a> - Montenaken Kerkhof 13:17</li><li><a href="stop-28816.html">28816</a> - Montenaken Markt 13:18</li><li><a href="stop-28810.html">28810</a> - Montenaken Gemeentehuis 13:19</li><li><a href="stop-28890.html">28890</a> - Montenaken Dehasque 13:19</li><li><a href="stop-28822.html">28822</a> - Montenaken Sint-Truiderbaan 13:20</li><li><a href="stop-28880.html">28880</a> - Gingelom Fabriekswijk 13:22</li><li><a href="stop-28847.html">28847</a> - Gingelom Station 13:23</li><li><a href="stop-28885.html">28885</a> - Gingelom Kruispunt 13:24</li><li><a href="stop-28841.html">28841</a> - Gingelom Regentwijk 13:25</li><li><a href="stop-28878.html">28878</a> - Gingelom Kerk 13:26</li><li><a href="stop-28764.html">28764</a> - Gingelom Den Kulter 13:27</li><li><a href="stop-96793.html">96793</a> - Niel-bij-Sint-Truiden Oude Katsei 13:27</li><li><a href="stop-96791.html">96791</a> - Niel-bij-Sint-Truiden Naamsestraat 13:28</li><li><a href="stop-96785.html">96785</a> - Niel-bij-Sint-Truiden Buvingenstraat 13:28</li><li><a href="stop-28749.html">28749</a> - Borlo Bergstraat 13:32</li><li><a href="stop-31851.html">31851</a> - Borlo Jeuksestraat 13:32</li><li><a href="stop-28755.html">28755</a> - Borlo Kerk 13:33</li><li><a href="stop-28753.html">28753</a> - Borlo Keibergstraat 13:34</li><li><a href="stop-28756.html">28756</a> - Buvingen Berg 13:35</li><li><a href="stop-28758.html">28758</a> - Buvingen Kerk 13:35</li><li><a href="stop-28762.html">28762</a> - Buvingen Weg naar Mielen 13:35</li><li><a href="stop-28760.html">28760</a> - Buvingen Weg naar Gingelom 13:36</li><li><a href="stop-28824.html">28824</a> - Muizen Hoeve 13:37</li><li><a href="stop-99839.html">99839</a> - Kerkom Truilingenstraat 13:39</li><li><a href="stop-99842.html">99842</a> - Kerkom Weg naar Kerkom 13:40</li><li><a href="stop-99838.html">99838</a> - Bevingen Straeten 13:41</li><li><a href="stop-99837.html">99837</a> - Bevingen Romeinse Steenweg 13:42</li><li><a href="stop-97516.html">97516</a> - Bevingen Centrum 13:43</li><li><a href="stop-33985.html">33985</a> - Sint-Truiden N.O. Omleiding 13:44</li><li><a href="stop-33928.html">33928</a> - Sint-Truiden Kattenstraat 13:47</li><li><a href="stop-105352.html">105352</a> - Sint-Truiden Europaplein 13:47</li><li><a href="stop-33974.html">33974</a> - Sint-Truiden Naamsepoort 13:48</li><li><a href="stop-110642.html">110642</a> - Sint-Truiden Zwembad 13:48</li><li><a href="stop-34026.html">34026</a> - Sint-Truiden Stationsstraat 13:50</li><li><a href="stop-127439.html">127439</a> - Sint-Truiden Station perron 6 13:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4583.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

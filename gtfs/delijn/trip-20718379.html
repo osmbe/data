@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Erpe Vijfhuizen - Burst - Zottegem - 20718379</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Erpe Vijfhuizen - Burst - Zottegem - 20718379</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126767.html">126767</a> - Zottegem Station perron 7 17:44</li><li><a href="stop-118440.html">118440</a> - Zottegem Welzijnstraat 17:45</li><li><a href="stop-118870.html">118870</a> - Zottegem Gevaertlaan 17:46</li><li><a href="stop-120344.html">120344</a> - Zottegem Vandendriesschestraat 17:48</li><li><a href="stop-120388.html">120388</a> - Leeuwergem Ter Kameren 17:50</li><li><a href="stop-113789.html">113789</a> - Oombergen De Vos 17:55</li><li><a href="stop-113786.html">113786</a> - Oombergen Oombergenstraat 17:56</li><li><a href="stop-116871.html">116871</a> - Hillegem Kerkhof 17:57</li><li><a href="stop-116872.html">116872</a> - Hillegem Dorp 17:58</li><li><a href="stop-116873.html">116873</a> - Hillegem Merehoekstraat 17:59</li><li><a href="stop-116874.html">116874</a> - Hillegem Daalkouterlaan 18:00</li><li><a href="stop-116875.html">116875</a> - Herzele Vierwegen 18:01</li><li><a href="stop-116976.html">116976</a> - Herzele Heirbaan 18:02</li><li><a href="stop-116975.html">116975</a> - Borsbeke Kerk 18:03</li><li><a href="stop-116974.html">116974</a> - Borsbeke Zijp 18:04</li><li><a href="stop-116973.html">116973</a> - Burst Kattestraat 18:05</li><li><a href="stop-116926.html">116926</a> - Burst Kerk 18:05</li><li><a href="stop-116925.html">116925</a> - Bambrugge Sint-Annastraat 18:06</li><li><a href="stop-116924.html">116924</a> - Bambrugge Prinsdaal 18:07</li><li><a href="stop-116923.html">116923</a> - Bambrugge Gemeentehuis 18:08</li><li><a href="stop-116731.html">116731</a> - Mere Bosstraat 18:10</li><li><a href="stop-116858.html">116858</a> - Mere Vijfhoek 18:13</li><li><a href="stop-116922.html">116922</a> - Mere Kerk 18:14</li><li><a href="stop-117868.html">117868</a> - Mere Kloosterstraat 18:14</li><li><a href="stop-112919.html">112919</a> - Mere Vijverstraat 18:14</li><li><a href="stop-117253.html">117253</a> - Erpe Kerkhof 18:16</li><li><a href="stop-116968.html">116968</a> - Erpe Kerk 18:17</li><li><a href="stop-116967.html">116967</a> - Erpe Botermelkstraat 18:18</li><li><a href="stop-116939.html">116939</a> - Erpe Dorpsstraat 18:20</li><li><a href="stop-119317.html">119317</a> - Erpe Vijfhuizen 18:21</li><li><a href="stop-120306.html">120306</a> - Aalst Erpestraat 18:22</li><li><a href="stop-120307.html">120307</a> - Aalst Sint-Apoloniastraat 18:22</li><li><a href="stop-120308.html">120308</a> - Aalst Kreupelveldstraat 18:23</li><li><a href="stop-116961.html">116961</a> - Aalst Welvaartstraat 18:24</li><li><a href="stop-116960.html">116960</a> - Aalst Sinte Annalaan 18:25</li><li><a href="stop-116959.html">116959</a> - Aalst Verastenstraat 18:26</li><li><a href="stop-116490.html">116490</a> - Aalst Meuleschettekapel 18:27</li><li><a href="stop-120301.html">120301</a> - Aalst Esplanade 18:28</li><li><a href="stop-126679.html">126679</a> - Aalst Station perron 3 18:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1300.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

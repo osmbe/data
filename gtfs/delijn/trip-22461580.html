@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Bilzen - Maastricht/Lanaken - Rekem - 22461580</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Bilzen - Maastricht/Lanaken - Rekem - 22461580</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-105346.html">105346</a> - Vlijtingen Lafelt 07:45</li><li><a href="stop-97219.html">97219</a> - Kesselt Kesselt 07:46</li><li><a href="stop-31474.html">31474</a> - Veldwezelt Meulenweg 07:47</li><li><a href="stop-87759.html">87759</a> - Hees Kiezelweg 07:48</li><li><a href="stop-27090.html">27090</a> - Hees Steenweg 07:48</li><li><a href="stop-27087.html">27087</a> - Hees Kruispunt Toekomststraat 07:49</li><li><a href="stop-27083.html">27083</a> - Hees Heesstraat 07:49</li><li><a href="stop-27085.html">27085</a> - Hees Kruispunt Striekestraat 07:50</li><li><a href="stop-27093.html">27093</a> - Hees Tombestraat 07:51</li><li><a href="stop-88802.html">88802</a> - Mopertingen Maastrichterstraat 07:55</li><li><a href="stop-88804.html">88804</a> - Mopertingen Mathijsestraat 07:56</li><li><a href="stop-43883.html">43883</a> - Mopertingen Annastraat 07:57</li><li><a href="stop-43885.html">43885</a> - Waltwilder Maastrichterstraat 07:59</li><li><a href="stop-110210.html">110210</a> - Waltwilder Sint-Remigiusstraat 08:00</li><li><a href="stop-120443.html">120443</a> - Waltwilder Sportveldstraat 08:00</li><li><a href="stop-27203.html">27203</a> - Waltwilder Gabrig 08:01</li><li><a href="stop-27112.html">27112</a> - Bilzen Maastrichterpoort 08:02</li><li><a href="stop-27154.html">27154</a> - Bilzen Parklaan 08:03</li><li><a href="stop-105150.html">105150</a> - Bilzen Station perron 4 08:05</li><li><a href="stop-27105.html">27105</a> - Bilzen Hospitaal Sint-Martinus 08:08</li><li><a href="stop-27017.html">27017</a> - Bilzen Broedersschool 08:09</li><li><a href="stop-27177.html">27177</a> - Bilzen Schuurhoven 08:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5203.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus 3 Huldenberg - Woluwe - 22789800</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus 3 Huldenberg - Woluwe - 22789800</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-10335.html">10335</a> - Sint-Pieters-Woluwe Mater Dei 16:10</li><li><a href="stop-90815.html">90815</a> - Sint-Pieters-Woluwe Sint-Jozef 16:20</li><li><a href="stop-10197.html">10197</a> - Oudergem Vorstrondpunt 16:26</li><li><a href="stop-10215.html">10215</a> - Oudergem Waver 16:27</li><li><a href="stop-90787.html">90787</a> - Oudergem Hermann-Debroux 16:28</li><li><a href="stop-10198.html">10198</a> - Oudergem U.L.B. Tuin Massart 16:29</li><li><a href="stop-87963.html">87963</a> - Oudergem Rood Klooster 16:29</li><li><a href="stop-90883.html">90883</a> - Overijse J.de Meeusstraat 16:36</li><li><a href="stop-99212.html">99212</a> - Overijse Louis Gunsstraat 16:37</li><li><a href="stop-87973.html">87973</a> - Overijse Hengstenberg 16:38</li><li><a href="stop-12968.html">12968</a> - Overijse O.L.Vrouwedal 16:39</li><li><a href="stop-87982.html">87982</a> - Overijse Terrest 16:40</li><li><a href="stop-13003.html">13003</a> - Overijse Vriendschapstraat 16:41</li><li><a href="stop-87977.html">87977</a> - Overijse Cl. Vanophemstraat 16:42</li><li><a href="stop-87976.html">87976</a> - Overijse Sint-Martinusschool 16:43</li><li><a href="stop-12992.html">12992</a> - Overijse Solheide 16:44</li><li><a href="stop-12947.html">12947</a> - Overijse Kerk 16:45</li><li><a href="stop-16221.html">16221</a> - Overijse De Leegheid 16:46</li><li><a href="stop-12980.html">12980</a> - Overijse Puttestraat 16:47</li><li><a href="stop-121270.html">121270</a> - Overijse Kouterstraat 16:49</li><li><a href="stop-11516.html">11516</a> - Huldenberg Kaalheide 16:50</li><li><a href="stop-11533.html">11533</a> - Huldenberg Stroobantsweg 16:52</li><li><a href="stop-11508.html">11508</a> - Huldenberg Gemeenteplein 16:53</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2410.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

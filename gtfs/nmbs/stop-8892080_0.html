@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - De Pinte</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: De Pinte</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-IC360514921.html">IC360514921</a> - IC360514921 - De Panne - Landen</li><li><a href="trip-IC360714941.html">IC360714941</a> - IC360714941 - De Panne - Landen</li><li><a href="trip-IC360814951.html">IC360814951</a> - IC360814951 - De Panne - Landen</li><li><a href="trip-IC360914961.html">IC360914961</a> - IC360914961 - De Panne - Landen</li><li><a href="trip-IC361014971.html">IC361014971</a> - IC361014971 - De Panne - Landen</li><li><a href="trip-IC361114981.html">IC361114981</a> - IC361114981 - De Panne - Landen</li><li><a href="trip-IC361214991.html">IC361214991</a> - IC361214991 - De Panne - Landen</li><li><a href="trip-IC361315001.html">IC361315001</a> - IC361315001 - De Panne - Landen</li><li><a href="trip-IC361415011.html">IC361415011</a> - IC361415011 - De Panne - Landen</li><li><a href="trip-IC361515021.html">IC361515021</a> - IC361515021 - De Panne - Landen</li><li><a href="trip-IC361615031.html">IC361615031</a> - IC361615031 - De Panne - Landen</li><li><a href="trip-IC361715041.html">IC361715041</a> - IC361715041 - De Panne - Landen</li><li><a href="trip-IC361815051.html">IC361815051</a> - IC361815051 - De Panne - Landen</li><li><a href="trip-IC361915061.html">IC361915061</a> - IC361915061 - De Panne - Landen</li><li><a href="trip-IC362915101.html">IC362915101</a> - IC362915101 - Landen - De Panne</li><li><a href="trip-IC363015111.html">IC363015111</a> - IC363015111 - Landen - De Panne</li><li><a href="trip-IC4066001.html">IC4066001</a> - IC4066001 - Kortrijk - Welkenraedt</li><li><a href="trip-IC4076011.html">IC4076011</a> - IC4076011 - Kortrijk - Leuven</li><li><a href="trip-IC4086021.html">IC4086021</a> - IC4086021 - Oostende - Welkenraedt</li><li><a href="trip-IC4096031.html">IC4096031</a> - IC4096031 - Kortrijk - Welkenraedt</li><li><a href="trip-IC4106041.html">IC4106041</a> - IC4106041 - Kortrijk - Leuven</li><li><a href="trip-IC4116051.html">IC4116051</a> - IC4116051 - Kortrijk - Welkenraedt</li><li><a href="trip-IC4126061.html">IC4126061</a> - IC4126061 - Kortrijk - Welkenraedt</li><li><a href="trip-IC4136071.html">IC4136071</a> - IC4136071 - Kortrijk - Welkenraedt</li><li><a href="trip-IC4146081.html">IC4146081</a> - IC4146081 - Kortrijk - Welkenraedt</li><li><a href="trip-IC4156091.html">IC4156091</a> - IC4156091 - Kortrijk - Welkenraedt</li><li><a href="trip-IC4166101.html">IC4166101</a> - IC4166101 - Kortrijk - Welkenraedt</li><li><a href="trip-IC4176111.html">IC4176111</a> - IC4176111 - Kortrijk - Welkenraedt</li><li><a href="trip-IC4286191.html">IC4286191</a> - IC4286191 - Welkenraedt - Kortrijk</li><li><a href="trip-IC4296201.html">IC4296201</a> - IC4296201 - Welkenraedt - Kortrijk</li><li><a href="trip-IC4306211.html">IC4306211</a> - IC4306211 - Welkenraedt - Kortrijk</li><li><a href="trip-IC4316221.html">IC4316221</a> - IC4316221 - Welkenraedt - Kortrijk</li><li><a href="trip-IC4326231.html">IC4326231</a> - IC4326231 - Welkenraedt - Kortrijk</li><li><a href="trip-IC4336241.html">IC4336241</a> - IC4336241 - Leuven - Kortrijk</li><li><a href="trip-IC4346251.html">IC4346251</a> - IC4346251 - Welkenraedt - Kortrijk</li><li><a href="trip-IC4356261.html">IC4356261</a> - IC4356261 - Welkenraedt - Kortrijk</li><li><a href="trip-IC4366271.html">IC4366271</a> - IC4366271 - Leuven - Kortrijk</li><li><a href="trip-IC4376281.html">IC4376281</a> - IC4376281 - Welkenraedt - Kortrijk</li><li><a href="trip-IC4386291.html">IC4386291</a> - IC4386291 - Welkenraedt - Kortrijk</li><li><a href="trip-IC4396301.html">IC4396301</a> - IC4396301 - Welkenraedt - Kortrijk</li><li><a href="trip-IC4406311.html">IC4406311</a> - IC4406311 - Welkenraedt - Oostende</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.997063, 3.650465], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.997063, 3.650465]).addTo(map);
+    </script>
+</body>
+
+</html>

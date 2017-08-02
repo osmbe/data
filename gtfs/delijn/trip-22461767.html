@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Houthalen - Peer - Kleine Brogel - 22461767</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Houthalen - Peer - Kleine Brogel - 22461767</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128973.html">128973</a> - Hasselt Station perron 14 07:43</li><li><a href="stop-29268.html">29268</a> - Hasselt Dusartplein 07:52</li><li><a href="stop-29647.html">29647</a> - Hasselt Zwembad perron 2 07:55</li><li><a href="stop-94957.html">94957</a> - Hasselt Handelsschool 07:58</li><li><a href="stop-29626.html">29626</a> - Hasselt Weg naar Genk 08:01</li><li><a href="stop-29242.html">29242</a> - Hasselt Banneuxwijk 08:02</li><li><a href="stop-97723.html">97723</a> - Kiewit Station 08:03</li><li><a href="stop-96832.html">96832</a> - Kiewit Europalaan 08:04</li><li><a href="stop-96898.html">96898</a> - Kiewit Kerk 08:05</li><li><a href="stop-96900.html">96900</a> - Kiewit Luchtvaartstraat 08:07</li><li><a href="stop-35235.html">35235</a> - Zonhoven Vertakking 08:07</li><li><a href="stop-125591.html">125591</a> - Zonhoven Heuveneinde 08:09</li><li><a href="stop-35199.html">35199</a> - Zonhoven Heuven 08:10</li><li><a href="stop-35183.html">35183</a> - Zonhoven Dorp 08:11</li><li><a href="stop-123219.html">123219</a> - Zonhoven Dorpsplein 08:12</li><li><a href="stop-35169.html">35169</a> - Zonhoven Berkenenstraat 08:14</li><li><a href="stop-30733.html">30733</a> - Houthalen Park & Ride 08:16</li><li><a href="stop-30693.html">30693</a> - Houthalen Koolmijnlaan 08:18</li><li><a href="stop-30724.html">30724</a> - Houthalen Mijn 08:18</li><li><a href="stop-93625.html">93625</a> - Houthalen Centrum 08:20</li><li><a href="stop-30702.html">30702</a> - Houthalen Laak 08:22</li><li><a href="stop-30630.html">30630</a> - Helchteren Technische School 08:25</li><li><a href="stop-30603.html">30603</a> - Helchteren Kruispunt 08:28</li><li><a href="stop-30607.html">30607</a> - Helchteren 8 Septemberlaan 08:29</li><li><a href="stop-30618.html">30618</a> - Helchteren Kazerne 2a 08:29</li><li><a href="stop-30612.html">30612</a> - Helchteren Eynderweg 08:31</li><li><a href="stop-30626.html">30626</a> - Helchteren Sonnis 08:32</li><li><a href="stop-30623.html">30623</a> - Helchteren Oude Postbaan 08:33</li><li><a href="stop-125559.html">125559</a> - Peer Bovenlinde 08:35</li><li><a href="stop-33520.html">33520</a> - Peer Lindebosstraat 08:36</li><li><a href="stop-97462.html">97462</a> - Linde Kluisstraat 08:37</li><li><a href="stop-110478.html">110478</a> - Linde Kerk 08:38</li><li><a href="stop-97467.html">97467</a> - Linde Smid 08:39</li><li><a href="stop-105333.html">105333</a> - Linde Croxdijk 08:40</li><li><a href="stop-33590.html">33590</a> - Peer 't Bergske 08:41</li><li><a href="stop-33477.html">33477</a> - Peer Burkel 08:42</li><li><a href="stop-105343.html">105343</a> - Peer Wittesteenstraat 08:43</li><li><a href="stop-33545.html">33545</a> - Peer Pol KIP 08:44</li><li><a href="stop-33540.html">33540</a> - Peer Rijksbasisschool 08:44</li><li><a href="stop-33531.html">33531</a> - Peer Noordervest 08:45</li><li><a href="stop-33432.html">33432</a> - Peer Bokterstraat 08:45</li><li><a href="stop-33470.html">33470</a> - Kleine-Brogel Spotters Corner 08:48</li><li><a href="stop-93813.html">93813</a> - Kleine-Brogel Kruispunt 08:52</li><li><a href="stop-110469.html">110469</a> - Kleine-Brogel Weg naar Overpelt 08:53</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5239.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

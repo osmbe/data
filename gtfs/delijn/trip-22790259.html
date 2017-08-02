@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Tienen - Meldert - 22790259</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Tienen - Meldert - 22790259</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-13903.html">13903</a> - Tienen Station Perron 2 08:05</li><li><a href="stop-13862.html">13862</a> - Tienen 4de Lansierslaan 08:06</li><li><a href="stop-13878.html">13878</a> - Tienen Grote Markt 08:08</li><li><a href="stop-15562.html">15562</a> - Tienen Goossensvest 08:09</li><li><a href="stop-16421.html">16421</a> - Tienen Mulkplein 08:10</li><li><a href="stop-95749.html">95749</a> - Oorbeek Driebek 08:11</li><li><a href="stop-95743.html">95743</a> - Oorbeek Engelbeekstraat 08:13</li><li><a href="stop-11403.html">11403</a> - Meldert Oud Station 08:18</li><li><a href="stop-11395.html">11395</a> - Meldert Baan 08:18</li><li><a href="stop-11399.html">11399</a> - Meldert Kasteel 08:20</li><li><a href="stop-10113.html">10113</a> - Meldert Sint-Janscollege 08:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2463.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

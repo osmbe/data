@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Avondlijn Brugge-Ruddervoorde - 22138506</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Avondlijn Brugge-Ruddervoorde - 22138506</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126325.html">126325</a> - Brugge Station perron 6 22:10</li><li><a href="stop-36770.html">36770</a> - Brugge Katelijneparking 22:12</li><li><a href="stop-36684.html">36684</a> - Assebroek Boldershof 22:13</li><li><a href="stop-36708.html">36708</a> - Assebroek Wantestraat 22:13</li><li><a href="stop-100827.html">100827</a> - Assebroek Brugs Kerkhofstraat 22:15</li><li><a href="stop-36705.html">36705</a> - Assebroek Tir 22:16</li><li><a href="stop-36681.html">36681</a> - Assebroek Benedictijnen 22:17</li><li><a href="stop-36704.html">36704</a> - Assebroek Abdij Steenbrugge 22:17</li><li><a href="stop-100851.html">100851</a> - Assebroek Park & Ride Steenbrugge 22:18</li><li><a href="stop-36974.html">36974</a> - Oostkamp Sint-Michielsstraat 22:19</li><li><a href="stop-36986.html">36986</a> - Oostkamp Gaston Roelandtstraat 22:19</li><li><a href="stop-36976.html">36976</a> - Oostkamp Rampe 22:21</li><li><a href="stop-36988.html">36988</a> - Oostkamp Zwarte Gat 22:22</li><li><a href="stop-36979.html">36979</a> - Oostkamp Rustoordstraat 22:22</li><li><a href="stop-36977.html">36977</a> - Oostkamp Centrum 22:23</li><li><a href="stop-36978.html">36978</a> - Oostkamp Rijkswacht 22:24</li><li><a href="stop-36981.html">36981</a> - Oostkamp Siemenslaan 22:24</li><li><a href="stop-36971.html">36971</a> - Oostkamp Daele 22:25</li><li><a href="stop-36983.html">36983</a> - Oostkamp Tijl Uilenspiegel 22:26</li><li><a href="stop-36975.html">36975</a> - Oostkamp Nelestraat 22:26</li><li><a href="stop-104697.html">104697</a> - Oostkamp Cardijnplein 22:27</li><li><a href="stop-37341.html">37341</a> - Oostkamp Abraham 22:28</li><li><a href="stop-37342.html">37342</a> - Oostkamp Palfijn 22:28</li><li><a href="stop-36985.html">36985</a> - Oostkamp Wapens 22:29</li><li><a href="stop-36969.html">36969</a> - Oostkamp Breideldreef 22:30</li><li><a href="stop-37182.html">37182</a> - Waardamme Lariksdreef 22:31</li><li><a href="stop-37181.html">37181</a> - Waardamme Drie Koningen 22:32</li><li><a href="stop-37180.html">37180</a> - Waardamme Dorp 22:32</li><li><a href="stop-37179.html">37179</a> - Waardamme Beernemstraat 22:33</li><li><a href="stop-37009.html">37009</a> - Ruddervoorde Kruiskalsijde 22:34</li><li><a href="stop-37016.html">37016</a> - Ruddervoorde Station 22:35</li><li><a href="stop-37002.html">37002</a> - Ruddervoorde Dorp 22:36</li><li><a href="stop-37006.html">37006</a> - Ruddervoorde Huis Nr. 95 22:37</li><li><a href="stop-37012.html">37012</a> - Ruddervoorde Posterij 22:39</li><li><a href="stop-37005.html">37005</a> - Ruddervoorde Huis Nr. 236 22:40</li><li><a href="stop-99331.html">99331</a> - Ruddervoorde Godelieve Kerk 22:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3995.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

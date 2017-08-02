@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Kuurne Sint-Pieter - 22620348</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Kuurne Sint-Pieter - 22620348</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-39152.html">39152</a> - Kuurne Sint-Pieter 08:02</li><li><a href="stop-39150.html">39150</a> - Kuurne Molenput 08:03</li><li><a href="stop-39148.html">39148</a> - Kuurne Papaverstraat 08:04</li><li><a href="stop-39146.html">39146</a> - Kuurne Kersendreef 08:06</li><li><a href="stop-39144.html">39144</a> - Kuurne Hippodroom 08:07</li><li><a href="stop-39142.html">39142</a> - Kuurne Begraafplaats 08:08</li><li><a href="stop-39138.html">39138</a> - Kuurne Sportpark 08:09</li><li><a href="stop-39140.html">39140</a> - Kuurne Groenstraat 08:10</li><li><a href="stop-41836.html">41836</a> - Kuurne Rode Kruisplein 08:11</li><li><a href="stop-93944.html">93944</a> - Kuurne Gasthuisstraat 08:13</li><li><a href="stop-42304.html">42304</a> - Kuurne Delhaize 08:14</li><li><a href="stop-105006.html">105006</a> - Kuurne 'T Zweerd 08:15</li><li><a href="stop-41821.html">41821</a> - Kuurne Belfort 08:15</li><li><a href="stop-41835.html">41835</a> - Kuurne Prins Boudewijn 08:16</li><li><a href="stop-41791.html">41791</a> - Kortrijk Pius X-Kerk 08:17</li><li><a href="stop-42281.html">42281</a> - Kortrijk Samenkomst 08:19</li><li><a href="stop-41759.html">41759</a> - Kortrijk Edgar Tinellaan 08:21</li><li><a href="stop-41801.html">41801</a> - Kortrijk Sint-Maartenskliniek 08:22</li><li><a href="stop-101099.html">101099</a> - Kortrijk J.Liebaertlaan 08:24</li><li><a href="stop-40026.html">40026</a> - Kortrijk Gentsestraat 08:25</li><li><a href="stop-37820.html">37820</a> - Kortrijk Plein 08:26</li><li><a href="stop-41777.html">41777</a> - Kortrijk Broeltorens 08:27</li><li><a href="stop-42866.html">42866</a> - Kortrijk Markt 08:28</li><li><a href="stop-125732.html">125732</a> - Kortrijk L. Robbeplein 08:29</li><li><a href="stop-126443.html">126443</a> - Kortrijk Station perron 3 08:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4047.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

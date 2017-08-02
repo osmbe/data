@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Arendonk - Retie - Witgoor - Dessel - Mol - 22519050</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Arendonk - Retie - Witgoor - Dessel - Mol - 22519050</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109394.html">109394</a> - Mol Station perron 4 12:19</li><li><a href="stop-23637.html">23637</a> - Mol Hangarstraat 12:20</li><li><a href="stop-109391.html">109391</a> - Mol Violettenstraat 12:24</li><li><a href="stop-109389.html">109389</a> - Mol Speelpleinstraat 12:25</li><li><a href="stop-109386.html">109386</a> - Mol Beukenbosstraat 12:26</li><li><a href="stop-109384.html">109384</a> - Mol Zandputlaan 12:27</li><li><a href="stop-109382.html">109382</a> - Mol Langendijk 12:28</li><li><a href="stop-23982.html">23982</a> - Dessel Goormansdijk 12:29</li><li><a href="stop-109379.html">109379</a> - Dessel Kromme Elleboogstraat 12:31</li><li><a href="stop-109377.html">109377</a> - Dessel Markt 12:31</li><li><a href="stop-93852.html">93852</a> - Dessel Dijkstraat 12:32</li><li><a href="stop-24074.html">24074</a> - Dessel Polderstraat 12:33</li><li><a href="stop-24076.html">24076</a> - Dessel Grachtstraat 12:33</li><li><a href="stop-109419.html">109419</a> - Dessel Perestraat 12:33</li><li><a href="stop-125831.html">125831</a> - Dessel Witgoor Kerk 12:34</li><li><a href="stop-24091.html">24091</a> - Dessel Gemeentedijkstraat 12:35</li><li><a href="stop-24093.html">24093</a> - Dessel Huzarenberg 12:39</li><li><a href="stop-24095.html">24095</a> - Dessel Bogaardstraat 12:39</li><li><a href="stop-109423.html">109423</a> - Dessel Heidekapel 12:40</li><li><a href="stop-23972.html">23972</a> - Dessel Kuilstraat 12:41</li><li><a href="stop-23970.html">23970</a> - Retie Werbeek 12:42</li><li><a href="stop-109374.html">109374</a> - Retie Nieuwstraat 12:44</li><li><a href="stop-109372.html">109372</a> - Retie Markt 12:45</li><li><a href="stop-24122.html">24122</a> - Retie Hovenstraat 12:45</li><li><a href="stop-24120.html">24120</a> - Retie Boesdijk 12:46</li><li><a href="stop-24118.html">24118</a> - Retie Oude Arendonksebaan 12:46</li><li><a href="stop-19606.html">19606</a> - Retie Plas 12:47</li><li><a href="stop-24116.html">24116</a> - Retie Obroek 12:48</li><li><a href="stop-24114.html">24114</a> - Arendonk Nieuwendijk 12:49</li><li><a href="stop-109429.html">109429</a> - Arendonk Berendonk 12:50</li><li><a href="stop-20709.html">20709</a> - Arendonk Hertevelden 12:51</li><li><a href="stop-24109.html">24109</a> - Arendonk Kerkstraat 12:51</li><li><a href="stop-109224.html">109224</a> - Arendonk Wezenstraat 12:52</li><li><a href="stop-23615.html">23615</a> - Arendonk Molenzicht 12:53</li><li><a href="stop-23617.html">23617</a> - Arendonk Wamp 12:54</li><li><a href="stop-23620.html">23620</a> - Arendonk Neerstraat 12:54</li><li><a href="stop-110134.html">110134</a> - Arendonk Pelgrimsplein 12:55</li><li><a href="stop-23625.html">23625</a> - Arendonk Onder d'Eiken 12:57</li><li><a href="stop-23628.html">23628</a> - Arendonk Roeststraat 12:57</li><li><a href="stop-109228.html">109228</a> - Arendonk Grens Langschelpen 12:58</li><li><a href="stop-93243.html">93243</a> - Reusel Ned. Grens Reusel 12:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3131.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Brussel-Luxemburg/Bruxelles-Luxembourg</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Brussel-Luxemburg/Bruxelles-Luxembourg</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-IC212610561.html">IC212610561</a> - IC212610561 - Jemelle - Brussel-Zuid</li><li><a href="trip-IC212710571.html">IC212710571</a> - IC212710571 - Aarlen - Brussel-Zuid</li><li><a href="trip-IC242611671.html">IC242611671</a> - IC242611671 - Luik-Paleis - Brussel-Zuid</li><li><a href="trip-IC242711681.html">IC242711681</a> - IC242711681 - Luik-Paleis - Brussel-Zuid</li><li><a href="trip-IC242811691.html">IC242811691</a> - IC242811691 - Luik-Paleis - Brussel-Zuid</li><li><a href="trip-IC242911701.html">IC242911701</a> - IC242911701 - Luik-Paleis - Brussel-Zuid</li><li><a href="trip-IC243711781.html">IC243711781</a> - IC243711781 - Luik-Paleis - Brussel-Zuid</li><li><a href="trip-IC243811791.html">IC243811791</a> - IC243811791 - Luik-Paleis - Brussel-Zuid</li><li><a href="trip-IC243911801.html">IC243911801</a> - IC243911801 - Luik-Paleis - Brussel-Zuid</li><li><a href="trip-IC244011811.html">IC244011811</a> - IC244011811 - Luik-Paleis - Brussel-Zuid</li><li><a href="trip-IC244111821.html">IC244111821</a> - IC244111821 - Luik-Paleis - Brussel-Zuid</li><li><a href="trip-IC244211831.html">IC244211831</a> - IC244211831 - Luik-Paleis - Brussel-Zuid</li><li><a href="trip-IC252635291.html">IC252635291</a> - IC252635291 - Namen - Brussel-Zuid</li><li><a href="trip-P760130841.html">P760130841</a> - P760130841 - Namen - Brussel-Zuid</li><li><a href="trip-P760330861.html">P760330861</a> - P760330861 - Gembloux - Brussel-Zuid</li><li><a href="trip-P760430871.html">P760430871</a> - P760430871 - Gembloux - Brussel-Zuid</li><li><a href="trip-S8176605771.html">S8176605771</a> - S8176605771 - Ottignies - Schaarbeek</li><li><a href="trip-S8176655781.html">S8176655781</a> - S8176655781 - Ottignies - Schaarbeek</li><li><a href="trip-S839763491.html">S839763491</a> - S839763491 - Ottignies - Brussel-Zuid</li><li><a href="trip-S839773501.html">S839773501</a> - S839773501 - Louvain-La-Neuve-Univ. - Brussel-Zuid</li><li><a href="trip-S865764501.html">S865764501</a> - S865764501 - Ottignies - Brussel-Zuid</li><li><a href="trip-S865774511.html">S865774511</a> - S865774511 - Ottignies - Brussel-Zuid</li><li><a href="trip-S865794531.html">S865794531</a> - S865794531 - Ottignies - Brussel-Zuid</li><li><a href="trip-S865804541.html">S865804541</a> - S865804541 - Ottignies - Brussel-Zuid</li><li><a href="trip-S865814551.html">S865814551</a> - S865814551 - Ottignies - Brussel-Zuid</li><li><a href="trip-S865824561.html">S865824561</a> - S865824561 - Ottignies - Brussel-Zuid</li><li><a href="trip-S865834571.html">S865834571</a> - S865834571 - Ottignies - Brussel-Zuid</li><li><a href="trip-S865844581.html">S865844581</a> - S865844581 - Ottignies - Brussel-Zuid</li><li><a href="trip-S865854591.html">S865854591</a> - S865854591 - Ottignies - Brussel-Zuid</li><li><a href="trip-S865864601.html">S865864601</a> - S865864601 - Ottignies - Geraardsbergen</li><li><a href="trip-S865874611.html">S865874611</a> - S865874611 - Ottignies - Brussel-Zuid</li><li><a href="trip-S865884621.html">S865884621</a> - S865884621 - Ottignies - Brussel-Zuid</li><li><a href="trip-S865894631.html">S865894631</a> - S865894631 - Ottignies - Brussel-Zuid</li><li><a href="trip-S865904641.html">S865904641</a> - S865904641 - Ottignies - Brussel-Zuid</li><li><a href="trip-S865914651.html">S865914651</a> - S865914651 - Ottignies - Brussel-Zuid</li><li><a href="trip-S865924661.html">S865924661</a> - S865924661 - Ottignies - Brussel-Zuid</li><li><a href="trip-S865934671.html">S865934671</a> - S865934671 - Ottignies - Brussel-Zuid</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.838943, 4.373674], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.838943, 4.373674]).addTo(map);
+    </script>
+</body>
+
+</html>

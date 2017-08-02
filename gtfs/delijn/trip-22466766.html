@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Leopoldsburg - Bree - Maaseik - 22466766</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Leopoldsburg - Bree - Maaseik - 22466766</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-110464.html">110464</a> - Grote-Brogel Kiosk 07:15</li><li><a href="stop-33449.html">33449</a> - Grote-Brogel Elvenweg 07:17</li><li><a href="stop-27241.html">27241</a> - Bocholt Goolderstraat 07:19</li><li><a href="stop-27239.html">27239</a> - Bocholt Gelehoekstraat 07:20</li><li><a href="stop-27233.html">27233</a> - Bocholt Damburgstraat 07:20</li><li><a href="stop-27283.html">27283</a> - Bocholt Post 07:21</li><li><a href="stop-27279.html">27279</a> - Bocholt Meierbroekstraat 07:22</li><li><a href="stop-27237.html">27237</a> - Bocholt Galgenbergstraat 07:24</li><li><a href="stop-27293.html">27293</a> - Reppel Kerk 07:25</li><li><a href="stop-27291.html">27291</a> - Reppel Kabien 07:26</li><li><a href="stop-27287.html">27287</a> - Reppel Bormanstraat 07:27</li><li><a href="stop-27576.html">27576</a> - Gerdingen Pannenbakkersstraat 07:29</li><li><a href="stop-123468.html">123468</a> - Bree Busstation Perron 6 07:33</li><li><a href="stop-27511.html">27511</a> - Bree Roterstraat 07:35</li><li><a href="stop-27640.html">27640</a> - Opitter Roeren 07:37</li><li><a href="stop-27620.html">27620</a> - Opitter Kapel 07:39</li><li><a href="stop-27614.html">27614</a> - Opitter Dorp 07:40</li><li><a href="stop-27646.html">27646</a> - Opitter Solt Kapel 07:41</li><li><a href="stop-32253.html">32253</a> - Opitter Ziepstraat 07:42</li><li><a href="stop-32249.html">32249</a> - Neeroeteren Solt Brug 07:44</li><li><a href="stop-32251.html">32251</a> - Neeroeteren Tip 07:46</li><li><a href="stop-106146.html">106146</a> - Neeroeteren Dorp 07:48</li><li><a href="stop-32239.html">32239</a> - Neeroeteren Meerkenshoeve 07:49</li><li><a href="stop-32237.html">32237</a> - Neeroeteren Hoogvonderen 07:51</li><li><a href="stop-32227.html">32227</a> - Neeroeteren Diestersteenweg 07:53</li><li><a href="stop-32193.html">32193</a> - Neeroeteren Jagershof 07:54</li><li><a href="stop-123082.html">123082</a> - Maaseik Campus H en R 08:02</li><li><a href="stop-123131.html">123131</a> - Maaseik Pieter Geunsstraat 08:03</li><li><a href="stop-32297.html">32297</a> - Maaseik Verloren Kost 08:03</li><li><a href="stop-32290.html">32290</a> - Maaseik Stationsstraat 08:04</li><li><a href="stop-123117.html">123117</a> - Maaseik Plantage 08:05</li><li><a href="stop-33097.html">33097</a> - Maaseik Van Eycklaan 08:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4835.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

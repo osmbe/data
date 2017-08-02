@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Rooseveltplaats - CMB - 21555162</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Rooseveltplaats - CMB - 21555162</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-107968.html">107968</a> - Antwerpen Kaai 210 CMB 20:05</li><li><a href="stop-107967.html">107967</a> - Antwerpen Kaai 204 20:06</li><li><a href="stop-123796.html">123796</a> - Antwerpen Kaai 200 20:06</li><li><a href="stop-121737.html">121737</a> - Antwerpen Kaai 184 20:07</li><li><a href="stop-20450.html">20450</a> - Antwerpen Kaai 180/182 20:08</li><li><a href="stop-107963.html">107963</a> - Antwerpen Kaai 176 20:08</li><li><a href="stop-123793.html">123793</a> - Antwerpen Kaai 170 20:09</li><li><a href="stop-107959.html">107959</a> - Antwerpen Kaai 142/168 20:09</li><li><a href="stop-107957.html">107957</a> - Antwerpen Kaai 138 20:10</li><li><a href="stop-107954.html">107954</a> - Antwerpen Kaai 114 20:10</li><li><a href="stop-123790.html">123790</a> - Antwerpen Kaai 110 20:11</li><li><a href="stop-107511.html">107511</a> - Antwerpen Ferdinanduspolder 20:13</li><li><a href="stop-107687.html">107687</a> - Antwerpen Indiëstraat 20:14</li><li><a href="stop-107686.html">107686</a> - Antwerpen Binnenvaartstraat 20:14</li><li><a href="stop-108192.html">108192</a> - Antwerpen Noorderplaats 20:15</li><li><a href="stop-108466.html">108466</a> - Antwerpen Sint-Jansplein 20:17</li><li><a href="stop-125296.html">125296</a> - Antwerpen F. Rooseveltplaats perron 24 20:19</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3748.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

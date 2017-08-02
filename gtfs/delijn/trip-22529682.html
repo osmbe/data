@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Turnhout - Dessel - SCK - Mol - 22529682</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Turnhout - Dessel - SCK - Mol - 22529682</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-25904.html">25904</a> - Turnhout Station perron 2 16:58</li><li><a href="stop-108880.html">108880</a> - Turnhout Zeshoek 17:00</li><li><a href="stop-109040.html">109040</a> - Turnhout Markt perron 4 17:03</li><li><a href="stop-109201.html">109201</a> - Turnhout Nijverheidstraat 17:04</li><li><a href="stop-109202.html">109202</a> - Turnhout Tijl en Nelestraat 17:05</li><li><a href="stop-108202.html">108202</a> - Turnhout Koninklijk Atheneum 17:07</li><li><a href="stop-109204.html">109204</a> - Turnhout Boomgaardstraat 17:07</li><li><a href="stop-23569.html">23569</a> - Turnhout Oranjemolenstraat 17:08</li><li><a href="stop-109208.html">109208</a> - Turnhout Zandbergstraat 17:09</li><li><a href="stop-109210.html">109210</a> - Oud-Turnhout Blekerijstraat 17:10</li><li><a href="stop-109211.html">109211</a> - Oud-Turnhout Tramwissel 17:11</li><li><a href="stop-109213.html">109213</a> - Oud-Turnhout Dorp 17:12</li><li><a href="stop-109214.html">109214</a> - Oud-Turnhout Molenbergen 17:13</li><li><a href="stop-109216.html">109216</a> - Oud-Turnhout Driedostraat 17:14</li><li><a href="stop-23586.html">23586</a> - Oud-Turnhout Staprijk 17:15</li><li><a href="stop-23588.html">23588</a> - Oud-Turnhout Zwanevenstraat 17:16</li><li><a href="stop-23945.html">23945</a> - Oud-Turnhout Lentedreef 17:17</li><li><a href="stop-23947.html">23947</a> - Oud-Turnhout Rhoode 17:17</li><li><a href="stop-23949.html">23949</a> - Oud-Turnhout Binnenheide 17:18</li><li><a href="stop-23951.html">23951</a> - Retie Hofstraat 17:19</li><li><a href="stop-23953.html">23953</a> - Retie Hesstraat 17:20</li><li><a href="stop-23956.html">23956</a> - Retie De Werft 17:21</li><li><a href="stop-23958.html">23958</a> - Retie Berg 17:22</li><li><a href="stop-109367.html">109367</a> - Retie Biezenstraat 17:23</li><li><a href="stop-109369.html">109369</a> - Retie Pijlstraat 17:24</li><li><a href="stop-109371.html">109371</a> - Retie Markt 17:26</li><li><a href="stop-109373.html">109373</a> - Retie Nieuwstraat 17:27</li><li><a href="stop-23969.html">23969</a> - Retie Werbeek 17:29</li><li><a href="stop-23971.html">23971</a> - Dessel Kuilstraat 17:31</li><li><a href="stop-23973.html">23973</a> - Dessel Koolvenstraat 17:32</li><li><a href="stop-109375.html">109375</a> - Dessel Markt 17:33</li><li><a href="stop-109378.html">109378</a> - Dessel Kromme Elleboogstraat 17:34</li><li><a href="stop-23980.html">23980</a> - Dessel Goormansdijk 17:35</li><li><a href="stop-109381.html">109381</a> - Mol Langendijk 17:36</li><li><a href="stop-24099.html">24099</a> - Mol Belgiëlaan 17:37</li><li><a href="stop-123814.html">123814</a> - Mol SCK-VITO 17:38</li><li><a href="stop-123328.html">123328</a> - Mol Kerkhoflaan 17:39</li><li><a href="stop-106079.html">106079</a> - Mol Achterbos Kerk 17:40</li><li><a href="stop-109392.html">109392</a> - Mol Station perron 5 17:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3414.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

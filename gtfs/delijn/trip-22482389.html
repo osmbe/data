@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tongeren - Visé - Voeren / Fourons - 22482389</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tongeren - Visé - Voeren / Fourons - 22482389</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-105389.html">105389</a> - Remersdaal Kerk 08:02</li><li><a href="stop-34779.html">34779</a> - Remersdaal Kultjen 08:03</li><li><a href="stop-92757.html">92757</a> - Remersdaal Weg op Sint-Martens-Voeren 08:05</li><li><a href="stop-34775.html">34775</a> - Remersdaal Hagelstein 08:07</li><li><a href="stop-92803.html">92803</a> - SPV Roth 08:09</li><li><a href="stop-92798.html">92798</a> - SPV Hoeve Demez 08:10</li><li><a href="stop-92811.html">92811</a> - SPV Zwaen 08:12</li><li><a href="stop-92797.html">92797</a> - SPV Gemeenteschool 08:13</li><li><a href="stop-129006.html">129006</a> - SPV Kerk 08:13</li><li><a href="stop-110522.html">110522</a> - SPV Sint-Annakapel 08:14</li><li><a href="stop-110263.html">110263</a> - SMV Crutzberg 08:15</li><li><a href="stop-92807.html">92807</a> - SPV Veurs Cabine 08:16</li><li><a href="stop-92809.html">92809</a> - SPV Veurs nr 40 08:18</li><li><a href="stop-92733.html">92733</a> - Remersdaal Roodbos 08:26</li><li><a href="stop-92759.html">92759</a> - Remersdaal Weg op Teuven 08:26</li><li><a href="stop-92784.html">92784</a> - SMV Panalpina 08:29</li><li><a href="stop-110494.html">110494</a> - SMV De Plank 08:29</li><li><a href="stop-92781.html">92781</a> - SMV Krindaal 08:31</li><li><a href="stop-110516.html">110516</a> - SMV Crutzberg 08:32</li><li><a href="stop-110521.html">110521</a> - SPV Sint-Annakapel 08:33</li><li><a href="stop-92801.html">92801</a> - SPV Knap 08:34</li><li><a href="stop-92793.html">92793</a> - SMV Station 08:35</li><li><a href="stop-92796.html">92796</a> - SMV Vogelstang 08:35</li><li><a href="stop-110518.html">110518</a> - SMV Rijkswacht 08:36</li><li><a href="stop-92767.html">92767</a> - SGV Ottegraeven 08:37</li><li><a href="stop-92770.html">92770</a> - SGV Schophem 08:38</li><li><a href="stop-92774.html">92774</a> - SGV Vogelgats 08:39</li><li><a href="stop-92786.html">92786</a> - SGV Ketten 08:39</li><li><a href="stop-92771.html">92771</a> - SGV Voerenberg 08:40</li><li><a href="stop-92776.html">92776</a> - SGV Altenbroek 08:40</li><li><a href="stop-110512.html">110512</a> - SGV Kerk 08:41</li><li><a href="stop-129003.html">129003</a> - SGV Provinciale School 08:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5287.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Schaarbeek - Aalst - S615782791</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schaarbeek - Aalst - S615782791</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8811007_8.html">8811007:8</a> - Schaarbeek/Schaerbeek 06:36</li><li><a href="stop-8812005_12.html">8812005:12</a> - Brussel-Noord/Bruxelles-Nord 06:42</li><li><a href="stop-8813003_6.html">8813003:6</a> - Brussel-Centraal/Bruxelles-Central 06:46</li><li><a href="stop-8814001_21.html">8814001:21</a> - Brussel-Zuid/Bruxelles-Midi 06:53</li><li><a href="stop-8814308_3.html">8814308:3</a> - Halle 07:04</li><li><a href="stop-8883311_1.html">8883311:1</a> - Enghien 07:15</li><li><a href="stop-8895646_2.html">8895646:2</a> - Herne 07:19</li><li><a href="stop-8895638_2.html">8895638:2</a> - Tollembeek 07:22</li><li><a href="stop-8895620_2.html">8895620:2</a> - Galmaarden 07:25</li><li><a href="stop-8895612_1.html">8895612:1</a> - Viane-Moerbeke 07:29</li><li><a href="stop-8895505_1.html">8895505:1</a> - Geraardsbergen 07:37</li><li><a href="stop-8895711_1.html">8895711:1</a> - Schendelbeke 07:41</li><li><a href="stop-8895729_2.html">8895729:2</a> - Idegem 07:43</li><li><a href="stop-8895737_2.html">8895737:2</a> - Zandbergen 07:46</li><li><a href="stop-8895745_1.html">8895745:1</a> - Appelterre 07:48</li><li><a href="stop-8895752_2.html">8895752:2</a> - Eichem 07:51</li><li><a href="stop-8895760_2.html">8895760:2</a> - Ninove 07:54</li><li><a href="stop-8895778_2.html">8895778:2</a> - Okegem 07:57</li><li><a href="stop-8895844_2.html">8895844:2</a> - Iddergem 08:01</li><li><a href="stop-8895802_0.html">8895802:0</a> - Denderleeuw 08:05</li><li><a href="stop-8895000_1.html">8895000:1</a> - Aalst 08:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1805.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

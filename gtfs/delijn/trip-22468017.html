@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tessenderlo (schoolbediening) - 22468017</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tessenderlo (schoolbediening) - 22468017</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-34358.html">34358</a> - Tessenderlo Zavelberg 08:10</li><li><a href="stop-97621.html">97621</a> - Schoot Baan 08:11</li><li><a href="stop-97645.html">97645</a> - Schoot Hooiman 08:12</li><li><a href="stop-97633.html">97633</a> - Schoot Sint-Jozefsplein 08:12</li><li><a href="stop-97625.html">97625</a> - Schoot Gerhees voetbal 08:13</li><li><a href="stop-97624.html">97624</a> - Schoot Everslag 08:14</li><li><a href="stop-97635.html">97635</a> - Schoot Kruispunt Gerhees 08:15</li><li><a href="stop-97640.html">97640</a> - Schoot Schrikhoek 19 08:17</li><li><a href="stop-97637.html">97637</a> - Schoot Kruispunt Schrikhoek 08:18</li><li><a href="stop-97631.html">97631</a> - Schoot Klein Frankrijk 08:18</li><li><a href="stop-97622.html">97622</a> - Schoot Boekdonkstraat 08:19</li><li><a href="stop-97641.html">97641</a> - Schoot Turfstraat 08:19</li><li><a href="stop-97627.html">97627</a> - Schoot Kerk 08:20</li><li><a href="stop-125576.html">125576</a> - Schoot Kerkhof 08:21</li><li><a href="stop-97638.html">97638</a> - Schoot Paddenhoek 08:21</li><li><a href="stop-97643.html">97643</a> - Schoot Vrije Kleuterschool I 08:21</li><li><a href="stop-97648.html">97648</a> - Schoot Vrije Kleuterschool II 08:22</li><li><a href="stop-97618.html">97618</a> - Schoot Fietsenhandel 08:23</li><li><a href="stop-34318.html">34318</a> - Tessenderlo Schoterweg 08:24</li><li><a href="stop-34244.html">34244</a> - Tessenderlo Kabien 08:25</li><li><a href="stop-34282.html">34282</a> - Tessenderlo Hommelbeek 08:26</li><li><a href="stop-32874.html">32874</a> - Tessenderlo Campus Russelberg 08:27</li><li><a href="stop-34247.html">34247</a> - Tessenderlo Kerk 08:31</li><li><a href="stop-125572.html">125572</a> - Tessenderlo Broedersschool 08:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5122.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

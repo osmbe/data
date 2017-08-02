@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Anderlecht - Drogenbos - Rode - Halle - 22758256</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Anderlecht - Drogenbos - Rode - Halle - 22758256</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-9600.html">9600</a> - Alsemberg Winderickxplein 05:41</li><li><a href="stop-13292.html">13292</a> - Sint-Genesius-Rode Tenbroek 05:42</li><li><a href="stop-15520.html">15520</a> - Sint-Genesius-Rode Zavelberg 05:42</li><li><a href="stop-9594.html">9594</a> - Alsemberg Oude Nijvelsebaan 05:43</li><li><a href="stop-9603.html">9603</a> - Alsemberg Herisemmolen 05:44</li><li><a href="stop-9631.html">9631</a> - Dworp Destelheide 05:44</li><li><a href="stop-9633.html">9633</a> - Dworp Smulders 05:45</li><li><a href="stop-9629.html">9629</a> - Dworp Sportschuur 05:47</li><li><a href="stop-16149.html">16149</a> - Dworp Gravenhof 05:48</li><li><a href="stop-16133.html">16133</a> - Dworp Willemskouter 05:49</li><li><a href="stop-16135.html">16135</a> - Dworp Krabbos 05:50</li><li><a href="stop-95828.html">95828</a> - Essenbeek 's Hertogenbos 05:51</li><li><a href="stop-95830.html">95830</a> - Essenbeek Mooi Vergezicht 05:52</li><li><a href="stop-95772.html">95772</a> - Essenbeek Arenberg 05:53</li><li><a href="stop-95633.html">95633</a> - Essenbeek De Floere 05:54</li><li><a href="stop-95634.html">95634</a> - Essenbeek Beschutte Werkplaats 05:55</li><li><a href="stop-95806.html">95806</a> - Essenbeek Kerkhof 05:56</li><li><a href="stop-95808.html">95808</a> - Essenbeek Kerk 05:57</li><li><a href="stop-95810.html">95810</a> - Essenbeek Nijvelsesteenweg 05:59</li><li><a href="stop-95812.html">95812</a> - Sint-Rochus Kruisstraat 06:00</li><li><a href="stop-95820.html">95820</a> - Sint-Rochus Leopoldstraat 06:02</li><li><a href="stop-95822.html">95822</a> - Sint-Rochus Goudvinkenlaan 06:04</li><li><a href="stop-95824.html">95824</a> - Sint-Rochus Kerk 06:05</li><li><a href="stop-10670.html">10670</a> - Halle Station afstaphalte 06:06</li><li><a href="stop-15685.html">15685</a> - Halle Station Perron 3 06:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1716.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

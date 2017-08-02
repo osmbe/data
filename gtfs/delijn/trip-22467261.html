@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Universiteit - Genk - Maaseik/Maastricht - 22467261</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Universiteit - Genk - Maaseik/Maastricht - 22467261</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-33097.html">33097</a> - Maaseik Van Eycklaan 20:05</li><li><a href="stop-123118.html">123118</a> - Maaseik Plantage 20:08</li><li><a href="stop-32302.html">32302</a> - Maaseik Zaveldijk 20:09</li><li><a href="stop-32276.html">32276</a> - Maaseik Oude Barrier 20:10</li><li><a href="stop-28089.html">28089</a> - Elen Rotsheide 20:11</li><li><a href="stop-28079.html">28079</a> - Elen Breemstraat 20:12</li><li><a href="stop-88457.html">88457</a> - Elen Kruispunt 20:13</li><li><a href="stop-28095.html">28095</a> - Elen Zonnestraat 20:14</li><li><a href="stop-88459.html">88459</a> - Elen Weg naar de Broeken 20:15</li><li><a href="stop-89038.html">89038</a> - Rotem Kruispunt 20:16</li><li><a href="stop-28139.html">28139</a> - Rotem Kasteel 20:17</li><li><a href="stop-28073.html">28073</a> - Dilsen Stansstraat 20:18</li><li><a href="stop-28066.html">28066</a> - Dilsen Kruispunt 20:19</li><li><a href="stop-88455.html">88455</a> - Dilsen Boslaan 20:20</li><li><a href="stop-89036.html">89036</a> - Lanklaar Kruispunt 20:22</li><li><a href="stop-28099.html">28099</a> - Lanklaar Broek 20:23</li><li><a href="stop-28117.html">28117</a> - Lanklaar Slakkenstraat 20:23</li><li><a href="stop-95088.html">95088</a> - Lanklaar Rijksweg 20:24</li><li><a href="stop-32400.html">32400</a> - Leut Rijksweg 20:24</li><li><a href="stop-32374.html">32374</a> - Eisden Schabbertenstraat 20:25</li><li><a href="stop-110423.html">110423</a> - Eisden Vrijthof 20:26</li><li><a href="stop-32356.html">32356</a> - Eisden Kerkhofstraat 20:27</li><li><a href="stop-32369.html">32369</a> - Eisden Post 20:30</li><li><a href="stop-123086.html">123086</a> - Eisden Bloemenlaan 20:32</li><li><a href="stop-92434.html">92434</a> - Eisden Berensheuvel 20:34</li><li><a href="stop-32444.html">32444</a> - Maasmechelen Rijksweg 20:35</li><li><a href="stop-32476.html">32476</a> - Maasmechelen College 20:36</li><li><a href="stop-32340.html">32340</a> - Maasmechelen Centrum 20:37</li><li><a href="stop-32467.html">32467</a> - Maasmechelen Endepoel 20:38</li><li><a href="stop-28472.html">28472</a> - Genk Heempark 20:50</li><li><a href="stop-28346.html">28346</a> - Genk Shopping Center perron 3 20:51</li><li><a href="stop-125473.html">125473</a> - Genk Station perron 12 20:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4595.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

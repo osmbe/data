@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brakel - Lierde - Ninove - 20715309</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brakel - Lierde - Ninove - 20715309</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-118038.html">118038</a> - Voorde Lavaanstraat 07:54</li><li><a href="stop-118037.html">118037</a> - Voorde Schuttershoek 07:55</li><li><a href="stop-118036.html">118036</a> - Voorde Hollestraat 07:57</li><li><a href="stop-122945.html">122945</a> - Appelterre Kerk 07:59</li><li><a href="stop-118034.html">118034</a> - Appelterre Kapittelstraat 08:00</li><li><a href="stop-118033.html">118033</a> - Appelterre Berrebroeckstraat 08:02</li><li><a href="stop-118032.html">118032</a> - Eichem Ratissestraat 08:03</li><li><a href="stop-118031.html">118031</a> - Eichem Perrestraat 08:04</li><li><a href="stop-118030.html">118030</a> - Outer Spoorwegstraat 08:06</li><li><a href="stop-118029.html">118029</a> - Outer Brakelsesteenweg 08:07</li><li><a href="stop-117800.html">117800</a> - Ninove Preulegem 08:08</li><li><a href="stop-117803.html">117803</a> - Ninove Gentsestraat 08:09</li><li><a href="stop-117799.html">117799</a> - Ninove Vuurkruisersstraat 08:09</li><li><a href="stop-116546.html">116546</a> - Ninove Centrum 08:10</li><li><a href="stop-116547.html">116547</a> - Ninove Graanmarkt 08:12</li><li><a href="stop-120322.html">120322</a> - Ninove Station Perron 4 08:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1156.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

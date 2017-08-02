@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tienen - Hoegaarden - Geldenaken - 22784880</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tienen - Hoegaarden - Geldenaken - 22784880</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-13903.html">13903</a> - Tienen Station Perron 2 07:59</li><li><a href="stop-13862.html">13862</a> - Tienen 4de Lansierslaan 08:01</li><li><a href="stop-13878.html">13878</a> - Tienen Grote Markt 08:03</li><li><a href="stop-15562.html">15562</a> - Tienen Goossensvest 08:04</li><li><a href="stop-16421.html">16421</a> - Tienen Mulkplein 08:06</li><li><a href="stop-95622.html">95622</a> - Oorbeek Overlaar Berg 08:08</li><li><a href="stop-95624.html">95624</a> - Oorbeek Sint-Lambertuskerk 08:09</li><li><a href="stop-11378.html">11378</a> - Hoegaarden Klein Overlaar 08:11</li><li><a href="stop-11380.html">11380</a> - Hoegaarden Klooster 08:12</li><li><a href="stop-11363.html">11363</a> - Hoegaarden Au Canal 08:13</li><li><a href="stop-15580.html">15580</a> - Hoegaarden Hoek Doelstraat 08:13</li><li><a href="stop-11388.html">11388</a> - Hoegaarden Station 08:14</li><li><a href="stop-11361.html">11361</a> - Hoegaarden Altenaken 08:15</li><li><a href="stop-92539.html">92539</a> - Zittert-Lummen Eglise 08:16</li><li><a href="stop-92546.html">92546</a> - Zittert-Lummen Sacré Coeur 08:17</li><li><a href="stop-92548.html">92548</a> - Zittert-Lummen Village 08:18</li><li><a href="stop-105046.html">105046</a> - Geldenaken Ferme Boxus 08:19</li><li><a href="stop-92529.html">92529</a> - Sint-Jans-Geest Rte Saint-Remy-Geest 08:20</li><li><a href="stop-92527.html">92527</a> - Sint-Jans-Geest Rte Gare 08:21</li><li><a href="stop-92531.html">92531</a> - Sint-Jans-Geest Sept Coins 08:22</li><li><a href="stop-92518.html">92518</a> - Geldenaken Ecole Normale 08:23</li><li><a href="stop-92522.html">92522</a> - Geldenaken Rue de Pietrain 08:24</li><li><a href="stop-92520.html">92520</a> - Geldenaken Gare Autobus Quai 8 08:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2230.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

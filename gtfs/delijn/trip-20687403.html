@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent Zuid - Melle - ( Oosterzele ) - 20687403</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent Zuid - Melle - ( Oosterzele ) - 20687403</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126534.html">126534</a> - Gent Zuid perron 5 18:15</li><li><a href="stop-112088.html">112088</a> - Gent Vijfwindgatenstraat 18:16</li><li><a href="stop-112117.html">112117</a> - Gent Sint-Lievensdoorgang 18:17</li><li><a href="stop-112116.html">112116</a> - Gent Sint-Lievenspoort 18:18</li><li><a href="stop-112115.html">112115</a> - Ledeberg Hundelgemsesteenweg 18:19</li><li><a href="stop-112471.html">112471</a> - Ledeberg Ledebergplein 18:21</li><li><a href="stop-112469.html">112469</a> - Gentbrugge Stelplaats 18:23</li><li><a href="stop-112468.html">112468</a> - Gentbrugge Arsenaal 18:25</li><li><a href="stop-120182.html">120182</a> - Gentbrugge Schooldreef 18:26</li><li><a href="stop-111679.html">111679</a> - Gentbrugge Benoitlaan 18:28</li><li><a href="stop-120630.html">120630</a> - Gentbrugge Steenbekestraat 18:29</li><li><a href="stop-120631.html">120631</a> - Gentbrugge Henri Van Daelestraat 18:30</li><li><a href="stop-111683.html">111683</a> - Melle Merelbekestraat 18:31</li><li><a href="stop-111684.html">111684</a> - Melle Vogelhoekplein 18:32</li><li><a href="stop-115657.html">115657</a> - Melle Vijverwegel 18:33</li><li><a href="stop-120330.html">120330</a> - Melle Avenskouter 18:33</li><li><a href="stop-111687.html">111687</a> - Melle Park Ten Hovelaan 18:34</li><li><a href="stop-111688.html">111688</a> - Melle Vijverveldlaan 18:34</li><li><a href="stop-111689.html">111689</a> - Melle Park Ten Hove 18:35</li><li><a href="stop-123854.html">123854</a> - Melle Varingstraat 18:38</li><li><a href="stop-111565.html">111565</a> - Melle Kruisstraat 18:40</li><li><a href="stop-111566.html">111566</a> - Melle Hof Ten Dries 18:40</li><li><a href="stop-111567.html">111567</a> - Melle Lindestraat 18:40</li><li><a href="stop-120148.html">120148</a> - Melle Station 18:41</li><li><a href="stop-120149.html">120149</a> - Melle Beekstraat 18:41</li><li><a href="stop-120150.html">120150</a> - Melle Ovenveldstraat 18:43</li><li><a href="stop-120837.html">120837</a> - Melle Oude Geraardsbergsesteenweg 18:43</li><li><a href="stop-120151.html">120151</a> - Melle Autostradeweg 18:44</li><li><a href="stop-111695.html">111695</a> - Gontrode Scheldeweg 18:44</li><li><a href="stop-111696.html">111696</a> - Gontrode Kerk 18:45</li><li><a href="stop-111692.html">111692</a> - Gontrode Station 18:46</li><li><a href="stop-111670.html">111670</a> - Gontrode Potaardestraat 18:47</li><li><a href="stop-111667.html">111667</a> - Landskouter Aalmoezenijestraat 18:49</li><li><a href="stop-128663.html">128663</a> - Landskouter Kerk 18:50</li><li><a href="stop-111669.html">111669</a> - Landskouter Rooberg 18:51</li><li><a href="stop-111702.html">111702</a> - Oosterzele Geraardsbergsesteenweg 18:53</li><li><a href="stop-111703.html">111703</a> - Oosterzele Meerstraat 18:54</li><li><a href="stop-111704.html">111704</a> - Oosterzele Hoek Ter Hulst 18:55</li><li><a href="stop-111705.html">111705</a> - Oosterzele IZOO 18:56</li><li><a href="stop-114737.html">114737</a> - Oosterzele Gemeentehuis 18:57</li><li><a href="stop-114744.html">114744</a> - Oosterzele Smessenbroek 18:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./161.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

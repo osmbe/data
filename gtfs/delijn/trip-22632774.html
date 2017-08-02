@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diksmuide-Nieuwpoort - 22632774</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diksmuide-Nieuwpoort - 22632774</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126281.html">126281</a> - Diksmuide Station perron 2 07:10</li><li><a href="stop-37548.html">37548</a> - Diksmuide Markt 07:11</li><li><a href="stop-37559.html">37559</a> - Diksmuide Vaartstraat 07:12</li><li><a href="stop-95211.html">95211</a> - Diksmuide Ijzerbrug 07:14</li><li><a href="stop-98120.html">98120</a> - Kaaskerke Station 07:16</li><li><a href="stop-98118.html">98118</a> - Kaaskerke Oude Bareel 07:17</li><li><a href="stop-98119.html">98119</a> - Kaaskerke Overweg 93 07:18</li><li><a href="stop-100921.html">100921</a> - Oostkerke Lettenburg 07:19</li><li><a href="stop-123587.html">123587</a> - Oostkerke Dorp 07:20</li><li><a href="stop-38048.html">38048</a> - Oostkerke Scheewege 07:21</li><li><a href="stop-98155.html">98155</a> - Lampernisse Paradijshof 07:22</li><li><a href="stop-38723.html">38723</a> - Pervijze Gemeentehuis 07:23</li><li><a href="stop-104800.html">104800</a> - Pervijze Klooster 07:23</li><li><a href="stop-38725.html">38725</a> - Pervijze Nieuwpoortstraat 07:24</li><li><a href="stop-104802.html">104802</a> - Pervijze Weg Op Schoorbakke 07:25</li><li><a href="stop-97922.html">97922</a> - Ramskapelle Violon 07:27</li><li><a href="stop-36200.html">36200</a> - Nieuwpoort Ramskapellestraat 138 07:27</li><li><a href="stop-100779.html">100779</a> - Ramskapelle Kerk 07:28</li><li><a href="stop-36203.html">36203</a> - Nieuwpoort Steenweg Op Sint-Joris 07:31</li><li><a href="stop-36197.html">36197</a> - Nieuwpoort Kerkhof 07:32</li><li><a href="stop-36202.html">36202</a> - Nieuwpoort Stad 07:34</li><li><a href="stop-101027.html">101027</a> - Nieuwpoort Parklaan 07:35</li><li><a href="stop-40380.html">40380</a> - Nieuwpoort Vismijn 07:36</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4164.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Londerzeel - Breendonk - Puurs - 22767487</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Londerzeel - Breendonk - Puurs - 22767487</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-12772.html">12772</a> - Wolvertem Gemeenteplein 05:54</li><li><a href="stop-12777.html">12777</a> - Wolvertem Hoogstraat 05:55</li><li><a href="stop-12762.html">12762</a> - Wolvertem Brug 05:56</li><li><a href="stop-12768.html">12768</a> - Wolvertem Karel Baudewijnslaan 05:57</li><li><a href="stop-12766.html">12766</a> - Wolvertem De Vlieten 05:58</li><li><a href="stop-12786.html">12786</a> - Wolvertem Meusegem 06:00</li><li><a href="stop-12790.html">12790</a> - Wolvertem Neerpoorten Huis33 06:01</li><li><a href="stop-12792.html">12792</a> - Wolvertem Neerpoorten,Kapel 06:02</li><li><a href="stop-12779.html">12779</a> - Wolvertem Impde,Kerk 06:03</li><li><a href="stop-12809.html">12809</a> - Wolvertem Slozen 06:05</li><li><a href="stop-12490.html">12490</a> - Londerzeel Driehoek 06:07</li><li><a href="stop-12488.html">12488</a> - Londerzeel De Zon 06:08</li><li><a href="stop-12501.html">12501</a> - Londerzeel Polderstraat 06:09</li><li><a href="stop-17223.html">17223</a> - Londerzeel Tramstraat 06:09</li><li><a href="stop-127051.html">127051</a> - Londerzeel Dorpsstraat 06:10</li><li><a href="stop-12478.html">12478</a> - Londerzeel Chrysantenlaan 06:10</li><li><a href="stop-128776.html">128776</a> - Londerzeel Station 06:11</li><li><a href="stop-15604.html">15604</a> - Londerzeel Egmont & Hoorn 06:12</li><li><a href="stop-15605.html">15605</a> - Londerzeel Zwembad 06:13</li><li><a href="stop-15606.html">15606</a> - Londerzeel Politiehuis 06:14</li><li><a href="stop-12486.html">12486</a> - Londerzeel De Maiter 06:14</li><li><a href="stop-12492.html">12492</a> - Londerzeel Duifke 06:15</li><li><a href="stop-12499.html">12499</a> - Londerzeel Molenhoek 06:16</li><li><a href="stop-12497.html">12497</a> - Londerzeel Marie Planché 06:17</li><li><a href="stop-14431.html">14431</a> - Breendonk Veurt 76 06:18</li><li><a href="stop-14433.html">14433</a> - Breendonk Vijfhoek 06:19</li><li><a href="stop-43391.html">43391</a> - Breendonk Molenheide 06:20</li><li><a href="stop-127531.html">127531</a> - Breendonk Groenstraat 06:22</li><li><a href="stop-24267.html">24267</a> - Liezele Wolfstraat 06:24</li><li><a href="stop-24265.html">24265</a> - Liezele Schemelberthof 06:25</li><li><a href="stop-109487.html">109487</a> - Liezele Weg Op Lippelo 06:27</li><li><a href="stop-127012.html">127012</a> - Liezele Kerk 06:27</li><li><a href="stop-26006.html">26006</a> - Liezele Dorp 06:28</li><li><a href="stop-26007.html">26007</a> - Liezele Heide 06:28</li><li><a href="stop-10383.html">10383</a> - Liezele Fort 06:28</li><li><a href="stop-17146.html">17146</a> - Puurs Leemgaard 06:29</li><li><a href="stop-109449.html">109449</a> - Puurs Merkenveld 06:30</li><li><a href="stop-21688.html">21688</a> - Puurs Station 06:31</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1928.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

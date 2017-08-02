@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sint-Truiden - Jeuk - 22480985</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Truiden - Jeuk - 22480985</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-28773.html">28773</a> - Jeuk Kapel 07:28</li><li><a href="stop-28769.html">28769</a> - Jeuk H. Stassenstraat 07:29</li><li><a href="stop-30304.html">30304</a> - Jeuk School 07:30</li><li><a href="stop-28776.html">28776</a> - Jeuk Kerk 07:31</li><li><a href="stop-28767.html">28767</a> - Jeuk Groenhof 07:32</li><li><a href="stop-28781.html">28781</a> - Jeuk Sneyers Kapel 07:33</li><li><a href="stop-106110.html">106110</a> - Boekhout H. Hartstraat 07:35</li><li><a href="stop-28797.html">28797</a> - Mielen-Boven-Aalst Bronplein 07:38</li><li><a href="stop-28805.html">28805</a> - Mielen-Boven-Aalst Oud Tramstation 07:39</li><li><a href="stop-28809.html">28809</a> - Mielen-Boven-Aalst School 07:40</li><li><a href="stop-106143.html">106143</a> - Mielen-Boven-Aalst Daalstraat 07:41</li><li><a href="stop-33797.html">33797</a> - Aalst Veert 07:43</li><li><a href="stop-33798.html">33798</a> - Aalst Voetbalveld 07:44</li><li><a href="stop-33793.html">33793</a> - Aalst Kapel 07:45</li><li><a href="stop-33801.html">33801</a> - Aalst Zwembad 07:46</li><li><a href="stop-33795.html">33795</a> - Aalst Nerumstraat 07:47</li><li><a href="stop-33829.html">33829</a> - Brustem Kabien 07:48</li><li><a href="stop-92476.html">92476</a> - Brustem Borgwormsesteenweg 07:49</li><li><a href="stop-33825.html">33825</a> - Brustem Dorp 07:50</li><li><a href="stop-31689.html">31689</a> - Brustem Vliegveldlaan 07:51</li><li><a href="stop-33841.html">33841</a> - Brustem Vliegplein 07:52</li><li><a href="stop-33844.html">33844</a> - Sint-Truiden Champagne 07:53</li><li><a href="stop-34113.html">34113</a> - Sint-Truiden Festraetstraat 07:54</li><li><a href="stop-33928.html">33928</a> - Sint-Truiden Kattenstraat 07:56</li><li><a href="stop-105352.html">105352</a> - Sint-Truiden Europaplein 07:56</li><li><a href="stop-33974.html">33974</a> - Sint-Truiden Naamsepoort 07:57</li><li><a href="stop-110642.html">110642</a> - Sint-Truiden Zwembad 07:58</li><li><a href="stop-34026.html">34026</a> - Sint-Truiden Stationsstraat 07:59</li><li><a href="stop-127440.html">127440</a> - Sint-Truiden Station perron 7 08:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4582.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

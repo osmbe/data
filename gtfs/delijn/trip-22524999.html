@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Antwerpen - Massenhoven - Herentals via E313 - 22524999</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Antwerpen - Massenhoven - Herentals via E313 - 22524999</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-125291.html">125291</a> - Antwerpen F. Rooseveltplaats perron 12 16:55</li><li><a href="stop-121217.html">121217</a> - Antwerpen Centraal Station perron 1 16:56</li><li><a href="stop-108678.html">108678</a> - Antwerpen Kerkstraat 16:59</li><li><a href="stop-19738.html">19738</a> - Borgerhout Drink 17:01</li><li><a href="stop-21414.html">21414</a> - Borgerhout De Roma 17:04</li><li><a href="stop-127002.html">127002</a> - Borgerhout Turnhoutsepoort 17:05</li><li><a href="stop-108945.html">108945</a> - Massenhoven Kerkstraat 17:20</li><li><a href="stop-22912.html">22912</a> - Massenhoven Gebroken Loop 17:21</li><li><a href="stop-110949.html">110949</a> - Zandhoven Liersebaan 17:22</li><li><a href="stop-22916.html">22916</a> - Zandhoven Dorp perron 2 17:24</li><li><a href="stop-108948.html">108948</a> - Zandhoven Rijkswacht 17:26</li><li><a href="stop-108852.html">108852</a> - Zandhoven Hallebaan 17:27</li><li><a href="stop-108854.html">108854</a> - Zandhoven Heikant 17:28</li><li><a href="stop-20859.html">20859</a> - Zandhoven Goormansstraat 17:28</li><li><a href="stop-22920.html">22920</a> - Pulderbos Roosten 17:29</li><li><a href="stop-108950.html">108950</a> - Pulderbos Dorp 17:30</li><li><a href="stop-22924.html">22924</a> - Pulderbos Draaiboom 17:31</li><li><a href="stop-22926.html">22926</a> - Pulle Dorpstraat 17:32</li><li><a href="stop-22928.html">22928</a> - Pulle Dorp 17:33</li><li><a href="stop-22930.html">22930</a> - Pulle Keulsebaan 17:34</li><li><a href="stop-108954.html">108954</a> - Grobbendonk Vierselsebaan 17:35</li><li><a href="stop-108956.html">108956</a> - Grobbendonk Kretbosstraat 17:37</li><li><a href="stop-108958.html">108958</a> - Grobbendonk Nijverheidsstraat 17:38</li><li><a href="stop-107703.html">107703</a> - Grobbendonk Dorp 17:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3259.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

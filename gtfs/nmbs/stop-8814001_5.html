@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Brussel-Zuid/Bruxelles-Midi</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Brussel-Zuid/Bruxelles-Midi</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-IC372915511.html">IC372915511</a> - IC372915511 - Brussels Airport - Zaventem - Bergen</li><li><a href="trip-ICE1519651.html">ICE1519651</a> - ICE1519651 - Brussel-Zuid -  Frankfurt Main (d)</li><li><a href="trip-ICE1939681.html">ICE1939681</a> - ICE1939681 - Brussel-Zuid -  Frankfurt Main (d)</li><li><a href="trip-P844532791.html">P844532791</a> - P844532791 - Brussel-Zuid - Wezet</li><li><a href="trip-THA930039481.html">THA930039481</a> - THA930039481 - Brussel-Zuid -  Paris Nord (f)</li><li><a href="trip-THA935640311.html">THA935640311</a> - THA935640311 - Brussel-Zuid -  Paris Nord (f)</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.835707, 4.336531], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.835707, 4.336531]).addTo(map);
+    </script>
+</body>
+
+</html>

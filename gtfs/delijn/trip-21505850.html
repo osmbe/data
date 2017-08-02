@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hoboken - Silsburg - 21505850</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hoboken - Silsburg - 21505850</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-107789.html">107789</a> - Borsbeek Silsburg 22:57</li><li><a href="stop-107556.html">107556</a> - Deurne Dassastraat 22:58</li><li><a href="stop-19888.html">19888</a> - Deurne Florent Pauwels 22:59</li><li><a href="stop-107733.html">107733</a> - Deurne Van Den Hautelei 23:01</li><li><a href="stop-107641.html">107641</a> - Deurne Eksterlaar 23:02</li><li><a href="stop-107926.html">107926</a> - Deurne Jozef Verboven 23:03</li><li><a href="stop-107546.html">107546</a> - Deurne Cruyslei 23:04</li><li><a href="stop-108565.html">108565</a> - Borgerhout Te Boelaarpark 23:05</li><li><a href="stop-107944.html">107944</a> - Borgerhout De Preter 23:06</li><li><a href="stop-107458.html">107458</a> - Borgerhout Apollo 23:07</li><li><a href="stop-107768.html">107768</a> - Berchem Groenenhoek 23:07</li><li><a href="stop-107400.html">107400</a> - Berchem Station perron 13 23:08</li><li><a href="stop-19496.html">19496</a> - Antwerpen Cuperus 23:11</li><li><a href="stop-22194.html">22194</a> - Antwerpen Lamorinièrestraat 23:13</li><li><a href="stop-19052.html">19052</a> - Antwerpen Belgiëlei 23:13</li><li><a href="stop-19313.html">19313</a> - Antwerpen Sint-Vincentius 23:16</li><li><a href="stop-19129.html">19129</a> - Antwerpen Hemel 23:18</li><li><a href="stop-108183.html">108183</a> - Antwerpen Nationale Bank 23:18</li><li><a href="stop-21000.html">21000</a> - Antwerpen Mechelseplein 23:20</li><li><a href="stop-21247.html">21247</a> - Antwerpen Oudaan 23:21</li><li><a href="stop-91987.html">91987</a> - Antwerpen Groenplaats 23:23</li><li><a href="stop-90977.html">90977</a> - Antwerpen Sint-Andries 23:25</li><li><a href="stop-88935.html">88935</a> - Antwerpen Tropisch Instituut 23:26</li><li><a href="stop-108171.html">108171</a> - Antwerpen Museum 23:28</li><li><a href="stop-107647.html">107647</a> - Antwerpen Pacificatie 23:30</li><li><a href="stop-107527.html">107527</a> - Antwerpen Bolivarplaats 23:31</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2673.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

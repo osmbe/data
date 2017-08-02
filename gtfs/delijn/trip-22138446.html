@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Avondlijn Brugge-Ruddervoorde - 22138446</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Avondlijn Brugge-Ruddervoorde - 22138446</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-37002.html">37002</a> - Ruddervoorde Dorp 24:46</li><li><a href="stop-41069.html">41069</a> - Ruddervoorde Station 24:47</li><li><a href="stop-41061.html">41061</a> - Ruddervoorde Kruiskalsijde 24:48</li><li><a href="stop-41216.html">41216</a> - Waardamme Beernemstraat 24:50</li><li><a href="stop-41217.html">41217</a> - Waardamme Dorp 24:50</li><li><a href="stop-41218.html">41218</a> - Waardamme Drie Koningen 24:50</li><li><a href="stop-41219.html">41219</a> - Waardamme Lariksdreef 24:51</li><li><a href="stop-41022.html">41022</a> - Oostkamp Breideldreef 24:52</li><li><a href="stop-41038.html">41038</a> - Oostkamp Wapens 24:53</li><li><a href="stop-41360.html">41360</a> - Oostkamp Palfijn 24:54</li><li><a href="stop-41359.html">41359</a> - Oostkamp Abraham 24:54</li><li><a href="stop-41023.html">41023</a> - Oostkamp Cardijnplein 24:55</li><li><a href="stop-41028.html">41028</a> - Oostkamp Nelestraat 24:55</li><li><a href="stop-41036.html">41036</a> - Oostkamp Tijl Uilenspiegel 24:56</li><li><a href="stop-41024.html">41024</a> - Oostkamp Daele 24:56</li><li><a href="stop-41034.html">41034</a> - Oostkamp Siemenslaan 24:56</li><li><a href="stop-41031.html">41031</a> - Oostkamp Rijkswacht 24:57</li><li><a href="stop-41030.html">41030</a> - Oostkamp Centrum 24:57</li><li><a href="stop-41032.html">41032</a> - Oostkamp Rustoordstraat 24:57</li><li><a href="stop-41041.html">41041</a> - Oostkamp Zwarte Gat 24:58</li><li><a href="stop-41029.html">41029</a> - Oostkamp Rampe 24:59</li><li><a href="stop-41039.html">41039</a> - Oostkamp Gaston Roelandtstraat 25:00</li><li><a href="stop-41027.html">41027</a> - Oostkamp Sint-Michielsstraat 25:00</li><li><a href="stop-101052.html">101052</a> - Assebroek Park & Ride Steenbrugge 25:01</li><li><a href="stop-40794.html">40794</a> - Assebroek Abdij Steenbrugge 25:02</li><li><a href="stop-40772.html">40772</a> - Assebroek Benedictijnen 25:03</li><li><a href="stop-40795.html">40795</a> - Assebroek Tir 25:03</li><li><a href="stop-101032.html">101032</a> - Assebroek Brugs Kerkhofstraat 25:04</li><li><a href="stop-40847.html">40847</a> - Brugge Katelijnepoort 25:06</li><li><a href="stop-126325.html">126325</a> - Brugge Station perron 6 25:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3994.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent Zuid - Gavere - Dikkelvenne/Beerlegem - 20695569</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent Zuid - Gavere - Dikkelvenne/Beerlegem - 20695569</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126534.html">126534</a> - Gent Zuid perron 5 08:30</li><li><a href="stop-112088.html">112088</a> - Gent Vijfwindgatenstraat 08:31</li><li><a href="stop-112117.html">112117</a> - Gent Sint-Lievensdoorgang 08:32</li><li><a href="stop-112116.html">112116</a> - Gent Sint-Lievenspoort 08:33</li><li><a href="stop-111555.html">111555</a> - Ledeberg Eggermontstraat 08:35</li><li><a href="stop-114753.html">114753</a> - Ledeberg Botermarkt 08:37</li><li><a href="stop-114754.html">114754</a> - Ledeberg Eindeke 08:39</li><li><a href="stop-114755.html">114755</a> - Merelbeke Koestraat 08:40</li><li><a href="stop-114756.html">114756</a> - Merelbeke Benoitstraat 08:40</li><li><a href="stop-114757.html">114757</a> - Merelbeke Van Goethemstraat 08:41</li><li><a href="stop-114760.html">114760</a> - Merelbeke Kerk Flora 08:43</li><li><a href="stop-112603.html">112603</a> - Gentbrugge Merelbeke Station 08:44</li><li><a href="stop-120269.html">120269</a> - Melle Vijverwegel 08:45</li><li><a href="stop-114761.html">114761</a> - Merelbeke Kon. Elisabethlaan 08:47</li><li><a href="stop-114762.html">114762</a> - Merelbeke Ginstdreef 08:48</li><li><a href="stop-114763.html">114763</a> - Merelbeke Nachtegaaldreef 08:49</li><li><a href="stop-114764.html">114764</a> - Merelbeke Plataan 08:52</li><li><a href="stop-114765.html">114765</a> - Merelbeke Waterstraat 08:53</li><li><a href="stop-114766.html">114766</a> - Merelbeke Hebbelynckstraat 08:54</li><li><a href="stop-113732.html">113732</a> - Merelbeke Kerk 08:55</li><li><a href="stop-113756.html">113756</a> - Merelbeke Molenhoek 08:57</li><li><a href="stop-113817.html">113817</a> - Merelbeke Polderstraat 08:58</li><li><a href="stop-114769.html">114769</a> - Merelbeke Kastanjestraat 08:58</li><li><a href="stop-114770.html">114770</a> - Merelbeke Populierenhof 08:59</li><li><a href="stop-114771.html">114771</a> - Merelbeke Notelaarstraat 09:01</li><li><a href="stop-114686.html">114686</a> - Merelbeke Sint-Elooistraat 09:01</li><li><a href="stop-120393.html">120393</a> - Merelbeke Hoorndriesstraat 09:02</li><li><a href="stop-122309.html">122309</a> - Schelderode Kerk 09:04</li><li><a href="stop-114688.html">114688</a> - Melsen Warandestraat 09:07</li><li><a href="stop-120846.html">120846</a> - Melsen Meersstraat 09:07</li><li><a href="stop-120847.html">120847</a> - Melsen Melsenstraat 09:08</li><li><a href="stop-120848.html">120848</a> - Vurste Gentweg 09:10</li><li><a href="stop-128629.html">128629</a> - Semmerzake Dorp 09:14</li><li><a href="stop-114695.html">114695</a> - Semmerzake Opperweg 09:16</li><li><a href="stop-114696.html">114696</a> - Gavere Grotenbroek 09:17</li><li><a href="stop-128630.html">128630</a> - Gavere Brandweer 09:19</li><li><a href="stop-126802.html">126802</a> - Gavere Warande perron 1 09:21</li><li><a href="stop-126798.html">126798</a> - Gavere Warande perron 1 09:21</li><li><a href="stop-114698.html">114698</a> - Gavere Kamp 09:23</li><li><a href="stop-114699.html">114699</a> - Dikkelvenne Sint-Christianastraat 09:24</li><li><a href="stop-114700.html">114700</a> - Dikkelvenne Diepestraat 09:25</li><li><a href="stop-114701.html">114701</a> - Dikkelvenne Kerk 09:26</li><li><a href="stop-120375.html">120375</a> - Dikkelvenne Vossenholstraat 09:27</li><li><a href="stop-114702.html">114702</a> - Dikkelvenne Saksenboomstraat 09:28</li><li><a href="stop-119648.html">119648</a> - Beerlegem Kerk 09:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./297.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Anderlecht - Drogenbos - Rode - Halle - 21128689</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Anderlecht - Drogenbos - Rode - Halle - 21128689</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-43623.html">43623</a> - Alsemberg Winderickxplein 05:06</li><li><a href="stop-90817.html">90817</a> - Sint-Genesius-Rode Fonteinstraat 05:08</li><li><a href="stop-13287.html">13287</a> - Sint-Genesius-Rode Rollebaan 05:09</li><li><a href="stop-13295.html">13295</a> - Sint-Genesius-Rode Termeulen 05:10</li><li><a href="stop-106412.html">106412</a> - Sint-Genesius-Rode Wauterbos 05:11</li><li><a href="stop-13278.html">13278</a> - Sint-Genesius-Rode Klein Luik 05:12</li><li><a href="stop-13276.html">13276</a> - Sint-Genesius-Rode Hof ten Berg 05:13</li><li><a href="stop-16130.html">16130</a> - Sint-Genesius-Rode Den Hoek Station 05:13</li><li><a href="stop-13269.html">13269</a> - Sint-Genesius-Rode Den Hoek Kerk 05:14</li><li><a href="stop-13271.html">13271</a> - Sint-Genesius-Rode Dragonderstraat 05:14</li><li><a href="stop-14587.html">14587</a> - Sint-Genesius-Rode Astrid 05:15</li><li><a href="stop-90831.html">90831</a> - Sint-Genesius-Rode Elvis Presley 05:17</li><li><a href="stop-93395.html">93395</a> - Sint-Genesius-Rode Grote Hut 05:18</li><li><a href="stop-16126.html">16126</a> - Sint-Genesius-Rode Ahornlaan 05:18</li><li><a href="stop-13283.html">13283</a> - Sint-Genesius-Rode Zoniënwoud 05:19</li><li><a href="stop-16119.html">16119</a> - Sint-Genesius-Rode Linkebeeksedreef 05:20</li><li><a href="stop-16117.html">16117</a> - Sint-Genesius-Rode Nelson Mandela 05:21</li><li><a href="stop-16115.html">16115</a> - Linkebeek Amnesty 05:22</li><li><a href="stop-16080.html">16080</a> - Linkebeek Spoorwegbrug 05:23</li><li><a href="stop-16113.html">16113</a> - Linkebeek Esselaar 05:23</li><li><a href="stop-16078.html">16078</a> - Linkebeek Hoeve 05:24</li><li><a href="stop-16076.html">16076</a> - Linkebeek Grasmus 05:25</li><li><a href="stop-16111.html">16111</a> - Linkebeek Krekelendries 05:26</li><li><a href="stop-16074.html">16074</a> - Linkebeek Kasteeldreef 05:26</li><li><a href="stop-16109.html">16109</a> - Linkebeek Van Lishout 05:27</li><li><a href="stop-16072.html">16072</a> - Linkebeek Dapperen 05:28</li><li><a href="stop-95176.html">95176</a> - Ukkel Oude Weg 05:28</li><li><a href="stop-16107.html">16107</a> - Ukkel Moensberg 05:29</li><li><a href="stop-16068.html">16068</a> - Ukkel Noordkrieken 05:29</li><li><a href="stop-16066.html">16066</a> - Ukkel Vleeskersen 05:30</li><li><a href="stop-95174.html">95174</a> - Ukkel Horzel 05:30</li><li><a href="stop-10346.html">10346</a> - Ukkel Kalevoet Station 05:31</li><li><a href="stop-16105.html">16105</a> - Ukkel Hercule Poirot 05:32</li><li><a href="stop-16103.html">16103</a> - Ukkel Vergeet-mij-nietjes 05:33</li><li><a href="stop-10397.html">10397</a> - Ukkel Egide Van Ophem 05:34</li><li><a href="stop-10391.html">10391</a> - Ukkel Kruispunt Stalle 05:35</li><li><a href="stop-43988.html">43988</a> - Drogenbos Eggergat 05:36</li><li><a href="stop-10620.html">10620</a> - Drogenbos Shopping 05:36</li><li><a href="stop-43172.html">43172</a> - Drogenbos Dorent 05:39</li><li><a href="stop-43170.html">43170</a> - Drogenbos Pathé 05:42</li><li><a href="stop-43107.html">43107</a> - Drogenbos Mozart 05:42</li><li><a href="stop-43168.html">43168</a> - Anderlecht Bollinckx 05:47</li><li><a href="stop-10047.html">10047</a> - Anderlecht Coovi 05:47</li><li><a href="stop-10018.html">10018</a> - Anderlecht Het Rad 05:49</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1719.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

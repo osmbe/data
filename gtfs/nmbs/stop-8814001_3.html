@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Brussel-Zuid/Bruxelles-Midi</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Brussel-Zuid/Bruxelles-Midi</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-IC321413901.html">IC321413901</a> - IC321413901 - Kortrijk - Sint-Niklaas</li><li><a href="trip-IC370715321.html">IC370715321</a> - IC370715321 - Bergen - Brussels Airport - Zaventem</li><li><a href="trip-IC370815331.html">IC370815331</a> - IC370815331 - Bergen - Brussels Airport - Zaventem</li><li><a href="trip-IC371515401.html">IC371515401</a> - IC371515401 - Bergen - Brussels Airport - Zaventem</li><li><a href="trip-IC371615411.html">IC371615411</a> - IC371615411 - Bergen - Brussels Airport - Zaventem</li><li><a href="trip-IC372015451.html">IC372015451</a> - IC372015451 - Bergen - Brussels Airport - Zaventem</li><li><a href="trip-ICE1339801.html">ICE1339801</a> - ICE1339801 - Brussel-Zuid -  Frankfurt Main (d)</li><li><a href="trip-P780131621.html">P780131621</a> - P780131621 - Quevy - Schaarbeek</li><li><a href="trip-S1038584981.html">S1038584981</a> - S1038584981 - Dendermonde - Aalst</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.835707, 4.336531], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.835707, 4.336531]).addTo(map);
+    </script>
+</body>
+
+</html>

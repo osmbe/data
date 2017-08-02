@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Harelbeke-Bavikhove-Hulste - 22143509</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Harelbeke-Bavikhove-Hulste - 22143509</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126382.html">126382</a> - Kortrijk Station perron 6 19:20</li><li><a href="stop-37777.html">37777</a> - Kortrijk Spoorweglaan 19:23</li><li><a href="stop-37842.html">37842</a> - Kortrijk K 19:23</li><li><a href="stop-37821.html">37821</a> - Kortrijk Groeningelaan 19:25</li><li><a href="stop-37785.html">37785</a> - Kortrijk Gentpoort 19:26</li><li><a href="stop-37801.html">37801</a> - Kortrijk Lefevere 19:27</li><li><a href="stop-37615.html">37615</a> - Harelbeke Koersplein 19:28</li><li><a href="stop-37609.html">37609</a> - Harelbeke Garage Rapid 19:30</li><li><a href="stop-37621.html">37621</a> - Harelbeke Royal 19:31</li><li><a href="stop-37617.html">37617</a> - Harelbeke Marktstraat 19:32</li><li><a href="stop-126389.html">126389</a> - Harelbeke Station perron 2 19:33</li><li><a href="stop-42847.html">42847</a> - Harelbeke Noordstraat 19:33</li><li><a href="stop-41598.html">41598</a> - Harelbeke Deerlijkstraat 19:34</li><li><a href="stop-41604.html">41604</a> - Harelbeke Markt 19:34</li><li><a href="stop-41591.html">41591</a> - Harelbeke Eierstraat 19:35</li><li><a href="stop-37632.html">37632</a> - Harelbeke Violettenstraat 19:36</li><li><a href="stop-37605.html">37605</a> - Harelbeke Broelstraat 19:37</li><li><a href="stop-37603.html">37603</a> - Harelbeke Bavikhoofsestraat 14 19:38</li><li><a href="stop-37460.html">37460</a> - Bavikhove Oudstrijderslaan 19:39</li><li><a href="stop-37461.html">37461</a> - Bavikhove Plaats 19:39</li><li><a href="stop-37458.html">37458</a> - Bavikhove Hoogstraat 19:40</li><li><a href="stop-37688.html">37688</a> - Hulste Tivoli 19:42</li><li><a href="stop-37684.html">37684</a> - Hulste Kasteelstraat 19:43</li><li><a href="stop-100903.html">100903</a> - Hulste Kwademeerslaan 19:44</li><li><a href="stop-37687.html">37687</a> - Hulste Meidoornlaan 19:45</li><li><a href="stop-37685.html">37685</a> - Hulste Kerk 19:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4102.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

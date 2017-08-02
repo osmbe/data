@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Anderlecht - Drogenbos - Rode - Halle - 22758486</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Anderlecht - Drogenbos - Rode - Halle - 22758486</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-95633.html">95633</a> - Essenbeek De Floere 10:37</li><li><a href="stop-95634.html">95634</a> - Essenbeek Beschutte Werkplaats 10:38</li><li><a href="stop-95806.html">95806</a> - Essenbeek Kerkhof 10:39</li><li><a href="stop-95808.html">95808</a> - Essenbeek Kerk 10:40</li><li><a href="stop-95810.html">95810</a> - Essenbeek Nijvelsesteenweg 10:42</li><li><a href="stop-95812.html">95812</a> - Sint-Rochus Kruisstraat 10:44</li><li><a href="stop-95814.html">95814</a> - Sint-Rochus E. Duezstraat 10:45</li><li><a href="stop-95816.html">95816</a> - Sint-Rochus Veldstraat 10:46</li><li><a href="stop-95818.html">95818</a> - Sint-Rochus Jubellaan 10:47</li><li><a href="stop-95820.html">95820</a> - Sint-Rochus Leopoldstraat 10:49</li><li><a href="stop-95822.html">95822</a> - Sint-Rochus Goudvinkenlaan 10:50</li><li><a href="stop-95824.html">95824</a> - Sint-Rochus Kerk 10:51</li><li><a href="stop-10670.html">10670</a> - Halle Station afstaphalte 10:52</li><li><a href="stop-15685.html">15685</a> - Halle Station Perron 3 10:53</li><li><a href="stop-15634.html">15634</a> - Halle Park 10:55</li><li><a href="stop-15656.html">15656</a> - Halle Arkenvest 10:56</li><li><a href="stop-15655.html">15655</a> - Halle Bergense Poort 10:57</li><li><a href="stop-17099.html">17099</a> - Halle Demaeghtlaan 10:58</li><li><a href="stop-87250.html">87250</a> - Halle AZ.Sint-Maria 10:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1698.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

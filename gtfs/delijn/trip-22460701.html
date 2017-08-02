@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Zonhoven - Halveweg - Houthalen - 22460701</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Zonhoven - Halveweg - Houthalen - 22460701</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-92283.html">92283</a> - Houthalen John Cuppensplein 17:24</li><li><a href="stop-30683.html">30683</a> - Houthalen Kerk 17:25</li><li><a href="stop-32912.html">32912</a> - Houthalen Stationsstraat 17:25</li><li><a href="stop-30672.html">30672</a> - Houthalen Hoolvenstraat 17:27</li><li><a href="stop-30758.html">30758</a> - Houthalen Station 17:29</li><li><a href="stop-30440.html">30440</a> - Zolder Mierenstraat 17:30</li><li><a href="stop-30424.html">30424</a> - Zolder Hoekstraat 17:32</li><li><a href="stop-30432.html">30432</a> - Zolder Kruispunt 17:32</li><li><a href="stop-43831.html">43831</a> - Zolder Laambroekstraat 17:37</li><li><a href="stop-29250.html">29250</a> - Zonhoven Hulsbergweg 17:37</li><li><a href="stop-30468.html">30468</a> - Zonhoven Dwarsstraat 17:39</li><li><a href="stop-31954.html">31954</a> - Zonhoven Hortstraat 17:40</li><li><a href="stop-35222.html">35222</a> - Zonhoven Moverkensstraat 17:42</li><li><a href="stop-125598.html">125598</a> - Zonhoven Delheidestraat 17:44</li><li><a href="stop-35251.html">35251</a> - Zonhoven Weg naar Bolderberg 17:44</li><li><a href="stop-35172.html">35172</a> - Zonhoven Beskensstraat 17:47</li><li><a href="stop-123220.html">123220</a> - Zonhoven Dorpsplein 17:50</li><li><a href="stop-31670.html">31670</a> - Zonhoven Genkerbaan 17:51</li><li><a href="stop-35219.html">35219</a> - Zonhoven Melkerij 17:51</li><li><a href="stop-35209.html">35209</a> - Zonhoven Katschotseweg 17:52</li><li><a href="stop-35197.html">35197</a> - Zonhoven Herestraat 17:53</li><li><a href="stop-35211.html">35211</a> - Zonhoven Korenmolenweg 17:54</li><li><a href="stop-35217.html">35217</a> - Zonhoven Manerikweg 17:54</li><li><a href="stop-35233.html">35233</a> - Zonhoven Termolen school 17:55</li><li><a href="stop-35187.html">35187</a> - Zonhoven Elstrekenweg 17:57</li><li><a href="stop-35215.html">35215</a> - Zonhoven Kruisstraat 17:57</li><li><a href="stop-97381.html">97381</a> - Boxberg Vlasberg 17:58</li><li><a href="stop-97334.html">97334</a> - Winterslag Hoekstraat 18:01</li><li><a href="stop-96717.html">96717</a> - Winterslag Erabelstraat 18:02</li><li><a href="stop-96724.html">96724</a> - Winterslag Spoorwegstraat 18:02</li><li><a href="stop-97175.html">97175</a> - Winterslag Brikkenovenstraat 18:06</li><li><a href="stop-28732.html">28732</a> - Genk Esserslaan 18:06</li><li><a href="stop-96722.html">96722</a> - Winterslag Mijn 18:07</li><li><a href="stop-125475.html">125475</a> - Genk Station perron 10 18:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4994.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Dendermonde - Opwijk Station - Asse - 20713943</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Dendermonde - Opwijk Station - Asse - 20713943</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126709.html">126709</a> - Dendermonde Station perron 7 08:40</li><li><a href="stop-116802.html">116802</a> - Sint-Gillis-Dendermonde Kerk 08:43</li><li><a href="stop-116801.html">116801</a> - Sint-Gillis-Dendermonde Acacialaan 08:44</li><li><a href="stop-116800.html">116800</a> - Sint-Gillis-Dendermonde Kruisstraat 08:45</li><li><a href="stop-116808.html">116808</a> - Lebbeke Vondelmolen 08:46</li><li><a href="stop-116799.html">116799</a> - Lebbeke Ziekenhuisveldbaan 08:47</li><li><a href="stop-116798.html">116798</a> - Lebbeke Kerk 08:48</li><li><a href="stop-116797.html">116797</a> - Lebbeke Konkelgoedstraat 08:49</li><li><a href="stop-116796.html">116796</a> - Lebbeke Sportcentrum 08:50</li><li><a href="stop-116820.html">116820</a> - Lebbeke Cardijnlaan 08:51</li><li><a href="stop-116819.html">116819</a> - Lebbeke Korte Weverstraat 08:52</li><li><a href="stop-116680.html">116680</a> - Lebbeke Meysveld 08:53</li><li><a href="stop-116818.html">116818</a> - Lebbeke Fochelstraat 08:54</li><li><a href="stop-117126.html">117126</a> - Lebbeke Heilig Kruiskapel 08:55</li><li><a href="stop-117130.html">117130</a> - Opwijk Bolstraat 08:58</li><li><a href="stop-117135.html">117135</a> - Opwijk Ravensveld 08:59</li><li><a href="stop-117125.html">117125</a> - Opwijk Heirbaan 09:00</li><li><a href="stop-116678.html">116678</a> - Opwijk Heiveld 09:01</li><li><a href="stop-126710.html">126710</a> - Opwijk Station perron 1 09:02</li><li><a href="stop-118066.html">118066</a> - Opwijk Kouterlaan 09:03</li><li><a href="stop-117125.html">117125</a> - Opwijk Heirbaan 09:03</li><li><a href="stop-116678.html">116678</a> - Opwijk Heiveld 09:05</li><li><a href="stop-116644.html">116644</a> - Opwijk Marktstraat 09:05</li><li><a href="stop-116645.html">116645</a> - Opwijk Klaarstraat 09:06</li><li><a href="stop-117129.html">117129</a> - Opwijk Schoolcampus Vko 09:07</li><li><a href="stop-117128.html">117128</a> - Opwijk Nanovestraat 09:08</li><li><a href="stop-117127.html">117127</a> - Droeshout Guldenboomstraat 09:09</li><li><a href="stop-128700.html">128700</a> - Droeshout Kerk 09:09</li><li><a href="stop-116651.html">116651</a> - Droeshout Droeshoutstraat 09:10</li><li><a href="stop-116652.html">116652</a> - Opwijk Steenweg op Vilvoorde 09:11</li><li><a href="stop-116681.html">116681</a> - Opwijk Steenweg op Vilvoorde 09:11</li><li><a href="stop-116682.html">116682</a> - Mazenzele Zottegemstraat 09:12</li><li><a href="stop-116683.html">116683</a> - Mazenzele Dorp 09:13</li><li><a href="stop-116684.html">116684</a> - Mazenzele Vossestraat 09:14</li><li><a href="stop-116685.html">116685</a> - Asse Oude Dendermondsebaan 09:15</li><li><a href="stop-116686.html">116686</a> - Asse Krokegem Kerk 09:17</li><li><a href="stop-93370.html">93370</a> - Asse Nerviërs 09:18</li><li><a href="stop-44010.html">44010</a> - Asse Kalkoven 09:19</li><li><a href="stop-9480.html">9480</a> - Asse Nieuwstraat 09:19</li><li><a href="stop-9453.html">9453</a> - Asse Gemeenteplein 09:20</li><li><a href="stop-9449.html">9449</a> - Asse Belvédère 09:20</li><li><a href="stop-9481.html">9481</a> - Asse Station 09:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1056.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

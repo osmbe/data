@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Pamel - Liedekerke - Essene - 22792395</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Pamel - Liedekerke - Essene - 22792395</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-17042.html">17042</a> - Essene Paddeput 13:02</li><li><a href="stop-9433.html">9433</a> - Essene Lombeekstraat 13:03</li><li><a href="stop-17129.html">17129</a> - Essene OLV-Kerk 13:05</li><li><a href="stop-10431.html">10431</a> - Essene Mouterij 13:06</li><li><a href="stop-10448.html">10448</a> - Essene Koudenberg 13:08</li><li><a href="stop-93357.html">93357</a> - Hekelgem Bleregem 13:09</li><li><a href="stop-9437.html">9437</a> - Hekelgem Den Beer 13:10</li><li><a href="stop-10446.html">10446</a> - Hekelgem Fosselbaan 13:11</li><li><a href="stop-10444.html">10444</a> - Hekelgem Sint-Michielskerk 13:12</li><li><a href="stop-10442.html">10442</a> - Hekelgem Buikouter 13:13</li><li><a href="stop-10440.html">10440</a> - Hekelgem Haezenweg 13:13</li><li><a href="stop-10438.html">10438</a> - Hekelgem Bellekouter 13:14</li><li><a href="stop-93946.html">93946</a> - Teralfene Kapelleweg 13:15</li><li><a href="stop-15212.html">15212</a> - Teralfene Sint-Janskerk 13:16</li><li><a href="stop-15210.html">15210</a> - Teralfene Portugeesstraat 13:17</li><li><a href="stop-15208.html">15208</a> - Liedekerke Station 13:19</li><li><a href="stop-44046.html">44046</a> - Liedekerke Affligemstraat 13:21</li><li><a href="stop-44044.html">44044</a> - Liedekerke K.T.A. 13:22</li><li><a href="stop-44038.html">44038</a> - Liedekerke Boerenkrijg 13:23</li><li><a href="stop-15168.html">15168</a> - Liedekerke Velodroom 13:23</li><li><a href="stop-15166.html">15166</a> - Liedekerke Sint-Gabriël 13:24</li><li><a href="stop-15164.html">15164</a> - Liedekerke Sportlaan 13:25</li><li><a href="stop-10331.html">10331</a> - Liedekerke Sport 13:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2496.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

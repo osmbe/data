@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diest - Mol / Leopoldsburg - 22491006</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diest - Mol / Leopoldsburg - 22491006</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-34247.html">34247</a> - Tessenderlo Kerk 12:10</li><li><a href="stop-125572.html">125572</a> - Tessenderlo Broedersschool 12:11</li><li><a href="stop-34280.html">34280</a> - Tessenderlo Rode Heide 12:12</li><li><a href="stop-93821.html">93821</a> - Tessenderlo Groenstraat 12:12</li><li><a href="stop-34353.html">34353</a> - Tessenderlo Weg op Vorst 12:13</li><li><a href="stop-96811.html">96811</a> - Genendijk Kerk 12:15</li><li><a href="stop-29008.html">29008</a> - Kwaadmechelen Vlinderstraat 12:16</li><li><a href="stop-28986.html">28986</a> - Kwaadmechelen Autosnelweg 12:17</li><li><a href="stop-29004.html">29004</a> - Kwaadmechelen Processiestraat 12:19</li><li><a href="stop-28994.html">28994</a> - Kwaadmechelen Kerk 12:20</li><li><a href="stop-29010.html">29010</a> - Kwaadmechelen Waterstraat 12:20</li><li><a href="stop-29000.html">29000</a> - Kwaadmechelen Mastentopstraat 12:21</li><li><a href="stop-29029.html">29029</a> - Oostham Weg op Station 12:22</li><li><a href="stop-29031.html">29031</a> - Oostham Schoolstraat 12:23</li><li><a href="stop-29019.html">29019</a> - Oostham Heppensesteenweg 12:24</li><li><a href="stop-29035.html">29035</a> - Oostham Warande 12:26</li><li><a href="stop-31768.html">31768</a> - Heppen Voetbalveldweg 12:28</li><li><a href="stop-31748.html">31748</a> - Heppen Hamsesteenweg 12:29</li><li><a href="stop-31757.html">31757</a> - Heppen Kerk 12:30</li><li><a href="stop-31750.html">31750</a> - Heppen Diestersteenweg 12:31</li><li><a href="stop-31742.html">31742</a> - Leopoldsburg De Vrachtkar 12:32</li><li><a href="stop-31792.html">31792</a> - Leopoldsburg Station 12:34</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4714.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

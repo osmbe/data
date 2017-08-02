@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Beringen - Paal - Tessenderlo - 22486050</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Beringen - Paal - Tessenderlo - 22486050</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-98777.html">98777</a> - Beringen Station perron 4 16:35</li><li><a href="stop-26954.html">26954</a> - Beringen Schutterstraat 16:36</li><li><a href="stop-26852.html">26852</a> - Beringen Graaf van Loonstraat 16:38</li><li><a href="stop-123255.html">123255</a> - Beringen Bogaersveld perron 4 16:39</li><li><a href="stop-88446.html">88446</a> - Koersel Posthoorn 16:42</li><li><a href="stop-105126.html">105126</a> - Koersel Beringen Mijnen 16:44</li><li><a href="stop-26839.html">26839</a> - Beverlo Kerkstraat 16:45</li><li><a href="stop-26845.html">26845</a> - Beverlo Tuinwijk 16:46</li><li><a href="stop-26895.html">26895</a> - Koersel Ulfortstraat 16:46</li><li><a href="stop-30271.html">30271</a> - Koersel Hoeveke 16:48</li><li><a href="stop-123039.html">123039</a> - Beringen Administratief Centrum 16:49</li><li><a href="stop-28286.html">28286</a> - Koersel Hoevestraat 16:50</li><li><a href="stop-26922.html">26922</a> - Paal Kruisbaan 16:52</li><li><a href="stop-96533.html">96533</a> - Tervant School 16:53</li><li><a href="stop-26928.html">26928</a> - Paal Oelen 16:54</li><li><a href="stop-88800.html">88800</a> - Paal Katermeerstraat 16:56</li><li><a href="stop-26924.html">26924</a> - Paal Industrieweg 16:57</li><li><a href="stop-26907.html">26907</a> - Paal Azaleastraat 16:59</li><li><a href="stop-89600.html">89600</a> - Paal Dorp 17:00</li><li><a href="stop-26948.html">26948</a> - Paal Weg naar Tessenderlo 17:01</li><li><a href="stop-26942.html">26942</a> - Paal Sint-Sebastiaanstraat 17:02</li><li><a href="stop-26933.html">26933</a> - Paal Rijselstraat 17:03</li><li><a href="stop-98914.html">98914</a> - Paal Sint-Jorisstraat 17:04</li><li><a href="stop-26912.html">26912</a> - Paal Deurnestraat 17:05</li><li><a href="stop-26950.html">26950</a> - Paal Wilbroek 17:06</li><li><a href="stop-34258.html">34258</a> - Tessenderlo Kruispunt Weg naar Diest 17:07</li><li><a href="stop-34217.html">34217</a> - Tessenderlo Essenschotstraat I 17:07</li><li><a href="stop-34196.html">34196</a> - Tessenderlo Bewel 17:08</li><li><a href="stop-34372.html">34372</a> - Tessenderlo Essenschotstraat II 17:09</li><li><a href="stop-34239.html">34239</a> - Hulst Warande 17:10</li><li><a href="stop-97647.html">97647</a> - Tusvoort Kraaienweg 17:11</li><li><a href="stop-34246.html">34246</a> - Tessenderlo Kanaalweg 17:11</li><li><a href="stop-34234.html">34234</a> - Hulst Kerk 17:13</li><li><a href="stop-34242.html">34242</a> - Hulst Hulsterweg 17:15</li><li><a href="stop-34357.html">34357</a> - Tessenderlo Zandstraat 17:16</li><li><a href="stop-34327.html">34327</a> - Tessenderlo Station 17:17</li><li><a href="stop-88486.html">88486</a> - Tessenderlo Broedersschool 17:18</li><li><a href="stop-34247.html">34247</a> - Tessenderlo Kerk 17:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4556.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

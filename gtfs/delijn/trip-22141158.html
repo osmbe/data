@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Moorsele - 22141158</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Moorsele - 22141158</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126441.html">126441</a> - Kortrijk Station perron 11 17:08</li><li><a href="stop-37799.html">37799</a> - Kortrijk L. Robbeplein 17:11</li><li><a href="stop-91310.html">91310</a> - Kortrijk De Appel 17:12</li><li><a href="stop-37808.html">37808</a> - Kortrijk Meensepoort 17:14</li><li><a href="stop-123573.html">123573</a> - Kortrijk Stadion 17:15</li><li><a href="stop-37667.html">37667</a> - Heule Overweg 17:16</li><li><a href="stop-37654.html">37654</a> - Heule G.Gezellelaan 17:16</li><li><a href="stop-42860.html">42860</a> - Heule De Losschaert 17:18</li><li><a href="stop-37660.html">37660</a> - Heule Lenteleven 17:19</li><li><a href="stop-125715.html">125715</a> - Gullegem Vti 17:21</li><li><a href="stop-37586.html">37586</a> - Gullegem Kruisstraat 17:22</li><li><a href="stop-37595.html">37595</a> - Gullegem Tramstation 17:23</li><li><a href="stop-37590.html">37590</a> - Gullegem Plaats 17:24</li><li><a href="stop-37580.html">37580</a> - Gullegem Bank 17:25</li><li><a href="stop-41567.html">41567</a> - Gullegem Ballingstraat 17:25</li><li><a href="stop-37589.html">37589</a> - Gullegem Nijverheidslaan 17:26</li><li><a href="stop-38366.html">38366</a> - Gullegem Noordstraat 17:27</li><li><a href="stop-38002.html">38002</a> - Moorsele In De Prins 17:28</li><li><a href="stop-38003.html">38003</a> - Moorsele Kerkhof 17:29</li><li><a href="stop-104753.html">104753</a> - Moorsele Standbeeld 17:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4034.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

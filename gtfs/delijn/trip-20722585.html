@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent - Zelzate (sneldienst) - 20722585</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent - Zelzate (sneldienst) - 20722585</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126697.html">126697</a> - Gent Sint-Pietersstation perron 14 16:13</li><li><a href="stop-112290.html">112290</a> - Gent Heuvelpoort 16:19</li><li><a href="stop-126588.html">126588</a> - Gent Zuid perron 3 16:25</li><li><a href="stop-126805.html">126805</a> - Gent Dampoort perron 14 16:33</li><li><a href="stop-114462.html">114462</a> - Zelzate Verbindingsstraat 17:02</li><li><a href="stop-114463.html">114463</a> - Zelzate Verbroederingslaan 17:03</li><li><a href="stop-127971.html">127971</a> - Zelzate Chalmetlaan 17:03</li><li><a href="stop-114225.html">114225</a> - Zelzate Groenstraat 17:04</li><li><a href="stop-120184.html">120184</a> - Zelzate Busstation perron 7 17:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1497.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

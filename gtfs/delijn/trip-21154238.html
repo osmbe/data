@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Nachtbus Leuven - Wakkerzeel - Tremelo - 21154238</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Nachtbus Leuven - Wakkerzeel - Tremelo - 21154238</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-15131.html">15131</a> - Tremelo Gemeentehuis 25:22</li><li><a href="stop-13924.html">13924</a> - Tremelo Watertoren 25:25</li><li><a href="stop-128907.html">128907</a> - Werchter Tremelobaan 25:27</li><li><a href="stop-13173.html">13173</a> - Werchter Kerkplein 25:27</li><li><a href="stop-11042.html">11042</a> - Haacht Dreef Hoogscharent 25:29</li><li><a href="stop-11962.html">11962</a> - Haacht Scharent 25:30</li><li><a href="stop-15468.html">15468</a> - Tildonk Wakkerzeel Hooghof 25:32</li><li><a href="stop-11084.html">11084</a> - Tildonk Wakkerzeel Spieke 25:33</li><li><a href="stop-11077.html">11077</a> - Tildonk Wakkerzeel Kelfsstraat 25:33</li><li><a href="stop-11079.html">11079</a> - Tildonk Wakkerzeel Kesterveldstraat 25:34</li><li><a href="stop-11086.html">11086</a> - Tildonk Wakkerzeel Wilgenstraat 25:35</li><li><a href="stop-11082.html">11082</a> - Tildonk Wakkerzeel Putbos 25:35</li><li><a href="stop-12321.html">12321</a> - Wijgmaal Oude Baan 25:36</li><li><a href="stop-12319.html">12319</a> - Wijgmaal Kroonstraat 25:36</li><li><a href="stop-15747.html">15747</a> - Wijgmaal Wijveld 25:37</li><li><a href="stop-12317.html">12317</a> - Wijgmaal Klooster 25:38</li><li><a href="stop-11129.html">11129</a> - Wijgmaal Korte Dolagestraat 25:39</li><li><a href="stop-12328.html">12328</a> - Wijgmaal Sint-Hadrianuskerk 25:40</li><li><a href="stop-12326.html">12326</a> - Wijgmaal Sportcentrum 25:40</li><li><a href="stop-12330.html">12330</a> - Wijgmaal Station 25:41</li><li><a href="stop-127842.html">127842</a> - Wijgmaal Remytoren 25:42</li><li><a href="stop-12333.html">12333</a> - Wijgmaal Vaartbrug 25:43</li><li><a href="stop-15552.html">15552</a> - Herent Waterstraat 25:44</li><li><a href="stop-12337.html">12337</a> - Wilsele Corbeelsplein 25:45</li><li><a href="stop-12349.html">12349</a> - Wilsele Langveld 25:46</li><li><a href="stop-12343.html">12343</a> - Wilsele Herentsesteenweg 25:48</li><li><a href="stop-16332.html">16332</a> - Wilsele Brandenstraat 25:48</li><li><a href="stop-12355.html">12355</a> - Wilsele Processiestraat 25:50</li><li><a href="stop-12361.html">12361</a> - Wilsele Sint-Martinuskerk 25:50</li><li><a href="stop-12346.html">12346</a> - Wilsele Kapellelaan 25:53</li><li><a href="stop-12307.html">12307</a> - Leuven Keizersberg 25:54</li><li><a href="stop-127690.html">127690</a> - Leuven Riddersstraat 25:56</li><li><a href="stop-127686.html">127686</a> - Leuven Half Maartstraat 25:57</li><li><a href="stop-12234.html">12234</a> - Leuven Dirk Boutslaan 25:59</li><li><a href="stop-89195.html">89195</a> - Leuven Rector De Somerplein zone A 26:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2580.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

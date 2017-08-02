@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Houthalen - Neerpelt - Achel - 22461468</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Houthalen - Neerpelt - Achel - 22461468</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128978.html">128978</a> - Hasselt Station perron 9 16:40</li><li><a href="stop-29268.html">29268</a> - Hasselt Dusartplein 16:50</li><li><a href="stop-29651.html">29651</a> - Hasselt Zwembad perron 6 16:52</li><li><a href="stop-94957.html">94957</a> - Hasselt Handelsschool 16:54</li><li><a href="stop-29626.html">29626</a> - Hasselt Weg naar Genk 16:56</li><li><a href="stop-29242.html">29242</a> - Hasselt Banneuxwijk 16:57</li><li><a href="stop-97723.html">97723</a> - Kiewit Station 16:58</li><li><a href="stop-120574.html">120574</a> - Helchteren Technische Schoolstraat 17:17</li><li><a href="stop-30605.html">30605</a> - Helchteren Kruispunt 17:19</li><li><a href="stop-93457.html">93457</a> - Hechtel Welsh Guardplein 17:31</li><li><a href="stop-29866.html">29866</a> - Hechtel Verloren Eindkapel 17:34</li><li><a href="stop-29815.html">29815</a> - Eksel Handwijzer 17:36</li><li><a href="stop-93430.html">93430</a> - Eksel Marktplein kapel 17:37</li><li><a href="stop-123260.html">123260</a> - Eksel Kerkstraat 17:38</li><li><a href="stop-29813.html">29813</a> - Eksel Groenstraat 17:39</li><li><a href="stop-29828.html">29828</a> - Eksel Winnerstraat 17:40</li><li><a href="stop-29811.html">29811</a> - Eksel Goudvinkenlaan 17:40</li><li><a href="stop-33428.html">33428</a> - Overpelt Hoeveneinde 17:42</li><li><a href="stop-33381.html">33381</a> - Overpelt Hoeven Kabien 17:43</li><li><a href="stop-33422.html">33422</a> - Overpelt Voorstraat 17:44</li><li><a href="stop-97445.html">97445</a> - Lindel Kerk 17:44</li><li><a href="stop-33405.html">33405</a> - Overpelt Schansstraat 17:45</li><li><a href="stop-33389.html">33389</a> - Overpelt Neus 17:46</li><li><a href="stop-33420.html">33420</a> - Overpelt Walstraat 17:47</li><li><a href="stop-33400.html">33400</a> - Overpelt Rijmenstraat 17:47</li><li><a href="stop-91059.html">91059</a> - Overpelt Kiosk 17:48</li><li><a href="stop-91062.html">91062</a> - Overpelt Overweg 17:51</li><li><a href="stop-33398.html">33398</a> - Overpelt Rijkswacht 17:52</li><li><a href="stop-33045.html">33045</a> - Neerpelt Station 17:53</li><li><a href="stop-123119.html">123119</a> - Neerpelt College 17:55</li><li><a href="stop-33016.html">33016</a> - Neerpelt Ankerweg 17:56</li><li><a href="stop-33059.html">33059</a> - Neerpelt Kleine Landeigendom 17:57</li><li><a href="stop-33026.html">33026</a> - Neerpelt De Bette 17:58</li><li><a href="stop-33081.html">33081</a> - Sint-Huibrechts-Lille Riet 17:59</li><li><a href="stop-126104.html">126104</a> - Sint-Huibrechts-Lille Centrum 18:00</li><li><a href="stop-93810.html">93810</a> - Sint-Huibrechts-Lille Heuvelenweg 18:01</li><li><a href="stop-105204.html">105204</a> - Achel Quatre-Bras 18:03</li><li><a href="stop-29036.html">29036</a> - Achel Bergeind 18:04</li><li><a href="stop-29047.html">29047</a> - Achel Kerk 18:05</li><li><a href="stop-29039.html">29039</a> - Achel De Vliet 18:06</li><li><a href="stop-29048.html">29048</a> - Achel Leenderdijk 18:07</li><li><a href="stop-29050.html">29050</a> - Achel Nieuwe Kerk 18:08</li><li><a href="stop-34963.html">34963</a> - Achel Statie 18:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5152.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

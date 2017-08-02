@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Rosoux - Jeuk - Waremme - 22459794</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Rosoux - Jeuk - Waremme - 22459794</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-44188.html">44188</a> - Waremme Gare de Waremme 15:50</li><li><a href="stop-34906.html">34906</a> - Waremme Ecole de Longchamps 15:52</li><li><a href="stop-34916.html">34916</a> - Waremme Maison Grissard 15:54</li><li><a href="stop-26987.html">26987</a> - Berloz Espinette 15:56</li><li><a href="stop-27003.html">27003</a> - Berloz Rue Crotteux 15:57</li><li><a href="stop-26973.html">26973</a> - Berloz Centre 15:58</li><li><a href="stop-26976.html">26976</a> - Berloz Cimetiere 15:59</li><li><a href="stop-26972.html">26972</a> - Corswarem Gare 16:00</li><li><a href="stop-26984.html">26984</a> - Corswarem Pont des Chevaux 16:02</li><li><a href="stop-26986.html">26986</a> - Corswarem Roppe 16:03</li><li><a href="stop-26982.html">26982</a> - Corswarem Hasselbroek 16:04</li><li><a href="stop-28773.html">28773</a> - Jeuk Kapel 16:05</li><li><a href="stop-28769.html">28769</a> - Jeuk H. Stassenstraat 16:06</li><li><a href="stop-28776.html">28776</a> - Jeuk Kerk 16:08</li><li><a href="stop-28782.html">28782</a> - Jeuk Kabien 16:09</li><li><a href="stop-28868.html">28868</a> - Jeuk Rampariestraat 16:10</li><li><a href="stop-31226.html">31226</a> - Jeuk E. Beauduinstraat 16:12</li><li><a href="stop-28774.html">28774</a> - Jeuk Kasteelstraat 16:13</li><li><a href="stop-105128.html">105128</a> - Berloz Rue de la Gare 16:14</li><li><a href="stop-26994.html">26994</a> - Berloz Route du Village 16:16</li><li><a href="stop-96800.html">96800</a> - Vorsen Brouwerijstraat 16:18</li><li><a href="stop-26991.html">26991</a> - Berloz Crenwick 16:21</li><li><a href="stop-123116.html">123116</a> - Rosoux Congo 16:22</li><li><a href="stop-26995.html">26995</a> - Berloz Route du Village 16:24</li><li><a href="stop-105129.html">105129</a> - Berloz Rue de la Gare 16:26</li><li><a href="stop-95068.html">95068</a> - Jeuk Kasteelstraat 16:27</li><li><a href="stop-31225.html">31225</a> - Jeuk E. Beauduinstraat 16:28</li><li><a href="stop-28869.html">28869</a> - Jeuk Rampariestraat 16:29</li><li><a href="stop-28783.html">28783</a> - Jeuk Kabien 16:30</li><li><a href="stop-28777.html">28777</a> - Jeuk Kerk 16:31</li><li><a href="stop-28768.html">28768</a> - Jeuk H. Stassenstraat 16:32</li><li><a href="stop-28772.html">28772</a> - Jeuk Kapel 16:33</li><li><a href="stop-26981.html">26981</a> - Corswarem Hasselbroek 16:34</li><li><a href="stop-26985.html">26985</a> - Corswarem Roppe 16:35</li><li><a href="stop-26983.html">26983</a> - Corswarem Pont des Chevaux 16:36</li><li><a href="stop-26971.html">26971</a> - Corswarem Gare 16:38</li><li><a href="stop-26975.html">26975</a> - Berloz Cimetiere 16:39</li><li><a href="stop-26974.html">26974</a> - Berloz Centre 16:40</li><li><a href="stop-27002.html">27002</a> - Berloz Rue Crotteux 16:41</li><li><a href="stop-26988.html">26988</a> - Berloz Espinette 16:42</li><li><a href="stop-34915.html">34915</a> - Waremme Maison Grissard 16:44</li><li><a href="stop-34905.html">34905</a> - Waremme Ecole de Longchamps 16:45</li><li><a href="stop-44188.html">44188</a> - Waremme Gare de Waremme 16:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4738.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

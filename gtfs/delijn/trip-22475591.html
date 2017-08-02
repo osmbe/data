@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kwaadmechelen - Westerlo - 22475591</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kwaadmechelen - Westerlo - 22475591</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-31243.html">31243</a> - Veerle Heide 06:43</li><li><a href="stop-31245.html">31245</a> - Veerle Heieinde 06:43</li><li><a href="stop-31263.html">31263</a> - Veerle Rode Laakstraat 06:44</li><li><a href="stop-31312.html">31312</a> - Veerle Pastorijstraat 06:45</li><li><a href="stop-31254.html">31254</a> - Veerle Kerk 06:46</li><li><a href="stop-31235.html">31235</a> - Veerle Dorp 06:46</li><li><a href="stop-31269.html">31269</a> - Veerle Zand 06:46</li><li><a href="stop-31266.html">31266</a> - Veerle Vorstsebaan 06:47</li><li><a href="stop-31234.html">31234</a> - Veerle Brug 06:48</li><li><a href="stop-31298.html">31298</a> - Vorst Steenbergen 06:48</li><li><a href="stop-31300.html">31300</a> - Vorst Toke Van Nestestraat 06:49</li><li><a href="stop-126518.html">126518</a> - Vorst Markt 06:50</li><li><a href="stop-20140.html">20140</a> - Vorst Hospestraat 06:51</li><li><a href="stop-126923.html">126923</a> - Vorst Smissestraat 06:51</li><li><a href="stop-126922.html">126922</a> - Vorst Borgtstraat 06:52</li><li><a href="stop-20132.html">20132</a> - Vorst Zijstraat 06:53</li><li><a href="stop-31290.html">31290</a> - Vorst Oranjestraat 06:54</li><li><a href="stop-31305.html">31305</a> - Vorst Willekerstraat 06:54</li><li><a href="stop-31304.html">31304</a> - Vorst Wiezestraat 06:55</li><li><a href="stop-31276.html">31276</a> - Vorst De Locht 06:55</li><li><a href="stop-31287.html">31287</a> - Vorst Meerhoutstraat 06:56</li><li><a href="stop-31279.html">31279</a> - Vorst Heistraat 06:56</li><li><a href="stop-20128.html">20128</a> - Klein Vorst Kerk 06:57</li><li><a href="stop-34169.html">34169</a> - Tessenderlo Baal 06:58</li><li><a href="stop-34172.html">34172</a> - Tessenderlo Baalbergstraat 06:59</li><li><a href="stop-34278.html">34278</a> - Tessenderlo Rijt 07:00</li><li><a href="stop-34247.html">34247</a> - Tessenderlo Kerk 07:01</li><li><a href="stop-125572.html">125572</a> - Tessenderlo Broedersschool 07:02</li><li><a href="stop-91085.html">91085</a> - Tessenderlo Tessenderlo Chemie 07:03</li><li><a href="stop-34326.html">34326</a> - Tessenderlo Station 07:04</li><li><a href="stop-34356.html">34356</a> - Tessenderlo Zandstraat 07:04</li><li><a href="stop-34241.html">34241</a> - Hulst Hulsterweg 07:05</li><li><a href="stop-43864.html">43864</a> - Hulst Kerk 07:07</li><li><a href="stop-34245.html">34245</a> - Tessenderlo Kanaalweg 07:07</li><li><a href="stop-34348.html">34348</a> - Tessenderlo Weg naar Kwaadmechelen 07:09</li><li><a href="stop-93143.html">93143</a> - Kwaadmechelen Tessenderlo Chemie Ham 07:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5164.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

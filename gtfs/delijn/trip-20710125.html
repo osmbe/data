@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sint-Niklaas - Hamme - Dendermonde- Lebbeke- Aalst - 20710125</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Niklaas - Hamme - Dendermonde- Lebbeke- Aalst - 20710125</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-117695.html">117695</a> - Dendermonde Nachtegaalstraat 12:08</li><li><a href="stop-117694.html">117694</a> - Dendermonde Veerstraat 12:10</li><li><a href="stop-127113.html">127113</a> - Dendermonde Oude Vest 12:10</li><li><a href="stop-117692.html">117692</a> - Dendermonde Brusselsestraat 12:13</li><li><a href="stop-126726.html">126726</a> - Dendermonde Station perron 1 12:15</li><li><a href="stop-116752.html">116752</a> - Dendermonde Brusselsestraat 12:17</li><li><a href="stop-126711.html">126711</a> - Dendermonde Oude Vest 12:19</li><li><a href="stop-117067.html">117067</a> - Grembergen Scheldedreef 12:23</li><li><a href="stop-117071.html">117071</a> - Grembergen Sportpleinstraat 12:25</li><li><a href="stop-117069.html">117069</a> - Grembergen Dorp 12:25</li><li><a href="stop-117070.html">117070</a> - Grembergen Gaverstraat 12:26</li><li><a href="stop-114975.html">114975</a> - Grembergen Zogsebaan 12:27</li><li><a href="stop-114987.html">114987</a> - Grembergen Hamsesteenweg 12:28</li><li><a href="stop-114974.html">114974</a> - Hamme Lange Maat 12:29</li><li><a href="stop-114973.html">114973</a> - Hamme Theet 12:31</li><li><a href="stop-114972.html">114972</a> - Hamme Hooirt 12:31</li><li><a href="stop-114971.html">114971</a> - Hamme Damstraat 12:32</li><li><a href="stop-114969.html">114969</a> - Hamme Hospitaalstraat 12:34</li><li><a href="stop-114968.html">114968</a> - Hamme Tweebruggenplein 12:34</li><li><a href="stop-114967.html">114967</a> - Hamme Roodkruisstraat 12:35</li><li><a href="stop-114965.html">114965</a> - Elversele Duivenhoek 12:38</li><li><a href="stop-115282.html">115282</a> - Elversele Hof Ter Elstlaan 12:39</li><li><a href="stop-115905.html">115905</a> - Waasmunster Kapelwijk 12:40</li><li><a href="stop-115281.html">115281</a> - Waasmunster Sombekedries 12:41</li><li><a href="stop-115280.html">115280</a> - Waasmunster Potaardestraat 12:43</li><li><a href="stop-116086.html">116086</a> - Waasmunster Spoorwegstraat 12:45</li><li><a href="stop-116087.html">116087</a> - Waasmunster Stationsstraat 12:47</li><li><a href="stop-127608.html">127608</a> - Waasmunster Abdij Van Roosenberglaan 12:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./913.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

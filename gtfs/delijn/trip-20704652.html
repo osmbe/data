@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Deinze - Gavere - Zingem - 20704652</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Deinze - Gavere - Zingem - 20704652</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-114221.html">114221</a> - Deinze Kerkhof 17:00</li><li><a href="stop-112202.html">112202</a> - Deinze Gentpoortstraat 17:01</li><li><a href="stop-114110.html">114110</a> - Deinze Gezellelaan 17:04</li><li><a href="stop-114114.html">114114</a> - Deinze Knok 17:06</li><li><a href="stop-126780.html">126780</a> - Deinze Station perron 7 17:07</li><li><a href="stop-114385.html">114385</a> - Deinze Poelstraat 17:09</li><li><a href="stop-114386.html">114386</a> - Deinze Kerselaarslaan 17:10</li><li><a href="stop-114387.html">114387</a> - Astene Parijsestraat 17:11</li><li><a href="stop-114388.html">114388</a> - Astene Nazarethsesteenweg 17:12</li><li><a href="stop-119868.html">119868</a> - Astene Oude Heirweg 17:14</li><li><a href="stop-119869.html">119869</a> - Nazareth Deinzestraat 17:15</li><li><a href="stop-119932.html">119932</a> - Nazareth Dorp 17:16</li><li><a href="stop-119931.html">119931</a> - Nazareth Drapstraat 17:17</li><li><a href="stop-112184.html">112184</a> - Nazareth Sporthal 17:18</li><li><a href="stop-119930.html">119930</a> - Nazareth Oudenaardse Heerweg 17:19</li><li><a href="stop-119929.html">119929</a> - Eke Station 17:21</li><li><a href="stop-119525.html">119525</a> - Eke De Biesten 17:22</li><li><a href="stop-119928.html">119928</a> - Eke De Lichterveldestraat 17:23</li><li><a href="stop-119927.html">119927</a> - Eke Dorp 17:23</li><li><a href="stop-120161.html">120161</a> - Eke Sluis 17:24</li><li><a href="stop-114421.html">114421</a> - Semmerzake Palmstraat 17:28</li><li><a href="stop-128628.html">128628</a> - Semmerzake Dorp 17:30</li><li><a href="stop-114695.html">114695</a> - Semmerzake Opperweg 17:32</li><li><a href="stop-114696.html">114696</a> - Gavere Grotenbroek 17:33</li><li><a href="stop-128630.html">128630</a> - Gavere Brandweer 17:35</li><li><a href="stop-119713.html">119713</a> - Asper Stationsstraat 17:37</li><li><a href="stop-119714.html">119714</a> - Asper Leegstraat 17:39</li><li><a href="stop-119715.html">119715</a> - Asper Gemeenteplein 17:41</li><li><a href="stop-119716.html">119716</a> - Asper Kerk 17:42</li><li><a href="stop-118751.html">118751</a> - Zingem Gemeentehuis 17:43</li><li><a href="stop-118633.html">118633</a> - Zingem Dorp 17:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./648.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

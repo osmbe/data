@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Dilbeek - Jette - Vilvoorde - Zaventem - 21155693</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Dilbeek - Jette - Vilvoorde - Zaventem - 21155693</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127956.html">127956</a> - Vilvoorde Station Perron 5 10:23</li><li><a href="stop-13948.html">13948</a> - Vilvoorde Heldenplein 10:25</li><li><a href="stop-13968.html">13968</a> - Vilvoorde Kerk 10:26</li><li><a href="stop-14014.html">14014</a> - Vilvoorde Sportcomplex 10:27</li><li><a href="stop-14028.html">14028</a> - Vilvoorde Vlierkens 10:28</li><li><a href="stop-14465.html">14465</a> - Vilvoorde Jordaen 10:29</li><li><a href="stop-14000.html">14000</a> - Vilvoorde Minnemolen 10:30</li><li><a href="stop-13938.html">13938</a> - Vilvoorde Ennepetal 10:30</li><li><a href="stop-13933.html">13933</a> - Vilvoorde Twee Leeuwenweg 10:32</li><li><a href="stop-14464.html">14464</a> - Vilvoorde V.T.M. 10:33</li><li><a href="stop-13998.html">13998</a> - Vilvoorde Militair Hospitaal 10:35</li><li><a href="stop-14462.html">14462</a> - Vilvoorde Living Tomorrow 10:35</li><li><a href="stop-13974.html">13974</a> - Vilvoorde Kerkweg 10:36</li><li><a href="stop-14022.html">14022</a> - Vilvoorde Steenstraat 10:37</li><li><a href="stop-14039.html">14039</a> - Vilvoorde Zangrije 10:38</li><li><a href="stop-99457.html">99457</a> - Vilvoorde Het Voor 10:39</li><li><a href="stop-13980.html">13980</a> - Vilvoorde Koekoekstraat 10:40</li><li><a href="stop-14016.html">14016</a> - Strombeek-Bever Ringlaan 10:41</li><li><a href="stop-43358.html">43358</a> - Strombeek-Bever Pierebad 10:42</li><li><a href="stop-11019.html">11019</a> - Strombeek-Bever Kerk 10:43</li><li><a href="stop-11013.html">11013</a> - Strombeek-Bever Gemeenteplein 10:44</li><li><a href="stop-11024.html">11024</a> - Strombeek-Bever Nieuwelaan 10:46</li><li><a href="stop-10081.html">10081</a> - Brussel Madelon 10:47</li><li><a href="stop-10067.html">10067</a> - Brussel Expo 10:48</li><li><a href="stop-110756.html">110756</a> - Brussel Panoramastraat 10:49</li><li><a href="stop-110754.html">110754</a> - Brussel Onyx 10:51</li><li><a href="stop-14091.html">14091</a> - Wemmel Kon. Astridlaan 10:52</li><li><a href="stop-10189.html">10189</a> - Jette Dikke Beuk - Heymbosch 10:53</li><li><a href="stop-10187.html">10187</a> - Jette UZ Brussel Brandweer 10:54</li><li><a href="stop-17232.html">17232</a> - Jette UZ Brussel Laarbeek 10:55</li><li><a href="stop-10185.html">10185</a> - Jette UZ Brussel Hospitaal 10:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2610.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

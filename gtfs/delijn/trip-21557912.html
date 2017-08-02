@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Lier Herderin - Lisp - Broechem - 21557912</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Lier Herderin - Lisp - Broechem - 21557912</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-22897.html">22897</a> - Broechem Van Den Nestlaan 20:00</li><li><a href="stop-108980.html">108980</a> - Broechem Nierlenderstraat 20:01</li><li><a href="stop-108981.html">108981</a> - Emblem Fransehoeveweg 20:03</li><li><a href="stop-108982.html">108982</a> - Emblem Tongelweg 20:04</li><li><a href="stop-108986.html">108986</a> - Emblem Broechemsesteenweg 20:04</li><li><a href="stop-108988.html">108988</a> - Emblem Kortestraat 20:05</li><li><a href="stop-108990.html">108990</a> - Emblem Ranstsesteenweg 20:06</li><li><a href="stop-107415.html">107415</a> - Lier Hagenbroeksesteenweg 20:09</li><li><a href="stop-107417.html">107417</a> - Lier Sint-Jozefstraat 20:09</li><li><a href="stop-107418.html">107418</a> - Lier Stadion 20:10</li><li><a href="stop-107419.html">107419</a> - Lier Groeningelaan 20:10</li><li><a href="stop-19138.html">19138</a> - Lier Pannenhuisstraat 20:11</li><li><a href="stop-19140.html">19140</a> - Lier Guldensporenlaan 20:12</li><li><a href="stop-107421.html">107421</a> - Lier Sporthal 20:13</li><li><a href="stop-19142.html">19142</a> - Lier Dageraadstraat 20:13</li><li><a href="stop-19295.html">19295</a> - Lier Australiëlaan 20:14</li><li><a href="stop-23731.html">23731</a> - Lier Zagerijstraat station 20:15</li><li><a href="stop-19715.html">19715</a> - Lier Baron Opsomerlaan 20:16</li><li><a href="stop-95326.html">95326</a> - Lier Dungelhoeff 20:17</li><li><a href="stop-19725.html">19725</a> - Lier Heilig Hartziekenhuis 20:18</li><li><a href="stop-108995.html">108995</a> - Lier Markt 20:19</li><li><a href="stop-23736.html">23736</a> - Lier Leopold III-laan 20:20</li><li><a href="stop-19143.html">19143</a> - Lier De Mol 20:22</li><li><a href="stop-24904.html">24904</a> - Lier Akkerstraat 20:23</li><li><a href="stop-19180.html">19180</a> - Lier Ceciliastraat 20:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3817.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Turnhout-Geel-Westerlo-Aarschot - 22529774</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Turnhout-Geel-Westerlo-Aarschot - 22529774</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-9300.html">9300</a> - Aarschot Bekaf 15:39</li><li><a href="stop-15898.html">15898</a> - Aarschot Heilaakstraat 15:41</li><li><a href="stop-128921.html">128921</a> - Aarschot Bareel 15:42</li><li><a href="stop-15894.html">15894</a> - Aarschot Lindekensstraat 15:43</li><li><a href="stop-15892.html">15892</a> - Aarschot Oude Mechelsebaan 15:44</li><li><a href="stop-25513.html">25513</a> - Ramsel Madestraat 15:45</li><li><a href="stop-25244.html">25244</a> - Ramsel Truitseinde Aarschotsestwg. 15:46</li><li><a href="stop-25241.html">25241</a> - Ramsel Bosstraat 15:47</li><li><a href="stop-25239.html">25239</a> - Herselt Oude Steenovenweg 15:48</li><li><a href="stop-25236.html">25236</a> - Herselt Molenvloed 15:49</li><li><a href="stop-25234.html">25234</a> - Herselt Stoppelblokken garage 15:50</li><li><a href="stop-25231.html">25231</a> - Herselt Ramselsesteenweg 15:51</li><li><a href="stop-25229.html">25229</a> - Herselt Neerstraat 15:51</li><li><a href="stop-25226.html">25226</a> - Herselt Stap 15:52</li><li><a href="stop-109775.html">109775</a> - Herselt Dorp 15:53</li><li><a href="stop-25221.html">25221</a> - Herselt Stippelberg 15:54</li><li><a href="stop-109773.html">109773</a> - Herselt Vijverstraat 15:55</li><li><a href="stop-93656.html">93656</a> - Herselt Ollemanshoek 15:56</li><li><a href="stop-25217.html">25217</a> - Herselt Provinciebaan 15:57</li><li><a href="stop-25215.html">25215</a> - Herselt Oude Baan Kaaistraat 15:59</li><li><a href="stop-88324.html">88324</a> - Westerlo Stelplaats 16:01</li><li><a href="stop-109934.html">109934</a> - Westerlo de Merodedreef 16:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3423.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

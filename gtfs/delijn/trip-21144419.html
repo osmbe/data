@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Herrmann-Debroux - Overijse - Hamme-Mille - 21144419</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Herrmann-Debroux - Overijse - Hamme-Mille - 21144419</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-12913.html">12913</a> - Sint-Joris-Weert Bareel 10:27</li><li><a href="stop-14709.html">14709</a> - Sint-Joris-Weert Dijle Brug 10:28</li><li><a href="stop-14707.html">14707</a> - Sint-Joris-Weert Neerijsebaan Huis nr 10 10:29</li><li><a href="stop-11573.html">11573</a> - Neerijse Wolfshagen 10:29</li><li><a href="stop-11877.html">11877</a> - Neerijse Groeve 10:30</li><li><a href="stop-11560.html">11560</a> - Neerijse Kliniek 10:31</li><li><a href="stop-11564.html">11564</a> - Neerijse Oud Station 10:32</li><li><a href="stop-11569.html">11569</a> - Neerijse Stwg. nr.Leefdaal 10:33</li><li><a href="stop-11568.html">11568</a> - Neerijse Schaveistraat 10:33</li><li><a href="stop-11552.html">11552</a> - Neerijse Ganzemansstraat 10:34</li><li><a href="stop-11543.html">11543</a> - Loonbeek Oud Station 10:35</li><li><a href="stop-11541.html">11541</a> - Loonbeek Kerk 10:36</li><li><a href="stop-14703.html">14703</a> - Loonbeek Kouterstraat 10:37</li><li><a href="stop-11539.html">11539</a> - Loonbeek Kapelleke 10:38</li><li><a href="stop-11545.html">11545</a> - Loonbeek Spitsberg 10:38</li><li><a href="stop-11536.html">11536</a> - Huldenberg Van Kildonckstraat 10:39</li><li><a href="stop-11527.html">11527</a> - Huldenberg Onder Smeysberg 10:40</li><li><a href="stop-11507.html">11507</a> - Huldenberg Gemeenteplein 10:41</li><li><a href="stop-11532.html">11532</a> - Huldenberg Stroobantsweg 10:42</li><li><a href="stop-11515.html">11515</a> - Huldenberg Kaalheide 10:43</li><li><a href="stop-12954.html">12954</a> - Overijse Kouterstraat 10:44</li><li><a href="stop-12979.html">12979</a> - Overijse Puttestraat 10:45</li><li><a href="stop-16218.html">16218</a> - Overijse De Leegheid 10:46</li><li><a href="stop-14889.html">14889</a> - Overijse Kerk 10:47</li><li><a href="stop-12991.html">12991</a> - Overijse Solheide 10:48</li><li><a href="stop-87975.html">87975</a> - Overijse Sint-Martinusschool 10:50</li><li><a href="stop-87978.html">87978</a> - Overijse Cl. Vanophemstraat 10:51</li><li><a href="stop-13004.html">13004</a> - Overijse Vriendschapstraat 10:52</li><li><a href="stop-87983.html">87983</a> - Overijse Terrest 10:53</li><li><a href="stop-12969.html">12969</a> - Overijse O.L.Vrouwedal 10:54</li><li><a href="stop-87974.html">87974</a> - Overijse Hengstenberg 10:55</li><li><a href="stop-99213.html">99213</a> - Overijse Louis Gunsstraat 10:56</li><li><a href="stop-90882.html">90882</a> - Overijse J.de Meeusstraat 10:57</li><li><a href="stop-12944.html">12944</a> - Overijse Jezus-Eik Kerk 10:58</li><li><a href="stop-10199.html">10199</a> - Oudergem U.L.B. Tuin Massart 11:04</li><li><a href="stop-90788.html">90788</a> - Oudergem Hermann-Debroux 11:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2177.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

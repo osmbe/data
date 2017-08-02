@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sint-Niklaas - Stekene - Koewacht - 20708762</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Niklaas - Stekene - Koewacht - 20708762</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127603.html">127603</a> - Koewacht Grens 08:03</li><li><a href="stop-115227.html">115227</a> - Stekene Bergstraat 08:04</li><li><a href="stop-115215.html">115215</a> - Stekene Dienstencentrum Koningshei 08:05</li><li><a href="stop-115214.html">115214</a> - Stekene Nieuwdorp 08:06</li><li><a href="stop-115213.html">115213</a> - Stekene Lange Dweerstraat 08:08</li><li><a href="stop-115212.html">115212</a> - Stekene Prinsenstraat 08:11</li><li><a href="stop-115211.html">115211</a> - Stekene Heikant 08:13</li><li><a href="stop-115210.html">115210</a> - Stekene Boterbloemstraat 08:14</li><li><a href="stop-115209.html">115209</a> - Stekene Molenbergstraat 08:15</li><li><a href="stop-115208.html">115208</a> - Stekene Bormte 08:16</li><li><a href="stop-115206.html">115206</a> - Stekene Spoorwegwegel 08:17</li><li><a href="stop-115205.html">115205</a> - Stekene Meersstraat 08:18</li><li><a href="stop-115204.html">115204</a> - Stekene Ijzerhandstraat 08:19</li><li><a href="stop-115203.html">115203</a> - Kemzeke Kwakkelstraat 08:20</li><li><a href="stop-115202.html">115202</a> - Kemzeke Kwakkelhoek 08:21</li><li><a href="stop-115201.html">115201</a> - Sint-Pauwels Puyveldestraat 08:22</li><li><a href="stop-115200.html">115200</a> - Sint-Pauwels Kapel 08:23</li><li><a href="stop-115199.html">115199</a> - Sint-Pauwels Lijkveldestraat 08:24</li><li><a href="stop-115198.html">115198</a> - Sint-Pauwels Groenstraat 08:25</li><li><a href="stop-115197.html">115197</a> - Sint-Pauwels Klapdorp 08:26</li><li><a href="stop-115188.html">115188</a> - Sint-Pauwels Dries 08:27</li><li><a href="stop-115187.html">115187</a> - Sint-Pauwels Bermijnstraat 08:28</li><li><a href="stop-115186.html">115186</a> - Sint-Pauwels Potterstraat 08:29</li><li><a href="stop-115185.html">115185</a> - Sint-Pauwels Patershoek 08:31</li><li><a href="stop-115184.html">115184</a> - Sint-Niklaas Vlyminckshoek 08:32</li><li><a href="stop-115183.html">115183</a> - Sint-Niklaas Mispelstraat 08:32</li><li><a href="stop-115182.html">115182</a> - Sint-Niklaas Kleibeekstraat 08:33</li><li><a href="stop-115181.html">115181</a> - Sint-Niklaas Wegvoeringsstraat 08:34</li><li><a href="stop-115504.html">115504</a> - Sint-Niklaas Kuildamstraat 08:35</li><li><a href="stop-115180.html">115180</a> - Sint-Niklaas Bremstraat 08:36</li><li><a href="stop-115501.html">115501</a> - Sint-Niklaas Kazernestraat 08:37</li><li><a href="stop-115500.html">115500</a> - Sint-Niklaas Uitgang Noordlaan 08:37</li><li><a href="stop-126690.html">126690</a> - Sint-Niklaas Station perron 3 08:39</li><li><a href="stop-116306.html">116306</a> - Sint-Niklaas Uitgang Noordlaan 08:40</li><li><a href="stop-115674.html">115674</a> - Sint-Niklaas Hofstraat 08:43</li><li><a href="stop-115762.html">115762</a> - Sint-Niklaas Markt 08:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./814.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

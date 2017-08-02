@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sint-Martens-Leerne/De Pinte-Latem-Gent-Wetteren - 20690662</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Martens-Leerne/De Pinte-Latem-Gent-Wetteren - 20690662</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126696.html">126696</a> - Gent Sint-Pietersstation perron 13 06:00</li><li><a href="stop-114424.html">114424</a> - Gent Parkplein 06:03</li><li><a href="stop-112292.html">112292</a> - Gent Fortlaan 06:03</li><li><a href="stop-112291.html">112291</a> - Gent Ledeganckstraat 06:04</li><li><a href="stop-112290.html">112290</a> - Gent Heuvelpoort 06:05</li><li><a href="stop-113906.html">113906</a> - Gent Terplatenbrug 06:06</li><li><a href="stop-114031.html">114031</a> - Gent Sint-Lievenspoort 06:07</li><li><a href="stop-114032.html">114032</a> - Gent Keizerpoort 06:10</li><li><a href="stop-114033.html">114033</a> - Gent Vlaamse Kaai 06:11</li><li><a href="stop-114034.html">114034</a> - Gent Forelstraat 06:12</li><li><a href="stop-112242.html">112242</a> - Gent Veemarkt 06:12</li><li><a href="stop-126646.html">126646</a> - Gent Dampoort perron 12 06:13</li><li><a href="stop-112157.html">112157</a> - Gent Nieuwhof 06:14</li><li><a href="stop-112156.html">112156</a> - Gent Banierstraat 06:14</li><li><a href="stop-112155.html">112155</a> - Sint-Amandsberg Heernisplein 06:15</li><li><a href="stop-114335.html">114335</a> - Sint-Amandsberg Baeyensstraat 06:16</li><li><a href="stop-114336.html">114336</a> - Destelbergen Lossystraat 06:17</li><li><a href="stop-114337.html">114337</a> - Destelbergen Stelplaats 06:18</li><li><a href="stop-114338.html">114338</a> - Destelbergen Admiraalstraat 06:19</li><li><a href="stop-114339.html">114339</a> - Destelbergen Zenderstraat 06:20</li><li><a href="stop-114340.html">114340</a> - Destelbergen Ter Ramen 06:21</li><li><a href="stop-114615.html">114615</a> - Destelbergen Reinaertweg 06:22</li><li><a href="stop-114343.html">114343</a> - Destelbergen Scheldekant 06:23</li><li><a href="stop-114344.html">114344</a> - Heusden Doolaegepark 06:24</li><li><a href="stop-114345.html">114345</a> - Heusden Hooistraat 06:25</li><li><a href="stop-114346.html">114346</a> - Heusden Tramstraat 06:26</li><li><a href="stop-114347.html">114347</a> - Heusden Loveldstraat 06:27</li><li><a href="stop-114348.html">114348</a> - Heusden Blauwe Steenstraat 06:27</li><li><a href="stop-114351.html">114351</a> - Heusden Driesstraat 06:28</li><li><a href="stop-114352.html">114352</a> - Heusden Broekstraat 06:29</li><li><a href="stop-114353.html">114353</a> - Laarne Korte Eekhoekstraat 06:30</li><li><a href="stop-112903.html">112903</a> - Laarne Vagevuurstraat 06:30</li><li><a href="stop-114354.html">114354</a> - Laarne Kasteel 06:31</li><li><a href="stop-114355.html">114355</a> - Laarne Dorp 06:32</li><li><a href="stop-114356.html">114356</a> - Laarne Oostremstraat 06:33</li><li><a href="stop-114357.html">114357</a> - Laarne Termstraat 06:33</li><li><a href="stop-114358.html">114358</a> - Laarne Meerhoekwegel 06:34</li><li><a href="stop-114359.html">114359</a> - Wetteren Zavelstraat 06:35</li><li><a href="stop-114360.html">114360</a> - Wetteren Kerkwegel 06:36</li><li><a href="stop-120199.html">120199</a> - Wetteren Veldstraat 06:36</li><li><a href="stop-114361.html">114361</a> - Wetteren Kapellendries 06:37</li><li><a href="stop-113401.html">113401</a> - Wetteren Oude Brug 06:38</li><li><a href="stop-114363.html">114363</a> - Wetteren Kon. Astridlaan 06:39</li><li><a href="stop-126542.html">126542</a> - Wetteren Station perron 5 06:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./185.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

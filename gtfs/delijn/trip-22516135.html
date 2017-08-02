@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Boom - Niel  - Antwerpen Rooseveltplaats - 22516135</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boom - Niel  - Antwerpen Rooseveltplaats - 22516135</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-125252.html">125252</a> - Antwerpen F. Rooseveltplaats perron 53 16:35</li><li><a href="stop-107386.html">107386</a> - Antwerpen Stadspark 16:41</li><li><a href="stop-108179.html">108179</a> - Antwerpen Nationale Bank 16:43</li><li><a href="stop-107741.html">107741</a> - Antwerpen Kasteelplein 16:45</li><li><a href="stop-19037.html">19037</a> - Antwerpen Bestorming 16:47</li><li><a href="stop-19325.html">19325</a> - Antwerpen Broedermin 16:49</li><li><a href="stop-108207.html">108207</a> - Antwerpen Station Zuid 16:51</li><li><a href="stop-108000.html">108000</a> - Antwerpen Kielpark 16:54</li><li><a href="stop-107355.html">107355</a> - Antwerpen Abdijstraat 16:55</li><li><a href="stop-107759.html">107759</a> - Hoboken Grens Kiel 16:57</li><li><a href="stop-108838.html">108838</a> - Hoboken Zwaantjes 16:58</li><li><a href="stop-107351.html">107351</a> - Hoboken Aartselaarstraat 17:00</li><li><a href="stop-107822.html">107822</a> - Hoboken Heidestraat 17:01</li><li><a href="stop-107934.html">107934</a> - Hoboken Karel Meyvis 17:02</li><li><a href="stop-109666.html">109666</a> - Hoboken P+R Schoonselhof 17:03</li><li><a href="stop-109411.html">109411</a> - Hoboken Groenstraat 17:04</li><li><a href="stop-128332.html">128332</a> - Hoboken Klaverbladdreef 17:05</li><li><a href="stop-25297.html">25297</a> - Hoboken Warschaustraat 17:06</li><li><a href="stop-108780.html">108780</a> - Hemiksem Herbekestraat 17:07</li><li><a href="stop-22454.html">22454</a> - Hemiksem Varenstraat 17:08</li><li><a href="stop-108783.html">108783</a> - Hemiksem Terlochtweg 17:09</li><li><a href="stop-108785.html">108785</a> - Hemiksem Callebeekstraat 17:11</li><li><a href="stop-108787.html">108787</a> - Hemiksem Scheldestraat 17:12</li><li><a href="stop-107376.html">107376</a> - Hemiksem Steenbakkerijstraat 17:13</li><li><a href="stop-108789.html">108789</a> - Hemiksem Delvauxstraat 17:14</li><li><a href="stop-108791.html">108791</a> - Hemiksem Bosstraat 17:15</li><li><a href="stop-108793.html">108793</a> - Schelle Kerk 17:16</li><li><a href="stop-108795.html">108795</a> - Schelle Peperstraat 17:17</li><li><a href="stop-108797.html">108797</a> - Schelle Kapelstraat 17:17</li><li><a href="stop-108799.html">108799</a> - Schelle Tolhuisstraat 17:18</li><li><a href="stop-109990.html">109990</a> - Niel Beekstraat 17:19</li><li><a href="stop-110132.html">110132</a> - Niel Stationsstraat 17:20</li><li><a href="stop-22479.html">22479</a> - Niel Kerkstraat 17:21</li><li><a href="stop-108803.html">108803</a> - Niel E. Vanderveldelaan 17:22</li><li><a href="stop-22484.html">22484</a> - Niel Keizerstraat 17:23</li><li><a href="stop-108806.html">108806</a> - Niel Hellegat 17:25</li><li><a href="stop-108808.html">108808</a> - Niel Walenhof 17:26</li><li><a href="stop-22492.html">22492</a> - Boom Beek 17:26</li><li><a href="stop-22494.html">22494</a> - Boom Noeveren 17:27</li><li><a href="stop-22497.html">22497</a> - Boom Nielsestraat 17:28</li><li><a href="stop-22499.html">22499</a> - Boom Plantsoenstraat 17:28</li><li><a href="stop-22502.html">22502</a> - Boom Vrijheidstraat 17:29</li><li><a href="stop-44118.html">44118</a> - Boom Markt 17:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3059.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

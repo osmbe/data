@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Ieper-Wervik(Geluwe)-Menen-Moeskroen - 22635827</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ieper-Wervik(Geluwe)-Menen-Moeskroen - 22635827</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126402.html">126402</a> - Menen Station perron 4 17:39</li><li><a href="stop-41930.html">41930</a> - Menen Rode Campagne 17:40</li><li><a href="stop-41916.html">41916</a> - Menen Keizer Karel 17:41</li><li><a href="stop-41558.html">41558</a> - Geluwe Kapelletje 17:43</li><li><a href="stop-41560.html">41560</a> - Geluwe Leiestraat 17:44</li><li><a href="stop-123694.html">123694</a> - Geluwe Plaats 17:45</li><li><a href="stop-38465.html">38465</a> - Geluwe Stelplaats 17:46</li><li><a href="stop-41561.html">41561</a> - Geluwe Meubelpaleis 17:47</li><li><a href="stop-41557.html">41557</a> - Geluwe De Kat 17:48</li><li><a href="stop-41559.html">41559</a> - Geluwe Koelberg 17:49</li><li><a href="stop-43428.html">43428</a> - Geluwe Ieperstraat 227 17:50</li><li><a href="stop-104980.html">104980</a> - Geluwe Nachtegaal 17:50</li><li><a href="stop-42340.html">42340</a> - Beselare Kortekeer 17:54</li><li><a href="stop-42339.html">42339</a> - Beselare Kapelletje 17:55</li><li><a href="stop-38387.html">38387</a> - Beselare Kerk 17:56</li><li><a href="stop-38386.html">38386</a> - Beselare Kapelletje 17:57</li><li><a href="stop-104767.html">104767</a> - Beselare Kortekeer 17:58</li><li><a href="stop-88302.html">88302</a> - Geluveld Kruiseik 18:00</li><li><a href="stop-42399.html">42399</a> - Geluveld De Fermette 18:01</li><li><a href="stop-42401.html">42401</a> - Geluveld Kerk 18:02</li><li><a href="stop-42403.html">42403</a> - Geluveld Station 18:03</li><li><a href="stop-42398.html">42398</a> - Geluveld De Blauwe Duif 18:03</li><li><a href="stop-42400.html">42400</a> - Geluveld Kantien 18:04</li><li><a href="stop-42397.html">42397</a> - Geluveld Belle Vue 18:05</li><li><a href="stop-42404.html">42404</a> - Geluveld Zandberg 18:05</li><li><a href="stop-42815.html">42815</a> - Zillebeke Bellewaerde 18:06</li><li><a href="stop-42819.html">42819</a> - Zillebeke Begijnenbosstraat 18:08</li><li><a href="stop-42461.html">42461</a> - Ieper Kruiskalsijde 18:09</li><li><a href="stop-42477.html">42477</a> - Ieper Watertoren 18:10</li><li><a href="stop-42473.html">42473</a> - Ieper Sint-Jozef 18:11</li><li><a href="stop-42449.html">42449</a> - Ieper Bascule 18:11</li><li><a href="stop-38536.html">38536</a> - Ieper Markt 18:15</li><li><a href="stop-104777.html">104777</a> - Ieper Gevangenis 18:18</li><li><a href="stop-126391.html">126391</a> - Ieper Station perron 4 18:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4240.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

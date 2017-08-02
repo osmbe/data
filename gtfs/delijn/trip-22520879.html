@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Antwerpen - Halle - Zandhoven - Oostmalle - 22520879</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Antwerpen - Halle - Zandhoven - Oostmalle - 22520879</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-22915.html">22915</a> - Zandhoven Dorp perron 1 12:10</li><li><a href="stop-108948.html">108948</a> - Zandhoven Rijkswacht 12:11</li><li><a href="stop-22632.html">22632</a> - Zandhoven Hallebaan 12:12</li><li><a href="stop-22630.html">22630</a> - Zandhoven Heuvelheide 12:13</li><li><a href="stop-22628.html">22628</a> - Halle Tappelweg 12:16</li><li><a href="stop-108850.html">108850</a> - Halle Kerk 12:17</li><li><a href="stop-108848.html">108848</a> - Halle De Pier 12:18</li><li><a href="stop-22622.html">22622</a> - Halle Heideweg 12:19</li><li><a href="stop-22620.html">22620</a> - Halle Lemmekensbaan 12:19</li><li><a href="stop-22618.html">22618</a> - Halle Baron de Borrekenslaan 12:20</li><li><a href="stop-22616.html">22616</a> - Halle Leeuwerikendreef 12:21</li><li><a href="stop-22564.html">22564</a> - Halle Eikenlaan 12:21</li><li><a href="stop-22562.html">22562</a> - Schilde Klein Waterstraat 12:22</li><li><a href="stop-90850.html">90850</a> - Schilde Schanslaan 12:23</li><li><a href="stop-22558.html">22558</a> - Schilde Wisselstraat 12:24</li><li><a href="stop-108826.html">108826</a> - Schilde Kerkelei 12:26</li><li><a href="stop-22554.html">22554</a> - Schilde Brasschaatsebaan 12:27</li><li><a href="stop-22551.html">22551</a> - Schilde Termalenbaan 12:28</li><li><a href="stop-22549.html">22549</a> - Schilde Goudbloemlaan 12:29</li><li><a href="stop-22546.html">22546</a> - Schilde Kasteeldreef 12:30</li><li><a href="stop-25969.html">25969</a> - Wijnegem Molenheide 12:31</li><li><a href="stop-22535.html">22535</a> - Wijnegem H. Meeusstraat 12:32</li><li><a href="stop-108820.html">108820</a> - Wijnegem Vaartdijk 12:34</li><li><a href="stop-22530.html">22530</a> - Wijnegem Dorp 12:35</li><li><a href="stop-88229.html">88229</a> - Wijnegem Fortveld 12:37</li><li><a href="stop-88125.html">88125</a> - Wijnegem Schijnbeemden 12:38</li><li><a href="stop-107876.html">107876</a> - Wijnegem Shopping Center 12:39</li><li><a href="stop-88227.html">88227</a> - Deurne Ertbrugge 12:40</li><li><a href="stop-109428.html">109428</a> - Deurne Havik 12:41</li><li><a href="stop-109658.html">109658</a> - Deurne Ruggeveld 12:43</li><li><a href="stop-88194.html">88194</a> - Deurne Schotensesteenweg 12:44</li><li><a href="stop-108724.html">108724</a> - Deurne Venneborg 12:45</li><li><a href="stop-107895.html">107895</a> - Deurne Lunden 12:47</li><li><a href="stop-107724.html">107724</a> - Deurne Gallifortlei 12:48</li><li><a href="stop-107529.html">107529</a> - Deurne Cogelsplein 12:49</li><li><a href="stop-127732.html">127732</a> - Borgerhout Hof ter Lo 12:51</li><li><a href="stop-109760.html">109760</a> - Borgerhout Turnhoutsepoort 12:52</li><li><a href="stop-107456.html">107456</a> - Borgerhout De Roma 12:53</li><li><a href="stop-19743.html">19743</a> - Borgerhout Drink 12:55</li><li><a href="stop-121176.html">121176</a> - Antwerpen Kerkstraat 12:58</li><li><a href="stop-24319.html">24319</a> - Antwerpen Centraal Station perron 5 12:59</li><li><a href="stop-125289.html">125289</a> - Antwerpen F. Rooseveltplaats perron 14 13:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3187.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

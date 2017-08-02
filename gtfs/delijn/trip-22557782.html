@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tivoli - Station - Geerdegemdries - 22557782</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tivoli - Station - Geerdegemdries - 22557782</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108308.html">108308</a> - Mechelen Bedrijvenlaan 17:05</li><li><a href="stop-108266.html">108266</a> - Mechelen Zwartkloosterstraat 17:05</li><li><a href="stop-22342.html">22342</a> - Mechelen Heisegemstraat 17:06</li><li><a href="stop-21641.html">21641</a> - Mechelen Kruisbaan 17:07</li><li><a href="stop-108384.html">108384</a> - Mechelen E. Walschaertstraat 17:08</li><li><a href="stop-109903.html">109903</a> - Mechelen Postzegel 17:09</li><li><a href="stop-19552.html">19552</a> - Mechelen De Regenboog 17:09</li><li><a href="stop-121730.html">121730</a> - Mechelen Dupont De Nemours 17:10</li><li><a href="stop-89150.html">89150</a> - Mechelen Watertoren 17:11</li><li><a href="stop-22340.html">22340</a> - Mechelen E. Walschaertsstraat 17:12</li><li><a href="stop-91183.html">91183</a> - Mechelen Geerdegemdries 17:13</li><li><a href="stop-21645.html">21645</a> - Mechelen Molenweide 17:14</li><li><a href="stop-21646.html">21646</a> - Mechelen Europalaan 17:16</li><li><a href="stop-108386.html">108386</a> - Mechelen Station perron 1 17:19</li><li><a href="stop-25813.html">25813</a> - Mechelen Raghenoplein 17:21</li><li><a href="stop-108356.html">108356</a> - Mechelen Zandpoortvest 17:22</li><li><a href="stop-108357.html">108357</a> - Mechelen Bleekstraat 17:24</li><li><a href="stop-108455.html">108455</a> - Mechelen Veemarkt 17:26</li><li><a href="stop-108390.html">108390</a> - Mechelen Biest 17:27</li><li><a href="stop-108358.html">108358</a> - Mechelen M. Sabbestraat 17:31</li><li><a href="stop-21599.html">21599</a> - Mechelen De Schijf 17:33</li><li><a href="stop-21690.html">21690</a> - Mechelen Oude Pleinstraat 17:34</li><li><a href="stop-21692.html">21692</a> - Mechelen Holmlei 17:35</li><li><a href="stop-108412.html">108412</a> - Mechelen Luchtvaartstraat 17:36</li><li><a href="stop-108739.html">108739</a> - Mechelen Galgenberg 17:37</li><li><a href="stop-108740.html">108740</a> - Mechelen Tuinbouwschool 17:38</li><li><a href="stop-23826.html">23826</a> - Mechelen Otterbeek 17:39</li><li><a href="stop-22348.html">22348</a> - Mechelen Tivoli 17:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3838.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

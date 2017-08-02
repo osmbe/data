@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Antwerpen L.O - Beveren - Vrasene - Kieldrecht - 20709639</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Antwerpen L.O - Beveren - Vrasene - Kieldrecht - 20709639</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127599.html">127599</a> - Antwerpen Van Eedenplein perron 3 16:33</li><li><a href="stop-108123.html">108123</a> - Antwerpen Halewijn 16:35</li><li><a href="stop-107781.html">107781</a> - Antwerpen Sporthal Linkeroever 16:37</li><li><a href="stop-108097.html">108097</a> - Antwerpen P+R Linkeroever 16:38</li><li><a href="stop-108204.html">108204</a> - Antwerpen Schep Vreugde 16:41</li><li><a href="stop-108208.html">108208</a> - Zwijndrecht Verbrandendijk 16:41</li><li><a href="stop-21158.html">21158</a> - Zwijndrecht Van Goey 16:43</li><li><a href="stop-43327.html">43327</a> - Zwijndrecht Dorp 16:44</li><li><a href="stop-108215.html">108215</a> - Zwijndrecht Hof Ter Rijen 16:45</li><li><a href="stop-127601.html">127601</a> - Zwijndrecht P+R Melsele perron 2 16:47</li><li><a href="stop-115111.html">115111</a> - Melsele Burggravenlaan 16:50</li><li><a href="stop-115112.html">115112</a> - Melsele Sint-Elisabethstraat 16:51</li><li><a href="stop-115113.html">115113</a> - Melsele Spoorweglaan 16:52</li><li><a href="stop-115114.html">115114</a> - Melsele IJzerstraat 16:53</li><li><a href="stop-115115.html">115115</a> - Beveren Parein 16:55</li><li><a href="stop-115116.html">115116</a> - Beveren Viergemeet 16:57</li><li><a href="stop-115117.html">115117</a> - Beveren Gravendreef 16:59</li><li><a href="stop-128686.html">128686</a> - Beveren Markt 17:00</li><li><a href="stop-115118.html">115118</a> - Beveren A.Z. Nikolaas 17:02</li><li><a href="stop-115119.html">115119</a> - Beveren Lesseliersdreef 17:04</li><li><a href="stop-115120.html">115120</a> - Beveren Vijfstraten 17:05</li><li><a href="stop-116152.html">116152</a> - Beveren O-L-Vrouwkerk 17:06</li><li><a href="stop-116214.html">116214</a> - Beveren J. Van Hoofstraat 17:07</li><li><a href="stop-115343.html">115343</a> - Beveren Elzestraat 17:10</li><li><a href="stop-115311.html">115311</a> - Beveren Polderstraat 17:10</li><li><a href="stop-115312.html">115312</a> - Beveren Klaas Dekkerstraat 17:11</li><li><a href="stop-115313.html">115313</a> - Vrasene Mosselbank 17:13</li><li><a href="stop-128689.html">128689</a> - Vrasene Sleutelhoflaan 17:15</li><li><a href="stop-115707.html">115707</a> - Vrasene Kerk 17:16</li><li><a href="stop-115706.html">115706</a> - Vrasene Peperdam 17:17</li><li><a href="stop-115289.html">115289</a> - Vrasene Oprit N49 17:19</li><li><a href="stop-115704.html">115704</a> - Vrasene Schoorstraat 17:20</li><li><a href="stop-115703.html">115703</a> - Verrebroek Aven Ackers 17:22</li><li><a href="stop-115702.html">115702</a> - Verrebroek Dorp 17:23</li><li><a href="stop-115701.html">115701</a> - Verrebroek Rijkstraat 17:24</li><li><a href="stop-115700.html">115700</a> - Verrebroek Bralstraat 17:25</li><li><a href="stop-115699.html">115699</a> - Kieldrecht Gemenestraat 17:26</li><li><a href="stop-115698.html">115698</a> - Kieldrecht Lange Nieuwstraat 17:27</li><li><a href="stop-115697.html">115697</a> - Kieldrecht Kreek 17:29</li><li><a href="stop-115696.html">115696</a> - Kieldrecht Kerk 17:29</li><li><a href="stop-114879.html">114879</a> - Kieldrecht Sportpleinstraat 17:31</li><li><a href="stop-114880.html">114880</a> - Kieldrecht Merodestraat 17:32</li><li><a href="stop-114881.html">114881</a> - Kieldrecht Kouterstraat 17:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./900.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

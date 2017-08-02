@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Eisden - Maasmechelen - Lanaken - Maastricht - 22467597</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eisden - Maasmechelen - Lanaken - Maastricht - 22467597</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-32369.html">32369</a> - Eisden Post 06:33</li><li><a href="stop-123086.html">123086</a> - Eisden Bloemenlaan 06:35</li><li><a href="stop-92434.html">92434</a> - Eisden Berensheuvel 06:36</li><li><a href="stop-32444.html">32444</a> - Maasmechelen Rijksweg 06:37</li><li><a href="stop-32476.html">32476</a> - Maasmechelen College 06:38</li><li><a href="stop-32340.html">32340</a> - Maasmechelen Centrum 06:38</li><li><a href="stop-32465.html">32465</a> - Maasmechelen Endepoel 06:40</li><li><a href="stop-32470.html">32470</a> - Maasmechelen Brug autosnelweg 06:41</li><li><a href="stop-32426.html">32426</a> - Opgrimbie Heirstraat 06:42</li><li><a href="stop-32420.html">32420</a> - Opgrimbie Centrum 06:43</li><li><a href="stop-32438.html">32438</a> - Opgrimbie Plein 06:44</li><li><a href="stop-32424.html">32424</a> - Opgrimbie Davidstraat 06:45</li><li><a href="stop-32432.html">32432</a> - Opgrimbie Kruispunt 06:46</li><li><a href="stop-110385.html">110385</a> - Rekem Daelwezeth 06:48</li><li><a href="stop-31432.html">31432</a> - Rekem Populierenlaan 06:50</li><li><a href="stop-31418.html">31418</a> - Rekem Bovenwezet 06:51</li><li><a href="stop-31398.html">31398</a> - Neerharen Steenweg 06:52</li><li><a href="stop-31406.html">31406</a> - Neerharen Verbindingslaan 06:53</li><li><a href="stop-31452.html">31452</a> - Lanaken Tournebride 06:54</li><li><a href="stop-123055.html">123055</a> - Lanaken Pietersheim 06:57</li><li><a href="stop-31478.html">31478</a> - Lanaken Vertakking 06:58</li><li><a href="stop-31435.html">31435</a> - Lanaken Atheneum Alicebourg 06:58</li><li><a href="stop-31378.html">31378</a> - Lanaken Gemeentehuis 06:59</li><li><a href="stop-31395.html">31395</a> - Lanaken Cultureel Centrum 07:00</li><li><a href="stop-97203.html">97203</a> - Smeermaas Industrieterrein 07:02</li><li><a href="stop-97205.html">97205</a> - Smeermaas Nijverheidslaan 07:03</li><li><a href="stop-97212.html">97212</a> - Smeermaas Kruispunt 07:04</li><li><a href="stop-32502.html">32502</a> - Maastricht Caberg Grens 07:05</li><li><a href="stop-32500.html">32500</a> - Maastricht Brusselseweg Sandersweg 07:08</li><li><a href="stop-32506.html">32506</a> - Maastricht Caberg 07:09</li><li><a href="stop-32497.html">32497</a> - Maastricht Brusselseweg Fagotstraat 07:10</li><li><a href="stop-32509.html">32509</a> - Maastricht Fort Willemweg 07:11</li><li><a href="stop-32504.html">32504</a> - Maastricht Cabergerweg 07:12</li><li><a href="stop-32540.html">32540</a> - Maastricht Frontensingel/Maagdendries 07:14</li><li><a href="stop-110426.html">110426</a> - Maastricht Boschstraat/Markt 07:16</li><li><a href="stop-32523.html">32523</a> - Maastricht Station perron M 07:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5038.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

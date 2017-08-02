@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Aspelare - Geraardsbergen - 20718038</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Aspelare - Geraardsbergen - 20718038</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-116953.html">116953</a> - Aspelare Dorp 06:21</li><li><a href="stop-116952.html">116952</a> - Aspelare Waalhovestraat 06:23</li><li><a href="stop-116597.html">116597</a> - Nederhasselt Van Der Schuerenstraat 06:24</li><li><a href="stop-116951.html">116951</a> - Nederhasselt Vogelzangstraat 06:25</li><li><a href="stop-116950.html">116950</a> - Nederhasselt Keylandstraat 06:26</li><li><a href="stop-116949.html">116949</a> - Heldergem Watertoren 06:27</li><li><a href="stop-116909.html">116909</a> - Heldergem Leistraat 06:28</li><li><a href="stop-116910.html">116910</a> - Kerksken Landlede 06:29</li><li><a href="stop-116911.html">116911</a> - Kerksken Terwaerentstraat 06:29</li><li><a href="stop-116912.html">116912</a> - Kerksken Terlicht 06:30</li><li><a href="stop-116913.html">116913</a> - Kerksken Hofstraat 06:31</li><li><a href="stop-116914.html">116914</a> - Kerksken Watervoortstraat 06:32</li><li><a href="stop-116948.html">116948</a> - Kerksken Kerk 06:33</li><li><a href="stop-116947.html">116947</a> - Haaltert Wijngaardweg 06:34</li><li><a href="stop-116946.html">116946</a> - Haaltert Burg. De Saedeleerstraat 06:35</li><li><a href="stop-116938.html">116938</a> - Haaltert Administratief Centrum 06:36</li><li><a href="stop-116945.html">116945</a> - Haaltert Dreef 06:37</li><li><a href="stop-116944.html">116944</a> - Haaltert Stationsstraat 06:37</li><li><a href="stop-116937.html">116937</a> - Haaltert Herenthout 06:38</li><li><a href="stop-116943.html">116943</a> - Haaltert Station 06:38</li><li><a href="stop-116617.html">116617</a> - Erembodegem Terjoden Kerk 06:39</li><li><a href="stop-117888.html">117888</a> - Erembodegem Hof Ter Lokerenstraat 06:40</li><li><a href="stop-116941.html">116941</a> - Nieuwerkerken Dries 06:42</li><li><a href="stop-116940.html">116940</a> - Nieuwerkerken Mortelveld 06:44</li><li><a href="stop-116529.html">116529</a> - Nieuwerkerken Schoolstraat 06:46</li><li><a href="stop-116530.html">116530</a> - Nieuwerkerken Kantonstraat 06:47</li><li><a href="stop-116531.html">116531</a> - Nieuwerkerken Kwadesteenstraat 06:48</li><li><a href="stop-116532.html">116532</a> - Nieuwerkerken Odisee 06:49</li><li><a href="stop-116533.html">116533</a> - Aalst F. Roucelstraat 06:50</li><li><a href="stop-116534.html">116534</a> - Aalst Capucijnenlaan 06:50</li><li><a href="stop-116535.html">116535</a> - Aalst Diepestraat 06:51</li><li><a href="stop-116536.html">116536</a> - Aalst Colinetstraat 06:53</li><li><a href="stop-116537.html">116537</a> - Aalst Houtmarkt 06:56</li><li><a href="stop-116541.html">116541</a> - Aalst Oude Vismarkt 07:00</li><li><a href="stop-126680.html">126680</a> - Aalst Station perron 4 07:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1290.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

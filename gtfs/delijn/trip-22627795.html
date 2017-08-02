@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Spiere-Avelgem-Anzegem-Waregem - 22627795</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Spiere-Avelgem-Anzegem-Waregem - 22627795</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126438.html">126438</a> - Waregem Station perron 4 09:37</li><li><a href="stop-101118.html">101118</a> - Waregem College 09:40</li><li><a href="stop-42201.html">42201</a> - Waregem Markt 09:41</li><li><a href="stop-38239.html">38239</a> - Waregem Renbaan 09:43</li><li><a href="stop-38236.html">38236</a> - Waregem Mexico 09:44</li><li><a href="stop-38736.html">38736</a> - Waregem Carpool 09:45</li><li><a href="stop-100934.html">100934</a> - Waregem Steenovenstraat 09:47</li><li><a href="stop-37436.html">37436</a> - Anzegem De Predikheer 09:49</li><li><a href="stop-37443.html">37443</a> - Anzegem Oude Steenbrug 09:50</li><li><a href="stop-39160.html">39160</a> - Anzegem Kruisweg 09:52</li><li><a href="stop-37444.html">37444</a> - Anzegem Sint-Vincentiusinstituut 09:53</li><li><a href="stop-37440.html">37440</a> - Anzegem Kerk 09:55</li><li><a href="stop-41423.html">41423</a> - Anzegem De Linde 09:56</li><li><a href="stop-37445.html">37445</a> - Anzegem Station 09:58</li><li><a href="stop-41910.html">41910</a> - Kaster Gaverstraat 10:00</li><li><a href="stop-41722.html">41722</a> - Kaster Dorp 10:02</li><li><a href="stop-90769.html">90769</a> - Kerkhove Baarmstraat 10:03</li><li><a href="stop-41723.html">41723</a> - Kerkhove Kerk 10:04</li><li><a href="stop-101117.html">101117</a> - Waarmaarde Sint-Elooi 10:06</li><li><a href="stop-39159.html">39159</a> - Avelgem Den Ast 10:07</li><li><a href="stop-104974.html">104974</a> - Avelgem Langestraat 10:09</li><li><a href="stop-101085.html">101085</a> - Avelgem Toekomststraat 10:10</li><li><a href="stop-127285.html">127285</a> - Avelgem Plaats 10:11</li><li><a href="stop-98688.html">98688</a> - Avelgem Station 10:12</li><li><a href="stop-37456.html">37456</a> - Avelgem Sportcentrum 10:13</li><li><a href="stop-38072.html">38072</a> - Outrijve Gibraltar 10:14</li><li><a href="stop-38070.html">38070</a> - Outrijve Beiaarddreef 10:15</li><li><a href="stop-38071.html">38071</a> - Outrijve Dorp 10:16</li><li><a href="stop-39158.html">39158</a> - Outrijve Weg Op Bossuit 10:18</li><li><a href="stop-37465.html">37465</a> - Bossuit Dorp 10:18</li><li><a href="stop-90428.html">90428</a> - Bossuit Kasteel 10:18</li><li><a href="stop-90511.html">90511</a> - Bossuit Doornikstw.  Hoek 10:19</li><li><a href="stop-39665.html">39665</a> - Helkijn Kasteeldreef 10:20</li><li><a href="stop-37644.html">37644</a> - Helkijn Centrum 10:21</li><li><a href="stop-37646.html">37646</a> - Helkijn Suikerfabriek 10:21</li><li><a href="stop-37645.html">37645</a> - Spiere Gemeentehuis 10:22</li><li><a href="stop-127902.html">127902</a> - Spiere Kerk 10:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4123.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

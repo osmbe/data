@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Etterbeek - Overijse - Terl. - Ottenburg - Waver - 22781373</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Etterbeek - Overijse - Terl. - Ottenburg - Waver - 22781373</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-89090.html">89090</a> - Elsene Etterbeek Station 09:27</li><li><a href="stop-88166.html">88166</a> - Oudergem Delta 09:33</li><li><a href="stop-90787.html">90787</a> - Oudergem Hermann-Debroux 09:40</li><li><a href="stop-10198.html">10198</a> - Oudergem U.L.B. Tuin Massart 09:41</li><li><a href="stop-87963.html">87963</a> - Oudergem Rood Klooster 09:41</li><li><a href="stop-90883.html">90883</a> - Overijse J.de Meeusstraat 09:48</li><li><a href="stop-99212.html">99212</a> - Overijse Louis Gunsstraat 09:49</li><li><a href="stop-87973.html">87973</a> - Overijse Hengstenberg 09:50</li><li><a href="stop-12968.html">12968</a> - Overijse O.L.Vrouwedal 09:51</li><li><a href="stop-87982.html">87982</a> - Overijse Terrest 09:52</li><li><a href="stop-13003.html">13003</a> - Overijse Vriendschapstraat 09:53</li><li><a href="stop-87977.html">87977</a> - Overijse Cl. Vanophemstraat 09:54</li><li><a href="stop-87976.html">87976</a> - Overijse Sint-Martinusschool 09:55</li><li><a href="stop-12992.html">12992</a> - Overijse Solheide 09:56</li><li><a href="stop-12947.html">12947</a> - Overijse Kerk 09:58</li><li><a href="stop-16220.html">16220</a> - Overijse De Leegheid 09:59</li><li><a href="stop-87985.html">87985</a> - Overijse Nijvelsebaan 10:01</li><li><a href="stop-13001.html">13001</a> - Overijse Vier Koningen 10:02</li><li><a href="stop-16419.html">16419</a> - Overijse Kerkstraat 10:03</li><li><a href="stop-16802.html">16802</a> - Overijse Champelsstraat 10:03</li><li><a href="stop-15601.html">15601</a> - Overijse Abstraat 10:05</li><li><a href="stop-12966.html">12966</a> - Overijse Mommaertstraat 10:06</li><li><a href="stop-12983.html">12983</a> - Overijse Schaesbroeckstraat 10:07</li><li><a href="stop-12970.html">12970</a> - Overijse Oude Abstraat 10:07</li><li><a href="stop-90890.html">90890</a> - Overijse Michielsplein 10:08</li><li><a href="stop-11588.html">11588</a> - Ottenburg Neerpoortenstraat 10:10</li><li><a href="stop-11578.html">11578</a> - Ottenburg Billandestraat 10:11</li><li><a href="stop-11584.html">11584</a> - Ottenburg Langelezstraat 10:12</li><li><a href="stop-11585.html">11585</a> - Huldenberg Luizenberg 10:13</li><li><a href="stop-11579.html">11579</a> - Ottenburg Dorp 10:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2162.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

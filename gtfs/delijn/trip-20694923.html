@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent Zuid - Merelbeke - Melle - 20694923</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent Zuid - Merelbeke - Melle - 20694923</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-120251.html">120251</a> - Melle Autostradeweg 14:54</li><li><a href="stop-120839.html">120839</a> - Melle Oude Geraardsbergsesteenweg 14:54</li><li><a href="stop-120250.html">120250</a> - Melle Ovenveldstraat 14:55</li><li><a href="stop-120249.html">120249</a> - Melle Beekstraat 14:57</li><li><a href="stop-120248.html">120248</a> - Melle Station 14:57</li><li><a href="stop-112633.html">112633</a> - Melle O.C.M.W. 14:59</li><li><a href="stop-112609.html">112609</a> - Melle Gontrode Heirweg 15:01</li><li><a href="stop-113816.html">113816</a> - Melle Caritas 15:03</li><li><a href="stop-113267.html">113267</a> - Merelbeke Campus Diergeneeskunde 15:04</li><li><a href="stop-113854.html">113854</a> - Merelbeke Ruiterstraat 15:06</li><li><a href="stop-113758.html">113758</a> - Merelbeke Lembergsesteenweg 15:07</li><li><a href="stop-113652.html">113652</a> - Merelbeke Wijnpeerstraat 15:08</li><li><a href="stop-113650.html">113650</a> - Merelbeke Lamstraat 15:09</li><li><a href="stop-113649.html">113649</a> - Merelbeke Kloosterstraat 15:10</li><li><a href="stop-114706.html">114706</a> - Merelbeke Molenhoek 15:11</li><li><a href="stop-114682.html">114682</a> - Merelbeke Kerk 15:13</li><li><a href="stop-113815.html">113815</a> - Merelbeke Hebbelynckstraat 15:14</li><li><a href="stop-113814.html">113814</a> - Merelbeke Waterstraat 15:15</li><li><a href="stop-113813.html">113813</a> - Merelbeke Plataan 15:16</li><li><a href="stop-113808.html">113808</a> - Merelbeke Ringvaartstraat 15:18</li><li><a href="stop-113807.html">113807</a> - Merelbeke Bergstraat 15:19</li><li><a href="stop-113806.html">113806</a> - Merelbeke Van Goethemstraat 15:20</li><li><a href="stop-113805.html">113805</a> - Merelbeke Benoitstraat 15:21</li><li><a href="stop-113804.html">113804</a> - Merelbeke Koestraat 15:21</li><li><a href="stop-113803.html">113803</a> - Ledeberg Eindeke 15:22</li><li><a href="stop-113802.html">113802</a> - Ledeberg Botermarkt 15:24</li><li><a href="stop-112472.html">112472</a> - Ledeberg Eggermontstraat 15:26</li><li><a href="stop-111199.html">111199</a> - Ledeberg Hundelgemsesteenweg 15:26</li><li><a href="stop-111200.html">111200</a> - Gent Sint-Lievenspoort 15:27</li><li><a href="stop-111201.html">111201</a> - Gent Sint-Lievensdoorgang 15:28</li><li><a href="stop-111171.html">111171</a> - Gent Vijfwindgatenstraat 15:28</li><li><a href="stop-126534.html">126534</a> - Gent Zuid perron 5 15:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./275.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

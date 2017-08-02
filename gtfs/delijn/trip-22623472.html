@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Deinze - 22623472</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Deinze - 22623472</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126385.html">126385</a> - Kortrijk Station perron 9 10:20</li><li><a href="stop-37777.html">37777</a> - Kortrijk Spoorweglaan 10:22</li><li><a href="stop-37842.html">37842</a> - Kortrijk K 10:23</li><li><a href="stop-37821.html">37821</a> - Kortrijk Groeningelaan 10:25</li><li><a href="stop-37785.html">37785</a> - Kortrijk Gentpoort 10:26</li><li><a href="stop-37801.html">37801</a> - Kortrijk Lefevere 10:28</li><li><a href="stop-37615.html">37615</a> - Harelbeke Koersplein 10:29</li><li><a href="stop-37609.html">37609</a> - Harelbeke Garage Rapid 10:31</li><li><a href="stop-37621.html">37621</a> - Harelbeke Royal 10:33</li><li><a href="stop-37617.html">37617</a> - Harelbeke Marktstraat 10:34</li><li><a href="stop-37614.html">37614</a> - Harelbeke Markt 10:35</li><li><a href="stop-37608.html">37608</a> - Harelbeke Deerlijkstraat 10:35</li><li><a href="stop-37619.html">37619</a> - Harelbeke Rijkswacht 10:36</li><li><a href="stop-38263.html">38263</a> - Beveren Pontstraat 10:37</li><li><a href="stop-123566.html">123566</a> - Beveren Klokke 10:38</li><li><a href="stop-37487.html">37487</a> - Beveren Nieuwe Kerk 10:39</li><li><a href="stop-37483.html">37483</a> - Beveren Hof De Commerce 10:40</li><li><a href="stop-37543.html">37543</a> - Desselgem Toren 10:41</li><li><a href="stop-87584.html">87584</a> - Desselgem Dries 10:42</li><li><a href="stop-37537.html">37537</a> - Desselgem De Engel 10:43</li><li><a href="stop-125711.html">125711</a> - Sint-Eloois-Vijve Kauwenhoek 10:44</li><li><a href="stop-125714.html">125714</a> - Sint-Eloois-Vijve Transvaal 10:47</li><li><a href="stop-38001.html">38001</a> - Waregem Containerpark 10:47</li><li><a href="stop-38232.html">38232</a> - Waregem Kliniek 10:48</li><li><a href="stop-126388.html">126388</a> - Waregem Station perron 2 10:49</li><li><a href="stop-101118.html">101118</a> - Waregem College 10:52</li><li><a href="stop-42201.html">42201</a> - Waregem Markt 10:53</li><li><a href="stop-123664.html">123664</a> - Waregem Churchilllaan 10:54</li><li><a href="stop-38229.html">38229</a> - Waregem Halfwege 10:55</li><li><a href="stop-38226.html">38226</a> - Waregem Drogenboom 10:57</li><li><a href="stop-104751.html">104751</a> - Waregem Recutex 10:58</li><li><a href="stop-111631.html">111631</a> - Zulte Villa Salome 10:59</li><li><a href="stop-111630.html">111630</a> - Zulte Station 11:01</li><li><a href="stop-111627.html">111627</a> - Zulte Damberd 11:02</li><li><a href="stop-126564.html">126564</a> - Zulte Standbeeld 11:03</li><li><a href="stop-111628.html">111628</a> - Zulte Garage Peugeot 11:04</li><li><a href="stop-126556.html">126556</a> - Olsene Overwinning 11:05</li><li><a href="stop-126555.html">126555</a> - Olsene Kerk 11:07</li><li><a href="stop-111535.html">111535</a> - Olsene Kasteel 11:08</li><li><a href="stop-111538.html">111538</a> - Machelen Tabarin 11:09</li><li><a href="stop-126554.html">126554</a> - Machelen De Prins 11:10</li><li><a href="stop-125335.html">125335</a> - Machelen Buitenlust 11:11</li><li><a href="stop-111621.html">111621</a> - Petegem A/D Leie Kapelhoek 11:13</li><li><a href="stop-111620.html">111620</a> - Petegem A/D Leie Industrielaan 11:13</li><li><a href="stop-127086.html">127086</a> - Petegem A/D Leie Gemeentehuis 11:14</li><li><a href="stop-114114.html">114114</a> - Deinze Knok 11:17</li><li><a href="stop-126813.html">126813</a> - Deinze Station perron 1 11:18</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4105.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

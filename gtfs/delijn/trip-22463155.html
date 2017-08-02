@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Nerem-Sluizen-Mal-Tongeren-'sHeren-Membr.-Genoels - 22463155</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Nerem-Sluizen-Mal-Tongeren-'sHeren-Membr.-Genoels - 22463155</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-34484.html">34484</a> - Tongeren Station 16:01</li><li><a href="stop-34641.html">34641</a> - Tongeren Het Kruis 16:03</li><li><a href="stop-34551.html">34551</a> - Tongeren Meulemanslaan 16:04</li><li><a href="stop-34687.html">34687</a> - Tongeren Hospitaal 16:05</li><li><a href="stop-34452.html">34452</a> - Tongeren Treurenberg 16:06</li><li><a href="stop-97679.html">97679</a> - 's Herenelderen Waterkuilstraat 16:09</li><li><a href="stop-97675.html">97675</a> - 's Herenelderen Bavershoeve 16:10</li><li><a href="stop-97678.html">97678</a> - 's Herenelderen Lindebornstraat 16:11</li><li><a href="stop-97486.html">97486</a> - Membruggen Mopertingenweg 16:15</li><li><a href="stop-97505.html">97505</a> - Membruggen Rijkerstraat 16:16</li><li><a href="stop-97503.html">97503</a> - Membruggen Monument 16:17</li><li><a href="stop-97501.html">97501</a> - Membruggen Kabien 16:18</li><li><a href="stop-97484.html">97484</a> - Membruggen Kerkhof 16:19</li><li><a href="stop-97490.html">97490</a> - Genoelselderen Kasteel 16:20</li><li><a href="stop-97870.html">97870</a> - Genoelselderen Kerk 16:21</li><li><a href="stop-97492.html">97492</a> - Genoelselderen Parochiezaal 16:22</li><li><a href="stop-97489.html">97489</a> - Genoelselderen Boudewijnstraat 16:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5365.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

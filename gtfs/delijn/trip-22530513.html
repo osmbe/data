@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Turnhout-Geel-Westerlo-Aarschot - 22530513</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Turnhout-Geel-Westerlo-Aarschot - 22530513</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108878.html">108878</a> - Turnhout Station perron 1 18:25</li><li><a href="stop-108880.html">108880</a> - Turnhout Zeshoek 18:27</li><li><a href="stop-92509.html">92509</a> - Turnhout Markt perron 7 18:29</li><li><a href="stop-109730.html">109730</a> - Turnhout Apostoliekenstraat 18:30</li><li><a href="stop-25110.html">25110</a> - Turnhout Graatakker 18:30</li><li><a href="stop-109731.html">109731</a> - Turnhout Sporthal 18:31</li><li><a href="stop-109733.html">109733</a> - Turnhout Ceka 18:31</li><li><a href="stop-25118.html">25118</a> - Turnhout Oprit brug E34 18:32</li><li><a href="stop-25120.html">25120</a> - Turnhout Technische Controle 18:33</li><li><a href="stop-98466.html">98466</a> - Turnhout Zevendonk 18:34</li><li><a href="stop-25125.html">25125</a> - Turnhout Mastheidestraat 18:35</li><li><a href="stop-93238.html">93238</a> - Turnhout De Borcht 18:36</li><li><a href="stop-129041.html">129041</a> - Kasterlee Klein Rees 18:37</li><li><a href="stop-25133.html">25133</a> - Kasterlee Zandhoef 18:38</li><li><a href="stop-109742.html">109742</a> - Kasterlee Eikenlaan 18:39</li><li><a href="stop-25138.html">25138</a> - Kasterlee Mertenshof 18:39</li><li><a href="stop-25140.html">25140</a> - Kasterlee Groot Goor 18:40</li><li><a href="stop-25143.html">25143</a> - Kasterlee Pellemanstraat 18:41</li><li><a href="stop-109745.html">109745</a> - Kasterlee Dorp 18:41</li><li><a href="stop-25148.html">25148</a> - Kasterlee Venheide 18:42</li><li><a href="stop-25150.html">25150</a> - Kasterlee Houtum 18:43</li><li><a href="stop-25153.html">25153</a> - Kasterlee Netebrug 18:44</li><li><a href="stop-25155.html">25155</a> - Geel Roerdompstraat 18:45</li><li><a href="stop-109747.html">109747</a> - Geel Aardseweg 18:46</li><li><a href="stop-25160.html">25160</a> - Geel Speenwaverdreef 18:48</li><li><a href="stop-25162.html">25162</a> - Geel Elzenstraat 18:49</li><li><a href="stop-25164.html">25164</a> - Geel Gasstraat 18:50</li><li><a href="stop-25167.html">25167</a> - Geel Velodroomwijk 18:50</li><li><a href="stop-109751.html">109751</a> - Geel Station perron 9 18:51</li><li><a href="stop-107517.html">107517</a> - Geel Stadspark 18:53</li><li><a href="stop-109754.html">109754</a> - Geel Markt 18:54</li><li><a href="stop-127001.html">127001</a> - Geel P. Van Neylenstraat 18:55</li><li><a href="stop-109757.html">109757</a> - Geel AZ Sint-Dimpna 18:57</li><li><a href="stop-20779.html">20779</a> - Geel Wedbos 18:58</li><li><a href="stop-107892.html">107892</a> - Geel AZ St Dimpna Hoofdingang 18:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3419.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

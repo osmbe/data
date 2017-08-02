@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Zaventem - Roodebeek - 21152347</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Zaventem - Roodebeek - 21152347</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-10323.html">10323</a> - Sint-Lambrechts-Woluwe Roodebeek 07:17</li><li><a href="stop-10322.html">10322</a> - Sint-Lambrechts-Woluwe Neerveld 07:19</li><li><a href="stop-128818.html">128818</a> - Sint-Lambrechts-Woluwe Thiry 07:20</li><li><a href="stop-99204.html">99204</a> - Sint-Stevens-Woluwe Hippokrates 07:21</li><li><a href="stop-11135.html">11135</a> - Sint-Stevens-Woluwe Lenneke Mare 07:22</li><li><a href="stop-11133.html">11133</a> - Kraainem Annecy 07:23</li><li><a href="stop-11131.html">11131</a> - Kraainem Sint-Antonius 07:23</li><li><a href="stop-12006.html">12006</a> - Kraainem Thumasstraat 07:24</li><li><a href="stop-16225.html">16225</a> - Kraainem Viaduct E40 07:25</li><li><a href="stop-87498.html">87498</a> - Sint-Stevens-Woluwe Van Damstraat 07:27</li><li><a href="stop-17163.html">17163</a> - Zaventem Hoogstraat 07:28</li><li><a href="stop-17027.html">17027</a> - Zaventem Maalbeekweg 07:29</li><li><a href="stop-98472.html">98472</a> - Zaventem Da Vinci 07:30</li><li><a href="stop-14186.html">14186</a> - Zaventem Olmenstraat 07:30</li><li><a href="stop-14168.html">14168</a> - Zaventem Gebouw 9 07:31</li><li><a href="stop-17025.html">17025</a> - Zaventem Technics Noord 07:32</li><li><a href="stop-16996.html">16996</a> - Zaventem Luchthaven Perron B 07:34</li><li><a href="stop-17026.html">17026</a> - Zaventem Technics Noord 07:36</li><li><a href="stop-14169.html">14169</a> - Zaventem Gebouw 9 07:37</li><li><a href="stop-14167.html">14167</a> - Zaventem B-House 07:38</li><li><a href="stop-94877.html">94877</a> - Machelen Korenberg 07:39</li><li><a href="stop-91151.html">91151</a> - Machelen Cargo Post 07:43</li><li><a href="stop-91149.html">91149</a> - Machelen Cargo 706 07:44</li><li><a href="stop-127846.html">127846</a> - Machelen Cargo Discount P1 07:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2532.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

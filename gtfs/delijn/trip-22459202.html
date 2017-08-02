@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Stevoort - Sint-Truiden - 22459202</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Stevoort - Sint-Truiden - 22459202</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128979.html">128979</a> - Hasselt Station perron 8 16:56</li><li><a href="stop-29461.html">29461</a> - Hasselt Leopoldplein 16:59</li><li><a href="stop-97048.html">97048</a> - Runkst Vooruitzichtlaan 17:00</li><li><a href="stop-96864.html">96864</a> - Runkst Paters Adonsstraat 17:01</li><li><a href="stop-96896.html">96896</a> - Runkst Kerkhof 17:01</li><li><a href="stop-29265.html">29265</a> - Hasselt Boerenkrijgsingel 17:03</li><li><a href="stop-105216.html">105216</a> - Runkst Runkstersteenweg 17:04</li><li><a href="stop-123231.html">123231</a> - Runkst Grasstraat 17:05</li><li><a href="stop-29236.html">29236</a> - Hasselt Augustijnenstraat 17:06</li><li><a href="stop-96893.html">96893</a> - Runkst Runksterkiezel 17:08</li><li><a href="stop-29561.html">29561</a> - Stevoort Kleine Roost 17:09</li><li><a href="stop-29677.html">29677</a> - Stevoort Caenenhof 17:11</li><li><a href="stop-29803.html">29803</a> - Stevoort Kannaertstraat 17:12</li><li><a href="stop-29581.html">29581</a> - Stevoort Kermtstraat 17:14</li><li><a href="stop-94963.html">94963</a> - Stevoort Instituut Mariaburcht 17:15</li><li><a href="stop-29549.html">29549</a> - Stevoort Centrum 17:17</li><li><a href="stop-29565.html">29565</a> - Stevoort Molenstraat 17:18</li><li><a href="stop-29553.html">29553</a> - Stevoort Herkkantstraat 17:20</li><li><a href="stop-30206.html">30206</a> - Herk-de-Stad Weg naar Wijer 17:20</li><li><a href="stop-95071.html">95071</a> - Herk-de-Stad Wijerstraat 17:21</li><li><a href="stop-30168.html">30168</a> - Herk-de-Stad Schoolstraat 17:22</li><li><a href="stop-123155.html">123155</a> - Wijer Grotestraat 17:24</li><li><a href="stop-88482.html">88482</a> - Wijer Kerk 17:24</li><li><a href="stop-33180.html">33180</a> - Wijer Kerkhof 17:25</li><li><a href="stop-33168.html">33168</a> - Wijer De Hoef 17:26</li><li><a href="stop-33179.html">33179</a> - Wijer Ter Heidebeek 17:26</li><li><a href="stop-33176.html">33176</a> - Wijer Opperstraat 17:27</li><li><a href="stop-30203.html">30203</a> - Herk-de-Stad Terbermenweg 17:28</li><li><a href="stop-95061.html">95061</a> - Nieuwerkerken Tegelrijstraat 17:29</li><li><a href="stop-33120.html">33120</a> - Nieuwerkerken Hakbosstraat 17:29</li><li><a href="stop-33122.html">33122</a> - Nieuwerkerken Kabien 17:30</li><li><a href="stop-33162.html">33162</a> - Nieuwerkerken Tegelrij 17:31</li><li><a href="stop-95062.html">95062</a> - Nieuwerkerken Rozenbosstraat 17:32</li><li><a href="stop-33127.html">33127</a> - Nieuwerkerken Kerk 17:33</li><li><a href="stop-33188.html">33188</a> - Nieuwerkerken Mouveld I 17:34</li><li><a href="stop-87784.html">87784</a> - Nieuwerkerken Tramstatie 17:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4641.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

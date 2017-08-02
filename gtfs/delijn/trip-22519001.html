@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Arendonk - Retie - Dessel - Mol - 22519001</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Arendonk - Retie - Dessel - Mol - 22519001</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108654.html">108654</a> - Arendonk Sint-Claracollege 12:08</li><li><a href="stop-88771.html">88771</a> - Arendonk Kerk 12:11</li><li><a href="stop-24108.html">24108</a> - Arendonk Kerkstraat 12:12</li><li><a href="stop-20710.html">20710</a> - Arendonk Hertevelden 12:12</li><li><a href="stop-24110.html">24110</a> - Arendonk Berendonk 12:14</li><li><a href="stop-24113.html">24113</a> - Arendonk Nieuwendijk 12:15</li><li><a href="stop-24115.html">24115</a> - Retie Obroek 12:17</li><li><a href="stop-19605.html">19605</a> - Retie Plas 12:18</li><li><a href="stop-24117.html">24117</a> - Retie Oude Arendonksebaan 12:19</li><li><a href="stop-24119.html">24119</a> - Retie Boesdijk 12:20</li><li><a href="stop-24121.html">24121</a> - Retie Hovenstraat 12:20</li><li><a href="stop-109371.html">109371</a> - Retie Markt 12:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3127.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

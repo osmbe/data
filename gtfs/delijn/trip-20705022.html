@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Deinze - Aalter - Maldegem - 20705022</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Deinze - Aalter - Maldegem - 20705022</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-113670.html">113670</a> - Lotenhulle Guldensporenplein 06:29</li><li><a href="stop-113238.html">113238</a> - Lotenhulle Pittemstraat 06:31</li><li><a href="stop-113237.html">113237</a> - Lotenhulle Prinsenstraat 06:31</li><li><a href="stop-113236.html">113236</a> - Lotenhulle Lobulckstraat 06:32</li><li><a href="stop-113235.html">113235</a> - Aalter Ganzeplas 06:34</li><li><a href="stop-113234.html">113234</a> - Aalter Beukenpark 06:34</li><li><a href="stop-113233.html">113233</a> - Aalter Kerkem 06:36</li><li><a href="stop-113000.html">113000</a> - Aalter Veilige Have 06:37</li><li><a href="stop-113252.html">113252</a> - Aalter Boomgaard 06:38</li><li><a href="stop-113232.html">113232</a> - Aalter Markt 06:38</li><li><a href="stop-113231.html">113231</a> - Aalter Scholen 06:39</li><li><a href="stop-126619.html">126619</a> - Aalter Station perron 1 06:43</li><li><a href="stop-120201.html">120201</a> - Aalter Wijkschool Drogenbroodstraat 06:44</li><li><a href="stop-113228.html">113228</a> - Aalter Tervennelaan 06:45</li><li><a href="stop-113227.html">113227</a> - Aalter Ter Walle 06:46</li><li><a href="stop-113224.html">113224</a> - Aalter Weststraat 06:48</li><li><a href="stop-113223.html">113223</a> - Knesselare Buntelarestraat 06:49</li><li><a href="stop-114192.html">114192</a> - Knesselare Spanjaardstraat 06:51</li><li><a href="stop-114190.html">114190</a> - Knesselare Maldegemseweg 06:52</li><li><a href="stop-126644.html">126644</a> - Knesselare Dorp 06:53</li><li><a href="stop-126620.html">126620</a> - Knesselare Dorp 06:56</li><li><a href="stop-113220.html">113220</a> - Knesselare Maldegemseweg 06:57</li><li><a href="stop-113222.html">113222</a> - Knesselare Spanjaardstraat 06:58</li><li><a href="stop-113216.html">113216</a> - Knesselare Schapersbosstraat 07:00</li><li><a href="stop-113215.html">113215</a> - Maldegem Oude Bruggeweg 07:01</li><li><a href="stop-113213.html">113213</a> - Maldegem Harinkweg 07:02</li><li><a href="stop-113212.html">113212</a> - Maldegem O.L.V. Dreef 07:04</li><li><a href="stop-113154.html">113154</a> - Maldegem Halledreef 07:05</li><li><a href="stop-113153.html">113153</a> - Maldegem Krakkeveld 07:05</li><li><a href="stop-113144.html">113144</a> - Maldegem Thyskensstraat 07:06</li><li><a href="stop-113143.html">113143</a> - Maldegem Kleitkalseide 07:06</li><li><a href="stop-113210.html">113210</a> - Maldegem Speyestraat 07:08</li><li><a href="stop-113209.html">113209</a> - Maldegem Astridlaan 07:09</li><li><a href="stop-125853.html">125853</a> - Maldegem Station 07:09</li><li><a href="stop-125164.html">125164</a> - Maldegem Zwarte Zusterslaan 07:10</li><li><a href="stop-112993.html">112993</a> - Maldegem Markt perron 1 07:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./659.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

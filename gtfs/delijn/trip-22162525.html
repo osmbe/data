@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oostende-Luchthaven Raversijde - 22162525</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oostende-Luchthaven Raversijde - 22162525</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-97924.html">97924</a> - Raversijde Luchthaven 12:44</li><li><a href="stop-100781.html">100781</a> - Raversijde Luchthavenstraat 12:45</li><li><a href="stop-101005.html">101005</a> - Raversijde Middenlaan 12:46</li><li><a href="stop-98259.html">98259</a> - Raversijde Luchthavenstraat 12:47</li><li><a href="stop-98256.html">98256</a> - Raversijde E.Desmitlaan 12:49</li><li><a href="stop-40406.html">40406</a> - Oostende Dorpstraat 12:50</li><li><a href="stop-40405.html">40405</a> - Oostende Distellaan 12:51</li><li><a href="stop-40403.html">40403</a> - Oostende Derbylaan 12:52</li><li><a href="stop-40393.html">40393</a> - Oostende Aartshertogstraat 12:53</li><li><a href="stop-106849.html">106849</a> - Oostende Northlaan vervangingshalte 12:54</li><li><a href="stop-106851.html">106851</a> - Oostende Sportstraat vervangingshalte 12:57</li><li><a href="stop-106850.html">106850</a> - Oostende Petit Paris vervangingshalte 12:58</li><li><a href="stop-40444.html">40444</a> - Oostende Sint-Jozefskerk 12:59</li><li><a href="stop-93744.html">93744</a> - Oostende Stadhuis 13:00</li><li><a href="stop-40421.html">40421</a> - Oostende Kapellestraat 13:01</li><li><a href="stop-125685.html">125685</a> - Oostende Station perron 2 13:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4313.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

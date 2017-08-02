@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Houthalen - Neerpelt - Achel - 22475539</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Houthalen - Neerpelt - Achel - 22475539</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-34963.html">34963</a> - Achel Statie 16:03</li><li><a href="stop-95294.html">95294</a> - Achel Nieuwe Kerk 16:04</li><li><a href="stop-29049.html">29049</a> - Achel Leenderdijk 16:05</li><li><a href="stop-29038.html">29038</a> - Achel De Vliet 16:06</li><li><a href="stop-29046.html">29046</a> - Achel Kerk 16:07</li><li><a href="stop-29037.html">29037</a> - Achel Bergeind 16:08</li><li><a href="stop-105205.html">105205</a> - Achel Quatre-Bras 16:09</li><li><a href="stop-93809.html">93809</a> - Sint-Huibrechts-Lille Heuvelenweg 16:11</li><li><a href="stop-126103.html">126103</a> - Sint-Huibrechts-Lille Centrum 16:12</li><li><a href="stop-33080.html">33080</a> - Sint-Huibrechts-Lille Riet 16:13</li><li><a href="stop-33025.html">33025</a> - Neerpelt De Bette 16:14</li><li><a href="stop-33058.html">33058</a> - Neerpelt Kleine Landeigendom 16:15</li><li><a href="stop-33015.html">33015</a> - Neerpelt Ankerweg 16:17</li><li><a href="stop-123120.html">123120</a> - Neerpelt College 16:18</li><li><a href="stop-33046.html">33046</a> - Neerpelt Station 16:20</li><li><a href="stop-33397.html">33397</a> - Overpelt Rijkswacht 16:21</li><li><a href="stop-91061.html">91061</a> - Overpelt Overweg 16:22</li><li><a href="stop-91060.html">91060</a> - Overpelt Kiosk 16:25</li><li><a href="stop-33399.html">33399</a> - Overpelt Rijmenstraat 16:26</li><li><a href="stop-33419.html">33419</a> - Overpelt Walstraat 16:27</li><li><a href="stop-33390.html">33390</a> - Overpelt Neus 16:27</li><li><a href="stop-33406.html">33406</a> - Overpelt Schansstraat 16:28</li><li><a href="stop-97446.html">97446</a> - Lindel Kerk 16:29</li><li><a href="stop-33421.html">33421</a> - Overpelt Voorstraat 16:30</li><li><a href="stop-33380.html">33380</a> - Overpelt Hoeven Kabien 16:30</li><li><a href="stop-33427.html">33427</a> - Overpelt Hoeveneinde 16:32</li><li><a href="stop-29810.html">29810</a> - Eksel Goudvinkenlaan 16:33</li><li><a href="stop-29829.html">29829</a> - Eksel Winnerstraat 16:34</li><li><a href="stop-29812.html">29812</a> - Eksel Groenstraat 16:35</li><li><a href="stop-123259.html">123259</a> - Eksel Kerkstraat 16:36</li><li><a href="stop-93431.html">93431</a> - Eksel Marktplein kapel 16:37</li><li><a href="stop-29808.html">29808</a> - Eksel Banneux kapel 16:38</li><li><a href="stop-92014.html">92014</a> - Wijchmaal Acacialaan 16:40</li><li><a href="stop-91065.html">91065</a> - Wijchmaal Sint-Elisabethlaan 16:41</li><li><a href="stop-33578.html">33578</a> - Wijchmaal Ontmoetingscentrum 16:42</li><li><a href="stop-110491.html">110491</a> - Wijchmaal Sint-Trudostraat 16:43</li><li><a href="stop-33584.html">33584</a> - Wijchmaal Station 16:44</li><li><a href="stop-29857.html">29857</a> - Hechtel Peerderbaan 2 16:45</li><li><a href="stop-29855.html">29855</a> - Hechtel Peerderbaan 1 16:46</li><li><a href="stop-93456.html">93456</a> - Hechtel Welsh Guardplein 16:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5585.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

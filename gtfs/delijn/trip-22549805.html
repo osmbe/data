@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Beerse -Turnhout - 22549805</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Beerse -Turnhout - 22549805</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-26001.html">26001</a> - Beerse Den Hout kerk 21:54</li><li><a href="stop-110001.html">110001</a> - Beerse Kapel 21:56</li><li><a href="stop-25998.html">25998</a> - Beerse Larenstraat 21:57</li><li><a href="stop-109998.html">109998</a> - Beerse Smisstraat 21:58</li><li><a href="stop-20734.html">20734</a> - Beerse Schoolstraat 21:58</li><li><a href="stop-108016.html">108016</a> - Beerse Krommenhof 21:59</li><li><a href="stop-92370.html">92370</a> - Beerse Kattespoelstraat 22:00</li><li><a href="stop-92369.html">92369</a> - Vosselaar Lindenhoeve 22:01</li><li><a href="stop-92383.html">92383</a> - Vosselaar Oudebaan 22:02</li><li><a href="stop-108875.html">108875</a> - Vosselaar Dorp 22:03</li><li><a href="stop-22699.html">22699</a> - Vosselaar Bergeneinde 22:04</li><li><a href="stop-22701.html">22701</a> - Vosselaar Jagerslaan 22:06</li><li><a href="stop-22703.html">22703</a> - Turnhout Galgenbeekweg 22:06</li><li><a href="stop-22705.html">22705</a> - Turnhout Lokerenstraat 22:07</li><li><a href="stop-22707.html">22707</a> - Turnhout Stelplaats 22:07</li><li><a href="stop-108879.html">108879</a> - Turnhout Station perron 6 22:08</li><li><a href="stop-108880.html">108880</a> - Turnhout Zeshoek 22:09</li><li><a href="stop-108881.html">108881</a> - Turnhout Markt perron 1 22:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3803.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

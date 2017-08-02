@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hoboken - Wilrijk - Merksem - Ekeren - 21528580</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hoboken - Wilrijk - Merksem - Ekeren - 21528580</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108106.html">108106</a> - Berchem Vosstraat 08:00</li><li><a href="stop-107346.html">107346</a> - Berchem Bikschotelaan 08:01</li><li><a href="stop-108042.html">108042</a> - Borgerhout L. Van Berckenlaan 08:04</li><li><a href="stop-107747.html">107747</a> - Borgerhout Gitschotellei 08:05</li><li><a href="stop-100346.html">100346</a> - Borgerhout K. Van De Woestijnelei 08:06</li><li><a href="stop-108126.html">108126</a> - Borgerhout Berchemlei 08:07</li><li><a href="stop-108125.html">108125</a> - Borgerhout Luitenant Lippenslaan 08:08</li><li><a href="stop-109617.html">109617</a> - Borgerhout Morckhoven 08:09</li><li><a href="stop-107935.html">107935</a> - Deurne Muggenberg 08:10</li><li><a href="stop-109585.html">109585</a> - Deurne Mestputteke 08:11</li><li><a href="stop-108529.html">108529</a> - Deurne Sterckshof 08:14</li><li><a href="stop-108631.html">108631</a> - Deurne Turnhoutsebaan 08:15</li><li><a href="stop-107383.html">107383</a> - Deurne Atheneum 08:16</li><li><a href="stop-107912.html">107912</a> - Deurne J. Scheurweghstraat 08:18</li><li><a href="stop-108054.html">108054</a> - Deurne Lakborslei 08:19</li><li><a href="stop-93267.html">93267</a> - Merksem Deurnebaan Albertkanaal 08:21</li><li><a href="stop-108432.html">108432</a> - Merksem Sint-Bartholomeusstraat 08:23</li><li><a href="stop-107605.html">107605</a> - Merksem Oudebareel 08:24</li><li><a href="stop-108038.html">108038</a> - Merksem Kroonplein 08:26</li><li><a href="stop-20399.html">20399</a> - Merksem J. Palfijnziekenhuis 08:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2805.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

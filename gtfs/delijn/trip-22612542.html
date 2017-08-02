@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge-Jabbeke - 22612542</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge-Jabbeke - 22612542</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128945.html">128945</a> - Brugge Station perron 5 06:57</li><li><a href="stop-126316.html">126316</a> - Brugge 'T Zand perron 7 06:59</li><li><a href="stop-98039.html">98039</a> - Sint-Andries Sint-Lodewijk 07:02</li><li><a href="stop-98010.html">98010</a> - Sint-Andries Hertogen 07:03</li><li><a href="stop-100866.html">100866</a> - Sint-Andries De Klokke 07:04</li><li><a href="stop-98074.html">98074</a> - Sint-Andries Farao 07:05</li><li><a href="stop-98073.html">98073</a> - Sint-Andries Hemelvaart 07:06</li><li><a href="stop-98017.html">98017</a> - Sint-Andries De Nieulant 07:08</li><li><a href="stop-98012.html">98012</a> - Sint-Andries Boeverbos 07:09</li><li><a href="stop-98026.html">98026</a> - Sint-Andries Kerk 07:10</li><li><a href="stop-98032.html">98032</a> - Sint-Andries Molendorp 07:11</li><li><a href="stop-100850.html">100850</a> - Sint-Andries Cosy-Corner 07:11</li><li><a href="stop-37166.html">37166</a> - Varsenare De Manlaan 07:12</li><li><a href="stop-37170.html">37170</a> - Varsenare Zeeweg 07:13</li><li><a href="stop-37167.html">37167</a> - Varsenare Dorp 07:14</li><li><a href="stop-37169.html">37169</a> - Varsenare Velddreef 07:15</li><li><a href="stop-37168.html">37168</a> - Varsenare Lijsterdreef 07:16</li><li><a href="stop-37023.html">37023</a> - Snellegem Halfweghuis 07:17</li><li><a href="stop-36874.html">36874</a> - Jabbeke Isenbaertstraat 07:19</li><li><a href="stop-36875.html">36875</a> - Jabbeke Museum Permeke 07:21</li><li><a href="stop-36872.html">36872</a> - Jabbeke Dorp 07:22</li><li><a href="stop-36873.html">36873</a> - Jabbeke Garage Cools 07:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5870.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Eeklo - Assenede - Zelzate - 20705360</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eeklo - Assenede - Zelzate - 20705360</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126629.html">126629</a> - Eeklo Station perron 1 12:13</li><li><a href="stop-113947.html">113947</a> - Eeklo Markt 12:16</li><li><a href="stop-114144.html">114144</a> - Eeklo Teirlinckstraat 12:17</li><li><a href="stop-113176.html">113176</a> - Eeklo P.T.I. 12:19</li><li><a href="stop-113998.html">113998</a> - Kaprijke Dorp 12:25</li><li><a href="stop-113027.html">113027</a> - Kaprijke Nieuwland 12:26</li><li><a href="stop-113563.html">113563</a> - Kaprijke Expressweg 12:26</li><li><a href="stop-113609.html">113609</a> - Kaprijke Wauterstraat 12:28</li><li><a href="stop-113610.html">113610</a> - Bassevelde Beekstraat 12:31</li><li><a href="stop-114550.html">114550</a> - Bassevelde Eendrachtstraat 12:32</li><li><a href="stop-113611.html">113611</a> - Bassevelde Dorp 12:32</li><li><a href="stop-113612.html">113612</a> - Bassevelde Sint-Bernardusstraat 12:32</li><li><a href="stop-113613.html">113613</a> - Bassevelde Zandstraat 12:33</li><li><a href="stop-113614.html">113614</a> - Bassevelde Papendreef 12:34</li><li><a href="stop-113615.html">113615</a> - Bassevelde Hendeken 12:35</li><li><a href="stop-113616.html">113616</a> - Bassevelde Riethoek 12:36</li><li><a href="stop-113617.html">113617</a> - Boekhoute Hazenstraat 12:37</li><li><a href="stop-113618.html">113618</a> - Boekhoute Molenplein 12:38</li><li><a href="stop-113619.html">113619</a> - Boekhoute Dorp 12:39</li><li><a href="stop-113620.html">113620</a> - Boekhoute Noordstraat 12:40</li><li><a href="stop-113621.html">113621</a> - Boekhoute Ooststraat 12:40</li><li><a href="stop-113622.html">113622</a> - Boekhoute Posthoorn 12:41</li><li><a href="stop-113623.html">113623</a> - Assenede Kapellestraat 12:42</li><li><a href="stop-113624.html">113624</a> - Assenede Knotwilgenstraat 12:45</li><li><a href="stop-113625.html">113625</a> - Assenede Basseveldestraat 12:46</li><li><a href="stop-113601.html">113601</a> - Assenede Kriekerijstraat 12:48</li><li><a href="stop-113627.html">113627</a> - Assenede Markt 12:49</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./671.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

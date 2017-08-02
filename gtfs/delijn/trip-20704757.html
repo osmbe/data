@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Deinze - Nevele - Bellem - 20704757</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Deinze - Nevele - Bellem - 20704757</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126817.html">126817</a> - Deinze Station perron 2 17:34</li><li><a href="stop-113141.html">113141</a> - Deinze Gezellelaan 17:35</li><li><a href="stop-113142.html">113142</a> - Deinze Gentpoortstraat Grammat 17:37</li><li><a href="stop-113251.html">113251</a> - Deinze Kerkhof 17:38</li><li><a href="stop-118978.html">118978</a> - Deinze Grimbaartstraat 17:39</li><li><a href="stop-118979.html">118979</a> - Meigem Dorp 17:46</li><li><a href="stop-118980.html">118980</a> - Meigem Berg 17:48</li><li><a href="stop-118981.html">118981</a> - Nevele Meigemstraat 17:51</li><li><a href="stop-113700.html">113700</a> - Nevele Markt 17:52</li><li><a href="stop-113699.html">113699</a> - Nevele De Akker 17:53</li><li><a href="stop-113698.html">113698</a> - Vosselare Egelare 17:54</li><li><a href="stop-111797.html">111797</a> - Vosselare Landegemstraat 17:55</li><li><a href="stop-111798.html">111798</a> - Vosselare Tempeliersstraat 17:56</li><li><a href="stop-118982.html">118982</a> - Landegem Dorp 17:57</li><li><a href="stop-118983.html">118983</a> - Landegem Station 17:58</li><li><a href="stop-118984.html">118984</a> - Landegem Wildedreef 17:59</li><li><a href="stop-127818.html">127818</a> - Merendree Langenakker 18:00</li><li><a href="stop-120137.html">120137</a> - Merendree Brug 18:01</li><li><a href="stop-111737.html">111737</a> - Hansbeke Voordestraat 18:04</li><li><a href="stop-113724.html">113724</a> - Hansbeke Overbroekkouterslag 18:05</li><li><a href="stop-118988.html">118988</a> - Hansbeke Station 18:07</li><li><a href="stop-118989.html">118989</a> - Hansbeke Lindestraat 18:08</li><li><a href="stop-118990.html">118990</a> - Hansbeke Warandestraat 18:10</li><li><a href="stop-118991.html">118991</a> - Hansbeke Mariahovelaan 18:12</li><li><a href="stop-118992.html">118992</a> - Bellem Kerk 18:15</li><li><a href="stop-120164.html">120164</a> - Bellem Moerstraat 18:16</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./652.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

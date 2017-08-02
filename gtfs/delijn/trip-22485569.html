@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Wellen - Borgloon - Heers - 22485569</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Wellen - Borgloon - Heers - 22485569</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-31155.html">31155</a> - Kortessem Weg naar Wellen 07:09</li><li><a href="stop-31158.html">31158</a> - Kortessem Hemelspark 07:10</li><li><a href="stop-31162.html">31162</a> - Kortessem Vinckenroyestraat 07:11</li><li><a href="stop-31154.html">31154</a> - Kortessem Weg naar Opeinde 07:13</li><li><a href="stop-34999.html">34999</a> - Wellen Langenakkerstraat 07:14</li><li><a href="stop-35052.html">35052</a> - Wellen Weg naar Kukkelberg 07:15</li><li><a href="stop-35013.html">35013</a> - Wellen Plattestraat 07:16</li><li><a href="stop-34980.html">34980</a> - Wellen Basisschool 07:17</li><li><a href="stop-34995.html">34995</a> - Wellen Klooster 07:17</li><li><a href="stop-123213.html">123213</a> - Wellen Gemeentehuis 07:18</li><li><a href="stop-35006.html">35006</a> - Wellen Maris 07:19</li><li><a href="stop-34986.html">34986</a> - Wellen Blijde Hoek 07:21</li><li><a href="stop-35047.html">35047</a> - Wellen Zavel 07:23</li><li><a href="stop-34988.html">34988</a> - Wellen Bos 07:26</li><li><a href="stop-34998.html">34998</a> - Wellen Laagbuls 07:27</li><li><a href="stop-35072.html">35072</a> - Alken Alker II 07:28</li><li><a href="stop-26438.html">26438</a> - Alken Smoutstraat 07:29</li><li><a href="stop-35074.html">35074</a> - Alken Leemkuilstraat 07:30</li><li><a href="stop-98702.html">98702</a> - Alken Sassenbroekstraat 07:30</li><li><a href="stop-98704.html">98704</a> - Alken Thielestraat 07:31</li><li><a href="stop-98706.html">98706</a> - Alken Weg naar Langenakker 07:34</li><li><a href="stop-29638.html">29638</a> - Wimmertingen Weg naar Alken 07:35</li><li><a href="stop-29320.html">29320</a> - Hasselt Herkerstraat 07:38</li><li><a href="stop-29464.html">29464</a> - Hasselt Mombeekdreef 07:41</li><li><a href="stop-96880.html">96880</a> - Rapertingen Trekschuren 07:43</li><li><a href="stop-96871.html">96871</a> - Rapertingen Kerk 07:44</li><li><a href="stop-89616.html">89616</a> - Hasselt Hassaluthdreef 07:46</li><li><a href="stop-123263.html">123263</a> - Hasselt Daniëlsstraat 07:49</li><li><a href="stop-29455.html">29455</a> - Hasselt Lentestraat 07:50</li><li><a href="stop-29471.html">29471</a> - Hasselt Oude Luikerbaan 07:52</li><li><a href="stop-29774.html">29774</a> - Hasselt Toekomststraat 07:54</li><li><a href="stop-29459.html">29459</a> - Hasselt Leopoldplein 07:56</li><li><a href="stop-29291.html">29291</a> - Hasselt Diesterpoort 07:57</li><li><a href="stop-128979.html">128979</a> - Hasselt Station perron 8 08:01</li><li><a href="stop-29268.html">29268</a> - Hasselt Dusartplein 08:12</li><li><a href="stop-29652.html">29652</a> - Hasselt Zwembad perron 7 08:14</li><li><a href="stop-94957.html">94957</a> - Hasselt Handelsschool 08:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4760.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

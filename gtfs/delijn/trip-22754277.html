@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Ninove via de N8 - 22754277</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Ninove via de N8 - 22754277</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-99479.html">99479</a> - Ninove Centrum 14:00</li><li><a href="stop-117981.html">117981</a> - Ninove Elisabethlaan 14:01</li><li><a href="stop-117982.html">117982</a> - Ninove Pollarebaan 14:01</li><li><a href="stop-128718.html">128718</a> - Ninove Brusselstraat 14:02</li><li><a href="stop-127107.html">127107</a> - Meerbeke Stelplaats 14:05</li><li><a href="stop-117407.html">117407</a> - Meerbeke Hermansstraat 14:06</li><li><a href="stop-117406.html">117406</a> - Meerbeke Roesbeke 14:07</li><li><a href="stop-128713.html">128713</a> - Meerbeke Poulck 14:08</li><li><a href="stop-95706.html">95706</a> - Pamel Poelkebeekstraat 14:09</li><li><a href="stop-95704.html">95704</a> - Pamel Oud Station 14:10</li><li><a href="stop-95710.html">95710</a> - Pamel Schoon Verbond 14:11</li><li><a href="stop-95573.html">95573</a> - Strijtem Weg naar O.L.V. Lombeek 14:12</li><li><a href="stop-95716.html">95716</a> - Strijtem Hunselstraat 14:13</li><li><a href="stop-95722.html">95722</a> - Strijtem Oud Station 14:14</li><li><a href="stop-13347.html">13347</a> - Sint-Kwintens-Lennik Weg Borchtlombeek 14:15</li><li><a href="stop-89576.html">89576</a> - Sint-Kwintens-Lennik Eizeringen kruispunt 14:16</li><li><a href="stop-13353.html">13353</a> - Sint-Martens-Lennik Breynaert 14:17</li><li><a href="stop-89565.html">89565</a> - Schepdaal Goudveerdegem 14:18</li><li><a href="stop-10587.html">10587</a> - Schepdaal Vossegat 14:19</li><li><a href="stop-10568.html">10568</a> - Schepdaal Centrum 14:20</li><li><a href="stop-10589.html">10589</a> - Schepdaal Weg naar Pede 14:22</li><li><a href="stop-10581.html">10581</a> - Schepdaal Spanuit 14:23</li><li><a href="stop-10552.html">10552</a> - Itterbeek Bettendries 14:25</li><li><a href="stop-10556.html">10556</a> - Itterbeek Windmuts 14:27</li><li><a href="stop-10529.html">10529</a> - Dilbeek Stelplaats 14:29</li><li><a href="stop-10511.html">10511</a> - Dilbeek Kalenbergstraat 14:31</li><li><a href="stop-10515.html">10515</a> - Dilbeek Kaudenaardestraat 14:32</li><li><a href="stop-89562.html">89562</a> - Dilbeek Sint-Antoon 14:35</li><li><a href="stop-10302.html">10302</a> - Dilbeek Tourelle 14:36</li><li><a href="stop-90796.html">90796</a> - Sint-Jans-Molenbeek Moortebeek 14:37</li><li><a href="stop-10027.html">10027</a> - Anderlecht Prins van Luik 14:39</li><li><a href="stop-9997.html">9997</a> - Anderlecht Bomstraat 14:40</li><li><a href="stop-10038.html">10038</a> - Anderlecht Scheut 14:41</li><li><a href="stop-10006.html">10006</a> - Anderlecht Dilbeekstraat 14:43</li><li><a href="stop-90807.html">90807</a> - Sint-Jans-Molenbeek Weststation 14:46</li><li><a href="stop-10305.html">10305</a> - Sint-Jans-Molenbeek Vier Winden 14:46</li><li><a href="stop-10281.html">10281</a> - Sint-Jans-Molenbeek Hertoginneplein 14:48</li><li><a href="stop-14911.html">14911</a> - Sint-Jans-Molenbeek Driehoek 14:48</li><li><a href="stop-10095.html">10095</a> - Brussel Ninoofse Poort 14:49</li><li><a href="stop-110705.html">110705</a> - Brussel Vlaamse Poort 14:51</li><li><a href="stop-110706.html">110706</a> - Brussel Klein Kasteeltje 14:53</li><li><a href="stop-10070.html">10070</a> - Brussel IJzer 14:58</li><li><a href="stop-10072.html">10072</a> - Brussel Albert-II-laan 15:01</li><li><a href="stop-10135.html">10135</a> - Brussel Rogier 15:04</li><li><a href="stop-10098.html">10098</a> - Brussel Noord Perron 3 15:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1572.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

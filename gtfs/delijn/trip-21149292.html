@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Heverlee Boskant - Leuven - 21149292</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Heverlee Boskant - Leuven - 21149292</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-12053.html">12053</a> - Heverlee Boskantlaan II 12:05</li><li><a href="stop-12101.html">12101</a> - Heverlee Prinses Lydialaan 12:06</li><li><a href="stop-12103.html">12103</a> - Heverlee Prosperdreef 12:06</li><li><a href="stop-15550.html">15550</a> - Heverlee Wezenplein 12:07</li><li><a href="stop-12061.html">12061</a> - Heverlee De Jacht 12:09</li><li><a href="stop-12082.html">12082</a> - Heverlee Jachtlaan 12:10</li><li><a href="stop-44003.html">44003</a> - Heverlee Leopold-III laan 12:11</li><li><a href="stop-44001.html">44001</a> - Heverlee H.Hartinstituut 12:12</li><li><a href="stop-12114.html">12114</a> - Heverlee Station 12:15</li><li><a href="stop-110154.html">110154</a> - Heverlee Groenstraat 12:16</li><li><a href="stop-94829.html">94829</a> - Leuven Naamsepoort 12:17</li><li><a href="stop-12278.html">12278</a> - Leuven Sint-Kwintenskerk 12:18</li><li><a href="stop-100232.html">100232</a> - Leuven H.Hartkliniek 12:19</li><li><a href="stop-12280.html">12280</a> - Leuven Sint-Michielskerk 12:21</li><li><a href="stop-12206.html">12206</a> - Leuven Zeelstraat 12:22</li><li><a href="stop-89195.html">89195</a> - Leuven Rector De Somerplein zone A 12:23</li><li><a href="stop-12231.html">12231</a> - Leuven J.Stasstraat 12:25</li><li><a href="stop-110186.html">110186</a> - Leuven Station Perron 1 12:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2396.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

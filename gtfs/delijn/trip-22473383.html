@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Maaseik - Vroenhoven - Tongeren - 22473383</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Maaseik - Vroenhoven - Tongeren - 22473383</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-123082.html">123082</a> - Maaseik Campus H en R 12:05</li><li><a href="stop-32297.html">32297</a> - Maaseik Verloren Kost 12:10</li><li><a href="stop-33097.html">33097</a> - Maaseik Van Eycklaan 12:10</li><li><a href="stop-123118.html">123118</a> - Maaseik Plantage 12:11</li><li><a href="stop-32302.html">32302</a> - Maaseik Zaveldijk 12:13</li><li><a href="stop-32276.html">32276</a> - Maaseik Oude Barrier 12:14</li><li><a href="stop-28089.html">28089</a> - Elen Rotsheide 12:15</li><li><a href="stop-28079.html">28079</a> - Elen Breemstraat 12:16</li><li><a href="stop-88457.html">88457</a> - Elen Kruispunt 12:17</li><li><a href="stop-28081.html">28081</a> - Elen Donkelstraat 12:19</li><li><a href="stop-28082.html">28082</a> - Elen Henrylaan 12:20</li><li><a href="stop-28141.html">28141</a> - Rotem Klaverstraat 12:21</li><li><a href="stop-28145.html">28145</a> - Rotem Molenweg 12:22</li><li><a href="stop-28133.html">28133</a> - Rotem Copie Center 12:23</li><li><a href="stop-28137.html">28137</a> - Rotem Haagstraat 12:23</li><li><a href="stop-28131.html">28131</a> - Rotem Biesestraat 12:24</li><li><a href="stop-28134.html">28134</a> - Rotem E. Dorlaan 12:25</li><li><a href="stop-28128.html">28128</a> - Rotem Bessenstraat 12:26</li><li><a href="stop-28071.html">28071</a> - Rotem Ritserstraat 12:27</li><li><a href="stop-28077.html">28077</a> - Dilsen Witte Kapel 12:28</li><li><a href="stop-28057.html">28057</a> - Dilsen Bakkershoefstraat 12:28</li><li><a href="stop-28063.html">28063</a> - Dilsen Dijkweg 12:30</li><li><a href="stop-125458.html">125458</a> - Dilsen Erteveld 12:31</li><li><a href="stop-28102.html">28102</a> - Lanklaar Dr. Lenstralaan 12:32</li><li><a href="stop-105184.html">105184</a> - Lanklaar Nijverheidslaan 12:34</li><li><a href="stop-28113.html">28113</a> - Lanklaar Kruispunt 12:37</li><li><a href="stop-28148.html">28148</a> - Stokkem Kapel 12:39</li><li><a href="stop-28152.html">28152</a> - Stokkem Kerk 12:40</li><li><a href="stop-28160.html">28160</a> - Stokkem Molenveld 12:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4614.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Mechelen - Zemst - Vilvoorde - Zaventem - 21153984</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mechelen - Zemst - Vilvoorde - Zaventem - 21153984</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-16996.html">16996</a> - Zaventem Luchthaven Perron B 12:39</li><li><a href="stop-17026.html">17026</a> - Zaventem Technics Noord 12:41</li><li><a href="stop-14169.html">14169</a> - Zaventem Gebouw 9 12:42</li><li><a href="stop-14167.html">14167</a> - Zaventem B-House 12:43</li><li><a href="stop-94877.html">94877</a> - Machelen Korenberg 12:44</li><li><a href="stop-94879.html">94879</a> - Machelen Gebouw 830 12:47</li><li><a href="stop-91151.html">91151</a> - Machelen Cargo Post 12:48</li><li><a href="stop-91149.html">91149</a> - Machelen Cargo 706 12:49</li><li><a href="stop-127846.html">127846</a> - Machelen Cargo Discount P1 12:49</li><li><a href="stop-12687.html">12687</a> - Machelen Heirbaan 12:52</li><li><a href="stop-95285.html">95285</a> - Vilvoorde Levis 12:54</li><li><a href="stop-127066.html">127066</a> - Vilvoorde Fabrieksstraat 12:56</li><li><a href="stop-127955.html">127955</a> - Vilvoorde Station Perron 4 12:57</li><li><a href="stop-14012.html">14012</a> - Vilvoorde Spoorwegbrug 12:58</li><li><a href="stop-14857.html">14857</a> - Vilvoorde Horteco 12:59</li><li><a href="stop-14010.html">14010</a> - Vilvoorde Seringenstraat 13:00</li><li><a href="stop-13958.html">13958</a> - Vilvoorde Houtemsestwg 191 13:01</li><li><a href="stop-13956.html">13956</a> - Vilvoorde Houtemsestwg 266 13:02</li><li><a href="stop-13936.html">13936</a> - Peutie Buitingstraat 13:03</li><li><a href="stop-13960.html">13960</a> - Vilvoorde Houtemveldstraat 13:04</li><li><a href="stop-13978.html">13978</a> - Vilvoorde Kluitingstraat 13:05</li><li><a href="stop-13954.html">13954</a> - Vilvoorde Hoge Buizen 13:07</li><li><a href="stop-14224.html">14224</a> - Eppegem Industrie 13:08</li><li><a href="stop-14228.html">14228</a> - Eppegem Station 13:09</li><li><a href="stop-14220.html">14220</a> - Eppegem Dorp 13:10</li><li><a href="stop-14226.html">14226</a> - Eppegem Molenhoek 13:11</li><li><a href="stop-14222.html">14222</a> - Eppegem De Waterleest 13:12</li><li><a href="stop-14244.html">14244</a> - Zemst Huis nr.258 13:13</li><li><a href="stop-14248.html">14248</a> - Zemst Gulden Boom 13:14</li><li><a href="stop-14240.html">14240</a> - Zemst Den Arm 13:15</li><li><a href="stop-14242.html">14242</a> - Zemst Dorp 13:16</li><li><a href="stop-14246.html">14246</a> - Zemst Melkerij 13:17</li><li><a href="stop-15303.html">15303</a> - Zemst Carrefour 13:18</li><li><a href="stop-17273.html">17273</a> - Hofstade Ontmoetingscentrum 13:20</li><li><a href="stop-14229.html">14229</a> - Hofstade t Steppeke 13:21</li><li><a href="stop-94870.html">94870</a> - Mechelen Geerdegemstraat 13:22</li><li><a href="stop-94872.html">94872</a> - Mechelen Lindestraat 13:23</li><li><a href="stop-14422.html">14422</a> - Mechelen Jubellaan 13:24</li><li><a href="stop-14420.html">14420</a> - Mechelen Wilgenstraat 13:25</li><li><a href="stop-14418.html">14418</a> - Mechelen Stenenmolenstraat 13:25</li><li><a href="stop-21646.html">21646</a> - Mechelen Europalaan 13:26</li><li><a href="stop-21589.html">21589</a> - Mechelen Station perron 3 13:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2570.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

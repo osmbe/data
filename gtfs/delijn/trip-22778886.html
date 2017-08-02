@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Moorsel - Leuven - 22778886</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Moorsel - Leuven - 22778886</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-14573.html">14573</a> - Brussel Noord Perron 6 21:59</li><li><a href="stop-99470.html">99470</a> - Brussel Rogier 22:00</li><li><a href="stop-10108.html">10108</a> - Brussel Rogier 22:01</li><li><a href="stop-90833.html">90833</a> - Sint-Joost-ten-Node Kruidtuin 22:03</li><li><a href="stop-90816.html">90816</a> - Sint-Joost-ten-Node Madou 22:05</li><li><a href="stop-90834.html">90834</a> - Sint-Joost-ten-Node Madou 22:06</li><li><a href="stop-17207.html">17207</a> - Sint-Joost-ten-Node Sint-Joost 22:07</li><li><a href="stop-10312.html">10312</a> - Sint-Joost-ten-Node Clovis 22:09</li><li><a href="stop-10241.html">10241</a> - Schaarbeek Vinçotte 22:10</li><li><a href="stop-10221.html">10221</a> - Schaarbeek Dailly 22:11</li><li><a href="stop-110144.html">110144</a> - Schaarbeek Meiser Station 22:12</li><li><a href="stop-10235.html">10235</a> - Schaarbeek Meiser 22:13</li><li><a href="stop-10231.html">10231</a> - Schaarbeek Lebrun 22:15</li><li><a href="stop-10227.html">10227</a> - Schaarbeek Genève 22:16</li><li><a href="stop-10167.html">10167</a> - Evere Grosjean 22:18</li><li><a href="stop-10165.html">10165</a> - Evere De Paduwa 22:19</li><li><a href="stop-10163.html">10163</a> - Evere De Lombaerde 22:20</li><li><a href="stop-107298.html">107298</a> - Sint-Lambrechts-Woluwe Tol 22:21</li><li><a href="stop-14138.html">14138</a> - Sint-Stevens-Woluwe Harenheide 22:22</li><li><a href="stop-14144.html">14144</a> - Sint-Stevens-Woluwe Lange Wagenstraat 22:23</li><li><a href="stop-14142.html">14142</a> - Sint-Stevens-Woluwe Eversestraat 22:23</li><li><a href="stop-14146.html">14146</a> - Sint-Stevens-Woluwe Woluwedal 22:24</li><li><a href="stop-16224.html">16224</a> - Kraainem Viaduct E40 22:25</li><li><a href="stop-16217.html">16217</a> - Kraainem Thumasstraat 22:25</li><li><a href="stop-11988.html">11988</a> - Kraainem Bricout 22:26</li><li><a href="stop-11994.html">11994</a> - Kraainem Dezangré 22:27</li><li><a href="stop-12002.html">12002</a> - Kraainem Lenaerts 22:28</li><li><a href="stop-14154.html">14154</a> - Sterrebeek J.F.Kennedylaan 22:29</li><li><a href="stop-14164.html">14164</a> - Sterrebeek Reigerslaan 22:30</li><li><a href="stop-14152.html">14152</a> - Sterrebeek Zeenstraat 22:31</li><li><a href="stop-14158.html">14158</a> - Sterrebeek L.Nantierlaan 22:32</li><li><a href="stop-14156.html">14156</a> - Sterrebeek Zavelstraat 22:32</li><li><a href="stop-14160.html">14160</a> - Sterrebeek Oud Station 22:33</li><li><a href="stop-14148.html">14148</a> - Sterrebeek Vossemlaan 22:34</li><li><a href="stop-125628.html">125628</a> - Tervuren Moorsel Begraafplaats 22:36</li><li><a href="stop-125630.html">125630</a> - Tervuren Moorsel Kerk 22:37</li><li><a href="stop-125632.html">125632</a> - Tervuren Moorsel Watertoren 22:38</li><li><a href="stop-16934.html">16934</a> - Tervuren Moorsel Mezenlaan 22:39</li><li><a href="stop-14691.html">14691</a> - Tervuren Moorsel Groenlaan 22:40</li><li><a href="stop-43137.html">43137</a> - Leefdaal Grensstraat 22:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2097.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

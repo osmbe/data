@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Schepdaal - Vlezenbeek - Halle - 22790208</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Schepdaal - Vlezenbeek - Halle - 22790208</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-15683.html">15683</a> - Halle Station Perron 1 15:50</li><li><a href="stop-15634.html">15634</a> - Halle Park 15:54</li><li><a href="stop-15656.html">15656</a> - Halle Arkenvest 15:56</li><li><a href="stop-15655.html">15655</a> - Halle Bergense Poort 15:56</li><li><a href="stop-14834.html">14834</a> - Halle Ziekenhuislaan 15:58</li><li><a href="stop-11195.html">11195</a> - Halle Ninoofse Poort 16:01</li><li><a href="stop-127399.html">127399</a> - Halle Brusselpoort 16:03</li><li><a href="stop-13405.html">13405</a> - Sint-Pieters-Leeuw De Klink 16:13</li><li><a href="stop-9513.html">9513</a> - Sint-Pieters-Leeuw Konkelerf 16:14</li><li><a href="stop-13460.html">13460</a> - Sint-Pieters-Leeuw Vagevuur 16:16</li><li><a href="stop-9344.html">9344</a> - Vlezenbeek Rekers 16:16</li><li><a href="stop-13481.html">13481</a> - Vlezenbeek Dorp 16:17</li><li><a href="stop-13480.html">13480</a> - Vlezenbeek Gemeenteplein 16:18</li><li><a href="stop-11022.html">11022</a> - Vlezenbeek Kamstraat 16:19</li><li><a href="stop-44030.html">44030</a> - Vlezenbeek Ziekenhuis Inkendaal 16:19</li><li><a href="stop-87248.html">87248</a> - Vlezenbeek Heilige Geest 16:20</li><li><a href="stop-13304.html">13304</a> - Vlezenbeek Vijfhoek 16:21</li><li><a href="stop-13300.html">13300</a> - Gaasbeek Kasteel 16:22</li><li><a href="stop-13302.html">13302</a> - Gaasbeek Onderstraat 16:23</li><li><a href="stop-26235.html">26235</a> - Gaasbeek OLV-Kerk 16:24</li><li><a href="stop-26234.html">26234</a> - Gaasbeek Statie 16:26</li><li><a href="stop-13357.html">13357</a> - Sint-Martens-Lennik Groenenberg 16:28</li><li><a href="stop-13359.html">13359</a> - Sint-Martens-Lennik Brouwerij Lindemans 16:29</li><li><a href="stop-99454.html">99454</a> - Vlezenbeek Ganzenveld 16:30</li><li><a href="stop-110162.html">110162</a> - Sint-Anna-Pede Isabellastraat 16:33</li><li><a href="stop-14649.html">14649</a> - Schepdaal Loveld 16:33</li><li><a href="stop-14651.html">14651</a> - Schepdaal Lostraat 16:37</li><li><a href="stop-10582.html">10582</a> - Schepdaal Sint-Gertrudis-Pede 16:37</li><li><a href="stop-92837.html">92837</a> - Schepdaal Rosweg 16:38</li><li><a href="stop-10575.html">10575</a> - Schepdaal Levenslust 16:38</li><li><a href="stop-14653.html">14653</a> - Schepdaal Caerenbergveld 16:39</li><li><a href="stop-10569.html">10569</a> - Schepdaal Geraardsbergsestr. 16:39</li><li><a href="stop-14659.html">14659</a> - Schepdaal Markt 16:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2456.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

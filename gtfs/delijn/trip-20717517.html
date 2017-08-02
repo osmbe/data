@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Overboelare - Geraardsbergen - Everbeek - Brakel - 20717517</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Overboelare - Geraardsbergen - Everbeek - Brakel - 20717517</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-119267.html">119267</a> - Everbeek Plaats Beneden 15:35</li><li><a href="stop-119257.html">119257</a> - Zarlardinge Mierenhoek 15:36</li><li><a href="stop-119268.html">119268</a> - Zarlardinge Torenstraat 15:37</li><li><a href="stop-119269.html">119269</a> - Zarlardinge Kerk 15:38</li><li><a href="stop-119270.html">119270</a> - Goeferdinge Kerk 15:40</li><li><a href="stop-119271.html">119271</a> - Goeferdinge Elzenstraat 15:41</li><li><a href="stop-119272.html">119272</a> - Goeferdinge Eersbekeweg 15:42</li><li><a href="stop-119273.html">119273</a> - Goeferdinge Marktweg 15:42</li><li><a href="stop-112910.html">112910</a> - Goeferdinge Dutskouter 15:43</li><li><a href="stop-112909.html">112909</a> - Goeferdinge Oudenaardsestraat 15:44</li><li><a href="stop-119284.html">119284</a> - Geraardsbergen Astridlaan 15:45</li><li><a href="stop-119283.html">119283</a> - Geraardsbergen Grotestraat 15:46</li><li><a href="stop-126607.html">126607</a> - Geraardsbergen Station perron 3 15:48</li><li><a href="stop-118905.html">118905</a> - Geraardsbergen Gasthuisstraat 15:49</li><li><a href="stop-118887.html">118887</a> - Overboelare Gaverstraat 15:52</li><li><a href="stop-118884.html">118884</a> - Overboelare Van Lierdelaan 15:53</li><li><a href="stop-118886.html">118886</a> - Overboelare Losweg 15:54</li><li><a href="stop-118888.html">118888</a> - Overboelare Denderoord 15:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1264.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

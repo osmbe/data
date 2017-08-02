@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Sint-Niklaas - Antwerpen-Centraal - P725030211</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Niklaas - Antwerpen-Centraal - P725030211</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8894508_A.html">8894508:A</a> - Sint-Niklaas 06:00</li><li><a href="stop-8894672_1.html">8894672:1</a> - Temse 06:08</li><li><a href="stop-8822772_1.html">8822772:1</a> - Bornem 06:13</li><li><a href="stop-8822715_3.html">8822715:3</a> - Puurs 06:33</li><li><a href="stop-8822848_1.html">8822848:1</a> - Ruisbroek-Sauvegarde 06:37</li><li><a href="stop-8822814_3.html">8822814:3</a> - Boom 06:42</li><li><a href="stop-8824240_1.html">8824240:1</a> - Niel 06:46</li><li><a href="stop-8824232_1.html">8824232:1</a> - Schelle 06:49</li><li><a href="stop-8824224_1.html">8824224:1</a> - Hemiksem 06:51</li><li><a href="stop-8824158_1.html">8824158:1</a> - Hoboken-Polder 06:57</li><li><a href="stop-8821196_1.html">8821196:1</a> - Antwerpen-Zuid 07:03</li><li><a href="stop-8821121_7.html">8821121:7</a> - Antwerpen-Berchem 07:09</li><li><a href="stop-8821006_5.html">8821006:5</a> - Antwerpen-Centraal 07:13</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1259.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

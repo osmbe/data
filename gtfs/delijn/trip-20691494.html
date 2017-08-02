@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - S-M-Leerne/De Pinte-Latem-Gent-Zele - 20691494</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: S-M-Leerne/De Pinte-Latem-Gent-Zele - 20691494</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-115377.html">115377</a> - Zele Station 06:15</li><li><a href="stop-115004.html">115004</a> - Zele Elststraat 06:17</li><li><a href="stop-115005.html">115005</a> - Zele Koevliet 06:19</li><li><a href="stop-115011.html">115011</a> - Zele Wezepoel 06:20</li><li><a href="stop-115012.html">115012</a> - Zele Groenlaan 06:21</li><li><a href="stop-115013.html">115013</a> - Zele Heikant 06:22</li><li><a href="stop-115555.html">115555</a> - Zele Kromme Heistraat 06:24</li><li><a href="stop-115554.html">115554</a> - Zele Gentsesteenweg 06:25</li><li><a href="stop-113458.html">113458</a> - Overmere Klappeldonk 06:26</li><li><a href="stop-113457.html">113457</a> - Overmere Mosseveldstraat 06:27</li><li><a href="stop-113456.html">113456</a> - Overmere Lindestraat 06:29</li><li><a href="stop-113455.html">113455</a> - Overmere Schoolstraat 06:29</li><li><a href="stop-113453.html">113453</a> - Overmere Kerk 06:30</li><li><a href="stop-113452.html">113452</a> - Overmere Vaarschootstraat 06:31</li><li><a href="stop-113451.html">113451</a> - Kalken Gaverstraatje 06:32</li><li><a href="stop-113450.html">113450</a> - Kalken Berringstraat 06:33</li><li><a href="stop-113444.html">113444</a> - Kalken Kerk 06:34</li><li><a href="stop-113443.html">113443</a> - Kalken Bieststraat 06:34</li><li><a href="stop-113442.html">113442</a> - Kalken Steenbeekstraat 06:35</li><li><a href="stop-113441.html">113441</a> - Kalken Belindestraat 06:36</li><li><a href="stop-113440.html">113440</a> - Kalken Colmanstraat 06:36</li><li><a href="stop-113439.html">113439</a> - Laarne Steentjesstraat 06:37</li><li><a href="stop-113438.html">113438</a> - Laarne Kerkstraat 06:38</li><li><a href="stop-113437.html">113437</a> - Laarne Ascopstraat 06:38</li><li><a href="stop-113436.html">113436</a> - Laarne Bergstraat 06:39</li><li><a href="stop-113435.html">113435</a> - Laarne Breestraat 06:40</li><li><a href="stop-113434.html">113434</a> - Laarne Groenstraat 06:40</li><li><a href="stop-113433.html">113433</a> - Destelbergen Meersakkerstraat 06:41</li><li><a href="stop-113432.html">113432</a> - Destelbergen Palingstraat 06:42</li><li><a href="stop-113431.html">113431</a> - Destelbergen Damvalleistraat 06:43</li><li><a href="stop-113430.html">113430</a> - Destelbergen Ring R4 06:44</li><li><a href="stop-113429.html">113429</a> - Destelbergen Sint-Pietershofstraat 06:45</li><li><a href="stop-113408.html">113408</a> - Destelbergen Kerk 06:46</li><li><a href="stop-113379.html">113379</a> - Destelbergen Ter Ramen 06:47</li><li><a href="stop-113378.html">113378</a> - Destelbergen Zenderstraat 06:48</li><li><a href="stop-113377.html">113377</a> - Destelbergen Admiraalstraat 06:49</li><li><a href="stop-113376.html">113376</a> - Destelbergen Stelplaats 06:50</li><li><a href="stop-113375.html">113375</a> - Destelbergen Lossystraat 06:51</li><li><a href="stop-113374.html">113374</a> - Sint-Amandsberg Baeyensstraat 06:52</li><li><a href="stop-111237.html">111237</a> - Sint-Amandsberg Heernisplein 06:53</li><li><a href="stop-111238.html">111238</a> - Gent Banierstraat 06:54</li><li><a href="stop-111239.html">111239</a> - Gent Nieuwhof 06:54</li><li><a href="stop-126622.html">126622</a> - Gent Dampoort perron 4 06:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./217.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

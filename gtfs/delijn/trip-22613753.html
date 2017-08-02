@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge Torhout Lichtervelde Roeselare - 22613753</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge Torhout Lichtervelde Roeselare - 22613753</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-110947.html">110947</a> - Lichtervelde Station Achterkant 09:22</li><li><a href="stop-110948.html">110948</a> - Lichtervelde Station Achterkant 09:22</li><li><a href="stop-123660.html">123660</a> - Lichtervelde Jive 09:24</li><li><a href="stop-40965.html">40965</a> - Lichtervelde Kruiskalsijde 09:25</li><li><a href="stop-40960.html">40960</a> - Lichtervelde Artois 09:26</li><li><a href="stop-40885.html">40885</a> - Gits Handboog 09:29</li><li><a href="stop-40886.html">40886</a> - Gits Kruiskalsijde 09:32</li><li><a href="stop-40884.html">40884</a> - Gits Finance 09:34</li><li><a href="stop-41341.html">41341</a> - Gits De Boomgaard 09:35</li><li><a href="stop-40882.html">40882</a> - Gits Plaats 09:36</li><li><a href="stop-40888.html">40888</a> - Gits Rusthuis 09:37</li><li><a href="stop-40881.html">40881</a> - Gits Berg 09:38</li><li><a href="stop-40887.html">40887</a> - Gits Land Van Belofte 09:40</li><li><a href="stop-40889.html">40889</a> - Gits Sportman 09:41</li><li><a href="stop-40883.html">40883</a> - Gits Epsom 09:42</li><li><a href="stop-123667.html">123667</a> - Beveren Wijnendale 09:43</li><li><a href="stop-41471.html">41471</a> - Beveren De Leye 09:44</li><li><a href="stop-42046.html">42046</a> - Roeselare De Rots 09:44</li><li><a href="stop-39236.html">39236</a> - Roeselare Mammoet 3 09:45</li><li><a href="stop-93336.html">93336</a> - Roeselare LeopoldIII-Laan 09:46</li><li><a href="stop-126366.html">126366</a> - Roeselare Station perron 5 09:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3970.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

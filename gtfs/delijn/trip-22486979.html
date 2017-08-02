@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Bree - Molenbeersel/Kinrooi - 22486979</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bree - Molenbeersel/Kinrooi - 22486979</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-123048.html">123048</a> - Kinrooi Dorpsplein 07:44</li><li><a href="stop-30952.html">30952</a> - Kinrooi Molenweg 07:45</li><li><a href="stop-30900.html">30900</a> - Kinrooi Breeërsteenweg 07:46</li><li><a href="stop-30962.html">30962</a> - Kinrooi Luitestraat 07:46</li><li><a href="stop-27665.html">27665</a> - Tongerlo 't Hasselt Kiezel 07:49</li><li><a href="stop-27685.html">27685</a> - Tongerlo Klaverblad 07:50</li><li><a href="stop-27695.html">27695</a> - Tongerlo Vogelsdonk 07:51</li><li><a href="stop-105173.html">105173</a> - Tongerlo Veestraat 07:53</li><li><a href="stop-105169.html">105169</a> - Tongerlo Bosstraat 07:54</li><li><a href="stop-27680.html">27680</a> - Tongerlo Kerkhofstraat 07:55</li><li><a href="stop-105170.html">105170</a> - Tongerlo Bosstraat 07:57</li><li><a href="stop-105174.html">105174</a> - Tongerlo Veestraat 07:58</li><li><a href="stop-27521.html">27521</a> - Bree Processieweg 08:02</li><li><a href="stop-27523.html">27523</a> - Bree 't Hasselt Kerk 08:03</li><li><a href="stop-27587.html">27587</a> - Bree Kanaal Noord 08:05</li><li><a href="stop-27543.html">27543</a> - Bree Brugstraat 08:06</li><li><a href="stop-123466.html">123466</a> - Bree Busstation Perron 4 08:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5093.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

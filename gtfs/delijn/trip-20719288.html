@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Geraardsbergen - Lierde - Oudenaarde - 20719288</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Geraardsbergen - Lierde - Oudenaarde - 20719288</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-119335.html">119335</a> - Nederbrakel Station 20:07</li><li><a href="stop-118363.html">118363</a> - Nederbrakel Kasteelstraat 20:08</li><li><a href="stop-119336.html">119336</a> - Nederbrakel Scholen 20:08</li><li><a href="stop-118459.html">118459</a> - Nederbrakel Herreweg 20:09</li><li><a href="stop-117369.html">117369</a> - Nederbrakel Leizemooie 20:10</li><li><a href="stop-118460.html">118460</a> - Nederbrakel Meerbeekstraat 20:10</li><li><a href="stop-120332.html">120332</a> - Nederbrakel Romeinseweg 20:11</li><li><a href="stop-118461.html">118461</a> - Nederbrakel Kleibergstraat 20:12</li><li><a href="stop-118462.html">118462</a> - Elst Gentsestraat 20:13</li><li><a href="stop-118463.html">118463</a> - Zegelsem Donkweg 20:14</li><li><a href="stop-118464.html">118464</a> - Zegelsem Teirlinckstraat 20:15</li><li><a href="stop-118465.html">118465</a> - Sint-Kornelis-Horebeke Ruitersstraat 20:17</li><li><a href="stop-118466.html">118466</a> - Sint-Maria-Horebeke Bovenstraat 20:18</li><li><a href="stop-118468.html">118468</a> - Mater Brouwerij Roman 20:19</li><li><a href="stop-118469.html">118469</a> - Mater Hauwaart 20:20</li><li><a href="stop-118470.html">118470</a> - Mater Holle Weg 20:21</li><li><a href="stop-120334.html">120334</a> - Edelare Eikenberg 20:22</li><li><a href="stop-118473.html">118473</a> - Edelare Kerzelare Kapel 20:23</li><li><a href="stop-128729.html">128729</a> - Edelare Kerk 20:24</li><li><a href="stop-118475.html">118475</a> - Edelare Aalststraat 20:25</li><li><a href="stop-118476.html">118476</a> - Oudenaarde Casteleinstraat 20:26</li><li><a href="stop-120381.html">120381</a> - Oudenaarde Smallendam 20:27</li><li><a href="stop-119355.html">119355</a> - Oudenaarde Markt 20:28</li><li><a href="stop-119356.html">119356</a> - Oudenaarde Tacambaro 20:30</li><li><a href="stop-126754.html">126754</a> - Oudenaarde Station perron 3 20:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1355.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

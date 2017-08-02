@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tessenderlo - Meerhout - Geel/Mol - 22479735</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tessenderlo - Meerhout - Geel/Mol - 22479735</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-24035.html">24035</a> - Mol Rozenbergschool 15:45</li><li><a href="stop-24034.html">24034</a> - Mol Bergstraat 15:46</li><li><a href="stop-109424.html">109424</a> - Mol Gemeenschapsschool 15:48</li><li><a href="stop-32938.html">32938</a> - Mol Station perron 3 15:50</li><li><a href="stop-127756.html">127756</a> - Mol College 15:52</li><li><a href="stop-127766.html">127766</a> - Mol TISP 15:58</li><li><a href="stop-21549.html">21549</a> - Mol Volmolenbaan 16:02</li><li><a href="stop-32965.html">32965</a> - Mol Schriek 16:04</li><li><a href="stop-32625.html">32625</a> - Meerhout Grees 16:06</li><li><a href="stop-26716.html">26716</a> - Balen Weg naar Hulsen 16:07</li><li><a href="stop-32642.html">32642</a> - Meerhout Lil 16:08</li><li><a href="stop-32646.html">32646</a> - Meerhout Molsebaan 16:09</li><li><a href="stop-20113.html">20113</a> - Meerhout Watermolen 16:11</li><li><a href="stop-127430.html">127430</a> - Meerhout Markt Dorp 16:12</li><li><a href="stop-32607.html">32607</a> - Meerhout Bergstraat 16:14</li><li><a href="stop-32653.html">32653</a> - Meerhout Weg op Olmen 16:15</li><li><a href="stop-32627.html">32627</a> - Meerhout Halveweg 16:16</li><li><a href="stop-32649.html">32649</a> - Meerhout Schaffenberg 16:18</li><li><a href="stop-127946.html">127946</a> - Meerhout Gestel kerk 16:20</li><li><a href="stop-32633.html">32633</a> - Meerhout Huis Dams 16:21</li><li><a href="stop-32629.html">32629</a> - Meerhout Hepmansbossen 16:22</li><li><a href="stop-29012.html">29012</a> - Kwaadmechelen Zwartenhoek 16:23</li><li><a href="stop-96812.html">96812</a> - Genendijk Kerk 16:25</li><li><a href="stop-34352.html">34352</a> - Tessenderlo Weg op Vorst 16:27</li><li><a href="stop-34221.html">34221</a> - Tessenderlo Garage De Lijn 16:29</li><li><a href="stop-34247.html">34247</a> - Tessenderlo Kerk 16:31</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4525.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

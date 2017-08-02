@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - As - Lanklaar - Dilsen - Maasmechelen - 22460034</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - As - Lanklaar - Dilsen - Maasmechelen - 22460034</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-28113.html">28113</a> - Lanklaar Kruispunt 07:23</li><li><a href="stop-28152.html">28152</a> - Stokkem Kerk 07:26</li><li><a href="stop-28160.html">28160</a> - Stokkem Molenveld 07:26</li><li><a href="stop-99154.html">99154</a> - Stokkem Arnold-Sauwenlaan 07:27</li><li><a href="stop-106877.html">106877</a> - Stokkem Koppelstraat 07:28</li><li><a href="stop-28151.html">28151</a> - Stokkem Kapelstraat 07:28</li><li><a href="stop-94993.html">94993</a> - Lanklaar Veeweide 07:29</li><li><a href="stop-32412.html">32412</a> - Meeswijk Molen 07:30</li><li><a href="stop-32416.html">32416</a> - Meeswijk School 07:31</li><li><a href="stop-32410.html">32410</a> - Meeswijk Genootstraat 07:32</li><li><a href="stop-32396.html">32396</a> - Leut Kliniek 07:33</li><li><a href="stop-32394.html">32394</a> - Leut Kerk 07:34</li><li><a href="stop-32402.html">32402</a> - Leut Zuilstraat 07:35</li><li><a href="stop-32398.html">32398</a> - Leut Leuterweg 07:36</li><li><a href="stop-32377.html">32377</a> - Vucht Heirstraat 07:39</li><li><a href="stop-110423.html">110423</a> - Eisden Vrijthof 07:41</li><li><a href="stop-32356.html">32356</a> - Eisden Kerkhofstraat 07:42</li><li><a href="stop-32369.html">32369</a> - Eisden Post 07:44</li><li><a href="stop-123086.html">123086</a> - Eisden Bloemenlaan 07:45</li><li><a href="stop-92434.html">92434</a> - Eisden Berensheuvel 07:46</li><li><a href="stop-32444.html">32444</a> - Maasmechelen Rijksweg 07:47</li><li><a href="stop-32476.html">32476</a> - Maasmechelen College 07:48</li><li><a href="stop-32340.html">32340</a> - Maasmechelen Centrum 07:49</li><li><a href="stop-32599.html">32599</a> - Maasmechelen Apotheek 07:50</li><li><a href="stop-32447.html">32447</a> - Maasmechelen Tuinwijk 07:52</li><li><a href="stop-32473.html">32473</a> - Maasmechelen T. Boslaan 07:53</li><li><a href="stop-32383.html">32383</a> - Maasmechelen Home Fabiola 07:54</li><li><a href="stop-32463.html">32463</a> - Maasmechelen Werkhuizen Kroon Group 08:00</li><li><a href="stop-32461.html">32461</a> - Maasmechelen Werkhuizen Bleichert 08:01</li><li><a href="stop-26559.html">26559</a> - As Station 08:04</li><li><a href="stop-91112.html">91112</a> - As Drieschaar 08:05</li><li><a href="stop-93473.html">93473</a> - As Gemeentehuis 08:06</li><li><a href="stop-88444.html">88444</a> - As Kerkhof 08:07</li><li><a href="stop-26564.html">26564</a> - As Zavelstraat 08:08</li><li><a href="stop-26526.html">26526</a> - As Bilzerweg 08:09</li><li><a href="stop-26554.html">26554</a> - As Oeleinde 08:11</li><li><a href="stop-96709.html">96709</a> - Waterschei Springstraat 08:13</li><li><a href="stop-96648.html">96648</a> - Waterschei Geenhornstraat 08:14</li><li><a href="stop-96696.html">96696</a> - Waterschei Bascule 08:15</li><li><a href="stop-96694.html">96694</a> - Waterschei Waterbleekstraat 08:18</li><li><a href="stop-28513.html">28513</a> - Genk Mispelaarstraat 08:20</li><li><a href="stop-43837.html">43837</a> - Genk Campus Bret 08:20</li><li><a href="stop-88462.html">88462</a> - Genk Sint-Lodewijkstraat 08:21</li><li><a href="stop-28377.html">28377</a> - Genk Koninklijk Atheneum 08:23</li><li><a href="stop-28492.html">28492</a> - Genk J. Habexlaan 08:25</li><li><a href="stop-43780.html">43780</a> - Genk Station perron 8 08:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4794.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

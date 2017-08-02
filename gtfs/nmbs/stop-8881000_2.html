@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Mons</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Mons</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-IC1990319381.html">IC1990319381</a> - IC1990319381 - Lille Flandres(f) - Namen</li><li><a href="trip-IC1994519511.html">IC1994519511</a> - IC1994519511 - Lille Flandres(f) - Namen</li><li><a href="trip-IC1995119521.html">IC1995119521</a> - IC1995119521 - Lille Flandres(f) - Namen</li><li><a href="trip-IC1996719581.html">IC1996719581</a> - IC1996719581 - Lille Flandres(f) - Namen</li><li><a href="trip-IC380515681.html">IC380515681</a> - IC380515681 - Bergen - Luik-Paleis</li><li><a href="trip-IC380615691.html">IC380615691</a> - IC380615691 - Bergen - Luik-Paleis</li><li><a href="trip-IC380815711.html">IC380815711</a> - IC380815711 - Bergen - Luik-Paleis</li><li><a href="trip-IC380915721.html">IC380915721</a> - IC380915721 - Bergen - Luik-Paleis</li><li><a href="trip-IC381015731.html">IC381015731</a> - IC381015731 - Bergen - Luik-Paleis</li><li><a href="trip-IC381115741.html">IC381115741</a> - IC381115741 - Bergen - Luik-Paleis</li><li><a href="trip-IC381315761.html">IC381315761</a> - IC381315761 - Bergen - Luik-Paleis</li><li><a href="trip-IC381415771.html">IC381415771</a> - IC381415771 - Bergen - Luik-Paleis</li><li><a href="trip-IC381515781.html">IC381515781</a> - IC381515781 - Bergen - Luik-Paleis</li><li><a href="trip-IC381715801.html">IC381715801</a> - IC381715801 - Bergen - Luik-Paleis</li><li><a href="trip-IC381815811.html">IC381815811</a> - IC381815811 - Bergen - Luik-Paleis</li><li><a href="trip-IC382215851.html">IC382215851</a> - IC382215851 - Bergen - Charleroi-Zuid</li><li><a href="trip-IC382515861.html">IC382515861</a> - IC382515861 - Charleroi-Zuid - Bergen</li><li><a href="trip-IC382615871.html">IC382615871</a> - IC382615871 - Namen - Bergen</li><li><a href="trip-IC382815891.html">IC382815891</a> - IC382815891 - Luik-Paleis - Bergen</li><li><a href="trip-IC382915901.html">IC382915901</a> - IC382915901 - Luik-Paleis - Bergen</li><li><a href="trip-IC383015911.html">IC383015911</a> - IC383015911 - Luik-Paleis - Bergen</li><li><a href="trip-IC383815991.html">IC383815991</a> - IC383815991 - Luik-Paleis - Bergen</li><li><a href="trip-IC384216031.html">IC384216031</a> - IC384216031 - Luik-Paleis - Bergen</li><li><a href="trip-IC9057901.html">IC9057901</a> - IC9057901 - Moeskroen - Namen</li><li><a href="trip-IC9077921.html">IC9077921</a> - IC9077921 - Moeskroen - Namen</li><li><a href="trip-IC9287981.html">IC9287981</a> - IC9287981 - Namen - Doornik</li><li><a href="trip-IC9338031.html">IC9338031</a> - IC9338031 - Namen - Lille Flandres(f)</li><li><a href="trip-IC9348041.html">IC9348041</a> - IC9348041 - Namen - Doornik</li><li><a href="trip-IC9358051.html">IC9358051</a> - IC9358051 - Namen - Lille Flandres(f)</li><li><a href="trip-IC9368061.html">IC9368061</a> - IC9368061 - Namen - Lille Flandres(f)</li><li><a href="trip-IC9388091.html">IC9388091</a> - IC9388091 - Namen - Moeskroen</li><li><a href="trip-IC9398101.html">IC9398101</a> - IC9398101 - Namen - Lille Flandres(f)</li><li><a href="trip-IC9418121.html">IC9418121</a> - IC9418121 - Namen - Doornik</li><li><a href="trip-IC9428131.html">IC9428131</a> - IC9428131 - Namen - Doornik</li><li><a href="trip-L445624201.html">L445624201</a> - L445624201 - Bergen - Charleroi-Zuid</li><li><a href="trip-L446624301.html">L446624301</a> - L446624301 - Quevy - La Louviere-Zuid</li><li><a href="trip-L446924331.html">L446924331</a> - L446924331 - Quevy - La Louviere-Zuid</li><li><a href="trip-P788031691.html">P788031691</a> - P788031691 - Quevy - Bergen</li><li><a href="trip-P877533561.html">P877533561</a> - P877533561 - Bergen - Manage</li><li><a href="trip-P880233671.html">P880233671</a> - P880233671 - Schaarbeek - Quevy</li><li><a href="trip-P888033711.html">P888033711</a> - P888033711 - Bergen - Quevy</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.453854, 3.942542], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.453854, 3.942542]).addTo(map);
+    </script>
+</body>
+
+</html>

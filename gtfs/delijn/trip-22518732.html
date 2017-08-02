@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Turnhout - Herentals - Herselt - Leuven - 22518732</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Turnhout - Herentals - Herselt - Leuven - 22518732</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108973.html">108973</a> - Herentals Belgiëlaan 11:09</li><li><a href="stop-25380.html">25380</a> - Herentals Station perron 6 11:10</li><li><a href="stop-100399.html">100399</a> - Herentals Hikstraat 11:11</li><li><a href="stop-108969.html">108969</a> - Herentals AZ Sint-Elisabeth 11:12</li><li><a href="stop-109957.html">109957</a> - Herentals Kerkhof 11:14</li><li><a href="stop-25373.html">25373</a> - Herentals Schoutenlaan 11:15</li><li><a href="stop-25371.html">25371</a> - Herentals Snepkenshoeve 11:17</li><li><a href="stop-25369.html">25369</a> - Lichtaart Snepkenshof 11:18</li><li><a href="stop-25367.html">25367</a> - Lichtaart Hof Ter Heidedreef 11:21</li><li><a href="stop-25365.html">25365</a> - Lichtaart Olensteenweg 11:22</li><li><a href="stop-109808.html">109808</a> - Lichtaart Kastanjelaan 11:24</li><li><a href="stop-109806.html">109806</a> - Lichtaart Schoolstraat 11:24</li><li><a href="stop-109804.html">109804</a> - Lichtaart Gemeentestraat 11:25</li><li><a href="stop-20540.html">20540</a> - Lichtaart Kerk 11:26</li><li><a href="stop-25405.html">25405</a> - Lichtaart Hoogstraat 11:27</li><li><a href="stop-25407.html">25407</a> - Kasterlee Koningsbos 11:28</li><li><a href="stop-25409.html">25409</a> - Kasterlee Hoge Mouw 11:28</li><li><a href="stop-25411.html">25411</a> - Kasterlee Ossengoor 11:29</li><li><a href="stop-109821.html">109821</a> - Kasterlee Kempenstraat 11:29</li><li><a href="stop-109822.html">109822</a> - Kasterlee Dorp 11:30</li><li><a href="stop-109744.html">109744</a> - Kasterlee Pellemanstraat 11:31</li><li><a href="stop-25142.html">25142</a> - Kasterlee Groot Goor 11:31</li><li><a href="stop-25139.html">25139</a> - Kasterlee Mertenshof 11:32</li><li><a href="stop-25137.html">25137</a> - Kasterlee Eikenlaan 11:32</li><li><a href="stop-109741.html">109741</a> - Kasterlee Zandhoef 11:33</li><li><a href="stop-129042.html">129042</a> - Kasterlee Klein Rees 11:34</li><li><a href="stop-109738.html">109738</a> - Kasterlee De Borcht 11:35</li><li><a href="stop-25127.html">25127</a> - Turnhout Mastheidestraat 11:36</li><li><a href="stop-98467.html">98467</a> - Turnhout Zevendonk 11:38</li><li><a href="stop-25122.html">25122</a> - Turnhout Technische Controle 11:38</li><li><a href="stop-25119.html">25119</a> - Turnhout Oprit brug E34 11:39</li><li><a href="stop-109735.html">109735</a> - Turnhout Ceka 11:40</li><li><a href="stop-109732.html">109732</a> - Turnhout Sporthal 11:41</li><li><a href="stop-25112.html">25112</a> - Turnhout Graatakker 11:41</li><li><a href="stop-88240.html">88240</a> - Turnhout Apostoliekenstraat 11:42</li><li><a href="stop-108881.html">108881</a> - Turnhout Markt perron 1 11:43</li><li><a href="stop-107831.html">107831</a> - Turnhout Warande 11:44</li><li><a href="stop-108878.html">108878</a> - Turnhout Station perron 1 11:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3098.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

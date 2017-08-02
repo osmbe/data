@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Dendermonde - Wetteren - Heusden - Gent - 20714245</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Dendermonde - Wetteren - Heusden - Gent - 20714245</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126631.html">126631</a> - Wetteren Station perron 6 07:30</li><li><a href="stop-113402.html">113402</a> - Wetteren Kon. Astridlaan 07:32</li><li><a href="stop-113404.html">113404</a> - Wetteren Molenstraatje 07:35</li><li><a href="stop-117360.html">117360</a> - Wetteren Peperstraatje 07:36</li><li><a href="stop-113405.html">113405</a> - Wetteren Inst. Scheppers 07:38</li><li><a href="stop-113362.html">113362</a> - Wetteren Stookte 07:38</li><li><a href="stop-113270.html">113270</a> - Wetteren Ten Ede Edekerkhof 07:39</li><li><a href="stop-113363.html">113363</a> - Wetteren Ten Ede Slagstraat 07:40</li><li><a href="stop-113364.html">113364</a> - Wetteren Ten Ede Edeschoolstraat 07:41</li><li><a href="stop-113372.html">113372</a> - Wetteren Ten Ede Gaverstraatje 07:41</li><li><a href="stop-113380.html">113380</a> - Heusden Bosheidestraat 07:43</li><li><a href="stop-113352.html">113352</a> - Heusden Donkerstraat 07:44</li><li><a href="stop-113389.html">113389</a> - Heusden Neerheide 07:46</li><li><a href="stop-113351.html">113351</a> - Heusden Spangerede 07:47</li><li><a href="stop-113388.html">113388</a> - Heusden Sint-Barbarastraat 07:48</li><li><a href="stop-113730.html">113730</a> - Heusden Aelmeersstraat 07:49</li><li><a href="stop-113691.html">113691</a> - Melle Wevershof 07:51</li><li><a href="stop-111302.html">111302</a> - Melle Leeuw 07:52</li><li><a href="stop-111683.html">111683</a> - Melle Merelbekestraat 07:53</li><li><a href="stop-111684.html">111684</a> - Melle Vogelhoekplein 07:54</li><li><a href="stop-112602.html">112602</a> - Melle Vogelhoekplein 07:54</li><li><a href="stop-112601.html">112601</a> - Melle Merelbekestraat 07:55</li><li><a href="stop-112221.html">112221</a> - Melle Leeuw 07:57</li><li><a href="stop-113841.html">113841</a> - Melle Leeuw 07:57</li><li><a href="stop-111159.html">111159</a> - Gentbrugge Pecherstraat 07:59</li><li><a href="stop-111160.html">111160</a> - Gentbrugge Tennisstraat 08:00</li><li><a href="stop-113838.html">113838</a> - Gentbrugge Schooldreef 08:01</li><li><a href="stop-111551.html">111551</a> - Gentbrugge Arsenaal 08:02</li><li><a href="stop-111552.html">111552</a> - Gentbrugge Stelplaats 08:03</li><li><a href="stop-111554.html">111554</a> - Ledeberg Ledebergplein 08:06</li><li><a href="stop-111555.html">111555</a> - Ledeberg Eggermontstraat 08:07</li><li><a href="stop-111429.html">111429</a> - Ledeberg Gaston Crommenlaan 08:09</li><li><a href="stop-112530.html">112530</a> - Gent Zomerstraat 08:10</li><li><a href="stop-112068.html">112068</a> - Gent Zwijnaardsesteenweg 08:11</li><li><a href="stop-128755.html">128755</a> - Gent Parkplein 08:12</li><li><a href="stop-126695.html">126695</a> - Gent Sint-Pietersstation perron 12 08:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1083.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

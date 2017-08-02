@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Eeklo - Sint-Laureins - Sint-Margriete - 20698993</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eeklo - Sint-Laureins - Sint-Margriete - 20698993</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-113168.html">113168</a> - Sint-Margriete Gemeentehuis 06:20</li><li><a href="stop-113167.html">113167</a> - Sint-Margriete Groenstraat 06:21</li><li><a href="stop-113166.html">113166</a> - Sint-Margriete Sint-Margrietestraat 06:23</li><li><a href="stop-113165.html">113165</a> - Sint-Margriete Ter Kreken 06:25</li><li><a href="stop-113164.html">113164</a> - Sint-Margriete Langeweg 06:26</li><li><a href="stop-113163.html">113163</a> - Sint-Margriete Groeneweg 06:27</li><li><a href="stop-113162.html">113162</a> - Sint-Laureins Comercaatsweg 06:28</li><li><a href="stop-113161.html">113161</a> - Sint-Laureins Vlamingstraat 06:28</li><li><a href="stop-113160.html">113160</a> - Sint-Laureins Dorp 06:29</li><li><a href="stop-113159.html">113159</a> - Sint-Laureins Rommelsweg 06:30</li><li><a href="stop-113158.html">113158</a> - Sint-Laureins Vaakweg 06:30</li><li><a href="stop-113157.html">113157</a> - Sint-Laureins Celiekerkweg 06:31</li><li><a href="stop-113156.html">113156</a> - Sint-Laureins Boterhoek 06:33</li><li><a href="stop-113155.html">113155</a> - Balgerhoeke Sint-Laureinsesteenweg 21 06:33</li><li><a href="stop-127588.html">127588</a> - Balgerhoeke Kerk 06:35</li><li><a href="stop-112983.html">112983</a> - Eeklo School 06:36</li><li><a href="stop-112982.html">112982</a> - Eeklo Kerkhof 06:37</li><li><a href="stop-128754.html">128754</a> - Eeklo AZ Alma 06:41</li><li><a href="stop-113067.html">113067</a> - Eeklo Galgenakker 06:42</li><li><a href="stop-113066.html">113066</a> - Eeklo Droomschip 06:43</li><li><a href="stop-112980.html">112980</a> - Eeklo Blakstraat 06:44</li><li><a href="stop-112979.html">112979</a> - Eeklo Brugsesteenweg 06:44</li><li><a href="stop-112978.html">112978</a> - Eeklo Eikelstraat 06:46</li><li><a href="stop-112977.html">112977</a> - Eeklo Markt 06:47</li><li><a href="stop-126662.html">126662</a> - Eeklo Station perron 3 06:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./408.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

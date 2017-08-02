@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Roeselare-Passendale-Ieper - 22643003</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Roeselare-Passendale-Ieper - 22643003</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126392.html">126392</a> - Ieper Station perron 5 21:47</li><li><a href="stop-95332.html">95332</a> - Ieper Oudstrijderslaan 21:50</li><li><a href="stop-38542.html">38542</a> - Ieper Rijselpoort 21:51</li><li><a href="stop-104779.html">104779</a> - Ieper Sint-Pieterskerk 21:52</li><li><a href="stop-39059.html">39059</a> - Ieper Markt 21:54</li><li><a href="stop-38526.html">38526</a> - Ieper Hospitaal 21:55</li><li><a href="stop-38517.html">38517</a> - Ieper Bascule 21:55</li><li><a href="stop-42465.html">42465</a> - Ieper Ligywijk 21:56</li><li><a href="stop-42463.html">42463</a> - Ieper La Mezarde 21:56</li><li><a href="stop-42471.html">42471</a> - Ieper Potyze 21:57</li><li><a href="stop-105014.html">105014</a> - Ieper Frans Kerkhof 21:58</li><li><a href="stop-42475.html">42475</a> - Ieper Verloren Hoek 21:59</li><li><a href="stop-42243.html">42243</a> - Zonnebeke Frezenberg 22:01</li><li><a href="stop-42247.html">42247</a> - Zonnebeke Steenbakkerij 22:02</li><li><a href="stop-42240.html">42240</a> - Zonnebeke De Brikke 22:02</li><li><a href="stop-42241.html">42241</a> - Zonnebeke De Oude Voerman 22:03</li><li><a href="stop-42245.html">42245</a> - Zonnebeke Klooster 22:04</li><li><a href="stop-42244.html">42244</a> - Zonnebeke Plaats 22:04</li><li><a href="stop-42242.html">42242</a> - Zonnebeke De Vier Seizoenen 22:05</li><li><a href="stop-42239.html">42239</a> - Zonnebeke Broodseinde 22:06</li><li><a href="stop-42588.html">42588</a> - Passendale Schipstraat 22:07</li><li><a href="stop-42589.html">42589</a> - Passendale Tyne Cot 22:07</li><li><a href="stop-42586.html">42586</a> - Passendale Hoeve De Poorter 22:09</li><li><a href="stop-42585.html">42585</a> - Passendale De Vos 22:09</li><li><a href="stop-42587.html">42587</a> - Passendale Plaats 22:10</li><li><a href="stop-42590.html">42590</a> - Passendale Wasserij 22:11</li><li><a href="stop-41981.html">41981</a> - Moorslede Station 22:11</li><li><a href="stop-41971.html">41971</a> - Moorslede Garage Dessein 22:12</li><li><a href="stop-90938.html">90938</a> - Moorslede Klooster 22:13</li><li><a href="stop-41979.html">41979</a> - Moorslede Plaats 22:14</li><li><a href="stop-41977.html">41977</a> - Moorslede Masselis 22:15</li><li><a href="stop-41970.html">41970</a> - Moorslede Garage 22:16</li><li><a href="stop-41976.html">41976</a> - Moorslede Kruisken 22:17</li><li><a href="stop-41983.html">41983</a> - Moorslede Vierkavenhoek 22:18</li><li><a href="stop-41972.html">41972</a> - Moorslede Huis Vanneste 22:20</li><li><a href="stop-91290.html">91290</a> - Roeselare De Ruiter 22:21</li><li><a href="stop-123683.html">123683</a> - Roeselare Martin 22:23</li><li><a href="stop-125733.html">125733</a> - Roeselare Pennoenstraat 22:24</li><li><a href="stop-123682.html">123682</a> - Roeselare Lindenstraat 22:24</li><li><a href="stop-123608.html">123608</a> - Roeselare Westerlinde 22:24</li><li><a href="stop-39253.html">39253</a> - Roeselare De Spil 22:26</li><li><a href="stop-39213.html">39213</a> - Roeselare Residentie Flora 22:26</li><li><a href="stop-39214.html">39214</a> - Roeselare De Mandel 22:27</li><li><a href="stop-126365.html">126365</a> - Roeselare Station perron 4 22:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4294.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

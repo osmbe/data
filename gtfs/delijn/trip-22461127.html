@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hamont - Geel - 22461127</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hamont - Geel - 22461127</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127159.html">127159</a> - Geel Station perron 5 07:37</li><li><a href="stop-107517.html">107517</a> - Geel Stadspark 07:40</li><li><a href="stop-109754.html">109754</a> - Geel Markt 07:41</li><li><a href="stop-127001.html">127001</a> - Geel P. Van Neylenstraat 07:44</li><li><a href="stop-127765.html">127765</a> - Geel Sint-Dimpnaplein 07:46</li><li><a href="stop-109971.html">109971</a> - Geel Molsesteenweg 07:47</li><li><a href="stop-25894.html">25894</a> - Geel Kievermont 07:49</li><li><a href="stop-25891.html">25891</a> - Geel Meerhoutseweg 07:50</li><li><a href="stop-25877.html">25877</a> - Geel Kunstijsbaan 07:52</li><li><a href="stop-25840.html">25840</a> - Geel Bruulstraat 07:52</li><li><a href="stop-25835.html">25835</a> - Geel Wijdbosstraat 07:54</li><li><a href="stop-109955.html">109955</a> - Geel Bel Kerk 07:55</li><li><a href="stop-25812.html">25812</a> - Geel Sint-Antoniusstraat 07:56</li><li><a href="stop-106739.html">106739</a> - Mol Korenstraat 07:58</li><li><a href="stop-106743.html">106743</a> - Mol Gerststraat 07:59</li><li><a href="stop-106742.html">106742</a> - Mol Oude Bergen 08:00</li><li><a href="stop-110028.html">110028</a> - Ezaart Kerk 08:01</li><li><a href="stop-106592.html">106592</a> - Mol Roggestraat 08:02</li><li><a href="stop-125304.html">125304</a> - Mol Ginderbroek 08:03</li><li><a href="stop-109399.html">109399</a> - Mol Martelarenstraat 08:04</li><li><a href="stop-127480.html">127480</a> - Mol Kerk 08:05</li><li><a href="stop-109395.html">109395</a> - Mol Laar 08:06</li><li><a href="stop-24035.html">24035</a> - Mol Rozenbergschool 08:07</li><li><a href="stop-24034.html">24034</a> - Mol Bergstraat 08:08</li><li><a href="stop-109424.html">109424</a> - Mol Gemeenschapsschool 08:09</li><li><a href="stop-32939.html">32939</a> - Mol Station perron 2 08:14</li><li><a href="stop-109231.html">109231</a> - Mol Gasthuis 08:15</li><li><a href="stop-109395.html">109395</a> - Mol Laar 08:16</li><li><a href="stop-24035.html">24035</a> - Mol Rozenbergschool 08:17</li><li><a href="stop-109406.html">109406</a> - Mol Overweg 78 08:18</li><li><a href="stop-106579.html">106579</a> - Mol Gompelbaan 08:19</li><li><a href="stop-127455.html">127455</a> - Mol Gompel Hoeve 08:20</li><li><a href="stop-107498.html">107498</a> - Gompel Pastoor Vaesstraat 08:24</li><li><a href="stop-97376.html">97376</a> - Gompel Glaverbel 08:25</li><li><a href="stop-97379.html">97379</a> - Gompel Lenslei 08:26</li><li><a href="stop-26704.html">26704</a> - Balen Vierhoek 08:28</li><li><a href="stop-97393.html">97393</a> - Wezel Wezelstraat 08:29</li><li><a href="stop-97392.html">97392</a> - Wezel Spoorwegdreef 08:31</li><li><a href="stop-97390.html">97390</a> - Wezel Lariëndijkweg 08:32</li><li><a href="stop-95400.html">95400</a> - Wezel Sint-Jozef Apotheek 08:34</li><li><a href="stop-97396.html">97396</a> - Wezel Casino 08:36</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5057.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

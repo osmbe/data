@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Moorsel Steven Kapel - Droeshout - Opwijk - 20715762</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Moorsel Steven Kapel - Droeshout - Opwijk - 20715762</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126710.html">126710</a> - Opwijk Station perron 1 07:03</li><li><a href="stop-118066.html">118066</a> - Opwijk Kouterlaan 07:04</li><li><a href="stop-117125.html">117125</a> - Opwijk Heirbaan 07:04</li><li><a href="stop-116678.html">116678</a> - Opwijk Heiveld 07:06</li><li><a href="stop-116644.html">116644</a> - Opwijk Marktstraat 07:06</li><li><a href="stop-116645.html">116645</a> - Opwijk Klaarstraat 07:07</li><li><a href="stop-117129.html">117129</a> - Opwijk Schoolcampus Vko 07:08</li><li><a href="stop-117128.html">117128</a> - Opwijk Nanovestraat 07:09</li><li><a href="stop-117127.html">117127</a> - Droeshout Guldenboomstraat 07:10</li><li><a href="stop-128700.html">128700</a> - Droeshout Kerk 07:11</li><li><a href="stop-116651.html">116651</a> - Droeshout Droeshoutstraat 07:12</li><li><a href="stop-116652.html">116652</a> - Opwijk Steenweg op Vilvoorde 07:13</li><li><a href="stop-117594.html">117594</a> - Opwijk Steenweg op Aalst 07:15</li><li><a href="stop-125759.html">125759</a> - Opwijk Steenweg op Dendermonde 07:16</li><li><a href="stop-116746.html">116746</a> - Baardegem Melkspinde 07:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1187.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

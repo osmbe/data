@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Leuven Gasthuisberg - Rotselaar - Tremelo - 22779945</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Leuven Gasthuisberg - Rotselaar - Tremelo - 22779945</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-14610.html">14610</a> - Leuven Station perron 11 16:45</li><li><a href="stop-12304.html">12304</a> - Leuven Vaartvest 16:48</li><li><a href="stop-93377.html">93377</a> - Leuven Dijledreef 16:50</li><li><a href="stop-12312.html">12312</a> - Wilsele Zwaaikom 16:51</li><li><a href="stop-127224.html">127224</a> - Wilsele Ecowerf 16:53</li><li><a href="stop-100233.html">100233</a> - Wilsele Viadukt A2 16:54</li><li><a href="stop-12341.html">12341</a> - Wilsele Gemeentehuis 16:55</li><li><a href="stop-12353.html">12353</a> - Wilsele Pleinstraat 16:56</li><li><a href="stop-12347.html">12347</a> - Wilsele L.Woutersstraat 16:58</li><li><a href="stop-12365.html">12365</a> - Wilsele Weggevoerdenstr. 16:59</li><li><a href="stop-12359.html">12359</a> - Wilsele Sint-Agathakerk 17:00</li><li><a href="stop-12357.html">12357</a> - Wilsele Jef Scherensstraat 17:02</li><li><a href="stop-13155.html">13155</a> - Rotselaar Rotonde 17:03</li><li><a href="stop-13160.html">13160</a> - Rotselaar Station 17:06</li><li><a href="stop-13156.html">13156</a> - Rotselaar Drielinden 17:06</li><li><a href="stop-93383.html">93383</a> - Rotselaar Huis Gordts 17:07</li><li><a href="stop-13146.html">13146</a> - Rotselaar Dorp 17:07</li><li><a href="stop-13150.html">13150</a> - Rotselaar Gemeentehuis 17:08</li><li><a href="stop-13168.html">13168</a> - Rotselaar Waranda 17:09</li><li><a href="stop-13175.html">13175</a> - Werchter Dijlekant 17:11</li><li><a href="stop-13170.html">13170</a> - Werchter De Brug 17:11</li><li><a href="stop-13172.html">13172</a> - Werchter Kerkplein 17:12</li><li><a href="stop-13176.html">13176</a> - Werchter Tremelobaan 17:13</li><li><a href="stop-13925.html">13925</a> - Tremelo Watertoren 17:15</li><li><a href="stop-15130.html">15130</a> - Tremelo Gemeentehuis 17:17</li><li><a href="stop-93861.html">93861</a> - Tremelo Vinneweg 17:18</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2124.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

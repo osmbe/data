@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent - Eeklo - Brugge - 20698822</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent - Eeklo - Brugge - 20698822</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127924.html">127924</a> - Brugge Station perron 2 22:50</li><li><a href="stop-36771.html">36771</a> - Brugge Katelijnepoort 22:53</li><li><a href="stop-103853.html">103853</a> - Brugge Gentpoort 22:54</li><li><a href="stop-125701.html">125701</a> - Brugge Kruispoort 22:55</li><li><a href="stop-110658.html">110658</a> - Brugge Altebijstraat 22:56</li><li><a href="stop-127280.html">127280</a> - Sint-Kruis Watertoren 22:57</li><li><a href="stop-127279.html">127279</a> - Sint-Kruis Vossensteert 22:58</li><li><a href="stop-105059.html">105059</a> - Sint-Kruis Bos En Lommer 22:59</li><li><a href="stop-98064.html">98064</a> - Sint-Kruis Vijversdreef 22:59</li><li><a href="stop-127896.html">127896</a> - Sint-Kruis Abdij Male 23:00</li><li><a href="stop-98055.html">98055</a> - Sint-Kruis Malesteenweg 556 23:01</li><li><a href="stop-127272.html">127272</a> - Sijsele Hekhoek 23:01</li><li><a href="stop-100886.html">100886</a> - Sijsele Kazerne 23:02</li><li><a href="stop-125702.html">125702</a> - Sijsele Dorp 23:03</li><li><a href="stop-127315.html">127315</a> - Sijsele Zwaanstraat 23:04</li><li><a href="stop-105067.html">105067</a> - Sijsele Gentsesteenweg 27 23:05</li><li><a href="stop-105066.html">105066</a> - Sijsele Veldhoek 23:06</li><li><a href="stop-127314.html">127314</a> - Sijsele Ziekenhuis 23:07</li><li><a href="stop-112998.html">112998</a> - Maldegem De Swaeflaan 23:07</li><li><a href="stop-112997.html">112997</a> - Maldegem Barbarastraat 23:08</li><li><a href="stop-112996.html">112996</a> - Maldegem Zandhoogte 23:09</li><li><a href="stop-112995.html">112995</a> - Maldegem Oude Kasteeldreef 23:10</li><li><a href="stop-112994.html">112994</a> - Maldegem Reesinghelaan 23:11</li><li><a href="stop-125412.html">125412</a> - Maldegem Markt perron 2 23:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./370.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

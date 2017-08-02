@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oostende-Zandv.-Oudenburg-Eernegem - 22650694</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oostende-Zandv.-Oudenburg-Eernegem - 22650694</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-36436.html">36436</a> - Eernegem Kerk 06:56</li><li><a href="stop-40240.html">40240</a> - Eernegem Leliestraat 06:57</li><li><a href="stop-40234.html">40234</a> - Eernegem Bruggestraat 06:58</li><li><a href="stop-40230.html">40230</a> - Eernegem 'S Gravendriesschelaan 06:59</li><li><a href="stop-40244.html">40244</a> - Eernegem Populierenlaan 07:01</li><li><a href="stop-40236.html">40236</a> - Eernegem Constantinopel 07:02</li><li><a href="stop-40233.html">40233</a> - Eernegem Brouwerij 07:03</li><li><a href="stop-40231.html">40231</a> - Eernegem Bourgogne 07:04</li><li><a href="stop-40527.html">40527</a> - Westkerke Eernegemstraat 07:05</li><li><a href="stop-40532.html">40532</a> - Westkerke Pardoenstraat 07:06</li><li><a href="stop-129056.html">129056</a> - Westkerke Kerk Vervangingshalte 07:06</li><li><a href="stop-129057.html">129057</a> - Oudenburg Cottemweg 07:12</li><li><a href="stop-40461.html">40461</a> - Oudenburg Plaats 07:13</li><li><a href="stop-40462.html">40462</a> - Oudenburg Sint-Pietersstraat 07:15</li><li><a href="stop-40465.html">40465</a> - Oudenburg Zandvoordebrug 07:16</li><li><a href="stop-40466.html">40466</a> - Oudenburg Zwinhoekje 07:17</li><li><a href="stop-104924.html">104924</a> - Oudenburg Caelfstraat 07:19</li><li><a href="stop-101008.html">101008</a> - Zandvoorde Spiegelaere 07:21</li><li><a href="stop-123635.html">123635</a> - Zandvoorde De Zwaan 07:21</li><li><a href="stop-98283.html">98283</a> - Zandvoorde Zonnebloem 07:22</li><li><a href="stop-98278.html">98278</a> - Zandvoorde Kalkoenlaan 07:23</li><li><a href="stop-98279.html">98279</a> - Zandvoorde Markt 07:23</li><li><a href="stop-98281.html">98281</a> - Zandvoorde Stationsstraat 07:24</li><li><a href="stop-105064.html">105064</a> - Zandvoorde Verbrandingsoven 07:25</li><li><a href="stop-40452.html">40452</a> - Oostende Vesuvius 07:26</li><li><a href="stop-40456.html">40456</a> - Oostende Waterzuiveringsstation 07:27</li><li><a href="stop-40422.html">40422</a> - Oostende Koebrugstraat 07:28</li><li><a href="stop-40395.html">40395</a> - Oostende Brouwerijstraat 07:28</li><li><a href="stop-40398.html">40398</a> - Oostende Conterdam Bareel 07:29</li><li><a href="stop-93908.html">93908</a> - Oostende Az Damiaan-Gouwelozestraat 07:29</li><li><a href="stop-40555.html">40555</a> - Oostende Gouwelozestraat 07:31</li><li><a href="stop-40440.html">40440</a> - Oostende Ravelijnstraat 07:33</li><li><a href="stop-125679.html">125679</a> - Oostende Station perron 8 07:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6200.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

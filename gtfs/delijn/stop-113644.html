@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oosteeklo Muikemstraat</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Oosteeklo Muikemstraat</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-20696356.html">20696356</a> - 20696356 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696357.html">20696357</a> - 20696357 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696359.html">20696359</a> - 20696359 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696361.html">20696361</a> - 20696361 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696362.html">20696362</a> - 20696362 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696365.html">20696365</a> - 20696365 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696368.html">20696368</a> - 20696368 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696369.html">20696369</a> - 20696369 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696371.html">20696371</a> - 20696371 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696373.html">20696373</a> - 20696373 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696374.html">20696374</a> - 20696374 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696377.html">20696377</a> - 20696377 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696379.html">20696379</a> - 20696379 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696380.html">20696380</a> - 20696380 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696381.html">20696381</a> - 20696381 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696385.html">20696385</a> - 20696385 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696386.html">20696386</a> - 20696386 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696388.html">20696388</a> - 20696388 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696390.html">20696390</a> - 20696390 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696391.html">20696391</a> - 20696391 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696394.html">20696394</a> - 20696394 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696397.html">20696397</a> - 20696397 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696398.html">20696398</a> - 20696398 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696400.html">20696400</a> - 20696400 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696402.html">20696402</a> - 20696402 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696403.html">20696403</a> - 20696403 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696406.html">20696406</a> - 20696406 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696408.html">20696408</a> - 20696408 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696409.html">20696409</a> - 20696409 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20696410.html">20696410</a> - 20696410 - Gent Zuid - Ertvelde - Bassevelde</li><li><a href="trip-20705865.html">20705865</a> - 20705865 - Eeklo - Oosteeklo - Assenede</li><li><a href="trip-20705866.html">20705866</a> - 20705866 - Eeklo - Oosteeklo - Assenede</li><li><a href="trip-20705869.html">20705869</a> - 20705869 - Eeklo - Oosteeklo - Assenede</li><li><a href="trip-20705870.html">20705870</a> - 20705870 - Eeklo - Oosteeklo - Assenede</li><li><a href="trip-20705871.html">20705871</a> - 20705871 - Eeklo - Oosteeklo - Assenede</li><li><a href="trip-20705874.html">20705874</a> - 20705874 - Eeklo - Oosteeklo - Assenede</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([51.1963015478369, 3.6996120138621], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([51.1963015478369, 3.6996120138621]).addTo(map);
+    </script>
+</body>
+
+</html>

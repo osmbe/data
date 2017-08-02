@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Mechelen - St-Katelijne-Waver - Beukheuvel - Lier - 22537610</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mechelen - St-Katelijne-Waver - Beukheuvel - Lier - 22537610</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-106757.html">106757</a> - Mechelen Station perron 20 06:40</li><li><a href="stop-25813.html">25813</a> - Mechelen Raghenoplein 06:42</li><li><a href="stop-108356.html">108356</a> - Mechelen Zandpoortvest 06:42</li><li><a href="stop-108357.html">108357</a> - Mechelen Bleekstraat 06:44</li><li><a href="stop-126974.html">126974</a> - Mechelen Nekkerspoel station 06:45</li><li><a href="stop-25087.html">25087</a> - Mechelen Nijverheidsstraat 06:46</li><li><a href="stop-25085.html">25085</a> - Mechelen Papenhofstraat 06:48</li><li><a href="stop-109722.html">109722</a> - Sint-Katelijne-Waver Goede Herderlaan 06:50</li><li><a href="stop-109721.html">109721</a> - Sint-Katelijne-Waver Deudondreef 06:51</li><li><a href="stop-25079.html">25079</a> - Sint-Katelijne-Waver Maanhoeveweg 06:51</li><li><a href="stop-25076.html">25076</a> - Sint-Katelijne-Waver Mechelsesteenweg 06:52</li><li><a href="stop-25074.html">25074</a> - Sint-Katelijne-Waver Het Strei 06:53</li><li><a href="stop-109717.html">109717</a> - Sint-Katelijne-Waver Kempenarestraat 06:54</li><li><a href="stop-25069.html">25069</a> - Sint-Katelijne-Waver Daliastraat 06:55</li><li><a href="stop-109711.html">109711</a> - Sint-Katelijne-Waver Lemanstraat 06:55</li><li><a href="stop-25066.html">25066</a> - Sint-Katelijne-Waver Kerk 06:56</li><li><a href="stop-109713.html">109713</a> - Sint-Katelijne-Waver Rusthuis Sint-Elisabeth 06:57</li><li><a href="stop-25062.html">25062</a> - Sint-Katelijne-Waver Muilshoek 06:57</li><li><a href="stop-25060.html">25060</a> - Sint-Katelijne-Waver Lintse Heide 06:59</li><li><a href="stop-25058.html">25058</a> - Duffel Heidestraat smid 07:00</li><li><a href="stop-25056.html">25056</a> - Duffel Baetens 07:01</li><li><a href="stop-25054.html">25054</a> - Koningshooikt Kruisbaan 07:02</li><li><a href="stop-25052.html">25052</a> - Koningshooikt Ceulemans 07:03</li><li><a href="stop-109707.html">109707</a> - Koningshooikt Zoetewei 07:04</li><li><a href="stop-25032.html">25032</a> - Koningshooikt Grote Brand 07:06</li><li><a href="stop-109705.html">109705</a> - Koningshooikt Boerenkrijglaan 07:06</li><li><a href="stop-25028.html">25028</a> - Koningshooikt Kerk 07:07</li><li><a href="stop-109703.html">109703</a> - Koningshooikt Schoolstraat 07:08</li><li><a href="stop-89080.html">89080</a> - Koningshooikt Leliënlei 07:09</li><li><a href="stop-25021.html">25021</a> - Koningshooikt Kruisstraat 07:10</li><li><a href="stop-25019.html">25019</a> - Lier Slenderstraat 07:12</li><li><a href="stop-25016.html">25016</a> - Lier Schollebeekstraat 07:13</li><li><a href="stop-25014.html">25014</a> - Lier Hoogveldweg 07:15</li><li><a href="stop-109701.html">109701</a> - Lier Veemarkt perron 7 07:16</li><li><a href="stop-109282.html">109282</a> - Lier Kluizenplein 07:18</li><li><a href="stop-109281.html">109281</a> - Lier Markt 07:20</li><li><a href="stop-109279.html">109279</a> - Lier Rolwagenstraat 07:24</li><li><a href="stop-109940.html">109940</a> - Lier Station perron 11 07:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3592.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hoboken Polderstad - UZA - Mortsel - Wijnegem - 21533414</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hoboken Polderstad - UZA - Mortsel - Wijnegem - 21533414</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108273.html">108273</a> - Hoboken Polderstad 06:48</li><li><a href="stop-107410.html">107410</a> - Hoboken Berkenrodelei 06:49</li><li><a href="stop-20653.html">20653</a> - Hoboken Kioskplaats 06:50</li><li><a href="stop-20557.html">20557</a> - Hoboken Kapelstraat 06:51</li><li><a href="stop-108245.html">108245</a> - Hoboken P. H. Spaaklaan 06:53</li><li><a href="stop-108160.html">108160</a> - Hoboken Moretusstraat 06:53</li><li><a href="stop-20040.html">20040</a> - Hoboken Sporthal Sorgvliet 06:54</li><li><a href="stop-18851.html">18851</a> - Hoboken Verenigde Natieslaan 06:55</li><li><a href="stop-18855.html">18855</a> - Wilrijk Fotografielaan 06:57</li><li><a href="stop-109669.html">109669</a> - Wilrijk Schoonselstraat 06:58</li><li><a href="stop-18860.html">18860</a> - Wilrijk Antarctica 06:59</li><li><a href="stop-107509.html">107509</a> - Wilrijk Legerstraat 07:00</li><li><a href="stop-18856.html">18856</a> - Wilrijk Moerelei 07:01</li><li><a href="stop-108036.html">108036</a> - Wilrijk Krijgslaan 07:03</li><li><a href="stop-94370.html">94370</a> - Wilrijk Universiteitsplein 07:10</li><li><a href="stop-107611.html">107611</a> - Wilrijk Doornstraat 07:10</li><li><a href="stop-88024.html">88024</a> - Edegem Revarte 07:12</li><li><a href="stop-88766.html">88766</a> - Edegem Universitair Ziekenhuis p. 14 07:13</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2882.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

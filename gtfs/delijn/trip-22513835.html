@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Poederlee - Lichtaart - Herentals - Vorselaar - 22513835</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Poederlee - Lichtaart - Herentals - Vorselaar - 22513835</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-22774.html">22774</a> - Vorselaar Van Roeyinstituut 16:40</li><li><a href="stop-108965.html">108965</a> - Vorselaar Dorp 16:42</li><li><a href="stop-109937.html">109937</a> - Vorselaar Voetbalterrein 16:43</li><li><a href="stop-22952.html">22952</a> - Vorselaar Proosthoevebaan 16:45</li><li><a href="stop-22954.html">22954</a> - Vorselaar Kweek 16:46</li><li><a href="stop-43233.html">43233</a> - Vorselaar Doornboom 16:47</li><li><a href="stop-22958.html">22958</a> - Herentals Poederleeseweg 16:49</li><li><a href="stop-22960.html">22960</a> - Herentals Watervoort 16:50</li><li><a href="stop-22962.html">22962</a> - Herentals Bosdreef 16:51</li><li><a href="stop-108968.html">108968</a> - Herentals Netepark 16:52</li><li><a href="stop-108970.html">108970</a> - Herentals AZ Sint-Elisabeth 16:53</li><li><a href="stop-108971.html">108971</a> - Herentals Hikstraat 16:54</li><li><a href="stop-108973.html">108973</a> - Herentals Belgiëlaan 16:54</li><li><a href="stop-25380.html">25380</a> - Herentals Station perron 6 16:55</li><li><a href="stop-108972.html">108972</a> - Herentals Belgiëlaan 16:55</li><li><a href="stop-25446.html">25446</a> - Herentals Ringlaan 16:56</li><li><a href="stop-25444.html">25444</a> - Herentals Gareelmakerstraat 16:57</li><li><a href="stop-25442.html">25442</a> - Herentals Kruisboogstraat 16:58</li><li><a href="stop-25440.html">25440</a> - Olen Weg op Doffen 16:59</li><li><a href="stop-25456.html">25456</a> - Olen Distelstraat 17:01</li><li><a href="stop-25455.html">25455</a> - Olen Boekel Kerk 17:03</li><li><a href="stop-109837.html">109837</a> - Olen Kruispunt Larumseweg 17:04</li><li><a href="stop-109835.html">109835</a> - Olen Station 17:05</li><li><a href="stop-109833.html">109833</a> - Olen Waterstraat 17:06</li><li><a href="stop-25434.html">25434</a> - Olen Kruispunt Lichtaartseweg 17:07</li><li><a href="stop-109826.html">109826</a> - Olen Sint-Jozef kerk 17:07</li><li><a href="stop-109824.html">109824</a> - Geel Oude Brugweg 17:08</li><li><a href="stop-100295.html">100295</a> - Lichtaart Spechtendreef 17:09</li><li><a href="stop-25365.html">25365</a> - Lichtaart Olensteenweg 17:10</li><li><a href="stop-109808.html">109808</a> - Lichtaart Kastanjelaan 17:12</li><li><a href="stop-109806.html">109806</a> - Lichtaart Schoolstraat 17:13</li><li><a href="stop-109804.html">109804</a> - Lichtaart Gemeentestraat 17:14</li><li><a href="stop-20540.html">20540</a> - Lichtaart Kerk 17:14</li><li><a href="stop-25405.html">25405</a> - Lichtaart Hoogstraat 17:15</li><li><a href="stop-25407.html">25407</a> - Kasterlee Koningsbos 17:17</li><li><a href="stop-25409.html">25409</a> - Kasterlee Hoge Mouw 17:17</li><li><a href="stop-25411.html">25411</a> - Kasterlee Ossengoor 17:18</li><li><a href="stop-109821.html">109821</a> - Kasterlee Kempenstraat 17:18</li><li><a href="stop-109822.html">109822</a> - Kasterlee Dorp 17:19</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2977.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

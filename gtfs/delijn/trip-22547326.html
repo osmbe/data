@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Van Cauwelaertsluis - Fr. Rooseveltplaats - 22547326</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Van Cauwelaertsluis - Fr. Rooseveltplaats - 22547326</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-106750.html">106750</a> - Antwerpen Wijtvliet 16:00</li><li><a href="stop-19068.html">19068</a> - Antwerpen Fina Poort 1 16:02</li><li><a href="stop-19066.html">19066</a> - Antwerpen Fina Vulcentrum 16:05</li><li><a href="stop-19063.html">19063</a> - Antwerpen Fina Haven 447 16:06</li><li><a href="stop-19664.html">19664</a> - Antwerpen Polderdijkweg 16:08</li><li><a href="stop-21344.html">21344</a> - Antwerpen Polderdijkweg 16:08</li><li><a href="stop-20383.html">20383</a> - Antwerpen Industrieweg 16:09</li><li><a href="stop-20483.html">20483</a> - Antwerpen Kaai 403 - Spek & Eieren 16:09</li><li><a href="stop-20384.html">20384</a> - Antwerpen Industrieweg 16:09</li><li><a href="stop-21349.html">21349</a> - Antwerpen Polderdijkweg 16:10</li><li><a href="stop-105029.html">105029</a> - Antwerpen Zwarte Weg 16:13</li><li><a href="stop-19803.html">19803</a> - Antwerpen Kastelweg 16:14</li><li><a href="stop-19805.html">19805</a> - Antwerpen Katoennatie 16:16</li><li><a href="stop-108233.html">108233</a> - Antwerpen Oosterweel-Kerk 16:17</li><li><a href="stop-108323.html">108323</a> - Antwerpen Royerssluis 16:19</li><li><a href="stop-107511.html">107511</a> - Antwerpen Ferdinanduspolder 16:21</li><li><a href="stop-107687.html">107687</a> - Antwerpen Indiëstraat 16:23</li><li><a href="stop-107686.html">107686</a> - Antwerpen Binnenvaartstraat 16:23</li><li><a href="stop-108192.html">108192</a> - Antwerpen Noorderplaats 16:27</li><li><a href="stop-108466.html">108466</a> - Antwerpen Sint-Jansplein 16:30</li><li><a href="stop-125282.html">125282</a> - Antwerpen F. Rooseveltplaats perron 23 16:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3757.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

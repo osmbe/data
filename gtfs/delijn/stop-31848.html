@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kessel-Lo Vuntcomplex</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Kessel-Lo Vuntcomplex</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-22458789.html">22458789</a> - 22458789 - Brussel - Leuven - Beringen - Leopoldsburg -Hamont</li><li><a href="trip-22479550.html">22479550</a> - 22479550 - Brussel - Leuven - Beringen - Leopoldsburg -Hamont</li><li><a href="trip-22495170.html">22495170</a> - 22495170 - Brussel - Leuven - Beringen - Leopoldsburg -Hamont</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.9073155901288, 4.71620578194521], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.9073155901288, 4.71620578194521]).addTo(map);
+    </script>
+</body>
+
+</html>

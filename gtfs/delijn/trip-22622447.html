@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Harelbeke-Deerlijk-Anzegem - 22622447</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Harelbeke-Deerlijk-Anzegem - 22622447</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126384.html">126384</a> - Kortrijk Station perron 12 17:25</li><li><a href="stop-37777.html">37777</a> - Kortrijk Spoorweglaan 17:27</li><li><a href="stop-37842.html">37842</a> - Kortrijk K 17:28</li><li><a href="stop-37821.html">37821</a> - Kortrijk Groeningelaan 17:30</li><li><a href="stop-37785.html">37785</a> - Kortrijk Gentpoort 17:31</li><li><a href="stop-37766.html">37766</a> - Kortrijk Blaasbalg 17:32</li><li><a href="stop-98669.html">98669</a> - Kortrijk Vennestraat 17:33</li><li><a href="stop-37623.html">37623</a> - Harelbeke Sint-Ritakerk 17:35</li><li><a href="stop-37610.html">37610</a> - Harelbeke Goedendaglaan 17:36</li><li><a href="stop-37611.html">37611</a> - Harelbeke Groeningestraat 17:37</li><li><a href="stop-37618.html">37618</a> - Harelbeke Nieuwe Brug 17:38</li><li><a href="stop-37621.html">37621</a> - Harelbeke Royal 17:39</li><li><a href="stop-37617.html">37617</a> - Harelbeke Marktstraat 17:40</li><li><a href="stop-37614.html">37614</a> - Harelbeke Markt 17:41</li><li><a href="stop-37608.html">37608</a> - Harelbeke Deerlijkstraat 17:42</li><li><a href="stop-39234.html">39234</a> - Harelbeke Noordstraat 17:42</li><li><a href="stop-126447.html">126447</a> - Harelbeke Station perron 1 17:43</li><li><a href="stop-37635.html">37635</a> - Harelbeke Zuidstraat 17:44</li><li><a href="stop-38352.html">38352</a> - Harelbeke Lano 17:45</li><li><a href="stop-37612.html">37612</a> - Harelbeke Groot Brittanielaan 17:45</li><li><a href="stop-37616.html">37616</a> - Harelbeke Leopold Iii Plein 17:46</li><li><a href="stop-37631.html">37631</a> - Harelbeke Verenigde Natienlaan 17:47</li><li><a href="stop-37613.html">37613</a> - Harelbeke Herpelstraat 17:47</li><li><a href="stop-37515.html">37515</a> - Deerlijk Deltex 17:48</li><li><a href="stop-37524.html">37524</a> - Deerlijk Marquettestraat 17:50</li><li><a href="stop-37520.html">37520</a> - Deerlijk Heirweg 17:51</li><li><a href="stop-37519.html">37519</a> - Deerlijk Gemeentehuis 17:52</li><li><a href="stop-37511.html">37511</a> - Deerlijk Cafe Terminus 17:53</li><li><a href="stop-37513.html">37513</a> - Deerlijk De Taeyelaan 17:53</li><li><a href="stop-94901.html">94901</a> - Deerlijk Belgiek 17:55</li><li><a href="stop-38207.html">38207</a> - Vichte De Jager 17:56</li><li><a href="stop-38208.html">38208</a> - Vichte Molen 17:58</li><li><a href="stop-93758.html">93758</a> - Vichte Plaats 17:59</li><li><a href="stop-37705.html">37705</a> - Ingooigem Pareelstraat 18:00</li><li><a href="stop-37708.html">37708</a> - Ingooigem Vossenhoek 18:01</li><li><a href="stop-37709.html">37709</a> - Ingooigem Zwevegemstraat 18:02</li><li><a href="stop-37706.html">37706</a> - Ingooigem Plaats 18:03</li><li><a href="stop-37707.html">37707</a> - Ingooigem Steenweg Op Otegem 18:04</li><li><a href="stop-41807.html">41807</a> - Ingooigem Helleweg 18:04</li><li><a href="stop-38198.html">38198</a> - Tiegem Barriere 18:04</li><li><a href="stop-38199.html">38199</a> - Tiegem Baskuul 18:05</li><li><a href="stop-38202.html">38202</a> - Tiegem Plaats 18:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4093.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

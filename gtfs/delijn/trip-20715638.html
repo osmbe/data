@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Opwijk - Londerzeel - 20715638</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Opwijk - Londerzeel - 20715638</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-115668.html">115668</a> - Merchtem Burchtlaan 09:27</li><li><a href="stop-12858.html">12858</a> - Merchtem Varkensmarkt 09:28</li><li><a href="stop-116637.html">116637</a> - Merchtem Spiegellaan 09:30</li><li><a href="stop-116638.html">116638</a> - Opwijk Overweg 09:32</li><li><a href="stop-127096.html">127096</a> - Opwijk Klei 09:33</li><li><a href="stop-127097.html">127097</a> - Opwijk Steenweg op Merchtem 09:34</li><li><a href="stop-116641.html">116641</a> - Opwijk Hollestraat 09:35</li><li><a href="stop-127098.html">127098</a> - Opwijk Fabriekstraat 09:37</li><li><a href="stop-126710.html">126710</a> - Opwijk Station perron 1 09:38</li><li><a href="stop-118066.html">118066</a> - Opwijk Kouterlaan 09:39</li><li><a href="stop-117125.html">117125</a> - Opwijk Heirbaan 09:39</li><li><a href="stop-116678.html">116678</a> - Opwijk Heiveld 09:40</li><li><a href="stop-116644.html">116644</a> - Opwijk Marktstraat 09:40</li><li><a href="stop-116645.html">116645</a> - Opwijk Klaarstraat 09:41</li><li><a href="stop-116646.html">116646</a> - Opwijk Korruit 09:41</li><li><a href="stop-116647.html">116647</a> - Opwijk Wijngaardstraat 09:42</li><li><a href="stop-116648.html">116648</a> - Opwijk Dageraadweg 09:43</li><li><a href="stop-116649.html">116649</a> - Opwijk Nijverseelstraat 09:44</li><li><a href="stop-125759.html">125759</a> - Opwijk Steenweg op Dendermonde 09:45</li><li><a href="stop-117240.html">117240</a> - Baardegem Melkspinde 09:46</li><li><a href="stop-116656.html">116656</a> - Baardegem Kerk 09:47</li><li><a href="stop-117285.html">117285</a> - Baardegem Dorpstraat 09:48</li><li><a href="stop-116657.html">116657</a> - Baardegem Elderberg 09:48</li><li><a href="stop-116658.html">116658</a> - Meldert Kammenkouterstraat 09:49</li><li><a href="stop-116659.html">116659</a> - Meldert Koeisteert 09:50</li><li><a href="stop-117246.html">117246</a> - Moorsel Berggouw 09:51</li><li><a href="stop-117245.html">117245</a> - Moorsel Leirekenstraat 09:52</li><li><a href="stop-116671.html">116671</a> - Moorsel Dorp 09:53</li><li><a href="stop-116672.html">116672</a> - Moorsel Ten Berg 09:54</li><li><a href="stop-116673.html">116673</a> - Moorsel Koebrugstraat 09:55</li><li><a href="stop-116674.html">116674</a> - Aalst Achterweg 09:56</li><li><a href="stop-116675.html">116675</a> - Aalst Paardendries 09:57</li><li><a href="stop-116514.html">116514</a> - Aalst Onze-Lieve-Vrouw Ziekenhuis 09:58</li><li><a href="stop-125417.html">125417</a> - Aalst Slotstraat 10:00</li><li><a href="stop-116516.html">116516</a> - Aalst Een Meistraat 10:01</li><li><a href="stop-126680.html">126680</a> - Aalst Station perron 4 10:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1160.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

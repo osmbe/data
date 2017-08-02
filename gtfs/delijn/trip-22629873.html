@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Zwevegem-Moen-St.Denijs-Helkijn - 22629873</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Zwevegem-Moen-St.Denijs-Helkijn - 22629873</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-41633.html">41633</a> - Helkijn Centrum 17:57</li><li><a href="stop-41631.html">41631</a> - Helkijn Brouwerij 17:58</li><li><a href="stop-41632.html">41632</a> - Helkijn Cafe Central 18:00</li><li><a href="stop-42131.html">42131</a> - Sint-Denijs Station 18:01</li><li><a href="stop-101114.html">101114</a> - Sint-Denijs Kerk 18:02</li><li><a href="stop-42127.html">42127</a> - Sint-Denijs Blekerij 18:03</li><li><a href="stop-42128.html">42128</a> - Sint-Denijs Dries 18:03</li><li><a href="stop-42129.html">42129</a> - Sint-Denijs In De Rust 18:04</li><li><a href="stop-41948.html">41948</a> - Moen Moenstraat 18:05</li><li><a href="stop-41949.html">41949</a> - Moen Montalleud 18:06</li><li><a href="stop-41950.html">41950</a> - Moen Vaart 18:07</li><li><a href="stop-41951.html">41951</a> - Moen Verzetstraat 18:07</li><li><a href="stop-41947.html">41947</a> - Moen Kerk 18:08</li><li><a href="stop-41946.html">41946</a> - Moen Lindebloesemlaan 18:10</li><li><a href="stop-41628.html">41628</a> - Heestert Station 18:11</li><li><a href="stop-41627.html">41627</a> - Heestert Keiberg 18:12</li><li><a href="stop-41625.html">41625</a> - Heestert Bonte Os 18:13</li><li><a href="stop-42263.html">42263</a> - Zwevegem Knokke Kerk 18:15</li><li><a href="stop-42252.html">42252</a> - Zwevegem Cafe Barakke 18:16</li><li><a href="stop-42258.html">42258</a> - Zwevegem Kapel Milanen 18:18</li><li><a href="stop-101121.html">101121</a> - Zwevegem Bloemenhof 18:19</li><li><a href="stop-42264.html">42264</a> - Zwevegem Kwadepoelstraat 18:20</li><li><a href="stop-42265.html">42265</a> - Zwevegem Lindelaan 18:21</li><li><a href="stop-42256.html">42256</a> - Zwevegem Frankrijklaan 18:23</li><li><a href="stop-42251.html">42251</a> - Zwevegem Brandweer 18:25</li><li><a href="stop-42261.html">42261</a> - Zwevegem Kerk 18:26</li><li><a href="stop-42253.html">42253</a> - Zwevegem Cafe De Uil 18:27</li><li><a href="stop-42321.html">42321</a> - Zwevegem Ter Winckele 18:28</li><li><a href="stop-42266.html">42266</a> - Zwevegem Losschaert 18:29</li><li><a href="stop-101097.html">101097</a> - Kortrijk Autosnelweg E17 18:31</li><li><a href="stop-41797.html">41797</a> - Kortrijk Soetens Molen 18:33</li><li><a href="stop-41809.html">41809</a> - Kortrijk Howest / VTI 18:34</li><li><a href="stop-41794.html">41794</a> - Kortrijk Rijkswacht 18:35</li><li><a href="stop-37818.html">37818</a> - Kortrijk Zwevegemsepoort 18:36</li><li><a href="stop-125731.html">125731</a> - Kortrijk Achterkant Station 18:37</li><li><a href="stop-126382.html">126382</a> - Kortrijk Station perron 6 18:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4131.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Roosendaal (nl) - Puurs - L258621801</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Roosendaal (nl) - Puurs - L258621801</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8400526_0.html">8400526:0</a> - Roosendaal 15:23</li><li><a href="stop-8821402_0.html">8821402:0</a> - Essen 15:33</li><li><a href="stop-8821436_0.html">8821436:0</a> - Wildert 15:37</li><li><a href="stop-8821444_0.html">8821444:0</a> - Kalmthout 15:42</li><li><a href="stop-8821451_0.html">8821451:0</a> - Kijkuit 15:44</li><li><a href="stop-8821519_0.html">8821519:0</a> - Heide 15:47</li><li><a href="stop-8821535_0.html">8821535:0</a> - Kapellen 15:53</li><li><a href="stop-8821543_0.html">8821543:0</a> - Sint-Mariaburg 15:56</li><li><a href="stop-8821071_0.html">8821071:0</a> - Ekeren 15:58</li><li><a href="stop-8821089_0.html">8821089:0</a> - Antwerpen-Noorderdokken 16:02</li><li><a href="stop-8821063_0.html">8821063:0</a> - Antwerpen-Luchtbal 16:06</li><li><a href="stop-8821006_0.html">8821006:0</a> - Antwerpen-Centraal 16:12</li><li><a href="stop-8821121_0.html">8821121:0</a> - Antwerpen-Berchem 16:17</li><li><a href="stop-8821196_0.html">8821196:0</a> - Antwerpen-Zuid 16:23</li><li><a href="stop-8824158_0.html">8824158:0</a> - Hoboken-Polder 16:28</li><li><a href="stop-8824224_0.html">8824224:0</a> - Hemiksem 16:34</li><li><a href="stop-8824232_0.html">8824232:0</a> - Schelle 16:36</li><li><a href="stop-8824240_0.html">8824240:0</a> - Niel 16:39</li><li><a href="stop-8822814_0.html">8822814:0</a> - Boom 16:44</li><li><a href="stop-8822848_0.html">8822848:0</a> - Ruisbroek-Sauvegarde 16:48</li><li><a href="stop-8822715_0.html">8822715:0</a> - Puurs 16:52</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./839.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

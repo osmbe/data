@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Brukom - Halle via N6 - 21130705</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Brukom - Halle via N6 - 21130705</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-13399.html">13399</a> - Sint-Pieters-Leeuw Brukom 16:19</li><li><a href="stop-44008.html">44008</a> - Sint-Pieters-Leeuw Hoog Elst 16:20</li><li><a href="stop-43976.html">43976</a> - Lot Elst 16:20</li><li><a href="stop-43982.html">43982</a> - Lot Stationsstraat 16:21</li><li><a href="stop-43980.html">43980</a> - Lot Imperbel 16:22</li><li><a href="stop-44023.html">44023</a> - Sint-Pieters-Leeuw E.Vander Steenenstr. 16:23</li><li><a href="stop-44027.html">44027</a> - Sint-Pieters-Leeuw Makro 16:23</li><li><a href="stop-13457.html">13457</a> - Sint-Pieters-Leeuw Stwg naar Ruisbroek 16:24</li><li><a href="stop-13476.html">13476</a> - Sint-Pieters-Leeuw Zuun 16:25</li><li><a href="stop-13425.html">13425</a> - Sint-Pieters-Leeuw J.Vanderstraetenstr. 16:26</li><li><a href="stop-13472.html">13472</a> - Sint-Pieters-Leeuw E. Ghijsstraat 16:29</li><li><a href="stop-13440.html">13440</a> - Sint-Pieters-Leeuw Negenmanneke 16:30</li><li><a href="stop-10040.html">10040</a> - Anderlecht IKEA 16:31</li><li><a href="stop-10047.html">10047</a> - Anderlecht Coovi 16:32</li><li><a href="stop-10018.html">10018</a> - Anderlecht Het Rad 16:34</li><li><a href="stop-9995.html">9995</a> - Anderlecht Bizet 16:36</li><li><a href="stop-127387.html">127387</a> - Anderlecht Veeweyde 16:37</li><li><a href="stop-9987.html">9987</a> - Anderlecht Aristide Briand 16:38</li><li><a href="stop-10004.html">10004</a> - Anderlecht Democratie 16:40</li><li><a href="stop-9991.html">9991</a> - Anderlecht Biestebroek 16:41</li><li><a href="stop-10043.html">10043</a> - Anderlecht Vaartbrug 16:43</li><li><a href="stop-10014.html">10014</a> - Anderlecht Grondel 16:45</li><li><a href="stop-10016.html">10016</a> - Anderlecht Oude Stelplaats 16:46</li><li><a href="stop-15707.html">15707</a> - Brussel Zuid Perron 6 16:49</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1818.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

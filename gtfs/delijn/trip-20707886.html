@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Meerdonk- St-Niklaas- Belsele - Sinaai - (Lokeren) - 20707886</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Meerdonk- St-Niklaas- Belsele - Sinaai - (Lokeren) - 20707886</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126685.html">126685</a> - Sint-Niklaas Station perron 4 16:55</li><li><a href="stop-116306.html">116306</a> - Sint-Niklaas Uitgang Noordlaan 16:56</li><li><a href="stop-115674.html">115674</a> - Sint-Niklaas Hofstraat 17:00</li><li><a href="stop-115762.html">115762</a> - Sint-Niklaas Markt 17:03</li><li><a href="stop-115763.html">115763</a> - Sint-Niklaas Park 17:03</li><li><a href="stop-115764.html">115764</a> - Sint-Niklaas Atheneum/Zwembad 17:06</li><li><a href="stop-115867.html">115867</a> - Sint-Niklaas Serwir 17:07</li><li><a href="stop-116300.html">116300</a> - Sint-Niklaas N70 / Tereken 17:08</li><li><a href="stop-115896.html">115896</a> - Sint-Niklaas Prinses J. Charlottelaan 17:09</li><li><a href="stop-115897.html">115897</a> - Sint-Niklaas Gentse Baan 17:09</li><li><a href="stop-115898.html">115898</a> - Sint-Niklaas Kleiweg 17:11</li><li><a href="stop-115900.html">115900</a> - Belsele Bookmolenstraat 17:12</li><li><a href="stop-115901.html">115901</a> - Belsele Arkestraat 17:13</li><li><a href="stop-115081.html">115081</a> - Belsele Reinaertlaan 17:13</li><li><a href="stop-115904.html">115904</a> - Belsele Malpertuuslaan 17:15</li><li><a href="stop-115878.html">115878</a> - Belsele Hulstendreef 17:16</li><li><a href="stop-115879.html">115879</a> - Belsele Dorp 17:16</li><li><a href="stop-115880.html">115880</a> - Belsele Koutermolenstraat 17:17</li><li><a href="stop-115881.html">115881</a> - Belsele Dubbelhofstraat 17:19</li><li><a href="stop-115882.html">115882</a> - Belsele Duizend Appels 17:19</li><li><a href="stop-115887.html">115887</a> - Waasmunster Grote Baan 17:20</li><li><a href="stop-115888.html">115888</a> - Waasmunster Vortekoestraat 17:21</li><li><a href="stop-115889.html">115889</a> - Waasmunster Korte Heesdonkstraat 17:23</li><li><a href="stop-115890.html">115890</a> - Waasmunster Doornijkstraat 17:23</li><li><a href="stop-114010.html">114010</a> - Lokeren Rozenstraat 17:25</li><li><a href="stop-114514.html">114514</a> - Lokeren Groenstraat 17:25</li><li><a href="stop-114012.html">114012</a> - Lokeren Waasmunsterbaan 17:27</li><li><a href="stop-114013.html">114013</a> - Lokeren Oude Bruglaan 17:27</li><li><a href="stop-114014.html">114014</a> - Lokeren Poststraat 17:29</li><li><a href="stop-116193.html">116193</a> - Lokeren Sportlaan 17:31</li><li><a href="stop-114015.html">114015</a> - Lokeren Markt 17:31</li><li><a href="stop-126617.html">126617</a> - Lokeren Station perron 6 17:34</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./737.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

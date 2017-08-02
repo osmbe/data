@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Vilvoorde - Steenokkerzeel - Kortenberg - 21132833</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Vilvoorde - Steenokkerzeel - Kortenberg - 21132833</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-13940.html">13940</a> - Vilvoorde Kliniek 14:25</li><li><a href="stop-14018.html">14018</a> - Vilvoorde Stadhuis 14:27</li><li><a href="stop-13949.html">13949</a> - Vilvoorde Heldenplein 14:29</li><li><a href="stop-127953.html">127953</a> - Vilvoorde Station Perron 2 14:31</li><li><a href="stop-127067.html">127067</a> - Vilvoorde Fabrieksstraat 14:33</li><li><a href="stop-95284.html">95284</a> - Vilvoorde Levis 14:33</li><li><a href="stop-12686.html">12686</a> - Machelen Heirbaan 14:34</li><li><a href="stop-89593.html">89593</a> - Melsbroek Steenwagenstraat 14:37</li><li><a href="stop-17050.html">17050</a> - Melsbroek Hooiweg 14:38</li><li><a href="stop-13509.html">13509</a> - Melsbroek Kerk (kliniek) 14:39</li><li><a href="stop-13524.html">13524</a> - Melsbroek Thenaertstraat 14:40</li><li><a href="stop-13501.html">13501</a> - Melsbroek Gillynstraat 14:41</li><li><a href="stop-15788.html">15788</a> - Melsbroek Hof ten As 14:42</li><li><a href="stop-13525.html">13525</a> - Melsbroek Vinkenbaan 14:43</li><li><a href="stop-13538.html">13538</a> - Perk Driesstraat 14:45</li><li><a href="stop-13532.html">13532</a> - Perk Kerk 14:46</li><li><a href="stop-14454.html">14454</a> - Steenokkerzeel Oud Station 14:49</li><li><a href="stop-95351.html">95351</a> - Steenokkerzeel Nieuwstraat 14:50</li><li><a href="stop-13507.html">13507</a> - Steenokkerzeel Kerk 14:52</li><li><a href="stop-13497.html">13497</a> - Steenokkerzeel Dijkstraat 14:53</li><li><a href="stop-13504.html">13504</a> - Steenokkerzeel Humelgem,7 Wegen 14:54</li><li><a href="stop-11978.html">11978</a> - Erps-Kwerps Erps Watertoren 14:56</li><li><a href="stop-11972.html">11972</a> - Kortenberg Station Zuid 14:57</li><li><a href="stop-11965.html">11965</a> - Kortenberg Rijkswacht 14:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1884.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Roeselare-Tielt - 22641905</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Roeselare-Tielt - 22641905</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126340.html">126340</a> - Tielt Station perron 4 06:00</li><li><a href="stop-37135.html">37135</a> - Tielt Vierhoek 06:02</li><li><a href="stop-101061.html">101061</a> - Tielt Polenplein 06:03</li><li><a href="stop-37127.html">37127</a> - Tielt Keidam 06:03</li><li><a href="stop-36992.html">36992</a> - Pittem Hoge 06:05</li><li><a href="stop-36990.html">36990</a> - Pittem Blotingstraat 06:06</li><li><a href="stop-36998.html">36998</a> - Pittem Wandeling 06:07</li><li><a href="stop-36993.html">36993</a> - Pittem Koevoet 06:08</li><li><a href="stop-36997.html">36997</a> - Pittem Station 06:10</li><li><a href="stop-90493.html">90493</a> - Pittem Waterstraat 06:11</li><li><a href="stop-36995.html">36995</a> - Pittem Posterij 06:12</li><li><a href="stop-36996.html">36996</a> - Pittem Rijsseleinde 06:13</li><li><a href="stop-36665.html">36665</a> - Ardooie Bergmolen 06:15</li><li><a href="stop-36670.html">36670</a> - Ardooie Kerkhof 06:16</li><li><a href="stop-90378.html">90378</a> - Ardooie Boomgaard 06:17</li><li><a href="stop-101029.html">101029</a> - Ardooie Wissel 06:18</li><li><a href="stop-100888.html">100888</a> - Ardooie Roeselaarsestraat 06:21</li><li><a href="stop-90374.html">90374</a> - Ardooie Tassche 06:24</li><li><a href="stop-90377.html">90377</a> - Roeselare Populierstraat 06:25</li><li><a href="stop-100889.html">100889</a> - Roeselare Zwaaikomstraat 06:26</li><li><a href="stop-90761.html">90761</a> - Roeselare Wetterenstraat 06:27</li><li><a href="stop-38092.html">38092</a> - Roeselare Gentpoort 06:28</li><li><a href="stop-126361.html">126361</a> - Roeselare Station perron 3 06:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4279.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

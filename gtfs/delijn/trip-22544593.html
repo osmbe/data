@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kapellen - Merksem - Antwerpen Luchtbal - 22544593</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kapellen - Merksem - Antwerpen Luchtbal - 22544593</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-21803.html">21803</a> - Kapellen Vredeburgh 20:00</li><li><a href="stop-26065.html">26065</a> - Kapellen Vandenhoudtstraat 20:01</li><li><a href="stop-108747.html">108747</a> - Kapellen Dorp 20:02</li><li><a href="stop-107492.html">107492</a> - Kapellen Administratief Centrum 20:03</li><li><a href="stop-108744.html">108744</a> - Kapellen Zilverhoeklaan 20:04</li><li><a href="stop-108544.html">108544</a> - Kapellen Hoogboomsteenweg 20:04</li><li><a href="stop-108542.html">108542</a> - Kapellen Valkenlaan 20:05</li><li><a href="stop-23585.html">23585</a> - Ekeren Boskapellei 20:06</li><li><a href="stop-25287.html">25287</a> - Ekeren Vrijwilligerslei 20:06</li><li><a href="stop-23959.html">23959</a> - Ekeren Frilinglei 20:07</li><li><a href="stop-24458.html">24458</a> - Ekeren Louislei 20:08</li><li><a href="stop-23777.html">23777</a> - Ekeren Donk kerk 20:09</li><li><a href="stop-23535.html">23535</a> - Ekeren Beekstraat 20:10</li><li><a href="stop-109691.html">109691</a> - Ekeren Sint-Michielscollege 20:11</li><li><a href="stop-109466.html">109466</a> - Merksem Kapelsesteenweg 20:13</li><li><a href="stop-128933.html">128933</a> - Merksem P+R Merksem 20:15</li><li><a href="stop-107395.html">107395</a> - Merksem De Biezen 20:19</li><li><a href="stop-20399.html">20399</a> - Merksem J. Palfijnziekenhuis 20:19</li><li><a href="stop-108140.html">108140</a> - Merksem Melgeshof 20:20</li><li><a href="stop-21034.html">21034</a> - Merksem Laaglandlaan 20:22</li><li><a href="stop-107633.html">107633</a> - Merksem F. Adriaenssensstraat 20:23</li><li><a href="stop-108124.html">108124</a> - Merksem Overhout 20:23</li><li><a href="stop-107754.html">107754</a> - Merksem Ryenlanddreef 20:24</li><li><a href="stop-108008.html">108008</a> - Merksem Laarsebaan 20:25</li><li><a href="stop-107785.html">107785</a> - Merksem Gudrunlaan 20:26</li><li><a href="stop-107461.html">107461</a> - Merksem Terlindenhofstraat 20:27</li><li><a href="stop-107760.html">107760</a> - Merksem Burgemeester Nolf 20:28</li><li><a href="stop-107723.html">107723</a> - Merksem Bredabaan 20:29</li><li><a href="stop-108057.html">108057</a> - Merksem Lambrechtshoeken 20:30</li><li><a href="stop-107645.html">107645</a> - Antwerpen Station Luchtbal 20:32</li><li><a href="stop-109408.html">109408</a> - Antwerpen Kinepolis 20:33</li><li><a href="stop-20093.html">20093</a> - Antwerpen Punt a/d Lijn 20:34</li><li><a href="stop-121195.html">121195</a> - Antwerpen Hondurasstraat 20:36</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3697.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

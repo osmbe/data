@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Hofstade - Lede - Serskamp - Wetteren - 20716991</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Hofstade - Lede - Serskamp - Wetteren - 20716991</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126623.html">126623</a> - Wetteren Station perron 3 06:10</li><li><a href="stop-112258.html">112258</a> - Wetteren Buyssestraat 06:11</li><li><a href="stop-113170.html">113170</a> - Wetteren Serskampstraat 06:12</li><li><a href="stop-111192.html">111192</a> - Wetteren Peyzershoek 06:14</li><li><a href="stop-113169.html">113169</a> - Serskamp Boskantstraat 06:15</li><li><a href="stop-117030.html">117030</a> - Serskamp Nieuwstraat 06:16</li><li><a href="stop-117375.html">117375</a> - Serskamp Biesakker 06:16</li><li><a href="stop-117029.html">117029</a> - Serskamp Kerk 06:17</li><li><a href="stop-117376.html">117376</a> - Serskamp Heidestraat 06:18</li><li><a href="stop-117028.html">117028</a> - Serskamp Smetledestraat 06:18</li><li><a href="stop-117027.html">117027</a> - Wanzele Wanzelesteenweg 06:20</li><li><a href="stop-117026.html">117026</a> - Wanzele Kerk 06:21</li><li><a href="stop-117025.html">117025</a> - Wanzele Processieweg 06:22</li><li><a href="stop-117024.html">117024</a> - Lede Guchtstraat 06:23</li><li><a href="stop-117272.html">117272</a> - Lede Damstraat 06:23</li><li><a href="stop-117023.html">117023</a> - Lede Ziekenhuis 06:24</li><li><a href="stop-116707.html">116707</a> - Lede Pastorijstraat 06:25</li><li><a href="stop-116708.html">116708</a> - Lede Kleine Ommegangweg 06:26</li><li><a href="stop-117260.html">117260</a> - Lede Station 06:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1235.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

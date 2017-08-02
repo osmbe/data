@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Ieper-Wervik(Geluwe)-Menen-Moeskroen - 22635661</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ieper-Wervik(Geluwe)-Menen-Moeskroen - 22635661</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126391.html">126391</a> - Ieper Station perron 4 17:18</li><li><a href="stop-95332.html">95332</a> - Ieper Oudstrijderslaan 17:22</li><li><a href="stop-38542.html">38542</a> - Ieper Rijselpoort 17:22</li><li><a href="stop-104779.html">104779</a> - Ieper Sint-Pieterskerk 17:24</li><li><a href="stop-38536.html">38536</a> - Ieper Markt 17:26</li><li><a href="stop-38526.html">38526</a> - Ieper Hospitaal 17:27</li><li><a href="stop-38517.html">38517</a> - Ieper Bascule 17:28</li><li><a href="stop-38543.html">38543</a> - Ieper Sint-Jozef 17:29</li><li><a href="stop-38558.html">38558</a> - Ieper Watertoren 17:29</li><li><a href="stop-38531.html">38531</a> - Ieper Kruiskalsijde 17:30</li><li><a href="stop-38998.html">38998</a> - Zillebeke Begijnenbosstraat 17:32</li><li><a href="stop-38994.html">38994</a> - Zillebeke Bellewaerde 17:34</li><li><a href="stop-38459.html">38459</a> - Geluveld Zandberg 17:35</li><li><a href="stop-38452.html">38452</a> - Geluveld Belle Vue 17:36</li><li><a href="stop-38455.html">38455</a> - Geluveld Kantien 17:37</li><li><a href="stop-38453.html">38453</a> - Geluveld De Blauwe Duif 17:37</li><li><a href="stop-38458.html">38458</a> - Geluveld Station 17:38</li><li><a href="stop-38456.html">38456</a> - Geluveld Kerk 17:39</li><li><a href="stop-38454.html">38454</a> - Geluveld De Fermette 17:40</li><li><a href="stop-38457.html">38457</a> - Geluveld Kruiseik 17:41</li><li><a href="stop-42340.html">42340</a> - Beselare Kortekeer 17:44</li><li><a href="stop-42339.html">42339</a> - Beselare Kapelletje 17:45</li><li><a href="stop-38387.html">38387</a> - Beselare Kerk 17:46</li><li><a href="stop-38386.html">38386</a> - Beselare Kapelletje 17:47</li><li><a href="stop-104767.html">104767</a> - Beselare Kortekeer 17:48</li><li><a href="stop-104737.html">104737</a> - Geluwe Nachtegaal 17:51</li><li><a href="stop-43429.html">43429</a> - Geluwe Ieperstraat 227 17:52</li><li><a href="stop-37573.html">37573</a> - Geluwe Koelberg 17:52</li><li><a href="stop-37571.html">37571</a> - Geluwe De Kat 17:53</li><li><a href="stop-37575.html">37575</a> - Geluwe Meubelpaleis 17:54</li><li><a href="stop-42406.html">42406</a> - Geluwe Stelplaats 17:55</li><li><a href="stop-123590.html">123590</a> - Geluwe Plaats 17:56</li><li><a href="stop-37574.html">37574</a> - Geluwe Leiestraat 17:57</li><li><a href="stop-37572.html">37572</a> - Geluwe Kapelletje 17:59</li><li><a href="stop-37945.html">37945</a> - Menen Keizer Karel 18:00</li><li><a href="stop-37959.html">37959</a> - Menen Rode Campagne 18:02</li><li><a href="stop-126374.html">126374</a> - Menen Station perron 1 18:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4239.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

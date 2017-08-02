@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Merchtem - Wemmel Campus - 22789771</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Merchtem - Wemmel Campus - 22789771</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-14082.html">14082</a> - Wemmel Campus 16:31</li><li><a href="stop-98471.html">98471</a> - Wemmel Ezelsbaan 16:32</li><li><a href="stop-14112.html">14112</a> - Wemmel Parklaan 16:33</li><li><a href="stop-14115.html">14115</a> - Wemmel Robbrechts 16:34</li><li><a href="stop-14114.html">14114</a> - Wemmel Robbrechts 16:35</li><li><a href="stop-14497.html">14497</a> - Wemmel Windberg 16:36</li><li><a href="stop-14120.html">14120</a> - Wemmel Vier Winden 16:37</li><li><a href="stop-12835.html">12835</a> - Hamme Hooghuis 16:38</li><li><a href="stop-12833.html">12833</a> - Hamme Guduladreef 16:38</li><li><a href="stop-12831.html">12831</a> - Brussegem Ossel Dorp 16:39</li><li><a href="stop-12825.html">12825</a> - Brussegem Kerkhof 16:40</li><li><a href="stop-12829.html">12829</a> - Brussegem Noorden 16:40</li><li><a href="stop-12827.html">12827</a> - Brussegem Koster 16:41</li><li><a href="stop-12819.html">12819</a> - Brussegem Bosbeek Sarten 16:44</li><li><a href="stop-12860.html">12860</a> - Merchtem Vier Winden 16:45</li><li><a href="stop-12856.html">12856</a> - Merchtem Terspelt 16:47</li><li><a href="stop-92643.html">92643</a> - Merchtem Sportcomplex 16:47</li><li><a href="stop-12852.html">12852</a> - Merchtem Nieuwe Wijk 16:48</li><li><a href="stop-12859.html">12859</a> - Merchtem Varkensmarkt 16:49</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2405.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

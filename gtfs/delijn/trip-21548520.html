@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Mechelen Gandhi - Duffel - Lier - 21548520</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mechelen Gandhi - Duffel - Lier - 21548520</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-25836.html">25836</a> - Duffel Station 07:32</li><li><a href="stop-109960.html">109960</a> - Duffel AZ Sint-Maarten 07:34</li><li><a href="stop-22435.html">22435</a> - Duffel Kerk 07:35</li><li><a href="stop-109145.html">109145</a> - Duffel Gemeentehuis 07:37</li><li><a href="stop-109147.html">109147</a> - Duffel Onze-Lieve-Vrouwlaan 07:38</li><li><a href="stop-23411.html">23411</a> - Duffel Naalstraat 07:39</li><li><a href="stop-109150.html">109150</a> - Duffel Varestraat 07:40</li><li><a href="stop-109152.html">109152</a> - Duffel Spoorwegtunnel 07:41</li><li><a href="stop-23417.html">23417</a> - Duffel Dijkstaplei 07:42</li><li><a href="stop-23419.html">23419</a> - Sint-Katelijne-Waver Lange Zandstraat 07:43</li><li><a href="stop-23421.html">23421</a> - Sint-Katelijne-Waver Dreef De Cock 07:44</li><li><a href="stop-23423.html">23423</a> - Sint-Katelijne-Waver Albertstraat 07:45</li><li><a href="stop-108405.html">108405</a> - Sint-Katelijne-Waver Clemenceaustraat 07:46</li><li><a href="stop-108403.html">108403</a> - Mechelen Groot Veld 07:47</li><li><a href="stop-108401.html">108401</a> - Mechelen Duivenstraat 07:48</li><li><a href="stop-21662.html">21662</a> - Mechelen Eikestraat 07:50</li><li><a href="stop-21661.html">21661</a> - Mechelen Oude Liersebaan 07:51</li><li><a href="stop-21659.html">21659</a> - Mechelen Kerkhoflei 07:53</li><li><a href="stop-21656.html">21656</a> - Mechelen Caputsteenstraat 07:55</li><li><a href="stop-108391.html">108391</a> - Mechelen Biest 07:56</li><li><a href="stop-108454.html">108454</a> - Mechelen Veemarkt 07:58</li><li><a href="stop-109723.html">109723</a> - Mechelen Bleekstraat 08:00</li><li><a href="stop-25092.html">25092</a> - Mechelen Zandpoortvest 08:02</li><li><a href="stop-108413.html">108413</a> - Mechelen Raghenoplein 08:03</li><li><a href="stop-107922.html">107922</a> - Mechelen Station perron 4 08:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3575.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

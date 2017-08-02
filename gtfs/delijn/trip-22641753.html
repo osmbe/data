@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tielt-Lichtervelde - 22641753</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tielt-Lichtervelde - 22641753</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126331.html">126331</a> - Lichtervelde Station perron 2 15:40</li><li><a href="stop-100878.html">100878</a> - Lichtervelde Rustoord 15:41</li><li><a href="stop-90685.html">90685</a> - Lichtervelde Astridlaan 15:42</li><li><a href="stop-40970.html">40970</a> - Lichtervelde Sidem 15:43</li><li><a href="stop-40964.html">40964</a> - Lichtervelde Koornbloem 15:44</li><li><a href="stop-40968.html">40968</a> - Lichtervelde Nieuwe Voerman 15:47</li><li><a href="stop-40951.html">40951</a> - Koolskamp Vuilvlage 15:49</li><li><a href="stop-90357.html">90357</a> - Koolskamp Lichterveldsestraat 15:50</li><li><a href="stop-36895.html">36895</a> - Koolskamp Dorp 15:51</li><li><a href="stop-36897.html">36897</a> - Koolskamp Tramstation 15:52</li><li><a href="stop-36675.html">36675</a> - Ardooie Station 15:54</li><li><a href="stop-36673.html">36673</a> - Ardooie Rozendaal 15:55</li><li><a href="stop-90304.html">90304</a> - Ardooie Dorp 15:56</li><li><a href="stop-90730.html">90730</a> - Ardooie Boomgaard 15:57</li><li><a href="stop-40761.html">40761</a> - Ardooie Kerkhof 15:57</li><li><a href="stop-40756.html">40756</a> - Ardooie Bergmolen 15:59</li><li><a href="stop-41049.html">41049</a> - Pittem Rijsseleinde 16:01</li><li><a href="stop-41048.html">41048</a> - Pittem Posterij 16:02</li><li><a href="stop-106856.html">106856</a> - Pittem Kruiskalsijde 16:04</li><li><a href="stop-39691.html">39691</a> - Pittem Balplas 16:05</li><li><a href="stop-40878.html">40878</a> - Egem Kapel 16:06</li><li><a href="stop-40879.html">40879</a> - Egem Kruiske 16:07</li><li><a href="stop-105054.html">105054</a> - Egem Plaats 16:08</li><li><a href="stop-41044.html">41044</a> - Pittem De Lijster 16:11</li><li><a href="stop-41375.html">41375</a> - Pittem Sporthal 16:13</li><li><a href="stop-41046.html">41046</a> - Pittem Koevoet 16:13</li><li><a href="stop-41051.html">41051</a> - Pittem Wandeling 16:14</li><li><a href="stop-41043.html">41043</a> - Pittem Blotingstraat 16:16</li><li><a href="stop-41045.html">41045</a> - Pittem Hoge 16:16</li><li><a href="stop-41165.html">41165</a> - Tielt Keidam 16:18</li><li><a href="stop-104701.html">104701</a> - Tielt Polenplein 16:19</li><li><a href="stop-41173.html">41173</a> - Tielt Vierhoek 16:19</li><li><a href="stop-126337.html">126337</a> - Tielt Station perron 5 16:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4277.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

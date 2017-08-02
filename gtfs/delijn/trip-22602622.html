@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge Centrum -Station-St.Andries (Hermitage) - 22602622</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge Centrum -Station-St.Andries (Hermitage) - 22602622</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-98023.html">98023</a> - Sint-Andries Hermitage 13:47</li><li><a href="stop-98320.html">98320</a> - Sint-Andries Braambos 13:48</li><li><a href="stop-98318.html">98318</a> - Sint-Andries Betferkerk 13:49</li><li><a href="stop-98334.html">98334</a> - Sint-Andries Lange Molen 13:50</li><li><a href="stop-98328.html">98328</a> - Sint-Andries Doornstraat 13:50</li><li><a href="stop-98326.html">98326</a> - Sint-Andries De Varens 13:51</li><li><a href="stop-98321.html">98321</a> - Sint-Andries Bremlaan 13:52</li><li><a href="stop-98337.html">98337</a> - Sint-Andries Molendorp 13:53</li><li><a href="stop-98331.html">98331</a> - Sint-Andries Kerk 13:54</li><li><a href="stop-98319.html">98319</a> - Sint-Andries Boeverbos 13:55</li><li><a href="stop-98324.html">98324</a> - Sint-Andries De Nieulant 13:56</li><li><a href="stop-98336.html">98336</a> - Sint-Andries Manitoba 13:57</li><li><a href="stop-98335.html">98335</a> - Sint-Andries Lange Munt 13:58</li><li><a href="stop-98342.html">98342</a> - Sint-Andries Sint-Baafskerk 13:58</li><li><a href="stop-98341.html">98341</a> - Sint-Andries Phare 13:59</li><li><a href="stop-98343.html">98343</a> - Sint-Andries Sint-Lodewijk 14:00</li><li><a href="stop-128941.html">128941</a> - Brugge Station perron 1 14:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5774.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

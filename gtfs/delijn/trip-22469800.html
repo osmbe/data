@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Nerem-Sluizen-Mal-Tongeren-'sHeren-Membr.-Genoels - 22469800</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Nerem-Sluizen-Mal-Tongeren-'sHeren-Membr.-Genoels - 22469800</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-89667.html">89667</a> - Nerem Kremersstraat 18:46</li><li><a href="stop-34561.html">34561</a> - Nerem Brug Henrotte 18:46</li><li><a href="stop-123182.html">123182</a> - Nerem Neremplein 18:47</li><li><a href="stop-123178.html">123178</a> - Mal Waterstraat 18:48</li><li><a href="stop-34629.html">34629</a> - Sluizen Apotheek 18:49</li><li><a href="stop-34438.html">34438</a> - Mal Kruisvindingsstraat 18:51</li><li><a href="stop-34544.html">34544</a> - Mal Kerk 18:52</li><li><a href="stop-34709.html">34709</a> - Mal Kleinmeerstraat 18:52</li><li><a href="stop-34706.html">34706</a> - Mal Klein Malstraat 18:53</li><li><a href="stop-34542.html">34542</a> - Mal Hogeropstraat 18:54</li><li><a href="stop-88489.html">88489</a> - Mal Strikstraat 18:55</li><li><a href="stop-92282.html">92282</a> - Tongeren Muggenberg 18:55</li><li><a href="stop-34450.html">34450</a> - Tongeren Blaarmolenstraat 18:57</li><li><a href="stop-34466.html">34466</a> - Tongeren Eerste Meistraat 18:57</li><li><a href="stop-34700.html">34700</a> - Tongeren Blaarstraat 18:58</li><li><a href="stop-34703.html">34703</a> - Tongeren Kazerne 18:59</li><li><a href="stop-34704.html">34704</a> - Tongeren Kerk 19:00</li><li><a href="stop-34484.html">34484</a> - Tongeren Station 19:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5367.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

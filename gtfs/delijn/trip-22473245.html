@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Leopoldsburg - Bree - Maaseik - 22473245</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Leopoldsburg - Bree - Maaseik - 22473245</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-123465.html">123465</a> - Bree Busstation Perron 3 12:16</li><li><a href="stop-123475.html">123475</a> - Bree Nieuwstad 12:17</li><li><a href="stop-27577.html">27577</a> - Gerdingen Pannenbakkersstraat 12:20</li><li><a href="stop-27288.html">27288</a> - Reppel Bormanstraat 12:22</li><li><a href="stop-27292.html">27292</a> - Reppel Kabien 12:23</li><li><a href="stop-27294.html">27294</a> - Reppel Kerk 12:24</li><li><a href="stop-27238.html">27238</a> - Bocholt Galgenbergstraat 12:25</li><li><a href="stop-27280.html">27280</a> - Bocholt Meierbroekstraat 12:27</li><li><a href="stop-27284.html">27284</a> - Bocholt Post 12:28</li><li><a href="stop-27234.html">27234</a> - Bocholt Damburgstraat 12:29</li><li><a href="stop-105160.html">105160</a> - Bocholt Gelehoekstraat 12:30</li><li><a href="stop-27242.html">27242</a> - Bocholt Goolderstraat 12:31</li><li><a href="stop-33450.html">33450</a> - Grote-Brogel Elvenweg 12:32</li><li><a href="stop-110465.html">110465</a> - Grote-Brogel Kiosk 12:35</li><li><a href="stop-33354.html">33354</a> - Grote-Brogel Kerk 12:36</li><li><a href="stop-33302.html">33302</a> - Grote-Brogel Dorpsstraat 12:36</li><li><a href="stop-33456.html">33456</a> - Grote-Brogel Laarderweg 12:37</li><li><a href="stop-89660.html">89660</a> - Grote-Brogel Bedrijfsstraat 12:38</li><li><a href="stop-110467.html">110467</a> - Grote-Brogel Smeetshof 12:40</li><li><a href="stop-33529.html">33529</a> - Peer Kloosterbos 12:42</li><li><a href="stop-33504.html">33504</a> - Peer KMO Panhoven 12:42</li><li><a href="stop-33545.html">33545</a> - Peer Pol KIP 12:43</li><li><a href="stop-33540.html">33540</a> - Peer Rijksbasisschool 12:44</li><li><a href="stop-33531.html">33531</a> - Peer Noordervest 12:44</li><li><a href="stop-33469.html">33469</a> - Peer Kerk 12:45</li><li><a href="stop-33560.html">33560</a> - Wijchmaal Dijkerstraat 12:48</li><li><a href="stop-110491.html">110491</a> - Wijchmaal Sint-Trudostraat 12:50</li><li><a href="stop-33584.html">33584</a> - Wijchmaal Station 12:51</li><li><a href="stop-29857.html">29857</a> - Hechtel Peerderbaan 2 12:52</li><li><a href="stop-29855.html">29855</a> - Hechtel Peerderbaan 1 12:53</li><li><a href="stop-93456.html">93456</a> - Hechtel Welsh Guardplein 12:54</li><li><a href="stop-29861.html">29861</a> - Hechtel Sint-Lambertusstraat 12:55</li><li><a href="stop-29841.html">29841</a> - Hechtel Kamperbaan 12:56</li><li><a href="stop-30782.html">30782</a> - Hechtel Oefenplein 12:57</li><li><a href="stop-29871.html">29871</a> - Hechtel Vliegplein 13:00</li><li><a href="stop-31774.html">31774</a> - Leopoldsburg Infanterie 13:01</li><li><a href="stop-31782.html">31782</a> - Leopoldsburg Militair Hospitaal 13:02</li><li><a href="stop-31792.html">31792</a> - Leopoldsburg Station 13:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5433.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

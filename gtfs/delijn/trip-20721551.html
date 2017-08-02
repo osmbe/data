@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Ronse/Renaix - Avelgem - 20721551</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ronse/Renaix - Avelgem - 20721551</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-104968.html">104968</a> - Avelgem Station 16:20</li><li><a href="stop-127334.html">127334</a> - Avelgem Plaats 16:23</li><li><a href="stop-100892.html">100892</a> - Avelgem Toekomststraat 16:26</li><li><a href="stop-104731.html">104731</a> - Avelgem Langestraat 16:28</li><li><a href="stop-127332.html">127332</a> - Avelgem Rugge Kerk 16:29</li><li><a href="stop-118748.html">118748</a> - Ruien Scheldestraat 16:30</li><li><a href="stop-118747.html">118747</a> - Ruien Station 16:31</li><li><a href="stop-118746.html">118746</a> - Ruien Wuipelstraat 16:32</li><li><a href="stop-118745.html">118745</a> - Ruien Kerk 16:33</li><li><a href="stop-118744.html">118744</a> - Ruien Rijerstraat 16:34</li><li><a href="stop-118743.html">118743</a> - Ruien Centrale 16:35</li><li><a href="stop-118742.html">118742</a> - Berchem Molenstraat 16:37</li><li><a href="stop-118773.html">118773</a> - Berchem Zonnestraat 16:38</li><li><a href="stop-118772.html">118772</a> - Kluisbergen Kieverstraat 16:39</li><li><a href="stop-118771.html">118771</a> - Kwaremont Dorp 16:41</li><li><a href="stop-118770.html">118770</a> - Kluisbergen Knoktstraat 16:42</li><li><a href="stop-118769.html">118769</a> - Kluisbergen Drogenbroodstraat 16:42</li><li><a href="stop-118768.html">118768</a> - Kluisbergen Eynsdaele 16:43</li><li><a href="stop-118767.html">118767</a> - Kluisbergen Kraaistraat 16:44</li><li><a href="stop-128508.html">128508</a> - Ronse Provinciaal Domein Heynsdaele 16:46</li><li><a href="stop-128507.html">128507</a> - Ronse Kasseiweg 16:47</li><li><a href="stop-128506.html">128506</a> - Ronse Klijpe Kerk 16:48</li><li><a href="stop-128505.html">128505</a> - Ronse Steenveldstraat 16:48</li><li><a href="stop-128504.html">128504</a> - Ronse Molekensstraat 16:49</li><li><a href="stop-128503.html">128503</a> - Ronse Kapellestraat 16:50</li><li><a href="stop-128413.html">128413</a> - Ronse Jan Van Nassaustraat 16:51</li><li><a href="stop-128502.html">128502</a> - Ronse Lange Haagstraat 16:51</li><li><a href="stop-128607.html">128607</a> - Ronse Kasteelstraat 16:52</li><li><a href="stop-128501.html">128501</a> - Ronse Hoogstraat 16:53</li><li><a href="stop-128421.html">128421</a> - Ronse Station perron 5 16:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1456.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

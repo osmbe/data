@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Westerlo - Oevel - Herentals - 22535403</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Westerlo - Oevel - Herentals - 22535403</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-24931.html">24931</a> - Herentals Station perron 11 15:50</li><li><a href="stop-108972.html">108972</a> - Herentals Belgiëlaan 15:51</li><li><a href="stop-109184.html">109184</a> - Herentals Markt - Grote Markt 15:52</li><li><a href="stop-19653.html">19653</a> - Herentals Kerkstraat 15:53</li><li><a href="stop-25466.html">25466</a> - Herentals E. Claesstraat 15:54</li><li><a href="stop-109843.html">109843</a> - Herentals Dikberd 15:56</li><li><a href="stop-123333.html">123333</a> - Herentals De Duinen 15:57</li><li><a href="stop-109847.html">109847</a> - Olen Industrielaan 15:58</li><li><a href="stop-24937.html">24937</a> - Olen Kleine Landeigendom 16:00</li><li><a href="stop-24940.html">24940</a> - Olen Dorp 16:01</li><li><a href="stop-24966.html">24966</a> - Olen Bulestraat 16:02</li><li><a href="stop-19632.html">19632</a> - Olen Brug over E313 16:04</li><li><a href="stop-24968.html">24968</a> - Olen Hoogbuul 16:05</li><li><a href="stop-109688.html">109688</a> - Oevel Kapelleke 16:07</li><li><a href="stop-109692.html">109692</a> - Oevel Dorp 16:08</li><li><a href="stop-24990.html">24990</a> - Oevel Dumpelstraat 16:09</li><li><a href="stop-109694.html">109694</a> - Oevel Trienenkantlaan 16:10</li><li><a href="stop-24994.html">24994</a> - Tongerlo Bosstraat 16:12</li><li><a href="stop-109911.html">109911</a> - Tongerlo Leistraat 16:13</li><li><a href="stop-24996.html">24996</a> - Tongerlo Dorp 16:13</li><li><a href="stop-19623.html">19623</a> - Tongerlo Kerk Meulemanslaan 16:14</li><li><a href="stop-25000.html">25000</a> - Tongerlo Dreef Abdij 16:15</li><li><a href="stop-19271.html">19271</a> - Westerlo Overwijs 16:16</li><li><a href="stop-19613.html">19613</a> - Westerlo A. Sterckxstraat 16:18</li><li><a href="stop-19270.html">19270</a> - Westerlo de Merodedreef Boerenkrijgl. 16:19</li><li><a href="stop-109938.html">109938</a> - Westerlo Dorp 16:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3559.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

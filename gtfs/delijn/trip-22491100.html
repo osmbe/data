@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gruitrode - Meeuwen - Peer - Hechtel - 22491100</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gruitrode - Meeuwen - Peer - Hechtel - 22491100</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-29830.html">29830</a> - Hechtel Don Bosco College 12:05</li><li><a href="stop-88470.html">88470</a> - Hechtel Don Bosco Straat 12:06</li><li><a href="stop-88473.html">88473</a> - Hechtel Tussenstraat 12:06</li><li><a href="stop-93457.html">93457</a> - Hechtel Welsh Guardplein 12:07</li><li><a href="stop-29854.html">29854</a> - Hechtel Peerderbaan 1 12:08</li><li><a href="stop-29856.html">29856</a> - Hechtel Peerderbaan 2 12:08</li><li><a href="stop-33583.html">33583</a> - Wijchmaal Station 12:09</li><li><a href="stop-110490.html">110490</a> - Wijchmaal Sint-Trudostraat 12:10</li><li><a href="stop-33559.html">33559</a> - Wijchmaal Dijkerstraat 12:12</li><li><a href="stop-128989.html">128989</a> - Peer Kerk 12:15</li><li><a href="stop-32895.html">32895</a> - Peer Agnetendal 12:15</li><li><a href="stop-33544.html">33544</a> - Peer Pol KIP 12:16</li><li><a href="stop-33438.html">33438</a> - Peer College 12:18</li><li><a href="stop-33497.html">33497</a> - Peer Kraanbergstraat 12:20</li><li><a href="stop-123103.html">123103</a> - Peer Snow Valley 12:20</li><li><a href="stop-105331.html">105331</a> - Peer Stevensweg 12:22</li><li><a href="stop-105375.html">105375</a> - Peer Deusterstraat 12:23</li><li><a href="stop-125539.html">125539</a> - Meeuwen Eikenstraat 12:24</li><li><a href="stop-32681.html">32681</a> - Meeuwen Elzenstraat 12:26</li><li><a href="stop-32798.html">32798</a> - Meeuwen Weg naar Helchteren 12:27</li><li><a href="stop-95297.html">95297</a> - Meeuwen Kerk 12:27</li><li><a href="stop-32756.html">32756</a> - Meeuwen Boerenbond 12:28</li><li><a href="stop-32770.html">32770</a> - Meeuwen Genitsstraat kapel 12:29</li><li><a href="stop-94415.html">94415</a> - Meeuwen Gruitroderbaan 12:29</li><li><a href="stop-32841.html">32841</a> - Wijshagen Rietenstraat 2 12:31</li><li><a href="stop-32844.html">32844</a> - Wijshagen Venstraat 12:32</li><li><a href="stop-91053.html">91053</a> - Wijshagen Kerkstraat 12:33</li><li><a href="stop-32862.html">32862</a> - Wijshagen Grensstraat 12:34</li><li><a href="stop-32836.html">32836</a> - Wijshagen Muizendijkstraat 12:35</li><li><a href="stop-123014.html">123014</a> - Bree Galgenbergstraat 12:37</li><li><a href="stop-32726.html">32726</a> - Gruitrode Boshoven 12:37</li><li><a href="stop-110433.html">110433</a> - Gruitrode Neerhovenstraat 12:40</li><li><a href="stop-123107.html">123107</a> - Gruitrode Muisven 12:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4434.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

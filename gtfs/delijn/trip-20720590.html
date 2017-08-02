@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oudenaarde - Waregem - 20720590</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oudenaarde - Waregem - 20720590</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-38232.html">38232</a> - Waregem Kliniek 18:43</li><li><a href="stop-126438.html">126438</a> - Waregem Station perron 4 18:45</li><li><a href="stop-101118.html">101118</a> - Waregem College 18:48</li><li><a href="stop-42201.html">42201</a> - Waregem Markt 18:49</li><li><a href="stop-38239.html">38239</a> - Waregem Renbaan 18:51</li><li><a href="stop-127331.html">127331</a> - Waregem Nachtegaallaan 18:53</li><li><a href="stop-127327.html">127327</a> - Waregem Bosstraat 18:54</li><li><a href="stop-119540.html">119540</a> - Wortegem Pontstraat 18:57</li><li><a href="stop-119539.html">119539</a> - Wortegem Tjammelstraat 18:58</li><li><a href="stop-119538.html">119538</a> - Wortegem Keerstraat 18:59</li><li><a href="stop-119537.html">119537</a> - Wortegem Gemeentehuis 19:00</li><li><a href="stop-119536.html">119536</a> - Wortegem Kerk 19:01</li><li><a href="stop-119535.html">119535</a> - Wortegem Oudenaardseweg 19:02</li><li><a href="stop-119326.html">119326</a> - Wortegem Heerbaan 19:03</li><li><a href="stop-119534.html">119534</a> - Elsegem Meganckstraat 19:04</li><li><a href="stop-119533.html">119533</a> - Elsegem Kloosterhoek 19:05</li><li><a href="stop-119532.html">119532</a> - Elsegem Dorp 19:06</li><li><a href="stop-119531.html">119531</a> - Petegem Dorp 19:09</li><li><a href="stop-119602.html">119602</a> - Petegem Rusthuis 19:10</li><li><a href="stop-119547.html">119547</a> - Petegem Statie 19:10</li><li><a href="stop-119546.html">119546</a> - Petegem Eekhout 19:11</li><li><a href="stop-119545.html">119545</a> - Petegem Vlinderstraat 19:12</li><li><a href="stop-119530.html">119530</a> - Petegem Beerstraat 19:12</li><li><a href="stop-119529.html">119529</a> - Oudenaarde Camping Vlaamse Ardennen 19:13</li><li><a href="stop-116458.html">116458</a> - Oudenaarde Kortrijkse Heerweg 19:15</li><li><a href="stop-116459.html">116459</a> - Oudenaarde Nieuwstraat 19:16</li><li><a href="stop-116460.html">116460</a> - Oudenaarde Bevere Kerk 19:17</li><li><a href="stop-119474.html">119474</a> - Oudenaarde Gentstraat 19:18</li><li><a href="stop-126755.html">126755</a> - Oudenaarde Station perron 2 19:19</li><li><a href="stop-118478.html">118478</a> - Oudenaarde Tacambaro 19:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1421.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Luik-Guillemins - Statte - P846132811</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Luik-Guillemins - Statte - P846132811</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8841004_4.html">8841004:4</a> - Liège-Guillemins 16:39</li><li><a href="stop-8843133_2.html">8843133:2</a> - Sclessin 16:43</li><li><a href="stop-8843141_2.html">8843141:2</a> - Pont-de-Seraing 16:47</li><li><a href="stop-8843158_2.html">8843158:2</a> - Jemeppe-sur-Meuse 16:49</li><li><a href="stop-8843166_2.html">8843166:2</a> - Flemalle-Grande 16:52</li><li><a href="stop-8843224_2.html">8843224:2</a> - Leman 16:54</li><li><a href="stop-8843208_1.html">8843208:1</a> - Flemalle-Haute 17:04</li><li><a href="stop-8843240_1.html">8843240:1</a> - Engis 17:09</li><li><a href="stop-8843349_2.html">8843349:2</a> - Haute-Flône 17:14</li><li><a href="stop-8843331_2.html">8843331:2</a> - Amay 17:16</li><li><a href="stop-8843323_2.html">8843323:2</a> - Ampsin 17:19</li><li><a href="stop-8843307_2.html">8843307:2</a> - Huy 17:25</li><li><a href="stop-8843406_5.html">8843406:5</a> - Statte 17:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1502.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

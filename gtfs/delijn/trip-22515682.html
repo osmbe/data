@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Boom - Willebroek - Heindonk - Mechelen - 22515682</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boom - Willebroek - Heindonk - Mechelen - 22515682</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-21781.html">21781</a> - Mechelen Station perron 17 11:05</li><li><a href="stop-108451.html">108451</a> - Mechelen Oude Brusselsestraat 11:06</li><li><a href="stop-108452.html">108452</a> - Mechelen Louizastraat 11:07</li><li><a href="stop-127008.html">127008</a> - Mechelen Brusselpoort 11:08</li><li><a href="stop-109905.html">109905</a> - Mechelen Korte Pennincstraat 11:09</li><li><a href="stop-109906.html">109906</a> - Mechelen Adegempoort 11:10</li><li><a href="stop-108436.html">108436</a> - Mechelen Polderstraat 11:11</li><li><a href="stop-108437.html">108437</a> - Mechelen Boetestraat 11:12</li><li><a href="stop-108440.html">108440</a> - Mechelen Landweg 11:13</li><li><a href="stop-108442.html">108442</a> - Mechelen Transportzone E19 11:14</li><li><a href="stop-109353.html">109353</a> - Mechelen Leestsesteenweg 11:16</li><li><a href="stop-109351.html">109351</a> - Mechelen Mechelbaan 11:17</li><li><a href="stop-24124.html">24124</a> - Heffen Centrum 11:19</li><li><a href="stop-109360.html">109360</a> - Heffen Brouwerijstraat 11:20</li><li><a href="stop-23929.html">23929</a> - Heffen Ten Doorn 11:21</li><li><a href="stop-21183.html">21183</a> - Heindonk Hazewinkel 11:22</li><li><a href="stop-23927.html">23927</a> - Heindonk Kerk 11:23</li><li><a href="stop-109357.html">109357</a> - Heindonk Oude Broekstraat 11:24</li><li><a href="stop-109355.html">109355</a> - Heindonk Stuyvenbergbaan 11:27</li><li><a href="stop-23920.html">23920</a> - Blaasveld Heindonksteenweg 11:28</li><li><a href="stop-23918.html">23918</a> - Blaasveld Fonteinstraat 11:29</li><li><a href="stop-23915.html">23915</a> - Blaasveld Kasteelstraat 11:29</li><li><a href="stop-21227.html">21227</a> - Blaasveld Verbindingsstraat 11:30</li><li><a href="stop-21225.html">21225</a> - Blaasveld Station 11:31</li><li><a href="stop-23896.html">23896</a> - Blaasveld Hinxelaar 11:33</li><li><a href="stop-109343.html">109343</a> - Blaasveld Kerk 11:34</li><li><a href="stop-109341.html">109341</a> - Willebroek Spaarzaamheidstraat 11:35</li><li><a href="stop-107911.html">107911</a> - Willebroek Van Landeghemplein 11:36</li><li><a href="stop-128898.html">128898</a> - Willebroek Bibliotheek 11:37</li><li><a href="stop-127792.html">127792</a> - Willebroek Veert 11:38</li><li><a href="stop-109336.html">109336</a> - Willebroek Vaartstraat 11:39</li><li><a href="stop-21279.html">21279</a> - Willebroek Stapelplaats 11:40</li><li><a href="stop-108254.html">108254</a> - Willebroek Turfsteeg 11:40</li><li><a href="stop-128938.html">128938</a> - Willebroek Hoeikensstraat 11:41</li><li><a href="stop-121174.html">121174</a> - Willebroek Brico 11:43</li><li><a href="stop-106077.html">106077</a> - Willebroek Klein Willebroek 11:45</li><li><a href="stop-108714.html">108714</a> - Boom E. Vanderveldestraat 11:47</li><li><a href="stop-44118.html">44118</a> - Boom Markt 11:48</li><li><a href="stop-106751.html">106751</a> - Boom Station perron 2 11:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3054.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

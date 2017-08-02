@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sint-Niklaas - Stekene - Moerbeke Waas - 20708497</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Niklaas - Stekene - Moerbeke Waas - 20708497</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-115725.html">115725</a> - Sint-Niklaas Markt 06:33</li><li><a href="stop-114858.html">114858</a> - Sint-Niklaas Hofstraat 06:35</li><li><a href="stop-115500.html">115500</a> - Sint-Niklaas Uitgang Noordlaan 06:37</li><li><a href="stop-126692.html">126692</a> - Sint-Niklaas Station perron 6 06:39</li><li><a href="stop-116306.html">116306</a> - Sint-Niklaas Uitgang Noordlaan 06:40</li><li><a href="stop-116307.html">116307</a> - Sint-Niklaas Kazernestraat 06:42</li><li><a href="stop-115992.html">115992</a> - Sint-Niklaas Bremstraat 06:42</li><li><a href="stop-116310.html">116310</a> - Sint-Niklaas Kuildamstraat 06:44</li><li><a href="stop-115993.html">115993</a> - Sint-Niklaas Wegvoeringsstraat 06:45</li><li><a href="stop-115994.html">115994</a> - Sint-Niklaas Kleibeekstraat 06:46</li><li><a href="stop-115995.html">115995</a> - Sint-Niklaas Mispelstraat 06:46</li><li><a href="stop-115996.html">115996</a> - Sint-Niklaas Vlyminckshoek 06:47</li><li><a href="stop-115997.html">115997</a> - Sint-Pauwels Patershoek 06:48</li><li><a href="stop-115998.html">115998</a> - Sint-Pauwels Potterstraat 06:49</li><li><a href="stop-115999.html">115999</a> - Sint-Pauwels Bermijnstraat 06:50</li><li><a href="stop-116000.html">116000</a> - Sint-Pauwels Dries 06:51</li><li><a href="stop-116001.html">116001</a> - Sint-Pauwels Collemanstraat 06:52</li><li><a href="stop-116002.html">116002</a> - Sint-Pauwels Bagonielaan 06:53</li><li><a href="stop-116003.html">116003</a> - Kemzeke Dorp 06:54</li><li><a href="stop-116004.html">116004</a> - Kemzeke Malpertuslaan 06:55</li><li><a href="stop-116005.html">116005</a> - Kemzeke Drieschouwen 06:56</li><li><a href="stop-116006.html">116006</a> - Stekene Hulsterstraat-Zuid 06:57</li><li><a href="stop-116007.html">116007</a> - Stekene Bettestraat 06:58</li><li><a href="stop-116008.html">116008</a> - Stekene Potaardestraat 06:59</li><li><a href="stop-116019.html">116019</a> - Stekene Kerk 07:00</li><li><a href="stop-116020.html">116020</a> - Stekene Bormte 07:01</li><li><a href="stop-116029.html">116029</a> - Stekene Zeshoekstraat 07:02</li><li><a href="stop-116030.html">116030</a> - Stekene Heimeersstraat 07:03</li><li><a href="stop-116031.html">116031</a> - Stekene Colputstraat 07:04</li><li><a href="stop-116032.html">116032</a> - Stekene Polken 07:05</li><li><a href="stop-116033.html">116033</a> - Stekene Wittingstraat 07:06</li><li><a href="stop-116034.html">116034</a> - Stekene Klein Sinaai 07:07</li><li><a href="stop-116035.html">116035</a> - Stekene Boudelostraat 07:07</li><li><a href="stop-121247.html">121247</a> - Moerbeke-Waas Oostvaart 07:08</li><li><a href="stop-121238.html">121238</a> - Moerbeke-Waas Koudenborm 07:08</li><li><a href="stop-121248.html">121248</a> - Moerbeke-Waas Heirweg 07:09</li><li><a href="stop-121249.html">121249</a> - Moerbeke-Waas Acacialaan 07:09</li><li><a href="stop-121241.html">121241</a> - Moerbeke-Waas Korte Damstraat 07:10</li><li><a href="stop-121242.html">121242</a> - Moerbeke-Waas Markt 07:11</li><li><a href="stop-121243.html">121243</a> - Moerbeke-Waas Opperstraat 07:12</li><li><a href="stop-121244.html">121244</a> - Moerbeke-Waas Begonialaan 07:13</li><li><a href="stop-121245.html">121245</a> - Moerbeke-Waas Terwest 07:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./784.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Denderleeuw - Aspelare - Ninove - 20714939</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Denderleeuw - Aspelare - Ninove - 20714939</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-117276.html">117276</a> - Iddergem Station 12:38</li><li><a href="stop-117275.html">117275</a> - Denderleeuw Bibliotheek 12:39</li><li><a href="stop-117274.html">117274</a> - Denderleeuw Brandweer 12:41</li><li><a href="stop-117273.html">117273</a> - Denderleeuw Middenstraat 12:42</li><li><a href="stop-116567.html">116567</a> - Denderleeuw Boomgaardstraat 12:44</li><li><a href="stop-116587.html">116587</a> - Denderleeuw Koopwarenstraat 12:45</li><li><a href="stop-120305.html">120305</a> - Denderleeuw Station (Achterzijde) 12:48</li><li><a href="stop-128619.html">128619</a> - Denderleeuw OCMW 12:51</li><li><a href="stop-116570.html">116570</a> - Welle Steenveldlaan 12:53</li><li><a href="stop-116572.html">116572</a> - Welle Kapel Langestraat 12:54</li><li><a href="stop-117334.html">117334</a> - Welle Dorp 12:56</li><li><a href="stop-116574.html">116574</a> - Welle Overweg 12:57</li><li><a href="stop-116575.html">116575</a> - Welle Meersemstraat 12:58</li><li><a href="stop-116589.html">116589</a> - Erembodegem Autostradelaan 12:59</li><li><a href="stop-116620.html">116620</a> - Erembodegem D'Uitseweg 13:00</li><li><a href="stop-117241.html">117241</a> - Erembodegem Orangeriestraat 13:01</li><li><a href="stop-116581.html">116581</a> - Erembodegem Villalaan 13:02</li><li><a href="stop-116582.html">116582</a> - Erembodegem Ninovesteenweg 13:02</li><li><a href="stop-116583.html">116583</a> - Aalst De Haring 13:03</li><li><a href="stop-116584.html">116584</a> - Aalst Blanckaertdreef 13:04</li><li><a href="stop-116537.html">116537</a> - Aalst Houtmarkt 13:06</li><li><a href="stop-116541.html">116541</a> - Aalst Oude Vismarkt 13:07</li><li><a href="stop-126679.html">126679</a> - Aalst Station perron 3 13:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1116.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

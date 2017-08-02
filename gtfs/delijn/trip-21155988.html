@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Merchtem - Grimbergen - Vilvoorde - Zaventem - 21155988</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Merchtem - Grimbergen - Vilvoorde - Zaventem - 21155988</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-16996.html">16996</a> - Zaventem Luchthaven Perron B 12:34</li><li><a href="stop-17026.html">17026</a> - Zaventem Technics Noord 12:36</li><li><a href="stop-14169.html">14169</a> - Zaventem Gebouw 9 12:37</li><li><a href="stop-14167.html">14167</a> - Zaventem B-House 12:38</li><li><a href="stop-94877.html">94877</a> - Machelen Korenberg 12:39</li><li><a href="stop-91151.html">91151</a> - Machelen Cargo Post 12:43</li><li><a href="stop-91149.html">91149</a> - Machelen Cargo 706 12:44</li><li><a href="stop-127846.html">127846</a> - Machelen Cargo Discount P1 12:44</li><li><a href="stop-12687.html">12687</a> - Machelen Heirbaan 12:49</li><li><a href="stop-95285.html">95285</a> - Vilvoorde Levis 12:49</li><li><a href="stop-127066.html">127066</a> - Vilvoorde Fabrieksstraat 12:51</li><li><a href="stop-127956.html">127956</a> - Vilvoorde Station Perron 5 12:53</li><li><a href="stop-13948.html">13948</a> - Vilvoorde Heldenplein 12:55</li><li><a href="stop-13968.html">13968</a> - Vilvoorde Kerk 12:56</li><li><a href="stop-14014.html">14014</a> - Vilvoorde Sportcomplex 12:57</li><li><a href="stop-14028.html">14028</a> - Vilvoorde Vlierkens 12:58</li><li><a href="stop-13935.html">13935</a> - Vilvoorde Breemput 12:59</li><li><a href="stop-10952.html">10952</a> - Grimbergen Oude Schapenbaan 13:01</li><li><a href="stop-14450.html">14450</a> - Grimbergen Delhaize 13:02</li><li><a href="stop-10959.html">10959</a> - Grimbergen Klont 13:04</li><li><a href="stop-10930.html">10930</a> - Grimbergen Hoge Steenweg 13:05</li><li><a href="stop-10963.html">10963</a> - Grimbergen Stelplaats 13:07</li><li><a href="stop-10973.html">10973</a> - Grimbergen Waardbeek 13:08</li><li><a href="stop-10914.html">10914</a> - Grimbergen Biesthoek 13:09</li><li><a href="stop-12726.html">12726</a> - Meise Dreef 13:10</li><li><a href="stop-12741.html">12741</a> - Meise Limbos 13:11</li><li><a href="stop-12747.html">12747</a> - Meise Oratorienlaan 13:13</li><li><a href="stop-17002.html">17002</a> - Meise De Donderstraat 13:13</li><li><a href="stop-12756.html">12756</a> - Meise Van Dievoetlaan 13:14</li><li><a href="stop-12743.html">12743</a> - Meise Oppem-Hasselt 13:15</li><li><a href="stop-12707.html">12707</a> - Meise Klepperstraat 13:16</li><li><a href="stop-99450.html">99450</a> - Meise Oppem Kerk 13:17</li><li><a href="stop-12711.html">12711</a> - Wolvertem Oppemse Hoeve 13:18</li><li><a href="stop-12705.html">12705</a> - Wolvertem Brussegemse Stwg. 13:19</li><li><a href="stop-12772.html">12772</a> - Wolvertem Gemeenteplein 13:20</li><li><a href="stop-99100.html">99100</a> - Wolvertem Driesstraat 13:21</li><li><a href="stop-12789.html">12789</a> - Wolvertem Meuzegemstraat 13:22</li><li><a href="stop-12818.html">12818</a> - Wolvertem Windmolenkouter 13:23</li><li><a href="stop-12845.html">12845</a> - Merchtem Kleystraat 13:24</li><li><a href="stop-12863.html">12863</a> - Merchtem Wolvertemsestg.196 13:25</li><li><a href="stop-12843.html">12843</a> - Merchtem Doornenstraat 13:26</li><li><a href="stop-12849.html">12849</a> - Merchtem Langeveldstraat 13:27</li><li><a href="stop-12839.html">12839</a> - Merchtem Bleukenberg 13:28</li><li><a href="stop-12858.html">12858</a> - Merchtem Varkensmarkt 13:29</li><li><a href="stop-121667.html">121667</a> - Merchtem Mieregem 13:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2617.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

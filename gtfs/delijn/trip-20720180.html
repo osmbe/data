@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oudenaarde - Zottegem - 20720180</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oudenaarde - Zottegem - 20720180</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-121631.html">121631</a> - Sint-Maria-Horebeke Broekestraat 07:41</li><li><a href="stop-119443.html">119443</a> - Sint-Maria-Horebeke Korsele 07:43</li><li><a href="stop-119444.html">119444</a> - Sint-Maria-Horebeke Kromstraat 07:44</li><li><a href="stop-119445.html">119445</a> - Sint-Denijs-Boekel Knokstraat 07:45</li><li><a href="stop-119446.html">119446</a> - Sint-Denijs-Boekel Station 07:47</li><li><a href="stop-119447.html">119447</a> - Sint-Denijs-Boekel Biestmolenstraat 07:48</li><li><a href="stop-119450.html">119450</a> - Nederzwalm Stationsstraat 07:49</li><li><a href="stop-119451.html">119451</a> - Welden Ronsen Heerweg 07:50</li><li><a href="stop-119452.html">119452</a> - Welden Roosstraat 07:52</li><li><a href="stop-119453.html">119453</a> - Welden Lambrechtstraat 07:54</li><li><a href="stop-119454.html">119454</a> - Welden Nederenamestraat 07:56</li><li><a href="stop-119455.html">119455</a> - Nederename De Preesterstraat 07:56</li><li><a href="stop-119456.html">119456</a> - Nederename Oudstrijdersstraat 07:57</li><li><a href="stop-119460.html">119460</a> - Ename Station 07:58</li><li><a href="stop-119461.html">119461</a> - Ename Dorp 07:59</li><li><a href="stop-119462.html">119462</a> - Ename Van Torhoutstraat 08:00</li><li><a href="stop-119463.html">119463</a> - Ename Rekkemstraat 08:01</li><li><a href="stop-128742.html">128742</a> - Edelare Smissestraat 08:02</li><li><a href="stop-128743.html">128743</a> - Edelare Vandefonteynelaan 08:04</li><li><a href="stop-119467.html">119467</a> - Oudenaarde Bergstraat 08:05</li><li><a href="stop-119468.html">119468</a> - Oudenaarde Raepsaetplein 08:06</li><li><a href="stop-120381.html">120381</a> - Oudenaarde Smallendam 08:09</li><li><a href="stop-119355.html">119355</a> - Oudenaarde Markt 08:10</li><li><a href="stop-119356.html">119356</a> - Oudenaarde Tacambaro 08:13</li><li><a href="stop-126753.html">126753</a> - Oudenaarde Station perron 6 08:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1403.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

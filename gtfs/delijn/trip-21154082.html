@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Lubbeek - Kerkom - Attenrode-Wever - Tienen - 21154082</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Lubbeek - Kerkom - Attenrode-Wever - Tienen - 21154082</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-13878.html">13878</a> - Tienen Grote Markt 11:20</li><li><a href="stop-13905.html">13905</a> - Tienen Station Perron 5 11:23</li><li><a href="stop-13862.html">13862</a> - Tienen 4de Lansierslaan 11:24</li><li><a href="stop-13887.html">13887</a> - Tienen Leuvenselaan 11:24</li><li><a href="stop-125643.html">125643</a> - Tienen Kerk Heilig Hart 11:25</li><li><a href="stop-13897.html">13897</a> - Tienen Schansstraat 11:25</li><li><a href="stop-13860.html">13860</a> - Tienen Aarschotsesteenweg 11:27</li><li><a href="stop-13895.html">13895</a> - Tienen Rozenhof 11:27</li><li><a href="stop-95735.html">95735</a> - Vissenaken Metselstraat 11:29</li><li><a href="stop-127856.html">127856</a> - Vissenaken Waterstraat 11:30</li><li><a href="stop-95733.html">95733</a> - Vissenaken Vissenakenstraat 11:31</li><li><a href="stop-95731.html">95731</a> - Vissenaken Daelhemstraat 11:32</li><li><a href="stop-95729.html">95729</a> - Vissenaken Haneveld 11:33</li><li><a href="stop-10806.html">10806</a> - Attenrode Wever Kerk 11:34</li><li><a href="stop-10804.html">10804</a> - Attenrode Weg naar Glabbeek 11:34</li><li><a href="stop-10802.html">10802</a> - Attenrode Hulsbos 11:36</li><li><a href="stop-10794.html">10794</a> - Attenrode Centrum 11:37</li><li><a href="stop-10800.html">10800</a> - Attenrode Langstraat 2 11:38</li><li><a href="stop-10798.html">10798</a> - Attenrode Langstraat 1 11:38</li><li><a href="stop-10796.html">10796</a> - Attenrode Het Hoekske 11:39</li><li><a href="stop-12531.html">12531</a> - Binkom Helstraat 11:41</li><li><a href="stop-12549.html">12549</a> - Binkom Stwg naar Attenrode 11:42</li><li><a href="stop-12539.html">12539</a> - Binkom Kwikkelberg 11:43</li><li><a href="stop-95598.html">95598</a> - Kerkom Koppel Eikenstraat 11:43</li><li><a href="stop-95592.html">95592</a> - Kerkom Dorp 11:44</li><li><a href="stop-95594.html">95594</a> - Kerkom Kabine 11:45</li><li><a href="stop-95596.html">95596</a> - Kerkom Malendries 11:46</li><li><a href="stop-12587.html">12587</a> - Lubbeek Kalenberg 11:48</li><li><a href="stop-12610.html">12610</a> - Lubbeek Terkeyen 2 11:49</li><li><a href="stop-12608.html">12608</a> - Lubbeek Terkeyen 1 11:49</li><li><a href="stop-12616.html">12616</a> - Lubbeek Weg naar Kerkom 11:50</li><li><a href="stop-12602.html">12602</a> - Lubbeek School 11:51</li><li><a href="stop-17264.html">17264</a> - Lubbeek Dorp 11:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2466.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

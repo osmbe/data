@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Ieper Langemark Roeselare - 22643690</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ieper Langemark Roeselare - 22643690</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126343.html">126343</a> - Ieper Station perron 2 09:25</li><li><a href="stop-95332.html">95332</a> - Ieper Oudstrijderslaan 09:28</li><li><a href="stop-38542.html">38542</a> - Ieper Rijselpoort 09:29</li><li><a href="stop-104779.html">104779</a> - Ieper Sint-Pieterskerk 09:30</li><li><a href="stop-38536.html">38536</a> - Ieper Markt 09:32</li><li><a href="stop-38526.html">38526</a> - Ieper Hospitaal 09:33</li><li><a href="stop-105020.html">105020</a> - Ieper Westlandia A 09:34</li><li><a href="stop-104780.html">104780</a> - Ieper Waterpoortstraat 09:34</li><li><a href="stop-104781.html">104781</a> - Ieper Westhoek Expo 09:35</li><li><a href="stop-122906.html">122906</a> - Ieper Ter Waarde 09:36</li><li><a href="stop-104533.html">104533</a> - Ieper Jan Ypermanziekenhuis 09:37</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4298.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

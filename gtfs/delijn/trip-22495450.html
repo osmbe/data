@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Wolske - 22495450</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Wolske - 22495450</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-31179.html">31179</a> - Hasselt Langveldstraat 09:39</li><li><a href="stop-31177.html">31177</a> - Hasselt Kroonwinningstraat 09:40</li><li><a href="stop-31175.html">31175</a> - Hasselt Singelbeekstraat 09:41</li><li><a href="stop-31173.html">31173</a> - Hasselt Rapertingenstraat 09:42</li><li><a href="stop-31171.html">31171</a> - Hasselt Keiselvoetweg 09:42</li><li><a href="stop-31169.html">31169</a> - Hasselt Pietelbekervoetweg 09:43</li><li><a href="stop-31167.html">31167</a> - Hasselt Diepenbekervoetweg 09:44</li><li><a href="stop-29639.html">29639</a> - Hasselt Wolskestraat 09:46</li><li><a href="stop-29382.html">29382</a> - Hasselt Kiezelstraat 09:47</li><li><a href="stop-29273.html">29273</a> - Hasselt Bosstraat 09:48</li><li><a href="stop-28288.html">28288</a> - Hasselt Nieuwe Steenweg 09:48</li><li><a href="stop-43768.html">43768</a> - Hasselt Het Dorlik 09:50</li><li><a href="stop-29598.html">29598</a> - Hasselt Voorstraat 09:51</li><li><a href="stop-29621.html">29621</a> - Hasselt Harpstraat 09:52</li><li><a href="stop-95074.html">95074</a> - Hasselt Maastrichtersteenweg 09:52</li><li><a href="stop-29619.html">29619</a> - Hasselt Willekensmolen 09:53</li><li><a href="stop-30082.html">30082</a> - Hasselt Sint-Jansplein 09:54</li><li><a href="stop-29607.html">29607</a> - Hasselt Maastrichterstraat 09:55</li><li><a href="stop-26745.html">26745</a> - Hasselt Sint-Jozefstraat 09:57</li><li><a href="stop-29459.html">29459</a> - Hasselt Leopoldplein 09:58</li><li><a href="stop-29291.html">29291</a> - Hasselt Diesterpoort 09:59</li><li><a href="stop-128985.html">128985</a> - Hasselt Station perron 2 10:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5334.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

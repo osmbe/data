@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Aspelare - Geraardsbergen - 20718014</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Aspelare - Geraardsbergen - 20718014</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-116948.html">116948</a> - Kerksken Kerk 05:41</li><li><a href="stop-116947.html">116947</a> - Haaltert Wijngaardweg 05:42</li><li><a href="stop-116946.html">116946</a> - Haaltert Burg. De Saedeleerstraat 05:42</li><li><a href="stop-116938.html">116938</a> - Haaltert Administratief Centrum 05:43</li><li><a href="stop-116945.html">116945</a> - Haaltert Dreef 05:44</li><li><a href="stop-116944.html">116944</a> - Haaltert Stationsstraat 05:44</li><li><a href="stop-116937.html">116937</a> - Haaltert Herenthout 05:45</li><li><a href="stop-116943.html">116943</a> - Haaltert Station 05:45</li><li><a href="stop-116617.html">116617</a> - Erembodegem Terjoden Kerk 05:46</li><li><a href="stop-117888.html">117888</a> - Erembodegem Hof Ter Lokerenstraat 05:47</li><li><a href="stop-116941.html">116941</a> - Nieuwerkerken Dries 05:48</li><li><a href="stop-116940.html">116940</a> - Nieuwerkerken Mortelveld 05:50</li><li><a href="stop-116529.html">116529</a> - Nieuwerkerken Schoolstraat 05:51</li><li><a href="stop-116530.html">116530</a> - Nieuwerkerken Kantonstraat 05:52</li><li><a href="stop-116531.html">116531</a> - Nieuwerkerken Kwadesteenstraat 05:53</li><li><a href="stop-116532.html">116532</a> - Nieuwerkerken Odisee 05:54</li><li><a href="stop-116533.html">116533</a> - Aalst F. Roucelstraat 05:55</li><li><a href="stop-116534.html">116534</a> - Aalst Capucijnenlaan 05:55</li><li><a href="stop-116535.html">116535</a> - Aalst Diepestraat 05:56</li><li><a href="stop-116536.html">116536</a> - Aalst Colinetstraat 05:58</li><li><a href="stop-116537.html">116537</a> - Aalst Houtmarkt 06:00</li><li><a href="stop-116541.html">116541</a> - Aalst Oude Vismarkt 06:02</li><li><a href="stop-126680.html">126680</a> - Aalst Station perron 4 06:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1291.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

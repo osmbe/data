@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brakel - Lierde - Ninove - 20715319</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brakel - Lierde - Ninove - 20715319</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-119335.html">119335</a> - Nederbrakel Station 08:49</li><li><a href="stop-118363.html">118363</a> - Nederbrakel Kasteelstraat 08:50</li><li><a href="stop-118362.html">118362</a> - Nederbrakel Markt 08:51</li><li><a href="stop-119731.html">119731</a> - Nederbrakel Beekstraat 08:52</li><li><a href="stop-119730.html">119730</a> - Nederbrakel Kokerbergstraat 08:53</li><li><a href="stop-119729.html">119729</a> - Nederbrakel Heyveld 08:54</li><li><a href="stop-128593.html">128593</a> - Sint-Martens-Lierde Holderbeke 08:55</li><li><a href="stop-119298.html">119298</a> - Sint-Maria-Lierde Eikenmolen 08:56</li><li><a href="stop-128538.html">128538</a> - Sint-Maria-Lierde Schoolstraat 08:57</li><li><a href="stop-120316.html">120316</a> - Sint-Maria-Lierde Station 08:58</li><li><a href="stop-119724.html">119724</a> - Sint-Maria-Lierde Struntel 09:01</li><li><a href="stop-119723.html">119723</a> - Sint-Maria-Lierde Dorpsstraat 09:02</li><li><a href="stop-119722.html">119722</a> - Ophasselt Heikouter 09:04</li><li><a href="stop-118829.html">118829</a> - Ophasselt De Kat 09:05</li><li><a href="stop-118828.html">118828</a> - Ophasselt Bildeken 09:06</li><li><a href="stop-118827.html">118827</a> - Ophasselt Kerk 09:07</li><li><a href="stop-121623.html">121623</a> - Steenhuize-Wijnhuize De Coninck 09:08</li><li><a href="stop-119721.html">119721</a> - Steenhuize-Wijnhuize Kriekelaar 09:09</li><li><a href="stop-118040.html">118040</a> - Voorde Steenweg Dreef 09:11</li><li><a href="stop-118039.html">118039</a> - Voorde Karmelietenstraat 09:11</li><li><a href="stop-118038.html">118038</a> - Voorde Lavaanstraat 09:12</li><li><a href="stop-118037.html">118037</a> - Voorde Schuttershoek 09:13</li><li><a href="stop-118036.html">118036</a> - Voorde Hollestraat 09:14</li><li><a href="stop-122945.html">122945</a> - Appelterre Kerk 09:16</li><li><a href="stop-118034.html">118034</a> - Appelterre Kapittelstraat 09:17</li><li><a href="stop-118033.html">118033</a> - Appelterre Berrebroeckstraat 09:18</li><li><a href="stop-118032.html">118032</a> - Eichem Ratissestraat 09:19</li><li><a href="stop-118031.html">118031</a> - Eichem Perrestraat 09:20</li><li><a href="stop-118030.html">118030</a> - Outer Spoorwegstraat 09:22</li><li><a href="stop-118029.html">118029</a> - Outer Brakelsesteenweg 09:23</li><li><a href="stop-117800.html">117800</a> - Ninove Preulegem 09:24</li><li><a href="stop-117803.html">117803</a> - Ninove Gentsestraat 09:25</li><li><a href="stop-117799.html">117799</a> - Ninove Vuurkruisersstraat 09:25</li><li><a href="stop-116546.html">116546</a> - Ninove Centrum 09:26</li><li><a href="stop-116547.html">116547</a> - Ninove Graanmarkt 09:28</li><li><a href="stop-120322.html">120322</a> - Ninove Station Perron 4 09:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1155.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

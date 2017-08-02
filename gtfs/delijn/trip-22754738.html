@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Dilbeek - 22754738</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Dilbeek - 22754738</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-14780.html">14780</a> - Dilbeek Zuurweide 19:03</li><li><a href="stop-14779.html">14779</a> - Dilbeek Braambessenstraat 19:04</li><li><a href="stop-14777.html">14777</a> - Dilbeek Savio 19:05</li><li><a href="stop-10528.html">10528</a> - Dilbeek Station 19:06</li><li><a href="stop-14776.html">14776</a> - Groot-Bijgaarden Heyrboutlaan 19:07</li><li><a href="stop-89064.html">89064</a> - Groot-Bijgaarden Kloosterstraat 19:07</li><li><a href="stop-14774.html">14774</a> - Dilbeek Wilgengaarde 19:08</li><li><a href="stop-10503.html">10503</a> - Dilbeek Elegem 19:08</li><li><a href="stop-14772.html">14772</a> - Dilbeek Van Malderlaan 19:10</li><li><a href="stop-14770.html">14770</a> - Dilbeek Mollekens 19:10</li><li><a href="stop-10507.html">10507</a> - Dilbeek H.Moeremanslaan 19:11</li><li><a href="stop-10505.html">10505</a> - Dilbeek Gemeenteplein 19:12</li><li><a href="stop-10513.html">10513</a> - Dilbeek Kasteelhoeve 19:12</li><li><a href="stop-10517.html">10517</a> - Dilbeek Markt 19:13</li><li><a href="stop-10515.html">10515</a> - Dilbeek Kaudenaardestraat 19:13</li><li><a href="stop-89562.html">89562</a> - Dilbeek Sint-Antoon 19:15</li><li><a href="stop-10302.html">10302</a> - Dilbeek Tourelle 19:16</li><li><a href="stop-90796.html">90796</a> - Sint-Jans-Molenbeek Moortebeek 19:18</li><li><a href="stop-10027.html">10027</a> - Anderlecht Prins van Luik 19:20</li><li><a href="stop-9997.html">9997</a> - Anderlecht Bomstraat 19:21</li><li><a href="stop-10038.html">10038</a> - Anderlecht Scheut 19:22</li><li><a href="stop-10006.html">10006</a> - Anderlecht Dilbeekstraat 19:24</li><li><a href="stop-90807.html">90807</a> - Sint-Jans-Molenbeek Weststation 19:26</li><li><a href="stop-95169.html">95169</a> - Sint-Jans-Molenbeek Vandenheuvel 19:26</li><li><a href="stop-90792.html">90792</a> - Sint-Jans-Molenbeek Beekkant 19:29</li><li><a href="stop-16212.html">16212</a> - Sint-Jans-Molenbeek Ossegem 19:30</li><li><a href="stop-90809.html">90809</a> - Sint-Jans-Molenbeek Zwarte Vijvers 19:32</li><li><a href="stop-90794.html">90794</a> - Sint-Jans-Molenbeek Merchtemse Stwg 19:34</li><li><a href="stop-90801.html">90801</a> - Sint-Jans-Molenbeek Ribaucourt 19:36</li><li><a href="stop-90803.html">90803</a> - Sint-Jans-Molenbeek Sainctelette 19:37</li><li><a href="stop-10070.html">10070</a> - Brussel IJzer 19:39</li><li><a href="stop-10072.html">10072</a> - Brussel Albert-II-laan 19:40</li><li><a href="stop-10135.html">10135</a> - Brussel Rogier 19:41</li><li><a href="stop-10101.html">10101</a> - Brussel Noord Perron 4 19:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1579.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

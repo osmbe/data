@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aarschot - Rillaar - Scherpenheuvel - Diest - 22780686</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aarschot - Rillaar - Scherpenheuvel - Diest - 22780686</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-17012.html">17012</a> - Diest Station Perron 7 10:42</li><li><a href="stop-43984.html">43984</a> - Diest Atheneum 10:43</li><li><a href="stop-10458.html">10458</a> - Diest Euro Shoe 10:44</li><li><a href="stop-10466.html">10466</a> - Diest Stadion 10:45</li><li><a href="stop-128819.html">128819</a> - Diest Sint-Jansplein 10:46</li><li><a href="stop-127837.html">127837</a> - Diest Leuvensepoort 10:48</li><li><a href="stop-10472.html">10472</a> - Kaggevinne Drukkerij 10:49</li><li><a href="stop-10476.html">10476</a> - Kaggevinne Gemeentehuis 10:51</li><li><a href="stop-10480.html">10480</a> - Kaggevinne Kerk 10:52</li><li><a href="stop-10478.html">10478</a> - Kaggevinne Halfweg 10:52</li><li><a href="stop-10482.html">10482</a> - Kaggevinne Koebaan 10:54</li><li><a href="stop-10470.html">10470</a> - Kaggevinne Café Nova 10:55</li><li><a href="stop-13231.html">13231</a> - Scherpenheuvel Pompken 10:56</li><li><a href="stop-13227.html">13227</a> - Scherpenheuvel Op t Hof 10:56</li><li><a href="stop-127053.html">127053</a> - Scherpenheuvel Gemeentehuis 10:57</li><li><a href="stop-13233.html">13233</a> - Scherpenheuvel Station 10:58</li><li><a href="stop-13237.html">13237</a> - Scherpenheuvel Weg op Keiberg 10:59</li><li><a href="stop-13239.html">13239</a> - Scherpenheuvel Witte Hoeve 11:00</li><li><a href="stop-13223.html">13223</a> - Scherpenheuvel Merellaan 11:01</li><li><a href="stop-13229.html">13229</a> - Scherpenheuvel Oude Tiensestraat 11:02</li><li><a href="stop-13217.html">13217</a> - Scherpenheuvel Kapelleke 11:02</li><li><a href="stop-13235.html">13235</a> - Scherpenheuvel Valvoortstraat 11:03</li><li><a href="stop-13241.html">13241</a> - Schoonderbuken Kerk 11:04</li><li><a href="stop-107027.html">107027</a> - Schoonderbuken Miskruis 11:05</li><li><a href="stop-13215.html">13215</a> - Schoonderbuken Hoensberg 11:06</li><li><a href="stop-13213.html">13213</a> - Schoonderbuken Groenhove 11:06</li><li><a href="stop-13219.html">13219</a> - Schoonderbuken Koestraat 5 11:07</li><li><a href="stop-13221.html">13221</a> - Scherpenheuvel Mannenberg 11:08</li><li><a href="stop-9395.html">9395</a> - Messelbroek Tieltsebaan 11:09</li><li><a href="stop-9393.html">9393</a> - Rillaar Café Matheus 11:10</li><li><a href="stop-9417.html">9417</a> - Rillaar Weg op Montenaken 11:11</li><li><a href="stop-9397.html">9397</a> - Rillaar Rusthuis 11:11</li><li><a href="stop-9409.html">9409</a> - Rillaar Motteveld 11:12</li><li><a href="stop-9405.html">9405</a> - Rillaar Kerk 11:12</li><li><a href="stop-9407.html">9407</a> - Rillaar Molenstraat 11:13</li><li><a href="stop-9411.html">9411</a> - Rillaar Nopstal 11:14</li><li><a href="stop-9328.html">9328</a> - Aarschot Schoonhoven 11:15</li><li><a href="stop-9330.html">9330</a> - Aarschot Schoonhoven Vijvers 11:16</li><li><a href="stop-16141.html">16141</a> - Aarschot Demervallei 11:18</li><li><a href="stop-9300.html">9300</a> - Aarschot Bekaf 11:21</li><li><a href="stop-128814.html">128814</a> - Aarschot Damiaaninstituut 11:23</li><li><a href="stop-9299.html">9299</a> - Aarschot Atheneum 11:24</li><li><a href="stop-128815.html">128815</a> - Aarschot Kerk 11:25</li><li><a href="stop-127037.html">127037</a> - Aarschot Station perron 9 11:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6270.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

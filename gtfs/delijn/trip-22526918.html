@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Turnhout Markt-Industrie-Vosselaar-Hoogstraten - 22526918</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Turnhout Markt-Industrie-Vosselaar-Hoogstraten - 22526918</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-22798.html">22798</a> - Vosselaar Dorp 08:05</li><li><a href="stop-108917.html">108917</a> - Vosselaar Gemeentehuis 08:06</li><li><a href="stop-108915.html">108915</a> - Vosselaar Koolhof 08:07</li><li><a href="stop-109996.html">109996</a> - Vosselaar Vlinderstraat 08:09</li><li><a href="stop-22793.html">22793</a> - Vosselaar Rijdtstraat 08:11</li><li><a href="stop-20743.html">20743</a> - Vosselaar Sportcentrum 08:11</li><li><a href="stop-92389.html">92389</a> - Vosselaar Breemsedijk 08:12</li><li><a href="stop-92366.html">92366</a> - Vosselaar Nachtegaalstraat 08:13</li><li><a href="stop-25592.html">25592</a> - Turnhout Philips II 08:15</li><li><a href="stop-25594.html">25594</a> - Turnhout Industrieweg 08:16</li><li><a href="stop-92498.html">92498</a> - Turnhout Amival II 08:16</li><li><a href="stop-25596.html">25596</a> - Turnhout Brepols 08:17</li><li><a href="stop-88331.html">88331</a> - Turnhout Steenweg op Tielen 08:18</li><li><a href="stop-100067.html">100067</a> - Turnhout Amival 08:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3329.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

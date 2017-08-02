@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hoboken - Wilrijk - UZA - Mortsel - Wijnegem - 22508910</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hoboken - Wilrijk - UZA - Mortsel - Wijnegem - 22508910</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108273.html">108273</a> - Hoboken Polderstad 23:05</li><li><a href="stop-107410.html">107410</a> - Hoboken Berkenrodelei 23:06</li><li><a href="stop-20653.html">20653</a> - Hoboken Kioskplaats 23:07</li><li><a href="stop-20557.html">20557</a> - Hoboken Kapelstraat 23:08</li><li><a href="stop-108245.html">108245</a> - Hoboken P. H. Spaaklaan 23:09</li><li><a href="stop-108160.html">108160</a> - Hoboken Moretusstraat 23:09</li><li><a href="stop-20040.html">20040</a> - Hoboken Sporthal Sorgvliet 23:10</li><li><a href="stop-94523.html">94523</a> - Hoboken P+R Schoonselhof 23:11</li><li><a href="stop-107784.html">107784</a> - Wilrijk Crematorium 23:13</li><li><a href="stop-107787.html">107787</a> - Wilrijk Valaardreef 23:14</li><li><a href="stop-107828.html">107828</a> - Wilrijk Bist 23:17</li><li><a href="stop-20794.html">20794</a> - Wilrijk Kerkeveldstraat 23:18</li><li><a href="stop-94370.html">94370</a> - Wilrijk Universiteitsplein 23:21</li><li><a href="stop-107611.html">107611</a> - Wilrijk Doornstraat 23:21</li><li><a href="stop-88024.html">88024</a> - Edegem Revarte 23:23</li><li><a href="stop-88766.html">88766</a> - Edegem Universitair Ziekenhuis p. 14 23:24</li><li><a href="stop-108085.html">108085</a> - Edegem W. Herreynsstraat 23:26</li><li><a href="stop-20889.html">20889</a> - Edegem Ter Borchtlaan 23:26</li><li><a href="stop-107720.html">107720</a> - Edegem Baron De Celleslaan 23:28</li><li><a href="stop-108004.html">108004</a> - Edegem Kladdenbergstraat 23:28</li><li><a href="stop-21925.html">21925</a> - Edegem Hof Ter Linden 23:29</li><li><a href="stop-109649.html">109649</a> - Edegem P. Pletinckxstraat 23:29</li><li><a href="stop-109596.html">109596</a> - Edegem Terlindenlaan 23:31</li><li><a href="stop-109743.html">109743</a> - Mortsel E. Thieffrylaan 23:32</li><li><a href="stop-109400.html">109400</a> - Mortsel Gemeenteplein 23:33</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2889.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus 2 Diest: Geetbets-Halen-Diest - 22789876</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus 2 Diest: Geetbets-Halen-Diest - 22789876</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-93365.html">93365</a> - Geetbets Stationswijk 07:45</li><li><a href="stop-10714.html">10714</a> - Geetbets Kasteellaan 07:46</li><li><a href="stop-10673.html">10673</a> - Geetbets Café Borgers 07:47</li><li><a href="stop-10667.html">10667</a> - Geetbets Borgloonstraat 07:47</li><li><a href="stop-10685.html">10685</a> - Geetbets Groten Bos 07:49</li><li><a href="stop-14826.html">14826</a> - Geetbets Maalderij 07:49</li><li><a href="stop-102631.html">102631</a> - Halen Verbindingsweg 07:50</li><li><a href="stop-102629.html">102629</a> - Halen In den Haan 07:50</li><li><a href="stop-127418.html">127418</a> - Halen Holakenstraat 07:51</li><li><a href="stop-100255.html">100255</a> - Halen Ertsenrijk 36 07:51</li><li><a href="stop-29102.html">29102</a> - Halen Ertsenrijkstraat 22 07:52</li><li><a href="stop-14566.html">14566</a> - Halen Sint-Barbaraplein 07:53</li><li><a href="stop-28940.html">28940</a> - Halen Kerk 07:54</li><li><a href="stop-28944.html">28944</a> - Halen Singellaan 07:54</li><li><a href="stop-28937.html">28937</a> - Halen Diestersteenweg 07:55</li><li><a href="stop-127416.html">127416</a> - Halen Liebroekstraat 07:56</li><li><a href="stop-96808.html">96808</a> - Zelk Kerkstraat 07:57</li><li><a href="stop-123134.html">123134</a> - Halen Carpoolparking 07:58</li><li><a href="stop-87747.html">87747</a> - Webbekom Staatsbaan 07:59</li><li><a href="stop-10498.html">10498</a> - Webbekom Oude Baan 08:00</li><li><a href="stop-10490.html">10490</a> - Webbekom Centrum 08:00</li><li><a href="stop-10456.html">10456</a> - Diest Beukenlaan 08:01</li><li><a href="stop-10461.html">10461</a> - Diest Hasseltsepoort 08:02</li><li><a href="stop-128820.html">128820</a> - Diest Sint-Jansplein 08:03</li><li><a href="stop-10467.html">10467</a> - Diest Stadion 08:04</li><li><a href="stop-10459.html">10459</a> - Diest Euro Shoe 08:05</li><li><a href="stop-43985.html">43985</a> - Diest Atheneum 08:05</li><li><a href="stop-14840.html">14840</a> - Diest Weerstandsplein 08:06</li><li><a href="stop-14841.html">14841</a> - Diest Sint-Jacobsplein 08:06</li><li><a href="stop-15568.html">15568</a> - Diest Station Perron 5 08:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2420.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

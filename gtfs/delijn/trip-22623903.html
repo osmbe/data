@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Deinze - 22623903</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Deinze - 22623903</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-37614.html">37614</a> - Harelbeke Markt 07:42</li><li><a href="stop-37608.html">37608</a> - Harelbeke Deerlijkstraat 07:43</li><li><a href="stop-37619.html">37619</a> - Harelbeke Rijkswacht 07:44</li><li><a href="stop-38263.html">38263</a> - Beveren Pontstraat 07:46</li><li><a href="stop-123566.html">123566</a> - Beveren Klokke 07:47</li><li><a href="stop-37487.html">37487</a> - Beveren Nieuwe Kerk 07:49</li><li><a href="stop-37483.html">37483</a> - Beveren Hof De Commerce 07:50</li><li><a href="stop-37540.html">37540</a> - Desselgem Kleine Liebaertstraat 07:52</li><li><a href="stop-37539.html">37539</a> - Desselgem Kerk 07:53</li><li><a href="stop-37538.html">37538</a> - Desselgem Kasteelstraat 07:55</li><li><a href="stop-37544.html">37544</a> - Desselgem Zilverbergstraat 07:57</li><li><a href="stop-87585.html">87585</a> - Desselgem Dries 07:58</li><li><a href="stop-37537.html">37537</a> - Desselgem De Engel 07:59</li><li><a href="stop-125711.html">125711</a> - Sint-Eloois-Vijve Kauwenhoek 08:00</li><li><a href="stop-125714.html">125714</a> - Sint-Eloois-Vijve Transvaal 08:04</li><li><a href="stop-38001.html">38001</a> - Waregem Containerpark 08:05</li><li><a href="stop-38232.html">38232</a> - Waregem Kliniek 08:06</li><li><a href="stop-126388.html">126388</a> - Waregem Station perron 2 08:07</li><li><a href="stop-101118.html">101118</a> - Waregem College 08:10</li><li><a href="stop-42201.html">42201</a> - Waregem Markt 08:12</li><li><a href="stop-42203.html">42203</a> - Waregem Revalidatiecentrum 08:16</li><li><a href="stop-38238.html">38238</a> - Waregem R.M.S. 08:19</li><li><a href="stop-127288.html">127288</a> - Waregem V.T.I. 08:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6024.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

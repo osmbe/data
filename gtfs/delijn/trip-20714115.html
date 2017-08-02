@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Dendermonde - Wieze - Aalst - 20714115</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Dendermonde - Wieze - Aalst - 20714115</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126709.html">126709</a> - Dendermonde Station perron 7 07:05</li><li><a href="stop-116802.html">116802</a> - Sint-Gillis-Dendermonde Kerk 07:08</li><li><a href="stop-116801.html">116801</a> - Sint-Gillis-Dendermonde Acacialaan 07:09</li><li><a href="stop-116800.html">116800</a> - Sint-Gillis-Dendermonde Kruisstraat 07:10</li><li><a href="stop-116808.html">116808</a> - Lebbeke Vondelmolen 07:11</li><li><a href="stop-116799.html">116799</a> - Lebbeke Ziekenhuisveldbaan 07:12</li><li><a href="stop-116821.html">116821</a> - Lebbeke Dorp 07:13</li><li><a href="stop-116822.html">116822</a> - Lebbeke Molenstraat 07:15</li><li><a href="stop-116823.html">116823</a> - Lebbeke Bellestraat 07:16</li><li><a href="stop-116824.html">116824</a> - Denderbelle Blijstraat 07:18</li><li><a href="stop-116825.html">116825</a> - Denderbelle Dorp 07:20</li><li><a href="stop-116826.html">116826</a> - Denderbelle Bermenstraat 07:21</li><li><a href="stop-116827.html">116827</a> - Denderbelle Mottekensstraat 07:22</li><li><a href="stop-116828.html">116828</a> - Wieze Streekbaan 07:24</li><li><a href="stop-116829.html">116829</a> - Wieze Dorp 07:25</li><li><a href="stop-122316.html">122316</a> - Wieze Oktoberhallen 07:26</li><li><a href="stop-116831.html">116831</a> - Herdersem Aartstraat 07:27</li><li><a href="stop-116494.html">116494</a> - Herdersem Gemeentehuis 07:28</li><li><a href="stop-116499.html">116499</a> - Herdersem Grote Baan/Kouterbaan 07:28</li><li><a href="stop-116496.html">116496</a> - Aalst Middenweg 07:29</li><li><a href="stop-116833.html">116833</a> - Herdersem Kapelleommegang 07:30</li><li><a href="stop-116834.html">116834</a> - Herdersem Kapel Pontweg 07:32</li><li><a href="stop-115653.html">115653</a> - Herdersem Gudstraat 07:33</li><li><a href="stop-117250.html">117250</a> - Moorsel Kattenbroek 07:35</li><li><a href="stop-117249.html">117249</a> - Moorsel Rijgerstraat 07:36</li><li><a href="stop-117251.html">117251</a> - Moorsel Avouestraat 07:37</li><li><a href="stop-117252.html">117252</a> - Aalst Paddenvijverstraat 07:38</li><li><a href="stop-116674.html">116674</a> - Aalst Achterweg 07:39</li><li><a href="stop-116675.html">116675</a> - Aalst Paardendries 07:41</li><li><a href="stop-116514.html">116514</a> - Aalst Onze-Lieve-Vrouw Ziekenhuis 07:42</li><li><a href="stop-125417.html">125417</a> - Aalst Slotstraat 07:45</li><li><a href="stop-116516.html">116516</a> - Aalst Een Meistraat 07:46</li><li><a href="stop-126706.html">126706</a> - Aalst Station perron 6 07:53</li><li><a href="stop-117434.html">117434</a> - Aalst Vredeplein 07:55</li><li><a href="stop-116540.html">116540</a> - Aalst Meuleschettekapel 07:56</li><li><a href="stop-117433.html">117433</a> - Aalst V.T.I. 07:57</li><li><a href="stop-117432.html">117432</a> - Aalst Asserendries 07:59</li><li><a href="stop-117490.html">117490</a> - Aalst Kon. Tech. Atheneum 1 08:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1076.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hamont - Geel - 22461129</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hamont - Geel - 22461129</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-32082.html">32082</a> - Lommel Vreyshorring 08:45</li><li><a href="stop-32019.html">32019</a> - Lommel Kerk 08:46</li><li><a href="stop-32032.html">32032</a> - Lommel Leopoldlaan 08:48</li><li><a href="stop-123073.html">123073</a> - Lutlommel Lutlommel 08:49</li><li><a href="stop-97264.html">97264</a> - Lutlommel Enneven 08:50</li><li><a href="stop-125523.html">125523</a> - Lutlommel School 08:51</li><li><a href="stop-97247.html">97247</a> - Grote-Barrier Beekstraat 08:53</li><li><a href="stop-123069.html">123069</a> - Grote-Barrier Grote-Barrier 08:55</li><li><a href="stop-33396.html">33396</a> - Overpelt Plascobel 08:56</li><li><a href="stop-33363.html">33363</a> - Overpelt Fabrieken 08:57</li><li><a href="stop-33367.html">33367</a> - Overpelt Haagdoorndijk 08:58</li><li><a href="stop-33425.html">33425</a> - Overpelt Zilverdenstraat 08:59</li><li><a href="stop-125556.html">125556</a> - Overpelt Dulco 09:00</li><li><a href="stop-33388.html">33388</a> - Overpelt Mulkenstraat 09:01</li><li><a href="stop-33379.html">33379</a> - Overpelt Houtmolen 09:01</li><li><a href="stop-123110.html">123110</a> - Overpelt Ziekenhuis 09:03</li><li><a href="stop-91062.html">91062</a> - Overpelt Overweg 09:06</li><li><a href="stop-33398.html">33398</a> - Overpelt Rijkswacht 09:07</li><li><a href="stop-33045.html">33045</a> - Neerpelt Station 09:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5059.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

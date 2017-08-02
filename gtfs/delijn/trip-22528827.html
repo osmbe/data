@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Turnhout - Baarle - 22528827</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Turnhout - Baarle - 22528827</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-121747.html">121747</a> - Turnhout Station perron 3 17:32</li><li><a href="stop-108880.html">108880</a> - Turnhout Zeshoek 17:34</li><li><a href="stop-109200.html">109200</a> - Turnhout Markt perron 6 17:37</li><li><a href="stop-23140.html">23140</a> - Turnhout Theobalduskapel 17:38</li><li><a href="stop-23142.html">23142</a> - Turnhout Brug 1 17:39</li><li><a href="stop-20534.html">20534</a> - Turnhout Kastelein 17:39</li><li><a href="stop-23144.html">23144</a> - Turnhout Hof van Turnhout 17:40</li><li><a href="stop-23146.html">23146</a> - Turnhout Lusthof 17:40</li><li><a href="stop-23148.html">23148</a> - Turnhout Zwaantjes 17:41</li><li><a href="stop-23150.html">23150</a> - Turnhout Dombergstraat 17:42</li><li><a href="stop-88236.html">88236</a> - Turnhout England 17:42</li><li><a href="stop-23154.html">23154</a> - Turnhout Ter Varenbeuke 17:43</li><li><a href="stop-23156.html">23156</a> - Turnhout Bremstraat 17:44</li><li><a href="stop-23158.html">23158</a> - Turnhout Zwart Water 17:45</li><li><a href="stop-23160.html">23160</a> - Turnhout Machielsen 17:45</li><li><a href="stop-23162.html">23162</a> - Turnhout Bareel 17:46</li><li><a href="stop-23164.html">23164</a> - Turnhout Vliegveld 17:47</li><li><a href="stop-23166.html">23166</a> - Weelde Stwg. op Zondereigen 17:48</li><li><a href="stop-23168.html">23168</a> - Weelde Stationstraat 17:49</li><li><a href="stop-23170.html">23170</a> - Weelde Grens 17:49</li><li><a href="stop-93202.html">93202</a> - Baarle-Nassau Frijters 17:50</li><li><a href="stop-93509.html">93509</a> - Baarle-Nassau Zevenhuizenlaan 17:51</li><li><a href="stop-93208.html">93208</a> - Baarle-Nassau Schaluinen 17:53</li><li><a href="stop-23180.html">23180</a> - Baarle-Hertog Gierlestraat 17:54</li><li><a href="stop-23182.html">23182</a> - Baarle-Hertog Molen 17:55</li><li><a href="stop-100308.html">100308</a> - Baarle-Nassau Singel 17:56</li><li><a href="stop-93222.html">93222</a> - Baarle-Nassau Generaal Maczeklaan 17:57</li><li><a href="stop-93224.html">93224</a> - Baarle-Nassau W. Alexanderstraat 17:57</li><li><a href="stop-107531.html">107531</a> - Baarle-Nassau Sint-Janstraat 17:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3400.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

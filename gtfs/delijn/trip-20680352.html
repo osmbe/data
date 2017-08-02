@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent Watersportbaan - Mariakerke Post - 20680352</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent Watersportbaan - Mariakerke Post - 20680352</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128611.html">128611</a> - Gent Bijloke 12:07</li><li><a href="stop-112436.html">112436</a> - Gent Plateaustraat 12:09</li><li><a href="stop-112366.html">112366</a> - Gent Bagattenstraat 12:11</li><li><a href="stop-126591.html">126591</a> - Gent Zuid perron 8 12:12</li><li><a href="stop-128669.html">128669</a> - Gent Tweebruggenstraat 12:15</li><li><a href="stop-112435.html">112435</a> - Gent Kasteellaan 12:16</li><li><a href="stop-112434.html">112434</a> - Gent Lousbergskaai 12:17</li><li><a href="stop-112433.html">112433</a> - Gent Eendrachtstraat 12:18</li><li><a href="stop-111331.html">111331</a> - Gent Minneplein 12:19</li><li><a href="stop-111541.html">111541</a> - Gent Wolterslaan 12:21</li><li><a href="stop-111235.html">111235</a> - Sint-Amandsberg Gentbruggebrug 12:22</li><li><a href="stop-111236.html">111236</a> - Sint-Amandsberg Gentbruggestraat 12:23</li><li><a href="stop-126812.html">126812</a> - Gent Oscar Colbrandtstraat 12:25</li><li><a href="stop-112429.html">112429</a> - Gent Van Cleemputteplein 12:26</li><li><a href="stop-111699.html">111699</a> - Gent Schoolstraat 12:28</li><li><a href="stop-111395.html">111395</a> - Gent Van Arenbergstraat 12:29</li><li><a href="stop-126609.html">126609</a> - Gent Dampoort perron 2 12:30</li><li><a href="stop-112428.html">112428</a> - Gent Koopvaardijlaan 12:31</li><li><a href="stop-112427.html">112427</a> - Gent Afrikalaan 12:33</li><li><a href="stop-112426.html">112426</a> - Gent Scandinaviestraat 12:33</li><li><a href="stop-112425.html">112425</a> - Gent Lubeckstraat 12:33</li><li><a href="stop-112424.html">112424</a> - Gent Aziestraat 12:34</li><li><a href="stop-112423.html">112423</a> - Gent Roerstraat 12:35</li><li><a href="stop-112422.html">112422</a> - Gent Muidebrug 12:35</li><li><a href="stop-112421.html">112421</a> - Gent Muidestation 12:36</li><li><a href="stop-112419.html">112419</a> - Gent New-Yorkstraat 12:38</li><li><a href="stop-112264.html">112264</a> - Gent Leithstraat 12:39</li><li><a href="stop-112418.html">112418</a> - Gent Glasgowstraat 12:40</li><li><a href="stop-113459.html">113459</a> - Gent LDC De Waterspiegel 12:41</li><li><a href="stop-111500.html">111500</a> - Gent Meeuwstraat 12:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./83.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

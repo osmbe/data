@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Roeselare-Izegem-Ingelmunster-Anzegem - 22642853</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Roeselare-Izegem-Ingelmunster-Anzegem - 22642853</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-38056.html">38056</a> - Oostrozebeke Gemeenteplein 07:11</li><li><a href="stop-42013.html">42013</a> - Wielsbeke Gaverstraat 07:12</li><li><a href="stop-42224.html">42224</a> - Wielsbeke De Kinne 07:13</li><li><a href="stop-38260.html">38260</a> - Wielsbeke Dries 07:15</li><li><a href="stop-38264.html">38264</a> - Wielsbeke Kasteeldreef 07:15</li><li><a href="stop-38266.html">38266</a> - Wielsbeke Oud Dorp 07:16</li><li><a href="stop-38268.html">38268</a> - Wielsbeke Waterstraat 07:17</li><li><a href="stop-125710.html">125710</a> - Sint-Baafs-Vijve Plaats 07:18</li><li><a href="stop-125705.html">125705</a> - Sint-Baafs-Vijve Electr. Kabien 07:19</li><li><a href="stop-125712.html">125712</a> - Sint-Eloois-Vijve Plaats 07:21</li><li><a href="stop-125713.html">125713</a> - Sint-Eloois-Vijve Posterij 07:22</li><li><a href="stop-38232.html">38232</a> - Waregem Kliniek 07:23</li><li><a href="stop-126438.html">126438</a> - Waregem Station perron 4 07:24</li><li><a href="stop-101118.html">101118</a> - Waregem College 07:26</li><li><a href="stop-42201.html">42201</a> - Waregem Markt 07:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6171.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

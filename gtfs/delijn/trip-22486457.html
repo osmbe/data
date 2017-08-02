@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Stokrooie - Zolder - Heusden - 22486457</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Stokrooie - Zolder - Heusden - 22486457</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-122993.html">122993</a> - Heusden Station 18:10</li><li><a href="stop-30376.html">30376</a> - Heusden Kerk 18:12</li><li><a href="stop-123042.html">123042</a> - Heusden Campus Heusden 18:13</li><li><a href="stop-30378.html">30378</a> - Heusden Kerkeblookstraat 18:13</li><li><a href="stop-30359.html">30359</a> - Heusden Brug 18:14</li><li><a href="stop-120452.html">120452</a> - Heusden Rode Kruisstraat 18:15</li><li><a href="stop-30357.html">30357</a> - Heusden Berkenbos 18:16</li><li><a href="stop-123283.html">123283</a> - Heusden Sint-Franciscuscollege 18:17</li><li><a href="stop-30395.html">30395</a> - Heusden Ziekenhuis 18:18</li><li><a href="stop-88535.html">88535</a> - Heusden Halstraat 18:20</li><li><a href="stop-97137.html">97137</a> - Lindeman Galgenberg 18:22</li><li><a href="stop-105232.html">105232</a> - Lindeman Kerk 18:23</li><li><a href="stop-30456.html">30456</a> - Zolder Weygaardstraat 18:25</li><li><a href="stop-92829.html">92829</a> - Zolder Langstraat 18:26</li><li><a href="stop-125497.html">125497</a> - Zolder Station 18:27</li><li><a href="stop-30433.html">30433</a> - Zolder Kruispunt 18:28</li><li><a href="stop-30448.html">30448</a> - Zolder Schobbenberg 18:29</li><li><a href="stop-30426.html">30426</a> - Zolder Kerk 18:30</li><li><a href="stop-30427.html">30427</a> - Zolder Kerkebosstraat 18:31</li><li><a href="stop-30417.html">30417</a> - Zolder Ganzenstraat 18:31</li><li><a href="stop-30415.html">30415</a> - Zolder Bieststraat 18:32</li><li><a href="stop-97108.html">97108</a> - Boekt Kruispunt 18:33</li><li><a href="stop-97089.html">97089</a> - Boekt Eikhof 18:34</li><li><a href="stop-97683.html">97683</a> - Boekt Bibliotheek 18:35</li><li><a href="stop-123175.html">123175</a> - Viversel Viverselweg 18:36</li><li><a href="stop-97141.html">97141</a> - Viversel Snelwegstraat 18:37</li><li><a href="stop-97126.html">97126</a> - Viversel Jeugdlaan 18:38</li><li><a href="stop-97133.html">97133</a> - Viversel Pleinstraat 18:39</li><li><a href="stop-97131.html">97131</a> - Viversel Kerk 18:40</li><li><a href="stop-97129.html">97129</a> - Viversel Kapel 18:41</li><li><a href="stop-97112.html">97112</a> - Viversel Tunnel autocircuit 18:42</li><li><a href="stop-97111.html">97111</a> - Bolderberg Kerk 18:44</li><li><a href="stop-97105.html">97105</a> - Bolderberg Broederspad 18:45</li><li><a href="stop-29592.html">29592</a> - Stokrooie Colemontstraat 18:46</li><li><a href="stop-29588.html">29588</a> - Stokrooie Brug Albertkanaal 18:47</li><li><a href="stop-29594.html">29594</a> - Stokrooie Kruispunt 18:48</li><li><a href="stop-96848.html">96848</a> - Tuilt Hoek 18:50</li><li><a href="stop-96846.html">96846</a> - Tuilt Basisschool 18:51</li><li><a href="stop-31323.html">31323</a> - Kuringen Herckenrode Abdij 18:52</li><li><a href="stop-29658.html">29658</a> - Kuringen Herckenrodedreef 18:53</li><li><a href="stop-94959.html">94959</a> - Kuringen Stevoortse Kiezel 18:54</li><li><a href="stop-29448.html">29448</a> - Kuringen McDonald's 18:58</li><li><a href="stop-29282.html">29282</a> - Hasselt Crutzenstraat 18:59</li><li><a href="stop-128979.html">128979</a> - Hasselt Station perron 8 19:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5003.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

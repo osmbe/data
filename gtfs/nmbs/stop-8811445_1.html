@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Groenendaal</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Groenendaal</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-S675722951.html">S675722951</a> - S675722951 - Geraardsbergen - Ottignies</li><li><a href="trip-S8176585751.html">S8176585751</a> - S8176585751 - Schaarbeek - Ottignies</li><li><a href="trip-S8186595791.html">S8186595791</a> - S8186595791 - Schaarbeek - Ottignies</li><li><a href="trip-S839563321.html">S839563321</a> - S839563321 - Brussel-Zuid - Louvain-La-Neuve-Univ.</li><li><a href="trip-S839573331.html">S839573331</a> - S839573331 - Brussel-Zuid - Louvain-La-Neuve-Univ.</li><li><a href="trip-S839583341.html">S839583341</a> - S839583341 - Brussel-Zuid - Louvain-La-Neuve-Univ.</li><li><a href="trip-S839593351.html">S839593351</a> - S839593351 - Brussel-Zuid - Louvain-La-Neuve-Univ.</li><li><a href="trip-S839603361.html">S839603361</a> - S839603361 - Brussel-Zuid - Louvain-La-Neuve-Univ.</li><li><a href="trip-S839613371.html">S839613371</a> - S839613371 - Brussel-Zuid - Louvain-La-Neuve-Univ.</li><li><a href="trip-S839623381.html">S839623381</a> - S839623381 - Brussel-Zuid - Louvain-La-Neuve-Univ.</li><li><a href="trip-S839633391.html">S839633391</a> - S839633391 - Brussel-Zuid - Louvain-La-Neuve-Univ.</li><li><a href="trip-S839643401.html">S839643401</a> - S839643401 - Brussel-Zuid - Louvain-La-Neuve-Univ.</li><li><a href="trip-S839653411.html">S839653411</a> - S839653411 - Brussel-Zuid - Louvain-La-Neuve-Univ.</li><li><a href="trip-S839683441.html">S839683441</a> - S839683441 - Brussel-Zuid - Louvain-La-Neuve-Univ.</li><li><a href="trip-S839693451.html">S839693451</a> - S839693451 - Brussel-Zuid - Louvain-La-Neuve-Univ.</li><li><a href="trip-S839703461.html">S839703461</a> - S839703461 - Brussel-Zuid - Louvain-La-Neuve-Univ.</li><li><a href="trip-S839713471.html">S839713471</a> - S839713471 - Brussel-Zuid - Louvain-La-Neuve-Univ.</li><li><a href="trip-S865554331.html">S865554331</a> - S865554331 - Brussel-Zuid - Ottignies</li><li><a href="trip-S865564341.html">S865564341</a> - S865564341 - Brussel-Zuid - Louvain-La-Neuve-Univ.</li><li><a href="trip-S8655739631.html">S8655739631</a> - S8655739631 - Brussel-Zuid - Ottignies</li><li><a href="trip-S865584351.html">S865584351</a> - S865584351 - Brussel-Zuid - Ottignies</li><li><a href="trip-S865594361.html">S865594361</a> - S865594361 - Brussel-Zuid - Ottignies</li><li><a href="trip-S865604371.html">S865604371</a> - S865604371 - Brussel-Zuid - Ottignies</li><li><a href="trip-S865614381.html">S865614381</a> - S865614381 - Brussel-Zuid - Ottignies</li><li><a href="trip-S865624391.html">S865624391</a> - S865624391 - Brussel-Zuid - Louvain-La-Neuve-Univ.</li><li><a href="trip-S865634401.html">S865634401</a> - S865634401 - Brussel-Zuid - Ottignies</li><li><a href="trip-S865644411.html">S865644411</a> - S865644411 - Brussel-Zuid - Ottignies</li><li><a href="trip-S865654421.html">S865654421</a> - S865654421 - Brussel-Zuid - Ottignies</li><li><a href="trip-S865664431.html">S865664431</a> - S865664431 - Brussel-Zuid - Ottignies</li><li><a href="trip-S865674441.html">S865674441</a> - S865674441 - Brussel-Zuid - Ottignies</li><li><a href="trip-S865684451.html">S865684451</a> - S865684451 - Brussel-Zuid - Ottignies</li><li><a href="trip-S865694461.html">S865694461</a> - S865694461 - Brussel-Zuid - Ottignies</li><li><a href="trip-S865704471.html">S865704471</a> - S865704471 - Brussel-Zuid - Ottignies</li><li><a href="trip-S865714481.html">S865714481</a> - S865714481 - Brussel-Zuid - Ottignies</li><li><a href="trip-S865724491.html">S865724491</a> - S865724491 - Brussel-Zuid - Ottignies</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.766103, 4.449489], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.766103, 4.449489]).addTo(map);
+    </script>
+</body>
+
+</html>

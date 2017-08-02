@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Turnhout - Retie - Dessel - Mol - 22529268</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Turnhout - Retie - Dessel - Mol - 22529268</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-25904.html">25904</a> - Turnhout Station perron 2 11:36</li><li><a href="stop-108880.html">108880</a> - Turnhout Zeshoek 11:38</li><li><a href="stop-109040.html">109040</a> - Turnhout Markt perron 4 11:41</li><li><a href="stop-109201.html">109201</a> - Turnhout Nijverheidstraat 11:42</li><li><a href="stop-109202.html">109202</a> - Turnhout Tijl en Nelestraat 11:44</li><li><a href="stop-108202.html">108202</a> - Turnhout Koninklijk Atheneum 11:45</li><li><a href="stop-109204.html">109204</a> - Turnhout Boomgaardstraat 11:46</li><li><a href="stop-23569.html">23569</a> - Turnhout Oranjemolenstraat 11:47</li><li><a href="stop-109208.html">109208</a> - Turnhout Zandbergstraat 11:48</li><li><a href="stop-109210.html">109210</a> - Oud-Turnhout Blekerijstraat 11:49</li><li><a href="stop-109211.html">109211</a> - Oud-Turnhout Tramwissel 11:50</li><li><a href="stop-109213.html">109213</a> - Oud-Turnhout Dorp 11:50</li><li><a href="stop-109214.html">109214</a> - Oud-Turnhout Molenbergen 11:52</li><li><a href="stop-109216.html">109216</a> - Oud-Turnhout Driedostraat 11:53</li><li><a href="stop-23586.html">23586</a> - Oud-Turnhout Staprijk 11:54</li><li><a href="stop-23588.html">23588</a> - Oud-Turnhout Zwanevenstraat 11:54</li><li><a href="stop-23945.html">23945</a> - Oud-Turnhout Lentedreef 11:55</li><li><a href="stop-23947.html">23947</a> - Oud-Turnhout Rhoode 11:55</li><li><a href="stop-23949.html">23949</a> - Oud-Turnhout Binnenheide 11:56</li><li><a href="stop-23951.html">23951</a> - Retie Hofstraat 11:58</li><li><a href="stop-23953.html">23953</a> - Retie Hesstraat 11:58</li><li><a href="stop-23956.html">23956</a> - Retie De Werft 11:59</li><li><a href="stop-23958.html">23958</a> - Retie Berg 12:01</li><li><a href="stop-109367.html">109367</a> - Retie Biezenstraat 12:02</li><li><a href="stop-109369.html">109369</a> - Retie Pijlstraat 12:02</li><li><a href="stop-109371.html">109371</a> - Retie Markt 12:03</li><li><a href="stop-109373.html">109373</a> - Retie Nieuwstraat 12:04</li><li><a href="stop-23969.html">23969</a> - Retie Werbeek 12:06</li><li><a href="stop-23971.html">23971</a> - Dessel Kuilstraat 12:08</li><li><a href="stop-23973.html">23973</a> - Dessel Koolvenstraat 12:09</li><li><a href="stop-109375.html">109375</a> - Dessel Markt 12:09</li><li><a href="stop-109378.html">109378</a> - Dessel Kromme Elleboogstraat 12:10</li><li><a href="stop-23980.html">23980</a> - Dessel Goormansdijk 12:12</li><li><a href="stop-109381.html">109381</a> - Mol Langendijk 12:12</li><li><a href="stop-23985.html">23985</a> - Mol Zandputlaan 12:15</li><li><a href="stop-109385.html">109385</a> - Mol Beukenbosstraat 12:15</li><li><a href="stop-109387.html">109387</a> - Mol Speelpleinstraat 12:17</li><li><a href="stop-109390.html">109390</a> - Mol Violettenstraat 12:18</li><li><a href="stop-109392.html">109392</a> - Mol Station perron 5 12:18</li><li><a href="stop-109231.html">109231</a> - Mol Gasthuis 12:22</li><li><a href="stop-126985.html">126985</a> - Mol Kerk 12:23</li><li><a href="stop-24002.html">24002</a> - Mol Martelarenstraat 12:25</li><li><a href="stop-125278.html">125278</a> - Mol Ginderbroek 12:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3406.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

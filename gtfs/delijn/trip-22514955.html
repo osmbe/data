@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Boom - Bornem - Dendermonde - 22514955</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boom - Bornem - Dendermonde - 22514955</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-106760.html">106760</a> - Boom Station perron 1 07:15</li><li><a href="stop-23308.html">23308</a> - Boom Vrijheidstraat 07:16</li><li><a href="stop-23212.html">23212</a> - Boom Markt 07:17</li><li><a href="stop-106076.html">106076</a> - Willebroek Klein Willebroek 07:20</li><li><a href="stop-109482.html">109482</a> - Ruisbroek Prod. Chimique 07:22</li><li><a href="stop-109481.html">109481</a> - Ruisbroek Oud-Gemeentehuis 07:23</li><li><a href="stop-108318.html">108318</a> - Ruisbroek Beemdstraat 07:25</li><li><a href="stop-109476.html">109476</a> - Ruisbroek J. De Donckerlaan 07:25</li><li><a href="stop-109474.html">109474</a> - Puurs Kapelstraat 07:27</li><li><a href="stop-24229.html">24229</a> - Puurs Eikse Amer 07:29</li><li><a href="stop-125833.html">125833</a> - Eikevliet Kerk 07:30</li><li><a href="stop-95500.html">95500</a> - Wintam Paepenstraat 07:32</li><li><a href="stop-95498.html">95498</a> - Wintam F. De Laetstraat 07:33</li><li><a href="stop-95431.html">95431</a> - Wintam De Vlietoever 07:34</li><li><a href="stop-109469.html">109469</a> - Wintam V. Kegelsstraat 07:35</li><li><a href="stop-95494.html">95494</a> - Wintam Kerk 07:36</li><li><a href="stop-87298.html">87298</a> - Hingene Ruipenbroekstraat 07:36</li><li><a href="stop-87296.html">87296</a> - Hingene Pastoor Huveneersstraat 07:37</li><li><a href="stop-87294.html">87294</a> - Hingene P. Coomansstraat 07:38</li><li><a href="stop-109467.html">109467</a> - Hingene Kerk 07:39</li><li><a href="stop-87352.html">87352</a> - Hingene Het Zand 07:40</li><li><a href="stop-87350.html">87350</a> - Bornem Sint-Rochuskapel 07:42</li><li><a href="stop-109464.html">109464</a> - Bornem Broekstraat 07:43</li><li><a href="stop-24201.html">24201</a> - Bornem Station 07:44</li><li><a href="stop-126989.html">126989</a> - Bornem Kerk 07:46</li><li><a href="stop-94556.html">94556</a> - Bornem Sint-Jozefkliniek 07:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3026.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Uitrit lijn 1 Stelplaats - Korenmarkt - Evergem - 20665275</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Uitrit lijn 1 Stelplaats - Korenmarkt - Evergem - 20665275</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-111167.html">111167</a> - Gentbrugge Stelplaats 05:21</li><li><a href="stop-111554.html">111554</a> - Ledeberg Ledebergplein 05:23</li><li><a href="stop-111199.html">111199</a> - Ledeberg Hundelgemsesteenweg 05:24</li><li><a href="stop-111200.html">111200</a> - Gent Sint-Lievenspoort 05:25</li><li><a href="stop-111201.html">111201</a> - Gent Sint-Lievensdoorgang 05:26</li><li><a href="stop-111171.html">111171</a> - Gent Vijfwindgatenstraat 05:27</li><li><a href="stop-126533.html">126533</a> - Gent Zuid perron 1 05:28</li><li><a href="stop-111173.html">111173</a> - Gent Lippensplein 05:29</li><li><a href="stop-111202.html">111202</a> - Gent Duivelsteen 05:30</li><li><a href="stop-126566.html">126566</a> - Gent Korenmarkt perron 3 05:32</li><li><a href="stop-112054.html">112054</a> - Gent Gravensteen 05:34</li><li><a href="stop-112053.html">112053</a> - Gent Burgstraat 05:36</li><li><a href="stop-112052.html">112052</a> - Gent Rabotstraat 05:37</li><li><a href="stop-112051.html">112051</a> - Gent Rabot 05:38</li><li><a href="stop-112050.html">112050</a> - Gent Witte Kaproenenplein 05:40</li><li><a href="stop-112049.html">112049</a> - Gent Nieuwevaartbrug 05:41</li><li><a href="stop-112048.html">112048</a> - Gent Guislainstraat 05:41</li><li><a href="stop-112046.html">112046</a> - Gent Hortensiastraat 05:43</li><li><a href="stop-112045.html">112045</a> - Gent Van Beverenplein 05:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./0.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

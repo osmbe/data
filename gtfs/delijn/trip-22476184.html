@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Singellijn Zuid - 22476184</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Singellijn Zuid - 22476184</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128972.html">128972</a> - Hasselt Station perron 20 16:57</li><li><a href="stop-29292.html">29292</a> - Hasselt Diesterpoort 16:59</li><li><a href="stop-29461.html">29461</a> - Hasselt Leopoldplein 17:00</li><li><a href="stop-29286.html">29286</a> - Hasselt Kunstlaan 17:01</li><li><a href="stop-29268.html">29268</a> - Hasselt Dusartplein 17:02</li><li><a href="stop-29712.html">29712</a> - Hasselt Kapermolen 17:03</li><li><a href="stop-128879.html">128879</a> - Hasselt Rijksadministratief Centrum 17:04</li><li><a href="stop-93427.html">93427</a> - Hasselt Taxandria 17:06</li><li><a href="stop-29576.html">29576</a> - Hasselt Ilgat 17:09</li><li><a href="stop-95073.html">95073</a> - Hasselt Gouverneur Roppesingel 17:10</li><li><a href="stop-98443.html">98443</a> - Hasselt Van Heinsberg 17:12</li><li><a href="stop-107238.html">107238</a> - Runkst Kruisveld 17:15</li><li><a href="stop-96897.html">96897</a> - Runkst Kerkhof 17:16</li><li><a href="stop-96865.html">96865</a> - Runkst Paters Adonsstraat 17:17</li><li><a href="stop-97047.html">97047</a> - Runkst Vooruitzichtlaan 17:17</li><li><a href="stop-29459.html">29459</a> - Hasselt Leopoldplein 17:18</li><li><a href="stop-29291.html">29291</a> - Hasselt Diesterpoort 17:19</li><li><a href="stop-128972.html">128972</a> - Hasselt Station perron 20 17:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5325.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Mechelen - Kampenhout - Leuven - 21137783</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mechelen - Kampenhout - Leuven - 21137783</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-12292.html">12292</a> - Leuven Station Perron 10 19:08</li><li><a href="stop-12232.html">12232</a> - Leuven J.Stasstraat 19:10</li><li><a href="stop-89196.html">89196</a> - Leuven Rector De Somerplein zone B 19:12</li><li><a href="stop-127843.html">127843</a> - Leuven Dirk Boutslaan 19:12</li><li><a href="stop-12200.html">12200</a> - Leuven De Bruul 19:13</li><li><a href="stop-12267.html">12267</a> - Leuven Delvauxwijk 19:14</li><li><a href="stop-93379.html">93379</a> - Leuven Mechelsepoort 19:15</li><li><a href="stop-12237.html">12237</a> - Leuven Kareelveld 19:15</li><li><a href="stop-11246.html">11246</a> - Herent Rijweg 19:18</li><li><a href="stop-17093.html">17093</a> - Herent Sergeystraat 19:19</li><li><a href="stop-16223.html">16223</a> - Herent Station 19:20</li><li><a href="stop-93405.html">93405</a> - Herent Kouterstraat 19:21</li><li><a href="stop-11242.html">11242</a> - Herent Molenweg 19:22</li><li><a href="stop-11218.html">11218</a> - Herent Den Bremt 19:23</li><li><a href="stop-14856.html">14856</a> - Herent Dorp 19:24</li><li><a href="stop-11232.html">11232</a> - Herent Keiberg 19:25</li><li><a href="stop-11234.html">11234</a> - Herent Kempen 19:26</li><li><a href="stop-11212.html">11212</a> - Herent Agra 19:27</li><li><a href="stop-11258.html">11258</a> - Herent Valgaten 19:28</li><li><a href="stop-11286.html">11286</a> - Winksele Ellestraat 19:29</li><li><a href="stop-11298.html">11298</a> - Winksele Nieuwe Kerk 19:30</li><li><a href="stop-99631.html">99631</a> - Winksele Zwarte Fles 19:31</li><li><a href="stop-11304.html">11304</a> - Winksele Spekstraat 19:31</li><li><a href="stop-11272.html">11272</a> - Veltem-Beisem Kapel 19:32</li><li><a href="stop-11663.html">11663</a> - Buken Madelon 19:33</li><li><a href="stop-11667.html">11667</a> - Kampenhout Huis nr. 34 19:34</li><li><a href="stop-11683.html">11683</a> - Kampenhout Vierstraten 19:35</li><li><a href="stop-17166.html">17166</a> - Kampenhout Sas 19:37</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2011.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

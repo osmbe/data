@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalter - Eeklo - 20699135</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalter - Eeklo - 20699135</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126619.html">126619</a> - Aalter Station perron 1 16:31</li><li><a href="stop-114201.html">114201</a> - Aalter Scholen 16:34</li><li><a href="stop-114200.html">114200</a> - Aalter Europalaan 16:37</li><li><a href="stop-113225.html">113225</a> - Aalter Weststraat 16:45</li><li><a href="stop-113257.html">113257</a> - Ursel Grote Dries 16:47</li><li><a href="stop-113258.html">113258</a> - Ursel Middelweg 55 16:49</li><li><a href="stop-113406.html">113406</a> - Ursel Kerk 16:50</li><li><a href="stop-113268.html">113268</a> - Ursel Schaperstraat 16:51</li><li><a href="stop-113982.html">113982</a> - Ursel Brugstraat 16:52</li><li><a href="stop-113313.html">113313</a> - Adegem Kruipuit 16:56</li><li><a href="stop-113314.html">113314</a> - Adegem Veldekens 36 17:00</li><li><a href="stop-113315.html">113315</a> - Adegem Leikant 17:01</li><li><a href="stop-113316.html">113316</a> - Adegem Veldekensvaart 17:02</li><li><a href="stop-113317.html">113317</a> - Eeklo Tieltsesteenweg 17:05</li><li><a href="stop-113318.html">113318</a> - Eeklo Nijverheidskaai 17:07</li><li><a href="stop-113319.html">113319</a> - Eeklo Kliniek 17:09</li><li><a href="stop-112977.html">112977</a> - Eeklo Markt 17:10</li><li><a href="stop-126621.html">126621</a> - Eeklo Station perron 5 17:13</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./419.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

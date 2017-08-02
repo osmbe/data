@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Tongeren - 22474375</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Tongeren - 22474375</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-34687.html">34687</a> - Tongeren Hospitaal 18:08</li><li><a href="stop-88490.html">88490</a> - Tongeren Meulemanslaan 18:09</li><li><a href="stop-34642.html">34642</a> - Tongeren Het Kruis 18:10</li><li><a href="stop-88863.html">88863</a> - Tongeren Station 18:12</li><li><a href="stop-34507.html">34507</a> - Tongeren Koemarkt 18:13</li><li><a href="stop-34448.html">34448</a> - Tongeren Bilzerpoort 18:13</li><li><a href="stop-34502.html">34502</a> - Tongeren Kerkhof 18:14</li><li><a href="stop-34462.html">34462</a> - Tongeren Driekruisenstraat 18:15</li><li><a href="stop-34672.html">34672</a> - Tongeren Weg naar Hasselt 18:16</li><li><a href="stop-105377.html">105377</a> - Henis Dorpstraat 18:17</li><li><a href="stop-34608.html">34608</a> - Riksingen Kruispunt 18:18</li><li><a href="stop-34607.html">34607</a> - Riksingen Dreef 18:19</li><li><a href="stop-30534.html">30534</a> - Hoeselt Metser 18:20</li><li><a href="stop-97165.html">97165</a> - Werm Panisbergstraat 18:21</li><li><a href="stop-97163.html">97163</a> - Werm Katteveldstraat 18:22</li><li><a href="stop-30568.html">30568</a> - Hoeselt Tongerse Steenweg 64 18:22</li><li><a href="stop-30516.html">30516</a> - Hoeselt Europalaan 18:23</li><li><a href="stop-30529.html">30529</a> - Hoeselt Kruispunt 18:24</li><li><a href="stop-30518.html">30518</a> - Hoeselt Gansterenstraat 18:25</li><li><a href="stop-27023.html">27023</a> - Bilzen Autosnelweg 18:27</li><li><a href="stop-122990.html">122990</a> - Bilzen Tongersestraat 18:28</li><li><a href="stop-105152.html">105152</a> - Bilzen Station perron 6 18:30</li><li><a href="stop-27105.html">27105</a> - Bilzen Hospitaal Sint-Martinus 18:32</li><li><a href="stop-27017.html">27017</a> - Bilzen Broedersschool 18:32</li><li><a href="stop-27177.html">27177</a> - Bilzen Schuurhoven 18:33</li><li><a href="stop-27120.html">27120</a> - Bilzen Meershoven 18:34</li><li><a href="stop-27144.html">27144</a> - Munsterbilzen Schietboomstraat 18:36</li><li><a href="stop-27152.html">27152</a> - Munsterbilzen Zavelstraat 18:36</li><li><a href="stop-27134.html">27134</a> - Munsterbilzen Centrum 18:37</li><li><a href="stop-27142.html">27142</a> - Munsterbilzen Oude Beekstraat 18:38</li><li><a href="stop-110205.html">110205</a> - Munsterbilzen Sint-Amorplein 18:39</li><li><a href="stop-27150.html">27150</a> - Munsterbilzen Taunusweg 18:40</li><li><a href="stop-35302.html">35302</a> - Zutendaal Wit Paard 18:42</li><li><a href="stop-28514.html">28514</a> - Genk MKM 18:43</li><li><a href="stop-28524.html">28524</a> - Genk Munsterenstraat 18:44</li><li><a href="stop-28495.html">28495</a> - Genk Kamerlo 18:48</li><li><a href="stop-28621.html">28621</a> - Genk Weg naar Sledderlo 18:49</li><li><a href="stop-28743.html">28743</a> - Genk Kerkhof 18:50</li><li><a href="stop-28584.html">28584</a> - Genk Vlakveld 18:51</li><li><a href="stop-28386.html">28386</a> - Genk Berglaan 18:52</li><li><a href="stop-88467.html">88467</a> - Genk Stadhuis 18:53</li><li><a href="stop-43779.html">43779</a> - Genk Station perron 9 18:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4474.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

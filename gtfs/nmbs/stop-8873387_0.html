@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Ham-sur-Heure</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Ham-sur-Heure</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-P771431311.html">P771431311</a> - P771431311 - Couvin - Charleroi-Zuid</li><li><a href="trip-P771531321.html">P771531321</a> - P771531321 - Walcourt - Charleroi-Zuid</li><li><a href="trip-P771831341.html">P771831341</a> - P771831341 - Charleroi-Zuid - Walcourt</li><li><a href="trip-P771931351.html">P771931351</a> - P771931351 - Walcourt - Charleroi-Zuid</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.319555, 4.404696], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.319555, 4.404696]).addTo(map);
+    </script>
+</body>
+
+</html>

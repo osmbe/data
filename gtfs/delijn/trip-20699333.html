@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent Arteveldepark - Zomergem - Ursel - 20699333</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent Arteveldepark - Zomergem - Ursel - 20699333</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126651.html">126651</a> - Gent Zuid perron 6 16:30</li><li><a href="stop-112365.html">112365</a> - Gent Kapucijnenham 16:34</li><li><a href="stop-112364.html">112364</a> - Gent Reep 16:34</li><li><a href="stop-112363.html">112363</a> - Gent Sint-Jacobs 16:36</li><li><a href="stop-120197.html">120197</a> - Gent Ottogracht 16:38</li><li><a href="stop-113909.html">113909</a> - Gent Fratersplein 16:39</li><li><a href="stop-112359.html">112359</a> - Gent Tolhuislaan 16:40</li><li><a href="stop-112358.html">112358</a> - Gent Tolpoort 16:41</li><li><a href="stop-114518.html">114518</a> - Gent Spaarstraat 16:42</li><li><a href="stop-128685.html">128685</a> - Gent Sint-Lucas Biervlietstraat 16:43</li><li><a href="stop-114520.html">114520</a> - Gent Kolveniersgang 16:44</li><li><a href="stop-114521.html">114521</a> - Gent Rabot 16:47</li><li><a href="stop-112050.html">112050</a> - Gent Witte Kaproenenplein 16:48</li><li><a href="stop-112049.html">112049</a> - Gent Nieuwevaartbrug 16:49</li><li><a href="stop-112533.html">112533</a> - Gent Ferrerlaan 16:50</li><li><a href="stop-114254.html">114254</a> - Mariakerke Vaartstraat 16:52</li><li><a href="stop-114255.html">114255</a> - Mariakerke Mazestraat 16:53</li><li><a href="stop-114256.html">114256</a> - Mariakerke Groenestaakstraat 16:55</li><li><a href="stop-114257.html">114257</a> - Mariakerke Industrieweg 16:57</li><li><a href="stop-114258.html">114258</a> - Evergem Rabotstraat 17:00</li><li><a href="stop-114259.html">114259</a> - Lovendegem Bierstal 17:01</li><li><a href="stop-114260.html">114260</a> - Lovendegem Appensvoorde 17:02</li><li><a href="stop-114261.html">114261</a> - Lovendegem Oostveldkouter 17:04</li><li><a href="stop-114262.html">114262</a> - Lovendegem Binnenslag 17:05</li><li><a href="stop-114263.html">114263</a> - Lovendegem Nieuwstraat 17:06</li><li><a href="stop-114264.html">114264</a> - Lovendegem Triestlaan 17:08</li><li><a href="stop-114464.html">114464</a> - Lovendegem Kerk 17:09</li><li><a href="stop-114265.html">114265</a> - Lovendegem Warandestraat 17:10</li><li><a href="stop-114266.html">114266</a> - Lovendegem Vellare 17:11</li><li><a href="stop-114267.html">114267</a> - Zomergem Mispelare Stelplaats 17:13</li><li><a href="stop-114268.html">114268</a> - Zomergem Overdam 17:14</li><li><a href="stop-114269.html">114269</a> - Zomergem Korteboeken 17:15</li><li><a href="stop-114270.html">114270</a> - Zomergem Schauwbroekstraat 17:16</li><li><a href="stop-114271.html">114271</a> - Zomergem Dreef 17:17</li><li><a href="stop-114272.html">114272</a> - Zomergem Kerk 17:19</li><li><a href="stop-114326.html">114326</a> - Zomergem Rijvers 17:20</li><li><a href="stop-114327.html">114327</a> - Zomergem G. Gezellestraat 17:21</li><li><a href="stop-114328.html">114328</a> - Zomergem Nekke 17:22</li><li><a href="stop-114329.html">114329</a> - Zomergem Gentweg 17:23</li><li><a href="stop-114330.html">114330</a> - Zomergem Weegbrug 17:25</li><li><a href="stop-114331.html">114331</a> - Ursel Essenbos 17:26</li><li><a href="stop-114239.html">114239</a> - Ursel Veldkruisstraat 17:27</li><li><a href="stop-114332.html">114332</a> - Ursel Molenkouterstraat 17:29</li><li><a href="stop-126648.html">126648</a> - Ursel Vleeswarenfabriek 17:29</li><li><a href="stop-114237.html">114237</a> - Ursel Dorp 17:30</li><li><a href="stop-113406.html">113406</a> - Ursel Kerk 17:31</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./433.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

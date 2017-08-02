@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hagenbroek Industrie - Lier station - Kessel - 21534409</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hagenbroek Industrie - Lier station - Kessel - 21534409</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-19153.html">19153</a> - Kessel Ringstraat 07:46</li><li><a href="stop-19154.html">19154</a> - Kessel Kleine Puttingbaan 07:47</li><li><a href="stop-23552.html">23552</a> - Kessel Station 07:48</li><li><a href="stop-19155.html">19155</a> - Kessel Emblemsesteenweg 07:48</li><li><a href="stop-19156.html">19156</a> - Kessel Esdoornlaan 07:49</li><li><a href="stop-19157.html">19157</a> - Kessel Wilgenlaan 07:50</li><li><a href="stop-19159.html">19159</a> - Lier Bist 07:51</li><li><a href="stop-23548.html">23548</a> - Lier Kriekenstraat 07:52</li><li><a href="stop-23547.html">23547</a> - Lier Beatrijslaan 07:53</li><li><a href="stop-23445.html">23445</a> - Lier Marnixdreef 07:54</li><li><a href="stop-23442.html">23442</a> - Lier Maasfortbaan 07:57</li><li><a href="stop-125829.html">125829</a> - Lier Veemarkt perron 3 07:59</li><li><a href="stop-25013.html">25013</a> - Lier Hoogveldweg 08:00</li><li><a href="stop-20771.html">20771</a> - Lier De Mol 08:01</li><li><a href="stop-108032.html">108032</a> - Lier Gasthuisvest 08:03</li><li><a href="stop-109282.html">109282</a> - Lier Kluizenplein 08:04</li><li><a href="stop-109281.html">109281</a> - Lier Markt 08:05</li><li><a href="stop-23006.html">23006</a> - Lier Kliniek 08:07</li><li><a href="stop-107624.html">107624</a> - Lier Heilig Hartziekenhuis 08:08</li><li><a href="stop-95325.html">95325</a> - Lier Dungelhoeff 08:09</li><li><a href="stop-87345.html">87345</a> - Lier Baron Opsomerlaan 08:10</li><li><a href="stop-106804.html">106804</a> - Lier Station perron 5 08:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2913.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

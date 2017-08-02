@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tielt-Winge Stevensstraat</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Tielt-Winge Stevensstraat</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-21149345.html">21149345</a> - 21149345 - Schoolbus Muggenberg - Tielt - Diest</li><li><a href="trip-21149346.html">21149346</a> - 21149346 - Schoolbus Muggenberg - Tielt - Diest</li><li><a href="trip-22789921.html">22789921</a> - 22789921 - Schoolbus Muggenberg - Tielt - Diest</li><li><a href="trip-22789922.html">22789922</a> - 22789922 - Schoolbus Muggenberg - Tielt - Diest</li><li><a href="trip-22789923.html">22789923</a> - 22789923 - Schoolbus Muggenberg - Tielt - Diest</li><li><a href="trip-22789924.html">22789924</a> - 22789924 - Schoolbus Muggenberg - Tielt - Diest</li><li><a href="trip-22789925.html">22789925</a> - 22789925 - Schoolbus Muggenberg - Tielt - Diest</li><li><a href="trip-22789926.html">22789926</a> - 22789926 - Schoolbus Muggenberg - Tielt - Diest</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.9288509823393, 4.92859455836195], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.9288509823393, 4.92859455836195]).addTo(map);
+    </script>
+</body>
+
+</html>

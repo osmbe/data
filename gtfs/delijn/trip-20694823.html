@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent Zuid - Merelbeke - Melle - 20694823</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent Zuid - Merelbeke - Melle - 20694823</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126534.html">126534</a> - Gent Zuid perron 5 07:45</li><li><a href="stop-112088.html">112088</a> - Gent Vijfwindgatenstraat 07:46</li><li><a href="stop-112117.html">112117</a> - Gent Sint-Lievensdoorgang 07:47</li><li><a href="stop-112116.html">112116</a> - Gent Sint-Lievenspoort 07:48</li><li><a href="stop-111555.html">111555</a> - Ledeberg Eggermontstraat 07:50</li><li><a href="stop-114753.html">114753</a> - Ledeberg Botermarkt 07:52</li><li><a href="stop-114754.html">114754</a> - Ledeberg Eindeke 07:54</li><li><a href="stop-114755.html">114755</a> - Merelbeke Koestraat 07:55</li><li><a href="stop-114756.html">114756</a> - Merelbeke Benoitstraat 07:55</li><li><a href="stop-114757.html">114757</a> - Merelbeke Van Goethemstraat 07:56</li><li><a href="stop-114758.html">114758</a> - Merelbeke Bergstraat 07:57</li><li><a href="stop-114759.html">114759</a> - Merelbeke Ringvaartstraat 07:58</li><li><a href="stop-114764.html">114764</a> - Merelbeke Plataan 08:00</li><li><a href="stop-114765.html">114765</a> - Merelbeke Waterstraat 08:01</li><li><a href="stop-114766.html">114766</a> - Merelbeke Hebbelynckstraat 08:02</li><li><a href="stop-113732.html">113732</a> - Merelbeke Kerk 08:03</li><li><a href="stop-113756.html">113756</a> - Merelbeke Molenhoek 08:05</li><li><a href="stop-114600.html">114600</a> - Merelbeke Kloosterstraat 08:06</li><li><a href="stop-114602.html">114602</a> - Merelbeke Lamstraat 08:07</li><li><a href="stop-114604.html">114604</a> - Merelbeke Wijnpeerstraat 08:08</li><li><a href="stop-114708.html">114708</a> - Merelbeke Lembergsesteenweg 08:09</li><li><a href="stop-114805.html">114805</a> - Merelbeke Ruiterstraat 08:11</li><li><a href="stop-114236.html">114236</a> - Merelbeke Campus Diergeneeskunde 08:13</li><li><a href="stop-114767.html">114767</a> - Melle Caritas 08:14</li><li><a href="stop-111691.html">111691</a> - Melle Gontrode Heirweg 08:16</li><li><a href="stop-111716.html">111716</a> - Melle O.C.M.W. 08:17</li><li><a href="stop-120148.html">120148</a> - Melle Station 08:19</li><li><a href="stop-120149.html">120149</a> - Melle Beekstraat 08:19</li><li><a href="stop-120150.html">120150</a> - Melle Ovenveldstraat 08:20</li><li><a href="stop-112615.html">112615</a> - Melle Brusselsesteenweg 08:21</li><li><a href="stop-112616.html">112616</a> - Melle College 08:22</li><li><a href="stop-111697.html">111697</a> - Melle Brusselsesteenweg 08:23</li><li><a href="stop-120837.html">120837</a> - Melle Oude Geraardsbergsesteenweg 08:24</li><li><a href="stop-120251.html">120251</a> - Melle Autostradeweg 08:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./276.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Marktbus Strombeek - Grimbergen - Vilvoorde - 22792288</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Marktbus Strombeek - Grimbergen - Vilvoorde - 22792288</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-14006.html">14006</a> - Vilvoorde Nowélei 10:56</li><li><a href="stop-127550.html">127550</a> - Vilvoorde Leuvensestraat 10:57</li><li><a href="stop-13968.html">13968</a> - Vilvoorde Kerk 10:58</li><li><a href="stop-14014.html">14014</a> - Vilvoorde Sportcomplex 10:59</li><li><a href="stop-14028.html">14028</a> - Vilvoorde Vlierkens 11:00</li><li><a href="stop-13935.html">13935</a> - Vilvoorde Breemput 11:01</li><li><a href="stop-14481.html">14481</a> - Grimbergen Tangedal 11:02</li><li><a href="stop-10924.html">10924</a> - Grimbergen Groot-Molenveld 11:03</li><li><a href="stop-14479.html">14479</a> - Grimbergen Populierendallaan 11:03</li><li><a href="stop-10912.html">10912</a> - Grimbergen Berkenlaan 11:04</li><li><a href="stop-14478.html">14478</a> - Grimbergen Sparrenlaan 11:05</li><li><a href="stop-10920.html">10920</a> - Grimbergen Prinsenstraat 11:07</li><li><a href="stop-14476.html">14476</a> - Grimbergen Prinsenbos 11:08</li><li><a href="stop-10922.html">10922</a> - Grimbergen Triohofstraat 11:08</li><li><a href="stop-10965.html">10965</a> - Grimbergen Triohofstraat 11:08</li><li><a href="stop-10927.html">10927</a> - Grimbergen Dorp 11:09</li><li><a href="stop-10961.html">10961</a> - Grimbergen Stelplaats 11:10</li><li><a href="stop-10929.html">10929</a> - Grimbergen Dorp 11:11</li><li><a href="stop-10966.html">10966</a> - Grimbergen Triohofstraat 11:11</li><li><a href="stop-10950.html">10950</a> - Grimbergen Nieuwelaan 11:12</li><li><a href="stop-10958.html">10958</a> - Grimbergen Spaanse Linde 11:13</li><li><a href="stop-10934.html">10934</a> - Grimbergen Hellebeekberg 11:14</li><li><a href="stop-14016.html">14016</a> - Strombeek-Bever Ringlaan 11:15</li><li><a href="stop-43358.html">43358</a> - Strombeek-Bever Pierebad 11:16</li><li><a href="stop-11019.html">11019</a> - Strombeek-Bever Kerk 11:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2494.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

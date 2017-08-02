@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Niel - Aartselaar - Groenplaats - 22512089</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Niel - Aartselaar - Groenplaats - 22512089</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-91989.html">91989</a> - Antwerpen Groenplaats 11:20</li><li><a href="stop-90977.html">90977</a> - Antwerpen Sint-Andries 11:23</li><li><a href="stop-88935.html">88935</a> - Antwerpen Tropisch Instituut 11:26</li><li><a href="stop-108171.html">108171</a> - Antwerpen Museum 11:26</li><li><a href="stop-23520.html">23520</a> - Antwerpen Amerikalei 11:28</li><li><a href="stop-107796.html">107796</a> - Antwerpen Troonplaats 11:29</li><li><a href="stop-109226.html">109226</a> - Antwerpen Brederodestraat 11:31</li><li><a href="stop-108207.html">108207</a> - Antwerpen Station Zuid 11:31</li><li><a href="stop-107848.html">107848</a> - Antwerpen Camille Huysmanslaan 11:34</li><li><a href="stop-107885.html">107885</a> - Antwerpen J. De Voslei 11:34</li><li><a href="stop-108355.html">108355</a> - Antwerpen Olympiade 11:35</li><li><a href="stop-107818.html">107818</a> - Antwerpen P+R Olympiade 11:37</li><li><a href="stop-107359.html">107359</a> - Wilrijk Eglantierlaan 11:37</li><li><a href="stop-108048.html">108048</a> - Wilrijk Laarstraat 11:38</li><li><a href="stop-108262.html">108262</a> - Wilrijk Sneeuwbeslaan 11:39</li><li><a href="stop-107825.html">107825</a> - Wilrijk Heistraat 11:39</li><li><a href="stop-107828.html">107828</a> - Wilrijk Bist 11:42</li><li><a href="stop-20794.html">20794</a> - Wilrijk Kerkeveldstraat 11:44</li><li><a href="stop-94370.html">94370</a> - Wilrijk Universiteitsplein 11:44</li><li><a href="stop-107611.html">107611</a> - Wilrijk Doornstraat 11:45</li><li><a href="stop-108006.html">108006</a> - Wilrijk Kleine Doornstraat 11:46</li><li><a href="stop-107838.html">107838</a> - Wilrijk Folklorelaan 11:47</li><li><a href="stop-93679.html">93679</a> - Wilrijk Aquafin 11:47</li><li><a href="stop-23232.html">23232</a> - Aartselaar Dijkstraat 11:48</li><li><a href="stop-43325.html">43325</a> - Aartselaar Wouwersveld 11:49</li><li><a href="stop-23234.html">23234</a> - Aartselaar Barones de Borrekenslaan 11:50</li><li><a href="stop-23236.html">23236</a> - Aartselaar Gemeentehuis 11:50</li><li><a href="stop-21650.html">21650</a> - Aartselaar Dokter Cuypersstraat 11:51</li><li><a href="stop-109075.html">109075</a> - Aartselaar S. Streuvelslaan 11:52</li><li><a href="stop-23240.html">23240</a> - Aartselaar J. Davidlaan 11:54</li><li><a href="stop-107384.html">107384</a> - Aartselaar Wullebeekstraat 11:55</li><li><a href="stop-18989.html">18989</a> - Aartselaar Ooievaarsbos 11:57</li><li><a href="stop-21188.html">21188</a> - Aartselaar Langlaarsteenweg 11:57</li><li><a href="stop-21198.html">21198</a> - Schelle Koekoekstraat 11:59</li><li><a href="stop-21194.html">21194</a> - Schelle Hulstlei 12:00</li><li><a href="stop-21192.html">21192</a> - Schelle Rozenstraat 12:00</li><li><a href="stop-108224.html">108224</a> - Schelle Station 12:02</li><li><a href="stop-108797.html">108797</a> - Schelle Kapelstraat 12:04</li><li><a href="stop-108799.html">108799</a> - Schelle Tolhuisstraat 12:04</li><li><a href="stop-107342.html">107342</a> - Schelle Acacialaan 12:05</li><li><a href="stop-19670.html">19670</a> - Schelle Wullebeekstraat 12:05</li><li><a href="stop-19732.html">19732</a> - Niel Edward Claessenslaan 12:07</li><li><a href="stop-110132.html">110132</a> - Niel Stationsstraat 12:07</li><li><a href="stop-107626.html">107626</a> - Niel Gemeentehuis 12:09</li><li><a href="stop-107603.html">107603</a> - Niel Maria Boodschap 12:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2940.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

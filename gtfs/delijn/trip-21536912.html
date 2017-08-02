@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kontich - Hove - Boechout - Broechem - 21536912</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kontich - Hove - Boechout - Broechem - 21536912</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-25994.html">25994</a> - Kontich Sint-Ritacollege 16:59</li><li><a href="stop-25993.html">25993</a> - Kontich Sint-Ritacollege 17:01</li><li><a href="stop-109117.html">109117</a> - Kontich Rubensstraat 17:01</li><li><a href="stop-23344.html">23344</a> - Kontich Kruisstraat 17:03</li><li><a href="stop-23345.html">23345</a> - Kontich Kerk 17:03</li><li><a href="stop-109242.html">109242</a> - Kontich Edegemsesteenweg 17:04</li><li><a href="stop-109240.html">109240</a> - Kontich Altenastraat 17:05</li><li><a href="stop-109237.html">109237</a> - Kontich Wipstraat 17:07</li><li><a href="stop-109017.html">109017</a> - Kontich Eikenstraat 17:09</li><li><a href="stop-23060.html">23060</a> - Hove Vredestraat 17:09</li><li><a href="stop-23056.html">23056</a> - Hove Geelhandstraat 17:12</li><li><a href="stop-109015.html">109015</a> - Hove Kerk 17:12</li><li><a href="stop-23052.html">23052</a> - Hove Weldadigheidstraat 17:14</li><li><a href="stop-109014.html">109014</a> - Boechout Kerkhof 17:17</li><li><a href="stop-107888.html">107888</a> - Boechout Ropstocklei 17:18</li><li><a href="stop-100401.html">100401</a> - Boechout Kerk 17:18</li><li><a href="stop-100400.html">100400</a> - Boechout J.F. Willemsstraat 17:19</li><li><a href="stop-100363.html">100363</a> - Boechout Dr. T. Tutsstraat 17:20</li><li><a href="stop-107479.html">107479</a> - Boechout Molenlei 17:21</li><li><a href="stop-109314.html">109314</a> - Boechout Sint-Gabrielstraat 17:21</li><li><a href="stop-127476.html">127476</a> - Boechout Capenberg 17:25</li><li><a href="stop-100355.html">100355</a> - Boechout Spokenhofstraat 17:27</li><li><a href="stop-109644.html">109644</a> - Borsbeek Oude Haegevelde 17:28</li><li><a href="stop-100403.html">100403</a> - Borsbeek Corluylei 17:29</li><li><a href="stop-109663.html">109663</a> - Borsbeek Schanslaan 17:30</li><li><a href="stop-109456.html">109456</a> - Borsbeek L. Janssenstraat 17:31</li><li><a href="stop-109655.html">109655</a> - Borsbeek J. Reusenslei 17:31</li><li><a href="stop-22870.html">22870</a> - Wommelgem Hofstraat 17:32</li><li><a href="stop-22872.html">22872</a> - Wommelgem 't Serclaesdreef 17:34</li><li><a href="stop-22874.html">22874</a> - Wommelgem Tuinbouwstraat 17:35</li><li><a href="stop-22876.html">22876</a> - Wommelgem Sint-Damiaanstraat 17:35</li><li><a href="stop-108939.html">108939</a> - Wommelgem Molenbaan 17:38</li><li><a href="stop-22880.html">22880</a> - Wommelgem Dorp 17:38</li><li><a href="stop-93173.html">93173</a> - Wommelgem Vremdesteenweg 17:40</li><li><a href="stop-93175.html">93175</a> - Wommelgem Schawijkstraat 17:44</li><li><a href="stop-22888.html">22888</a> - Ranst Zevenbergen 17:44</li><li><a href="stop-21295.html">21295</a> - Ranst Kastanjelaan 17:45</li><li><a href="stop-22890.html">22890</a> - Ranst Gasthuisstraat 17:46</li><li><a href="stop-22892.html">22892</a> - Ranst Lieve Vrouwestraat 17:46</li><li><a href="stop-22894.html">22894</a> - Ranst Processieweg 17:47</li><li><a href="stop-22896.html">22896</a> - Broechem Achterlo 17:49</li><li><a href="stop-22898.html">22898</a> - Broechem Van Den Nestlaan 17:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2997.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - inrij tramlijn 4 vanaf UZ nr GBR-> via Veldstraat - 20665907</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: inrij tramlijn 4 vanaf UZ nr GBR-> via Veldstraat - 20665907</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-120633.html">120633</a> - Gent UZ 19:39</li><li><a href="stop-112343.html">112343</a> - Gent De Pintelaan 19:42</li><li><a href="stop-112342.html">112342</a> - Gent Krijgslaan 19:42</li><li><a href="stop-112341.html">112341</a> - Gent Sint-Pietersaalststraat 19:44</li><li><a href="stop-126536.html">126536</a> - Gent Sint-Pietersstation perron 20 19:48</li><li><a href="stop-126585.html">126585</a> - Gent Sint-Pietersstation perron 18 19:49</li><li><a href="stop-112062.html">112062</a> - Gent Van Monckhovenstraat 19:53</li><li><a href="stop-112061.html">112061</a> - Gent Van Nassaustraat 19:53</li><li><a href="stop-112059.html">112059</a> - Gent Veergrep 19:56</li><li><a href="stop-112058.html">112058</a> - Gent Verlorenkost 19:57</li><li><a href="stop-112057.html">112057</a> - Gent Savaanstraat 19:59</li><li><a href="stop-112064.html">112064</a> - Gent Korte Meer 20:01</li><li><a href="stop-126568.html">126568</a> - Gent Korenmarkt perron 5 20:01</li><li><a href="stop-112118.html">112118</a> - Gent Duivelsteen 20:03</li><li><a href="stop-112090.html">112090</a> - Gent Lippensplein 20:05</li><li><a href="stop-126574.html">126574</a> - Gent Zuid perron 2 20:05</li><li><a href="stop-112088.html">112088</a> - Gent Vijfwindgatenstraat 20:07</li><li><a href="stop-112117.html">112117</a> - Gent Sint-Lievensdoorgang 20:09</li><li><a href="stop-112116.html">112116</a> - Gent Sint-Lievenspoort 20:10</li><li><a href="stop-112115.html">112115</a> - Ledeberg Hundelgemsesteenweg 20:11</li><li><a href="stop-112471.html">112471</a> - Ledeberg Ledebergplein 20:12</li><li><a href="stop-112084.html">112084</a> - Gentbrugge Stelplaats 20:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./20.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

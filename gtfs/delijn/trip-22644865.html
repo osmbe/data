@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Centrumbus Oostende - 22644865</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Centrumbus Oostende - 22644865</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-93318.html">93318</a> - Oostende AZ Damiaan 13:15</li><li><a href="stop-89062.html">89062</a> - Oostende Parking 13:19</li><li><a href="stop-36619.html">36619</a> - Oostende Hazegras 13:22</li><li><a href="stop-126279.html">126279</a> - Oostende Station perron 1 13:23</li><li><a href="stop-88872.html">88872</a> - Oostende Sint- Petrus Paulusplein 13:25</li><li><a href="stop-100795.html">100795</a> - Oostende Ooststraat 13:25</li><li><a href="stop-36473.html">36473</a> - Oostende Centrum 13:26</li><li><a href="stop-100798.html">100798</a> - Oostende Kapucijnenkerk 13:27</li><li><a href="stop-100796.html">100796</a> - Oostende Van Iseghemlaan 13:27</li><li><a href="stop-104638.html">104638</a> - Oostende Vlaanderenstraat 13:28</li><li><a href="stop-36475.html">36475</a> - Oostende Casino-Kursaal 13:29</li><li><a href="stop-127307.html">127307</a> - Oostende Marie Joseplein perron 4 13:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4300.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

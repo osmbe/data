@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Poppel - Weelde Stenenbrug - Turnhout - 22528348</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Poppel - Weelde Stenenbrug - Turnhout - 22528348</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-25906.html">25906</a> - Turnhout Station perron 4 12:12</li><li><a href="stop-108880.html">108880</a> - Turnhout Zeshoek 12:14</li><li><a href="stop-109200.html">109200</a> - Turnhout Markt perron 6 12:17</li><li><a href="stop-23140.html">23140</a> - Turnhout Theobalduskapel 12:18</li><li><a href="stop-109019.html">109019</a> - Turnhout Drieskensstraat 12:19</li><li><a href="stop-109020.html">109020</a> - Turnhout Meirgoren 12:20</li><li><a href="stop-109021.html">109021</a> - Turnhout Van Solmstraat 12:21</li><li><a href="stop-23069.html">23069</a> - Oud-Turnhout Polderstraat 12:22</li><li><a href="stop-23071.html">23071</a> - Oud-Turnhout Kuiltjesstraat 12:23</li><li><a href="stop-125828.html">125828</a> - Oud-Turnhout Werkendam 12:24</li><li><a href="stop-23075.html">23075</a> - Oud-Turnhout Heidehuisjes 12:24</li><li><a href="stop-23077.html">23077</a> - Oud-Turnhout Leeuwerkstraat 12:25</li><li><a href="stop-23079.html">23079</a> - Ravels Kanaaldijk 12:26</li><li><a href="stop-109502.html">109502</a> - Ravels Vaartstraat 12:27</li><li><a href="stop-109024.html">109024</a> - Ravels Berkenlaan 12:27</li><li><a href="stop-109026.html">109026</a> - Ravels Onze-Lieve-Vrouwstraat 12:28</li><li><a href="stop-109027.html">109027</a> - Ravels Kerk 12:28</li><li><a href="stop-23128.html">23128</a> - Ravels Klein Ravels 12:28</li><li><a href="stop-109039.html">109039</a> - Ravels Goudbergstraat 12:29</li><li><a href="stop-23132.html">23132</a> - Weelde Stenenbrug 12:30</li><li><a href="stop-19103.html">19103</a> - Weelde Turnhoutseweg 12:31</li><li><a href="stop-23134.html">23134</a> - Weelde Maatsheikensstraat 12:31</li><li><a href="stop-23136.html">23136</a> - Weelde Elzenstraat 12:32</li><li><a href="stop-92685.html">92685</a> - Weelde Moleneinde 12:33</li><li><a href="stop-23099.html">23099</a> - Weelde Gemeentehuis 12:34</li><li><a href="stop-109029.html">109029</a> - Weelde Schoolstraat 12:35</li><li><a href="stop-25791.html">25791</a> - Weelde Singel 12:36</li><li><a href="stop-109030.html">109030</a> - Weelde Schoolstraat 12:37</li><li><a href="stop-109032.html">109032</a> - Weelde Weeldestraat 12:38</li><li><a href="stop-109034.html">109034</a> - Weelde Hegge 12:39</li><li><a href="stop-23108.html">23108</a> - Weelde Noord Heikant 12:40</li><li><a href="stop-25863.html">25863</a> - Weelde Prinsenlaan 12:41</li><li><a href="stop-23110.html">23110</a> - Weelde Rustoord Emmaus 12:41</li><li><a href="stop-23112.html">23112</a> - Poppel Verbindingsweg 12:42</li><li><a href="stop-23114.html">23114</a> - Poppel Grote Vond 12:43</li><li><a href="stop-109036.html">109036</a> - Poppel Vondstraat 12:44</li><li><a href="stop-109038.html">109038</a> - Poppel Dorp 12:44</li><li><a href="stop-93200.html">93200</a> - Poppel Trierstraat 12:45</li><li><a href="stop-23122.html">23122</a> - Poppel Maarle 12:46</li><li><a href="stop-23124.html">23124</a> - Poppel Politie 12:47</li><li><a href="stop-23126.html">23126</a> - Poppel Grens 12:48</li><li><a href="stop-105943.html">105943</a> - Goirle Natuurpoort Roovertsche Leij 12:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3383.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

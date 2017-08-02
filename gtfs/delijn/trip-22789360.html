@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Moorsel - Tervuren - 22789360</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Moorsel - Tervuren - 22789360</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-16894.html">16894</a> - Tervuren Centrum 12:13</li><li><a href="stop-13618.html">13618</a> - Tervuren G.I.T.O. 12:16</li><li><a href="stop-16896.html">16896</a> - Tervuren Atheneum 12:17</li><li><a href="stop-15531.html">15531</a> - Tervuren H. Hartcollege 12:20</li><li><a href="stop-16234.html">16234</a> - Tervuren Terminus tram 44 12:23</li><li><a href="stop-13610.html">13610</a> - Tervuren O.Leuvense Baan 12:25</li><li><a href="stop-13600.html">13600</a> - Tervuren Gordaallaan 12:27</li><li><a href="stop-13623.html">13623</a> - Tervuren Vier Winden 12:27</li><li><a href="stop-13628.html">13628</a> - Tervuren Moorsel Waalse Baan 12:29</li><li><a href="stop-14685.html">14685</a> - Tervuren Moorsel Weidelaan 12:31</li><li><a href="stop-125633.html">125633</a> - Tervuren Moorsel Watertoren 12:31</li><li><a href="stop-125631.html">125631</a> - Tervuren Moorsel Kerk 12:32</li><li><a href="stop-125642.html">125642</a> - Tervuren Moorsel Begraafplaats 12:33</li><li><a href="stop-14687.html">14687</a> - Tervuren Moorsel Vinkenlaan 12:34</li><li><a href="stop-125640.html">125640</a> - Tervuren Moorsel Merellaan 12:35</li><li><a href="stop-14691.html">14691</a> - Tervuren Moorsel Groenlaan 12:36</li><li><a href="stop-16981.html">16981</a> - Leefdaal Grensstraat 12:37</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2352.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

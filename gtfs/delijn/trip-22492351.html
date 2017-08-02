@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Geel - Leuven - Brussel - 22492351</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Geel - Leuven - Brussel - 22492351</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127159.html">127159</a> - Geel Station perron 5 13:05</li><li><a href="stop-107517.html">107517</a> - Geel Stadspark 13:08</li><li><a href="stop-109754.html">109754</a> - Geel Markt 13:10</li><li><a href="stop-127001.html">127001</a> - Geel P. Van Neylenstraat 13:11</li><li><a href="stop-109757.html">109757</a> - Geel AZ Sint-Dimpna 13:12</li><li><a href="stop-127004.html">127004</a> - Geel Waterstraat 13:14</li><li><a href="stop-109784.html">109784</a> - Geel Maal 13:16</li><li><a href="stop-109788.html">109788</a> - Geel Punt kerk 13:20</li><li><a href="stop-125841.html">125841</a> - Zammel Kruispunt 13:27</li><li><a href="stop-109935.html">109935</a> - Westerlo Dorp 13:30</li><li><a href="stop-109933.html">109933</a> - Westerlo de Merodedreef 13:31</li><li><a href="stop-92720.html">92720</a> - Herselt Westerlosesteenweg 13:33</li><li><a href="stop-107908.html">107908</a> - Herselt Ollemanshoek 13:36</li><li><a href="stop-25218.html">25218</a> - Herselt Vijverstraat 13:37</li><li><a href="stop-109774.html">109774</a> - Herselt Dorp 13:39</li><li><a href="stop-25233.html">25233</a> - Herselt Stoppelblokken garage 13:42</li><li><a href="stop-25240.html">25240</a> - Ramsel Bosstraat 13:45</li><li><a href="stop-15891.html">15891</a> - Aarschot Oude Mechelsebaan 13:48</li><li><a href="stop-15893.html">15893</a> - Aarschot Lindekensstraat 13:49</li><li><a href="stop-128814.html">128814</a> - Aarschot Damiaaninstituut 13:51</li><li><a href="stop-9299.html">9299</a> - Aarschot Atheneum 13:52</li><li><a href="stop-128815.html">128815</a> - Aarschot Kerk 13:53</li><li><a href="stop-105085.html">105085</a> - Aarschot Station perron 4 13:54</li><li><a href="stop-110186.html">110186</a> - Leuven Station Perron 1 14:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5255.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

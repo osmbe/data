@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hoboken - Merksem - 21504094</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hoboken - Merksem - 21504094</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128935.html">128935</a> - Merksem P+R Merksem 17:40</li><li><a href="stop-20960.html">20960</a> - Merksem Ringlaan 17:42</li><li><a href="stop-108118.html">108118</a> - Merksem Rerum Novarum 17:43</li><li><a href="stop-108120.html">108120</a> - Merksem Victor Roosens 17:43</li><li><a href="stop-107607.html">107607</a> - Merksem Oudebareel 17:46</li><li><a href="stop-108695.html">108695</a> - Merksem Barnkracht 17:46</li><li><a href="stop-107760.html">107760</a> - Merksem Burgemeester Nolf 17:48</li><li><a href="stop-107729.html">107729</a> - Merksem Gasthuishoeve 17:49</li><li><a href="stop-121744.html">121744</a> - Antwerpen Premetrostation Sport 17:52</li><li><a href="stop-121190.html">121190</a> - Antwerpen Premetrostation Schijnpoort 17:53</li><li><a href="stop-121187.html">121187</a> - Antwerpen Premetrostation Handel 17:54</li><li><a href="stop-122268.html">122268</a> - Antwerpen Premetrostation Elisabeth 17:56</li><li><a href="stop-121186.html">121186</a> - Antwerpen Premetrostation Astrid 17:57</li><li><a href="stop-120882.html">120882</a> - Antwerpen Premetrostation Diamant 17:58</li><li><a href="stop-120896.html">120896</a> - Antwerpen Premetrostation Plantin 18:00</li><li><a href="stop-120805.html">120805</a> - Antwerpen Lange Leemstraat 18:02</li><li><a href="stop-107801.html">107801</a> - Antwerpen Harmonie 18:04</li><li><a href="stop-108298.html">108298</a> - Antwerpen Provinciehuis 18:05</li><li><a href="stop-108134.html">108134</a> - Antwerpen Markgravelei 18:07</li><li><a href="stop-107540.html">107540</a> - Antwerpen deSingel 18:09</li><li><a href="stop-107497.html">107497</a> - Antwerpen Antwerp Expo 18:11</li><li><a href="stop-108761.html">108761</a> - Antwerpen Volhardingstraat 18:13</li><li><a href="stop-107887.html">107887</a> - Antwerpen Olympiade 18:14</li><li><a href="stop-107558.html">107558</a> - Antwerpen De Bosschaert 18:15</li><li><a href="stop-98697.html">98697</a> - Antwerpen Schijfwerper 18:17</li><li><a href="stop-108407.html">108407</a> - Wilrijk Sportstraat 18:19</li><li><a href="stop-108833.html">108833</a> - Hoboken Zwaantjes 18:21</li><li><a href="stop-107913.html">107913</a> - Hoboken Jan Van de Wouwer 18:22</li><li><a href="stop-107612.html">107612</a> - Hoboken Draaiboom 18:23</li><li><a href="stop-108534.html">108534</a> - Hoboken Steynstraat 18:24</li><li><a href="stop-19105.html">19105</a> - Hoboken Kioskplaats 18:25</li><li><a href="stop-108003.html">108003</a> - Hoboken Lelieplaats 18:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2654.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

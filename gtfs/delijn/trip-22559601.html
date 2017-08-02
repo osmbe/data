@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Duffel - Mijlstraat - Lier - 22559601</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Duffel - Mijlstraat - Lier - 22559601</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-25836.html">25836</a> - Duffel Station 11:34</li><li><a href="stop-109960.html">109960</a> - Duffel AZ Sint-Maarten 11:36</li><li><a href="stop-22435.html">22435</a> - Duffel Kerk 11:37</li><li><a href="stop-109145.html">109145</a> - Duffel Gemeentehuis 11:39</li><li><a href="stop-109147.html">109147</a> - Duffel Onze-Lieve-Vrouwlaan 11:41</li><li><a href="stop-19187.html">19187</a> - Duffel Hogevelden 11:42</li><li><a href="stop-109680.html">109680</a> - Duffel Lage Weg 11:42</li><li><a href="stop-107433.html">107433</a> - Duffel Berkhoevelaan 11:43</li><li><a href="stop-24926.html">24926</a> - Duffel Enkelstraat 11:43</li><li><a href="stop-24924.html">24924</a> - Duffel Lintse Beek 11:45</li><li><a href="stop-24922.html">24922</a> - Duffel Hoogstraat 11:46</li><li><a href="stop-25058.html">25058</a> - Duffel Heidestraat smid 11:47</li><li><a href="stop-109677.html">109677</a> - Duffel Mijlstraat kerk 11:48</li><li><a href="stop-24915.html">24915</a> - Duffel Zijpstraat 11:49</li><li><a href="stop-24913.html">24913</a> - Duffel Oude Liersebaan 11:49</li><li><a href="stop-109675.html">109675</a> - Duffel Itterbeek 11:50</li><li><a href="stop-24909.html">24909</a> - Lier Wolfsleikapel 11:51</li><li><a href="stop-24907.html">24907</a> - Lier Ceciliastraat 11:53</li><li><a href="stop-24905.html">24905</a> - Lier Akkerstraat 11:54</li><li><a href="stop-107927.html">107927</a> - Lier Boomlaarstraat marktreisweg 11:59</li><li><a href="stop-107622.html">107622</a> - Lier Zwembad 12:01</li><li><a href="stop-109940.html">109940</a> - Lier Station perron 11 12:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3851.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

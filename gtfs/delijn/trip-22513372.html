@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Turnhout - Gierle - Tielen - Lichtaart - Herentals - 22513372</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Turnhout - Gierle - Tielen - Lichtaart - Herentals - 22513372</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-25380.html">25380</a> - Herentals Station perron 6 12:15</li><li><a href="stop-108972.html">108972</a> - Herentals Belgiëlaan 12:16</li><li><a href="stop-100399.html">100399</a> - Herentals Hikstraat 12:16</li><li><a href="stop-108969.html">108969</a> - Herentals AZ Sint-Elisabeth 12:17</li><li><a href="stop-109957.html">109957</a> - Herentals Kerkhof 12:19</li><li><a href="stop-25373.html">25373</a> - Herentals Schoutenlaan 12:20</li><li><a href="stop-25371.html">25371</a> - Herentals Snepkenshoeve 12:22</li><li><a href="stop-25369.html">25369</a> - Lichtaart Snepkenshof 12:23</li><li><a href="stop-25367.html">25367</a> - Lichtaart Hof Ter Heidedreef 12:26</li><li><a href="stop-25365.html">25365</a> - Lichtaart Olensteenweg 12:27</li><li><a href="stop-109808.html">109808</a> - Lichtaart Kastanjelaan 12:29</li><li><a href="stop-109806.html">109806</a> - Lichtaart Schoolstraat 12:29</li><li><a href="stop-109804.html">109804</a> - Lichtaart Gemeentestraat 12:30</li><li><a href="stop-109803.html">109803</a> - Lichtaart Korenbloemlaan 12:31</li><li><a href="stop-25355.html">25355</a> - Lichtaart Driesstraat 12:32</li><li><a href="stop-109801.html">109801</a> - Tielen Dorp 12:33</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2969.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

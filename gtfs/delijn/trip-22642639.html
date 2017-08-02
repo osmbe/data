@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Roeselare-Izegem-Ingelmunster-Anzegem - 22642639</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Roeselare-Izegem-Ingelmunster-Anzegem - 22642639</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126369.html">126369</a> - Roeselare Station perron 8 17:50</li><li><a href="stop-42087.html">42087</a> - Roeselare Victoria 17:54</li><li><a href="stop-38117.html">38117</a> - Roeselare Rumbeeksegravier 17:56</li><li><a href="stop-37739.html">37739</a> - Kachtem Snakebos 17:58</li><li><a href="stop-37738.html">37738</a> - Kachtem Roeselarestraat 24 17:59</li><li><a href="stop-37735.html">37735</a> - Kachtem Draaitap 18:00</li><li><a href="stop-37733.html">37733</a> - Kachtem 'T Hoge 18:01</li><li><a href="stop-37737.html">37737</a> - Kachtem Plaats 18:02</li><li><a href="stop-37734.html">37734</a> - Kachtem De Wandeling 18:04</li><li><a href="stop-40880.html">40880</a> - Emelgem Vijfwegen 18:07</li><li><a href="stop-126435.html">126435</a> - Izegem Station perron 2 18:10</li><li><a href="stop-37721.html">37721</a> - Izegem H.Hartkerk 18:11</li><li><a href="stop-39202.html">39202</a> - Izegem Papestraat 18:13</li><li><a href="stop-37724.html">37724</a> - Izegem Sint-Louis 18:14</li><li><a href="stop-37728.html">37728</a> - Izegem Voerman 18:15</li><li><a href="stop-37698.html">37698</a> - Ingelmunster Prinsenhof 18:17</li><li><a href="stop-37699.html">37699</a> - Ingelmunster Rozenstraat 18:17</li><li><a href="stop-37697.html">37697</a> - Ingelmunster Pelikaan 18:19</li><li><a href="stop-37702.html">37702</a> - Ingelmunster Station 18:20</li><li><a href="stop-37694.html">37694</a> - Ingelmunster Markt 18:21</li><li><a href="stop-100127.html">100127</a> - Ingelmunster Sportcentrum 18:22</li><li><a href="stop-37700.html">37700</a> - Ingelmunster School 18:24</li><li><a href="stop-37704.html">37704</a> - Ingelmunster Vliegend Paard 18:24</li><li><a href="stop-42849.html">42849</a> - Oostrozebeke Nijverheidsstraat 18:26</li><li><a href="stop-38054.html">38054</a> - Oostrozebeke De Pauw 18:27</li><li><a href="stop-38059.html">38059</a> - Oostrozebeke Roterij 18:28</li><li><a href="stop-38053.html">38053</a> - Oostrozebeke De Baanwachter 18:29</li><li><a href="stop-38056.html">38056</a> - Oostrozebeke Gemeenteplein 18:30</li><li><a href="stop-42013.html">42013</a> - Wielsbeke Gaverstraat 18:31</li><li><a href="stop-42224.html">42224</a> - Wielsbeke De Kinne 18:32</li><li><a href="stop-38260.html">38260</a> - Wielsbeke Dries 18:34</li><li><a href="stop-38264.html">38264</a> - Wielsbeke Kasteeldreef 18:34</li><li><a href="stop-38266.html">38266</a> - Wielsbeke Oud Dorp 18:35</li><li><a href="stop-38268.html">38268</a> - Wielsbeke Waterstraat 18:36</li><li><a href="stop-125710.html">125710</a> - Sint-Baafs-Vijve Plaats 18:37</li><li><a href="stop-125705.html">125705</a> - Sint-Baafs-Vijve Electr. Kabien 18:38</li><li><a href="stop-125712.html">125712</a> - Sint-Eloois-Vijve Plaats 18:40</li><li><a href="stop-125713.html">125713</a> - Sint-Eloois-Vijve Posterij 18:41</li><li><a href="stop-38232.html">38232</a> - Waregem Kliniek 18:42</li><li><a href="stop-126438.html">126438</a> - Waregem Station perron 4 18:44</li><li><a href="stop-101118.html">101118</a> - Waregem College 18:45</li><li><a href="stop-42201.html">42201</a> - Waregem Markt 18:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4285.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

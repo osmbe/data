@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent Arteveldepark - Zomergem - Ursel - 20699597</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent Arteveldepark - Zomergem - Ursel - 20699597</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126651.html">126651</a> - Gent Zuid perron 6 12:20</li><li><a href="stop-112365.html">112365</a> - Gent Kapucijnenham 12:23</li><li><a href="stop-112364.html">112364</a> - Gent Reep 12:24</li><li><a href="stop-112363.html">112363</a> - Gent Sint-Jacobs 12:25</li><li><a href="stop-120197.html">120197</a> - Gent Ottogracht 12:26</li><li><a href="stop-113909.html">113909</a> - Gent Fratersplein 12:27</li><li><a href="stop-112359.html">112359</a> - Gent Tolhuislaan 12:28</li><li><a href="stop-112358.html">112358</a> - Gent Tolpoort 12:29</li><li><a href="stop-114518.html">114518</a> - Gent Spaarstraat 12:30</li><li><a href="stop-128685.html">128685</a> - Gent Sint-Lucas Biervlietstraat 12:31</li><li><a href="stop-114520.html">114520</a> - Gent Kolveniersgang 12:32</li><li><a href="stop-114521.html">114521</a> - Gent Rabot 12:34</li><li><a href="stop-112050.html">112050</a> - Gent Witte Kaproenenplein 12:35</li><li><a href="stop-112049.html">112049</a> - Gent Nieuwevaartbrug 12:35</li><li><a href="stop-112533.html">112533</a> - Gent Ferrerlaan 12:36</li><li><a href="stop-114254.html">114254</a> - Mariakerke Vaartstraat 12:38</li><li><a href="stop-114255.html">114255</a> - Mariakerke Mazestraat 12:39</li><li><a href="stop-114256.html">114256</a> - Mariakerke Groenestaakstraat 12:40</li><li><a href="stop-114257.html">114257</a> - Mariakerke Industrieweg 12:42</li><li><a href="stop-114258.html">114258</a> - Evergem Rabotstraat 12:43</li><li><a href="stop-114259.html">114259</a> - Lovendegem Bierstal 12:44</li><li><a href="stop-114260.html">114260</a> - Lovendegem Appensvoorde 12:45</li><li><a href="stop-114261.html">114261</a> - Lovendegem Oostveldkouter 12:47</li><li><a href="stop-114262.html">114262</a> - Lovendegem Binnenslag 12:48</li><li><a href="stop-114263.html">114263</a> - Lovendegem Nieuwstraat 12:49</li><li><a href="stop-114264.html">114264</a> - Lovendegem Triestlaan 12:50</li><li><a href="stop-114464.html">114464</a> - Lovendegem Kerk 12:51</li><li><a href="stop-114265.html">114265</a> - Lovendegem Warandestraat 12:52</li><li><a href="stop-114266.html">114266</a> - Lovendegem Vellare 12:53</li><li><a href="stop-114267.html">114267</a> - Zomergem Mispelare Stelplaats 12:54</li><li><a href="stop-114268.html">114268</a> - Zomergem Overdam 12:55</li><li><a href="stop-114269.html">114269</a> - Zomergem Korteboeken 12:56</li><li><a href="stop-114270.html">114270</a> - Zomergem Schauwbroekstraat 12:57</li><li><a href="stop-114271.html">114271</a> - Zomergem Dreef 12:58</li><li><a href="stop-114272.html">114272</a> - Zomergem Kerk 12:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./440.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

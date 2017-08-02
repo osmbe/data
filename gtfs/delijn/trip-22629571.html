@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Zwevegem-Moen-St.Denijs-Helkijn - 22629571</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Zwevegem-Moen-St.Denijs-Helkijn - 22629571</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126382.html">126382</a> - Kortrijk Station perron 6 19:56</li><li><a href="stop-37777.html">37777</a> - Kortrijk Spoorweglaan 19:58</li><li><a href="stop-104741.html">104741</a> - Kortrijk Rijkswacht 20:00</li><li><a href="stop-37841.html">37841</a> - Kortrijk Howest / VTI 20:02</li><li><a href="stop-37826.html">37826</a> - Kortrijk Soetens Molen 20:03</li><li><a href="stop-100905.html">100905</a> - Kortrijk Autosnelweg E17 20:04</li><li><a href="stop-38302.html">38302</a> - Zwevegem Losschaert 20:07</li><li><a href="stop-38365.html">38365</a> - Zwevegem Ter Winckele 20:07</li><li><a href="stop-38289.html">38289</a> - Zwevegem Cafe De Uil 20:08</li><li><a href="stop-38297.html">38297</a> - Zwevegem Kerk 20:09</li><li><a href="stop-38287.html">38287</a> - Zwevegem Brandweer 20:10</li><li><a href="stop-38292.html">38292</a> - Zwevegem Frankrijklaan 20:12</li><li><a href="stop-38301.html">38301</a> - Zwevegem Lindelaan 20:13</li><li><a href="stop-38300.html">38300</a> - Zwevegem Kwadepoelstraat 20:14</li><li><a href="stop-100935.html">100935</a> - Zwevegem Bloemenhof 20:15</li><li><a href="stop-38294.html">38294</a> - Zwevegem Kapel Milanen 20:16</li><li><a href="stop-38288.html">38288</a> - Zwevegem Cafe Barakke 20:18</li><li><a href="stop-38299.html">38299</a> - Zwevegem Knokke Kerk 20:19</li><li><a href="stop-37636.html">37636</a> - Heestert Bonte Os 20:21</li><li><a href="stop-37638.html">37638</a> - Heestert Keiberg 20:22</li><li><a href="stop-37639.html">37639</a> - Heestert Station 20:23</li><li><a href="stop-37988.html">37988</a> - Moen Lindebloesemlaan 20:24</li><li><a href="stop-37989.html">37989</a> - Moen Kerk 20:26</li><li><a href="stop-37993.html">37993</a> - Moen Verzetstraat 20:26</li><li><a href="stop-37992.html">37992</a> - Moen Vaart 20:27</li><li><a href="stop-37991.html">37991</a> - Moen Montalleud 20:28</li><li><a href="stop-37990.html">37990</a> - Moen Moenstraat 20:28</li><li><a href="stop-38166.html">38166</a> - Sint-Denijs In De Rust 20:30</li><li><a href="stop-110601.html">110601</a> - Sint-Denijs Dries 20:30</li><li><a href="stop-38164.html">38164</a> - Sint-Denijs Blekerij 20:31</li><li><a href="stop-100927.html">100927</a> - Sint-Denijs Kerk 20:31</li><li><a href="stop-38168.html">38168</a> - Sint-Denijs Station 20:32</li><li><a href="stop-37643.html">37643</a> - Helkijn Cafe Central 20:32</li><li><a href="stop-37642.html">37642</a> - Helkijn Brouwerij 20:33</li><li><a href="stop-37644.html">37644</a> - Helkijn Centrum 20:34</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4130.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

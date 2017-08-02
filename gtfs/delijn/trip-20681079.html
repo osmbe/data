@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent Arteveldepark - AZ Sint-Lucas - 20681079</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent Arteveldepark - AZ Sint-Lucas - 20681079</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-120203.html">120203</a> - Gent AZ Sint-Lucas 10:01</li><li><a href="stop-113564.html">113564</a> - Gent Spaarstraat 10:03</li><li><a href="stop-111443.html">111443</a> - Gent Tolpoort 10:04</li><li><a href="stop-111444.html">111444</a> - Gent Tolhuislaan 10:06</li><li><a href="stop-111445.html">111445</a> - Gent Fratersplein 10:07</li><li><a href="stop-111446.html">111446</a> - Gent Heilig-Kerst 10:09</li><li><a href="stop-111615.html">111615</a> - Gent Dok Noord 10:10</li><li><a href="stop-111447.html">111447</a> - Gent Stapelplein 10:11</li><li><a href="stop-112022.html">112022</a> - Gent Blekerijstraat 10:12</li><li><a href="stop-111242.html">111242</a> - Gent Steendam 10:14</li><li><a href="stop-111448.html">111448</a> - Gent Sint-Jacobs 10:15</li><li><a href="stop-111328.html">111328</a> - Gent Reep 10:17</li><li><a href="stop-111450.html">111450</a> - Gent Kapucijnenham 10:18</li><li><a href="stop-126551.html">126551</a> - Gent Zuid perron 9 10:20</li><li><a href="stop-111451.html">111451</a> - Gent Bagattenstraat 10:22</li><li><a href="stop-111452.html">111452</a> - Gent Blandijnberg 10:24</li><li><a href="stop-111453.html">111453</a> - Gent Sint-Pietersplein 10:25</li><li><a href="stop-111301.html">111301</a> - Gent Heuvelpoort 10:27</li><li><a href="stop-112924.html">112924</a> - Gent Ottergemsesteenweg 10:28</li><li><a href="stop-111454.html">111454</a> - Gent De Heerestraat 10:29</li><li><a href="stop-111455.html">111455</a> - Gent Burggravenlaan 10:30</li><li><a href="stop-120185.html">120185</a> - Gent Koekoeklaan 10:31</li><li><a href="stop-111599.html">111599</a> - Gent Heymanslaan 10:33</li><li><a href="stop-111600.html">111600</a> - Gent UZ Heymanslaan 10:34</li><li><a href="stop-111601.html">111601</a> - Gent Proeftuinstraat 10:35</li><li><a href="stop-127631.html">127631</a> - Gent Arteveldepark perron 1 10:36</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./88.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

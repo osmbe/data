@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Silsburg - Schoonselhof - 21525202</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Silsburg - Schoonselhof - 21525202</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108382.html">108382</a> - Borsbeek Silsburg 23:36</li><li><a href="stop-107556.html">107556</a> - Deurne Dassastraat 23:37</li><li><a href="stop-19888.html">19888</a> - Deurne Florent Pauwels 23:38</li><li><a href="stop-21910.html">21910</a> - Deurne Stevenslei 23:39</li><li><a href="stop-100342.html">100342</a> - Deurne Waterbaan 23:40</li><li><a href="stop-21019.html">21019</a> - Deurne Mestputteke 23:41</li><li><a href="stop-108167.html">108167</a> - Deurne Muggenberg 23:42</li><li><a href="stop-108159.html">108159</a> - Borgerhout Morckhoven 23:43</li><li><a href="stop-107532.html">107532</a> - Borgerhout Joe English 23:44</li><li><a href="stop-108522.html">108522</a> - Borgerhout Stenenbrug 23:45</li><li><a href="stop-107456.html">107456</a> - Borgerhout De Roma 23:46</li><li><a href="stop-19743.html">19743</a> - Borgerhout Drink 23:47</li><li><a href="stop-121176.html">121176</a> - Antwerpen Kerkstraat 23:48</li><li><a href="stop-107737.html">107737</a> - Antwerpen Centraal Station perron 3 23:49</li><li><a href="stop-125243.html">125243</a> - Antwerpen F. Rooseveltplaats perron 50 23:51</li><li><a href="stop-107386.html">107386</a> - Antwerpen Stadspark 23:53</li><li><a href="stop-108179.html">108179</a> - Antwerpen Nationale Bank 23:54</li><li><a href="stop-107741.html">107741</a> - Antwerpen Kasteelplein 23:56</li><li><a href="stop-19037.html">19037</a> - Antwerpen Bestorming 23:57</li><li><a href="stop-19325.html">19325</a> - Antwerpen Broedermin 23:58</li><li><a href="stop-128310.html">128310</a> - Antwerpen Brussel 23:59</li><li><a href="stop-21155.html">21155</a> - Antwerpen Station Zuid 24:00</li><li><a href="stop-108014.html">108014</a> - Antwerpen Kolonel Silvertop 24:01</li><li><a href="stop-108012.html">108012</a> - Antwerpen Generaal Armstrong 24:02</li><li><a href="stop-108000.html">108000</a> - Antwerpen Kielpark 24:03</li><li><a href="stop-107355.html">107355</a> - Antwerpen Abdijstraat 24:03</li><li><a href="stop-107759.html">107759</a> - Hoboken Grens Kiel 24:05</li><li><a href="stop-108838.html">108838</a> - Hoboken Zwaantjes 24:06</li><li><a href="stop-107351.html">107351</a> - Hoboken Aartselaarstraat 24:07</li><li><a href="stop-107822.html">107822</a> - Hoboken Heidestraat 24:08</li><li><a href="stop-107934.html">107934</a> - Hoboken Karel Meyvis 24:09</li><li><a href="stop-106744.html">106744</a> - Hoboken P+R Schoonselhof 24:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2757.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Dendermonde - Malderen - 20713859</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Dendermonde - Malderen - 20713859</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126709.html">126709</a> - Dendermonde Station perron 7 16:00</li><li><a href="stop-116802.html">116802</a> - Sint-Gillis-Dendermonde Kerk 16:05</li><li><a href="stop-116801.html">116801</a> - Sint-Gillis-Dendermonde Acacialaan 16:06</li><li><a href="stop-116800.html">116800</a> - Sint-Gillis-Dendermonde Kruisstraat 16:07</li><li><a href="stop-116808.html">116808</a> - Lebbeke Vondelmolen 16:08</li><li><a href="stop-116799.html">116799</a> - Lebbeke Ziekenhuisveldbaan 16:09</li><li><a href="stop-116798.html">116798</a> - Lebbeke Kerk 16:11</li><li><a href="stop-116797.html">116797</a> - Lebbeke Konkelgoedstraat 16:12</li><li><a href="stop-116796.html">116796</a> - Lebbeke Sportcentrum 16:13</li><li><a href="stop-116795.html">116795</a> - Lebbeke Langestraat 16:14</li><li><a href="stop-116794.html">116794</a> - Lebbeke Ijzerenwegstraat 16:15</li><li><a href="stop-116793.html">116793</a> - Lebbeke Lindekenstraat 16:16</li><li><a href="stop-116792.html">116792</a> - Lebbeke Opstalstraat 16:17</li><li><a href="stop-116791.html">116791</a> - Lebbeke Terhoevenstraat 16:18</li><li><a href="stop-116790.html">116790</a> - Opstal Molenstraat 16:19</li><li><a href="stop-116789.html">116789</a> - Opstal Hof Ter Koppen 16:20</li><li><a href="stop-116788.html">116788</a> - Buggenhout Breemstraat 16:21</li><li><a href="stop-116787.html">116787</a> - Buggenhout Hauwerstraat 16:23</li><li><a href="stop-116786.html">116786</a> - Buggenhout Collegestraat 16:24</li><li><a href="stop-116785.html">116785</a> - Buggenhout Station 16:26</li><li><a href="stop-116784.html">116784</a> - Buggenhout Minneveld 16:27</li><li><a href="stop-116783.html">116783</a> - Opdorp Vitsstraat 16:28</li><li><a href="stop-116782.html">116782</a> - Opdorp Dries 16:29</li><li><a href="stop-116809.html">116809</a> - Opdorp Houtenmolenstraat 16:30</li><li><a href="stop-116781.html">116781</a> - Opdorp Veldstraat 16:31</li><li><a href="stop-116810.html">116810</a> - Opdorp Hoogweg 16:32</li><li><a href="stop-116780.html">116780</a> - Malderen Station 16:33</li><li><a href="stop-116779.html">116779</a> - Malderen Holstraat 16:34</li><li><a href="stop-116778.html">116778</a> - Malderen Dorp 16:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1046.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

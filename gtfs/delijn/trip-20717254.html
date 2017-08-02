@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Geraardsbergen-Moerbeke-Galmaarden-Enghien/Edingen - 20717254</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Geraardsbergen-Moerbeke-Galmaarden-Enghien/Edingen - 20717254</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128595.html">128595</a> - Edingen Station 17:20</li><li><a href="stop-10630.html">10630</a> - Edingen Oude Markt 17:21</li><li><a href="stop-10629.html">10629</a> - Edingen Koningin Astrid 17:23</li><li><a href="stop-10625.html">10625</a> - Edingen Buurtspoorwegstation 17:24</li><li><a href="stop-128594.html">128594</a> - Herne Heyselstraat 17:26</li><li><a href="stop-119799.html">119799</a> - Herne Geraardsbergsesteenweg 17:27</li><li><a href="stop-119798.html">119798</a> - Herne Overweg 17:28</li><li><a href="stop-119797.html">119797</a> - Herne Hernebos 17:29</li><li><a href="stop-119784.html">119784</a> - Herne Scholen 17:31</li><li><a href="stop-14790.html">14790</a> - Herne Stationsstraat 17:32</li><li><a href="stop-9577.html">9577</a> - Herne Groeneboom 17:33</li><li><a href="stop-11341.html">11341</a> - Herne Imbeekstraat 17:33</li><li><a href="stop-14788.html">14788</a> - Tollembeek Hernestraat 17:35</li><li><a href="stop-15782.html">15782</a> - Tollembeek Schoolstraat 17:36</li><li><a href="stop-99469.html">99469</a> - Tollembeek Plaats 17:36</li><li><a href="stop-10640.html">10640</a> - Tollembeek Hollestraat 17:36</li><li><a href="stop-15778.html">15778</a> - Tollembeek Smedries 17:39</li><li><a href="stop-15776.html">15776</a> - Tollembeek Haagstraat 17:40</li><li><a href="stop-128771.html">128771</a> - Tollembeek Vijfhoek 17:40</li><li><a href="stop-15772.html">15772</a> - Tollembeek Sint-Leonardusstraat 17:41</li><li><a href="stop-15770.html">15770</a> - Tollembeek Molenveldbaan 17:42</li><li><a href="stop-15768.html">15768</a> - Galmaarden Hollebeekstraat 17:43</li><li><a href="stop-119783.html">119783</a> - Galmaarden Markt 17:43</li><li><a href="stop-127122.html">127122</a> - Galmaarden Oude Cité 17:44</li><li><a href="stop-119781.html">119781</a> - Galmaarden Berg Van Eynde 17:45</li><li><a href="stop-119780.html">119780</a> - Galmaarden Kapelledreef 17:46</li><li><a href="stop-119779.html">119779</a> - Galmaarden Bosstraat 17:46</li><li><a href="stop-119778.html">119778</a> - Moerbeke Geraardsbergsestraat 17:47</li><li><a href="stop-119777.html">119777</a> - Moerbeke Stoffelstraat 17:48</li><li><a href="stop-118950.html">118950</a> - Moerbeke Station 17:49</li><li><a href="stop-119761.html">119761</a> - Moerbeke Edingseweg 17:49</li><li><a href="stop-119760.html">119760</a> - Moerbeke Mijnwerkersstraat 17:51</li><li><a href="stop-119759.html">119759</a> - Overboelare K. De Lensstraat 17:52</li><li><a href="stop-119758.html">119758</a> - Overboelare Kalvariestraat 17:53</li><li><a href="stop-119757.html">119757</a> - Overboelare Arduinbos 17:54</li><li><a href="stop-119770.html">119770</a> - Overboelare Boelarebos 17:54</li><li><a href="stop-119756.html">119756</a> - Overboelare Denderoord 17:55</li><li><a href="stop-119754.html">119754</a> - Overboelare Losweg 17:56</li><li><a href="stop-119752.html">119752</a> - Overboelare Van Lierdelaan 17:57</li><li><a href="stop-119755.html">119755</a> - Overboelare Gaverstraat 17:59</li><li><a href="stop-119772.html">119772</a> - Geraardsbergen Gasthuisstraat 18:01</li><li><a href="stop-126774.html">126774</a> - Geraardsbergen Station perron 4 18:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1247.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

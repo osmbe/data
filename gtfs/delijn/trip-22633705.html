@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diksmuide-Leke-Oostende - 22633705</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diksmuide-Leke-Oostende - 22633705</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-36151.html">36151</a> - Leffinge Dorp 20:35</li><li><a href="stop-104906.html">104906</a> - Leffinge Kerkhof 20:35</li><li><a href="stop-40333.html">40333</a> - Leffinge Zonneveld 20:36</li><li><a href="stop-40331.html">40331</a> - Leffinge Noordhoek 20:37</li><li><a href="stop-99239.html">99239</a> - Oostende Rolbaanstraat 20:38</li><li><a href="stop-98265.html">98265</a> - Stene Top Center 20:39</li><li><a href="stop-98262.html">98262</a> - Stene Esperanto 20:39</li><li><a href="stop-98260.html">98260</a> - Stene Duinkerkseweg 20:40</li><li><a href="stop-98263.html">98263</a> - Stene Hoge Bareel 20:41</li><li><a href="stop-101001.html">101001</a> - Oostende Mariakerkelaan 20:42</li><li><a href="stop-95215.html">95215</a> - Oostende Elisabethlaan 20:43</li><li><a href="stop-40458.html">40458</a> - Oostende Zwaluwenstraat 20:44</li><li><a href="stop-40413.html">40413</a> - Oostende Mac Leodplein 20:45</li><li><a href="stop-95218.html">95218</a> - Oostende Petit Paris 20:46</li><li><a href="stop-40444.html">40444</a> - Oostende Sint-Jozefskerk 20:47</li><li><a href="stop-93744.html">93744</a> - Oostende Stadhuis 20:48</li><li><a href="stop-125654.html">125654</a> - Oostende Station perron 12 20:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4186.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

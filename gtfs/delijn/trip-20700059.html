@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Waarschoot - Gent Zuid - 20700059</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Waarschoot - Gent Zuid - 20700059</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126651.html">126651</a> - Gent Zuid perron 6 07:04</li><li><a href="stop-112365.html">112365</a> - Gent Kapucijnenham 07:07</li><li><a href="stop-112364.html">112364</a> - Gent Reep 07:08</li><li><a href="stop-112363.html">112363</a> - Gent Sint-Jacobs 07:09</li><li><a href="stop-120197.html">120197</a> - Gent Ottogracht 07:11</li><li><a href="stop-113909.html">113909</a> - Gent Fratersplein 07:12</li><li><a href="stop-112359.html">112359</a> - Gent Tolhuislaan 07:13</li><li><a href="stop-112358.html">112358</a> - Gent Tolpoort 07:14</li><li><a href="stop-114518.html">114518</a> - Gent Spaarstraat 07:15</li><li><a href="stop-128685.html">128685</a> - Gent Sint-Lucas Biervlietstraat 07:16</li><li><a href="stop-114520.html">114520</a> - Gent Kolveniersgang 07:17</li><li><a href="stop-114521.html">114521</a> - Gent Rabot 07:20</li><li><a href="stop-112050.html">112050</a> - Gent Witte Kaproenenplein 07:21</li><li><a href="stop-112049.html">112049</a> - Gent Nieuwevaartbrug 07:22</li><li><a href="stop-112533.html">112533</a> - Gent Ferrerlaan 07:23</li><li><a href="stop-114254.html">114254</a> - Mariakerke Vaartstraat 07:25</li><li><a href="stop-114255.html">114255</a> - Mariakerke Mazestraat 07:26</li><li><a href="stop-114256.html">114256</a> - Mariakerke Groenestaakstraat 07:28</li><li><a href="stop-114257.html">114257</a> - Mariakerke Industrieweg 07:30</li><li><a href="stop-114258.html">114258</a> - Evergem Rabotstraat 07:32</li><li><a href="stop-114259.html">114259</a> - Lovendegem Bierstal 07:33</li><li><a href="stop-114260.html">114260</a> - Lovendegem Appensvoorde 07:34</li><li><a href="stop-114261.html">114261</a> - Lovendegem Oostveldkouter 07:36</li><li><a href="stop-114288.html">114288</a> - Lovendegem Binnenslag 07:37</li><li><a href="stop-114833.html">114833</a> - Lovendegem Bredestraat 07:38</li><li><a href="stop-114834.html">114834</a> - Lovendegem Meienbroekstraat 07:38</li><li><a href="stop-114835.html">114835</a> - Waarschoot Veldeken 07:40</li><li><a href="stop-114836.html">114836</a> - Waarschoot Mercator 07:41</li><li><a href="stop-114837.html">114837</a> - Waarschoot Beke Center 07:42</li><li><a href="stop-114838.html">114838</a> - Waarschoot Beke Fabriek 07:43</li><li><a href="stop-113941.html">113941</a> - Waarschoot Kerk 07:45</li><li><a href="stop-113942.html">113942</a> - Waarschoot Schoolstraat 07:46</li><li><a href="stop-113944.html">113944</a> - Eeklo Het Leen 07:51</li><li><a href="stop-113945.html">113945</a> - Eeklo Oude Gentweg 07:51</li><li><a href="stop-126621.html">126621</a> - Eeklo Station perron 5 07:53</li><li><a href="stop-113947.html">113947</a> - Eeklo Markt 07:56</li><li><a href="stop-114144.html">114144</a> - Eeklo Teirlinckstraat 07:58</li><li><a href="stop-114145.html">114145</a> - Eeklo P.T.I. 08:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./470.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

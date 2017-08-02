@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Stokkem-Meeswijk-Maasmechelen-Boorsem-Uikhoven - 22481509</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Stokkem-Meeswijk-Maasmechelen-Boorsem-Uikhoven - 22481509</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-110241.html">110241</a> - Stokkem Koeweerd 13:08</li><li><a href="stop-28159.html">28159</a> - Stokkem Langs de Graaf 13:09</li><li><a href="stop-99154.html">99154</a> - Stokkem Arnold-Sauwenlaan 13:09</li><li><a href="stop-106877.html">106877</a> - Stokkem Koppelstraat 13:11</li><li><a href="stop-28151.html">28151</a> - Stokkem Kapelstraat 13:12</li><li><a href="stop-94993.html">94993</a> - Lanklaar Veeweide 13:13</li><li><a href="stop-32412.html">32412</a> - Meeswijk Molen 13:15</li><li><a href="stop-32416.html">32416</a> - Meeswijk School 13:16</li><li><a href="stop-32410.html">32410</a> - Meeswijk Genootstraat 13:17</li><li><a href="stop-32396.html">32396</a> - Leut Kliniek 13:18</li><li><a href="stop-32394.html">32394</a> - Leut Kerk 13:19</li><li><a href="stop-32402.html">32402</a> - Leut Zuilstraat 13:20</li><li><a href="stop-32398.html">32398</a> - Leut Leuterweg 13:21</li><li><a href="stop-125599.html">125599</a> - Vucht Eisdenweg 13:22</li><li><a href="stop-32590.html">32590</a> - Vucht Schietskuil 13:22</li><li><a href="stop-32592.html">32592</a> - Vucht Kerk 13:24</li><li><a href="stop-32377.html">32377</a> - Vucht Heirstraat 13:25</li><li><a href="stop-123085.html">123085</a> - Eisden Bloemenlaan 13:30</li><li><a href="stop-123086.html">123086</a> - Eisden Bloemenlaan 13:31</li><li><a href="stop-94412.html">94412</a> - Eisden Heikamp 13:32</li><li><a href="stop-32366.html">32366</a> - Eisden Oude Baan 13:32</li><li><a href="stop-32604.html">32604</a> - Maasmechelen Windelsteen 13:33</li><li><a href="stop-32603.html">32603</a> - Maasmechelen Luyckxstraat 13:34</li><li><a href="stop-32386.html">32386</a> - Maasmechelen Koninklijkestraat 13:35</li><li><a href="stop-32606.html">32606</a> - Maasmechelen Fabiolasquare 13:35</li><li><a href="stop-32601.html">32601</a> - Maasmechelen T. Boslaan 13:36</li><li><a href="stop-125533.html">125533</a> - Maasmechelen Tuinwijk 13:39</li><li><a href="stop-32600.html">32600</a> - Maasmechelen Apotheek 13:41</li><li><a href="stop-123225.html">123225</a> - Maasmechelen Politie 13:41</li><li><a href="stop-32343.html">32343</a> - Maasmechelen Parklaan 13:41</li><li><a href="stop-32408.html">32408</a> - Maasmechelen Meelstraat 13:42</li><li><a href="stop-32404.html">32404</a> - Maasmechelen Maasweg 13:44</li><li><a href="stop-123088.html">123088</a> - Kotem Hoeve 13:46</li><li><a href="stop-105292.html">105292</a> - Kotem Weertveld 13:48</li><li><a href="stop-97338.html">97338</a> - Kotem Kerk 13:49</li><li><a href="stop-123084.html">123084</a> - Boorsem Beek 13:50</li><li><a href="stop-32333.html">32333</a> - Boorsem Bampstraat 13:51</li><li><a href="stop-125531.html">125531</a> - Boorsem Kerk 13:52</li><li><a href="stop-32339.html">32339</a> - Boorsem Spekstraat 13:52</li><li><a href="stop-32454.html">32454</a> - Uikhoven Lange Weidestraat 13:54</li><li><a href="stop-32450.html">32450</a> - Uikhoven Daaluikhoven kapel 13:54</li><li><a href="stop-32458.html">32458</a> - Uikhoven Schoorstraat 13:55</li><li><a href="stop-32452.html">32452</a> - Uikhoven Kerk 13:56</li><li><a href="stop-125535.html">125535</a> - Uikhoven Pastoor Goossenslaan 13:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5047.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

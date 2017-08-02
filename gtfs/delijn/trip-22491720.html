@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Universiteit - Genk - Maaseik/Maastricht - 22491720</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Universiteit - Genk - Maaseik/Maastricht - 22491720</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128981.html">128981</a> - Hasselt Station perron 6 16:32</li><li><a href="stop-29268.html">29268</a> - Hasselt Dusartplein 16:38</li><li><a href="stop-29712.html">29712</a> - Hasselt Kapermolen 16:39</li><li><a href="stop-128879.html">128879</a> - Hasselt Rijksadministratief Centrum 16:41</li><li><a href="stop-29305.html">29305</a> - Hasselt Provinciehuis 16:42</li><li><a href="stop-43889.html">43889</a> - Diepenbeek Bewel 16:46</li><li><a href="stop-43772.html">43772</a> - Genk Caetsbeek 16:51</li><li><a href="stop-28383.html">28383</a> - Genk DSM 16:53</li><li><a href="stop-43775.html">43775</a> - Genk Station perron 13 17:00</li><li><a href="stop-28345.html">28345</a> - Genk Shopping Center perron 1 17:03</li><li><a href="stop-28473.html">28473</a> - Genk Heempark 17:04</li><li><a href="stop-32466.html">32466</a> - Maasmechelen Endepoel 17:16</li><li><a href="stop-125532.html">125532</a> - Maasmechelen Centrum 17:17</li><li><a href="stop-100204.html">100204</a> - Maasmechelen College 17:18</li><li><a href="stop-100203.html">100203</a> - Maasmechelen Rijksweg 17:19</li><li><a href="stop-92433.html">92433</a> - Eisden Berensheuvel 17:21</li><li><a href="stop-123085.html">123085</a> - Eisden Bloemenlaan 17:22</li><li><a href="stop-32368.html">32368</a> - Eisden Post 17:24</li><li><a href="stop-32615.html">32615</a> - Eisden Guilliaume Lambertlaan 17:25</li><li><a href="stop-32359.html">32359</a> - Eisden Koninginnelaan 17:25</li><li><a href="stop-32357.html">32357</a> - Eisden Kersenlaan 17:26</li><li><a href="stop-32382.html">32382</a> - Eisden Kunstacademie 17:27</li><li><a href="stop-123094.html">123094</a> - Eisden Maasmechelen Village 17:28</li><li><a href="stop-32355.html">32355</a> - Eisden Kerkhofstraat 17:31</li><li><a href="stop-110424.html">110424</a> - Eisden Vrijthof 17:32</li><li><a href="stop-32373.html">32373</a> - Eisden Schabbertenstraat 17:33</li><li><a href="stop-32399.html">32399</a> - Leut Rijksweg 17:34</li><li><a href="stop-95275.html">95275</a> - Lanklaar Rijksweg 17:35</li><li><a href="stop-28116.html">28116</a> - Lanklaar Slakkenstraat 17:36</li><li><a href="stop-28098.html">28098</a> - Lanklaar Broek 17:37</li><li><a href="stop-89035.html">89035</a> - Lanklaar Kruispunt 17:38</li><li><a href="stop-88454.html">88454</a> - Dilsen Boslaan 17:39</li><li><a href="stop-28068.html">28068</a> - Dilsen Kruispunt 17:41</li><li><a href="stop-28072.html">28072</a> - Dilsen Stansstraat 17:42</li><li><a href="stop-125462.html">125462</a> - Rotem Kasteel 17:42</li><li><a href="stop-89037.html">89037</a> - Rotem Kruispunt 17:43</li><li><a href="stop-88458.html">88458</a> - Elen Weg naar de Broeken 17:44</li><li><a href="stop-28094.html">28094</a> - Elen Zonnestraat 17:45</li><li><a href="stop-88456.html">88456</a> - Elen Kruispunt 17:46</li><li><a href="stop-28078.html">28078</a> - Elen Breemstraat 17:47</li><li><a href="stop-28088.html">28088</a> - Elen Rotsheide 17:48</li><li><a href="stop-32275.html">32275</a> - Maaseik Oude Barrier 17:49</li><li><a href="stop-32301.html">32301</a> - Maaseik Zaveldijk 17:50</li><li><a href="stop-123117.html">123117</a> - Maaseik Plantage 17:51</li><li><a href="stop-33097.html">33097</a> - Maaseik Van Eycklaan 17:52</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4984.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

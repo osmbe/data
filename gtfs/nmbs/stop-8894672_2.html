@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Temse</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Temse</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-L275522241.html">L275522241</a> - L275522241 - Leuven - Sint-Niklaas</li><li><a href="trip-P709830151.html">P709830151</a> - P709830151 - Mechelen - Sint-Niklaas</li><li><a href="trip-P738630441.html">P738630441</a> - P738630441 - Leuven - Sint-Niklaas</li><li><a href="trip-P838632691.html">P838632691</a> - P838632691 - Mechelen - Sint-Niklaas</li><li><a href="trip-P838932721.html">P838932721</a> - P838932721 - Mechelen - Sint-Niklaas</li><li><a href="trip-P839032731.html">P839032731</a> - P839032731 - Leuven - Sint-Niklaas</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([51.126085, 4.221352], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([51.126085, 4.221352]).addTo(map);
+    </script>
+</body>
+
+</html>

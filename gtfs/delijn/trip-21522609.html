@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - UZA - Valaar - Groenplaats - 21522609</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: UZA - Valaar - Groenplaats - 21522609</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-91989.html">91989</a> - Antwerpen Groenplaats 19:30</li><li><a href="stop-90977.html">90977</a> - Antwerpen Sint-Andries 19:32</li><li><a href="stop-88935.html">88935</a> - Antwerpen Tropisch Instituut 19:34</li><li><a href="stop-107982.html">107982</a> - Antwerpen Kronenburgstraat 19:35</li><li><a href="stop-107362.html">107362</a> - Antwerpen Begijnenvest 19:36</li><li><a href="stop-21545.html">21545</a> - Antwerpen Sanderusstraat 19:36</li><li><a href="stop-107387.html">107387</a> - Antwerpen Ballaarstraat 19:38</li><li><a href="stop-108702.html">108702</a> - Antwerpen Van Schoonbekestraat 19:40</li><li><a href="stop-108100.html">108100</a> - Antwerpen Lokkaardstraat 19:40</li><li><a href="stop-108135.html">108135</a> - Antwerpen Markgravelei 19:41</li><li><a href="stop-19612.html">19612</a> - Antwerpen deSingel 19:41</li><li><a href="stop-107496.html">107496</a> - Antwerpen Antwerp Expo 19:43</li><li><a href="stop-107739.html">107739</a> - Antwerpen Generaal Cabrastraat 19:44</li><li><a href="stop-108578.html">108578</a> - Antwerpen Tentoonstellingslaan 19:46</li><li><a href="stop-107848.html">107848</a> - Antwerpen Camille Huysmanslaan 19:46</li><li><a href="stop-107885.html">107885</a> - Antwerpen J. De Voslei 19:46</li><li><a href="stop-108355.html">108355</a> - Antwerpen Olympiade 19:47</li><li><a href="stop-107559.html">107559</a> - Antwerpen De Bosschaert 19:49</li><li><a href="stop-108350.html">108350</a> - Antwerpen Schijfwerper 19:50</li><li><a href="stop-107883.html">107883</a> - Wilrijk J. De Geyterstraat 19:50</li><li><a href="stop-20964.html">20964</a> - Wilrijk Pastoor Bauwenslaan 19:51</li><li><a href="stop-21461.html">21461</a> - Wilrijk Ridderveld 19:52</li><li><a href="stop-22153.html">22153</a> - Wilrijk Valaardreef Kerk 19:52</li><li><a href="stop-22424.html">22424</a> - Wilrijk Valaardreef 19:53</li><li><a href="stop-108021.html">108021</a> - Wilrijk Koornbloemstraat 19:53</li><li><a href="stop-20864.html">20864</a> - Wilrijk Boomsesteenweg 19:54</li><li><a href="stop-107826.html">107826</a> - Wilrijk Bist 19:55</li><li><a href="stop-108537.html">108537</a> - Wilrijk Sint-Sebastiaanstraat 19:56</li><li><a href="stop-20595.html">20595</a> - Wilrijk Kerkhofstraat 19:56</li><li><a href="stop-107598.html">107598</a> - Wilrijk Hulststraat 19:58</li><li><a href="stop-107336.html">107336</a> - Wilrijk Klaproosstraat 19:58</li><li><a href="stop-107333.html">107333</a> - Wilrijk Dr. Donnyplein 19:59</li><li><a href="stop-22531.html">22531</a> - Wilrijk Wilsonweg 20:01</li><li><a href="stop-108816.html">108816</a> - Edegem Wilrijkstraat 20:01</li><li><a href="stop-88757.html">88757</a> - Edegem Universitair Ziekenhuis p. 3 20:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2747.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Namen - Ottignies - L628929631</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Namen - Ottignies - L628929631</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8863008_11.html">8863008:11</a> - Namur 18:59</li><li><a href="stop-8861440_2.html">8861440:2</a> - Rhisnes 19:05</li><li><a href="stop-8861432_2.html">8861432:2</a> - Saint-Denis-Bovesse 19:08</li><li><a href="stop-8861424_2.html">8861424:2</a> - Beuzet 19:11</li><li><a href="stop-8861416_2.html">8861416:2</a> - Lonzée 19:14</li><li><a href="stop-8861200_2.html">8861200:2</a> - Gembloux 19:36</li><li><a href="stop-8861515_2.html">8861515:2</a> - Ernage 19:41</li><li><a href="stop-8861523_2.html">8861523:2</a> - Chastre 19:44</li><li><a href="stop-8861531_2.html">8861531:2</a> - Blanmont 19:46</li><li><a href="stop-8861549_1.html">8861549:1</a> - Mont-Saint-Guibert 19:50</li><li><a href="stop-8811601_5.html">8811601:5</a> - Ottignies 19:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1182.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

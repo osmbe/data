@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Wetteren - Kalken - Overmere - Lokeren - 20691562</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Wetteren - Kalken - Overmere - Lokeren - 20691562</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126541.html">126541</a> - Wetteren Station perron 4 07:11</li><li><a href="stop-113402.html">113402</a> - Wetteren Kon. Astridlaan 07:13</li><li><a href="stop-114362.html">114362</a> - Wetteren Oude Brug 07:15</li><li><a href="stop-113400.html">113400</a> - Wetteren Kapellendries 07:16</li><li><a href="stop-111284.html">111284</a> - Wetteren Giezeveld 07:17</li><li><a href="stop-113445.html">113445</a> - Wetteren Kalkensteenweg 07:17</li><li><a href="stop-113446.html">113446</a> - Kalken Meerkens 07:19</li><li><a href="stop-113447.html">113447</a> - Kalken Krimineelstraat 07:20</li><li><a href="stop-113448.html">113448</a> - Kalken Stelplaats 07:21</li><li><a href="stop-113449.html">113449</a> - Kalken Vaartstraat 07:22</li><li><a href="stop-114423.html">114423</a> - Kalken Kerk 07:23</li><li><a href="stop-114411.html">114411</a> - Kalken Berringstraat 07:24</li><li><a href="stop-114412.html">114412</a> - Kalken Gaverstraatje 07:26</li><li><a href="stop-114413.html">114413</a> - Overmere Vaarschootstraat 07:27</li><li><a href="stop-114414.html">114414</a> - Overmere Kerk 07:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./235.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

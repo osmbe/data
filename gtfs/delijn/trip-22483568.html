@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk Sation-Zwartberg -Opglabbeek N. Kempen-Louwel - 22483568</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk Sation-Zwartberg -Opglabbeek N. Kempen-Louwel - 22483568</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-43781.html">43781</a> - Genk Station perron 7 16:30</li><li><a href="stop-123237.html">123237</a> - Genk Bochtlaan 16:33</li><li><a href="stop-28530.html">28530</a> - Genk Negenhuizen 16:34</li><li><a href="stop-28721.html">28721</a> - Genk Hoefstadstraat 16:36</li><li><a href="stop-94037.html">94037</a> - Genk Vennestraat noord 16:38</li><li><a href="stop-98767.html">98767</a> - Genk C-Mine 16:39</li><li><a href="stop-94038.html">94038</a> - Genk Vennestraat noord 16:40</li><li><a href="stop-28533.html">28533</a> - Genk Paresbemdstraat 16:42</li><li><a href="stop-28384.html">28384</a> - Genk Bergbeemdstraat 16:43</li><li><a href="stop-28468.html">28468</a> - Genk Heizeisstraat 16:44</li><li><a href="stop-96699.html">96699</a> - Waterschei Hoevenzavel 16:45</li><li><a href="stop-96737.html">96737</a> - Zwartberg Cité 16:46</li><li><a href="stop-96739.html">96739</a> - Zwartberg Cockerillplaats 16:47</li><li><a href="stop-99162.html">99162</a> - Zwartberg Bewel 16:48</li><li><a href="stop-96767.html">96767</a> - Zwartberg Zenobe Grammestraat 16:48</li><li><a href="stop-96749.html">96749</a> - Zwartberg Torenlaan 16:50</li><li><a href="stop-33280.html">33280</a> - Opglabbeek Nieuwe Kempen 16:53</li><li><a href="stop-34666.html">34666</a> - Opglabbeek Nieuwe Kempen Kerk 16:55</li><li><a href="stop-33276.html">33276</a> - Opglabbeek Merelstraat 16:56</li><li><a href="stop-31798.html">31798</a> - Opglabbeek Leeuwerikstraat 16:57</li><li><a href="stop-107242.html">107242</a> - Opglabbeek Industrieweg 16:58</li><li><a href="stop-31801.html">31801</a> - Opglabbeek Mecona 16:59</li><li><a href="stop-33294.html">33294</a> - Opglabbeek Zagerijstraat 17:00</li><li><a href="stop-31802.html">31802</a> - Opglabbeek Ophovenstraat 17:01</li><li><a href="stop-91055.html">91055</a> - Opglabbeek Dorpsplein 17:02</li><li><a href="stop-91047.html">91047</a> - Opglabbeek Vinkenkantstraat 17:03</li><li><a href="stop-92465.html">92465</a> - Opglabbeek Lindeboomke 17:03</li><li><a href="stop-33258.html">33258</a> - Opglabbeek Heerstraat 17:04</li><li><a href="stop-97415.html">97415</a> - Louwel Kerk 17:05</li><li><a href="stop-97472.html">97472</a> - Louwel Voetbalveld 17:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5361.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

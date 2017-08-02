@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Spiere-Avelgem-Anzegem-Waregem - 22628073</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Spiere-Avelgem-Anzegem-Waregem - 22628073</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-98688.html">98688</a> - Avelgem Station 16:37</li><li><a href="stop-37456.html">37456</a> - Avelgem Sportcentrum 16:39</li><li><a href="stop-38072.html">38072</a> - Outrijve Gibraltar 16:40</li><li><a href="stop-38070.html">38070</a> - Outrijve Beiaarddreef 16:41</li><li><a href="stop-38071.html">38071</a> - Outrijve Dorp 16:42</li><li><a href="stop-38073.html">38073</a> - Outrijve Weg Op Bossuit 16:44</li><li><a href="stop-37501.html">37501</a> - Moen Maraillestraat 16:45</li><li><a href="stop-37502.html">37502</a> - Moen Station 16:46</li><li><a href="stop-37993.html">37993</a> - Moen Verzetstraat 16:47</li><li><a href="stop-37992.html">37992</a> - Moen Vaart 16:47</li><li><a href="stop-37991.html">37991</a> - Moen Montalleud 16:48</li><li><a href="stop-37990.html">37990</a> - Moen Moenstraat 16:49</li><li><a href="stop-38166.html">38166</a> - Sint-Denijs In De Rust 16:51</li><li><a href="stop-110601.html">110601</a> - Sint-Denijs Dries 16:51</li><li><a href="stop-38164.html">38164</a> - Sint-Denijs Blekerij 16:52</li><li><a href="stop-100927.html">100927</a> - Sint-Denijs Kerk 16:53</li><li><a href="stop-38168.html">38168</a> - Sint-Denijs Station 16:54</li><li><a href="stop-37643.html">37643</a> - Helkijn Cafe Central 16:55</li><li><a href="stop-37642.html">37642</a> - Helkijn Brouwerij 16:56</li><li><a href="stop-37644.html">37644</a> - Helkijn Centrum 16:57</li><li><a href="stop-37646.html">37646</a> - Helkijn Suikerfabriek 16:58</li><li><a href="stop-37645.html">37645</a> - Spiere Gemeentehuis 16:59</li><li><a href="stop-127902.html">127902</a> - Spiere Kerk 17:00</li><li><a href="stop-42120.html">42120</a> - Spiere Kasteel Spiere 17:01</li><li><a href="stop-42117.html">42117</a> - Spiere Ijzeren Bareel 17:04</li><li><a href="stop-41726.html">41726</a> - Kooigem Koninklijk Jacht 17:06</li><li><a href="stop-41724.html">41724</a> - Kooigem Garage Tune Up 17:07</li><li><a href="stop-41725.html">41725</a> - Kooigem Klein Molentje 17:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6030.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

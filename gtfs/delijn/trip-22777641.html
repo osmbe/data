@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tienen - St-Truiden - 22777641</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tienen - St-Truiden - 22777641</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127441.html">127441</a> - Sint-Truiden Station perron 8 12:14</li><li><a href="stop-43389.html">43389</a> - Sint-Truiden STVV 12:16</li><li><a href="stop-16200.html">16200</a> - Sint-Truiden Zoutleeuwsesteenweg 12:17</li><li><a href="stop-14586.html">14586</a> - Sint-Truiden Leeuwerweg 12:19</li><li><a href="stop-14584.html">14584</a> - Wilderen Militaire Wijk 12:20</li><li><a href="stop-14318.html">14318</a> - Halle-Booienhoven Weg naar Wilderen 12:21</li><li><a href="stop-14300.html">14300</a> - Halle-Booienhoven Grote Baan 12:21</li><li><a href="stop-14304.html">14304</a> - Halle-Booienhoven Houtstraat 12:22</li><li><a href="stop-127063.html">127063</a> - Halle-Booienhoven Dorp 12:23</li><li><a href="stop-95757.html">95757</a> - Dormaal Zoutleeuwsesteenweg 12:24</li><li><a href="stop-95755.html">95755</a> - Dormaal Broekstraat 12:25</li><li><a href="stop-95670.html">95670</a> - Dormaal Oude Dorpsstraat 12:26</li><li><a href="stop-12439.html">12439</a> - Orsmaal Melkwezerweg 12:26</li><li><a href="stop-12435.html">12435</a> - Orsmaal Gussenh. Oude Kerkstraat 12:27</li><li><a href="stop-12451.html">12451</a> - Orsmaal Overhespenstraat 12:28</li><li><a href="stop-12437.html">12437</a> - Orsmaal Korteweg 12:28</li><li><a href="stop-12453.html">12453</a> - Neerhespen Weg naar Landen 12:29</li><li><a href="stop-12443.html">12443</a> - Neerhespen Kerk 12:30</li><li><a href="stop-128906.html">128906</a> - Neerhespen Dorp 12:31</li><li><a href="stop-12035.html">12035</a> - Neerwinden Neerhespenstraat 12:32</li><li><a href="stop-12037.html">12037</a> - Neerwinden Wange Dorp 12:33</li><li><a href="stop-12039.html">12039</a> - Neerwinden Wange Geldenaakseweg 12:34</li><li><a href="stop-12447.html">12447</a> - Overhespen Dorp 12:36</li><li><a href="stop-12449.html">12449</a> - Overhespen Hekstraat 12:38</li><li><a href="stop-13774.html">13774</a> - Hakendover Wangestraat 12:39</li><li><a href="stop-13778.html">13778</a> - Hakendover Kruisbeemdstraat 12:40</li><li><a href="stop-13780.html">13780</a> - Hakendover Putstraat 12:41</li><li><a href="stop-13776.html">13776</a> - Hakendover Dorp 12:42</li><li><a href="stop-15735.html">15735</a> - Tienen Ambachtenlaan 12:43</li><li><a href="stop-13768.html">13768</a> - Tienen O.L.V.-ten-Steen 12:44</li><li><a href="stop-13772.html">13772</a> - Tienen Tumuli 12:45</li><li><a href="stop-13770.html">13770</a> - Tienen Grimde Kerk 12:45</li><li><a href="stop-13915.html">13915</a> - Tienen Suikerraffinaderij 12:46</li><li><a href="stop-13899.html">13899</a> - Tienen Leopoldvest 12:47</li><li><a href="stop-13874.html">13874</a> - Tienen Sliksteenvest 12:48</li><li><a href="stop-13913.html">13913</a> - Tienen Waaibergstraat 12:49</li><li><a href="stop-99268.html">99268</a> - Tienen Atheneum 12:50</li><li><a href="stop-127857.html">127857</a> - Tienen Kabbeeksepoort 12:51</li><li><a href="stop-13880.html">13880</a> - Tienen Kerk Heilig Hart 12:52</li><li><a href="stop-13886.html">13886</a> - Tienen Leuvenselaan 12:53</li><li><a href="stop-13861.html">13861</a> - Tienen 4de Lansierslaan 12:53</li><li><a href="stop-13904.html">13904</a> - Tienen Station Perron 1 12:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2085.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Heist - Keerbergen scholen - 22535082</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Heist - Keerbergen scholen - 22535082</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126993.html">126993</a> - Heist-op-den-Berg Station perron 3 07:20</li><li><a href="stop-24429.html">24429</a> - Heist-op-den-Berg Kapel 07:21</li><li><a href="stop-24427.html">24427</a> - Heist-op-den-Berg Kruispunt 07:22</li><li><a href="stop-24424.html">24424</a> - Beerzel Kroonstraat 07:23</li><li><a href="stop-24414.html">24414</a> - Beerzel Kroonstraat 07:23</li><li><a href="stop-109541.html">109541</a> - Beerzel Berg 07:24</li><li><a href="stop-109539.html">109539</a> - Beerzel Kerk 07:25</li><li><a href="stop-24407.html">24407</a> - Beerzel Merelstraat 07:26</li><li><a href="stop-107409.html">107409</a> - Beerzel Rijmeterstraat 07:27</li><li><a href="stop-24405.html">24405</a> - Beerzel Driesstraat 07:27</li><li><a href="stop-24403.html">24403</a> - Putte Helstraat 07:29</li><li><a href="stop-109536.html">109536</a> - Putte Eksterstraat 07:30</li><li><a href="stop-109534.html">109534</a> - Putte Centrum 07:31</li><li><a href="stop-109621.html">109621</a> - Putte Schaapstraat 07:32</li><li><a href="stop-24672.html">24672</a> - Putte Tinstraat 07:34</li><li><a href="stop-109625.html">109625</a> - Putte Wolzakken 07:36</li><li><a href="stop-109627.html">109627</a> - Putte Grensstraat 07:38</li><li><a href="stop-15136.html">15136</a> - Keerbergen Klein Kontich 07:38</li><li><a href="stop-120524.html">120524</a> - Keerbergen Atheneum 07:42</li><li><a href="stop-127048.html">127048</a> - Keerbergen Oude Putsebaan 07:44</li><li><a href="stop-11743.html">11743</a> - Keerbergen Dennendreef 07:46</li><li><a href="stop-127068.html">127068</a> - Keerbergen Stationsstraat 07:47</li><li><a href="stop-15087.html">15087</a> - Keerbergen Kerk 07:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3550.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

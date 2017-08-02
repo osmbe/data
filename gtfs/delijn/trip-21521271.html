@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Borsbeek - Berchem Station (B) - Rooseveltplaats - 21521271</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Borsbeek - Berchem Station (B) - Rooseveltplaats - 21521271</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109655.html">109655</a> - Borsbeek J. Reusenslei 06:20</li><li><a href="stop-20979.html">20979</a> - Borsbeek Jan Bosstraat 06:22</li><li><a href="stop-109459.html">109459</a> - Borsbeek L. Janssenstraat 06:23</li><li><a href="stop-109307.html">109307</a> - Borsbeek Dorp 06:24</li><li><a href="stop-109478.html">109478</a> - Borsbeek Kerkhof 06:25</li><li><a href="stop-100368.html">100368</a> - Borsbeek De Robianostraat 06:26</li><li><a href="stop-108811.html">108811</a> - Borsbeek Wenigerstraat 06:28</li><li><a href="stop-107638.html">107638</a> - Deurne de Villegasplein 06:30</li><li><a href="stop-108128.html">108128</a> - Deurne Boekenbergpark 06:31</li><li><a href="stop-20412.html">20412</a> - Deurne Boekenberglei 06:32</li><li><a href="stop-108010.html">108010</a> - Deurne De Brierstraat 06:33</li><li><a href="stop-21973.html">21973</a> - Borgerhout Te Boelaarlei 06:34</li><li><a href="stop-19088.html">19088</a> - Borgerhout Berchemlei 06:34</li><li><a href="stop-108130.html">108130</a> - Borgerhout Fr. De Vriendtstraat 06:35</li><li><a href="stop-108129.html">108129</a> - Berchem Neptunusstraat 06:36</li><li><a href="stop-107453.html">107453</a> - Berchem Station perron 15 06:38</li><li><a href="stop-107620.html">107620</a> - Berchem Draakplaats 06:40</li><li><a href="stop-108154.html">108154</a> - Borgerhout Montensstraat 06:41</li><li><a href="stop-108302.html">108302</a> - Antwerpen Van Den Nestlei 06:42</li><li><a href="stop-108665.html">108665</a> - Antwerpen Mercatorstraat 06:43</li><li><a href="stop-108062.html">108062</a> - Antwerpen Lange Kievitstraat 06:44</li><li><a href="stop-107519.html">107519</a> - Antwerpen Centraal Station perron 10 06:46</li><li><a href="stop-125273.html">125273</a> - Antwerpen F. Rooseveltplaats perron 42 06:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2729.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

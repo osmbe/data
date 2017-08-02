@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Ieper-Mesen-Le Bizet - 22635177</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ieper-Mesen-Le Bizet - 22635177</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-100946.html">100946</a> - Ploegsteert Le Bizet Touquetstraat 18:31</li><li><a href="stop-90431.html">90431</a> - Ploegsteert Le Bizet Driebisschoppenstraat 18:32</li><li><a href="stop-42603.html">42603</a> - Ploegsteert Kasteel Nonet 18:33</li><li><a href="stop-42606.html">42606</a> - Ploegsteert Rijksschool 18:34</li><li><a href="stop-42605.html">42605</a> - Ploegsteert P. Des Meubles 18:34</li><li><a href="stop-42604.html">42604</a> - Ploegsteert Kerk 18:36</li><li><a href="stop-42607.html">42607</a> - Ploegsteert Zwart Paard 18:37</li><li><a href="stop-42602.html">42602</a> - Ploegsteert Gedenksteen 18:38</li><li><a href="stop-42732.html">42732</a> - Waasten La Hutte 18:39</li><li><a href="stop-42731.html">42731</a> - Waasten Kruissteen 18:39</li><li><a href="stop-42327.html">42327</a> - Waasten Douve 18:40</li><li><a href="stop-42730.html">42730</a> - Waasten Kapel 18:41</li><li><a href="stop-42549.html">42549</a> - Mesen Au Pelerin 18:41</li><li><a href="stop-42550.html">42550</a> - Mesen Plaats 18:42</li><li><a href="stop-42778.html">42778</a> - Wijtschate De Brieke 18:42</li><li><a href="stop-42776.html">42776</a> - Wijtschate Bunker 18:44</li><li><a href="stop-42779.html">42779</a> - Wijtschate Staanijzer 18:45</li><li><a href="stop-42781.html">42781</a> - Wijtschate Plaats 18:46</li><li><a href="stop-42782.html">42782</a> - Wijtschate Kapellerie 18:47</li><li><a href="stop-42777.html">42777</a> - Wijtschate Capri 18:48</li><li><a href="stop-95864.html">95864</a> - Voormezele O. Mesenstwg. 18:49</li><li><a href="stop-95865.html">95865</a> - Voormezele Sint-Elooi 18:49</li><li><a href="stop-95866.html">95866</a> - Voormezele Vaart 18:51</li><li><a href="stop-42459.html">42459</a> - Ieper Kemmelseweg 18:53</li><li><a href="stop-38542.html">38542</a> - Ieper Rijselpoort 18:54</li><li><a href="stop-104779.html">104779</a> - Ieper Sint-Pieterskerk 18:55</li><li><a href="stop-38536.html">38536</a> - Ieper Markt 18:56</li><li><a href="stop-104777.html">104777</a> - Ieper Gevangenis 18:59</li><li><a href="stop-126393.html">126393</a> - Ieper Station perron 6 19:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4224.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

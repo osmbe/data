@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Boom - Willebroek -Mechelen - 22515358</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boom - Willebroek -Mechelen - 22515358</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-106751.html">106751</a> - Boom Station perron 2 09:49</li><li><a href="stop-23308.html">23308</a> - Boom Vrijheidstraat 09:50</li><li><a href="stop-23309.html">23309</a> - Boom Markt 09:51</li><li><a href="stop-106076.html">106076</a> - Willebroek Klein Willebroek 09:53</li><li><a href="stop-121175.html">121175</a> - Willebroek Brico 09:55</li><li><a href="stop-128939.html">128939</a> - Willebroek Hoeikensstraat 09:57</li><li><a href="stop-108255.html">108255</a> - Willebroek Turfsteeg 09:58</li><li><a href="stop-21280.html">21280</a> - Willebroek Stapelplaats 09:59</li><li><a href="stop-109335.html">109335</a> - Willebroek Vaartstraat 09:59</li><li><a href="stop-127791.html">127791</a> - Willebroek Veert 10:00</li><li><a href="stop-107567.html">107567</a> - Willebroek Station 10:01</li><li><a href="stop-128897.html">128897</a> - Willebroek Bibliotheek 10:02</li><li><a href="stop-92687.html">92687</a> - Willebroek Van Landeghemplein 10:03</li><li><a href="stop-23890.html">23890</a> - Willebroek Spaarzaamheidstraat 10:04</li><li><a href="stop-109342.html">109342</a> - Blaasveld Kerk 10:05</li><li><a href="stop-23895.html">23895</a> - Blaasveld Hinxelaar 10:06</li><li><a href="stop-109344.html">109344</a> - Blaasveld Station 10:08</li><li><a href="stop-109346.html">109346</a> - Blaasveld Heihoek 10:09</li><li><a href="stop-23902.html">23902</a> - Heffen Nuffelstraat 10:11</li><li><a href="stop-23904.html">23904</a> - Heffen Raaienblokstraat 10:11</li><li><a href="stop-109348.html">109348</a> - Heffen Centrum 10:12</li><li><a href="stop-109350.html">109350</a> - Mechelen Mechelbaan 10:14</li><li><a href="stop-109352.html">109352</a> - Mechelen Leestsesteenweg 10:15</li><li><a href="stop-108443.html">108443</a> - Mechelen Transportzone E19 10:16</li><li><a href="stop-108441.html">108441</a> - Mechelen Landweg 10:17</li><li><a href="stop-108438.html">108438</a> - Mechelen Boetestraat 10:18</li><li><a href="stop-21726.html">21726</a> - Mechelen Polderstraat 10:19</li><li><a href="stop-108434.html">108434</a> - Mechelen Adegempoort 10:20</li><li><a href="stop-108449.html">108449</a> - Mechelen Korte Pennincstraat 10:21</li><li><a href="stop-126972.html">126972</a> - Mechelen Brusselpoort 10:22</li><li><a href="stop-109099.html">109099</a> - Mechelen Oude Brusselsestraat 10:24</li><li><a href="stop-21781.html">21781</a> - Mechelen Station perron 17 10:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3044.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

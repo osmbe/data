@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Erpe Vijfhuizen - Houtem -Herzele-Zottegem - 20718558</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Erpe Vijfhuizen - Houtem -Herzele-Zottegem - 20718558</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126767.html">126767</a> - Zottegem Station perron 7 12:12</li><li><a href="stop-118440.html">118440</a> - Zottegem Welzijnstraat 12:14</li><li><a href="stop-118403.html">118403</a> - Zottegem Collegestraat 12:15</li><li><a href="stop-118441.html">118441</a> - Grotenberge Speelplein Ten Berg 12:16</li><li><a href="stop-118442.html">118442</a> - Grotenberge Kerk 12:17</li><li><a href="stop-118443.html">118443</a> - Grotenberge V.D.A.B. 12:18</li><li><a href="stop-118958.html">118958</a> - Grotenberge Ballingsweg 12:19</li><li><a href="stop-118444.html">118444</a> - Grotenberge Hoge Weg 12:19</li><li><a href="stop-118445.html">118445</a> - Grotenberge Diepeweg 12:20</li><li><a href="stop-116885.html">116885</a> - Herzele Koekelberg 12:22</li><li><a href="stop-116886.html">116886</a> - Herzele Bloemenstraat 12:23</li><li><a href="stop-116882.html">116882</a> - Herzele Groenlaan 12:24</li><li><a href="stop-116881.html">116881</a> - Herzele Gemeentehuis 12:25</li><li><a href="stop-116880.html">116880</a> - Herzele Kerk 12:26</li><li><a href="stop-116879.html">116879</a> - Herzele Graaf Du Parclaan 12:27</li><li><a href="stop-116878.html">116878</a> - Herzele Sint-Rochusstraat 12:28</li><li><a href="stop-116877.html">116877</a> - Herzele Melkerijstraat 12:29</li><li><a href="stop-116876.html">116876</a> - Herzele Station 12:30</li><li><a href="stop-113656.html">113656</a> - Herzele Vierwegen 12:31</li><li><a href="stop-113655.html">113655</a> - Herzele Heibaan 12:32</li><li><a href="stop-113654.html">113654</a> - Sint-Lievens-Houtem Ouden Heerweg 12:33</li><li><a href="stop-113653.html">113653</a> - Sint-Lievens-Houtem Kapelleweg 12:34</li><li><a href="stop-113014.html">113014</a> - Sint-Lievens-Houtem Fabrieksstraat 12:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1317.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Knokke-Maldegem - 22653140</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Knokke-Maldegem - 22653140</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-112992.html">112992</a> - Maldegem Station 08:22</li><li><a href="stop-125164.html">125164</a> - Maldegem Zwarte Zusterslaan 08:23</li><li><a href="stop-120271.html">120271</a> - Maldegem Markt perron 3 08:24</li><li><a href="stop-113964.html">113964</a> - Maldegem Reesinghelaan 08:24</li><li><a href="stop-113965.html">113965</a> - Maldegem Oude Kasteeldreef 08:25</li><li><a href="stop-120112.html">120112</a> - Maldegem Tivoli 08:27</li><li><a href="stop-36943.html">36943</a> - Moerkerke Leentjes Brug 08:33</li><li><a href="stop-36949.html">36949</a> - Moerkerke Weg Op Middelburg 08:34</li><li><a href="stop-40981.html">40981</a> - Middelburg Waterpolder 08:35</li><li><a href="stop-40979.html">40979</a> - Middelburg Leiputje 08:36</li><li><a href="stop-127309.html">127309</a> - Middelburg Markt 08:36</li><li><a href="stop-36925.html">36925</a> - Middelburg Dorp 08:37</li><li><a href="stop-127271.html">127271</a> - Middelburg Markt 08:37</li><li><a href="stop-36926.html">36926</a> - Middelburg Leiputje 08:37</li><li><a href="stop-36928.html">36928</a> - Middelburg Waterpolder 08:38</li><li><a href="stop-41002.html">41002</a> - Moerkerke Weg Op Middelburg 08:40</li><li><a href="stop-40993.html">40993</a> - Moerkerke De Stropijp 08:41</li><li><a href="stop-40999.html">40999</a> - Moerkerke Sint-Ritakerk 08:42</li><li><a href="stop-40991.html">40991</a> - Moerkerke De Hoorn 08:43</li><li><a href="stop-40990.html">40990</a> - Moerkerke De Eendracht 08:44</li><li><a href="stop-40994.html">40994</a> - Moerkerke Jackxenbrug 08:46</li><li><a href="stop-40995.html">40995</a> - Moerkerke Kruispunt 08:47</li><li><a href="stop-36945.html">36945</a> - Moerkerke Plaats 08:48</li><li><a href="stop-36944.html">36944</a> - Moerkerke Nieuw Dorp 08:48</li><li><a href="stop-36942.html">36942</a> - Moerkerke Kruispunt 08:49</li><li><a href="stop-36941.html">36941</a> - Moerkerke Jackxenbrug 08:50</li><li><a href="stop-36937.html">36937</a> - Moerkerke De Eendracht 08:51</li><li><a href="stop-36938.html">36938</a> - Moerkerke De Hoorn 08:52</li><li><a href="stop-36946.html">36946</a> - Moerkerke Sint-Ritakerk 08:52</li><li><a href="stop-36940.html">36940</a> - Moerkerke De Stropijp 08:53</li><li><a href="stop-41303.html">41303</a> - Moerkerke De Stropijp 08:53</li><li><a href="stop-36936.html">36936</a> - Moerkerke Damse Weg 08:54</li><li><a href="stop-97912.html">97912</a> - Lapscheure Grens 08:56</li><li><a href="stop-97913.html">97913</a> - Lapscheure Kerk 08:58</li><li><a href="stop-97914.html">97914</a> - Lapscheure Noorwegen 08:59</li><li><a href="stop-97915.html">97915</a> - Lapscheure Rustenburg 09:00</li><li><a href="stop-97891.html">97891</a> - Hoeke Brug 09:01</li><li><a href="stop-97892.html">97892</a> - Hoeke Molen 09:02</li><li><a href="stop-97939.html">97939</a> - Westkapelle Marouxdreef 09:03</li><li><a href="stop-97961.html">97961</a> - Westkapelle Hoekestraat 09:03</li><li><a href="stop-97933.html">97933</a> - Westkapelle Sacramentstraat 09:04</li><li><a href="stop-97935.html">97935</a> - Westkapelle Natienlaan 09:06</li><li><a href="stop-100786.html">100786</a> - Westkapelle Kalvekeetdijk 09:08</li><li><a href="stop-97936.html">97936</a> - Westkapelle Isabellavaart 09:12</li><li><a href="stop-100785.html">100785</a> - Knokke Camping Europe 09:14</li><li><a href="stop-126293.html">126293</a> - Knokke Station perron 3 09:18</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4358.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

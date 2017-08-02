@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Geraardsbergen - Parike - Oudenaarde - 20719158</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Geraardsbergen - Parike - Oudenaarde - 20719158</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126754.html">126754</a> - Oudenaarde Station perron 3 05:36</li><li><a href="stop-118478.html">118478</a> - Oudenaarde Tacambaro 05:38</li><li><a href="stop-118477.html">118477</a> - Oudenaarde Markt 05:40</li><li><a href="stop-120335.html">120335</a> - Oudenaarde Smallendam 05:41</li><li><a href="stop-118590.html">118590</a> - Oudenaarde Raepsaetplein 05:42</li><li><a href="stop-118589.html">118589</a> - Oudenaarde Bergstraat 05:43</li><li><a href="stop-119129.html">119129</a> - Edelare Mijttestraat 05:44</li><li><a href="stop-128739.html">128739</a> - Edelare Tivolistraat 05:45</li><li><a href="stop-128730.html">128730</a> - Edelare Winkelstraat 05:45</li><li><a href="stop-119127.html">119127</a> - Volkegem Wolvenberg 05:46</li><li><a href="stop-119350.html">119350</a> - Volkegem Kerk 05:47</li><li><a href="stop-119348.html">119348</a> - Mater Holle Weg 05:49</li><li><a href="stop-119347.html">119347</a> - Mater Hauwaart 05:49</li><li><a href="stop-119346.html">119346</a> - Mater Brouwerij Roman 05:51</li><li><a href="stop-119344.html">119344</a> - Sint-Maria-Horebeke Bovenstraat 05:52</li><li><a href="stop-119343.html">119343</a> - Sint-Kornelis-Horebeke Ruitersstraat 05:53</li><li><a href="stop-119342.html">119342</a> - Zegelsem Teirlinckstraat 05:55</li><li><a href="stop-119341.html">119341</a> - Zegelsem Donkweg 05:56</li><li><a href="stop-119340.html">119340</a> - Elst Gentsestraat 05:57</li><li><a href="stop-119339.html">119339</a> - Nederbrakel Kleibergstraat 05:58</li><li><a href="stop-120378.html">120378</a> - Nederbrakel Romeinseweg 05:59</li><li><a href="stop-119338.html">119338</a> - Nederbrakel Meerbeekstraat 06:00</li><li><a href="stop-118306.html">118306</a> - Nederbrakel Leizemooie 06:00</li><li><a href="stop-119337.html">119337</a> - Nederbrakel Herreweg 06:01</li><li><a href="stop-118456.html">118456</a> - Nederbrakel Spoorwegstraat 06:02</li><li><a href="stop-119335.html">119335</a> - Nederbrakel Station 06:03</li><li><a href="stop-118363.html">118363</a> - Nederbrakel Kasteelstraat 06:04</li><li><a href="stop-119336.html">119336</a> - Nederbrakel Scholen 06:04</li><li><a href="stop-119243.html">119243</a> - Nederbrakel Termergelstraat 06:07</li><li><a href="stop-119333.html">119333</a> - Parike Fayte 06:09</li><li><a href="stop-119332.html">119332</a> - Parike Kerk 06:10</li><li><a href="stop-119331.html">119331</a> - Parike Wouterbosweg 06:11</li><li><a href="stop-119330.html">119330</a> - Parike Gelategemstraat 06:12</li><li><a href="stop-119329.html">119329</a> - Deftinge Boshoekstraat 06:13</li><li><a href="stop-119328.html">119328</a> - Deftinge Breebijl 06:14</li><li><a href="stop-119289.html">119289</a> - Deftinge Kruisstraat 06:15</li><li><a href="stop-119288.html">119288</a> - Deftinge Hekkouterstraat 06:15</li><li><a href="stop-119287.html">119287</a> - Deftinge Kasteelken 06:16</li><li><a href="stop-119286.html">119286</a> - Goeferdinge Hazelaarstraat 06:17</li><li><a href="stop-119285.html">119285</a> - Goeferdinge Kerkhof 06:18</li><li><a href="stop-119284.html">119284</a> - Geraardsbergen Astridlaan 06:19</li><li><a href="stop-119283.html">119283</a> - Geraardsbergen Grotestraat 06:20</li><li><a href="stop-126747.html">126747</a> - Geraardsbergen Station perron 8 06:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1341.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

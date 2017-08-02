@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk Station - Waterschei - Zwartberg - 22488717</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk Station - Waterschei - Zwartberg - 22488717</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-43783.html">43783</a> - Genk Station perron 5 07:15</li><li><a href="stop-28493.html">28493</a> - Genk J. Habexlaan 07:18</li><li><a href="stop-28376.html">28376</a> - Genk Koninklijk Atheneum 07:19</li><li><a href="stop-88463.html">88463</a> - Genk Sint-Lodewijkstraat 07:20</li><li><a href="stop-28554.html">28554</a> - Genk Sportcentrum 07:21</li><li><a href="stop-28384.html">28384</a> - Genk Bergbeemdstraat 07:23</li><li><a href="stop-96713.html">96713</a> - Waterschei Viaduct 07:23</li><li><a href="stop-99179.html">99179</a> - Waterschei Watergrasstraat 07:26</li><li><a href="stop-96765.html">96765</a> - Waterschei Ziekenhuis 07:28</li><li><a href="stop-96714.html">96714</a> - Waterschei Onafhankelijkheidslaan 07:29</li><li><a href="stop-96706.html">96706</a> - Waterschei Politiebureel 07:31</li><li><a href="stop-96699.html">96699</a> - Waterschei Hoevenzavel 07:32</li><li><a href="stop-96741.html">96741</a> - Zwartberg Galopinstraat 07:33</li><li><a href="stop-96743.html">96743</a> - Zwartberg Koning Albertstraat 07:34</li><li><a href="stop-96751.html">96751</a> - Zwartberg Zaveldriesstraat 07:35</li><li><a href="stop-125477.html">125477</a> - Zwartberg G. Lambertlaan 07:36</li><li><a href="stop-96748.html">96748</a> - Zwartberg Nieuwe Kempen 07:37</li><li><a href="stop-96682.html">96682</a> - Zwartberg Omlooplaan 07:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4744.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gentbrugge Moscou-UZ - 20673813</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gentbrugge Moscou-UZ - 20673813</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-111212.html">111212</a> - Gent Tolpoort 17:47</li><li><a href="stop-111213.html">111213</a> - Gent Spaarstraat 17:49</li><li><a href="stop-128658.html">128658</a> - Gent Sint-Lucas Biervlietstraat 17:50</li><li><a href="stop-111215.html">111215</a> - Gent Opgeeistenlaan 17:51</li><li><a href="stop-111836.html">111836</a> - Gent Rabot 17:53</li><li><a href="stop-111216.html">111216</a> - Gent Brugsepoort 17:55</li><li><a href="stop-111217.html">111217</a> - Gent Theresianenstraat 17:57</li><li><a href="stop-111179.html">111179</a> - Gent Rozemarijnbrug 17:59</li><li><a href="stop-111180.html">111180</a> - Gent Bernard Spaelaan 18:00</li><li><a href="stop-111181.html">111181</a> - Gent Bijlokehof 18:01</li><li><a href="stop-111182.html">111182</a> - Gent Koning Albertbrug 18:03</li><li><a href="stop-111183.html">111183</a> - Gent Meersstraat 18:05</li><li><a href="stop-126577.html">126577</a> - Gent Sint-Pietersstation perron 17 18:06</li><li><a href="stop-111423.html">111423</a> - Gent Sint-Denijslaan 18:09</li><li><a href="stop-111424.html">111424</a> - Gent Sint-Pietersaalststraat 18:10</li><li><a href="stop-111425.html">111425</a> - Gent Krijgslaan 18:12</li><li><a href="stop-120628.html">120628</a> - Gent UZ 18:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./45.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

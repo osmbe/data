@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aartselaar - Groenplaats - 22510860</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aartselaar - Groenplaats - 22510860</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108642.html">108642</a> - Wilrijk Universiteitsplein 05:00</li><li><a href="stop-20590.html">20590</a> - Wilrijk Kerkeveldstraat 05:01</li><li><a href="stop-107829.html">107829</a> - Wilrijk Bist 05:03</li><li><a href="stop-108049.html">108049</a> - Wilrijk Heistraat 05:04</li><li><a href="stop-108388.html">108388</a> - Wilrijk Sneeuwbeslaan 05:05</li><li><a href="stop-108221.html">108221</a> - Wilrijk Laarstraat 05:06</li><li><a href="stop-107634.html">107634</a> - Wilrijk Eglantierlaan 05:06</li><li><a href="stop-107809.html">107809</a> - Antwerpen P+R Olympiade 05:07</li><li><a href="stop-107886.html">107886</a> - Antwerpen Olympiade 05:09</li><li><a href="stop-107324.html">107324</a> - Antwerpen J. De Voslei 05:09</li><li><a href="stop-107845.html">107845</a> - Antwerpen Camille Huysmanslaan 05:12</li><li><a href="stop-108206.html">108206</a> - Antwerpen Station Zuid 05:12</li><li><a href="stop-109225.html">109225</a> - Antwerpen Brederodestraat 05:14</li><li><a href="stop-23515.html">23515</a> - Antwerpen Troonplaats 05:15</li><li><a href="stop-107914.html">107914</a> - Antwerpen Graaf Van Hoornestraat 05:16</li><li><a href="stop-108172.html">108172</a> - Antwerpen Museum 05:16</li><li><a href="stop-90976.html">90976</a> - Antwerpen Tropisch Instituut 05:18</li><li><a href="stop-108557.html">108557</a> - Antwerpen Sint-Andries 05:20</li><li><a href="stop-91989.html">91989</a> - Antwerpen Groenplaats 05:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2929.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

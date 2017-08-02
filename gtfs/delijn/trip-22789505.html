@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Honsem - Lubbeek - Heverlee - 22789505</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Honsem - Lubbeek - Heverlee - 22789505</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-12086.html">12086</a> - Heverlee Kazerne (H. Hart) 16:40</li><li><a href="stop-93390.html">93390</a> - Heverlee De Hemptinne 16:42</li><li><a href="stop-14623.html">14623</a> - Heverlee Schaatsbaan 16:43</li><li><a href="stop-12189.html">12189</a> - Heverlee Ambachtenlaan 16:44</li><li><a href="stop-14625.html">14625</a> - Heverlee Sterrekes 16:45</li><li><a href="stop-12201.html">12201</a> - Leuven De Mol 16:49</li><li><a href="stop-9853.html">9853</a> - Korbeek-Lo Vlinderlaan 16:50</li><li><a href="stop-9837.html">9837</a> - Korbeek-Lo Eikenbrug 16:51</li><li><a href="stop-9841.html">9841</a> - Korbeek-Lo Korbeekveld 16:52</li><li><a href="stop-9833.html">9833</a> - Korbeek-Lo Bierbeekstraat 16:53</li><li><a href="stop-9845.html">9845</a> - Korbeek-Lo Pastorijstraat 16:54</li><li><a href="stop-9878.html">9878</a> - Lovenjoel Zootechnisch Centrum 16:55</li><li><a href="stop-9863.html">9863</a> - Lovenjoel Centrum 16:56</li><li><a href="stop-9676.html">9676</a> - Pellenberg Ganzendries 16:57</li><li><a href="stop-16291.html">16291</a> - Pellenberg Papenveld 16:58</li><li><a href="stop-12623.html">12623</a> - Pellenberg Dorp 17:00</li><li><a href="stop-99109.html">99109</a> - Pellenberg Molenstraat 17:02</li><li><a href="stop-12582.html">12582</a> - Lubbeek Herendal 17:03</li><li><a href="stop-12596.html">12596</a> - Lubbeek Lommerhof Kapel 17:04</li><li><a href="stop-12573.html">12573</a> - Lubbeek Bollenberg 17:05</li><li><a href="stop-12592.html">12592</a> - Lubbeek Kwadeschuur 17:05</li><li><a href="stop-12620.html">12620</a> - Lubbeek Weg naar Uilekot 17:06</li><li><a href="stop-12577.html">12577</a> - Lubbeek Dorp 17:07</li><li><a href="stop-12601.html">12601</a> - Lubbeek School 17:07</li><li><a href="stop-12615.html">12615</a> - Lubbeek Weg naar Kerkom 17:08</li><li><a href="stop-12607.html">12607</a> - Lubbeek Terkeyen 1 17:09</li><li><a href="stop-12609.html">12609</a> - Lubbeek Terkeyen 2 17:10</li><li><a href="stop-12586.html">12586</a> - Lubbeek Kalenberg 17:11</li><li><a href="stop-95595.html">95595</a> - Kerkom Malendries 17:13</li><li><a href="stop-95593.html">95593</a> - Kerkom Kabine 17:15</li><li><a href="stop-95591.html">95591</a> - Kerkom Dorp 17:15</li><li><a href="stop-95786.html">95786</a> - Kerkom Kerk 17:16</li><li><a href="stop-16328.html">16328</a> - Boutersem Kapelstraat 17:18</li><li><a href="stop-15421.html">15421</a> - Boutersem Butsel Kerk 17:19</li><li><a href="stop-16504.html">16504</a> - Boutersem Oude Vijvers 17:20</li><li><a href="stop-15419.html">15419</a> - Boutersem Eyckeveld 17:21</li><li><a href="stop-14881.html">14881</a> - Boutersem Stationsstraat 17:22</li><li><a href="stop-9970.html">9970</a> - Boutersem Vertrijk Station 17:24</li><li><a href="stop-9968.html">9968</a> - Boutersem Schoolstraat 17:26</li><li><a href="stop-9966.html">9966</a> - Boutersem Honsemsestraat 17:27</li><li><a href="stop-9972.html">9972</a> - Willebringen Hoeksken 17:29</li><li><a href="stop-9979.html">9979</a> - Willebringen Kerk 17:30</li><li><a href="stop-9985.html">9985</a> - Willebringen Windmolenveld 15 17:31</li><li><a href="stop-9981.html">9981</a> - Willebringen Kerkhof 17:32</li><li><a href="stop-15536.html">15536</a> - Honsem Kapel 17:34</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2369.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

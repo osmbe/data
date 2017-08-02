@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel-Asse-Aalst - 21131638</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel-Asse-Aalst - 21131638</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126704.html">126704</a> - Aalst Station perron 5 23:10</li><li><a href="stop-128722.html">128722</a> - Aalst De Wolfkaai 23:12</li><li><a href="stop-128721.html">128721</a> - Aalst Zeeberg 23:14</li><li><a href="stop-118314.html">118314</a> - Aalst Albrechtlaan 23:15</li><li><a href="stop-14602.html">14602</a> - Aalst Overhamme 23:16</li><li><a href="stop-116868.html">116868</a> - Aalst Schietbaan 23:16</li><li><a href="stop-120324.html">120324</a> - Erembodegem Ronsevaalstraat 23:17</li><li><a href="stop-121265.html">121265</a> - Erembodegem Jagershoek 23:18</li><li><a href="stop-14596.html">14596</a> - Erembodegem Central 23:19</li><li><a href="stop-14594.html">14594</a> - Erembodegem Kapellestraat 23:19</li><li><a href="stop-9442.html">9442</a> - Hekelgem Molenberg 23:21</li><li><a href="stop-9444.html">9444</a> - Hekelgem Zandtapijt 23:22</li><li><a href="stop-9438.html">9438</a> - Hekelgem Den Beer 23:23</li><li><a href="stop-9440.html">9440</a> - Hekelgem Bleregem 23:24</li><li><a href="stop-9432.html">9432</a> - Essene Koudenberg 23:25</li><li><a href="stop-9422.html">9422</a> - Essene Bareel 23:26</li><li><a href="stop-127831.html">127831</a> - Asse Terheide Lindestraat 23:27</li><li><a href="stop-127829.html">127829</a> - Asse Terheide Kerk 23:28</li><li><a href="stop-9466.html">9466</a> - Asse Heuvelstraat 23:29</li><li><a href="stop-9458.html">9458</a> - Asse Groenstraat 23:30</li><li><a href="stop-9452.html">9452</a> - Asse Budastraat 23:30</li><li><a href="stop-9497.html">9497</a> - Asse Wijndruif 23:31</li><li><a href="stop-93370.html">93370</a> - Asse Nerviërs 23:32</li><li><a href="stop-44010.html">44010</a> - Asse Kalkoven 23:33</li><li><a href="stop-9480.html">9480</a> - Asse Nieuwstraat 23:33</li><li><a href="stop-9453.html">9453</a> - Asse Gemeenteplein 23:34</li><li><a href="stop-9449.html">9449</a> - Asse Belvédère 23:35</li><li><a href="stop-9483.html">9483</a> - Asse Station 23:36</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1857.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

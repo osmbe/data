@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Neerpelt - Achel Sneldienst - 22487183</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Neerpelt - Achel Sneldienst - 22487183</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-34963.html">34963</a> - Achel Statie 06:54</li><li><a href="stop-95294.html">95294</a> - Achel Nieuwe Kerk 06:55</li><li><a href="stop-29049.html">29049</a> - Achel Leenderdijk 06:57</li><li><a href="stop-29038.html">29038</a> - Achel De Vliet 06:59</li><li><a href="stop-29046.html">29046</a> - Achel Kerk 07:00</li><li><a href="stop-29037.html">29037</a> - Achel Bergeind 07:01</li><li><a href="stop-105205.html">105205</a> - Achel Quatre-Bras 07:02</li><li><a href="stop-93809.html">93809</a> - Sint-Huibrechts-Lille Heuvelenweg 07:04</li><li><a href="stop-126103.html">126103</a> - Sint-Huibrechts-Lille Centrum 07:05</li><li><a href="stop-33080.html">33080</a> - Sint-Huibrechts-Lille Riet 07:06</li><li><a href="stop-33025.html">33025</a> - Neerpelt De Bette 07:07</li><li><a href="stop-33058.html">33058</a> - Neerpelt Kleine Landeigendom 07:08</li><li><a href="stop-33015.html">33015</a> - Neerpelt Ankerweg 07:09</li><li><a href="stop-123120.html">123120</a> - Neerpelt College 07:10</li><li><a href="stop-33046.html">33046</a> - Neerpelt Station 07:12</li><li><a href="stop-91060.html">91060</a> - Overpelt Kiosk 07:16</li><li><a href="stop-93917.html">93917</a> - Houthalen Centrum 07:44</li><li><a href="stop-97724.html">97724</a> - Kiewit Station 07:57</li><li><a href="stop-93426.html">93426</a> - Hasselt Handelsschool 08:03</li><li><a href="stop-29645.html">29645</a> - Hasselt Zwembad 08:07</li><li><a href="stop-29267.html">29267</a> - Hasselt Dusartplein 08:09</li><li><a href="stop-128978.html">128978</a> - Hasselt Station perron 9 08:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5157.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

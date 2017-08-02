@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Bergen - Luik-Paleis - IC381415771</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bergen - Luik-Paleis - IC381415771</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8881000_2.html">8881000:2</a> - Mons 14:37</li><li><a href="stop-8882206_3.html">8882206:3</a> - La Louvière-Sud 14:54</li><li><a href="stop-8871100_2.html">8871100:2</a> - Marchienne-au-Pont 15:08</li><li><a href="stop-8872009_7.html">8872009:7</a> - Charleroi-Sud 15:14</li><li><a href="stop-8874005_4.html">8874005:4</a> - Châtelet 15:20</li><li><a href="stop-8874609_2.html">8874609:2</a> - Tamines 15:27</li><li><a href="stop-8874716_2.html">8874716:2</a> - Auvelais 15:30</li><li><a href="stop-8874724_3.html">8874724:3</a> - Jemeppe-sur-Sambre 15:35</li><li><a href="stop-8863008_4.html">8863008:4</a> - Namur 15:53</li><li><a href="stop-8863404_2.html">8863404:2</a> - Andenne 16:07</li><li><a href="stop-8843307_3.html">8843307:3</a> - Huy 16:19</li><li><a href="stop-8843208_4.html">8843208:4</a> - Flemalle-Haute 16:32</li><li><a href="stop-8841004_9.html">8841004:9</a> - Liège-Guillemins 16:44</li><li><a href="stop-8841558_2.html">8841558:2</a> - Liège-Jonfosse 16:49</li><li><a href="stop-8841525_2.html">8841525:2</a> - Liège-Palais 16:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./518.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

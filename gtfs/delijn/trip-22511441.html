@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Rumst - Aartselaar - Groenplaats - 22511441</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Rumst - Aartselaar - Groenplaats - 22511441</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-23265.html">23265</a> - Rumst Busstation 08:03</li><li><a href="stop-23227.html">23227</a> - Rumst Catenberg 08:04</li><li><a href="stop-109082.html">109082</a> - Rumst Hollebeekstraat 08:05</li><li><a href="stop-19742.html">19742</a> - Reet Hoge Meentochtstraat 08:07</li><li><a href="stop-23261.html">23261</a> - Reet Watertoren 08:07</li><li><a href="stop-19425.html">19425</a> - Reet Kerkhof 08:08</li><li><a href="stop-109081.html">109081</a> - Reet Kerk 08:08</li><li><a href="stop-109079.html">109079</a> - Reet Beukendreef 08:09</li><li><a href="stop-109078.html">109078</a> - Reet Kerremansstraat 08:10</li><li><a href="stop-23253.html">23253</a> - Reet Molenstraat 08:12</li><li><a href="stop-23251.html">23251</a> - Reet Molenhuis 08:14</li><li><a href="stop-23249.html">23249</a> - Reet Rozenlaan 08:14</li><li><a href="stop-23247.html">23247</a> - Reet Sint-Jozefstraat 08:15</li><li><a href="stop-128327.html">128327</a> - Reet Pierstraat 08:17</li><li><a href="stop-23243.html">23243</a> - Aartselaar Bekersveld 08:20</li><li><a href="stop-94572.html">94572</a> - Aartselaar Oever 08:20</li><li><a href="stop-23239.html">23239</a> - Aartselaar J. Davidlaan 08:22</li><li><a href="stop-109074.html">109074</a> - Aartselaar S. Streuvelslaan 08:24</li><li><a href="stop-108387.html">108387</a> - Aartselaar Dokter Cuypersstraat 08:25</li><li><a href="stop-23235.html">23235</a> - Aartselaar Gemeentehuis 08:25</li><li><a href="stop-23233.html">23233</a> - Aartselaar Barones de Borrekenslaan 08:27</li><li><a href="stop-43326.html">43326</a> - Aartselaar Wouwersveld 08:29</li><li><a href="stop-109073.html">109073</a> - Aartselaar Dijkstraat 08:30</li><li><a href="stop-93678.html">93678</a> - Aartselaar Aquafin 08:30</li><li><a href="stop-107839.html">107839</a> - Wilrijk Folklorelaan 08:32</li><li><a href="stop-108007.html">108007</a> - Wilrijk Kleine Doornstraat 08:33</li><li><a href="stop-107609.html">107609</a> - Wilrijk Doornstraat 08:35</li><li><a href="stop-108642.html">108642</a> - Wilrijk Universiteitsplein 08:35</li><li><a href="stop-20590.html">20590</a> - Wilrijk Kerkeveldstraat 08:36</li><li><a href="stop-107829.html">107829</a> - Wilrijk Bist 08:38</li><li><a href="stop-108049.html">108049</a> - Wilrijk Heistraat 08:40</li><li><a href="stop-108388.html">108388</a> - Wilrijk Sneeuwbeslaan 08:41</li><li><a href="stop-108221.html">108221</a> - Wilrijk Laarstraat 08:42</li><li><a href="stop-107634.html">107634</a> - Wilrijk Eglantierlaan 08:42</li><li><a href="stop-107809.html">107809</a> - Antwerpen P+R Olympiade 08:43</li><li><a href="stop-107886.html">107886</a> - Antwerpen Olympiade 08:45</li><li><a href="stop-107324.html">107324</a> - Antwerpen J. De Voslei 08:45</li><li><a href="stop-107845.html">107845</a> - Antwerpen Camille Huysmanslaan 08:48</li><li><a href="stop-108206.html">108206</a> - Antwerpen Station Zuid 08:48</li><li><a href="stop-109225.html">109225</a> - Antwerpen Brederodestraat 08:50</li><li><a href="stop-23515.html">23515</a> - Antwerpen Troonplaats 08:52</li><li><a href="stop-107914.html">107914</a> - Antwerpen Graaf Van Hoornestraat 08:53</li><li><a href="stop-108172.html">108172</a> - Antwerpen Museum 08:53</li><li><a href="stop-90976.html">90976</a> - Antwerpen Tropisch Instituut 08:55</li><li><a href="stop-108557.html">108557</a> - Antwerpen Sint-Andries 08:57</li><li><a href="stop-91989.html">91989</a> - Antwerpen Groenplaats 08:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2935.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

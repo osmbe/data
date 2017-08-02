@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Beersel - 22790225</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Beersel - 22790225</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-89586.html">89586</a> - Alsemberg Sint-Victor 16:04</li><li><a href="stop-9600.html">9600</a> - Alsemberg Winderickxplein 16:08</li><li><a href="stop-13292.html">13292</a> - Sint-Genesius-Rode Tenbroek 16:09</li><li><a href="stop-15520.html">15520</a> - Sint-Genesius-Rode Zavelberg 16:10</li><li><a href="stop-9594.html">9594</a> - Alsemberg Oude Nijvelsebaan 16:11</li><li><a href="stop-9603.html">9603</a> - Alsemberg Herisemmolen 16:12</li><li><a href="stop-9631.html">9631</a> - Dworp Destelheide 16:13</li><li><a href="stop-9633.html">9633</a> - Dworp Smulders 16:14</li><li><a href="stop-9629.html">9629</a> - Dworp Sportschuur 16:17</li><li><a href="stop-9627.html">9627</a> - Dworp Gravenhof 16:19</li><li><a href="stop-9635.html">9635</a> - Dworp Wauweringen 16:21</li><li><a href="stop-9641.html">9641</a> - Huizingen Pretersblok 16:22</li><li><a href="stop-9639.html">9639</a> - Huizingen Domein 16:22</li><li><a href="stop-43425.html">43425</a> - Huizingen Kerk 16:23</li><li><a href="stop-9646.html">9646</a> - Huizingen Menisberg 16:25</li><li><a href="stop-9638.html">9638</a> - Huizingen Begraafplaats 16:26</li><li><a href="stop-9668.html">9668</a> - Lot Sollemberg 16:26</li><li><a href="stop-9666.html">9666</a> - Lot Kloosterstraat 16:29</li><li><a href="stop-15481.html">15481</a> - Lot Rijkswacht 16:30</li><li><a href="stop-9295.html">9295</a> - Lot Station 16:30</li><li><a href="stop-99482.html">99482</a> - Lot Denijstraat 16:31</li><li><a href="stop-9293.html">9293</a> - Lot Zennestraat 16:32</li><li><a href="stop-15482.html">15482</a> - Lot Klarissenbos 16:33</li><li><a href="stop-9662.html">9662</a> - Lot Kerkhof 16:35</li><li><a href="stop-9664.html">9664</a> - Lot Kerkhofstraat 16:36</li><li><a href="stop-9618.html">9618</a> - Beersel Oud Beersel 16:36</li><li><a href="stop-9614.html">9614</a> - Beersel Kapel 16:37</li><li><a href="stop-9626.html">9626</a> - Beersel Vijverstraat 16:38</li><li><a href="stop-9612.html">9612</a> - Beersel Gemeenteplein 16:39</li><li><a href="stop-9620.html">9620</a> - Beersel Windmolen 16:41</li><li><a href="stop-9610.html">9610</a> - Beersel Danislaan 16:42</li><li><a href="stop-9606.html">9606</a> - Beersel Dachelenberg 16:43</li><li><a href="stop-9624.html">9624</a> - Beersel Parmentier 16:43</li><li><a href="stop-15484.html">15484</a> - Linkebeek Van Haelen 16:44</li><li><a href="stop-14833.html">14833</a> - Drogenbos Beersellaan 16:45</li><li><a href="stop-10622.html">10622</a> - Drogenbos Calmeyn 16:48</li><li><a href="stop-14831.html">14831</a> - Ukkel Stelplaats 16:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2458.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

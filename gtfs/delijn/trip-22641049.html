@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Roeselare-Beitem-Menen - 22641049</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Roeselare-Beitem-Menen - 22641049</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126375.html">126375</a> - Menen Station perron 5 10:57</li><li><a href="stop-37951.html">37951</a> - Menen Markt 10:58</li><li><a href="stop-37966.html">37966</a> - Menen Vedastuskerk 10:59</li><li><a href="stop-37948.html">37948</a> - Menen Waalvest 10:59</li><li><a href="stop-41919.html">41919</a> - Menen Ontmoetingscentrum 11:00</li><li><a href="stop-41932.html">41932</a> - Menen Leopoldplein 11:01</li><li><a href="stop-38364.html">38364</a> - Menen Sabbestraat 11:02</li><li><a href="stop-41937.html">41937</a> - Menen Wahisstraat 11:03</li><li><a href="stop-41907.html">41907</a> - Menen Bruggepoort 11:04</li><li><a href="stop-41914.html">41914</a> - Menen Groenhof 11:04</li><li><a href="stop-41918.html">41918</a> - Menen Kliniek 11:05</li><li><a href="stop-41906.html">41906</a> - Menen Barriere 11:07</li><li><a href="stop-41912.html">41912</a> - Menen Galgestraat 11:08</li><li><a href="stop-41954.html">41954</a> - Moorsele Boldershof 11:09</li><li><a href="stop-41962.html">41962</a> - Moorsele Kezelberg 11:10</li><li><a href="stop-41492.html">41492</a> - Dadizele 'T Hoge 11:12</li><li><a href="stop-37505.html">37505</a> - Dadizele Klephoek 11:13</li><li><a href="stop-41870.html">41870</a> - Ledegem Dadizelehoek 11:15</li><li><a href="stop-100916.html">100916</a> - Ledegem Kerk 11:16</li><li><a href="stop-107316.html">107316</a> - Ledegem De Samenkomst 11:17</li><li><a href="stop-37906.html">37906</a> - Ledegem Station 11:18</li><li><a href="stop-37903.html">37903</a> - Ledegem Kapellehoek 11:19</li><li><a href="stop-37902.html">37902</a> - Ledegem In 'T Paard 11:20</li><li><a href="stop-104990.html">104990</a> - Ledegem Wit Kruis 11:20</li><li><a href="stop-104988.html">104988</a> - Ledegem Huis Van Commerce 11:21</li><li><a href="stop-104989.html">104989</a> - Ledegem Sint-Pieter 11:22</li><li><a href="stop-104977.html">104977</a> - Beitem Veldmolen 11:23</li><li><a href="stop-98400.html">98400</a> - Beitem Plaats 11:24</li><li><a href="stop-42109.html">42109</a> - Rumbeke Steenbakkerij 11:26</li><li><a href="stop-122914.html">122914</a> - Rumbeke Euro Shop 11:27</li><li><a href="stop-42844.html">42844</a> - Rumbeke 'T Vosken 11:28</li><li><a href="stop-42104.html">42104</a> - Rumbeke De Aap 11:29</li><li><a href="stop-101113.html">101113</a> - Rumbeke Zilverberg 11:30</li><li><a href="stop-42102.html">42102</a> - Rumbeke Berlekot 11:32</li><li><a href="stop-39253.html">39253</a> - Roeselare De Spil 11:34</li><li><a href="stop-39213.html">39213</a> - Roeselare Residentie Flora 11:35</li><li><a href="stop-39214.html">39214</a> - Roeselare De Mandel 11:36</li><li><a href="stop-126352.html">126352</a> - Roeselare Station perron 2 11:37</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4270.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Marktbus Neervelp - Boutersem - Tienen - 21153205</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Marktbus Neervelp - Boutersem - Tienen - 21153205</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-95628.html">95628</a> - Neervelp Carpoolparking 08:44</li><li><a href="stop-17265.html">17265</a> - Boutersem Gemeentehuis 08:45</li><li><a href="stop-10643.html">10643</a> - Boutersem Kerkweg 08:46</li><li><a href="stop-93363.html">93363</a> - Boutersem Vertrijk Station 08:47</li><li><a href="stop-9945.html">9945</a> - Boutersem Stationsstraat 08:49</li><li><a href="stop-15420.html">15420</a> - Boutersem Eyckeveld 08:51</li><li><a href="stop-16505.html">16505</a> - Boutersem Oude Vijvers 08:52</li><li><a href="stop-15422.html">15422</a> - Boutersem Butsel Kerk 08:53</li><li><a href="stop-16327.html">16327</a> - Boutersem Kapelstraat 08:54</li><li><a href="stop-95787.html">95787</a> - Kerkom Kerk 08:57</li><li><a href="stop-95789.html">95789</a> - Kerkom Dorp 08:58</li><li><a href="stop-95791.html">95791</a> - Kerkom Molenweg 08:59</li><li><a href="stop-95793.html">95793</a> - Kerkom Kapelleke 09:00</li><li><a href="stop-15434.html">15434</a> - Kumtich Breisem Kerk 09:01</li><li><a href="stop-15436.html">15436</a> - Kumtich Kerkomstraat 09:02</li><li><a href="stop-95795.html">95795</a> - Vissenaken Sint-Pieterskerk 09:07</li><li><a href="stop-95797.html">95797</a> - Vissenaken Sint-Pietersstraat 09:08</li><li><a href="stop-95621.html">95621</a> - Vissenaken Romeinsebaan 09:09</li><li><a href="stop-127856.html">127856</a> - Vissenaken Waterstraat 09:09</li><li><a href="stop-95733.html">95733</a> - Vissenaken Vissenakenstraat 09:10</li><li><a href="stop-95799.html">95799</a> - Vissenaken Kapelleke 09:11</li><li><a href="stop-95801.html">95801</a> - Vissenaken Sint-Martens 09:12</li><li><a href="stop-95803.html">95803</a> - Vissenaken Kraaibonveld 09:12</li><li><a href="stop-15448.html">15448</a> - Tienen De Scheper 09:15</li><li><a href="stop-15450.html">15450</a> - Tienen Vogelzang 09:16</li><li><a href="stop-127857.html">127857</a> - Tienen Kabbeeksepoort 09:17</li><li><a href="stop-13880.html">13880</a> - Tienen Kerk Heilig Hart 09:18</li><li><a href="stop-13886.html">13886</a> - Tienen Leuvenselaan 09:19</li><li><a href="stop-13861.html">13861</a> - Tienen 4de Lansierslaan 09:19</li><li><a href="stop-13878.html">13878</a> - Tienen Grote Markt 09:21</li><li><a href="stop-13908.html">13908</a> - Tienen Station Perron 3 09:24</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2558.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

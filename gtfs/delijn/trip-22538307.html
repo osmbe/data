@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Lier - Berlaar Heikant - Berlaar - 22538307</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Lier - Berlaar Heikant - Berlaar - 22538307</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-24449.html">24449</a> - Berlaar Berlaar-Heikant 06:50</li><li><a href="stop-109553.html">109553</a> - Berlaar Heikant Kerk 06:50</li><li><a href="stop-91130.html">91130</a> - Berlaar Heikant Kerkhof 06:51</li><li><a href="stop-25106.html">25106</a> - Berlaar Smidstraat 06:52</li><li><a href="stop-25104.html">25104</a> - Berlaar Steenbeek 06:53</li><li><a href="stop-93237.html">93237</a> - Berlaar Hemelshoek 06:54</li><li><a href="stop-25099.html">25099</a> - Koningshooikt Brandestraat 06:55</li><li><a href="stop-109726.html">109726</a> - Koningshooikt Verlinden 06:56</li><li><a href="stop-109725.html">109725</a> - Koningshooikt Putsebaan 06:58</li><li><a href="stop-25028.html">25028</a> - Koningshooikt Kerk 06:59</li><li><a href="stop-109703.html">109703</a> - Koningshooikt Schoolstraat 07:00</li><li><a href="stop-89080.html">89080</a> - Koningshooikt Leliënlei 07:01</li><li><a href="stop-25021.html">25021</a> - Koningshooikt Kruisstraat 07:02</li><li><a href="stop-25019.html">25019</a> - Lier Slenderstraat 07:04</li><li><a href="stop-25016.html">25016</a> - Lier Schollebeekstraat 07:05</li><li><a href="stop-25014.html">25014</a> - Lier Hoogveldweg 07:07</li><li><a href="stop-109701.html">109701</a> - Lier Veemarkt perron 7 07:08</li><li><a href="stop-109282.html">109282</a> - Lier Kluizenplein 07:10</li><li><a href="stop-109281.html">109281</a> - Lier Markt 07:12</li><li><a href="stop-109279.html">109279</a> - Lier Rolwagenstraat 07:16</li><li><a href="stop-109940.html">109940</a> - Lier Station perron 11 07:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3609.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

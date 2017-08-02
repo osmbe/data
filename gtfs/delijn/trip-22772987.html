@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Mechelen - Breendonk - 22772987</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mechelen - Breendonk - 22772987</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-14411.html">14411</a> - Mechelen Station perron 18 05:52</li><li><a href="stop-108451.html">108451</a> - Mechelen Oude Brusselsestraat 05:53</li><li><a href="stop-108452.html">108452</a> - Mechelen Louizastraat 05:53</li><li><a href="stop-126973.html">126973</a> - Mechelen Brusselpoort 05:54</li><li><a href="stop-91123.html">91123</a> - Mechelen Dodoens 05:55</li><li><a href="stop-91121.html">91121</a> - Mechelen Fortuinstraat 05:56</li><li><a href="stop-109972.html">109972</a> - Mechelen Procter & Gamble 05:58</li><li><a href="stop-109973.html">109973</a> - Hombeek Dorp 06:02</li><li><a href="stop-14373.html">14373</a> - Hombeek Kapellebaan 06:03</li><li><a href="stop-14375.html">14375</a> - Hombeek Molenhuis 06:04</li><li><a href="stop-14377.html">14377</a> - Leest Kasteeltje 06:05</li><li><a href="stop-14379.html">14379</a> - Leest De Prinsenlaan 06:06</li><li><a href="stop-14380.html">14380</a> - Leest Dorp 06:07</li><li><a href="stop-14382.html">14382</a> - Leest Kruispunt 06:08</li><li><a href="stop-14384.html">14384</a> - Leest Kapelleke 06:09</li><li><a href="stop-14386.html">14386</a> - Leest Weg naar Blaasveld 06:10</li><li><a href="stop-14388.html">14388</a> - Leest Van Praet 06:11</li><li><a href="stop-14390.html">14390</a> - Tisselt Valkstraat 06:12</li><li><a href="stop-14392.html">14392</a> - Tisselt Kapelleke 06:13</li><li><a href="stop-108316.html">108316</a> - Tisselt Kerk 06:14</li><li><a href="stop-108244.html">108244</a> - Tisselt Melkerij 06:15</li><li><a href="stop-16966.html">16966</a> - Tisselt Oude Spoorbaan 06:16</li><li><a href="stop-16965.html">16965</a> - Tisselt Breendonkstraat 06:19</li><li><a href="stop-16963.html">16963</a> - Breendonk Autosnelweg 06:20</li><li><a href="stop-88050.html">88050</a> - Breendonk Gemeentehuis 06:21</li><li><a href="stop-16204.html">16204</a> - Breendonk 't Centrum 06:22</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2019.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

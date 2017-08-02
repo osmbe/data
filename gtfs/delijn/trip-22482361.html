@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Diest / Tessenderlo - 22482361</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Diest / Tessenderlo - 22482361</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128974.html">128974</a> - Hasselt Station perron 13 07:49</li><li><a href="stop-29281.html">29281</a> - Hasselt Crutzenstraat 07:53</li><li><a href="stop-29447.html">29447</a> - Kuringen McDonald's 07:55</li><li><a href="stop-94958.html">94958</a> - Kuringen Stevoortse Kiezel 07:58</li><li><a href="stop-29668.html">29668</a> - Kuringen Herckenrodedreef 07:59</li><li><a href="stop-31324.html">31324</a> - Kuringen Herckenrode Abdij 08:01</li><li><a href="stop-96845.html">96845</a> - Tuilt Basisschool 08:02</li><li><a href="stop-97110.html">97110</a> - Bolderberg Kerk 08:15</li><li><a href="stop-97105.html">97105</a> - Bolderberg Broederspad 08:17</li><li><a href="stop-29592.html">29592</a> - Stokrooie Colemontstraat 08:18</li><li><a href="stop-29588.html">29588</a> - Stokrooie Brug Albertkanaal 08:19</li><li><a href="stop-29725.html">29725</a> - Stokrooie Ontmoetingscentrum 08:20</li><li><a href="stop-102657.html">102657</a> - Stokrooie Waterstraat 08:21</li><li><a href="stop-29594.html">29594</a> - Stokrooie Kruispunt 08:21</li><li><a href="stop-96848.html">96848</a> - Tuilt Hoek 08:23</li><li><a href="stop-29432.html">29432</a> - Kermt Dahliastraat 08:24</li><li><a href="stop-29597.html">29597</a> - Kermt Regenbooglaan 08:25</li><li><a href="stop-128074.html">128074</a> - Kermt Overweg 08:25</li><li><a href="stop-29362.html">29362</a> - Kermt De Willeman 08:26</li><li><a href="stop-29539.html">29539</a> - Spalbeek Spalbeekstraat 08:28</li><li><a href="stop-87473.html">87473</a> - Spalbeek Diestersteenweg 08:29</li><li><a href="stop-30126.html">30126</a> - Berbroek Veiling 08:30</li><li><a href="stop-30115.html">30115</a> - Berbroek Bosstraat 08:31</li><li><a href="stop-89245.html">89245</a> - Berbroek Sint-Jorislaan kruispunt 08:32</li><li><a href="stop-30124.html">30124</a> - Berbroek Steenweg 08:34</li><li><a href="stop-105229.html">105229</a> - Herk-de-Stad College 08:38</li><li><a href="stop-30195.html">30195</a> - Herk-de-Stad Markt 08:41</li><li><a href="stop-30140.html">30140</a> - Herk-de-Stad Klooster 08:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5276.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

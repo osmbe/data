@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sint-Truiden - Tongeren (bediening Wellen) - 22480029</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Truiden - Tongeren (bediening Wellen) - 22480029</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-88863.html">88863</a> - Tongeren Station 12:10</li><li><a href="stop-34507.html">34507</a> - Tongeren Koemarkt 12:11</li><li><a href="stop-34448.html">34448</a> - Tongeren Bilzerpoort 12:12</li><li><a href="stop-91239.html">91239</a> - Tongeren Sint-Truiderpoort 12:14</li><li><a href="stop-34611.html">34611</a> - Tongeren Rode Kruislaan 12:15</li><li><a href="stop-34477.html">34477</a> - Tongeren Inrit PIBO 12:17</li><li><a href="stop-34600.html">34600</a> - Piringen Weg op Widooie 12:18</li><li><a href="stop-34595.html">34595</a> - Piringen Kerk 12:19</li><li><a href="stop-34591.html">34591</a> - Piringen Borghof 12:19</li><li><a href="stop-34599.html">34599</a> - Piringen Oude Statie 12:21</li><li><a href="stop-34583.html">34583</a> - Overrepen Burchtstraat 12:22</li><li><a href="stop-34585.html">34585</a> - Overrepen Jesserenweg 12:22</li><li><a href="stop-34493.html">34493</a> - Overrepen Herkerveldstraat 12:25</li><li><a href="stop-27421.html">27421</a> - Jesseren Statieplein 12:26</li><li><a href="stop-27417.html">27417</a> - Jesseren Kerk 12:27</li><li><a href="stop-27410.html">27410</a> - Jesseren Dorpstraat 12:28</li><li><a href="stop-89602.html">89602</a> - Kerniel Groenstraat 12:29</li><li><a href="stop-27435.html">27435</a> - Kerniel Weg op Jesseren 12:30</li><li><a href="stop-27429.html">27429</a> - Kerniel Heuvel 12:31</li><li><a href="stop-27436.html">27436</a> - Kerniel Weg op Leeuw 12:31</li><li><a href="stop-27360.html">27360</a> - Gors-Opleeuw Warande 12:33</li><li><a href="stop-27356.html">27356</a> - Gors-Opleeuw Kerk 12:34</li><li><a href="stop-27358.html">27358</a> - Gors-Opleeuw Mellenstraat 12:35</li><li><a href="stop-27349.html">27349</a> - Gors-Opleeuw Diepestraat 12:36</li><li><a href="stop-27353.html">27353</a> - Gors-Opleeuw Drie Linden 12:37</li><li><a href="stop-27437.html">27437</a> - Kerniel Weg op Leeuw 12:38</li><li><a href="stop-27428.html">27428</a> - Kerniel Heuvel 12:39</li><li><a href="stop-27478.html">27478</a> - Kerniel Oorsprongstraat 12:39</li><li><a href="stop-27433.html">27433</a> - Kerniel Tapstraat 12:40</li><li><a href="stop-27427.html">27427</a> - Kerniel Haagsmaal 12:42</li><li><a href="stop-97717.html">97717</a> - Vrolingen Vogeleinde 12:43</li><li><a href="stop-97715.html">97715</a> - Vrolingen Stenenbrug 12:44</li><li><a href="stop-97713.html">97713</a> - Vrolingen Steenweg op Vrolingen 12:45</li><li><a href="stop-34976.html">34976</a> - Wellen Abswellen Kapel 12:46</li><li><a href="stop-93477.html">93477</a> - Wellen Oud Tramstation 12:46</li><li><a href="stop-123213.html">123213</a> - Wellen Gemeentehuis 12:47</li><li><a href="stop-35006.html">35006</a> - Wellen Maris 12:48</li><li><a href="stop-35039.html">35039</a> - Wellen Veerstraat 12:49</li><li><a href="stop-35046.html">35046</a> - Wellen Weg naar Ulbeek 12:49</li><li><a href="stop-35008.html">35008</a> - Wellen Mewis 12:50</li><li><a href="stop-35024.html">35024</a> - Wellen Tervoort 12:51</li><li><a href="stop-35051.html">35051</a> - Ulbeek Smid 12:52</li><li><a href="stop-35030.html">35030</a> - Ulbeek Kleinmeerveldstraat 12:53</li><li><a href="stop-35034.html">35034</a> - Ulbeek Nieuwstraat 12:54</li><li><a href="stop-35038.html">35038</a> - Ulbeek Tereiken 12:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5619.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

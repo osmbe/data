@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aarschot - Rillaar - Scherpenheuvel - Diest - 22780711</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aarschot - Rillaar - Scherpenheuvel - Diest - 22780711</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-16334.html">16334</a> - Keiberg Kerkhof 07:28</li><li><a href="stop-15875.html">15875</a> - Keiberg Processieweg 07:30</li><li><a href="stop-15877.html">15877</a> - Keiberg Pelgrimsstraat 07:31</li><li><a href="stop-13206.html">13206</a> - Messelbroek Engelenberg 07:34</li><li><a href="stop-13208.html">13208</a> - Messelbroek Kerk 07:35</li><li><a href="stop-14550.html">14550</a> - Messelbroek De Broodhoek 07:37</li><li><a href="stop-14551.html">14551</a> - Messelbroek Maasstraat 07:38</li><li><a href="stop-13207.html">13207</a> - Messelbroek Engelenberg 07:40</li><li><a href="stop-13210.html">13210</a> - Messelbroek Puttestraat 07:41</li><li><a href="stop-15549.html">15549</a> - Messelbroek Tieltsebaan 07:43</li><li><a href="stop-13222.html">13222</a> - Scherpenheuvel Mannenberg 07:44</li><li><a href="stop-13220.html">13220</a> - Schoonderbuken Koestraat 5 07:45</li><li><a href="stop-13214.html">13214</a> - Schoonderbuken Groenhove 07:46</li><li><a href="stop-13216.html">13216</a> - Schoonderbuken Hoensberg 07:47</li><li><a href="stop-107028.html">107028</a> - Schoonderbuken Miskruis 07:47</li><li><a href="stop-13242.html">13242</a> - Schoonderbuken Kerk 07:48</li><li><a href="stop-13236.html">13236</a> - Scherpenheuvel Valvoortstraat 07:49</li><li><a href="stop-13218.html">13218</a> - Scherpenheuvel Kapelleke 07:50</li><li><a href="stop-13230.html">13230</a> - Scherpenheuvel Oude Tiensestraat 07:50</li><li><a href="stop-13224.html">13224</a> - Scherpenheuvel Merellaan 07:51</li><li><a href="stop-13240.html">13240</a> - Scherpenheuvel Witte Hoeve 07:52</li><li><a href="stop-13238.html">13238</a> - Scherpenheuvel Weg op Keiberg 07:53</li><li><a href="stop-13234.html">13234</a> - Scherpenheuvel Station 07:54</li><li><a href="stop-127054.html">127054</a> - Scherpenheuvel Gemeentehuis 07:55</li><li><a href="stop-13228.html">13228</a> - Scherpenheuvel Op t Hof 07:56</li><li><a href="stop-13232.html">13232</a> - Scherpenheuvel Pompken 07:56</li><li><a href="stop-10471.html">10471</a> - Kaggevinne Café Nova 07:57</li><li><a href="stop-10483.html">10483</a> - Kaggevinne Koebaan 07:58</li><li><a href="stop-10479.html">10479</a> - Kaggevinne Halfweg 08:00</li><li><a href="stop-10481.html">10481</a> - Kaggevinne Kerk 08:00</li><li><a href="stop-10477.html">10477</a> - Kaggevinne Gemeentehuis 08:01</li><li><a href="stop-10473.html">10473</a> - Kaggevinne Drukkerij 08:03</li><li><a href="stop-127837.html">127837</a> - Diest Leuvensepoort 08:04</li><li><a href="stop-10461.html">10461</a> - Diest Hasseltsepoort 08:06</li><li><a href="stop-128820.html">128820</a> - Diest Sint-Jansplein 08:06</li><li><a href="stop-10467.html">10467</a> - Diest Stadion 08:07</li><li><a href="stop-10459.html">10459</a> - Diest Euro Shoe 08:08</li><li><a href="stop-43985.html">43985</a> - Diest Atheneum 08:09</li><li><a href="stop-17012.html">17012</a> - Diest Station Perron 7 08:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2149.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

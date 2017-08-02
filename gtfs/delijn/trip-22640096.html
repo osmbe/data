@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Roeselare-Hooglede-Diksmuide - 22640096</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Roeselare-Hooglede-Diksmuide - 22640096</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-36844.html">36844</a> - Hooglede Dorp 09:10</li><li><a href="stop-36850.html">36850</a> - Hooglede Rodenbachwijk 09:11</li><li><a href="stop-36842.html">36842</a> - Hooglede Cafe Rozenhof 09:12</li><li><a href="stop-36856.html">36856</a> - Hooglede Villa Paret 09:15</li><li><a href="stop-38084.html">38084</a> - Roeselare Biezenstraat 09:16</li><li><a href="stop-38121.html">38121</a> - Roeselare Stadenstraat 09:17</li><li><a href="stop-17673.html">17673</a> - Roeselare Noordlaan 09:18</li><li><a href="stop-38099.html">38099</a> - Roeselare Hospitaal 09:20</li><li><a href="stop-39240.html">39240</a> - Roeselare Gaaipersstraat 09:21</li><li><a href="stop-17661.html">17661</a> - Roeselare Sint-Amandsstraat 09:22</li><li><a href="stop-38120.html">38120</a> - Roeselare Sint-Michielskerk 09:23</li><li><a href="stop-38115.html">38115</a> - Roeselare Polenplein 09:24</li><li><a href="stop-126370.html">126370</a> - Roeselare Station perron 9 09:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4265.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Liers - Marloie - L555727601</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liers - Marloie - L555727601</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8841673_3.html">8841673:3</a> - Liers 07:46</li><li><a href="stop-8841665_2.html">8841665:2</a> - Milmort 07:50</li><li><a href="stop-8841608_2.html">8841608:2</a> - Herstal 07:57</li><li><a href="stop-8841525_1.html">8841525:1</a> - Liège-Palais 08:03</li><li><a href="stop-8841558_1.html">8841558:1</a> - Liège-Jonfosse 08:06</li><li><a href="stop-8841004_5.html">8841004:5</a> - Liège-Guillemins 08:14</li><li><a href="stop-8842002_4.html">8842002:4</a> - Angleur 08:18</li><li><a href="stop-8842630_2.html">8842630:2</a> - Tilff 08:24</li><li><a href="stop-8842648_2.html">8842648:2</a> - Méry 08:28</li><li><a href="stop-8842655_2.html">8842655:2</a> - Hony 08:31</li><li><a href="stop-8842663_2.html">8842663:2</a> - Esneux 08:33</li><li><a href="stop-8842689_2.html">8842689:2</a> - Poulseur 08:37</li><li><a href="stop-8842705_2.html">8842705:2</a> - Rivage 08:41</li><li><a href="stop-8842838_1.html">8842838:1</a> - Comblain-la-Tour 08:46</li><li><a href="stop-8842846_1.html">8842846:1</a> - Hamoir 08:51</li><li><a href="stop-8842853_1.html">8842853:1</a> - Sy 08:55</li><li><a href="stop-8864469_1.html">8864469:1</a> - Bomal 09:00</li><li><a href="stop-8864451_1.html">8864451:1</a> - Barvaux 09:04</li><li><a href="stop-8864436_1.html">8864436:1</a> - Melreux-Hotton 09:11</li><li><a href="stop-8864410_1.html">8864410:1</a> - Marche-en-Famenne 09:18</li><li><a href="stop-8864345_1.html">8864345:1</a> - Marloie 09:22</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1074.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

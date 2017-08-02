@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diksmuide-Torhout-Aartrijke - 22634641</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diksmuide-Torhout-Aartrijke - 22634641</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126418.html">126418</a> - Torhout Station perron 5 07:26</li><li><a href="stop-41185.html">41185</a> - Torhout Kortemarkstraat 07:27</li><li><a href="stop-41187.html">41187</a> - Torhout Kruispunt 07:28</li><li><a href="stop-41180.html">41180</a> - Torhout Hof Van Engeland 07:30</li><li><a href="stop-41188.html">41188</a> - Torhout Maagdeveld 07:32</li><li><a href="stop-101062.html">101062</a> - Torhout Cambrinus 07:33</li><li><a href="stop-126417.html">126417</a> - Torhout Kasteel Wijnendale 07:35</li><li><a href="stop-40922.html">40922</a> - Ichtegem Oostendse Baan 07:36</li><li><a href="stop-40926.html">40926</a> - Ichtegem Vijf Wegen 07:38</li><li><a href="stop-40923.html">40923</a> - Ichtegem Reiger 07:39</li><li><a href="stop-40914.html">40914</a> - Ichtegem Coussensstraat Nr. 100 07:40</li><li><a href="stop-41266.html">41266</a> - Ichtegem Sportlaan 07:41</li><li><a href="stop-36865.html">36865</a> - Ichtegem Melkerij 07:42</li><li><a href="stop-87575.html">87575</a> - Ichtegem Dorp 07:43</li><li><a href="stop-36887.html">36887</a> - Koekelare Warande 07:45</li><li><a href="stop-37332.html">37332</a> - Koekelare Lidl 07:45</li><li><a href="stop-36882.html">36882</a> - Koekelare Kapel 07:46</li><li><a href="stop-41350.html">41350</a> - Koekelare Eikendreef 07:47</li><li><a href="stop-40939.html">40939</a> - Koekelare Nieuwenhove 07:47</li><li><a href="stop-40932.html">40932</a> - Koekelare Belhutte 07:49</li><li><a href="stop-104953.html">104953</a> - Koekelare Drie Zottemolens 07:50</li><li><a href="stop-40936.html">40936</a> - Koekelare Grote Baan 07:51</li><li><a href="stop-98420.html">98420</a> - Bovekerke Moskou 07:52</li><li><a href="stop-98422.html">98422</a> - Bovekerke Zothoek 07:52</li><li><a href="stop-98419.html">98419</a> - Bovekerke Dorp 07:53</li><li><a href="stop-98202.html">98202</a> - Bovekerke De Toekomst 07:54</li><li><a href="stop-98421.html">98421</a> - Bovekerke Wegwijzer 07:55</li><li><a href="stop-42174.html">42174</a> - Vladslo Bovekerkestraat 16 07:56</li><li><a href="stop-42175.html">42175</a> - Vladslo De Hoeven 07:57</li><li><a href="stop-42178.html">42178</a> - Vladslo Kortewilde 07:57</li><li><a href="stop-42177.html">42177</a> - Vladslo Huis Hemeryck 07:58</li><li><a href="stop-42179.html">42179</a> - Vladslo Troetelaar 07:59</li><li><a href="stop-42176.html">42176</a> - Vladslo Dorp 08:00</li><li><a href="stop-98128.html">98128</a> - Esen Station 08:03</li><li><a href="stop-100899.html">100899</a> - Esen Eikhof 08:04</li><li><a href="stop-98112.html">98112</a> - Esen Cafe Tirol 08:06</li><li><a href="stop-37546.html">37546</a> - Diksmuide Cafe Derby 08:07</li><li><a href="stop-126288.html">126288</a> - Diksmuide Station perron 9 08:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6107.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

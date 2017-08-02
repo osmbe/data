@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hoeleden Pottelberg</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Hoeleden Pottelberg</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-21147813.html">21147813</a> - 21147813 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-21147814.html">21147814</a> - 21147814 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-21147815.html">21147815</a> - 21147815 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-21147820.html">21147820</a> - 21147820 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-21147821.html">21147821</a> - 21147821 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-21147827.html">21147827</a> - 21147827 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-21147828.html">21147828</a> - 21147828 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-21149373.html">21149373</a> - 21149373 - Schoolbus Oplinter - Zoutleeuw</li><li><a href="trip-21149376.html">21149376</a> - 21149376 - Schoolbus Oplinter - Zoutleeuw</li><li><a href="trip-22786766.html">22786766</a> - 22786766 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-22786767.html">22786767</a> - 22786767 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-22786771.html">22786771</a> - 22786771 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-22786772.html">22786772</a> - 22786772 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-22786776.html">22786776</a> - 22786776 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-22786777.html">22786777</a> - 22786777 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-22786781.html">22786781</a> - 22786781 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-22786782.html">22786782</a> - 22786782 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-22786786.html">22786786</a> - 22786786 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-22786787.html">22786787</a> - 22786787 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-22786791.html">22786791</a> - 22786791 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-22786792.html">22786792</a> - 22786792 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-22786793.html">22786793</a> - 22786793 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-22786795.html">22786795</a> - 22786795 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-22786797.html">22786797</a> - 22786797 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-22786799.html">22786799</a> - 22786799 - Tielt - Waanrode - Hoeleden - Tienen</li><li><a href="trip-22790018.html">22790018</a> - 22790018 - Schoolbus Oplinter - Zoutleeuw</li><li><a href="trip-22790019.html">22790019</a> - 22790019 - Schoolbus Oplinter - Zoutleeuw</li><li><a href="trip-22790020.html">22790020</a> - 22790020 - Schoolbus Oplinter - Zoutleeuw</li><li><a href="trip-22790021.html">22790021</a> - 22790021 - Schoolbus Oplinter - Zoutleeuw</li><li><a href="trip-22790022.html">22790022</a> - 22790022 - Schoolbus Oplinter - Zoutleeuw</li><li><a href="trip-22790023.html">22790023</a> - 22790023 - Schoolbus Oplinter - Zoutleeuw</li><li><a href="trip-22790024.html">22790024</a> - 22790024 - Schoolbus Oplinter - Zoutleeuw</li><li><a href="trip-22790025.html">22790025</a> - 22790025 - Schoolbus Oplinter - Zoutleeuw</li><li><a href="trip-22790026.html">22790026</a> - 22790026 - Schoolbus Oplinter - Zoutleeuw</li><li><a href="trip-22790027.html">22790027</a> - 22790027 - Schoolbus Oplinter - Zoutleeuw</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.8654800212233, 5.00824156799473], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.8654800212233, 5.00824156799473]).addTo(map);
+    </script>
+</body>
+
+</html>

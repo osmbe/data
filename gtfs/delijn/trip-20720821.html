@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kruishoutem - Waregem - 20720821</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kruishoutem - Waregem - 20720821</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126438.html">126438</a> - Waregem Station perron 4 07:18</li><li><a href="stop-101118.html">101118</a> - Waregem College 07:21</li><li><a href="stop-42201.html">42201</a> - Waregem Markt 07:22</li><li><a href="stop-123664.html">123664</a> - Waregem Churchilllaan 07:23</li><li><a href="stop-127328.html">127328</a> - Waregem Torenlaan 07:24</li><li><a href="stop-127329.html">127329</a> - Waregem Meersblomme 07:24</li><li><a href="stop-92124.html">92124</a> - Waregem Hazewindstraat 07:25</li><li><a href="stop-127330.html">127330</a> - Waregem Driekavenstraat 07:26</li><li><a href="stop-119553.html">119553</a> - Kruishoutem Herlegemstraat 07:27</li><li><a href="stop-119554.html">119554</a> - Kruishoutem Vijverdamstraat 07:28</li><li><a href="stop-119555.html">119555</a> - Nokere Nokeredorpsstraat 07:30</li><li><a href="stop-119556.html">119556</a> - Kruishoutem Anzegemsesteenweg 07:31</li><li><a href="stop-112712.html">112712</a> - Kruishoutem Galgestraat 07:33</li><li><a href="stop-118608.html">118608</a> - Kruishoutem Sint-Elooiskeer 07:33</li><li><a href="stop-118609.html">118609</a> - Kruishoutem Kerk 07:34</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1427.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

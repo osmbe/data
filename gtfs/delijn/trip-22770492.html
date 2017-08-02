@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Zaventem Luchthaven - 22770492</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Zaventem Luchthaven - 22770492</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-14189.html">14189</a> - Zaventem Luchthaven Perron A 11:51</li><li><a href="stop-17026.html">17026</a> - Zaventem Technics Noord 11:53</li><li><a href="stop-43266.html">43266</a> - Zaventem Gebouw 9 11:54</li><li><a href="stop-14185.html">14185</a> - Zaventem Olmenstraat 11:55</li><li><a href="stop-12651.html">12651</a> - Zaventem Hoekplein 11:56</li><li><a href="stop-14194.html">14194</a> - Zaventem Station 11:57</li><li><a href="stop-14204.html">14204</a> - Zaventem Watertorenlaan 11:58</li><li><a href="stop-14181.html">14181</a> - Zaventem Kerkplein 11:59</li><li><a href="stop-15647.html">15647</a> - Zaventem Stationsstraat 12:00</li><li><a href="stop-14197.html">14197</a> - Zaventem Kleine Daalstraat 12:00</li><li><a href="stop-14176.html">14176</a> - Zaventem Henneau/Excelsior 12:03</li><li><a href="stop-14191.html">14191</a> - Zaventem Minerva 12:04</li><li><a href="stop-16370.html">16370</a> - Diegem Grensstraat 12:04</li><li><a href="stop-12660.html">12660</a> - Diegem Kouterveld 12:05</li><li><a href="stop-12654.html">12654</a> - Diegem Kennedy 12:06</li><li><a href="stop-12636.html">12636</a> - Diegem Berkenlaan 12:08</li><li><a href="stop-91143.html">91143</a> - Diegem Bessenveld 12:09</li><li><a href="stop-94790.html">94790</a> - Haren Bourget 12:11</li><li><a href="stop-128292.html">128292</a> - Haren N.A.V.O 12:13</li><li><a href="stop-10160.html">10160</a> - Evere Bazel 12:14</li><li><a href="stop-16199.html">16199</a> - Brussel Haren Bordet Station 12:16</li><li><a href="stop-99447.html">99447</a> - Evere Oud Kapelleke 12:18</li><li><a href="stop-88498.html">88498</a> - Evere Vande Velde 12:20</li><li><a href="stop-10224.html">10224</a> - Schaarbeek Dejaze 12:22</li><li><a href="stop-121271.html">121271</a> - Schaarbeek Helmet 12:23</li><li><a href="stop-10244.html">10244</a> - Schaarbeek Waelhem 12:24</li><li><a href="stop-10238.html">10238</a> - Schaarbeek Metsys 12:25</li><li><a href="stop-10220.html">10220</a> - Schaarbeek Collignon 12:26</li><li><a href="stop-10234.html">10234</a> - Schaarbeek Lehon 12:27</li><li><a href="stop-10240.html">10240</a> - Schaarbeek Sint-Maria 12:29</li><li><a href="stop-90812.html">90812</a> - Sint-Joost-ten-Node Kruidtuin 12:33</li><li><a href="stop-10135.html">10135</a> - Brussel Rogier 12:36</li><li><a href="stop-10226.html">10226</a> - Brussel Noord Perron 5 12:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1978.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

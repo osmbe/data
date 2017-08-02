@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Zuid - Borgerhout - Berchem - Zuid - 21526010</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Zuid - Borgerhout - Berchem - Zuid - 21526010</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108623.html">108623</a> - Borgerhout Turnhoutsebaan 11:40</li><li><a href="stop-107456.html">107456</a> - Borgerhout De Roma 11:42</li><li><a href="stop-19743.html">19743</a> - Borgerhout Drink 11:45</li><li><a href="stop-108080.html">108080</a> - Borgerhout Langstraat 11:46</li><li><a href="stop-108270.html">108270</a> - Borgerhout Plantin & Moretuslei 11:48</li><li><a href="stop-107617.html">107617</a> - Berchem Draakplaats 11:50</li><li><a href="stop-107454.html">107454</a> - Berchem Station perron 24 11:52</li><li><a href="stop-108325.html">108325</a> - Berchem Station perron 22 11:53</li><li><a href="stop-108504.html">108504</a> - Berchem Maatschappijstraat 11:53</li><li><a href="stop-22226.html">22226</a> - Antwerpen Van Luppenstraat 11:55</li><li><a href="stop-107331.html">107331</a> - Antwerpen A. Grisarstraat 11:56</li><li><a href="stop-122919.html">122919</a> - Antwerpen Haringrodestraat 11:57</li><li><a href="stop-107805.html">107805</a> - Antwerpen Harmonie 11:59</li><li><a href="stop-43180.html">43180</a> - Antwerpen Provinciehuis 12:00</li><li><a href="stop-108135.html">108135</a> - Antwerpen Markgravelei 12:01</li><li><a href="stop-22266.html">22266</a> - Antwerpen Van Schoonbekestraat 12:03</li><li><a href="stop-107713.html">107713</a> - Antwerpen Fransenplaats 12:04</li><li><a href="stop-108074.html">108074</a> - Antwerpen Balansstraat 12:05</li><li><a href="stop-23515.html">23515</a> - Antwerpen Troonplaats 12:06</li><li><a href="stop-108802.html">108802</a> - Antwerpen Waterpoort 12:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2766.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

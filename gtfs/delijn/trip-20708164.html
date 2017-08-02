@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Meerdonk- Sint-Niklaas- Sinaai- Eksaarde- Lokeren - 20708164</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Meerdonk- Sint-Niklaas- Sinaai- Eksaarde- Lokeren - 20708164</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-115034.html">115034</a> - Sinaai Dries 17:48</li><li><a href="stop-115033.html">115033</a> - Sinaai Vleeshouwersstraat 17:49</li><li><a href="stop-115032.html">115032</a> - Sinaai Molenstraat 17:50</li><li><a href="stop-115031.html">115031</a> - Sinaai Helsvuurstraat 17:51</li><li><a href="stop-115030.html">115030</a> - Belsele Kruisstraat 17:51</li><li><a href="stop-115029.html">115029</a> - Belsele Puivelde Kerk 17:53</li><li><a href="stop-115028.html">115028</a> - Belsele Marktstraat 17:54</li><li><a href="stop-115027.html">115027</a> - Belsele Kwade Plas 17:55</li><li><a href="stop-115026.html">115026</a> - Belsele Gentstraat 17:56</li><li><a href="stop-115175.html">115175</a> - Belsele Nauwstraat 66 17:56</li><li><a href="stop-115025.html">115025</a> - Belsele Nauwstraat 17:57</li><li><a href="stop-115024.html">115024</a> - Belsele Zwarte Beek 17:58</li><li><a href="stop-115023.html">115023</a> - Belsele Dreef 17:59</li><li><a href="stop-115061.html">115061</a> - Belsele Hoge Bokstraat 18:00</li><li><a href="stop-115060.html">115060</a> - Belsele Lage Bokstraat 18:01</li><li><a href="stop-115059.html">115059</a> - Belsele Timmermanslaan 18:01</li><li><a href="stop-115058.html">115058</a> - Sint-Niklaas Rodenbachstraat 18:02</li><li><a href="stop-115057.html">115057</a> - Sint-Niklaas Hugo Verrieststraat 18:03</li><li><a href="stop-115056.html">115056</a> - Sint-Niklaas Plezantstraat 18:04</li><li><a href="stop-115762.html">115762</a> - Sint-Niklaas Markt 18:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./770.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

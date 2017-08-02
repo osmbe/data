@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oostende-Luchthaven Raversijde - 22648680</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oostende-Luchthaven Raversijde - 22648680</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-125684.html">125684</a> - Oostende Station perron 3 07:00</li><li><a href="stop-36263.html">36263</a> - Oostende Kapellestraat 07:02</li><li><a href="stop-36256.html">36256</a> - Oostende Stadhuis 07:03</li><li><a href="stop-100775.html">100775</a> - Oostende Sint-Jozefskerk 07:04</li><li><a href="stop-106852.html">106852</a> - Oostende Petit Paris vervangingshalte 07:06</li><li><a href="stop-106853.html">106853</a> - Oostende Sportstraat vervangingshalte 07:07</li><li><a href="stop-36281.html">36281</a> - Oostende Northlaan 07:08</li><li><a href="stop-100761.html">100761</a> - Oostende Aartshertogstraat 07:09</li><li><a href="stop-36242.html">36242</a> - Oostende Derbylaan 07:09</li><li><a href="stop-100765.html">100765</a> - Oostende Distellaan 07:10</li><li><a href="stop-36246.html">36246</a> - Oostende Dorpstraat 07:11</li><li><a href="stop-100780.html">100780</a> - Raversijde E.Desmitlaan 07:12</li><li><a href="stop-97924.html">97924</a> - Raversijde Luchthaven 07:13</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4312.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

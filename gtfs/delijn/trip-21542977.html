@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Meersel Dreef - Hoogstraten - Turnhout - Reusel - 21542977</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Meersel Dreef - Hoogstraten - Turnhout - Reusel - 21542977</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-121747.html">121747</a> - Turnhout Station perron 3 16:05</li><li><a href="stop-108880.html">108880</a> - Turnhout Zeshoek 16:07</li><li><a href="stop-109040.html">109040</a> - Turnhout Markt perron 4 16:10</li><li><a href="stop-109201.html">109201</a> - Turnhout Nijverheidstraat 16:11</li><li><a href="stop-109202.html">109202</a> - Turnhout Tijl en Nelestraat 16:13</li><li><a href="stop-108202.html">108202</a> - Turnhout Koninklijk Atheneum 16:14</li><li><a href="stop-109204.html">109204</a> - Turnhout Boomgaardstraat 16:15</li><li><a href="stop-23569.html">23569</a> - Turnhout Oranjemolenstraat 16:16</li><li><a href="stop-109208.html">109208</a> - Turnhout Zandbergstraat 16:17</li><li><a href="stop-109210.html">109210</a> - Oud-Turnhout Blekerijstraat 16:18</li><li><a href="stop-109211.html">109211</a> - Oud-Turnhout Tramwissel 16:19</li><li><a href="stop-109213.html">109213</a> - Oud-Turnhout Dorp 16:19</li><li><a href="stop-109214.html">109214</a> - Oud-Turnhout Molenbergen 16:21</li><li><a href="stop-109216.html">109216</a> - Oud-Turnhout Driedostraat 16:22</li><li><a href="stop-23586.html">23586</a> - Oud-Turnhout Staprijk 16:23</li><li><a href="stop-23588.html">23588</a> - Oud-Turnhout Zwanevenstraat 16:23</li><li><a href="stop-23945.html">23945</a> - Oud-Turnhout Lentedreef 16:24</li><li><a href="stop-25559.html">25559</a> - Oud-Turnhout Oude Retiese baan 16:25</li><li><a href="stop-25562.html">25562</a> - Oud-Turnhout Engelstraat 16:26</li><li><a href="stop-23596.html">23596</a> - Oud-Turnhout Spreeuwendreef 16:27</li><li><a href="stop-23598.html">23598</a> - Arendonk Delstraat 16:27</li><li><a href="stop-23601.html">23601</a> - Arendonk Spiebosch 16:28</li><li><a href="stop-23603.html">23603</a> - Arendonk Leeuwerfstraat 16:29</li><li><a href="stop-23605.html">23605</a> - Arendonk Hoge Pedestraat 16:30</li><li><a href="stop-23607.html">23607</a> - Arendonk Akkerstraat 16:30</li><li><a href="stop-23609.html">23609</a> - Arendonk De Daries 16:30</li><li><a href="stop-88771.html">88771</a> - Arendonk Kerk 16:31</li><li><a href="stop-109224.html">109224</a> - Arendonk Wezenstraat 16:33</li><li><a href="stop-23615.html">23615</a> - Arendonk Molenzicht 16:33</li><li><a href="stop-23617.html">23617</a> - Arendonk Wamp 16:34</li><li><a href="stop-23620.html">23620</a> - Arendonk Neerstraat 16:34</li><li><a href="stop-110134.html">110134</a> - Arendonk Pelgrimsplein 16:35</li><li><a href="stop-23625.html">23625</a> - Arendonk Onder d'Eiken 16:35</li><li><a href="stop-23628.html">23628</a> - Arendonk Roeststraat 16:36</li><li><a href="stop-109228.html">109228</a> - Arendonk Grens Langschelpen 16:38</li><li><a href="stop-93243.html">93243</a> - Reusel Ned. Grens Reusel 16:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3278.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

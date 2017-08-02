@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortenberg - Leuven - 22794426</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortenberg - Leuven - 22794426</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-11968.html">11968</a> - Kortenberg Staca 06:30</li><li><a href="stop-11958.html">11958</a> - Kortenberg Kapelleke 06:31</li><li><a href="stop-16189.html">16189</a> - Kortenberg Craenenplein 06:32</li><li><a href="stop-11964.html">11964</a> - Kortenberg Rijkswacht 06:33</li><li><a href="stop-11966.html">11966</a> - Kortenberg Sint-Jozefkliniek 06:34</li><li><a href="stop-11928.html">11928</a> - Erps-Kwerps Prinsendreef 06:35</li><li><a href="stop-17194.html">17194</a> - Erps-Kwerps D'Ieteren 06:35</li><li><a href="stop-11904.html">11904</a> - Erps-Kwerps Erpsveld 06:36</li><li><a href="stop-11930.html">11930</a> - Erps-Kwerps Schoonaarde 06:37</li><li><a href="stop-11932.html">11932</a> - Erps-Kwerps Strooien Dak 06:38</li><li><a href="stop-11269.html">11269</a> - Veltem-Beisem Kantonnier 06:38</li><li><a href="stop-11275.html">11275</a> - Veltem-Beisem Kluis 06:39</li><li><a href="stop-11279.html">11279</a> - Veltem-Beisem Radioweg 06:39</li><li><a href="stop-11283.html">11283</a> - Veltem-Beisem Veltem Steenweg 06:40</li><li><a href="stop-11305.html">11305</a> - Winksele Toverberg 06:41</li><li><a href="stop-11299.html">11299</a> - Winksele Schoonzicht 06:42</li><li><a href="stop-11289.html">11289</a> - Winksele IJzerenberg 06:43</li><li><a href="stop-93537.html">93537</a> - Herent Grote Molenweg 06:44</li><li><a href="stop-11219.html">11219</a> - Herent Diependaal 06:45</li><li><a href="stop-127222.html">127222</a> - Leuven KBC 06:46</li><li><a href="stop-44007.html">44007</a> - Leuven O.L.V.Middelareskerk 06:50</li><li><a href="stop-110186.html">110186</a> - Leuven Station Perron 1 06:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2528.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

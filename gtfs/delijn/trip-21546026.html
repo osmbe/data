@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Antwerpen - Boom - Rumst - Mechelen - 21546026</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Antwerpen - Boom - Rumst - Mechelen - 21546026</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-23831.html">23831</a> - Wilrijk Electronikalaan 17:26</li><li><a href="stop-24535.html">24535</a> - Wilrijk Mechanicalaan 17:27</li><li><a href="stop-24830.html">24830</a> - Wilrijk Schans XV 17:27</li><li><a href="stop-109669.html">109669</a> - Wilrijk Schoonselstraat 17:28</li><li><a href="stop-18860.html">18860</a> - Wilrijk Antarctica 17:29</li><li><a href="stop-107509.html">107509</a> - Wilrijk Legerstraat 17:31</li><li><a href="stop-109588.html">109588</a> - Wilrijk Moerelei 17:33</li><li><a href="stop-109771.html">109771</a> - Wilrijk Valkstraat 17:35</li><li><a href="stop-109616.html">109616</a> - Wilrijk J. Moretuslei 17:36</li><li><a href="stop-18950.html">18950</a> - Wilrijk Dr. Veeckmanslaan 17:38</li><li><a href="stop-109441.html">109441</a> - Wilrijk Hof Van Mols 17:38</li><li><a href="stop-107886.html">107886</a> - Antwerpen Olympiade 17:41</li><li><a href="stop-107324.html">107324</a> - Antwerpen J. De Voslei 17:42</li><li><a href="stop-107845.html">107845</a> - Antwerpen Camille Huysmanslaan 17:43</li><li><a href="stop-108206.html">108206</a> - Antwerpen Station Zuid 17:46</li><li><a href="stop-19328.html">19328</a> - Antwerpen Broedermin 17:48</li><li><a href="stop-18945.html">18945</a> - Antwerpen Bestorming 17:50</li><li><a href="stop-107469.html">107469</a> - Antwerpen Bres 17:50</li><li><a href="stop-110994.html">110994</a> - Antwerpen Kasteelplein 17:52</li><li><a href="stop-108176.html">108176</a> - Antwerpen Nationale Bank 17:53</li><li><a href="stop-108103.html">108103</a> - Antwerpen Stadspark 17:55</li><li><a href="stop-125290.html">125290</a> - Antwerpen F. Rooseveltplaats perron 40 17:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3455.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt-Tongeren(bediening Schalkhoven/Diepenbeek) - 22481732</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt-Tongeren(bediening Schalkhoven/Diepenbeek) - 22481732</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-31132.html">31132</a> - Wintershoven Brandstraat 07:13</li><li><a href="stop-31138.html">31138</a> - Wintershoven Kerk 07:14</li><li><a href="stop-31130.html">31130</a> - Wintershoven Bronstraat 07:15</li><li><a href="stop-31151.html">31151</a> - Vliermaalroot Herestraat 07:17</li><li><a href="stop-31115.html">31115</a> - Vliermaalroot Mombeek 07:18</li><li><a href="stop-31113.html">31113</a> - Vliermaalroot Kerk 07:19</li><li><a href="stop-31112.html">31112</a> - Vliermaalroot Gulmerstraat 07:20</li><li><a href="stop-123050.html">123050</a> - Vliermaalroot W/N Jongenbos 07:21</li><li><a href="stop-122995.html">122995</a> - Diepenbeek Helstraat 07:23</li><li><a href="stop-27789.html">27789</a> - Diepenbeek Kukkelbosstraat 07:25</li><li><a href="stop-27867.html">27867</a> - Diepenbeek Crijt 07:25</li><li><a href="stop-27870.html">27870</a> - Diepenbeek Houbrichtstraat 07:27</li><li><a href="stop-31144.html">31144</a> - Kortessem Reeweg 07:28</li><li><a href="stop-31049.html">31049</a> - Kortessem Daaleindestraat 07:29</li><li><a href="stop-31072.html">31072</a> - Kortessem Kerk 07:30</li><li><a href="stop-31156.html">31156</a> - Kortessem Weg naar Wellen 07:34</li><li><a href="stop-31079.html">31079</a> - Kortessem Oud Tramstation 07:35</li><li><a href="stop-31092.html">31092</a> - Kortessem Hachensteeg 07:36</li><li><a href="stop-31081.html">31081</a> - Kortessem Printhagenstraat 07:37</li><li><a href="stop-93442.html">93442</a> - Kortessem Herbroekstraat 07:38</li><li><a href="stop-29636.html">29636</a> - Wimmertingen Centrum 07:40</li><li><a href="stop-29320.html">29320</a> - Hasselt Herkerstraat 07:42</li><li><a href="stop-29464.html">29464</a> - Hasselt Mombeekdreef 07:43</li><li><a href="stop-96880.html">96880</a> - Rapertingen Trekschuren 07:44</li><li><a href="stop-96871.html">96871</a> - Rapertingen Kerk 07:45</li><li><a href="stop-89616.html">89616</a> - Hasselt Hassaluthdreef 07:46</li><li><a href="stop-123263.html">123263</a> - Hasselt Daniëlsstraat 07:48</li><li><a href="stop-29455.html">29455</a> - Hasselt Lentestraat 07:49</li><li><a href="stop-29471.html">29471</a> - Hasselt Oude Luikerbaan 07:51</li><li><a href="stop-29774.html">29774</a> - Hasselt Toekomststraat 07:52</li><li><a href="stop-29268.html">29268</a> - Hasselt Dusartplein 07:56</li><li><a href="stop-29652.html">29652</a> - Hasselt Zwembad perron 7 07:58</li><li><a href="stop-94957.html">94957</a> - Hasselt Handelsschool 07:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5080.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

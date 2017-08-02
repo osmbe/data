@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schilde - Broechem - Zandhoven VTI - 22524667</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schilde - Broechem - Zandhoven VTI - 22524667</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108856.html">108856</a> - Zandhoven VTI 12:25</li><li><a href="stop-108853.html">108853</a> - Zandhoven Heikant 12:27</li><li><a href="stop-108851.html">108851</a> - Zandhoven Hallebaan 12:27</li><li><a href="stop-22911.html">22911</a> - Massenhoven Gebroken Loop 12:29</li><li><a href="stop-22909.html">22909</a> - Massenhoven Kerkstraat 12:29</li><li><a href="stop-22907.html">22907</a> - Massenhoven Kanaalstraat 12:31</li><li><a href="stop-108943.html">108943</a> - Massenhoven Lammerenberg 12:33</li><li><a href="stop-22903.html">22903</a> - Broechem Beemdenstraat 12:33</li><li><a href="stop-22901.html">22901</a> - Broechem Massenhovensesteenweg 12:35</li><li><a href="stop-92390.html">92390</a> - Broechem Stelplaats 12:36</li><li><a href="stop-91991.html">91991</a> - Broechem Gemeentehuis 12:37</li><li><a href="stop-22898.html">22898</a> - Broechem Van Den Nestlaan 12:38</li><li><a href="stop-108996.html">108996</a> - Broechem Lostraat 12:39</li><li><a href="stop-23016.html">23016</a> - Broechem Bistweg 12:40</li><li><a href="stop-23018.html">23018</a> - Oelegem Oelegemsteenweg 12:43</li><li><a href="stop-23020.html">23020</a> - Oelegem Hoornveldstraat 12:43</li><li><a href="stop-22243.html">22243</a> - Oelegem Nieuwe Laan 12:44</li><li><a href="stop-19779.html">19779</a> - Oelegem Rundvoortstraat 12:45</li><li><a href="stop-22244.html">22244</a> - Oelegem Kerk 12:46</li><li><a href="stop-108693.html">108693</a> - Oelegem Nieuwe Laan 12:46</li><li><a href="stop-22239.html">22239</a> - Oelegem Knodbaan 12:47</li><li><a href="stop-22237.html">22237</a> - Oelegem Goorstraat 12:48</li><li><a href="stop-22234.html">22234</a> - Schilde Rozenhoek 12:48</li><li><a href="stop-22230.html">22230</a> - Schilde Puttenhoflaan 12:49</li><li><a href="stop-22228.html">22228</a> - Schilde Kerk 12:49</li><li><a href="stop-108688.html">108688</a> - Schilde Bogaertslaan 12:50</li><li><a href="stop-22223.html">22223</a> - Schilde Brasschaatsebaan 12:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3255.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

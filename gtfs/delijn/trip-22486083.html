@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Meeuwen - Peer - Neerpelt - 22486083</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Meeuwen - Peer - Neerpelt - 22486083</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-32799.html">32799</a> - Meeuwen Weg naar Helchteren 07:25</li><li><a href="stop-105307.html">105307</a> - Meeuwen Broekkant 07:26</li><li><a href="stop-105311.html">105311</a> - Meeuwen Wilgenstraat 07:27</li><li><a href="stop-32791.html">32791</a> - Meeuwen Meeuweneinde 07:28</li><li><a href="stop-97477.html">97477</a> - Wauberg Overes 07:30</li><li><a href="stop-97479.html">97479</a> - Wauberg School 07:30</li><li><a href="stop-33547.html">33547</a> - Peer Wauberg 07:31</li><li><a href="stop-93831.html">93831</a> - Peer Ruiterstraat 07:33</li><li><a href="stop-33520.html">33520</a> - Peer Lindebosstraat 07:34</li><li><a href="stop-97462.html">97462</a> - Linde Kluisstraat 07:35</li><li><a href="stop-110478.html">110478</a> - Linde Kerk 07:36</li><li><a href="stop-97467.html">97467</a> - Linde Smid 07:38</li><li><a href="stop-105333.html">105333</a> - Linde Croxdijk 07:39</li><li><a href="stop-33590.html">33590</a> - Peer 't Bergske 07:40</li><li><a href="stop-33477.html">33477</a> - Peer Burkel 07:41</li><li><a href="stop-105343.html">105343</a> - Peer Wittesteenstraat 07:42</li><li><a href="stop-33438.html">33438</a> - Peer College 07:44</li><li><a href="stop-33545.html">33545</a> - Peer Pol KIP 07:46</li><li><a href="stop-33540.html">33540</a> - Peer Rijksbasisschool 07:46</li><li><a href="stop-33531.html">33531</a> - Peer Noordervest 07:47</li><li><a href="stop-33432.html">33432</a> - Peer Bokterstraat 07:47</li><li><a href="stop-33470.html">33470</a> - Kleine-Brogel Spotters Corner 07:49</li><li><a href="stop-93813.html">93813</a> - Kleine-Brogel Kruispunt 07:53</li><li><a href="stop-93833.html">93833</a> - Kleine-Brogel Dommellaan 07:54</li><li><a href="stop-88314.html">88314</a> - Kleine-Brogel Groenewoudstraat 07:55</li><li><a href="stop-33407.html">33407</a> - Overpelt Sint-Oda 07:58</li><li><a href="stop-33413.html">33413</a> - Overpelt Steenovenstraat 08:00</li><li><a href="stop-33358.html">33358</a> - Overpelt Dalakkerstraat 08:01</li><li><a href="stop-33409.html">33409</a> - Overpelt Spoorwegstraat 08:01</li><li><a href="stop-89653.html">89653</a> - Overpelt Breugelweg 08:02</li><li><a href="stop-89652.html">89652</a> - Overpelt Ursulinen 08:02</li><li><a href="stop-91059.html">91059</a> - Overpelt Kiosk 08:05</li><li><a href="stop-123164.html">123164</a> - Overpelt Hofweg 08:08</li><li><a href="stop-91082.html">91082</a> - Overpelt Atheneum 08:10</li><li><a href="stop-33011.html">33011</a> - Neerpelt Centrum 08:12</li><li><a href="stop-123120.html">123120</a> - Neerpelt College 08:13</li><li><a href="stop-33046.html">33046</a> - Neerpelt Station 08:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4926.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

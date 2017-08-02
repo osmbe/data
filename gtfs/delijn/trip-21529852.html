@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Fr. Rooseveltpl - Linkeroever - 21529852</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Fr. Rooseveltpl - Linkeroever - 21529852</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126942.html">126942</a> - Antwerpen IGLO 06:12</li><li><a href="stop-126966.html">126966</a> - Antwerpen Gijsselsstraat 06:13</li><li><a href="stop-126964.html">126964</a> - Antwerpen Halewijn 06:14</li><li><a href="stop-21124.html">21124</a> - Antwerpen Van Eedenplein 06:15</li><li><a href="stop-108186.html">108186</a> - Antwerpen Verhaerenlaan 06:16</li><li><a href="stop-21129.html">21129</a> - Antwerpen Stedelijk Lyceum 06:16</li><li><a href="stop-108187.html">108187</a> - Antwerpen De Costerlaan 06:17</li><li><a href="stop-108189.html">108189</a> - Antwerpen Farnèseplein 06:18</li><li><a href="stop-108191.html">108191</a> - Antwerpen Gloriantlaan 06:19</li><li><a href="stop-108194.html">108194</a> - Antwerpen Van Velthemlaan 06:20</li><li><a href="stop-108196.html">108196</a> - Antwerpen Hof Ter Schelde 06:21</li><li><a href="stop-108200.html">108200</a> - Antwerpen Vuylstekelaan 06:22</li><li><a href="stop-108177.html">108177</a> - Antwerpen Tunnelplaats 06:27</li><li><a href="stop-108466.html">108466</a> - Antwerpen Sint-Jansplein 06:30</li><li><a href="stop-125296.html">125296</a> - Antwerpen F. Rooseveltplaats perron 24 06:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2816.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

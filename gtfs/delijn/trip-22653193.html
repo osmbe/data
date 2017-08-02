@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oostende-Bredene-Klemskerke - 22653193</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oostende-Bredene-Klemskerke - 22653193</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127267.html">127267</a> - Oostende Marie Joseplein perron 3 16:25</li><li><a href="stop-104635.html">104635</a> - Oostende Stadhuis 16:27</li><li><a href="stop-40421.html">40421</a> - Oostende Kapellestraat 16:28</li><li><a href="stop-125652.html">125652</a> - Oostende Station perron 14 16:31</li><li><a href="stop-36293.html">36293</a> - Oostende Stapelhuis 16:32</li><li><a href="stop-36289.html">36289</a> - Oostende Sassenbrug 16:36</li><li><a href="stop-123503.html">123503</a> - Bredene Centrale 16:37</li><li><a href="stop-35994.html">35994</a> - Bredene Fientje Ketels 16:38</li><li><a href="stop-100743.html">100743</a> - Bredene Nukkerbrug 16:39</li><li><a href="stop-35986.html">35986</a> - Bredene Aug.Plovieplein 16:40</li><li><a href="stop-36003.html">36003</a> - Bredene Spuikomlaan 16:41</li><li><a href="stop-35993.html">35993</a> - Bredene Dorp 16:42</li><li><a href="stop-43188.html">43188</a> - Bredene Wackerbout 16:43</li><li><a href="stop-43190.html">43190</a> - Bredene Colruyt 16:44</li><li><a href="stop-43192.html">43192</a> - Bredene Zandstraat 16:45</li><li><a href="stop-43194.html">43194</a> - Bredene Klemskerkestraat 16:46</li><li><a href="stop-43196.html">43196</a> - Bredene Westerhauwe 16:47</li><li><a href="stop-100735.html">100735</a> - Bredene Kapelletje 16:48</li><li><a href="stop-36002.html">36002</a> - Bredene Koerslaan 16:49</li><li><a href="stop-35989.html">35989</a> - Bredene Camping Devos 16:50</li><li><a href="stop-36087.html">36087</a> - Klemskerke Chat Botte 16:50</li><li><a href="stop-36086.html">36086</a> - Klemskerke Auberge Du Golf 16:51</li><li><a href="stop-100749.html">100749</a> - Klemskerke Vosseslag 16:53</li><li><a href="stop-36091.html">36091</a> - Klemskerke Kattereek 16:53</li><li><a href="stop-36096.html">36096</a> - Klemskerke Tramhalte 16:55</li><li><a href="stop-104612.html">104612</a> - Klemskerke Dorp 16:57</li><li><a href="stop-36092.html">36092</a> - Klemskerke Nieuwe Steenweg Huis Nr. 25 16:58</li><li><a href="stop-36024.html">36024</a> - De Haan Kerkhof 16:58</li><li><a href="stop-36025.html">36025</a> - De Haan Lindenhof 16:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4359.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

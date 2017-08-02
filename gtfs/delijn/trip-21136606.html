@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Zaventem Luchthaven - 21136606</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Zaventem Luchthaven - 21136606</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-10226.html">10226</a> - Brussel Noord Perron 5 07:53</li><li><a href="stop-99470.html">99470</a> - Brussel Rogier 07:57</li><li><a href="stop-10108.html">10108</a> - Brussel Rogier 07:58</li><li><a href="stop-90810.html">90810</a> - Sint-Joost-ten-Node Kruidtuin 08:00</li><li><a href="stop-10239.html">10239</a> - Schaarbeek Sint-Maria 08:03</li><li><a href="stop-10233.html">10233</a> - Schaarbeek Lehon 08:05</li><li><a href="stop-10219.html">10219</a> - Schaarbeek Collignon 08:06</li><li><a href="stop-10237.html">10237</a> - Schaarbeek Metsys 08:07</li><li><a href="stop-10243.html">10243</a> - Schaarbeek Waelhem 08:08</li><li><a href="stop-121272.html">121272</a> - Schaarbeek Helmet 08:10</li><li><a href="stop-10223.html">10223</a> - Schaarbeek Dejaze 08:11</li><li><a href="stop-10175.html">10175</a> - Evere Vande Velde 08:13</li><li><a href="stop-10173.html">10173</a> - Evere Oud Kapelleke 08:15</li><li><a href="stop-10161.html">10161</a> - Evere Bordet Station 08:17</li><li><a href="stop-10159.html">10159</a> - Evere Bazel 08:19</li><li><a href="stop-128291.html">128291</a> - Haren N.A.V.O 08:20</li><li><a href="stop-94789.html">94789</a> - Haren Bourget 08:22</li><li><a href="stop-91142.html">91142</a> - Diegem Bessenveld 08:24</li><li><a href="stop-12635.html">12635</a> - Diegem Berkenlaan 08:25</li><li><a href="stop-12653.html">12653</a> - Diegem Kennedy 08:27</li><li><a href="stop-12659.html">12659</a> - Diegem Kouterveld 08:28</li><li><a href="stop-16369.html">16369</a> - Diegem Grensstraat 08:29</li><li><a href="stop-14190.html">14190</a> - Zaventem Minerva 08:30</li><li><a href="stop-14177.html">14177</a> - Zaventem Henneau/Excelsior 08:30</li><li><a href="stop-14196.html">14196</a> - Zaventem Kleine Daalstraat 08:33</li><li><a href="stop-15646.html">15646</a> - Zaventem Stationsstraat 08:33</li><li><a href="stop-14182.html">14182</a> - Zaventem Kerkplein 08:34</li><li><a href="stop-14203.html">14203</a> - Zaventem Watertorenlaan 08:35</li><li><a href="stop-92840.html">92840</a> - Zaventem Station 08:36</li><li><a href="stop-12652.html">12652</a> - Zaventem Hoekplein 08:37</li><li><a href="stop-14186.html">14186</a> - Zaventem Olmenstraat 08:37</li><li><a href="stop-14168.html">14168</a> - Zaventem Gebouw 9 08:38</li><li><a href="stop-17025.html">17025</a> - Zaventem Technics Noord 08:39</li><li><a href="stop-16996.html">16996</a> - Zaventem Luchthaven Perron B 08:41</li><li><a href="stop-17026.html">17026</a> - Zaventem Technics Noord 08:43</li><li><a href="stop-14169.html">14169</a> - Zaventem Gebouw 9 08:44</li><li><a href="stop-14167.html">14167</a> - Zaventem B-House 08:45</li><li><a href="stop-94877.html">94877</a> - Machelen Korenberg 08:46</li><li><a href="stop-91151.html">91151</a> - Machelen Cargo Post 08:50</li><li><a href="stop-91149.html">91149</a> - Machelen Cargo 706 08:51</li><li><a href="stop-127846.html">127846</a> - Machelen Cargo Discount P1 08:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1977.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

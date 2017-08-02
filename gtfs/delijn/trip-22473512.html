@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Diest / Tessenderlo - 22473512</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Diest / Tessenderlo - 22473512</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-30141.html">30141</a> - Herk-de-Stad Klooster 12:50</li><li><a href="stop-30215.html">30215</a> - Herk-de-Stad Markt vervanghalte 12:51</li><li><a href="stop-30153.html">30153</a> - Herk-de-Stad Gemeenschapsschool 12:52</li><li><a href="stop-105230.html">105230</a> - Herk-de-Stad College 12:54</li><li><a href="stop-30192.html">30192</a> - Schulen Weg op Beringen 12:56</li><li><a href="stop-30125.html">30125</a> - Berbroek Steenweg 12:56</li><li><a href="stop-89246.html">89246</a> - Berbroek Sint-Jorislaan kruispunt 12:57</li><li><a href="stop-30114.html">30114</a> - Berbroek Bosstraat 12:58</li><li><a href="stop-30127.html">30127</a> - Berbroek Veiling 12:59</li><li><a href="stop-87474.html">87474</a> - Spalbeek Diestersteenweg 12:59</li><li><a href="stop-29540.html">29540</a> - Spalbeek Spalbeekstraat 13:00</li><li><a href="stop-29371.html">29371</a> - Kermt Meistraat 13:01</li><li><a href="stop-29363.html">29363</a> - Kermt De Willeman 13:02</li><li><a href="stop-128075.html">128075</a> - Kermt Overweg 13:03</li><li><a href="stop-29585.html">29585</a> - Kermt Regenbooglaan 13:03</li><li><a href="stop-29433.html">29433</a> - Kermt Dahliastraat 13:04</li><li><a href="stop-96847.html">96847</a> - Tuilt Hoek 13:05</li><li><a href="stop-29593.html">29593</a> - Stokrooie Kruispunt 13:07</li><li><a href="stop-102659.html">102659</a> - Stokrooie Waterstraat 13:07</li><li><a href="stop-29590.html">29590</a> - Stokrooie Ontmoetingscentrum 13:08</li><li><a href="stop-29587.html">29587</a> - Stokrooie Brug Albertkanaal 13:09</li><li><a href="stop-29591.html">29591</a> - Stokrooie Colemontstraat 13:10</li><li><a href="stop-97104.html">97104</a> - Bolderberg Broederspad 13:11</li><li><a href="stop-97110.html">97110</a> - Bolderberg Kerk 13:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4431.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

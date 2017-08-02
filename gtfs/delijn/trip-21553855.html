@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Stabroek - Wildert - Essen Scholen - 21553855</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Stabroek - Wildert - Essen Scholen - 21553855</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-21856.html">21856</a> - Stabroek Dorp 07:34</li><li><a href="stop-21839.html">21839</a> - Stabroek Sigarenstraat 07:35</li><li><a href="stop-26061.html">26061</a> - Stabroek Lassonhoflaan 07:36</li><li><a href="stop-26062.html">26062</a> - Stabroek Danckerseweg 07:37</li><li><a href="stop-26063.html">26063</a> - Stabroek Kerkhof 07:38</li><li><a href="stop-26064.html">26064</a> - Stabroek Plantinlaan 07:39</li><li><a href="stop-21820.html">21820</a> - Kapellen Stabroeksteenweg 07:40</li><li><a href="stop-21822.html">21822</a> - Kapellen Lepelstraat 07:40</li><li><a href="stop-108486.html">108486</a> - Stabroek Moretuslei 07:41</li><li><a href="stop-108485.html">108485</a> - Kapellen Lepelstraat 07:42</li><li><a href="stop-108484.html">108484</a> - Kapellen Stabroeksteenweg 07:42</li><li><a href="stop-93272.html">93272</a> - Kapellen Harklaan 07:43</li><li><a href="stop-107677.html">107677</a> - Kalmthout Korte Heuvelstraat 07:51</li><li><a href="stop-108157.html">108157</a> - Kalmthout OCMW 07:51</li><li><a href="stop-108156.html">108156</a> - Kalmthout Arboretum 07:51</li><li><a href="stop-107678.html">107678</a> - Kalmthout Dorpsstraat 07:53</li><li><a href="stop-108161.html">108161</a> - Wildert Huybergsebaan 07:58</li><li><a href="stop-108151.html">108151</a> - Wildert Eikenblok 07:59</li><li><a href="stop-128066.html">128066</a> - Essen Achterstraat 08:00</li><li><a href="stop-120875.html">120875</a> - Essen Schaapsbaan 08:01</li><li><a href="stop-110675.html">110675</a> - Essen Tuincentrum 08:06</li><li><a href="stop-22428.html">22428</a> - Essen Spijker 08:07</li><li><a href="stop-108772.html">108772</a> - Essen Gemeentehuis 08:08</li><li><a href="stop-107652.html">107652</a> - Essen Atheneum 08:09</li><li><a href="stop-107651.html">107651</a> - Essen Sint-Jozef 08:10</li><li><a href="stop-107650.html">107650</a> - Essen Mariaberg 08:11</li><li><a href="stop-19121.html">19121</a> - Essen Bibliotheek 08:13</li><li><a href="stop-19123.html">19123</a> - Essen Kloosterstraat 08:13</li><li><a href="stop-19826.html">19826</a> - Essen Station 08:15</li><li><a href="stop-21035.html">21035</a> - Essen Heemhuis 08:17</li><li><a href="stop-19819.html">19819</a> - Essen College 08:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3717.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

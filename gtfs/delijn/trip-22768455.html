@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel Noord - Ternat - Liedekerke - 22768455</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel Noord - Ternat - Liedekerke - 22768455</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-10101.html">10101</a> - Brussel Noord Perron 4 14:33</li><li><a href="stop-99470.html">99470</a> - Brussel Rogier 14:35</li><li><a href="stop-10071.html">10071</a> - Brussel Albert-II-laan 14:37</li><li><a href="stop-10069.html">10069</a> - Brussel IJzer 14:38</li><li><a href="stop-90802.html">90802</a> - Sint-Jans-Molenbeek Sainctelette 14:40</li><li><a href="stop-90799.html">90799</a> - Sint-Jans-Molenbeek Ribaucourt 14:41</li><li><a href="stop-90797.html">90797</a> - Sint-Jans-Molenbeek Ourthe 14:43</li><li><a href="stop-10193.html">10193</a> - Koekelberg Simonis 14:45</li><li><a href="stop-14485.html">14485</a> - Koekelberg Besme 14:46</li><li><a href="stop-14486.html">14486</a> - Koekelberg Bossaert-Basiliek 14:47</li><li><a href="stop-10245.html">10245</a> - Sint-Agatha-Berchem Basiliek 14:48</li><li><a href="stop-10251.html">10251</a> - Sint-Agatha-Berchem Goffin 14:49</li><li><a href="stop-10249.html">10249</a> - Sint-Agatha-Berchem Valida 14:50</li><li><a href="stop-10257.html">10257</a> - Sint-Agatha-Berchem Schweitzer 14:51</li><li><a href="stop-10261.html">10261</a> - Sint-Agatha-Berchem Vereman 14:52</li><li><a href="stop-14487.html">14487</a> - Sint-Agatha-Berchem Azuur 14:53</li><li><a href="stop-90824.html">90824</a> - Sint-Agatha-Berchem Hunderenveld 14:54</li><li><a href="stop-10536.html">10536</a> - Groot-Bijgaarden Gezellestraat 14:56</li><li><a href="stop-10534.html">10534</a> - Groot-Bijgaarden E.Deblutslaan 14:58</li><li><a href="stop-10541.html">10541</a> - Groot-Bijgaarden Kartonfabriek 14:59</li><li><a href="stop-10543.html">10543</a> - Groot-Bijgaarden Kerk 15:00</li><li><a href="stop-10539.html">10539</a> - Groot-Bijgaarden Kapel 15:02</li><li><a href="stop-10545.html">10545</a> - Groot-Bijgaarden Merlo 15:03</li><li><a href="stop-14491.html">14491</a> - Groot-Bijgaarden Bekkerzeelweg 15:04</li><li><a href="stop-10549.html">10549</a> - Groot-Bijgaarden Rood Huis 15:05</li><li><a href="stop-10547.html">10547</a> - Groot-Bijgaarden Rodenberg 15:06</li><li><a href="stop-10598.html">10598</a> - Sint-Ulriks-Kapelle Lindenberg 15:07</li><li><a href="stop-10592.html">10592</a> - Sint-Ulriks-Kapelle Garage De Coster 15:08</li><li><a href="stop-11615.html">11615</a> - Sint-Ulriks-Kapelle Kerkhof 15:08</li><li><a href="stop-10594.html">10594</a> - Sint-Ulriks-Kapelle Kapel 15:10</li><li><a href="stop-10596.html">10596</a> - Sint-Ulriks-Kapelle Kerk 15:11</li><li><a href="stop-10600.html">10600</a> - Sint-Ulriks-Kapelle Vier Winden 15:11</li><li><a href="stop-10602.html">10602</a> - Sint-Ulriks-Kapelle Weg op Bodegem 15:13</li><li><a href="stop-13564.html">13564</a> - Ternat Vitseroel 15:14</li><li><a href="stop-13548.html">13548</a> - Ternat Batavia 15:15</li><li><a href="stop-13560.html">13560</a> - Ternat Nieuwe Wijk 15:16</li><li><a href="stop-13566.html">13566</a> - Ternat Neeralfenestraat 15:16</li><li><a href="stop-13558.html">13558</a> - Ternat Markt 15:17</li><li><a href="stop-93385.html">93385</a> - Ternat Klooster - Scholen 15:18</li><li><a href="stop-13562.html">13562</a> - Ternat Station 15:19</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1945.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

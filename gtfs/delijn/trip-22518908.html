@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Geel - Dessel - Retie - Arendonk/Oud-Turnhout - 22518908</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Geel - Dessel - Retie - Arendonk/Oud-Turnhout - 22518908</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-106800.html">106800</a> - Geel Station perron 7 08:02</li><li><a href="stop-107517.html">107517</a> - Geel Stadspark 08:04</li><li><a href="stop-109754.html">109754</a> - Geel Markt 08:05</li><li><a href="stop-127001.html">127001</a> - Geel P. Van Neylenstraat 08:06</li><li><a href="stop-127765.html">127765</a> - Geel Sint-Dimpnaplein 08:07</li><li><a href="stop-25630.html">25630</a> - Geel Mannestraat 08:08</li><li><a href="stop-25628.html">25628</a> - Geel Heimerik 08:09</li><li><a href="stop-25626.html">25626</a> - Geel Galven 08:10</li><li><a href="stop-25624.html">25624</a> - Geel Nieuwland 08:12</li><li><a href="stop-25622.html">25622</a> - Geel Binnenblokken 08:13</li><li><a href="stop-25620.html">25620</a> - Geel Ericastraat 08:14</li><li><a href="stop-25618.html">25618</a> - Geel Domeinstraat 08:15</li><li><a href="stop-25616.html">25616</a> - Geel SCK Europawijk 08:18</li><li><a href="stop-109894.html">109894</a> - Mol SCK Europaschool 08:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3109.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tongeren - Visé - Voeren / Fourons - 22468555</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tongeren - Visé - Voeren / Fourons - 22468555</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-97489.html">97489</a> - Genoelselderen Boudewijnstraat 07:43</li><li><a href="stop-97493.html">97493</a> - Genoelselderen Parochiezaal 07:44</li><li><a href="stop-97870.html">97870</a> - Genoelselderen Kerk 07:45</li><li><a href="stop-91070.html">91070</a> - Millen Steenweg 07:47</li><li><a href="stop-33688.html">33688</a> - Millen Voetbalveld 07:48</li><li><a href="stop-33675.html">33675</a> - Millen Genendries 07:49</li><li><a href="stop-33687.html">33687</a> - Millen Trinellestraat 07:50</li><li><a href="stop-123147.html">123147</a> - Millen Sluizerweg 07:51</li><li><a href="stop-33678.html">33678</a> - Millen Langstraat 07:52</li><li><a href="stop-33700.html">33700</a> - Val-Meer Merestraat 07:56</li><li><a href="stop-123253.html">123253</a> - Val-Meer Hoogstraat 07:57</li><li><a href="stop-94690.html">94690</a> - Val-Meer Bergstraat 07:59</li><li><a href="stop-33694.html">33694</a> - Val-Meer Oud gemeentehuis 08:00</li><li><a href="stop-123149.html">123149</a> - Val-Meer Grote Straat 08:01</li><li><a href="stop-35675.html">35675</a> - Val-Meer Vijf Kruisenstraat 08:02</li><li><a href="stop-33708.html">33708</a> - Val-Meer Verbindingsweg 08:03</li><li><a href="stop-123151.html">123151</a> - Val-Meer Pannestraat 08:03</li><li><a href="stop-33702.html">33702</a> - Val-Meer Haselinde 08:04</li><li><a href="stop-33609.html">33609</a> - Bolder Bolderstraat 08:05</li><li><a href="stop-33615.html">33615</a> - Bolder Hoeve de Mean 08:05</li><li><a href="stop-33614.html">33614</a> - Bolder Kleinveldstraat 08:06</li><li><a href="stop-33611.html">33611</a> - Bolder Dorp 08:06</li><li><a href="stop-33762.html">33762</a> - Zichen Kerk 08:08</li><li><a href="stop-33764.html">33764</a> - Zichen Mennestraat 08:09</li><li><a href="stop-35671.html">35671</a> - Zussen Weg naar Zussen 08:09</li><li><a href="stop-33768.html">33768</a> - Zussen Misweg 08:10</li><li><a href="stop-35625.html">35625</a> - Zussen Hennestraat 08:10</li><li><a href="stop-89097.html">89097</a> - Zichen Groenstraat 08:11</li><li><a href="stop-26821.html">26821</a> - Lixhe Halembay 08:16</li><li><a href="stop-32721.html">32721</a> - Lixhe Rue de la montagne 08:18</li><li><a href="stop-126105.html">126105</a> - Mo Centrum 08:28</li><li><a href="stop-97708.html">97708</a> - Mo Withuisstraat 08:30</li><li><a href="stop-97703.html">97703</a> - Mo Kruispunt 08:32</li><li><a href="stop-97696.html">97696</a> - Mo Batticestraat 08:33</li><li><a href="stop-97706.html">97706</a> - Mo Weg op Berneau 08:33</li><li><a href="stop-92777.html">92777</a> - SGV Grijzegraaf 08:36</li><li><a href="stop-92760.html">92760</a> - SGV Hof de Voer 08:37</li><li><a href="stop-92764.html">92764</a> - SGV Lagere School 08:37</li><li><a href="stop-129003.html">129003</a> - SGV Provinciale School 08:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5281.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

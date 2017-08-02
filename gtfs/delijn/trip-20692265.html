@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Blaarmeersen-St. Amandsberg Achtendries - 20692265</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Blaarmeersen-St. Amandsberg Achtendries - 20692265</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127988.html">127988</a> - Gent Blaarmeersen 07:52</li><li><a href="stop-112625.html">112625</a> - Gent Topsporthal Vlaanderen 07:53</li><li><a href="stop-112257.html">112257</a> - Gent Belvedereweg 07:55</li><li><a href="stop-112256.html">112256</a> - Gent Nekkersberglaan 07:56</li><li><a href="stop-112255.html">112255</a> - Gent Europabrug 07:57</li><li><a href="stop-112254.html">112254</a> - Gent Verenigde Natieslaan 07:58</li><li><a href="stop-112267.html">112267</a> - Gent Neermeerskaai 07:59</li><li><a href="stop-112253.html">112253</a> - Gent Jubileumlaan 08:00</li><li><a href="stop-112252.html">112252</a> - Gent Andrieslaan 08:01</li><li><a href="stop-112251.html">112251</a> - Gent Beneluxplein 08:02</li><li><a href="stop-112505.html">112505</a> - Gent Overzet 08:04</li><li><a href="stop-112249.html">112249</a> - Gent Einde Were 08:05</li><li><a href="stop-112248.html">112248</a> - Gent Nieuwe Wandeling 08:07</li><li><a href="stop-112189.html">112189</a> - Gent Brugsepoort 08:12</li><li><a href="stop-112165.html">112165</a> - Gent Poel 08:16</li><li><a href="stop-126563.html">126563</a> - Gent Korenmarkt perron 2 08:18</li><li><a href="stop-112263.html">112263</a> - Gent Sint-Jacobs 08:20</li><li><a href="stop-112160.html">112160</a> - Gent Steendam 08:22</li><li><a href="stop-112159.html">112159</a> - Gent Dampoortstraat 08:23</li><li><a href="stop-126587.html">126587</a> - Gent Dampoort perron 10 08:25</li><li><a href="stop-120286.html">120286</a> - Sint-Amandsberg Schoolstraat 08:27</li><li><a href="stop-112238.html">112238</a> - Sint-Amandsberg Dienstencentrum 08:29</li><li><a href="stop-112237.html">112237</a> - Sint-Amandsberg Grondwetlaan 08:30</li><li><a href="stop-112235.html">112235</a> - Sint-Amandsberg Zavelput 08:31</li><li><a href="stop-112233.html">112233</a> - Sint-Amandsberg Snellaertplein 08:33</li><li><a href="stop-112232.html">112232</a> - Sint-Amandsberg Gevaertstraat 08:34</li><li><a href="stop-112231.html">112231</a> - Sint-Amandsberg Zingemkouterstraat 08:35</li><li><a href="stop-112229.html">112229</a> - Oostakker Vogelzang 08:36</li><li><a href="stop-112222.html">112222</a> - Oostakker Goedlevenstraat 08:38</li><li><a href="stop-112223.html">112223</a> - Oostakker Krijtestraat 08:40</li><li><a href="stop-112224.html">112224</a> - Oostakker Louise Derachestraat 08:42</li><li><a href="stop-112225.html">112225</a> - Oostakker Wildebrake 08:43</li><li><a href="stop-112227.html">112227</a> - Sint-Amandsberg Pijkestraat 08:45</li><li><a href="stop-112071.html">112071</a> - Sint-Amandsberg Achtendries 08:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./245.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

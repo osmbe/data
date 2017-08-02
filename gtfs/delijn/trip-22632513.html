@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Torhout-Kortemark-Ieper - 22632513</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Torhout-Kortemark-Ieper - 22632513</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126348.html">126348</a> - Torhout Station perron 4 10:20</li><li><a href="stop-41185.html">41185</a> - Torhout Kortemarkstraat 10:21</li><li><a href="stop-41187.html">41187</a> - Torhout Kruispunt 10:22</li><li><a href="stop-37361.html">37361</a> - Torhout Garage 10:22</li><li><a href="stop-37149.html">37149</a> - Torhout Kruisken 10:24</li><li><a href="stop-37155.html">37155</a> - Torhout Slarin 10:24</li><li><a href="stop-37140.html">37140</a> - Torhout De Uil 10:26</li><li><a href="stop-37753.html">37753</a> - Kortemark Ma Campagne 10:28</li><li><a href="stop-37750.html">37750</a> - Kortemark Cafe Kanon 10:29</li><li><a href="stop-100904.html">100904</a> - Kortemark Plaats 10:30</li><li><a href="stop-39204.html">39204</a> - Kortemark Station 10:31</li><li><a href="stop-37758.html">37758</a> - Kortemark Steenbakkerij 10:32</li><li><a href="stop-37759.html">37759</a> - Kortemark Vliegend Paard 10:33</li><li><a href="stop-37752.html">37752</a> - Kortemark Huis Maes 10:35</li><li><a href="stop-36843.html">36843</a> - Hooglede De Geite 10:36</li><li><a href="stop-39233.html">39233</a> - Hooglede Geitestraat 10:37</li><li><a href="stop-100837.html">100837</a> - Hooglede Hazewind 10:38</li><li><a href="stop-123544.html">123544</a> - Staden Stroveldkruis 10:39</li><li><a href="stop-38319.html">38319</a> - Staden Sporthal 10:40</li><li><a href="stop-38184.html">38184</a> - Staden Dorp 10:41</li><li><a href="stop-38191.html">38191</a> - Staden Rustoord 10:42</li><li><a href="stop-38186.html">38186</a> - Staden Kasteelstraat 10:43</li><li><a href="stop-38185.html">38185</a> - Staden Drevestraat 10:45</li><li><a href="stop-38940.html">38940</a> - Westrozebeke Vijfwegen 10:46</li><li><a href="stop-38936.html">38936</a> - Westrozebeke Kazernen 10:47</li><li><a href="stop-38747.html">38747</a> - Poelkapelle Schaapbaliedreef 10:47</li><li><a href="stop-38744.html">38744</a> - Poelkapelle Bareelstraat 10:48</li><li><a href="stop-39063.html">39063</a> - Langemark Vrijbos 10:49</li><li><a href="stop-38749.html">38749</a> - Poelkapelle Station 10:50</li><li><a href="stop-38748.html">38748</a> - Poelkapelle Treurniet 10:51</li><li><a href="stop-38750.html">38750</a> - Poelkapelle Wulverstraat 10:51</li><li><a href="stop-38746.html">38746</a> - Poelkapelle Guynemer 10:52</li><li><a href="stop-127290.html">127290</a> - Poelkapelle Langemarkstraat 10:53</li><li><a href="stop-37879.html">37879</a> - Langemark Halfweghuis 10:54</li><li><a href="stop-37880.html">37880</a> - Langemark Hooyaardstraat 10:55</li><li><a href="stop-37883.html">37883</a> - Langemark Markt 10:56</li><li><a href="stop-37876.html">37876</a> - Langemark De Flodder 10:57</li><li><a href="stop-37875.html">37875</a> - Langemark Cafe Hagebos 10:59</li><li><a href="stop-38413.html">38413</a> - Boezinge Pilkem 11:00</li><li><a href="stop-38409.html">38409</a> - Boezinge Bretoens Gedenkteken 11:01</li><li><a href="stop-38410.html">38410</a> - Boezinge De Brug 11:02</li><li><a href="stop-38416.html">38416</a> - Boezinge Station 11:03</li><li><a href="stop-38412.html">38412</a> - Boezinge Kanon 11:04</li><li><a href="stop-38415.html">38415</a> - Boezinge Sint-Pieter 11:07</li><li><a href="stop-38516.html">38516</a> - Ieper Barmstraatje 11:08</li><li><a href="stop-38559.html">38559</a> - Ieper Wegwijzer 11:09</li><li><a href="stop-104782.html">104782</a> - Ieper Stelplaats 11:11</li><li><a href="stop-126393.html">126393</a> - Ieper Station perron 6 11:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4157.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

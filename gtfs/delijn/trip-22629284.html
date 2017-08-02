@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Zwevegem-Otegem-Avelgem - 22629284</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Zwevegem-Otegem-Avelgem - 22629284</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-37519.html">37519</a> - Deerlijk Gemeentehuis 07:21</li><li><a href="stop-37511.html">37511</a> - Deerlijk Cafe Terminus 07:22</li><li><a href="stop-37513.html">37513</a> - Deerlijk De Taeyelaan 07:24</li><li><a href="stop-94901.html">94901</a> - Deerlijk Belgiek 07:27</li><li><a href="stop-38207.html">38207</a> - Vichte De Jager 07:28</li><li><a href="stop-38208.html">38208</a> - Vichte Molen 07:30</li><li><a href="stop-93059.html">93059</a> - Vichte Station 07:33</li><li><a href="stop-38567.html">38567</a> - Vichte Diesveldstraat 07:34</li><li><a href="stop-39662.html">39662</a> - Deerlijk Bouckaertstraat 07:35</li><li><a href="stop-101115.html">101115</a> - Deerlijk Sint-Lodewijk Kerk 07:36</li><li><a href="stop-41509.html">41509</a> - Deerlijk Kapelstraat 07:38</li><li><a href="stop-42470.html">42470</a> - Zwevegem Wulfsbergstraat 07:39</li><li><a href="stop-42259.html">42259</a> - Zwevegem Kappaert 07:41</li><li><a href="stop-42268.html">42268</a> - Zwevegem Slijpe 07:42</li><li><a href="stop-123688.html">123688</a> - Zwevegem Vaart 07:44</li><li><a href="stop-42269.html">42269</a> - Zwevegem Station 07:45</li><li><a href="stop-42257.html">42257</a> - Zwevegem Gemeentehuis 07:46</li><li><a href="stop-42261.html">42261</a> - Zwevegem Kerk 07:47</li><li><a href="stop-42253.html">42253</a> - Zwevegem Cafe De Uil 07:48</li><li><a href="stop-42321.html">42321</a> - Zwevegem Ter Winckele 07:49</li><li><a href="stop-42266.html">42266</a> - Zwevegem Losschaert 07:50</li><li><a href="stop-101097.html">101097</a> - Kortrijk Autosnelweg E17 07:54</li><li><a href="stop-41797.html">41797</a> - Kortrijk Soetens Molen 07:56</li><li><a href="stop-41809.html">41809</a> - Kortrijk Howest / VTI 07:57</li><li><a href="stop-41794.html">41794</a> - Kortrijk Rijkswacht 07:59</li><li><a href="stop-37818.html">37818</a> - Kortrijk Zwevegemsepoort 08:00</li><li><a href="stop-125731.html">125731</a> - Kortrijk Achterkant Station 08:02</li><li><a href="stop-126381.html">126381</a> - Kortrijk Station perron 5 08:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6045.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

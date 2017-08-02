@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diest - Paal - Beringen - 22485644</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diest - Paal - Beringen - 22485644</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-27961.html">27961</a> - Diest Station perron 2 13:13</li><li><a href="stop-16507.html">16507</a> - Schaffen Schoonaarde 13:15</li><li><a href="stop-128838.html">128838</a> - Schaffen Weg op Tessenderlo 13:16</li><li><a href="stop-16308.html">16308</a> - Schaffen Dorp 13:18</li><li><a href="stop-16519.html">16519</a> - Schaffen Klein Kasteeltje 13:19</li><li><a href="stop-16520.html">16520</a> - Schaffen Wezelbaan 13:20</li><li><a href="stop-16522.html">16522</a> - Schaffen Kromme Elleboog 13:21</li><li><a href="stop-16524.html">16524</a> - Schaffen Postbaan 13:21</li><li><a href="stop-32143.html">32143</a> - Meldert Zwarte Ring 13:22</li><li><a href="stop-128840.html">128840</a> - Schaffen Blanklaar 13:23</li><li><a href="stop-26926.html">26926</a> - Paal Nieuwenhof 13:25</li><li><a href="stop-125442.html">125442</a> - Paal Riethof 13:26</li><li><a href="stop-91028.html">91028</a> - Paal Bleukstraat 13:26</li><li><a href="stop-26937.html">26937</a> - Paal School 13:27</li><li><a href="stop-89601.html">89601</a> - Paal Dorp 13:28</li><li><a href="stop-43881.html">43881</a> - Paal Veldstraat 13:29</li><li><a href="stop-26953.html">26953</a> - Paal Zwanenbergstraat 13:30</li><li><a href="stop-26917.html">26917</a> - Paal Katermeer 13:31</li><li><a href="stop-26851.html">26851</a> - Beringen Kanaalbrug 13:33</li><li><a href="stop-125441.html">125441</a> - Beringen Markt 13:35</li><li><a href="stop-26955.html">26955</a> - Beringen Schutterstraat 13:38</li><li><a href="stop-98774.html">98774</a> - Beringen Station perron 1 13:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4767.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

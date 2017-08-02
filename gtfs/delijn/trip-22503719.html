@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Zuid Station - Schijnpoort - 22503719</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Zuid Station - Schijnpoort - 22503719</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108206.html">108206</a> - Antwerpen Station Zuid 16:35</li><li><a href="stop-108268.html">108268</a> - Antwerpen PIVA 16:38</li><li><a href="stop-107541.html">107541</a> - Antwerpen deSingel 16:39</li><li><a href="stop-107393.html">107393</a> - Berchem Sint-Willibrordus 16:43</li><li><a href="stop-107394.html">107394</a> - Berchem Station perron 21 16:47</li><li><a href="stop-107565.html">107565</a> - Berchem Station perron 11 16:48</li><li><a href="stop-21222.html">21222</a> - Borgerhout Station Oost 16:51</li><li><a href="stop-108527.html">108527</a> - Borgerhout Stenenbrug 16:53</li><li><a href="stop-107850.html">107850</a> - Borgerhout Hof ter Lo 16:55</li><li><a href="stop-21983.html">21983</a> - Borgerhout Technisch Centrum 16:57</li><li><a href="stop-19657.html">19657</a> - Antwerpen Schijnpoort 16:58</li><li><a href="stop-107851.html">107851</a> - Antwerpen Slachthuislaan 16:59</li><li><a href="stop-88329.html">88329</a> - Antwerpen Schijnpoort 17:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2818.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

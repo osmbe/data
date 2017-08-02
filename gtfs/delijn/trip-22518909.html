@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Geel - Dessel - Retie - Arendonk/Oud-Turnhout - 22518909</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Geel - Dessel - Retie - Arendonk/Oud-Turnhout - 22518909</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-93215.html">93215</a> - Reusel Ned. Grens Reusel 07:15</li><li><a href="stop-109229.html">109229</a> - Arendonk Grens Langschelpen 07:16</li><li><a href="stop-109227.html">109227</a> - Arendonk Roeststraat 07:17</li><li><a href="stop-23627.html">23627</a> - Arendonk Onder d'Eiken 07:18</li><li><a href="stop-110135.html">110135</a> - Arendonk Pelgrimsplein 07:19</li><li><a href="stop-23621.html">23621</a> - Arendonk Neerstraat 07:20</li><li><a href="stop-23618.html">23618</a> - Arendonk Wamp 07:20</li><li><a href="stop-23616.html">23616</a> - Arendonk Molenzicht 07:21</li><li><a href="stop-23614.html">23614</a> - Arendonk Wezenstraat 07:22</li><li><a href="stop-109223.html">109223</a> - Arendonk Gemeentehuis 07:23</li><li><a href="stop-88771.html">88771</a> - Arendonk Kerk 07:23</li><li><a href="stop-24108.html">24108</a> - Arendonk Kerkstraat 07:24</li><li><a href="stop-20710.html">20710</a> - Arendonk Hertevelden 07:25</li><li><a href="stop-24110.html">24110</a> - Arendonk Berendonk 07:26</li><li><a href="stop-24113.html">24113</a> - Arendonk Nieuwendijk 07:27</li><li><a href="stop-24115.html">24115</a> - Retie Obroek 07:29</li><li><a href="stop-19605.html">19605</a> - Retie Plas 07:30</li><li><a href="stop-24117.html">24117</a> - Retie Oude Arendonksebaan 07:32</li><li><a href="stop-24119.html">24119</a> - Retie Boesdijk 07:32</li><li><a href="stop-24121.html">24121</a> - Retie Hovenstraat 07:32</li><li><a href="stop-109371.html">109371</a> - Retie Markt 07:33</li><li><a href="stop-109373.html">109373</a> - Retie Nieuwstraat 07:34</li><li><a href="stop-23969.html">23969</a> - Retie Werbeek 07:36</li><li><a href="stop-23971.html">23971</a> - Dessel Kuilstraat 07:37</li><li><a href="stop-23973.html">23973</a> - Dessel Koolvenstraat 07:38</li><li><a href="stop-109375.html">109375</a> - Dessel Markt 07:39</li><li><a href="stop-109890.html">109890</a> - Dessel Berkestraat 07:41</li><li><a href="stop-20747.html">20747</a> - Dessel Sportcentrum 07:42</li><li><a href="stop-25602.html">25602</a> - Dessel Delstraat 07:43</li><li><a href="stop-87487.html">87487</a> - Retie Brasel 07:45</li><li><a href="stop-109892.html">109892</a> - Retie Kastelsedijk 07:46</li><li><a href="stop-93245.html">93245</a> - Retie MMN Europalaan 07:47</li><li><a href="stop-93246.html">93246</a> - Retie Heide 07:47</li><li><a href="stop-25612.html">25612</a> - Geel Castelsebaan 07:49</li><li><a href="stop-25615.html">25615</a> - Geel SCK Europawijk 07:50</li><li><a href="stop-25617.html">25617</a> - Geel Domeinstraat 07:52</li><li><a href="stop-25619.html">25619</a> - Geel Ericastraat 07:52</li><li><a href="stop-25621.html">25621</a> - Geel Binnenblokken 07:53</li><li><a href="stop-25623.html">25623</a> - Geel Nieuwland 07:54</li><li><a href="stop-25625.html">25625</a> - Geel Galven 07:54</li><li><a href="stop-109895.html">109895</a> - Geel Heimerik 07:55</li><li><a href="stop-109896.html">109896</a> - Geel Mannestraat 07:56</li><li><a href="stop-127734.html">127734</a> - Geel Sint-Dimpnaplein 07:57</li><li><a href="stop-126934.html">126934</a> - Geel Nieuwstraat 07:58</li><li><a href="stop-107515.html">107515</a> - Geel Stadspark 07:59</li><li><a href="stop-106800.html">106800</a> - Geel Station perron 7 08:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3113.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

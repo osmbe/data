@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aarschot - Tielt - Bunsbeek - Tienen - 22787295</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aarschot - Tielt - Bunsbeek - Tienen - 22787295</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-13900.html">13900</a> - Tienen Station Perron 9 16:50</li><li><a href="stop-13862.html">13862</a> - Tienen 4de Lansierslaan 16:51</li><li><a href="stop-13887.html">13887</a> - Tienen Leuvenselaan 16:52</li><li><a href="stop-125639.html">125639</a> - Tienen Kerk Heilig Hart 16:53</li><li><a href="stop-127858.html">127858</a> - Tienen Kabbeeksepoort 16:55</li><li><a href="stop-13863.html">13863</a> - Tienen Atheneum 16:56</li><li><a href="stop-13912.html">13912</a> - Tienen Waaibergstraat 16:57</li><li><a href="stop-127860.html">127860</a> - Tienen Kabbeekvest 16:58</li><li><a href="stop-17234.html">17234</a> - Tienen Houtemstraat 17:00</li><li><a href="stop-13921.html">13921</a> - Tienen Werkmanssteeg 17:00</li><li><a href="stop-13877.html">13877</a> - Tienen Brandweer 17:01</li><li><a href="stop-89994.html">89994</a> - Sint-Margriete-Houtem PachthofDe Bareel 17:02</li><li><a href="stop-10766.html">10766</a> - Bunsbeek Veldweg 17:02</li><li><a href="stop-10755.html">10755</a> - Bunsbeek Diestseweg 17:03</li><li><a href="stop-10758.html">10758</a> - Bunsbeek Kerk 17:03</li><li><a href="stop-10760.html">10760</a> - Bunsbeek Oude Diestsestraat 17:04</li><li><a href="stop-10753.html">10753</a> - Bunsbeek Boeslinter Centrum 17:05</li><li><a href="stop-10764.html">10764</a> - Bunsbeek Pepinusfortstraat 17:07</li><li><a href="stop-10750.html">10750</a> - Bunsbeek Boeslinter 17:08</li><li><a href="stop-87965.html">87965</a> - Bunsbeek Meenselbeekstraat 17:09</li><li><a href="stop-10774.html">10774</a> - Glabbeek-Zuurbemde Kruispunt 17:09</li><li><a href="stop-10778.html">10778</a> - Glabbeek-Zuurbemde Vredegerecht 17:10</li><li><a href="stop-10770.html">10770</a> - Glabbeek-Zuurbemde Glabbeek Dorp 17:11</li><li><a href="stop-10790.html">10790</a> - Kapellen Stationsstraat 17:13</li><li><a href="stop-10788.html">10788</a> - Kapellen Oud Station 17:14</li><li><a href="stop-9735.html">9735</a> - Kapellen Steenbeek 17:15</li><li><a href="stop-9726.html">9726</a> - Molenbeek-Wersbeek Muggenberg 17:16</li><li><a href="stop-13691.html">13691</a> - Meensel-Kiezegem Wersbeekstraat 17:17</li><li><a href="stop-13686.html">13686</a> - Meensel-Kiezegem Tramstraat 17:18</li><li><a href="stop-13673.html">13673</a> - Meensel-Kiezegem Binkomstraat 17:19</li><li><a href="stop-13681.html">13681</a> - Meensel-Kiezegem Meensel Gemeentehuis 17:20</li><li><a href="stop-13671.html">13671</a> - Meensel-Kiezegem Watertoren 17:21</li><li><a href="stop-13670.html">13670</a> - Meensel-Kiezegem Kiezegem Kerk 17:21</li><li><a href="stop-16329.html">16329</a> - Meensel-Kiezegem Meenselbaan 17:22</li><li><a href="stop-13759.html">13759</a> - Sint-Joris-Winge Kiezegemstraat 17:23</li><li><a href="stop-10488.html">10488</a> - Sint-Joris-Winge Bronstraat 17:23</li><li><a href="stop-16404.html">16404</a> - Sint-Joris-Winge Dommelhof 17:24</li><li><a href="stop-16402.html">16402</a> - Sint-Joris-Winge Bremberg 17:25</li><li><a href="stop-16409.html">16409</a> - Tielt-Winge Halensebaan 17:26</li><li><a href="stop-13755.html">13755</a> - Tielt-Winge Woubeek 17:28</li><li><a href="stop-13721.html">13721</a> - Tielt-Winge Driesstraat 17:29</li><li><a href="stop-120422.html">120422</a> - Tielt-Winge Stelplaats Perron 5 17:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2287.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

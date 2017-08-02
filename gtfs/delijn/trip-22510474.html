@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aarschot - Booischot - Heist Op Den Berg - 22510474</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aarschot - Booischot - Heist Op Den Berg - 22510474</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-105081.html">105081</a> - Aarschot Station perron 2 17:25</li><li><a href="stop-9313.html">9313</a> - Aarschot Gilsonplein 17:26</li><li><a href="stop-94823.html">94823</a> - Aarschot Sancta Maria 17:27</li><li><a href="stop-109912.html">109912</a> - Aarschot Kerk 17:27</li><li><a href="stop-9323.html">9323</a> - Aarschot Moederhuis 17:28</li><li><a href="stop-128816.html">128816</a> - Aarschot Sint-Jozefscollege 17:29</li><li><a href="stop-15898.html">15898</a> - Aarschot Heilaakstraat 17:30</li><li><a href="stop-128921.html">128921</a> - Aarschot Bareel 17:31</li><li><a href="stop-15886.html">15886</a> - Aarschot Bloemsehoeve 17:33</li><li><a href="stop-15884.html">15884</a> - Aarschot Literstraat 17:34</li><li><a href="stop-15882.html">15882</a> - Aarschot Nonnenhoefstraat 17:35</li><li><a href="stop-16858.html">16858</a> - Begijnendijk Waterstraat 17:38</li><li><a href="stop-128927.html">128927</a> - Begijnendijk Haltestraat 17:38</li><li><a href="stop-16877.html">16877</a> - Begijnendijk Puttestraat 17:40</li><li><a href="stop-128922.html">128922</a> - Begijnendijk Kerk 17:40</li><li><a href="stop-16841.html">16841</a> - Begijnendijk De Bruynlaan 17:41</li><li><a href="stop-16840.html">16840</a> - Begijnendijk Dorpstraat 17:42</li><li><a href="stop-107692.html">107692</a> - Booischot Heiakker 17:45</li><li><a href="stop-125834.html">125834</a> - Booischot Pijpelheide Kerk 17:45</li><li><a href="stop-24309.html">24309</a> - Booischot Pijpelstraat 17:46</li><li><a href="stop-24359.html">24359</a> - Booischot Station 17:48</li><li><a href="stop-24357.html">24357</a> - Booischot Blindejennestraat 17:49</li><li><a href="stop-109509.html">109509</a> - Booischot Oude Aarschotsebaan 17:51</li><li><a href="stop-24353.html">24353</a> - Booischot Dorp 17:51</li><li><a href="stop-24351.html">24351</a> - Booischot Boekelselei 17:52</li><li><a href="stop-24349.html">24349</a> - Booischot Mechelbaan 17:53</li><li><a href="stop-24347.html">24347</a> - Heist-op-den-Berg Kruispunt Mechelbaan 17:54</li><li><a href="stop-109506.html">109506</a> - Heist-op-den-Berg Zonderschot Kerk 17:54</li><li><a href="stop-24342.html">24342</a> - Heist-op-den-Berg Heuvelstraat 17:55</li><li><a href="stop-21328.html">21328</a> - Heist-op-den-Berg Klein Laarstraat 17:56</li><li><a href="stop-24339.html">24339</a> - Heist-op-den-Berg Hollestraat 17:56</li><li><a href="stop-24337.html">24337</a> - Heist-op-den-Berg Tapelaarstraat 17:58</li><li><a href="stop-24334.html">24334</a> - Heist-op-den-Berg Oude Godstraat 17:58</li><li><a href="stop-23801.html">23801</a> - Heist-op-den-Berg E. Woutersstraat 17:59</li><li><a href="stop-98784.html">98784</a> - Heist-op-den-Berg Noordstraat 18:00</li><li><a href="stop-25727.html">25727</a> - Heist-op-den-Berg OCMW 18:01</li><li><a href="stop-126992.html">126992</a> - Heist-op-den-Berg Station perron 1 18:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2924.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

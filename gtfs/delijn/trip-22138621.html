@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Avondlijn Brugge-Moerkerke - 22138621</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Avondlijn Brugge-Moerkerke - 22138621</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-36945.html">36945</a> - Moerkerke Plaats 21:40</li><li><a href="stop-36944.html">36944</a> - Moerkerke Nieuw Dorp 21:40</li><li><a href="stop-36942.html">36942</a> - Moerkerke Kruispunt 21:41</li><li><a href="stop-41000.html">41000</a> - Moerkerke Styllux 21:41</li><li><a href="stop-41001.html">41001</a> - Moerkerke Visserstraat 21:42</li><li><a href="stop-90675.html">90675</a> - Moerkerke Weststraat 21:43</li><li><a href="stop-41003.html">41003</a> - Moerkerke Wonderjaar 21:44</li><li><a href="stop-40992.html">40992</a> - Moerkerke De Kroon 21:44</li><li><a href="stop-98369.html">98369</a> - Vivenkapelle Dorp 21:45</li><li><a href="stop-98684.html">98684</a> - Vivenkapelle De Serren 21:46</li><li><a href="stop-99916.html">99916</a> - Sijsele Sijseelsesteenweg 21:47</li><li><a href="stop-99918.html">99918</a> - Sijsele Warandelaan 21:48</li><li><a href="stop-101050.html">101050</a> - Sijsele Veldstraat 21:48</li><li><a href="stop-99415.html">99415</a> - Sijsele Woonzorgcentrum 21:49</li><li><a href="stop-36594.html">36594</a> - Sijsele Cultuurfabriek 21:49</li><li><a href="stop-101079.html">101079</a> - Sijsele Kazerne 21:50</li><li><a href="stop-127310.html">127310</a> - Sijsele Hekhoek 21:51</li><li><a href="stop-98357.html">98357</a> - Sint-Kruis Malesteenweg 556 21:52</li><li><a href="stop-127887.html">127887</a> - Sint-Kruis Abdij Male 21:53</li><li><a href="stop-98058.html">98058</a> - Sint-Kruis Poortersstraat 21:55</li><li><a href="stop-98061.html">98061</a> - Sint-Kruis Raadsheren 21:56</li><li><a href="stop-98057.html">98057</a> - Sint-Kruis Markgraaf 21:56</li><li><a href="stop-98090.html">98090</a> - Sint-Kruis Bachten Beukenbos 21:57</li><li><a href="stop-104957.html">104957</a> - Sint-Kruis Doornhut 21:58</li><li><a href="stop-101057.html">101057</a> - Sint-Kruis Mexico 21:59</li><li><a href="stop-98348.html">98348</a> - Sint-Kruis Brieversweg 21:59</li><li><a href="stop-98354.html">98354</a> - Sint-Kruis Kerk 22:00</li><li><a href="stop-98361.html">98361</a> - Sint-Kruis Brugse Metten 22:02</li><li><a href="stop-125728.html">125728</a> - Brugge Kruispoort 22:03</li><li><a href="stop-40835.html">40835</a> - Brugge Gentpoort 22:05</li><li><a href="stop-40847.html">40847</a> - Brugge Katelijnepoort 22:06</li><li><a href="stop-126326.html">126326</a> - Brugge Station perron 7 22:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4000.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Gijzegem - Overmere - Lokeren - 20716006</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Gijzegem - Overmere - Lokeren - 20716006</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-114465.html">114465</a> - Overmere Klappeldonk 07:55</li><li><a href="stop-113870.html">113870</a> - Overmere Donkmeer 07:56</li><li><a href="stop-113869.html">113869</a> - Overmere Jachtstraat 07:57</li><li><a href="stop-116724.html">116724</a> - Overmere Kapelleplein 07:58</li><li><a href="stop-116725.html">116725</a> - Overmere Vogelpark 07:59</li><li><a href="stop-116726.html">116726</a> - Berlare Groenendijk 08:00</li><li><a href="stop-116727.html">116727</a> - Berlare Blauwe Hoeve 08:00</li><li><a href="stop-116728.html">116728</a> - Berlare Turfputstraat 08:02</li><li><a href="stop-116729.html">116729</a> - Berlare Kerk 08:03</li><li><a href="stop-116730.html">116730</a> - Berlare Sint-Annaplein 08:05</li><li><a href="stop-116732.html">116732</a> - Berlare Fabriekstraat 08:06</li><li><a href="stop-116733.html">116733</a> - Berlare Christiaensstraat 08:07</li><li><a href="stop-116734.html">116734</a> - Schoonaarde Gemeenteplein 08:10</li><li><a href="stop-116735.html">116735</a> - Schoonaarde Schoolstraat 08:11</li><li><a href="stop-116736.html">116736</a> - Schoonaarde Schuiteplasstraat 08:11</li><li><a href="stop-116737.html">116737</a> - Schoonaarde Migrodries 08:11</li><li><a href="stop-116738.html">116738</a> - Schoonaarde Pontstraat 08:12</li><li><a href="stop-116744.html">116744</a> - Gijzegem Nijverheidslaan 08:14</li><li><a href="stop-117247.html">117247</a> - Gijzegem Sint-Vincentius 08:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1211.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

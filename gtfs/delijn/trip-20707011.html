@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Nieuwkerken-Ster-Station-Markt-Tuinlaan-H Bokstr - 20707011</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Nieuwkerken-Ster-Station-Markt-Tuinlaan-H Bokstr - 20707011</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126683.html">126683</a> - Sint-Niklaas Station perron 9 15:37</li><li><a href="stop-115961.html">115961</a> - Sint-Niklaas Paterskerk 15:38</li><li><a href="stop-115960.html">115960</a> - Sint-Niklaas Elisabethplein 15:39</li><li><a href="stop-115959.html">115959</a> - Sint-Niklaas Breedstraat 15:40</li><li><a href="stop-115956.html">115956</a> - Sint-Niklaas Nieuwe Molenstraat 15:40</li><li><a href="stop-115955.html">115955</a> - Sint-Niklaas Grote Heimelinkstraat 15:41</li><li><a href="stop-115954.html">115954</a> - Sint-Niklaas Callaertstraat 15:42</li><li><a href="stop-114866.html">114866</a> - Sint-Niklaas Uilestraat 15:43</li><li><a href="stop-115973.html">115973</a> - Sint-Niklaas Lange Rekstraat 15:44</li><li><a href="stop-115953.html">115953</a> - Sint-Niklaas Ster 15:45</li><li><a href="stop-116301.html">116301</a> - Nieuwkerken Heihoekstraat 15:46</li><li><a href="stop-116299.html">116299</a> - Nieuwkerken Wegel 15:47</li><li><a href="stop-116298.html">116298</a> - Nieuwkerken Station 15:48</li><li><a href="stop-116297.html">116297</a> - Nieuwkerken Nieuwkerkenstraat 15:49</li><li><a href="stop-115713.html">115713</a> - Nieuwkerken Vlasbloemstraat 15:50</li><li><a href="stop-115712.html">115712</a> - Nieuwkerken Dorp 15:51</li><li><a href="stop-115726.html">115726</a> - Nieuwkerken Rusthuis 15:52</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./710.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

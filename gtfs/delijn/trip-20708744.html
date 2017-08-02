@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sint-Niklaas - Stekene - Koewacht - 20708744</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Niklaas - Stekene - Koewacht - 20708744</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127604.html">127604</a> - Sint-Niklaas Waasland Shopping perron 3 14:26</li><li><a href="stop-115480.html">115480</a> - Sint-Niklaas Atheneum/Zwembad 14:29</li><li><a href="stop-115481.html">115481</a> - Sint-Niklaas Park 14:31</li><li><a href="stop-115725.html">115725</a> - Sint-Niklaas Markt 14:32</li><li><a href="stop-114858.html">114858</a> - Sint-Niklaas Hofstraat 14:34</li><li><a href="stop-115500.html">115500</a> - Sint-Niklaas Uitgang Noordlaan 14:36</li><li><a href="stop-126692.html">126692</a> - Sint-Niklaas Station perron 6 14:38</li><li><a href="stop-116306.html">116306</a> - Sint-Niklaas Uitgang Noordlaan 14:39</li><li><a href="stop-116307.html">116307</a> - Sint-Niklaas Kazernestraat 14:40</li><li><a href="stop-115992.html">115992</a> - Sint-Niklaas Bremstraat 14:41</li><li><a href="stop-116310.html">116310</a> - Sint-Niklaas Kuildamstraat 14:42</li><li><a href="stop-115993.html">115993</a> - Sint-Niklaas Wegvoeringsstraat 14:43</li><li><a href="stop-115994.html">115994</a> - Sint-Niklaas Kleibeekstraat 14:44</li><li><a href="stop-115995.html">115995</a> - Sint-Niklaas Mispelstraat 14:44</li><li><a href="stop-115996.html">115996</a> - Sint-Niklaas Vlyminckshoek 14:45</li><li><a href="stop-115997.html">115997</a> - Sint-Pauwels Patershoek 14:46</li><li><a href="stop-115998.html">115998</a> - Sint-Pauwels Potterstraat 14:47</li><li><a href="stop-115999.html">115999</a> - Sint-Pauwels Bermijnstraat 14:49</li><li><a href="stop-116000.html">116000</a> - Sint-Pauwels Dries 14:50</li><li><a href="stop-116009.html">116009</a> - Sint-Pauwels Klapdorp 14:51</li><li><a href="stop-116010.html">116010</a> - Sint-Pauwels Groenstraat 14:51</li><li><a href="stop-116011.html">116011</a> - Sint-Pauwels Lijkveldestraat 14:52</li><li><a href="stop-116012.html">116012</a> - Sint-Pauwels Kapel 14:53</li><li><a href="stop-116013.html">116013</a> - Sint-Pauwels Puyveldestraat 14:54</li><li><a href="stop-116014.html">116014</a> - Kemzeke Kwakkelhoek 14:55</li><li><a href="stop-116015.html">116015</a> - Kemzeke Kwakkelstraat 14:56</li><li><a href="stop-116016.html">116016</a> - Stekene Ijzerhandstraat 14:58</li><li><a href="stop-116017.html">116017</a> - Stekene Meersstraat 14:59</li><li><a href="stop-116018.html">116018</a> - Stekene Spoorwegwegel 14:59</li><li><a href="stop-116042.html">116042</a> - Stekene Bormte 15:00</li><li><a href="stop-116021.html">116021</a> - Stekene Molenbergstraat 15:02</li><li><a href="stop-116022.html">116022</a> - Stekene Boterbloemstraat 15:03</li><li><a href="stop-116023.html">116023</a> - Stekene Heikant 15:03</li><li><a href="stop-116024.html">116024</a> - Stekene Prinsenstraat 15:04</li><li><a href="stop-116025.html">116025</a> - Stekene Lange Dweerstraat 15:08</li><li><a href="stop-116026.html">116026</a> - Stekene Nieuwdorp 15:09</li><li><a href="stop-116027.html">116027</a> - Stekene Dienstencentrum Koningshei 15:10</li><li><a href="stop-116039.html">116039</a> - Stekene Bergstraat 15:11</li><li><a href="stop-127607.html">127607</a> - Koewacht Grens 15:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./812.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

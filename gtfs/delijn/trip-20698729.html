@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent - Eeklo - Brugge - 20698729</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent - Eeklo - Brugge - 20698729</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126636.html">126636</a> - Eeklo Station perron 2 09:00</li><li><a href="stop-113947.html">113947</a> - Eeklo Markt 09:03</li><li><a href="stop-113948.html">113948</a> - Eeklo Eikelstraat 09:04</li><li><a href="stop-113949.html">113949</a> - Eeklo Brugsesteenweg 09:06</li><li><a href="stop-113950.html">113950</a> - Eeklo Blakstraat 09:06</li><li><a href="stop-114036.html">114036</a> - Eeklo Droomschip 09:07</li><li><a href="stop-114037.html">114037</a> - Eeklo Galgenakker 09:08</li><li><a href="stop-113952.html">113952</a> - Eeklo Kerkhof 09:11</li><li><a href="stop-113953.html">113953</a> - Eeklo School 09:12</li><li><a href="stop-127592.html">127592</a> - Balgerhoeke Kerk 09:13</li><li><a href="stop-113955.html">113955</a> - Adegem Dr. Herreboutlaan 09:14</li><li><a href="stop-113956.html">113956</a> - Adegem Root 09:14</li><li><a href="stop-113957.html">113957</a> - Adegem Dorp 09:15</li><li><a href="stop-113958.html">113958</a> - Maldegem Harlingenhof 09:17</li><li><a href="stop-113959.html">113959</a> - Maldegem Radestraat 09:18</li><li><a href="stop-113960.html">113960</a> - Maldegem Ommeloper 09:20</li><li><a href="stop-113961.html">113961</a> - Maldegem Godshuis 09:20</li><li><a href="stop-120271.html">120271</a> - Maldegem Markt perron 3 09:22</li><li><a href="stop-113964.html">113964</a> - Maldegem Reesinghelaan 09:23</li><li><a href="stop-113965.html">113965</a> - Maldegem Oude Kasteeldreef 09:24</li><li><a href="stop-113966.html">113966</a> - Maldegem Zandhoogte 09:26</li><li><a href="stop-113967.html">113967</a> - Maldegem Barbarastraat 09:28</li><li><a href="stop-113968.html">113968</a> - Maldegem De Swaeflaan 09:29</li><li><a href="stop-37238.html">37238</a> - Sijsele Ziekenhuis 09:29</li><li><a href="stop-105056.html">105056</a> - Sijsele Veldhoek 09:30</li><li><a href="stop-105057.html">105057</a> - Sijsele Gentsesteenweg 27 09:31</li><li><a href="stop-127277.html">127277</a> - Sijsele Zwaanstraat 09:32</li><li><a href="stop-126850.html">126850</a> - Sijsele Dorp 09:33</li><li><a href="stop-101079.html">101079</a> - Sijsele Kazerne 09:34</li><li><a href="stop-127310.html">127310</a> - Sijsele Hekhoek 09:35</li><li><a href="stop-98357.html">98357</a> - Sint-Kruis Malesteenweg 556 09:36</li><li><a href="stop-127887.html">127887</a> - Sint-Kruis Abdij Male 09:37</li><li><a href="stop-98365.html">98365</a> - Sint-Kruis Vijversdreef 09:38</li><li><a href="stop-105069.html">105069</a> - Sint-Kruis Bos En Lommer 09:38</li><li><a href="stop-127317.html">127317</a> - Sint-Kruis Vossensteert 09:39</li><li><a href="stop-127318.html">127318</a> - Sint-Kruis Watertoren 09:41</li><li><a href="stop-110660.html">110660</a> - Brugge Altebijstraat 09:43</li><li><a href="stop-125728.html">125728</a> - Brugge Kruispoort 09:44</li><li><a href="stop-40835.html">40835</a> - Brugge Gentpoort 09:46</li><li><a href="stop-40847.html">40847</a> - Brugge Katelijnepoort 09:47</li><li><a href="stop-127924.html">127924</a> - Brugge Station perron 2 09:49</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./366.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

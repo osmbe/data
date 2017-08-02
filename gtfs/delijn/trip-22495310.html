@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kiewit - Hasselt - Alken/Terkoest - 22495310</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kiewit - Hasselt - Alken/Terkoest - 22495310</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-96835.html">96835</a> - Kiewit Kinderboerderij 08:40</li><li><a href="stop-96834.html">96834</a> - Kiewit Sporthal 08:42</li><li><a href="stop-96823.html">96823</a> - Kiewit Stadsheide 08:43</li><li><a href="stop-96829.html">96829</a> - Kiewit KMO 08:43</li><li><a href="stop-105210.html">105210</a> - Kiewit KIDS 08:45</li><li><a href="stop-29280.html">29280</a> - Hasselt Detmoldlaan 08:46</li><li><a href="stop-29275.html">29275</a> - Hasselt Eindhovenlaan 08:47</li><li><a href="stop-29271.html">29271</a> - Hasselt Dreef 08:47</li><li><a href="stop-29269.html">29269</a> - Hasselt Leeuweriklaan 08:48</li><li><a href="stop-29312.html">29312</a> - Hasselt Hazelarenlaan 08:49</li><li><a href="stop-29506.html">29506</a> - Hasselt Banneux Kerk 08:49</li><li><a href="stop-29229.html">29229</a> - Hasselt A. Dumontstraat 08:50</li><li><a href="stop-29251.html">29251</a> - Hasselt Banneuxstraat 08:50</li><li><a href="stop-29627.html">29627</a> - Hasselt Weg naar Genk 08:52</li><li><a href="stop-93426.html">93426</a> - Hasselt Handelsschool 08:54</li><li><a href="stop-29645.html">29645</a> - Hasselt Zwembad 08:56</li><li><a href="stop-29267.html">29267</a> - Hasselt Dusartplein 08:57</li><li><a href="stop-29878.html">29878</a> - Hasselt Molenpoort 08:58</li><li><a href="stop-29292.html">29292</a> - Hasselt Diesterpoort 08:59</li><li><a href="stop-128983.html">128983</a> - Hasselt Station perron 4 09:03</li><li><a href="stop-29292.html">29292</a> - Hasselt Diesterpoort 09:05</li><li><a href="stop-29461.html">29461</a> - Hasselt Leopoldplein 09:06</li><li><a href="stop-97048.html">97048</a> - Runkst Vooruitzichtlaan 09:08</li><li><a href="stop-96864.html">96864</a> - Runkst Paters Adonsstraat 09:08</li><li><a href="stop-96896.html">96896</a> - Runkst Kerkhof 09:09</li><li><a href="stop-96838.html">96838</a> - Runkst Heilig Kruis 09:10</li><li><a href="stop-97050.html">97050</a> - Runkst Huidevetterslaan 09:10</li><li><a href="stop-97052.html">97052</a> - Runkst Grote Lindelaan 09:11</li><li><a href="stop-97053.html">97053</a> - Runkst Biezenstraat 09:12</li><li><a href="stop-96858.html">96858</a> - Ter Hilst Overmerelaan 09:14</li><li><a href="stop-128986.html">128986</a> - Hasselt Ter Hilst 09:15</li><li><a href="stop-96902.html">96902</a> - Ter Hilst De Magneet 09:16</li><li><a href="stop-29523.html">29523</a> - Sint-Lambrechts-Herk Oude Truierbaan 09:17</li><li><a href="stop-29749.html">29749</a> - Sint-Lambrechts-Herk Kruispunt 09:19</li><li><a href="stop-29750.html">29750</a> - Sint-Lambrechts-Herk Post 09:20</li><li><a href="stop-29752.html">29752</a> - Sint-Lambrechts-Herk Jukstraat 09:20</li><li><a href="stop-29754.html">29754</a> - Sint-Lambrechts-Herk Gravin 09:21</li><li><a href="stop-29756.html">29756</a> - Sint-Lambrechts-Herk Graaf 09:22</li><li><a href="stop-105220.html">105220</a> - Sint-Lambrechts-Herk Pastorij 09:22</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5657.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

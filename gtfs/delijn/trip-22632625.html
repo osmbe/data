@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Torhout-Kortemark-Ieper - 22632625</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Torhout-Kortemark-Ieper - 22632625</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126393.html">126393</a> - Ieper Station perron 6 12:25</li><li><a href="stop-95332.html">95332</a> - Ieper Oudstrijderslaan 12:28</li><li><a href="stop-38542.html">38542</a> - Ieper Rijselpoort 12:29</li><li><a href="stop-104779.html">104779</a> - Ieper Sint-Pieterskerk 12:30</li><li><a href="stop-38536.html">38536</a> - Ieper Markt 12:32</li><li><a href="stop-38526.html">38526</a> - Ieper Hospitaal 12:33</li><li><a href="stop-42457.html">42457</a> - Ieper Kaai 12:34</li><li><a href="stop-42478.html">42478</a> - Ieper Wegwijzer 12:34</li><li><a href="stop-42448.html">42448</a> - Ieper Barmstraatje 12:35</li><li><a href="stop-42366.html">42366</a> - Boezinge Sint-Pieter 12:36</li><li><a href="stop-42363.html">42363</a> - Boezinge Kanon 12:38</li><li><a href="stop-42367.html">42367</a> - Boezinge Station 12:39</li><li><a href="stop-42361.html">42361</a> - Boezinge De Brug 12:40</li><li><a href="stop-42360.html">42360</a> - Boezinge Bretoens Gedenkteken 12:41</li><li><a href="stop-42364.html">42364</a> - Boezinge Pilkem 12:42</li><li><a href="stop-41846.html">41846</a> - Langemark Cafe Hagebos 12:43</li><li><a href="stop-41847.html">41847</a> - Langemark De Flodder 12:45</li><li><a href="stop-41854.html">41854</a> - Langemark Markt 12:46</li><li><a href="stop-41851.html">41851</a> - Langemark Hooyaardstraat 12:47</li><li><a href="stop-41850.html">41850</a> - Langemark Halfweghuis 12:48</li><li><a href="stop-127177.html">127177</a> - Poelkapelle Langemarkstraat 12:49</li><li><a href="stop-42610.html">42610</a> - Poelkapelle Guynemer 12:50</li><li><a href="stop-42614.html">42614</a> - Poelkapelle Wulverstraat 12:51</li><li><a href="stop-42612.html">42612</a> - Poelkapelle Treurniet 12:51</li><li><a href="stop-42613.html">42613</a> - Poelkapelle Station 12:52</li><li><a href="stop-42837.html">42837</a> - Langemark Vrijbos 12:53</li><li><a href="stop-42608.html">42608</a> - Poelkapelle Bareelstraat 12:54</li><li><a href="stop-42611.html">42611</a> - Poelkapelle Schaapbaliedreef 12:55</li><li><a href="stop-42762.html">42762</a> - Westrozebeke Kazernen 12:55</li><li><a href="stop-42766.html">42766</a> - Westrozebeke Vijfwegen 12:56</li><li><a href="stop-42148.html">42148</a> - Staden Drevestraat 12:57</li><li><a href="stop-42149.html">42149</a> - Staden Kasteelstraat 12:59</li><li><a href="stop-42154.html">42154</a> - Staden Rustoord 13:00</li><li><a href="stop-42147.html">42147</a> - Staden Dorp 13:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4162.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

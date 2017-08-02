@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Zottegem - Aspelare - Ninove - 20715265</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Zottegem - Aspelare - Ninove - 20715265</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-120322.html">120322</a> - Ninove Station Perron 4 12:41</li><li><a href="stop-117492.html">117492</a> - Ninove Graanmarkt 12:43</li><li><a href="stop-117491.html">117491</a> - Ninove Centrum 12:45</li><li><a href="stop-116856.html">116856</a> - Ninove Vuurkruisersstraat 12:46</li><li><a href="stop-116859.html">116859</a> - Ninove Gentsestraat 12:46</li><li><a href="stop-116857.html">116857</a> - Ninove Preulegem 12:47</li><li><a href="stop-116592.html">116592</a> - Outer Kerkhofstraat 12:49</li><li><a href="stop-116593.html">116593</a> - Outer Kloosterstraat 12:50</li><li><a href="stop-116594.html">116594</a> - Outer Kasteelstraat 12:51</li><li><a href="stop-116595.html">116595</a> - Nederhasselt Dorp 12:53</li><li><a href="stop-117277.html">117277</a> - Aspelare Wildendries 12:55</li><li><a href="stop-117980.html">117980</a> - Aspelare Schoolstraatje 12:55</li><li><a href="stop-117979.html">117979</a> - Aspelare Prieelsstraat 12:56</li><li><a href="stop-117978.html">117978</a> - Sint-Antelinks Roeselarestraat 12:58</li><li><a href="stop-117977.html">117977</a> - Sint-Antelinks Kerk 12:59</li><li><a href="stop-117032.html">117032</a> - Sint-Antelinks Mutsaardstraat 13:00</li><li><a href="stop-118864.html">118864</a> - Sint-Lievens-Esse Mollestraat 13:01</li><li><a href="stop-118814.html">118814</a> - Sint-Lievens-Esse Overstraat 13:01</li><li><a href="stop-118863.html">118863</a> - Sint-Lievens-Esse Kokkestraat 13:01</li><li><a href="stop-118813.html">118813</a> - Sint-Lievens-Esse Doornstraat 13:02</li><li><a href="stop-118812.html">118812</a> - Sint-Lievens-Esse Zonneveld 13:02</li><li><a href="stop-119684.html">119684</a> - Sint-Lievens-Esse Kerk 13:03</li><li><a href="stop-119683.html">119683</a> - Sint-Lievens-Esse Populierestraat 13:04</li><li><a href="stop-119682.html">119682</a> - Sint-Lievens-Esse Tervarent 13:05</li><li><a href="stop-119646.html">119646</a> - Sint-Lievens-Esse Brug 13:06</li><li><a href="stop-121632.html">121632</a> - Steenhuize Wijnhuize Schipstraat 13:07</li><li><a href="stop-118807.html">118807</a> - Sint-Lievens-Esse Armstraat 13:08</li><li><a href="stop-118928.html">118928</a> - Sint-Lievens-Esse Pijpketel 13:08</li><li><a href="stop-118927.html">118927</a> - Godveerdegem Wijnhuizestraat 13:10</li><li><a href="stop-118926.html">118926</a> - Godveerdegem Rodestraat 13:11</li><li><a href="stop-118925.html">118925</a> - Godveerdegem Rozenstraat 13:12</li><li><a href="stop-118924.html">118924</a> - Godveerdegem Tweekerkenstraat 13:13</li><li><a href="stop-118805.html">118805</a> - Zottegem Bevegemstraat 13:14</li><li><a href="stop-118804.html">118804</a> - Zottegem Ziekenhuis 13:15</li><li><a href="stop-126766.html">126766</a> - Zottegem Station perron 4 13:16</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1149.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

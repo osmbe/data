@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Kooigem-Spiere - 22618707</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Kooigem-Spiere - 22618707</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126386.html">126386</a> - Kortrijk Station perron 10 18:50</li><li><a href="stop-37777.html">37777</a> - Kortrijk Spoorweglaan 18:52</li><li><a href="stop-37818.html">37818</a> - Kortrijk Zwevegemsepoort 18:53</li><li><a href="stop-41751.html">41751</a> - Kortrijk Doorniksepoort 18:54</li><li><a href="stop-37780.html">37780</a> - Kortrijk Doornikwijk 18:55</li><li><a href="stop-37835.html">37835</a> - Kortrijk Sint-Rochuskerk 18:55</li><li><a href="stop-90395.html">90395</a> - Kortrijk Kanon 18:56</li><li><a href="stop-37812.html">37812</a> - Kortrijk Nieuwpoortstraat 18:57</li><li><a href="stop-37774.html">37774</a> - Kortrijk Halve Jan 18:58</li><li><a href="stop-99334.html">99334</a> - Kortrijk Syntra West 18:59</li><li><a href="stop-37760.html">37760</a> - Kortrijk 'T Hoge 19:01</li><li><a href="stop-37477.html">37477</a> - Bellegem Kruisstraat 19:02</li><li><a href="stop-37480.html">37480</a> - Bellegem Rood Paard 19:03</li><li><a href="stop-37474.html">37474</a> - Bellegem De Kat 19:04</li><li><a href="stop-37476.html">37476</a> - Bellegem Katteberg 19:05</li><li><a href="stop-37473.html">37473</a> - Bellegem Beiaard 19:05</li><li><a href="stop-37472.html">37472</a> - Bellegem Balling 19:06</li><li><a href="stop-37747.html">37747</a> - Kooigem Ruddervoorde 19:07</li><li><a href="stop-37745.html">37745</a> - Kooigem Klein Molentje 19:08</li><li><a href="stop-37744.html">37744</a> - Kooigem Garage Tune Up 19:08</li><li><a href="stop-37746.html">37746</a> - Kooigem Koninklijk Jacht 19:09</li><li><a href="stop-38154.html">38154</a> - Spiere Ijzeren Bareel 19:11</li><li><a href="stop-38157.html">38157</a> - Spiere Kasteel Spiere 19:12</li><li><a href="stop-38153.html">38153</a> - Spiere Kerk 19:13</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4024.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

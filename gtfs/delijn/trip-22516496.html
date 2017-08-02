@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Boom - Niel  - Antwerpen Rooseveltplaats - 22516496</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boom - Niel  - Antwerpen Rooseveltplaats - 22516496</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-23213.html">23213</a> - Boom Markt 15:47</li><li><a href="stop-43023.html">43023</a> - Boom E. Vanderveldestraat 15:48</li><li><a href="stop-22500.html">22500</a> - Boom Vrijheidstraat 15:49</li><li><a href="stop-22498.html">22498</a> - Boom Plantsoenstraat 15:50</li><li><a href="stop-18892.html">18892</a> - Boom Industrieweg 15:51</li><li><a href="stop-18894.html">18894</a> - Boom Tunnelweg 15:52</li><li><a href="stop-108807.html">108807</a> - Niel Walenhof 15:54</li><li><a href="stop-108804.html">108804</a> - Niel Hellegat 15:55</li><li><a href="stop-22483.html">22483</a> - Niel Keizerstraat 15:57</li><li><a href="stop-108801.html">108801</a> - Niel E. Vanderveldelaan 15:59</li><li><a href="stop-108800.html">108800</a> - Niel Kerkstraat 16:00</li><li><a href="stop-110131.html">110131</a> - Niel Stationsstraat 16:01</li><li><a href="stop-25966.html">25966</a> - Niel Beekstraat 16:02</li><li><a href="stop-108798.html">108798</a> - Schelle Tolhuisstraat 16:03</li><li><a href="stop-108796.html">108796</a> - Schelle Kapelstraat 16:04</li><li><a href="stop-108794.html">108794</a> - Schelle Peperstraat 16:05</li><li><a href="stop-108792.html">108792</a> - Schelle Kerk 16:05</li><li><a href="stop-108790.html">108790</a> - Hemiksem Bosstraat 16:06</li><li><a href="stop-108788.html">108788</a> - Hemiksem Delvauxstraat 16:07</li><li><a href="stop-107375.html">107375</a> - Hemiksem Steenbakkerijstraat 16:08</li><li><a href="stop-108786.html">108786</a> - Hemiksem Scheldestraat 16:09</li><li><a href="stop-108784.html">108784</a> - Hemiksem Callebeekstraat 16:10</li><li><a href="stop-108782.html">108782</a> - Hemiksem Terlochtweg 16:12</li><li><a href="stop-108781.html">108781</a> - Hemiksem Varenstraat 16:13</li><li><a href="stop-108779.html">108779</a> - Hemiksem Herbekestraat 16:14</li><li><a href="stop-25292.html">25292</a> - Hoboken Warschaustraat 16:15</li><li><a href="stop-128333.html">128333</a> - Hoboken Klaverbladdreef 16:16</li><li><a href="stop-24053.html">24053</a> - Hoboken Groenstraat 16:17</li><li><a href="stop-94581.html">94581</a> - Hoboken P+R Schoonselhof 16:18</li><li><a href="stop-107950.html">107950</a> - Hoboken Karel Meyvis 16:19</li><li><a href="stop-107820.html">107820</a> - Hoboken Heidestraat 16:20</li><li><a href="stop-107350.html">107350</a> - Hoboken Aartselaarstraat 16:21</li><li><a href="stop-108829.html">108829</a> - Hoboken Zwaantjes 16:23</li><li><a href="stop-107756.html">107756</a> - Antwerpen Grens Kiel 16:25</li><li><a href="stop-107352.html">107352</a> - Antwerpen Abdijstraat 16:26</li><li><a href="stop-107995.html">107995</a> - Antwerpen Kielpark 16:27</li><li><a href="stop-108206.html">108206</a> - Antwerpen Station Zuid 16:30</li><li><a href="stop-19328.html">19328</a> - Antwerpen Broedermin 16:33</li><li><a href="stop-18945.html">18945</a> - Antwerpen Bestorming 16:34</li><li><a href="stop-107469.html">107469</a> - Antwerpen Bres 16:35</li><li><a href="stop-110994.html">110994</a> - Antwerpen Kasteelplein 16:36</li><li><a href="stop-108176.html">108176</a> - Antwerpen Nationale Bank 16:38</li><li><a href="stop-108103.html">108103</a> - Antwerpen Stadspark 16:40</li><li><a href="stop-125252.html">125252</a> - Antwerpen F. Rooseveltplaats perron 53 16:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3066.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

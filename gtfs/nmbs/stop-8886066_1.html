@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Brugelette</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Brugelette</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-L485525551.html">L485525551</a> - L485525551 - Geraardsbergen - Moeskroen</li><li><a href="trip-L485625561.html">L485625561</a> - L485625561 - Geraardsbergen - Doornik</li><li><a href="trip-L486125611.html">L486125611</a> - L486125611 - Geraardsbergen - Doornik</li><li><a href="trip-L486225621.html">L486225621</a> - L486225621 - Geraardsbergen - Doornik</li><li><a href="trip-L486325631.html">L486325631</a> - L486325631 - Geraardsbergen - Moeskroen</li><li><a href="trip-L486425641.html">L486425641</a> - L486425641 - Geraardsbergen - Moeskroen</li><li><a href="trip-L486525651.html">L486525651</a> - L486525651 - Geraardsbergen - Doornik</li><li><a href="trip-L486625661.html">L486625661</a> - L486625661 - Geraardsbergen - Doornik</li><li><a href="trip-L486725671.html">L486725671</a> - L486725671 - Geraardsbergen - Doornik</li><li><a href="trip-L486825681.html">L486825681</a> - L486825681 - Geraardsbergen - Doornik</li><li><a href="trip-L486925691.html">L486925691</a> - L486925691 - Geraardsbergen - Doornik</li><li><a href="trip-L487025701.html">L487025701</a> - L487025701 - Geraardsbergen - Doornik</li><li><a href="trip-P758030761.html">P758030761</a> - P758030761 - Aat - Bergen</li><li><a href="trip-P758530781.html">P758530781</a> - P758530781 - Aat - Jurbeke</li><li><a href="trip-P858132931.html">P858132931</a> - P858132931 - Aat - Doornik</li><li><a href="trip-P858232941.html">P858232941</a> - P858232941 - Aat - Doornik</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.594229, 3.852551], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.594229, 3.852551]).addTo(map);
+    </script>
+</body>
+
+</html>

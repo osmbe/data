@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - De Klinge- Meerdonk- Sint-Niklaas- Belsele- Sinaai - 20708071</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: De Klinge- Meerdonk- Sint-Niklaas- Belsele- Sinaai - 20708071</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-115725.html">115725</a> - Sint-Niklaas Markt 16:16</li><li><a href="stop-114858.html">114858</a> - Sint-Niklaas Hofstraat 16:18</li><li><a href="stop-115500.html">115500</a> - Sint-Niklaas Uitgang Noordlaan 16:21</li><li><a href="stop-126682.html">126682</a> - Sint-Niklaas Station perron 5 16:23</li><li><a href="stop-116306.html">116306</a> - Sint-Niklaas Uitgang Noordlaan 16:24</li><li><a href="stop-116307.html">116307</a> - Sint-Niklaas Kazernestraat 16:25</li><li><a href="stop-116308.html">116308</a> - Sint-Niklaas Slachthuisstraat 16:26</li><li><a href="stop-116309.html">116309</a> - Sint-Niklaas Driekoningenstraat/Heistraat 16:27</li><li><a href="stop-116312.html">116312</a> - Sint-Niklaas Nachtegalenlaan 16:28</li><li><a href="stop-116313.html">116313</a> - Sint-Niklaas Bekelstraat 16:29</li><li><a href="stop-116314.html">116314</a> - Sint-Niklaas Sint-Gillisbaan/Kerkwegel 16:29</li><li><a href="stop-116315.html">116315</a> - Sint-Niklaas Vrouweneekhoek 16:30</li><li><a href="stop-116316.html">116316</a> - Sint-Gillis-Waas Roskamstraat 16:31</li><li><a href="stop-116317.html">116317</a> - Sint-Gillis-Waas Dagsterrestraat 16:33</li><li><a href="stop-116318.html">116318</a> - Sint-Gillis-Waas Hoogeinde 16:34</li><li><a href="stop-116319.html">116319</a> - Sint-Gillis-Waas Doornstraat 16:35</li><li><a href="stop-116320.html">116320</a> - Sint-Gillis-Waas Bosstraat 16:35</li><li><a href="stop-116322.html">116322</a> - Sint-Gillis-Waas Gemeentehuis 16:36</li><li><a href="stop-116323.html">116323</a> - Sint-Gillis-Waas Stationsstraat 16:38</li><li><a href="stop-115907.html">115907</a> - Sint-Gillis-Waas Sint-Helena 16:39</li><li><a href="stop-116136.html">116136</a> - Sint-Gillis-Waas Kemphoekstraat 16:41</li><li><a href="stop-116135.html">116135</a> - Sint-Gillis-Waas Zijpstraat 16:42</li><li><a href="stop-116134.html">116134</a> - Sint-Gillis-Waas Turkeyenstraat 16:43</li><li><a href="stop-115541.html">115541</a> - Meerdonk Zandloperstraat 16:48</li><li><a href="stop-115540.html">115540</a> - Meerdonk Donkstraat 16:49</li><li><a href="stop-115539.html">115539</a> - Meerdonk Margrietstraat 16:50</li><li><a href="stop-115538.html">115538</a> - Meerdonk Teerlingstraat 16:51</li><li><a href="stop-115537.html">115537</a> - Meerdonk Dorp 16:52</li><li><a href="stop-115536.html">115536</a> - Meerdonk Lange Nieuwstraat 16:53</li><li><a href="stop-115535.html">115535</a> - Meerdonk Molenhoekstraat 16:55</li><li><a href="stop-115534.html">115534</a> - De Klinge Fortstraat 16:57</li><li><a href="stop-115533.html">115533</a> - De Klinge Spaanskwartier 16:58</li><li><a href="stop-115532.html">115532</a> - De Klinge Van Saeftingelaan 16:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./752.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

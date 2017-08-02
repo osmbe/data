@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Avondlijn koolkerke-dudzele - 22138015</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Avondlijn koolkerke-dudzele - 22138015</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-98220.html">98220</a> - Dudzele Dorp 23:41</li><li><a href="stop-98222.html">98222</a> - Dudzele Melkerij 23:42</li><li><a href="stop-98219.html">98219</a> - Dudzele 'T Apertje 23:42</li><li><a href="stop-98223.html">98223</a> - Dudzele Ter Bolle 23:44</li><li><a href="stop-104896.html">104896</a> - Brugge Kruisabele 23:45</li><li><a href="stop-104895.html">104895</a> - Brugge 'T Boompje 23:45</li><li><a href="stop-99237.html">99237</a> - Koolkerke Gemeentehuis 23:48</li><li><a href="stop-98382.html">98382</a> - Koolkerke Warmoezenier 23:49</li><li><a href="stop-101044.html">101044</a> - Koolkerke Transvaal 23:49</li><li><a href="stop-98397.html">98397</a> - Koolkerke Fort Van Beieren 23:50</li><li><a href="stop-98395.html">98395</a> - Koolkerke Romboudswijk 23:51</li><li><a href="stop-98396.html">98396</a> - Koolkerke Zagersweg 23:52</li><li><a href="stop-98309.html">98309</a> - Koolkerke Leenweg 23:53</li><li><a href="stop-94911.html">94911</a> - Brugge Ons Tehuis 23:53</li><li><a href="stop-36742.html">36742</a> - Brugge C.Everaartstraat 23:53</li><li><a href="stop-84940.html">84940</a> - Brugge Sint-Jozef 23:54</li><li><a href="stop-40834.html">40834</a> - Brugge Fort Lapin 23:55</li><li><a href="stop-40865.html">40865</a> - Brugge Sasplein 23:56</li><li><a href="stop-104951.html">104951</a> - Brugge Gistfabriek 23:56</li><li><a href="stop-40842.html">40842</a> - Brugge J.&M. Sabbestraat 23:57</li><li><a href="stop-40867.html">40867</a> - Brugge Snaggaardbrug 23:58</li><li><a href="stop-40838.html">40838</a> - Brugge Gouden Handstraat 23:58</li><li><a href="stop-40843.html">40843</a> - Brugge Jan Van Eyckplein 23:59</li><li><a href="stop-100725.html">100725</a> - Brugge Stadsschouwburg 24:00</li><li><a href="stop-37226.html">37226</a> - Brugge Kipstraat 24:00</li><li><a href="stop-36792.html">36792</a> - Brugge Poitevinstraat 24:01</li><li><a href="stop-90316.html">90316</a> - Brugge Howest 24:01</li><li><a href="stop-36783.html">36783</a> - Brugge N.Gombertstraat 24:02</li><li><a href="stop-37271.html">37271</a> - Brugge N. Gombertstraat 24:02</li><li><a href="stop-98660.html">98660</a> - Brugge Ezelpoort 24:03</li><li><a href="stop-40821.html">40821</a> - Brugge Beenhouwerstraat 24:04</li><li><a href="stop-41337.html">41337</a> - Brugge Hoefijzer 24:05</li><li><a href="stop-126411.html">126411</a> - Brugge 'T Zand perron 6 24:06</li><li><a href="stop-126330.html">126330</a> - Brugge Station perron 1 24:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3981.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Zwartberg - Houthalen - 22480790</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Zwartberg - Houthalen - 22480790</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-94122.html">94122</a> - Houthalen Cleantech Campus 12:45</li><li><a href="stop-125567.html">125567</a> - Houthalen NAC 12:46</li><li><a href="stop-123115.html">123115</a> - Houthalen Kleuterweg 12:47</li><li><a href="stop-30731.html">30731</a> - Houthalen Oudstrijderslaan 12:48</li><li><a href="stop-92721.html">92721</a> - Houthalen Herebaan Oost 12:50</li><li><a href="stop-110846.html">110846</a> - Houthalen Geerstraat 12:51</li><li><a href="stop-30685.html">30685</a> - Houthalen Kerkhofstraat 12:51</li><li><a href="stop-30660.html">30660</a> - Houthalen Groenstraat 12:52</li><li><a href="stop-30765.html">30765</a> - Houthalen Tenhout 12:53</li><li><a href="stop-30699.html">30699</a> - Houthalen Kwalaak 12:54</li><li><a href="stop-30679.html">30679</a> - Houthalen Kelchterhoef 12:57</li><li><a href="stop-30708.html">30708</a> - Houthalen Lijsterstraat 12:59</li><li><a href="stop-30740.html">30740</a> - Houthalen Pelikaanstraat 13:00</li><li><a href="stop-30664.html">30664</a> - Houthalen Heivinkstraat 13:01</li><li><a href="stop-30696.html">30696</a> - Houthalen Korhoenstraat 13:01</li><li><a href="stop-30743.html">30743</a> - Houthalen Rekreatiepark 13:02</li><li><a href="stop-30770.html">30770</a> - Houthalen Tulpenstraat 13:03</li><li><a href="stop-30675.html">30675</a> - Houthalen Thuyastraat 13:04</li><li><a href="stop-30642.html">30642</a> - Houthalen Canadastraat 13:05</li><li><a href="stop-30690.html">30690</a> - Houthalen Kerselaarstraat 13:06</li><li><a href="stop-30634.html">30634</a> - Houthalen Berkenstraat 13:07</li><li><a href="stop-30678.html">30678</a> - Houthalen Kastanjestraat 13:08</li><li><a href="stop-105242.html">105242</a> - Houthalen Park van Genk Kerk 13:09</li><li><a href="stop-30772.html">30772</a> - Houthalen Violierenstraat 13:10</li><li><a href="stop-30704.html">30704</a> - Houthalen Halstraat 13:12</li><li><a href="stop-96747.html">96747</a> - Zwartberg Nieuwe Kempen 13:13</li><li><a href="stop-125478.html">125478</a> - Zwartberg G. Lambertlaan 13:14</li><li><a href="stop-96752.html">96752</a> - Zwartberg Zaveldriesstraat 13:15</li><li><a href="stop-28456.html">28456</a> - Genk Driehoeven 13:16</li><li><a href="stop-28739.html">28739</a> - Genk Jonkersblook 13:18</li><li><a href="stop-94685.html">94685</a> - Genk Vogelsberg 13:19</li><li><a href="stop-28735.html">28735</a> - Genk Hengelhoefstraat 13:20</li><li><a href="stop-28733.html">28733</a> - Genk Sint-Michiel 13:20</li><li><a href="stop-28732.html">28732</a> - Genk Esserslaan 13:21</li><li><a href="stop-96722.html">96722</a> - Winterslag Mijn 13:22</li><li><a href="stop-28398.html">28398</a> - Genk Erfstraat 13:24</li><li><a href="stop-123238.html">123238</a> - Genk Bochtlaan 13:25</li><li><a href="stop-125475.html">125475</a> - Genk Station perron 10 13:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4546.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

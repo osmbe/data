@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Turnhout - Tielen - Kasterlee - 21535990</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Turnhout - Tielen - Kasterlee - 21535990</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109745.html">109745</a> - Kasterlee Dorp 06:55</li><li><a href="stop-25414.html">25414</a> - Kasterlee Kempenstraat 06:56</li><li><a href="stop-25412.html">25412</a> - Kasterlee Ossengoor 06:56</li><li><a href="stop-25410.html">25410</a> - Kasterlee Hoge Mouw 06:57</li><li><a href="stop-25408.html">25408</a> - Kasterlee Koningsbos 06:57</li><li><a href="stop-25406.html">25406</a> - Lichtaart Hoogstraat 06:58</li><li><a href="stop-20681.html">20681</a> - Lichtaart Kerk 06:59</li><li><a href="stop-25358.html">25358</a> - Lichtaart Gemeentestraat 07:00</li><li><a href="stop-25427.html">25427</a> - Lichtaart Kapelhof 07:02</li><li><a href="stop-107748.html">107748</a> - Lichtaart Krokuslaan 07:04</li><li><a href="stop-107974.html">107974</a> - Lichtaart Lamstraat 07:06</li><li><a href="stop-20546.html">20546</a> - Lichtaart Klein Plaats 07:07</li><li><a href="stop-19782.html">19782</a> - Lichtaart Sportterrein 07:08</li><li><a href="stop-20548.html">20548</a> - Lichtaart Hoge Rielen 07:10</li><li><a href="stop-20550.html">20550</a> - Tielen Kaliebaan 07:11</li><li><a href="stop-107976.html">107976</a> - Tielen Opstal 07:13</li><li><a href="stop-109801.html">109801</a> - Tielen Dorp 07:14</li><li><a href="stop-88780.html">88780</a> - Tielen Kasteeldreef 07:16</li><li><a href="stop-127761.html">127761</a> - Tielen Prijstraat 07:17</li><li><a href="stop-25383.html">25383</a> - Gierle Broekzijde 07:30</li><li><a href="stop-101647.html">101647</a> - Gierle Kerk 07:32</li><li><a href="stop-108043.html">108043</a> - Gierle Houtakkerstraat 07:33</li><li><a href="stop-20559.html">20559</a> - Gierle Schoorstraat 07:34</li><li><a href="stop-20274.html">20274</a> - Gierle Het Laar 07:35</li><li><a href="stop-127740.html">127740</a> - Gierle P+R Gierle 07:36</li><li><a href="stop-20565.html">20565</a> - Gierle Gielsbos 07:37</li><li><a href="stop-20567.html">20567</a> - Vosselaar Zeggelaan 07:38</li><li><a href="stop-107983.html">107983</a> - Vosselaar Heilanders 07:39</li><li><a href="stop-109995.html">109995</a> - Vosselaar Vlinderstraat 07:39</li><li><a href="stop-20784.html">20784</a> - Vosselaar R. Sniederspad 07:40</li><li><a href="stop-20739.html">20739</a> - Vosselaar Astridlaan 07:41</li><li><a href="stop-108873.html">108873</a> - Vosselaar Dennendreef 07:42</li><li><a href="stop-108875.html">108875</a> - Vosselaar Dorp 07:43</li><li><a href="stop-22699.html">22699</a> - Vosselaar Bergeneinde 07:44</li><li><a href="stop-22701.html">22701</a> - Vosselaar Jagerslaan 07:46</li><li><a href="stop-22703.html">22703</a> - Turnhout Galgenbeekweg 07:47</li><li><a href="stop-22705.html">22705</a> - Turnhout Lokerenstraat 07:49</li><li><a href="stop-22707.html">22707</a> - Turnhout Stelplaats 07:50</li><li><a href="stop-108879.html">108879</a> - Turnhout Station perron 6 07:51</li><li><a href="stop-108880.html">108880</a> - Turnhout Zeshoek 07:52</li><li><a href="stop-109791.html">109791</a> - Turnhout Markt perron 5 07:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2953.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

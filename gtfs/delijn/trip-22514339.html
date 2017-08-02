@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kontich - Hove - Boechout - Broechem - 22514339</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kontich - Hove - Boechout - Broechem - 22514339</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-22897.html">22897</a> - Broechem Van Den Nestlaan 07:26</li><li><a href="stop-22895.html">22895</a> - Broechem Achterlo 07:28</li><li><a href="stop-22893.html">22893</a> - Ranst Processieweg 07:30</li><li><a href="stop-22891.html">22891</a> - Ranst Lieve Vrouwestraat 07:30</li><li><a href="stop-108941.html">108941</a> - Ranst Gasthuisstraat 07:31</li><li><a href="stop-21294.html">21294</a> - Ranst Kastanjelaan 07:33</li><li><a href="stop-22887.html">22887</a> - Ranst Zevenbergen 07:33</li><li><a href="stop-93174.html">93174</a> - Wommelgem Schawijkstraat 07:34</li><li><a href="stop-93172.html">93172</a> - Wommelgem Vremdesteenweg 07:36</li><li><a href="stop-108940.html">108940</a> - Wommelgem Dorp 07:38</li><li><a href="stop-108938.html">108938</a> - Wommelgem Molenbaan 07:41</li><li><a href="stop-22875.html">22875</a> - Wommelgem Sint-Damiaanstraat 07:41</li><li><a href="stop-22873.html">22873</a> - Wommelgem Tuinbouwstraat 07:42</li><li><a href="stop-22871.html">22871</a> - Wommelgem 't Serclaesdreef 07:44</li><li><a href="stop-22869.html">22869</a> - Wommelgem Hofstraat 07:45</li><li><a href="stop-24805.html">24805</a> - Borsbeek J. Reusenslei 07:45</li><li><a href="stop-109459.html">109459</a> - Borsbeek L. Janssenstraat 07:47</li><li><a href="stop-109662.html">109662</a> - Borsbeek Schanslaan 07:48</li><li><a href="stop-109268.html">109268</a> - Borsbeek Corluylei 07:49</li><li><a href="stop-109643.html">109643</a> - Borsbeek Oude Haegevelde 07:50</li><li><a href="stop-23037.html">23037</a> - Boechout Spokenhofstraat 07:52</li><li><a href="stop-127477.html">127477</a> - Boechout Capenberg 07:54</li><li><a href="stop-109011.html">109011</a> - Boechout Station 07:56</li><li><a href="stop-107479.html">107479</a> - Boechout Molenlei 07:57</li><li><a href="stop-23046.html">23046</a> - Boechout Heuvelstraat 07:58</li><li><a href="stop-109013.html">109013</a> - Boechout Kerk 07:58</li><li><a href="stop-100379.html">100379</a> - Boechout Ropstocklei 07:59</li><li><a href="stop-23051.html">23051</a> - Boechout Kerkhof 08:00</li><li><a href="stop-23053.html">23053</a> - Hove Weldadigheidstraat 08:02</li><li><a href="stop-23055.html">23055</a> - Hove Kerk 08:02</li><li><a href="stop-23057.html">23057</a> - Hove Geelhandstraat 08:04</li><li><a href="stop-109235.html">109235</a> - Hove Vredestraat 08:04</li><li><a href="stop-109236.html">109236</a> - Kontich Eikenstraat 08:06</li><li><a href="stop-109238.html">109238</a> - Kontich Wipstraat 08:08</li><li><a href="stop-109241.html">109241</a> - Kontich Altenastraat 08:09</li><li><a href="stop-109243.html">109243</a> - Kontich Edegemsesteenweg 08:10</li><li><a href="stop-109120.html">109120</a> - Kontich Kerk 08:10</li><li><a href="stop-109119.html">109119</a> - Kontich Kruisstraat 08:11</li><li><a href="stop-109118.html">109118</a> - Kontich Rubensstraat 08:13</li><li><a href="stop-25994.html">25994</a> - Kontich Sint-Ritacollege 08:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2998.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

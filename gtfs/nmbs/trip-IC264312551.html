@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Hasselt - Antwerpen-Centraal - IC264312551</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Antwerpen-Centraal - IC264312551</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8831005_6.html">8831005:6</a> - Hasselt 21:38</li><li><a href="stop-8831401_1.html">8831401:1</a> - Diest 21:53</li><li><a href="stop-8833209_1.html">8833209:1</a> - Aarschot 22:07</li><li><a href="stop-8833001_7.html">8833001:7</a> - Leuven 22:26</li><li><a href="stop-8819406_1.html">8819406:1</a> - Brussel-Nat-Luchthaven/Bruxelles-Nat-Aéroport 22:42</li><li><a href="stop-8822004_7.html">8822004:7</a> - Mechelen 22:56</li><li><a href="stop-8821121_10.html">8821121:10</a> - Antwerpen-Berchem 23:11</li><li><a href="stop-8821006_4.html">8821006:4</a> - Antwerpen-Centraal 23:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./314.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

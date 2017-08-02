@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Lier - Duffel - Rumst - 22537135</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Lier - Duffel - Rumst - 22537135</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-23266.html">23266</a> - Rumst Busstation 17:57</li><li><a href="stop-109083.html">109083</a> - Rumst Ekkersgatstraat 17:59</li><li><a href="stop-109085.html">109085</a> - Rumst Hof Ten Eiken 18:01</li><li><a href="stop-107943.html">107943</a> - Rumst P+R Carpool E19 18:02</li><li><a href="stop-109160.html">109160</a> - Rumst Vosberg 18:03</li><li><a href="stop-109159.html">109159</a> - Rumst Hoge Vosbergstraat 18:03</li><li><a href="stop-23436.html">23436</a> - Rumst Hovenierstraat 18:04</li><li><a href="stop-23434.html">23434</a> - Duffel Boecksteinweg 18:05</li><li><a href="stop-88557.html">88557</a> - Duffel Walemstraat 18:06</li><li><a href="stop-88548.html">88548</a> - Duffel Groenstraat 18:07</li><li><a href="stop-109155.html">109155</a> - Duffel Erpsel 18:07</li><li><a href="stop-25836.html">25836</a> - Duffel Station 18:08</li><li><a href="stop-109960.html">109960</a> - Duffel AZ Sint-Maarten 18:10</li><li><a href="stop-22435.html">22435</a> - Duffel Kerk 18:11</li><li><a href="stop-109146.html">109146</a> - Duffel Gemeentehuis 18:13</li><li><a href="stop-109264.html">109264</a> - Duffel Leopoldstraat 18:13</li><li><a href="stop-23406.html">23406</a> - Lier De Beunt 18:14</li><li><a href="stop-109143.html">109143</a> - Lier Jacobs 18:15</li><li><a href="stop-23402.html">23402</a> - Lier Mechelsesteenweg 18:16</li><li><a href="stop-109142.html">109142</a> - Lier Het Ven 18:17</li><li><a href="stop-23398.html">23398</a> - Lier Lachenen 18:18</li><li><a href="stop-23396.html">23396</a> - Lier Maaikeneveld 18:19</li><li><a href="stop-109141.html">109141</a> - Lier Lintsesteenweg 18:21</li><li><a href="stop-109139.html">109139</a> - Lier Dennenlaan 18:22</li><li><a href="stop-109140.html">109140</a> - Lier Sint-Annastraat 18:24</li><li><a href="stop-95325.html">95325</a> - Lier Dungelhoeff 18:24</li><li><a href="stop-87345.html">87345</a> - Lier Baron Opsomerlaan 18:25</li><li><a href="stop-106803.html">106803</a> - Lier Station perron 6 18:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3585.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

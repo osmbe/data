@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gentbrugge Moscou-UZ - 20677073</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gentbrugge Moscou-UZ - 20677073</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-111194.html">111194</a> - Gentbrugge Moscou 12:36</li><li><a href="stop-111195.html">111195</a> - Ledeberg Van Ooteghemstraat 12:38</li><li><a href="stop-111196.html">111196</a> - Ledeberg Moriaanstraat 12:39</li><li><a href="stop-111197.html">111197</a> - Ledeberg Botermarkt 12:40</li><li><a href="stop-111198.html">111198</a> - Ledeberg Ledebergplein 12:42</li><li><a href="stop-111199.html">111199</a> - Ledeberg Hundelgemsesteenweg 12:43</li><li><a href="stop-111200.html">111200</a> - Gent Sint-Lievenspoort 12:44</li><li><a href="stop-111201.html">111201</a> - Gent Sint-Lievensdoorgang 12:45</li><li><a href="stop-111171.html">111171</a> - Gent Vijfwindgatenstraat 12:46</li><li><a href="stop-126533.html">126533</a> - Gent Zuid perron 1 12:48</li><li><a href="stop-111173.html">111173</a> - Gent Lippensplein 12:50</li><li><a href="stop-111202.html">111202</a> - Gent Duivelsteen 12:51</li><li><a href="stop-126566.html">126566</a> - Gent Korenmarkt perron 3 12:53</li><li><a href="stop-111204.html">111204</a> - Gent Gravensteen 12:55</li><li><a href="stop-111205.html">111205</a> - Gent Langesteenstraat 12:56</li><li><a href="stop-111206.html">111206</a> - Gent Sluizeken 12:57</li><li><a href="stop-111207.html">111207</a> - Gent Coppinstraat 12:58</li><li><a href="stop-111208.html">111208</a> - Gent Heilig Kerst 12:59</li><li><a href="stop-111209.html">111209</a> - Gent Sint-Salvatorstraat 13:01</li><li><a href="stop-111210.html">111210</a> - Gent Muidebrug 13:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./47.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

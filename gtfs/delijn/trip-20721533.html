@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oudenaarde - Kerkhove - Avelgem - 20721533</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oudenaarde - Kerkhove - Avelgem - 20721533</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-119359.html">119359</a> - Oudenaarde Sportcentrum 12:23</li><li><a href="stop-121649.html">121649</a> - Oudenaarde V.T.I. 12:27</li><li><a href="stop-126762.html">126762</a> - Oudenaarde Station perron 5 12:29</li><li><a href="stop-118478.html">118478</a> - Oudenaarde Tacambaro 12:31</li><li><a href="stop-118477.html">118477</a> - Oudenaarde Markt 12:33</li><li><a href="stop-127974.html">127974</a> - Oudenaarde Provinciaal Instituut Vlaamse Ardennen 12:35</li><li><a href="stop-128746.html">128746</a> - Leupegem Westerring 12:39</li><li><a href="stop-119605.html">119605</a> - Melden Schapendries 12:40</li><li><a href="stop-119606.html">119606</a> - Melden Meldenstraat 12:42</li><li><a href="stop-119607.html">119607</a> - Melden Dorp 12:43</li><li><a href="stop-119608.html">119608</a> - Melden Berchemweg 12:44</li><li><a href="stop-119609.html">119609</a> - Melden Middenweg 12:44</li><li><a href="stop-119610.html">119610</a> - Berchem Heylbroekstraat 12:45</li><li><a href="stop-119611.html">119611</a> - Berchem Kasteelstraat 12:46</li><li><a href="stop-119612.html">119612</a> - Berchem Pontstraat 12:48</li><li><a href="stop-122954.html">122954</a> - Berchem Brugzavel ( Brandweer ) 12:48</li><li><a href="stop-119627.html">119627</a> - Berchem Kerkstraat 12:48</li><li><a href="stop-41723.html">41723</a> - Kerkhove Kerk 12:50</li><li><a href="stop-101117.html">101117</a> - Waarmaarde Sint-Elooi 12:51</li><li><a href="stop-39159.html">39159</a> - Avelgem Den Ast 12:52</li><li><a href="stop-104974.html">104974</a> - Avelgem Langestraat 12:54</li><li><a href="stop-101085.html">101085</a> - Avelgem Toekomststraat 12:54</li><li><a href="stop-127285.html">127285</a> - Avelgem Plaats 12:55</li><li><a href="stop-104968.html">104968</a> - Avelgem Station 12:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1454.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Herentals - Heultje - Houtvenne - Aarschot - 22514312</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Herentals - Heultje - Houtvenne - Aarschot - 22514312</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-9300.html">9300</a> - Aarschot Bekaf 12:10</li><li><a href="stop-15898.html">15898</a> - Aarschot Heilaakstraat 12:12</li><li><a href="stop-128921.html">128921</a> - Aarschot Bareel 12:13</li><li><a href="stop-15894.html">15894</a> - Aarschot Lindekensstraat 12:14</li><li><a href="stop-15892.html">15892</a> - Aarschot Oude Mechelsebaan 12:15</li><li><a href="stop-25513.html">25513</a> - Ramsel Madestraat 12:16</li><li><a href="stop-25511.html">25511</a> - Ramsel Truitseinde Vandenheuvelstr. 12:17</li><li><a href="stop-25509.html">25509</a> - Ramsel Roteinde 12:19</li><li><a href="stop-25507.html">25507</a> - Ramsel Bergstraat 12:20</li><li><a href="stop-109870.html">109870</a> - Ramsel Kerk Stationsstraat 12:21</li><li><a href="stop-109869.html">109869</a> - Ramsel Station 12:22</li><li><a href="stop-88784.html">88784</a> - Ramsel Begijnendijksesteenweg 12:23</li><li><a href="stop-21504.html">21504</a> - Ramsel Steenovens 12:23</li><li><a href="stop-25530.html">25530</a> - Ramsel Strokapel 12:24</li><li><a href="stop-109868.html">109868</a> - Houtvenne Kerk 12:26</li><li><a href="stop-25526.html">25526</a> - Houtvenne Donkenstraat 12:27</li><li><a href="stop-127758.html">127758</a> - Ramsel Vennekensstraat 12:28</li><li><a href="stop-24562.html">24562</a> - Houtvenne Arbor 12:29</li><li><a href="stop-24564.html">24564</a> - Westmeerbeek Station 12:30</li><li><a href="stop-109590.html">109590</a> - Westmeerbeek Kerk Netestraat 12:31</li><li><a href="stop-95503.html">95503</a> - Heultje Netestraat 12:32</li><li><a href="stop-109593.html">109593</a> - Heultje Hoog Heultje 12:33</li><li><a href="stop-95507.html">95507</a> - Heultje Hoge Akkers 12:33</li><li><a href="stop-95509.html">95509</a> - Heultje Goorbossen 12:34</li><li><a href="stop-109859.html">109859</a> - Heultje Kerk dorp 12:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2995.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

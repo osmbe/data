@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Leuven - Everb - Kortenb - Steenok - Cargo - Luch - 22793721</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Leuven - Everb - Kortenb - Steenok - Cargo - Luch - 22793721</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-17096.html">17096</a> - Leuven Station Perron 12 22:20</li><li><a href="stop-127221.html">127221</a> - Leuven KBC 22:25</li><li><a href="stop-11220.html">11220</a> - Herent Diependaal 22:26</li><li><a href="stop-93538.html">93538</a> - Herent Grote Molenweg 22:27</li><li><a href="stop-11290.html">11290</a> - Winksele IJzerenberg 22:28</li><li><a href="stop-11301.html">11301</a> - Winksele Schoonzicht 22:29</li><li><a href="stop-11306.html">11306</a> - Winksele Toverberg 22:30</li><li><a href="stop-93368.html">93368</a> - Veltem-Beisem Veltem Steenweg 22:30</li><li><a href="stop-11280.html">11280</a> - Veltem-Beisem Radioweg 22:32</li><li><a href="stop-11278.html">11278</a> - Veltem-Beisem Kluis 22:32</li><li><a href="stop-17148.html">17148</a> - Meerbeek Bosveldfarm 22:33</li><li><a href="stop-87967.html">87967</a> - Meerbeek Goedestraat 22:35</li><li><a href="stop-11985.html">11985</a> - Meerbeek Gemeentehuis 22:36</li><li><a href="stop-15910.html">15910</a> - Meerbeek Anastasia 22:37</li><li><a href="stop-11983.html">11983</a> - Meerbeek Burcht 22:37</li><li><a href="stop-16249.html">16249</a> - Everberg Hof van Graven 22:38</li><li><a href="stop-11935.html">11935</a> - Everberg Aan de Leeuwen 22:39</li><li><a href="stop-11939.html">11939</a> - Everberg Kerk 22:40</li><li><a href="stop-87743.html">87743</a> - Everberg Steenhof 22:41</li><li><a href="stop-11941.html">11941</a> - Everberg Pachthof Hogeras 22:42</li><li><a href="stop-11947.html">11947</a> - Everberg Winkelstraat 22:43</li><li><a href="stop-11949.html">11949</a> - Everberg Zavelstraat 22:44</li><li><a href="stop-11937.html">11937</a> - Everberg Dries 22:45</li><li><a href="stop-11977.html">11977</a> - Kortenberg Vaan 22:45</li><li><a href="stop-11953.html">11953</a> - Kortenberg Café Jamar 22:46</li><li><a href="stop-11955.html">11955</a> - Kortenberg Eikenhof 22:47</li><li><a href="stop-17241.html">17241</a> - Kortenberg Berkenhof 22:48</li><li><a href="stop-17192.html">17192</a> - Kortenberg Gemeentehuis 22:49</li><li><a href="stop-16189.html">16189</a> - Kortenberg Craenenplein 22:49</li><li><a href="stop-11965.html">11965</a> - Kortenberg Rijkswacht 22:51</li><li><a href="stop-11973.html">11973</a> - Kortenberg Station Zuid 22:52</li><li><a href="stop-11979.html">11979</a> - Erps-Kwerps Erps Watertoren 22:53</li><li><a href="stop-13505.html">13505</a> - Steenokkerzeel Humelgem,7 Wegen 22:56</li><li><a href="stop-13498.html">13498</a> - Steenokkerzeel Dijkstraat 22:57</li><li><a href="stop-13508.html">13508</a> - Steenokkerzeel Kerk 22:58</li><li><a href="stop-95352.html">95352</a> - Steenokkerzeel Nieuwstraat 22:59</li><li><a href="stop-13520.html">13520</a> - Steenokkerzeel Oud Station 23:01</li><li><a href="stop-13503.html">13503</a> - Melsbroek Groeneveld 23:02</li><li><a href="stop-13500.html">13500</a> - Melsbroek Geerensstraat 23:03</li><li><a href="stop-91156.html">91156</a> - Melsbroek Stationslaan 23:04</li><li><a href="stop-110691.html">110691</a> - Melsbroek Cargo Noord 23:04</li><li><a href="stop-110688.html">110688</a> - Melsbroek Cargo Discount P2 23:05</li><li><a href="stop-127845.html">127845</a> - Machelen Cargo Discount P1 23:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2519.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Jeuk - Montenaken - 22490852</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jeuk - Montenaken - 22490852</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-31672.html">31672</a> - Landen Mariahof 12:17</li><li><a href="stop-128834.html">128834</a> - Landen Bronplein 12:18</li><li><a href="stop-128832.html">128832</a> - Landen Maartstraat 12:19</li><li><a href="stop-15270.html">15270</a> - Landen Hertog van Brabantlaan 12:19</li><li><a href="stop-31610.html">31610</a> - Landen Sint-Gertrudisinstituut 12:21</li><li><a href="stop-43363.html">43363</a> - Landen Fabriekstraat 12:22</li><li><a href="stop-88392.html">88392</a> - Landen Station perron 2 12:24</li><li><a href="stop-12029.html">12029</a> - Landen Overweg 12:26</li><li><a href="stop-31640.html">31640</a> - Walsbets Kerk 12:27</li><li><a href="stop-91937.html">91937</a> - Wezeren School 12:28</li><li><a href="stop-31664.html">31664</a> - Wezeren Wezerenstraat 12:29</li><li><a href="stop-31675.html">31675</a> - Wezeren Kerk 12:29</li><li><a href="stop-28888.html">28888</a> - Montenaken Kerkhof 12:31</li><li><a href="stop-28816.html">28816</a> - Montenaken Markt 12:32</li><li><a href="stop-28854.html">28854</a> - Montenaken Gemeentehuis 12:33</li><li><a href="stop-28812.html">28812</a> - Montenaken Goyenslaan 12:33</li><li><a href="stop-28819.html">28819</a> - Montenaken Oud Tramstation 12:33</li><li><a href="stop-88057.html">88057</a> - Montenaken Klein Vorsen 12:34</li><li><a href="stop-100253.html">100253</a> - Kortijs Weg naar Hannuit 12:36</li><li><a href="stop-96782.html">96782</a> - Kortijs Vorsenberg 12:37</li><li><a href="stop-96802.html">96802</a> - Vorsen Kerkstraat 12:38</li><li><a href="stop-26995.html">26995</a> - Berloz Route du Village 12:40</li><li><a href="stop-105129.html">105129</a> - Berloz Rue de la Gare 12:42</li><li><a href="stop-95068.html">95068</a> - Jeuk Kasteelstraat 12:43</li><li><a href="stop-28779.html">28779</a> - Jeuk Langestraat 12:44</li><li><a href="stop-28773.html">28773</a> - Jeuk Kapel 12:45</li><li><a href="stop-28769.html">28769</a> - Jeuk H. Stassenstraat 12:46</li><li><a href="stop-28776.html">28776</a> - Jeuk Kerk 12:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4528.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sint-Niklaas-Hamme-Moerzeke- D'monde-Lebbeke-Aalst - 20710451</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Niklaas-Hamme-Moerzeke- D'monde-Lebbeke-Aalst - 20710451</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-115784.html">115784</a> - Hamme Tweebruggenplein 16:28</li><li><a href="stop-115785.html">115785</a> - Hamme Hospitaalstraat 16:29</li><li><a href="stop-115787.html">115787</a> - Hamme Damstraat 16:30</li><li><a href="stop-115788.html">115788</a> - Hamme Hooirt 16:31</li><li><a href="stop-115792.html">115792</a> - Hamme Spurt 16:32</li><li><a href="stop-115363.html">115363</a> - Hamme Zwaarveld Samat 16:34</li><li><a href="stop-115894.html">115894</a> - Hamme Zwaarveld Atcomex 16:35</li><li><a href="stop-115793.html">115793</a> - Hamme Neerstraat 16:36</li><li><a href="stop-115794.html">115794</a> - Moerzeke Hammestraat 16:38</li><li><a href="stop-115795.html">115795</a> - Moerzeke Bloemenstraat 16:39</li><li><a href="stop-115796.html">115796</a> - Moerzeke Dorp 16:40</li><li><a href="stop-115799.html">115799</a> - Moerzeke D'Hebbe 16:41</li><li><a href="stop-115800.html">115800</a> - Moerzeke Hebbestraat 16:42</li><li><a href="stop-118016.html">118016</a> - Grembergen Zijdijk 16:43</li><li><a href="stop-118015.html">118015</a> - Grembergen Oude Molenstraat 16:45</li><li><a href="stop-118013.html">118013</a> - Grembergen Gaverstraat 16:46</li><li><a href="stop-118012.html">118012</a> - Grembergen Dorp 16:47</li><li><a href="stop-118014.html">118014</a> - Grembergen Sportpleinstraat 16:49</li><li><a href="stop-118010.html">118010</a> - Grembergen Scheldedreef 16:51</li><li><a href="stop-127113.html">127113</a> - Dendermonde Oude Vest 16:53</li><li><a href="stop-117692.html">117692</a> - Dendermonde Brusselsestraat 16:56</li><li><a href="stop-126709.html">126709</a> - Dendermonde Station perron 7 16:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./948.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

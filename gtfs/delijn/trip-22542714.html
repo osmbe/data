@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brecht - Wuustwezel - Brasschaat - Antwerpen - 22542714</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brecht - Wuustwezel - Brasschaat - Antwerpen - 22542714</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108732.html">108732</a> - Wuustwezel Stelplaats 12:50</li><li><a href="stop-108730.html">108730</a> - Wuustwezel Voetbalplein 12:52</li><li><a href="stop-108729.html">108729</a> - Wuustwezel G. Gezellelaan 12:53</li><li><a href="stop-108727.html">108727</a> - Wuustwezel Dorp 12:54</li><li><a href="stop-22311.html">22311</a> - Wuustwezel Kouterstraat 12:55</li><li><a href="stop-22309.html">22309</a> - Wuustwezel Beersgat 12:57</li><li><a href="stop-22307.html">22307</a> - Wuustwezel Martendijk 12:58</li><li><a href="stop-108723.html">108723</a> - Wuustwezel Klooster 12:59</li><li><a href="stop-125821.html">125821</a> - Wuustwezel Verellenlaan 13:00</li><li><a href="stop-22292.html">22292</a> - Wuustwezel Bosduinstraat 13:01</li><li><a href="stop-125817.html">125817</a> - Wuustwezel Kochdreef 13:02</li><li><a href="stop-93190.html">93190</a> - Brasschaat Koersdreef 13:03</li><li><a href="stop-22282.html">22282</a> - Brasschaat Struikenlaan 13:04</li><li><a href="stop-108711.html">108711</a> - Brasschaat Sint-Jobsteenweg 13:06</li><li><a href="stop-125815.html">125815</a> - Brasschaat Maria Ter Heide Kerk 13:07</li><li><a href="stop-22274.html">22274</a> - Brasschaat Wipstraat 13:08</li><li><a href="stop-22272.html">22272</a> - Brasschaat Bethaniëlei 13:09</li><li><a href="stop-108705.html">108705</a> - Brasschaat Pauwelslei 13:11</li><li><a href="stop-22267.html">22267</a> - Brasschaat Torenhof 13:11</li><li><a href="stop-108703.html">108703</a> - Brasschaat Prins Kavellei 13:13</li><li><a href="stop-22260.html">22260</a> - Brasschaat Door Verstraetelei 13:15</li><li><a href="stop-22258.html">22258</a> - Brasschaat Kerk Bredabaan 13:16</li><li><a href="stop-22255.html">22255</a> - Brasschaat Dr. Roosensplein 13:18</li><li><a href="stop-108699.html">108699</a> - Brasschaat Zegersdreef 13:19</li><li><a href="stop-108697.html">108697</a> - Brasschaat Plataandreef 13:20</li><li><a href="stop-108696.html">108696</a> - Brasschaat Voshollei 13:21</li><li><a href="stop-108694.html">108694</a> - Brasschaat Oudstrijderslei 13:22</li><li><a href="stop-109466.html">109466</a> - Merksem Kapelsesteenweg 13:23</li><li><a href="stop-128933.html">128933</a> - Merksem P+R Merksem 13:25</li><li><a href="stop-107395.html">107395</a> - Merksem De Biezen 13:28</li><li><a href="stop-21034.html">21034</a> - Merksem Laaglandlaan 13:30</li><li><a href="stop-107633.html">107633</a> - Merksem F. Adriaenssensstraat 13:31</li><li><a href="stop-108124.html">108124</a> - Merksem Overhout 13:31</li><li><a href="stop-107754.html">107754</a> - Merksem Ryenlanddreef 13:32</li><li><a href="stop-108024.html">108024</a> - Merksem De Vlaschaardstraat 13:33</li><li><a href="stop-107821.html">107821</a> - Merksem Laarbekestraat 13:35</li><li><a href="stop-107645.html">107645</a> - Antwerpen Station Luchtbal 13:37</li><li><a href="stop-108192.html">108192</a> - Antwerpen Noorderplaats 13:43</li><li><a href="stop-108466.html">108466</a> - Antwerpen Sint-Jansplein 13:45</li><li><a href="stop-125284.html">125284</a> - Antwerpen F. Rooseveltplaats perron 34 13:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3679.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

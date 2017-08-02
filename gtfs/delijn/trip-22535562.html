@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Westerlo - Voortkapel - Noorderwijk - 22535562</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Westerlo - Voortkapel - Noorderwijk - 22535562</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109934.html">109934</a> - Westerlo de Merodedreef 15:53</li><li><a href="stop-109938.html">109938</a> - Westerlo Dorp 15:55</li><li><a href="stop-109698.html">109698</a> - Tongerlo Kerk De Trannoyplein 15:59</li><li><a href="stop-19623.html">19623</a> - Tongerlo Kerk Meulemanslaan 15:59</li><li><a href="stop-25000.html">25000</a> - Tongerlo Dreef Abdij 16:00</li><li><a href="stop-24962.html">24962</a> - Tongerlo Giselbertusstraat 16:01</li><li><a href="stop-24960.html">24960</a> - Tongerlo Geneinde 16:02</li><li><a href="stop-24957.html">24957</a> - Tongerlo Steine Hoevestraat 16:03</li><li><a href="stop-95534.html">95534</a> - Voortkapel Ter Voort 16:05</li><li><a href="stop-95532.html">95532</a> - Voortkapel Stwg. Voortkapel 16:06</li><li><a href="stop-109685.html">109685</a> - Voortkapel Centrum 16:07</li><li><a href="stop-95528.html">95528</a> - Voortkapel Nieuwebaan 16:07</li><li><a href="stop-95527.html">95527</a> - Oosterwijk Busselen 16:08</li><li><a href="stop-95382.html">95382</a> - Oosterwijk Zwarte Braak 16:09</li><li><a href="stop-95554.html">95554</a> - Oosterwijk Sint-Lambertusschool 16:10</li><li><a href="stop-95367.html">95367</a> - Voortkapel Ketelstraat 16:12</li><li><a href="stop-109953.html">109953</a> - Tongerlo Strateneinde 16:13</li><li><a href="stop-109951.html">109951</a> - Morkhoven Zandhoevestraat 16:14</li><li><a href="stop-25485.html">25485</a> - Morkhoven Station 16:15</li><li><a href="stop-25483.html">25483</a> - Noorderwijk Hoogton 16:16</li><li><a href="stop-25481.html">25481</a> - Noorderwijk Venheide 16:17</li><li><a href="stop-109853.html">109853</a> - Noorderwijk Gemeentehuis 16:18</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3567.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

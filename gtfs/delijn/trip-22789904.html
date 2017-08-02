@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Muggenberg - Tielt - Diest - 22789904</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Muggenberg - Tielt - Diest - 22789904</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-17013.html">17013</a> - Diest Station Perron 8 15:35</li><li><a href="stop-14840.html">14840</a> - Diest Weerstandsplein 15:39</li><li><a href="stop-14841.html">14841</a> - Diest Sint-Jacobsplein 15:41</li><li><a href="stop-43984.html">43984</a> - Diest Atheneum 15:42</li><li><a href="stop-10458.html">10458</a> - Diest Euro Shoe 15:43</li><li><a href="stop-10466.html">10466</a> - Diest Stadion 15:44</li><li><a href="stop-128819.html">128819</a> - Diest Sint-Jansplein 15:45</li><li><a href="stop-127837.html">127837</a> - Diest Leuvensepoort 15:47</li><li><a href="stop-10475.html">10475</a> - Kaggevinne Galgeveldstraat 15:49</li><li><a href="stop-10487.html">10487</a> - Kaggevinne Nieuwstraat 15:49</li><li><a href="stop-10485.html">10485</a> - Kaggevinne Leuvensestraat 216 15:50</li><li><a href="stop-9708.html">9708</a> - Assent Zandstraat 15:52</li><li><a href="stop-9690.html">9690</a> - Assent Nieuwstraat 15:53</li><li><a href="stop-9692.html">9692</a> - Assent Oprit A2 15:54</li><li><a href="stop-9686.html">9686</a> - Assent Meerbeek 15:55</li><li><a href="stop-9716.html">9716</a> - Bekkevoort Begraafplaats 15:56</li><li><a href="stop-9710.html">9710</a> - Bekkevoort Kerk 15:57</li><li><a href="stop-9714.html">9714</a> - Bekkevoort Schillekensberg 15:58</li><li><a href="stop-9712.html">9712</a> - Bekkevoort Oude Tiensebaan 15:59</li><li><a href="stop-13749.html">13749</a> - Tielt-Winge Tomberg 16:01</li><li><a href="stop-13729.html">13729</a> - Tielt-Winge Horenweg 16:03</li><li><a href="stop-13738.html">13738</a> - Tielt-Winge Stevensstraat 16:04</li><li><a href="stop-13719.html">13719</a> - Tielt-Winge Bruin Kruis 16:05</li><li><a href="stop-13743.html">13743</a> - Tielt-Winge Stelplaats Perron 4 16:06</li><li><a href="stop-13720.html">13720</a> - Tielt-Winge Driesstraat 16:08</li><li><a href="stop-13695.html">13695</a> - Molenbeek-Wersbeek Kapel 16:10</li><li><a href="stop-15563.html">15563</a> - Molenbeek-Wersbeek Tiensebaan 16:13</li><li><a href="stop-9730.html">9730</a> - Molenbeek-Wersbeek Muggenberg Kapel 16:15</li><li><a href="stop-9728.html">9728</a> - Molenbeek-Wersbeek Muggenberg 16:17</li><li><a href="stop-13691.html">13691</a> - Meensel-Kiezegem Wersbeekstraat 16:18</li><li><a href="stop-13686.html">13686</a> - Meensel-Kiezegem Tramstraat 16:19</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2421.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

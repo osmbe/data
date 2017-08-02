@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Eeklo - Watervliet - Sint-Jan-in-Eremo - 20699105</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eeklo - Watervliet - Sint-Jan-in-Eremo - 20699105</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-113198.html">113198</a> - Sint-Jan-In-Eremo Kerk 05:31</li><li><a href="stop-113197.html">113197</a> - Sint-Jan-In-Eremo Sint-Jansstraat 05:32</li><li><a href="stop-113196.html">113196</a> - Waterland-Oudeman Zeestraat 05:35</li><li><a href="stop-113195.html">113195</a> - Waterland-Oudeman Dorp 05:36</li><li><a href="stop-113194.html">113194</a> - Waterland-Oudeman Steenweg 05:37</li><li><a href="stop-113193.html">113193</a> - Waterland-Oudeman Zandstraat 05:37</li><li><a href="stop-113192.html">113192</a> - Watervliet Lathouwerstraat 05:38</li><li><a href="stop-113191.html">113191</a> - Watervliet Oudemansdijk 18 05:39</li><li><a href="stop-113039.html">113039</a> - Watervliet Hoogkasteel 05:40</li><li><a href="stop-113038.html">113038</a> - Watervliet Munte 05:40</li><li><a href="stop-113037.html">113037</a> - Watervliet Dorp 05:41</li><li><a href="stop-113036.html">113036</a> - Watervliet Ketterijstraat 43 05:42</li><li><a href="stop-113035.html">113035</a> - Watervliet Mariapolderdijk 05:42</li><li><a href="stop-113034.html">113034</a> - Watervliet Brug 05:43</li><li><a href="stop-113033.html">113033</a> - Watervliet Nieuwstraat 05:43</li><li><a href="stop-113032.html">113032</a> - Watervliet Linde 05:44</li><li><a href="stop-113186.html">113186</a> - Bentille Kerselarenhoek 05:45</li><li><a href="stop-113185.html">113185</a> - Bentille Kerk 05:46</li><li><a href="stop-113184.html">113184</a> - Kaprijke Goochelstraat 05:47</li><li><a href="stop-113183.html">113183</a> - Kaprijke Rijselhofdreef 05:48</li><li><a href="stop-113182.html">113182</a> - Kaprijke Kruiskenstraat 05:48</li><li><a href="stop-113181.html">113181</a> - Kaprijke Wiskenstraat 05:48</li><li><a href="stop-113180.html">113180</a> - Kaprijke Eerstestraat 05:49</li><li><a href="stop-113179.html">113179</a> - Eeklo Kleemhoek 05:50</li><li><a href="stop-113178.html">113178</a> - Eeklo Waaistraat 05:51</li><li><a href="stop-113177.html">113177</a> - Eeklo Busstraat 05:52</li><li><a href="stop-113176.html">113176</a> - Eeklo P.T.I. 05:53</li><li><a href="stop-113175.html">113175</a> - Eeklo Teirlinckstraat 05:54</li><li><a href="stop-112977.html">112977</a> - Eeklo Markt 05:55</li><li><a href="stop-126663.html">126663</a> - Eeklo Station perron 4 05:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./415.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Dendermonde - Wieze - Aalst - 20714120</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Dendermonde - Wieze - Aalst - 20714120</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126709.html">126709</a> - Dendermonde Station perron 7 17:45</li><li><a href="stop-116802.html">116802</a> - Sint-Gillis-Dendermonde Kerk 17:48</li><li><a href="stop-116801.html">116801</a> - Sint-Gillis-Dendermonde Acacialaan 17:49</li><li><a href="stop-116800.html">116800</a> - Sint-Gillis-Dendermonde Kruisstraat 17:50</li><li><a href="stop-116808.html">116808</a> - Lebbeke Vondelmolen 17:51</li><li><a href="stop-116799.html">116799</a> - Lebbeke Ziekenhuisveldbaan 17:51</li><li><a href="stop-116821.html">116821</a> - Lebbeke Dorp 17:52</li><li><a href="stop-116822.html">116822</a> - Lebbeke Molenstraat 17:54</li><li><a href="stop-116823.html">116823</a> - Lebbeke Bellestraat 17:55</li><li><a href="stop-116824.html">116824</a> - Denderbelle Blijstraat 17:57</li><li><a href="stop-116825.html">116825</a> - Denderbelle Dorp 17:59</li><li><a href="stop-116826.html">116826</a> - Denderbelle Bermenstraat 18:00</li><li><a href="stop-116827.html">116827</a> - Denderbelle Mottekensstraat 18:01</li><li><a href="stop-116828.html">116828</a> - Wieze Streekbaan 18:03</li><li><a href="stop-116829.html">116829</a> - Wieze Dorp 18:04</li><li><a href="stop-122316.html">122316</a> - Wieze Oktoberhallen 18:05</li><li><a href="stop-116831.html">116831</a> - Herdersem Aartstraat 18:06</li><li><a href="stop-116494.html">116494</a> - Herdersem Gemeentehuis 18:07</li><li><a href="stop-116499.html">116499</a> - Herdersem Grote Baan/Kouterbaan 18:07</li><li><a href="stop-116496.html">116496</a> - Aalst Middenweg 18:08</li><li><a href="stop-116833.html">116833</a> - Herdersem Kapelleommegang 18:09</li><li><a href="stop-116834.html">116834</a> - Herdersem Kapel Pontweg 18:10</li><li><a href="stop-115653.html">115653</a> - Herdersem Gudstraat 18:11</li><li><a href="stop-117250.html">117250</a> - Moorsel Kattenbroek 18:13</li><li><a href="stop-117249.html">117249</a> - Moorsel Rijgerstraat 18:14</li><li><a href="stop-117251.html">117251</a> - Moorsel Avouestraat 18:14</li><li><a href="stop-117252.html">117252</a> - Aalst Paddenvijverstraat 18:15</li><li><a href="stop-116674.html">116674</a> - Aalst Achterweg 18:16</li><li><a href="stop-116675.html">116675</a> - Aalst Paardendries 18:18</li><li><a href="stop-116514.html">116514</a> - Aalst Onze-Lieve-Vrouw Ziekenhuis 18:19</li><li><a href="stop-125417.html">125417</a> - Aalst Slotstraat 18:21</li><li><a href="stop-116516.html">116516</a> - Aalst Een Meistraat 18:22</li><li><a href="stop-126706.html">126706</a> - Aalst Station perron 6 18:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1072.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

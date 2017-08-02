@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Overmere - Lokeren - 20716126</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Overmere - Lokeren - 20716126</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-116729.html">116729</a> - Berlare Kerk 05:16</li><li><a href="stop-116730.html">116730</a> - Berlare Sint-Annaplein 05:18</li><li><a href="stop-116732.html">116732</a> - Berlare Fabriekstraat 05:19</li><li><a href="stop-116733.html">116733</a> - Berlare Christiaensstraat 05:20</li><li><a href="stop-116734.html">116734</a> - Schoonaarde Gemeenteplein 05:22</li><li><a href="stop-116735.html">116735</a> - Schoonaarde Schoolstraat 05:23</li><li><a href="stop-116736.html">116736</a> - Schoonaarde Schuiteplasstraat 05:23</li><li><a href="stop-116737.html">116737</a> - Schoonaarde Migrodries 05:23</li><li><a href="stop-116738.html">116738</a> - Schoonaarde Pontstraat 05:24</li><li><a href="stop-117301.html">117301</a> - Gijzegem Cabine 05:24</li><li><a href="stop-116739.html">116739</a> - Gijzegem Muntstraat 05:25</li><li><a href="stop-116740.html">116740</a> - Gijzegem Lange Haagstraat 05:26</li><li><a href="stop-116741.html">116741</a> - Hofstade Heerlijkheidstraat 05:27</li><li><a href="stop-117242.html">117242</a> - Hofstade Babbelaarstraat 05:28</li><li><a href="stop-116742.html">116742</a> - Hofstade Residentie Kareeloven 05:29</li><li><a href="stop-116743.html">116743</a> - Hofstade K. Van Der Slotenstraat 05:30</li><li><a href="stop-117346.html">117346</a> - Hofstade Mottantstraat 05:30</li><li><a href="stop-116714.html">116714</a> - Hofstade Blektestraat 05:31</li><li><a href="stop-116715.html">116715</a> - Hofstade Consciencestraat 05:32</li><li><a href="stop-116716.html">116716</a> - Hofstade Molenkouter 05:33</li><li><a href="stop-116717.html">116717</a> - Aalst Twijnderstraat 05:34</li><li><a href="stop-116718.html">116718</a> - Aalst Dendermondsesteenweg 05:35</li><li><a href="stop-120301.html">120301</a> - Aalst Esplanade 05:36</li><li><a href="stop-126678.html">126678</a> - Aalst Station perron 2 05:37</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1215.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

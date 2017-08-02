@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Erpe Vijfhuizen - Ressegem - Zottegem - 20718600</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Erpe Vijfhuizen - Ressegem - Zottegem - 20718600</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126679.html">126679</a> - Aalst Station perron 3 17:26</li><li><a href="stop-117434.html">117434</a> - Aalst Vredeplein 17:30</li><li><a href="stop-117904.html">117904</a> - Aalst Gentsestraat 17:32</li><li><a href="stop-117905.html">117905</a> - Aalst Sinte Annalaan 17:34</li><li><a href="stop-117907.html">117907</a> - Aalst Kreupelveldstraat 17:37</li><li><a href="stop-117908.html">117908</a> - Aalst Sint-Apoloniastraat 17:38</li><li><a href="stop-117909.html">117909</a> - Aalst Erpestraat 17:39</li><li><a href="stop-117910.html">117910</a> - Erpe Vijfhuizen 17:40</li><li><a href="stop-117885.html">117885</a> - Erpe Dorpsstraat 17:40</li><li><a href="stop-117911.html">117911</a> - Erpe Botermelkstraat 17:41</li><li><a href="stop-117912.html">117912</a> - Erpe Kerk 17:42</li><li><a href="stop-117913.html">117913</a> - Erpe Kraaineststraat 17:43</li><li><a href="stop-117915.html">117915</a> - Erpe Station Erpe Mere 17:44</li><li><a href="stop-117916.html">117916</a> - Mere Bosstraat 17:46</li><li><a href="stop-117869.html">117869</a> - Bambrugge Gemeentehuis 17:47</li><li><a href="stop-117870.html">117870</a> - Bambrugge Prinsdaal 17:48</li><li><a href="stop-117871.html">117871</a> - Bambrugge Sint-Annastraat 17:49</li><li><a href="stop-117872.html">117872</a> - Burst Kerk 17:50</li><li><a href="stop-118026.html">118026</a> - Burst Molenveld 17:51</li><li><a href="stop-117873.html">117873</a> - Burst Station 17:53</li><li><a href="stop-118025.html">118025</a> - Burst Eremietstraat 17:53</li><li><a href="stop-117874.html">117874</a> - Burst Stationsstraat 17:54</li><li><a href="stop-118024.html">118024</a> - Aaigem Kwakkel 17:55</li><li><a href="stop-118023.html">118023</a> - Ressegem Veldhoekstraat 17:56</li><li><a href="stop-118022.html">118022</a> - Ressegem Kamerstraat 17:57</li><li><a href="stop-128719.html">128719</a> - Ressegem Sint-Mauritsplein 17:57</li><li><a href="stop-118020.html">118020</a> - Ressegem Ressegemstraat 17:57</li><li><a href="stop-118019.html">118019</a> - Herzele Eikboslaan 17:59</li><li><a href="stop-117826.html">117826</a> - Herzele Gemeentehuis 18:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1318.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

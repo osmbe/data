@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Boom - Puurs - Dendermonde - 22514819</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boom - Puurs - Dendermonde - 22514819</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109447.html">109447</a> - Puurs Station 06:35</li><li><a href="stop-107716.html">107716</a> - Puurs Markt 06:36</li><li><a href="stop-110004.html">110004</a> - Puurs Hooiveld 06:37</li><li><a href="stop-128655.html">128655</a> - Puurs Hof Ten Berg 06:38</li><li><a href="stop-21180.html">21180</a> - Puurs Zeutestraat 06:39</li><li><a href="stop-109445.html">109445</a> - Oppuurs Kerkhof 06:40</li><li><a href="stop-109444.html">109444</a> - Oppuurs Oppuurs Station 06:41</li><li><a href="stop-109442.html">109442</a> - Oppuurs Schoolstraat 06:42</li><li><a href="stop-24146.html">24146</a> - Oppuurs Schaddekensdries 06:43</li><li><a href="stop-109440.html">109440</a> - Oppuurs Pandgatheide 06:45</li><li><a href="stop-109439.html">109439</a> - Sint-Amands Heidestraat 06:47</li><li><a href="stop-24140.html">24140</a> - Sint-Amands Buisstraat 06:48</li><li><a href="stop-24137.html">24137</a> - Sint-Amands Station 06:49</li><li><a href="stop-109435.html">109435</a> - Sint-Amands De Valk 06:50</li><li><a href="stop-107772.html">107772</a> - Sint-Amands Boonhof 06:51</li><li><a href="stop-24132.html">24132</a> - Sint-Amands Dorekensstraat 06:51</li><li><a href="stop-109431.html">109431</a> - Sint-Amands Fok 06:52</li><li><a href="stop-126713.html">126713</a> - Buggenhout Weide 06:53</li><li><a href="stop-117133.html">117133</a> - Buggenhout Van Praet 06:54</li><li><a href="stop-117134.html">117134</a> - Buggenhout Brielstraat 06:54</li><li><a href="stop-117184.html">117184</a> - Buggenhout Diepmeerstraat 06:55</li><li><a href="stop-126742.html">126742</a> - Baasrode Noord Station 06:56</li><li><a href="stop-118263.html">118263</a> - Baasrode Vermijlenstraat 06:57</li><li><a href="stop-118262.html">118262</a> - Baasrode Scheepswerfstraat 06:58</li><li><a href="stop-126741.html">126741</a> - Baasrode Rosstraat 06:59</li><li><a href="stop-126740.html">126740</a> - Baasrode Broekkouter 07:00</li><li><a href="stop-118259.html">118259</a> - Baasrode Broekstraat 07:01</li><li><a href="stop-127116.html">127116</a> - Baasrode Weg Naar Vlassenbroek 07:02</li><li><a href="stop-126738.html">126738</a> - Dendermonde Industrieweg 07:03</li><li><a href="stop-127115.html">127115</a> - Dendermonde Korte Dijkstraat 07:05</li><li><a href="stop-118255.html">118255</a> - Dendermonde Kroonveldlaan 07:06</li><li><a href="stop-127113.html">127113</a> - Dendermonde Oude Vest 07:07</li><li><a href="stop-117692.html">117692</a> - Dendermonde Brusselsestraat 07:09</li><li><a href="stop-43017.html">43017</a> - Dendermonde Station perron 5 07:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3012.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

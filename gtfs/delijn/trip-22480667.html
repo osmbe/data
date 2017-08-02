@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diest - Geel / Tessenderlo - 22480667</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diest - Geel / Tessenderlo - 22480667</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-31262.html">31262</a> - Veerle Pompert 07:29</li><li><a href="stop-31235.html">31235</a> - Veerle Dorp 07:30</li><li><a href="stop-31269.html">31269</a> - Veerle Zand 07:30</li><li><a href="stop-31266.html">31266</a> - Veerle Vorstsebaan 07:31</li><li><a href="stop-31234.html">31234</a> - Veerle Brug 07:32</li><li><a href="stop-31298.html">31298</a> - Vorst Steenbergen 07:33</li><li><a href="stop-31300.html">31300</a> - Vorst Toke Van Nestestraat 07:34</li><li><a href="stop-126518.html">126518</a> - Vorst Markt 07:35</li><li><a href="stop-20147.html">20147</a> - Vorst Rode Kruisstraat 07:36</li><li><a href="stop-20149.html">20149</a> - Eindhout Paviljoen 07:38</li><li><a href="stop-20151.html">20151</a> - Eindhout Sint-Jozefstraat 07:39</li><li><a href="stop-126928.html">126928</a> - Eindhout Dorp 07:40</li><li><a href="stop-20155.html">20155</a> - Eindhout Kruispunt 07:41</li><li><a href="stop-25778.html">25778</a> - Geel Spikkewaverdijk 07:44</li><li><a href="stop-106799.html">106799</a> - Geel Dennenstraat 07:45</li><li><a href="stop-110936.html">110936</a> - Geel Winkelomheide Dorp 07:46</li><li><a href="stop-25789.html">25789</a> - Geel Djepstraat 07:47</li><li><a href="stop-97659.html">97659</a> - Winkelomheide Winkelomseheide 07:48</li><li><a href="stop-127487.html">127487</a> - Winkelomheide Punt 07:48</li><li><a href="stop-25800.html">25800</a> - Geel Seppendijk 07:49</li><li><a href="stop-109946.html">109946</a> - Geel Brukel 07:51</li><li><a href="stop-109949.html">109949</a> - Geel Diestseweg 07:52</li><li><a href="stop-109758.html">109758</a> - Geel AZ Sint-Dimpna 07:53</li><li><a href="stop-126934.html">126934</a> - Geel Nieuwstraat 07:56</li><li><a href="stop-107515.html">107515</a> - Geel Stadspark 07:58</li><li><a href="stop-126875.html">126875</a> - Geel Station perron 2 08:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4866.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

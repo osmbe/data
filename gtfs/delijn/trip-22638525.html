@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Roeselare Station-Nieuw Kerkhof - 22638525</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Roeselare Station-Nieuw Kerkhof - 22638525</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-39252.html">39252</a> - Roeselare Nieuw Kerkhof 06:25</li><li><a href="stop-94905.html">94905</a> - Roeselare Groenestraat 06:26</li><li><a href="stop-42081.html">42081</a> - Roeselare Sneyssensstraat 06:27</li><li><a href="stop-42066.html">42066</a> - Roeselare K. Roelandstraat 06:28</li><li><a href="stop-39251.html">39251</a> - Roeselare Knapenstraat 06:28</li><li><a href="stop-39250.html">39250</a> - Roeselare Maria'S Rustoord 06:29</li><li><a href="stop-90969.html">90969</a> - Roeselare Kerelsplein 06:30</li><li><a href="stop-39248.html">39248</a> - Roeselare Collievijverpark 06:31</li><li><a href="stop-39247.html">39247</a> - Roeselare Happestraat 06:32</li><li><a href="stop-39246.html">39246</a> - Roeselare Roularta 06:32</li><li><a href="stop-42062.html">42062</a> - Roeselare Kijkuit 06:34</li><li><a href="stop-123680.html">123680</a> - Roeselare Kliniek H.Hart 06:36</li><li><a href="stop-100925.html">100925</a> - Roeselare Ieperstraat 06:37</li><li><a href="stop-38115.html">38115</a> - Roeselare Polenplein 06:39</li><li><a href="stop-126376.html">126376</a> - Roeselare Station perron 11 06:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4259.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

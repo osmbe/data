@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Aarschot</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Aarschot</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-IC292713101.html">IC292713101</a> - IC292713101 - Leuven - Antwerpen-Centraal</li><li><a href="trip-IC292813111.html">IC292813111</a> - IC292813111 - Leuven - Antwerpen-Centraal</li><li><a href="trip-IC293713201.html">IC293713201</a> - IC293713201 - Leuven - Antwerpen-Centraal</li><li><a href="trip-IC293813211.html">IC293813211</a> - IC293813211 - Leuven - Antwerpen-Centraal</li><li><a href="trip-IC293913221.html">IC293913221</a> - IC293913221 - Leuven - Antwerpen-Centraal</li><li><a href="trip-IC294013231.html">IC294013231</a> - IC294013231 - Leuven - Antwerpen-Centraal</li><li><a href="trip-IC294113241.html">IC294113241</a> - IC294113241 - Leuven - Antwerpen-Centraal</li><li><a href="trip-P828132491.html">P828132491</a> - P828132491 - Antwerpen-Centraal - Aarschot</li><li><a href="trip-P828232501.html">P828232501</a> - P828232501 - Antwerpen-Centraal - Aarschot</li><li><a href="trip-P828332511.html">P828332511</a> - P828332511 - Antwerpen-Centraal - Aarschot</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.984406, 4.824043], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.984406, 4.824043]).addTo(map);
+    </script>
+</body>
+
+</html>

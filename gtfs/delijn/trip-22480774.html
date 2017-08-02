@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sint-Truiden - Herk-de-Stad - Lummen - Beringen - 22480774</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Truiden - Herk-de-Stad - Lummen - Beringen - 22480774</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-123257.html">123257</a> - Beringen Bogaersveld perron 3 07:56</li><li><a href="stop-26853.html">26853</a> - Beringen Graaf van Loonstraat 07:57</li><li><a href="stop-26959.html">26959</a> - Beringen Weg naar Hoxelaar 07:58</li><li><a href="stop-26900.html">26900</a> - Beringen Muizenheide 07:59</li><li><a href="stop-30364.html">30364</a> - Heusden Everselweg 08:00</li><li><a href="stop-30372.html">30372</a> - Heusden Kapelstraat 08:01</li><li><a href="stop-97118.html">97118</a> - Eversel Bavostraat 08:02</li><li><a href="stop-97120.html">97120</a> - Eversel Kerk 08:03</li><li><a href="stop-97123.html">97123</a> - Eversel Everselkiezel 08:04</li><li><a href="stop-97315.html">97315</a> - Genenbos Kanaalbrug 08:07</li><li><a href="stop-97317.html">97317</a> - Genenbos Schipperstraat 08:10</li><li><a href="stop-97319.html">97319</a> - Genenbos Voetballokaal 08:11</li><li><a href="stop-97321.html">97321</a> - Molem Schutterstraat 08:13</li><li><a href="stop-32148.html">32148</a> - Lummen Molem 08:14</li><li><a href="stop-32150.html">32150</a> - Lummen Molem Kabien 08:15</li><li><a href="stop-32092.html">32092</a> - Lummen De Steenberg 08:15</li><li><a href="stop-32117.html">32117</a> - Lummen Kruispunt 08:17</li><li><a href="stop-32095.html">32095</a> - Lummen Frederickxstraat 08:18</li><li><a href="stop-32161.html">32161</a> - Lummen Pastoor Winterstraat 08:20</li><li><a href="stop-30186.html">30186</a> - Schulen Station 08:23</li><li><a href="stop-30179.html">30179</a> - Schulen Neerstraat 08:24</li><li><a href="stop-30172.html">30172</a> - Schulen Kerk 08:25</li><li><a href="stop-30183.html">30183</a> - Schulen Sint-Jansstraat 08:26</li><li><a href="stop-30194.html">30194</a> - Schulen Weg op Beringen 08:28</li><li><a href="stop-30137.html">30137</a> - Herk-de-Stad Hasseltsesteenweg 08:29</li><li><a href="stop-30146.html">30146</a> - Herk-de-Stad Markt 08:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4907.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

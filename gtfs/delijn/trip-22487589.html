@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Diest / Tessenderlo - 22487589</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Diest / Tessenderlo - 22487589</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-32134.html">32134</a> - Meldert Centrum 07:29</li><li><a href="stop-32137.html">32137</a> - Meldert Langendries 07:30</li><li><a href="stop-32141.html">32141</a> - Meldert Otterberg 07:31</li><li><a href="stop-28949.html">28949</a> - Zelem Bakelstraat 07:32</li><li><a href="stop-28972.html">28972</a> - Zelem Tuinwijkstraat 07:32</li><li><a href="stop-28962.html">28962</a> - Zelem Meldertsestraat 07:33</li><li><a href="stop-28967.html">28967</a> - Zelem Station 07:34</li><li><a href="stop-28968.html">28968</a> - Zelem Stationstraat 07:35</li><li><a href="stop-28964.html">28964</a> - Zelem Schans kapel 07:36</li><li><a href="stop-28971.html">28971</a> - Zelem Thibautstraat 07:37</li><li><a href="stop-28956.html">28956</a> - Zelem Kolenbergstraat 07:39</li><li><a href="stop-28953.html">28953</a> - Zelem Gennepstraat 07:40</li><li><a href="stop-28950.html">28950</a> - Zelem Geesthuis 07:41</li><li><a href="stop-16511.html">16511</a> - Schaffen Sparrenlaan 07:43</li><li><a href="stop-16513.html">16513</a> - Schaffen Groenstraat 07:44</li><li><a href="stop-128839.html">128839</a> - Schaffen Weg op Tessenderlo 07:46</li><li><a href="stop-16506.html">16506</a> - Schaffen Schoonaarde 07:47</li><li><a href="stop-27963.html">27963</a> - Diest Station perron 4 07:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5274.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

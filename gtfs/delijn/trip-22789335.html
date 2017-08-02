@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Meerbeek - Erps-Kwerps - Haacht - 22789335</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Meerbeek - Erps-Kwerps - Haacht - 22789335</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-93388.html">93388</a> - Haacht Don Bosco 15:50</li><li><a href="stop-11058.html">11058</a> - Haacht Schorisgat 15:53</li><li><a href="stop-11044.html">11044</a> - Haacht Haardbos 15:54</li><li><a href="stop-93389.html">93389</a> - Wespelaar Sporthal 15:56</li><li><a href="stop-93367.html">93367</a> - Wespelaar Station 15:57</li><li><a href="stop-11100.html">11100</a> - Wespelaar Weg nr. Wakkerzeel 15:58</li><li><a href="stop-93662.html">93662</a> - Wespelaar Herkenrode 15:59</li><li><a href="stop-11065.html">11065</a> - Tildonk Brug 16:00</li><li><a href="stop-11071.html">11071</a> - Tildonk Sint-Angela 16:01</li><li><a href="stop-11309.html">11309</a> - Winksele Mechelsesteenweg 16:05</li><li><a href="stop-11304.html">11304</a> - Winksele Spekstraat 16:06</li><li><a href="stop-11272.html">11272</a> - Veltem-Beisem Kapel 16:08</li><li><a href="stop-17011.html">17011</a> - Buken Madelon 16:09</li><li><a href="stop-16947.html">16947</a> - Buken Kerk 16:09</li><li><a href="stop-88159.html">88159</a> - Veltem-Beisem Papenstraat 16:19</li><li><a href="stop-88163.html">88163</a> - Veltem-Beisem Kerkstraat 16:20</li><li><a href="stop-93542.html">93542</a> - Erps-Kwerps Molenbeek 16:22</li><li><a href="stop-11901.html">11901</a> - Erps-Kwerps Diestbrug 16:24</li><li><a href="stop-11927.html">11927</a> - Erps-Kwerps Olmenhoek 16:26</li><li><a href="stop-11909.html">11909</a> - Erps-Kwerps Haaggatstraat 16:27</li><li><a href="stop-11899.html">11899</a> - Erps-Kwerps Deckerskapel 16:28</li><li><a href="stop-11913.html">11913</a> - Erps-Kwerps In de Welkom 16:28</li><li><a href="stop-11917.html">11917</a> - Erps-Kwerps Kwerps Kapel 16:29</li><li><a href="stop-99125.html">99125</a> - Erps-Kwerps Kwerps Kerk 16:30</li><li><a href="stop-16121.html">16121</a> - Erps-Kwerps Schoonaardestraat 16:33</li><li><a href="stop-16122.html">16122</a> - Meerbeek Dorpsstraat 16:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2350.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

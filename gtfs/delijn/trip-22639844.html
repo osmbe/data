@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diksmuide-Houthulst-Roeselare - 22639844</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diksmuide-Houthulst-Roeselare - 22639844</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126289.html">126289</a> - Diksmuide Station perron 10 12:17</li><li><a href="stop-37548.html">37548</a> - Diksmuide Markt 12:18</li><li><a href="stop-37558.html">37558</a> - Diksmuide Steenweg Op Woumen 12:18</li><li><a href="stop-37549.html">37549</a> - Diksmuide Nijverheidsstraat 12:20</li><li><a href="stop-98115.html">98115</a> - Esen Kasteel 12:21</li><li><a href="stop-38984.html">38984</a> - Woumen Zwarte Dreef 12:24</li><li><a href="stop-38981.html">38981</a> - Woumen Warande 12:25</li><li><a href="stop-38976.html">38976</a> - Woumen Plaats 12:26</li><li><a href="stop-104824.html">104824</a> - Woumen Station 12:27</li><li><a href="stop-38977.html">38977</a> - Woumen Serpenthoek 12:27</li><li><a href="stop-38974.html">38974</a> - Woumen Korte Wandeling 12:28</li><li><a href="stop-38975.html">38975</a> - Woumen Ooievaar 12:29</li><li><a href="stop-38591.html">38591</a> - Klerken Dorp 12:30</li><li><a href="stop-38593.html">38593</a> - Klerken Klooster 12:31</li><li><a href="stop-38592.html">38592</a> - Klerken Drieweg 12:32</li><li><a href="stop-38594.html">38594</a> - Klerken Welkom 12:33</li><li><a href="stop-38590.html">38590</a> - Klerken Cafe De Haan 12:34</li><li><a href="stop-39034.html">39034</a> - Klerken Schoolstraat 12:35</li><li><a href="stop-100945.html">100945</a> - Houthulst Jagershof 12:36</li><li><a href="stop-38508.html">38508</a> - Houthulst Nieuw Kerkhof 12:36</li><li><a href="stop-38513.html">38513</a> - Houthulst Vijverstraat 12:37</li><li><a href="stop-38514.html">38514</a> - Houthulst Zegestraat 12:38</li><li><a href="stop-38502.html">38502</a> - Houthulst Brouwershof 12:39</li><li><a href="stop-125746.html">125746</a> - Houthulst Plaats 12:40</li><li><a href="stop-38509.html">38509</a> - Houthulst Noordstraat 12:41</li><li><a href="stop-121708.html">121708</a> - Houthulst Gentseleenstraat 12:41</li><li><a href="stop-38512.html">38512</a> - Houthulst Terrestdreef 12:42</li><li><a href="stop-38507.html">38507</a> - Houthulst Lindestraat 12:43</li><li><a href="stop-38506.html">38506</a> - Houthulst Kruisstraat 12:45</li><li><a href="stop-42438.html">42438</a> - Houthulst Kruisstraat 12:45</li><li><a href="stop-42439.html">42439</a> - Houthulst Lindestraat 12:47</li><li><a href="stop-42444.html">42444</a> - Houthulst Terrestdreef 12:47</li><li><a href="stop-121709.html">121709</a> - Houthulst Gentseleenstraat 12:48</li><li><a href="stop-42441.html">42441</a> - Houthulst Noordstraat 12:49</li><li><a href="stop-125746.html">125746</a> - Houthulst Plaats 12:50</li><li><a href="stop-93771.html">93771</a> - Houthulst Poelkapellestraat 12:53</li><li><a href="stop-42519.html">42519</a> - Langemark Vrijbos 12:56</li><li><a href="stop-42518.html">42518</a> - Langemark Transvaal 12:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6136.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Budingen - Kortenaken - Halen - HerkdeSt - 22790087</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Budingen - Kortenaken - Halen - HerkdeSt - 22790087</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-105229.html">105229</a> - Herk-de-Stad College 17:05</li><li><a href="stop-30195.html">30195</a> - Herk-de-Stad Markt 17:06</li><li><a href="stop-30140.html">30140</a> - Herk-de-Stad Klooster 17:07</li><li><a href="stop-28940.html">28940</a> - Halen Kerk 17:15</li><li><a href="stop-28944.html">28944</a> - Halen Singellaan 17:15</li><li><a href="stop-100262.html">100262</a> - Halen Station 17:16</li><li><a href="stop-14565.html">14565</a> - Halen 4e Lanciersstraat 17:16</li><li><a href="stop-100256.html">100256</a> - Halen Liniestraat 14 17:18</li><li><a href="stop-120566.html">120566</a> - Halen Kerkhof 17:18</li><li><a href="stop-100258.html">100258</a> - Halen 1ste Gidsenstraat 17:19</li><li><a href="stop-29117.html">29117</a> - Halen Monument 17:20</li><li><a href="stop-120567.html">120567</a> - Halen Kauwplasstraat 17:21</li><li><a href="stop-127419.html">127419</a> - Loksbergen Kerk 17:21</li><li><a href="stop-120569.html">120569</a> - Loksbergen Dorpstraat 17:22</li><li><a href="stop-120570.html">120570</a> - Loksbergen Klein Frankrijk 17:23</li><li><a href="stop-120571.html">120571</a> - Loksbergen Blekkom 17:25</li><li><a href="stop-11833.html">11833</a> - Kortenaken Riegel 17:26</li><li><a href="stop-11809.html">11809</a> - Kortenaken Mounstraat 17:27</li><li><a href="stop-11823.html">11823</a> - Kortenaken Diestsestraat 31 17:28</li><li><a href="stop-11812.html">11812</a> - Kortenaken Dorp 17:28</li><li><a href="stop-11805.html">11805</a> - Kortenaken Buizenmakerij 17:29</li><li><a href="stop-11821.html">11821</a> - Kortenaken Tiensestraat 51 17:29</li><li><a href="stop-11825.html">11825</a> - Kortenaken Tiensestraat 62 17:30</li><li><a href="stop-11807.html">11807</a> - Kortenaken Donkelstraat 17:31</li><li><a href="stop-11851.html">11851</a> - Ransberg Koningstraat 17:32</li><li><a href="stop-11841.html">11841</a> - Ransberg Baaistraat 17:33</li><li><a href="stop-15268.html">15268</a> - Ransberg Stg. naar Budingen 17:34</li><li><a href="stop-14854.html">14854</a> - Budingen Panisbornestraat 17:34</li><li><a href="stop-14268.html">14268</a> - Budingen Klottenbergstraat 17:36</li><li><a href="stop-14278.html">14278</a> - Budingen Winkel Lido 17:37</li><li><a href="stop-14256.html">14256</a> - Budingen Heirbaan 17:38</li><li><a href="stop-14264.html">14264</a> - Budingen Kabien 17:39</li><li><a href="stop-128911.html">128911</a> - Budingen Garage Van Mullem 17:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2444.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge-Breskens - 22165555</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge-Breskens - 22165555</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-39714.html">39714</a> - Sluis Sint-Annastraat 07:27</li><li><a href="stop-39712.html">39712</a> - Sluis Ridderstraat 07:29</li><li><a href="stop-17640.html">17640</a> - Sluis Toversluis 07:30</li><li><a href="stop-91115.html">91115</a> - Draaibrug Draaibrugseweg 07:35</li><li><a href="stop-39704.html">39704</a> - Oostburg Brugse Vaart 07:43</li><li><a href="stop-39707.html">39707</a> - Oostburg Ziekenhuis 07:46</li><li><a href="stop-39703.html">39703</a> - Oostburg Ledelplein 07:47</li><li><a href="stop-39699.html">39699</a> - Oostburg Bredestraat 07:48</li><li><a href="stop-90924.html">90924</a> - Oostburg Watertoren 07:49</li><li><a href="stop-39710.html">39710</a> - Schoondijke De Molen 07:56</li><li><a href="stop-39715.html">39715</a> - Schoondijke Rotonde 07:57</li><li><a href="stop-104866.html">104866</a> - Schoondijke Damstraat 07:58</li><li><a href="stop-39695.html">39695</a> - Breskens Kruisdijk 08:02</li><li><a href="stop-39697.html">39697</a> - Breskens Vogelenzang 08:05</li><li><a href="stop-99602.html">99602</a> - Breskens Boulevard 08:06</li><li><a href="stop-39696.html">39696</a> - Breskens Langeweg 08:07</li><li><a href="stop-39693.html">39693</a> - Breskens Bejaardentehuis 08:08</li><li><a href="stop-39781.html">39781</a> - Breskens Veerhaven 08:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4348.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Maaseik - Leopoldsburg - Geel - 22482277</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Maaseik - Leopoldsburg - Geel - 22482277</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-93826.html">93826</a> - Tessenderlo Groenstraat 17:26</li><li><a href="stop-34279.html">34279</a> - Tessenderlo Rode Heide 17:28</li><li><a href="stop-34247.html">34247</a> - Tessenderlo Kerk 17:31</li><li><a href="stop-125572.html">125572</a> - Tessenderlo Broedersschool 17:33</li><li><a href="stop-34280.html">34280</a> - Tessenderlo Rode Heide 17:34</li><li><a href="stop-93821.html">93821</a> - Tessenderlo Groenstraat 17:35</li><li><a href="stop-34339.html">34339</a> - Tessenderlo Wijkschool Rijt 17:36</li><li><a href="stop-34277.html">34277</a> - Tessenderlo Rijt 17:36</li><li><a href="stop-34171.html">34171</a> - Tessenderlo Baalbergstraat 17:36</li><li><a href="stop-34170.html">34170</a> - Tessenderlo Baal 17:37</li><li><a href="stop-20129.html">20129</a> - Klein Vorst Kerk 17:38</li><li><a href="stop-31280.html">31280</a> - Vorst Heistraat 17:39</li><li><a href="stop-31289.html">31289</a> - Vorst Meerhoutstraat 17:39</li><li><a href="stop-31221.html">31221</a> - Klein Vorst Kattestraat 17:40</li><li><a href="stop-97353.html">97353</a> - Zittaart Biezenhoed 17:42</li><li><a href="stop-97366.html">97366</a> - Zittaart Lindestraat 17:43</li><li><a href="stop-97363.html">97363</a> - Zittaart Kruispunt 17:44</li><li><a href="stop-97361.html">97361</a> - Zittaart Kluterstraat 17:45</li><li><a href="stop-97355.html">97355</a> - Zittaart Bredestraat 17:46</li><li><a href="stop-97357.html">97357</a> - Zittaart Djepstraat 17:47</li><li><a href="stop-92333.html">92333</a> - Geel Stedelijke werkplaats 17:48</li><li><a href="stop-92340.html">92340</a> - Geel Tessenderloseweg 17:48</li><li><a href="stop-127487.html">127487</a> - Winkelomheide Punt 17:49</li><li><a href="stop-25800.html">25800</a> - Geel Seppendijk 17:49</li><li><a href="stop-109946.html">109946</a> - Geel Brukel 17:51</li><li><a href="stop-109949.html">109949</a> - Geel Diestseweg 17:51</li><li><a href="stop-109758.html">109758</a> - Geel AZ Sint-Dimpna 17:52</li><li><a href="stop-126934.html">126934</a> - Geel Nieuwstraat 17:54</li><li><a href="stop-107515.html">107515</a> - Geel Stadspark 17:56</li><li><a href="stop-127158.html">127158</a> - Geel Station perron 4 17:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5251.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

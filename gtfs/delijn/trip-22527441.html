@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oostmalle - Brecht Centrum - Essen - 22527441</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oostmalle - Brecht Centrum - Essen - 22527441</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-19825.html">19825</a> - Essen Station 15:35</li><li><a href="stop-107413.html">107413</a> - Essen Kloosterstraat 15:37</li><li><a href="stop-19122.html">19122</a> - Essen Bibliotheek 15:37</li><li><a href="stop-107652.html">107652</a> - Essen Atheneum 15:38</li><li><a href="stop-107651.html">107651</a> - Essen Sint-Jozef 15:39</li><li><a href="stop-107650.html">107650</a> - Essen Mariaberg 15:40</li><li><a href="stop-22429.html">22429</a> - Essen Gemeentehuis 15:42</li><li><a href="stop-22427.html">22427</a> - Essen Spijker 15:42</li><li><a href="stop-108771.html">108771</a> - Essen Rijkmakerslaan 15:46</li><li><a href="stop-95475.html">95475</a> - Nieuwmoer Grens Essen 15:47</li><li><a href="stop-95473.html">95473</a> - Nieuwmoer Boentbosch 15:47</li><li><a href="stop-95471.html">95471</a> - Nieuwmoer Kapel 15:48</li><li><a href="stop-108769.html">108769</a> - Nieuwmoer Dorpplaats 15:48</li><li><a href="stop-95467.html">95467</a> - Nieuwmoer Holleweg 15:49</li><li><a href="stop-95465.html">95465</a> - Nieuwmoer Darm 15:49</li><li><a href="stop-95463.html">95463</a> - Nieuwmoer Zilverhoekstraat 15:50</li><li><a href="stop-93195.html">93195</a> - Essen Zilverhoekhoeve 15:51</li><li><a href="stop-95460.html">95460</a> - Achterbroek Huis Maes 15:52</li><li><a href="stop-108764.html">108764</a> - Achterbroek Handelaar 15:53</li><li><a href="stop-95456.html">95456</a> - Achterbroek Kapelleke 15:53</li><li><a href="stop-95392.html">95392</a> - Achterbroek Leyterstraat 15:54</li><li><a href="stop-95477.html">95477</a> - Achterbroek Duffelaarstraat 15:55</li><li><a href="stop-43383.html">43383</a> - Wuustwezel Zuymoeren 15:57</li><li><a href="stop-108775.html">108775</a> - Wuustwezel Witgoorsebaan 16:00</li><li><a href="stop-108777.html">108777</a> - Wuustwezel Sint-Godelievestraat 16:01</li><li><a href="stop-22446.html">22446</a> - Wuustwezel Sint-Willibrordusstraat 16:02</li><li><a href="stop-108728.html">108728</a> - Wuustwezel Dorp 16:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3355.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

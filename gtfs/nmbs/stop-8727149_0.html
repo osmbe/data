@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Aéroport Charles-de-Gaulle TGV</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Aéroport Charles-de-Gaulle TGV</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-TGV981034101.html">TGV981034101</a> - TGV981034101 - Brussel-Zuid -  Marseille Saint Ch (f)</li><li><a href="trip-TGV981234111.html">TGV981234111</a> - TGV981234111 - Brussel-Zuid -  Montpellier (f)</li><li><a href="trip-TGV982634121.html">TGV982634121</a> - TGV982634121 - Brussel-Zuid -  Marseille Saint Ch (f)</li><li><a href="trip-TGV982834131.html">TGV982834131</a> - TGV982834131 - Brussel-Zuid -  Nice Ville (f)</li><li><a href="trip-TGV983634141.html">TGV983634141</a> - TGV983634141 - Brussel-Zuid -  Montpellier (f)</li><li><a href="trip-TGV984634151.html">TGV984634151</a> - TGV984634151 - Brussel-Zuid -  Lyon Perrache</li><li><a href="trip-TGV985334161.html">TGV985334161</a> - TGV985334161 - Lyon Part Dieu (f)  - Brussel-Zuid</li><li><a href="trip-TGV985539861.html">TGV985539861</a> - TGV985539861 - Marseille Saint Ch (f)  - Brussel-Zuid</li><li><a href="trip-TGV986134171.html">TGV986134171</a> - TGV986134171 - Nice Ville (f)  - Brussel-Zuid</li><li><a href="trip-TGV986334181.html">TGV986334181</a> - TGV986334181 - Montpellier (f)  - Brussel-Zuid</li><li><a href="trip-TGV986734191.html">TGV986734191</a> - TGV986734191 - Marseille Saint Ch (f)  - Brussel-Zuid</li><li><a href="trip-TGV986934201.html">TGV986934201</a> - TGV986934201 - Montpellier (f)  - Brussel-Zuid</li><li><a href="trip-TGV987034211.html">TGV987034211</a> - TGV987034211 - Brussel-Zuid -  Strasbourg (f)</li><li><a href="trip-TGV987434221.html">TGV987434221</a> - TGV987434221 - Brussel-Zuid -  Strasbourg (f)</li><li><a href="trip-TGV988334231.html">TGV988334231</a> - TGV988334231 - Marseille Saint Ch (f)  - Brussel-Zuid</li><li><a href="trip-THA998741041.html">THA998741041</a> - THA998741041 - Bourg Saint Maurice (f)  - Antwerpen-Centraal</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([49.003955, 2.571123], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([49.003955, 2.571123]).addTo(map);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Overboelare - Geraardsbergen - Everbeek - Brakel - 20717585</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Overboelare - Geraardsbergen - Everbeek - Brakel - 20717585</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-119240.html">119240</a> - Nederbrakel Markt 12:50</li><li><a href="stop-119335.html">119335</a> - Nederbrakel Station 12:52</li><li><a href="stop-118363.html">118363</a> - Nederbrakel Kasteelstraat 12:52</li><li><a href="stop-119336.html">119336</a> - Nederbrakel Scholen 12:53</li><li><a href="stop-119243.html">119243</a> - Nederbrakel Termergelstraat 12:54</li><li><a href="stop-119244.html">119244</a> - Nederbrakel Evensveldstraat 12:55</li><li><a href="stop-119245.html">119245</a> - Everbeek Hayestraat 12:56</li><li><a href="stop-119246.html">119246</a> - Everbeek Hoogbos 12:57</li><li><a href="stop-119247.html">119247</a> - Everbeek Kroonstraat 12:57</li><li><a href="stop-119248.html">119248</a> - Everbeek Steneplein 12:58</li><li><a href="stop-119249.html">119249</a> - Everbeek Oolstraat 12:58</li><li><a href="stop-119250.html">119250</a> - Everbeek Maandagstraat 12:59</li><li><a href="stop-119256.html">119256</a> - Everbeek Nieuwpoort 13:00</li><li><a href="stop-119251.html">119251</a> - Everbeek Muiterij 13:00</li><li><a href="stop-119252.html">119252</a> - Everbeek Steenberg 13:01</li><li><a href="stop-119253.html">119253</a> - Everbeek Priemstraat 13:02</li><li><a href="stop-119254.html">119254</a> - Everbeek Plankkouter 13:03</li><li><a href="stop-119259.html">119259</a> - Everbeek Plaatsbeek 13:04</li><li><a href="stop-119267.html">119267</a> - Everbeek Plaats Beneden 13:06</li><li><a href="stop-119257.html">119257</a> - Zarlardinge Mierenhoek 13:07</li><li><a href="stop-119268.html">119268</a> - Zarlardinge Torenstraat 13:08</li><li><a href="stop-119269.html">119269</a> - Zarlardinge Kerk 13:09</li><li><a href="stop-119270.html">119270</a> - Goeferdinge Kerk 13:11</li><li><a href="stop-119271.html">119271</a> - Goeferdinge Elzenstraat 13:12</li><li><a href="stop-119272.html">119272</a> - Goeferdinge Eersbekeweg 13:13</li><li><a href="stop-119273.html">119273</a> - Goeferdinge Marktweg 13:13</li><li><a href="stop-112910.html">112910</a> - Goeferdinge Dutskouter 13:14</li><li><a href="stop-112909.html">112909</a> - Goeferdinge Oudenaardsestraat 13:15</li><li><a href="stop-119284.html">119284</a> - Geraardsbergen Astridlaan 13:15</li><li><a href="stop-119283.html">119283</a> - Geraardsbergen Grotestraat 13:16</li><li><a href="stop-126607.html">126607</a> - Geraardsbergen Station perron 3 13:18</li><li><a href="stop-118905.html">118905</a> - Geraardsbergen Gasthuisstraat 13:19</li><li><a href="stop-118887.html">118887</a> - Overboelare Gaverstraat 13:22</li><li><a href="stop-118884.html">118884</a> - Overboelare Van Lierdelaan 13:23</li><li><a href="stop-118886.html">118886</a> - Overboelare Losweg 13:24</li><li><a href="stop-118888.html">118888</a> - Overboelare Denderoord 13:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1267.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

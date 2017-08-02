@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kiewit - Hasselt - Alken/Terkoest - 22462032</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kiewit - Hasselt - Alken/Terkoest - 22462032</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-26397.html">26397</a> - Alken Kerk 07:33</li><li><a href="stop-26376.html">26376</a> - Alken Grootstraat 07:34</li><li><a href="stop-92403.html">92403</a> - Alken Meerdegat 07:35</li><li><a href="stop-26489.html">26489</a> - Alken Hakkeveld 07:36</li><li><a href="stop-26493.html">26493</a> - Alken Oftingen 07:37</li><li><a href="stop-26491.html">26491</a> - Alken Jardin 07:38</li><li><a href="stop-26406.html">26406</a> - Alken Kolmen 07:39</li><li><a href="stop-26396.html">26396</a> - Alken Kapelleke 07:40</li><li><a href="stop-105221.html">105221</a> - Sint-Lambrechts-Herk Pastorij 07:41</li><li><a href="stop-29757.html">29757</a> - Sint-Lambrechts-Herk Graaf 07:42</li><li><a href="stop-29755.html">29755</a> - Sint-Lambrechts-Herk Gravin 07:42</li><li><a href="stop-29753.html">29753</a> - Sint-Lambrechts-Herk Jukstraat 07:43</li><li><a href="stop-29751.html">29751</a> - Sint-Lambrechts-Herk Post 07:44</li><li><a href="stop-29520.html">29520</a> - Sint-Lambrechts-Herk Kruispunt 07:46</li><li><a href="stop-29524.html">29524</a> - Sint-Lambrechts-Herk Oude Truierbaan 07:48</li><li><a href="stop-96903.html">96903</a> - Ter Hilst De Magneet 07:50</li><li><a href="stop-128987.html">128987</a> - Hasselt Ter Hilst 07:51</li><li><a href="stop-96859.html">96859</a> - Ter Hilst Overmerelaan 07:52</li><li><a href="stop-97054.html">97054</a> - Runkst Biezenstraat 07:54</li><li><a href="stop-125608.html">125608</a> - Hasselt IKEA 07:56</li><li><a href="stop-97051.html">97051</a> - Runkst Grote Lindelaan 07:58</li><li><a href="stop-97049.html">97049</a> - Runkst Huidevetterslaan 07:59</li><li><a href="stop-96839.html">96839</a> - Runkst Heilig Kruis 08:00</li><li><a href="stop-96897.html">96897</a> - Runkst Kerkhof 08:01</li><li><a href="stop-96865.html">96865</a> - Runkst Paters Adonsstraat 08:02</li><li><a href="stop-97047.html">97047</a> - Runkst Vooruitzichtlaan 08:03</li><li><a href="stop-29459.html">29459</a> - Hasselt Leopoldplein 08:05</li><li><a href="stop-29291.html">29291</a> - Hasselt Diesterpoort 08:06</li><li><a href="stop-128983.html">128983</a> - Hasselt Station perron 4 08:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5303.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

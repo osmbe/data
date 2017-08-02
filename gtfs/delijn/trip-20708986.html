@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Dendermonde - Zele - Lokeren - 20708986</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Dendermonde - Zele - Lokeren - 20708986</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126722.html">126722</a> - Dendermonde Station perron 3 16:03</li><li><a href="stop-116752.html">116752</a> - Dendermonde Brusselsestraat 16:07</li><li><a href="stop-126711.html">126711</a> - Dendermonde Oude Vest 16:10</li><li><a href="stop-117067.html">117067</a> - Grembergen Scheldedreef 16:13</li><li><a href="stop-117068.html">117068</a> - Grembergen Kleinzand 16:15</li><li><a href="stop-117069.html">117069</a> - Grembergen Dorp 16:18</li><li><a href="stop-117070.html">117070</a> - Grembergen Gaverstraat 16:19</li><li><a href="stop-114975.html">114975</a> - Grembergen Zogsebaan 16:20</li><li><a href="stop-114994.html">114994</a> - Hamme Zogge Centrum 16:23</li><li><a href="stop-114995.html">114995</a> - Zele Hansevelde Kapel 16:25</li><li><a href="stop-114996.html">114996</a> - Zele Huivelde Kerk 16:26</li><li><a href="stop-114997.html">114997</a> - Zele Bakkerstraat 16:27</li><li><a href="stop-114998.html">114998</a> - Zele Huivelde/N47 16:28</li><li><a href="stop-114993.html">114993</a> - Zele Dendermondebaan/N47 16:29</li><li><a href="stop-115000.html">115000</a> - Zele Ommegangstraat 16:29</li><li><a href="stop-115001.html">115001</a> - Zele Zandberg 16:30</li><li><a href="stop-115817.html">115817</a> - Zele De Deckerstraat 16:31</li><li><a href="stop-115004.html">115004</a> - Zele Elststraat 16:34</li><li><a href="stop-115005.html">115005</a> - Zele Koevliet 16:35</li><li><a href="stop-115011.html">115011</a> - Zele Wezepoel 16:37</li><li><a href="stop-115012.html">115012</a> - Zele Groenlaan 16:38</li><li><a href="stop-115013.html">115013</a> - Zele Heikant 16:39</li><li><a href="stop-115014.html">115014</a> - Zele Hoogstraat 16:41</li><li><a href="stop-115015.html">115015</a> - Zele Kerk Heikant 16:43</li><li><a href="stop-115016.html">115016</a> - Zele Vlietstraat 16:44</li><li><a href="stop-113146.html">113146</a> - Lokeren Everslaarstraat 16:48</li><li><a href="stop-113147.html">113147</a> - Lokeren Bokslaarstraat 16:49</li><li><a href="stop-113148.html">113148</a> - Lokeren Lokerhoutstraat 16:50</li><li><a href="stop-113149.html">113149</a> - Lokeren H. Hartlaan 16:51</li><li><a href="stop-113150.html">113150</a> - Lokeren Vrijheidsplein 16:52</li><li><a href="stop-114066.html">114066</a> - Lokeren Eekstraat 16:55</li><li><a href="stop-115602.html">115602</a> - Lokeren Markt 16:57</li><li><a href="stop-126639.html">126639</a> - Lokeren Station perron 1 17:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./831.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

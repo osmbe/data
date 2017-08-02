@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Vilvoorde - Nieuwenrode - Londerzeel - 22769230</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Vilvoorde - Nieuwenrode - Londerzeel - 22769230</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128775.html">128775</a> - Londerzeel Station 06:33</li><li><a href="stop-12479.html">12479</a> - Londerzeel Chrysantenlaan 06:34</li><li><a href="stop-15645.html">15645</a> - Londerzeel Lode Meeusplein 06:35</li><li><a href="stop-12485.html">12485</a> - Londerzeel Brandweer 06:36</li><li><a href="stop-12506.html">12506</a> - Londerzeel Sint-Christoffelstraat 06:37</li><li><a href="stop-12473.html">12473</a> - Londerzeel Autosnelweg 06:38</li><li><a href="stop-12481.html">12481</a> - Londerzeel Berg 06:39</li><li><a href="stop-16214.html">16214</a> - Londerzeel Sporthuis 06:40</li><li><a href="stop-17052.html">17052</a> - Wolvertem Westrode Stuyverstraat 06:43</li><li><a href="stop-12782.html">12782</a> - Wolvertem In Robroek 06:45</li><li><a href="stop-12814.html">12814</a> - Wolvertem Westrode Kerk 06:46</li><li><a href="stop-12816.html">12816</a> - Wolvertem Westrode,School 06:47</li><li><a href="stop-12799.html">12799</a> - Wolvertem Patatestraat 44 06:48</li><li><a href="stop-12869.html">12869</a> - Wolvertem Nerom 06:50</li><li><a href="stop-16272.html">16272</a> - Nieuwenrode Nieuwenrodestraat 06:52</li><li><a href="stop-11718.html">11718</a> - Nieuwenrode Dorp 06:53</li><li><a href="stop-11727.html">11727</a> - Nieuwenrode Meiselaan 06:53</li><li><a href="stop-11002.html">11002</a> - Humbeek Zeypstraat 06:55</li><li><a href="stop-11000.html">11000</a> - Humbeek Voordestraat 06:55</li><li><a href="stop-10984.html">10984</a> - Humbeek Hof ter Wildelaan 06:56</li><li><a href="stop-10992.html">10992</a> - Humbeek Langstraatje 06:57</li><li><a href="stop-10978.html">10978</a> - Humbeek Benedestraat 06:58</li><li><a href="stop-10986.html">10986</a> - Humbeek Kapel 06:59</li><li><a href="stop-10996.html">10996</a> - Humbeek Slikkestraat 07:00</li><li><a href="stop-10994.html">10994</a> - Humbeek Plaskie 07:00</li><li><a href="stop-10942.html">10942</a> - Grimbergen Lintkasteelstraat 07:01</li><li><a href="stop-10971.html">10971</a> - Grimbergen Vliegplein 07:02</li><li><a href="stop-14507.html">14507</a> - Grimbergen Maelbeek 07:03</li><li><a href="stop-10948.html">10948</a> - Grimbergen Nieuw Kwartier 07:04</li><li><a href="stop-10940.html">10940</a> - Grimbergen Kluizenberg 07:05</li><li><a href="stop-10916.html">10916</a> - Grimbergen Borght 07:08</li><li><a href="stop-14009.html">14009</a> - Vilvoorde Oude Vaartbrug 07:09</li><li><a href="stop-14015.html">14015</a> - Vilvoorde Sportcomplex 07:09</li><li><a href="stop-13969.html">13969</a> - Vilvoorde Kerk 07:11</li><li><a href="stop-13949.html">13949</a> - Vilvoorde Heldenplein 07:13</li><li><a href="stop-127952.html">127952</a> - Vilvoorde Station Perron 1 07:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1967.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

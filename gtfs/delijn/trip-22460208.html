@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diest - Geel / Tessenderlo - 22460208</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diest - Geel / Tessenderlo - 22460208</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-27960.html">27960</a> - Diest Station perron 1 20:12</li><li><a href="stop-14509.html">14509</a> - Diest Fort Leopoldlaan 20:13</li><li><a href="stop-127874.html">127874</a> - Molenstede Nieuwe Steenweg 20:13</li><li><a href="stop-16645.html">16645</a> - Molenstede Zandstraat 20:17</li><li><a href="stop-128837.html">128837</a> - Molenstede Eikelenberg 20:18</li><li><a href="stop-33787.html">33787</a> - Okselaar Pastoor Brissacstraat 20:20</li><li><a href="stop-34117.html">34117</a> - Okselaar Turnhoutsebaan 20:21</li><li><a href="stop-34168.html">34168</a> - Okselaar Achterheide 20:22</li><li><a href="stop-34225.html">34225</a> - Tessenderlo Heggenbossenweg 20:23</li><li><a href="stop-34334.html">34334</a> - Tessenderlo Turnhoutsebaan 20:25</li><li><a href="stop-125512.html">125512</a> - Veerle Weg naar Averbode 20:26</li><li><a href="stop-31262.html">31262</a> - Veerle Pompert 20:26</li><li><a href="stop-31235.html">31235</a> - Veerle Dorp 20:27</li><li><a href="stop-31269.html">31269</a> - Veerle Zand 20:27</li><li><a href="stop-31266.html">31266</a> - Veerle Vorstsebaan 20:28</li><li><a href="stop-31234.html">31234</a> - Veerle Brug 20:29</li><li><a href="stop-31298.html">31298</a> - Vorst Steenbergen 20:30</li><li><a href="stop-31300.html">31300</a> - Vorst Toke Van Nestestraat 20:31</li><li><a href="stop-126518.html">126518</a> - Vorst Markt 20:32</li><li><a href="stop-20147.html">20147</a> - Vorst Rode Kruisstraat 20:33</li><li><a href="stop-20149.html">20149</a> - Eindhout Paviljoen 20:34</li><li><a href="stop-20151.html">20151</a> - Eindhout Sint-Jozefstraat 20:35</li><li><a href="stop-126928.html">126928</a> - Eindhout Dorp 20:36</li><li><a href="stop-20155.html">20155</a> - Eindhout Kruispunt 20:37</li><li><a href="stop-25778.html">25778</a> - Geel Spikkewaverdijk 20:40</li><li><a href="stop-106799.html">106799</a> - Geel Dennenstraat 20:41</li><li><a href="stop-110936.html">110936</a> - Geel Winkelomheide Dorp 20:42</li><li><a href="stop-25789.html">25789</a> - Geel Djepstraat 20:43</li><li><a href="stop-97659.html">97659</a> - Winkelomheide Winkelomseheide 20:44</li><li><a href="stop-127487.html">127487</a> - Winkelomheide Punt 20:44</li><li><a href="stop-25800.html">25800</a> - Geel Seppendijk 20:45</li><li><a href="stop-109946.html">109946</a> - Geel Brukel 20:47</li><li><a href="stop-109949.html">109949</a> - Geel Diestseweg 20:48</li><li><a href="stop-109758.html">109758</a> - Geel AZ Sint-Dimpna 20:49</li><li><a href="stop-126934.html">126934</a> - Geel Nieuwstraat 20:52</li><li><a href="stop-107515.html">107515</a> - Geel Stadspark 20:53</li><li><a href="stop-126875.html">126875</a> - Geel Station perron 2 20:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4860.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

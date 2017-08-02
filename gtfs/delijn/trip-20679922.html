@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent Watersportbaan - Mariakerke Post - 20679922</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent Watersportbaan - Mariakerke Post - 20679922</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-111489.html">111489</a> - Mariakerke Post 08:45</li><li><a href="stop-111490.html">111490</a> - Mariakerke Mariakerkebrug 08:45</li><li><a href="stop-111491.html">111491</a> - Mariakerke Dienstencentrum 08:46</li><li><a href="stop-111492.html">111492</a> - Mariakerke Kollekasteel 08:47</li><li><a href="stop-111493.html">111493</a> - Mariakerke Lusthoflaan 08:48</li><li><a href="stop-111494.html">111494</a> - Wondelgem Gaverstraat 08:49</li><li><a href="stop-111495.html">111495</a> - Wondelgem Maststraat 08:50</li><li><a href="stop-111496.html">111496</a> - Wondelgem Vroonstalledries 08:51</li><li><a href="stop-111497.html">111497</a> - Wondelgem Evergemsesteenweg 08:52</li><li><a href="stop-111498.html">111498</a> - Wondelgem Station 08:53</li><li><a href="stop-111499.html">111499</a> - Gent Kapiteinstraat 08:54</li><li><a href="stop-111524.html">111524</a> - Gent Meeuwstraat 08:56</li><li><a href="stop-111502.html">111502</a> - Gent Glasgowstraat 08:58</li><li><a href="stop-111343.html">111343</a> - Gent Leithstraat 08:59</li><li><a href="stop-111503.html">111503</a> - Gent New-Yorkstraat 09:00</li><li><a href="stop-111505.html">111505</a> - Gent Muidestation 09:02</li><li><a href="stop-111506.html">111506</a> - Gent Muidebrug 09:03</li><li><a href="stop-111507.html">111507</a> - Gent Roerstraat 09:04</li><li><a href="stop-111508.html">111508</a> - Gent Aziëstraat 09:05</li><li><a href="stop-111509.html">111509</a> - Gent Lubeckstraat 09:05</li><li><a href="stop-111510.html">111510</a> - Gent Scandinaviestraat 09:06</li><li><a href="stop-111511.html">111511</a> - Gent Afrikalaan 09:06</li><li><a href="stop-111512.html">111512</a> - Gent Koopvaardijlaan 09:08</li><li><a href="stop-126605.html">126605</a> - Gent Dampoort perron 16 09:09</li><li><a href="stop-127591.html">127591</a> - Gent Dampoort perron 7 09:10</li><li><a href="stop-112318.html">112318</a> - Gent Van Arenbergstraat 09:11</li><li><a href="stop-112317.html">112317</a> - Gent Schoolstraat 09:12</li><li><a href="stop-111513.html">111513</a> - Gent Van Cleemputteplein 09:13</li><li><a href="stop-126820.html">126820</a> - Gent Oscar Colbrandtstraat 09:14</li><li><a href="stop-113374.html">113374</a> - Sint-Amandsberg Baeyensstraat 09:16</li><li><a href="stop-112154.html">112154</a> - Sint-Amandsberg Gentbruggestraat 09:17</li><li><a href="stop-112153.html">112153</a> - Sint-Amandsberg Gentbruggebrug 09:18</li><li><a href="stop-112458.html">112458</a> - Gent Wolterslaan 09:20</li><li><a href="stop-112250.html">112250</a> - Gent Minneplein 09:21</li><li><a href="stop-111515.html">111515</a> - Gent Vlaamse Kaai 09:22</li><li><a href="stop-111516.html">111516</a> - Gent Eendrachtstraat 09:23</li><li><a href="stop-111517.html">111517</a> - Gent Lousbergskaai 09:24</li><li><a href="stop-111518.html">111518</a> - Gent Kasteellaan 09:25</li><li><a href="stop-128659.html">128659</a> - Gent Tweebruggenstraat 09:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./64.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

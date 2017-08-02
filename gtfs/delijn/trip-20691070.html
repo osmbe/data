@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - St-M-Leerne/De Pinte-Latem-Gent-Beervelde-Lokeren - 20691070</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-M-Leerne/De Pinte-Latem-Gent-Beervelde-Lokeren - 20691070</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-113108.html">113108</a> - Beervelde Tollekenswegel 13:41</li><li><a href="stop-113107.html">113107</a> - Beervelde Molenstraatje 13:42</li><li><a href="stop-113106.html">113106</a> - Beervelde Bennesteeg 13:43</li><li><a href="stop-113420.html">113420</a> - Beervelde Kerk 13:44</li><li><a href="stop-113419.html">113419</a> - Beervelde Parochiedreef 13:44</li><li><a href="stop-113418.html">113418</a> - Beervelde Pensionaatstraat 13:46</li><li><a href="stop-113417.html">113417</a> - Destelbergen Paardenstraat 13:47</li><li><a href="stop-113416.html">113416</a> - Destelbergen Burgstraat 13:48</li><li><a href="stop-113415.html">113415</a> - Destelbergen Groenstraat 13:49</li><li><a href="stop-112935.html">112935</a> - Destelbergen Hoenderstraat 13:50</li><li><a href="stop-113414.html">113414</a> - Destelbergen Vissershoek 13:51</li><li><a href="stop-113413.html">113413</a> - Destelbergen Damstraat 13:52</li><li><a href="stop-113837.html">113837</a> - Destelbergen Zandstraat 13:53</li><li><a href="stop-113412.html">113412</a> - Destelbergen Dorekenswegel 13:54</li><li><a href="stop-113411.html">113411</a> - Destelbergen Hermelijnestraat 13:55</li><li><a href="stop-113410.html">113410</a> - Destelbergen Kleingentstraat 13:55</li><li><a href="stop-113409.html">113409</a> - Destelbergen Kouterstraat 13:56</li><li><a href="stop-113172.html">113172</a> - Destelbergen Burgemeester Libbrechtstraat 13:56</li><li><a href="stop-113408.html">113408</a> - Destelbergen Kerk 13:57</li><li><a href="stop-113379.html">113379</a> - Destelbergen Ter Ramen 13:58</li><li><a href="stop-113378.html">113378</a> - Destelbergen Zenderstraat 13:59</li><li><a href="stop-113377.html">113377</a> - Destelbergen Admiraalstraat 14:00</li><li><a href="stop-113376.html">113376</a> - Destelbergen Stelplaats 14:01</li><li><a href="stop-113375.html">113375</a> - Destelbergen Lossystraat 14:03</li><li><a href="stop-113374.html">113374</a> - Sint-Amandsberg Baeyensstraat 14:04</li><li><a href="stop-111237.html">111237</a> - Sint-Amandsberg Heernisplein 14:05</li><li><a href="stop-111238.html">111238</a> - Gent Banierstraat 14:06</li><li><a href="stop-111239.html">111239</a> - Gent Nieuwhof 14:07</li><li><a href="stop-126622.html">126622</a> - Gent Dampoort perron 4 14:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./211.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

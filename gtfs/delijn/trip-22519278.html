@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hoogstraten - Malle - Zandhoven - Herentals - 22519278</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hoogstraten - Malle - Zandhoven - Herentals - 22519278</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-110682.html">110682</a> - Westmalle Mariagaarde 12:30</li><li><a href="stop-94841.html">94841</a> - Westmalle Kerk 12:31</li><li><a href="stop-108883.html">108883</a> - Westmalle Sint-Jan Berchmans perron 4 12:32</li><li><a href="stop-108841.html">108841</a> - Westmalle Schaggeleweg 12:33</li><li><a href="stop-108842.html">108842</a> - Westmalle Zandstraat 12:34</li><li><a href="stop-108843.html">108843</a> - Westmalle Kapelstraat 12:35</li><li><a href="stop-127744.html">127744</a> - Oostmalle Steenovenstraat 12:36</li><li><a href="stop-108846.html">108846</a> - Oostmalle Maris Stella 12:37</li><li><a href="stop-22661.html">22661</a> - Oostmalle Busstation perron 4 12:38</li><li><a href="stop-109324.html">109324</a> - Oostmalle Lierselei 12:39</li><li><a href="stop-109325.html">109325</a> - Oostmalle Kapel RMS 12:40</li><li><a href="stop-23851.html">23851</a> - Oostmalle P. Hensstraat 12:41</li><li><a href="stop-23853.html">23853</a> - Oostmalle Spaeydreef 12:42</li><li><a href="stop-109326.html">109326</a> - Wechelderzande Sept 12:45</li><li><a href="stop-109328.html">109328</a> - Wechelderzande Stepke 12:46</li><li><a href="stop-99140.html">99140</a> - Wechelderzande Kerk 12:46</li><li><a href="stop-109331.html">109331</a> - Wechelderzande Nieuwstraat 12:47</li><li><a href="stop-109332.html">109332</a> - Wechelderzande Moereind 12:48</li><li><a href="stop-127726.html">127726</a> - Lille P+R Lille 12:49</li><li><a href="stop-23867.html">23867</a> - Lille Geitenstraat 12:49</li><li><a href="stop-23869.html">23869</a> - Lille Boskant 12:50</li><li><a href="stop-23872.html">23872</a> - Lille Kruispunt Gierlebaan 12:51</li><li><a href="stop-109811.html">109811</a> - Lille Dorp 12:52</li><li><a href="stop-109813.html">109813</a> - Lille Beek 12:53</li><li><a href="stop-109815.html">109815</a> - Poederlee Heikant 12:53</li><li><a href="stop-109817.html">109817</a> - Poederlee Dorp 12:54</li><li><a href="stop-109819.html">109819</a> - Poederlee Schrieken 12:55</li><li><a href="stop-25402.html">25402</a> - Poederlee Heggekapel 12:57</li><li><a href="stop-108966.html">108966</a> - Vorselaar Doornboom 12:59</li><li><a href="stop-22958.html">22958</a> - Herentals Poederleeseweg 13:01</li><li><a href="stop-22960.html">22960</a> - Herentals Watervoort 13:02</li><li><a href="stop-22962.html">22962</a> - Herentals Bosdreef 13:03</li><li><a href="stop-108968.html">108968</a> - Herentals Netepark 13:04</li><li><a href="stop-108970.html">108970</a> - Herentals AZ Sint-Elisabeth 13:05</li><li><a href="stop-108971.html">108971</a> - Herentals Hikstraat 13:06</li><li><a href="stop-108973.html">108973</a> - Herentals Belgiëlaan 13:06</li><li><a href="stop-25378.html">25378</a> - Herentals Station perron 5 13:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3153.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

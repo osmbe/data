@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Winterslag Brikkenovenstraat</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Winterslag Brikkenovenstraat</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-22460698.html">22460698</a> - 22460698 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22460699.html">22460699</a> - 22460699 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22460701.html">22460701</a> - 22460701 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22460703.html">22460703</a> - 22460703 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22460706.html">22460706</a> - 22460706 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22460710.html">22460710</a> - 22460710 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22467332.html">22467332</a> - 22467332 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22467333.html">22467333</a> - 22467333 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22467335.html">22467335</a> - 22467335 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22467337.html">22467337</a> - 22467337 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22467340.html">22467340</a> - 22467340 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22467344.html">22467344</a> - 22467344 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22473362.html">22473362</a> - 22473362 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22473364.html">22473364</a> - 22473364 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22474903.html">22474903</a> - 22474903 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22474907.html">22474907</a> - 22474907 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22474909.html">22474909</a> - 22474909 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22474910.html">22474910</a> - 22474910 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22474911.html">22474911</a> - 22474911 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22481155.html">22481155</a> - 22481155 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22481156.html">22481156</a> - 22481156 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22481158.html">22481158</a> - 22481158 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22481160.html">22481160</a> - 22481160 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22481163.html">22481163</a> - 22481163 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22481167.html">22481167</a> - 22481167 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22486385.html">22486385</a> - 22486385 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22486386.html">22486386</a> - 22486386 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22486388.html">22486388</a> - 22486388 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22486390.html">22486390</a> - 22486390 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22486393.html">22486393</a> - 22486393 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22486397.html">22486397</a> - 22486397 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22490936.html">22490936</a> - 22490936 - Genk - Zonhoven - Halveweg - Houthalen</li><li><a href="trip-22490938.html">22490938</a> - 22490938 - Genk - Zonhoven - Halveweg - Houthalen</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.9824005065027, 5.4704639272138], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.9824005065027, 5.4704639272138]).addTo(map);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk - Sint-Eloois-Winkel - Roeselare - 22621798</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk - Sint-Eloois-Winkel - Roeselare - 22621798</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126440.html">126440</a> - Kortrijk Station perron 13 17:57</li><li><a href="stop-37799.html">37799</a> - Kortrijk L. Robbeplein 18:00</li><li><a href="stop-91310.html">91310</a> - Kortrijk De Appel 18:01</li><li><a href="stop-37808.html">37808</a> - Kortrijk Meensepoort 18:04</li><li><a href="stop-123573.html">123573</a> - Kortrijk Stadion 18:05</li><li><a href="stop-37667.html">37667</a> - Heule Overweg 18:06</li><li><a href="stop-37654.html">37654</a> - Heule G.Gezellelaan 18:07</li><li><a href="stop-42860.html">42860</a> - Heule De Losschaert 18:08</li><li><a href="stop-37666.html">37666</a> - Heule Oudstrijderslaan 18:09</li><li><a href="stop-37661.html">37661</a> - Heule Markt 18:11</li><li><a href="stop-37592.html">37592</a> - Gullegem Samenkomst 18:13</li><li><a href="stop-37581.html">37581</a> - Gullegem Cafe Sports 18:14</li><li><a href="stop-37594.html">37594</a> - Gullegem Ter Winkel 18:16</li><li><a href="stop-41580.html">41580</a> - Gullegem Plaats 18:17</li><li><a href="stop-41586.html">41586</a> - Gullegem Wevelgemstraat 18:18</li><li><a href="stop-41567.html">41567</a> - Gullegem Ballingstraat 18:19</li><li><a href="stop-37589.html">37589</a> - Gullegem Nijverheidslaan 18:20</li><li><a href="stop-38366.html">38366</a> - Gullegem Noordstraat 18:21</li><li><a href="stop-38002.html">38002</a> - Moorsele In De Prins 18:22</li><li><a href="stop-38003.html">38003</a> - Moorsele Kerkhof 18:22</li><li><a href="stop-38007.html">38007</a> - Moorsele Plaats 18:23</li><li><a href="stop-37999.html">37999</a> - Moorsele Clerckstraat 18:24</li><li><a href="stop-37997.html">37997</a> - Moorsele Cabine 18:25</li><li><a href="stop-37995.html">37995</a> - Moorsele Barakken 18:25</li><li><a href="stop-38135.html">38135</a> - Rollegem-Kapelle Neerhof 18:27</li><li><a href="stop-38134.html">38134</a> - Rollegem-Kapelle Dorp 18:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5995.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

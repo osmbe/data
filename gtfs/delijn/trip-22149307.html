@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kusttram Knokke-Oostende-De Panne - 22149307</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kusttram Knokke-Oostende-De Panne - 22149307</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-104618.html">104618</a> - Knokke Station 18:40</li><li><a href="stop-104619.html">104619</a> - Duinbergen Watertoren 18:42</li><li><a href="stop-100747.html">100747</a> - Duinbergen Duinbergen 18:43</li><li><a href="stop-90161.html">90161</a> - Heist Heldenplein 18:46</li><li><a href="stop-90159.html">90159</a> - Heist Dijk 18:47</li><li><a href="stop-90234.html">90234</a> - Zeebrugge Zeesluis 18:49</li><li><a href="stop-90231.html">90231</a> - Zeebrugge Kerk 18:53</li><li><a href="stop-90233.html">90233</a> - Zeebrugge Vaart 18:55</li><li><a href="stop-90232.html">90232</a> - Zeebrugge Strandwijk 18:57</li><li><a href="stop-90141.html">90141</a> - Blankenberge Duinse Polders 19:00</li><li><a href="stop-90144.html">90144</a> - Blankenberge Sea Life 19:01</li><li><a href="stop-90143.html">90143</a> - Blankenberge Pier 19:02</li><li><a href="stop-126292.html">126292</a> - Blankenberge Station perron 1 19:05</li><li><a href="stop-90142.html">90142</a> - Blankenberge Markt 19:08</li><li><a href="stop-90226.html">90226</a> - Wenduine Harendijke 19:11</li><li><a href="stop-90227.html">90227</a> - Wenduine Manitoba 19:13</li><li><a href="stop-90225.html">90225</a> - Wenduine Centrum 19:15</li><li><a href="stop-90228.html">90228</a> - Wenduine Molen 19:16</li><li><a href="stop-104643.html">104643</a> - Wenduine Konijnenpad 19:17</li><li><a href="stop-104642.html">104642</a> - De Haan Zwarte Kiezel 19:19</li><li><a href="stop-104641.html">104641</a> - De Haan Waterkasteellaan 19:21</li><li><a href="stop-104608.html">104608</a> - De Haan Aan Zee 19:23</li><li><a href="stop-104614.html">104614</a> - De Haan Preventorium 19:24</li><li><a href="stop-104615.html">104615</a> - De Haan Vosseslag 19:26</li><li><a href="stop-90146.html">90146</a> - Bredene Renbaan 19:28</li><li><a href="stop-35991.html">35991</a> - Bredene Campings 19:31</li><li><a href="stop-90145.html">90145</a> - Bredene Aan Zee 19:32</li><li><a href="stop-104634.html">104634</a> - Oostende Duin & Zee 19:35</li><li><a href="stop-104639.html">104639</a> - Oostende Weg Naar Vismijn 19:37</li><li><a href="stop-126308.html">126308</a> - Oostende Station perron 1 19:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4147.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

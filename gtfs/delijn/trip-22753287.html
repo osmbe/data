@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Itterbeek - Schepdaal - 22753287</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Itterbeek - Schepdaal - 22753287</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-15711.html">15711</a> - Brussel Zuid Perron 10 07:23</li><li><a href="stop-10015.html">10015</a> - Anderlecht Oude Stelplaats 07:25</li><li><a href="stop-10013.html">10013</a> - Anderlecht Grondel 07:27</li><li><a href="stop-14639.html">14639</a> - Anderlecht Kuregem 07:28</li><li><a href="stop-10042.html">10042</a> - Anderlecht Vaartbrug 07:29</li><li><a href="stop-9990.html">9990</a> - Anderlecht Biestebroek 07:30</li><li><a href="stop-10030.html">10030</a> - Anderlecht Sint-Guido 07:33</li><li><a href="stop-10025.html">10025</a> - Anderlecht Meir 07:34</li><li><a href="stop-10000.html">10000</a> - Anderlecht De Linde Plein 07:36</li><li><a href="stop-10019.html">10019</a> - Anderlecht Hospitaal J.Bracops 07:37</li><li><a href="stop-10031.html">10031</a> - Anderlecht R. Henry 07:38</li><li><a href="stop-93364.html">93364</a> - Anderlecht Fruit 07:40</li><li><a href="stop-14640.html">14640</a> - Anderlecht Westland Shopping 07:41</li><li><a href="stop-10033.html">10033</a> - Anderlecht Appelboom 07:43</li><li><a href="stop-99127.html">99127</a> - Anderlecht Goede Lucht 07:44</li><li><a href="stop-10518.html">10518</a> - Dilbeek Neerhofstraat 07:45</li><li><a href="stop-87410.html">87410</a> - Dilbeek Vlinderstraat 07:46</li><li><a href="stop-127512.html">127512</a> - Itterbeek Boudewijnlaan 07:47</li><li><a href="stop-10557.html">10557</a> - Itterbeek Dorp 07:48</li><li><a href="stop-10559.html">10559</a> - Itterbeek Gemeentehuis 07:49</li><li><a href="stop-10563.html">10563</a> - Itterbeek Koevijverstraat 07:51</li><li><a href="stop-10606.html">10606</a> - Sint-Anna-Pede Kerk 07:52</li><li><a href="stop-10608.html">10608</a> - Sint-Anna-Pede Kleine Roomstraat 07:53</li><li><a href="stop-110162.html">110162</a> - Sint-Anna-Pede Isabellastraat 07:54</li><li><a href="stop-14649.html">14649</a> - Schepdaal Loveld 07:55</li><li><a href="stop-14651.html">14651</a> - Schepdaal Lostraat 07:56</li><li><a href="stop-10582.html">10582</a> - Schepdaal Sint-Gertrudis-Pede 07:58</li><li><a href="stop-92837.html">92837</a> - Schepdaal Rosweg 08:00</li><li><a href="stop-10575.html">10575</a> - Schepdaal Levenslust 08:01</li><li><a href="stop-14653.html">14653</a> - Schepdaal Caerenbergveld 08:03</li><li><a href="stop-10569.html">10569</a> - Schepdaal Geraardsbergsestr. 08:03</li><li><a href="stop-14659.html">14659</a> - Schepdaal Markt 08:04</li><li><a href="stop-10586.html">10586</a> - Schepdaal Vossegat 08:06</li><li><a href="stop-89567.html">89567</a> - Schepdaal Goudveerdegem 08:07</li><li><a href="stop-127059.html">127059</a> - Sint-Martens-Lennik Sint-Godelieve 08:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1558.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

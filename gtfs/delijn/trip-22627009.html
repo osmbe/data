@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Marke-Lauwe-Moorsele - 22627009</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Marke-Lauwe-Moorsele - 22627009</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126384.html">126384</a> - Kortrijk Station perron 12 05:55</li><li><a href="stop-37799.html">37799</a> - Kortrijk L. Robbeplein 05:57</li><li><a href="stop-37805.html">37805</a> - Kortrijk De Appel 05:57</li><li><a href="stop-37807.html">37807</a> - Kortrijk Markesteenweg 05:58</li><li><a href="stop-35842.html">35842</a> - Kortrijk Stelplaats 05:59</li><li><a href="stop-41519.html">41519</a> - Kortrijk Bouwcentrum 06:01</li><li><a href="stop-41895.html">41895</a> - Marke Leerbergestraat 06:02</li><li><a href="stop-104748.html">104748</a> - Marke Ijzeren Poort 06:03</li><li><a href="stop-37927.html">37927</a> - Marke Plaats 06:05</li><li><a href="stop-100917.html">100917</a> - Marke Brandweer 06:06</li><li><a href="stop-37925.html">37925</a> - Marke Nieuwe Wijk 06:06</li><li><a href="stop-37926.html">37926</a> - Marke Oostenrijk 06:07</li><li><a href="stop-37923.html">37923</a> - Marke Kabien 06:08</li><li><a href="stop-123575.html">123575</a> - Lauwe Kanon 06:09</li><li><a href="stop-37889.html">37889</a> - Lauwe Berg 06:10</li><li><a href="stop-37891.html">37891</a> - Lauwe Dronkaardstraat 06:11</li><li><a href="stop-37897.html">37897</a> - Lauwe Spoorwegstraat 06:12</li><li><a href="stop-90740.html">90740</a> - Lauwe Prins Regentstraat 06:13</li><li><a href="stop-37890.html">37890</a> - Lauwe Deken Darrasstraat 06:14</li><li><a href="stop-37896.html">37896</a> - Lauwe Sporthal 06:14</li><li><a href="stop-90742.html">90742</a> - Lauwe Plaats 06:15</li><li><a href="stop-41869.html">41869</a> - Lauwe Volkshuis 06:17</li><li><a href="stop-42211.html">42211</a> - Wevelgem Goudbergstraat 06:18</li><li><a href="stop-42216.html">42216</a> - Wevelgem Ter Meersch 06:20</li><li><a href="stop-42217.html">42217</a> - Wevelgem Plaats 06:21</li><li><a href="stop-100962.html">100962</a> - Wevelgem Station 06:22</li><li><a href="stop-127294.html">127294</a> - Wevelgem Roterijstraat 06:23</li><li><a href="stop-39099.html">39099</a> - Wevelgem Reutelstraat 06:24</li><li><a href="stop-39098.html">39098</a> - Wevelgem Moerstraat 06:24</li><li><a href="stop-127293.html">127293</a> - Wevelgem Vijverhof 06:25</li><li><a href="stop-38733.html">38733</a> - Moorsele Warandestraat 06:28</li><li><a href="stop-39096.html">39096</a> - Moorsele Karrestraat 06:28</li><li><a href="stop-41966.html">41966</a> - Moorsele Standbeeld 06:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4116.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

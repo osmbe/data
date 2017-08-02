@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - St Job Kristus Koning - Antwerpen - 21550312</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St Job Kristus Koning - Antwerpen - 21550312</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-22029.html">22029</a> - Sint-Job-in-'t Goor Inst. Kristus Koning 08:20</li><li><a href="stop-19363.html">19363</a> - Sint-Job-in-'t Goor Schorpioenlaan 08:21</li><li><a href="stop-108588.html">108588</a> - Sint-Job-in-'t Goor Kerkelei 08:22</li><li><a href="stop-108586.html">108586</a> - Sint-Job-in-'t Goor Braakstraat 08:24</li><li><a href="stop-108584.html">108584</a> - Sint-Job-in-'t Goor De Renlaan 08:25</li><li><a href="stop-108580.html">108580</a> - Sint-Job-in-'t Goor Kruispunt 08:27</li><li><a href="stop-110933.html">110933</a> - Sint-Job-in-'t Goor Zandgroefweg 08:28</li><li><a href="stop-108577.html">108577</a> - Sint-Job-in-'t Goor Sluisvijfbaan 08:28</li><li><a href="stop-108576.html">108576</a> - Schoten Terheidedreef 08:29</li><li><a href="stop-108575.html">108575</a> - Schoten Spaans Wijnhuis 08:29</li><li><a href="stop-22004.html">22004</a> - Schoten Kempensedreef 08:30</li><li><a href="stop-108574.html">108574</a> - Schoten Botermelkbaan 08:32</li><li><a href="stop-22000.html">22000</a> - Schoten Wildhof 08:32</li><li><a href="stop-26024.html">26024</a> - Schoten Fortbaan 08:33</li><li><a href="stop-21998.html">21998</a> - Schoten Molenbaan 08:33</li><li><a href="stop-21995.html">21995</a> - Schoten Zeurtebaan 08:34</li><li><a href="stop-19304.html">19304</a> - Schoten Gemeentelijk Sportpark 08:35</li><li><a href="stop-19310.html">19310</a> - Schoten J. Jennesstraat 08:36</li><li><a href="stop-19312.html">19312</a> - Schoten Thuretstraat 08:37</li><li><a href="stop-107473.html">107473</a> - Schoten Wilgendaalstraat 08:38</li><li><a href="stop-107474.html">107474</a> - Schoten Wolfsstraat 08:39</li><li><a href="stop-107475.html">107475</a> - Schoten Amerlolaan 08:40</li><li><a href="stop-109249.html">109249</a> - Merksem Calesbergdreef 08:42</li><li><a href="stop-109594.html">109594</a> - Merksem Molenlei 08:43</li><li><a href="stop-107607.html">107607</a> - Merksem Oudebareel 08:45</li><li><a href="stop-108695.html">108695</a> - Merksem Barnkracht 08:47</li><li><a href="stop-107760.html">107760</a> - Merksem Burgemeester Nolf 08:49</li><li><a href="stop-108192.html">108192</a> - Antwerpen Noorderplaats 08:54</li><li><a href="stop-108466.html">108466</a> - Antwerpen Sint-Jansplein 08:56</li><li><a href="stop-125285.html">125285</a> - Antwerpen F. Rooseveltplaats perron 31 08:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3634.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

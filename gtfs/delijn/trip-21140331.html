@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Herent - Leuven - Haasrode Brabanthal - 21140331</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Herent - Leuven - Haasrode Brabanthal - 21140331</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-17285.html">17285</a> - Herent Keierveld 15:40</li><li><a href="stop-11213.html">11213</a> - Herent Bijlokstraat 15:41</li><li><a href="stop-11259.html">11259</a> - Herent Weggevoerdenstraat 15:42</li><li><a href="stop-99214.html">99214</a> - Herent Betlehem 15:43</li><li><a href="stop-91134.html">91134</a> - Herent De Wildeman 15:44</li><li><a href="stop-14855.html">14855</a> - Herent Dorp 15:45</li><li><a href="stop-11217.html">11217</a> - Herent Den Bremt 15:46</li><li><a href="stop-11241.html">11241</a> - Herent Molenweg 15:47</li><li><a href="stop-17094.html">17094</a> - Herent Kouterstraat 15:48</li><li><a href="stop-16222.html">16222</a> - Herent Station 15:49</li><li><a href="stop-17092.html">17092</a> - Herent Sergeystraat 15:50</li><li><a href="stop-11245.html">11245</a> - Herent Rijweg 15:51</li><li><a href="stop-12335.html">12335</a> - Wilsele Autosnelweg A2 15:53</li><li><a href="stop-12306.html">12306</a> - Leuven Decouxlaan 15:54</li><li><a href="stop-127690.html">127690</a> - Leuven Riddersstraat 15:56</li><li><a href="stop-127686.html">127686</a> - Leuven Half Maartstraat 15:58</li><li><a href="stop-12234.html">12234</a> - Leuven Dirk Boutslaan 16:00</li><li><a href="stop-89195.html">89195</a> - Leuven Rector De Somerplein zone A 16:02</li><li><a href="stop-12231.html">12231</a> - Leuven J.Stasstraat 16:04</li><li><a href="stop-12287.html">12287</a> - Leuven Station Perron 5 16:06</li><li><a href="stop-90001.html">90001</a> - Leuven Kleine Gevangenis 16:09</li><li><a href="stop-12302.html">12302</a> - Leuven Campus Vesalius 16:12</li><li><a href="stop-89570.html">89570</a> - Leuven Rustoord Remy 16:14</li><li><a href="stop-12252.html">12252</a> - Leuven Parkpoort 16:16</li><li><a href="stop-12070.html">12070</a> - Heverlee Paul Van Ostaijenlaan 16:17</li><li><a href="stop-12056.html">12056</a> - Heverlee Broekstraat 16:18</li><li><a href="stop-12097.html">12097</a> - Heverlee Pakenstraat 16:20</li><li><a href="stop-12099.html">12099</a> - Heverlee Parkdallaan 16:20</li><li><a href="stop-12091.html">12091</a> - Heverlee Leeuwerikenstraat 16:21</li><li><a href="stop-14619.html">14619</a> - Heverlee Kriekenboslaan 16:22</li><li><a href="stop-12086.html">12086</a> - Heverlee Kazerne (H. Hart) 16:23</li><li><a href="stop-93390.html">93390</a> - Heverlee De Hemptinne 16:24</li><li><a href="stop-14623.html">14623</a> - Heverlee Schaatsbaan 16:25</li><li><a href="stop-12189.html">12189</a> - Heverlee Ambachtenlaan 16:26</li><li><a href="stop-14625.html">14625</a> - Heverlee Sterrekes 16:26</li><li><a href="stop-125634.html">125634</a> - Haasrode VDAB 16:27</li><li><a href="stop-125636.html">125636</a> - Haasrode UCLL 16:28</li><li><a href="stop-125627.html">125627</a> - Haasrode Terumo 16:29</li><li><a href="stop-14629.html">14629</a> - Haasrode Ridgid 16:30</li><li><a href="stop-127688.html">127688</a> - Haasrode Siemens 16:31</li><li><a href="stop-14631.html">14631</a> - Haasrode Philips 16:31</li><li><a href="stop-14633.html">14633</a> - Haasrode Donaldson 16:32</li><li><a href="stop-14634.html">14634</a> - Haasrode Brabanthal 16:33</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2042.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

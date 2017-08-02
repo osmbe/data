@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kwaadmechelen - Westerlo - 22491030</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kwaadmechelen - Westerlo - 22491030</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-93143.html">93143</a> - Kwaadmechelen Tessenderlo Chemie Ham 16:13</li><li><a href="stop-34349.html">34349</a> - Tessenderlo Weg naar Kwaadmechelen 16:16</li><li><a href="stop-34246.html">34246</a> - Tessenderlo Kanaalweg 16:18</li><li><a href="stop-34234.html">34234</a> - Hulst Kerk 16:19</li><li><a href="stop-34242.html">34242</a> - Hulst Hulsterweg 16:20</li><li><a href="stop-34357.html">34357</a> - Tessenderlo Zandstraat 16:21</li><li><a href="stop-34327.html">34327</a> - Tessenderlo Station 16:22</li><li><a href="stop-91085.html">91085</a> - Tessenderlo Tessenderlo Chemie 16:23</li><li><a href="stop-34247.html">34247</a> - Tessenderlo Kerk 16:25</li><li><a href="stop-125572.html">125572</a> - Tessenderlo Broedersschool 16:26</li><li><a href="stop-34280.html">34280</a> - Tessenderlo Rode Heide 16:27</li><li><a href="stop-93821.html">93821</a> - Tessenderlo Groenstraat 16:28</li><li><a href="stop-34277.html">34277</a> - Tessenderlo Rijt 16:29</li><li><a href="stop-34171.html">34171</a> - Tessenderlo Baalbergstraat 16:30</li><li><a href="stop-34170.html">34170</a> - Tessenderlo Baal 16:31</li><li><a href="stop-20129.html">20129</a> - Klein Vorst Kerk 16:33</li><li><a href="stop-31280.html">31280</a> - Vorst Heistraat 16:34</li><li><a href="stop-31288.html">31288</a> - Vorst Meerhoutstraat 16:35</li><li><a href="stop-31275.html">31275</a> - Vorst De Locht 16:35</li><li><a href="stop-31303.html">31303</a> - Vorst Wiezestraat 16:35</li><li><a href="stop-31306.html">31306</a> - Vorst Willekerstraat 16:36</li><li><a href="stop-20131.html">20131</a> - Vorst Oranjestraat 16:36</li><li><a href="stop-20135.html">20135</a> - Vorst Zijstraat 16:38</li><li><a href="stop-126924.html">126924</a> - Vorst Borgtstraat 16:39</li><li><a href="stop-127463.html">127463</a> - Vorst Smissestraat 16:40</li><li><a href="stop-20141.html">20141</a> - Vorst Hospestraat 16:40</li><li><a href="stop-126519.html">126519</a> - Vorst Markt 16:41</li><li><a href="stop-31299.html">31299</a> - Vorst Toke Van Nestestraat 16:42</li><li><a href="stop-31297.html">31297</a> - Vorst Steenbergen 16:43</li><li><a href="stop-31233.html">31233</a> - Veerle Brug 16:45</li><li><a href="stop-31265.html">31265</a> - Veerle Vorstsebaan 16:46</li><li><a href="stop-31270.html">31270</a> - Veerle Zand 16:47</li><li><a href="stop-31236.html">31236</a> - Veerle Dorp 16:47</li><li><a href="stop-31253.html">31253</a> - Veerle Kerk 16:47</li><li><a href="stop-31257.html">31257</a> - Veerle Pastorijstraat 16:48</li><li><a href="stop-31264.html">31264</a> - Veerle Rode Laakstraat 16:49</li><li><a href="stop-31246.html">31246</a> - Veerle Heieinde 16:50</li><li><a href="stop-31244.html">31244</a> - Veerle Heide 16:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5508.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

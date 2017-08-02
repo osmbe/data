@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Antwerpen Waterhoenlaan</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Antwerpen Waterhoenlaan</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-20710494.html">20710494</a> - 20710494 - Sint-Niklaas - Hoogk - Temse - Rupelm - A'pen L.O</li><li><a href="trip-20710544.html">20710544</a> - 20710544 - Sint-Niklaas - Hoogk - Temse - Rupelm - A'pen L.O</li><li><a href="trip-20710679.html">20710679</a> - 20710679 - Sint-Niklaas - Velle - Temse - Rupelm - A'pen L.O</li><li><a href="trip-20710706.html">20710706</a> - 20710706 - Sint-Niklaas - Velle - Temse - Rupelm - A'pen L.O</li><li><a href="trip-20710798.html">20710798</a> - 20710798 - Sint-Niklaas - Tielr - Temse - Rupelm - A'pen L.O</li><li><a href="trip-20710805.html">20710805</a> - 20710805 - Sint-Niklaas - Tielr - Temse - Rupelm - A'pen L.O</li><li><a href="trip-20710861.html">20710861</a> - 20710861 - Hamme - Temse - Rupelmonde - Antwerpen L.O</li><li><a href="trip-20710881.html">20710881</a> - 20710881 - Hamme - Temse - Rupelmonde - Antwerpen L.O</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([51.2217498446717, 4.38212665070803], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([51.2217498446717, 4.38212665070803]).addTo(map);
+    </script>
+</body>
+
+</html>

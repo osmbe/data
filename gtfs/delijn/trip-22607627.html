@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge Station - Centrum - St-Jozef(Ghandi) - 22607627</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge Station - Centrum - St-Jozef(Ghandi) - 22607627</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-36760.html">36760</a> - Brugge Ghandi 12:15</li><li><a href="stop-40877.html">40877</a> - Brugge Van Maerlant 12:16</li><li><a href="stop-40827.html">40827</a> - Brugge De Garve 12:17</li><li><a href="stop-84940.html">84940</a> - Brugge Sint-Jozef 12:18</li><li><a href="stop-123644.html">123644</a> - Brugge Sint-Jozefkerk 12:20</li><li><a href="stop-99898.html">99898</a> - Brugge Dudzeelse Steenweg 12:21</li><li><a href="stop-40841.html">40841</a> - Brugge Haven 12:21</li><li><a href="stop-87651.html">87651</a> - Brugge Komvest 12:23</li><li><a href="stop-40874.html">40874</a> - Brugge Stokersstraat 12:24</li><li><a href="stop-40842.html">40842</a> - Brugge J.&M. Sabbestraat 12:25</li><li><a href="stop-40867.html">40867</a> - Brugge Snaggaardbrug 12:25</li><li><a href="stop-40838.html">40838</a> - Brugge Gouden Handstraat 12:26</li><li><a href="stop-40843.html">40843</a> - Brugge Jan Van Eyckplein 12:27</li><li><a href="stop-100725.html">100725</a> - Brugge Stadsschouwburg 12:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3893.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

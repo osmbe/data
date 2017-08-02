@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aarschot - Gijmel - Varenwinkel - Wolfsdonk - 22782514</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aarschot - Gijmel - Varenwinkel - Wolfsdonk - 22782514</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127036.html">127036</a> - Aarschot Station perron 8 08:45</li><li><a href="stop-9313.html">9313</a> - Aarschot Gilsonplein 08:45</li><li><a href="stop-94823.html">94823</a> - Aarschot Sancta Maria 08:46</li><li><a href="stop-128901.html">128901</a> - Aarschot Kerk 08:47</li><li><a href="stop-9323.html">9323</a> - Aarschot Moederhuis 08:48</li><li><a href="stop-128816.html">128816</a> - Aarschot Sint-Jozefscollege 08:48</li><li><a href="stop-9317.html">9317</a> - Aarschot Withuisstraat 08:49</li><li><a href="stop-9309.html">9309</a> - Aarschot Nonnenlanden 08:50</li><li><a href="stop-9376.html">9376</a> - Langdorp Gijmel Brug 08:51</li><li><a href="stop-9363.html">9363</a> - Langdorp De Budetstraat 08:52</li><li><a href="stop-9361.html">9361</a> - Langdorp Venneloopstraat 08:53</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6278.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

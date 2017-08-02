@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Maaseik - Kinrooi - Molenbeersel - 22485820</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Maaseik - Kinrooi - Molenbeersel - 22485820</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-123048.html">123048</a> - Kinrooi Dorpsplein 07:26</li><li><a href="stop-30963.html">30963</a> - Kinrooi Molen 07:27</li><li><a href="stop-93440.html">93440</a> - Kinrooi Nagelstraat 07:29</li><li><a href="stop-93435.html">93435</a> - Kinrooi Gemeentehuis 07:30</li><li><a href="stop-93438.html">93438</a> - Kessenich Drietak 07:31</li><li><a href="stop-105250.html">105250</a> - Kessenich Breeërsteenweg 07:33</li><li><a href="stop-30948.html">30948</a> - Kessenich Veldstraat 07:34</li><li><a href="stop-30944.html">30944</a> - Kessenich Ittervoorterweg 07:35</li><li><a href="stop-30945.html">30945</a> - Kessenich Toekomststraat 07:36</li><li><a href="stop-30924.html">30924</a> - Kessenich Dorpsstraat 07:38</li><li><a href="stop-30938.html">30938</a> - Kessenich School 07:39</li><li><a href="stop-30932.html">30932</a> - Kessenich Kruispunt 07:40</li><li><a href="stop-30990.html">30990</a> - Ophoven 't Meulke 07:42</li><li><a href="stop-30992.html">30992</a> - Ophoven Geistingen 07:43</li><li><a href="stop-31010.html">31010</a> - Ophoven Kerk 07:45</li><li><a href="stop-31006.html">31006</a> - Ophoven Grens 07:46</li><li><a href="stop-32278.html">32278</a> - Maaseik Oude Ophoverbaan 07:47</li><li><a href="stop-32196.html">32196</a> - Maaseik Javanastraat 07:48</li><li><a href="stop-32294.html">32294</a> - Maaseik Maasweg 07:49</li><li><a href="stop-93445.html">93445</a> - Maaseik Burgemeester Philipslaan 07:50</li><li><a href="stop-93469.html">93469</a> - Maaseik Bospoort 07:50</li><li><a href="stop-33097.html">33097</a> - Maaseik Van Eycklaan 07:51</li><li><a href="stop-32298.html">32298</a> - Maaseik Verloren Kost 07:52</li><li><a href="stop-123130.html">123130</a> - Maaseik Pieter Geunsstraat 07:53</li><li><a href="stop-123082.html">123082</a> - Maaseik Campus H en R 07:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4836.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Zwevezele-Ardooie-Roeselare - 22609599</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Zwevezele-Ardooie-Roeselare - 22609599</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126345.html">126345</a> - Zwevezele Hille 07:33</li><li><a href="stop-37220.html">37220</a> - Zwevezele Vierwegen 07:36</li><li><a href="stop-37219.html">37219</a> - Zwevezele Tramstation 07:37</li><li><a href="stop-37275.html">37275</a> - Zwevezele Dorp 07:39</li><li><a href="stop-37216.html">37216</a> - Zwevezele Kasteelstraat 07:39</li><li><a href="stop-37222.html">37222</a> - Zwevezele Zeswege 07:41</li><li><a href="stop-37221.html">37221</a> - Zwevezele Vrijgeweide 07:42</li><li><a href="stop-123553.html">123553</a> - Zwevezele Sprietstraat 07:44</li><li><a href="stop-37217.html">37217</a> - Zwevezele Machienepark 07:44</li><li><a href="stop-36908.html">36908</a> - Lichtervelde Fonteinestraat 07:45</li><li><a href="stop-36914.html">36914</a> - Lichtervelde Mosselstraat 07:47</li><li><a href="stop-90686.html">90686</a> - Lichtervelde Astridlaan 07:48</li><li><a href="stop-100877.html">100877</a> - Lichtervelde Rustoord 07:49</li><li><a href="stop-90916.html">90916</a> - Lichtervelde Ketelbuiserstraat 07:54</li><li><a href="stop-37367.html">37367</a> - Lichtervelde Hobby Center 07:56</li><li><a href="stop-37138.html">37138</a> - Lichtervelde Turfhauwe 07:56</li><li><a href="stop-37161.html">37161</a> - Torhout Tulpenstraat 07:59</li><li><a href="stop-37146.html">37146</a> - Torhout Kievitstraat 08:01</li><li><a href="stop-37163.html">37163</a> - Torhout Vredegerecht 08:02</li><li><a href="stop-126347.html">126347</a> - Torhout Station perron 2 08:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5838.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Zuid - Berchem - Borgerhout - Zuid - 21529342</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Zuid - Berchem - Borgerhout - Zuid - 21529342</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-19905.html">19905</a> - Antwerpen Waterpoort 09:08</li><li><a href="stop-23520.html">23520</a> - Antwerpen Amerikalei 09:10</li><li><a href="stop-107796.html">107796</a> - Antwerpen Troonplaats 09:10</li><li><a href="stop-108075.html">108075</a> - Antwerpen Balansstraat 09:11</li><li><a href="stop-107712.html">107712</a> - Antwerpen Fransenplaats 09:13</li><li><a href="stop-22271.html">22271</a> - Antwerpen Van Schoonbekestraat 09:15</li><li><a href="stop-108133.html">108133</a> - Antwerpen Markgravelei 09:16</li><li><a href="stop-43309.html">43309</a> - Antwerpen Provinciehuis 09:18</li><li><a href="stop-122920.html">122920</a> - Antwerpen Haringrodestraat 09:19</li><li><a href="stop-19986.html">19986</a> - Berchem A. Grisarstraat 09:20</li><li><a href="stop-22468.html">22468</a> - Berchem Van Luppenstraat 09:22</li><li><a href="stop-21861.html">21861</a> - Berchem Maatschappijstraat 09:22</li><li><a href="stop-107394.html">107394</a> - Berchem Station perron 21 09:23</li><li><a href="stop-107632.html">107632</a> - Berchem Station perron 23 09:24</li><li><a href="stop-107620.html">107620</a> - Berchem Draakplaats 09:25</li><li><a href="stop-21337.html">21337</a> - Antwerpen Plantin & Moretuslei 09:26</li><li><a href="stop-20874.html">20874</a> - Borgerhout Langstraat 09:27</li><li><a href="stop-19738.html">19738</a> - Borgerhout Drink 09:28</li><li><a href="stop-21414.html">21414</a> - Borgerhout De Roma 09:31</li><li><a href="stop-108626.html">108626</a> - Borgerhout Turnhoutsebaan 09:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2812.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge-Zwevezele-Tielt - 22609369</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge-Zwevezele-Tielt - 22609369</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126345.html">126345</a> - Zwevezele Hille 06:07</li><li><a href="stop-37187.html">37187</a> - Wingene De Sparre 06:09</li><li><a href="stop-37192.html">37192</a> - Wingene Schewege 06:10</li><li><a href="stop-37189.html">37189</a> - Wingene Garage 06:11</li><li><a href="stop-37185.html">37185</a> - Wingene Anker 06:12</li><li><a href="stop-37188.html">37188</a> - Wingene Dorp 06:13</li><li><a href="stop-37193.html">37193</a> - Wingene Wissel 06:14</li><li><a href="stop-37186.html">37186</a> - Wingene De Pijpe 06:16</li><li><a href="stop-38205.html">38205</a> - Tielt Ratte 06:18</li><li><a href="stop-38149.html">38149</a> - Schuiferskapelle Bafa 06:20</li><li><a href="stop-38151.html">38151</a> - Schuiferskapelle Klooster 06:21</li><li><a href="stop-38150.html">38150</a> - Schuiferskapelle Brouwerijstraat 06:22</li><li><a href="stop-38204.html">38204</a> - Tielt Het Hoge 06:25</li><li><a href="stop-37323.html">37323</a> - Tielt De Zon 06:26</li><li><a href="stop-37120.html">37120</a> - Tielt De Haan 06:29</li><li><a href="stop-37128.html">37128</a> - Tielt Kliniek Sint-Andries 06:29</li><li><a href="stop-37121.html">37121</a> - Tielt Dekenij 06:30</li><li><a href="stop-104701.html">104701</a> - Tielt Polenplein 06:31</li><li><a href="stop-41173.html">41173</a> - Tielt Vierhoek 06:32</li><li><a href="stop-126332.html">126332</a> - Tielt Station perron 1 06:33</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3910.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

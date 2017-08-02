@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Zutendaal - 22483497</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Zutendaal - 22483497</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-43782.html">43782</a> - Genk Station perron 6 14:30</li><li><a href="stop-29002.html">29002</a> - Genk Shopping Center perron 2 14:32</li><li><a href="stop-94950.html">94950</a> - Genk Hospitaalstraat 14:33</li><li><a href="stop-88460.html">88460</a> - Genk Bretheistraat 14:34</li><li><a href="stop-43835.html">43835</a> - Genk College 14:35</li><li><a href="stop-28512.html">28512</a> - Genk Mispelaarstraat 14:36</li><li><a href="stop-96693.html">96693</a> - Waterschei Waterbleekstraat 14:37</li><li><a href="stop-96695.html">96695</a> - Waterschei Bascule 14:38</li><li><a href="stop-96646.html">96646</a> - Waterschei Oudasserstraat 14:39</li><li><a href="stop-28625.html">28625</a> - Genk Wijerdriesstraat 14:40</li><li><a href="stop-35269.html">35269</a> - Zutendaal Gelierseweg 14:42</li><li><a href="stop-97726.html">97726</a> - Wiemesmeer Kerk 14:43</li><li><a href="stop-35288.html">35288</a> - Zutendaal Schepersstraat 14:44</li><li><a href="stop-35297.html">35297</a> - Zutendaal Weg naar As 14:45</li><li><a href="stop-35273.html">35273</a> - Zutendaal Hoogstraat 14:46</li><li><a href="stop-88495.html">88495</a> - Zutendaal Kerk 14:47</li><li><a href="stop-35409.html">35409</a> - Zutendaal Gemeentehuis 14:48</li><li><a href="stop-121585.html">121585</a> - Zutendaal Ossenbergstraat 14:49</li><li><a href="stop-35267.html">35267</a> - Zutendaal Eikenstraat 14:50</li><li><a href="stop-123230.html">123230</a> - Zutendaal Halmstraat 14:51</li><li><a href="stop-35272.html">35272</a> - Zutendaal Gewaai 14:51</li><li><a href="stop-35262.html">35262</a> - Zutendaal 15 Augustusstraat 14:52</li><li><a href="stop-35277.html">35277</a> - Zutendaal Merellaan 14:53</li><li><a href="stop-35351.html">35351</a> - Zutendaal Driesprongstraat 14:54</li><li><a href="stop-121587.html">121587</a> - Zutendaal Gijzenveldstraat 14:55</li><li><a href="stop-35283.html">35283</a> - Zutendaal Roelen 14:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5355.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

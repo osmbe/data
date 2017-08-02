@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge-Breskens - 22652831</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge-Breskens - 22652831</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-39781.html">39781</a> - Breskens Veerhaven 20:17</li><li><a href="stop-39782.html">39782</a> - Breskens Bejaardentehuis 20:18</li><li><a href="stop-39785.html">39785</a> - Breskens Langeweg 20:18</li><li><a href="stop-99604.html">99604</a> - Breskens Boulevard 20:19</li><li><a href="stop-39786.html">39786</a> - Breskens Vogelenzang 20:20</li><li><a href="stop-39784.html">39784</a> - Breskens Kruisdijk 20:23</li><li><a href="stop-104869.html">104869</a> - Schoondijke Damstraat 20:26</li><li><a href="stop-39804.html">39804</a> - Schoondijke Rotonde 20:27</li><li><a href="stop-39799.html">39799</a> - Schoondijke De Molen 20:27</li><li><a href="stop-90928.html">90928</a> - Oostburg Watertoren 20:35</li><li><a href="stop-39788.html">39788</a> - Oostburg Bredestraat 20:36</li><li><a href="stop-39792.html">39792</a> - Oostburg Ledelplein 20:38</li><li><a href="stop-39796.html">39796</a> - Oostburg Ziekenhuis 20:42</li><li><a href="stop-39793.html">39793</a> - Oostburg Brugse Vaart 20:43</li><li><a href="stop-91116.html">91116</a> - Draaibrug Draaibrugseweg 20:48</li><li><a href="stop-17641.html">17641</a> - Sluis Toversluis 20:53</li><li><a href="stop-39801.html">39801</a> - Sluis Ridderstraat 20:55</li><li><a href="stop-39803.html">39803</a> - Sluis Sint-Annastraat 20:57</li><li><a href="stop-127930.html">127930</a> - Sluis Havenstraat 21:00</li><li><a href="stop-39800.html">39800</a> - Sluis Grens 21:01</li><li><a href="stop-98275.html">98275</a> - Westkapelle Schapenbrug 21:04</li><li><a href="stop-104667.html">104667</a> - Westkapelle Koekoekstraat 21:06</li><li><a href="stop-97933.html">97933</a> - Westkapelle Sacramentstraat 21:07</li><li><a href="stop-97935.html">97935</a> - Westkapelle Natienlaan 21:08</li><li><a href="stop-100786.html">100786</a> - Westkapelle Kalvekeetdijk 21:09</li><li><a href="stop-97936.html">97936</a> - Westkapelle Isabellavaart 21:10</li><li><a href="stop-100785.html">100785</a> - Knokke Camping Europe 21:10</li><li><a href="stop-126293.html">126293</a> - Knokke Station perron 3 21:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4354.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

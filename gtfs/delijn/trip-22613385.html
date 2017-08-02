@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge-Beernem-Knesselare (Ursel) - 22613385</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge-Beernem-Knesselare (Ursel) - 22613385</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-98358.html">98358</a> - Sint-Kruis Mariawende 12:31</li><li><a href="stop-98354.html">98354</a> - Sint-Kruis Kerk 12:32</li><li><a href="stop-98353.html">98353</a> - Sint-Kruis Keizerstraat 12:33</li><li><a href="stop-127313.html">127313</a> - Sint-Kruis Watertoren 12:34</li><li><a href="stop-98306.html">98306</a> - Sint-Kruis Sint-Andreaslyceum 12:35</li><li><a href="stop-104949.html">104949</a> - Assebroek Zandtiende 12:36</li><li><a href="stop-36711.html">36711</a> - Assebroek Zevecote 12:39</li><li><a href="stop-36683.html">36683</a> - Assebroek Astridlaan 12:39</li><li><a href="stop-36691.html">36691</a> - Assebroek Engelendale 12:40</li><li><a href="stop-36702.html">36702</a> - Assebroek Sparrestraat 12:41</li><li><a href="stop-36959.html">36959</a> - Oedelem Loweidestraat 12:43</li><li><a href="stop-36960.html">36960</a> - Oedelem Maandagse 12:44</li><li><a href="stop-36958.html">36958</a> - Oedelem L.T.I. 12:45</li><li><a href="stop-36965.html">36965</a> - Oedelem Vliegend Paard 12:47</li><li><a href="stop-36951.html">36951</a> - Oedelem Bruggesteenweg Nr 256 12:48</li><li><a href="stop-36954.html">36954</a> - Oedelem Drie Koningen 12:49</li><li><a href="stop-36962.html">36962</a> - Oedelem Molentje 12:51</li><li><a href="stop-36961.html">36961</a> - Oedelem Ter Bunen 12:51</li><li><a href="stop-36953.html">36953</a> - Oedelem Dorp 12:52</li><li><a href="stop-36956.html">36956</a> - Oedelem Haverbilken 12:53</li><li><a href="stop-36967.html">36967</a> - Oedelem Zuiddamme 12:55</li><li><a href="stop-36716.html">36716</a> - Beernem Dorp 12:57</li><li><a href="stop-36721.html">36721</a> - Beernem Zwembad 12:58</li><li><a href="stop-36714.html">36714</a> - Beernem Bloemendale 12:59</li><li><a href="stop-36723.html">36723</a> - Beernem Sint-Andreas 13:00</li><li><a href="stop-126314.html">126314</a> - Beernem Station perron 2 13:01</li><li><a href="stop-36719.html">36719</a> - Beernem M.Sabbestraat 13:02</li><li><a href="stop-37338.html">37338</a> - Beernem Industriepark 13:03</li><li><a href="stop-36713.html">36713</a> - Beernem 'T Hof 13:05</li><li><a href="stop-36724.html">36724</a> - Beernem Sint-Joris Ten Distel 13:06</li><li><a href="stop-36717.html">36717</a> - Beernem Knesselarestwg 13:07</li><li><a href="stop-100830.html">100830</a> - Beernem Nieuwendorpe 13:08</li><li><a href="stop-36718.html">36718</a> - Beernem Langedonk 13:09</li><li><a href="stop-120113.html">120113</a> - Knesselare Wandelaars 13:10</li><li><a href="stop-126620.html">126620</a> - Knesselare Dorp 13:11</li><li><a href="stop-113220.html">113220</a> - Knesselare Maldegemseweg 13:12</li><li><a href="stop-113222.html">113222</a> - Knesselare Spanjaardstraat 13:12</li><li><a href="stop-113261.html">113261</a> - Knesselare Kapellestraat 13:13</li><li><a href="stop-113262.html">113262</a> - Knesselare Westvoorde 13:14</li><li><a href="stop-113263.html">113263</a> - Ursel Drongengoedweg 13:15</li><li><a href="stop-113264.html">113264</a> - Ursel Bogaertstraat 13:17</li><li><a href="stop-113265.html">113265</a> - Ursel Nieuwe Baan 13:18</li><li><a href="stop-113406.html">113406</a> - Ursel Kerk 13:19</li><li><a href="stop-113268.html">113268</a> - Ursel Schaperstraat 13:19</li><li><a href="stop-126624.html">126624</a> - Ursel Vleeswarenfabriek 13:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5904.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

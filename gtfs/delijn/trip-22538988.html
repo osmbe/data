@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - St Job Kristus Koning - Antwerpen - 22538988</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St Job Kristus Koning - Antwerpen - 22538988</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-125285.html">125285</a> - Antwerpen F. Rooseveltplaats perron 31 16:25</li><li><a href="stop-108767.html">108767</a> - Antwerpen Paardenmarkt 16:28</li><li><a href="stop-108219.html">108219</a> - Antwerpen Noorderplaats 16:30</li><li><a href="stop-107727.html">107727</a> - Antwerpen Smallestraat 16:32</li><li><a href="stop-107494.html">107494</a> - Merksem Burgemeester Nolf 16:35</li><li><a href="stop-108708.html">108708</a> - Merksem Barnkracht 16:37</li><li><a href="stop-107605.html">107605</a> - Merksem Oudebareel 16:39</li><li><a href="stop-109592.html">109592</a> - Merksem Molenlei 16:41</li><li><a href="stop-23665.html">23665</a> - Schoten Calesbergdreef 16:42</li><li><a href="stop-19318.html">19318</a> - Schoten Amerlolaan 16:44</li><li><a href="stop-19317.html">19317</a> - Schoten Wolfsstraat 16:45</li><li><a href="stop-19315.html">19315</a> - Schoten Wilgendaalstraat 16:46</li><li><a href="stop-107472.html">107472</a> - Schoten Thuretstraat 16:47</li><li><a href="stop-107471.html">107471</a> - Schoten J. Jennesstraat 16:48</li><li><a href="stop-107470.html">107470</a> - Schoten Gemeentelijk Sportpark 16:49</li><li><a href="stop-21996.html">21996</a> - Schoten Zeurtebaan 16:50</li><li><a href="stop-21999.html">21999</a> - Schoten Molenbaan 16:51</li><li><a href="stop-26037.html">26037</a> - Schoten Fortbaan 16:52</li><li><a href="stop-22001.html">22001</a> - Schoten Wildhof 16:52</li><li><a href="stop-22003.html">22003</a> - Schoten Botermelkbaan 16:53</li><li><a href="stop-22005.html">22005</a> - Schoten Kempensedreef 16:54</li><li><a href="stop-22007.html">22007</a> - Schoten Spaans Wijnhuis 16:56</li><li><a href="stop-98789.html">98789</a> - Schoten Terheidedreef 16:56</li><li><a href="stop-22011.html">22011</a> - Sint-Job-in-'t Goor Sluisvijfbaan 16:57</li><li><a href="stop-22014.html">22014</a> - Sint-Job-in-'t Goor  Zandgroefweg 16:58</li><li><a href="stop-22016.html">22016</a> - Sint-Job-in-'t Goor Kruispunt 16:58</li><li><a href="stop-108585.html">108585</a> - Sint-Job-in-'t Goor De Renlaan 16:59</li><li><a href="stop-108587.html">108587</a> - Sint-Job-in-'t Goor Braakstraat 17:00</li><li><a href="stop-108590.html">108590</a> - Sint-Job-in-'t Goor Kerkelei 17:01</li><li><a href="stop-19364.html">19364</a> - Sint-Job-in-'t Goor Schorpioenlaan 17:02</li><li><a href="stop-22029.html">22029</a> - Sint-Job-in-'t Goor Inst. Kristus Koning 17:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3633.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

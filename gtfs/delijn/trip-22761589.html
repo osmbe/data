@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Asse - Ternat - Teralfene - Aalst - 22761589</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Asse - Ternat - Teralfene - Aalst - 22761589</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-13563.html">13563</a> - Ternat Station 16:20</li><li><a href="stop-15181.html">15181</a> - Ternat Kasteellaan 16:21</li><li><a href="stop-110163.html">110163</a> - Ternat Neerveldlaan 16:22</li><li><a href="stop-15185.html">15185</a> - Ternat Beekstraat 16:23</li><li><a href="stop-15187.html">15187</a> - Sint-Katharina-Lombeek Kerk 16:24</li><li><a href="stop-15189.html">15189</a> - Sint-Katharina-Lombeek Lippensputweg 16:25</li><li><a href="stop-15191.html">15191</a> - Sint-Katharina-Lombeek Broekstraat 16:26</li><li><a href="stop-15193.html">15193</a> - Sint-Katharina-Lombeek Meerstraat 16:27</li><li><a href="stop-15195.html">15195</a> - Sint-Katharina-Lombeek Bosstraat 16:29</li><li><a href="stop-15197.html">15197</a> - Sint-Katharina-Lombeek School 16:30</li><li><a href="stop-15199.html">15199</a> - Sint-Katharina-Lombeek Sluisvijverstraat 16:30</li><li><a href="stop-15201.html">15201</a> - Sint-Katharina-Lombeek Nieuwbaan 16:31</li><li><a href="stop-15203.html">15203</a> - Liedekerke Muilemstraat 16:32</li><li><a href="stop-15205.html">15205</a> - Liedekerke Affligemstraat 16:33</li><li><a href="stop-15207.html">15207</a> - Liedekerke Station 16:35</li><li><a href="stop-15209.html">15209</a> - Teralfene Portugeesstraat 16:37</li><li><a href="stop-15211.html">15211</a> - Teralfene Sint-Janskerk 16:38</li><li><a href="stop-15213.html">15213</a> - Teralfene Daalstraat 16:39</li><li><a href="stop-10087.html">10087</a> - Teralfene 't Rieselke 16:39</li><li><a href="stop-15215.html">15215</a> - Teralfene Achterdaalstraat 16:40</li><li><a href="stop-15217.html">15217</a> - Teralfene De Kavee 16:41</li><li><a href="stop-15219.html">15219</a> - Erembodegem Resschebeke 16:42</li><li><a href="stop-128778.html">128778</a> - Erembodegem Bakkerij 16:43</li><li><a href="stop-15223.html">15223</a> - Erembodegem Dommodest Van Assche 16:44</li><li><a href="stop-15225.html">15225</a> - Erembodegem Avondelsbaan 16:46</li><li><a href="stop-128780.html">128780</a> - Erembodegem Zevensterre 16:47</li><li><a href="stop-116864.html">116864</a> - Erembodegem Brug 16:48</li><li><a href="stop-117404.html">117404</a> - Erembodegem Station 16:49</li><li><a href="stop-116861.html">116861</a> - Erembodegem Kerkhofbaan 16:50</li><li><a href="stop-127772.html">127772</a> - Erembodegem Sporthal Schotte 16:51</li><li><a href="stop-128701.html">128701</a> - Aalst Park 16:52</li><li><a href="stop-116537.html">116537</a> - Aalst Houtmarkt 16:53</li><li><a href="stop-116541.html">116541</a> - Aalst Oude Vismarkt 16:54</li><li><a href="stop-126704.html">126704</a> - Aalst Station perron 5 16:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1837.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

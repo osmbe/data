@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oedelem Zeldonk</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Oedelem Zeldonk</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-22136685.html">22136685</a> - 22136685 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22136794.html">22136794</a> - 22136794 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22136798.html">22136798</a> - 22136798 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22136809.html">22136809</a> - 22136809 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22136816.html">22136816</a> - 22136816 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22136821.html">22136821</a> - 22136821 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613280.html">22613280</a> - 22613280 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613284.html">22613284</a> - 22613284 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613294.html">22613294</a> - 22613294 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613302.html">22613302</a> - 22613302 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613305.html">22613305</a> - 22613305 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613309.html">22613309</a> - 22613309 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613316.html">22613316</a> - 22613316 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613323.html">22613323</a> - 22613323 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613333.html">22613333</a> - 22613333 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613336.html">22613336</a> - 22613336 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613340.html">22613340</a> - 22613340 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613347.html">22613347</a> - 22613347 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613354.html">22613354</a> - 22613354 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613379.html">22613379</a> - 22613379 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613383.html">22613383</a> - 22613383 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613389.html">22613389</a> - 22613389 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613393.html">22613393</a> - 22613393 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613404.html">22613404</a> - 22613404 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613411.html">22613411</a> - 22613411 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613415.html">22613415</a> - 22613415 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613419.html">22613419</a> - 22613419 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613422.html">22613422</a> - 22613422 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613436.html">22613436</a> - 22613436 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613443.html">22613443</a> - 22613443 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613446.html">22613446</a> - 22613446 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613452.html">22613452</a> - 22613452 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613457.html">22613457</a> - 22613457 - Brugge-Beernem-Knesselare (Ursel)</li><li><a href="trip-22613466.html">22613466</a> - 22613466 - Brugge-Beernem-Knesselare (Ursel)</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([51.14721969461, 3.39428886621502], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([51.14721969461, 3.39428886621502]).addTo(map);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Meerdonk- St-Niklaas- Belsele - Sinaai - (Lokeren) - 20707885</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Meerdonk- St-Niklaas- Belsele - Sinaai - (Lokeren) - 20707885</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126617.html">126617</a> - Lokeren Station perron 6 07:03</li><li><a href="stop-115602.html">115602</a> - Lokeren Markt 07:05</li><li><a href="stop-115385.html">115385</a> - Lokeren Sportlaan 07:07</li><li><a href="stop-113045.html">113045</a> - Lokeren Poststraat 07:09</li><li><a href="stop-113044.html">113044</a> - Lokeren Oude Bruglaan 07:09</li><li><a href="stop-113043.html">113043</a> - Lokeren Waasmunsterbaan 07:10</li><li><a href="stop-113558.html">113558</a> - Lokeren Groenstraat 07:12</li><li><a href="stop-113040.html">113040</a> - Lokeren Rozenstraat 07:13</li><li><a href="stop-115076.html">115076</a> - Waasmunster Doornijkstraat 07:13</li><li><a href="stop-115075.html">115075</a> - Waasmunster Korte Heesdonkstraat 07:14</li><li><a href="stop-115074.html">115074</a> - Waasmunster Vortekoestraat 07:15</li><li><a href="stop-115073.html">115073</a> - Waasmunster Grote Baan 07:16</li><li><a href="stop-115068.html">115068</a> - Belsele Duizend Appels 07:17</li><li><a href="stop-115067.html">115067</a> - Belsele Dubbelhofstraat 07:18</li><li><a href="stop-115066.html">115066</a> - Belsele Koutermolenstraat 07:20</li><li><a href="stop-115065.html">115065</a> - Belsele Dorp 07:20</li><li><a href="stop-115064.html">115064</a> - Belsele Hulstendreef 07:21</li><li><a href="stop-115089.html">115089</a> - Belsele Malpertuuslaan 07:22</li><li><a href="stop-115081.html">115081</a> - Belsele Reinaertlaan 07:22</li><li><a href="stop-115087.html">115087</a> - Belsele Arkestraat 07:24</li><li><a href="stop-115086.html">115086</a> - Belsele Bookmolenstraat 07:25</li><li><a href="stop-115084.html">115084</a> - Sint-Niklaas Kleiweg 07:26</li><li><a href="stop-115083.html">115083</a> - Sint-Niklaas Gentse Baan 07:26</li><li><a href="stop-115082.html">115082</a> - Sint-Niklaas Prinses J. Charlottelaan 07:28</li><li><a href="stop-115493.html">115493</a> - Sint-Niklaas N70 / Tereken 07:28</li><li><a href="stop-115480.html">115480</a> - Sint-Niklaas Atheneum/Zwembad 07:30</li><li><a href="stop-115481.html">115481</a> - Sint-Niklaas Park 07:30</li><li><a href="stop-115725.html">115725</a> - Sint-Niklaas Markt 07:34</li><li><a href="stop-114858.html">114858</a> - Sint-Niklaas Hofstraat 07:36</li><li><a href="stop-115500.html">115500</a> - Sint-Niklaas Uitgang Noordlaan 07:39</li><li><a href="stop-126682.html">126682</a> - Sint-Niklaas Station perron 5 07:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./743.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

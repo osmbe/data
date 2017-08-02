@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Leerbeek - Gaasbeek - Brussel - 21127230</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Leerbeek - Gaasbeek - Brussel - 21127230</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-10872.html">10872</a> - Leerbeek Stelplaats Kaai 1 22:05</li><li><a href="stop-14821.html">14821</a> - Gooik Meintjes 22:06</li><li><a href="stop-10816.html">10816</a> - Gooik Kwakenbeek 22:07</li><li><a href="stop-10832.html">10832</a> - Gooik Wijngaardstraat 22:08</li><li><a href="stop-10820.html">10820</a> - Gooik Oplombeek 22:09</li><li><a href="stop-13349.html">13349</a> - Sint-Kwintens-Lennik Zwartenbroek 22:10</li><li><a href="stop-13343.html">13343</a> - Sint-Kwintens-Lennik Saffelberg 22:10</li><li><a href="stop-9277.html">9277</a> - Sint-Kwintens-Lennik Negenbunderstraat 22:11</li><li><a href="stop-15917.html">15917</a> - Sint-Kwintens-Lennik Zonnestraal 22:12</li><li><a href="stop-13334.html">13334</a> - Sint-Kwintens-Lennik Marktplein 22:13</li><li><a href="stop-13345.html">13345</a> - Sint-Kwintens-Lennik Gustaaf Van Der Steenstraat 22:15</li><li><a href="stop-13337.html">13337</a> - Sint-Kwintens-Lennik Nederkouter 22:16</li><li><a href="stop-13327.html">13327</a> - Sint-Kwintens-Lennik Groot Vijversele 22:16</li><li><a href="stop-13319.html">13319</a> - Sint-Kwintens-Lennik De Westhoek 22:17</li><li><a href="stop-13307.html">13307</a> - Gaasbeek Wegwijzer 22:18</li><li><a href="stop-13299.html">13299</a> - Gaasbeek Dorp 22:18</li><li><a href="stop-13303.html">13303</a> - Gaasbeek Onderstraat 22:19</li><li><a href="stop-13301.html">13301</a> - Gaasbeek Kasteel 22:20</li><li><a href="stop-13305.html">13305</a> - Vlezenbeek Vijfhoek 22:21</li><li><a href="stop-87249.html">87249</a> - Vlezenbeek Heilige Geest 22:22</li><li><a href="stop-44129.html">44129</a> - Vlezenbeek Ziekenhuis Inkendaal 22:22</li><li><a href="stop-11021.html">11021</a> - Vlezenbeek Kamstraat 22:23</li><li><a href="stop-13482.html">13482</a> - Vlezenbeek Gemeenteplein 22:24</li><li><a href="stop-9343.html">9343</a> - Vlezenbeek Kapelleke 22:25</li><li><a href="stop-13488.html">13488</a> - Vlezenbeek Klein Nederstraat 22:25</li><li><a href="stop-13494.html">13494</a> - Vlezenbeek School Max 22:26</li><li><a href="stop-9280.html">9280</a> - Vlezenbeek Steenbergstraat 22:27</li><li><a href="stop-14724.html">14724</a> - Anderlecht Yzerkruis 22:27</li><li><a href="stop-10008.html">10008</a> - Anderlecht Erasmus 22:28</li><li><a href="stop-10029.html">10029</a> - Anderlecht Meylemeersch 22:29</li><li><a href="stop-9999.html">9999</a> - Anderlecht Eddy Merckx 22:29</li><li><a href="stop-127201.html">127201</a> - Anderlecht Leemans - Eddy Merckx 22:29</li><li><a href="stop-10041.html">10041</a> - Anderlecht Sint-Niklaas 22:30</li><li><a href="stop-10047.html">10047</a> - Anderlecht Coovi 22:31</li><li><a href="stop-10018.html">10018</a> - Anderlecht Het Rad 22:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1609.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

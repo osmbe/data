@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Dendermonde</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Dendermonde</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-L265621881.html">L265621881</a> - L265621881 - Antwerpen-Centraal - Dendermonde</li><li><a href="trip-L265721891.html">L265721891</a> - L265721891 - Antwerpen-Centraal - Dendermonde</li><li><a href="trip-L266822001.html">L266822001</a> - L266822001 - Antwerpen-Centraal - Dendermonde</li><li><a href="trip-L267722081.html">L267722081</a> - L267722081 - Dendermonde - Antwerpen-Centraal</li><li><a href="trip-L267822091.html">L267822091</a> - L267822091 - Dendermonde - Antwerpen-Centraal</li><li><a href="trip-L267922101.html">L267922101</a> - L267922101 - Dendermonde - Antwerpen-Centraal</li><li><a href="trip-L55819741.html">L55819741</a> - L55819741 - Zeebrugge-Dorp - Mechelen</li><li><a href="trip-L56019761.html">L56019761</a> - L56019761 - Zeebrugge-Dorp - Mechelen</li><li><a href="trip-L56119771.html">L56119771</a> - L56119771 - Zeebrugge-Dorp - Mechelen</li><li><a href="trip-L59520081.html">L59520081</a> - L59520081 - Mechelen - Dendermonde</li><li><a href="trip-P709130111.html">P709130111</a> - P709130111 - Dendermonde - Mechelen</li><li><a href="trip-P809832421.html">P809832421</a> - P809832421 - Dendermonde - Mechelen</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([51.022781, 4.101427], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([51.022781, 4.101427]).addTo(map);
+    </script>
+</body>
+
+</html>

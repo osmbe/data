@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hoevenen - Kapellen - Brasschaat - 22549594</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hoevenen - Kapellen - Brasschaat - 22549594</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-19675.html">19675</a> - Brasschaat De Golf 11:49</li><li><a href="stop-19678.html">19678</a> - Brasschaat Meeslaan 11:50</li><li><a href="stop-26051.html">26051</a> - Brasschaat De Vis 11:51</li><li><a href="stop-19680.html">19680</a> - Brasschaat Begraafplaats 11:52</li><li><a href="stop-26039.html">26039</a> - Brasschaat Elshoutbaan 11:53</li><li><a href="stop-110019.html">110019</a> - Brasschaat Kerk Miksebaan 11:54</li><li><a href="stop-109987.html">109987</a> - Brasschaat Kerk Augustijnslei 11:55</li><li><a href="stop-26041.html">26041</a> - Brasschaat Du Boislei 11:56</li><li><a href="stop-110017.html">110017</a> - Brasschaat Klina 11:58</li><li><a href="stop-21968.html">21968</a> - Brasschaat Lage Kaart 12:00</li><li><a href="stop-110021.html">110021</a> - Brasschaat Hoge Kaart 12:01</li><li><a href="stop-26068.html">26068</a> - Brasschaat Max Hermanlei 12:02</li><li><a href="stop-21953.html">21953</a> - Brasschaat Oud Eikelenberg 12:03</li><li><a href="stop-125814.html">125814</a> - Kapellen Hoogboom Kerk 12:04</li><li><a href="stop-108546.html">108546</a> - Kapellen Hoogboom Kazerne 12:05</li><li><a href="stop-21946.html">21946</a> - Kapellen Kon. Astridlaan 12:07</li><li><a href="stop-19735.html">19735</a> - Kapellen Oude Bergsebaan 12:07</li><li><a href="stop-108746.html">108746</a> - Kapellen Zilverhoeklaan 12:09</li><li><a href="stop-107493.html">107493</a> - Kapellen Administratief Centrum 12:10</li><li><a href="stop-108475.html">108475</a> - Kapellen Dorp 12:12</li><li><a href="stop-108474.html">108474</a> - Kapellen Dorp 12:12</li><li><a href="stop-21799.html">21799</a> - Kapellen Sevenhanslei 12:13</li><li><a href="stop-21797.html">21797</a> - Kapellen Albertdreef 12:14</li><li><a href="stop-21794.html">21794</a> - Hoevenen Parijseweg 12:15</li><li><a href="stop-26045.html">26045</a> - Hoevenen Witvenpad 12:16</li><li><a href="stop-110018.html">110018</a> - Hoevenen Markt 12:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3799.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

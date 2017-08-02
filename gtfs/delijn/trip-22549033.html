@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Putte - Stabroek - Antwerpen via A12 - 22549033</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Putte - Stabroek - Antwerpen via A12 - 22549033</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-125281.html">125281</a> - Antwerpen F. Rooseveltplaats perron 21 17:52</li><li><a href="stop-108458.html">108458</a> - Antwerpen Sint-Jansplein 17:54</li><li><a href="stop-123332.html">123332</a> - Antwerpen Noorderplaats 17:55</li><li><a href="stop-107872.html">107872</a> - Antwerpen IJzerlaan 17:59</li><li><a href="stop-107869.html">107869</a> - Antwerpen Noorderbrug 18:01</li><li><a href="stop-107488.html">107488</a> - Antwerpen Straatsburgdok 18:01</li><li><a href="stop-107823.html">107823</a> - Antwerpen Noorderlaan 18:03</li><li><a href="stop-109408.html">109408</a> - Antwerpen Kinepolis 18:03</li><li><a href="stop-94509.html">94509</a> - Stabroek P+R Stabroek 18:17</li><li><a href="stop-21912.html">21912</a> - Stabroek RVT Cuypers 18:17</li><li><a href="stop-21856.html">21856</a> - Stabroek Dorp 18:18</li><li><a href="stop-21839.html">21839</a> - Stabroek Sigarenstraat 18:19</li><li><a href="stop-26061.html">26061</a> - Stabroek Lassonhoflaan 18:20</li><li><a href="stop-26062.html">26062</a> - Stabroek Danckerseweg 18:21</li><li><a href="stop-26063.html">26063</a> - Stabroek Kerkhof 18:22</li><li><a href="stop-26064.html">26064</a> - Stabroek Plantinlaan 18:23</li><li><a href="stop-21820.html">21820</a> - Kapellen Stabroeksteenweg 18:24</li><li><a href="stop-21822.html">21822</a> - Kapellen Lepelstraat 18:24</li><li><a href="stop-108486.html">108486</a> - Stabroek Moretuslei 18:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3773.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

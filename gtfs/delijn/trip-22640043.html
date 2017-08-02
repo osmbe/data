@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Roeselare-Hooglede-Diksmuide - 22640043</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Roeselare-Hooglede-Diksmuide - 22640043</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126281.html">126281</a> - Diksmuide Station perron 2 18:10</li><li><a href="stop-37548.html">37548</a> - Diksmuide Markt 18:11</li><li><a href="stop-41533.html">41533</a> - Diksmuide Cafe Derby 18:13</li><li><a href="stop-98403.html">98403</a> - Esen Cafe Tirol 18:15</li><li><a href="stop-101091.html">101091</a> - Esen Eikhof 18:16</li><li><a href="stop-98404.html">98404</a> - Esen Dorp 18:18</li><li><a href="stop-98407.html">98407</a> - Esen Kruis 18:19</li><li><a href="stop-98402.html">98402</a> - Esen Cafe Moto-Sport 18:20</li><li><a href="stop-98408.html">98408</a> - Esen Roggeveld 18:21</li><li><a href="stop-42238.html">42238</a> - Zarren Zuivelfabriek 18:22</li><li><a href="stop-42313.html">42313</a> - Zarren Dorp 18:23</li><li><a href="stop-38272.html">38272</a> - Zarren Meisjesschool 18:24</li><li><a href="stop-99335.html">99335</a> - Zarren Kruiskalsijde 18:24</li><li><a href="stop-17645.html">17645</a> - Zarren Garage 18:25</li><li><a href="stop-38274.html">38274</a> - Zarren Smissestraat 18:26</li><li><a href="stop-99251.html">99251</a> - Zarren Kapoenstraat 18:26</li><li><a href="stop-38273.html">38273</a> - Zarren Papeleen 18:28</li><li><a href="stop-38183.html">38183</a> - Staden Congo 18:29</li><li><a href="stop-38188.html">38188</a> - Staden Mispelaareik 18:30</li><li><a href="stop-42147.html">42147</a> - Staden Dorp 18:31</li><li><a href="stop-104757.html">104757</a> - Staden Voorstad 18:32</li><li><a href="stop-104756.html">104756</a> - Staden Lindeken 18:33</li><li><a href="stop-123609.html">123609</a> - Staden Kristus Koning 18:35</li><li><a href="stop-36857.html">36857</a> - Hooglede Wulfhoekstraat 18:36</li><li><a href="stop-36846.html">36846</a> - Hooglede Huis Devuldere 18:37</li><li><a href="stop-36848.html">36848</a> - Hooglede Koningstraat 18:38</li><li><a href="stop-36844.html">36844</a> - Hooglede Dorp 18:39</li><li><a href="stop-36850.html">36850</a> - Hooglede Rodenbachwijk 18:41</li><li><a href="stop-36842.html">36842</a> - Hooglede Cafe Rozenhof 18:42</li><li><a href="stop-36856.html">36856</a> - Hooglede Villa Paret 18:44</li><li><a href="stop-38084.html">38084</a> - Roeselare Biezenstraat 18:46</li><li><a href="stop-38121.html">38121</a> - Roeselare Stadenstraat 18:47</li><li><a href="stop-17673.html">17673</a> - Roeselare Noordlaan 18:48</li><li><a href="stop-38099.html">38099</a> - Roeselare Hospitaal 18:50</li><li><a href="stop-39240.html">39240</a> - Roeselare Gaaipersstraat 18:51</li><li><a href="stop-17661.html">17661</a> - Roeselare Sint-Amandsstraat 18:52</li><li><a href="stop-38120.html">38120</a> - Roeselare Sint-Michielskerk 18:53</li><li><a href="stop-38115.html">38115</a> - Roeselare Polenplein 18:54</li><li><a href="stop-126370.html">126370</a> - Roeselare Station perron 9 18:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4267.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Leerbeek - Ternat - Asse - 21129667</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Leerbeek - Ternat - Asse - 21129667</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-11103.html">11103</a> - Leerbeek Stelplaats Kaai 4 08:13</li><li><a href="stop-14821.html">14821</a> - Gooik Meintjes 08:14</li><li><a href="stop-10816.html">10816</a> - Gooik Kwakenbeek 08:15</li><li><a href="stop-10832.html">10832</a> - Gooik Wijngaardstraat 08:15</li><li><a href="stop-10820.html">10820</a> - Gooik Oplombeek 08:16</li><li><a href="stop-13349.html">13349</a> - Sint-Kwintens-Lennik Zwartenbroek 08:17</li><li><a href="stop-13343.html">13343</a> - Sint-Kwintens-Lennik Saffelberg 08:17</li><li><a href="stop-9277.html">9277</a> - Sint-Kwintens-Lennik Negenbunderstraat 08:18</li><li><a href="stop-15917.html">15917</a> - Sint-Kwintens-Lennik Zonnestraal 08:21</li><li><a href="stop-13334.html">13334</a> - Sint-Kwintens-Lennik Marktplein 08:21</li><li><a href="stop-13345.html">13345</a> - Sint-Kwintens-Lennik Gustaaf Van Der Steenstraat 08:22</li><li><a href="stop-14726.html">14726</a> - Sint-Kwintens-Lennik Sporthal 08:23</li><li><a href="stop-11139.html">11139</a> - Sint-Martens-Lennik Postberg 08:24</li><li><a href="stop-127060.html">127060</a> - Sint-Martens-Lennik Sint-Godelieve 08:26</li><li><a href="stop-87496.html">87496</a> - Sint-Martens-Lennik Oude Brusselstraat 08:29</li><li><a href="stop-89572.html">89572</a> - Schepdaal Goudveerdegem 08:30</li><li><a href="stop-87495.html">87495</a> - Schepdaal Kapellestraat 08:31</li><li><a href="stop-87493.html">87493</a> - Wambeek Massestraat 08:36</li><li><a href="stop-87491.html">87491</a> - Wambeek Potgieter 08:38</li><li><a href="stop-16285.html">16285</a> - Wambeek Brouwerij De Troch 08:39</li><li><a href="stop-13570.html">13570</a> - Wambeek Kerk 08:39</li><li><a href="stop-16283.html">16283</a> - Wambeek De Spiegel 08:40</li><li><a href="stop-13569.html">13569</a> - Wambeek Brouwerij 08:42</li><li><a href="stop-13577.html">13577</a> - Wambeek Vianestraat 08:43</li><li><a href="stop-10283.html">10283</a> - Ternat Vinkenlaan 08:44</li><li><a href="stop-13555.html">13555</a> - Ternat Kerkstraat 08:45</li><li><a href="stop-13563.html">13563</a> - Ternat Station 08:47</li><li><a href="stop-93386.html">93386</a> - Ternat Klooster - Scholen 08:48</li><li><a href="stop-13559.html">13559</a> - Ternat Markt 08:49</li><li><a href="stop-99854.html">99854</a> - Ternat Steenberg 08:57</li><li><a href="stop-99098.html">99098</a> - Ternat Ferrero 08:59</li><li><a href="stop-11374.html">11374</a> - Ternat Tuborg 09:00</li><li><a href="stop-11408.html">11408</a> - Ternat Handelsstraat 09:00</li><li><a href="stop-127379.html">127379</a> - Ternat Industrie 09:01</li><li><a href="stop-9888.html">9888</a> - Asse Zavellos 09:04</li><li><a href="stop-9460.html">9460</a> - Asse Heedstraat/Stwg Edingen 09:06</li><li><a href="stop-9499.html">9499</a> - Asse Zavelputstraat 09:07</li><li><a href="stop-15599.html">15599</a> - Asse Keierberg 09:09</li><li><a href="stop-89557.html">89557</a> - Asse Koninklijk Atheneum 09:09</li><li><a href="stop-15239.html">15239</a> - Asse Kliniek 09:10</li><li><a href="stop-9449.html">9449</a> - Asse Belvédère 09:11</li><li><a href="stop-9483.html">9483</a> - Asse Station 09:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1801.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

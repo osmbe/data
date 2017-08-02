@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Brukom - Halle via N6 - 22761234</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Brukom - Halle via N6 - 22761234</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-13399.html">13399</a> - Sint-Pieters-Leeuw Brukom 11:19</li><li><a href="stop-44008.html">44008</a> - Sint-Pieters-Leeuw Hoog Elst 11:20</li><li><a href="stop-43976.html">43976</a> - Lot Elst 11:20</li><li><a href="stop-43982.html">43982</a> - Lot Stationsstraat 11:21</li><li><a href="stop-43980.html">43980</a> - Lot Imperbel 11:22</li><li><a href="stop-44023.html">44023</a> - Sint-Pieters-Leeuw E.Vander Steenenstr. 11:23</li><li><a href="stop-44027.html">44027</a> - Sint-Pieters-Leeuw Makro 11:23</li><li><a href="stop-13457.html">13457</a> - Sint-Pieters-Leeuw Stwg naar Ruisbroek 11:24</li><li><a href="stop-13476.html">13476</a> - Sint-Pieters-Leeuw Zuun 11:25</li><li><a href="stop-13425.html">13425</a> - Sint-Pieters-Leeuw J.Vanderstraetenstr. 11:26</li><li><a href="stop-13472.html">13472</a> - Sint-Pieters-Leeuw E. Ghijsstraat 11:29</li><li><a href="stop-13440.html">13440</a> - Sint-Pieters-Leeuw Negenmanneke 11:30</li><li><a href="stop-10040.html">10040</a> - Anderlecht IKEA 11:31</li><li><a href="stop-10047.html">10047</a> - Anderlecht Coovi 11:32</li><li><a href="stop-10018.html">10018</a> - Anderlecht Het Rad 11:34</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1819.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

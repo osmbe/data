@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - De Pinte - Gent - Lochristi - Wachtebeke - 20702560</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: De Pinte - Gent - Lochristi - Wachtebeke - 20702560</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-111770.html">111770</a> - Wachtebeke Domein Zwembad 13:09</li><li><a href="stop-112687.html">112687</a> - Wachtebeke Domein Camping 13:11</li><li><a href="stop-111769.html">111769</a> - Wachtebeke Kalvebrug 13:12</li><li><a href="stop-114024.html">114024</a> - Wachtebeke Kalve 13:13</li><li><a href="stop-114025.html">114025</a> - Wachtebeke Axelsvaardeken 13:14</li><li><a href="stop-114026.html">114026</a> - Wachtebeke Molenhoek 13:15</li><li><a href="stop-114027.html">114027</a> - Wachtebeke Godshuisstraat 13:15</li><li><a href="stop-113524.html">113524</a> - Wachtebeke Persijnplein 13:17</li><li><a href="stop-112688.html">112688</a> - Wachtebeke Meersstraat 13:18</li><li><a href="stop-113561.html">113561</a> - Wachtebeke Dom. Puyenbroek P1 13:22</li><li><a href="stop-113560.html">113560</a> - Wachtebeke Craenendam 13:23</li><li><a href="stop-111270.html">111270</a> - Zaffelare Dam 13:24</li><li><a href="stop-113543.html">113543</a> - Zaffelare Oosteindeken 13:25</li><li><a href="stop-113542.html">113542</a> - Zaffelare Kerk 13:26</li><li><a href="stop-113541.html">113541</a> - Zaffelare Molenstraat 13:27</li><li><a href="stop-113540.html">113540</a> - Zaffelare Nerenhoek 13:28</li><li><a href="stop-113539.html">113539</a> - Zaffelare Rechtstraat 13:29</li><li><a href="stop-113538.html">113538</a> - Zaffelare Kapiteinstraat 13:30</li><li><a href="stop-111269.html">111269</a> - Zaffelare Verleydonckstraat 13:31</li><li><a href="stop-111802.html">111802</a> - Lochristi Smalhaveldstraat 13:32</li><li><a href="stop-111268.html">111268</a> - Lochristi Dorpsstraat 13:33</li><li><a href="stop-113081.html">113081</a> - Lochristi Hoekskensstraat 13:34</li><li><a href="stop-113126.html">113126</a> - Lochristi Rustoord 13:35</li><li><a href="stop-113079.html">113079</a> - Lochristi Kerk 13:36</li><li><a href="stop-113078.html">113078</a> - Lochristi Schoolstraat 13:37</li><li><a href="stop-113077.html">113077</a> - Lochristi Stationsstraat 13:38</li><li><a href="stop-113171.html">113171</a> - Lochristi Kapelleken 13:40</li><li><a href="stop-113118.html">113118</a> - Lochristi Begoniastraat 13:41</li><li><a href="stop-113117.html">113117</a> - Lochristi Crematorium Westlede 13:42</li><li><a href="stop-113116.html">113116</a> - Lochristi Palingstraat 13:43</li><li><a href="stop-113074.html">113074</a> - Lochristi Doornikstraat 13:43</li><li><a href="stop-113073.html">113073</a> - Lochristi Sparrenlaan 13:44</li><li><a href="stop-113072.html">113072</a> - Oostakker Eisenhowerlaan 13:45</li><li><a href="stop-113071.html">113071</a> - Oostakker Teirlinckstraat 13:46</li><li><a href="stop-111342.html">111342</a> - Sint-Amandsberg Achtenkouterstraat 13:46</li><li><a href="stop-113065.html">113065</a> - Sint-Amandsberg P+R Oostakker 13:47</li><li><a href="stop-111231.html">111231</a> - Sint-Amandsberg Oudebareelstraat 13:48</li><li><a href="stop-111230.html">111230</a> - Sint-Amandsberg Carelshof 13:49</li><li><a href="stop-111317.html">111317</a> - Sint-Amandsberg Everstraat 13:50</li><li><a href="stop-111316.html">111316</a> - Sint-Amandsberg Zavelput 13:51</li><li><a href="stop-111318.html">111318</a> - Sint-Amandsberg Grondwetlaan 13:53</li><li><a href="stop-111319.html">111319</a> - Sint-Amandsberg Dienstencentrum 13:54</li><li><a href="stop-120186.html">120186</a> - Sint-Amandsberg Schoolstraat 13:55</li><li><a href="stop-126807.html">126807</a> - Gent Dampoort perron 5 13:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./582.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

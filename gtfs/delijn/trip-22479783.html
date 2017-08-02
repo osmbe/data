@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Zwartberg - Houthalen - 22479783</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Zwartberg - Houthalen - 22479783</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-125475.html">125475</a> - Genk Station perron 10 16:44</li><li><a href="stop-28345.html">28345</a> - Genk Shopping Center perron 1 16:47</li><li><a href="stop-94950.html">94950</a> - Genk Hospitaalstraat 16:49</li><li><a href="stop-88460.html">88460</a> - Genk Bretheistraat 16:50</li><li><a href="stop-43835.html">43835</a> - Genk College 16:51</li><li><a href="stop-43836.html">43836</a> - Genk Campus Bret 16:54</li><li><a href="stop-88462.html">88462</a> - Genk Sint-Lodewijkstraat 16:55</li><li><a href="stop-28377.html">28377</a> - Genk Koninklijk Atheneum 16:56</li><li><a href="stop-28492.html">28492</a> - Genk J. Habexlaan 16:57</li><li><a href="stop-123237.html">123237</a> - Genk Bochtlaan 16:59</li><li><a href="stop-28399.html">28399</a> - Genk Erfstraat 17:00</li><li><a href="stop-96723.html">96723</a> - Winterslag Mijn 17:02</li><li><a href="stop-28731.html">28731</a> - Genk Esserslaan 17:03</li><li><a href="stop-28734.html">28734</a> - Genk Sint-Michiel 17:04</li><li><a href="stop-28736.html">28736</a> - Genk Hengelhoefstraat 17:05</li><li><a href="stop-94686.html">94686</a> - Genk Vogelsberg 17:06</li><li><a href="stop-28740.html">28740</a> - Genk Jonkersblook 17:07</li><li><a href="stop-28457.html">28457</a> - Genk Driehoeven 17:09</li><li><a href="stop-96751.html">96751</a> - Zwartberg Zaveldriesstraat 17:10</li><li><a href="stop-125477.html">125477</a> - Zwartberg G. Lambertlaan 17:11</li><li><a href="stop-96748.html">96748</a> - Zwartberg Nieuwe Kempen 17:13</li><li><a href="stop-30703.html">30703</a> - Houthalen Halstraat 17:13</li><li><a href="stop-30773.html">30773</a> - Houthalen Violierenstraat 17:15</li><li><a href="stop-105241.html">105241</a> - Houthalen Park van Genk Kerk 17:16</li><li><a href="stop-30677.html">30677</a> - Houthalen Kastanjestraat 17:17</li><li><a href="stop-30633.html">30633</a> - Houthalen Berkenstraat 17:19</li><li><a href="stop-30689.html">30689</a> - Houthalen Kerselaarstraat 17:20</li><li><a href="stop-30641.html">30641</a> - Houthalen Canadastraat 17:21</li><li><a href="stop-30676.html">30676</a> - Houthalen Thuyastraat 17:22</li><li><a href="stop-30771.html">30771</a> - Houthalen Tulpenstraat 17:23</li><li><a href="stop-30744.html">30744</a> - Houthalen Rekreatiepark 17:25</li><li><a href="stop-30695.html">30695</a> - Houthalen Korhoenstraat 17:26</li><li><a href="stop-30665.html">30665</a> - Houthalen Heivinkstraat 17:26</li><li><a href="stop-30739.html">30739</a> - Houthalen Pelikaanstraat 17:27</li><li><a href="stop-30707.html">30707</a> - Houthalen Lijsterstraat 17:28</li><li><a href="stop-30680.html">30680</a> - Houthalen Kelchterhoef 17:30</li><li><a href="stop-30700.html">30700</a> - Houthalen Kwalaak 17:34</li><li><a href="stop-30656.html">30656</a> - Houthalen Gemeenschapsscholen 17:34</li><li><a href="stop-30767.html">30767</a> - Meulenberg Ten Hout Kapelleke 17:35</li><li><a href="stop-32899.html">32899</a> - Meulenberg Saviostraat 17:35</li><li><a href="stop-32897.html">32897</a> - Meulenberg Parochiecentrum 17:36</li><li><a href="stop-30720.html">30720</a> - Meulenberg Kerk 17:37</li><li><a href="stop-30636.html">30636</a> - Meulenberg Brelaarstraat 17:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4552.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Geel - Dessel - Witgoor - Retie - Arendonk - 21539440</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Geel - Dessel - Witgoor - Retie - Arendonk - 21539440</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-106800.html">106800</a> - Geel Station perron 7 12:05</li><li><a href="stop-107517.html">107517</a> - Geel Stadspark 12:07</li><li><a href="stop-109754.html">109754</a> - Geel Markt 12:08</li><li><a href="stop-127001.html">127001</a> - Geel P. Van Neylenstraat 12:09</li><li><a href="stop-127765.html">127765</a> - Geel Sint-Dimpnaplein 12:10</li><li><a href="stop-25630.html">25630</a> - Geel Mannestraat 12:11</li><li><a href="stop-25628.html">25628</a> - Geel Heimerik 12:12</li><li><a href="stop-25626.html">25626</a> - Geel Galven 12:13</li><li><a href="stop-25624.html">25624</a> - Geel Nieuwland 12:14</li><li><a href="stop-25622.html">25622</a> - Geel Binnenblokken 12:15</li><li><a href="stop-25620.html">25620</a> - Geel Ericastraat 12:15</li><li><a href="stop-25618.html">25618</a> - Geel Domeinstraat 12:16</li><li><a href="stop-25616.html">25616</a> - Geel SCK Europawijk 12:17</li><li><a href="stop-25613.html">25613</a> - Geel Castelsebaan 12:19</li><li><a href="stop-25611.html">25611</a> - Dessel Heide 12:21</li><li><a href="stop-25609.html">25609</a> - Dessel MMN Europalaan 12:21</li><li><a href="stop-109893.html">109893</a> - Dessel Kastelsedijk 12:22</li><li><a href="stop-87488.html">87488</a> - Retie Brasel 12:23</li><li><a href="stop-25603.html">25603</a> - Dessel Delstraat 12:25</li><li><a href="stop-20748.html">20748</a> - Dessel Sportcentrum 12:26</li><li><a href="stop-109891.html">109891</a> - Dessel Berkestraat 12:27</li><li><a href="stop-109377.html">109377</a> - Dessel Markt 12:29</li><li><a href="stop-93852.html">93852</a> - Dessel Dijkstraat 12:30</li><li><a href="stop-24074.html">24074</a> - Dessel Polderstraat 12:31</li><li><a href="stop-24076.html">24076</a> - Dessel Grachtstraat 12:31</li><li><a href="stop-109419.html">109419</a> - Dessel Perestraat 12:31</li><li><a href="stop-125831.html">125831</a> - Dessel Witgoor Kerk 12:32</li><li><a href="stop-24091.html">24091</a> - Dessel Gemeentedijkstraat 12:33</li><li><a href="stop-24093.html">24093</a> - Dessel Huzarenberg 12:37</li><li><a href="stop-24095.html">24095</a> - Dessel Bogaardstraat 12:37</li><li><a href="stop-109423.html">109423</a> - Dessel Heidekapel 12:38</li><li><a href="stop-23972.html">23972</a> - Dessel Kuilstraat 12:39</li><li><a href="stop-23970.html">23970</a> - Retie Werbeek 12:40</li><li><a href="stop-109374.html">109374</a> - Retie Nieuwstraat 12:42</li><li><a href="stop-109372.html">109372</a> - Retie Markt 12:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3119.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

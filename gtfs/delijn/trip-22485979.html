@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sint-Truiden - Engelmanshoven - Heers - Oreye - 22485979</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Truiden - Engelmanshoven - Heers - Oreye - 22485979</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127434.html">127434</a> - Sint-Truiden Station perron 1 14:20</li><li><a href="stop-34027.html">34027</a> - Sint-Truiden Stationsstraat 14:21</li><li><a href="stop-34066.html">34066</a> - Sint-Truiden Zwembad 14:23</li><li><a href="stop-33975.html">33975</a> - Sint-Truiden Naamsepoort 14:25</li><li><a href="stop-105351.html">105351</a> - Sint-Truiden Europaplein 14:26</li><li><a href="stop-33929.html">33929</a> - Sint-Truiden Kattenstraat 14:27</li><li><a href="stop-34112.html">34112</a> - Sint-Truiden Festraetstraat 14:29</li><li><a href="stop-33843.html">33843</a> - Sint-Truiden Champagne 14:31</li><li><a href="stop-33840.html">33840</a> - Brustem Vliegplein 14:33</li><li><a href="stop-33842.html">33842</a> - Brustem Vliegveldlaan 14:34</li><li><a href="stop-33824.html">33824</a> - Brustem Dorp 14:34</li><li><a href="stop-34139.html">34139</a> - Brustem Berg 14:35</li><li><a href="stop-33835.html">33835</a> - Brustem Luikersteenweg 410 14:36</li><li><a href="stop-105349.html">105349</a> - Brustem Saffraanberg 14:37</li><li><a href="stop-33880.html">33880</a> - Gelmen Interbeton 14:38</li><li><a href="stop-33857.html">33857</a> - Engelmanshoven Groot-Gelmenlaan 14:39</li><li><a href="stop-33877.html">33877</a> - Gelinden Sint-Jansberg 14:40</li><li><a href="stop-33872.html">33872</a> - Gelinden Dorp 14:41</li><li><a href="stop-100039.html">100039</a> - Klein-Gelmen Bosveldstraat 14:42</li><li><a href="stop-29943.html">29943</a> - Heers Bovelingenstraat 14:42</li><li><a href="stop-29991.html">29991</a> - Heers Paardskerkhof 14:43</li><li><a href="stop-30003.html">30003</a> - Heers Salvialaan 14:43</li><li><a href="stop-30029.html">30029</a> - Heers Weg naar Waremme 14:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4536.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

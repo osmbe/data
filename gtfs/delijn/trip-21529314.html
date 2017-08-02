@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Zuid - Berchem - Borgerhout - Zuid - 21529314</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Zuid - Berchem - Borgerhout - Zuid - 21529314</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108626.html">108626</a> - Borgerhout Turnhoutsebaan 21:35</li><li><a href="stop-92235.html">92235</a> - Borgerhout Helmstraat 21:36</li><li><a href="stop-92234.html">92234</a> - Borgerhout Groeningerplein 21:37</li><li><a href="stop-21932.html">21932</a> - Antwerpen AZ Stuivenberg 21:38</li><li><a href="stop-20318.html">20318</a> - Antwerpen Handel 21:39</li><li><a href="stop-20329.html">20329</a> - Antwerpen Handelsteeg 21:40</li><li><a href="stop-108439.html">108439</a> - Antwerpen Sint-Elisabethstraat 21:41</li><li><a href="stop-108321.html">108321</a> - Antwerpen Rotterdamstraat 21:42</li><li><a href="stop-107365.html">107365</a> - Antwerpen Sint-Jansplein 21:43</li><li><a href="stop-21283.html">21283</a> - Antwerpen Rodestraat 21:43</li><li><a href="stop-20366.html">20366</a> - Antwerpen Hessenbrug 21:44</li><li><a href="stop-107615.html">107615</a> - Antwerpen Felixarchief 21:45</li><li><a href="stop-108698.html">108698</a> - Antwerpen Van Schoonbekeplein 21:45</li><li><a href="stop-108411.html">108411</a> - Antwerpen Sint-Pietersvliet 21:46</li><li><a href="stop-108547.html">108547</a> - Antwerpen Suikerrui Steenplein 21:48</li><li><a href="stop-21782.html">21782</a> - Antwerpen Sint-Jansvliet 21:49</li><li><a href="stop-108345.html">108345</a> - Antwerpen Sint-Michielskaai 21:51</li><li><a href="stop-19902.html">19902</a> - Antwerpen Scheldestraat 21:52</li><li><a href="stop-19904.html">19904</a> - Antwerpen Visserskaai 21:53</li><li><a href="stop-19905.html">19905</a> - Antwerpen Waterpoort 21:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2813.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

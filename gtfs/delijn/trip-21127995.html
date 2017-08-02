@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Anderlecht - Drogenbos- Halle - Ninove - 21127995</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Anderlecht - Drogenbos- Halle - Ninove - 21127995</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-10870.html">10870</a> - Leerbeek Stelplaats Kaai 3 04:20</li><li><a href="stop-14821.html">14821</a> - Gooik Meintjes 04:21</li><li><a href="stop-10816.html">10816</a> - Gooik Kwakenbeek 04:21</li><li><a href="stop-10834.html">10834</a> - Gooik Wijngaardstraat 04:22</li><li><a href="stop-10809.html">10809</a> - Gooik Gooikeveldstraat 04:23</li><li><a href="stop-10813.html">10813</a> - Gooik Koekoekstraat 04:24</li><li><a href="stop-10821.html">10821</a> - Gooik Paddenbroekstraat 04:25</li><li><a href="stop-10823.html">10823</a> - Gooik Steenberg 04:26</li><li><a href="stop-10827.html">10827</a> - Gooik Terlo 04:27</li><li><a href="stop-10811.html">10811</a> - Gooik Hoezenbroekstraat 04:28</li><li><a href="stop-9974.html">9974</a> - Gooik Sporthal Koornmolen 04:28</li><li><a href="stop-87245.html">87245</a> - Gooik Strijland School 04:28</li><li><a href="stop-10825.html">10825</a> - Gooik Strijland Kerk 04:29</li><li><a href="stop-10829.html">10829</a> - Gooik Weg naar Lieferinge 04:30</li><li><a href="stop-15510.html">15510</a> - Neigem Nieuwstraat 04:32</li><li><a href="stop-127114.html">127114</a> - Neigem Dorp 04:33</li><li><a href="stop-117044.html">117044</a> - Neigem Neep 04:34</li><li><a href="stop-127104.html">127104</a> - Meerbeke Halsesteenweg 04:35</li><li><a href="stop-127103.html">127103</a> - Meerbeke Walstraat 04:37</li><li><a href="stop-117041.html">117041</a> - Meerbeke Kerk 04:38</li><li><a href="stop-118343.html">118343</a> - Meerbeke Vlinderlaan 04:39</li><li><a href="stop-16180.html">16180</a> - Ninove Nederwijk Oost 04:42</li><li><a href="stop-127111.html">127111</a> - Ninove Industrie 04:42</li><li><a href="stop-118356.html">118356</a> - Ninove Astridlaan 04:43</li><li><a href="stop-126824.html">126824</a> - Ninove Station perron 1 04:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1643.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

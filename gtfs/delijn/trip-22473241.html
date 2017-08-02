@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Meeuwen - Grote Brogel - Bocholt - 22473241</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Meeuwen - Grote Brogel - Bocholt - 22473241</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-123219.html">123219</a> - Zonhoven Dorpsplein 12:00</li><li><a href="stop-35169.html">35169</a> - Zonhoven Berkenenstraat 12:02</li><li><a href="stop-30733.html">30733</a> - Houthalen Park & Ride 12:04</li><li><a href="stop-30693.html">30693</a> - Houthalen Koolmijnlaan 12:05</li><li><a href="stop-30724.html">30724</a> - Houthalen Mijn 12:05</li><li><a href="stop-93625.html">93625</a> - Houthalen Centrum 12:07</li><li><a href="stop-30702.html">30702</a> - Houthalen Laak 12:09</li><li><a href="stop-30630.html">30630</a> - Helchteren Technische School 12:12</li><li><a href="stop-30603.html">30603</a> - Helchteren Kruispunt 12:15</li><li><a href="stop-30607.html">30607</a> - Helchteren 8 Septemberlaan 12:15</li><li><a href="stop-30618.html">30618</a> - Helchteren Kazerne 2a 12:16</li><li><a href="stop-30612.html">30612</a> - Helchteren Eynderweg 12:18</li><li><a href="stop-30626.html">30626</a> - Helchteren Sonnis 12:18</li><li><a href="stop-30623.html">30623</a> - Helchteren Oude Postbaan 12:20</li><li><a href="stop-125559.html">125559</a> - Peer Bovenlinde 12:21</li><li><a href="stop-33546.html">33546</a> - Peer Wauberg 12:23</li><li><a href="stop-97478.html">97478</a> - Wauberg School 12:23</li><li><a href="stop-97476.html">97476</a> - Wauberg Overes 12:24</li><li><a href="stop-32790.html">32790</a> - Meeuwen Meeuweneinde 12:25</li><li><a href="stop-105310.html">105310</a> - Meeuwen Wilgenstraat 12:26</li><li><a href="stop-110434.html">110434</a> - Meeuwen Broekkant 12:27</li><li><a href="stop-32798.html">32798</a> - Meeuwen Weg naar Helchteren 12:28</li><li><a href="stop-32753.html">32753</a> - Meeuwen Bergstraat 12:29</li><li><a href="stop-32785.html">32785</a> - Meeuwen Lierstraat 12:30</li><li><a href="stop-32854.html">32854</a> - Meeuwen Luttelmeeuwen 12:31</li><li><a href="stop-32711.html">32711</a> - Ellikom Ellikommerbaan 12:32</li><li><a href="stop-32717.html">32717</a> - Ellikom Hellestraat 12:33</li><li><a href="stop-32719.html">32719</a> - Ellikom Kerk 12:33</li><li><a href="stop-105299.html">105299</a> - Ellikom Schoolstraat 12:34</li><li><a href="stop-32723.html">32723</a> - Ellikom Schutterslaan 12:35</li><li><a href="stop-32714.html">32714</a> - Ellikom Grote Baan 12:36</li><li><a href="stop-93812.html">93812</a> - Grote-Brogel Laarheide 12:38</li><li><a href="stop-89661.html">89661</a> - Grote-Brogel Bedrijfsstraat 12:38</li><li><a href="stop-33455.html">33455</a> - Grote-Brogel Laarderweg 12:39</li><li><a href="stop-33606.html">33606</a> - Grote-Brogel Dorpsstraat 12:40</li><li><a href="stop-33479.html">33479</a> - Grote-Brogel Kerk 12:41</li><li><a href="stop-110464.html">110464</a> - Grote-Brogel Kiosk 12:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5430.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

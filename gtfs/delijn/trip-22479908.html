@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hamont - Geel - 22479908</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hamont - Geel - 22479908</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-32939.html">32939</a> - Mol Station perron 2 16:26</li><li><a href="stop-127756.html">127756</a> - Mol College 16:29</li><li><a href="stop-127480.html">127480</a> - Mol Kerk 16:30</li><li><a href="stop-109395.html">109395</a> - Mol Laar 16:30</li><li><a href="stop-24035.html">24035</a> - Mol Rozenbergschool 16:31</li><li><a href="stop-109406.html">109406</a> - Mol Overweg 78 16:31</li><li><a href="stop-106579.html">106579</a> - Mol Gompelbaan 16:32</li><li><a href="stop-127455.html">127455</a> - Mol Gompel Hoeve 16:32</li><li><a href="stop-107498.html">107498</a> - Gompel Pastoor Vaesstraat 16:34</li><li><a href="stop-97376.html">97376</a> - Gompel Glaverbel 16:35</li><li><a href="stop-97379.html">97379</a> - Gompel Lenslei 16:36</li><li><a href="stop-26704.html">26704</a> - Balen Vierhoek 16:38</li><li><a href="stop-97393.html">97393</a> - Wezel Wezelstraat 16:39</li><li><a href="stop-97392.html">97392</a> - Wezel Spoorwegdreef 16:41</li><li><a href="stop-97390.html">97390</a> - Wezel Lariëndijkweg 16:42</li><li><a href="stop-95400.html">95400</a> - Wezel Sint-Jozef Apotheek 16:44</li><li><a href="stop-97396.html">97396</a> - Wezel Casino 16:46</li><li><a href="stop-97395.html">97395</a> - Wezel Viaduct 16:48</li><li><a href="stop-106810.html">106810</a> - Mol Blekestraat 16:51</li><li><a href="stop-128812.html">128812</a> - Mol Kiezelweg 16:52</li><li><a href="stop-99833.html">99833</a> - Werkplaatsen Stevensvennen 16:54</li><li><a href="stop-99831.html">99831</a> - Werkplaatsen Kiezel 16:56</li><li><a href="stop-99830.html">99830</a> - Werkplaatsen Dubbelrij 16:57</li><li><a href="stop-99827.html">99827</a> - Werkplaatsen Dorperheide 16:58</li><li><a href="stop-110415.html">110415</a> - Heeserbergen Kempensestraat 16:59</li><li><a href="stop-110413.html">110413</a> - Lommel Guido Gezellestraat 17:00</li><li><a href="stop-97255.html">97255</a> - Heeserbergen Dode Ven 17:01</li><li><a href="stop-31977.html">31977</a> - Lommel Donkerstraat 17:02</li><li><a href="stop-32082.html">32082</a> - Lommel Vreyshorring 17:03</li><li><a href="stop-32019.html">32019</a> - Lommel Kerk 17:04</li><li><a href="stop-32032.html">32032</a> - Lommel Leopoldlaan 17:06</li><li><a href="stop-123073.html">123073</a> - Lutlommel Lutlommel 17:07</li><li><a href="stop-97264.html">97264</a> - Lutlommel Enneven 17:08</li><li><a href="stop-125523.html">125523</a> - Lutlommel School 17:10</li><li><a href="stop-97247.html">97247</a> - Grote-Barrier Beekstraat 17:12</li><li><a href="stop-123069.html">123069</a> - Grote-Barrier Grote-Barrier 17:13</li><li><a href="stop-33396.html">33396</a> - Overpelt Plascobel 17:15</li><li><a href="stop-33363.html">33363</a> - Overpelt Fabrieken 17:16</li><li><a href="stop-33367.html">33367</a> - Overpelt Haagdoorndijk 17:17</li><li><a href="stop-33425.html">33425</a> - Overpelt Zilverdenstraat 17:19</li><li><a href="stop-125556.html">125556</a> - Overpelt Dulco 17:19</li><li><a href="stop-33388.html">33388</a> - Overpelt Mulkenstraat 17:21</li><li><a href="stop-33379.html">33379</a> - Overpelt Houtmolen 17:21</li><li><a href="stop-91062.html">91062</a> - Overpelt Overweg 17:22</li><li><a href="stop-33398.html">33398</a> - Overpelt Rijkswacht 17:23</li><li><a href="stop-33045.html">33045</a> - Neerpelt Station 17:24</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4628.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

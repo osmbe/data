@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge-Oudenburg-Oostende - 22654574</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge-Oudenburg-Oostende - 22654574</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-125653.html">125653</a> - Oostende Station perron 13 18:10</li><li><a href="stop-36293.html">36293</a> - Oostende Stapelhuis 18:12</li><li><a href="stop-90258.html">90258</a> - Oostende Oesterbank 18:17</li><li><a href="stop-36284.html">36284</a> - Oostende Ostend Stores 18:17</li><li><a href="stop-97945.html">97945</a> - Zandvoorde Halfweghuis 18:19</li><li><a href="stop-36321.html">36321</a> - Oudenburg Station 18:22</li><li><a href="stop-41383.html">41383</a> - Oudenburg Verhelst 18:24</li><li><a href="stop-43614.html">43614</a> - Oudenburg Plaats 18:26</li><li><a href="stop-36318.html">36318</a> - Oudenburg Cottemweg 18:27</li><li><a href="stop-36322.html">36322</a> - Oudenburg Vrijboom 18:28</li><li><a href="stop-36061.html">36061</a> - Ettelgem Gemeentehuis 18:29</li><li><a href="stop-35876.html">35876</a> - Ettelgem Markt 18:30</li><li><a href="stop-41245.html">41245</a> - Zerkegem Kruiskalsijde 18:34</li><li><a href="stop-41246.html">41246</a> - Zerkegem Pelikaan 18:35</li><li><a href="stop-40931.html">40931</a> - Jabbeke Zevecote 18:36</li><li><a href="stop-40928.html">40928</a> - Jabbeke Garage Cools 18:37</li><li><a href="stop-40927.html">40927</a> - Jabbeke Dorp 18:38</li><li><a href="stop-40930.html">40930</a> - Jabbeke Museum Permeke 18:39</li><li><a href="stop-40929.html">40929</a> - Jabbeke Isenbaertstraat 18:40</li><li><a href="stop-41076.html">41076</a> - Snellegem Halfweghuis 18:41</li><li><a href="stop-41205.html">41205</a> - Varsenare Lijsterdreef 18:42</li><li><a href="stop-41206.html">41206</a> - Varsenare Velddreef 18:43</li><li><a href="stop-41204.html">41204</a> - Varsenare Dorp 18:44</li><li><a href="stop-41207.html">41207</a> - Varsenare Zeeweg 18:45</li><li><a href="stop-41203.html">41203</a> - Varsenare De Manlaan 18:46</li><li><a href="stop-101051.html">101051</a> - Sint-Andries Cosy-Corner 18:47</li><li><a href="stop-98337.html">98337</a> - Sint-Andries Molendorp 18:48</li><li><a href="stop-98331.html">98331</a> - Sint-Andries Kerk 18:49</li><li><a href="stop-98319.html">98319</a> - Sint-Andries Boeverbos 18:50</li><li><a href="stop-98324.html">98324</a> - Sint-Andries De Nieulant 18:51</li><li><a href="stop-98336.html">98336</a> - Sint-Andries Manitoba 18:52</li><li><a href="stop-98335.html">98335</a> - Sint-Andries Lange Munt 18:52</li><li><a href="stop-98342.html">98342</a> - Sint-Andries Sint-Baafskerk 18:53</li><li><a href="stop-98341.html">98341</a> - Sint-Andries Phare 18:54</li><li><a href="stop-98343.html">98343</a> - Sint-Andries Sint-Lodewijk 18:55</li><li><a href="stop-110599.html">110599</a> - Sint-Michiels Station West 18:56</li><li><a href="stop-121699.html">121699</a> - Sint-Michiels Station West 18:57</li><li><a href="stop-126319.html">126319</a> - Brugge 'T Zand perron 9 18:59</li><li><a href="stop-128947.html">128947</a> - Brugge Station perron 7 19:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6240.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

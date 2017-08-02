@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diksmuide-Torhout-Aartrijke - 22634643</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diksmuide-Torhout-Aartrijke - 22634643</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-37467.html">37467</a> - Beerst Spaarbank 07:20</li><li><a href="stop-41454.html">41454</a> - Beerst Dorp 07:21</li><li><a href="stop-100894.html">100894</a> - Vladslo Kotjes 07:22</li><li><a href="stop-39196.html">39196</a> - Vladslo Houtland 07:25</li><li><a href="stop-104696.html">104696</a> - Koekelare Drie Zottemolens 07:29</li><li><a href="stop-36877.html">36877</a> - Koekelare Belhutte 07:30</li><li><a href="stop-36884.html">36884</a> - Koekelare Nieuwenhove 07:32</li><li><a href="stop-37331.html">37331</a> - Koekelare Eikendreef 07:32</li><li><a href="stop-40937.html">40937</a> - Koekelare Kapel 07:33</li><li><a href="stop-41351.html">41351</a> - Koekelare Lidl 07:34</li><li><a href="stop-123649.html">123649</a> - Koekelare Warande 07:35</li><li><a href="stop-87654.html">87654</a> - Ichtegem Dorp 07:36</li><li><a href="stop-40920.html">40920</a> - Ichtegem Melkerij 07:37</li><li><a href="stop-37230.html">37230</a> - Ichtegem Sportlaan 07:38</li><li><a href="stop-36859.html">36859</a> - Ichtegem Coussensstraat Nr. 100 07:39</li><li><a href="stop-36868.html">36868</a> - Ichtegem Reiger 07:40</li><li><a href="stop-36871.html">36871</a> - Ichtegem Vijf Wegen 07:41</li><li><a href="stop-36867.html">36867</a> - Ichtegem Oostendse Baan 07:43</li><li><a href="stop-126333.html">126333</a> - Torhout Kasteel Wijnendale 07:44</li><li><a href="stop-100862.html">100862</a> - Torhout Cambrinus 07:45</li><li><a href="stop-37151.html">37151</a> - Torhout Maagdeveld 07:46</li><li><a href="stop-37143.html">37143</a> - Torhout Hof Van Engeland 07:47</li><li><a href="stop-37150.html">37150</a> - Torhout Kruispunt 07:49</li><li><a href="stop-37148.html">37148</a> - Torhout Kortemarkstraat 07:50</li><li><a href="stop-126334.html">126334</a> - Torhout Station perron 1 07:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6108.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Harelbeke-Deerlijk-Waregem - 22622343</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Harelbeke-Deerlijk-Waregem - 22622343</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-42198.html">42198</a> - Waregem Markt 18:05</li><li><a href="stop-104760.html">104760</a> - Waregem Markt 18:06</li><li><a href="stop-100932.html">100932</a> - Waregem College 18:08</li><li><a href="stop-126378.html">126378</a> - Waregem Station perron 3 18:11</li><li><a href="stop-127287.html">127287</a> - Waregem Kon.Atheneum 18:12</li><li><a href="stop-42207.html">42207</a> - Waregem Driekoningenstraat 18:15</li><li><a href="stop-94619.html">94619</a> - Waregem De Nieuwe Duc 18:16</li><li><a href="stop-42190.html">42190</a> - Waregem Garage Vandenbroucke 18:18</li><li><a href="stop-42194.html">42194</a> - Waregem Kabien 18:20</li><li><a href="stop-39498.html">39498</a> - Waregem Lepelboomstraat 18:23</li><li><a href="stop-87517.html">87517</a> - Waregem Plasstraat 18:24</li><li><a href="stop-87189.html">87189</a> - Ingooigem Elstweg 18:29</li><li><a href="stop-42311.html">42311</a> - Vichte Molen 18:31</li><li><a href="stop-93059.html">93059</a> - Vichte Station 18:33</li><li><a href="stop-38567.html">38567</a> - Vichte Diesveldstraat 18:35</li><li><a href="stop-39662.html">39662</a> - Deerlijk Bouckaertstraat 18:36</li><li><a href="stop-101115.html">101115</a> - Deerlijk Sint-Lodewijk Kerk 18:37</li><li><a href="stop-41517.html">41517</a> - Deerlijk Vredelaan 18:38</li><li><a href="stop-41497.html">41497</a> - Deerlijk B.S.T. 18:39</li><li><a href="stop-41422.html">41422</a> - Deerlijk Brandsmis 18:40</li><li><a href="stop-101089.html">101089</a> - Deerlijk Station 18:41</li><li><a href="stop-42301.html">42301</a> - Deerlijk Tapuitstraat 18:43</li><li><a href="stop-41506.html">41506</a> - Deerlijk Gaverbad 18:44</li><li><a href="stop-41516.html">41516</a> - Deerlijk Veldstraat 18:45</li><li><a href="stop-42300.html">42300</a> - Deerlijk Pontstraat 18:45</li><li><a href="stop-41502.html">41502</a> - Deerlijk De Taeyelaan 18:46</li><li><a href="stop-41499.html">41499</a> - Deerlijk Cafe Terminus 18:47</li><li><a href="stop-41507.html">41507</a> - Deerlijk Politiekantoor 18:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5997.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

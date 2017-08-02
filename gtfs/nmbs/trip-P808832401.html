@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Sint-Niklaas - Leuven - P808832401</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Niklaas - Leuven - P808832401</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8894508_1.html">8894508:1</a> - Sint-Niklaas 17:23</li><li><a href="stop-8894672_1.html">8894672:1</a> - Temse 17:31</li><li><a href="stop-8822772_1.html">8822772:1</a> - Bornem 17:36</li><li><a href="stop-8822715_2.html">8822715:2</a> - Puurs 17:45</li><li><a href="stop-8822608_1.html">8822608:1</a> - Willebroek 17:55</li><li><a href="stop-8822004_3.html">8822004:3</a> - Mechelen 18:09</li><li><a href="stop-8822459_2.html">8822459:2</a> - Hever 18:16</li><li><a href="stop-8822475_2.html">8822475:2</a> - Boortmeerbeek 18:20</li><li><a href="stop-8822517_1.html">8822517:1</a> - Haacht 18:24</li><li><a href="stop-8822525_1.html">8822525:1</a> - Wespelaar-Tildonk 18:27</li><li><a href="stop-8833175_2.html">8833175:2</a> - Wijgmaal 18:32</li><li><a href="stop-8833001_5.html">8833001:5</a> - Leuven 18:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1459.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

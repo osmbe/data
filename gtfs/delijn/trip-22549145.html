@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Zandvliet - Kapellen - Brasschaat - Wijnegem - 22549145</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Zandvliet - Kapellen - Brasschaat - Wijnegem - 22549145</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109994.html">109994</a> - Schoten Kerkhof 07:18</li><li><a href="stop-25988.html">25988</a> - Schoten Venstraat 07:19</li><li><a href="stop-108567.html">108567</a> - Schoten Th. V. Cauwenberghslei 07:20</li><li><a href="stop-108570.html">108570</a> - Schoten Blangenoisstraat 07:21</li><li><a href="stop-21991.html">21991</a> - Schoten Bloemendaal 07:22</li><li><a href="stop-21994.html">21994</a> - Schoten Eksterdreef 07:23</li><li><a href="stop-21996.html">21996</a> - Schoten Zeurtebaan 07:24</li><li><a href="stop-21999.html">21999</a> - Schoten Molenbaan 07:25</li><li><a href="stop-26037.html">26037</a> - Schoten Fortbaan 07:26</li><li><a href="stop-22001.html">22001</a> - Schoten Wildhof 07:26</li><li><a href="stop-26038.html">26038</a> - Schoten Dennenweg 07:28</li><li><a href="stop-108079.html">108079</a> - Brasschaat Sportcentrum 07:31</li><li><a href="stop-26039.html">26039</a> - Brasschaat Elshoutbaan 07:33</li><li><a href="stop-110019.html">110019</a> - Brasschaat Kerk Miksebaan 07:34</li><li><a href="stop-109987.html">109987</a> - Brasschaat Kerk Augustijnslei 07:35</li><li><a href="stop-26041.html">26041</a> - Brasschaat Du Boislei 07:36</li><li><a href="stop-110017.html">110017</a> - Brasschaat Klina 07:38</li><li><a href="stop-21968.html">21968</a> - Brasschaat Lage Kaart 07:40</li><li><a href="stop-110021.html">110021</a> - Brasschaat Hoge Kaart 07:41</li><li><a href="stop-26068.html">26068</a> - Brasschaat Max Hermanlei 07:42</li><li><a href="stop-21953.html">21953</a> - Brasschaat Oud Eikelenberg 07:43</li><li><a href="stop-125814.html">125814</a> - Kapellen Hoogboom Kerk 07:45</li><li><a href="stop-108546.html">108546</a> - Kapellen Hoogboom Kazerne 07:46</li><li><a href="stop-21946.html">21946</a> - Kapellen Kon. Astridlaan 07:48</li><li><a href="stop-19735.html">19735</a> - Kapellen Oude Bergsebaan 07:48</li><li><a href="stop-108746.html">108746</a> - Kapellen Zilverhoeklaan 07:50</li><li><a href="stop-107493.html">107493</a> - Kapellen Administratief Centrum 07:51</li><li><a href="stop-108475.html">108475</a> - Kapellen Dorp 07:53</li><li><a href="stop-108474.html">108474</a> - Kapellen Dorp 07:53</li><li><a href="stop-21799.html">21799</a> - Kapellen Sevenhanslei 07:55</li><li><a href="stop-21797.html">21797</a> - Kapellen Albertdreef 07:56</li><li><a href="stop-21794.html">21794</a> - Hoevenen Parijseweg 07:57</li><li><a href="stop-26045.html">26045</a> - Hoevenen Witvenpad 07:59</li><li><a href="stop-110018.html">110018</a> - Hoevenen Markt 08:00</li><li><a href="stop-21826.html">21826</a> - Hoevenen Mannienlaan 08:01</li><li><a href="stop-21830.html">21830</a> - Hoevenen Krekelberg 08:02</li><li><a href="stop-108498.html">108498</a> - Hoevenen Rijstraat 08:03</li><li><a href="stop-109923.html">109923</a> - Hoevenen 's Hertogendijk 08:05</li><li><a href="stop-21492.html">21492</a> - Stabroek Rode Hoevelaan 08:06</li><li><a href="stop-108492.html">108492</a> - Stabroek Molenberg 08:08</li><li><a href="stop-108494.html">108494</a> - Stabroek Sigarenstraat 08:09</li><li><a href="stop-108500.html">108500</a> - Stabroek Dorp 08:11</li><li><a href="stop-108349.html">108349</a> - Stabroek Pito 08:13</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3795.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

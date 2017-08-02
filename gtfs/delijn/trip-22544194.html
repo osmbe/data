@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kapellen - Merksem - Antwerpen Luchtbal - 22544194</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kapellen - Merksem - Antwerpen Luchtbal - 22544194</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-121195.html">121195</a> - Antwerpen Hondurasstraat 09:30</li><li><a href="stop-121164.html">121164</a> - Antwerpen Santiagostraat 09:31</li><li><a href="stop-100306.html">100306</a> - Antwerpen Punt a/d Lijn 09:31</li><li><a href="stop-107763.html">107763</a> - Antwerpen Groenendaallaan 09:33</li><li><a href="stop-93163.html">93163</a> - Antwerpen Station Luchtbal 09:34</li><li><a href="stop-108055.html">108055</a> - Merksem Lambrechtshoeken 09:35</li><li><a href="stop-107464.html">107464</a> - Merksem Bredabaan 09:37</li><li><a href="stop-107494.html">107494</a> - Merksem Burgemeester Nolf 09:38</li><li><a href="stop-108602.html">108602</a> - Merksem Terlindenhofstraat 09:40</li><li><a href="stop-107864.html">107864</a> - Merksem Gudrunlaan 09:41</li><li><a href="stop-107863.html">107863</a> - Merksem Laarsebaan 09:43</li><li><a href="stop-108337.html">108337</a> - Merksem Ryenlanddreef 09:45</li><li><a href="stop-108127.html">108127</a> - Merksem Overhout 09:45</li><li><a href="stop-107659.html">107659</a> - Merksem F. Adriaenssensstraat 09:46</li><li><a href="stop-108149.html">108149</a> - Merksem Laaglandlaan 09:47</li><li><a href="stop-110046.html">110046</a> - Merksem Melgeshof 09:49</li><li><a href="stop-107907.html">107907</a> - Merksem J. Palfijnziekenhuis 09:49</li><li><a href="stop-107397.html">107397</a> - Merksem De Biezen 09:50</li><li><a href="stop-108117.html">108117</a> - Merksem Ringlaan 09:52</li><li><a href="stop-128937.html">128937</a> - Merksem P+R Merksem 09:53</li><li><a href="stop-93228.html">93228</a> - Schoten Kapelsesteenweg 09:56</li><li><a href="stop-24984.html">24984</a> - Brasschaat Sint-Michielscollege 09:58</li><li><a href="stop-109192.html">109192</a> - Brasschaat Beekstraat 09:59</li><li><a href="stop-109301.html">109301</a> - Brasschaat Donk kerk 10:00</li><li><a href="stop-109555.html">109555</a> - Brasschaat Louislei 10:01</li><li><a href="stop-23954.html">23954</a> - Brasschaat Frilinglei 10:02</li><li><a href="stop-25277.html">25277</a> - Brasschaat Vrijwilligerslei 10:03</li><li><a href="stop-23590.html">23590</a> - Brasschaat Boskapellei 10:04</li><li><a href="stop-108543.html">108543</a> - Kapellen Valkenlaan 10:05</li><li><a href="stop-108743.html">108743</a> - Kapellen Hoogboomsteenweg 10:06</li><li><a href="stop-108746.html">108746</a> - Kapellen Zilverhoeklaan 10:06</li><li><a href="stop-107493.html">107493</a> - Kapellen Administratief Centrum 10:07</li><li><a href="stop-108475.html">108475</a> - Kapellen Dorp 10:09</li><li><a href="stop-110020.html">110020</a> - Kapellen Vandenhoudtstraat 10:10</li><li><a href="stop-21803.html">21803</a> - Kapellen Vredeburgh 10:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3696.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

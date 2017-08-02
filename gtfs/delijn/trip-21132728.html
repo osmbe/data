@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Asse - Mollem - Asse - 21132728</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Asse - Mollem - Asse - 21132728</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-9481.html">9481</a> - Asse Station 16:37</li><li><a href="stop-9450.html">9450</a> - Asse Belvédère 16:39</li><li><a href="stop-9454.html">9454</a> - Asse Gemeenteplein 16:39</li><li><a href="stop-9456.html">9456</a> - Asse C.C. Asse 16:40</li><li><a href="stop-99446.html">99446</a> - Asse Waarbeeklaan 16:41</li><li><a href="stop-15914.html">15914</a> - Mollem Havimo 16:43</li><li><a href="stop-87413.html">87413</a> - Mollem Beschutte Werkplaats 16:43</li><li><a href="stop-87405.html">87405</a> - Mollem Ingang Z5 16:44</li><li><a href="stop-15584.html">15584</a> - Mollem Politiecommissariaat 16:45</li><li><a href="stop-9542.html">9542</a> - Mollem Hof te Bollebeek 16:46</li><li><a href="stop-11356.html">11356</a> - Mollem Velm 16:48</li><li><a href="stop-11358.html">11358</a> - Mollem Smidsestraat 16:48</li><li><a href="stop-9537.html">9537</a> - Mollem Sint-Stefanus-kerk 16:49</li><li><a href="stop-99096.html">99096</a> - Mollem P. De Munter 16:50</li><li><a href="stop-15319.html">15319</a> - Mollem Rozenlaan 16:51</li><li><a href="stop-11146.html">11146</a> - Mollem Beneden Vrijlegem 16:51</li><li><a href="stop-11360.html">11360</a> - Mollem Boven Vrijlegem 16:52</li><li><a href="stop-11359.html">11359</a> - Mollem Station 16:52</li><li><a href="stop-15940.html">15940</a> - Mollem Voorste Hoeve 16:54</li><li><a href="stop-9538.html">9538</a> - Mollem Sint-Stefanus-kerk 16:55</li><li><a href="stop-11357.html">11357</a> - Mollem Smidsestraat 16:56</li><li><a href="stop-11355.html">11355</a> - Mollem Velm 16:57</li><li><a href="stop-9541.html">9541</a> - Mollem Hof te Bollebeek 16:59</li><li><a href="stop-15585.html">15585</a> - Mollem Politiecommissariaat 17:00</li><li><a href="stop-9539.html">9539</a> - Mollem Ingang Z5 17:00</li><li><a href="stop-87412.html">87412</a> - Mollem Beschutte Werkplaats 17:01</li><li><a href="stop-15915.html">15915</a> - Mollem Havimo 17:02</li><li><a href="stop-99445.html">99445</a> - Asse Waarbeeklaan 17:04</li><li><a href="stop-9455.html">9455</a> - Asse C.C. Asse 17:05</li><li><a href="stop-9453.html">9453</a> - Asse Gemeenteplein 17:05</li><li><a href="stop-9449.html">9449</a> - Asse Belvédère 17:05</li><li><a href="stop-9483.html">9483</a> - Asse Station 17:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1868.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

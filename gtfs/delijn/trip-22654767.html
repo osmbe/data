@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Veurne-De Panne - 22654767</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Veurne-De Panne - 22654767</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-36622.html">36622</a> - De Panne Esplanade 08:43</li><li><a href="stop-36631.html">36631</a> - De Panne Rusthuis 08:45</li><li><a href="stop-36034.html">36034</a> - De Panne Wielewaalstraat 08:46</li><li><a href="stop-36026.html">36026</a> - De Panne Blauwe Distel 08:47</li><li><a href="stop-36033.html">36033</a> - De Panne Oosthoek 08:48</li><li><a href="stop-110956.html">110956</a> - De Panne Sporthal 08:49</li><li><a href="stop-36133.html">36133</a> - Koksijde Kapelletje 08:50</li><li><a href="stop-38849.html">38849</a> - Veurne Industriezone Ii 08:52</li><li><a href="stop-38865.html">38865</a> - Veurne Weverij Joncheere 08:53</li><li><a href="stop-38863.html">38863</a> - Veurne Weg Op Sint-Idesbald 08:53</li><li><a href="stop-38854.html">38854</a> - Veurne Pannestraat 08:54</li><li><a href="stop-38855.html">38855</a> - Veurne Rozendal 08:56</li><li><a href="stop-38857.html">38857</a> - Veurne Station 08:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4375.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

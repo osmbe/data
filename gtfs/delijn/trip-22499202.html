@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Drakenhof - Deurne Z - Deurne N - Centraal Station - 22499202</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Drakenhof - Deurne Z - Deurne N - Centraal Station - 22499202</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127002.html">127002</a> - Borgerhout Turnhoutsepoort 21:35</li><li><a href="stop-127731.html">127731</a> - Borgerhout Hof ter Lo 21:36</li><li><a href="stop-107530.html">107530</a> - Deurne Cogelsplein 21:38</li><li><a href="stop-107728.html">107728</a> - Deurne Gallifortlei 21:39</li><li><a href="stop-107896.html">107896</a> - Deurne Lunden 21:40</li><li><a href="stop-108720.html">108720</a> - Deurne Venneborg 21:41</li><li><a href="stop-88195.html">88195</a> - Deurne Schotensesteenweg 21:42</li><li><a href="stop-121194.html">121194</a> - Deurne Seraphin de Grootestraat 21:43</li><li><a href="stop-121219.html">121219</a> - Deurne Frans Van Dijck 21:44</li><li><a href="stop-121205.html">121205</a> - Deurne Venneborglaan 21:45</li><li><a href="stop-121156.html">121156</a> - Deurne Baron Leroystraat 21:45</li><li><a href="stop-121200.html">121200</a> - Deurne Ter Heydelaan 21:46</li><li><a href="stop-121165.html">121165</a> - Deurne Bosuilplein 21:47</li><li><a href="stop-121157.html">121157</a> - Deurne Bisschoppenhoflaan 21:48</li><li><a href="stop-121168.html">121168</a> - Deurne J. Van Parijsstraat 21:49</li><li><a href="stop-121201.html">121201</a> - Deurne Torremansstraat 21:49</li><li><a href="stop-121203.html">121203</a> - Deurne Van Deynsestraat 21:50</li><li><a href="stop-121202.html">121202</a> - Deurne Van Nevelestraat 21:51</li><li><a href="stop-121196.html">121196</a> - Antwerpen Schijnpoort 21:52</li><li><a href="stop-121204.html">121204</a> - Antwerpen Van Helmontstraat 21:53</li><li><a href="stop-121199.html">121199</a> - Antwerpen AZ Stuivenberg 21:54</li><li><a href="stop-123316.html">123316</a> - Antwerpen Lange Van Bloerstraat 21:55</li><li><a href="stop-121197.html">121197</a> - Antwerpen Sint-Willibrorduskerk 21:57</li><li><a href="stop-121176.html">121176</a> - Antwerpen Kerkstraat 21:59</li><li><a href="stop-107737.html">107737</a> - Antwerpen Centraal Station perron 3 22:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5667.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Ronse/Renaix Station - Grote Markt - Hogerlucht - 20721998</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ronse/Renaix Station - Grote Markt - Hogerlucht - 20721998</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128520.html">128520</a> - Ronse Station perron 1 19:00</li><li><a href="stop-128430.html">128430</a> - Ronse Zuidstraat 19:01</li><li><a href="stop-128410.html">128410</a> - Ronse Grote Markt 19:02</li><li><a href="stop-128431.html">128431</a> - Ronse E.Soudansquare 19:03</li><li><a href="stop-128432.html">128432</a> - Ronse Depoorterplein 19:04</li><li><a href="stop-128433.html">128433</a> - Ronse Vuurkruisenstraat 19:05</li><li><a href="stop-128411.html">128411</a> - Ronse Ziekenhuis Hogerlucht 19:06</li><li><a href="stop-128496.html">128496</a> - Ronse Klevestraat 19:08</li><li><a href="stop-128495.html">128495</a> - Ronse Kruisstraat 19:09</li><li><a href="stop-128434.html">128434</a> - Ronse Fiertelmeers 19:10</li><li><a href="stop-128412.html">128412</a> - Ronse Voorzienigheidstraat 19:11</li><li><a href="stop-128435.html">128435</a> - Ronse Spinsterstraat 19:12</li><li><a href="stop-128585.html">128585</a> - Ronse Lange Haagstraat 19:12</li><li><a href="stop-128502.html">128502</a> - Ronse Lange Haagstraat 19:12</li><li><a href="stop-128607.html">128607</a> - Ronse Kasteelstraat 19:13</li><li><a href="stop-128501.html">128501</a> - Ronse Hoogstraat 19:14</li><li><a href="stop-128621.html">128621</a> - Ronse Vanhovestraat 19:15</li><li><a href="stop-128483.html">128483</a> - Ronse Astridplein 19:15</li><li><a href="stop-128520.html">128520</a> - Ronse Station perron 1 19:16</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1462.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

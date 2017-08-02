@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tongeren - Vroenhoven - Maastricht - 22481397</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tongeren - Vroenhoven - Maastricht - 22481397</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-88863.html">88863</a> - Tongeren Station 06:35</li><li><a href="stop-34604.html">34604</a> - Tongeren Rijkswacht 06:38</li><li><a href="stop-34473.html">34473</a> - Tongeren Hommelenberg 06:39</li><li><a href="stop-34443.html">34443</a> - Berg Molenweg 06:40</li><li><a href="stop-34446.html">34446</a> - Berg Viseweg 06:42</li><li><a href="stop-34505.html">34505</a> - Tongeren Ketsingen 06:44</li><li><a href="stop-120460.html">120460</a> - Tongeren Industrie Oost 06:45</li><li><a href="stop-33690.html">33690</a> - Millen Weg naar Genoelselderen 06:45</li><li><a href="stop-91070.html">91070</a> - Millen Steenweg 06:47</li><li><a href="stop-89643.html">89643</a> - Millen Peperstraat 06:48</li><li><a href="stop-89050.html">89050</a> - Herderen Kruispunt Tolstraat 06:50</li><li><a href="stop-33635.html">33635</a> - Herderen Kruisherenstraat 06:51</li><li><a href="stop-89053.html">89053</a> - Riemst Busstation perron 2 06:55</li><li><a href="stop-128992.html">128992</a> - Riemst Klein Lafeltstraat 06:56</li><li><a href="stop-33666.html">33666</a> - Riemst Maastrichtersteenweg 06:57</li><li><a href="stop-33721.html">33721</a> - Vroenhoven Busstation perron 1 06:59</li><li><a href="stop-92467.html">92467</a> - Vroenhoven Burgemeester Marresbaan 07:00</li><li><a href="stop-33728.html">33728</a> - Vroenhoven Lafelterweg 07:01</li><li><a href="stop-33725.html">33725</a> - Vroenhoven Krijtstraat 07:01</li><li><a href="stop-94120.html">94120</a> - Vroenhoven Grens 07:02</li><li><a href="stop-32564.html">32564</a> - Maastricht Tongerseweg Wolder 07:03</li><li><a href="stop-32562.html">32562</a> - Maastricht Tongerseweg School 07:04</li><li><a href="stop-32560.html">32560</a> - Maastricht Tongerseweg Kerkhof 07:05</li><li><a href="stop-32531.html">32531</a> - Maastricht Javastraat 07:06</li><li><a href="stop-32513.html">32513</a> - Maastricht Gewantmakersdreef Zuid 07:06</li><li><a href="stop-32535.html">32535</a> - Maastricht Keurmeestersdreef Oost 07:08</li><li><a href="stop-32482.html">32482</a> - Maastricht Dr.Bakstraat 07:08</li><li><a href="stop-32493.html">32493</a> - Maastricht Via Regia/Brusselsepoort 07:09</li><li><a href="stop-110428.html">110428</a> - Maastricht Via Regia/Sint-Annadal 07:09</li><li><a href="stop-44161.html">44161</a> - Maastricht Koningin Emmaplein 07:10</li><li><a href="stop-32540.html">32540</a> - Maastricht Frontensingel/Maagdendries 07:12</li><li><a href="stop-110426.html">110426</a> - Maastricht Boschstraat/Markt 07:14</li><li><a href="stop-32517.html">32517</a> - Maastricht Station perron K 07:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5031.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

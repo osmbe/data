@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Houthalen - Peer - Kleine Brogel - 22461769</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Houthalen - Peer - Kleine Brogel - 22461769</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-110468.html">110468</a> - Kleine-Brogel Weg naar Overpelt 07:23</li><li><a href="stop-93814.html">93814</a> - Kleine-Brogel Kruispunt 07:24</li><li><a href="stop-33471.html">33471</a> - Kleine-Brogel Spotters Corner 07:28</li><li><a href="stop-33433.html">33433</a> - Peer Bokterstraat 07:30</li><li><a href="stop-128989.html">128989</a> - Peer Kerk 07:31</li><li><a href="stop-32895.html">32895</a> - Peer Agnetendal 07:31</li><li><a href="stop-33544.html">33544</a> - Peer Pol KIP 07:32</li><li><a href="stop-33586.html">33586</a> - Peer Wittesteenstraat 07:33</li><li><a href="stop-33478.html">33478</a> - Peer Burkel 07:34</li><li><a href="stop-33589.html">33589</a> - Peer 't Bergske 07:35</li><li><a href="stop-105332.html">105332</a> - Linde Croxdijk 07:36</li><li><a href="stop-97466.html">97466</a> - Linde Smid 07:37</li><li><a href="stop-110477.html">110477</a> - Linde Kerk 07:38</li><li><a href="stop-97461.html">97461</a> - Linde Kluisstraat 07:39</li><li><a href="stop-33519.html">33519</a> - Peer Lindebosstraat 07:40</li><li><a href="stop-125560.html">125560</a> - Peer Bovenlinde 07:41</li><li><a href="stop-30624.html">30624</a> - Helchteren Oude Postbaan 07:43</li><li><a href="stop-30625.html">30625</a> - Helchteren Sonnis 07:44</li><li><a href="stop-125501.html">125501</a> - Helchteren Eynderweg 07:45</li><li><a href="stop-30617.html">30617</a> - Helchteren Kazerne 2a 07:47</li><li><a href="stop-105238.html">105238</a> - Helchteren 8 Septemberlaan 07:48</li><li><a href="stop-30606.html">30606</a> - Helchteren Kruispunt 07:49</li><li><a href="stop-30627.html">30627</a> - Helchteren Technische School 07:51</li><li><a href="stop-120575.html">120575</a> - Helchteren Technische Schoolstraat 07:52</li><li><a href="stop-30701.html">30701</a> - Houthalen Laak 07:54</li><li><a href="stop-30784.html">30784</a> - Houthalen Sint-Paulusinstituut boven 07:56</li><li><a href="stop-30663.html">30663</a> - Houthalen Guldensporenlaan 07:57</li><li><a href="stop-30749.html">30749</a> - Houthalen Sint-Paulusinstituut onder 07:57</li><li><a href="stop-30777.html">30777</a> - Houthalen Welvaartstraat 07:57</li><li><a href="stop-30712.html">30712</a> - Houthalen Filip Neri 07:58</li><li><a href="stop-30672.html">30672</a> - Houthalen Hoolvenstraat 07:59</li><li><a href="stop-30758.html">30758</a> - Houthalen Station 08:01</li><li><a href="stop-30440.html">30440</a> - Zolder Mierenstraat 08:02</li><li><a href="stop-30424.html">30424</a> - Zolder Hoekstraat 08:03</li><li><a href="stop-30432.html">30432</a> - Zolder Kruispunt 08:03</li><li><a href="stop-105233.html">105233</a> - Zolder Station 08:05</li><li><a href="stop-92828.html">92828</a> - Zolder Langstraat 08:05</li><li><a href="stop-91041.html">91041</a> - Zolder Pleintje 08:06</li><li><a href="stop-30441.html">30441</a> - Zolder Mijn 08:07</li><li><a href="stop-30396.html">30396</a> - Heusden Ziekenhuis 08:09</li><li><a href="stop-123282.html">123282</a> - Heusden Sint-Franciscuscollege 08:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5241.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Turnhout - Herentals - Herselt - Leuven - 21539234</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Turnhout - Herentals - Herselt - Leuven - 21539234</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-123333.html">123333</a> - Herentals De Duinen 13:00</li><li><a href="stop-109847.html">109847</a> - Olen Industrielaan 13:00</li><li><a href="stop-24937.html">24937</a> - Olen Kleine Landeigendom 13:02</li><li><a href="stop-24940.html">24940</a> - Olen Dorp 13:02</li><li><a href="stop-24942.html">24942</a> - Olen Basis REME 13:03</li><li><a href="stop-95526.html">95526</a> - Oosterwijk Busselen 13:04</li><li><a href="stop-109901.html">109901</a> - Voortkapel Nieuwebaan Olenseweg 13:06</li><li><a href="stop-95368.html">95368</a> - Voortkapel Trapstraat 13:06</li><li><a href="stop-95385.html">95385</a> - Voortkapel Ter Voort Olenseweg 13:07</li><li><a href="stop-25968.html">25968</a> - Zoerle-Parwijs Vlasland 13:09</li><li><a href="stop-19628.html">19628</a> - Zoerle-Parwijs Oude Zoerlebaan 13:09</li><li><a href="stop-109598.html">109598</a> - Zoerle-Parwijs Dorp 13:10</li><li><a href="stop-20316.html">20316</a> - Zoerle-Parwijs Bergveld 13:11</li><li><a href="stop-25558.html">25558</a> - Herselt Snepkens 13:12</li><li><a href="stop-19264.html">19264</a> - Herselt Limberg 13:14</li><li><a href="stop-109774.html">109774</a> - Herselt Dorp 13:15</li><li><a href="stop-25225.html">25225</a> - Herselt Stap 13:16</li><li><a href="stop-25228.html">25228</a> - Herselt Neerstraat 13:16</li><li><a href="stop-25230.html">25230</a> - Herselt Ramselsesteenweg 13:17</li><li><a href="stop-25233.html">25233</a> - Herselt Stoppelblokken garage 13:17</li><li><a href="stop-25235.html">25235</a> - Herselt Molenvloed 13:18</li><li><a href="stop-25238.html">25238</a> - Herselt Oude Steenovenweg 13:19</li><li><a href="stop-25240.html">25240</a> - Ramsel Bosstraat 13:20</li><li><a href="stop-25243.html">25243</a> - Ramsel Truitseinde Aarschotsestwg. 13:21</li><li><a href="stop-25512.html">25512</a> - Ramsel Madestraat 13:22</li><li><a href="stop-15891.html">15891</a> - Aarschot Oude Mechelsebaan 13:23</li><li><a href="stop-15893.html">15893</a> - Aarschot Lindekensstraat 13:24</li><li><a href="stop-128920.html">128920</a> - Aarschot Bareel 13:25</li><li><a href="stop-15897.html">15897</a> - Aarschot Heilaakstraat 13:26</li><li><a href="stop-128814.html">128814</a> - Aarschot Damiaaninstituut 13:27</li><li><a href="stop-9299.html">9299</a> - Aarschot Atheneum 13:28</li><li><a href="stop-128815.html">128815</a> - Aarschot Kerk 13:29</li><li><a href="stop-105085.html">105085</a> - Aarschot Station perron 4 13:30</li><li><a href="stop-9313.html">9313</a> - Aarschot Gilsonplein 13:30</li><li><a href="stop-110186.html">110186</a> - Leuven Station Perron 1 13:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3105.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

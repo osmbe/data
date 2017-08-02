@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Snelbus Leuven - Lubbeek - Tienen - 22789042</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Snelbus Leuven - Lubbeek - Tienen - 22789042</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-12291.html">12291</a> - Leuven Station Perron 9 06:52</li><li><a href="stop-12554.html">12554</a> - Linden Galgenstraat 06:59</li><li><a href="stop-12590.html">12590</a> - Lubbeek Kraaiwinkelstraat 07:03</li><li><a href="stop-12611.html">12611</a> - Lubbeek Veldstraat 07:05</li><li><a href="stop-12580.html">12580</a> - Lubbeek Gellenberg 07:06</li><li><a href="stop-12578.html">12578</a> - Lubbeek Dorp 07:07</li><li><a href="stop-12588.html">12588</a> - Lubbeek Kapelleke 07:08</li><li><a href="stop-12575.html">12575</a> - Lubbeek Brakum 07:09</li><li><a href="stop-12536.html">12536</a> - Binkom Kasteeldreef 07:11</li><li><a href="stop-12532.html">12532</a> - Binkom In den Haan 07:12</li><li><a href="stop-12526.html">12526</a> - Binkom Gemeentehuis 07:13</li><li><a href="stop-12542.html">12542</a> - Binkom Rusthuis 07:14</li><li><a href="stop-12546.html">12546</a> - Binkom Stwg naar Attenrode 07:14</li><li><a href="stop-12528.html">12528</a> - Binkom Groenendries 07:15</li><li><a href="stop-95673.html">95673</a> - Vissenaken Eksterveld 07:16</li><li><a href="stop-95736.html">95736</a> - Vissenaken In de Zon 07:17</li><li><a href="stop-127853.html">127853</a> - Vissenaken Waterstraat 07:18</li><li><a href="stop-95734.html">95734</a> - Vissenaken Metselstraat 07:19</li><li><a href="stop-13894.html">13894</a> - Tienen Rozenhof 07:21</li><li><a href="stop-13859.html">13859</a> - Tienen Aarschotsesteenweg 07:21</li><li><a href="stop-13896.html">13896</a> - Tienen Schansstraat 07:22</li><li><a href="stop-13880.html">13880</a> - Tienen Kerk Heilig Hart 07:23</li><li><a href="stop-13886.html">13886</a> - Tienen Leuvenselaan 07:24</li><li><a href="stop-13861.html">13861</a> - Tienen 4de Lansierslaan 07:24</li><li><a href="stop-13905.html">13905</a> - Tienen Station Perron 5 07:25</li><li><a href="stop-13862.html">13862</a> - Tienen 4de Lansierslaan 07:26</li><li><a href="stop-13878.html">13878</a> - Tienen Grote Markt 07:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2312.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

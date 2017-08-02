@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Station - Battel - Leest - 22557572</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Station - Battel - Leest - 22557572</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-22323.html">22323</a> - Leest Europawijk 16:19</li><li><a href="stop-22322.html">22322</a> - Leest  Dorp 16:20</li><li><a href="stop-22195.html">22195</a> - Mechelen Zennebrug 16:21</li><li><a href="stop-21923.html">21923</a> - Mechelen Pennemeesterstraat 16:23</li><li><a href="stop-21921.html">21921</a> - Mechelen Leestsesteenweg 16:24</li><li><a href="stop-21735.html">21735</a> - Mechelen Lange Akkerstraat 16:26</li><li><a href="stop-108445.html">108445</a> - Mechelen Neerweg 16:27</li><li><a href="stop-108446.html">108446</a> - Mechelen Battelse Bergen 16:28</li><li><a href="stop-108447.html">108447</a> - Mechelen Baron Empainlaan 16:29</li><li><a href="stop-21740.html">21740</a> - Mechelen Battel Kerk 16:29</li><li><a href="stop-108443.html">108443</a> - Mechelen Transportzone E19 16:31</li><li><a href="stop-108441.html">108441</a> - Mechelen Landweg 16:32</li><li><a href="stop-108438.html">108438</a> - Mechelen Boetestraat 16:33</li><li><a href="stop-21726.html">21726</a> - Mechelen Polderstraat 16:34</li><li><a href="stop-108434.html">108434</a> - Mechelen Adegempoort 16:35</li><li><a href="stop-108449.html">108449</a> - Mechelen Korte Pennincstraat 16:36</li><li><a href="stop-126972.html">126972</a> - Mechelen Brusselpoort 16:37</li><li><a href="stop-109099.html">109099</a> - Mechelen Oude Brusselsestraat 16:39</li><li><a href="stop-21781.html">21781</a> - Mechelen Station perron 17 16:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3832.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

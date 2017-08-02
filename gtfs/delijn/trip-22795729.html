@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Marktbus Meldert - Tienen - 22795729</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Marktbus Meldert - Tienen - 22795729</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127251.html">127251</a> - Meldert Sint-Ermelindiskerk 09:16</li><li><a href="stop-11396.html">11396</a> - Meldert Hoegaardsestraat 09:17</li><li><a href="stop-11394.html">11394</a> - Meldert Baan 09:18</li><li><a href="stop-11402.html">11402</a> - Meldert Oud Station 09:18</li><li><a href="stop-11413.html">11413</a> - Hoegaarden Steenweg naar Meldert 09:22</li><li><a href="stop-11409.html">11409</a> - Hoegaarden Sint-Kat-Houtem Kabine 09:23</li><li><a href="stop-11411.html">11411</a> - Hoegaarden Sint-Kat-Houtem Kapel 09:24</li><li><a href="stop-13809.html">13809</a> - Hoegaarden Weg naar Houtem 09:24</li><li><a href="stop-11392.html">11392</a> - Hoegaarden Hoksem Kerk 09:26</li><li><a href="stop-11390.html">11390</a> - Hoegaarden Hoksem Berg 09:27</li><li><a href="stop-95746.html">95746</a> - Oorbeek Dorp 09:29</li><li><a href="stop-95744.html">95744</a> - Oorbeek Kapel 09:29</li><li><a href="stop-95742.html">95742</a> - Oorbeek Engelbeekstraat 09:30</li><li><a href="stop-95748.html">95748</a> - Oorbeek Driebek 09:31</li><li><a href="stop-13883.html">13883</a> - Tienen Mulkplein 09:32</li><li><a href="stop-13875.html">13875</a> - Tienen Goossensvest 09:35</li><li><a href="stop-13903.html">13903</a> - Tienen Station Perron 2 09:38</li><li><a href="stop-13862.html">13862</a> - Tienen 4de Lansierslaan 09:39</li><li><a href="stop-13878.html">13878</a> - Tienen Grote Markt 09:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2544.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

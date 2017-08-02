@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tongeren - Heers - 22473290</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tongeren - Heers - 22473290</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-88863.html">88863</a> - Tongeren Station 12:10</li><li><a href="stop-34507.html">34507</a> - Tongeren Koemarkt 12:11</li><li><a href="stop-34448.html">34448</a> - Tongeren Bilzerpoort 12:12</li><li><a href="stop-91239.html">91239</a> - Tongeren Sint-Truiderpoort 12:14</li><li><a href="stop-34576.html">34576</a> - Tongeren Nieuwe Wijk 12:15</li><li><a href="stop-34516.html">34516</a> - Koninksem Woonwijk Paspoel 12:16</li><li><a href="stop-34515.html">34515</a> - Koninksem Paardeweistraat 12:18</li><li><a href="stop-34512.html">34512</a> - Koninksem Kerk 12:18</li><li><a href="stop-34508.html">34508</a> - Koninksem Herderstraat 12:18</li><li><a href="stop-34510.html">34510</a> - Koninksem Kapel 12:18</li><li><a href="stop-30302.html">30302</a> - Herstappe Kapel 12:20</li><li><a href="stop-90043.html">90043</a> - Lauw Herstappelstraat 12:21</li><li><a href="stop-91101.html">91101</a> - Lauw Brug 12:22</li><li><a href="stop-34525.html">34525</a> - Lauw Hesbeinstraat 12:22</li><li><a href="stop-105380.html">105380</a> - Lauw Romeinse Steenweg 12:24</li><li><a href="stop-97015.html">97015</a> - Vechmaal Wit Kapelleke 12:26</li><li><a href="stop-97003.html">97003</a> - Vechmaal Bielenstraat 12:26</li><li><a href="stop-97011.html">97011</a> - Vechmaal Vechmaallaan 12:28</li><li><a href="stop-97013.html">97013</a> - Vechmaal Weg naar Heks 12:29</li><li><a href="stop-29958.html">29958</a> - Heks Kasteel 12:30</li><li><a href="stop-29960.html">29960</a> - Heks Kerk 12:31</li><li><a href="stop-29962.html">29962</a> - Heks Molenstraat 12:32</li><li><a href="stop-105226.html">105226</a> - Horpmaal Overhemsestraat 12:34</li><li><a href="stop-96996.html">96996</a> - Horpmaal Tomberg 12:34</li><li><a href="stop-105223.html">105223</a> - Gutschoven Kerk 12:37</li><li><a href="stop-97019.html">97019</a> - Veulen Nieuwe Steenweg 12:38</li><li><a href="stop-97017.html">97017</a> - Veulen Kerk 12:39</li><li><a href="stop-30006.html">30006</a> - Heers Sporthal 12:40</li><li><a href="stop-43811.html">43811</a> - Heers Weg naar Waremme 12:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4537.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

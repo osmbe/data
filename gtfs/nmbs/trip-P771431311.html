@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Couvin - Charleroi-Zuid - P771431311</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Couvin - Charleroi-Zuid - P771431311</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8875127_0.html">8875127:0</a> - Couvin 06:42</li><li><a href="stop-8875002_0.html">8875002:0</a> - Mariembourg 06:53</li><li><a href="stop-8873122_0.html">8873122:0</a> - Philippeville 07:04</li><li><a href="stop-8873239_0.html">8873239:0</a> - Yves-Gomezée 07:11</li><li><a href="stop-8873007_0.html">8873007:0</a> - Walcourt 07:19</li><li><a href="stop-8873312_0.html">8873312:0</a> - Pry 07:21</li><li><a href="stop-8873320_0.html">8873320:0</a> - Berzée 07:24</li><li><a href="stop-8873379_0.html">8873379:0</a> - Cour-sur-Heure 07:27</li><li><a href="stop-8873387_0.html">8873387:0</a> - Ham-sur-Heure 07:30</li><li><a href="stop-8871183_0.html">8871183:0</a> - Beignée 07:33</li><li><a href="stop-8871175_0.html">8871175:0</a> - Jamioulx 07:39</li><li><a href="stop-8872009_0.html">8872009:0</a> - Charleroi-Sud 07:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1359.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge-Beernem-Knesselare (Ursel) - 22613388</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge-Beernem-Knesselare (Ursel) - 22613388</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126644.html">126644</a> - Knesselare Dorp 09:54</li><li><a href="stop-125177.html">125177</a> - Knesselare Wandelaars 09:55</li><li><a href="stop-40806.html">40806</a> - Beernem Langedonk 09:56</li><li><a href="stop-101035.html">101035</a> - Beernem Nieuwendorpe 09:57</li><li><a href="stop-40805.html">40805</a> - Beernem Knesselarestwg 09:58</li><li><a href="stop-40812.html">40812</a> - Beernem Sint-Joris Ten Distel 09:59</li><li><a href="stop-40801.html">40801</a> - Beernem 'T Hof 10:00</li><li><a href="stop-41357.html">41357</a> - Beernem Industriepark 10:02</li><li><a href="stop-40807.html">40807</a> - Beernem M.Sabbestraat 10:03</li><li><a href="stop-126410.html">126410</a> - Beernem Station perron 1 10:04</li><li><a href="stop-40811.html">40811</a> - Beernem Sint-Andreas 10:05</li><li><a href="stop-40802.html">40802</a> - Beernem Bloemendale 10:06</li><li><a href="stop-40809.html">40809</a> - Beernem Zwembad 10:07</li><li><a href="stop-40804.html">40804</a> - Beernem Dorp 10:07</li><li><a href="stop-41020.html">41020</a> - Oedelem Zuiddamme 10:09</li><li><a href="stop-41009.html">41009</a> - Oedelem Haverbilken 10:11</li><li><a href="stop-41006.html">41006</a> - Oedelem Dorp 10:12</li><li><a href="stop-41014.html">41014</a> - Oedelem Ter Bunen 10:12</li><li><a href="stop-41015.html">41015</a> - Oedelem Molentje 10:13</li><li><a href="stop-41007.html">41007</a> - Oedelem Drie Koningen 10:14</li><li><a href="stop-41004.html">41004</a> - Oedelem Bruggesteenweg Nr 256 10:14</li><li><a href="stop-41018.html">41018</a> - Oedelem Vliegend Paard 10:15</li><li><a href="stop-41011.html">41011</a> - Oedelem L.T.I. 10:16</li><li><a href="stop-41013.html">41013</a> - Oedelem Maandagse 10:17</li><li><a href="stop-41012.html">41012</a> - Oedelem Loweidestraat 10:17</li><li><a href="stop-40792.html">40792</a> - Assebroek Sparrestraat 10:19</li><li><a href="stop-40782.html">40782</a> - Assebroek Engelendale 10:19</li><li><a href="stop-40774.html">40774</a> - Assebroek Astridlaan 10:19</li><li><a href="stop-40799.html">40799</a> - Assebroek Zevecote 10:20</li><li><a href="stop-40790.html">40790</a> - Assebroek Raboudenburg 10:20</li><li><a href="stop-40791.html">40791</a> - Assebroek Smisje 10:21</li><li><a href="stop-101033.html">101033</a> - Assebroek C.V.D. Bussche 10:21</li><li><a href="stop-40788.html">40788</a> - Assebroek Peerdeke 10:22</li><li><a href="stop-40784.html">40784</a> - Assebroek Kruisboog 10:23</li><li><a href="stop-40779.html">40779</a> - Assebroek Daverlostraat 10:23</li><li><a href="stop-40835.html">40835</a> - Brugge Gentpoort 10:24</li><li><a href="stop-40847.html">40847</a> - Brugge Katelijnepoort 10:25</li><li><a href="stop-128950.html">128950</a> - Brugge Station perron 10 10:27</li><li><a href="stop-126413.html">126413</a> - Brugge 'T Zand perron 5 10:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5887.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

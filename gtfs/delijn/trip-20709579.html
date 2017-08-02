@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Antwerpen L.O.- Beveren - Kallo - Kieldrecht - 20709579</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Antwerpen L.O.- Beveren - Kallo - Kieldrecht - 20709579</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-114881.html">114881</a> - Kieldrecht Kouterstraat 20:52</li><li><a href="stop-115347.html">115347</a> - Kieldrecht Molenstraat 20:54</li><li><a href="stop-115346.html">115346</a> - Kieldrecht Singel 20:55</li><li><a href="stop-115692.html">115692</a> - Kieldrecht Sportpleinstraat 20:56</li><li><a href="stop-114883.html">114883</a> - Kieldrecht Kerk 20:56</li><li><a href="stop-114884.html">114884</a> - Kieldrecht Kreek 20:56</li><li><a href="stop-114885.html">114885</a> - Kieldrecht Lange Nieuwstraat 20:58</li><li><a href="stop-114886.html">114886</a> - Kieldrecht Gemenestraat 20:58</li><li><a href="stop-114887.html">114887</a> - Verrebroek Bralstraat 20:59</li><li><a href="stop-114888.html">114888</a> - Verrebroek Rijkstraat 21:01</li><li><a href="stop-114889.html">114889</a> - Verrebroek Dorp 21:01</li><li><a href="stop-114890.html">114890</a> - Verrebroek Aven Ackers 21:02</li><li><a href="stop-115969.html">115969</a> - Verrebroek Haandorpweg 21:06</li><li><a href="stop-115968.html">115968</a> - Kallo Land Van Waaslaan 21:08</li><li><a href="stop-115967.html">115967</a> - Kallo Kruipin 21:10</li><li><a href="stop-116118.html">116118</a> - Kallo Dijkgravenstraat 21:13</li><li><a href="stop-116117.html">116117</a> - Kallo Fabriekstraat 21:13</li><li><a href="stop-116116.html">116116</a> - Kallo Dorp 21:15</li><li><a href="stop-116116.html">116116</a> - Kallo Dorp 21:15</li><li><a href="stop-116115.html">116115</a> - Kallo Kruisdijklaan 21:16</li><li><a href="stop-116114.html">116114</a> - Melsele Dijkstraat 21:19</li><li><a href="stop-116113.html">116113</a> - Melsele Koolputstraat 21:20</li><li><a href="stop-115339.html">115339</a> - Beveren Hagewinde 21:21</li><li><a href="stop-116112.html">116112</a> - Beveren Gaverlanddam 21:22</li><li><a href="stop-116111.html">116111</a> - Beveren Halfdreef 21:23</li><li><a href="stop-116122.html">116122</a> - Beveren Glazenleeuwstraat 21:24</li><li><a href="stop-116109.html">116109</a> - Beveren Vinkendam 21:25</li><li><a href="stop-116108.html">116108</a> - Beveren Triestlaan 21:26</li><li><a href="stop-116107.html">116107</a> - Beveren Van Beverenlaan 21:27</li><li><a href="stop-128694.html">128694</a> - Beveren Markt 21:28</li><li><a href="stop-115934.html">115934</a> - Beveren Gravendreef 21:29</li><li><a href="stop-115933.html">115933</a> - Beveren Viergemeet 21:30</li><li><a href="stop-115932.html">115932</a> - Beveren Parein 21:31</li><li><a href="stop-115931.html">115931</a> - Melsele IJzerstraat 21:32</li><li><a href="stop-115930.html">115930</a> - Melsele Spoorweglaan 21:33</li><li><a href="stop-115929.html">115929</a> - Melsele Sint-Elisabethstraat 21:34</li><li><a href="stop-115928.html">115928</a> - Melsele Burggravenlaan 21:34</li><li><a href="stop-127606.html">127606</a> - Zwijndrecht P+R Melsele perron 6 21:36</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./896.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

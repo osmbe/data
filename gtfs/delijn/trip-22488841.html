@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Nerem-Sluizen-Mal-Tongeren-'sHeren-Membr.-Genoels - 22488841</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Nerem-Sluizen-Mal-Tongeren-'sHeren-Membr.-Genoels - 22488841</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-34484.html">34484</a> - Tongeren Station 16:00</li><li><a href="stop-34705.html">34705</a> - Tongeren Kerk 16:01</li><li><a href="stop-34702.html">34702</a> - Tongeren Kazerne 16:01</li><li><a href="stop-34701.html">34701</a> - Tongeren Blaarstraat 16:02</li><li><a href="stop-34465.html">34465</a> - Tongeren Eerste Meistraat 16:03</li><li><a href="stop-34449.html">34449</a> - Tongeren Blaarmolenstraat 16:03</li><li><a href="stop-92281.html">92281</a> - Tongeren Muggenberg 16:05</li><li><a href="stop-88488.html">88488</a> - Mal Strikstraat 16:05</li><li><a href="stop-34541.html">34541</a> - Mal Hogeropstraat 16:06</li><li><a href="stop-34707.html">34707</a> - Mal Klein Malstraat 16:07</li><li><a href="stop-34708.html">34708</a> - Mal Kleinmeerstraat 16:08</li><li><a href="stop-34543.html">34543</a> - Mal Kerk 16:08</li><li><a href="stop-123178.html">123178</a> - Mal Waterstraat 16:08</li><li><a href="stop-34629.html">34629</a> - Sluizen Apotheek 16:09</li><li><a href="stop-34438.html">34438</a> - Mal Kruisvindingsstraat 16:11</li><li><a href="stop-123183.html">123183</a> - Nerem Neremplein 16:13</li><li><a href="stop-89630.html">89630</a> - Nerem Brug Henrotte 16:14</li><li><a href="stop-89633.html">89633</a> - Nerem Kremersstraat 16:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5366.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

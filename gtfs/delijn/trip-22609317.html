@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge-Zwevezele-Tielt - 22609317</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge-Zwevezele-Tielt - 22609317</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126332.html">126332</a> - Tielt Station perron 1 18:00</li><li><a href="stop-37135.html">37135</a> - Tielt Vierhoek 18:01</li><li><a href="stop-90913.html">90913</a> - Tielt College 18:02</li><li><a href="stop-126272.html">126272</a> - Tielt Rameplein perron 1 18:02</li><li><a href="stop-101150.html">101150</a> - Tielt Kerk 18:03</li><li><a href="stop-93056.html">93056</a> - Tielt WZC Sint-Andries 18:04</li><li><a href="stop-93328.html">93328</a> - Tielt Kliniek Sint-Andries 18:04</li><li><a href="stop-41158.html">41158</a> - Tielt De Haan 18:05</li><li><a href="stop-41343.html">41343</a> - Tielt De Zon 18:07</li><li><a href="stop-42167.html">42167</a> - Tielt Het Hoge 18:09</li><li><a href="stop-42114.html">42114</a> - Schuiferskapelle Brouwerijstraat 18:12</li><li><a href="stop-42115.html">42115</a> - Schuiferskapelle Klooster 18:13</li><li><a href="stop-42113.html">42113</a> - Schuiferskapelle Bafa 18:14</li><li><a href="stop-42168.html">42168</a> - Tielt Ratte 18:16</li><li><a href="stop-41223.html">41223</a> - Wingene De Pijpe 18:19</li><li><a href="stop-41230.html">41230</a> - Wingene Wissel 18:20</li><li><a href="stop-41225.html">41225</a> - Wingene Dorp 18:21</li><li><a href="stop-41222.html">41222</a> - Wingene Anker 18:22</li><li><a href="stop-41226.html">41226</a> - Wingene Garage 18:23</li><li><a href="stop-41229.html">41229</a> - Wingene Schewege 18:23</li><li><a href="stop-41224.html">41224</a> - Wingene De Sparre 18:25</li><li><a href="stop-126345.html">126345</a> - Zwevezele Hille 18:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3917.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

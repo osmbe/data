@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Meerle - Hoogstraten - Antwerpen via Schoten Ring - 21550116</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Meerle - Hoogstraten - Antwerpen via Schoten Ring - 21550116</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-22016.html">22016</a> - Sint-Job-in-'t Goor Kruispunt 07:30</li><li><a href="stop-108592.html">108592</a> - Brecht Cambeenbos 07:31</li><li><a href="stop-108594.html">108594</a> - Brecht Bareeltje 07:33</li><li><a href="stop-108596.html">108596</a> - Brecht Vriendschapslaan 07:33</li><li><a href="stop-108599.html">108599</a> - Brecht Schippersdreef 07:34</li><li><a href="stop-108601.html">108601</a> - Brecht Solvijnslaan 07:35</li><li><a href="stop-22044.html">22044</a> - Brecht Miksebaan 07:36</li><li><a href="stop-108605.html">108605</a> - Brecht Sternhoven 07:37</li><li><a href="stop-108606.html">108606</a> - Brecht Molenveld 07:39</li><li><a href="stop-20332.html">20332</a> - Brecht Gasthuisstraat 07:40</li><li><a href="stop-108608.html">108608</a> - Brecht Biest 07:40</li><li><a href="stop-108611.html">108611</a> - Brecht Schoolstraat 07:41</li><li><a href="stop-22056.html">22056</a> - Brecht Broekhovenstraat 07:41</li><li><a href="stop-108615.html">108615</a> - Sint-Lenaarts Leemstraat 07:42</li><li><a href="stop-22061.html">22061</a> - Sint-Lenaarts Molenheiken 07:43</li><li><a href="stop-108617.html">108617</a> - Sint-Lenaarts J. Cardijnlaan 07:44</li><li><a href="stop-22065.html">22065</a> - Sint-Lenaarts Kerk 07:46</li><li><a href="stop-22067.html">22067</a> - Sint-Lenaarts Kapelakker 07:47</li><li><a href="stop-108620.html">108620</a> - Sint-Lenaarts Eester 07:48</li><li><a href="stop-22072.html">22072</a> - Sint-Lenaarts Groenstraat 07:48</li><li><a href="stop-25749.html">25749</a> - Sint-Lenaarts Leeuwerk 07:49</li><li><a href="stop-22075.html">22075</a> - Rijkevorsel Grensstraat 07:49</li><li><a href="stop-22077.html">22077</a> - Rijkevorsel Heerbaan 07:50</li><li><a href="stop-22080.html">22080</a> - Rijkevorsel Merret 07:51</li><li><a href="stop-108625.html">108625</a> - Rijkevorsel Kerk 07:52</li><li><a href="stop-108627.html">108627</a> - Rijkevorsel Sint-Luciestraat 07:53</li><li><a href="stop-22087.html">22087</a> - Rijkevorsel Vonderstraat 07:53</li><li><a href="stop-108630.html">108630</a> - Rijkevorsel Kleine Gammel 07:54</li><li><a href="stop-22092.html">22092</a> - Rijkevorsel Angelicadreef 07:55</li><li><a href="stop-22095.html">22095</a> - Rijkevorsel Rovana 07:56</li><li><a href="stop-108634.html">108634</a> - Rijkevorsel Achtelsteenweg 07:57</li><li><a href="stop-22108.html">22108</a> - Hoogstraten Leemputten 07:58</li><li><a href="stop-108638.html">108638</a> - Hoogstraten Veiling 07:59</li><li><a href="stop-108641.html">108641</a> - Hoogstraten Loenhoutseweg 07:59</li><li><a href="stop-22118.html">22118</a> - Hoogstraten Seminarie 08:00</li><li><a href="stop-22121.html">22121</a> - Hoogstraten Kerk 08:00</li><li><a href="stop-22836.html">22836</a> - Hoogstraten K. Boomstraat 08:01</li><li><a href="stop-109963.html">109963</a> - Hoogstraten VITO 08:02</li><li><a href="stop-109932.html">109932</a> - Hoogstraten 't Spijker perron 3 08:07</li><li><a href="stop-22123.html">22123</a> - Hoogstraten Begijnhof 08:09</li><li><a href="stop-93043.html">93043</a> - Hoogstraten Van Aertselaerplein 08:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3627.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

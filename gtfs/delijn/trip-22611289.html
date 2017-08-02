@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Beernem - Wingene - Zwevezele - 22611289</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Beernem - Wingene - Zwevezele - 22611289</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-36716.html">36716</a> - Beernem Dorp 17:57</li><li><a href="stop-36721.html">36721</a> - Beernem Zwembad 17:58</li><li><a href="stop-36714.html">36714</a> - Beernem Bloemendale 17:59</li><li><a href="stop-36723.html">36723</a> - Beernem Sint-Andreas 18:00</li><li><a href="stop-126314.html">126314</a> - Beernem Station perron 2 18:01</li><li><a href="stop-36719.html">36719</a> - Beernem M.Sabbestraat 18:02</li><li><a href="stop-37245.html">37245</a> - Beernem Nijverheidstraat 18:04</li><li><a href="stop-37246.html">37246</a> - Beernem Carpool 18:05</li><li><a href="stop-37247.html">37247</a> - Beernem Sint-Amandus 18:06</li><li><a href="stop-37248.html">37248</a> - Beernem Bulskampveld 18:07</li><li><a href="stop-37249.html">37249</a> - Wingene Fazantendreef 18:08</li><li><a href="stop-37250.html">37250</a> - Wingene Wildenburg 18:10</li><li><a href="stop-37251.html">37251</a> - Wingene Romerij 18:11</li><li><a href="stop-37252.html">37252</a> - Wingene Barrierke 18:13</li><li><a href="stop-37276.html">37276</a> - Wingene Beernemstraat 18:14</li><li><a href="stop-41361.html">41361</a> - Wingene Kaplote 18:15</li><li><a href="stop-41225.html">41225</a> - Wingene Dorp 18:16</li><li><a href="stop-41222.html">41222</a> - Wingene Anker 18:17</li><li><a href="stop-41226.html">41226</a> - Wingene Garage 18:18</li><li><a href="stop-41229.html">41229</a> - Wingene Schewege 18:18</li><li><a href="stop-41224.html">41224</a> - Wingene De Sparre 18:20</li><li><a href="stop-126345.html">126345</a> - Zwevezele Hille 18:21</li><li><a href="stop-37220.html">37220</a> - Zwevezele Vierwegen 18:22</li><li><a href="stop-37219.html">37219</a> - Zwevezele Tramstation 18:23</li><li><a href="stop-37214.html">37214</a> - Zwevezele Dorp 18:24</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3934.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

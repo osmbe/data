@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Landen - Ezemaal - Overhespen (schoolbediening) - 22491077</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Landen - Ezemaal - Overhespen (schoolbediening) - 22491077</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-88391.html">88391</a> - Landen Station perron 1 12:12</li><li><a href="stop-32867.html">32867</a> - Landen Fabriekstraat 12:14</li><li><a href="stop-31611.html">31611</a> - Landen Sint-Gertrudisinstituut 12:15</li><li><a href="stop-15269.html">15269</a> - Landen Hertog van Brabantlaan 12:18</li><li><a href="stop-128831.html">128831</a> - Landen Maartstraat 12:19</li><li><a href="stop-128833.html">128833</a> - Landen Bronplein 12:20</li><li><a href="stop-31671.html">31671</a> - Landen Mariahof 12:21</li><li><a href="stop-31612.html">31612</a> - Landen Tiensestraat 12:22</li><li><a href="stop-89618.html">89618</a> - Landen Overwindenstraat 12:23</li><li><a href="stop-31498.html">31498</a> - Landen Roosberg 12:24</li><li><a href="stop-31594.html">31594</a> - Overwinden Kabien 12:26</li><li><a href="stop-31596.html">31596</a> - Overwinden Kerk 12:26</li><li><a href="stop-31598.html">31598</a> - Overwinden Kruispunt 12:27</li><li><a href="stop-31325.html">31325</a> - Overwinden Middelwindenstraat 12:28</li><li><a href="stop-31589.html">31589</a> - Neerwinden Station 12:29</li><li><a href="stop-31587.html">31587</a> - Neerwinden Laarstraat 12:30</li><li><a href="stop-31565.html">31565</a> - Laar Kleinveldstraat 12:30</li><li><a href="stop-31568.html">31568</a> - Laar Wijngaardstraat 12:31</li><li><a href="stop-31562.html">31562</a> - Laar Kerk 12:31</li><li><a href="stop-31567.html">31567</a> - Laar Weg naar Eliksem 12:32</li><li><a href="stop-31524.html">31524</a> - Eliksem Watermolen 12:34</li><li><a href="stop-31522.html">31522</a> - Eliksem Kerk 12:35</li><li><a href="stop-31519.html">31519</a> - Eliksem Kruispunt 12:35</li><li><a href="stop-31518.html">31518</a> - Eliksem Grote Steenweg 12:36</li><li><a href="stop-31546.html">31546</a> - Ezemaal Tramstraat 12:36</li><li><a href="stop-31538.html">31538</a> - Ezemaal Kruispunt 12:37</li><li><a href="stop-31533.html">31533</a> - Ezemaal Brug 12:37</li><li><a href="stop-31543.html">31543</a> - Ezemaal Station 12:38</li><li><a href="stop-31539.html">31539</a> - Ezemaal Nieuwe Wijk 12:38</li><li><a href="stop-12036.html">12036</a> - Neerwinden Wange Dorp 12:45</li><li><a href="stop-12034.html">12034</a> - Neerwinden Neerhespenstraat 12:46</li><li><a href="stop-128824.html">128824</a> - Neerhespen Dorp 12:47</li><li><a href="stop-128826.html">128826</a> - Overhespen Walsbergenstraat 12:48</li><li><a href="stop-31944.html">31944</a> - Overhespen Brouwerijstraat 12:49</li><li><a href="stop-31946.html">31946</a> - Overhespen Gemeenteschool 12:49</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4723.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

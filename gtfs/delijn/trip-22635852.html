@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Ieper-Wervik(Geluwe)-Menen-Moeskroen - 22635852</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ieper-Wervik(Geluwe)-Menen-Moeskroen - 22635852</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126374.html">126374</a> - Menen Station perron 1 07:53</li><li><a href="stop-37951.html">37951</a> - Menen Markt 07:56</li><li><a href="stop-37966.html">37966</a> - Menen Vedastuskerk 07:57</li><li><a href="stop-37948.html">37948</a> - Menen Waalvest 07:58</li><li><a href="stop-37954.html">37954</a> - Menen Nieuwe Brug 07:59</li><li><a href="stop-37934.html">37934</a> - Menen Barakken 08:00</li><li><a href="stop-37949.html">37949</a> - Menen Koninginnestraat 08:02</li><li><a href="stop-37979.html">37979</a> - Menen Zuidstraat 08:03</li><li><a href="stop-37953.html">37953</a> - Menen Nieuw Kwartier 08:04</li><li><a href="stop-90415.html">90415</a> - Rekkem Vierwegenstraat 08:05</li><li><a href="stop-38077.html">38077</a> - Rekkem Kerk 08:07</li><li><a href="stop-121700.html">121700</a> - Rekkem Plaats 08:07</li><li><a href="stop-100922.html">100922</a> - Rekkem Post 08:08</li><li><a href="stop-38078.html">38078</a> - Rekkem Kloosterhoek 08:08</li><li><a href="stop-38076.html">38076</a> - Rekkem Kattestraat 08:09</li><li><a href="stop-38074.html">38074</a> - Rekkem Croise 08:09</li><li><a href="stop-123601.html">123601</a> - Rekkem Volkshuis 08:10</li><li><a href="stop-38808.html">38808</a> - Rekkem Dronkaard 08:11</li><li><a href="stop-92056.html">92056</a> - Rekkem Paradijs 08:13</li><li><a href="stop-123700.html">123700</a> - Rekkem Ten Bulke 08:15</li><li><a href="stop-38807.html">38807</a> - Rekkem De Schaper 08:15</li><li><a href="stop-38806.html">38806</a> - Rekkem Belle Vue 08:17</li><li><a href="stop-90507.html">90507</a> - Moeskroen Hall Expo 08:18</li><li><a href="stop-38659.html">38659</a> - Moeskroen Boomkwekerijstraat 08:21</li><li><a href="stop-38679.html">38679</a> - Moeskroen Picardieplaats 08:22</li><li><a href="stop-38661.html">38661</a> - Moeskroen Casino 08:22</li><li><a href="stop-38667.html">38667</a> - Moeskroen Gerechtsplein 08:23</li><li><a href="stop-38678.html">38678</a> - Moeskroen Phenix 08:24</li><li><a href="stop-42552.html">42552</a> - Moeskroen Busstation 08:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4229.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

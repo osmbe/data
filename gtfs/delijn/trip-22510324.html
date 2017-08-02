@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Herentals Station - Herentals Industrie - 22510324</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Herentals Station - Herentals Industrie - 22510324</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-24521.html">24521</a> - Herentals Station perron 9 07:21</li><li><a href="stop-108972.html">108972</a> - Herentals Belgiëlaan 07:22</li><li><a href="stop-109184.html">109184</a> - Herentals Markt - Grote Markt 07:23</li><li><a href="stop-109571.html">109571</a> - Herentals Sint-Waldetrudiskerk 07:24</li><li><a href="stop-24517.html">24517</a> - Herentals Sas 07:24</li><li><a href="stop-24515.html">24515</a> - Herentals Meidoornlaan 07:26</li><li><a href="stop-24512.html">24512</a> - Herentals Veldhoven 07:26</li><li><a href="stop-20226.html">20226</a> - Herentals Lange Eerselsstraat 07:27</li><li><a href="stop-20232.html">20232</a> - Herentals Dompel 07:29</li><li><a href="stop-20224.html">20224</a> - Noorderwijk Diamantstraat 07:31</li><li><a href="stop-20221.html">20221</a> - Herenthout Moerbroek 07:31</li><li><a href="stop-20235.html">20235</a> - Grobbendonk Bouwelven 07:35</li><li><a href="stop-20219.html">20219</a> - Herentals Saffierstraat 07:38</li><li><a href="stop-20216.html">20216</a> - Herentals Toekomstlaan 07:40</li><li><a href="stop-20215.html">20215</a> - Grobbendonk Wolfstee-Station 07:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2914.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

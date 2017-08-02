@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus 1 Diest: Neerlinter-Loksbergen-Diest - 22789859</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus 1 Diest: Neerlinter-Loksbergen-Diest - 22789859</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-15568.html">15568</a> - Diest Station Perron 5 12:30</li><li><a href="stop-14840.html">14840</a> - Diest Weerstandsplein 12:34</li><li><a href="stop-14841.html">14841</a> - Diest Sint-Jacobsplein 12:36</li><li><a href="stop-43984.html">43984</a> - Diest Atheneum 12:37</li><li><a href="stop-10458.html">10458</a> - Diest Euro Shoe 12:38</li><li><a href="stop-10466.html">10466</a> - Diest Stadion 12:38</li><li><a href="stop-128819.html">128819</a> - Diest Sint-Jansplein 12:39</li><li><a href="stop-10460.html">10460</a> - Diest Bevrijdingsstraat (Hasseltsepoort) 12:40</li><li><a href="stop-10457.html">10457</a> - Diest Beukenlaan 12:41</li><li><a href="stop-10491.html">10491</a> - Webbekom Centrum 12:42</li><li><a href="stop-10499.html">10499</a> - Webbekom Oude Baan 12:42</li><li><a href="stop-87746.html">87746</a> - Webbekom Staatsbaan 12:44</li><li><a href="stop-123135.html">123135</a> - Halen Carpoolparking 12:44</li><li><a href="stop-120448.html">120448</a> - Zelk Kerkstraat 12:45</li><li><a href="stop-90871.html">90871</a> - Halen Liebroekstraat 12:46</li><li><a href="stop-120573.html">120573</a> - Loksbergen Zelkstraat 12:47</li><li><a href="stop-127422.html">127422</a> - Loksbergen Rozenstraat 12:49</li><li><a href="stop-100261.html">100261</a> - Loksbergen Kauwplasstraat II 12:52</li><li><a href="stop-127419.html">127419</a> - Loksbergen Kerk 12:53</li><li><a href="stop-120569.html">120569</a> - Loksbergen Dorpstraat 12:54</li><li><a href="stop-120570.html">120570</a> - Loksbergen Klein Frankrijk 12:54</li><li><a href="stop-120571.html">120571</a> - Loksbergen Blekkom 12:55</li><li><a href="stop-11833.html">11833</a> - Kortenaken Riegel 12:56</li><li><a href="stop-11809.html">11809</a> - Kortenaken Mounstraat 12:57</li><li><a href="stop-11823.html">11823</a> - Kortenaken Diestsestraat 31 12:58</li><li><a href="stop-11812.html">11812</a> - Kortenaken Dorp 12:58</li><li><a href="stop-11805.html">11805</a> - Kortenaken Buizenmakerij 12:59</li><li><a href="stop-11821.html">11821</a> - Kortenaken Tiensestraat 51 13:00</li><li><a href="stop-11825.html">11825</a> - Kortenaken Tiensestraat 62 13:00</li><li><a href="stop-11807.html">11807</a> - Kortenaken Donkelstraat 13:02</li><li><a href="stop-11851.html">11851</a> - Ransberg Koningstraat 13:03</li><li><a href="stop-11841.html">11841</a> - Ransberg Baaistraat 13:03</li><li><a href="stop-11855.html">11855</a> - Ransberg Stg. naar Budingen 13:04</li><li><a href="stop-11849.html">11849</a> - Ransberg Kerk 13:05</li><li><a href="stop-11847.html">11847</a> - Ransberg Garage Stiers 13:06</li><li><a href="stop-11843.html">11843</a> - Ransberg Bredestraat 13:06</li><li><a href="stop-11845.html">11845</a> - Ransberg Café Berg en Dal 13:07</li><li><a href="stop-11853.html">11853</a> - Ransberg Leidriesstraat 13:07</li><li><a href="stop-95645.html">95645</a> - Neerlinter Nieuwe Brug 13:08</li><li><a href="stop-95637.html">95637</a> - Neerlinter Café Schepers 13:09</li><li><a href="stop-95663.html">95663</a> - Neerlinter Kapel 13:09</li><li><a href="stop-95666.html">95666</a> - Neerlinter Kruispunt Heide 13:10</li><li><a href="stop-95627.html">95627</a> - Neerlinter Kasteelstraat 13:11</li><li><a href="stop-95661.html">95661</a> - Neerlinter Dorp 13:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2417.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

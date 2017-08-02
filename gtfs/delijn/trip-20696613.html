@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent Zuid - Evergem Doornzele - 20696613</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent Zuid - Evergem Doornzele - 20696613</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-113349.html">113349</a> - Evergem Twaalfroedenstraat 13:57</li><li><a href="stop-113348.html">113348</a> - Evergem Doornzele Kerk 13:58</li><li><a href="stop-113347.html">113347</a> - Evergem Zonder Naamstraat 13:59</li><li><a href="stop-113346.html">113346</a> - Evergem Hoeksken 14:00</li><li><a href="stop-113345.html">113345</a> - Evergem Grote Nest 14:01</li><li><a href="stop-113344.html">113344</a> - Evergem Werk V/D Akker 14:02</li><li><a href="stop-113343.html">113343</a> - Evergem Kerkbruggestraat 14:03</li><li><a href="stop-113205.html">113205</a> - Evergem Elslo/J. Parijslaan 14:04</li><li><a href="stop-113578.html">113578</a> - Evergem Bruggemanstraat 14:05</li><li><a href="stop-113577.html">113577</a> - Evergem Koestraat 14:06</li><li><a href="stop-113576.html">113576</a> - Evergem Kapellestraat 14:07</li><li><a href="stop-113575.html">113575</a> - Evergem Reibroekstraat 14:08</li><li><a href="stop-113922.html">113922</a> - Evergem Kerkhof 14:09</li><li><a href="stop-126075.html">126075</a> - Evergem Brielken 14:10</li><li><a href="stop-126076.html">126076</a> - Evergem Spoorwegstraat 14:11</li><li><a href="stop-112949.html">112949</a> - Wondelgem Waalbrugstraat 14:14</li><li><a href="stop-112948.html">112948</a> - Wondelgem Liefkensstraat 14:15</li><li><a href="stop-112947.html">112947</a> - Wondelgem Kwikstaartlaan 14:15</li><li><a href="stop-112946.html">112946</a> - Wondelgem Vierwegen 14:16</li><li><a href="stop-111265.html">111265</a> - Wondelgem Sint-Sebastiaanstraat 14:17</li><li><a href="stop-113573.html">113573</a> - Wondelgem Molenstraat 14:18</li><li><a href="stop-113572.html">113572</a> - Wondelgem Korenveldstraat 14:19</li><li><a href="stop-113571.html">113571</a> - Wondelgem Spoorwegstraat 14:19</li><li><a href="stop-113570.html">113570</a> - Gent Grensstraat 14:21</li><li><a href="stop-111472.html">111472</a> - Gent Van Ryhovelaan 14:21</li><li><a href="stop-111433.html">111433</a> - Gent Van Beverenplein 14:22</li><li><a href="stop-111434.html">111434</a> - Gent Fuchsiastraat 14:23</li><li><a href="stop-113569.html">113569</a> - Gent Wondelgembrug 14:24</li><li><a href="stop-113568.html">113568</a> - Gent Maria Theresiastraat 14:26</li><li><a href="stop-113567.html">113567</a> - Gent Rabot 14:29</li><li><a href="stop-113566.html">113566</a> - Gent Kolveniersgang 14:30</li><li><a href="stop-128679.html">128679</a> - Gent Sint-Lucas Biervlietstraat 14:31</li><li><a href="stop-113564.html">113564</a> - Gent Spaarstraat 14:31</li><li><a href="stop-111443.html">111443</a> - Gent Tolpoort 14:32</li><li><a href="stop-111444.html">111444</a> - Gent Tolhuislaan 14:33</li><li><a href="stop-112939.html">112939</a> - Gent Fratersplein 14:34</li><li><a href="stop-120097.html">120097</a> - Gent Ottogracht 14:35</li><li><a href="stop-111463.html">111463</a> - Gent Sint-Jacobs 14:36</li><li><a href="stop-111328.html">111328</a> - Gent Reep 14:37</li><li><a href="stop-111450.html">111450</a> - Gent Kapucijnenham 14:38</li><li><a href="stop-126575.html">126575</a> - Gent Zuid perron 7 14:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./338.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

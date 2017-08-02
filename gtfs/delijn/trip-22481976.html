@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kwaadmechelen - Westerlo - 22481976</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kwaadmechelen - Westerlo - 22481976</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126927.html">126927</a> - Eindhout Dorp 07:43</li><li><a href="stop-31211.html">31211</a> - Eindhout Oude Tramlijn 07:44</li><li><a href="stop-31209.html">31209</a> - Eindhout Meir 07:44</li><li><a href="stop-31215.html">31215</a> - Eindhout Poeleinde 07:46</li><li><a href="stop-31200.html">31200</a> - Eindhout Bergske 07:47</li><li><a href="stop-31242.html">31242</a> - Veerle Grote Laak 07:48</li><li><a href="stop-31238.html">31238</a> - Veerle Eindhoutseweg 07:49</li><li><a href="stop-31270.html">31270</a> - Veerle Zand 07:50</li><li><a href="stop-31236.html">31236</a> - Veerle Dorp 07:50</li><li><a href="stop-93621.html">93621</a> - Veerle Pompert 07:51</li><li><a href="stop-125515.html">125515</a> - Veerle Weg naar Averbode 07:52</li><li><a href="stop-31231.html">31231</a> - Veerle Boshuis 07:53</li><li><a href="stop-125562.html">125562</a> - Tessenderlo Abdijstraat 07:55</li><li><a href="stop-128828.html">128828</a> - Averbode Abdij 07:55</li><li><a href="stop-33780.html">33780</a> - Averbode Wezelbaan 07:55</li><li><a href="stop-125563.html">125563</a> - Tessenderlo Abdijstraat 07:56</li><li><a href="stop-31243.html">31243</a> - Veerle Heide 07:58</li><li><a href="stop-31245.html">31245</a> - Veerle Heieinde 07:59</li><li><a href="stop-31263.html">31263</a> - Veerle Rode Laakstraat 08:00</li><li><a href="stop-31256.html">31256</a> - Veerle Kwade Plas 08:01</li><li><a href="stop-31310.html">31310</a> - Veerle Pompert 08:01</li><li><a href="stop-31262.html">31262</a> - Veerle Pompert 08:02</li><li><a href="stop-31253.html">31253</a> - Veerle Kerk 08:02</li><li><a href="stop-31258.html">31258</a> - Veerle Pastorijstraat 08:03</li><li><a href="stop-125514.html">125514</a> - Veerle Geelsebaan 08:04</li><li><a href="stop-31248.html">31248</a> - Veerle Hulstsestraat 08:05</li><li><a href="stop-31230.html">31230</a> - Varendonk Varendonksebaan 08:07</li><li><a href="stop-31227.html">31227</a> - Varendonk Grote Steenweg 08:08</li><li><a href="stop-125465.html">125465</a> - Zammel Netebrug 08:11</li><li><a href="stop-125841.html">125841</a> - Zammel Kruispunt 08:12</li><li><a href="stop-25207.html">25207</a> - Westerlo Standbeeld PD Ligne 08:14</li><li><a href="stop-109935.html">109935</a> - Westerlo Dorp 08:17</li><li><a href="stop-109933.html">109933</a> - Westerlo de Merodedreef 08:19</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5163.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

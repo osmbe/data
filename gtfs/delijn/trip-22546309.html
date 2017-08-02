@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Putte - Kapellen - Hoevenen - Antwerpen - 22546309</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Putte - Kapellen - Hoevenen - Antwerpen - 22546309</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108486.html">108486</a> - Stabroek Moretuslei 16:05</li><li><a href="stop-108485.html">108485</a> - Kapellen Lepelstraat 16:06</li><li><a href="stop-108484.html">108484</a> - Kapellen Stabroeksteenweg 16:06</li><li><a href="stop-107518.html">107518</a> - Kapellen Oude Ertbrandstraat 16:07</li><li><a href="stop-108482.html">108482</a> - Kapellen Oude Galgenstraat 16:08</li><li><a href="stop-108481.html">108481</a> - Kapellen Waterstraat 16:09</li><li><a href="stop-19545.html">19545</a> - Kapellen Kringloopcentrum 16:09</li><li><a href="stop-108480.html">108480</a> - Kapellen Pelgrimsstraat 16:10</li><li><a href="stop-21809.html">21809</a> - Kapellen Kalmthoutsesteenweg 16:11</li><li><a href="stop-21806.html">21806</a> - Kapellen Dennenburg 16:11</li><li><a href="stop-108476.html">108476</a> - Kapellen Streepstraat 16:13</li><li><a href="stop-108474.html">108474</a> - Kapellen Dorp 16:14</li><li><a href="stop-21799.html">21799</a> - Kapellen Sevenhanslei 16:15</li><li><a href="stop-21797.html">21797</a> - Kapellen Albertdreef 16:16</li><li><a href="stop-21794.html">21794</a> - Hoevenen Parijseweg 16:17</li><li><a href="stop-26045.html">26045</a> - Hoevenen Witvenpad 16:19</li><li><a href="stop-108471.html">108471</a> - Hoevenen Molenweg 16:19</li><li><a href="stop-108470.html">108470</a> - Hoevenen Plasstraat 16:20</li><li><a href="stop-109499.html">109499</a> - Ekeren Klein Heiken 16:21</li><li><a href="stop-109544.html">109544</a> - Ekeren Leugenberg 16:22</li><li><a href="stop-109297.html">109297</a> - Ekeren Bilderdijk 16:25</li><li><a href="stop-109629.html">109629</a> - Antwerpen Oorderseweg 16:26</li><li><a href="stop-109177.html">109177</a> - Ekeren Akkerstraat 16:27</li><li><a href="stop-24058.html">24058</a> - Ekeren Groot Hagelkruis 16:29</li><li><a href="stop-109498.html">109498</a> - Ekeren Klein Hagelkruis 16:30</li><li><a href="stop-109578.html">109578</a> - Ekeren Markt 16:32</li><li><a href="stop-43910.html">43910</a> - Ekeren F. Verbieststraat 16:33</li><li><a href="stop-25232.html">25232</a> - Antwerpen R. Veremanstraat 16:34</li><li><a href="stop-24101.html">24101</a> - Antwerpen Havanastraat 16:37</li><li><a href="stop-23813.html">23813</a> - Antwerpen Dublin 16:38</li><li><a href="stop-109566.html">109566</a> - Antwerpen Manchesterlaan 16:39</li><li><a href="stop-24825.html">24825</a> - Antwerpen Luchtbal Kerk 16:40</li><li><a href="stop-109944.html">109944</a> - Antwerpen Punt a/d Lijn 16:40</li><li><a href="stop-121215.html">121215</a> - Antwerpen Kinepolis 16:41</li><li><a href="stop-108192.html">108192</a> - Antwerpen Noorderplaats 16:47</li><li><a href="stop-108466.html">108466</a> - Antwerpen Sint-Jansplein 16:49</li><li><a href="stop-125250.html">125250</a> - Antwerpen F. Rooseveltplaats perron 22 16:52</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3728.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

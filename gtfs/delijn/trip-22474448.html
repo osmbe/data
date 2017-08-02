@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Maaseik - Kinrooi - Meeuwen-Gruitrode - Hasselt - 22474448</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Maaseik - Kinrooi - Meeuwen-Gruitrode - Hasselt - 22474448</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-123048.html">123048</a> - Kinrooi Dorpsplein 05:47</li><li><a href="stop-30952.html">30952</a> - Kinrooi Molenweg 05:48</li><li><a href="stop-30900.html">30900</a> - Kinrooi Breeërsteenweg 05:48</li><li><a href="stop-30962.html">30962</a> - Kinrooi Luitestraat 05:48</li><li><a href="stop-27665.html">27665</a> - Tongerlo 't Hasselt Kiezel 05:50</li><li><a href="stop-27685.html">27685</a> - Tongerlo Klaverblad 05:50</li><li><a href="stop-27695.html">27695</a> - Tongerlo Vogelsdonk 05:51</li><li><a href="stop-27521.html">27521</a> - Bree Processieweg 05:52</li><li><a href="stop-27523.html">27523</a> - Bree 't Hasselt Kerk 05:53</li><li><a href="stop-27587.html">27587</a> - Bree Kanaal Noord 05:54</li><li><a href="stop-27543.html">27543</a> - Bree Brugstraat 05:56</li><li><a href="stop-123471.html">123471</a> - Bree Opitterpoort 05:57</li><li><a href="stop-126521.html">126521</a> - Bree Kloosterpoort 05:59</li><li><a href="stop-123465.html">123465</a> - Bree Busstation Perron 3 06:00</li><li><a href="stop-27699.html">27699</a> - Bree Verloren Koststraat 06:02</li><li><a href="stop-27701.html">27701</a> - Bree Vostaert 06:03</li><li><a href="stop-27565.html">27565</a> - Bree Eetseveldstraat 06:04</li><li><a href="stop-123015.html">123015</a> - Bree Galgenbergstraat 06:06</li><li><a href="stop-32837.html">32837</a> - Wijshagen Muizendijkstraat 06:07</li><li><a href="stop-89617.html">89617</a> - Wijshagen Grensstraat 06:07</li><li><a href="stop-91052.html">91052</a> - Wijshagen Kerkstraat 06:08</li><li><a href="stop-125541.html">125541</a> - Wijshagen Venstraat 06:09</li><li><a href="stop-95296.html">95296</a> - Meeuwen Heerstraat 06:11</li><li><a href="stop-32801.html">32801</a> - Meeuwen Weg naar Klein Meeuwen 06:12</li><li><a href="stop-32754.html">32754</a> - Meeuwen Bergstraat 06:13</li><li><a href="stop-32799.html">32799</a> - Meeuwen Weg naar Helchteren 06:13</li><li><a href="stop-105307.html">105307</a> - Meeuwen Broekkant 06:14</li><li><a href="stop-105311.html">105311</a> - Meeuwen Wilgenstraat 06:14</li><li><a href="stop-32791.html">32791</a> - Meeuwen Meeuweneinde 06:15</li><li><a href="stop-97477.html">97477</a> - Wauberg Overes 06:16</li><li><a href="stop-97479.html">97479</a> - Wauberg School 06:16</li><li><a href="stop-33547.html">33547</a> - Peer Wauberg 06:17</li><li><a href="stop-125560.html">125560</a> - Peer Bovenlinde 06:18</li><li><a href="stop-30624.html">30624</a> - Helchteren Oude Postbaan 06:20</li><li><a href="stop-30625.html">30625</a> - Helchteren Sonnis 06:21</li><li><a href="stop-125501.html">125501</a> - Helchteren Eynderweg 06:22</li><li><a href="stop-30617.html">30617</a> - Helchteren Kazerne 2a 06:23</li><li><a href="stop-105238.html">105238</a> - Helchteren 8 Septemberlaan 06:24</li><li><a href="stop-30606.html">30606</a> - Helchteren Kruispunt 06:25</li><li><a href="stop-120578.html">120578</a> - Helchteren Technische Schoolstraat 06:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4844.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

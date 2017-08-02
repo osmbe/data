@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk Station - Ziekenhuis O- Limburg/Kattevennen - 22483192</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk Station - Ziekenhuis O- Limburg/Kattevennen - 22483192</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-43786.html">43786</a> - Genk Station perron 2 10:00</li><li><a href="stop-29002.html">29002</a> - Genk Shopping Center perron 2 10:02</li><li><a href="stop-90015.html">90015</a> - Genk Parking Kerk 10:03</li><li><a href="stop-28585.html">28585</a> - Genk Vlakveld 10:04</li><li><a href="stop-28741.html">28741</a> - Genk Kerkhof 10:05</li><li><a href="stop-28619.html">28619</a> - Genk Weg naar Sledderlo 10:06</li><li><a href="stop-28494.html">28494</a> - Genk Kamerlo 10:07</li><li><a href="stop-110273.html">110273</a> - Genk Ziekenhuis Oost-Limburg 10:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5345.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

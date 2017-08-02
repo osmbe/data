@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sportpaleis - Bolivarplaats - 21516233</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sportpaleis - Bolivarplaats - 21516233</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-107526.html">107526</a> - Antwerpen Bolivarplaats 12:40</li><li><a href="stop-107392.html">107392</a> - Antwerpen Montigny 12:41</li><li><a href="stop-107469.html">107469</a> - Antwerpen Bres 12:43</li><li><a href="stop-110994.html">110994</a> - Antwerpen Kasteelplein 12:44</li><li><a href="stop-108176.html">108176</a> - Antwerpen Nationale Bank 12:46</li><li><a href="stop-108103.html">108103</a> - Antwerpen Stadspark 12:47</li><li><a href="stop-125240.html">125240</a> - Antwerpen F. Rooseveltplaats perron 52 12:51</li><li><a href="stop-107510.html">107510</a> - Antwerpen Centraal Station perron 6 12:53</li><li><a href="stop-107569.html">107569</a> - Antwerpen De Coninck 12:54</li><li><a href="stop-21460.html">21460</a> - Antwerpen Richard 12:56</li><li><a href="stop-100211.html">100211</a> - Antwerpen Sint-Gummarus 12:57</li><li><a href="stop-20028.html">20028</a> - Antwerpen Gasstraat 12:58</li><li><a href="stop-21942.html">21942</a> - Antwerpen Stuivenberg 13:00</li><li><a href="stop-107793.html">107793</a> - Antwerpen Halenstraat 13:02</li><li><a href="stop-21597.html">21597</a> - Antwerpen Schijnpoort 13:03</li><li><a href="stop-19611.html">19611</a> - Antwerpen Sportpaleis 13:05</li><li><a href="stop-108395.html">108395</a> - Deurne Sportpaleis 13:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2707.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

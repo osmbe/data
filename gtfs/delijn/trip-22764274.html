@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Asse - Mollem - Asse - 22764274</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Asse - Mollem - Asse - 22764274</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-14616.html">14616</a> - Zellik Moleken 07:20</li><li><a href="stop-9564.html">9564</a> - Zellik Kortemanstraat 07:21</li><li><a href="stop-9505.html">9505</a> - Bekkerzeel Schutstraat 07:22</li><li><a href="stop-9507.html">9507</a> - Bekkerzeel Sint-Godardus-Kerk 07:24</li><li><a href="stop-9509.html">9509</a> - Bekkerzeel Notelaarstraat 07:25</li><li><a href="stop-9503.html">9503</a> - Bekkerzeel Zavelstr 07:26</li><li><a href="stop-9501.html">9501</a> - Asse Ringlaan 07:28</li><li><a href="stop-9467.html">9467</a> - Asse Zittert 07:29</li><li><a href="stop-9495.html">9495</a> - Asse Walfergem 07:30</li><li><a href="stop-9529.html">9529</a> - Kobbegem Sint-Goriksstraat 07:34</li><li><a href="stop-90828.html">90828</a> - Kobbegem Sint-Gorik-Kerk 07:35</li><li><a href="stop-15941.html">15941</a> - Mollem Bollebeek Stallaertplein 07:39</li><li><a href="stop-11356.html">11356</a> - Mollem Velm 07:42</li><li><a href="stop-11358.html">11358</a> - Mollem Smidsestraat 07:43</li><li><a href="stop-9537.html">9537</a> - Mollem Sint-Stefanus-kerk 07:44</li><li><a href="stop-99096.html">99096</a> - Mollem P. De Munter 07:45</li><li><a href="stop-15319.html">15319</a> - Mollem Rozenlaan 07:46</li><li><a href="stop-11146.html">11146</a> - Mollem Beneden Vrijlegem 07:46</li><li><a href="stop-11360.html">11360</a> - Mollem Boven Vrijlegem 07:47</li><li><a href="stop-11359.html">11359</a> - Mollem Station 07:47</li><li><a href="stop-15940.html">15940</a> - Mollem Voorste Hoeve 07:49</li><li><a href="stop-9538.html">9538</a> - Mollem Sint-Stefanus-kerk 07:50</li><li><a href="stop-11357.html">11357</a> - Mollem Smidsestraat 07:50</li><li><a href="stop-11355.html">11355</a> - Mollem Velm 07:51</li><li><a href="stop-9541.html">9541</a> - Mollem Hof te Bollebeek 07:53</li><li><a href="stop-15585.html">15585</a> - Mollem Politiecommissariaat 07:54</li><li><a href="stop-9539.html">9539</a> - Mollem Ingang Z5 07:55</li><li><a href="stop-87412.html">87412</a> - Mollem Beschutte Werkplaats 07:56</li><li><a href="stop-15915.html">15915</a> - Mollem Havimo 07:57</li><li><a href="stop-99445.html">99445</a> - Asse Waarbeeklaan 08:00</li><li><a href="stop-9455.html">9455</a> - Asse C.C. Asse 08:02</li><li><a href="stop-9473.html">9473</a> - Asse Bloklaan 08:05</li><li><a href="stop-15239.html">15239</a> - Asse Kliniek 08:06</li><li><a href="stop-9449.html">9449</a> - Asse Belvédère 08:07</li><li><a href="stop-9483.html">9483</a> - Asse Station 08:12</li><li><a href="stop-110156.html">110156</a> - Asse Bergveld 08:14</li><li><a href="stop-9485.html">9485</a> - Asse Ten Berg 08:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1871.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

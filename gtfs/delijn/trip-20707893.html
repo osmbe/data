@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Meerdonk- St-Niklaas- Belsele - Sinaai - (Lokeren) - 20707893</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Meerdonk- St-Niklaas- Belsele - Sinaai - (Lokeren) - 20707893</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-115849.html">115849</a> - Sinaai Dries 07:47</li><li><a href="stop-115035.html">115035</a> - Sinaai Haeltermanlaan 07:48</li><li><a href="stop-115072.html">115072</a> - Sinaai Mezenstraat 07:49</li><li><a href="stop-115071.html">115071</a> - Sinaai Wijnveld 07:50</li><li><a href="stop-115070.html">115070</a> - Sinaai Bellemansstraat 07:53</li><li><a href="stop-115069.html">115069</a> - Sinaai Station 07:53</li><li><a href="stop-115068.html">115068</a> - Belsele Duizend Appels 07:55</li><li><a href="stop-115067.html">115067</a> - Belsele Dubbelhofstraat 07:56</li><li><a href="stop-115066.html">115066</a> - Belsele Koutermolenstraat 07:58</li><li><a href="stop-115065.html">115065</a> - Belsele Dorp 07:58</li><li><a href="stop-115064.html">115064</a> - Belsele Hulstendreef 08:00</li><li><a href="stop-115089.html">115089</a> - Belsele Malpertuuslaan 08:01</li><li><a href="stop-115081.html">115081</a> - Belsele Reinaertlaan 08:01</li><li><a href="stop-115087.html">115087</a> - Belsele Arkestraat 08:03</li><li><a href="stop-115086.html">115086</a> - Belsele Bookmolenstraat 08:05</li><li><a href="stop-115084.html">115084</a> - Sint-Niklaas Kleiweg 08:06</li><li><a href="stop-115083.html">115083</a> - Sint-Niklaas Gentse Baan 08:06</li><li><a href="stop-115082.html">115082</a> - Sint-Niklaas Prinses J. Charlottelaan 08:08</li><li><a href="stop-115493.html">115493</a> - Sint-Niklaas N70 / Tereken 08:09</li><li><a href="stop-115480.html">115480</a> - Sint-Niklaas Atheneum/Zwembad 08:11</li><li><a href="stop-115481.html">115481</a> - Sint-Niklaas Park 08:11</li><li><a href="stop-115725.html">115725</a> - Sint-Niklaas Markt 08:15</li><li><a href="stop-114858.html">114858</a> - Sint-Niklaas Hofstraat 08:17</li><li><a href="stop-115500.html">115500</a> - Sint-Niklaas Uitgang Noordlaan 08:20</li><li><a href="stop-126682.html">126682</a> - Sint-Niklaas Station perron 5 08:22</li><li><a href="stop-116306.html">116306</a> - Sint-Niklaas Uitgang Noordlaan 08:23</li><li><a href="stop-116307.html">116307</a> - Sint-Niklaas Kazernestraat 08:25</li><li><a href="stop-116308.html">116308</a> - Sint-Niklaas Slachthuisstraat 08:26</li><li><a href="stop-116309.html">116309</a> - Sint-Niklaas Driekoningenstraat/Heistraat 08:27</li><li><a href="stop-116312.html">116312</a> - Sint-Niklaas Nachtegalenlaan 08:28</li><li><a href="stop-116313.html">116313</a> - Sint-Niklaas Bekelstraat 08:29</li><li><a href="stop-116314.html">116314</a> - Sint-Niklaas Sint-Gillisbaan/Kerkwegel 08:29</li><li><a href="stop-116315.html">116315</a> - Sint-Niklaas Vrouweneekhoek 08:30</li><li><a href="stop-116316.html">116316</a> - Sint-Gillis-Waas Roskamstraat 08:31</li><li><a href="stop-116317.html">116317</a> - Sint-Gillis-Waas Dagsterrestraat 08:32</li><li><a href="stop-116318.html">116318</a> - Sint-Gillis-Waas Hoogeinde 08:33</li><li><a href="stop-116319.html">116319</a> - Sint-Gillis-Waas Doornstraat 08:34</li><li><a href="stop-116320.html">116320</a> - Sint-Gillis-Waas Bosstraat 08:35</li><li><a href="stop-116322.html">116322</a> - Sint-Gillis-Waas Gemeentehuis 08:35</li><li><a href="stop-116323.html">116323</a> - Sint-Gillis-Waas Stationsstraat 08:36</li><li><a href="stop-115907.html">115907</a> - Sint-Gillis-Waas Sint-Helena 08:37</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./728.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

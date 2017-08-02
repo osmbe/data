@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Mol - Brussel-Zuid - P720830171</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mol - Brussel-Zuid - P720830171</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8832409_3.html">8832409:3</a> - Mol 06:26</li><li><a href="stop-8832433_1.html">8832433:1</a> - Geel 06:34</li><li><a href="stop-8832458_1.html">8832458:1</a> - Olen 06:39</li><li><a href="stop-8821717_1.html">8821717:1</a> - Herentals 06:46</li><li><a href="stop-8821725_2.html">8821725:2</a> - Bouwel 06:51</li><li><a href="stop-8821667_2.html">8821667:2</a> - Nijlen 06:56</li><li><a href="stop-8821659_2.html">8821659:2</a> - Kessel 07:00</li><li><a href="stop-8821600_1.html">8821600:1</a> - Lier 07:07</li><li><a href="stop-8822343_4.html">8822343:4</a> - Mechelen-Nekkerspoel 07:22</li><li><a href="stop-8822004_10.html">8822004:10</a> - Mechelen 07:27</li><li><a href="stop-8811189_2.html">8811189:2</a> - Vilvoorde 07:38</li><li><a href="stop-8811007_5.html">8811007:5</a> - Schaarbeek/Schaerbeek 07:45</li><li><a href="stop-8812005_12.html">8812005:12</a> - Brussel-Noord/Bruxelles-Nord 07:51</li><li><a href="stop-8813003_6.html">8813003:6</a> - Brussel-Centraal/Bruxelles-Central 07:55</li><li><a href="stop-8814001_21.html">8814001:21</a> - Brussel-Zuid/Bruxelles-Midi 07:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1256.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

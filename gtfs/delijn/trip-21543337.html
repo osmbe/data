@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Turnhout - Vosselaar - Beerse - Rijkevorsel - 21543337</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Turnhout - Vosselaar - Beerse - Rijkevorsel - 21543337</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108882.html">108882</a> - Turnhout Warande 13:15</li><li><a href="stop-109974.html">109974</a> - Turnhout Station perron 5 13:17</li><li><a href="stop-25318.html">25318</a> - Turnhout Lokeren Bareel 13:18</li><li><a href="stop-88777.html">88777</a> - Turnhout Boerenkrijglaan 13:19</li><li><a href="stop-107730.html">107730</a> - Turnhout Oud-Strijderslaan 13:20</li><li><a href="stop-109793.html">109793</a> - Turnhout Slachthuisstraat 13:21</li><li><a href="stop-91187.html">91187</a> - Turnhout Winkelpark XXL 13:22</li><li><a href="stop-92364.html">92364</a> - Turnhout Philips I 13:23</li><li><a href="stop-92365.html">92365</a> - Vosselaar Nachtegaalstraat 13:25</li><li><a href="stop-92388.html">92388</a> - Vosselaar Breemsedijk 13:26</li><li><a href="stop-20744.html">20744</a> - Vosselaar Sportcentrum 13:27</li><li><a href="stop-22792.html">22792</a> - Vosselaar Rijdtstraat 13:28</li><li><a href="stop-92367.html">92367</a> - Vosselaar Heieinde 13:28</li><li><a href="stop-108914.html">108914</a> - Vosselaar Koolhof 13:29</li><li><a href="stop-108916.html">108916</a> - Vosselaar Gemeentehuis 13:30</li><li><a href="stop-108874.html">108874</a> - Vosselaar Dorp 13:31</li><li><a href="stop-22694.html">22694</a> - Vosselaar Dennendreef 13:32</li><li><a href="stop-22692.html">22692</a> - Beerse Heibergstraat 13:33</li><li><a href="stop-108889.html">108889</a> - Beerse Gierleseweg 13:34</li><li><a href="stop-107583.html">107583</a> - Beerse Gemeentehuis 13:35</li><li><a href="stop-108890.html">108890</a> - Beerse Dorp 13:37</li><li><a href="stop-109999.html">109999</a> - Beerse Smisstraat 13:38</li><li><a href="stop-25997.html">25997</a> - Beerse Larenstraat 13:39</li><li><a href="stop-110000.html">110000</a> - Beerse Kapel 13:40</li><li><a href="stop-26002.html">26002</a> - Beerse Den Hout kerk 13:41</li><li><a href="stop-22776.html">22776</a> - Beerse Heidestraat 13:42</li><li><a href="stop-22778.html">22778</a> - Beerse Lange Kwikstraat 13:45</li><li><a href="stop-120662.html">120662</a> - Beerse Blakheide 13:46</li><li><a href="stop-110098.html">110098</a> - Rijkevorsel Zwartvenstraat 13:47</li><li><a href="stop-108910.html">108910</a> - Rijkevorsel Hoogstraat 13:48</li><li><a href="stop-108912.html">108912</a> - Rijkevorsel Sint-Jozef Kerk 13:49</li><li><a href="stop-108913.html">108913</a> - Rijkevorsel Sint-Jozef Brug 13:50</li><li><a href="stop-92246.html">92246</a> - Rijkevorsel De Parre 13:51</li><li><a href="stop-108904.html">108904</a> - Rijkevorsel Driehoek 13:53</li><li><a href="stop-107560.html">107560</a> - Rijkevorsel Kerk 13:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3299.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

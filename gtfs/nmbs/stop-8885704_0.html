@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Mouscron</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Mouscron</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-IC1970119181.html">IC1970119181</a> - IC1970119181 - Lille Flandres(f) - Antwerpen-Centraal</li><li><a href="trip-IC1970336781.html">IC1970336781</a> - IC1970336781 - Lille Flandres(f) - Kortrijk</li><li><a href="trip-IC1970519201.html">IC1970519201</a> - IC1970519201 - Lille Flandres(f) - Antwerpen-Centraal</li><li><a href="trip-IC1970719211.html">IC1970719211</a> - IC1970719211 - Lille Flandres(f) - Antwerpen-Centraal</li><li><a href="trip-IC1970919221.html">IC1970919221</a> - IC1970919221 - Lille Flandres(f) - Antwerpen-Centraal</li><li><a href="trip-IC1971139241.html">IC1971139241</a> - IC1971139241 - Lille Flandres(f) - Kortrijk</li><li><a href="trip-IC1971319241.html">IC1971319241</a> - IC1971319241 - Lille Flandres(f) - Antwerpen-Centraal</li><li><a href="trip-IC1971519251.html">IC1971519251</a> - IC1971519251 - Lille Flandres(f) - Antwerpen-Centraal</li><li><a href="trip-IC1971736811.html">IC1971736811</a> - IC1971736811 - Lille Flandres(f) - Kortrijk</li><li><a href="trip-IC1971919271.html">IC1971919271</a> - IC1971919271 - Lille Flandres(f) - Antwerpen-Centraal</li><li><a href="trip-IC1972136821.html">IC1972136821</a> - IC1972136821 - Lille Flandres(f) - Kortrijk</li><li><a href="trip-IC1972336831.html">IC1972336831</a> - IC1972336831 - Lille Flandres(f) - Kortrijk</li><li><a href="trip-IC1972519281.html">IC1972519281</a> - IC1972519281 - Lille Flandres(f) - Antwerpen-Centraal</li><li><a href="trip-IC1972736841.html">IC1972736841</a> - IC1972736841 - Lille Flandres(f) - Kortrijk</li><li><a href="trip-IC1972919291.html">IC1972919291</a> - IC1972919291 - Lille Flandres(f) - Antwerpen-Centraal</li><li><a href="trip-IC1973136851.html">IC1973136851</a> - IC1973136851 - Lille Flandres(f) - Kortrijk</li><li><a href="trip-IC1973339251.html">IC1973339251</a> - IC1973339251 - Lille Flandres(f) - Kortrijk</li><li><a href="trip-IC1973519301.html">IC1973519301</a> - IC1973519301 - Lille Flandres(f) - Antwerpen-Centraal</li><li><a href="trip-IC1973719311.html">IC1973719311</a> - IC1973719311 - Lille Flandres(f) - Kortrijk</li><li><a href="trip-IC1973939261.html">IC1973939261</a> - IC1973939261 - Lille Flandres(f) - Kortrijk</li><li><a href="trip-IC1974119321.html">IC1974119321</a> - IC1974119321 - Lille Flandres(f) - Kortrijk</li><li><a href="trip-IC1974319331.html">IC1974319331</a> - IC1974319331 - Lille Flandres(f) - Antwerpen-Centraal</li><li><a href="trip-IC1974519341.html">IC1974519341</a> - IC1974519341 - Lille Flandres(f) - Antwerpen-Centraal</li><li><a href="trip-IC1974719351.html">IC1974719351</a> - IC1974719351 - Lille Flandres(f) - Antwerpen-Centraal</li><li><a href="trip-IC1974939271.html">IC1974939271</a> - IC1974939271 - Lille Flandres(f) - Kortrijk</li><li><a href="trip-IC320813841.html">IC320813841</a> - IC320813841 - Kortrijk - Sint-Niklaas</li><li><a href="trip-IC320913851.html">IC320913851</a> - IC320913851 - Kortrijk - Sint-Niklaas</li><li><a href="trip-IC321013861.html">IC321013861</a> - IC321013861 - Kortrijk - Sint-Niklaas</li><li><a href="trip-IC321113871.html">IC321113871</a> - IC321113871 - Kortrijk - Sint-Niklaas</li><li><a href="trip-IC321213881.html">IC321213881</a> - IC321213881 - Kortrijk - Sint-Niklaas</li><li><a href="trip-IC322113971.html">IC322113971</a> - IC322113971 - Kortrijk - Dendermonde</li><li><a href="trip-L488025771.html">L488025771</a> - L488025771 - Moeskroen - Geraardsbergen</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.741005, 3.228448], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.741005, 3.228448]).addTo(map);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent - Watervliet - 20697618</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent - Watervliet - 20697618</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-113199.html">113199</a> - Lembeke Kapel 07:09</li><li><a href="stop-113022.html">113022</a> - Lembeke Ledestraat 07:11</li><li><a href="stop-113021.html">113021</a> - Lembeke Kaprijkestraat 07:12</li><li><a href="stop-113020.html">113020</a> - Lembeke Gentweg 07:12</li><li><a href="stop-113019.html">113019</a> - Lembeke Antwerpse Heirweg 07:13</li><li><a href="stop-113018.html">113018</a> - Sleidinge Vierhuizen 07:14</li><li><a href="stop-113017.html">113017</a> - Sleidinge Singeldreef 07:15</li><li><a href="stop-113016.html">113016</a> - Sleidinge Wellingstraat 07:16</li><li><a href="stop-113015.html">113015</a> - Sleidinge Stringenwegel 07:17</li><li><a href="stop-112960.html">112960</a> - Sleidinge Hooiwege 07:17</li><li><a href="stop-112959.html">112959</a> - Sleidinge Klooster 07:18</li><li><a href="stop-112958.html">112958</a> - Sleidinge Dorp 07:20</li><li><a href="stop-112957.html">112957</a> - Sleidinge Kerkhof 07:20</li><li><a href="stop-112937.html">112937</a> - Sleidinge Bernt 07:21</li><li><a href="stop-112956.html">112956</a> - Sleidinge Wurmstraat 07:22</li><li><a href="stop-112955.html">112955</a> - Evergem Asschout 07:23</li><li><a href="stop-112954.html">112954</a> - Evergem Kromveldstraatje 07:25</li><li><a href="stop-126075.html">126075</a> - Evergem Brielken 07:26</li><li><a href="stop-126076.html">126076</a> - Evergem Spoorwegstraat 07:27</li><li><a href="stop-112949.html">112949</a> - Wondelgem Waalbrugstraat 07:30</li><li><a href="stop-112948.html">112948</a> - Wondelgem Liefkensstraat 07:32</li><li><a href="stop-112947.html">112947</a> - Wondelgem Kwikstaartlaan 07:33</li><li><a href="stop-112946.html">112946</a> - Wondelgem Vierwegen 07:35</li><li><a href="stop-111498.html">111498</a> - Wondelgem Station 07:37</li><li><a href="stop-112945.html">112945</a> - Gent Meulestedebrug 07:39</li><li><a href="stop-112943.html">112943</a> - Gent Limbastraat 07:42</li><li><a href="stop-112942.html">112942</a> - Gent Spoorwegbrug 07:44</li><li><a href="stop-112941.html">112941</a> - Gent Tolhuisbrug 07:45</li><li><a href="stop-112940.html">112940</a> - Gent Tolpoort 07:46</li><li><a href="stop-111444.html">111444</a> - Gent Tolhuislaan 07:47</li><li><a href="stop-112939.html">112939</a> - Gent Fratersplein 07:48</li><li><a href="stop-120097.html">120097</a> - Gent Ottogracht 07:49</li><li><a href="stop-111463.html">111463</a> - Gent Sint-Jacobs 07:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./354.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

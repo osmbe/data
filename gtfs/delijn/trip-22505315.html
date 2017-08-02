@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Berchem Station - Hove - Duffel - 22505315</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Berchem Station - Hove - Duffel - 22505315</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109253.html">109253</a> - Hove Kerk 20:03</li><li><a href="stop-23675.html">23675</a> - Hove Lambrechtslei 20:04</li><li><a href="stop-108060.html">108060</a> - Hove Wouwstraat 20:05</li><li><a href="stop-109251.html">109251</a> - Mortsel Boechoutselei 20:05</li><li><a href="stop-109250.html">109250</a> - Mortsel Rubensstraat 20:05</li><li><a href="stop-109681.html">109681</a> - Mortsel Sint-Jozefkliniek 20:07</li><li><a href="stop-19793.html">19793</a> - Mortsel Molenlei 20:08</li><li><a href="stop-19949.html">19949</a> - Mortsel Floralaan 20:09</li><li><a href="stop-20044.html">20044</a> - Mortsel Gemeenteplein 20:10</li><li><a href="stop-107552.html">107552</a> - Mortsel Gemeenteplein 20:11</li><li><a href="stop-108555.html">108555</a> - Mortsel T. Reynlaan 20:13</li><li><a href="stop-108236.html">108236</a> - Mortsel Osylei 20:14</li><li><a href="stop-21088.html">21088</a> - Mortsel Station 20:16</li><li><a href="stop-108419.html">108419</a> - Mortsel Sint-Amedeuskliniek 20:17</li><li><a href="stop-108107.html">108107</a> - Deurne Luchthaven 20:18</li><li><a href="stop-108106.html">108106</a> - Berchem Vosstraat 20:19</li><li><a href="stop-107420.html">107420</a> - Berchem Bikschotelaan 20:20</li><li><a href="stop-107596.html">107596</a> - Berchem Dianalaan 20:20</li><li><a href="stop-108046.html">108046</a> - Berchem Minervastraat 20:21</li><li><a href="stop-107744.html">107744</a> - Berchem Groenenhoek 20:22</li><li><a href="stop-107631.html">107631</a> - Berchem Station perron 2 20:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2824.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

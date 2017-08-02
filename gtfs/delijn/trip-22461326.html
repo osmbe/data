@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Geel Industriepark - Mol - Leopoldsburg - 22461326</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Geel Industriepark - Mol - Leopoldsburg - 22461326</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-123233.html">123233</a> - Geel Agio Cigars 16:05</li><li><a href="stop-100049.html">100049</a> - Oevel Hotelstraat 16:08</li><li><a href="stop-109789.html">109789</a> - Geel Punt kerk 16:15</li><li><a href="stop-127484.html">127484</a> - Geel Punt Antwerpseweg 16:18</li><li><a href="stop-109786.html">109786</a> - Geel Meeuwstraat 16:19</li><li><a href="stop-109785.html">109785</a> - Geel Maal 16:21</li><li><a href="stop-127003.html">127003</a> - Geel Waterstraat 16:23</li><li><a href="stop-109758.html">109758</a> - Geel AZ Sint-Dimpna 16:25</li><li><a href="stop-127765.html">127765</a> - Geel Sint-Dimpnaplein 16:25</li><li><a href="stop-109971.html">109971</a> - Geel Molsesteenweg 16:26</li><li><a href="stop-25894.html">25894</a> - Geel Kievermont 16:28</li><li><a href="stop-25891.html">25891</a> - Geel Meerhoutseweg 16:29</li><li><a href="stop-25889.html">25889</a> - Geel Textielbedrijf 16:30</li><li><a href="stop-25878.html">25878</a> - Geel Molsebaan 16:32</li><li><a href="stop-106739.html">106739</a> - Mol Korenstraat 16:34</li><li><a href="stop-106743.html">106743</a> - Mol Gerststraat 16:34</li><li><a href="stop-106742.html">106742</a> - Mol Oude Bergen 16:35</li><li><a href="stop-110028.html">110028</a> - Ezaart Kerk 16:37</li><li><a href="stop-106592.html">106592</a> - Mol Roggestraat 16:37</li><li><a href="stop-125304.html">125304</a> - Mol Ginderbroek 16:38</li><li><a href="stop-109399.html">109399</a> - Mol Martelarenstraat 16:39</li><li><a href="stop-32925.html">32925</a> - Mol De Hutten 16:42</li><li><a href="stop-105312.html">105312</a> - Balen Weg op Rosselaar 16:43</li><li><a href="stop-26699.html">26699</a> - Balen Tenderlo 16:45</li><li><a href="stop-26638.html">26638</a> - Balen Overweg Vaartstraat 16:46</li><li><a href="stop-126916.html">126916</a> - Balen Markt 16:48</li><li><a href="stop-26724.html">26724</a> - Balen Gemeentehuis 16:49</li><li><a href="stop-26688.html">26688</a> - Balen Delsupehe 16:50</li><li><a href="stop-96515.html">96515</a> - Schoor Intermarché 16:51</li><li><a href="stop-26686.html">26686</a> - Balen Schoor 16:51</li><li><a href="stop-96517.html">96517</a> - Schoor Kapel 16:52</li><li><a href="stop-26682.html">26682</a> - Balen Schoorheide 16:53</li><li><a href="stop-26607.html">26607</a> - Balen Industrieterrein 16:54</li><li><a href="stop-26578.html">26578</a> - Balen Antverpialaan 16:55</li><li><a href="stop-26616.html">26616</a> - Balen Maloukerk 16:55</li><li><a href="stop-26592.html">26592</a> - Balen De Baecklaan 16:56</li><li><a href="stop-26584.html">26584</a> - Balen Belgenlaan 16:56</li><li><a href="stop-26698.html">26698</a> - Balen Steenweg op Leopoldsburg II 16:58</li><li><a href="stop-26696.html">26696</a> - Balen Steenweg op Leopoldsburg I 16:58</li><li><a href="stop-26580.html">26580</a> - Balen Antwerpsesteenweg II 16:59</li><li><a href="stop-107240.html">107240</a> - Leopoldsburg Antwerpsesteenweg I 16:59</li><li><a href="stop-31796.html">31796</a> - Leopoldsburg Vaartstraat 17:00</li><li><a href="stop-105434.html">105434</a> - Leopoldsburg Quatre Bras 17:01</li><li><a href="stop-94979.html">94979</a> - Leopoldsburg VDAB Werkwinkel 17:01</li><li><a href="stop-31792.html">31792</a> - Leopoldsburg Station 17:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5103.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

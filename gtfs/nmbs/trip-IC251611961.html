@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Brussels Airport - Zaventem - Dinant - IC251611961</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussels Airport - Zaventem - Dinant - IC251611961</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8819406_2.html">8819406:2</a> - Brussel-Nat-Luchthaven/Bruxelles-Nat-Aéroport 16:17</li><li><a href="stop-8811163_2.html">8811163:2</a> - Bordet 16:26</li><li><a href="stop-8811916_4.html">8811916:4</a> - Brussel-Schuman/Bruxelles-Schuman 16:33</li><li><a href="stop-8811304_5.html">8811304:5</a> - Brussel-Luxemburg/Bruxelles-Luxembourg 16:37</li><li><a href="stop-8811411_2.html">8811411:2</a> - Etterbeek 16:41</li><li><a href="stop-8811601_3.html">8811601:3</a> - Ottignies 17:01</li><li><a href="stop-8861200_4.html">8861200:4</a> - Gembloux 17:16</li><li><a href="stop-8863008_10.html">8863008:10</a> - Namur 17:32</li><li><a href="stop-8863115_2.html">8863115:2</a> - Jambes 17:37</li><li><a href="stop-8863156_1.html">8863156:1</a> - Lustin 17:46</li><li><a href="stop-8863560_2.html">8863560:2</a> - Godinne 17:50</li><li><a href="stop-8863545_2.html">8863545:2</a> - Yvoir 17:55</li><li><a href="stop-8863503_1.html">8863503:1</a> - Dinant 18:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./284.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

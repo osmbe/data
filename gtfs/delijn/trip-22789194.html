@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Haacht - Zaventem - 22789194</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Haacht - Zaventem - 22789194</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-16228.html">16228</a> - Zaventem Atheneum 16:40</li><li><a href="stop-14203.html">14203</a> - Zaventem Watertorenlaan 16:43</li><li><a href="stop-14617.html">14617</a> - Zaventem Zavo Groenstraat 16:43</li><li><a href="stop-14194.html">14194</a> - Zaventem Station 16:45</li><li><a href="stop-14201.html">14201</a> - Zaventem Vilvoordelaan 16:46</li><li><a href="stop-14169.html">14169</a> - Zaventem Gebouw 9 16:47</li><li><a href="stop-14167.html">14167</a> - Zaventem B-House 16:48</li><li><a href="stop-94877.html">94877</a> - Machelen Korenberg 16:50</li><li><a href="stop-91151.html">91151</a> - Machelen Cargo Post 16:54</li><li><a href="stop-91149.html">91149</a> - Machelen Cargo 706 16:55</li><li><a href="stop-127846.html">127846</a> - Machelen Cargo Discount P1 16:56</li><li><a href="stop-110689.html">110689</a> - Melsbroek Cargo Discount P2 16:57</li><li><a href="stop-110692.html">110692</a> - Melsbroek Cargo Noord 16:58</li><li><a href="stop-91157.html">91157</a> - Melsbroek Stationslaan 16:58</li><li><a href="stop-13499.html">13499</a> - Melsbroek Geerensstraat 16:59</li><li><a href="stop-13502.html">13502</a> - Melsbroek Groeneveld 17:01</li><li><a href="stop-14454.html">14454</a> - Steenokkerzeel Oud Station 17:02</li><li><a href="stop-95351.html">95351</a> - Steenokkerzeel Nieuwstraat 17:04</li><li><a href="stop-13507.html">13507</a> - Steenokkerzeel Kerk 17:05</li><li><a href="stop-13497.html">13497</a> - Steenokkerzeel Dijkstraat 17:06</li><li><a href="stop-13506.html">13506</a> - Steenokkerzeel Humelgem,Kerk 17:08</li><li><a href="stop-13505.html">13505</a> - Steenokkerzeel Humelgem,7 Wegen 17:09</li><li><a href="stop-13519.html">13519</a> - Steenokkerzeel Oud Station 17:14</li><li><a href="stop-93384.html">93384</a> - Steenokkerzeel Zonnebos 17:16</li><li><a href="stop-11656.html">11656</a> - Berg Lelle 17:17</li><li><a href="stop-11658.html">11658</a> - Berg Oud Station 17:18</li><li><a href="stop-11660.html">11660</a> - Berg Pastorijstraat 17:20</li><li><a href="stop-11654.html">11654</a> - Berg Fazantedal 17:21</li><li><a href="stop-11692.html">11692</a> - Nederokkerzeel Laar 17:24</li><li><a href="stop-11688.html">11688</a> - Nederokkerzeel Kapelleke 17:25</li><li><a href="stop-11686.html">11686</a> - Nederokkerzeel Gemeentehuis 17:26</li><li><a href="stop-11690.html">11690</a> - Nederokkerzeel Kerk 17:27</li><li><a href="stop-11696.html">11696</a> - Nederokkerzeel Meubelwinkel 17:28</li><li><a href="stop-11698.html">11698</a> - Nederokkerzeel Weg naar Buken 17:29</li><li><a href="stop-11694.html">11694</a> - Nederokkerzeel Liststraat 17:30</li><li><a href="stop-11676.html">11676</a> - Kampenhout Rijkswacht 17:32</li><li><a href="stop-17167.html">17167</a> - Kampenhout Dreef 17:35</li><li><a href="stop-11670.html">11670</a> - Kampenhout Oud Station 17:37</li><li><a href="stop-11678.html">11678</a> - Kampenhout Ruisbeek 17:38</li><li><a href="stop-11674.html">11674</a> - Kampenhout Relst 17:41</li><li><a href="stop-17166.html">17166</a> - Kampenhout Sas 17:43</li><li><a href="stop-11672.html">11672</a> - Kampenhout Oudestraat 17:46</li><li><a href="stop-127838.html">127838</a> - Boortmeerbeek Eugène Deroplein 17:47</li><li><a href="stop-11061.html">11061</a> - Haacht Station 17:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2324.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

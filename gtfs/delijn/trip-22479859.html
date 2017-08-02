@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt/Zonhoven - Boxbergheide - Genk - 22479859</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt/Zonhoven - Boxbergheide - Genk - 22479859</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-125475.html">125475</a> - Genk Station perron 10 12:03</li><li><a href="stop-123237.html">123237</a> - Genk Bochtlaan 12:06</li><li><a href="stop-28527.html">28527</a> - Genk Nieuwe Kuilenweg 12:07</li><li><a href="stop-96729.html">96729</a> - Winterslag Stiemerbeek 12:08</li><li><a href="stop-96731.html">96731</a> - Winterslag Vennestraat 12:09</li><li><a href="stop-96719.html">96719</a> - Winterslag Kerkstraat 12:09</li><li><a href="stop-97880.html">97880</a> - Winterslag Kerk 12:10</li><li><a href="stop-96721.html">96721</a> - Winterslag Margaretalaan 12:12</li><li><a href="stop-96727.html">96727</a> - Winterslag Sportlaan 12:13</li><li><a href="stop-96725.html">96725</a> - Winterslag Spoorwegstraat 12:14</li><li><a href="stop-96716.html">96716</a> - Winterslag Erabelstraat 12:15</li><li><a href="stop-96733.html">96733</a> - Winterslag Zandoerstraat 12:16</li><li><a href="stop-96673.html">96673</a> - Boxberg De Heuvel 12:17</li><li><a href="stop-96757.html">96757</a> - Boxberg Roerstraat 12:18</li><li><a href="stop-96755.html">96755</a> - Boxberg Ankerstraat 12:19</li><li><a href="stop-96675.html">96675</a> - Boxberg De Vroente 12:20</li><li><a href="stop-96671.html">96671</a> - Boxberg Boogstraat 12:20</li><li><a href="stop-96669.html">96669</a> - Boxberg Jongensschool 12:21</li><li><a href="stop-123266.html">123266</a> - Boxberg Don Bosco Genk 12:22</li><li><a href="stop-96679.html">96679</a> - Boxberg Turfstraat 12:23</li><li><a href="stop-97385.html">97385</a> - Boxberg Klotstraat 12:24</li><li><a href="stop-97383.html">97383</a> - Boxberg Klotbroek 12:25</li><li><a href="stop-97380.html">97380</a> - Boxberg Vlasberg 12:26</li><li><a href="stop-35216.html">35216</a> - Zonhoven Kruisstraat 12:27</li><li><a href="stop-35188.html">35188</a> - Zonhoven Elstrekenweg 12:28</li><li><a href="stop-35234.html">35234</a> - Zonhoven Termolen school 12:30</li><li><a href="stop-35218.html">35218</a> - Zonhoven Manerikweg 12:31</li><li><a href="stop-35212.html">35212</a> - Zonhoven Korenmolenweg 12:32</li><li><a href="stop-35198.html">35198</a> - Zonhoven Herestraat 12:34</li><li><a href="stop-35210.html">35210</a> - Zonhoven Katschotseweg 12:35</li><li><a href="stop-35220.html">35220</a> - Zonhoven Melkerij 12:36</li><li><a href="stop-31669.html">31669</a> - Zonhoven Genkerbaan 12:36</li><li><a href="stop-123219.html">123219</a> - Zonhoven Dorpsplein 12:37</li><li><a href="stop-35171.html">35171</a> - Zonhoven Beskensstraat 12:39</li><li><a href="stop-91083.html">91083</a> - Zonhoven Station 12:40</li><li><a href="stop-35194.html">35194</a> - Zonhoven Halveweg 12:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4597.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

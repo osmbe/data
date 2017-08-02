@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Diepenbeek - Universiteit - Hasselt - 22491630</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Diepenbeek - Universiteit - Hasselt - 22491630</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128981.html">128981</a> - Hasselt Station perron 6 22:06</li><li><a href="stop-29292.html">29292</a> - Hasselt Diesterpoort 22:08</li><li><a href="stop-29461.html">29461</a> - Hasselt Leopoldplein 22:09</li><li><a href="stop-29286.html">29286</a> - Hasselt Kunstlaan 22:10</li><li><a href="stop-29268.html">29268</a> - Hasselt Dusartplein 22:12</li><li><a href="stop-29712.html">29712</a> - Hasselt Kapermolen 22:14</li><li><a href="stop-128879.html">128879</a> - Hasselt Rijksadministratief Centrum 22:15</li><li><a href="stop-29305.html">29305</a> - Hasselt Provinciehuis 22:16</li><li><a href="stop-120579.html">120579</a> - Diepenbeek Agoralaan 22:21</li><li><a href="stop-110215.html">110215</a> - Diepenbeek Universiteit 22:21</li><li><a href="stop-120580.html">120580</a> - Diepenbeek Agoralaan 22:22</li><li><a href="stop-27752.html">27752</a> - Diepenbeek De Vijvers 22:24</li><li><a href="stop-27819.html">27819</a> - Diepenbeek Plompaertstraat 22:24</li><li><a href="stop-27806.html">27806</a> - Diepenbeek Passionistenstraat 22:25</li><li><a href="stop-27762.html">27762</a> - Diepenbeek Ginderover 22:26</li><li><a href="stop-27810.html">27810</a> - Diepenbeek Patersplein 22:27</li><li><a href="stop-27832.html">27832</a> - Diepenbeek Rooierheide School 22:28</li><li><a href="stop-27868.html">27868</a> - Diepenbeek Stiemerbrug 22:29</li><li><a href="stop-27816.html">27816</a> - Diepenbeek Piannesbergstraat 22:29</li><li><a href="stop-27741.html">27741</a> - Diepenbeek A. Jeurissenstraat 22:30</li><li><a href="stop-27756.html">27756</a> - Diepenbeek Dorpheidestraat 22:31</li><li><a href="stop-27764.html">27764</a> - Diepenbeek Heidestraat 22:32</li><li><a href="stop-27835.html">27835</a> - Diepenbeek Sint-Servatiusstraat 22:33</li><li><a href="stop-27906.html">27906</a> - Diepenbeek Biezenveld 22:34</li><li><a href="stop-96571.html">96571</a> - Lutselus Kanaalstraat 22:35</li><li><a href="stop-96582.html">96582</a> - Lutselus Steenakkerstraat 22:35</li><li><a href="stop-96579.html">96579</a> - Lutselus Schoolstraat 22:36</li><li><a href="stop-96578.html">96578</a> - Lutselus Lutselusplein 22:37</li><li><a href="stop-105181.html">105181</a> - Lutselus Kerk 22:37</li><li><a href="stop-27808.html">27808</a> - Diepenbeek Pastorijstraat 22:38</li><li><a href="stop-27847.html">27847</a> - Diepenbeek Volkstraat 22:39</li><li><a href="stop-27860.html">27860</a> - Diepenbeek Zandstraat 22:40</li><li><a href="stop-27776.html">27776</a> - Diepenbeek Kabergheidestraat 22:41</li><li><a href="stop-100199.html">100199</a> - Diepenbeek Irisstraat 22:42</li><li><a href="stop-100197.html">100197</a> - Diepenbeek Anjerstraat 22:44</li><li><a href="stop-43032.html">43032</a> - Diepenbeek Rozendaal 22:44</li><li><a href="stop-27749.html">27749</a> - Diepenbeek Dahliastraat 22:45</li><li><a href="stop-43772.html">43772</a> - Genk Caetsbeek 22:47</li><li><a href="stop-28674.html">28674</a> - Genk Meeënweg 22:51</li><li><a href="stop-28471.html">28471</a> - Genk Flekeleerstraat 22:52</li><li><a href="stop-122999.html">122999</a> - Genk Termien Kerk 22:52</li><li><a href="stop-28623.html">28623</a> - Genk Weg naar Termien 22:53</li><li><a href="stop-28450.html">28450</a> - Genk Dieplaan 22:54</li><li><a href="stop-43784.html">43784</a> - Genk Station perron 4 22:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4942.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

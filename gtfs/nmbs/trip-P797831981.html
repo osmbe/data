@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Geraardsbergen - Denderleeuw - P797831981</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Geraardsbergen - Denderleeuw - P797831981</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8895505_4.html">8895505:4</a> - Geraardsbergen 12:16</li><li><a href="stop-8895711_1.html">8895711:1</a> - Schendelbeke 12:20</li><li><a href="stop-8895729_2.html">8895729:2</a> - Idegem 12:23</li><li><a href="stop-8895737_2.html">8895737:2</a> - Zandbergen 12:26</li><li><a href="stop-8895745_1.html">8895745:1</a> - Appelterre 12:29</li><li><a href="stop-8895752_2.html">8895752:2</a> - Eichem 12:32</li><li><a href="stop-8895760_2.html">8895760:2</a> - Ninove 12:36</li><li><a href="stop-8895778_2.html">8895778:2</a> - Okegem 12:40</li><li><a href="stop-8895844_2.html">8895844:2</a> - Iddergem 12:43</li><li><a href="stop-8895802_7.html">8895802:7</a> - Denderleeuw 12:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1422.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

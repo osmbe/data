@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Lokeren - Moerbeke Waas - Zelzate - 20708830</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Lokeren - Moerbeke Waas - Zelzate - 20708830</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126637.html">126637</a> - Lokeren Station perron 2 17:53</li><li><a href="stop-116407.html">116407</a> - Lokeren Markt 17:56</li><li><a href="stop-113096.html">113096</a> - Lokeren Eekstraat 17:58</li><li><a href="stop-113051.html">113051</a> - Lokeren Heirbrugstraat 17:59</li><li><a href="stop-113557.html">113557</a> - Lokeren Veerstraat 18:00</li><li><a href="stop-113052.html">113052</a> - Lokeren Eksaardebaan 18:02</li><li><a href="stop-113053.html">113053</a> - Lokeren Braamstraat 18:03</li><li><a href="stop-113109.html">113109</a> - Daknam Ganzendries 18:05</li><li><a href="stop-114928.html">114928</a> - Eksaarde Keerken 18:08</li><li><a href="stop-115742.html">115742</a> - Eksaarde Brug 18:09</li><li><a href="stop-115743.html">115743</a> - Eksaarde Basisschool 18:10</li><li><a href="stop-121239.html">121239</a> - Moerbeke-Waas Waaigem 18:13</li><li><a href="stop-121240.html">121240</a> - Moerbeke-Waas Damstraat 18:15</li><li><a href="stop-121241.html">121241</a> - Moerbeke-Waas Korte Damstraat 18:15</li><li><a href="stop-121242.html">121242</a> - Moerbeke-Waas Markt 18:16</li><li><a href="stop-121243.html">121243</a> - Moerbeke-Waas Opperstraat 18:17</li><li><a href="stop-121244.html">121244</a> - Moerbeke-Waas Begonialaan 18:18</li><li><a href="stop-121245.html">121245</a> - Moerbeke-Waas Terwest 18:19</li><li><a href="stop-121246.html">121246</a> - Moerbeke-Waas Fortstraat 18:21</li><li><a href="stop-128376.html">128376</a> - Wachtebeke Peene 18:24</li><li><a href="stop-114024.html">114024</a> - Wachtebeke Kalve 18:25</li><li><a href="stop-114025.html">114025</a> - Wachtebeke Axelsvaardeken 18:26</li><li><a href="stop-114026.html">114026</a> - Wachtebeke Molenhoek 18:27</li><li><a href="stop-114027.html">114027</a> - Wachtebeke Godshuisstraat 18:28</li><li><a href="stop-114457.html">114457</a> - Wachtebeke Azalealaan 18:29</li><li><a href="stop-114458.html">114458</a> - Wachtebeke Kerkstraat 18:30</li><li><a href="stop-114459.html">114459</a> - Wachtebeke Walderdonk 18:30</li><li><a href="stop-114460.html">114460</a> - Wachtebeke Gebr. Naudtslaan 18:32</li><li><a href="stop-120294.html">120294</a> - Wachtebeke Kloosterbos 18:34</li><li><a href="stop-114462.html">114462</a> - Zelzate Verbindingsstraat 18:38</li><li><a href="stop-114463.html">114463</a> - Zelzate Verbroederingslaan 18:38</li><li><a href="stop-127971.html">127971</a> - Zelzate Chalmetlaan 18:39</li><li><a href="stop-114225.html">114225</a> - Zelzate Groenstraat 18:40</li><li><a href="stop-113637.html">113637</a> - Zelzate Busstation perron 4 18:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./823.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

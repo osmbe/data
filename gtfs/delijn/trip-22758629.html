@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Halle - Lembeek - 22758629</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Halle - Lembeek - 22758629</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-15686.html">15686</a> - Halle Station Perron 4 21:35</li><li><a href="stop-15634.html">15634</a> - Halle Park 21:37</li><li><a href="stop-15656.html">15656</a> - Halle Arkenvest 21:38</li><li><a href="stop-15655.html">15655</a> - Halle Bergense Poort 21:38</li><li><a href="stop-9653.html">9653</a> - Halle Huisnr 31 21:39</li><li><a href="stop-43977.html">43977</a> - Halle Groene Jager (Colruyt) 21:40</li><li><a href="stop-9669.html">9669</a> - Lembeek Witte Roos 21:41</li><li><a href="stop-14592.html">14592</a> - Lembeek Beuken 21:42</li><li><a href="stop-9333.html">9333</a> - Lembeek Heide 21:43</li><li><a href="stop-14590.html">14590</a> - Lembeek Mimosa 21:44</li><li><a href="stop-16042.html">16042</a> - Lembeek Sancta Maria 21:45</li><li><a href="stop-15663.html">15663</a> - Lembeek Kerk 21:46</li><li><a href="stop-43109.html">43109</a> - Lembeek Gieterij 21:47</li><li><a href="stop-15665.html">15665</a> - Lembeek Sas 21:48</li><li><a href="stop-15667.html">15667</a> - Lembeek Baesberg 21:48</li><li><a href="stop-87420.html">87420</a> - Lembeek Mussenberg 21:50</li><li><a href="stop-15669.html">15669</a> - Lembeek Steenweg Kasteelbrakel nr 176 21:50</li><li><a href="stop-15671.html">15671</a> - Lembeek Steenweg Kasteelbrakel nr 236 21:51</li><li><a href="stop-15741.html">15741</a> - Lembeek Officierenstraat 21:52</li><li><a href="stop-15673.html">15673</a> - Lembeek Trompstraat 21:52</li><li><a href="stop-15675.html">15675</a> - Lembeek Congo 21:53</li><li><a href="stop-15677.html">15677</a> - Lembeek Krekelenberg 21:54</li><li><a href="stop-15679.html">15679</a> - Lembeek Maasdal 21:55</li><li><a href="stop-14899.html">14899</a> - Lembeek Blekerijstraat 21:56</li><li><a href="stop-15681.html">15681</a> - Lembeek Malheide 21:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1732.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

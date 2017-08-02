@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Lichtervelde-Diksmuide-Veurne - 22631787</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Lichtervelde-Diksmuide-Veurne - 22631787</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126280.html">126280</a> - Diksmuide Station perron 1 12:43</li><li><a href="stop-41533.html">41533</a> - Diksmuide Cafe Derby 12:46</li><li><a href="stop-98403.html">98403</a> - Esen Cafe Tirol 12:48</li><li><a href="stop-101091.html">101091</a> - Esen Eikhof 12:50</li><li><a href="stop-98404.html">98404</a> - Esen Dorp 12:53</li><li><a href="stop-98407.html">98407</a> - Esen Kruis 12:54</li><li><a href="stop-98402.html">98402</a> - Esen Cafe Moto-Sport 12:55</li><li><a href="stop-98408.html">98408</a> - Esen Roggeveld 12:56</li><li><a href="stop-42238.html">42238</a> - Zarren Zuivelfabriek 12:57</li><li><a href="stop-42233.html">42233</a> - Zarren Station 12:58</li><li><a href="stop-42296.html">42296</a> - Werken Kerk 13:00</li><li><a href="stop-42291.html">42291</a> - Werken Klaproos 13:01</li><li><a href="stop-42209.html">42209</a> - Werken De Voorstad 13:01</li><li><a href="stop-99951.html">99951</a> - Handzame Werkenstraat 13:02</li><li><a href="stop-41590.html">41590</a> - Handzame Zwevelvoetwegstraat 13:03</li><li><a href="stop-41588.html">41588</a> - Handzame Plaats 13:04</li><li><a href="stop-41587.html">41587</a> - Handzame Elflijnenlaan 13:05</li><li><a href="stop-93049.html">93049</a> - Kortemark Krekebekestraat 13:06</li><li><a href="stop-41735.html">41735</a> - Kortemark Oudstrijderslaan 13:07</li><li><a href="stop-41734.html">41734</a> - Kortemark Margareta Maria Instituut 13:08</li><li><a href="stop-37757.html">37757</a> - Kortemark Station 13:09</li><li><a href="stop-101096.html">101096</a> - Kortemark Plaats 13:09</li><li><a href="stop-41729.html">41729</a> - Kortemark Cafe Du Commerce 13:10</li><li><a href="stop-41728.html">41728</a> - Kortemark Cafe De Welkom 13:11</li><li><a href="stop-37154.html">37154</a> - Torhout Paleputten 13:13</li><li><a href="stop-37158.html">37158</a> - Torhout Sint-Henricuskerk 13:14</li><li><a href="stop-36912.html">36912</a> - Lichtervelde Kruiskalsijde 13:16</li><li><a href="stop-123558.html">123558</a> - Lichtervelde Jive 13:16</li><li><a href="stop-110947.html">110947</a> - Lichtervelde Station Achterkant 13:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4156.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

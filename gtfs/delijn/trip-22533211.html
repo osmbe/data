@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Mechelen - Heist-op-den-Berg - Herentals - 22533211</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mechelen - Heist-op-den-Berg - Herentals - 22533211</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109312.html">109312</a> - Heist-op-den-Berg E. Woutersstraat 07:36</li><li><a href="stop-21352.html">21352</a> - Heist-op-den-Berg Leopoldlei 07:37</li><li><a href="stop-21348.html">21348</a> - Heist-op-den-Berg Cultureel Centrum 07:38</li><li><a href="stop-25727.html">25727</a> - Heist-op-den-Berg OCMW 07:39</li><li><a href="stop-126993.html">126993</a> - Heist-op-den-Berg Station perron 3 07:41</li><li><a href="stop-24429.html">24429</a> - Heist-op-den-Berg Kapel 07:43</li><li><a href="stop-24427.html">24427</a> - Heist-op-den-Berg Kruispunt 07:44</li><li><a href="stop-24424.html">24424</a> - Beerzel Kroonstraat 07:45</li><li><a href="stop-24414.html">24414</a> - Beerzel Kroonstraat 07:45</li><li><a href="stop-109541.html">109541</a> - Beerzel Berg 07:47</li><li><a href="stop-109539.html">109539</a> - Beerzel Kerk 07:48</li><li><a href="stop-24407.html">24407</a> - Beerzel Merelstraat 07:49</li><li><a href="stop-107409.html">107409</a> - Beerzel Rijmeterstraat 07:51</li><li><a href="stop-24405.html">24405</a> - Beerzel Driesstraat 07:52</li><li><a href="stop-24403.html">24403</a> - Putte Helstraat 07:54</li><li><a href="stop-109536.html">109536</a> - Putte Eksterstraat 07:56</li><li><a href="stop-109534.html">109534</a> - Putte Centrum 07:57</li><li><a href="stop-109532.html">109532</a> - Putte Markt 07:58</li><li><a href="stop-24394.html">24394</a> - Putte Kapelstraat 07:59</li><li><a href="stop-24392.html">24392</a> - Onze-Lieve-Vrouw-Waver Prinsenstraat 08:02</li><li><a href="stop-24389.html">24389</a> - Onze-Lieve-Vrouw-Waver Scheerslei 08:03</li><li><a href="stop-109402.html">109402</a> - Onze-Lieve-Vrouw-Waver Sint-Ursula 08:05</li><li><a href="stop-109403.html">109403</a> - Onze-Lieve-Vrouw-Waver Koelarenvelden 08:06</li><li><a href="stop-109709.html">109709</a> - Onze-Lieve-Vrouw-Waver Bosstraat 08:07</li><li><a href="stop-98587.html">98587</a> - Onze-Lieve-Vrouw-Waver Liekens 08:08</li><li><a href="stop-98588.html">98588</a> - Onze-Lieve-Vrouw-Waver Wolvenstraat 08:10</li><li><a href="stop-98569.html">98569</a> - Onze-Lieve-Vrouw-Waver Wolvenstraat 08:10</li><li><a href="stop-109548.html">109548</a> - Sint-Katelijne-Waver Hagelstein 08:13</li><li><a href="stop-109517.html">109517</a> - Sint-Katelijne-Waver Heiken 08:15</li><li><a href="stop-109515.html">109515</a> - Sint-Katelijne-Waver Gestellei 08:15</li><li><a href="stop-108465.html">108465</a> - Sint-Katelijne-Waver IJzerenveld 08:16</li><li><a href="stop-108464.html">108464</a> - Sint-Katelijne-Waver Borgerstein 08:16</li><li><a href="stop-108462.html">108462</a> - Sint-Katelijne-Waver Schorsemolenstraat 08:17</li><li><a href="stop-21770.html">21770</a> - Mechelen Pasbrug 08:17</li><li><a href="stop-21768.html">21768</a> - Mechelen Sint-Libertuskerk 08:18</li><li><a href="stop-123322.html">123322</a> - Mechelen Weidestraat 08:20</li><li><a href="stop-123320.html">123320</a> - Mechelen Borchtstraat 08:21</li><li><a href="stop-126975.html">126975</a> - Mechelen Nekkerspoel station 08:22</li><li><a href="stop-109723.html">109723</a> - Mechelen Bleekstraat 08:24</li><li><a href="stop-25092.html">25092</a> - Mechelen Zandpoortvest 08:26</li><li><a href="stop-108413.html">108413</a> - Mechelen Raghenoplein 08:27</li><li><a href="stop-24362.html">24362</a> - Mechelen Station perron 11 08:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3487.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

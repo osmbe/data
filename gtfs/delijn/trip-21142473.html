@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kraainem- Tervuren - Bertem - Leuven - 21142473</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kraainem- Tervuren - Bertem - Leuven - 21142473</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-14683.html">14683</a> - Sint-Lambrechts-Woluwe Kraainem Metro 21:39</li><li><a href="stop-107300.html">107300</a> - Kraainem Wilderozen 21:41</li><li><a href="stop-93409.html">93409</a> - Kraainem Potaarde 21:42</li><li><a href="stop-17202.html">17202</a> - Kraainem Prinsedal 21:43</li><li><a href="stop-17200.html">17200</a> - Kraainem Heidekruidlaan 21:45</li><li><a href="stop-11998.html">11998</a> - Kraainem Kastanjeslaan 21:47</li><li><a href="stop-12004.html">12004</a> - Kraainem Middenlaan 21:48</li><li><a href="stop-11986.html">11986</a> - Kraainem Bechetlaan 21:50</li><li><a href="stop-106407.html">106407</a> - Tervuren Stg.op Brussel/Albert 21:51</li><li><a href="stop-16886.html">16886</a> - Tervuren Atheneum 21:52</li><li><a href="stop-17282.html">17282</a> - Tervuren Jezus-Eiklaan 21:54</li><li><a href="stop-88183.html">88183</a> - Tervuren Eikestraat 21:55</li><li><a href="stop-16884.html">16884</a> - Tervuren Sportcentrum 21:56</li><li><a href="stop-16882.html">16882</a> - Tervuren De Nettenberg 21:57</li><li><a href="stop-16880.html">16880</a> - Tervuren Hertenbergstraat 21:58</li><li><a href="stop-13626.html">13626</a> - Tervuren Kerk 21:59</li><li><a href="stop-16895.html">16895</a> - Tervuren Centrum 22:00</li><li><a href="stop-16234.html">16234</a> - Tervuren Terminus tram 44 22:01</li><li><a href="stop-13610.html">13610</a> - Tervuren O.Leuvense Baan 22:03</li><li><a href="stop-13600.html">13600</a> - Tervuren Gordaallaan 22:04</li><li><a href="stop-13622.html">13622</a> - Tervuren Vier Winden 22:05</li><li><a href="stop-13647.html">13647</a> - Vossem Stationsstraat 22:06</li><li><a href="stop-13631.html">13631</a> - Vossem Coigesteenweg 22:07</li><li><a href="stop-9783.html">9783</a> - Leefdaal Hammeveld 22:08</li><li><a href="stop-9791.html">9791</a> - Leefdaal Oud Station 22:09</li><li><a href="stop-9785.html">9785</a> - Leefdaal Kasteel 22:10</li><li><a href="stop-89558.html">89558</a> - Leefdaal Het Bies 22:11</li><li><a href="stop-9759.html">9759</a> - Bertem Sinte Veronica 22:12</li><li><a href="stop-9740.html">9740</a> - Bertem Koppelstraat 22:13</li><li><a href="stop-9756.html">9756</a> - Bertem Oud Station 22:14</li><li><a href="stop-9750.html">9750</a> - Bertem Vanhaerenstraat 22:15</li><li><a href="stop-9738.html">9738</a> - Bertem Alsemberg 22:16</li><li><a href="stop-12054.html">12054</a> - Heverlee Bremstraat 22:17</li><li><a href="stop-107302.html">107302</a> - Heverlee Sociaal Hogeschool 22:18</li><li><a href="stop-26237.html">26237</a> - Heverlee Berg Tabor 22:19</li><li><a href="stop-12168.html">12168</a> - Leuven Gasthuisberg Kliniek Perron 4 22:21</li><li><a href="stop-127681.html">127681</a> - Leuven Lemmensinstituut 22:23</li><li><a href="stop-14800.html">14800</a> - Leuven Groefstraat 22:24</li><li><a href="stop-14836.html">14836</a> - Leuven Sint-Jacobsplein 22:25</li><li><a href="stop-12281.html">12281</a> - Leuven Sint-Rafaelkliniek 22:25</li><li><a href="stop-12274.html">12274</a> - Leuven Sint-Pieterskliniek 22:26</li><li><a href="stop-12259.html">12259</a> - Leuven Dirk Boutslaan 22:27</li><li><a href="stop-89195.html">89195</a> - Leuven Rector De Somerplein zone A 22:28</li><li><a href="stop-12231.html">12231</a> - Leuven J.Stasstraat 22:30</li><li><a href="stop-110186.html">110186</a> - Leuven Station Perron 1 22:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2094.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

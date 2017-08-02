@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Wemmel - Asse - 22766570</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Wemmel - Asse - 22766570</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-10096.html">10096</a> - Brussel Noord Perron 1 13:40</li><li><a href="stop-99470.html">99470</a> - Brussel Rogier 13:43</li><li><a href="stop-10071.html">10071</a> - Brussel Albert-II-laan 13:44</li><li><a href="stop-10069.html">10069</a> - Brussel IJzer 13:46</li><li><a href="stop-90802.html">90802</a> - Sint-Jans-Molenbeek Sainctelette 13:47</li><li><a href="stop-90799.html">90799</a> - Sint-Jans-Molenbeek Ribaucourt 13:48</li><li><a href="stop-10299.html">10299</a> - Sint-Jans-Molenbeek Jubelfeest 13:49</li><li><a href="stop-10278.html">10278</a> - Sint-Jans-Molenbeek Belgica 13:50</li><li><a href="stop-10295.html">10295</a> - Sint-Jans-Molenbeek Schelde 13:51</li><li><a href="stop-10102.html">10102</a> - Brussel Poesjkin 13:52</li><li><a href="stop-15693.html">15693</a> - Brussel Nekkersdal 13:53</li><li><a href="stop-10055.html">10055</a> - Brussel Bockstael 13:54</li><li><a href="stop-90784.html">90784</a> - Brussel Bockstael B 13:55</li><li><a href="stop-10115.html">10115</a> - Brussel Sobieski 13:57</li><li><a href="stop-10121.html">10121</a> - Brussel Stuyvenberg 13:58</li><li><a href="stop-10060.html">10060</a> - Brussel Brugmann 14:00</li><li><a href="stop-10117.html">10117</a> - Brussel Stadion 14:02</li><li><a href="stop-10126.html">10126</a> - Brussel Koning Boudewijn 14:03</li><li><a href="stop-14085.html">14085</a> - Wemmel Burvenich 14:05</li><li><a href="stop-14088.html">14088</a> - Wemmel De Ridder 14:06</li><li><a href="stop-14118.html">14118</a> - Wemmel Van Elewijck 14:08</li><li><a href="stop-14122.html">14122</a> - Wemmel Vijvers 14:09</li><li><a href="stop-14116.html">14116</a> - Wemmel Markt 14:10</li><li><a href="stop-14114.html">14114</a> - Wemmel Robbrechts 14:11</li><li><a href="stop-14497.html">14497</a> - Wemmel Windberg 14:12</li><li><a href="stop-14120.html">14120</a> - Wemmel Vier Winden 14:12</li><li><a href="stop-12835.html">12835</a> - Hamme Hooghuis 14:13</li><li><a href="stop-12833.html">12833</a> - Hamme Guduladreef 14:14</li><li><a href="stop-12831.html">12831</a> - Brussegem Ossel Dorp 14:14</li><li><a href="stop-12825.html">12825</a> - Brussegem Kerkhof 14:15</li><li><a href="stop-12829.html">12829</a> - Brussegem Noorden 14:16</li><li><a href="stop-12821.html">12821</a> - Brussegem Huis nr.13 14:17</li><li><a href="stop-12823.html">12823</a> - Brussegem Huis nr.20 14:17</li><li><a href="stop-9533.html">9533</a> - Brussegem Bollebeek Kapel 14:18</li><li><a href="stop-127832.html">127832</a> - Brussegem Bollebeek Kerk 14:18</li><li><a href="stop-9541.html">9541</a> - Mollem Hof te Bollebeek 14:19</li><li><a href="stop-15585.html">15585</a> - Mollem Politiecommissariaat 14:20</li><li><a href="stop-9539.html">9539</a> - Mollem Ingang Z5 14:21</li><li><a href="stop-87412.html">87412</a> - Mollem Beschutte Werkplaats 14:22</li><li><a href="stop-15915.html">15915</a> - Mollem Havimo 14:23</li><li><a href="stop-9481.html">9481</a> - Asse Station 14:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1911.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

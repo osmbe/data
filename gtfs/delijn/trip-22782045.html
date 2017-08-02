@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Herrmann-Debroux - Hoeilaart - Waver - 22782045</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Herrmann-Debroux - Hoeilaart - Waver - 22782045</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-90787.html">90787</a> - Oudergem Hermann-Debroux 19:08</li><li><a href="stop-10198.html">10198</a> - Oudergem U.L.B. Tuin Massart 19:09</li><li><a href="stop-87963.html">87963</a> - Oudergem Rood Klooster 19:09</li><li><a href="stop-13005.html">13005</a> - Overijse Brug Autobaan 19:15</li><li><a href="stop-12999.html">12999</a> - Overijse Treurwilgenlaan 19:16</li><li><a href="stop-12927.html">12927</a> - Overijse Esdoornenlaan 19:17</li><li><a href="stop-11429.html">11429</a> - Hoeilaart G.De Kleermaekers 19:18</li><li><a href="stop-11447.html">11447</a> - Hoeilaart Watertoren 19:19</li><li><a href="stop-11425.html">11425</a> - Hoeilaart E.Sohiestraat 19:20</li><li><a href="stop-11453.html">11453</a> - Hoeilaart Wijndaalstraat 19:21</li><li><a href="stop-11440.html">11440</a> - Hoeilaart Kerk 19:22</li><li><a href="stop-11421.html">11421</a> - Hoeilaart D. Vander Vaerenstr. 19:23</li><li><a href="stop-11415.html">11415</a> - Hoeilaart A.Rowiestraat 19:24</li><li><a href="stop-11437.html">11437</a> - Hoeilaart J.B.Denayerstraat 19:25</li><li><a href="stop-11433.html">11433</a> - Hoeilaart Hoeilaartseweg 19:26</li><li><a href="stop-11443.html">11443</a> - Hoeilaart Veldstraat 19:27</li><li><a href="stop-127847.html">127847</a> - Overijse Bakenbos Linde 19:28</li><li><a href="stop-12952.html">12952</a> - Overijse Koninginnelaan 19:29</li><li><a href="stop-12931.html">12931</a> - Overijse Fél. Bergiersstraat 19:30</li><li><a href="stop-12956.html">12956</a> - Overijse Lange Weg 19:31</li><li><a href="stop-90884.html">90884</a> - Overijse Maleizen Kerk 19:32</li><li><a href="stop-12933.html">12933</a> - Overijse Geitenhoek 19:33</li><li><a href="stop-87421.html">87421</a> - Overijse Boslaan 19:34</li><li><a href="stop-13065.html">13065</a> - Rosières Ferme Englebert 19:36</li><li><a href="stop-13067.html">13067</a> - Rosières Place de la Chapelle 19:37</li><li><a href="stop-13069.html">13069</a> - Rosières Place du Monument 19:38</li><li><a href="stop-13064.html">13064</a> - Rosières Eglise 19:39</li><li><a href="stop-14057.html">14057</a> - Bierges Rue des Templiers 19:39</li><li><a href="stop-14043.html">14043</a> - Bierges Champles Cabine Electrique 19:41</li><li><a href="stop-14041.html">14041</a> - Bierges Café Francis 19:42</li><li><a href="stop-99102.html">99102</a> - Bierges Rue de Wavre 19:43</li><li><a href="stop-14045.html">14045</a> - Bierges Chem. d Angoussart 19:44</li><li><a href="stop-14049.html">14049</a> - Bierges Point du Jour 19:45</li><li><a href="stop-14053.html">14053</a> - Bierges Rue de la Roche 19:46</li><li><a href="stop-14047.html">14047</a> - Bierges Eglise 19:47</li><li><a href="stop-14051.html">14051</a> - Bierges Pont Autoroute 19:49</li><li><a href="stop-92565.html">92565</a> - Waver Station 19:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2181.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Rutten-Koninksem-Tongeren-Berg-Kets.-'sHeren - 22463189</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Rutten-Koninksem-Tongeren-Berg-Kets.-'sHeren - 22463189</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-34616.html">34616</a> - Rutten Kerk 15:38</li><li><a href="stop-34615.html">34615</a> - Rutten Markt 15:38</li><li><a href="stop-34726.html">34726</a> - Rutten Perkestraat 15:39</li><li><a href="stop-34614.html">34614</a> - Rutten Honnestraat 15:39</li><li><a href="stop-34618.html">34618</a> - Rutten Smalstraat 15:40</li><li><a href="stop-34616.html">34616</a> - Rutten Kerk 15:41</li><li><a href="stop-34464.html">34464</a> - Rutten Electriciteitscabine 15:42</li><li><a href="stop-34511.html">34511</a> - Koninksem Kapel 15:45</li><li><a href="stop-34509.html">34509</a> - Koninksem Herderstraat 15:45</li><li><a href="stop-34513.html">34513</a> - Koninksem Kerk 15:46</li><li><a href="stop-34514.html">34514</a> - Koninksem Paardeweistraat 15:47</li><li><a href="stop-34455.html">34455</a> - Koninksem Koninksemstraat nr 58 15:47</li><li><a href="stop-34697.html">34697</a> - Tongeren Linderstraat 15:49</li><li><a href="stop-34690.html">34690</a> - Tongeren Paspoel Kerk 15:50</li><li><a href="stop-34577.html">34577</a> - Tongeren Nieuwe Wijk 15:51</li><li><a href="stop-34593.html">34593</a> - Tongeren Kleine Kasteeltjes 15:52</li><li><a href="stop-34539.html">34539</a> - Tongeren Luikerpoort 15:54</li><li><a href="stop-123194.html">123194</a> - Tongeren Wijkstraat 15:55</li><li><a href="stop-34387.html">34387</a> - Tongeren Offelken 15:57</li><li><a href="stop-123193.html">123193</a> - Tongeren Wijkstraat 15:59</li><li><a href="stop-34540.html">34540</a> - Tongeren Luikerpoort 16:00</li><li><a href="stop-91238.html">91238</a> - Tongeren Sint-Truiderpoort 16:00</li><li><a href="stop-34447.html">34447</a> - Tongeren Bilzerpoort 16:02</li><li><a href="stop-93475.html">93475</a> - Tongeren Koemarkt 16:03</li><li><a href="stop-34484.html">34484</a> - Tongeren Station 16:07</li><li><a href="stop-34641.html">34641</a> - Tongeren Het Kruis 16:09</li><li><a href="stop-34551.html">34551</a> - Tongeren Meulemanslaan 16:10</li><li><a href="stop-34687.html">34687</a> - Tongeren Hospitaal 16:11</li><li><a href="stop-34452.html">34452</a> - Tongeren Treurenberg 16:12</li><li><a href="stop-34439.html">34439</a> - Berg Gousbeemdstraat 16:14</li><li><a href="stop-34467.html">34467</a> - Berg Ogezstraat 16:15</li><li><a href="stop-34441.html">34441</a> - Berg Nieuw Kerkhof 16:15</li><li><a href="stop-97667.html">97667</a> - Ketsingen Gemeenteschool 16:16</li><li><a href="stop-97665.html">97665</a> - Ketsingen Dorp 16:17</li><li><a href="stop-97669.html">97669</a> - Ketsingen Dries 16:18</li><li><a href="stop-97670.html">97670</a> - 's Herenelderen Membruggenweg 16:19</li><li><a href="stop-99411.html">99411</a> - 's Herenelderen Langbamdweg 16:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5371.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

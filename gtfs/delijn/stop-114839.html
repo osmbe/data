@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Waarschoot Renning</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Waarschoot Renning</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-20700049.html">20700049</a> - 20700049 - Waarschoot - Gent Zuid</li><li><a href="trip-20700050.html">20700050</a> - 20700050 - Waarschoot - Gent Zuid</li><li><a href="trip-20700054.html">20700054</a> - 20700054 - Waarschoot - Gent Zuid</li><li><a href="trip-20700055.html">20700055</a> - 20700055 - Waarschoot - Gent Zuid</li><li><a href="trip-20700057.html">20700057</a> - 20700057 - Waarschoot - Gent Zuid</li><li><a href="trip-20700061.html">20700061</a> - 20700061 - Waarschoot - Gent Zuid</li><li><a href="trip-20700062.html">20700062</a> - 20700062 - Waarschoot - Gent Zuid</li><li><a href="trip-20700066.html">20700066</a> - 20700066 - Waarschoot - Gent Zuid</li><li><a href="trip-20700067.html">20700067</a> - 20700067 - Waarschoot - Gent Zuid</li><li><a href="trip-20700069.html">20700069</a> - 20700069 - Waarschoot - Gent Zuid</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([51.1407087931401, 3.60256826781594], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([51.1407087931401, 3.60256826781594]).addTo(map);
+    </script>
+</body>
+
+</html>

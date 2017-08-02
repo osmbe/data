@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge-Moerkerke-Middelburg - 22136655</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge-Moerkerke-Middelburg - 22136655</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-36925.html">36925</a> - Middelburg Dorp 06:41</li><li><a href="stop-127271.html">127271</a> - Middelburg Markt 06:41</li><li><a href="stop-36926.html">36926</a> - Middelburg Leiputje 06:42</li><li><a href="stop-36928.html">36928</a> - Middelburg Waterpolder 06:43</li><li><a href="stop-41002.html">41002</a> - Moerkerke Weg Op Middelburg 06:44</li><li><a href="stop-40993.html">40993</a> - Moerkerke De Stropijp 06:46</li><li><a href="stop-40999.html">40999</a> - Moerkerke Sint-Ritakerk 06:47</li><li><a href="stop-40991.html">40991</a> - Moerkerke De Hoorn 06:48</li><li><a href="stop-40990.html">40990</a> - Moerkerke De Eendracht 06:48</li><li><a href="stop-40994.html">40994</a> - Moerkerke Jackxenbrug 06:50</li><li><a href="stop-40995.html">40995</a> - Moerkerke Kruispunt 06:51</li><li><a href="stop-40997.html">40997</a> - Moerkerke Nieuw Dorp 06:52</li><li><a href="stop-40998.html">40998</a> - Moerkerke Plaats 06:52</li><li><a href="stop-41000.html">41000</a> - Moerkerke Styllux 06:53</li><li><a href="stop-41001.html">41001</a> - Moerkerke Visserstraat 06:54</li><li><a href="stop-90675.html">90675</a> - Moerkerke Weststraat 06:55</li><li><a href="stop-41003.html">41003</a> - Moerkerke Wonderjaar 06:56</li><li><a href="stop-40992.html">40992</a> - Moerkerke De Kroon 06:56</li><li><a href="stop-98369.html">98369</a> - Vivenkapelle Dorp 06:58</li><li><a href="stop-98394.html">98394</a> - Vivenkapelle Vivenmolenstraat 06:59</li><li><a href="stop-98393.html">98393</a> - Vivenkapelle Vierscharestraat 07:00</li><li><a href="stop-98092.html">98092</a> - Sint-Kruis Pijpeweg 07:01</li><li><a href="stop-98091.html">98091</a> - Sint-Kruis Malehoeklaan 07:02</li><li><a href="stop-98090.html">98090</a> - Sint-Kruis Bachten Beukenbos 07:03</li><li><a href="stop-98089.html">98089</a> - Sint-Kruis Doornhut 07:04</li><li><a href="stop-100855.html">100855</a> - Sint-Kruis Beukenlaan 07:05</li><li><a href="stop-127274.html">127274</a> - Sint-Kruis Vossensteert 07:05</li><li><a href="stop-37090.html">37090</a> - Assebroek Zuiderakker 07:06</li><li><a href="stop-36707.html">36707</a> - Assebroek Vossenslag 07:07</li><li><a href="stop-100449.html">100449</a> - Assebroek Zevecote Dreef 07:07</li><li><a href="stop-105065.html">105065</a> - Assebroek Oude Stelplaats 07:08</li><li><a href="stop-40788.html">40788</a> - Assebroek Peerdeke 07:08</li><li><a href="stop-40784.html">40784</a> - Assebroek Kruisboog 07:09</li><li><a href="stop-40779.html">40779</a> - Assebroek Daverlostraat 07:09</li><li><a href="stop-40835.html">40835</a> - Brugge Gentpoort 07:10</li><li><a href="stop-40847.html">40847</a> - Brugge Katelijnepoort 07:11</li><li><a href="stop-126327.html">126327</a> - Brugge Station perron 8 07:14</li><li><a href="stop-126411.html">126411</a> - Brugge 'T Zand perron 6 07:16</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3958.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

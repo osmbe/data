@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tielt - Assent - Diest - 21147372</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tielt - Assent - Diest - 21147372</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-17013.html">17013</a> - Diest Station Perron 8 17:20</li><li><a href="stop-14840.html">14840</a> - Diest Weerstandsplein 17:24</li><li><a href="stop-14841.html">14841</a> - Diest Sint-Jacobsplein 17:26</li><li><a href="stop-43984.html">43984</a> - Diest Atheneum 17:27</li><li><a href="stop-10458.html">10458</a> - Diest Euro Shoe 17:27</li><li><a href="stop-10466.html">10466</a> - Diest Stadion 17:28</li><li><a href="stop-128819.html">128819</a> - Diest Sint-Jansplein 17:29</li><li><a href="stop-10460.html">10460</a> - Diest Bevrijdingsstraat (Hasseltsepoort) 17:30</li><li><a href="stop-10457.html">10457</a> - Diest Beukenlaan 17:30</li><li><a href="stop-10491.html">10491</a> - Webbekom Centrum 17:31</li><li><a href="stop-15515.html">15515</a> - Webbekom Peulbergstraat 17:32</li><li><a href="stop-10493.html">10493</a> - Webbekom Dorpsveldstraat 17:33</li><li><a href="stop-10495.html">10495</a> - Webbekom Kwadestraat 17:35</li><li><a href="stop-10497.html">10497</a> - Webbekom Oud Kapelleke 17:36</li><li><a href="stop-9706.html">9706</a> - Webbekom Wolvenstraat 17:37</li><li><a href="stop-9678.html">9678</a> - Assent Bekweg 17:38</li><li><a href="stop-9688.html">9688</a> - Assent Mierenberg 17:39</li><li><a href="stop-9680.html">9680</a> - Assent Centrum 17:39</li><li><a href="stop-9682.html">9682</a> - Assent Doornhof 17:40</li><li><a href="stop-9700.html">9700</a> - Assent Struikstraat 7 17:41</li><li><a href="stop-9702.html">9702</a> - Assent Struikstraat 89 17:42</li><li><a href="stop-9698.html">9698</a> - Assent Rijnrodestraat 17:43</li><li><a href="stop-9704.html">9704</a> - Assent Weg naar Loksbergen 17:44</li><li><a href="stop-9684.html">9684</a> - Assent Kabien 17:45</li><li><a href="stop-93360.html">93360</a> - Waanrode Rijnrode Huis 79 17:46</li><li><a href="stop-11897.html">11897</a> - Waanrode Waanveld 17:48</li><li><a href="stop-11893.html">11893</a> - Waanrode Sint-Annaveld 17:48</li><li><a href="stop-11878.html">11878</a> - Waanrode Kerk 17:49</li><li><a href="stop-11886.html">11886</a> - Waanrode Nieuwe Wijk 17:50</li><li><a href="stop-11860.html">11860</a> - Waanrode Boterbergstraat 17:50</li><li><a href="stop-11894.html">11894</a> - Waanrode Tolkamerstraat 17:51</li><li><a href="stop-11869.html">11869</a> - Waanrode Halenseweg 17:52</li><li><a href="stop-11864.html">11864</a> - Waanrode Grote Weg 17:53</li><li><a href="stop-9732.html">9732</a> - Bekkevoort Provinciebaan 17:54</li><li><a href="stop-9724.html">9724</a> - Bekkevoort Klein Kempen 17:55</li><li><a href="stop-14808.html">14808</a> - Molenbeek-Wersbeek Kiezegemstraat 17:56</li><li><a href="stop-9736.html">9736</a> - Molenbeek-Wersbeek Tiensebaan 17:57</li><li><a href="stop-9721.html">9721</a> - Molenbeek-Wersbeek Molenbeek Kerk 17:58</li><li><a href="stop-9719.html">9719</a> - Molenbeek-Wersbeek Heiblokstraat 17:59</li><li><a href="stop-9717.html">9717</a> - Molenbeek-Wersbeek Dellestraat 18:00</li><li><a href="stop-13754.html">13754</a> - Tielt-Winge Woubeek 18:00</li><li><a href="stop-13721.html">13721</a> - Tielt-Winge Driesstraat 18:01</li><li><a href="stop-110971.html">110971</a> - Tielt-Winge Stelplaats Perron 6 18:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2257.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

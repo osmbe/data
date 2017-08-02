@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Boom - Puurs - Dendermonde - 22514741</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boom - Puurs - Dendermonde - 22514741</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-23212.html">23212</a> - Boom Markt 16:05</li><li><a href="stop-106076.html">106076</a> - Willebroek Klein Willebroek 16:08</li><li><a href="stop-109482.html">109482</a> - Ruisbroek Prod. Chimique 16:10</li><li><a href="stop-109481.html">109481</a> - Ruisbroek Oud-Gemeentehuis 16:11</li><li><a href="stop-108318.html">108318</a> - Ruisbroek Beemdstraat 16:13</li><li><a href="stop-109476.html">109476</a> - Ruisbroek J. De Donckerlaan 16:13</li><li><a href="stop-108256.html">108256</a> - Ruisbroek Begonialaan 16:15</li><li><a href="stop-20253.html">20253</a> - Ruisbroek Pullaarsteenweg 16:17</li><li><a href="stop-108257.html">108257</a> - Puurs Pullaar 16:18</li><li><a href="stop-100156.html">100156</a> - Puurs Brabantstraat 16:19</li><li><a href="stop-21179.html">21179</a> - Puurs Alcon Couvreur 16:19</li><li><a href="stop-23937.html">23937</a> - Puurs Pfizer 16:20</li><li><a href="stop-20206.html">20206</a> - Puurs A. Meersmansdreef 16:21</li><li><a href="stop-109450.html">109450</a> - Puurs Kalfortdorp 16:23</li><li><a href="stop-109449.html">109449</a> - Puurs Merkenveld 16:24</li><li><a href="stop-109447.html">109447</a> - Puurs Station 16:35</li><li><a href="stop-107716.html">107716</a> - Puurs Markt 16:36</li><li><a href="stop-110004.html">110004</a> - Puurs Hooiveld 16:36</li><li><a href="stop-128655.html">128655</a> - Puurs Hof Ten Berg 16:37</li><li><a href="stop-21180.html">21180</a> - Puurs Zeutestraat 16:38</li><li><a href="stop-109445.html">109445</a> - Oppuurs Kerkhof 16:40</li><li><a href="stop-109444.html">109444</a> - Oppuurs Oppuurs Station 16:40</li><li><a href="stop-109442.html">109442</a> - Oppuurs Schoolstraat 16:41</li><li><a href="stop-24146.html">24146</a> - Oppuurs Schaddekensdries 16:42</li><li><a href="stop-109440.html">109440</a> - Oppuurs Pandgatheide 16:44</li><li><a href="stop-109439.html">109439</a> - Sint-Amands Heidestraat 16:47</li><li><a href="stop-24140.html">24140</a> - Sint-Amands Buisstraat 16:48</li><li><a href="stop-24137.html">24137</a> - Sint-Amands Station 16:49</li><li><a href="stop-109435.html">109435</a> - Sint-Amands De Valk 16:50</li><li><a href="stop-107772.html">107772</a> - Sint-Amands Boonhof 16:51</li><li><a href="stop-24132.html">24132</a> - Sint-Amands Dorekensstraat 16:52</li><li><a href="stop-109431.html">109431</a> - Sint-Amands Fok 16:53</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3016.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

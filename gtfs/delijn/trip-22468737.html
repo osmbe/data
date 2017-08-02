@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Godsheide - Hasselt - Stokrooie/Kiewit - 22468737</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Godsheide - Hasselt - Stokrooie/Kiewit - 22468737</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-120464.html">120464</a> - Godsheide Kerk 07:47</li><li><a href="stop-128082.html">128082</a> - Godsheide Kapelveld 07:48</li><li><a href="stop-120462.html">120462</a> - Godsheide Golf 07:49</li><li><a href="stop-29717.html">29717</a> - Hasselt P&R Grenslandhallen 07:51</li><li><a href="stop-92477.html">92477</a> - Hasselt Infrax 07:52</li><li><a href="stop-29721.html">29721</a> - Hasselt Vormingscentrum 07:53</li><li><a href="stop-110548.html">110548</a> - Hasselt VDAB 07:54</li><li><a href="stop-29645.html">29645</a> - Hasselt Zwembad 07:56</li><li><a href="stop-29267.html">29267</a> - Hasselt Dusartplein 07:57</li><li><a href="stop-29878.html">29878</a> - Hasselt Molenpoort 07:59</li><li><a href="stop-29292.html">29292</a> - Hasselt Diesterpoort 08:01</li><li><a href="stop-128984.html">128984</a> - Hasselt Station perron 3 08:06</li><li><a href="stop-29453.html">29453</a> - Hasselt Lazarijstraat 08:07</li><li><a href="stop-29395.html">29395</a> - Hasselt Kuringersteenweg 08:08</li><li><a href="stop-33660.html">33660</a> - Hasselt Herkenrodesingel 08:10</li><li><a href="stop-31824.html">31824</a> - Hasselt Gevangenis 08:12</li><li><a href="stop-31822.html">31822</a> - Kuringen Simpernelstraat 08:15</li><li><a href="stop-31820.html">31820</a> - Kuringen Braambessenstraat 08:15</li><li><a href="stop-31818.html">31818</a> - Kuringen Gebrandestraat 08:16</li><li><a href="stop-29733.html">29733</a> - Kuringen Groenstraat 08:17</li><li><a href="stop-29396.html">29396</a> - Kuringen Beemdweg 08:17</li><li><a href="stop-29730.html">29730</a> - Kuringen Zuiveringsstation 08:18</li><li><a href="stop-29773.html">29773</a> - Kuringen Mellebroek 08:19</li><li><a href="stop-29728.html">29728</a> - Stokrooie Kerk 08:23</li><li><a href="stop-29725.html">29725</a> - Stokrooie Ontmoetingscentrum 08:23</li><li><a href="stop-102657.html">102657</a> - Stokrooie Waterstraat 08:24</li><li><a href="stop-29766.html">29766</a> - Stokrooie Waterlozestraat 08:25</li><li><a href="stop-29767.html">29767</a> - Stokrooie Beuzestraat 08:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5313.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

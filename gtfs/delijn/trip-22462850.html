@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Bokrijk - Winterslag - Genk Station - Gelieren - 22462850</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bokrijk - Winterslag - Genk Station - Gelieren - 22462850</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-99160.html">99160</a> - Genk Kokerstraat 12:12</li><li><a href="stop-28696.html">28696</a> - Genk Bonderstraat III 12:13</li><li><a href="stop-28694.html">28694</a> - Genk Mindersstraat 12:15</li><li><a href="stop-28692.html">28692</a> - Genk Bonderstraat II 12:15</li><li><a href="stop-28656.html">28656</a> - Genk Bonderstraat I 12:16</li><li><a href="stop-92480.html">92480</a> - Genk Hiemelsbergstraat 12:17</li><li><a href="stop-28618.html">28618</a> - Genk Neerzijstraat 12:18</li><li><a href="stop-28583.html">28583</a> - Genk De Richter 12:20</li><li><a href="stop-28576.html">28576</a> - Genk Herfstvreugde 12:21</li><li><a href="stop-90027.html">90027</a> - Genk Zagerijstraat 12:22</li><li><a href="stop-28481.html">28481</a> - Genk Hospitaalstraat 12:23</li><li><a href="stop-28999.html">28999</a> - Genk Shopping Center perron 4 12:25</li><li><a href="stop-43785.html">43785</a> - Genk Station perron 3 12:30</li><li><a href="stop-123237.html">123237</a> - Genk Bochtlaan 12:32</li><li><a href="stop-28527.html">28527</a> - Genk Nieuwe Kuilenweg 12:33</li><li><a href="stop-96729.html">96729</a> - Winterslag Stiemerbeek 12:34</li><li><a href="stop-98769.html">98769</a> - Winterslag Colruyt 12:34</li><li><a href="stop-98730.html">98730</a> - Winterslag Hoefstadstraat 12:35</li><li><a href="stop-96761.html">96761</a> - Winterslag Eikenlaan 12:36</li><li><a href="stop-96764.html">96764</a> - Winterslag Berkenlaan 12:37</li><li><a href="stop-97880.html">97880</a> - Winterslag Kerk 12:38</li><li><a href="stop-96721.html">96721</a> - Winterslag Margaretalaan 12:39</li><li><a href="stop-96727.html">96727</a> - Winterslag Sportlaan 12:40</li><li><a href="stop-96725.html">96725</a> - Winterslag Spoorwegstraat 12:41</li><li><a href="stop-96716.html">96716</a> - Winterslag Erabelstraat 12:42</li><li><a href="stop-96733.html">96733</a> - Winterslag Zandoerstraat 12:43</li><li><a href="stop-96673.html">96673</a> - Boxberg De Heuvel 12:44</li><li><a href="stop-96757.html">96757</a> - Boxberg Roerstraat 12:45</li><li><a href="stop-96755.html">96755</a> - Boxberg Ankerstraat 12:46</li><li><a href="stop-96675.html">96675</a> - Boxberg De Vroente 12:47</li><li><a href="stop-96671.html">96671</a> - Boxberg Boogstraat 12:48</li><li><a href="stop-96669.html">96669</a> - Boxberg Jongensschool 12:50</li><li><a href="stop-123266.html">123266</a> - Boxberg Don Bosco Genk 12:51</li><li><a href="stop-96679.html">96679</a> - Boxberg Turfstraat 12:52</li><li><a href="stop-96681.html">96681</a> - Boxberg Vogelzangstraat 12:53</li><li><a href="stop-28416.html">28416</a> - Genk Craenevenne 12:54</li><li><a href="stop-96655.html">96655</a> - Bokrijk Provinciaal Natuurcentrum 12:55</li><li><a href="stop-96661.html">96661</a> - Bokrijk Genkerdreef 12:56</li><li><a href="stop-123011.html">123011</a> - Bokrijk Domein 12:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5348.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

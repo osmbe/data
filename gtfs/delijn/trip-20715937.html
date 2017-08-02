@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Wetteren - Oosterzele - Zottegem - 20715937</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Wetteren - Oosterzele - Zottegem - 20715937</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-113781.html">113781</a> - Sint-Lievens-Houtem Kerk 05:50</li><li><a href="stop-114729.html">114729</a> - Sint-Lievens-Houtem Dorp 05:51</li><li><a href="stop-113657.html">113657</a> - Sint-Lievens-Houtem Hoeksken 05:51</li><li><a href="stop-113779.html">113779</a> - Sint-Lievens-Houtem Stelplaats 05:52</li><li><a href="stop-113778.html">113778</a> - Sint-Lievens-Houtem Swessestraat 05:53</li><li><a href="stop-113777.html">113777</a> - Oosterzele Boekhoutstraat 05:55</li><li><a href="stop-113776.html">113776</a> - Oosterzele Heistraat 05:55</li><li><a href="stop-113725.html">113725</a> - Oosterzele Smessenbroek 05:56</li><li><a href="stop-111707.html">111707</a> - Oosterzele Gemeentehuis 05:57</li><li><a href="stop-114724.html">114724</a> - Oosterzele Groenweg 05:58</li><li><a href="stop-113658.html">113658</a> - Oosterzele Reigerstraat 05:58</li><li><a href="stop-113659.html">113659</a> - Oosterzele Merebaaistraat 05:59</li><li><a href="stop-113726.html">113726</a> - Oosterzele Anker 06:00</li><li><a href="stop-114715.html">114715</a> - Oosterzele Roosbloemstraat 06:01</li><li><a href="stop-118301.html">118301</a> - Oosterzele Steenstraat 06:02</li><li><a href="stop-118302.html">118302</a> - Bavegem Houwstraat 06:03</li><li><a href="stop-113792.html">113792</a> - Bavegem Vijverstraat 06:04</li><li><a href="stop-113796.html">113796</a> - Bavegem Hoge Hellesemweg 06:05</li><li><a href="stop-116866.html">116866</a> - Westrem Westremdries 06:07</li><li><a href="stop-116867.html">116867</a> - Westrem Dorp 06:09</li><li><a href="stop-113664.html">113664</a> - Westrem Keiberg 06:10</li><li><a href="stop-116869.html">116869</a> - Massemen Strop 06:11</li><li><a href="stop-120620.html">120620</a> - Massemen Dorp 06:12</li><li><a href="stop-116870.html">116870</a> - Massemen Maelbroekstraat 06:14</li><li><a href="stop-113797.html">113797</a> - Wetteren Diepenbroekstraat 06:15</li><li><a href="stop-113798.html">113798</a> - Wetteren Zuidlaan 06:15</li><li><a href="stop-113665.html">113665</a> - Wetteren Oordegemsesteenweg 06:16</li><li><a href="stop-124357.html">124357</a> - Wetteren Buyssestraat 06:17</li><li><a href="stop-126647.html">126647</a> - Wetteren Station perron 1 06:18</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1195.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

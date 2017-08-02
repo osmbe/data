@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diksmuide-Merkem-Ieper - 22631191</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diksmuide-Merkem-Ieper - 22631191</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126282.html">126282</a> - Diksmuide Station perron 3 18:20</li><li><a href="stop-37548.html">37548</a> - Diksmuide Markt 18:22</li><li><a href="stop-37558.html">37558</a> - Diksmuide Steenweg Op Woumen 18:23</li><li><a href="stop-37549.html">37549</a> - Diksmuide Nijverheidsstraat 18:23</li><li><a href="stop-98115.html">98115</a> - Esen Kasteel 18:24</li><li><a href="stop-38984.html">38984</a> - Woumen Zwarte Dreef 18:26</li><li><a href="stop-38981.html">38981</a> - Woumen Warande 18:27</li><li><a href="stop-38976.html">38976</a> - Woumen Plaats 18:28</li><li><a href="stop-104824.html">104824</a> - Woumen Station 18:29</li><li><a href="stop-38977.html">38977</a> - Woumen Serpenthoek 18:29</li><li><a href="stop-38983.html">38983</a> - Woumen Witte Hoeve 18:30</li><li><a href="stop-38978.html">38978</a> - Houthulst Smisse 18:32</li><li><a href="stop-38980.html">38980</a> - Houthulst Steenbeekstraat Nr.2 18:33</li><li><a href="stop-38972.html">38972</a> - Houthulst Kabien 18:34</li><li><a href="stop-101139.html">101139</a> - Houthulst Jonkershove 18:34</li><li><a href="stop-42546.html">42546</a> - Merkem Sneppe 18:35</li><li><a href="stop-42538.html">42538</a> - Merkem Grote Abri 18:37</li><li><a href="stop-123695.html">123695</a> - Merkem Kippe 18:39</li><li><a href="stop-42537.html">42537</a> - Merkem Gemeentehuis 18:40</li><li><a href="stop-38646.html">38646</a> - Merkem Hoekske 18:41</li><li><a href="stop-38650.html">38650</a> - Merkem Langewade 18:42</li><li><a href="stop-38652.html">38652</a> - Merkem Nieuwe Wereld 18:43</li><li><a href="stop-98417.html">98417</a> - Bikschote Smiske 18:44</li><li><a href="stop-98136.html">98136</a> - Bikschote Steenstraat 18:45</li><li><a href="stop-98173.html">98173</a> - Zuidschote Lizerne 18:46</li><li><a href="stop-38411.html">38411</a> - Boezinge De Vos 18:49</li><li><a href="stop-38414.html">38414</a> - Boezinge Plaats 18:49</li><li><a href="stop-38416.html">38416</a> - Boezinge Station 18:50</li><li><a href="stop-38412.html">38412</a> - Boezinge Kanon 18:50</li><li><a href="stop-38415.html">38415</a> - Boezinge Sint-Pieter 18:53</li><li><a href="stop-38516.html">38516</a> - Ieper Barmstraatje 18:54</li><li><a href="stop-38559.html">38559</a> - Ieper Wegwijzer 18:55</li><li><a href="stop-38527.html">38527</a> - Ieper Kaai 18:56</li><li><a href="stop-104784.html">104784</a> - Ieper Bibliotheek 18:57</li><li><a href="stop-42466.html">42466</a> - Ieper Markt 18:59</li><li><a href="stop-104777.html">104777</a> - Ieper Gevangenis 19:02</li><li><a href="stop-126343.html">126343</a> - Ieper Station perron 2 19:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4151.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

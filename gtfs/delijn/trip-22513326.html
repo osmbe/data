@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Turnhout - Gierle - Tielen - Lichtaart - Herentals - 22513326</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Turnhout - Gierle - Tielen - Lichtaart - Herentals - 22513326</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-25380.html">25380</a> - Herentals Station perron 6 05:00</li><li><a href="stop-108972.html">108972</a> - Herentals Belgiëlaan 05:01</li><li><a href="stop-100399.html">100399</a> - Herentals Hikstraat 05:01</li><li><a href="stop-108969.html">108969</a> - Herentals AZ Sint-Elisabeth 05:02</li><li><a href="stop-109957.html">109957</a> - Herentals Kerkhof 05:04</li><li><a href="stop-25373.html">25373</a> - Herentals Schoutenlaan 05:05</li><li><a href="stop-25371.html">25371</a> - Herentals Snepkenshoeve 05:07</li><li><a href="stop-25369.html">25369</a> - Lichtaart Snepkenshof 05:08</li><li><a href="stop-25367.html">25367</a> - Lichtaart Hof Ter Heidedreef 05:11</li><li><a href="stop-25365.html">25365</a> - Lichtaart Olensteenweg 05:12</li><li><a href="stop-109808.html">109808</a> - Lichtaart Kastanjelaan 05:14</li><li><a href="stop-109806.html">109806</a> - Lichtaart Schoolstraat 05:14</li><li><a href="stop-109804.html">109804</a> - Lichtaart Gemeentestraat 05:15</li><li><a href="stop-109803.html">109803</a> - Lichtaart Korenbloemlaan 05:16</li><li><a href="stop-25355.html">25355</a> - Lichtaart Driesstraat 05:17</li><li><a href="stop-109801.html">109801</a> - Tielen Dorp 05:18</li><li><a href="stop-88780.html">88780</a> - Tielen Kasteeldreef 05:20</li><li><a href="stop-127761.html">127761</a> - Tielen Prijstraat 05:21</li><li><a href="stop-25383.html">25383</a> - Gierle Broekzijde 05:33</li><li><a href="stop-101647.html">101647</a> - Gierle Kerk 05:34</li><li><a href="stop-25342.html">25342</a> - Gierle Molenpad 05:35</li><li><a href="stop-25339.html">25339</a> - Gierle Middelveld 05:36</li><li><a href="stop-25337.html">25337</a> - Gierle Rooien 05:37</li><li><a href="stop-25334.html">25334</a> - Gierle Beemdenstraat 05:38</li><li><a href="stop-25332.html">25332</a> - Vosselaar De Breem 05:40</li><li><a href="stop-88137.html">88137</a> - Turnhout Philips I 05:43</li><li><a href="stop-91188.html">91188</a> - Turnhout Winkelpark XXL 05:44</li><li><a href="stop-109794.html">109794</a> - Turnhout Slachthuisstraat 05:44</li><li><a href="stop-92490.html">92490</a> - Turnhout Oud-Strijderslaan 05:45</li><li><a href="stop-88778.html">88778</a> - Turnhout Boerenkrijglaan 05:45</li><li><a href="stop-109792.html">109792</a> - Turnhout Lokeren Bareel 05:46</li><li><a href="stop-108879.html">108879</a> - Turnhout Station perron 6 05:47</li><li><a href="stop-108880.html">108880</a> - Turnhout Zeshoek 05:48</li><li><a href="stop-107830.html">107830</a> - Turnhout Warande 05:49</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2967.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

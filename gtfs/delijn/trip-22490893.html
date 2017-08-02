@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Meeuwen - Peer - Neerpelt - 22490893</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Meeuwen - Peer - Neerpelt - 22490893</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-91060.html">91060</a> - Overpelt Kiosk 12:05</li><li><a href="stop-33416.html">33416</a> - Overpelt Ursulinen 12:08</li><li><a href="stop-89654.html">89654</a> - Overpelt Breugelweg 12:08</li><li><a href="stop-33410.html">33410</a> - Overpelt Spoorwegstraat 12:09</li><li><a href="stop-33359.html">33359</a> - Overpelt Dalakkerstraat 12:09</li><li><a href="stop-33414.html">33414</a> - Overpelt Steenovenstraat 12:10</li><li><a href="stop-33408.html">33408</a> - Overpelt Sint-Oda 12:12</li><li><a href="stop-88315.html">88315</a> - Kleine-Brogel Groenewoudstraat 12:15</li><li><a href="stop-93834.html">93834</a> - Kleine-Brogel Dommellaan 12:16</li><li><a href="stop-93814.html">93814</a> - Kleine-Brogel Kruispunt 12:17</li><li><a href="stop-33471.html">33471</a> - Kleine-Brogel Spotters Corner 12:21</li><li><a href="stop-33433.html">33433</a> - Peer Bokterstraat 12:23</li><li><a href="stop-128989.html">128989</a> - Peer Kerk 12:24</li><li><a href="stop-32895.html">32895</a> - Peer Agnetendal 12:24</li><li><a href="stop-33544.html">33544</a> - Peer Pol KIP 12:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5455.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

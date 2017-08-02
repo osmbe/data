@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Baaigem - Gavere - Oudenaarde - 20695199</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Baaigem - Gavere - Oudenaarde - 20695199</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-114785.html">114785</a> - Baaigem Bosstraat 07:09</li><li><a href="stop-113757.html">113757</a> - Scheldewindeke Keerken 07:12</li><li><a href="stop-113840.html">113840</a> - Dikkelvenne Wafelhoekstraat 07:13</li><li><a href="stop-113839.html">113839</a> - Dikkelvenne Kouterstraat 07:14</li><li><a href="stop-113755.html">113755</a> - Beerlegem Zavelputstraat 07:15</li><li><a href="stop-120328.html">120328</a> - Dikkelvenne Saksenboomstraat 07:17</li><li><a href="stop-120329.html">120329</a> - Dikkelvenne Vossenholstraat 07:18</li><li><a href="stop-113751.html">113751</a> - Dikkelvenne Kerk 07:19</li><li><a href="stop-113750.html">113750</a> - Dikkelvenne Diepestraat 07:20</li><li><a href="stop-113749.html">113749</a> - Dikkelvenne Sint-Christianastraat 07:21</li><li><a href="stop-113748.html">113748</a> - Gavere Kamp 07:22</li><li><a href="stop-126781.html">126781</a> - Gavere Warande perron 3 07:23</li><li><a href="stop-113747.html">113747</a> - Gavere Scheldestraat 07:24</li><li><a href="stop-128626.html">128626</a> - Gavere Brandweer 07:25</li><li><a href="stop-120162.html">120162</a> - Asper Stationsstraat 07:27</li><li><a href="stop-119937.html">119937</a> - Asper Station 07:28</li><li><a href="stop-119938.html">119938</a> - Asper Heedstraat 07:29</li><li><a href="stop-119939.html">119939</a> - Asper Gentse Steenweg 07:30</li><li><a href="stop-119504.html">119504</a> - Ouwegem Galgestraat 07:32</li><li><a href="stop-119505.html">119505</a> - Ouwegem Colmstraat 07:33</li><li><a href="stop-118629.html">118629</a> - Huise Peerdeken 07:35</li><li><a href="stop-118630.html">118630</a> - Huise Heulestraat 07:37</li><li><a href="stop-118631.html">118631</a> - Zingem Bekestraat 07:38</li><li><a href="stop-118632.html">118632</a> - Zingem Tuinwijk 07:39</li><li><a href="stop-118633.html">118633</a> - Zingem Dorp 07:40</li><li><a href="stop-118634.html">118634</a> - Zingem Nederzwalmsesteenweg 07:41</li><li><a href="stop-118635.html">118635</a> - Zingem Kouterstraat 07:42</li><li><a href="stop-118636.html">118636</a> - Heurne Amandusstraat 07:44</li><li><a href="stop-118637.html">118637</a> - Heurne Kerk 07:46</li><li><a href="stop-118638.html">118638</a> - Eine Grimbergenstraat 07:48</li><li><a href="stop-118639.html">118639</a> - Eine Fabriekstraat 07:50</li><li><a href="stop-118640.html">118640</a> - Eine Akkerstraat 07:51</li><li><a href="stop-118641.html">118641</a> - Oudenaarde Paterstraat 07:52</li><li><a href="stop-118642.html">118642</a> - Oudenaarde Drijf 07:53</li><li><a href="stop-118643.html">118643</a> - Oudenaarde Bulkendreef 07:55</li><li><a href="stop-121648.html">121648</a> - Oudenaarde V.T.I. 07:56</li><li><a href="stop-118481.html">118481</a> - Oudenaarde Sportcentrum 07:59</li><li><a href="stop-126756.html">126756</a> - Oudenaarde Station perron 1 08:03</li><li><a href="stop-118478.html">118478</a> - Oudenaarde Tacambaro 08:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./282.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

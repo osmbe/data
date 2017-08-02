@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Menen - 22618990</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Menen - 22618990</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126372.html">126372</a> - Menen Station perron 6 17:10</li><li><a href="stop-37951.html">37951</a> - Menen Markt 17:15</li><li><a href="stop-37966.html">37966</a> - Menen Vedastuskerk 17:16</li><li><a href="stop-37948.html">37948</a> - Menen Waalvest 17:16</li><li><a href="stop-41919.html">41919</a> - Menen Ontmoetingscentrum 17:17</li><li><a href="stop-41932.html">41932</a> - Menen Leopoldplein 17:18</li><li><a href="stop-41931.html">41931</a> - Menen Rozestraat 17:19</li><li><a href="stop-41936.html">41936</a> - Menen Voetbal 17:20</li><li><a href="stop-42218.html">42218</a> - Wevelgem Posthoorn 17:21</li><li><a href="stop-42210.html">42210</a> - Wevelgem Sint-Theresiakerk 17:23</li><li><a href="stop-42220.html">42220</a> - Wevelgem Vliegmachine 17:25</li><li><a href="stop-42222.html">42222</a> - Wevelgem Wezelhoek 17:26</li><li><a href="stop-42219.html">42219</a> - Wevelgem Sportveld 17:27</li><li><a href="stop-105004.html">105004</a> - Wevelgem Kerkhof 17:28</li><li><a href="stop-42217.html">42217</a> - Wevelgem Plaats 17:29</li><li><a href="stop-42215.html">42215</a> - Wevelgem Kozak 17:31</li><li><a href="stop-42212.html">42212</a> - Wevelgem Hippodroom 17:33</li><li><a href="stop-42221.html">42221</a> - Wevelgem Vliegveld 17:35</li><li><a href="stop-42213.html">42213</a> - Wevelgem Hirondelle 17:37</li><li><a href="stop-41482.html">41482</a> - Bissegem Eldorado 17:38</li><li><a href="stop-41487.html">41487</a> - Bissegem Plaats 17:40</li><li><a href="stop-41485.html">41485</a> - Bissegem Land Van Belofte 17:41</li><li><a href="stop-41755.html">41755</a> - Kortrijk De Mol 17:42</li><li><a href="stop-41771.html">41771</a> - Kortrijk Kerkhof 17:43</li><li><a href="stop-41780.html">41780</a> - Kortrijk Meensepoort 17:44</li><li><a href="stop-91302.html">91302</a> - Kortrijk De Appel 17:45</li><li><a href="stop-125732.html">125732</a> - Kortrijk L. Robbeplein 17:46</li><li><a href="stop-126380.html">126380</a> - Kortrijk Station perron 7 17:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4031.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

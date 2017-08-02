@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Zwartberg - Houthalen - 22479776</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Zwartberg - Houthalen - 22479776</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-30674.html">30674</a> - Houthalen Hortensiastraat 15:32</li><li><a href="stop-105241.html">105241</a> - Houthalen Park van Genk Kerk 15:34</li><li><a href="stop-30677.html">30677</a> - Houthalen Kastanjestraat 15:35</li><li><a href="stop-30633.html">30633</a> - Houthalen Berkenstraat 15:36</li><li><a href="stop-30729.html">30729</a> - Houthalen Notenstraat 15:37</li><li><a href="stop-30759.html">30759</a> - Houthalen Taxusstraat 15:38</li><li><a href="stop-30779.html">30779</a> - Houthalen Wilde Kers 15:39</li><li><a href="stop-30752.html">30752</a> - Houthalen Sparrenstraat 15:40</li><li><a href="stop-30689.html">30689</a> - Houthalen Kerselaarstraat 15:41</li><li><a href="stop-30641.html">30641</a> - Houthalen Canadastraat 15:42</li><li><a href="stop-30676.html">30676</a> - Houthalen Thuyastraat 15:43</li><li><a href="stop-30771.html">30771</a> - Houthalen Tulpenstraat 15:44</li><li><a href="stop-30744.html">30744</a> - Houthalen Rekreatiepark 15:46</li><li><a href="stop-30695.html">30695</a> - Houthalen Korhoenstraat 15:47</li><li><a href="stop-30728.html">30728</a> - Houthalen Musstraat 15:48</li><li><a href="stop-30786.html">30786</a> - Houthalen Fazantenstraat 15:51</li><li><a href="stop-30665.html">30665</a> - Houthalen Heivinkstraat 15:52</li><li><a href="stop-30739.html">30739</a> - Houthalen Pelikaanstraat 15:53</li><li><a href="stop-30707.html">30707</a> - Houthalen Lijsterstraat 15:54</li><li><a href="stop-30680.html">30680</a> - Houthalen Kelchterhoef 15:56</li><li><a href="stop-30700.html">30700</a> - Houthalen Kwalaak 15:59</li><li><a href="stop-30764.html">30764</a> - Houthalen Tenhout 16:00</li><li><a href="stop-30661.html">30661</a> - Houthalen Groenstraat 16:01</li><li><a href="stop-30686.html">30686</a> - Houthalen Kerkhofstraat 16:02</li><li><a href="stop-110845.html">110845</a> - Houthalen Geerstraat 16:03</li><li><a href="stop-92722.html">92722</a> - Houthalen Herebaan Oost 16:04</li><li><a href="stop-91972.html">91972</a> - Houthalen Oudstrijderslaan 16:05</li><li><a href="stop-123114.html">123114</a> - Houthalen Kleuterweg 16:06</li><li><a href="stop-123166.html">123166</a> - Houthalen NAC 16:07</li><li><a href="stop-94122.html">94122</a> - Houthalen Cleantech Campus 16:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4547.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

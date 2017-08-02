@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Meerle - Hoogstraten - Antwerpen via Schoten Ring - 21550117</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Meerle - Hoogstraten - Antwerpen via Schoten Ring - 21550117</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-19307.html">19307</a> - Schoten Industriepark Brechtsebaan 07:05</li><li><a href="stop-19304.html">19304</a> - Schoten Gemeentelijk Sportpark 07:06</li><li><a href="stop-19310.html">19310</a> - Schoten J. Jennesstraat 07:07</li><li><a href="stop-19312.html">19312</a> - Schoten Thuretstraat 07:08</li><li><a href="stop-107473.html">107473</a> - Schoten Wilgendaalstraat 07:08</li><li><a href="stop-107474.html">107474</a> - Schoten Wolfsstraat 07:09</li><li><a href="stop-107475.html">107475</a> - Schoten Amerlolaan 07:09</li><li><a href="stop-109249.html">109249</a> - Merksem Calesbergdreef 07:11</li><li><a href="stop-109594.html">109594</a> - Merksem Molenlei 07:12</li><li><a href="stop-107607.html">107607</a> - Merksem Oudebareel 07:14</li><li><a href="stop-108695.html">108695</a> - Merksem Barnkracht 07:16</li><li><a href="stop-107760.html">107760</a> - Merksem Burgemeester Nolf 07:17</li><li><a href="stop-108192.html">108192</a> - Antwerpen Noorderplaats 07:22</li><li><a href="stop-108466.html">108466</a> - Antwerpen Sint-Jansplein 07:24</li><li><a href="stop-125285.html">125285</a> - Antwerpen F. Rooseveltplaats perron 31 07:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3628.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

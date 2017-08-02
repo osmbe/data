@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Kortenaken - Grazen - Herk-de-Stad - 22790128</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Kortenaken - Grazen - Herk-de-Stad - 22790128</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-105229.html">105229</a> - Herk-de-Stad College 17:05</li><li><a href="stop-30195.html">30195</a> - Herk-de-Stad Markt 17:06</li><li><a href="stop-30140.html">30140</a> - Herk-de-Stad Klooster 17:07</li><li><a href="stop-10731.html">10731</a> - Rummen Leeuwbeek 17:13</li><li><a href="stop-10728.html">10728</a> - Rummen Kruispunt Donk 17:13</li><li><a href="stop-10726.html">10726</a> - Rummen Kerk 17:14</li><li><a href="stop-10736.html">10736</a> - Rummen Monument 17:15</li><li><a href="stop-10742.html">10742</a> - Rummen Verandastraat 17:17</li><li><a href="stop-10732.html">10732</a> - Rummen Oppenstraat 17:18</li><li><a href="stop-10740.html">10740</a> - Rummen Romerstraat 17:20</li><li><a href="stop-10734.html">10734</a> - Rummen Lutzestraat 17:22</li><li><a href="stop-95615.html">95615</a> - Grazen Orsmaalstraat 17:23</li><li><a href="stop-95608.html">95608</a> - Grazen Vijverstraat 17:24</li><li><a href="stop-95610.html">95610</a> - Grazen Kerk 17:25</li><li><a href="stop-95614.html">95614</a> - Grazen Verdaelstraat 17:26</li><li><a href="stop-95612.html">95612</a> - Grazen Dorpstraat 17:27</li><li><a href="stop-16313.html">16313</a> - Geetbets Getestraat 17:28</li><li><a href="stop-10677.html">10677</a> - Geetbets Dorp 17:29</li><li><a href="stop-93365.html">93365</a> - Geetbets Stationswijk 17:29</li><li><a href="stop-10679.html">10679</a> - Geetbets Ganzenweg 17:30</li><li><a href="stop-10687.html">10687</a> - Geetbets Heirbaan 17:31</li><li><a href="stop-10691.html">10691</a> - Geetbets Steenweg naar Kortenaken 17:32</li><li><a href="stop-11818.html">11818</a> - Kortenaken Heidebos 17:33</li><li><a href="stop-11816.html">11816</a> - Kortenaken Heidestraat 17:34</li><li><a href="stop-11830.html">11830</a> - Kortenaken Molenstraat 17:35</li><li><a href="stop-11813.html">11813</a> - Kortenaken Dorp 17:36</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2448.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

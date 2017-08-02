@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Deinze - Gavere - Zottegem - 20704539</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Deinze - Gavere - Zottegem - 20704539</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-119648.html">119648</a> - Beerlegem Kerk 07:42</li><li><a href="stop-119649.html">119649</a> - Beerlegem Beerlegembaan 07:43</li><li><a href="stop-119654.html">119654</a> - Munkzwalm Dikkelsebaan 07:44</li><li><a href="stop-119655.html">119655</a> - Hundelgem Kazernestraat 07:46</li><li><a href="stop-119656.html">119656</a> - Velzeke Bussegemstraat 07:47</li><li><a href="stop-122345.html">122345</a> - Velzeke Provinciebaan 07:48</li><li><a href="stop-119659.html">119659</a> - Velzeke Schoolstraat 07:50</li><li><a href="stop-119660.html">119660</a> - Velzeke Lindestraat 07:51</li><li><a href="stop-119661.html">119661</a> - Velzeke Pierkenstraat 07:52</li><li><a href="stop-119662.html">119662</a> - Velzeke Dorp 07:54</li><li><a href="stop-119663.html">119663</a> - Velzeke Velzekestraat 07:55</li><li><a href="stop-119664.html">119664</a> - Velzeke Steenbekestraat 07:55</li><li><a href="stop-119737.html">119737</a> - Velzeke Pandelaarstraat 07:56</li><li><a href="stop-119665.html">119665</a> - Elene Balegemstraat 07:57</li><li><a href="stop-119666.html">119666</a> - Elene Dorp 07:58</li><li><a href="stop-119667.html">119667</a> - Elene Rijkbos 07:58</li><li><a href="stop-119676.html">119676</a> - Elene Elenestraat 07:59</li><li><a href="stop-119668.html">119668</a> - Elene Vierklaver 08:00</li><li><a href="stop-119669.html">119669</a> - Strijpen Kleine Lage 08:00</li><li><a href="stop-119670.html">119670</a> - Strijpen Bruggenhoek 08:01</li><li><a href="stop-119741.html">119741</a> - Zottegem Gevaertlaan 08:02</li><li><a href="stop-119318.html">119318</a> - Zottegem Welzijnstraat 08:02</li><li><a href="stop-120342.html">120342</a> - Zottegem Station (Achterzijde) 08:03</li><li><a href="stop-120343.html">120343</a> - Zottegem Ziekenhuis 08:03</li><li><a href="stop-126804.html">126804</a> - Zottegem Station perron 6 08:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./638.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

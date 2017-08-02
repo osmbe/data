@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oostakker - Gent - Nazareth - 20701096</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oostakker - Gent - Nazareth - 20701096</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126673.html">126673</a> - Gent Sint-Pietersstation perron 6 13:23</li><li><a href="stop-111261.html">111261</a> - Gent Hogeschool Gent 13:25</li><li><a href="stop-111262.html">111262</a> - Gent Textielinstituut 13:27</li><li><a href="stop-111605.html">111605</a> - Gent Sterre 13:28</li><li><a href="stop-111606.html">111606</a> - Gent De Pintelaan 13:29</li><li><a href="stop-111607.html">111607</a> - Zwijnaarde De Deynestraat 13:29</li><li><a href="stop-111608.html">111608</a> - Zwijnaarde E40-Autoweg 13:30</li><li><a href="stop-111713.html">111713</a> - Zwijnaarde Bollebergen 13:31</li><li><a href="stop-111714.html">111714</a> - Zwijnaarde Tramstraat 13:31</li><li><a href="stop-111715.html">111715</a> - Zwijnaarde Technologiepark 13:32</li><li><a href="stop-111609.html">111609</a> - Zwijnaarde Campusstraat 13:33</li><li><a href="stop-111411.html">111411</a> - Zwijnaarde Molen 13:33</li><li><a href="stop-126810.html">126810</a> - Zwijnaarde Bibliotheek 13:34</li><li><a href="stop-111388.html">111388</a> - Zwijnaarde Remi Vlerickstraat 13:35</li><li><a href="stop-119234.html">119234</a> - Zwijnaarde Zandvoordestraat 13:35</li><li><a href="stop-120100.html">120100</a> - Zwijnaarde Mattestede 13:36</li><li><a href="stop-119052.html">119052</a> - Zwijnaarde Heerweg Zuid 13:37</li><li><a href="stop-119053.html">119053</a> - Zevergem Pont Noord 13:39</li><li><a href="stop-118594.html">118594</a> - Zevergem Wijngaardeke 13:39</li><li><a href="stop-119054.html">119054</a> - Zevergem Dorp 13:40</li><li><a href="stop-118617.html">118617</a> - Zevergem Molenstraat 13:41</li><li><a href="stop-118846.html">118846</a> - Zevergem Veldblomme 13:41</li><li><a href="stop-119055.html">119055</a> - Zevergem Veldstraat 13:42</li><li><a href="stop-119056.html">119056</a> - Zevergem Kriekstraat 13:43</li><li><a href="stop-119057.html">119057</a> - Eke Savaanstraat 13:44</li><li><a href="stop-119058.html">119058</a> - Eke Brouwershoflaan 13:44</li><li><a href="stop-119059.html">119059</a> - Eke Landuitstraat 13:45</li><li><a href="stop-111187.html">111187</a> - Eke Duivelstraatje 13:46</li><li><a href="stop-118645.html">118645</a> - Eke Nieuwe Steenweg 13:46</li><li><a href="stop-118646.html">118646</a> - Eke 'S Gravendreef 13:47</li><li><a href="stop-119977.html">119977</a> - Eke Dorp 13:48</li><li><a href="stop-118647.html">118647</a> - Eke De Lichterveldestraat 13:48</li><li><a href="stop-118648.html">118648</a> - Eke De Biesten 13:49</li><li><a href="stop-119063.html">119063</a> - Eke Station 13:50</li><li><a href="stop-119064.html">119064</a> - Nazareth Oudenaardse Heerweg 13:51</li><li><a href="stop-111266.html">111266</a> - Nazareth Sporthal 13:52</li><li><a href="stop-119065.html">119065</a> - Nazareth Drapstraat 13:52</li><li><a href="stop-119066.html">119066</a> - Nazareth Dorp 13:53</li><li><a href="stop-112005.html">112005</a> - Nazareth Kortrijkseheerweg 13:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./513.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

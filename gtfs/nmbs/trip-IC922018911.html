@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Amsterdam Cs (nl)  - Brussel-Zuid - IC922018911</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Amsterdam Cs (nl)  - Brussel-Zuid - IC922018911</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8400058_0.html">8400058:0</a> - Amsterdam CS 07:52</li><li><a href="stop-8400561_0.html">8400561:0</a> - Schiphol 08:07</li><li><a href="stop-8400280_0.html">8400280:0</a> - Den Haag HS 08:43</li><li><a href="stop-8400530_0.html">8400530:0</a> - Rotterdam CS 09:08</li><li><a href="stop-8400180_0.html">8400180:0</a> - Dordrecht 09:22</li><li><a href="stop-8400526_0.html">8400526:0</a> - Roosendaal 09:47</li><li><a href="stop-8821006_0.html">8821006:0</a> - Antwerpen-Centraal 10:17</li><li><a href="stop-8821121_0.html">8821121:0</a> - Antwerpen-Berchem 10:23</li><li><a href="stop-8822004_0.html">8822004:0</a> - Mechelen 10:38</li><li><a href="stop-8819406_0.html">8819406:0</a> - Brussel-Nat-Luchthaven/Bruxelles-Nat-Aéroport 10:52</li><li><a href="stop-8812005_0.html">8812005:0</a> - Brussel-Noord/Bruxelles-Nord 11:07</li><li><a href="stop-8813003_0.html">8813003:0</a> - Brussel-Centraal/Bruxelles-Central 11:11</li><li><a href="stop-8814001_0.html">8814001:0</a> - Brussel-Zuid/Bruxelles-Midi 11:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./750.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

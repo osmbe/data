@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Ieper-Dranouter - 22635097</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ieper-Dranouter - 22635097</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-38438.html">38438</a> - Dranouter Dorp 06:38</li><li><a href="stop-42531.html">42531</a> - Loker Engels Kerkhof 06:39</li><li><a href="stop-104516.html">104516</a> - Loker Nieuwe Wereld 06:40</li><li><a href="stop-104513.html">104513</a> - Loker Dorp 06:41</li><li><a href="stop-104515.html">104515</a> - Loker Meiboom 06:42</li><li><a href="stop-104514.html">104514</a> - Loker Hoekjes 06:43</li><li><a href="stop-105013.html">105013</a> - Loker Scherpenberg 06:44</li><li><a href="stop-98428.html">98428</a> - Klijte Bellesteenweg Nr.72 06:45</li><li><a href="stop-105012.html">105012</a> - Klijte De Klijte 06:46</li><li><a href="stop-42416.html">42416</a> - Dikkebus Millekruis 06:48</li><li><a href="stop-42383.html">42383</a> - Dikkebus Hallebast 06:49</li><li><a href="stop-42380.html">42380</a> - Dikkebus T Zweerd 06:50</li><li><a href="stop-42382.html">42382</a> - Dikkebus Dorp 06:51</li><li><a href="stop-42384.html">42384</a> - Dikkebus Smisse 06:52</li><li><a href="stop-42381.html">42381</a> - Dikkebus De Reke 06:52</li><li><a href="stop-42385.html">42385</a> - Dikkebus Vijver 06:53</li><li><a href="stop-42721.html">42721</a> - Vlamertinge Krommenelst 06:54</li><li><a href="stop-95862.html">95862</a> - Voormezele Cafe Francais 06:54</li><li><a href="stop-42468.html">42468</a> - Ieper Oefeningsplein 06:56</li><li><a href="stop-42462.html">42462</a> - Ieper Kruisstraat 06:57</li><li><a href="stop-42451.html">42451</a> - Ieper Brouwerijstraat 06:58</li><li><a href="stop-126392.html">126392</a> - Ieper Station perron 5 06:59</li><li><a href="stop-95332.html">95332</a> - Ieper Oudstrijderslaan 07:02</li><li><a href="stop-38542.html">38542</a> - Ieper Rijselpoort 07:03</li><li><a href="stop-104779.html">104779</a> - Ieper Sint-Pieterskerk 07:05</li><li><a href="stop-39059.html">39059</a> - Ieper Markt 07:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4222.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

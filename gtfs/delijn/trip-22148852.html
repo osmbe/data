@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kusttram De Panne-Oostende-Knokke - 22148852</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kusttram De Panne-Oostende-Knokke - 22148852</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-100979.html">100979</a> - De Panne Station 07:12</li><li><a href="stop-101011.html">101011</a> - De Panne Plopsaland 07:13</li><li><a href="stop-90616.html">90616</a> - De Panne Moeder Lambic 07:15</li><li><a href="stop-90617.html">90617</a> - De Panne Kerk 07:17</li><li><a href="stop-90618.html">90618</a> - De Panne Esplanade 07:19</li><li><a href="stop-90540.html">90540</a> - De Panne Centrum 07:21</li><li><a href="stop-90541.html">90541</a> - De Panne Golfstraat 07:22</li><li><a href="stop-90569.html">90569</a> - Koksijde Sint-Idesbald 07:23</li><li><a href="stop-90570.html">90570</a> - Koksijde Ster Der Zee 07:25</li><li><a href="stop-90567.html">90567</a> - Koksijde Bad 07:28</li><li><a href="stop-90568.html">90568</a> - Koksijde Lejeunelaan 07:29</li><li><a href="stop-90589.html">90589</a> - Oostduinkerke Schipgat 07:31</li><li><a href="stop-90586.html">90586</a> - Oostduinkerke Bad 07:33</li><li><a href="stop-90587.html">90587</a> - Oostduinkerke Duinpark 07:34</li><li><a href="stop-90588.html">90588</a> - Oostduinkerke Groenendijk Bad 07:36</li><li><a href="stop-90585.html">90585</a> - Nieuwpoort Zonnebloem 07:38</li><li><a href="stop-90581.html">90581</a> - Nieuwpoort Bad 07:41</li><li><a href="stop-90584.html">90584</a> - Nieuwpoort Ysermonde 07:43</li><li><a href="stop-90582.html">90582</a> - Nieuwpoort Cardijnlaan 07:44</li><li><a href="stop-90583.html">90583</a> - Nieuwpoort Stad 07:45</li><li><a href="stop-104910.html">104910</a> - Lombardsijde Ymca 07:47</li><li><a href="stop-104909.html">104909</a> - Lombardsijde Dorp 07:49</li><li><a href="stop-90572.html">90572</a> - Lombardsijde Bad 07:51</li><li><a href="stop-90604.html">90604</a> - Westende Sint-Laureins 07:53</li><li><a href="stop-40510.html">40510</a> - Westende Bad 07:55</li><li><a href="stop-40512.html">40512</a> - Westende Belle Vue 07:57</li><li><a href="stop-40353.html">40353</a> - Middelkerke Krokodiel 07:58</li><li><a href="stop-104914.html">104914</a> - Middelkerke Verhaeghelaan 07:59</li><li><a href="stop-90578.html">90578</a> - Middelkerke Casino 08:01</li><li><a href="stop-40348.html">40348</a> - Middelkerke De Greefplein 08:02</li><li><a href="stop-100992.html">100992</a> - Raversijde Domein Raversijde 08:05</li><li><a href="stop-100991.html">100991</a> - Oostende Raversijde 08:07</li><li><a href="stop-100990.html">100990</a> - Oostende Ravelingen 08:10</li><li><a href="stop-123629.html">123629</a> - Mariakerke Bad 08:12</li><li><a href="stop-90593.html">90593</a> - Oostende Northlaan 08:14</li><li><a href="stop-40591.html">40591</a> - Oostende Renbaan 08:16</li><li><a href="stop-90591.html">90591</a> - Oostende Koninginnelaan 08:18</li><li><a href="stop-127306.html">127306</a> - Oostende Marie Joseplein perron 1 08:21</li><li><a href="stop-126407.html">126407</a> - Oostende Station perron 4 08:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4139.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Leerbeek - Vollezele - Ninove - 22759209</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Leerbeek - Vollezele - Ninove - 22759209</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126824.html">126824</a> - Ninove Station perron 1 16:17</li><li><a href="stop-117492.html">117492</a> - Ninove Graanmarkt 16:19</li><li><a href="stop-117491.html">117491</a> - Ninove Centrum 16:20</li><li><a href="stop-117981.html">117981</a> - Ninove Elisabethlaan 16:21</li><li><a href="stop-117982.html">117982</a> - Ninove Pollarebaan 16:21</li><li><a href="stop-16183.html">16183</a> - Ninove Brusselstraat 16:22</li><li><a href="stop-128712.html">128712</a> - Meerbeke West 16:25</li><li><a href="stop-117402.html">117402</a> - Denderwindeke Brilstraat 16:26</li><li><a href="stop-117401.html">117401</a> - Denderwindeke Bruylandt 16:27</li><li><a href="stop-117989.html">117989</a> - Denderwindeke Kerk 16:28</li><li><a href="stop-128711.html">128711</a> - Denderwindeke Melkerij 16:28</li><li><a href="stop-117398.html">117398</a> - Denderwindeke Dasselt 16:29</li><li><a href="stop-127106.html">127106</a> - Denderwindeke Rijstraat 16:30</li><li><a href="stop-117396.html">117396</a> - Denderwindeke Boterdaelstraat 16:31</li><li><a href="stop-10645.html">10645</a> - Vollezele Achter den Bos 16:33</li><li><a href="stop-10649.html">10649</a> - Vollezele Garage Malfroit 16:34</li><li><a href="stop-10651.html">10651</a> - Vollezele Kapelleke 16:35</li><li><a href="stop-14915.html">14915</a> - Vollezele De Okkernoot 16:36</li><li><a href="stop-10662.html">10662</a> - Vollezele Stwg naar Galmaarden 16:36</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1757.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Boekt - Beringen - 22495040</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Boekt - Beringen - 22495040</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128980.html">128980</a> - Hasselt Station perron 7 16:56</li><li><a href="stop-29292.html">29292</a> - Hasselt Diesterpoort 16:58</li><li><a href="stop-29461.html">29461</a> - Hasselt Leopoldplein 16:59</li><li><a href="stop-29286.html">29286</a> - Hasselt Kunstlaan 17:00</li><li><a href="stop-29268.html">29268</a> - Hasselt Dusartplein 17:02</li><li><a href="stop-29646.html">29646</a> - Hasselt Zwembad perron 1 17:04</li><li><a href="stop-94957.html">94957</a> - Hasselt Handelsschool 17:05</li><li><a href="stop-29626.html">29626</a> - Hasselt Weg naar Genk 17:07</li><li><a href="stop-29242.html">29242</a> - Hasselt Banneuxwijk 17:07</li><li><a href="stop-97723.html">97723</a> - Kiewit Station 17:08</li><li><a href="stop-96832.html">96832</a> - Kiewit Europalaan 17:09</li><li><a href="stop-96898.html">96898</a> - Kiewit Kerk 17:10</li><li><a href="stop-96900.html">96900</a> - Kiewit Luchtvaartstraat 17:11</li><li><a href="stop-99409.html">99409</a> - Zonhoven Bremstraat 17:12</li><li><a href="stop-35225.html">35225</a> - Zonhoven Nieuwveldstraat 17:13</li><li><a href="stop-35179.html">35179</a> - Zonhoven Donk 17:14</li><li><a href="stop-91083.html">91083</a> - Zonhoven Station 17:15</li><li><a href="stop-35194.html">35194</a> - Zonhoven Halveweg 17:16</li><li><a href="stop-43872.html">43872</a> - Zonhoven Nachtegalenstraat 17:17</li><li><a href="stop-30453.html">30453</a> - Zolder Vogelzang 17:18</li><li><a href="stop-30419.html">30419</a> - Zolder Heikant 17:20</li><li><a href="stop-97095.html">97095</a> - Boekt Kruispunt 17:21</li><li><a href="stop-30394.html">30394</a> - Heusden Weg naar Genebos 17:24</li><li><a href="stop-30373.html">30373</a> - Heusden Kapelstraat 17:25</li><li><a href="stop-30365.html">30365</a> - Heusden Everselweg 17:27</li><li><a href="stop-26901.html">26901</a> - Beringen Muizenheide 17:28</li><li><a href="stop-26958.html">26958</a> - Beringen Weg naar Hoxelaar 17:30</li><li><a href="stop-98915.html">98915</a> - Beringen Harmoniestraat 17:31</li><li><a href="stop-26955.html">26955</a> - Beringen Schutterstraat 17:32</li><li><a href="stop-98776.html">98776</a> - Beringen Station Perron 3 17:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5011.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

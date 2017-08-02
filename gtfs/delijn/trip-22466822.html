@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diest - Geel / Tessenderlo - 22466822</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diest - Geel / Tessenderlo - 22466822</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-34247.html">34247</a> - Tessenderlo Kerk 06:44</li><li><a href="stop-125572.html">125572</a> - Tessenderlo Broedersschool 06:46</li><li><a href="stop-34280.html">34280</a> - Tessenderlo Rode Heide 06:47</li><li><a href="stop-93821.html">93821</a> - Tessenderlo Groenstraat 06:48</li><li><a href="stop-34277.html">34277</a> - Tessenderlo Rijt 06:49</li><li><a href="stop-34171.html">34171</a> - Tessenderlo Baalbergstraat 06:50</li><li><a href="stop-34170.html">34170</a> - Tessenderlo Baal 06:51</li><li><a href="stop-20129.html">20129</a> - Klein Vorst Kerk 06:52</li><li><a href="stop-20131.html">20131</a> - Vorst Oranjestraat 06:53</li><li><a href="stop-20135.html">20135</a> - Vorst Zijstraat 06:54</li><li><a href="stop-126924.html">126924</a> - Vorst Borgtstraat 06:56</li><li><a href="stop-127463.html">127463</a> - Vorst Smissestraat 06:57</li><li><a href="stop-20141.html">20141</a> - Vorst Hospestraat 06:57</li><li><a href="stop-126519.html">126519</a> - Vorst Markt 06:58</li><li><a href="stop-31299.html">31299</a> - Vorst Toke Van Nestestraat 06:59</li><li><a href="stop-31297.html">31297</a> - Vorst Steenbergen 07:00</li><li><a href="stop-31270.html">31270</a> - Veerle Zand 07:03</li><li><a href="stop-31236.html">31236</a> - Veerle Dorp 07:03</li><li><a href="stop-93621.html">93621</a> - Veerle Pompert 07:04</li><li><a href="stop-125511.html">125511</a> - Veerle Weg naar Averbode 07:05</li><li><a href="stop-34335.html">34335</a> - Tessenderlo Turnhoutsebaan 07:06</li><li><a href="stop-34226.html">34226</a> - Tessenderlo Heggenbossenweg 07:09</li><li><a href="stop-34167.html">34167</a> - Okselaar Achterheide 07:10</li><li><a href="stop-33789.html">33789</a> - Okselaar Tessenderlosebaan 07:11</li><li><a href="stop-33783.html">33783</a> - Okselaar Brabantsebaan 07:12</li><li><a href="stop-33791.html">33791</a> - Okselaar Reppelsebaan 07:13</li><li><a href="stop-16642.html">16642</a> - Molenstede Herrestraat 07:14</li><li><a href="stop-16063.html">16063</a> - Molenstede Dorp 07:15</li><li><a href="stop-27977.html">27977</a> - Molenstede Kerkhof 07:16</li><li><a href="stop-125456.html">125456</a> - Molenstede Weg naar Veerle 07:17</li><li><a href="stop-127875.html">127875</a> - Molenstede Nieuwe Steenweg 07:19</li><li><a href="stop-14510.html">14510</a> - Diest Fort Leopoldlaan 07:20</li><li><a href="stop-27960.html">27960</a> - Diest Station perron 1 07:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4861.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

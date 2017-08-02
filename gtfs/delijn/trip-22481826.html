@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diest - Mol / Leopoldsburg - 22481826</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diest - Mol / Leopoldsburg - 22481826</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-32938.html">32938</a> - Mol Station perron 3 16:52</li><li><a href="stop-109231.html">109231</a> - Mol Gasthuis 16:54</li><li><a href="stop-126985.html">126985</a> - Mol Kerk 16:55</li><li><a href="stop-32925.html">32925</a> - Mol De Hutten 16:57</li><li><a href="stop-105312.html">105312</a> - Balen Weg op Rosselaar 16:59</li><li><a href="stop-96512.html">96512</a> - Rosselaar Kerk 17:01</li><li><a href="stop-96502.html">96502</a> - Neet Olmense Baan 17:02</li><li><a href="stop-96501.html">96501</a> - Neet Huis Blokken 17:04</li><li><a href="stop-125426.html">125426</a> - Hoolst Hoolstmolen 17:06</li><li><a href="stop-105124.html">105124</a> - Olmen Broekstraat 17:08</li><li><a href="stop-26646.html">26646</a> - Olmen Processieweg 17:09</li><li><a href="stop-122974.html">122974</a> - Olmen Veldstraat 17:09</li><li><a href="stop-26642.html">26642</a> - Olmen Heistraat 17:10</li><li><a href="stop-122978.html">122978</a> - Olmen Heivoort 17:12</li><li><a href="stop-106137.html">106137</a> - Olmen Egstraat 17:12</li><li><a href="stop-29027.html">29027</a> - Oostham Olmensebaan 17:13</li><li><a href="stop-29032.html">29032</a> - Oostham Slagveldstraat 17:15</li><li><a href="stop-29030.html">29030</a> - Oostham Schoolstraat 17:16</li><li><a href="stop-29028.html">29028</a> - Oostham Weg op Station 17:17</li><li><a href="stop-29001.html">29001</a> - Kwaadmechelen Mastentopstraat 17:18</li><li><a href="stop-29011.html">29011</a> - Kwaadmechelen Waterstraat 17:18</li><li><a href="stop-28995.html">28995</a> - Kwaadmechelen Kerk 17:19</li><li><a href="stop-125480.html">125480</a> - Kwaadmechelen Processiestraat 17:20</li><li><a href="stop-28987.html">28987</a> - Kwaadmechelen Autosnelweg 17:23</li><li><a href="stop-29009.html">29009</a> - Kwaadmechelen Vlinderstraat 17:24</li><li><a href="stop-96812.html">96812</a> - Genendijk Kerk 17:25</li><li><a href="stop-34352.html">34352</a> - Tessenderlo Weg op Vorst 17:28</li><li><a href="stop-93826.html">93826</a> - Tessenderlo Groenstraat 17:29</li><li><a href="stop-34279.html">34279</a> - Tessenderlo Rode Heide 17:31</li><li><a href="stop-34247.html">34247</a> - Tessenderlo Kerk 17:33</li><li><a href="stop-125572.html">125572</a> - Tessenderlo Broedersschool 17:34</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4652.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

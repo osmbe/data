@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tongeren - Visé - Voeren / Fourons - 22487618</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tongeren - Visé - Voeren / Fourons - 22487618</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-89645.html">89645</a> - Vlijtingen Ophemmerstraat 07:46</li><li><a href="stop-33719.html">33719</a> - Vlijtingen Sint-Albanusstraat 07:47</li><li><a href="stop-33750.html">33750</a> - Vlijtingen Kabricht 07:48</li><li><a href="stop-33748.html">33748</a> - Vlijtingen Deken Gelaesplein 07:48</li><li><a href="stop-97512.html">97512</a> - Lafelt Kerk 07:52</li><li><a href="stop-97864.html">97864</a> - Lafelt Oostheuvel 07:53</li><li><a href="stop-33721.html">33721</a> - Vroenhoven Busstation perron 1 07:58</li><li><a href="stop-92467.html">92467</a> - Vroenhoven Burgemeester Marresbaan 07:59</li><li><a href="stop-33730.html">33730</a> - Vroenhoven Lafelterweg 08:00</li><li><a href="stop-33739.html">33739</a> - Vroenhoven Bibliotheek 08:00</li><li><a href="stop-33725.html">33725</a> - Vroenhoven Krijtstraat 08:01</li><li><a href="stop-33736.html">33736</a> - Vroenhoven Weg naar Kanne 08:01</li><li><a href="stop-33648.html">33648</a> - Kanne Muizenberg 08:04</li><li><a href="stop-33651.html">33651</a> - Kanne Statieplein 08:06</li><li><a href="stop-33652.html">33652</a> - Kanne Rijkswacht 08:07</li><li><a href="stop-26789.html">26789</a> - Emael Chaussée des Grenadiers 08:09</li><li><a href="stop-26795.html">26795</a> - Emael Rue du Fort 08:10</li><li><a href="stop-26793.html">26793</a> - Emael Maison Communale 08:11</li><li><a href="stop-26791.html">26791</a> - Emael Ecole de l' Etat 08:12</li><li><a href="stop-26779.html">26779</a> - Eben Docteur 08:13</li><li><a href="stop-93877.html">93877</a> - Eben Kerk 08:14</li><li><a href="stop-26783.html">26783</a> - Eben Moulin 08:15</li><li><a href="stop-26821.html">26821</a> - Lixhe Halembay 08:17</li><li><a href="stop-32721.html">32721</a> - Lixhe Rue de la montagne 08:19</li><li><a href="stop-33306.html">33306</a> - Haccourt Place de Hallembaye 08:22</li><li><a href="stop-33312.html">33312</a> - Haccourt Rue des 7 Bonniers 08:22</li><li><a href="stop-33308.html">33308</a> - Haccourt Square Roi Baudouin 08:23</li><li><a href="stop-34749.html">34749</a> - Visé Devant le Port 08:24</li><li><a href="stop-105382.html">105382</a> - Visé Gare Ir 08:25</li><li><a href="stop-110508.html">110508</a> - Visé Place Reine Astrid 08:26</li><li><a href="stop-34738.html">34738</a> - Visé Allee des Acacias 08:27</li><li><a href="stop-97704.html">97704</a> - Mo Spoorwegbrug 08:29</li><li><a href="stop-105385.html">105385</a> - Mo Berwinebrug 08:30</li><li><a href="stop-97708.html">97708</a> - Mo Withuisstraat 08:30</li><li><a href="stop-97703.html">97703</a> - Mo Kruispunt 08:31</li><li><a href="stop-97696.html">97696</a> - Mo Batticestraat 08:31</li><li><a href="stop-97706.html">97706</a> - Mo Weg op Berneau 08:32</li><li><a href="stop-92777.html">92777</a> - SGV Grijzegraaf 08:36</li><li><a href="stop-92760.html">92760</a> - SGV Hof de Voer 08:38</li><li><a href="stop-92764.html">92764</a> - SGV Lagere School 08:38</li><li><a href="stop-129003.html">129003</a> - SGV Provinciale School 08:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5286.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

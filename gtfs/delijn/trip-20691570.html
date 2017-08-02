@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Wetteren - Kalken - Overmere - Lokeren - 20691570</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Wetteren - Kalken - Overmere - Lokeren - 20691570</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126664.html">126664</a> - Lokeren Station perron 3 17:05</li><li><a href="stop-116407.html">116407</a> - Lokeren Markt 17:09</li><li><a href="stop-113096.html">113096</a> - Lokeren Eekstraat 17:10</li><li><a href="stop-114678.html">114678</a> - Lokeren Vrijheidsplein 17:12</li><li><a href="stop-113879.html">113879</a> - Lokeren Vondelstraat 17:13</li><li><a href="stop-113878.html">113878</a> - Lokeren Ledehof 17:14</li><li><a href="stop-113877.html">113877</a> - Lokeren Roggestraat 17:16</li><li><a href="stop-113876.html">113876</a> - Lokeren Heiende Kerk 17:17</li><li><a href="stop-113875.html">113875</a> - Lokeren Gentsestraat 17:18</li><li><a href="stop-113874.html">113874</a> - Lokeren Vogelzangstraat 17:19</li><li><a href="stop-113873.html">113873</a> - Overmere Ooringstraat 17:21</li><li><a href="stop-113872.html">113872</a> - Overmere Kattebroeckstraat 17:22</li><li><a href="stop-113871.html">113871</a> - Overmere Loerewegel 17:22</li><li><a href="stop-113454.html">113454</a> - Overmere Kerk 17:23</li><li><a href="stop-113453.html">113453</a> - Overmere Kerk 17:23</li><li><a href="stop-113452.html">113452</a> - Overmere Vaarschootstraat 17:24</li><li><a href="stop-113451.html">113451</a> - Kalken Gaverstraatje 17:26</li><li><a href="stop-113450.html">113450</a> - Kalken Berringstraat 17:27</li><li><a href="stop-113463.html">113463</a> - Kalken Kerk 17:28</li><li><a href="stop-114410.html">114410</a> - Kalken Vaartstraat 17:29</li><li><a href="stop-114409.html">114409</a> - Kalken Stelplaats 17:31</li><li><a href="stop-114408.html">114408</a> - Kalken Krimineelstraat 17:32</li><li><a href="stop-114407.html">114407</a> - Kalken Meerkens 17:33</li><li><a href="stop-114406.html">114406</a> - Wetteren Kalkensteenweg 17:35</li><li><a href="stop-112203.html">112203</a> - Wetteren Giezeveld 17:35</li><li><a href="stop-114361.html">114361</a> - Wetteren Kapellendries 17:36</li><li><a href="stop-113401.html">113401</a> - Wetteren Oude Brug 17:37</li><li><a href="stop-114363.html">114363</a> - Wetteren Kon. Astridlaan 17:40</li><li><a href="stop-126541.html">126541</a> - Wetteren Station perron 4 17:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./239.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

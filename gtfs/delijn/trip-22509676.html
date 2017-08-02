@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Lier - Nijlen - Herentals - 22509676</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Lier - Nijlen - Herentals - 22509676</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-106754.html">106754</a> - Lier Station perron 4 21:35</li><li><a href="stop-108994.html">108994</a> - Lier Rolwagenstraat 21:36</li><li><a href="stop-23006.html">23006</a> - Lier Kliniek 21:37</li><li><a href="stop-108995.html">108995</a> - Lier Markt 21:38</li><li><a href="stop-23736.html">23736</a> - Lier Leopold III-laan 21:39</li><li><a href="stop-25845.html">25845</a> - Lier Molenstraat 21:41</li><li><a href="stop-109283.html">109283</a> - Lier Veemarkt perron 5 21:42</li><li><a href="stop-23441.html">23441</a> - Lier Maasfortbaan 21:43</li><li><a href="stop-23443.html">23443</a> - Lier Marnixdreef 21:44</li><li><a href="stop-23446.html">23446</a> - Lier Kerkhof 21:45</li><li><a href="stop-23448.html">23448</a> - Kessel Salvatorbaan 21:46</li><li><a href="stop-19591.html">19591</a> - Kessel Vorst 21:47</li><li><a href="stop-109161.html">109161</a> - Kessel Stationssteenweg 21:47</li><li><a href="stop-109163.html">109163</a> - Kessel Gemeentehuis 21:48</li><li><a href="stop-23454.html">23454</a> - Kessel Smoutmolendreef 21:48</li><li><a href="stop-23457.html">23457</a> - Kessel Hoenderstraat 21:49</li><li><a href="stop-23459.html">23459</a> - Kessel Jagershuis 21:50</li><li><a href="stop-23462.html">23462</a> - Nijlen Goorstraat 21:51</li><li><a href="stop-109167.html">109167</a> - Nijlen Station 21:52</li><li><a href="stop-109169.html">109169</a> - Nijlen Kerk 21:53</li><li><a href="stop-109170.html">109170</a> - Nijlen Bovenstraat 21:54</li><li><a href="stop-23472.html">23472</a> - Nijlen Koekoekstraat 21:54</li><li><a href="stop-23474.html">23474</a> - Nijlen Beenderstraat 21:55</li><li><a href="stop-109172.html">109172</a> - Nijlen Paddekotse Heide 21:55</li><li><a href="stop-23478.html">23478</a> - Nijlen Hulstsestraat 21:56</li><li><a href="stop-23480.html">23480</a> - Bouwel Looystraat 21:56</li><li><a href="stop-23482.html">23482</a> - Bouwel Binnenheide 21:57</li><li><a href="stop-23484.html">23484</a> - Bouwel Droomland 21:57</li><li><a href="stop-23487.html">23487</a> - Bouwel Bergenhof 21:58</li><li><a href="stop-109175.html">109175</a> - Bouwel Lindekens Liersesteenweg 21:59</li><li><a href="stop-23492.html">23492</a> - Grobbendonk Nieuwendijk 22:00</li><li><a href="stop-23494.html">23494</a> - Grobbendonk Jagersdreef 22:01</li><li><a href="stop-23497.html">23497</a> - Grobbendonk Buntvenne 22:01</li><li><a href="stop-23499.html">23499</a> - Grobbendonk Meirendreef 22:02</li><li><a href="stop-23502.html">23502</a> - Grobbendonk Hazenstraat 22:03</li><li><a href="stop-120664.html">120664</a> - Herentals Wolfstee 22:03</li><li><a href="stop-109179.html">109179</a> - Herentals Kanaalbrug 22:05</li><li><a href="stop-23508.html">23508</a> - Herentals Veldstraat 22:06</li><li><a href="stop-109181.html">109181</a> - Herentals Zandpoort 22:06</li><li><a href="stop-108389.html">108389</a> - Herentals Markt Nieuwstraat 22:06</li><li><a href="stop-109185.html">109185</a> - Herentals Station perron 1 22:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2892.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

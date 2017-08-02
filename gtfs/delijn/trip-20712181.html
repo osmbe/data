@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Erembodegem - Aalst Station - Herdersem - 20712181</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Erembodegem - Aalst Station - Herdersem - 20712181</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-116492.html">116492</a> - Herdersem Hardingstraat 16:55</li><li><a href="stop-116493.html">116493</a> - Herdersem Witgerstraat 16:56</li><li><a href="stop-116494.html">116494</a> - Herdersem Gemeentehuis 16:57</li><li><a href="stop-117341.html">117341</a> - Herdersem Kouterbaan/Grote Baan 16:57</li><li><a href="stop-117340.html">117340</a> - Aalst Oude Melkerij 16:58</li><li><a href="stop-116497.html">116497</a> - Aalst Kapel Ten Beeldeken 16:59</li><li><a href="stop-116498.html">116498</a> - Aalst Hammestraat 17:00</li><li><a href="stop-116500.html">116500</a> - Aalst Bredestraat 17:01</li><li><a href="stop-116501.html">116501</a> - Aalst Popperodedries 17:02</li><li><a href="stop-116502.html">116502</a> - Aalst Lion D'Or 17:03</li><li><a href="stop-116721.html">116721</a> - Aalst Weverijstraat 17:04</li><li><a href="stop-120302.html">120302</a> - Aalst Tramstraat 17:05</li><li><a href="stop-120303.html">120303</a> - Aalst Sint-Annabrug 17:07</li><li><a href="stop-126677.html">126677</a> - Aalst Station perron 1 17:10</li><li><a href="stop-117486.html">117486</a> - Aalst Oude Vismarkt 17:13</li><li><a href="stop-117480.html">117480</a> - Aalst Houtmarkt 17:14</li><li><a href="stop-128717.html">128717</a> - Aalst Park 17:15</li><li><a href="stop-127773.html">127773</a> - Erembodegem Sporthal Schotte 17:16</li><li><a href="stop-117805.html">117805</a> - Erembodegem Kerkhofbaan 17:17</li><li><a href="stop-117119.html">117119</a> - Erembodegem Ijzerenwegstraat 17:18</li><li><a href="stop-117074.html">117074</a> - Erembodegem Holleweg 17:20</li><li><a href="stop-117241.html">117241</a> - Erembodegem Orangeriestraat 17:21</li><li><a href="stop-116580.html">116580</a> - Erembodegem Groene Weg 17:21</li><li><a href="stop-117524.html">117524</a> - Erembodegem Churchillsteenweg 17:22</li><li><a href="stop-117561.html">117561</a> - Erembodegem Dotterbloemstraat 17:24</li><li><a href="stop-117888.html">117888</a> - Erembodegem Hof Ter Lokerenstraat 17:25</li><li><a href="stop-117887.html">117887</a> - Nieuwerkerken Dries 17:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1010.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kwatrecht Mariagaard</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Kwatrecht Mariagaard</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-20714411.html">20714411</a> - 20714411 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714412.html">20714412</a> - 20714412 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714413.html">20714413</a> - 20714413 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714415.html">20714415</a> - 20714415 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714416.html">20714416</a> - 20714416 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714418.html">20714418</a> - 20714418 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714420.html">20714420</a> - 20714420 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714422.html">20714422</a> - 20714422 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714423.html">20714423</a> - 20714423 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714424.html">20714424</a> - 20714424 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714425.html">20714425</a> - 20714425 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714426.html">20714426</a> - 20714426 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714451.html">20714451</a> - 20714451 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714452.html">20714452</a> - 20714452 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714453.html">20714453</a> - 20714453 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714455.html">20714455</a> - 20714455 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714457.html">20714457</a> - 20714457 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714458.html">20714458</a> - 20714458 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714459.html">20714459</a> - 20714459 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714460.html">20714460</a> - 20714460 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714461.html">20714461</a> - 20714461 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714486.html">20714486</a> - 20714486 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714487.html">20714487</a> - 20714487 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714488.html">20714488</a> - 20714488 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714490.html">20714490</a> - 20714490 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714491.html">20714491</a> - 20714491 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714492.html">20714492</a> - 20714492 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714493.html">20714493</a> - 20714493 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20714494.html">20714494</a> - 20714494 - Dendermonde - Wetteren - Melle - Gent</li><li><a href="trip-20715862.html">20715862</a> - 20715862 - Wetteren - Oosterzele - Zottegem</li><li><a href="trip-20715863.html">20715863</a> - 20715863 - Wetteren - Oosterzele - Zottegem</li><li><a href="trip-20715919.html">20715919</a> - 20715919 - Wetteren - Oosterzele - Zottegem</li><li><a href="trip-20722560.html">20722560</a> - 20722560 - Kwatrecht Mariagaard-Gent Sint-Pieters(sneldienst)</li><li><a href="trip-20722561.html">20722561</a> - 20722561 - Kwatrecht Mariagaard-Gent Sint-Pieters(sneldienst)</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.9780523132646, 3.83698957130771], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.9780523132646, 3.83698957130771]).addTo(map);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Leuven - Houthalen- Maaseik - 22481844</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Leuven - Houthalen- Maaseik - 22481844</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-27734.html">27734</a> - Elsene VUB Gebouw M inrit 11 16:40</li><li><a href="stop-27735.html">27735</a> - Etterbeek G. Jacqueslaan 16:41</li><li><a href="stop-27736.html">27736</a> - Sint-Pieters-Woluwe Montgomery 16:45</li><li><a href="stop-123134.html">123134</a> - Halen Carpoolparking 17:33</li><li><a href="stop-32086.html">32086</a> - Lummen Het Klaverblad 17:40</li><li><a href="stop-30735.html">30735</a> - Houthalen Park & Ride 17:50</li><li><a href="stop-96707.html">96707</a> - Waterschei Politiebureel 18:11</li><li><a href="stop-96643.html">96643</a> - Waterschei Mijn 18:16</li><li><a href="stop-106882.html">106882</a> - Maasmechelen Carpoolparking 18:27</li><li><a href="stop-32434.html">32434</a> - Opgrimbie Loograaf 18:28</li><li><a href="stop-31396.html">31396</a> - Lanaken Cultureel Centrum 18:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5126.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

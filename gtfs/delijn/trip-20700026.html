@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Evergem - Belzele - Vinderhoute - Gent Zuid - 20700026</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Evergem - Belzele - Vinderhoute - Gent Zuid - 20700026</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126081.html">126081</a> - Evergem Spoorwegstraat 07:13</li><li><a href="stop-126080.html">126080</a> - Evergem Brielken 07:14</li><li><a href="stop-120196.html">120196</a> - Evergem Elfputten 07:15</li><li><a href="stop-120195.html">120195</a> - Evergem Lijnwaadstraat 07:16</li><li><a href="stop-120194.html">120194</a> - Evergem Molenhoek 07:18</li><li><a href="stop-120193.html">120193</a> - Belzele Dorp 07:19</li><li><a href="stop-114848.html">114848</a> - Evergem Grote Moerstraat 07:20</li><li><a href="stop-120191.html">120191</a> - Lovendegem Kuitenberg 07:21</li><li><a href="stop-113068.html">113068</a> - Lovendegem Mimosastraat 07:22</li><li><a href="stop-113290.html">113290</a> - Lovendegem Appensvoorde 07:23</li><li><a href="stop-111481.html">111481</a> - Vinderhoute Neerstraat 07:25</li><li><a href="stop-111480.html">111480</a> - Vinderhoute Dorp 07:26</li><li><a href="stop-111479.html">111479</a> - Vinderhoute Speystraat 07:27</li><li><a href="stop-115641.html">115641</a> - Mariakerke Uranusstraat 07:29</li><li><a href="stop-111478.html">111478</a> - Mariakerke Trekweg 07:29</li><li><a href="stop-119210.html">119210</a> - Mariakerke Post 07:31</li><li><a href="stop-111490.html">111490</a> - Mariakerke Mariakerkebrug 07:32</li><li><a href="stop-111491.html">111491</a> - Mariakerke Dienstencentrum 07:33</li><li><a href="stop-111492.html">111492</a> - Mariakerke Kollekasteel 07:34</li><li><a href="stop-111577.html">111577</a> - Mariakerke Losweg 07:35</li><li><a href="stop-112401.html">112401</a> - Mariakerke Sint-Lutgardus 07:36</li><li><a href="stop-111581.html">111581</a> - Mariakerke Vaartstraat 07:37</li><li><a href="stop-111582.html">111582</a> - Gent Staakskenstraat 07:38</li><li><a href="stop-111132.html">111132</a> - Gent Nieuwevaartbrug 07:39</li><li><a href="stop-111133.html">111133</a> - Gent Witte Kaproenenplein 07:40</li><li><a href="stop-113567.html">113567</a> - Gent Rabot 07:42</li><li><a href="stop-113566.html">113566</a> - Gent Kolveniersgang 07:44</li><li><a href="stop-128679.html">128679</a> - Gent Sint-Lucas Biervlietstraat 07:45</li><li><a href="stop-113564.html">113564</a> - Gent Spaarstraat 07:46</li><li><a href="stop-111443.html">111443</a> - Gent Tolpoort 07:47</li><li><a href="stop-111444.html">111444</a> - Gent Tolhuislaan 07:48</li><li><a href="stop-112939.html">112939</a> - Gent Fratersplein 07:49</li><li><a href="stop-120097.html">120097</a> - Gent Ottogracht 07:50</li><li><a href="stop-111463.html">111463</a> - Gent Sint-Jacobs 07:52</li><li><a href="stop-111328.html">111328</a> - Gent Reep 07:53</li><li><a href="stop-111450.html">111450</a> - Gent Kapucijnenham 07:54</li><li><a href="stop-126651.html">126651</a> - Gent Zuid perron 6 07:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./465.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

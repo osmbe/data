@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sint-Niklaas - Hoogk - Temse - Rupelm - A'pen L.O - 20710632</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Niklaas - Hoogk - Temse - Rupelm - A'pen L.O - 20710632</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-115601.html">115601</a> - Temse Vrijheidstraat 06:02</li><li><a href="stop-115441.html">115441</a> - Temse Gasthuisstraat 06:03</li><li><a href="stop-115442.html">115442</a> - Temse Schoolstraat 06:04</li><li><a href="stop-115443.html">115443</a> - Temse Tinelplaats 06:04</li><li><a href="stop-115465.html">115465</a> - Temse Vredestraat 06:05</li><li><a href="stop-115466.html">115466</a> - Temse Grote Dweersstraat 06:06</li><li><a href="stop-115467.html">115467</a> - Temse Eurolaan 06:07</li><li><a href="stop-115468.html">115468</a> - Temse Kapelanielaan 06:08</li><li><a href="stop-115469.html">115469</a> - Sint-Niklaas Hoge Heerweg 06:09</li><li><a href="stop-115470.html">115470</a> - Sint-Niklaas Houten Schoen 06:10</li><li><a href="stop-115471.html">115471</a> - Sint-Niklaas Hertenhof 06:11</li><li><a href="stop-115472.html">115472</a> - Sint-Niklaas Hertenstraat 06:12</li><li><a href="stop-115179.html">115179</a> - Sint-Niklaas H. Familie 06:13</li><li><a href="stop-127604.html">127604</a> - Sint-Niklaas Waasland Shopping perron 3 06:14</li><li><a href="stop-115480.html">115480</a> - Sint-Niklaas Atheneum/Zwembad 06:17</li><li><a href="stop-115481.html">115481</a> - Sint-Niklaas Park 06:19</li><li><a href="stop-115725.html">115725</a> - Sint-Niklaas Markt 06:20</li><li><a href="stop-114858.html">114858</a> - Sint-Niklaas Hofstraat 06:21</li><li><a href="stop-115501.html">115501</a> - Sint-Niklaas Kazernestraat 06:22</li><li><a href="stop-115500.html">115500</a> - Sint-Niklaas Uitgang Noordlaan 06:23</li><li><a href="stop-126691.html">126691</a> - Sint-Niklaas Station perron 2 06:24</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./953.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oelegem - Schilde - Sint-Antonius - Scholen Malle - 22540323</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oelegem - Schilde - Sint-Antonius - Scholen Malle - 22540323</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-19779.html">19779</a> - Oelegem Rundvoortstraat 07:25</li><li><a href="stop-22244.html">22244</a> - Oelegem Kerk 07:26</li><li><a href="stop-108693.html">108693</a> - Oelegem Nieuwe Laan 07:26</li><li><a href="stop-22239.html">22239</a> - Oelegem Knodbaan 07:27</li><li><a href="stop-22237.html">22237</a> - Oelegem Goorstraat 07:28</li><li><a href="stop-22234.html">22234</a> - Schilde Rozenhoek 07:29</li><li><a href="stop-22230.html">22230</a> - Schilde Puttenhoflaan 07:29</li><li><a href="stop-22228.html">22228</a> - Schilde Kerk 07:30</li><li><a href="stop-108688.html">108688</a> - Schilde Bogaertslaan 07:31</li><li><a href="stop-22223.html">22223</a> - Schilde Brasschaatsebaan 07:32</li><li><a href="stop-108827.html">108827</a> - Schilde Kerkelei 07:33</li><li><a href="stop-95324.html">95324</a> - Schilde Wisselstraat 07:34</li><li><a href="stop-90851.html">90851</a> - Schilde Schanslaan 07:35</li><li><a href="stop-22563.html">22563</a> - Schilde Klein Waterstraat 07:37</li><li><a href="stop-22565.html">22565</a> - Halle Eikenlaan 07:38</li><li><a href="stop-108830.html">108830</a> - Sint-Antonius Joostens 07:41</li><li><a href="stop-108832.html">108832</a> - Sint-Antonius Kwikaard 07:42</li><li><a href="stop-108835.html">108835</a> - Sint-Antonius Bibliotheek 07:43</li><li><a href="stop-108837.html">108837</a> - Sint-Antonius Bethaniëlei 07:45</li><li><a href="stop-109991.html">109991</a> - Sint-Antonius A. Vesaliuslaan 07:46</li><li><a href="stop-22593.html">22593</a> - Westmalle Olmenlei 07:47</li><li><a href="stop-22595.html">22595</a> - Westmalle Eikendreef 07:47</li><li><a href="stop-22597.html">22597</a> - Westmalle Nooit Rust 07:48</li><li><a href="stop-101487.html">101487</a> - Westmalle Abdij 07:49</li><li><a href="stop-22601.html">22601</a> - Westmalle Dennenlaan 07:50</li><li><a href="stop-22603.html">22603</a> - Westmalle Kempendreef 07:51</li><li><a href="stop-22605.html">22605</a> - Westmalle Scherpenberg 07:53</li><li><a href="stop-88129.html">88129</a> - Westmalle Sint-Jan Berchmans perron 3 07:54</li><li><a href="stop-107884.html">107884</a> - Westmalle Kerk 07:55</li><li><a href="stop-108842.html">108842</a> - Westmalle Zandstraat 07:56</li><li><a href="stop-108843.html">108843</a> - Westmalle Kapelstraat 07:57</li><li><a href="stop-127744.html">127744</a> - Oostmalle Steenovenstraat 07:59</li><li><a href="stop-108846.html">108846</a> - Oostmalle Maris Stella 07:59</li><li><a href="stop-93414.html">93414</a> - Oostmalle Busstation perron 1 08:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3652.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

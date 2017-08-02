@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sint-Truiden-Zoutleeuw-Wommersom-Industriep.Tienen - 22779902</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Truiden-Zoutleeuw-Wommersom-Industriep.Tienen - 22779902</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127441.html">127441</a> - Sint-Truiden Station perron 8 05:03</li><li><a href="stop-43389.html">43389</a> - Sint-Truiden STVV 05:05</li><li><a href="stop-92641.html">92641</a> - Sint-Truiden Volmolenweg 05:06</li><li><a href="stop-14580.html">14580</a> - Wilderen Garage Heusdens 05:08</li><li><a href="stop-14578.html">14578</a> - Wilderen Galgestraat 05:09</li><li><a href="stop-14825.html">14825</a> - Halle-Booienhoven Café Julia 05:10</li><li><a href="stop-14823.html">14823</a> - Halle-Booienhoven Kapel 05:11</li><li><a href="stop-14350.html">14350</a> - Zoutleeuw Sint-Truidensesteenweg 71 05:12</li><li><a href="stop-14348.html">14348</a> - Zoutleeuw Solveld 05:12</li><li><a href="stop-14340.html">14340</a> - Zoutleeuw Post 05:13</li><li><a href="stop-14332.html">14332</a> - Zoutleeuw Kerk 05:14</li><li><a href="stop-14352.html">14352</a> - Zoutleeuw Leeuwerweg 05:15</li><li><a href="stop-99449.html">99449</a> - Helen-Bos Oude Kassei 05:16</li><li><a href="stop-99476.html">99476</a> - Helen-Bos Kruispunt Bos 05:17</li><li><a href="stop-99478.html">99478</a> - Helen-Bos Spoorwegstraat 05:18</li><li><a href="stop-99472.html">99472</a> - Helen-Bos Dorp 05:21</li><li><a href="stop-99474.html">99474</a> - Helen-Bos Kapel 05:22</li><li><a href="stop-95653.html">95653</a> - Melkwezer Galerijstraat 05:22</li><li><a href="stop-95655.html">95655</a> - Melkwezer Groenstraat 05:23</li><li><a href="stop-95657.html">95657</a> - Melkwezer Hazenbergstraat 05:24</li><li><a href="stop-95659.html">95659</a> - Melkwezer Kerk 05:24</li><li><a href="stop-95651.html">95651</a> - Melkwezer Dorpstraat 05:25</li><li><a href="stop-95672.html">95672</a> - Melkwezer Walsbergen 05:26</li><li><a href="stop-12465.html">12465</a> - Wommersom Melkwezerstraat 05:28</li><li><a href="stop-12463.html">12463</a> - Wommersom Klein Broekstraat 05:28</li><li><a href="stop-92640.html">92640</a> - Wommersom Kerk 05:29</li><li><a href="stop-12469.html">12469</a> - Wommersom Kouterstraat 05:30</li><li><a href="stop-12459.html">12459</a> - Wommersom Bergdries 05:31</li><li><a href="stop-13834.html">13834</a> - Oplinter Kanadaweg 05:32</li><li><a href="stop-13842.html">13842</a> - Oplinter Maagdendal 05:34</li><li><a href="stop-13824.html">13824</a> - Oplinter Sint-Genovevaplein 05:35</li><li><a href="stop-13812.html">13812</a> - Oplinter Oplintersesteenweg 05:36</li><li><a href="stop-13818.html">13818</a> - Oplinter Halverwege 05:37</li><li><a href="stop-13820.html">13820</a> - Oplinter Huiskensstraat 05:38</li><li><a href="stop-13826.html">13826</a> - Oplinter Militair Kerkhof 05:39</li><li><a href="stop-13919.html">13919</a> - Tienen Villapark 05:40</li><li><a href="stop-15574.html">15574</a> - Tienen Hamelendreef 05:41</li><li><a href="stop-15366.html">15366</a> - Tienen Bosch 05:42</li><li><a href="stop-13868.html">13868</a> - Tienen Viander en Bosch 05:43</li><li><a href="stop-128830.html">128830</a> - Tienen Roosmolen 05:44</li><li><a href="stop-13917.html">13917</a> - Tienen Sylvania 05:45</li><li><a href="stop-16275.html">16275</a> - Tienen Industriepark 05:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2121.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

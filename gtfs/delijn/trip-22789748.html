@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Neervelp - Meldert - Tienen - 22789748</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Neervelp - Meldert - Tienen - 22789748</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-95628.html">95628</a> - Neervelp Carpoolparking 07:35</li><li><a href="stop-95630.html">95630</a> - Neervelp Kapel 07:36</li><li><a href="stop-95602.html">95602</a> - Neervelp Kruispunt 07:37</li><li><a href="stop-95600.html">95600</a> - Neervelp De Smid 07:37</li><li><a href="stop-95580.html">95580</a> - Opvelp Molensteen 07:38</li><li><a href="stop-95575.html">95575</a> - Opvelp Gemeentehuis 07:40</li><li><a href="stop-9975.html">9975</a> - Honsem Kapel 07:42</li><li><a href="stop-11404.html">11404</a> - Meldert Weg naar Babelom 07:44</li><li><a href="stop-127251.html">127251</a> - Meldert Sint-Ermelindiskerk 07:45</li><li><a href="stop-11396.html">11396</a> - Meldert Hoegaardsestraat 07:46</li><li><a href="stop-11394.html">11394</a> - Meldert Baan 07:47</li><li><a href="stop-11402.html">11402</a> - Meldert Oud Station 07:47</li><li><a href="stop-11413.html">11413</a> - Hoegaarden Steenweg naar Meldert 07:51</li><li><a href="stop-11409.html">11409</a> - Hoegaarden Sint-Kat-Houtem Kabine 07:52</li><li><a href="stop-11411.html">11411</a> - Hoegaarden Sint-Kat-Houtem Kapel 07:53</li><li><a href="stop-13809.html">13809</a> - Hoegaarden Weg naar Houtem 07:53</li><li><a href="stop-11392.html">11392</a> - Hoegaarden Hoksem Kerk 07:55</li><li><a href="stop-11390.html">11390</a> - Hoegaarden Hoksem Berg 07:56</li><li><a href="stop-95746.html">95746</a> - Oorbeek Dorp 07:58</li><li><a href="stop-95744.html">95744</a> - Oorbeek Kapel 07:58</li><li><a href="stop-95742.html">95742</a> - Oorbeek Engelbeekstraat 07:59</li><li><a href="stop-95748.html">95748</a> - Oorbeek Driebek 08:00</li><li><a href="stop-13883.html">13883</a> - Tienen Mulkplein 08:01</li><li><a href="stop-13875.html">13875</a> - Tienen Goossensvest 08:04</li><li><a href="stop-13903.html">13903</a> - Tienen Station Perron 2 08:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2402.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

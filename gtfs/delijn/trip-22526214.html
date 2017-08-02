@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Turnhout - Vosselaar - Beerse - Rijkevorsel - 22526214</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Turnhout - Vosselaar - Beerse - Rijkevorsel - 22526214</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-107560.html">107560</a> - Rijkevorsel Kerk 07:07</li><li><a href="stop-108905.html">108905</a> - Rijkevorsel Driehoek 07:08</li><li><a href="stop-92247.html">92247</a> - Rijkevorsel De Parre 07:10</li><li><a href="stop-22787.html">22787</a> - Rijkevorsel Sint-Jozef Brug 07:11</li><li><a href="stop-22785.html">22785</a> - Rijkevorsel Sint-Jozef Kerk 07:12</li><li><a href="stop-108911.html">108911</a> - Rijkevorsel Hoogstraat 07:13</li><li><a href="stop-108909.html">108909</a> - Rijkevorsel Zwartvenstraat 07:14</li><li><a href="stop-120663.html">120663</a> - Beerse Blakheide 07:15</li><li><a href="stop-22779.html">22779</a> - Beerse Lange Kwikstraat 07:16</li><li><a href="stop-108907.html">108907</a> - Beerse Heidestraat 07:18</li><li><a href="stop-26001.html">26001</a> - Beerse Den Hout kerk 07:20</li><li><a href="stop-110001.html">110001</a> - Beerse Kapel 07:21</li><li><a href="stop-25998.html">25998</a> - Beerse Larenstraat 07:22</li><li><a href="stop-109998.html">109998</a> - Beerse Smisstraat 07:23</li><li><a href="stop-108891.html">108891</a> - Beerse Dorp 07:24</li><li><a href="stop-107584.html">107584</a> - Beerse Gemeentehuis 07:25</li><li><a href="stop-108870.html">108870</a> - Beerse Gierleseweg 07:27</li><li><a href="stop-22693.html">22693</a> - Beerse Heibergstraat 07:28</li><li><a href="stop-108873.html">108873</a> - Vosselaar Dennendreef 07:29</li><li><a href="stop-22798.html">22798</a> - Vosselaar Dorp 07:30</li><li><a href="stop-108917.html">108917</a> - Vosselaar Gemeentehuis 07:31</li><li><a href="stop-108915.html">108915</a> - Vosselaar Koolhof 07:32</li><li><a href="stop-20568.html">20568</a> - Vosselaar Heieinde 07:33</li><li><a href="stop-22793.html">22793</a> - Vosselaar Rijdtstraat 07:33</li><li><a href="stop-20743.html">20743</a> - Vosselaar Sportcentrum 07:34</li><li><a href="stop-92389.html">92389</a> - Vosselaar Breemsedijk 07:35</li><li><a href="stop-92366.html">92366</a> - Vosselaar Nachtegaalstraat 07:36</li><li><a href="stop-88137.html">88137</a> - Turnhout Philips I 07:38</li><li><a href="stop-91188.html">91188</a> - Turnhout Winkelpark XXL 07:39</li><li><a href="stop-109794.html">109794</a> - Turnhout Slachthuisstraat 07:40</li><li><a href="stop-92490.html">92490</a> - Turnhout Oud-Strijderslaan 07:41</li><li><a href="stop-88778.html">88778</a> - Turnhout Boerenkrijglaan 07:41</li><li><a href="stop-109792.html">109792</a> - Turnhout Lokeren Bareel 07:42</li><li><a href="stop-108879.html">108879</a> - Turnhout Station perron 6 07:43</li><li><a href="stop-108880.html">108880</a> - Turnhout Zeshoek 07:44</li><li><a href="stop-108882.html">108882</a> - Turnhout Warande 07:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3300.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

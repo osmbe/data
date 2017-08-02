@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Hofstade - Lede - Oordegem - Wetteren - 20717117</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Hofstade - Lede - Oordegem - Wetteren - 20717117</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126623.html">126623</a> - Wetteren Station perron 3 12:58</li><li><a href="stop-112204.html">112204</a> - Wetteren Buyssestraat 12:59</li><li><a href="stop-114614.html">114614</a> - Wetteren Oordegemsesteenweg 13:01</li><li><a href="stop-114747.html">114747</a> - Wetteren Zuidlaan 13:01</li><li><a href="stop-114746.html">114746</a> - Wetteren Diepenbroekstraat 13:02</li><li><a href="stop-117815.html">117815</a> - Massemen Maelbroekstraat 13:03</li><li><a href="stop-120623.html">120623</a> - Massemen Dorp 13:05</li><li><a href="stop-120625.html">120625</a> - Massemen Loweestraat 13:07</li><li><a href="stop-118204.html">118204</a> - Massemen Oordegemsesteenweg 13:08</li><li><a href="stop-118303.html">118303</a> - Oordegem Klinkaard 13:10</li><li><a href="stop-118205.html">118205</a> - Oordegem Blekte 13:11</li><li><a href="stop-118206.html">118206</a> - Oordegem Dries 13:12</li><li><a href="stop-117002.html">117002</a> - Oordegem Grote Steenweg 13:13</li><li><a href="stop-117261.html">117261</a> - Oordegem Dorp 13:14</li><li><a href="stop-117014.html">117014</a> - Oordegem Rodtstraat 13:15</li><li><a href="stop-117013.html">117013</a> - Smetlede Kapelleweg 13:16</li><li><a href="stop-119361.html">119361</a> - Smetlede Pontweg 13:18</li><li><a href="stop-117012.html">117012</a> - Smetlede Kerk 13:19</li><li><a href="stop-117011.html">117011</a> - Impe Serskampstraat 13:20</li><li><a href="stop-117010.html">117010</a> - Impe Hofsmeer 13:21</li><li><a href="stop-117009.html">117009</a> - Impe Dorp 13:22</li><li><a href="stop-117269.html">117269</a> - Impe Kerk 13:22</li><li><a href="stop-118208.html">118208</a> - Lede Kapel 13:24</li><li><a href="stop-118209.html">118209</a> - Lede Molenbergstraat 13:25</li><li><a href="stop-118284.html">118284</a> - Lede Smesweg 13:25</li><li><a href="stop-117272.html">117272</a> - Lede Damstraat 13:26</li><li><a href="stop-117023.html">117023</a> - Lede Ziekenhuis 13:26</li><li><a href="stop-116707.html">116707</a> - Lede Pastorijstraat 13:29</li><li><a href="stop-116708.html">116708</a> - Lede Kleine Ommegangweg 13:29</li><li><a href="stop-117260.html">117260</a> - Lede Station 13:31</li><li><a href="stop-117259.html">117259</a> - Lede Voetgangersbrug 13:32</li><li><a href="stop-116709.html">116709</a> - Lede Bosstraat 13:33</li><li><a href="stop-116710.html">116710</a> - Lede Sasstraat 13:35</li><li><a href="stop-116711.html">116711</a> - Hofstade Noenstraat 13:36</li><li><a href="stop-116712.html">116712</a> - Hofstade Vijverstraat 13:37</li><li><a href="stop-116713.html">116713</a> - Hofstade Doriksveld 13:38</li><li><a href="stop-116743.html">116743</a> - Hofstade K. Van Der Slotenstraat 13:39</li><li><a href="stop-117346.html">117346</a> - Hofstade Mottantstraat 13:39</li><li><a href="stop-116714.html">116714</a> - Hofstade Blektestraat 13:40</li><li><a href="stop-116715.html">116715</a> - Hofstade Consciencestraat 13:41</li><li><a href="stop-117331.html">117331</a> - Aalst J. De Nul 13:42</li><li><a href="stop-117345.html">117345</a> - Aalst Viaduct 13:42</li><li><a href="stop-117330.html">117330</a> - Aalst Tragel Sport 13:43</li><li><a href="stop-120302.html">120302</a> - Aalst Tramstraat 13:43</li><li><a href="stop-120303.html">120303</a> - Aalst Sint-Annabrug 13:44</li><li><a href="stop-126678.html">126678</a> - Aalst Station perron 2 13:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1239.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

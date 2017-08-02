@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Antwerpen - Massenhoven - Herentals via E313 - 22524854</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Antwerpen - Massenhoven - Herentals via E313 - 22524854</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-24521.html">24521</a> - Herentals Station perron 9 07:40</li><li><a href="stop-108972.html">108972</a> - Herentals Belgiëlaan 07:41</li><li><a href="stop-100399.html">100399</a> - Herentals Hikstraat 07:42</li><li><a href="stop-108969.html">108969</a> - Herentals AZ Sint-Elisabeth 07:43</li><li><a href="stop-108967.html">108967</a> - Herentals Netepark 07:44</li><li><a href="stop-22961.html">22961</a> - Herentals Bosdreef 07:46</li><li><a href="stop-22959.html">22959</a> - Herentals Watervoort 07:47</li><li><a href="stop-22957.html">22957</a> - Herentals Poederleeseweg 07:48</li><li><a href="stop-22955.html">22955</a> - Vorselaar Doornboom 07:50</li><li><a href="stop-22953.html">22953</a> - Vorselaar Kweek 07:51</li><li><a href="stop-22951.html">22951</a> - Vorselaar Proosthoevebaan 07:52</li><li><a href="stop-109936.html">109936</a> - Vorselaar Voetbalterrein 07:54</li><li><a href="stop-22947.html">22947</a> - Vorselaar Dorp 07:55</li><li><a href="stop-108963.html">108963</a> - Vorselaar Goorbergenlaan 07:56</li><li><a href="stop-93197.html">93197</a> - Grobbendonk  Hildering 07:57</li><li><a href="stop-22941.html">22941</a> - Grobbendonk Watermolenweg 07:58</li><li><a href="stop-108961.html">108961</a> - Grobbendonk Beukenlaan 08:00</li><li><a href="stop-108959.html">108959</a> - Grobbendonk Dorp 08:01</li><li><a href="stop-108957.html">108957</a> - Grobbendonk Nijverheidsstraat 08:02</li><li><a href="stop-108955.html">108955</a> - Grobbendonk Kretbosstraat 08:03</li><li><a href="stop-22931.html">22931</a> - Grobbendonk Vierselsebaan 08:04</li><li><a href="stop-108953.html">108953</a> - Pulle Keulsebaan 08:05</li><li><a href="stop-108952.html">108952</a> - Pulle Dorp 08:06</li><li><a href="stop-22925.html">22925</a> - Pulle Dorpstraat 08:07</li><li><a href="stop-108951.html">108951</a> - Pulderbos Draaiboom 08:09</li><li><a href="stop-108949.html">108949</a> - Pulderbos Dorp 08:10</li><li><a href="stop-22919.html">22919</a> - Pulderbos Roosten 08:11</li><li><a href="stop-20858.html">20858</a> - Zandhoven Goormansstraat 08:13</li><li><a href="stop-108853.html">108853</a> - Zandhoven Heikant 08:13</li><li><a href="stop-108851.html">108851</a> - Zandhoven Hallebaan 08:14</li><li><a href="stop-108947.html">108947</a> - Zandhoven Rijkswacht 08:16</li><li><a href="stop-22915.html">22915</a> - Zandhoven Dorp perron 1 08:18</li><li><a href="stop-110950.html">110950</a> - Zandhoven Liersebaan 08:20</li><li><a href="stop-22911.html">22911</a> - Massenhoven Gebroken Loop 08:21</li><li><a href="stop-22909.html">22909</a> - Massenhoven Kerkstraat 08:22</li><li><a href="stop-109760.html">109760</a> - Borgerhout Turnhoutsepoort 08:45</li><li><a href="stop-107456.html">107456</a> - Borgerhout De Roma 08:46</li><li><a href="stop-19743.html">19743</a> - Borgerhout Drink 08:48</li><li><a href="stop-121176.html">121176</a> - Antwerpen Kerkstraat 08:51</li><li><a href="stop-24319.html">24319</a> - Antwerpen Centraal Station perron 5 08:52</li><li><a href="stop-125291.html">125291</a> - Antwerpen F. Rooseveltplaats perron 12 08:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3257.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Waarschoot - Gent Zuid - 20700060</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Waarschoot - Gent Zuid - 20700060</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-113176.html">113176</a> - Eeklo P.T.I. 16:20</li><li><a href="stop-113175.html">113175</a> - Eeklo Teirlinckstraat 16:22</li><li><a href="stop-112977.html">112977</a> - Eeklo Markt 16:24</li><li><a href="stop-126610.html">126610</a> - Eeklo Station perron 9 16:27</li><li><a href="stop-112975.html">112975</a> - Eeklo Oude Gentweg 16:28</li><li><a href="stop-112974.html">112974</a> - Eeklo Het Leen 16:29</li><li><a href="stop-112972.html">112972</a> - Waarschoot Schoolstraat 16:32</li><li><a href="stop-112971.html">112971</a> - Waarschoot Kerk 16:33</li><li><a href="stop-113887.html">113887</a> - Waarschoot Beke Fabriek 16:35</li><li><a href="stop-113886.html">113886</a> - Waarschoot Beke Center 16:36</li><li><a href="stop-113885.html">113885</a> - Waarschoot Mercator 16:37</li><li><a href="stop-113884.html">113884</a> - Waarschoot Veldeken 16:37</li><li><a href="stop-113883.html">113883</a> - Lovendegem Meienbroekstraat 16:39</li><li><a href="stop-113882.html">113882</a> - Lovendegem Bredestraat 16:39</li><li><a href="stop-113292.html">113292</a> - Lovendegem Binnenslag 16:40</li><li><a href="stop-113291.html">113291</a> - Lovendegem Oostveldkouter 16:41</li><li><a href="stop-113290.html">113290</a> - Lovendegem Appensvoorde 16:43</li><li><a href="stop-113289.html">113289</a> - Lovendegem Bierstal 16:44</li><li><a href="stop-113288.html">113288</a> - Evergem Rabotstraat 16:45</li><li><a href="stop-113287.html">113287</a> - Mariakerke Industrieweg 16:47</li><li><a href="stop-113285.html">113285</a> - Mariakerke Groenestaakstraat 16:49</li><li><a href="stop-113284.html">113284</a> - Mariakerke Mazestraat 16:51</li><li><a href="stop-113283.html">113283</a> - Mariakerke Vaartstraat 16:52</li><li><a href="stop-111132.html">111132</a> - Gent Nieuwevaartbrug 16:55</li><li><a href="stop-111133.html">111133</a> - Gent Witte Kaproenenplein 16:56</li><li><a href="stop-113567.html">113567</a> - Gent Rabot 16:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./471.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

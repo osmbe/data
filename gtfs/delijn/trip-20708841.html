@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Lokeren - Moerbeke Waas - Zelzate - 20708841</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Lokeren - Moerbeke Waas - Zelzate - 20708841</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-113637.html">113637</a> - Zelzate Busstation perron 4 20:00</li><li><a href="stop-127987.html">127987</a> - Zelzate Chalmetlaan 20:02</li><li><a href="stop-113506.html">113506</a> - Zelzate Verbroederingslaan 20:02</li><li><a href="stop-113505.html">113505</a> - Zelzate Verbindingsstraat 20:03</li><li><a href="stop-120298.html">120298</a> - Wachtebeke Kloosterbos 20:06</li><li><a href="stop-113503.html">113503</a> - Wachtebeke Gebr. Naudtslaan 20:07</li><li><a href="stop-113502.html">113502</a> - Wachtebeke Walderdonk 20:08</li><li><a href="stop-113501.html">113501</a> - Wachtebeke Kerkstraat 20:09</li><li><a href="stop-113500.html">113500</a> - Wachtebeke Azalealaan 20:09</li><li><a href="stop-113058.html">113058</a> - Wachtebeke Godshuisstraat 20:10</li><li><a href="stop-113057.html">113057</a> - Wachtebeke Molenhoek 20:11</li><li><a href="stop-113056.html">113056</a> - Wachtebeke Axelsvaardeken 20:11</li><li><a href="stop-113055.html">113055</a> - Wachtebeke Kalve 20:12</li><li><a href="stop-128364.html">128364</a> - Wachtebeke Peene 20:13</li><li><a href="stop-121231.html">121231</a> - Moerbeke-Waas Fortstraat 20:15</li><li><a href="stop-121230.html">121230</a> - Moerbeke-Waas Terwest 20:17</li><li><a href="stop-121229.html">121229</a> - Moerbeke-Waas Begonialaan 20:17</li><li><a href="stop-121228.html">121228</a> - Moerbeke-Waas Opperstraat 20:18</li><li><a href="stop-121227.html">121227</a> - Moerbeke-Waas Markt 20:19</li><li><a href="stop-121226.html">121226</a> - Moerbeke-Waas Korte Damstraat 20:20</li><li><a href="stop-121225.html">121225</a> - Moerbeke-Waas Damstraat 20:20</li><li><a href="stop-121224.html">121224</a> - Moerbeke-Waas Waaigem 20:21</li><li><a href="stop-114930.html">114930</a> - Eksaarde Basisschool 20:24</li><li><a href="stop-114929.html">114929</a> - Eksaarde Brug 20:25</li><li><a href="stop-115741.html">115741</a> - Eksaarde Keerken 20:26</li><li><a href="stop-114079.html">114079</a> - Daknam Ganzendries 20:28</li><li><a href="stop-114022.html">114022</a> - Lokeren Braamstraat 20:30</li><li><a href="stop-114021.html">114021</a> - Lokeren Eksaardebaan 20:31</li><li><a href="stop-114513.html">114513</a> - Lokeren Veerstraat 20:33</li><li><a href="stop-114020.html">114020</a> - Lokeren Heirbrugstraat 20:34</li><li><a href="stop-114066.html">114066</a> - Lokeren Eekstraat 20:35</li><li><a href="stop-115602.html">115602</a> - Lokeren Markt 20:37</li><li><a href="stop-126637.html">126637</a> - Lokeren Station perron 2 20:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./820.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

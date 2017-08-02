@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Haacht - Keerbergen - 22769537</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Haacht - Keerbergen - 22769537</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-11061.html">11061</a> - Haacht Station 05:46</li><li><a href="stop-11059.html">11059</a> - Haacht Spoorwegstraat 05:46</li><li><a href="stop-11046.html">11046</a> - Haacht Jennekensstraat 05:47</li><li><a href="stop-11041.html">11041</a> - Haacht Don Bosco 05:48</li><li><a href="stop-11053.html">11053</a> - Haacht Mercatorlaan 05:49</li><li><a href="stop-89995.html">89995</a> - Haacht kerk 05:50</li><li><a href="stop-11063.html">11063</a> - Haacht Wildeheidestraat 05:51</li><li><a href="stop-11745.html">11745</a> - Keerbergen Hansbrug 05:52</li><li><a href="stop-11750.html">11750</a> - Keerbergen Kruishoevestraat 05:53</li><li><a href="stop-128903.html">128903</a> - Keerbergen Koekoekdreef 05:54</li><li><a href="stop-127048.html">127048</a> - Keerbergen Oude Putsebaan 05:55</li><li><a href="stop-11743.html">11743</a> - Keerbergen Dennendreef 05:56</li><li><a href="stop-127068.html">127068</a> - Keerbergen Stationsstraat 05:57</li><li><a href="stop-11747.html">11747</a> - Keerbergen Kerk 05:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1973.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

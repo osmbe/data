@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Zevergem - De Pinte - Gent - Lochristi - Lokeren - 20703949</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Zevergem - De Pinte - Gent - Lochristi - Lokeren - 20703949</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-113088.html">113088</a> - Lokeren Nieuwe Dreef 07:17</li><li><a href="stop-113087.html">113087</a> - Lokeren Nieuwpoortstraat 07:17</li><li><a href="stop-113086.html">113086</a> - Lokeren Drongenstraat 07:20</li><li><a href="stop-113085.html">113085</a> - Zeveneken Kerk 07:21</li><li><a href="stop-113084.html">113084</a> - Zeveneken Zavel 07:22</li><li><a href="stop-113083.html">113083</a> - Zeveneken Eikstraat 07:23</li><li><a href="stop-113082.html">113082</a> - Lochristi Lozen Boer 07:25</li><li><a href="stop-113119.html">113119</a> - Lochristi Denen 07:26</li><li><a href="stop-111267.html">111267</a> - Lochristi Dorp Oost 07:28</li><li><a href="stop-113126.html">113126</a> - Lochristi Rustoord 07:29</li><li><a href="stop-113079.html">113079</a> - Lochristi Kerk 07:30</li><li><a href="stop-113078.html">113078</a> - Lochristi Schoolstraat 07:32</li><li><a href="stop-113077.html">113077</a> - Lochristi Stationsstraat 07:32</li><li><a href="stop-113076.html">113076</a> - Lochristi Azalealaan 07:34</li><li><a href="stop-113075.html">113075</a> - Lochristi Lichtelarestraat 07:35</li><li><a href="stop-113074.html">113074</a> - Lochristi Doornikstraat 07:36</li><li><a href="stop-113073.html">113073</a> - Lochristi Sparrenlaan 07:37</li><li><a href="stop-113072.html">113072</a> - Oostakker Eisenhowerlaan 07:38</li><li><a href="stop-113071.html">113071</a> - Oostakker Teirlinckstraat 07:39</li><li><a href="stop-111342.html">111342</a> - Sint-Amandsberg Achtenkouterstraat 07:40</li><li><a href="stop-113065.html">113065</a> - Sint-Amandsberg P+R Oostakker 07:41</li><li><a href="stop-111231.html">111231</a> - Sint-Amandsberg Oudebareelstraat 07:42</li><li><a href="stop-111230.html">111230</a> - Sint-Amandsberg Carelshof 07:43</li><li><a href="stop-111317.html">111317</a> - Sint-Amandsberg Everstraat 07:44</li><li><a href="stop-111316.html">111316</a> - Sint-Amandsberg Zavelput 07:45</li><li><a href="stop-111318.html">111318</a> - Sint-Amandsberg Grondwetlaan 07:47</li><li><a href="stop-111319.html">111319</a> - Sint-Amandsberg Dienstencentrum 07:48</li><li><a href="stop-120186.html">120186</a> - Sint-Amandsberg Schoolstraat 07:49</li><li><a href="stop-126807.html">126807</a> - Gent Dampoort perron 5 07:51</li><li><a href="stop-111323.html">111323</a> - Gent Veemarkt 07:53</li><li><a href="stop-111324.html">111324</a> - Gent Eendrachtstraat 07:54</li><li><a href="stop-128659.html">128659</a> - Gent Tweebruggenstraat 07:55</li><li><a href="stop-126547.html">126547</a> - Gent Zuid perron 4 07:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./617.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

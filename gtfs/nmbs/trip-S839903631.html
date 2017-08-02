@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Louvain-La-Neuve-Univ. - Brussel-Zuid - S839903631</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Louvain-La-Neuve-Univ. - Brussel-Zuid - S839903631</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8811676_2.html">8811676:2</a> - Louvain-la-Neuve-Université 19:40</li><li><a href="stop-8811601_2.html">8811601:2</a> - Ottignies 19:50</li><li><a href="stop-8811536_2.html">8811536:2</a> - Rixensart 19:54</li><li><a href="stop-8811528_2.html">8811528:2</a> - Genval 19:57</li><li><a href="stop-8811510_2.html">8811510:2</a> - La Hulpe 20:00</li><li><a href="stop-8811445_2.html">8811445:2</a> - Groenendaal 20:05</li><li><a href="stop-8811437_2.html">8811437:2</a> - Bosvoorde/Boitsfort 20:09</li><li><a href="stop-8811411_1.html">8811411:1</a> - Etterbeek 20:14</li><li><a href="stop-8811304_2.html">8811304:2</a> - Brussel-Luxemburg/Bruxelles-Luxembourg 20:19</li><li><a href="stop-8811916_1.html">8811916:1</a> - Brussel-Schuman/Bruxelles-Schuman 20:22</li><li><a href="stop-8812005_8.html">8812005:8</a> - Brussel-Noord/Bruxelles-Nord 20:31</li><li><a href="stop-8813003_4.html">8813003:4</a> - Brussel-Centraal/Bruxelles-Central 20:35</li><li><a href="stop-8814001_18.html">8814001:18</a> - Brussel-Zuid/Bruxelles-Midi 20:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1849.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

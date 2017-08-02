@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Lier - Nijlen - Grobbendonk - (Vorselaar) - 22510239</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Lier - Nijlen - Grobbendonk - (Vorselaar) - 22510239</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-106804.html">106804</a> - Lier Station perron 5 08:05</li><li><a href="stop-108994.html">108994</a> - Lier Rolwagenstraat 08:06</li><li><a href="stop-23006.html">23006</a> - Lier Kliniek 08:08</li><li><a href="stop-108995.html">108995</a> - Lier Markt 08:10</li><li><a href="stop-23736.html">23736</a> - Lier Leopold III-laan 08:11</li><li><a href="stop-25845.html">25845</a> - Lier Molenstraat 08:14</li><li><a href="stop-109283.html">109283</a> - Lier Veemarkt perron 5 08:15</li><li><a href="stop-23441.html">23441</a> - Lier Maasfortbaan 08:16</li><li><a href="stop-23443.html">23443</a> - Lier Marnixdreef 08:18</li><li><a href="stop-23446.html">23446</a> - Lier Kerkhof 08:18</li><li><a href="stop-23448.html">23448</a> - Kessel Salvatorbaan 08:21</li><li><a href="stop-19591.html">19591</a> - Kessel Vorst 08:21</li><li><a href="stop-109161.html">109161</a> - Kessel Stationssteenweg 08:22</li><li><a href="stop-109163.html">109163</a> - Kessel Gemeentehuis 08:23</li><li><a href="stop-23454.html">23454</a> - Kessel Smoutmolendreef 08:24</li><li><a href="stop-23457.html">23457</a> - Kessel Hoenderstraat 08:25</li><li><a href="stop-23459.html">23459</a> - Kessel Jagershuis 08:27</li><li><a href="stop-23462.html">23462</a> - Nijlen Goorstraat 08:29</li><li><a href="stop-109167.html">109167</a> - Nijlen Station 08:30</li><li><a href="stop-109169.html">109169</a> - Nijlen Kerk 08:32</li><li><a href="stop-109170.html">109170</a> - Nijlen Bovenstraat 08:33</li><li><a href="stop-23472.html">23472</a> - Nijlen Koekoekstraat 08:34</li><li><a href="stop-23474.html">23474</a> - Nijlen Beenderstraat 08:35</li><li><a href="stop-109172.html">109172</a> - Nijlen Paddekotse Heide 08:35</li><li><a href="stop-23478.html">23478</a> - Nijlen Hulstsestraat 08:36</li><li><a href="stop-23480.html">23480</a> - Bouwel Looystraat 08:36</li><li><a href="stop-23482.html">23482</a> - Bouwel Binnenheide 08:37</li><li><a href="stop-23484.html">23484</a> - Bouwel Droomland 08:38</li><li><a href="stop-23487.html">23487</a> - Bouwel Bergenhof 08:39</li><li><a href="stop-127142.html">127142</a> - Bouwel Lindekens Bouwelsesteenweg 08:40</li><li><a href="stop-24537.html">24537</a> - Grobbendonk Engels Kamp 08:42</li><li><a href="stop-109914.html">109914</a> - Grobbendonk Beemdenstraat 08:42</li><li><a href="stop-108960.html">108960</a> - Grobbendonk Dorp 08:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2907.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

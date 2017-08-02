@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Boom - Puurs - Lippelo - Dendermonde - 22514904</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boom - Puurs - Lippelo - Dendermonde - 22514904</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109447.html">109447</a> - Puurs Station 17:04</li><li><a href="stop-107716.html">107716</a> - Puurs Markt 17:05</li><li><a href="stop-110005.html">110005</a> - Puurs Hooiveld 17:06</li><li><a href="stop-26010.html">26010</a> - Liezele Heide 17:07</li><li><a href="stop-26005.html">26005</a> - Liezele Dorp 17:08</li><li><a href="stop-127013.html">127013</a> - Liezele Kerk 17:08</li><li><a href="stop-109488.html">109488</a> - Liezele Weg Op Lippelo 17:09</li><li><a href="stop-24264.html">24264</a> - Liezele Schemelberthof 17:09</li><li><a href="stop-24266.html">24266</a> - Liezele Wolfstraat 17:10</li><li><a href="stop-21232.html">21232</a> - Liezele Steentjesstraat 17:11</li><li><a href="stop-21233.html">21233</a> - Liezele Patattestraat 17:12</li><li><a href="stop-21236.html">21236</a> - Liezele Hof Ter Bollen 17:13</li><li><a href="stop-20258.html">20258</a> - Lippelo 's-Gravenkasteel 17:14</li><li><a href="stop-109485.html">109485</a> - Lippelo Dorp 17:15</li><li><a href="stop-109483.html">109483</a> - Lippelo Breutheide 17:16</li><li><a href="stop-24251.html">24251</a> - Lippelo Oude Heirbaan 17:16</li><li><a href="stop-21240.html">21240</a> - Sint-Amands Keten 17:18</li><li><a href="stop-21242.html">21242</a> - Sint-Amands Fierkensstraat 17:19</li><li><a href="stop-108239.html">108239</a> - Sint-Amands J. Cardijnlaan 17:21</li><li><a href="stop-24137.html">24137</a> - Sint-Amands Station 17:22</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3019.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

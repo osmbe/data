@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Knokke-Brugge - 22652502</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Knokke-Brugge - 22652502</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128949.html">128949</a> - Brugge Station perron 9 17:04</li><li><a href="stop-126318.html">126318</a> - Brugge 'T Zand perron 2 17:07</li><li><a href="stop-37316.html">37316</a> - Brugge Hoefijzer 17:09</li><li><a href="stop-36737.html">36737</a> - Brugge Beenhouwerstraat 17:11</li><li><a href="stop-98661.html">98661</a> - Brugge Ezelpoort 17:12</li><li><a href="stop-40857.html">40857</a> - Brugge N.Gombertstraat 17:13</li><li><a href="stop-40869.html">40869</a> - Brugge De Veste 17:14</li><li><a href="stop-87651.html">87651</a> - Brugge Komvest 17:15</li><li><a href="stop-36765.html">36765</a> - Brugge Haven 17:16</li><li><a href="stop-127270.html">127270</a> - Brugge Waterweelde 17:16</li><li><a href="stop-100833.html">100833</a> - Brugge Landjuwelenstraat 17:17</li><li><a href="stop-36011.html">36011</a> - Brugge Ten Berge 17:18</li><li><a href="stop-104607.html">104607</a> - Brugge 'T Boompje 17:19</li><li><a href="stop-36009.html">36009</a> - Brugge Kruisabele 17:20</li><li><a href="stop-97887.html">97887</a> - Dudzele Ter Bolle 17:20</li><li><a href="stop-97883.html">97883</a> - Dudzele 'T Apertje 17:22</li><li><a href="stop-97886.html">97886</a> - Dudzele Melkerij 17:22</li><li><a href="stop-97884.html">97884</a> - Dudzele Dorp 17:23</li><li><a href="stop-97888.html">97888</a> - Dudzele Wissel 7 17:24</li><li><a href="stop-97960.html">97960</a> - Dudzele Kasteelstraat 17:24</li><li><a href="stop-97885.html">97885</a> - Dudzele Zonnebloem 17:25</li><li><a href="stop-100746.html">100746</a> - Dudzele Zelzatebrug 17:28</li><li><a href="stop-97940.html">97940</a> - Westkapelle Pelikaan 17:29</li><li><a href="stop-97983.html">97983</a> - Westkapelle Herenweg 17:32</li><li><a href="stop-98286.html">98286</a> - Westkapelle Dorp 17:34</li><li><a href="stop-97933.html">97933</a> - Westkapelle Sacramentstraat 17:35</li><li><a href="stop-97985.html">97985</a> - Westkapelle Hazelaarsdreef 17:37</li><li><a href="stop-97981.html">97981</a> - Westkapelle Dennendreef 17:37</li><li><a href="stop-97938.html">97938</a> - Westkapelle Kragendijk 17:39</li><li><a href="stop-97937.html">97937</a> - Westkapelle Korenbloemdreef 17:41</li><li><a href="stop-97984.html">97984</a> - Knokke Driewegen 17:42</li><li><a href="stop-97894.html">97894</a> - Knokke J. Devischstraat 17:43</li><li><a href="stop-97898.html">97898</a> - Knokke Kliniek Ter Linden 17:44</li><li><a href="stop-97908.html">97908</a> - Knokke Vogelzang 17:45</li><li><a href="stop-123507.html">123507</a> - Knokke Gemeenteplein 17:46</li><li><a href="stop-126293.html">126293</a> - Knokke Station perron 3 17:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6216.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

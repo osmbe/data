@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Roeselare-Passendale-Ieper - 22643587</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Roeselare-Passendale-Ieper - 22643587</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126365.html">126365</a> - Roeselare Station perron 4 12:32</li><li><a href="stop-17621.html">17621</a> - Roeselare De Mandel 12:33</li><li><a href="stop-17620.html">17620</a> - Roeselare Residentie Flora 12:34</li><li><a href="stop-17669.html">17669</a> - Roeselare De Spil 12:35</li><li><a href="stop-123484.html">123484</a> - Roeselare Westerlinde 12:36</li><li><a href="stop-123582.html">123582</a> - Roeselare Lindenstraat 12:37</li><li><a href="stop-125704.html">125704</a> - Roeselare Pennoenstraat 12:37</li><li><a href="stop-123583.html">123583</a> - Roeselare Martin 12:38</li><li><a href="stop-91262.html">91262</a> - Roeselare De Ruiter 12:40</li><li><a href="stop-38014.html">38014</a> - Moorslede Huis Vanneste 12:42</li><li><a href="stop-38025.html">38025</a> - Moorslede Vierkavenhoek 12:44</li><li><a href="stop-38018.html">38018</a> - Moorslede Kruisken 12:45</li><li><a href="stop-38012.html">38012</a> - Moorslede Garage 12:47</li><li><a href="stop-38019.html">38019</a> - Moorslede Masselis 12:48</li><li><a href="stop-38021.html">38021</a> - Moorslede Plaats 12:49</li><li><a href="stop-90918.html">90918</a> - Moorslede Klooster 12:50</li><li><a href="stop-38013.html">38013</a> - Moorslede Garage Dessein 12:51</li><li><a href="stop-38023.html">38023</a> - Moorslede Station 12:52</li><li><a href="stop-38718.html">38718</a> - Passendale Wasserij 12:52</li><li><a href="stop-38715.html">38715</a> - Passendale Plaats 12:53</li><li><a href="stop-38713.html">38713</a> - Passendale De Vos 12:54</li><li><a href="stop-38714.html">38714</a> - Passendale Hoeve De Poorter 12:55</li><li><a href="stop-38717.html">38717</a> - Passendale Tyne Cot 12:56</li><li><a href="stop-38716.html">38716</a> - Passendale Schipstraat 12:56</li><li><a href="stop-38276.html">38276</a> - Zonnebeke Broodseinde 12:57</li><li><a href="stop-42246.html">42246</a> - Zonnebeke Molenaarelst 12:58</li><li><a href="stop-42328.html">42328</a> - Zonnebeke Noordeinde 12:59</li><li><a href="stop-42341.html">42341</a> - Beselare Beselarestraat 194 13:00</li><li><a href="stop-43543.html">43543</a> - Beselare Markizaatstraat 13:01</li><li><a href="stop-38387.html">38387</a> - Beselare Kerk 13:02</li><li><a href="stop-43544.html">43544</a> - Beselare Markizaatstraat 13:03</li><li><a href="stop-38389.html">38389</a> - Beselare Beselarestraat 194 13:03</li><li><a href="stop-38375.html">38375</a> - Zonnebeke Noordeinde 13:04</li><li><a href="stop-38283.html">38283</a> - Zonnebeke Molenaarelst 13:05</li><li><a href="stop-38279.html">38279</a> - Zonnebeke De Vier Seizoenen 13:07</li><li><a href="stop-38281.html">38281</a> - Zonnebeke Plaats 13:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6184.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

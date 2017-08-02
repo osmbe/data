@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Ieper-Komen - 22636045</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ieper-Komen - 22636045</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126393.html">126393</a> - Ieper Station perron 6 18:46</li><li><a href="stop-95332.html">95332</a> - Ieper Oudstrijderslaan 18:49</li><li><a href="stop-38542.html">38542</a> - Ieper Rijselpoort 18:50</li><li><a href="stop-104779.html">104779</a> - Ieper Sint-Pieterskerk 18:51</li><li><a href="stop-39059.html">39059</a> - Ieper Markt 18:53</li><li><a href="stop-38526.html">38526</a> - Ieper Hospitaal 18:54</li><li><a href="stop-38517.html">38517</a> - Ieper Bascule 18:54</li><li><a href="stop-38543.html">38543</a> - Ieper Sint-Jozef 18:55</li><li><a href="stop-38558.html">38558</a> - Ieper Watertoren 18:56</li><li><a href="stop-38531.html">38531</a> - Ieper Kruiskalsijde 18:56</li><li><a href="stop-38999.html">38999</a> - Zillebeke Lindenboom 18:58</li><li><a href="stop-38997.html">38997</a> - Zillebeke Dorp 18:59</li><li><a href="stop-104826.html">104826</a> - Zillebeke Wervikstraat 94 19:00</li><li><a href="stop-38995.html">38995</a> - Zillebeke Berg 60 19:01</li><li><a href="stop-39000.html">39000</a> - Zillebeke Weg Op Zwartleen 19:01</li><li><a href="stop-39010.html">39010</a> - Zillebeke Palingbeek 19:02</li><li><a href="stop-38996.html">38996</a> - Zillebeke Cafe A L'Entrepot 19:03</li><li><a href="stop-98149.html">98149</a> - Hollebeke Huis Nr.133 19:04</li><li><a href="stop-98148.html">98148</a> - Hollebeke Dorp 19:04</li><li><a href="stop-38500.html">38500</a> - Houthem Raafstraat 19:06</li><li><a href="stop-39006.html">39006</a> - Houthem Ma Campagne 19:07</li><li><a href="stop-39007.html">39007</a> - Houthem Kerk 19:08</li><li><a href="stop-38501.html">38501</a> - Houthem Station 19:09</li><li><a href="stop-38499.html">38499</a> - Houthem Kortewilde 19:10</li><li><a href="stop-98172.html">98172</a> - Zandvoorde Schaprulle 19:12</li><li><a href="stop-98171.html">98171</a> - Zandvoorde Houthemstraat 19:13</li><li><a href="stop-38608.html">38608</a> - Komen Voorstraete 19:14</li><li><a href="stop-38598.html">38598</a> - Komen Fleur De Lin 19:15</li><li><a href="stop-38601.html">38601</a> - Komen Molen 19:16</li><li><a href="stop-38606.html">38606</a> - Komen Ten Brielen 19:16</li><li><a href="stop-38597.html">38597</a> - Komen Christ 19:16</li><li><a href="stop-38596.html">38596</a> - Komen Blauw Hof 19:18</li><li><a href="stop-38607.html">38607</a> - Komen Vijfwegen 19:19</li><li><a href="stop-38605.html">38605</a> - Komen Station 19:20</li><li><a href="stop-38603.html">38603</a> - Komen Sint-Annaplein 19:22</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4247.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

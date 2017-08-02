@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Berchem Station - Hove - Duffel - 22504686</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Berchem Station - Hove - Duffel - 22504686</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-107631.html">107631</a> - Berchem Station perron 2 18:27</li><li><a href="stop-107565.html">107565</a> - Berchem Station perron 11 18:27</li><li><a href="stop-107745.html">107745</a> - Berchem Groenenhoek 18:28</li><li><a href="stop-108045.html">108045</a> - Berchem Minervastraat 18:29</li><li><a href="stop-108821.html">108821</a> - Berchem Dianalaan 18:30</li><li><a href="stop-19144.html">19144</a> - Berchem Bikschotelaan 18:31</li><li><a href="stop-108108.html">108108</a> - Deurne Luchthaven 18:33</li><li><a href="stop-108109.html">108109</a> - Deurne Luchthavenlei 18:34</li><li><a href="stop-108414.html">108414</a> - Mortsel Sint-Amedeuskliniek 18:35</li><li><a href="stop-21089.html">21089</a> - Mortsel Station 18:36</li><li><a href="stop-107341.html">107341</a> - Mortsel A. Stockmanslei 18:37</li><li><a href="stop-21959.html">21959</a> - Mortsel T. Reynlaan 18:38</li><li><a href="stop-107553.html">107553</a> - Mortsel Gemeenteplein 18:42</li><li><a href="stop-20049.html">20049</a> - Mortsel Gemeenteplein 18:43</li><li><a href="stop-108137.html">108137</a> - Mortsel Floralaan 18:44</li><li><a href="stop-19792.html">19792</a> - Mortsel Molenlei 18:45</li><li><a href="stop-25839.html">25839</a> - Mortsel Sint-Jozefkliniek 18:47</li><li><a href="stop-23672.html">23672</a> - Hove Rubensstraat 18:48</li><li><a href="stop-23674.html">23674</a> - Hove Boechoutselei 18:49</li><li><a href="stop-108061.html">108061</a> - Hove Wouwstraat 18:49</li><li><a href="stop-109252.html">109252</a> - Hove Lambrechtslei 18:50</li><li><a href="stop-109015.html">109015</a> - Hove Kerk 18:51</li><li><a href="stop-108333.html">108333</a> - Hove R. Verbeecklaan 18:51</li><li><a href="stop-109254.html">109254</a> - Hove Dumortierstraat 18:52</li><li><a href="stop-109255.html">109255</a> - Hove Lauwhoevestraat 18:53</li><li><a href="stop-23683.html">23683</a> - Hove Lege Veldkantlaan 18:54</li><li><a href="stop-23685.html">23685</a> - Hove Boshoekstraat 18:55</li><li><a href="stop-23687.html">23687</a> - Lint Station 18:56</li><li><a href="stop-109259.html">109259</a> - Lint Kon. Albertstraat 18:57</li><li><a href="stop-109261.html">109261</a> - Lint Moederhoefstraat 18:58</li><li><a href="stop-23695.html">23695</a> - Lint Bossenstraat 18:59</li><li><a href="stop-23697.html">23697</a> - Duffel Roetestraat 19:00</li><li><a href="stop-23699.html">23699</a> - Duffel Leliestraat 19:01</li><li><a href="stop-23701.html">23701</a> - Duffel J. Reypensstraat 19:02</li><li><a href="stop-109265.html">109265</a> - Duffel Leopoldstraat 19:03</li><li><a href="stop-109962.html">109962</a> - Duffel Gemeentehuis 19:04</li><li><a href="stop-109266.html">109266</a> - Duffel Kerk 19:04</li><li><a href="stop-107431.html">107431</a> - Duffel AZ Sint-Maarten 19:06</li><li><a href="stop-107432.html">107432</a> - Duffel Station 19:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2828.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

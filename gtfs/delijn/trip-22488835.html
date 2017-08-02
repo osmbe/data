@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Nerem-Sluizen-Mal-Tongeren-'sHeren-Membr.-Genoels - 22488835</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Nerem-Sluizen-Mal-Tongeren-'sHeren-Membr.-Genoels - 22488835</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-97489.html">97489</a> - Genoelselderen Boudewijnstraat 13:07</li><li><a href="stop-97493.html">97493</a> - Genoelselderen Parochiezaal 13:08</li><li><a href="stop-97483.html">97483</a> - Genoelselderen Kerk 13:09</li><li><a href="stop-97491.html">97491</a> - Genoelselderen Kasteel 13:10</li><li><a href="stop-97485.html">97485</a> - Membruggen Kerkhof 13:11</li><li><a href="stop-97502.html">97502</a> - Membruggen Kabien 13:12</li><li><a href="stop-97504.html">97504</a> - Membruggen Monument 13:13</li><li><a href="stop-97506.html">97506</a> - Membruggen Rijkerstraat 13:14</li><li><a href="stop-97487.html">97487</a> - Membruggen Mopertingenweg 13:15</li><li><a href="stop-97677.html">97677</a> - 's Herenelderen Lindebornstraat 13:19</li><li><a href="stop-97676.html">97676</a> - 's Herenelderen Bavershoeve 13:20</li><li><a href="stop-97680.html">97680</a> - 's Herenelderen Waterkuilstraat 13:21</li><li><a href="stop-34451.html">34451</a> - Tongeren Treurenberg 13:24</li><li><a href="stop-34687.html">34687</a> - Tongeren Hospitaal 13:25</li><li><a href="stop-88490.html">88490</a> - Tongeren Meulemanslaan 13:26</li><li><a href="stop-34642.html">34642</a> - Tongeren Het Kruis 13:27</li><li><a href="stop-34484.html">34484</a> - Tongeren Station 13:32</li><li><a href="stop-34705.html">34705</a> - Tongeren Kerk 13:33</li><li><a href="stop-34702.html">34702</a> - Tongeren Kazerne 13:33</li><li><a href="stop-34701.html">34701</a> - Tongeren Blaarstraat 13:34</li><li><a href="stop-34465.html">34465</a> - Tongeren Eerste Meistraat 13:35</li><li><a href="stop-34449.html">34449</a> - Tongeren Blaarmolenstraat 13:35</li><li><a href="stop-92281.html">92281</a> - Tongeren Muggenberg 13:37</li><li><a href="stop-88488.html">88488</a> - Mal Strikstraat 13:37</li><li><a href="stop-34541.html">34541</a> - Mal Hogeropstraat 13:38</li><li><a href="stop-34707.html">34707</a> - Mal Klein Malstraat 13:39</li><li><a href="stop-34708.html">34708</a> - Mal Kleinmeerstraat 13:40</li><li><a href="stop-34543.html">34543</a> - Mal Kerk 13:40</li><li><a href="stop-123178.html">123178</a> - Mal Waterstraat 13:40</li><li><a href="stop-34629.html">34629</a> - Sluizen Apotheek 13:41</li><li><a href="stop-34438.html">34438</a> - Mal Kruisvindingsstraat 13:43</li><li><a href="stop-123183.html">123183</a> - Nerem Neremplein 13:45</li><li><a href="stop-89630.html">89630</a> - Nerem Brug Henrotte 13:46</li><li><a href="stop-89633.html">89633</a> - Nerem Kremersstraat 13:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5363.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

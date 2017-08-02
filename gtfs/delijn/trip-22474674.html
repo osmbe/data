@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Diepenbeek - Universiteit - Hasselt - 22474674</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Diepenbeek - Universiteit - Hasselt - 22474674</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-43784.html">43784</a> - Genk Station perron 4 09:30</li><li><a href="stop-28451.html">28451</a> - Genk Dieplaan 09:32</li><li><a href="stop-28624.html">28624</a> - Genk Weg naar Termien 09:33</li><li><a href="stop-122998.html">122998</a> - Genk Termien Kerk 09:34</li><li><a href="stop-28470.html">28470</a> - Genk Flekeleerstraat 09:34</li><li><a href="stop-28673.html">28673</a> - Genk Meeënweg 09:35</li><li><a href="stop-43773.html">43773</a> - Genk Caetsbeek 09:39</li><li><a href="stop-43031.html">43031</a> - Diepenbeek Dahliastraat 09:41</li><li><a href="stop-98442.html">98442</a> - Diepenbeek Rozendaal 09:42</li><li><a href="stop-100198.html">100198</a> - Diepenbeek Anjerstraat 09:42</li><li><a href="stop-100200.html">100200</a> - Diepenbeek Irisstraat 09:43</li><li><a href="stop-27777.html">27777</a> - Diepenbeek Kabergheidestraat 09:45</li><li><a href="stop-27861.html">27861</a> - Diepenbeek Zandstraat 09:46</li><li><a href="stop-27848.html">27848</a> - Diepenbeek Volkstraat 09:47</li><li><a href="stop-27809.html">27809</a> - Diepenbeek Pastorijstraat 09:49</li><li><a href="stop-105182.html">105182</a> - Lutselus Kerk 09:50</li><li><a href="stop-96577.html">96577</a> - Lutselus Lutselusplein 09:50</li><li><a href="stop-96580.html">96580</a> - Lutselus Schoolstraat 09:51</li><li><a href="stop-96581.html">96581</a> - Lutselus Steenakkerstraat 09:52</li><li><a href="stop-96570.html">96570</a> - Lutselus Kanaalstraat 09:52</li><li><a href="stop-27905.html">27905</a> - Diepenbeek Biezenveld 09:53</li><li><a href="stop-27836.html">27836</a> - Diepenbeek Sint-Servatiusstraat 09:54</li><li><a href="stop-27765.html">27765</a> - Diepenbeek Heidestraat 09:55</li><li><a href="stop-27761.html">27761</a> - Diepenbeek Ganzebroekstraat 09:56</li><li><a href="stop-27887.html">27887</a> - Diepenbeek Stationsstraat 09:57</li><li><a href="stop-27822.html">27822</a> - Diepenbeek Provinciale School 09:58</li><li><a href="stop-27839.html">27839</a> - Diepenbeek Station 09:59</li><li><a href="stop-27838.html">27838</a> - Diepenbeek Spoorstraat 10:00</li><li><a href="stop-27850.html">27850</a> - Diepenbeek Waardestraat 10:00</li><li><a href="stop-27803.html">27803</a> - Diepenbeek Nierstraat 10:02</li><li><a href="stop-27812.html">27812</a> - Diepenbeek Peperstraat 10:03</li><li><a href="stop-27750.html">27750</a> - Diepenbeek De Bokkenrijer 10:04</li><li><a href="stop-120579.html">120579</a> - Diepenbeek Agoralaan 10:07</li><li><a href="stop-110215.html">110215</a> - Diepenbeek Universiteit 10:07</li><li><a href="stop-120580.html">120580</a> - Diepenbeek Agoralaan 10:08</li><li><a href="stop-29304.html">29304</a> - Hasselt Provinciehuis 10:12</li><li><a href="stop-128880.html">128880</a> - Hasselt Rijksadministratief Centrum 10:13</li><li><a href="stop-29713.html">29713</a> - Hasselt Kapermolen 10:14</li><li><a href="stop-29267.html">29267</a> - Hasselt Dusartplein 10:16</li><li><a href="stop-29356.html">29356</a> - Hasselt Molenpoort afstaphalte 10:18</li><li><a href="stop-128981.html">128981</a> - Hasselt Station perron 6 10:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4940.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

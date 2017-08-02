@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Deinze - Gent - Lochristi - Beervelde - 20703543</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Deinze - Gent - Lochristi - Beervelde - 20703543</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-113108.html">113108</a> - Beervelde Tollekenswegel 06:55</li><li><a href="stop-113107.html">113107</a> - Beervelde Molenstraatje 06:56</li><li><a href="stop-113106.html">113106</a> - Beervelde Bennesteeg 06:57</li><li><a href="stop-113105.html">113105</a> - Beervelde Station 06:59</li><li><a href="stop-113069.html">113069</a> - Beervelde Bastelare 07:00</li><li><a href="stop-113104.html">113104</a> - Lochristi Beervelde Baan 07:01</li><li><a href="stop-113103.html">113103</a> - Lochristi Tomboslaan 07:03</li><li><a href="stop-113102.html">113102</a> - Lochristi Ledebeekweg 07:05</li><li><a href="stop-113101.html">113101</a> - Lochristi Lobos 07:05</li><li><a href="stop-113100.html">113100</a> - Lochristi Boskapellaan 07:06</li><li><a href="stop-113049.html">113049</a> - Lochristi Rozelaredreef 07:07</li><li><a href="stop-113099.html">113099</a> - Lochristi Bosdreef 07:08</li><li><a href="stop-113080.html">113080</a> - Lochristi Rustoord 07:10</li><li><a href="stop-113079.html">113079</a> - Lochristi Kerk 07:11</li><li><a href="stop-113078.html">113078</a> - Lochristi Schoolstraat 07:12</li><li><a href="stop-113077.html">113077</a> - Lochristi Stationsstraat 07:13</li><li><a href="stop-113076.html">113076</a> - Lochristi Azalealaan 07:14</li><li><a href="stop-113075.html">113075</a> - Lochristi Lichtelarestraat 07:15</li><li><a href="stop-113074.html">113074</a> - Lochristi Doornikstraat 07:16</li><li><a href="stop-113073.html">113073</a> - Lochristi Sparrenlaan 07:17</li><li><a href="stop-113072.html">113072</a> - Oostakker Eisenhowerlaan 07:18</li><li><a href="stop-113071.html">113071</a> - Oostakker Teirlinckstraat 07:19</li><li><a href="stop-111342.html">111342</a> - Sint-Amandsberg Achtenkouterstraat 07:20</li><li><a href="stop-113065.html">113065</a> - Sint-Amandsberg P+R Oostakker 07:21</li><li><a href="stop-111231.html">111231</a> - Sint-Amandsberg Oudebareelstraat 07:22</li><li><a href="stop-111230.html">111230</a> - Sint-Amandsberg Carelshof 07:23</li><li><a href="stop-111317.html">111317</a> - Sint-Amandsberg Everstraat 07:24</li><li><a href="stop-111316.html">111316</a> - Sint-Amandsberg Zavelput 07:25</li><li><a href="stop-111318.html">111318</a> - Sint-Amandsberg Grondwetlaan 07:27</li><li><a href="stop-111319.html">111319</a> - Sint-Amandsberg Dienstencentrum 07:28</li><li><a href="stop-120186.html">120186</a> - Sint-Amandsberg Schoolstraat 07:29</li><li><a href="stop-126807.html">126807</a> - Gent Dampoort perron 5 07:31</li><li><a href="stop-111323.html">111323</a> - Gent Veemarkt 07:33</li><li><a href="stop-111324.html">111324</a> - Gent Eendrachtstraat 07:34</li><li><a href="stop-128659.html">128659</a> - Gent Tweebruggenstraat 07:35</li><li><a href="stop-126547.html">126547</a> - Gent Zuid perron 4 07:38</li><li><a href="stop-112088.html">112088</a> - Gent Vijfwindgatenstraat 07:40</li><li><a href="stop-111367.html">111367</a> - Gent Muinklaan 07:41</li><li><a href="stop-111368.html">111368</a> - Gent Leeuwstraat 07:43</li><li><a href="stop-111369.html">111369</a> - Gent Terplatenbrug 07:44</li><li><a href="stop-111370.html">111370</a> - Gent Heuvelpoort 07:45</li><li><a href="stop-111371.html">111371</a> - Gent Ledeganckstraat 07:46</li><li><a href="stop-111372.html">111372</a> - Gent Fortlaan 07:47</li><li><a href="stop-112021.html">112021</a> - Gent Parkplein 07:48</li><li><a href="stop-126672.html">126672</a> - Gent Sint-Pietersstation perron 5 07:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./603.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

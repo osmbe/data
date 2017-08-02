@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Doornik - Brussels Airport - Zaventem - IC192235251</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Doornik - Brussels Airport - Zaventem - IC192235251</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8885001_3.html">8885001:3</a> - Tournai 22:44</li><li><a href="stop-8886348_2.html">8886348:2</a> - Leuze 22:56</li><li><a href="stop-8886009_1.html">8886009:1</a> - Ath 23:08</li><li><a href="stop-8883436_1.html">8883436:1</a> - Silly 23:17</li><li><a href="stop-8883311_4.html">8883311:4</a> - Enghien 23:26</li><li><a href="stop-8814308_2.html">8814308:2</a> - Halle 23:38</li><li><a href="stop-8814001_17.html">8814001:17</a> - Brussel-Zuid/Bruxelles-Midi 23:51</li><li><a href="stop-8813003_5.html">8813003:5</a> - Brussel-Centraal/Bruxelles-Central 23:55</li><li><a href="stop-8812005_5.html">8812005:5</a> - Brussel-Noord/Bruxelles-Nord 24:02</li><li><a href="stop-8811213_4.html">8811213:4</a> - Diegem 24:12</li><li><a href="stop-8811221_4.html">8811221:4</a> - Zaventem 24:16</li><li><a href="stop-8819406_1.html">8819406:1</a> - Brussel-Nat-Luchthaven/Bruxelles-Nat-Aéroport 24:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./135.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

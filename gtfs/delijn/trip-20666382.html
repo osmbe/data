@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent Fl. Expo - Gent St.Pieters - Evergem Brielken - 20666382</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent Fl. Expo - Gent St.Pieters - Evergem Brielken - 20666382</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-111116.html">111116</a> - Evergem Brielken 20:30</li><li><a href="stop-111117.html">111117</a> - Evergem Spoorwegstraat 20:32</li><li><a href="stop-111118.html">111118</a> - Wondelgem Heinakker 20:34</li><li><a href="stop-111119.html">111119</a> - Wondelgem Industrieweg 20:35</li><li><a href="stop-111121.html">111121</a> - Wondelgem Vroonstallestraat 20:36</li><li><a href="stop-111122.html">111122</a> - Wondelgem Hoevestraat 20:37</li><li><a href="stop-111123.html">111123</a> - Wondelgem Langeveld 20:38</li><li><a href="stop-111124.html">111124</a> - Wondelgem Botestraat 20:39</li><li><a href="stop-111125.html">111125</a> - Wondelgem Roodborstjesstraat 20:41</li><li><a href="stop-111126.html">111126</a> - Wondelgem Kolegemstraat 20:42</li><li><a href="stop-111127.html">111127</a> - Gent Poperingestraat 20:43</li><li><a href="stop-111128.html">111128</a> - Gent Van Beverenplein 20:44</li><li><a href="stop-111129.html">111129</a> - Gent Hortensiastraat 20:46</li><li><a href="stop-111131.html">111131</a> - Gent Guislainstraat 20:48</li><li><a href="stop-111132.html">111132</a> - Gent Nieuwevaartbrug 20:49</li><li><a href="stop-111133.html">111133</a> - Gent Witte Kaproenenplein 20:50</li><li><a href="stop-111134.html">111134</a> - Gent Rabot 20:52</li><li><a href="stop-111135.html">111135</a> - Gent Rabotstraat 20:53</li><li><a href="stop-111136.html">111136</a> - Gent Burgstraat 20:54</li><li><a href="stop-111137.html">111137</a> - Gent Gravensteen 20:56</li><li><a href="stop-126562.html">126562</a> - Gent Korenmarkt perron 1 20:58</li><li><a href="stop-111139.html">111139</a> - Gent Zonnestraat 20:59</li><li><a href="stop-111140.html">111140</a> - Gent Savaanstraat 21:01</li><li><a href="stop-111141.html">111141</a> - Gent Verlorenkost 21:01</li><li><a href="stop-111142.html">111142</a> - Gent Veergrep 21:03</li><li><a href="stop-111144.html">111144</a> - Gent Van Nassaustraat 21:05</li><li><a href="stop-111145.html">111145</a> - Gent Van Monckhovenstraat 21:06</li><li><a href="stop-126668.html">126668</a> - Gent Sint-Pietersstation perron 1 21:08</li><li><a href="stop-111261.html">111261</a> - Gent Hogeschool Gent 21:09</li><li><a href="stop-111262.html">111262</a> - Gent Textielinstituut 21:11</li><li><a href="stop-111263.html">111263</a> - Gent Maaltebruggestraat 21:12</li><li><a href="stop-111264.html">111264</a> - Gent M. Middelares - Maalte 21:13</li><li><a href="stop-111400.html">111400</a> - Sint-Denijs-Westrem Flanders Expo 21:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./26.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

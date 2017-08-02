@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Zolder - Heusden - Helchteren - Houthalen - 22473325</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Zolder - Heusden - Helchteren - Houthalen - 22473325</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-30630.html">30630</a> - Helchteren Technische School 12:10</li><li><a href="stop-92283.html">92283</a> - Houthalen John Cuppensplein 12:19</li><li><a href="stop-30711.html">30711</a> - Houthalen Filip Neri 12:22</li><li><a href="stop-30776.html">30776</a> - Houthalen Welvaartstraat 12:23</li><li><a href="stop-30750.html">30750</a> - Houthalen Sint-Paulusinstituut onder 12:24</li><li><a href="stop-30662.html">30662</a> - Houthalen Guldensporenlaan 12:25</li><li><a href="stop-43818.html">43818</a> - Houthalen Weg naar Helchteren 12:26</li><li><a href="stop-30709.html">30709</a> - Houthalen Lillo 12:27</li><li><a href="stop-92823.html">92823</a> - Zolder Boekweitstraat 12:28</li><li><a href="stop-91041.html">91041</a> - Zolder Pleintje 12:29</li><li><a href="stop-30441.html">30441</a> - Zolder Mijn 12:30</li><li><a href="stop-30396.html">30396</a> - Heusden Ziekenhuis 12:32</li><li><a href="stop-123282.html">123282</a> - Heusden Sint-Franciscuscollege 12:32</li><li><a href="stop-30356.html">30356</a> - Heusden Berkenbos 12:34</li><li><a href="stop-30385.html">30385</a> - Heusden Rode Kruisstraat 12:36</li><li><a href="stop-30358.html">30358</a> - Heusden Brug 12:37</li><li><a href="stop-30377.html">30377</a> - Heusden Kerkeblookstraat 12:39</li><li><a href="stop-123041.html">123041</a> - Heusden Campus Heusden 12:40</li><li><a href="stop-30408.html">30408</a> - Heusden Schootstraat 12:41</li><li><a href="stop-30410.html">30410</a> - Heusden Zolderseweg 12:43</li><li><a href="stop-30430.html">30430</a> - Zolder Ketelstraat 12:46</li><li><a href="stop-30411.html">30411</a> - Zolder A. Cuppenslaan 12:47</li><li><a href="stop-30426.html">30426</a> - Zolder Kerk 12:48</li><li><a href="stop-30427.html">30427</a> - Zolder Kerkebosstraat 12:49</li><li><a href="stop-30417.html">30417</a> - Zolder Ganzenstraat 12:50</li><li><a href="stop-30415.html">30415</a> - Zolder Bieststraat 12:52</li><li><a href="stop-97094.html">97094</a> - Boekt Kruispunt 12:53</li><li><a href="stop-97093.html">97093</a> - Boekt Hofeinde 12:54</li><li><a href="stop-97085.html">97085</a> - Boekt Belikstraat 12:55</li><li><a href="stop-97087.html">97087</a> - Boekt De Panestraat 12:56</li><li><a href="stop-97090.html">97090</a> - Boekt H. Hartlaan 12:58</li><li><a href="stop-97097.html">97097</a> - Boekt Poelenstraat 12:58</li><li><a href="stop-97098.html">97098</a> - Boekt Steenberg 12:59</li><li><a href="stop-97100.html">97100</a> - Boekt Weg naar Viversel 13:00</li><li><a href="stop-97141.html">97141</a> - Viversel Snelwegstraat 13:01</li><li><a href="stop-97126.html">97126</a> - Viversel Jeugdlaan 13:02</li><li><a href="stop-97133.html">97133</a> - Viversel Pleinstraat 13:03</li><li><a href="stop-97131.html">97131</a> - Viversel Kerk 13:04</li><li><a href="stop-97129.html">97129</a> - Viversel Kapel 13:05</li><li><a href="stop-97112.html">97112</a> - Viversel Tunnel autocircuit 13:06</li><li><a href="stop-97111.html">97111</a> - Bolderberg Kerk 13:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4564.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

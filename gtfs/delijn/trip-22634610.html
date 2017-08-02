@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Poperinge-Dranouter-Nieuwkerke - 22634610</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Poperinge-Dranouter-Nieuwkerke - 22634610</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-104513.html">104513</a> - Loker Dorp 07:41</li><li><a href="stop-104515.html">104515</a> - Loker Meiboom 07:42</li><li><a href="stop-104514.html">104514</a> - Loker Hoekjes 07:43</li><li><a href="stop-104538.html">104538</a> - Westouter Kwadestraat 07:46</li><li><a href="stop-42751.html">42751</a> - Westouter De Brieke 07:47</li><li><a href="stop-42755.html">42755</a> - Westouter Neerplaats 07:48</li><li><a href="stop-104539.html">104539</a> - Westouter Ondank 07:49</li><li><a href="stop-42753.html">42753</a> - Westouter Keibilckstraat 07:50</li><li><a href="stop-42678.html">42678</a> - Reningelst Driehoek 07:52</li><li><a href="stop-101134.html">101134</a> - Reningelst Dorp 07:52</li><li><a href="stop-42680.html">42680</a> - Reningelst Hoogte 07:53</li><li><a href="stop-42679.html">42679</a> - Reningelst Hemelstraat 07:54</li><li><a href="stop-42681.html">42681</a> - Reningelst Robaartbeek 07:55</li><li><a href="stop-42633.html">42633</a> - Poperinge Kruisstraat 07:57</li><li><a href="stop-42644.html">42644</a> - Poperinge Singel 07:58</li><li><a href="stop-42628.html">42628</a> - Poperinge Jagerstraat 08:00</li><li><a href="stop-42642.html">42642</a> - Poperinge Rekhof 08:01</li><li><a href="stop-104527.html">104527</a> - Poperinge Bertenplein 08:02</li><li><a href="stop-42840.html">42840</a> - Poperinge Hondstraat 08:02</li><li><a href="stop-92881.html">92881</a> - Poperinge Markt afstaphalte 08:03</li><li><a href="stop-42655.html">42655</a> - Poperinge Zwembad 08:05</li><li><a href="stop-126399.html">126399</a> - Poperinge Station perron 1 08:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6099.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

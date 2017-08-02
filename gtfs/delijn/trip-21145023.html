@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Etterbeek - Huldenberg - Ottenburg - 21145023</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Etterbeek - Huldenberg - Ottenburg - 21145023</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-89090.html">89090</a> - Elsene Etterbeek Station 13:37</li><li><a href="stop-88166.html">88166</a> - Oudergem Delta 13:43</li><li><a href="stop-90787.html">90787</a> - Oudergem Hermann-Debroux 13:50</li><li><a href="stop-10198.html">10198</a> - Oudergem U.L.B. Tuin Massart 13:51</li><li><a href="stop-87963.html">87963</a> - Oudergem Rood Klooster 13:51</li><li><a href="stop-90883.html">90883</a> - Overijse J.de Meeusstraat 13:58</li><li><a href="stop-99212.html">99212</a> - Overijse Louis Gunsstraat 13:59</li><li><a href="stop-87973.html">87973</a> - Overijse Hengstenberg 14:00</li><li><a href="stop-12968.html">12968</a> - Overijse O.L.Vrouwedal 14:01</li><li><a href="stop-87982.html">87982</a> - Overijse Terrest 14:02</li><li><a href="stop-13003.html">13003</a> - Overijse Vriendschapstraat 14:03</li><li><a href="stop-87977.html">87977</a> - Overijse Cl. Vanophemstraat 14:04</li><li><a href="stop-87976.html">87976</a> - Overijse Sint-Martinusschool 14:05</li><li><a href="stop-12992.html">12992</a> - Overijse Solheide 14:06</li><li><a href="stop-12947.html">12947</a> - Overijse Kerk 14:08</li><li><a href="stop-16221.html">16221</a> - Overijse De Leegheid 14:09</li><li><a href="stop-12980.html">12980</a> - Overijse Puttestraat 14:10</li><li><a href="stop-121270.html">121270</a> - Overijse Kouterstraat 14:11</li><li><a href="stop-11516.html">11516</a> - Huldenberg Kaalheide 14:12</li><li><a href="stop-11533.html">11533</a> - Huldenberg Stroobantsweg 14:13</li><li><a href="stop-11509.html">11509</a> - Huldenberg Gemeenteplein 14:14</li><li><a href="stop-11521.html">11521</a> - Huldenberg Koxberg (Huis nr 16) 14:15</li><li><a href="stop-11511.html">11511</a> - Huldenberg Geroytstraat 14:16</li><li><a href="stop-11534.html">11534</a> - Huldenberg Theyssensstraat 14:18</li><li><a href="stop-91136.html">91136</a> - Huldenberg Boven Smeysberg 14:19</li><li><a href="stop-11530.html">11530</a> - Huldenberg Stroobantsstraat 76 14:20</li><li><a href="stop-11519.html">11519</a> - Huldenberg Klooster 14:21</li><li><a href="stop-15959.html">15959</a> - Neerijse Steenbeekstraat 14:22</li><li><a href="stop-14717.html">14717</a> - Neerijse Weg naar Sint-Agatha-Rode 14:23</li><li><a href="stop-11591.html">11591</a> - Sint-Agatha-Rode Dorp 14:24</li><li><a href="stop-11957.html">11957</a> - Sint-Agatha-Rode School 14:25</li><li><a href="stop-11597.html">11597</a> - Sint-Agatha-Rode Vijverstraat 14:25</li><li><a href="stop-11599.html">11599</a> - Sint-Agatha-Rode Zesdagmaalstraat 14:26</li><li><a href="stop-16904.html">16904</a> - Sint-Agatha-Rode Cité 14:26</li><li><a href="stop-11595.html">11595</a> - Sint-Agatha-Rode Schaveistraat 14:27</li><li><a href="stop-11593.html">11593</a> - Sint-Agatha-Rode Gansdelle 14:28</li><li><a href="stop-11581.html">11581</a> - Ottenburg Kapel Sint-Rochus 14:29</li><li><a href="stop-16245.html">16245</a> - Ottenburg Leuvensebaan 97-110 14:29</li><li><a href="stop-16385.html">16385</a> - Ottenburg Dorp 14:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2203.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

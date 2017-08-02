@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Wemmel - Drijpikkel - 22766366</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Wemmel - Drijpikkel - 22766366</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-10096.html">10096</a> - Brussel Noord Perron 1 10:20</li><li><a href="stop-99470.html">99470</a> - Brussel Rogier 10:23</li><li><a href="stop-10071.html">10071</a> - Brussel Albert-II-laan 10:24</li><li><a href="stop-10069.html">10069</a> - Brussel IJzer 10:26</li><li><a href="stop-90802.html">90802</a> - Sint-Jans-Molenbeek Sainctelette 10:27</li><li><a href="stop-90799.html">90799</a> - Sint-Jans-Molenbeek Ribaucourt 10:28</li><li><a href="stop-10299.html">10299</a> - Sint-Jans-Molenbeek Jubelfeest 10:29</li><li><a href="stop-10278.html">10278</a> - Sint-Jans-Molenbeek Belgica 10:30</li><li><a href="stop-10295.html">10295</a> - Sint-Jans-Molenbeek Schelde 10:31</li><li><a href="stop-10102.html">10102</a> - Brussel Poesjkin 10:32</li><li><a href="stop-15693.html">15693</a> - Brussel Nekkersdal 10:33</li><li><a href="stop-10055.html">10055</a> - Brussel Bockstael 10:34</li><li><a href="stop-90784.html">90784</a> - Brussel Bockstael B 10:35</li><li><a href="stop-10115.html">10115</a> - Brussel Sobieski 10:37</li><li><a href="stop-10121.html">10121</a> - Brussel Stuyvenberg 10:38</li><li><a href="stop-10060.html">10060</a> - Brussel Brugmann 10:40</li><li><a href="stop-10117.html">10117</a> - Brussel Stadion 10:42</li><li><a href="stop-10126.html">10126</a> - Brussel Koning Boudewijn 10:43</li><li><a href="stop-14085.html">14085</a> - Wemmel Burvenich 10:45</li><li><a href="stop-14088.html">14088</a> - Wemmel De Ridder 10:46</li><li><a href="stop-14118.html">14118</a> - Wemmel Van Elewijck 10:48</li><li><a href="stop-14122.html">14122</a> - Wemmel Vijvers 10:49</li><li><a href="stop-14116.html">14116</a> - Wemmel Markt 10:50</li><li><a href="stop-14113.html">14113</a> - Wemmel Robbrechts 10:51</li><li><a href="stop-14111.html">14111</a> - Wemmel Parklaan 10:52</li><li><a href="stop-14093.html">14093</a> - Wemmel Ezelsbaan 10:52</li><li><a href="stop-14081.html">14081</a> - Wemmel Campus 10:53</li><li><a href="stop-14109.html">14109</a> - Wemmel Norland 10:54</li><li><a href="stop-14098.html">14098</a> - Wemmel Home Marie-Louise 10:54</li><li><a href="stop-11009.html">11009</a> - Strombeek-Bever Drijpikkel 10:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1908.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

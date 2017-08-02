@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Geel - Westerlo - Blauberg - Aarschot - 21545739</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Geel - Westerlo - Blauberg - Aarschot - 21545739</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109935.html">109935</a> - Westerlo Dorp 07:18</li><li><a href="stop-109933.html">109933</a> - Westerlo de Merodedreef 07:19</li><li><a href="stop-88323.html">88323</a> - Westerlo Stelplaats 07:20</li><li><a href="stop-25246.html">25246</a> - Herselt Oude Baan Diestsebaan 07:22</li><li><a href="stop-25249.html">25249</a> - Herselt Veerlepad 07:24</li><li><a href="stop-25251.html">25251</a> - Herselt Hulst 07:25</li><li><a href="stop-25254.html">25254</a> - Herselt Ploegpad 07:26</li><li><a href="stop-25256.html">25256</a> - Herselt Beldreef 07:27</li><li><a href="stop-25259.html">25259</a> - Herselt Vispoel 07:28</li><li><a href="stop-19646.html">19646</a> - Herselt Diestsebaan 07:28</li><li><a href="stop-109778.html">109778</a> - Herselt Berkenveld 07:29</li><li><a href="stop-25263.html">25263</a> - Herselt Bremheide 07:29</li><li><a href="stop-125843.html">125843</a> - Herselt Blauberg kerk 07:30</li><li><a href="stop-25267.html">25267</a> - Herselt Goordijk 07:31</li><li><a href="stop-25269.html">25269</a> - Herselt Zandstraat 07:32</li><li><a href="stop-25270.html">25270</a> - Herselt Wezel 07:33</li><li><a href="stop-25272.html">25272</a> - Herselt Eikenstraat 07:36</li><li><a href="stop-25274.html">25274</a> - Herselt Molenbergstraat 07:37</li><li><a href="stop-109774.html">109774</a> - Herselt Dorp 07:38</li><li><a href="stop-25225.html">25225</a> - Herselt Stap 07:39</li><li><a href="stop-25228.html">25228</a> - Herselt Neerstraat 07:39</li><li><a href="stop-25230.html">25230</a> - Herselt Ramselsesteenweg 07:40</li><li><a href="stop-25233.html">25233</a> - Herselt Stoppelblokken garage 07:40</li><li><a href="stop-25235.html">25235</a> - Herselt Molenvloed 07:41</li><li><a href="stop-25238.html">25238</a> - Herselt Oude Steenovenweg 07:42</li><li><a href="stop-25240.html">25240</a> - Ramsel Bosstraat 07:43</li><li><a href="stop-25243.html">25243</a> - Ramsel Truitseinde Aarschotsestwg. 07:44</li><li><a href="stop-25512.html">25512</a> - Ramsel Madestraat 07:45</li><li><a href="stop-15891.html">15891</a> - Aarschot Oude Mechelsebaan 07:46</li><li><a href="stop-15893.html">15893</a> - Aarschot Lindekensstraat 07:47</li><li><a href="stop-128920.html">128920</a> - Aarschot Bareel 07:48</li><li><a href="stop-15897.html">15897</a> - Aarschot Heilaakstraat 07:49</li><li><a href="stop-93860.html">93860</a> - Aarschot Bekaf 07:51</li><li><a href="stop-9300.html">9300</a> - Aarschot Bekaf 07:53</li><li><a href="stop-128814.html">128814</a> - Aarschot Damiaaninstituut 07:55</li><li><a href="stop-9299.html">9299</a> - Aarschot Atheneum 07:56</li><li><a href="stop-128815.html">128815</a> - Aarschot Kerk 07:57</li><li><a href="stop-105085.html">105085</a> - Aarschot Station perron 4 07:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3436.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

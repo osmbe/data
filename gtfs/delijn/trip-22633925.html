@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Ieper-Poperinge-Abele - 22633925</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ieper-Poperinge-Abele - 22633925</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-104528.html">104528</a> - Poperinge Markt 05:37</li><li><a href="stop-42840.html">42840</a> - Poperinge Hondstraat 05:38</li><li><a href="stop-92881.html">92881</a> - Poperinge Markt afstaphalte 05:39</li><li><a href="stop-42655.html">42655</a> - Poperinge Zwembad 05:40</li><li><a href="stop-126400.html">126400</a> - Poperinge Station perron 3 05:41</li><li><a href="stop-94498.html">94498</a> - Poperinge Oostlaan 05:42</li><li><a href="stop-42648.html">42648</a> - Poperinge Edelweiss 05:42</li><li><a href="stop-42638.html">42638</a> - Poperinge Meiboom 05:44</li><li><a href="stop-42717.html">42717</a> - Vlamertinge Brandhoek 05:46</li><li><a href="stop-42718.html">42718</a> - Vlamertinge Bruneel 05:47</li><li><a href="stop-42719.html">42719</a> - Vlamertinge Casselstraat 05:48</li><li><a href="stop-42722.html">42722</a> - Vlamertinge Sporthal 05:48</li><li><a href="stop-42720.html">42720</a> - Vlamertinge Kerk 05:49</li><li><a href="stop-42723.html">42723</a> - Vlamertinge Station 05:49</li><li><a href="stop-42452.html">42452</a> - Ieper Cafe Belge 05:50</li><li><a href="stop-42447.html">42447</a> - Ieper Augustijnenstraat 05:54</li><li><a href="stop-42453.html">42453</a> - Ieper Capucienenstraat 05:56</li><li><a href="stop-126390.html">126390</a> - Ieper Station perron 3 05:58</li><li><a href="stop-95332.html">95332</a> - Ieper Oudstrijderslaan 06:01</li><li><a href="stop-38542.html">38542</a> - Ieper Rijselpoort 06:01</li><li><a href="stop-104779.html">104779</a> - Ieper Sint-Pieterskerk 06:02</li><li><a href="stop-38536.html">38536</a> - Ieper Markt 06:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4189.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

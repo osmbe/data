@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Lier - Kontich - Wilrijk - 22507691</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Lier - Kontich - Wilrijk - 22507691</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108094.html">108094</a> - Lier Veemarkt perron 4 16:03</li><li><a href="stop-109282.html">109282</a> - Lier Kluizenplein 16:05</li><li><a href="stop-109281.html">109281</a> - Lier Markt 16:07</li><li><a href="stop-109279.html">109279</a> - Lier Rolwagenstraat 16:11</li><li><a href="stop-109940.html">109940</a> - Lier Station perron 11 16:12</li><li><a href="stop-19722.html">19722</a> - Lier Zwembad 16:14</li><li><a href="stop-19720.html">19720</a> - Lier Boomlaarstraat 16:15</li><li><a href="stop-19716.html">19716</a> - Lier Pieter Breughellaan 16:17</li><li><a href="stop-19718.html">19718</a> - Lier Frans Boogaertslaan 16:17</li><li><a href="stop-109138.html">109138</a> - Lier Oudstrijderslaan 16:19</li><li><a href="stop-100169.html">100169</a> - Lier Maaikeneveld 16:20</li><li><a href="stop-100167.html">100167</a> - Lier Hulststraat 16:22</li><li><a href="stop-23372.html">23372</a> - Lint Trommelbaan 16:23</li><li><a href="stop-23370.html">23370</a> - Lint Haakveld 16:24</li><li><a href="stop-109136.html">109136</a> - Lint Zevenhuizenstraat 16:25</li><li><a href="stop-109134.html">109134</a> - Lint Bouwenstraat 16:26</li><li><a href="stop-109132.html">109132</a> - Lint Brouwerijstraat 16:26</li><li><a href="stop-109130.html">109130</a> - Lint Kerk 16:27</li><li><a href="stop-109128.html">109128</a> - Lint Kasteelplein 16:28</li><li><a href="stop-87287.html">87287</a> - Lint Reynaertshof 16:29</li><li><a href="stop-108089.html">108089</a> - Kontich Hoge Akker 16:30</li><li><a href="stop-20909.html">20909</a> - Kontich Elshagenlaan 16:31</li><li><a href="stop-109125.html">109125</a> - Kontich Weg op Lint 16:32</li><li><a href="stop-126984.html">126984</a> - Kontich Station perron 2 16:33</li><li><a href="stop-23354.html">23354</a> - Kontich Weg op Lint 16:34</li><li><a href="stop-20907.html">20907</a> - Kontich Hof Van Spruytlaan 16:36</li><li><a href="stop-109124.html">109124</a> - Kontich Kon. Astridlaan 16:37</li><li><a href="stop-23350.html">23350</a> - Kontich Hofstraat 16:38</li><li><a href="stop-109122.html">109122</a> - Kontich Duivenstraat 16:39</li><li><a href="stop-109243.html">109243</a> - Kontich Edegemsesteenweg 16:39</li><li><a href="stop-109120.html">109120</a> - Kontich Kerk 16:40</li><li><a href="stop-109242.html">109242</a> - Kontich Edegemsesteenweg 16:41</li><li><a href="stop-108087.html">108087</a> - Kontich De Villermontstraat 16:42</li><li><a href="stop-20904.html">20904</a> - Kontich VTI 16:43</li><li><a href="stop-20892.html">20892</a> - Edegem Posdijk 16:45</li><li><a href="stop-108082.html">108082</a> - Edegem Mgr. Cardijnlaan 16:46</li><li><a href="stop-88429.html">88429</a> - Edegem Gemeentehuis 16:47</li><li><a href="stop-107849.html">107849</a> - Edegem Hof Ter Linden 16:48</li><li><a href="stop-108005.html">108005</a> - Edegem Kladdenbergstraat 16:49</li><li><a href="stop-107388.html">107388</a> - Edegem Baron De Celleslaan 16:50</li><li><a href="stop-20890.html">20890</a> - Edegem Ter Borchtlaan 16:51</li><li><a href="stop-108086.html">108086</a> - Edegem W. Herreynsstraat 16:52</li><li><a href="stop-127733.html">127733</a> - Edegem Universitair Ziekenhuis p. 11 16:54</li><li><a href="stop-88211.html">88211</a> - Edegem Revarte 16:55</li><li><a href="stop-107609.html">107609</a> - Wilrijk Doornstraat 16:58</li><li><a href="stop-108642.html">108642</a> - Wilrijk Universiteitsplein 17:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2855.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

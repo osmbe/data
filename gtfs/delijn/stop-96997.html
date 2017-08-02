@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Horpmaal Tomberg</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Horpmaal Tomberg</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-22460303.html">22460303</a> - 22460303 - Tongeren - Heers</li><li><a href="trip-22466937.html">22466937</a> - 22466937 - Tongeren - Heers</li><li><a href="trip-22473092.html">22473092</a> - 22473092 - Tongeren - Heers</li><li><a href="trip-22479438.html">22479438</a> - 22479438 - Tongeren - Heers</li><li><a href="trip-22480760.html">22480760</a> - 22480760 - Tongeren - Heers</li><li><a href="trip-22485990.html">22485990</a> - 22485990 - Tongeren - Heers</li><li><a href="trip-22490695.html">22490695</a> - 22490695 - Tongeren - Heers</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.7613494862073, 5.33449653662069], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.7613494862073, 5.33449653662069]).addTo(map);
+    </script>
+</body>
+
+</html>

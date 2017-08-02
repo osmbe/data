@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Landen - Tienen - 22475918</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Landen - Tienen - 22475918</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-88391.html">88391</a> - Landen Station perron 1 16:10</li><li><a href="stop-12026.html">12026</a> - Landen Stadhuis 16:11</li><li><a href="stop-128834.html">128834</a> - Landen Bronplein 16:12</li><li><a href="stop-31612.html">31612</a> - Landen Tiensestraat 16:12</li><li><a href="stop-89618.html">89618</a> - Landen Overwindenstraat 16:13</li><li><a href="stop-31498.html">31498</a> - Landen Roosberg 16:14</li><li><a href="stop-31594.html">31594</a> - Overwinden Kabien 16:16</li><li><a href="stop-31596.html">31596</a> - Overwinden Kerk 16:16</li><li><a href="stop-31598.html">31598</a> - Overwinden Kruispunt 16:17</li><li><a href="stop-31325.html">31325</a> - Overwinden Middelwindenstraat 16:18</li><li><a href="stop-31589.html">31589</a> - Neerwinden Station 16:19</li><li><a href="stop-31587.html">31587</a> - Neerwinden Laarstraat 16:20</li><li><a href="stop-31565.html">31565</a> - Laar Kleinveldstraat 16:20</li><li><a href="stop-31568.html">31568</a> - Laar Wijngaardstraat 16:21</li><li><a href="stop-31562.html">31562</a> - Laar Kerk 16:21</li><li><a href="stop-31567.html">31567</a> - Laar Weg naar Eliksem 16:22</li><li><a href="stop-31524.html">31524</a> - Eliksem Watermolen 16:24</li><li><a href="stop-31522.html">31522</a> - Eliksem Kerk 16:25</li><li><a href="stop-31518.html">31518</a> - Eliksem Grote Steenweg 16:26</li><li><a href="stop-31546.html">31546</a> - Ezemaal Tramstraat 16:26</li><li><a href="stop-31538.html">31538</a> - Ezemaal Kruispunt 16:27</li><li><a href="stop-31533.html">31533</a> - Ezemaal Brug 16:27</li><li><a href="stop-31543.html">31543</a> - Ezemaal Station 16:28</li><li><a href="stop-31539.html">31539</a> - Ezemaal Nieuwe Wijk 16:29</li><li><a href="stop-17070.html">17070</a> - Goetsenhoven Meer Hoeve 16:31</li><li><a href="stop-128853.html">128853</a> - Goetsenhoven Meer Kruispunt 16:31</li><li><a href="stop-128851.html">128851</a> - Hakendover Kapel 16:33</li><li><a href="stop-15412.html">15412</a> - Hakendover Overweg 16:34</li><li><a href="stop-15414.html">15414</a> - Tienen Oostelijke Ring 16:35</li><li><a href="stop-15416.html">15416</a> - Tienen Grimde Kerk 16:37</li><li><a href="stop-13915.html">13915</a> - Tienen Suikerraffinaderij 16:38</li><li><a href="stop-13899.html">13899</a> - Tienen Leopoldvest 16:39</li><li><a href="stop-13874.html">13874</a> - Tienen Sliksteenvest 16:40</li><li><a href="stop-127860.html">127860</a> - Tienen Kabbeekvest 16:41</li><li><a href="stop-127857.html">127857</a> - Tienen Kabbeeksepoort 16:42</li><li><a href="stop-13880.html">13880</a> - Tienen Kerk Heilig Hart 16:43</li><li><a href="stop-13886.html">13886</a> - Tienen Leuvenselaan 16:44</li><li><a href="stop-13861.html">13861</a> - Tienen 4de Lansierslaan 16:45</li><li><a href="stop-13906.html">13906</a> - Tienen Station Perron 4 16:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5259.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

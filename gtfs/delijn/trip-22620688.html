@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Tielt - 22620688</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Tielt - 22620688</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126416.html">126416</a> - Tielt Station perron 2 11:23</li><li><a href="stop-37135.html">37135</a> - Tielt Vierhoek 11:24</li><li><a href="stop-90913.html">90913</a> - Tielt College 11:26</li><li><a href="stop-126272.html">126272</a> - Tielt Rameplein perron 1 11:27</li><li><a href="stop-37121.html">37121</a> - Tielt Dekenij 11:28</li><li><a href="stop-104701.html">104701</a> - Tielt Polenplein 11:29</li><li><a href="stop-41160.html">41160</a> - Tielt Drukkerij Lannoo 11:30</li><li><a href="stop-41154.html">41154</a> - Tielt Automobielinspectie 11:31</li><li><a href="stop-41171.html">41171</a> - Tielt Sint-Amandstraat 11:33</li><li><a href="stop-104994.html">104994</a> - Meulebeke Vliegend Paard 11:34</li><li><a href="stop-17631.html">17631</a> - Meulebeke Molenstraat 11:36</li><li><a href="stop-41943.html">41943</a> - Meulebeke Paardekens 11:37</li><li><a href="stop-41942.html">41942</a> - Meulebeke Oosthoek 11:38</li><li><a href="stop-41939.html">41939</a> - Meulebeke Goethalsplaats 11:39</li><li><a href="stop-41941.html">41941</a> - Meulebeke Koevoet 11:40</li><li><a href="stop-41940.html">41940</a> - Meulebeke Hazewind 11:41</li><li><a href="stop-41673.html">41673</a> - Ingelmunster Bekaert 11:43</li><li><a href="stop-41672.html">41672</a> - Ingelmunster 'T Bouwke 11:43</li><li><a href="stop-41676.html">41676</a> - Ingelmunster Meulebekestraat Nr 56 11:44</li><li><a href="stop-100146.html">100146</a> - Ingelmunster Sportcentrum 11:46</li><li><a href="stop-41675.html">41675</a> - Ingelmunster Markt 11:47</li><li><a href="stop-41683.html">41683</a> - Ingelmunster Station 11:48</li><li><a href="stop-41674.html">41674</a> - Ingelmunster Garage 11:49</li><li><a href="stop-127336.html">127336</a> - Ingelmunster Vlasschaard 11:50</li><li><a href="stop-41668.html">41668</a> - Hulste Hoge Doorn 11:51</li><li><a href="stop-41671.html">41671</a> - Hulste Vlasbloem 11:52</li><li><a href="stop-41669.html">41669</a> - Hulste Kalsijde 11:53</li><li><a href="stop-41841.html">41841</a> - Kuurne Stokerij 11:55</li><li><a href="stop-41823.html">41823</a> - Kuurne Cafe Astrid 11:57</li><li><a href="stop-41829.html">41829</a> - Kuurne Katte 11:57</li><li><a href="stop-42277.html">42277</a> - Kuurne Watertorenstraat 11:58</li><li><a href="stop-41837.html">41837</a> - Kuurne Rumba 11:59</li><li><a href="stop-41824.html">41824</a> - Kuurne France 12:00</li><li><a href="stop-42312.html">42312</a> - Heule Shopping Center 12:01</li><li><a href="stop-41795.html">41795</a> - Kortrijk Samenkomst 12:02</li><li><a href="stop-41748.html">41748</a> - Kortrijk Brugsepoort 12:03</li><li><a href="stop-41800.html">41800</a> - Kortrijk Sint-Jansput 12:04</li><li><a href="stop-41780.html">41780</a> - Kortrijk Meensepoort 12:05</li><li><a href="stop-91302.html">91302</a> - Kortrijk De Appel 12:06</li><li><a href="stop-125732.html">125732</a> - Kortrijk L. Robbeplein 12:07</li><li><a href="stop-126442.html">126442</a> - Kortrijk Station perron 8 12:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4048.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

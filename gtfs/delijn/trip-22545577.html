@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Putte - Kapellen - Hoevenen - Antwerpen - 22545577</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Putte - Kapellen - Hoevenen - Antwerpen - 22545577</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-125250.html">125250</a> - Antwerpen F. Rooseveltplaats perron 22 19:24</li><li><a href="stop-108458.html">108458</a> - Antwerpen Sint-Jansplein 19:26</li><li><a href="stop-123332.html">123332</a> - Antwerpen Noorderplaats 19:27</li><li><a href="stop-107872.html">107872</a> - Antwerpen IJzerlaan 19:31</li><li><a href="stop-107869.html">107869</a> - Antwerpen Noorderbrug 19:32</li><li><a href="stop-107488.html">107488</a> - Antwerpen Straatsburgdok 19:33</li><li><a href="stop-107823.html">107823</a> - Antwerpen Noorderlaan 19:34</li><li><a href="stop-109408.html">109408</a> - Antwerpen Kinepolis 19:34</li><li><a href="stop-20093.html">20093</a> - Antwerpen Punt a/d Lijn 19:35</li><li><a href="stop-109661.html">109661</a> - Antwerpen Luchtbal Kerk 19:35</li><li><a href="stop-109564.html">109564</a> - Antwerpen Manchesterlaan 19:37</li><li><a href="stop-23818.html">23818</a> - Antwerpen Dublin 19:38</li><li><a href="stop-24097.html">24097</a> - Antwerpen Havanastraat 19:39</li><li><a href="stop-109776.html">109776</a> - Antwerpen R. Veremanstraat 19:41</li><li><a href="stop-43911.html">43911</a> - Ekeren F. Verbieststraat 19:42</li><li><a href="stop-24525.html">24525</a> - Ekeren Markt 19:43</li><li><a href="stop-109497.html">109497</a> - Ekeren Klein Hagelkruis 19:44</li><li><a href="stop-109413.html">109413</a> - Ekeren Groot Hagelkruis 19:46</li><li><a href="stop-109178.html">109178</a> - Ekeren Akkerstraat 19:47</li><li><a href="stop-109632.html">109632</a> - Ekeren Oorderseweg 19:48</li><li><a href="stop-109288.html">109288</a> - Ekeren Bilderdijk 19:49</li><li><a href="stop-109542.html">109542</a> - Ekeren Leugenberg 19:51</li><li><a href="stop-109500.html">109500</a> - Ekeren Klein Heiken 19:52</li><li><a href="stop-21790.html">21790</a> - Ekeren Plasstraat 19:53</li><li><a href="stop-21793.html">21793</a> - Hoevenen Molenweg 19:54</li><li><a href="stop-110007.html">110007</a> - Hoevenen Witvenpad 19:54</li><li><a href="stop-21795.html">21795</a> - Hoevenen Parijseweg 19:55</li><li><a href="stop-108472.html">108472</a> - Kapellen Albertdreef 19:56</li><li><a href="stop-108473.html">108473</a> - Kapellen Sevenhanslei 19:57</li><li><a href="stop-108475.html">108475</a> - Kapellen Dorp 19:59</li><li><a href="stop-108477.html">108477</a> - Kapellen Streepstraat 20:00</li><li><a href="stop-21807.html">21807</a> - Kapellen Dennenburg 20:02</li><li><a href="stop-108479.html">108479</a> - Kapellen Kalmthoutsesteenweg 20:02</li><li><a href="stop-21812.html">21812</a> - Kapellen Pelgrimsstraat 20:03</li><li><a href="stop-19547.html">19547</a> - Kapellen Kringloopcentrum 20:04</li><li><a href="stop-21815.html">21815</a> - Kapellen Waterstraat 20:05</li><li><a href="stop-21817.html">21817</a> - Kapellen Oude Galgenstraat 20:05</li><li><a href="stop-19422.html">19422</a> - Kapellen Oude Ertbrandstraat 20:06</li><li><a href="stop-21820.html">21820</a> - Kapellen Stabroeksteenweg 20:07</li><li><a href="stop-21822.html">21822</a> - Kapellen Lepelstraat 20:07</li><li><a href="stop-108486.html">108486</a> - Stabroek Moretuslei 20:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3729.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

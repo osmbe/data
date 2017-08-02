@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst Oude Abdijstraat - Station - Nieuwerkerken - 20712764</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst Oude Abdijstraat - Station - Nieuwerkerken - 20712764</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-117303.html">117303</a> - Aalst Oude Abdijstraat 08:34</li><li><a href="stop-116521.html">116521</a> - Aalst Horebekeveld 08:35</li><li><a href="stop-116522.html">116522</a> - Aalst Botermelkstraat 08:35</li><li><a href="stop-116523.html">116523</a> - Aalst Bosveld 08:36</li><li><a href="stop-116749.html">116749</a> - Aalst Heidestraat 08:36</li><li><a href="stop-116571.html">116571</a> - Aalst O. Dendermondsestwg 08:37</li><li><a href="stop-116607.html">116607</a> - Aalst Paaskeshof 08:38</li><li><a href="stop-115669.html">115669</a> - Aalst Dompelstraat 08:39</li><li><a href="stop-116626.html">116626</a> - Aalst Popperodehof 08:39</li><li><a href="stop-116629.html">116629</a> - Aalst Landbouwersstraat 08:40</li><li><a href="stop-116503.html">116503</a> - Aalst H.Hartplein 08:41</li><li><a href="stop-116495.html">116495</a> - Aalst Tulpstraat 08:42</li><li><a href="stop-116748.html">116748</a> - Aalst Dr. De Moorstraat 08:43</li><li><a href="stop-116525.html">116525</a> - Aalst Gasthuisstraat 08:44</li><li><a href="stop-116526.html">116526</a> - Aalst Moutstraat 08:45</li><li><a href="stop-126677.html">126677</a> - Aalst Station perron 1 08:49</li><li><a href="stop-117486.html">117486</a> - Aalst Oude Vismarkt 08:52</li><li><a href="stop-117480.html">117480</a> - Aalst Houtmarkt 08:53</li><li><a href="stop-117479.html">117479</a> - Aalst Colinetstraat 08:55</li><li><a href="stop-117478.html">117478</a> - Aalst Diepestraat 08:57</li><li><a href="stop-117477.html">117477</a> - Aalst Capucijnenlaan 08:58</li><li><a href="stop-117476.html">117476</a> - Aalst F. Roucelstraat 08:59</li><li><a href="stop-117475.html">117475</a> - Nieuwerkerken Odisee 09:00</li><li><a href="stop-117474.html">117474</a> - Nieuwerkerken Kwadesteenstraat 09:02</li><li><a href="stop-117473.html">117473</a> - Nieuwerkerken Kantonstraat 09:03</li><li><a href="stop-124864.html">124864</a> - Nieuwerkerken Kerk (OVL) 09:04</li><li><a href="stop-116636.html">116636</a> - Nieuwerkerken Terbekenstraat 09:05</li><li><a href="stop-117903.html">117903</a> - Nieuwerkerken Maal 09:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1025.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

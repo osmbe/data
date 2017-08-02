@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Diest / Tessenderlo - 22468537</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Diest / Tessenderlo - 22468537</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-32140.html">32140</a> - Meldert Melkerij 06:39</li><li><a href="stop-32134.html">32134</a> - Meldert Centrum 06:41</li><li><a href="stop-32137.html">32137</a> - Meldert Langendries 06:42</li><li><a href="stop-32141.html">32141</a> - Meldert Otterberg 06:42</li><li><a href="stop-28949.html">28949</a> - Zelem Bakelstraat 06:43</li><li><a href="stop-28972.html">28972</a> - Zelem Tuinwijkstraat 06:44</li><li><a href="stop-28962.html">28962</a> - Zelem Meldertsestraat 06:44</li><li><a href="stop-28967.html">28967</a> - Zelem Station 06:45</li><li><a href="stop-28968.html">28968</a> - Zelem Stationstraat 06:46</li><li><a href="stop-28955.html">28955</a> - Zelem Heidestraat 06:49</li><li><a href="stop-32182.html">32182</a> - Linkhout Vlootbrug 06:50</li><li><a href="stop-28945.html">28945</a> - Halen Singellaan 06:53</li><li><a href="stop-28941.html">28941</a> - Halen Kerk 06:53</li><li><a href="stop-28938.html">28938</a> - Halen Getebrug 06:54</li><li><a href="stop-30135.html">30135</a> - Donk Pastorijstraat 06:56</li><li><a href="stop-123031.html">123031</a> - Donk Grote Baan 06:57</li><li><a href="stop-30209.html">30209</a> - Herk-de-Stad Zeven Heldenlaan 06:58</li><li><a href="stop-30141.html">30141</a> - Herk-de-Stad Klooster 06:59</li><li><a href="stop-30146.html">30146</a> - Herk-de-Stad Markt 06:59</li><li><a href="stop-30136.html">30136</a> - Herk-de-Stad Hasseltsesteenweg 07:00</li><li><a href="stop-30192.html">30192</a> - Schulen Weg op Beringen 07:01</li><li><a href="stop-30125.html">30125</a> - Berbroek Steenweg 07:01</li><li><a href="stop-89246.html">89246</a> - Berbroek Sint-Jorislaan kruispunt 07:02</li><li><a href="stop-30114.html">30114</a> - Berbroek Bosstraat 07:03</li><li><a href="stop-30127.html">30127</a> - Berbroek Veiling 07:04</li><li><a href="stop-87474.html">87474</a> - Spalbeek Diestersteenweg 07:04</li><li><a href="stop-29540.html">29540</a> - Spalbeek Spalbeekstraat 07:05</li><li><a href="stop-29371.html">29371</a> - Kermt Meistraat 07:07</li><li><a href="stop-29363.html">29363</a> - Kermt De Willeman 07:08</li><li><a href="stop-29361.html">29361</a> - Kermt Centrum 07:09</li><li><a href="stop-29358.html">29358</a> - Kermt Heerstraat 07:10</li><li><a href="stop-29570.html">29570</a> - Kermt Asfaltfabriek 07:11</li><li><a href="stop-29378.html">29378</a> - Kermt Station 07:12</li><li><a href="stop-94959.html">94959</a> - Kuringen Stevoortse Kiezel 07:13</li><li><a href="stop-29448.html">29448</a> - Kuringen McDonald's 07:16</li><li><a href="stop-29282.html">29282</a> - Hasselt Crutzenstraat 07:17</li><li><a href="stop-128974.html">128974</a> - Hasselt Station perron 13 07:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5273.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

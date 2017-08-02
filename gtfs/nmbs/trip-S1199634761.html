@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Antwerpen-Centraal - Brussel-Zuid - S1199634761</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Antwerpen-Centraal - Brussel-Zuid - S1199634761</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8821006_0.html">8821006:0</a> - Antwerpen-Centraal 00:10</li><li><a href="stop-8821121_0.html">8821121:0</a> - Antwerpen-Berchem 00:15</li><li><a href="stop-8821147_0.html">8821147:0</a> - Mortsel 00:18</li><li><a href="stop-8821246_0.html">8821246:0</a> - Mortsel-Liersesteenweg 00:22</li><li><a href="stop-8821337_0.html">8821337:0</a> - Hove 00:25</li><li><a href="stop-8821311_0.html">8821311:0</a> - Kontich 00:28</li><li><a href="stop-8822210_0.html">8822210:0</a> - Duffel 00:32</li><li><a href="stop-8822228_0.html">8822228:0</a> - Sint-Katelijne-Waver 00:35</li><li><a href="stop-8822343_0.html">8822343:0</a> - Mechelen-Nekkerspoel 00:40</li><li><a href="stop-8822004_0.html">8822004:0</a> - Mechelen 00:48</li><li><a href="stop-8822251_0.html">8822251:0</a> - Weerde 00:53</li><li><a href="stop-8822269_0.html">8822269:0</a> - Eppegem 00:56</li><li><a href="stop-8811189_0.html">8811189:0</a> - Vilvoorde 01:01</li><li><a href="stop-8812005_0.html">8812005:0</a> - Brussel-Noord/Bruxelles-Nord 01:19</li><li><a href="stop-8814001_0.html">8814001:0</a> - Brussel-Zuid/Bruxelles-Midi 01:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1693.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

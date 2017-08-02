@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Bilzen - Maastricht/Lanaken - Rekem - 22491037</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Bilzen - Maastricht/Lanaken - Rekem - 22491037</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-110207.html">110207</a> - Bilzen Sint-Lambertuscollege 12:18</li><li><a href="stop-27104.html">27104</a> - Bilzen Hospitaal Sint-Martinus 12:19</li><li><a href="stop-105149.html">105149</a> - Bilzen Station perron 3 12:23</li><li><a href="stop-93786.html">93786</a> - Bilzen Parklaan 12:24</li><li><a href="stop-27113.html">27113</a> - Bilzen Maastrichterpoort 12:25</li><li><a href="stop-27202.html">27202</a> - Waltwilder Gabrig 12:25</li><li><a href="stop-120442.html">120442</a> - Waltwilder Sportveldstraat 12:27</li><li><a href="stop-110209.html">110209</a> - Waltwilder Sint-Remigiusstraat 12:27</li><li><a href="stop-43884.html">43884</a> - Waltwilder Maastrichterstraat 12:28</li><li><a href="stop-88449.html">88449</a> - Mopertingen Annastraat 12:30</li><li><a href="stop-88803.html">88803</a> - Mopertingen Mathijsestraat 12:31</li><li><a href="stop-88801.html">88801</a> - Mopertingen Maastrichterstraat 12:32</li><li><a href="stop-27092.html">27092</a> - Hees Tombestraat 12:35</li><li><a href="stop-87758.html">87758</a> - Hees Kruispunt Striekestraat 12:36</li><li><a href="stop-27082.html">27082</a> - Hees Heesstraat 12:37</li><li><a href="stop-27086.html">27086</a> - Hees Kruispunt Toekomststraat 12:38</li><li><a href="stop-27089.html">27089</a> - Hees Steenweg 12:38</li><li><a href="stop-87760.html">87760</a> - Hees Kiezelweg 12:38</li><li><a href="stop-31473.html">31473</a> - Veldwezelt Meulenweg 12:39</li><li><a href="stop-97218.html">97218</a> - Kesselt Kesselt 12:39</li><li><a href="stop-105347.html">105347</a> - Vlijtingen Lafelt 12:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4687.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

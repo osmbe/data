@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Antwerpen - Boom - Rumst - Mechelen - 21545996</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Antwerpen - Boom - Rumst - Mechelen - 21545996</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-23213.html">23213</a> - Boom Markt 14:33</li><li><a href="stop-109067.html">109067</a> - Boom Advokaatstraat 14:34</li><li><a href="stop-109065.html">109065</a> - Boom Beukenlaan 14:35</li><li><a href="stop-109063.html">109063</a> - Boom Tuinwijk 14:36</li><li><a href="stop-93169.html">93169</a> - Boom Kerselaarlaan 14:37</li><li><a href="stop-109061.html">109061</a> - Reet 's-Herenbaan 14:38</li><li><a href="stop-109059.html">109059</a> - Aartselaar Hof Daman 14:39</li><li><a href="stop-109057.html">109057</a> - Aartselaar Lindenboslaan 14:40</li><li><a href="stop-122264.html">122264</a> - Schelle Winkelpark 14:40</li><li><a href="stop-109055.html">109055</a> - Aartselaar Langlaarsteenweg 14:42</li><li><a href="stop-109053.html">109053</a> - Aartselaar Schelselei 14:44</li><li><a href="stop-109051.html">109051</a> - Aartselaar Leugstraat 14:45</li><li><a href="stop-109049.html">109049</a> - Aartselaar G. Gezellestraat 14:46</li><li><a href="stop-109047.html">109047</a> - Aartselaar Kontichsesteenweg 14:47</li><li><a href="stop-109046.html">109046</a> - Aartselaar Grote Struisbeek 14:48</li><li><a href="stop-109736.html">109736</a> - Wilrijk Terbekehofdreef 14:49</li><li><a href="stop-109633.html">109633</a> - Wilrijk Oudebaan 14:50</li><li><a href="stop-109588.html">109588</a> - Wilrijk Moerelei 14:51</li><li><a href="stop-109771.html">109771</a> - Wilrijk Valkstraat 14:53</li><li><a href="stop-109616.html">109616</a> - Wilrijk J. Moretuslei 14:54</li><li><a href="stop-18950.html">18950</a> - Wilrijk Dr. Veeckmanslaan 14:55</li><li><a href="stop-109441.html">109441</a> - Wilrijk Hof Van Mols 14:56</li><li><a href="stop-107886.html">107886</a> - Antwerpen Olympiade 14:58</li><li><a href="stop-107324.html">107324</a> - Antwerpen J. De Voslei 14:59</li><li><a href="stop-107845.html">107845</a> - Antwerpen Camille Huysmanslaan 15:00</li><li><a href="stop-108206.html">108206</a> - Antwerpen Station Zuid 15:02</li><li><a href="stop-19328.html">19328</a> - Antwerpen Broedermin 15:04</li><li><a href="stop-18945.html">18945</a> - Antwerpen Bestorming 15:06</li><li><a href="stop-107469.html">107469</a> - Antwerpen Bres 15:06</li><li><a href="stop-110994.html">110994</a> - Antwerpen Kasteelplein 15:08</li><li><a href="stop-108176.html">108176</a> - Antwerpen Nationale Bank 15:09</li><li><a href="stop-108103.html">108103</a> - Antwerpen Stadspark 15:11</li><li><a href="stop-125290.html">125290</a> - Antwerpen F. Rooseveltplaats perron 40 15:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3447.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sint-Truiden - Tongeren - 22461703</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Truiden - Tongeren - 22461703</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-88863.html">88863</a> - Tongeren Station 19:04</li><li><a href="stop-34507.html">34507</a> - Tongeren Koemarkt 19:05</li><li><a href="stop-34448.html">34448</a> - Tongeren Bilzerpoort 19:06</li><li><a href="stop-91239.html">91239</a> - Tongeren Sint-Truiderpoort 19:08</li><li><a href="stop-34611.html">34611</a> - Tongeren Rode Kruislaan 19:09</li><li><a href="stop-34477.html">34477</a> - Tongeren Inrit PIBO 19:11</li><li><a href="stop-34600.html">34600</a> - Piringen Weg op Widooie 19:12</li><li><a href="stop-27334.html">27334</a> - Bommershoven Tieckenstraat 19:14</li><li><a href="stop-27330.html">27330</a> - Bommershoven Kruispunt 19:15</li><li><a href="stop-27326.html">27326</a> - Bommershoven Kapelleke 19:16</li><li><a href="stop-27475.html">27475</a> - Borgloon Weg naar Grootloon 19:17</li><li><a href="stop-92831.html">92831</a> - Borgloon Kleine Veldsteeg 19:18</li><li><a href="stop-92456.html">92456</a> - Borgloon Sint-Truidersteenweg 19:19</li><li><a href="stop-123246.html">123246</a> - Borgloon Grootloonstraat 19:20</li><li><a href="stop-27463.html">27463</a> - Borgloon Tongersepoort 19:21</li><li><a href="stop-93787.html">93787</a> - Borgloon Kanunnik Darisstraat 19:21</li><li><a href="stop-27473.html">27473</a> - Borgloon Walstraat 19:21</li><li><a href="stop-27369.html">27369</a> - Borgloon Graaf Lodewijkplein 19:22</li><li><a href="stop-27453.html">27453</a> - Borgloon Rusthuis 19:23</li><li><a href="stop-27371.html">27371</a> - Borgloon Graeth 19:23</li><li><a href="stop-27363.html">27363</a> - Borgloon Steenweg op Kuttekoven 19:25</li><li><a href="stop-27477.html">27477</a> - Gotem Wolfstraat 19:26</li><li><a href="stop-43887.html">43887</a> - Gotem Weg op Gotem 19:26</li><li><a href="stop-27402.html">27402</a> - Hoepertingen Looza 19:27</li><li><a href="stop-27407.html">27407</a> - Hoepertingen Sportplein 19:28</li><li><a href="stop-27489.html">27489</a> - Hoepertingen Kruispunt 19:29</li><li><a href="stop-27405.html">27405</a> - Hoepertingen Sint-Truidersteenweg 16 19:30</li><li><a href="stop-27485.html">27485</a> - Hoepertingen Entbroek kruispunt 19:31</li><li><a href="stop-94401.html">94401</a> - Rijkel School 19:32</li><li><a href="stop-33895.html">33895</a> - Brustem Lenertstraat 19:34</li><li><a href="stop-33831.html">33831</a> - Brustem Kruispunt 19:35</li><li><a href="stop-33823.html">33823</a> - Brustem Brandhoutstraat 19:36</li><li><a href="stop-34044.html">34044</a> - Sint-Truiden Veiling 19:37</li><li><a href="stop-34063.html">34063</a> - Sint-Truiden Vlierboomstraat 19:37</li><li><a href="stop-33928.html">33928</a> - Sint-Truiden Kattenstraat 19:38</li><li><a href="stop-105352.html">105352</a> - Sint-Truiden Europaplein 19:38</li><li><a href="stop-33974.html">33974</a> - Sint-Truiden Naamsepoort 19:39</li><li><a href="stop-110642.html">110642</a> - Sint-Truiden Zwembad 19:41</li><li><a href="stop-34026.html">34026</a> - Sint-Truiden Stationsstraat 19:43</li><li><a href="stop-127438.html">127438</a> - Sint-Truiden Station perron 5 19:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4422.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

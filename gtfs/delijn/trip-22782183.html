@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aarschot - Langdorp - Averbode - Scherpenheuvel - 22782183</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aarschot - Langdorp - Averbode - Scherpenheuvel - 22782183</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-17012.html">17012</a> - Diest Station Perron 7 15:40</li><li><a href="stop-43984.html">43984</a> - Diest Atheneum 15:41</li><li><a href="stop-10458.html">10458</a> - Diest Euro Shoe 15:42</li><li><a href="stop-10466.html">10466</a> - Diest Stadion 15:43</li><li><a href="stop-128819.html">128819</a> - Diest Sint-Jansplein 15:44</li><li><a href="stop-127837.html">127837</a> - Diest Leuvensepoort 15:46</li><li><a href="stop-10472.html">10472</a> - Kaggevinne Drukkerij 15:47</li><li><a href="stop-10476.html">10476</a> - Kaggevinne Gemeentehuis 15:49</li><li><a href="stop-10480.html">10480</a> - Kaggevinne Kerk 15:50</li><li><a href="stop-10478.html">10478</a> - Kaggevinne Halfweg 15:50</li><li><a href="stop-10482.html">10482</a> - Kaggevinne Koebaan 15:52</li><li><a href="stop-10470.html">10470</a> - Kaggevinne Café Nova 15:53</li><li><a href="stop-13231.html">13231</a> - Scherpenheuvel Pompken 15:54</li><li><a href="stop-13227.html">13227</a> - Scherpenheuvel Op t Hof 15:54</li><li><a href="stop-127053.html">127053</a> - Scherpenheuvel Gemeentehuis 15:55</li><li><a href="stop-13259.html">13259</a> - Zichem Nieuwe Wijk 15:56</li><li><a href="stop-13257.html">13257</a> - Zichem Mollenveldwijk 15:57</li><li><a href="stop-13253.html">13253</a> - Zichem Lindeboom 15:58</li><li><a href="stop-16985.html">16985</a> - Zichem Kerk 16:00</li><li><a href="stop-13261.html">13261</a> - Zichem Station 16:01</li><li><a href="stop-13263.html">13263</a> - Zichem Weg naar Diest 16:02</li><li><a href="stop-13199.html">13199</a> - Averbode Broekstraat 16:03</li><li><a href="stop-13201.html">13201</a> - Averbode De Haak 16:04</li><li><a href="stop-13202.html">13202</a> - Averbode Dorp 16:05</li><li><a href="stop-13195.html">13195</a> - Averbode Abdij 16:06</li><li><a href="stop-13197.html">13197</a> - Averbode Bredestraat 16:07</li><li><a href="stop-13204.html">13204</a> - Averbode Zand 16:08</li><li><a href="stop-13247.html">13247</a> - Testelt Pl. Vondel 16:09</li><li><a href="stop-13243.html">13243</a> - Testelt Bareel 16:11</li><li><a href="stop-13249.html">13249</a> - Testelt Station 16:11</li><li><a href="stop-13245.html">13245</a> - Testelt Haneberg 16:12</li><li><a href="stop-9364.html">9364</a> - Langdorp Drie Wegen 16:13</li><li><a href="stop-9368.html">9368</a> - Langdorp Kabien 16:13</li><li><a href="stop-9387.html">9387</a> - Langdorp Zavel 16:14</li><li><a href="stop-9371.html">9371</a> - Langdorp Kapelleke 16:16</li><li><a href="stop-9366.html">9366</a> - Langdorp Opperstraat 16:17</li><li><a href="stop-9354.html">9354</a> - Langdorp Kleine Meur 16:18</li><li><a href="stop-9377.html">9377</a> - Langdorp School 16:19</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2190.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

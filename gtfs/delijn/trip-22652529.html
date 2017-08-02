@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Knokke-Brugge - 22652529</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Knokke-Brugge - 22652529</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126293.html">126293</a> - Knokke Station perron 3 08:30</li><li><a href="stop-101006.html">101006</a> - Knokke Camping Europe 08:37</li><li><a href="stop-98270.html">98270</a> - Westkapelle Isabellavaart 08:38</li><li><a href="stop-101007.html">101007</a> - Westkapelle Kalvekeetdijk 08:40</li><li><a href="stop-104928.html">104928</a> - Westkapelle Natienlaan 08:41</li><li><a href="stop-98267.html">98267</a> - Westkapelle Sacramentstraat 08:42</li><li><a href="stop-97955.html">97955</a> - Westkapelle Dorp 08:44</li><li><a href="stop-98300.html">98300</a> - Westkapelle Herenweg 08:45</li><li><a href="stop-98274.html">98274</a> - Westkapelle Pelikaan 08:48</li><li><a href="stop-100983.html">100983</a> - Dudzele Zelzatebrug 08:49</li><li><a href="stop-98221.html">98221</a> - Dudzele Zonnebloem 08:52</li><li><a href="stop-98290.html">98290</a> - Dudzele Kasteelstraat 08:53</li><li><a href="stop-98224.html">98224</a> - Dudzele Wissel 7 08:53</li><li><a href="stop-98220.html">98220</a> - Dudzele Dorp 08:54</li><li><a href="stop-98222.html">98222</a> - Dudzele Melkerij 08:55</li><li><a href="stop-98219.html">98219</a> - Dudzele 'T Apertje 08:55</li><li><a href="stop-98223.html">98223</a> - Dudzele Ter Bolle 08:57</li><li><a href="stop-104896.html">104896</a> - Brugge Kruisabele 08:57</li><li><a href="stop-104895.html">104895</a> - Brugge 'T Boompje 08:58</li><li><a href="stop-40205.html">40205</a> - Brugge Ten Berge 08:59</li><li><a href="stop-101037.html">101037</a> - Brugge Sint-Jozef Landjuwelenstraat 09:00</li><li><a href="stop-127308.html">127308</a> - Brugge Waterweelde 09:01</li><li><a href="stop-40841.html">40841</a> - Brugge Haven 09:01</li><li><a href="stop-87572.html">87572</a> - Brugge Komvest 09:02</li><li><a href="stop-36802.html">36802</a> - Brugge De Veste 09:03</li><li><a href="stop-37271.html">37271</a> - Brugge N. Gombertstraat 09:04</li><li><a href="stop-98660.html">98660</a> - Brugge Ezelpoort 09:05</li><li><a href="stop-40821.html">40821</a> - Brugge Beenhouwerstraat 09:06</li><li><a href="stop-41337.html">41337</a> - Brugge Hoefijzer 09:08</li><li><a href="stop-126411.html">126411</a> - Brugge 'T Zand perron 6 09:09</li><li><a href="stop-128949.html">128949</a> - Brugge Station perron 9 09:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6215.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

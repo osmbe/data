@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Sint-Truiden - Herk-de-Stad - Lummen - Beringen - 22479588</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Truiden - Herk-de-Stad - Lummen - Beringen - 22479588</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-30195.html">30195</a> - Herk-de-Stad Markt 16:11</li><li><a href="stop-30153.html">30153</a> - Herk-de-Stad Gemeenschapsschool 16:12</li><li><a href="stop-105230.html">105230</a> - Herk-de-Stad College 16:12</li><li><a href="stop-30157.html">30157</a> - Herk-de-Stad Rummenweg 16:13</li><li><a href="stop-88309.html">88309</a> - Herk-de-Stad Sint-Truidersteenweg 104 16:13</li><li><a href="stop-30139.html">30139</a> - Herk-de-Stad Jodestraat 16:14</li><li><a href="stop-17090.html">17090</a> - Rummen Smoldersstraat 16:16</li><li><a href="stop-17089.html">17089</a> - Rummen Molen 16:16</li><li><a href="stop-128855.html">128855</a> - Rummen Bergeneindestraat 16:17</li><li><a href="stop-17083.html">17083</a> - Rummen Weg naar Dorp 16:20</li><li><a href="stop-17081.html">17081</a> - Rummen Zavelkuil 16:22</li><li><a href="stop-128854.html">128854</a> - Rummen Dorp 16:24</li><li><a href="stop-17080.html">17080</a> - Rummen Zavelkuil 16:25</li><li><a href="stop-17082.html">17082</a> - Rummen Weg naar Dorp 16:25</li><li><a href="stop-33131.html">33131</a> - Nieuwerkerken Klein Tichelrij 16:26</li><li><a href="stop-33187.html">33187</a> - Nieuwerkerken Wolverstraat 16:27</li><li><a href="stop-33161.html">33161</a> - Nieuwerkerken Schelfheide 16:28</li><li><a href="stop-33156.html">33156</a> - Nieuwerkerken Kruispunt 16:30</li><li><a href="stop-33195.html">33195</a> - Nieuwerkerken Mouveld II 16:31</li><li><a href="stop-33130.html">33130</a> - Nieuwerkerken Kerkstraat 16:32</li><li><a href="stop-34033.html">34033</a> - Sint-Truiden Terbeek 16:34</li><li><a href="stop-97552.html">97552</a> - Melveren Centrum 16:35</li><li><a href="stop-105365.html">105365</a> - Sint-Truiden Provinciale Tuinbouwschool 16:36</li><li><a href="stop-127786.html">127786</a> - Sint-Truiden Sint-Trudo Ziekenhuis Ingang 16:38</li><li><a href="stop-33847.html">33847</a> - Sint-Truiden Diesterpoort 16:40</li><li><a href="stop-127440.html">127440</a> - Sint-Truiden Station perron 7 16:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4440.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

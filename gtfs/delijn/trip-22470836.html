@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Nieuwenhoven - Melveren - Sint-Truiden - Ordingen - 22470836</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Nieuwenhoven - Melveren - Sint-Truiden - Ordingen - 22470836</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-34166.html">34166</a> - Sint-Truiden Nieuwenhoven 18:49</li><li><a href="stop-97579.html">97579</a> - Melveren Senselberg 18:52</li><li><a href="stop-97569.html">97569</a> - Melveren Overbrugging 18:53</li><li><a href="stop-97571.html">97571</a> - Melveren Overweg 18:54</li><li><a href="stop-123161.html">123161</a> - Melveren Engelbamp 18:57</li><li><a href="stop-97525.html">97525</a> - Melveren Kabien 18:58</li><li><a href="stop-97526.html">97526</a> - Melveren Bornedries 19:00</li><li><a href="stop-97527.html">97527</a> - Melveren Zavelkuil 19:01</li><li><a href="stop-97528.html">97528</a> - Melveren De Born 19:01</li><li><a href="stop-97576.html">97576</a> - Melveren Sancta Maria 19:04</li><li><a href="stop-123162.html">123162</a> - Melveren Engelbamp 19:05</li><li><a href="stop-97555.html">97555</a> - Melveren Dorp 19:06</li><li><a href="stop-97524.html">97524</a> - Melveren Kruispunt 19:06</li><li><a href="stop-97584.html">97584</a> - Terbiest Hotelschool 19:07</li><li><a href="stop-97532.html">97532</a> - Terbiest Kasteeldomein 19:07</li><li><a href="stop-97582.html">97582</a> - Terbiest Speelplein 19:08</li><li><a href="stop-97540.html">97540</a> - Melveren Kommanderijstraat II 19:09</li><li><a href="stop-97538.html">97538</a> - Melveren Kommanderijstraat I 19:10</li><li><a href="stop-97521.html">97521</a> - Melveren Boudewijnlaan 19:11</li><li><a href="stop-33960.html">33960</a> - Sint-Truiden Meigaar 19:12</li><li><a href="stop-97574.html">97574</a> - Schurhoven Rusthuis 19:13</li><li><a href="stop-34041.html">34041</a> - Sint-Truiden Veemarkt 19:14</li><li><a href="stop-127788.html">127788</a> - Sint-Truiden Sint-Trudo Ziekenhuis Speelhoflaan 19:14</li><li><a href="stop-33847.html">33847</a> - Sint-Truiden Diesterpoort 19:16</li><li><a href="stop-127436.html">127436</a> - Sint-Truiden Station perron 3 19:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5387.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

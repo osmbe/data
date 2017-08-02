@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Bilzen - Maastricht/Lanaken - Rekem - 22468238</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Bilzen - Maastricht/Lanaken - Rekem - 22468238</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-27857.html">27857</a> - Diepenbeek Weg op Reitje 06:54</li><li><a href="stop-27804.html">27804</a> - Diepenbeek Oude Baan 06:55</li><li><a href="stop-27786.html">27786</a> - Diepenbeek Kruispunt Keistraat 06:56</li><li><a href="stop-27823.html">27823</a> - Diepenbeek Reitje 06:56</li><li><a href="stop-27825.html">27825</a> - Diepenbeek Reitje brug 06:57</li><li><a href="stop-125500.html">125500</a> - Romershoven Aanlofstraat 06:59</li><li><a href="stop-97150.html">97150</a> - Romershoven Hanterstraat 07:00</li><li><a href="stop-97154.html">97154</a> - Romershoven Romershovenstraat 07:01</li><li><a href="stop-97156.html">97156</a> - Romershoven Sitsingenstraat 07:01</li><li><a href="stop-110374.html">110374</a> - Romershoven Kerk 07:03</li><li><a href="stop-97161.html">97161</a> - Romershoven Winkelstraat 07:04</li><li><a href="stop-97158.html">97158</a> - Romershoven Weg op Schalkhoven 07:04</li><li><a href="stop-30523.html">30523</a> - Hoeselt Heibrikplein 07:06</li><li><a href="stop-125499.html">125499</a> - Hoeselt Grot 07:07</li><li><a href="stop-30557.html">30557</a> - Hoeselt Klooster 07:08</li><li><a href="stop-30525.html">30525</a> - Hoeselt Heibrikstraat 07:09</li><li><a href="stop-123044.html">123044</a> - Hoeselt Daalstraat 07:10</li><li><a href="stop-30519.html">30519</a> - Hoeselt Groenstraat 07:11</li><li><a href="stop-127527.html">127527</a> - Hoeselt Nederstraat Kerk 07:11</li><li><a href="stop-122983.html">122983</a> - Merem Klooster 07:13</li><li><a href="stop-96551.html">96551</a> - Merem Meremweg 07:14</li><li><a href="stop-105149.html">105149</a> - Bilzen Station perron 3 07:16</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5208.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

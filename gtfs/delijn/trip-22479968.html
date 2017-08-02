@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Houthalen - Neerpelt - Achel - 22479968</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Houthalen - Neerpelt - Achel - 22479968</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-91081.html">91081</a> - Overpelt Atheneum 15:30</li><li><a href="stop-123163.html">123163</a> - Overpelt Hofweg 15:31</li><li><a href="stop-91062.html">91062</a> - Overpelt Overweg 15:31</li><li><a href="stop-33398.html">33398</a> - Overpelt Rijkswacht 15:32</li><li><a href="stop-33045.html">33045</a> - Neerpelt Station 15:34</li><li><a href="stop-123119.html">123119</a> - Neerpelt College 15:37</li><li><a href="stop-33012.html">33012</a> - Neerpelt Centrum 15:37</li><li><a href="stop-99177.html">99177</a> - Neerpelt CLB 15:40</li><li><a href="stop-33035.html">33035</a> - Neerpelt Hayenhoek 15:42</li><li><a href="stop-33031.html">33031</a> - Neerpelt Grote Heide Kerk 15:44</li><li><a href="stop-33066.html">33066</a> - Neerpelt Lochterdijk 15:44</li><li><a href="stop-33086.html">33086</a> - Neerpelt Vlasrootweg 15:46</li><li><a href="stop-33033.html">33033</a> - Neerpelt Hageheidestraat 15:46</li><li><a href="stop-33084.html">33084</a> - Neerpelt Turfheidestraat 15:47</li><li><a href="stop-33054.html">33054</a> - Neerpelt Kabien 15:48</li><li><a href="stop-125544.html">125544</a> - Neerpelt Weidenstraat 15:50</li><li><a href="stop-100206.html">100206</a> - Neerpelt Zonhoekstraat 15:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4666.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

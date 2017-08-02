@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Beringen - Mol - 22492108</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Beringen - Mol - 22492108</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109393.html">109393</a> - Mol Station perron 6 16:10</li><li><a href="stop-109231.html">109231</a> - Mol Gasthuis 16:13</li><li><a href="stop-126985.html">126985</a> - Mol Kerk 16:14</li><li><a href="stop-32925.html">32925</a> - Mol De Hutten 16:16</li><li><a href="stop-105312.html">105312</a> - Balen Weg op Rosselaar 16:17</li><li><a href="stop-26699.html">26699</a> - Balen Tenderlo 16:19</li><li><a href="stop-26638.html">26638</a> - Balen Overweg Vaartstraat 16:20</li><li><a href="stop-125548.html">125548</a> - Balen Station 16:22</li><li><a href="stop-90025.html">90025</a> - Balen Gasthuisstraat 16:22</li><li><a href="stop-20095.html">20095</a> - Balen Hoolsterberg 16:24</li><li><a href="stop-20097.html">20097</a> - Balen Hoolst 16:26</li><li><a href="stop-125426.html">125426</a> - Hoolst Hoolstmolen 16:27</li><li><a href="stop-105124.html">105124</a> - Olmen Broekstraat 16:29</li><li><a href="stop-26646.html">26646</a> - Olmen Processieweg 16:30</li><li><a href="stop-122974.html">122974</a> - Olmen Veldstraat 16:30</li><li><a href="stop-26642.html">26642</a> - Olmen Heistraat 16:31</li><li><a href="stop-122975.html">122975</a> - Olmen Olmense Zoo 16:33</li><li><a href="stop-122978.html">122978</a> - Olmen Heivoort 16:35</li><li><a href="stop-106137.html">106137</a> - Olmen Egstraat 16:35</li><li><a href="stop-29027.html">29027</a> - Oostham Olmensebaan 16:36</li><li><a href="stop-29032.html">29032</a> - Oostham Slagveldstraat 16:37</li><li><a href="stop-123123.html">123123</a> - Oostham Heldenplein 16:38</li><li><a href="stop-29014.html">29014</a> - Oostham Allerheiligenberg 16:39</li><li><a href="stop-29020.html">29020</a> - Oostham In de Bus 16:40</li><li><a href="stop-29016.html">29016</a> - Oostham Heikant 16:41</li><li><a href="stop-26828.html">26828</a> - Beverlo Broekstraat 16:42</li><li><a href="stop-43879.html">43879</a> - Beverlo Hanebergstraat 16:43</li><li><a href="stop-94021.html">94021</a> - Beverlo Oosthamsesteenweg 16:44</li><li><a href="stop-26830.html">26830</a> - Beverlo Centrum 16:45</li><li><a href="stop-27755.html">27755</a> - Beverlo Melkerijstraat 16:45</li><li><a href="stop-123005.html">123005</a> - Beverlo Station 16:46</li><li><a href="stop-123124.html">123124</a> - Korspel Eggestraat 16:47</li><li><a href="stop-96529.html">96529</a> - Stal Weg naar Korspel 16:50</li><li><a href="stop-96528.html">96528</a> - Stal Kerk 16:51</li><li><a href="stop-96532.html">96532</a> - Stal Weg naar Steenveld 16:53</li><li><a href="stop-88445.html">88445</a> - Koersel Posthoorn 16:55</li><li><a href="stop-123258.html">123258</a> - Beringen Bogaersveld perron 1 16:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5579.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

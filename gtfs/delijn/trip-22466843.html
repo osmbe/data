@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diest - Geel / Tessenderlo - 22466843</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diest - Geel / Tessenderlo - 22466843</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126875.html">126875</a> - Geel Station perron 2 07:11</li><li><a href="stop-107517.html">107517</a> - Geel Stadspark 07:14</li><li><a href="stop-109754.html">109754</a> - Geel Markt 07:15</li><li><a href="stop-127001.html">127001</a> - Geel P. Van Neylenstraat 07:17</li><li><a href="stop-109757.html">109757</a> - Geel AZ Sint-Dimpna 07:19</li><li><a href="stop-25810.html">25810</a> - Geel Diestseweg 07:20</li><li><a href="stop-109948.html">109948</a> - Geel Brukel 07:21</li><li><a href="stop-25799.html">25799</a> - Geel Seppendijk 07:22</li><li><a href="stop-127009.html">127009</a> - Winkelomheide Punt 07:23</li><li><a href="stop-97658.html">97658</a> - Winkelomheide Winkelomseheide 07:23</li><li><a href="stop-25790.html">25790</a> - Geel Djepstraat 07:24</li><li><a href="stop-110937.html">110937</a> - Geel Winkelomheide Dorp 07:25</li><li><a href="stop-25782.html">25782</a> - Geel Dennenstraat 07:26</li><li><a href="stop-25764.html">25764</a> - Geel Spikkewaverdijk 07:27</li><li><a href="stop-88094.html">88094</a> - Eindhout Kruispunt 07:29</li><li><a href="stop-126927.html">126927</a> - Eindhout Dorp 07:30</li><li><a href="stop-31211.html">31211</a> - Eindhout Oude Tramlijn 07:31</li><li><a href="stop-31209.html">31209</a> - Eindhout Meir 07:31</li><li><a href="stop-31215.html">31215</a> - Eindhout Poeleinde 07:33</li><li><a href="stop-31200.html">31200</a> - Eindhout Bergske 07:34</li><li><a href="stop-31242.html">31242</a> - Veerle Grote Laak 07:35</li><li><a href="stop-31238.html">31238</a> - Veerle Eindhoutseweg 07:36</li><li><a href="stop-31270.html">31270</a> - Veerle Zand 07:37</li><li><a href="stop-31236.html">31236</a> - Veerle Dorp 07:37</li><li><a href="stop-93621.html">93621</a> - Veerle Pompert 07:38</li><li><a href="stop-125511.html">125511</a> - Veerle Weg naar Averbode 07:39</li><li><a href="stop-34335.html">34335</a> - Tessenderlo Turnhoutsebaan 07:40</li><li><a href="stop-34226.html">34226</a> - Tessenderlo Heggenbossenweg 07:44</li><li><a href="stop-34167.html">34167</a> - Okselaar Achterheide 07:45</li><li><a href="stop-33789.html">33789</a> - Okselaar Tessenderlosebaan 07:46</li><li><a href="stop-33783.html">33783</a> - Okselaar Brabantsebaan 07:47</li><li><a href="stop-33791.html">33791</a> - Okselaar Reppelsebaan 07:48</li><li><a href="stop-16642.html">16642</a> - Molenstede Herrestraat 07:49</li><li><a href="stop-16063.html">16063</a> - Molenstede Dorp 07:51</li><li><a href="stop-27977.html">27977</a> - Molenstede Kerkhof 07:52</li><li><a href="stop-125456.html">125456</a> - Molenstede Weg naar Veerle 07:53</li><li><a href="stop-127875.html">127875</a> - Molenstede Nieuwe Steenweg 07:56</li><li><a href="stop-14510.html">14510</a> - Diest Fort Leopoldlaan 07:57</li><li><a href="stop-27960.html">27960</a> - Diest Station perron 1 07:58</li><li><a href="stop-14840.html">14840</a> - Diest Weerstandsplein 08:01</li><li><a href="stop-14841.html">14841</a> - Diest Sint-Jacobsplein 08:03</li><li><a href="stop-43984.html">43984</a> - Diest Atheneum 08:04</li><li><a href="stop-10458.html">10458</a> - Diest Euro Shoe 08:05</li><li><a href="stop-10466.html">10466</a> - Diest Stadion 08:06</li><li><a href="stop-128819.html">128819</a> - Diest Sint-Jansplein 08:07</li><li><a href="stop-127426.html">127426</a> - Diest Leuvensepoort 08:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4865.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

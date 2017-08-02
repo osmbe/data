@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent - Eeklo - Brugge - 20698655</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent - Eeklo - Brugge - 20698655</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126610.html">126610</a> - Eeklo Station perron 9 20:05</li><li><a href="stop-112975.html">112975</a> - Eeklo Oude Gentweg 20:06</li><li><a href="stop-112974.html">112974</a> - Eeklo Het Leen 20:07</li><li><a href="stop-112972.html">112972</a> - Waarschoot Schoolstraat 20:10</li><li><a href="stop-112971.html">112971</a> - Waarschoot Kerk 20:11</li><li><a href="stop-112970.html">112970</a> - Waarschoot Kouterweg 20:12</li><li><a href="stop-112969.html">112969</a> - Waarschoot Molenstraat 20:13</li><li><a href="stop-112968.html">112968</a> - Waarschoot Arisdonk 20:13</li><li><a href="stop-112966.html">112966</a> - Sleidinge Daasdonk 20:16</li><li><a href="stop-112963.html">112963</a> - Sleidinge Eeksken 20:17</li><li><a href="stop-112962.html">112962</a> - Sleidinge Meistraat 20:19</li><li><a href="stop-112961.html">112961</a> - Sleidinge Station 20:20</li><li><a href="stop-113276.html">113276</a> - Sleidinge Keizersdreef 20:21</li><li><a href="stop-112958.html">112958</a> - Sleidinge Dorp 20:23</li><li><a href="stop-112957.html">112957</a> - Sleidinge Kerkhof 20:23</li><li><a href="stop-112937.html">112937</a> - Sleidinge Bernt 20:24</li><li><a href="stop-112956.html">112956</a> - Sleidinge Wurmstraat 20:25</li><li><a href="stop-112955.html">112955</a> - Evergem Asschout 20:26</li><li><a href="stop-112954.html">112954</a> - Evergem Kromveldstraatje 20:27</li><li><a href="stop-126075.html">126075</a> - Evergem Brielken 20:28</li><li><a href="stop-126076.html">126076</a> - Evergem Spoorwegstraat 20:29</li><li><a href="stop-112949.html">112949</a> - Wondelgem Waalbrugstraat 20:30</li><li><a href="stop-112948.html">112948</a> - Wondelgem Liefkensstraat 20:31</li><li><a href="stop-112947.html">112947</a> - Wondelgem Kwikstaartlaan 20:32</li><li><a href="stop-112946.html">112946</a> - Wondelgem Vierwegen 20:33</li><li><a href="stop-111498.html">111498</a> - Wondelgem Station 20:34</li><li><a href="stop-112945.html">112945</a> - Gent Meulestedebrug 20:35</li><li><a href="stop-112943.html">112943</a> - Gent Limbastraat 20:36</li><li><a href="stop-112942.html">112942</a> - Gent Spoorwegbrug 20:37</li><li><a href="stop-112941.html">112941</a> - Gent Tolhuisbrug 20:38</li><li><a href="stop-112940.html">112940</a> - Gent Tolpoort 20:38</li><li><a href="stop-111444.html">111444</a> - Gent Tolhuislaan 20:39</li><li><a href="stop-112939.html">112939</a> - Gent Fratersplein 20:40</li><li><a href="stop-120097.html">120097</a> - Gent Ottogracht 20:41</li><li><a href="stop-111463.html">111463</a> - Gent Sint-Jacobs 20:42</li><li><a href="stop-111328.html">111328</a> - Gent Reep 20:43</li><li><a href="stop-111450.html">111450</a> - Gent Kapucijnenham 20:43</li><li><a href="stop-126651.html">126651</a> - Gent Zuid perron 6 20:46</li><li><a href="stop-112088.html">112088</a> - Gent Vijfwindgatenstraat 20:47</li><li><a href="stop-111367.html">111367</a> - Gent Muinklaan 20:48</li><li><a href="stop-111368.html">111368</a> - Gent Leeuwstraat 20:49</li><li><a href="stop-111369.html">111369</a> - Gent Terplatenbrug 20:50</li><li><a href="stop-111370.html">111370</a> - Gent Heuvelpoort 20:51</li><li><a href="stop-111371.html">111371</a> - Gent Ledeganckstraat 20:52</li><li><a href="stop-111372.html">111372</a> - Gent Fortlaan 20:53</li><li><a href="stop-112021.html">112021</a> - Gent Parkplein 20:53</li><li><a href="stop-126697.html">126697</a> - Gent Sint-Pietersstation perron 14 20:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./376.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

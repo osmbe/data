@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Mechelen Station - Centrum - Sint-Libertuskerk - 22553181</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mechelen Station - Centrum - Sint-Libertuskerk - 22553181</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-107900.html">107900</a> - Mechelen Station perron 9 10:00</li><li><a href="stop-108451.html">108451</a> - Mechelen Oude Brusselsestraat 10:02</li><li><a href="stop-108452.html">108452</a> - Mechelen Louizastraat 10:03</li><li><a href="stop-123785.html">123785</a> - Mechelen Ganzendries 10:05</li><li><a href="stop-123786.html">123786</a> - Mechelen Korenmarkt 10:05</li><li><a href="stop-123787.html">123787</a> - Mechelen Schoenmarkt 10:07</li><li><a href="stop-123788.html">123788</a> - Mechelen Wollemarkt 10:08</li><li><a href="stop-129036.html">129036</a> - Mechelen Van Hoeystraat 10:09</li><li><a href="stop-108454.html">108454</a> - Mechelen Veemarkt 10:12</li><li><a href="stop-126974.html">126974</a> - Mechelen Nekkerspoel station 10:14</li><li><a href="stop-123319.html">123319</a> - Mechelen Borchtstraat 10:14</li><li><a href="stop-123321.html">123321</a> - Mechelen Weidestraat 10:15</li><li><a href="stop-108460.html">108460</a> - Mechelen Sint-Libertuskerk 10:16</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5762.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

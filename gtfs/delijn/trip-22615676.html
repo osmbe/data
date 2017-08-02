@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Avondlijn Brugge-Veldegem - 22615676</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Avondlijn Brugge-Veldegem - 22615676</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-37176.html">37176</a> - Veldegem Weg Op Veldegem 21:45</li><li><a href="stop-37198.html">37198</a> - Zedelgem De Leeuw 21:47</li><li><a href="stop-37206.html">37206</a> - Zedelgem Zuidwege 21:48</li><li><a href="stop-37197.html">37197</a> - Zedelgem De Arend 21:49</li><li><a href="stop-104708.html">104708</a> - Zedelgem Ter Loo 21:50</li><li><a href="stop-36920.html">36920</a> - Loppem Heidelberg 21:51</li><li><a href="stop-36923.html">36923</a> - Loppem Vijverkasteel 21:52</li><li><a href="stop-36922.html">36922</a> - Loppem Station 21:53</li><li><a href="stop-90322.html">90322</a> - Loppem Dorp 21:54</li><li><a href="stop-37307.html">37307</a> - Loppem Sportcentrum 21:55</li><li><a href="stop-36921.html">36921</a> - Loppem Smisje 21:56</li><li><a href="stop-100875.html">100875</a> - Sint-Michiels Brembos 22:00</li><li><a href="stop-37297.html">37297</a> - Sint-Michiels Spoorwegstraat 22:05</li><li><a href="stop-121699.html">121699</a> - Sint-Michiels Station West 22:07</li><li><a href="stop-128949.html">128949</a> - Brugge Station perron 9 22:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5957.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

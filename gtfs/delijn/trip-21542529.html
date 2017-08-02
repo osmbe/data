@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Berchem - Broechem - Emblem - Lier - 21542529</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Berchem - Broechem - Emblem - Lier - 21542529</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-20912.html">20912</a> - Lier Veemarkt perron 2 12:09</li><li><a href="stop-109282.html">109282</a> - Lier Kluizenplein 12:11</li><li><a href="stop-109281.html">109281</a> - Lier Markt 12:13</li><li><a href="stop-109279.html">109279</a> - Lier Rolwagenstraat 12:16</li><li><a href="stop-106802.html">106802</a> - Lier Station perron 7 12:17</li><li><a href="stop-108994.html">108994</a> - Lier Rolwagenstraat 12:17</li><li><a href="stop-108992.html">108992</a> - Lier Lisperpoort 12:19</li><li><a href="stop-23001.html">23001</a> - Lier Voetbalstraat 12:21</li><li><a href="stop-22999.html">22999</a> - Lier Lisp kerk 12:22</li><li><a href="stop-108991.html">108991</a> - Lier Frankenweg 12:23</li><li><a href="stop-108989.html">108989</a> - Emblem Ranstsesteenweg 12:24</li><li><a href="stop-108987.html">108987</a> - Emblem Kortestraat 12:26</li><li><a href="stop-108985.html">108985</a> - Emblem Broechemsesteenweg 12:27</li><li><a href="stop-108983.html">108983</a> - Emblem Stapstraat 12:29</li><li><a href="stop-22989.html">22989</a> - Emblem Grimmarastraat 12:30</li><li><a href="stop-108984.html">108984</a> - Emblem Emblemseweg 12:32</li><li><a href="stop-22986.html">22986</a> - Emblem Tongelweg 12:34</li><li><a href="stop-22984.html">22984</a> - Emblem Fransehoeveweg 12:35</li><li><a href="stop-108979.html">108979</a> - Broechem Nierlenderstraat 12:36</li><li><a href="stop-22897.html">22897</a> - Broechem Van Den Nestlaan 12:37</li><li><a href="stop-22895.html">22895</a> - Broechem Achterlo 12:39</li><li><a href="stop-22893.html">22893</a> - Ranst Processieweg 12:40</li><li><a href="stop-22891.html">22891</a> - Ranst Lieve Vrouwestraat 12:41</li><li><a href="stop-108941.html">108941</a> - Ranst Gasthuisstraat 12:41</li><li><a href="stop-21294.html">21294</a> - Ranst Kastanjelaan 12:42</li><li><a href="stop-22887.html">22887</a> - Ranst Zevenbergen 12:43</li><li><a href="stop-93174.html">93174</a> - Wommelgem Schawijkstraat 12:44</li><li><a href="stop-93172.html">93172</a> - Wommelgem Vremdesteenweg 12:45</li><li><a href="stop-108940.html">108940</a> - Wommelgem Dorp 12:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3252.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

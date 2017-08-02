@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Zwartberg - Houthalen - 22473311</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Zwartberg - Houthalen - 22473311</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-93625.html">93625</a> - Houthalen Centrum 12:12</li><li><a href="stop-92721.html">92721</a> - Houthalen Herebaan Oost 12:14</li><li><a href="stop-110846.html">110846</a> - Houthalen Geerstraat 12:15</li><li><a href="stop-30685.html">30685</a> - Houthalen Kerkhofstraat 12:15</li><li><a href="stop-30660.html">30660</a> - Houthalen Groenstraat 12:16</li><li><a href="stop-30765.html">30765</a> - Houthalen Tenhout 12:17</li><li><a href="stop-30699.html">30699</a> - Houthalen Kwalaak 12:18</li><li><a href="stop-30679.html">30679</a> - Houthalen Kelchterhoef 12:21</li><li><a href="stop-30708.html">30708</a> - Houthalen Lijsterstraat 12:23</li><li><a href="stop-30740.html">30740</a> - Houthalen Pelikaanstraat 12:24</li><li><a href="stop-30664.html">30664</a> - Houthalen Heivinkstraat 12:25</li><li><a href="stop-30696.html">30696</a> - Houthalen Korhoenstraat 12:25</li><li><a href="stop-30743.html">30743</a> - Houthalen Rekreatiepark 12:26</li><li><a href="stop-30770.html">30770</a> - Houthalen Tulpenstraat 12:27</li><li><a href="stop-30675.html">30675</a> - Houthalen Thuyastraat 12:28</li><li><a href="stop-30642.html">30642</a> - Houthalen Canadastraat 12:29</li><li><a href="stop-30690.html">30690</a> - Houthalen Kerselaarstraat 12:30</li><li><a href="stop-30634.html">30634</a> - Houthalen Berkenstraat 12:31</li><li><a href="stop-30678.html">30678</a> - Houthalen Kastanjestraat 12:32</li><li><a href="stop-105242.html">105242</a> - Houthalen Park van Genk Kerk 12:33</li><li><a href="stop-30772.html">30772</a> - Houthalen Violierenstraat 12:34</li><li><a href="stop-30704.html">30704</a> - Houthalen Halstraat 12:36</li><li><a href="stop-96747.html">96747</a> - Zwartberg Nieuwe Kempen 12:37</li><li><a href="stop-125478.html">125478</a> - Zwartberg G. Lambertlaan 12:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4555.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

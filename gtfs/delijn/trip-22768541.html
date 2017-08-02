@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel Noord - Ternat - Liedekerke - 22768541</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel Noord - Ternat - Liedekerke - 22768541</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-15208.html">15208</a> - Liedekerke Station 17:21</li><li><a href="stop-44046.html">44046</a> - Liedekerke Affligemstraat 17:23</li><li><a href="stop-44044.html">44044</a> - Liedekerke K.T.A. 17:24</li><li><a href="stop-44038.html">44038</a> - Liedekerke Boerenkrijg 17:25</li><li><a href="stop-15168.html">15168</a> - Liedekerke Velodroom 17:26</li><li><a href="stop-87414.html">87414</a> - Liedekerke Dorpsplein 17:27</li><li><a href="stop-12386.html">12386</a> - Liedekerke Pamelstraat 17:28</li><li><a href="stop-12385.html">12385</a> - Liedekerke Kapellebaan 17:29</li><li><a href="stop-12381.html">12381</a> - Liedekerke Café Liekerkbos 17:30</li><li><a href="stop-13090.html">13090</a> - Liedekerke Radiotoren 17:31</li><li><a href="stop-13081.html">13081</a> - Liedekerke Korenbloem 17:32</li><li><a href="stop-43105.html">43105</a> - Liedekerke Gravenbos 17:32</li><li><a href="stop-13079.html">13079</a> - Liedekerke Café Hopbeurs 17:33</li><li><a href="stop-13077.html">13077</a> - Borchtlombeek Café Handelshuis 17:35</li><li><a href="stop-13084.html">13084</a> - Borchtlombeek Kerk 17:36</li><li><a href="stop-13088.html">13088</a> - Borchtlombeek Kraanstraat nr 19 17:37</li><li><a href="stop-13092.html">13092</a> - Borchtlombeek Stwg Lied./Stwg Edingen 17:38</li><li><a href="stop-13573.html">13573</a> - Wambeek Klapscheut 17:39</li><li><a href="stop-13581.html">13581</a> - Wambeek Vijfhoek 17:40</li><li><a href="stop-13569.html">13569</a> - Wambeek Brouwerij 17:41</li><li><a href="stop-13577.html">13577</a> - Wambeek Vianestraat 17:42</li><li><a href="stop-10283.html">10283</a> - Ternat Vinkenlaan 17:43</li><li><a href="stop-13555.html">13555</a> - Ternat Kerkstraat 17:43</li><li><a href="stop-13563.html">13563</a> - Ternat Station 17:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1948.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

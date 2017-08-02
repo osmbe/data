@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent U.Z. - Van Beverenplein - 20678383</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent U.Z. - Van Beverenplein - 20678383</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-125921.html">125921</a> - Gent Universitair Ziekenhuis Zwijnaardsesteenweg 14:38</li><li><a href="stop-112372.html">112372</a> - Gent Opvoedingstraat 14:39</li><li><a href="stop-112371.html">112371</a> - Gent Burggravenlaan 14:41</li><li><a href="stop-112370.html">112370</a> - Gent De Heerestraat 14:43</li><li><a href="stop-112378.html">112378</a> - Gent Ottergemsesteenweg 14:44</li><li><a href="stop-112369.html">112369</a> - Gent Heuvelpoort 14:45</li><li><a href="stop-112368.html">112368</a> - Gent Sint-Pietersplein 14:46</li><li><a href="stop-112367.html">112367</a> - Gent Blandijnberg 14:47</li><li><a href="stop-112366.html">112366</a> - Gent Bagattenstraat 14:49</li><li><a href="stop-126591.html">126591</a> - Gent Zuid perron 8 14:51</li><li><a href="stop-112365.html">112365</a> - Gent Kapucijnenham 14:54</li><li><a href="stop-112364.html">112364</a> - Gent Reep 14:55</li><li><a href="stop-112363.html">112363</a> - Gent Sint-Jacobs 14:56</li><li><a href="stop-112160.html">112160</a> - Gent Steendam 14:57</li><li><a href="stop-112925.html">112925</a> - Gent Blekerijstraat 14:59</li><li><a href="stop-112362.html">112362</a> - Gent Stapelplein 15:00</li><li><a href="stop-112531.html">112531</a> - Gent Dok Noord 15:01</li><li><a href="stop-112361.html">112361</a> - Gent Heilig-Kerst 15:02</li><li><a href="stop-112360.html">112360</a> - Gent Fratersplein 15:03</li><li><a href="stop-112359.html">112359</a> - Gent Tolhuislaan 15:04</li><li><a href="stop-112358.html">112358</a> - Gent Tolpoort 15:05</li><li><a href="stop-112381.html">112381</a> - Gent Wiedauwkaai 15:07</li><li><a href="stop-112382.html">112382</a> - Gent Vynckier 15:08</li><li><a href="stop-112383.html">112383</a> - Gent Gaardeniersweg 15:08</li><li><a href="stop-112384.html">112384</a> - Gent Wondelgembrug 15:10</li><li><a href="stop-112349.html">112349</a> - Gent Fuchsiastraat 15:12</li><li><a href="stop-112348.html">112348</a> - Gent Van Beverenplein 15:13</li><li><a href="stop-112388.html">112388</a> - Gent Van Ryhovelaan 15:14</li><li><a href="stop-125869.html">125869</a> - Gent Dracenastraat 15:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./55.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

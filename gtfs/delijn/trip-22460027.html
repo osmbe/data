@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Overpelt - 22460027</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Overpelt - 22460027</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-27294.html">27294</a> - Reppel Kerk 07:33</li><li><a href="stop-27238.html">27238</a> - Bocholt Galgenbergstraat 07:34</li><li><a href="stop-27280.html">27280</a> - Bocholt Meierbroekstraat 07:36</li><li><a href="stop-27232.html">27232</a> - Bocholt Brouwerij 07:38</li><li><a href="stop-27223.html">27223</a> - Bocholt Biotechnicum 07:39</li><li><a href="stop-27285.html">27285</a> - Bocholt Oude Kerkstraat 07:40</li><li><a href="stop-27243.html">27243</a> - Bocholt Kapel 07:41</li><li><a href="stop-27235.html">27235</a> - Bocholt De Hees 07:42</li><li><a href="stop-27246.html">27246</a> - Kaulille Balkenweg 07:43</li><li><a href="stop-27269.html">27269</a> - Kaulille Rietweg 07:45</li><li><a href="stop-27257.html">27257</a> - Kaulille Kerk 07:46</li><li><a href="stop-27259.html">27259</a> - Kaulille Kruispunt 07:47</li><li><a href="stop-27263.html">27263</a> - Kaulille Marsestraat 07:48</li><li><a href="stop-27253.html">27253</a> - Kaulille Hostie 07:49</li><li><a href="stop-27265.html">27265</a> - Kaulille Oude Hostieweg 07:50</li><li><a href="stop-105320.html">105320</a> - Sint-Huibrechts-Lille Bosuilstraat 07:52</li><li><a href="stop-33072.html">33072</a> - Sint-Huibrechts-Lille Heikant 07:53</li><li><a href="stop-93148.html">93148</a> - Sint-Huibrechts-Lille Schutterijstraat 07:54</li><li><a href="stop-126103.html">126103</a> - Sint-Huibrechts-Lille Centrum 07:56</li><li><a href="stop-33080.html">33080</a> - Sint-Huibrechts-Lille Riet 07:57</li><li><a href="stop-33025.html">33025</a> - Neerpelt De Bette 07:59</li><li><a href="stop-33058.html">33058</a> - Neerpelt Kleine Landeigendom 08:00</li><li><a href="stop-33015.html">33015</a> - Neerpelt Ankerweg 08:02</li><li><a href="stop-123120.html">123120</a> - Neerpelt College 08:03</li><li><a href="stop-33046.html">33046</a> - Neerpelt Station 08:06</li><li><a href="stop-33397.html">33397</a> - Overpelt Rijkswacht 08:08</li><li><a href="stop-91061.html">91061</a> - Overpelt Overweg 08:09</li><li><a href="stop-91060.html">91060</a> - Overpelt Kiosk 08:13</li><li><a href="stop-33416.html">33416</a> - Overpelt Ursulinen 08:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4787.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

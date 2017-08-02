@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Meeuwen - Peer - Neerpelt - 22490699</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Meeuwen - Peer - Neerpelt - 22490699</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-33546.html">33546</a> - Peer Wauberg 08:59</li><li><a href="stop-97478.html">97478</a> - Wauberg School 09:00</li><li><a href="stop-97476.html">97476</a> - Wauberg Overes 09:00</li><li><a href="stop-32790.html">32790</a> - Meeuwen Meeuweneinde 09:01</li><li><a href="stop-105310.html">105310</a> - Meeuwen Wilgenstraat 09:02</li><li><a href="stop-110434.html">110434</a> - Meeuwen Broekkant 09:03</li><li><a href="stop-32798.html">32798</a> - Meeuwen Weg naar Helchteren 09:04</li><li><a href="stop-95297.html">95297</a> - Meeuwen Kerk 09:05</li><li><a href="stop-32765.html">32765</a> - Meeuwen Genits 09:06</li><li><a href="stop-105309.html">105309</a> - Meeuwen Tulpenstraat 09:07</li><li><a href="stop-32797.html">32797</a> - Meeuwen Vliegeneinde 09:07</li><li><a href="stop-99408.html">99408</a> - Wijshagen Plockroy school 09:08</li><li><a href="stop-32821.html">32821</a> - Wijshagen Donderslag 09:09</li><li><a href="stop-32834.html">32834</a> - Wijshagen Molenheide 09:12</li><li><a href="stop-94150.html">94150</a> - Opglabbeek Weg naar Meeuwen 09:14</li><li><a href="stop-96750.html">96750</a> - Zwartberg Torenlaan 09:15</li><li><a href="stop-96746.html">96746</a> - Zwartberg Luikerwijk 09:16</li><li><a href="stop-96740.html">96740</a> - Zwartberg Cockerillplaats 09:17</li><li><a href="stop-125478.html">125478</a> - Zwartberg G. Lambertlaan 09:19</li><li><a href="stop-96752.html">96752</a> - Zwartberg Zaveldriesstraat 09:20</li><li><a href="stop-28456.html">28456</a> - Genk Driehoeven 09:21</li><li><a href="stop-28464.html">28464</a> - Genk Haagsteeg 09:23</li><li><a href="stop-28652.html">28652</a> - Genk Weg naar Hengelhoef 09:24</li><li><a href="stop-96722.html">96722</a> - Winterslag Mijn 09:25</li><li><a href="stop-28398.html">28398</a> - Genk Erfstraat 09:27</li><li><a href="stop-123238.html">123238</a> - Genk Bochtlaan 09:28</li><li><a href="stop-43779.html">43779</a> - Genk Station perron 9 09:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5400.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

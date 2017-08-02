@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Heist op den Berg - Tremelo - 22534368</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Heist op den Berg - Tremelo - 22534368</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-93861.html">93861</a> - Tremelo Vinneweg 07:25</li><li><a href="stop-15131.html">15131</a> - Tremelo Gemeentehuis 07:26</li><li><a href="stop-15130.html">15130</a> - Tremelo Gemeentehuis 07:26</li><li><a href="stop-15091.html">15091</a> - Tremelo Baalsebaan 07:27</li><li><a href="stop-15093.html">15093</a> - Tremelo Kalvennestraat 07:28</li><li><a href="stop-15095.html">15095</a> - Tremelo Heidelaan 07:29</li><li><a href="stop-15109.html">15109</a> - Baal Domstraat 07:31</li><li><a href="stop-15111.html">15111</a> - Baal Montystraat 07:32</li><li><a href="stop-15113.html">15113</a> - Baal Kerk 07:33</li><li><a href="stop-15115.html">15115</a> - Baal Kerkhof 07:34</li><li><a href="stop-15117.html">15117</a> - Baal Lange Vennestraat 07:37</li><li><a href="stop-15119.html">15119</a> - Baal Grootlostraat 07:38</li><li><a href="stop-15107.html">15107</a> - Tremelo Hazenbergstraat 07:40</li><li><a href="stop-15105.html">15105</a> - Tremelo Kruispunt Grote Bollostraat 07:40</li><li><a href="stop-24744.html">24744</a> - Schriek Grootlo Kerk 07:42</li><li><a href="stop-24742.html">24742</a> - Schriek Langstraat 07:43</li><li><a href="stop-24740.html">24740</a> - Schriek Puttestraat 07:45</li><li><a href="stop-109637.html">109637</a> - Schriek Ommeweg 07:46</li><li><a href="stop-25707.html">25707</a> - Schriek Kerk 07:47</li><li><a href="stop-109634.html">109634</a> - Schriek Sint-Bernardus Kapel 07:48</li><li><a href="stop-24712.html">24712</a> - Schriek Schriekstraat 07:50</li><li><a href="stop-24710.html">24710</a> - Heist-op-den-Berg Lammeneelstraat 07:52</li><li><a href="stop-109642.html">109642</a> - Heist-op-den-Berg Goor Kerk 07:53</li><li><a href="stop-109641.html">109641</a> - Heist-op-den-Berg Wipstraat 07:54</li><li><a href="stop-109639.html">109639</a> - Heist-op-den-Berg Liersesteenweg 07:56</li><li><a href="stop-24294.html">24294</a> - Heist-op-den-Berg Liersesteenweg 07:56</li><li><a href="stop-24293.html">24293</a> - Heist-op-den-Berg Heide Lo station 07:58</li><li><a href="stop-24291.html">24291</a> - Heist-op-den-Berg Oudestraat 08:00</li><li><a href="stop-109494.html">109494</a> - Heist-op-den-Berg Kruispunt Lo 08:01</li><li><a href="stop-23801.html">23801</a> - Heist-op-den-Berg E. Woutersstraat 08:03</li><li><a href="stop-23803.html">23803</a> - Heist-op-den-Berg KTA 08:06</li><li><a href="stop-23804.html">23804</a> - Heist-op-den-Berg Kattestraat 08:07</li><li><a href="stop-24429.html">24429</a> - Heist-op-den-Berg Kapel 08:09</li><li><a href="stop-109926.html">109926</a> - Heist-op-den-Berg College 08:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3504.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

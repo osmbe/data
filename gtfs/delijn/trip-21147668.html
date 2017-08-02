@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Honsem - Boutersem - Tienen - 21147668</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Honsem - Boutersem - Tienen - 21147668</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-13878.html">13878</a> - Tienen Grote Markt 17:50</li><li><a href="stop-13908.html">13908</a> - Tienen Station Perron 3 17:53</li><li><a href="stop-13862.html">13862</a> - Tienen 4de Lansierslaan 17:54</li><li><a href="stop-13887.html">13887</a> - Tienen Leuvenselaan 17:54</li><li><a href="stop-15567.html">15567</a> - Tienen Zijdelingsestraat 17:55</li><li><a href="stop-13870.html">13870</a> - Tienen De Brouwerstraat 17:55</li><li><a href="stop-13866.html">13866</a> - Tienen Bareelken 17:56</li><li><a href="stop-13788.html">13788</a> - Tienen Bowling 17:57</li><li><a href="stop-13782.html">13782</a> - Kumtich Vogelzang 17:58</li><li><a href="stop-16664.html">16664</a> - Kumtich Vondelstraat 17:59</li><li><a href="stop-15751.html">15751</a> - Kumtich Centrum 18:00</li><li><a href="stop-13786.html">13786</a> - Kumtich Kumtichstraat 18:02</li><li><a href="stop-13792.html">13792</a> - Kumtich Groenhofstraat 18:03</li><li><a href="stop-13784.html">13784</a> - Kumtich Castel Pic 18:04</li><li><a href="stop-95584.html">95584</a> - Roosbeek Berg 18:05</li><li><a href="stop-95590.html">95590</a> - Roosbeek Statiestr. Roosbeek 18:05</li><li><a href="stop-95586.html">95586</a> - Roosbeek Oude Baan 18:06</li><li><a href="stop-95588.html">95588</a> - Roosbeek Groenstraat 18:07</li><li><a href="stop-14881.html">14881</a> - Boutersem Stationsstraat 18:08</li><li><a href="stop-9970.html">9970</a> - Boutersem Vertrijk Station 18:10</li><li><a href="stop-9968.html">9968</a> - Boutersem Schoolstraat 18:12</li><li><a href="stop-9966.html">9966</a> - Boutersem Honsemsestraat 18:13</li><li><a href="stop-9972.html">9972</a> - Willebringen Hoeksken 18:15</li><li><a href="stop-9979.html">9979</a> - Willebringen Kerk 18:16</li><li><a href="stop-9985.html">9985</a> - Willebringen Windmolenveld 15 18:17</li><li><a href="stop-9981.html">9981</a> - Willebringen Kerkhof 18:18</li><li><a href="stop-15536.html">15536</a> - Honsem Kapel 18:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2264.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

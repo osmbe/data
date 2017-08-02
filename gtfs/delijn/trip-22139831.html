@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk Station-Shopping Center-Heule - 22139831</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk Station-Shopping Center-Heule - 22139831</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126439.html">126439</a> - Kortrijk Station perron 2 18:08</li><li><a href="stop-41782.html">41782</a> - Kortrijk Graanmarkt 18:11</li><li><a href="stop-41777.html">41777</a> - Kortrijk Broeltorens 18:12</li><li><a href="stop-41779.html">41779</a> - Kortrijk O.L.V. Hospitaal 18:13</li><li><a href="stop-41784.html">41784</a> - Kortrijk Gasstraat 18:16</li><li><a href="stop-37829.html">37829</a> - Kortrijk Sint-Amandsplein 18:16</li><li><a href="stop-37832.html">37832</a> - Kortrijk Sint-Jansput 18:17</li><li><a href="stop-37790.html">37790</a> - Kortrijk Izegemsestraat 18:18</li><li><a href="stop-100912.html">100912</a> - Kortrijk Watermolenstraat 18:18</li><li><a href="stop-37671.html">37671</a> - Heule Samenkomst 18:19</li><li><a href="stop-37649.html">37649</a> - Heule Bozestraat 18:20</li><li><a href="stop-100902.html">100902</a> - Heule Watermolenkerk 18:20</li><li><a href="stop-90904.html">90904</a> - Heule Shopping Center 18:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4012.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

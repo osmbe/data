@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Beringen - Lommel - 22486561</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Beringen - Lommel - 22486561</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-32062.html">32062</a> - Lommel Speeltuin 05:38</li><li><a href="stop-32064.html">32064</a> - Lommel Sportcentrum 05:39</li><li><a href="stop-35546.html">35546</a> - Lommel Adelberg 05:41</li><li><a href="stop-31977.html">31977</a> - Lommel Donkerstraat 05:42</li><li><a href="stop-32082.html">32082</a> - Lommel Vreyshorring 05:43</li><li><a href="stop-32019.html">32019</a> - Lommel Kerk 05:44</li><li><a href="stop-31957.html">31957</a> - Lommel Autoweg 05:45</li><li><a href="stop-32027.html">32027</a> - Lommel Kliniek 05:47</li><li><a href="stop-30886.html">30886</a> - Lommel Station 05:48</li><li><a href="stop-100083.html">100083</a> - Kattenbos Bakhuisstraat 05:49</li><li><a href="stop-123072.html">123072</a> - Kattenbos Kattenbos 05:50</li><li><a href="stop-97248.html">97248</a> - Kattenbos Blauwe Meer 05:51</li><li><a href="stop-97269.html">97269</a> - Kerkhoven Gelderhorsten 05:52</li><li><a href="stop-97296.html">97296</a> - Kerkhoven Maaikant 05:52</li><li><a href="stop-97261.html">97261</a> - Kerkhoven Elep 05:53</li><li><a href="stop-97274.html">97274</a> - Kerkhoven Hooistraat 05:54</li><li><a href="stop-97297.html">97297</a> - Kerkhoven Maaldersweg 05:55</li><li><a href="stop-97303.html">97303</a> - Kerkhoven Sint-Jansstraat 05:55</li><li><a href="stop-97283.html">97283</a> - Kerkhoven Kerkhoven 05:56</li><li><a href="stop-97299.html">97299</a> - Kerkhoven Plezanten Hoek 05:57</li><li><a href="stop-94019.html">94019</a> - Balen Kievitstraat 05:57</li><li><a href="stop-26612.html">26612</a> - Balen Kerkhovenweg 05:58</li><li><a href="stop-26582.html">26582</a> - Balen Baan op Strooien Dorp 05:59</li><li><a href="stop-31777.html">31777</a> - Leopoldsburg Kerk Strooien Dorp 06:00</li><li><a href="stop-31791.html">31791</a> - Leopoldsburg Sparrenstraat 06:00</li><li><a href="stop-105434.html">105434</a> - Leopoldsburg Quatre Bras 06:01</li><li><a href="stop-94979.html">94979</a> - Leopoldsburg VDAB Werkwinkel 06:02</li><li><a href="stop-31792.html">31792</a> - Leopoldsburg Station 06:03</li><li><a href="stop-31743.html">31743</a> - Leopoldsburg De Vrachtkar 06:04</li><li><a href="stop-31751.html">31751</a> - Heppen Diestersteenweg 06:06</li><li><a href="stop-31756.html">31756</a> - Heppen Kerk 06:07</li><li><a href="stop-31746.html">31746</a> - Heppen Binnenveld 06:08</li><li><a href="stop-125436.html">125436</a> - Beverlo Braamstraat 06:09</li><li><a href="stop-26837.html">26837</a> - Beverlo Kerkhof 06:10</li><li><a href="stop-26829.html">26829</a> - Beverlo Centrum 06:11</li><li><a href="stop-26841.html">26841</a> - Beverlo Ringlaan 06:13</li><li><a href="stop-26843.html">26843</a> - Beverlo Tuinwijk 06:14</li><li><a href="stop-26840.html">26840</a> - Beverlo Kerkstraat 06:15</li><li><a href="stop-105127.html">105127</a> - Koersel Beringen Mijnen 06:16</li><li><a href="stop-88445.html">88445</a> - Koersel Posthoorn 06:18</li><li><a href="stop-123258.html">123258</a> - Beringen Bogaersveld perron 1 06:21</li><li><a href="stop-26853.html">26853</a> - Beringen Graaf van Loonstraat 06:22</li><li><a href="stop-26955.html">26955</a> - Beringen Schutterstraat 06:23</li><li><a href="stop-98776.html">98776</a> - Beringen Station Perron 3 06:24</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5012.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

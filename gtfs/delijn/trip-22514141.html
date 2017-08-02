@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Herentals-Hulshout-Westmeerbeek-Ramsel-Aarschot - 22514141</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Herentals-Hulshout-Westmeerbeek-Ramsel-Aarschot - 22514141</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-24548.html">24548</a> - Hulshout Gemeentehuis 06:06</li><li><a href="stop-24546.html">24546</a> - Hulshout Brouwerijstraat 06:06</li><li><a href="stop-109583.html">109583</a> - Hulshout Peerdekerkhofstraat 06:07</li><li><a href="stop-24542.html">24542</a> - Heist-op-den-Berg Wiekevorstsesteenweg 06:08</li><li><a href="stop-25522.html">25522</a> - Heist-op-den-Berg Haagstraat 06:09</li><li><a href="stop-25520.html">25520</a> - Heist-op-den-Berg Heidestraat 06:09</li><li><a href="stop-25518.html">25518</a> - Wiekevorst Advokatestraat 06:11</li><li><a href="stop-92700.html">92700</a> - Wiekevorst Witte Gracht 06:12</li><li><a href="stop-25493.html">25493</a> - Wiekevorst Smisberg 06:12</li><li><a href="stop-25491.html">25491</a> - Wiekevorst Berteneinde 06:13</li><li><a href="stop-109858.html">109858</a> - Morkhoven Mispelaar 06:14</li><li><a href="stop-109856.html">109856</a> - Morkhoven Doornestraat 06:15</li><li><a href="stop-25485.html">25485</a> - Morkhoven Station 06:16</li><li><a href="stop-25483.html">25483</a> - Noorderwijk Hoogton 06:17</li><li><a href="stop-25481.html">25481</a> - Noorderwijk Venheide 06:18</li><li><a href="stop-109853.html">109853</a> - Noorderwijk Gemeentehuis 06:19</li><li><a href="stop-109851.html">109851</a> - Noorderwijk Kijnigestraat 06:20</li><li><a href="stop-109849.html">109849</a> - Olen Herentalseweg 06:21</li><li><a href="stop-109848.html">109848</a> - Herentals Industrielaan 06:23</li><li><a href="stop-123334.html">123334</a> - Herentals De Duinen 06:24</li><li><a href="stop-109844.html">109844</a> - Herentals Dikberd 06:25</li><li><a href="stop-109842.html">109842</a> - Herentals E. Claesstraat 06:27</li><li><a href="stop-107597.html">107597</a> - Herentals Kerkstraat 06:28</li><li><a href="stop-109183.html">109183</a> - Herentals Markt - Grote Markt 06:28</li><li><a href="stop-108973.html">108973</a> - Herentals Belgiëlaan 06:29</li><li><a href="stop-22971.html">22971</a> - Herentals Station perron 8 06:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2988.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Donk - Herk-de-Stad - Lummen - Beringen - 22481657</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Donk - Herk-de-Stad - Lummen - Beringen - 22481657</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-123035.html">123035</a> - Donk Dreefstraat 19:12</li><li><a href="stop-30227.html">30227</a> - Donk T. Donnestraat 19:12</li><li><a href="stop-30225.html">30225</a> - Donk Berkenstraat 19:13</li><li><a href="stop-30223.html">30223</a> - Donk Nieuwstraat 19:14</li><li><a href="stop-30221.html">30221</a> - Donk Lepelstraat 19:15</li><li><a href="stop-125490.html">125490</a> - Donk Kerk 19:16</li><li><a href="stop-30637.html">30637</a> - Donk Meerhoutstraat 19:17</li><li><a href="stop-30135.html">30135</a> - Donk Pastorijstraat 19:17</li><li><a href="stop-123031.html">123031</a> - Donk Grote Baan 19:18</li><li><a href="stop-30209.html">30209</a> - Herk-de-Stad Zeven Heldenlaan 19:19</li><li><a href="stop-30141.html">30141</a> - Herk-de-Stad Klooster 19:21</li><li><a href="stop-30146.html">30146</a> - Herk-de-Stad Markt 19:22</li><li><a href="stop-30136.html">30136</a> - Herk-de-Stad Hasseltsesteenweg 19:23</li><li><a href="stop-30193.html">30193</a> - Schulen Weg op Beringen 19:24</li><li><a href="stop-30182.html">30182</a> - Schulen Sint-Jansstraat 19:26</li><li><a href="stop-30173.html">30173</a> - Schulen Kerk 19:27</li><li><a href="stop-30178.html">30178</a> - Schulen Neerstraat 19:28</li><li><a href="stop-30187.html">30187</a> - Schulen Station 19:29</li><li><a href="stop-32162.html">32162</a> - Lummen Pastoor Winterstraat 19:32</li><li><a href="stop-32117.html">32117</a> - Lummen Kruispunt 19:34</li><li><a href="stop-32095.html">32095</a> - Lummen Frederickxstraat 19:37</li><li><a href="stop-123065.html">123065</a> - Lummen Zwembad 19:39</li><li><a href="stop-105273.html">105273</a> - Lummen Sint-Ferdinand Instituut 19:41</li><li><a href="stop-31886.html">31886</a> - Lummen Hoogveldstraat 19:43</li><li><a href="stop-32213.html">32213</a> - Lummen Dwarsstraat 19:45</li><li><a href="stop-123079.html">123079</a> - Lummen Groenlarenstraat 19:46</li><li><a href="stop-32160.html">32160</a> - Lummen Oude Straat 19:47</li><li><a href="stop-127942.html">127942</a> - Lummen Gestel Kerk 19:49</li><li><a href="stop-32103.html">32103</a> - Gestel Hegstraat 19:50</li><li><a href="stop-26905.html">26905</a> - Beringen Oude Lummenseweg 19:51</li><li><a href="stop-125441.html">125441</a> - Beringen Markt 19:54</li><li><a href="stop-26852.html">26852</a> - Beringen Graaf van Loonstraat 19:56</li><li><a href="stop-123255.html">123255</a> - Beringen Bogaersveld perron 4 19:57</li><li><a href="stop-88446.html">88446</a> - Koersel Posthoorn 19:59</li><li><a href="stop-105126.html">105126</a> - Koersel Beringen Mijnen 20:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5071.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

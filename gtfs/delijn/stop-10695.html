@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Anderlecht Sint-Niklaas</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Anderlecht Sint-Niklaas</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-21149411.html">21149411</a> - 21149411 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-21149412.html">21149412</a> - 21149412 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-21149414.html">21149414</a> - 21149414 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-21149415.html">21149415</a> - 21149415 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-21149418.html">21149418</a> - 21149418 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-21149421.html">21149421</a> - 21149421 - Schoolbus Zellik - Dilbeek - Halle</li><li><a href="trip-21149424.html">21149424</a> - 21149424 - Schoolbus Zellik - Dilbeek - Halle</li><li><a href="trip-21149425.html">21149425</a> - 21149425 - Schoolbus Zellik - Dilbeek - Halle</li><li><a href="trip-22790153.html">22790153</a> - 22790153 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790154.html">22790154</a> - 22790154 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790155.html">22790155</a> - 22790155 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790156.html">22790156</a> - 22790156 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790157.html">22790157</a> - 22790157 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790158.html">22790158</a> - 22790158 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790159.html">22790159</a> - 22790159 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790162.html">22790162</a> - 22790162 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790163.html">22790163</a> - 22790163 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790164.html">22790164</a> - 22790164 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790165.html">22790165</a> - 22790165 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790166.html">22790166</a> - 22790166 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790167.html">22790167</a> - 22790167 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790168.html">22790168</a> - 22790168 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790169.html">22790169</a> - 22790169 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790170.html">22790170</a> - 22790170 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790171.html">22790171</a> - 22790171 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790172.html">22790172</a> - 22790172 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790173.html">22790173</a> - 22790173 - Schoolbus Halle - Sint-Pieters-Leeuw - Dilbeek</li><li><a href="trip-22790182.html">22790182</a> - 22790182 - Schoolbus Zellik - Dilbeek - Halle</li><li><a href="trip-22790193.html">22790193</a> - 22790193 - Schoolbus Zellik - Dilbeek - Halle</li><li><a href="trip-22790194.html">22790194</a> - 22790194 - Schoolbus Zellik - Dilbeek - Halle</li><li><a href="trip-22790195.html">22790195</a> - 22790195 - Schoolbus Zellik - Dilbeek - Halle</li><li><a href="trip-22790196.html">22790196</a> - 22790196 - Schoolbus Zellik - Dilbeek - Halle</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.8142147385592, 4.28782886386233], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.8142147385592, 4.28782886386233]).addTo(map);
+    </script>
+</body>
+
+</html>

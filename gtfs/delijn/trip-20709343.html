@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Antwerpen L.O.-Beveren-Haasdonk-St-Niklaas-Lokeren - 20709343</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Antwerpen L.O.-Beveren-Haasdonk-St-Niklaas-Lokeren - 20709343</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127601.html">127601</a> - Zwijndrecht P+R Melsele perron 2 07:23</li><li><a href="stop-115111.html">115111</a> - Melsele Burggravenlaan 07:25</li><li><a href="stop-115112.html">115112</a> - Melsele Sint-Elisabethstraat 07:25</li><li><a href="stop-115113.html">115113</a> - Melsele Spoorweglaan 07:26</li><li><a href="stop-115114.html">115114</a> - Melsele IJzerstraat 07:27</li><li><a href="stop-115115.html">115115</a> - Beveren Parein 07:28</li><li><a href="stop-115116.html">115116</a> - Beveren Viergemeet 07:29</li><li><a href="stop-115117.html">115117</a> - Beveren Gravendreef 07:30</li><li><a href="stop-128686.html">128686</a> - Beveren Markt 07:31</li><li><a href="stop-115118.html">115118</a> - Beveren A.Z. Nikolaas 07:33</li><li><a href="stop-115119.html">115119</a> - Beveren Lesseliersdreef 07:34</li><li><a href="stop-115120.html">115120</a> - Beveren Vijfstraten 07:35</li><li><a href="stop-115127.html">115127</a> - Haasdonk Bosbeek 07:36</li><li><a href="stop-115173.html">115173</a> - Haasdonk Hof Ter Saksen 07:37</li><li><a href="stop-115128.html">115128</a> - Haasdonk Sint-Gomaruslaan 07:38</li><li><a href="stop-115129.html">115129</a> - Haasdonk Stuurstraat 07:39</li><li><a href="stop-115130.html">115130</a> - Haasdonk Hoge Wegel 07:40</li><li><a href="stop-115131.html">115131</a> - Haasdonk Dorp 07:41</li><li><a href="stop-115132.html">115132</a> - Haasdonk Bergstraat 07:42</li><li><a href="stop-115133.html">115133</a> - Haasdonk Bank 07:43</li><li><a href="stop-115134.html">115134</a> - Sint-Niklaas Krekel 07:45</li><li><a href="stop-115135.html">115135</a> - Sint-Niklaas Domein 07:47</li><li><a href="stop-115495.html">115495</a> - Sint-Niklaas Ster 07:49</li><li><a href="stop-115496.html">115496</a> - Sint-Niklaas Uilestraat 07:50</li><li><a href="stop-115139.html">115139</a> - Sint-Niklaas Callaertstraat 07:51</li><li><a href="stop-115140.html">115140</a> - Sint-Niklaas Grote Heimelinkstraat 07:53</li><li><a href="stop-115141.html">115141</a> - Sint-Niklaas Nieuwe Molenstraat 07:53</li><li><a href="stop-126690.html">126690</a> - Sint-Niklaas Station perron 3 07:57</li><li><a href="stop-116306.html">116306</a> - Sint-Niklaas Uitgang Noordlaan 07:58</li><li><a href="stop-115674.html">115674</a> - Sint-Niklaas Hofstraat 08:01</li><li><a href="stop-115762.html">115762</a> - Sint-Niklaas Markt 08:03</li><li><a href="stop-115763.html">115763</a> - Sint-Niklaas Park 08:04</li><li><a href="stop-114859.html">114859</a> - Sint-Niklaas Atheneum/Zwembad 08:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./866.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

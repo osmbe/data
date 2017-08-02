@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Ottignies - Charleroi-Zuid - L1256340961</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ottignies - Charleroi-Zuid - L1256340961</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8811601_11.html">8811601:11</a> - Ottignies 13:23</li><li><a href="stop-8811817_1.html">8811817:1</a> - Ceroux-Mousty 13:26</li><li><a href="stop-8811825_1.html">8811825:1</a> - Court-Saint-Étienne 13:29</li><li><a href="stop-8872611_1.html">8872611:1</a> - Faux 13:33</li><li><a href="stop-8872587_1.html">8872587:1</a> - La Roche (Brabant) 13:35</li><li><a href="stop-8872579_1.html">8872579:1</a> - Villers-la-Ville 13:40</li><li><a href="stop-8872553_1.html">8872553:1</a> - Tilly 13:44</li><li><a href="stop-8872520_1.html">8872520:1</a> - Ligny 13:49</li><li><a href="stop-8872413_1.html">8872413:1</a> - Fleurus 13:53</li><li><a href="stop-8872306_1.html">8872306:1</a> - Lodelinsart 14:00</li><li><a href="stop-8872066_1.html">8872066:1</a> - Charleroi-Ouest 14:06</li><li><a href="stop-8872009_2.html">8872009:2</a> - Charleroi-Sud 14:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./786.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt/Zonhoven - Boxbergheide - Genk - 22474898</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt/Zonhoven - Boxbergheide - Genk - 22474898</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-96679.html">96679</a> - Boxberg Turfstraat 07:25</li><li><a href="stop-97385.html">97385</a> - Boxberg Klotstraat 07:26</li><li><a href="stop-97383.html">97383</a> - Boxberg Klotbroek 07:27</li><li><a href="stop-97380.html">97380</a> - Boxberg Vlasberg 07:28</li><li><a href="stop-35216.html">35216</a> - Zonhoven Kruisstraat 07:29</li><li><a href="stop-35188.html">35188</a> - Zonhoven Elstrekenweg 07:30</li><li><a href="stop-35234.html">35234</a> - Zonhoven Termolen school 07:32</li><li><a href="stop-35218.html">35218</a> - Zonhoven Manerikweg 07:33</li><li><a href="stop-35212.html">35212</a> - Zonhoven Korenmolenweg 07:34</li><li><a href="stop-35198.html">35198</a> - Zonhoven Herestraat 07:36</li><li><a href="stop-35210.html">35210</a> - Zonhoven Katschotseweg 07:37</li><li><a href="stop-35220.html">35220</a> - Zonhoven Melkerij 07:38</li><li><a href="stop-31669.html">31669</a> - Zonhoven Genkerbaan 07:38</li><li><a href="stop-123219.html">123219</a> - Zonhoven Dorpsplein 07:39</li><li><a href="stop-35171.html">35171</a> - Zonhoven Beskensstraat 07:41</li><li><a href="stop-91083.html">91083</a> - Zonhoven Station 07:42</li><li><a href="stop-35194.html">35194</a> - Zonhoven Halveweg 07:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4988.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

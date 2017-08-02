@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Vaalbeek - Leuven - Wijgmaal - Wakkerzeel - 21140647</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Vaalbeek - Leuven - Wijgmaal - Wakkerzeel - 21140647</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-125637.html">125637</a> - Haasrode UCLL 21:11</li><li><a href="stop-125635.html">125635</a> - Haasrode VDAB 21:12</li><li><a href="stop-100237.html">100237</a> - Heverlee Sterrekes 21:12</li><li><a href="stop-12190.html">12190</a> - Heverlee Ambachtenlaan 21:13</li><li><a href="stop-14624.html">14624</a> - Heverlee Schaatsbaan 21:13</li><li><a href="stop-93391.html">93391</a> - Heverlee De Hemptinne 21:14</li><li><a href="stop-14620.html">14620</a> - Heverlee Kazerne (H. Hart) 21:15</li><li><a href="stop-12090.html">12090</a> - Heverlee Kriekenboslaan 21:16</li><li><a href="stop-12092.html">12092</a> - Heverlee Leeuwerikenstraat 21:16</li><li><a href="stop-12100.html">12100</a> - Heverlee Parkdallaan 21:17</li><li><a href="stop-12098.html">12098</a> - Heverlee Pakenstraat 21:17</li><li><a href="stop-12057.html">12057</a> - Heverlee Broekstraat 21:18</li><li><a href="stop-12071.html">12071</a> - Heverlee Paul Van Ostaijenlaan 21:19</li><li><a href="stop-12254.html">12254</a> - Leuven Parkpoort 21:20</li><li><a href="stop-89571.html">89571</a> - Leuven Rustoord Remy 21:22</li><li><a href="stop-12303.html">12303</a> - Leuven Campus Vesalius 21:23</li><li><a href="stop-12241.html">12241</a> - Leuven Kleine Gevangenis 21:24</li><li><a href="stop-12286.html">12286</a> - Leuven Station Perron 4 21:26</li><li><a href="stop-12232.html">12232</a> - Leuven J.Stasstraat 21:28</li><li><a href="stop-89196.html">89196</a> - Leuven Rector De Somerplein zone B 21:30</li><li><a href="stop-127843.html">127843</a> - Leuven Dirk Boutslaan 21:31</li><li><a href="stop-127687.html">127687</a> - Leuven Half Maartstraat 21:33</li><li><a href="stop-127691.html">127691</a> - Leuven Riddersstraat 21:34</li><li><a href="stop-12309.html">12309</a> - Leuven Keizersberg 21:36</li><li><a href="stop-12345.html">12345</a> - Wilsele Kapellelaan 21:37</li><li><a href="stop-12362.html">12362</a> - Wilsele Sint-Martinuskerk 21:39</li><li><a href="stop-12356.html">12356</a> - Wilsele Processiestraat 21:40</li><li><a href="stop-16331.html">16331</a> - Wilsele Brandenstraat 21:41</li><li><a href="stop-12344.html">12344</a> - Wilsele Herentsesteenweg 21:42</li><li><a href="stop-12350.html">12350</a> - Wilsele Langveld 21:43</li><li><a href="stop-12338.html">12338</a> - Wilsele Corbeelsplein 21:45</li><li><a href="stop-15551.html">15551</a> - Herent Waterstraat 21:46</li><li><a href="stop-12334.html">12334</a> - Wijgmaal Vaartbrug 21:46</li><li><a href="stop-127841.html">127841</a> - Wijgmaal Remytoren 21:48</li><li><a href="stop-12329.html">12329</a> - Wijgmaal Station 21:49</li><li><a href="stop-12325.html">12325</a> - Wijgmaal Sportcentrum 21:50</li><li><a href="stop-12327.html">12327</a> - Wijgmaal Sint-Hadrianuskerk 21:51</li><li><a href="stop-11199.html">11199</a> - Wijgmaal Korte Dolagestraat 21:52</li><li><a href="stop-12318.html">12318</a> - Wijgmaal Klooster 21:53</li><li><a href="stop-15746.html">15746</a> - Wijgmaal Wijveld 21:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2054.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Snelbus Antwerpen - Kontich - Rumst - 22512630</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Snelbus Antwerpen - Kontich - Rumst - 22512630</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109238.html">109238</a> - Kontich Wipstraat 07:37</li><li><a href="stop-109241.html">109241</a> - Kontich Altenastraat 07:38</li><li><a href="stop-109243.html">109243</a> - Kontich Edegemsesteenweg 07:39</li><li><a href="stop-109120.html">109120</a> - Kontich Kerk 07:40</li><li><a href="stop-109119.html">109119</a> - Kontich Kruisstraat 07:41</li><li><a href="stop-109118.html">109118</a> - Kontich Rubensstraat 07:42</li><li><a href="stop-25994.html">25994</a> - Kontich Sint-Ritacollege 07:43</li><li><a href="stop-127010.html">127010</a> - Kontich P+R Kontich 07:45</li><li><a href="stop-107824.html">107824</a> - Antwerpen Provinciehuis 07:55</li><li><a href="stop-107800.html">107800</a> - Antwerpen Harmonie 07:56</li><li><a href="stop-108068.html">108068</a> - Antwerpen Lange Leemstraat 07:59</li><li><a href="stop-121179.html">121179</a> - Antwerpen Loosplaats 08:01</li><li><a href="stop-121218.html">121218</a> - Antwerpen Rubenslei 08:03</li><li><a href="stop-125292.html">125292</a> - Antwerpen F. Rooseveltplaats perron 43 08:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2950.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

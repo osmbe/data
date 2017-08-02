@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Mechelen - Bonheiden - Boortmeerbeek - Zaventem - 22796018</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mechelen - Bonheiden - Boortmeerbeek - Zaventem - 22796018</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-14516.html">14516</a> - Hever Schiplaken Kerk 06:41</li><li><a href="stop-15240.html">15240</a> - Hever Schiplaken Blokstraat 06:43</li><li><a href="stop-110741.html">110741</a> - Schiplaken Vaart 06:43</li><li><a href="stop-9908.html">9908</a> - Boortmeerbeek Kallebeekstraat 06:45</li><li><a href="stop-93949.html">93949</a> - Boortmeerbeek Schippersbos 06:45</li><li><a href="stop-15242.html">15242</a> - Boortmeerbeek Heikestraat 06:46</li><li><a href="stop-9898.html">9898</a> - Boortmeerbeek Dorp 06:47</li><li><a href="stop-14402.html">14402</a> - Boortmeerbeek Kerkhof 06:49</li><li><a href="stop-11126.html">11126</a> - Boortmeerbeek Leibeek 06:50</li><li><a href="stop-24850.html">24850</a> - Rijmenam Brug 06:52</li><li><a href="stop-126997.html">126997</a> - Rijmenam Kerk 06:53</li><li><a href="stop-126999.html">126999</a> - Rijmenam Lange Dreef 06:53</li><li><a href="stop-24794.html">24794</a> - Rijmenam Broekstraat 06:54</li><li><a href="stop-24792.html">24792</a> - Rijmenam Zwart Water 06:56</li><li><a href="stop-24790.html">24790</a> - Bonheiden Spiekelei 06:56</li><li><a href="stop-24788.html">24788</a> - Bonheiden Gezonde Luchtlaan 06:57</li><li><a href="stop-24786.html">24786</a> - Bonheiden Kanonniersweg 06:58</li><li><a href="stop-24783.html">24783</a> - Bonheiden Imeldalaan 06:58</li><li><a href="stop-24781.html">24781</a> - Bonheiden Grote Heidestraat 06:59</li><li><a href="stop-109652.html">109652</a> - Bonheiden Kerk 06:59</li><li><a href="stop-24777.html">24777</a> - Bonheiden Muizensteenweg 07:00</li><li><a href="stop-24775.html">24775</a> - Bonheiden Roggemanstraat 07:01</li><li><a href="stop-24773.html">24773</a> - Bonheiden P. Benoitlaan 07:02</li><li><a href="stop-128900.html">128900</a> - Bonheiden Tramweg 07:03</li><li><a href="stop-25210.html">25210</a> - Bonheiden Befferhof 07:04</li><li><a href="stop-109615.html">109615</a> - Sint-Katelijne-Waver Pasbrug 07:05</li><li><a href="stop-21768.html">21768</a> - Mechelen Sint-Libertuskerk 07:06</li><li><a href="stop-123322.html">123322</a> - Mechelen Weidestraat 07:06</li><li><a href="stop-123320.html">123320</a> - Mechelen Borchtstraat 07:07</li><li><a href="stop-126975.html">126975</a> - Mechelen Nekkerspoel station 07:08</li><li><a href="stop-109723.html">109723</a> - Mechelen Bleekstraat 07:09</li><li><a href="stop-25092.html">25092</a> - Mechelen Zandpoortvest 07:11</li><li><a href="stop-108413.html">108413</a> - Mechelen Raghenoplein 07:12</li><li><a href="stop-17153.html">17153</a> - Mechelen Station perron 16 07:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2561.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Boom - Willebroek - Tisselt - 22515080</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boom - Willebroek - Tisselt - 22515080</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-100311.html">100311</a> - Boom RMS 1 15:50</li><li><a href="stop-109909.html">109909</a> - Boom RMS 2 15:50</li><li><a href="stop-109103.html">109103</a> - Boom G. Gezellestraat 15:52</li><li><a href="stop-109927.html">109927</a> - Boom Conscienceplein 15:53</li><li><a href="stop-109068.html">109068</a> - Boom Advokaatstraat 15:58</li><li><a href="stop-43023.html">43023</a> - Boom E. Vanderveldestraat 15:59</li><li><a href="stop-23212.html">23212</a> - Boom Markt 16:00</li><li><a href="stop-106076.html">106076</a> - Willebroek Klein Willebroek 16:03</li><li><a href="stop-121175.html">121175</a> - Willebroek Brico 16:05</li><li><a href="stop-128939.html">128939</a> - Willebroek Hoeikensstraat 16:07</li><li><a href="stop-108255.html">108255</a> - Willebroek Turfsteeg 16:08</li><li><a href="stop-21280.html">21280</a> - Willebroek Stapelplaats 16:09</li><li><a href="stop-109335.html">109335</a> - Willebroek Vaartstraat 16:10</li><li><a href="stop-127791.html">127791</a> - Willebroek Veert 16:11</li><li><a href="stop-21200.html">21200</a> - Willebroek H. Vosstraat 16:12</li><li><a href="stop-128890.html">128890</a> - Willebroek Acacialei 16:13</li><li><a href="stop-108222.html">108222</a> - Willebroek Denderlaan 16:14</li><li><a href="stop-108228.html">108228</a> - Willebroek Schalkstraat 16:14</li><li><a href="stop-128893.html">128893</a> - Willebroek Fort van Breendonk 16:15</li><li><a href="stop-21210.html">21210</a> - Willebroek Leeuwerikstraat 16:16</li><li><a href="stop-108231.html">108231</a> - Willebroek Beukenlaan 16:18</li><li><a href="stop-21216.html">21216</a> - Willebroek Dahliastraat 16:19</li><li><a href="stop-21218.html">21218</a> - Willebroek Res. Schoondonk 16:20</li><li><a href="stop-125239.html">125239</a> - Willebroek Ziekenhuis Dodoens 16:21</li><li><a href="stop-108250.html">108250</a> - Willebroek Merkezeel 16:21</li><li><a href="stop-108248.html">108248</a> - Willebroek Opdam 16:22</li><li><a href="stop-21262.html">21262</a> - Willebroek Alfit 16:23</li><li><a href="stop-21256.html">21256</a> - Tisselt Melkerij 16:24</li><li><a href="stop-108316.html">108316</a> - Tisselt Kerk 16:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3034.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

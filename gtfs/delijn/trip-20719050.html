@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Geraardsbergen - Lierde - Zottegem - 20719050</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Geraardsbergen - Lierde - Zottegem - 20719050</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126606.html">126606</a> - Geraardsbergen Station perron 11 08:45</li><li><a href="stop-118405.html">118405</a> - Geraardsbergen Adamstraat 08:46</li><li><a href="stop-118406.html">118406</a> - Geraardsbergen Astridlaan 08:48</li><li><a href="stop-118839.html">118839</a> - Nederboelare Zonnebloemstraat 08:50</li><li><a href="stop-118838.html">118838</a> - Nederboelare Molendreef 08:51</li><li><a href="stop-118837.html">118837</a> - Nederboelare Industriepark 08:52</li><li><a href="stop-118836.html">118836</a> - Schendelbeke Galgestraat 08:53</li><li><a href="stop-118835.html">118835</a> - Deftinge Broekstraat 08:54</li><li><a href="stop-118834.html">118834</a> - Deftinge Kouterstraat 08:55</li><li><a href="stop-118997.html">118997</a> - Deftinge Elleboogstraat 08:56</li><li><a href="stop-118996.html">118996</a> - Deftinge Molenhof 08:57</li><li><a href="stop-118413.html">118413</a> - Deftinge Beek 08:59</li><li><a href="stop-128453.html">128453</a> - Sint-Martens-Lierde Keybergstraat 09:00</li><li><a href="stop-118415.html">118415</a> - Sint-Martens-Lierde Opstaldries 09:02</li><li><a href="stop-128454.html">128454</a> - Sint-Martens-Lierde Bosveldstraat 09:03</li><li><a href="stop-118417.html">118417</a> - Sint-Martens-Lierde Hoogstraat 09:03</li><li><a href="stop-118418.html">118418</a> - Sint-Maria-Lierde Groenstraat 09:04</li><li><a href="stop-128455.html">128455</a> - Sint-Maria-Lierde Schoolstraat 09:05</li><li><a href="stop-118420.html">118420</a> - Sint-Maria-Lierde Eikenmolen 09:06</li><li><a href="stop-128456.html">128456</a> - Sint-Martens-Lierde Holderbeke 09:07</li><li><a href="stop-128457.html">128457</a> - Sint-Maria-Oudenhove Hongerstraat 09:09</li><li><a href="stop-118423.html">118423</a> - Sint-Maria-Oudenhove Berthoflos 09:10</li><li><a href="stop-118424.html">118424</a> - Sint-Maria-Oudenhove Kleine Hazestraat 09:11</li><li><a href="stop-128458.html">128458</a> - Sint-Maria-Oudenhove Pijperzelestraat 09:11</li><li><a href="stop-118426.html">118426</a> - Sint-Maria-Oudenhove Faliestraat 09:12</li><li><a href="stop-128459.html">128459</a> - Sint-Maria-Oudenhove Dorp 09:13</li><li><a href="stop-118428.html">118428</a> - Sint-Maria-Oudenhove Boterhoekstraat 09:14</li><li><a href="stop-118447.html">118447</a> - Sint-Maria-Oudenhove Oudenhovestraat 09:14</li><li><a href="stop-118446.html">118446</a> - Sint-Goriks-Oudenhove Sint-Goriksstraat 09:15</li><li><a href="stop-118429.html">118429</a> - Sint-Goriks-Oudenhove Langendries 09:15</li><li><a href="stop-118430.html">118430</a> - Sint-Goriks-Oudenhove Ten Bosse Boven 09:17</li><li><a href="stop-117373.html">117373</a> - Sint-Goriks-Oudenhove Ten Bosse Beneden 09:17</li><li><a href="stop-128460.html">128460</a> - Sint-Goriks-Oudenhove Dorp 09:18</li><li><a href="stop-118432.html">118432</a> - Sint-Goriks-Oudenhove Krommestraat 09:19</li><li><a href="stop-118433.html">118433</a> - Sint-Goriks-Oudenhove Overweg 09:20</li><li><a href="stop-118434.html">118434</a> - Strijpen Pastoriestraat 09:21</li><li><a href="stop-124969.html">124969</a> - Strijpen Meileveld 09:22</li><li><a href="stop-118436.html">118436</a> - Zottegem Luchtbal 09:23</li><li><a href="stop-118437.html">118437</a> - Zottegem Atheneum 09:24</li><li><a href="stop-126771.html">126771</a> - Zottegem Station perron 9 09:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1334.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

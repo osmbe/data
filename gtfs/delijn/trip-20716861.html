@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Hofstade - Gijzegem - Dendermonde - 20716861</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Hofstade - Gijzegem - Dendermonde - 20716861</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126736.html">126736</a> - Dendermonde Station perron 6 20:33</li><li><a href="stop-116752.html">116752</a> - Dendermonde Brusselsestraat 20:35</li><li><a href="stop-126711.html">126711</a> - Dendermonde Oude Vest 20:36</li><li><a href="stop-116754.html">116754</a> - Dendermonde Veerstraat 20:37</li><li><a href="stop-116755.html">116755</a> - Dendermonde Nachtegaalstraat 20:38</li><li><a href="stop-116756.html">116756</a> - Dendermonde Donkstraat 20:39</li><li><a href="stop-116757.html">116757</a> - Dendermonde Dammenlaan 20:40</li><li><a href="stop-116758.html">116758</a> - Appels Handwijzer 20:41</li><li><a href="stop-116759.html">116759</a> - Oudegem Denderstraat 20:42</li><li><a href="stop-116760.html">116760</a> - Oudegem Station 20:44</li><li><a href="stop-116761.html">116761</a> - Oudegem Kerk 20:45</li><li><a href="stop-116762.html">116762</a> - Oudegem Sporthal 20:46</li><li><a href="stop-116763.html">116763</a> - Mespelare Singelweg 20:47</li><li><a href="stop-116764.html">116764</a> - Gijzegem Mimosastraat 20:48</li><li><a href="stop-116765.html">116765</a> - Gijzegem Molenhoek 20:49</li><li><a href="stop-117248.html">117248</a> - Gijzegem Klooster 20:50</li><li><a href="stop-116745.html">116745</a> - Gijzegem Legeweg 20:51</li><li><a href="stop-116766.html">116766</a> - Hofstade Aldegondisstraat 20:51</li><li><a href="stop-117243.html">117243</a> - Hofstade Kuipersstraat 20:52</li><li><a href="stop-116767.html">116767</a> - Hofstade Bieststraat 20:53</li><li><a href="stop-116768.html">116768</a> - Hofstade Hekkestraat 20:53</li><li><a href="stop-116769.html">116769</a> - Hofstade Gemeentehuis 20:54</li><li><a href="stop-116714.html">116714</a> - Hofstade Blektestraat 20:55</li><li><a href="stop-116715.html">116715</a> - Hofstade Consciencestraat 20:56</li><li><a href="stop-116716.html">116716</a> - Hofstade Molenkouter 20:57</li><li><a href="stop-116717.html">116717</a> - Aalst Twijnderstraat 20:58</li><li><a href="stop-116718.html">116718</a> - Aalst Dendermondsesteenweg 20:59</li><li><a href="stop-120301.html">120301</a> - Aalst Esplanade 21:00</li><li><a href="stop-126678.html">126678</a> - Aalst Station perron 2 21:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1226.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

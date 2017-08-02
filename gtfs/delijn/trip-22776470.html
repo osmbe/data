@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Bierbeek Centrum - Leuven - Heverlee - Bertem - 22776470</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bierbeek Centrum - Leuven - Heverlee - Bertem - 22776470</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-16262.html">16262</a> - Bierbeek De Borre 16:05</li><li><a href="stop-9823.html">9823</a> - Bierbeek Meeren 16:07</li><li><a href="stop-9821.html">9821</a> - Bierbeek Lindeboom 16:07</li><li><a href="stop-16260.html">16260</a> - Bierbeek Ventjesgat 16:09</li><li><a href="stop-16258.html">16258</a> - Bierbeek Dreefstraat 16:11</li><li><a href="stop-9824.html">9824</a> - Bierbeek Sint-Kamillus 16:13</li><li><a href="stop-9832.html">9832</a> - Korbeek-Lo Bemdenveld 16:16</li><li><a href="stop-9850.html">9850</a> - Korbeek-Lo Station 16:18</li><li><a href="stop-9836.html">9836</a> - Korbeek-Lo Centrum 16:20</li><li><a href="stop-17226.html">17226</a> - Korbeek-Lo Ter Korbeke 16:21</li><li><a href="stop-9852.html">9852</a> - Korbeek-Lo Stichelweg 16:21</li><li><a href="stop-9856.html">9856</a> - Korbeek-Lo Oaselaan 16:22</li><li><a href="stop-12198.html">12198</a> - Leuven Dalemhof 16:23</li><li><a href="stop-12258.html">12258</a> - Leuven Philipslaan 16:25</li><li><a href="stop-12271.html">12271</a> - Leuven Spaanse Kroon 16:27</li><li><a href="stop-12219.html">12219</a> - Leuven Hoegaardenstraat 16:28</li><li><a href="stop-12243.html">12243</a> - Leuven Korbeek-Lostraat 16:29</li><li><a href="stop-12205.html">12205</a> - Leuven Elisabethlaan 16:30</li><li><a href="stop-12112.html">12112</a> - Heverlee Sint-Franciscuskerk 16:31</li><li><a href="stop-12176.html">12176</a> - Kessel-Lo Platte-Lostraat 16:32</li><li><a href="stop-12301.html">12301</a> - Leuven Delaunoislaan 16:33</li><li><a href="stop-94824.html">94824</a> - Leuven Tiensepoort 16:34</li><li><a href="stop-16799.html">16799</a> - Leuven Provinciehuis 16:35</li><li><a href="stop-12286.html">12286</a> - Leuven Station Perron 4 16:38</li><li><a href="stop-12232.html">12232</a> - Leuven J.Stasstraat 16:40</li><li><a href="stop-89196.html">89196</a> - Leuven Rector De Somerplein zone B 16:42</li><li><a href="stop-127843.html">127843</a> - Leuven Dirk Boutslaan 16:43</li><li><a href="stop-12275.html">12275</a> - Leuven Sint-Pieterskliniek 16:45</li><li><a href="stop-12282.html">12282</a> - Leuven Sint-Rafaelkliniek 16:46</li><li><a href="stop-12192.html">12192</a> - Leuven Bankstraat 16:48</li><li><a href="stop-12263.html">12263</a> - Leuven Redingenhof 16:49</li><li><a href="stop-12119.html">12119</a> - Leuven Ijzerenmolenstraat 16:51</li><li><a href="stop-15534.html">15534</a> - Heverlee Groenveld 16:52</li><li><a href="stop-12084.html">12084</a> - Heverlee Joos Florquinlaan 16:54</li><li><a href="stop-12081.html">12081</a> - Heverlee Henri Geeraertlaan 16:56</li><li><a href="stop-15528.html">15528</a> - Heverlee Berg Tabor 16:57</li><li><a href="stop-12073.html">12073</a> - Heverlee Ter Elst 16:58</li><li><a href="stop-14796.html">14796</a> - Heverlee Populierenlaan 16:58</li><li><a href="stop-12137.html">12137</a> - Heverlee Groeneweg 16:59</li><li><a href="stop-12115.html">12115</a> - Heverlee Veldstraat 17:00</li><li><a href="stop-12064.html">12064</a> - Heverlee Egenhoven 17:00</li><li><a href="stop-14913.html">14913</a> - Heverlee Toverberg 17:01</li><li><a href="stop-9744.html">9744</a> - Heverlee Doleeg 17:02</li><li><a href="stop-9749.html">9749</a> - Bertem Rond-Punt 17:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2062.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

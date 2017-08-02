@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Tongeren - 22479673</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Tongeren - 22479673</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-30528.html">30528</a> - Hoeselt Klooster 12:11</li><li><a href="stop-30518.html">30518</a> - Hoeselt Gansterenstraat 12:13</li><li><a href="stop-27023.html">27023</a> - Bilzen Autosnelweg 12:15</li><li><a href="stop-122990.html">122990</a> - Bilzen Tongersestraat 12:16</li><li><a href="stop-105152.html">105152</a> - Bilzen Station perron 6 12:18</li><li><a href="stop-27105.html">27105</a> - Bilzen Hospitaal Sint-Martinus 12:20</li><li><a href="stop-27017.html">27017</a> - Bilzen Broedersschool 12:20</li><li><a href="stop-27177.html">27177</a> - Bilzen Schuurhoven 12:21</li><li><a href="stop-27120.html">27120</a> - Bilzen Meershoven 12:22</li><li><a href="stop-27144.html">27144</a> - Munsterbilzen Schietboomstraat 12:24</li><li><a href="stop-27152.html">27152</a> - Munsterbilzen Zavelstraat 12:24</li><li><a href="stop-27134.html">27134</a> - Munsterbilzen Centrum 12:25</li><li><a href="stop-27142.html">27142</a> - Munsterbilzen Oude Beekstraat 12:26</li><li><a href="stop-110205.html">110205</a> - Munsterbilzen Sint-Amorplein 12:27</li><li><a href="stop-27150.html">27150</a> - Munsterbilzen Taunusweg 12:28</li><li><a href="stop-35301.html">35301</a> - Zutendaal Wit Paard 12:30</li><li><a href="stop-105412.html">105412</a> - Zutendaal Smitsstraat 12:32</li><li><a href="stop-88494.html">88494</a> - Zutendaal Kerk 12:34</li><li><a href="stop-35274.html">35274</a> - Zutendaal Hoogstraat 12:35</li><li><a href="stop-35298.html">35298</a> - Zutendaal Weg naar As 12:35</li><li><a href="stop-35282.html">35282</a> - Zutendaal Papendaal 12:37</li><li><a href="stop-28580.html">28580</a> - Genk Terboekt 12:38</li><li><a href="stop-28375.html">28375</a> - Genk Lijkweg 12:39</li><li><a href="stop-28495.html">28495</a> - Genk Kamerlo 12:40</li><li><a href="stop-28621.html">28621</a> - Genk Weg naar Sledderlo 12:41</li><li><a href="stop-28743.html">28743</a> - Genk Kerkhof 12:42</li><li><a href="stop-28584.html">28584</a> - Genk Vlakveld 12:43</li><li><a href="stop-28386.html">28386</a> - Genk Berglaan 12:45</li><li><a href="stop-88467.html">88467</a> - Genk Stadhuis 12:45</li><li><a href="stop-43779.html">43779</a> - Genk Station perron 9 12:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5600.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

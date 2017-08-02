@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Mechelen - Keerbergen - Tremelo - Aarschot - 22534858</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mechelen - Keerbergen - Tremelo - Aarschot - 22534858</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-15130.html">15130</a> - Tremelo Gemeentehuis 07:44</li><li><a href="stop-15091.html">15091</a> - Tremelo Baalsebaan 07:45</li><li><a href="stop-15093.html">15093</a> - Tremelo Kalvennestraat 07:46</li><li><a href="stop-15095.html">15095</a> - Tremelo Heidelaan 07:47</li><li><a href="stop-15109.html">15109</a> - Baal Domstraat 07:50</li><li><a href="stop-15111.html">15111</a> - Baal Montystraat 07:51</li><li><a href="stop-15113.html">15113</a> - Baal Kerk 07:51</li><li><a href="stop-128915.html">128915</a> - Baal Geetsvondelstraat 07:53</li><li><a href="stop-15124.html">15124</a> - Baal Betekomstraat 07:54</li><li><a href="stop-16818.html">16818</a> - Betekom Raystraat 07:55</li><li><a href="stop-16814.html">16814</a> - Betekom Molenberg 07:56</li><li><a href="stop-87253.html">87253</a> - Betekom C. Vissenaekenplein 07:57</li><li><a href="stop-16808.html">16808</a> - Betekom Tummekensberg 07:58</li><li><a href="stop-16806.html">16806</a> - Betekom Heuvelstraat 07:58</li><li><a href="stop-16803.html">16803</a> - Betekom Steyenhoflaan 07:59</li><li><a href="stop-15803.html">15803</a> - Aarschot Nieuwland 2 08:01</li><li><a href="stop-24843.html">24843</a> - Aarschot Beschermde Werkplaats 08:02</li><li><a href="stop-15890.html">15890</a> - Aarschot Sasstraat 08:02</li><li><a href="stop-9323.html">9323</a> - Aarschot Moederhuis 08:03</li><li><a href="stop-128816.html">128816</a> - Aarschot Sint-Jozefscollege 08:03</li><li><a href="stop-93860.html">93860</a> - Aarschot Bekaf 08:04</li><li><a href="stop-9300.html">9300</a> - Aarschot Bekaf 08:05</li><li><a href="stop-128814.html">128814</a> - Aarschot Damiaaninstituut 08:09</li><li><a href="stop-9299.html">9299</a> - Aarschot Atheneum 08:12</li><li><a href="stop-128815.html">128815</a> - Aarschot Kerk 08:15</li><li><a href="stop-105084.html">105084</a> - Aarschot Station perron 3 08:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3529.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

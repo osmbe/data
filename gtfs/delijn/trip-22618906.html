@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Kortrijk-Rollegem-Moeskroen - 22618906</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk-Rollegem-Moeskroen - 22618906</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126441.html">126441</a> - Kortrijk Station perron 11 16:20</li><li><a href="stop-37777.html">37777</a> - Kortrijk Spoorweglaan 16:24</li><li><a href="stop-37818.html">37818</a> - Kortrijk Zwevegemsepoort 16:25</li><li><a href="stop-41751.html">41751</a> - Kortrijk Doorniksepoort 16:25</li><li><a href="stop-37780.html">37780</a> - Kortrijk Doornikwijk 16:27</li><li><a href="stop-37835.html">37835</a> - Kortrijk Sint-Rochuskerk 16:28</li><li><a href="stop-90395.html">90395</a> - Kortrijk Kanon 16:28</li><li><a href="stop-37812.html">37812</a> - Kortrijk Nieuwpoortstraat 16:29</li><li><a href="stop-37774.html">37774</a> - Kortrijk Halve Jan 16:31</li><li><a href="stop-99334.html">99334</a> - Kortrijk Syntra West 16:32</li><li><a href="stop-37760.html">37760</a> - Kortrijk 'T Hoge 16:34</li><li><a href="stop-37477.html">37477</a> - Bellegem Kruisstraat 16:36</li><li><a href="stop-37480.html">37480</a> - Bellegem Rood Paard 16:37</li><li><a href="stop-40069.html">40069</a> - Bellegem De Kat 16:38</li><li><a href="stop-37475.html">37475</a> - Bellegem Fabriek Delberghe 16:39</li><li><a href="stop-37478.html">37478</a> - Bellegem Manpadstraat 16:41</li><li><a href="stop-37481.html">37481</a> - Bellegem Voetbalplein 16:42</li><li><a href="stop-37479.html">37479</a> - Bellegem Plaats 16:43</li><li><a href="stop-38133.html">38133</a> - Rollegem Waterval 16:44</li><li><a href="stop-38129.html">38129</a> - Rollegem Kannestraat 16:45</li><li><a href="stop-88644.html">88644</a> - Rollegem Aalbekestraat 16:47</li><li><a href="stop-88276.html">88276</a> - Rollegem Plaats 16:48</li><li><a href="stop-38128.html">38128</a> - Rollegem Beekstraat 16:49</li><li><a href="stop-38130.html">38130</a> - Rollegem Kwade Brug 16:50</li><li><a href="stop-38132.html">38132</a> - Rollegem Tombroek 16:52</li><li><a href="stop-101142.html">101142</a> - Luingne Molenstraat 16:53</li><li><a href="stop-92609.html">92609</a> - Luingne Textiellaan 16:56</li><li><a href="stop-92611.html">92611</a> - Moeskroen Les Dauphins 16:58</li><li><a href="stop-100947.html">100947</a> - Luingne Vreugdestraat 16:59</li><li><a href="stop-42835.html">42835</a> - Moeskroen Busstation 17:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4026.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

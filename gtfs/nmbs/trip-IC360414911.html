@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - De Panne - Landen - IC360414911</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: De Panne - Landen - IC360414911</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8892338_2.html">8892338:2</a> - De Panne 04:52</li><li><a href="stop-8892320_1.html">8892320:1</a> - Koksijde 04:56</li><li><a href="stop-8892304_1.html">8892304:1</a> - Veurne 05:01</li><li><a href="stop-8892452_1.html">8892452:1</a> - Diksmuide 05:13</li><li><a href="stop-8892403_1.html">8892403:1</a> - Kortemark 05:23</li><li><a href="stop-8892205_1.html">8892205:1</a> - Lichtervelde 05:30</li><li><a href="stop-8892254_1.html">8892254:1</a> - Tielt 05:42</li><li><a href="stop-8892106_4.html">8892106:4</a> - Deinze 05:53</li><li><a href="stop-8892080_4.html">8892080:4</a> - De Pinte 06:00</li><li><a href="stop-8892007_6.html">8892007:6</a> - Gent-Sint-Pieters 06:14</li><li><a href="stop-8893559_1.html">8893559:1</a> - Wetteren 06:25</li><li><a href="stop-8893542_1.html">8893542:1</a> - Schellebelle 06:29</li><li><a href="stop-8893583_2.html">8893583:2</a> - Serskamp 06:33</li><li><a href="stop-8895067_2.html">8895067:2</a> - Lede 06:37</li><li><a href="stop-8895000_3.html">8895000:3</a> - Aalst 06:43</li><li><a href="stop-8895091_1.html">8895091:1</a> - Erembodegem 06:47</li><li><a href="stop-8895802_2.html">8895802:2</a> - Denderleeuw 06:54</li><li><a href="stop-8895836_3.html">8895836:3</a> - Liedekerke 06:58</li><li><a href="stop-8814001_11.html">8814001:11</a> - Brussel-Zuid/Bruxelles-Midi 07:14</li><li><a href="stop-8813003_1.html">8813003:1</a> - Brussel-Centraal/Bruxelles-Central 07:18</li><li><a href="stop-8812005_3.html">8812005:3</a> - Brussel-Noord/Bruxelles-Nord 07:25</li><li><a href="stop-8819406_2.html">8819406:2</a> - Brussel-Nat-Luchthaven/Bruxelles-Nat-Aéroport 07:38</li><li><a href="stop-8833001_4.html">8833001:4</a> - Leuven 07:53</li><li><a href="stop-8833050_2.html">8833050:2</a> - Vertrijk 08:01</li><li><a href="stop-8833308_3.html">8833308:3</a> - Tienen 08:07</li><li><a href="stop-8833449_2.html">8833449:2</a> - Ezemaal 08:12</li><li><a href="stop-8833670_2.html">8833670:2</a> - Neerwinden 08:16</li><li><a href="stop-8833605_5.html">8833605:5</a> - Landen 08:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./470.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

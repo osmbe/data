@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Boom - Niel - Aartselaar - 22517140</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boom - Niel - Aartselaar - 22517140</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-100311.html">100311</a> - Boom RMS 1 16:25</li><li><a href="stop-109909.html">109909</a> - Boom RMS 2 16:25</li><li><a href="stop-109103.html">109103</a> - Boom G. Gezellestraat 16:27</li><li><a href="stop-109927.html">109927</a> - Boom Conscienceplein 16:28</li><li><a href="stop-109068.html">109068</a> - Boom Advokaatstraat 16:33</li><li><a href="stop-43023.html">43023</a> - Boom E. Vanderveldestraat 16:34</li><li><a href="stop-23213.html">23213</a> - Boom Markt 16:35</li><li><a href="stop-43023.html">43023</a> - Boom E. Vanderveldestraat 16:36</li><li><a href="stop-22500.html">22500</a> - Boom Vrijheidstraat 16:37</li><li><a href="stop-22498.html">22498</a> - Boom Plantsoenstraat 16:38</li><li><a href="stop-108810.html">108810</a> - Boom Nielsestraat 16:38</li><li><a href="stop-22493.html">22493</a> - Boom Noeveren 16:38</li><li><a href="stop-108809.html">108809</a> - Boom Beek 16:39</li><li><a href="stop-108807.html">108807</a> - Niel Walenhof 16:39</li><li><a href="stop-108804.html">108804</a> - Niel Hellegat 16:40</li><li><a href="stop-22483.html">22483</a> - Niel Keizerstraat 16:42</li><li><a href="stop-108801.html">108801</a> - Niel E. Vanderveldelaan 16:44</li><li><a href="stop-108800.html">108800</a> - Niel Kerkstraat 16:45</li><li><a href="stop-110131.html">110131</a> - Niel Stationsstraat 16:46</li><li><a href="stop-25966.html">25966</a> - Niel Beekstraat 16:47</li><li><a href="stop-108798.html">108798</a> - Schelle Tolhuisstraat 16:48</li><li><a href="stop-107604.html">107604</a> - Schelle Kapelstraat 16:49</li><li><a href="stop-108223.html">108223</a> - Schelle Station 16:51</li><li><a href="stop-21193.html">21193</a> - Schelle Rozenstraat 16:52</li><li><a href="stop-21195.html">21195</a> - Schelle Hulstlei 16:54</li><li><a href="stop-21197.html">21197</a> - Schelle Koekoekstraat 16:55</li><li><a href="stop-107340.html">107340</a> - Aartselaar Langlaarsteenweg 16:58</li><li><a href="stop-18990.html">18990</a> - Aartselaar Ooievaarsbos 16:59</li><li><a href="stop-18987.html">18987</a> - Aartselaar Wullebeekstraat 17:00</li><li><a href="stop-23239.html">23239</a> - Aartselaar J. Davidlaan 17:00</li><li><a href="stop-109074.html">109074</a> - Aartselaar S. Streuvelslaan 17:02</li><li><a href="stop-108387.html">108387</a> - Aartselaar Dokter Cuypersstraat 17:02</li><li><a href="stop-23235.html">23235</a> - Aartselaar Gemeentehuis 17:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3076.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

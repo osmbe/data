@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Bilzen - Maastricht/Lanaken - Rekem - 22459243</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Bilzen - Maastricht/Lanaken - Rekem - 22459243</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-128977.html">128977</a> - Hasselt Station perron 10 16:04</li><li><a href="stop-29268.html">29268</a> - Hasselt Dusartplein 16:14</li><li><a href="stop-29712.html">29712</a> - Hasselt Kapermolen 16:17</li><li><a href="stop-128879.html">128879</a> - Hasselt Rijksadministratief Centrum 16:18</li><li><a href="stop-43769.html">43769</a> - Hasselt Het Dorlik 16:20</li><li><a href="stop-96867.html">96867</a> - Godsheide Pietelbeekstraat 16:22</li><li><a href="stop-27780.html">27780</a> - Diepenbeek Kerselaerstraat 16:24</li><li><a href="stop-27802.html">27802</a> - Diepenbeek Nierstraat 16:25</li><li><a href="stop-27849.html">27849</a> - Diepenbeek Waardestraat 16:27</li><li><a href="stop-27837.html">27837</a> - Diepenbeek Spoorstraat 16:28</li><li><a href="stop-27878.html">27878</a> - Diepenbeek Marktplein 16:29</li><li><a href="stop-27827.html">27827</a> - Diepenbeek Rijkswacht 16:30</li><li><a href="stop-27800.html">27800</a> - Diepenbeek Molenstraat 16:31</li><li><a href="stop-27855.html">27855</a> - Diepenbeek Weg op Reitje 16:33</li><li><a href="stop-27784.html">27784</a> - Diepenbeek Kruispunt Huseman 16:34</li><li><a href="stop-27040.html">27040</a> - Beverst Weg op Schoonbeek 16:35</li><li><a href="stop-27030.html">27030</a> - Beverst NMBS Overweg 16:36</li><li><a href="stop-96538.html">96538</a> - Schoonbeek Appelveldstraat 16:38</li><li><a href="stop-96544.html">96544</a> - Schoonbeek Waterkasteelstraat 16:40</li><li><a href="stop-96540.html">96540</a> - Schoonbeek Hoekstraat 16:41</li><li><a href="stop-96542.html">96542</a> - Schoonbeek Hombergstraat 16:43</li><li><a href="stop-27094.html">27094</a> - Heesveld Heesveld 16:45</li><li><a href="stop-27218.html">27218</a> - Bilzen Heesveld Weg op Spurk 16:47</li><li><a href="stop-96536.html">96536</a> - Spurk Akkerstraat 16:48</li><li><a href="stop-96547.html">96547</a> - Spurk Hoogbrugstraat 16:49</li><li><a href="stop-27196.html">27196</a> - Bilzen Spoorstraat 16:50</li><li><a href="stop-27014.html">27014</a> - Bilzen Gansbeekstraat 16:51</li><li><a href="stop-27104.html">27104</a> - Bilzen Hospitaal Sint-Martinus 16:51</li><li><a href="stop-105149.html">105149</a> - Bilzen Station perron 3 16:52</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4676.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

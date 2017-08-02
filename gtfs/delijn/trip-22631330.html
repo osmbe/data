@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diksmuide-OostVleteren-Poperinge - 22631330</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diksmuide-OostVleteren-Poperinge - 22631330</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-38712.html">38712</a> - Oostvleteren Station 07:30</li><li><a href="stop-42467.html">42467</a> - Oostvleteren Benaja 07:31</li><li><a href="stop-42578.html">42578</a> - Oostvleteren Dorp 07:31</li><li><a href="stop-101131.html">101131</a> - Oostvleteren Molen 07:32</li><li><a href="stop-101133.html">101133</a> - Reninge Kruisdoorn 07:34</li><li><a href="stop-42673.html">42673</a> - Reninge Hoflandstraat 07:35</li><li><a href="stop-42676.html">42676</a> - Reninge Station 07:36</li><li><a href="stop-110961.html">110961</a> - Reninge Hof Ten Ijzer 07:37</li><li><a href="stop-42575.html">42575</a> - Noordschote Oude Pereboomstraat 07:39</li><li><a href="stop-42573.html">42573</a> - Noordschote Dorp 07:40</li><li><a href="stop-42574.html">42574</a> - Noordschote Drie Grachten 07:41</li><li><a href="stop-42544.html">42544</a> - Merkem Luigem 07:43</li><li><a href="stop-42548.html">42548</a> - Merkem Voorstad 07:44</li><li><a href="stop-42541.html">42541</a> - Merkem Kerk 07:45</li><li><a href="stop-38644.html">38644</a> - Merkem Gemeentehuis 07:45</li><li><a href="stop-123591.html">123591</a> - Merkem Kippe 07:46</li><li><a href="stop-42540.html">42540</a> - Merkem Jonkershofstraat 07:47</li><li><a href="stop-42791.html">42791</a> - Woumen Broekdreef 07:49</li><li><a href="stop-123480.html">123480</a> - Woumen Kasteel 07:50</li><li><a href="stop-42804.html">42804</a> - Woumen Wegwijzer 07:51</li><li><a href="stop-42792.html">42792</a> - Woumen Gouden Appel 07:52</li><li><a href="stop-104541.html">104541</a> - Woumen Station 07:52</li><li><a href="stop-42798.html">42798</a> - Woumen Plaats 07:53</li><li><a href="stop-42803.html">42803</a> - Woumen Warande 07:54</li><li><a href="stop-42806.html">42806</a> - Woumen Zwarte Dreef 07:56</li><li><a href="stop-98406.html">98406</a> - Esen Kasteel 07:59</li><li><a href="stop-41536.html">41536</a> - Diksmuide Nijverheidsstraat 07:59</li><li><a href="stop-41544.html">41544</a> - Diksmuide Steenweg Op Woumen 08:01</li><li><a href="stop-41535.html">41535</a> - Diksmuide Markt 08:02</li><li><a href="stop-126287.html">126287</a> - Diksmuide Station perron 8 08:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6051.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

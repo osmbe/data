@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent - Eeklo - Brugge - 20697974</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent - Eeklo - Brugge - 20697974</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-125412.html">125412</a> - Maldegem Markt perron 2 08:20</li><li><a href="stop-125164.html">125164</a> - Maldegem Zwarte Zusterslaan 08:22</li><li><a href="stop-112991.html">112991</a> - Maldegem Godshuis 08:23</li><li><a href="stop-112990.html">112990</a> - Maldegem Ommeloper 08:24</li><li><a href="stop-112989.html">112989</a> - Maldegem Radestraat 08:25</li><li><a href="stop-112988.html">112988</a> - Maldegem Harlingenhof 08:26</li><li><a href="stop-112987.html">112987</a> - Adegem Dorp 08:28</li><li><a href="stop-112986.html">112986</a> - Adegem Root 08:30</li><li><a href="stop-112985.html">112985</a> - Adegem Dr. Herreboutlaan 08:31</li><li><a href="stop-127588.html">127588</a> - Balgerhoeke Kerk 08:32</li><li><a href="stop-112983.html">112983</a> - Eeklo School 08:33</li><li><a href="stop-112982.html">112982</a> - Eeklo Kerkhof 08:34</li><li><a href="stop-113067.html">113067</a> - Eeklo Galgenakker 08:37</li><li><a href="stop-113066.html">113066</a> - Eeklo Droomschip 08:38</li><li><a href="stop-112980.html">112980</a> - Eeklo Blakstraat 08:39</li><li><a href="stop-112979.html">112979</a> - Eeklo Brugsesteenweg 08:40</li><li><a href="stop-112978.html">112978</a> - Eeklo Eikelstraat 08:41</li><li><a href="stop-112977.html">112977</a> - Eeklo Markt 08:42</li><li><a href="stop-126610.html">126610</a> - Eeklo Station perron 9 08:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./357.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

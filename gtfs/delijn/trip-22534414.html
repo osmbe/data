@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Waver Scholen  - Tremelo - 22534414</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Waver Scholen  - Tremelo - 22534414</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109546.html">109546</a> - Sint-Katelijne-Waver Hagelstein 12:25</li><li><a href="stop-24440.html">24440</a> - Onze-Lieve-Vrouw-Waver Wolvenstraat 12:28</li><li><a href="stop-25044.html">25044</a> - Onze-Lieve-Vrouw-Waver Liekens 12:29</li><li><a href="stop-25042.html">25042</a> - Onze-Lieve-Vrouw-Waver Bosstraat 12:31</li><li><a href="stop-24024.html">24024</a> - Onze-Lieve-Vrouw-Waver Koelarenvelden 12:31</li><li><a href="stop-88439.html">88439</a> - Onze-Lieve-Vrouw-Waver Sint-Ursula 12:32</li><li><a href="stop-24388.html">24388</a> - Onze-Lieve-Vrouw-Waver Scheerslei 12:34</li><li><a href="stop-24390.html">24390</a> - Onze-Lieve-Vrouw-Waver Prinsenstraat 12:36</li><li><a href="stop-109530.html">109530</a> - Putte Kapelstraat 12:38</li><li><a href="stop-24395.html">24395</a> - Putte Markt 12:39</li><li><a href="stop-109621.html">109621</a> - Putte Schaapstraat 12:41</li><li><a href="stop-24672.html">24672</a> - Putte Tinstraat 12:42</li><li><a href="stop-109625.html">109625</a> - Putte Wolzakken 12:44</li><li><a href="stop-109627.html">109627</a> - Putte Grensstraat 12:45</li><li><a href="stop-24681.html">24681</a> - Putte Weg op Schriek 12:46</li><li><a href="stop-109630.html">109630</a> - Putte Grasheide Scholen 12:47</li><li><a href="stop-24686.html">24686</a> - Putte Langendijk 12:48</li><li><a href="stop-24689.html">24689</a> - Schriek Booischotbaan 12:49</li><li><a href="stop-24691.html">24691</a> - Schriek Haachtsebaan 12:50</li><li><a href="stop-24694.html">24694</a> - Schriek Pachterslei 12:52</li><li><a href="stop-24696.html">24696</a> - Schriek Sint-Bernardus Kapel 12:53</li><li><a href="stop-109636.html">109636</a> - Schriek Kerk 12:54</li><li><a href="stop-24700.html">24700</a> - Schriek Ommeweg 12:55</li><li><a href="stop-24738.html">24738</a> - Schriek Puttestraat 12:56</li><li><a href="stop-24741.html">24741</a> - Schriek Langstraat 12:57</li><li><a href="stop-24743.html">24743</a> - Schriek Grootlo Kerk 12:58</li><li><a href="stop-15106.html">15106</a> - Tremelo Kruispunt Grote Bollostraat 13:00</li><li><a href="stop-15104.html">15104</a> - Tremelo Meiboomlaan 13:00</li><li><a href="stop-15102.html">15102</a> - Tremelo Bollobos 13:01</li><li><a href="stop-24755.html">24755</a> - Tremelo Park Tremeland 13:02</li><li><a href="stop-15098.html">15098</a> - Tremelo Kleine Bollostraat 13:02</li><li><a href="stop-24758.html">24758</a> - Tremelo Baalsebaan 13:03</li><li><a href="stop-15131.html">15131</a> - Tremelo Gemeentehuis 13:04</li><li><a href="stop-15130.html">15130</a> - Tremelo Gemeentehuis 13:04</li><li><a href="stop-93861.html">93861</a> - Tremelo Vinneweg 13:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3508.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

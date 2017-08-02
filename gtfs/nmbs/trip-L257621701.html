@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Antwerpen-Centraal - Puurs - L257621701</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Antwerpen-Centraal - Puurs - L257621701</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8821006_22.html">8821006:22</a> - Antwerpen-Centraal 06:12</li><li><a href="stop-8821121_6.html">8821121:6</a> - Antwerpen-Berchem 06:17</li><li><a href="stop-8821196_4.html">8821196:4</a> - Antwerpen-Zuid 06:23</li><li><a href="stop-8824158_2.html">8824158:2</a> - Hoboken-Polder 06:28</li><li><a href="stop-8824224_2.html">8824224:2</a> - Hemiksem 06:34</li><li><a href="stop-8824232_2.html">8824232:2</a> - Schelle 06:36</li><li><a href="stop-8824240_2.html">8824240:2</a> - Niel 06:39</li><li><a href="stop-8822814_2.html">8822814:2</a> - Boom 06:44</li><li><a href="stop-8822848_1.html">8822848:1</a> - Ruisbroek-Sauvegarde 06:48</li><li><a href="stop-8822715_3.html">8822715:3</a> - Puurs 06:52</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./837.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent - Zaffelare - Lokeren - 20701895</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent - Zaffelare - Lokeren - 20701895</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-114443.html">114443</a> - Oostakker Dorp 13:59</li><li><a href="stop-114486.html">114486</a> - Oostakker Kerkhof 14:00</li><li><a href="stop-114487.html">114487</a> - Oostakker Molzelestraat 14:01</li><li><a href="stop-114489.html">114489</a> - Oostakker Wittewalle 14:02</li><li><a href="stop-114490.html">114490</a> - Oostakker Eversdonk 14:03</li><li><a href="stop-114491.html">114491</a> - Lochristi Nokerestraat 14:04</li><li><a href="stop-114492.html">114492</a> - Lochristi Doornzelestraat 14:05</li><li><a href="stop-114493.html">114493</a> - Lochristi Hyfte Kerk 14:06</li><li><a href="stop-112187.html">112187</a> - Zaffelare Verleydonckstraat 14:08</li><li><a href="stop-114494.html">114494</a> - Zaffelare Kapiteinstraat 14:10</li><li><a href="stop-114495.html">114495</a> - Zaffelare Rechtstraat 14:10</li><li><a href="stop-114496.html">114496</a> - Zaffelare Nerenhoek 14:12</li><li><a href="stop-114497.html">114497</a> - Zaffelare Molenstraat 14:13</li><li><a href="stop-114498.html">114498</a> - Zaffelare Kerk 14:14</li><li><a href="stop-114499.html">114499</a> - Zaffelare Oosteindeken 14:14</li><li><a href="stop-114500.html">114500</a> - Zaffelare Bosdam 14:15</li><li><a href="stop-114501.html">114501</a> - Zaffelare Leemstraat 14:17</li><li><a href="stop-114502.html">114502</a> - Zaffelare Persijzerstraat 14:17</li><li><a href="stop-114516.html">114516</a> - Zaffelare Oude Veldstraat 14:18</li><li><a href="stop-114503.html">114503</a> - Eksaarde Hoekstraat 14:19</li><li><a href="stop-114504.html">114504</a> - Eksaarde Stenenbrug 14:20</li><li><a href="stop-114505.html">114505</a> - Eksaarde Rechtstraat 14:21</li><li><a href="stop-114506.html">114506</a> - Eksaarde Rechtstraat/Calaigne 14:21</li><li><a href="stop-114507.html">114507</a> - Eksaarde Calaigne 14:22</li><li><a href="stop-114508.html">114508</a> - Eksaarde Doorslaardorp 14:24</li><li><a href="stop-113211.html">113211</a> - Eksaarde Doorslaar Kerk 14:24</li><li><a href="stop-114509.html">114509</a> - Eksaarde Doorslaar Veldeken 14:25</li><li><a href="stop-114510.html">114510</a> - Eksaarde Doorslaardam 14:27</li><li><a href="stop-114511.html">114511</a> - Lokeren Haneweestraat 14:28</li><li><a href="stop-114512.html">114512</a> - Lokeren Papestraat 14:29</li><li><a href="stop-114513.html">114513</a> - Lokeren Veerstraat 14:30</li><li><a href="stop-113041.html">113041</a> - Lokeren Groendreef 14:32</li><li><a href="stop-126615.html">126615</a> - Lokeren Station perron 7 14:33</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./552.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

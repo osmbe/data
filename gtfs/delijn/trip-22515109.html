@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Mechelen - Zemst - Weerde - 22515109</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mechelen - Zemst - Weerde - 22515109</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126972.html">126972</a> - Mechelen Brusselpoort 12:45</li><li><a href="stop-128896.html">128896</a> - Mechelen AZ Sint-Maarten 12:46</li><li><a href="stop-108368.html">108368</a> - Mechelen W. Geetsstraat 12:47</li><li><a href="stop-107922.html">107922</a> - Mechelen Station perron 4 12:48</li><li><a href="stop-109899.html">109899</a> - Mechelen Europalaan 12:50</li><li><a href="stop-108383.html">108383</a> - Mechelen Brusselsesteenweg 12:50</li><li><a href="stop-92397.html">92397</a> - Mechelen Technopolis 12:53</li><li><a href="stop-25652.html">25652</a> - Mechelen Vijfhuizen 12:53</li><li><a href="stop-25654.html">25654</a> - Mechelen Zennebeemden 12:54</li><li><a href="stop-109900.html">109900</a> - Mechelen Zemstbaan 12:55</li><li><a href="stop-14245.html">14245</a> - Zemst Melkerij 12:57</li><li><a href="stop-109404.html">109404</a> - Zemst Dorp 12:57</li><li><a href="stop-16768.html">16768</a> - Weerde Vredelaan 12:58</li><li><a href="stop-16770.html">16770</a> - Weerde Station Weerde 12:59</li><li><a href="stop-16772.html">16772</a> - Zemst Damstraat 13:00</li><li><a href="stop-15728.html">15728</a> - Weerde Pastoor Primsstraat 13:02</li><li><a href="stop-15730.html">15730</a> - Weerde Dorpsstraat 13:02</li><li><a href="stop-15261.html">15261</a> - Weerde Kerk 13:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3038.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Geel Industriepark - Mol - Leopoldsburg - 22461324</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Geel Industriepark - Mol - Leopoldsburg - 22461324</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126917.html">126917</a> - Balen Markt 07:31</li><li><a href="stop-90025.html">90025</a> - Balen Gasthuisstraat 07:33</li><li><a href="stop-20095.html">20095</a> - Balen Hoolsterberg 07:35</li><li><a href="stop-125433.html">125433</a> - Balen Vloedstraat 07:36</li><li><a href="stop-125429.html">125429</a> - Balen Scheps 07:37</li><li><a href="stop-125431.html">125431</a> - Balen Schepsveld 07:37</li><li><a href="stop-26722.html">26722</a> - Balen Windmolenstraat 07:38</li><li><a href="stop-26685.html">26685</a> - Balen Schoor 07:38</li><li><a href="stop-96514.html">96514</a> - Schoor Intermarché 07:38</li><li><a href="stop-26712.html">26712</a> - Balen Vredelaan 07:39</li><li><a href="stop-26694.html">26694</a> - Balen Steegsebaan III 07:39</li><li><a href="stop-26692.html">26692</a> - Balen Krijnsloop 07:40</li><li><a href="stop-125432.html">125432</a> - Balen Steegsebaan 07:40</li><li><a href="stop-26614.html">26614</a> - Balen Konijnenberg 07:40</li><li><a href="stop-125424.html">125424</a> - Balen Het Roth 07:41</li><li><a href="stop-26636.html">26636</a> - Balen Nieuwendijk 07:41</li><li><a href="stop-26710.html">26710</a> - Balen Vogelsberg 07:41</li><li><a href="stop-26659.html">26659</a> - Balen Peer Luytendijk 07:42</li><li><a href="stop-26658.html">26658</a> - Balen Ongelberg 07:42</li><li><a href="stop-26656.html">26656</a> - Balen Sinterveld 07:43</li><li><a href="stop-26654.html">26654</a> - Balen Sint-Rochus 07:45</li><li><a href="stop-26652.html">26652</a> - Balen J. Marien 07:47</li><li><a href="stop-96517.html">96517</a> - Schoor Kapel 07:48</li><li><a href="stop-26682.html">26682</a> - Balen Schoorheide 07:49</li><li><a href="stop-26607.html">26607</a> - Balen Industrieterrein 07:51</li><li><a href="stop-26578.html">26578</a> - Balen Antverpialaan 07:51</li><li><a href="stop-26616.html">26616</a> - Balen Maloukerk 07:52</li><li><a href="stop-26592.html">26592</a> - Balen De Baecklaan 07:52</li><li><a href="stop-26584.html">26584</a> - Balen Belgenlaan 07:53</li><li><a href="stop-26698.html">26698</a> - Balen Steenweg op Leopoldsburg II 07:55</li><li><a href="stop-26696.html">26696</a> - Balen Steenweg op Leopoldsburg I 07:55</li><li><a href="stop-26580.html">26580</a> - Balen Antwerpsesteenweg II 07:56</li><li><a href="stop-107240.html">107240</a> - Leopoldsburg Antwerpsesteenweg I 07:57</li><li><a href="stop-31796.html">31796</a> - Leopoldsburg Vaartstraat 07:58</li><li><a href="stop-105434.html">105434</a> - Leopoldsburg Quatre Bras 07:59</li><li><a href="stop-94979.html">94979</a> - Leopoldsburg VDAB Werkwinkel 07:59</li><li><a href="stop-31792.html">31792</a> - Leopoldsburg Station 08:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5101.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

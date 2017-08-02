@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Waasl Shopping-Station-H Bokstr-Tuinlaan - 20706635</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Waasl Shopping-Station-H Bokstr-Tuinlaan - 20706635</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126689.html">126689</a> - Sint-Niklaas Station perron 8 16:37</li><li><a href="stop-116306.html">116306</a> - Sint-Niklaas Uitgang Noordlaan 16:38</li><li><a href="stop-115674.html">115674</a> - Sint-Niklaas Hofstraat 16:41</li><li><a href="stop-115869.html">115869</a> - Sint-Niklaas O.L.V. Plein 16:42</li><li><a href="stop-115870.html">115870</a> - Sint-Niklaas Plezantstraat 16:43</li><li><a href="stop-115871.html">115871</a> - Sint-Niklaas Hugo Verrieststraat 16:44</li><li><a href="stop-115872.html">115872</a> - Sint-Niklaas Rodenbachstraat 16:44</li><li><a href="stop-115873.html">115873</a> - Belsele Timmermanslaan 16:45</li><li><a href="stop-115874.html">115874</a> - Belsele Lage Bokstraat 16:45</li><li><a href="stop-115875.html">115875</a> - Belsele Hoge Bokstraat 16:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./706.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

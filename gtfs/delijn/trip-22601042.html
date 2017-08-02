@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge Station-Centrum (Dijver) -Ver Assebroek - 22601042</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge Station-Centrum (Dijver) -Ver Assebroek - 22601042</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-94594.html">94594</a> - Assebroek Ver-Assebroek 14:17</li><li><a href="stop-40780.html">40780</a> - Assebroek De Meersen 14:18</li><li><a href="stop-101030.html">101030</a> - Assebroek Aanborgers 14:18</li><li><a href="stop-40792.html">40792</a> - Assebroek Sparrestraat 14:19</li><li><a href="stop-40782.html">40782</a> - Assebroek Engelendale 14:20</li><li><a href="stop-40774.html">40774</a> - Assebroek Astridlaan 14:21</li><li><a href="stop-40799.html">40799</a> - Assebroek Zevecote 14:21</li><li><a href="stop-40790.html">40790</a> - Assebroek Raboudenburg 14:22</li><li><a href="stop-40791.html">40791</a> - Assebroek Smisje 14:22</li><li><a href="stop-101033.html">101033</a> - Assebroek C.V.D. Bussche 14:23</li><li><a href="stop-40788.html">40788</a> - Assebroek Peerdeke 14:24</li><li><a href="stop-40784.html">40784</a> - Assebroek Kruisboog 14:25</li><li><a href="stop-40779.html">40779</a> - Assebroek Daverlostraat 14:25</li><li><a href="stop-40835.html">40835</a> - Brugge Gentpoort 14:26</li><li><a href="stop-40847.html">40847</a> - Brugge Katelijnepoort 14:27</li><li><a href="stop-128941.html">128941</a> - Brugge Station perron 1 14:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5764.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oostende-Groenendijk-Sas Slijkens-Oostende - 22650159</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oostende-Groenendijk-Sas Slijkens-Oostende - 22650159</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127267.html">127267</a> - Oostende Marie Joseplein perron 3 08:40</li><li><a href="stop-104635.html">104635</a> - Oostende Stadhuis 08:42</li><li><a href="stop-40421.html">40421</a> - Oostende Kapellestraat 08:43</li><li><a href="stop-125682.html">125682</a> - Oostende Station perron 5 08:46</li><li><a href="stop-36293.html">36293</a> - Oostende Stapelhuis 08:48</li><li><a href="stop-101002.html">101002</a> - Oostende Sluisplein 08:52</li><li><a href="stop-40450.html">40450</a> - Oostende Th.Van Loostraat 08:53</li><li><a href="stop-40401.html">40401</a> - Oostende Afrikalaan 08:53</li><li><a href="stop-40429.html">40429</a> - Oostende Mansveldstraat 08:54</li><li><a href="stop-40448.html">40448</a> - Oostende Stroombanklaan 08:55</li><li><a href="stop-40432.html">40432</a> - Oostende Militair Hospitaal 08:56</li><li><a href="stop-40190.html">40190</a> - Bredene Groenendijk 08:57</li><li><a href="stop-40182.html">40182</a> - Bredene Cafe De Zeemeeuw 08:58</li><li><a href="stop-40627.html">40627</a> - Bredene Zeelaan 08:59</li><li><a href="stop-40189.html">40189</a> - Bredene Frankrijklaan 09:00</li><li><a href="stop-100980.html">100980</a> - Bredene Centrumplein 09:01</li><li><a href="stop-40198.html">40198</a> - Bredene Wackerbout 09:02</li><li><a href="stop-40187.html">40187</a> - Bredene Dorp 09:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4319.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

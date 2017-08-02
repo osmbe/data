@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Vosselaar - Gierle - Lichtaart - Tielen - Geel - 22530679</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Vosselaar - Gierle - Lichtaart - Tielen - Geel - 22530679</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109753.html">109753</a> - Geel Station perron 8 16:58</li><li><a href="stop-109750.html">109750</a> - Geel Velodroomwijk 16:59</li><li><a href="stop-25166.html">25166</a> - Geel Gasstraat 17:00</li><li><a href="stop-25163.html">25163</a> - Geel Elzenstraat 17:01</li><li><a href="stop-25161.html">25161</a> - Geel Speenwaverdreef 17:02</li><li><a href="stop-109748.html">109748</a> - Geel Aardseweg 17:04</li><li><a href="stop-25157.html">25157</a> - Geel Roerdompstraat 17:05</li><li><a href="stop-25154.html">25154</a> - Kasterlee Netebrug 17:07</li><li><a href="stop-25152.html">25152</a> - Kasterlee Houtum 17:08</li><li><a href="stop-25149.html">25149</a> - Kasterlee Venheide 17:09</li><li><a href="stop-109746.html">109746</a> - Kasterlee Dorp 17:10</li><li><a href="stop-25414.html">25414</a> - Kasterlee Kempenstraat 17:11</li><li><a href="stop-25412.html">25412</a> - Kasterlee Ossengoor 17:11</li><li><a href="stop-25410.html">25410</a> - Kasterlee Hoge Mouw 17:12</li><li><a href="stop-25408.html">25408</a> - Kasterlee Koningsbos 17:12</li><li><a href="stop-25406.html">25406</a> - Lichtaart Hoogstraat 17:13</li><li><a href="stop-20681.html">20681</a> - Lichtaart Kerk 17:14</li><li><a href="stop-109803.html">109803</a> - Lichtaart Korenbloemlaan 17:15</li><li><a href="stop-25355.html">25355</a> - Lichtaart Driesstraat 17:17</li><li><a href="stop-109801.html">109801</a> - Tielen Dorp 17:19</li><li><a href="stop-88780.html">88780</a> - Tielen Kasteeldreef 17:21</li><li><a href="stop-127761.html">127761</a> - Tielen Prijstraat 17:22</li><li><a href="stop-25383.html">25383</a> - Gierle Broekzijde 17:35</li><li><a href="stop-101647.html">101647</a> - Gierle Kerk 17:36</li><li><a href="stop-108043.html">108043</a> - Gierle Houtakkerstraat 17:37</li><li><a href="stop-20559.html">20559</a> - Gierle Schoorstraat 17:38</li><li><a href="stop-20274.html">20274</a> - Gierle Het Laar 17:39</li><li><a href="stop-127740.html">127740</a> - Gierle P+R Gierle 17:40</li><li><a href="stop-20565.html">20565</a> - Gierle Gielsbos 17:41</li><li><a href="stop-20567.html">20567</a> - Vosselaar Zeggelaan 17:42</li><li><a href="stop-107983.html">107983</a> - Vosselaar Heilanders 17:43</li><li><a href="stop-109995.html">109995</a> - Vosselaar Vlinderstraat 17:43</li><li><a href="stop-20784.html">20784</a> - Vosselaar R. Sniederspad 17:44</li><li><a href="stop-20739.html">20739</a> - Vosselaar Astridlaan 17:45</li><li><a href="stop-108873.html">108873</a> - Vosselaar Dennendreef 17:46</li><li><a href="stop-108875.html">108875</a> - Vosselaar Dorp 17:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3441.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

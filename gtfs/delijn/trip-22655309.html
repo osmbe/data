@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oostende-Nieuwpoort-Koksijde Kazerne-Veurne - 22655309</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oostende-Nieuwpoort-Koksijde Kazerne-Veurne - 22655309</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-38857.html">38857</a> - Veurne Station 07:20</li><li><a href="stop-42705.html">42705</a> - Veurne Rozendal 07:21</li><li><a href="stop-42704.html">42704</a> - Veurne Pannestraat 07:24</li><li><a href="stop-42712.html">42712</a> - Veurne Weg Op Sint-Idesbald 07:25</li><li><a href="stop-36139.html">36139</a> - Koksijde Station 07:27</li><li><a href="stop-40319.html">40319</a> - Koksijde Vliegveld 07:28</li><li><a href="stop-104903.html">104903</a> - Koksijde Grote Bogaerde 07:29</li><li><a href="stop-40320.html">40320</a> - Koksijde Zeepanne 07:30</li><li><a href="stop-40313.html">40313</a> - Koksijde Kazerne 07:31</li><li><a href="stop-40310.html">40310</a> - Koksijde Dorp 07:32</li><li><a href="stop-104935.html">104935</a> - Koksijde Galloper 07:34</li><li><a href="stop-40662.html">40662</a> - Oostduinkerke West Hinder 07:35</li><li><a href="stop-40661.html">40661</a> - Oostduinkerke Ammanswalle 07:36</li><li><a href="stop-127919.html">127919</a> - Oostduinkerke Dorpsstraat 07:37</li><li><a href="stop-127931.html">127931</a> - Oostduinkerke Farazijnstraat 07:38</li><li><a href="stop-127921.html">127921</a> - Oostduinkerke Nieuwpoortsteenweg 07:40</li><li><a href="stop-127922.html">127922</a> - Oostduinkerke Watertoren 07:42</li><li><a href="stop-110608.html">110608</a> - Oostduinkerke Sunparks Kinderlaan 07:43</li><li><a href="stop-40368.html">40368</a> - Nieuwpoort Dudenhofenlaan 07:46</li><li><a href="stop-40373.html">40373</a> - Nieuwpoort Roger Vyveystraat 07:47</li><li><a href="stop-40383.html">40383</a> - Nieuwpoort Zwembad 07:48</li><li><a href="stop-101027.html">101027</a> - Nieuwpoort Parklaan 07:49</li><li><a href="stop-40380.html">40380</a> - Nieuwpoort Vismijn 07:50</li><li><a href="stop-40377.html">40377</a> - Nieuwpoort Stad 07:51</li><li><a href="stop-123631.html">123631</a> - Nieuwpoort Monument Albert 07:52</li><li><a href="stop-40338.html">40338</a> - Lombardsijde Dorp 07:55</li><li><a href="stop-129054.html">129054</a> - Westende Dorp Vervangingshalte 07:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6245.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

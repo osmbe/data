@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Essen - Kapellen - Merksem - 22545167</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Essen - Kapellen - Merksem - 22545167</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108475.html">108475</a> - Kapellen Dorp 13:36</li><li><a href="stop-108477.html">108477</a> - Kapellen Streepstraat 13:37</li><li><a href="stop-21807.html">21807</a> - Kapellen Dennenburg 13:38</li><li><a href="stop-22356.html">22356</a> - Kapellen Kalmthoutsesteenweg 13:39</li><li><a href="stop-22358.html">22358</a> - Kapellen J. Mulslaan 13:40</li><li><a href="stop-22361.html">22361</a> - Kapellen Marcottedreef 13:43</li><li><a href="stop-22363.html">22363</a> - Kapellen Golflei 13:44</li><li><a href="stop-22366.html">22366</a> - Kapellen Vijverslei 13:46</li><li><a href="stop-22368.html">22368</a> - Kalmthout Withoeflei 13:47</li><li><a href="stop-108749.html">108749</a> - Kalmthout Heidestatiestraat 13:48</li><li><a href="stop-22373.html">22373</a> - Kalmthout Kon. Elisabethstraat 13:49</li><li><a href="stop-108752.html">108752</a> - Kalmthout Bareelstraat 13:50</li><li><a href="stop-108754.html">108754</a> - Kalmthout Foxemaatstraat 13:51</li><li><a href="stop-108756.html">108756</a> - Kalmthout Kerk 13:52</li><li><a href="stop-108758.html">108758</a> - Kalmthout Sint-Vincentius 13:54</li><li><a href="stop-108760.html">108760</a> - Kalmthout Achterbroeksteenweg 13:56</li><li><a href="stop-107867.html">107867</a> - Kalmthout Station 13:56</li><li><a href="stop-22387.html">22387</a> - Kalmthout Kruisboshof 13:58</li><li><a href="stop-95453.html">95453</a> - Achterbroek Regina Pacis 13:59</li><li><a href="stop-95455.html">95455</a> - Achterbroek J.V.D. Berg 14:00</li><li><a href="stop-92245.html">92245</a> - Kalmthout Achterbroek Kerk 14:00</li><li><a href="stop-95391.html">95391</a> - Achterbroek Leyterstraat 14:00</li><li><a href="stop-108763.html">108763</a> - Achterbroek Kapelleke 14:01</li><li><a href="stop-108765.html">108765</a> - Achterbroek Handelaar 14:02</li><li><a href="stop-95461.html">95461</a> - Achterbroek Huis Maes 14:03</li><li><a href="stop-95462.html">95462</a> - Nieuwmoer Zilverhoekhoeve 14:05</li><li><a href="stop-95464.html">95464</a> - Nieuwmoer Zilverhoekstraat 14:06</li><li><a href="stop-95466.html">95466</a> - Nieuwmoer Darm 14:07</li><li><a href="stop-95468.html">95468</a> - Nieuwmoer Holleweg 14:08</li><li><a href="stop-95470.html">95470</a> - Nieuwmoer Dorpplaats 14:08</li><li><a href="stop-108153.html">108153</a> - Nieuwmoer Spreeuwstraat 14:09</li><li><a href="stop-95472.html">95472</a> - Nieuwmoer Kapel 14:10</li><li><a href="stop-95474.html">95474</a> - Nieuwmoer Boentbosch 14:11</li><li><a href="stop-95476.html">95476</a> - Nieuwmoer Grens Essen 14:11</li><li><a href="stop-22423.html">22423</a> - Essen Rijkmakerslaan 14:12</li><li><a href="stop-22426.html">22426</a> - Essen Postbaan 14:12</li><li><a href="stop-95441.html">95441</a> - Horendonk Kraaienberg 14:14</li><li><a href="stop-108169.html">108169</a> - Horendonk Kleuterschool 14:15</li><li><a href="stop-95445.html">95445</a> - Horendonk Over d'Aa 14:16</li><li><a href="stop-120878.html">120878</a> - Horendonk Melkerijstraat 14:17</li><li><a href="stop-22428.html">22428</a> - Essen Spijker 14:18</li><li><a href="stop-108772.html">108772</a> - Essen Gemeentehuis 14:19</li><li><a href="stop-19121.html">19121</a> - Essen Bibliotheek 14:20</li><li><a href="stop-19123.html">19123</a> - Essen Kloosterstraat 14:20</li><li><a href="stop-107412.html">107412</a> - Essen Sint-Antoniusstraat 14:21</li><li><a href="stop-108774.html">108774</a> - Essen Station 14:22</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3705.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

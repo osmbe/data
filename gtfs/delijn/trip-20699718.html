@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Zomergem - Eeklo - 20699718</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Zomergem - Eeklo - 20699718</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-114272.html">114272</a> - Zomergem Kerk 16:38</li><li><a href="stop-114273.html">114273</a> - Zomergem Tuinwijk 16:39</li><li><a href="stop-114274.html">114274</a> - Ronsele Daalmstraat 16:40</li><li><a href="stop-114275.html">114275</a> - Ronsele Kerk 16:41</li><li><a href="stop-114276.html">114276</a> - Ronsele Hoekstraat 16:42</li><li><a href="stop-114277.html">114277</a> - Oostwinkel Aardekensstraat 16:43</li><li><a href="stop-114278.html">114278</a> - Oostwinkel Mostmolen 16:44</li><li><a href="stop-114279.html">114279</a> - Oostwinkel Langestraat 16:44</li><li><a href="stop-114280.html">114280</a> - Oostwinkel Veldhoek 16:45</li><li><a href="stop-113313.html">113313</a> - Adegem Kruipuit 16:46</li><li><a href="stop-113314.html">113314</a> - Adegem Veldekens 36 16:48</li><li><a href="stop-113315.html">113315</a> - Adegem Leikant 16:48</li><li><a href="stop-113316.html">113316</a> - Adegem Veldekensvaart 16:49</li><li><a href="stop-113317.html">113317</a> - Eeklo Tieltsesteenweg 16:51</li><li><a href="stop-113318.html">113318</a> - Eeklo Nijverheidskaai 16:51</li><li><a href="stop-113980.html">113980</a> - Eeklo Slachthuisstraat 16:52</li><li><a href="stop-111995.html">111995</a> - Eeklo Ambachtenstraat 16:54</li><li><a href="stop-113320.html">113320</a> - Eeklo Revam 16:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./450.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

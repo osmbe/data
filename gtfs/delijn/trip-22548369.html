@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Zandvliet - Antwerpen via A12 - 22548369</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Zandvliet - Antwerpen via A12 - 22548369</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108528.html">108528</a> - Zandvliet Stelplaats 06:51</li><li><a href="stop-109925.html">109925</a> - Zandvliet Ruytermansweg 06:52</li><li><a href="stop-108524.html">108524</a> - Berendrecht Kapelstraat 06:53</li><li><a href="stop-108521.html">108521</a> - Berendrecht Zandweg 06:54</li><li><a href="stop-108520.html">108520</a> - Zandvliet Antwerpsebaan 06:56</li><li><a href="stop-108518.html">108518</a> - Zandvliet Aakstraat 06:57</li><li><a href="stop-108516.html">108516</a> - Zandvliet Dorp 06:58</li><li><a href="stop-21885.html">21885</a> - Zandvliet Bakkerstraat 06:59</li><li><a href="stop-21883.html">21883</a> - Berendrecht Zoutestraat 07:00</li><li><a href="stop-108513.html">108513</a> - Berendrecht Stwg. Zandvliet 07:01</li><li><a href="stop-21878.html">21878</a> - Berendrecht Prelaatstraat 07:01</li><li><a href="stop-21875.html">21875</a> - Berendrecht Solftplaats 07:02</li><li><a href="stop-108509.html">108509</a> - Berendrecht Kleine Bredestraat 07:04</li><li><a href="stop-108506.html">108506</a> - Berendrecht Viswater 07:05</li><li><a href="stop-108329.html">108329</a> - Berendrecht Kromme Weg 07:07</li><li><a href="stop-108327.html">108327</a> - Berendrecht Oprit A12 07:08</li><li><a href="stop-121215.html">121215</a> - Antwerpen Kinepolis 07:24</li><li><a href="stop-108192.html">108192</a> - Antwerpen Noorderplaats 07:32</li><li><a href="stop-108466.html">108466</a> - Antwerpen Sint-Jansplein 07:34</li><li><a href="stop-125281.html">125281</a> - Antwerpen F. Rooseveltplaats perron 21 07:37</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3764.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

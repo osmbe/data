@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Eeklo - Sint-Laureins - Sint-Margriete - 20698974</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eeklo - Sint-Laureins - Sint-Margriete - 20698974</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126662.html">126662</a> - Eeklo Station perron 3 18:00</li><li><a href="stop-113947.html">113947</a> - Eeklo Markt 18:03</li><li><a href="stop-113948.html">113948</a> - Eeklo Eikelstraat 18:04</li><li><a href="stop-113949.html">113949</a> - Eeklo Brugsesteenweg 18:06</li><li><a href="stop-113950.html">113950</a> - Eeklo Blakstraat 18:07</li><li><a href="stop-114036.html">114036</a> - Eeklo Droomschip 18:07</li><li><a href="stop-114037.html">114037</a> - Eeklo Galgenakker 18:08</li><li><a href="stop-113952.html">113952</a> - Eeklo Kerkhof 18:12</li><li><a href="stop-113953.html">113953</a> - Eeklo School 18:13</li><li><a href="stop-127592.html">127592</a> - Balgerhoeke Kerk 18:14</li><li><a href="stop-114124.html">114124</a> - Balgerhoeke Sint-Laureinsesteenweg 21 18:16</li><li><a href="stop-114125.html">114125</a> - Sint-Laureins Boterhoek 18:17</li><li><a href="stop-114126.html">114126</a> - Sint-Laureins Celiekerkweg 18:18</li><li><a href="stop-114127.html">114127</a> - Sint-Laureins Vaakweg 18:20</li><li><a href="stop-114128.html">114128</a> - Sint-Laureins Rommelsweg 18:20</li><li><a href="stop-114129.html">114129</a> - Sint-Laureins Dorp 18:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./404.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

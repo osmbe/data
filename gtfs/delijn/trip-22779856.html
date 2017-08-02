@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Tienen - Wommersom - Zoutleeuw - 22779856</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tienen - Wommersom - Zoutleeuw - 22779856</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-13901.html">13901</a> - Tienen Station Perron 8 17:59</li><li><a href="stop-13862.html">13862</a> - Tienen 4de Lansierslaan 18:00</li><li><a href="stop-13887.html">13887</a> - Tienen Leuvenselaan 18:01</li><li><a href="stop-125639.html">125639</a> - Tienen Kerk Heilig Hart 18:02</li><li><a href="stop-127858.html">127858</a> - Tienen Kabbeeksepoort 18:03</li><li><a href="stop-13863.html">13863</a> - Tienen Atheneum 18:04</li><li><a href="stop-13912.html">13912</a> - Tienen Waaibergstraat 18:05</li><li><a href="stop-127861.html">127861</a> - Tienen Oplintersepoort 18:06</li><li><a href="stop-13910.html">13910</a> - Tienen Het Rond Punt 18:07</li><li><a href="stop-13881.html">13881</a> - Tienen Hamelendreef 18:08</li><li><a href="stop-13918.html">13918</a> - Tienen Villapark 18:09</li><li><a href="stop-13825.html">13825</a> - Oplinter Militair Kerkhof 18:09</li><li><a href="stop-13819.html">13819</a> - Oplinter Huiskensstraat 18:11</li><li><a href="stop-13839.html">13839</a> - Oplinter Kloosterstraat 18:13</li><li><a href="stop-13829.html">13829</a> - Oplinter Melkweg 18:14</li><li><a href="stop-13841.html">13841</a> - Oplinter Maagdendal 18:15</li><li><a href="stop-13833.html">13833</a> - Oplinter Kanadaweg 18:16</li><li><a href="stop-12458.html">12458</a> - Wommersom Bergdries 18:18</li><li><a href="stop-12468.html">12468</a> - Wommersom Kouterstraat 18:19</li><li><a href="stop-92639.html">92639</a> - Wommersom Kerk 18:20</li><li><a href="stop-12462.html">12462</a> - Wommersom Klein Broekstraat 18:21</li><li><a href="stop-12464.html">12464</a> - Wommersom Melkwezerstraat 18:21</li><li><a href="stop-95671.html">95671</a> - Melkwezer Walsbergen 18:23</li><li><a href="stop-95650.html">95650</a> - Melkwezer Dorpstraat 18:24</li><li><a href="stop-95658.html">95658</a> - Melkwezer Kerk 18:25</li><li><a href="stop-95656.html">95656</a> - Melkwezer Hazenbergstraat 18:25</li><li><a href="stop-95654.html">95654</a> - Melkwezer Groenstraat 18:26</li><li><a href="stop-95652.html">95652</a> - Melkwezer Galerijstraat 18:27</li><li><a href="stop-99473.html">99473</a> - Helen-Bos Kapel 18:27</li><li><a href="stop-99471.html">99471</a> - Helen-Bos Dorp 18:28</li><li><a href="stop-99477.html">99477</a> - Helen-Bos Spoorwegstraat 18:31</li><li><a href="stop-99475.html">99475</a> - Helen-Bos Kruispunt Bos 18:32</li><li><a href="stop-99448.html">99448</a> - Helen-Bos Oude Kassei 18:33</li><li><a href="stop-14351.html">14351</a> - Zoutleeuw Leeuwerweg 18:34</li><li><a href="stop-14331.html">14331</a> - Zoutleeuw Kerk 18:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2117.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

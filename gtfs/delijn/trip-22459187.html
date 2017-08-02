@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hamont - Geel - 22459187</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hamont - Geel - 22459187</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-24035.html">24035</a> - Mol Rozenbergschool 16:07</li><li><a href="stop-24034.html">24034</a> - Mol Bergstraat 16:08</li><li><a href="stop-109424.html">109424</a> - Mol Gemeenschapsschool 16:10</li><li><a href="stop-32939.html">32939</a> - Mol Station perron 2 16:12</li><li><a href="stop-127756.html">127756</a> - Mol College 16:15</li><li><a href="stop-32925.html">32925</a> - Mol De Hutten 16:20</li><li><a href="stop-105312.html">105312</a> - Balen Weg op Rosselaar 16:22</li><li><a href="stop-26699.html">26699</a> - Balen Tenderlo 16:24</li><li><a href="stop-26638.html">26638</a> - Balen Overweg Vaartstraat 16:26</li><li><a href="stop-126916.html">126916</a> - Balen Markt 16:28</li><li><a href="stop-20083.html">20083</a> - Balen Rijsberg 16:29</li><li><a href="stop-20081.html">20081</a> - Balen Wagenstraat 16:31</li><li><a href="stop-105914.html">105914</a> - Balen Breden Els 16:32</li><li><a href="stop-95408.html">95408</a> - Gerheide Kapel 16:33</li><li><a href="stop-95407.html">95407</a> - Gerheide Lexy's 16:34</li><li><a href="stop-127461.html">127461</a> - Keiheuvel Ringlaan 16:35</li><li><a href="stop-95402.html">95402</a> - Wezel Nethehof 16:36</li><li><a href="stop-99643.html">99643</a> - Balen Neetlaan 16:36</li><li><a href="stop-97396.html">97396</a> - Wezel Casino 16:38</li><li><a href="stop-97395.html">97395</a> - Wezel Viaduct 16:40</li><li><a href="stop-106810.html">106810</a> - Mol Blekestraat 16:43</li><li><a href="stop-128812.html">128812</a> - Mol Kiezelweg 16:44</li><li><a href="stop-99833.html">99833</a> - Werkplaatsen Stevensvennen 16:46</li><li><a href="stop-99831.html">99831</a> - Werkplaatsen Kiezel 16:48</li><li><a href="stop-99830.html">99830</a> - Werkplaatsen Dubbelrij 16:49</li><li><a href="stop-99827.html">99827</a> - Werkplaatsen Dorperheide 16:50</li><li><a href="stop-110415.html">110415</a> - Heeserbergen Kempensestraat 16:51</li><li><a href="stop-110413.html">110413</a> - Lommel Guido Gezellestraat 16:52</li><li><a href="stop-97255.html">97255</a> - Heeserbergen Dode Ven 16:53</li><li><a href="stop-31977.html">31977</a> - Lommel Donkerstraat 16:54</li><li><a href="stop-32082.html">32082</a> - Lommel Vreyshorring 16:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4627.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Bree - Neerpelt Sneldienst - 22468141</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Bree - Neerpelt Sneldienst - 22468141</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-33045.html">33045</a> - Neerpelt Station 06:20</li><li><a href="stop-126104.html">126104</a> - Sint-Huibrechts-Lille Centrum 06:26</li><li><a href="stop-27258.html">27258</a> - Kaulille Kerk 06:34</li><li><a href="stop-27231.html">27231</a> - Bocholt Brouwerij 06:40</li><li><a href="stop-123464.html">123464</a> - Bree Busstation Perron 2 06:47</li><li><a href="stop-105303.html">105303</a> - Gruitrode Centrum 06:55</li><li><a href="stop-91056.html">91056</a> - Opglabbeek Dorpsplein 07:01</li><li><a href="stop-26530.html">26530</a> - As Kerk 07:06</li><li><a href="stop-28346.html">28346</a> - Genk Shopping Center perron 3 07:16</li><li><a href="stop-43782.html">43782</a> - Genk Station perron 6 07:18</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5160.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

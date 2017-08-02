@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Keerbergen - Waver Scholen - 22535097</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Keerbergen - Waver Scholen - 22535097</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-15087.html">15087</a> - Keerbergen Kerk 07:40</li><li><a href="stop-87252.html">87252</a> - Keerbergen Kempenlaan 07:41</li><li><a href="stop-15090.html">15090</a> - Keerbergen Bloemenbosdreef 07:42</li><li><a href="stop-24808.html">24808</a> - Rijmenam Grote Paallaan 07:43</li><li><a href="stop-109656.html">109656</a> - Rijmenam Jachthoornlaan 07:44</li><li><a href="stop-24792.html">24792</a> - Rijmenam Zwart Water 07:48</li><li><a href="stop-24790.html">24790</a> - Bonheiden Spiekelei 07:49</li><li><a href="stop-24788.html">24788</a> - Bonheiden Gezonde Luchtlaan 07:50</li><li><a href="stop-24786.html">24786</a> - Bonheiden Kanonniersweg 07:51</li><li><a href="stop-24783.html">24783</a> - Bonheiden Imeldalaan 07:52</li><li><a href="stop-24781.html">24781</a> - Bonheiden Grote Heidestraat 07:53</li><li><a href="stop-109652.html">109652</a> - Bonheiden Kerk 07:53</li><li><a href="stop-24777.html">24777</a> - Bonheiden Muizensteenweg 07:54</li><li><a href="stop-24775.html">24775</a> - Bonheiden Roggemanstraat 07:56</li><li><a href="stop-24773.html">24773</a> - Bonheiden P. Benoitlaan 07:57</li><li><a href="stop-127892.html">127892</a> - Bonheiden Eksterveldlaan 08:00</li><li><a href="stop-91344.html">91344</a> - Bonheiden Waversesteenweg 08:01</li><li><a href="stop-98584.html">98584</a> - Bonheiden Achterdiedonken 08:02</li><li><a href="stop-98585.html">98585</a> - Onze-Lieve-Vrouw-Waver Heivelden 08:03</li><li><a href="stop-98586.html">98586</a> - Onze-Lieve-Vrouw-Waver Duivelshoek 08:04</li><li><a href="stop-108264.html">108264</a> - Onze-Lieve-Vrouw-Waver Berkenhoekstraat 08:05</li><li><a href="stop-109524.html">109524</a> - Onze-Lieve-Vrouw-Waver Kruisweglei 08:06</li><li><a href="stop-24383.html">24383</a> - Onze-Lieve-Vrouw-Waver Dijk 08:07</li><li><a href="stop-109528.html">109528</a> - Onze-Lieve-Vrouw-Waver Kerk 08:07</li><li><a href="stop-109402.html">109402</a> - Onze-Lieve-Vrouw-Waver Sint-Ursula 08:09</li><li><a href="stop-109403.html">109403</a> - Onze-Lieve-Vrouw-Waver Koelarenvelden 08:10</li><li><a href="stop-109709.html">109709</a> - Onze-Lieve-Vrouw-Waver Bosstraat 08:11</li><li><a href="stop-98587.html">98587</a> - Onze-Lieve-Vrouw-Waver Liekens 08:12</li><li><a href="stop-98588.html">98588</a> - Onze-Lieve-Vrouw-Waver Wolvenstraat 08:14</li><li><a href="stop-98569.html">98569</a> - Onze-Lieve-Vrouw-Waver Wolvenstraat 08:14</li><li><a href="stop-109548.html">109548</a> - Sint-Katelijne-Waver Hagelstein 08:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3552.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

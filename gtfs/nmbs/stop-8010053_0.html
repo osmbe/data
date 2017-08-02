@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Dortmund Hbf</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Dortmund Hbf</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-TGV941339851.html">TGV941339851</a> - TGV941339851 - Paris Nord (f)  -  Dortmund Hbf (d)</li><li><a href="trip-THA941234641.html">THA941234641</a> - THA941234641 - Dortmund Hbf (d)  -  Paris Nord (f)</li><li><a href="trip-THA941334651.html">THA941334651</a> - THA941334651 - Paris Nord (f)  -  Dortmund Hbf (d)</li><li><a href="trip-THA942434661.html">THA942434661</a> - THA942434661 - Dortmund Hbf (d)  -  Paris Nord (f)</li><li><a href="trip-THA946134691.html">THA946134691</a> - THA946134691 - Paris Nord (f)  -  Dortmund Hbf (d)</li><li><a href="trip-THA947234701.html">THA947234701</a> - THA947234701 - Dortmund Hbf (d)  -  Paris Nord (f)</li><li><a href="trip-THA947334711.html">THA947334711</a> - THA947334711 - Paris Nord (f)  -  Dortmund Hbf (d)</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([51.517898, 7.459293], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([51.517898, 7.459293]).addTo(map);
+    </script>
+</body>
+
+</html>

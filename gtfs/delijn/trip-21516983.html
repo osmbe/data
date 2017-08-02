@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Polderstad - Eilandje - 21516983</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Polderstad - Eilandje - 21516983</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-107804.html">107804</a> - Antwerpen Cadixstraat 16:43</li><li><a href="stop-107687.html">107687</a> - Antwerpen Indiëstraat 16:44</li><li><a href="stop-107686.html">107686</a> - Antwerpen Binnenvaartstraat 16:44</li><li><a href="stop-108613.html">108613</a> - Antwerpen Tunnelplaats 16:46</li><li><a href="stop-108253.html">108253</a> - Antwerpen Paardenmarkt 16:48</li><li><a href="stop-125248.html">125248</a> - Antwerpen F. Rooseveltplaats 16:49</li><li><a href="stop-107386.html">107386</a> - Antwerpen Stadspark 16:53</li><li><a href="stop-108179.html">108179</a> - Antwerpen Nationale Bank 16:55</li><li><a href="stop-107741.html">107741</a> - Antwerpen Kasteelplein 16:57</li><li><a href="stop-19037.html">19037</a> - Antwerpen Bestorming 17:00</li><li><a href="stop-19325.html">19325</a> - Antwerpen Broedermin 17:01</li><li><a href="stop-108207.html">108207</a> - Antwerpen Station Zuid 17:03</li><li><a href="stop-108514.html">108514</a> - Antwerpen Stedelijke Sporthal 17:05</li><li><a href="stop-107778.html">107778</a> - Antwerpen Groothandelsmarkt 17:06</li><li><a href="stop-108051.html">108051</a> - Hoboken Lageweg 17:07</li><li><a href="stop-108824.html">108824</a> - Hoboken Waaslandstraat 17:09</li><li><a href="stop-108277.html">108277</a> - Hoboken Portugesestraat 17:10</li><li><a href="stop-107855.html">107855</a> - Hoboken Hoge Beuken 17:11</li><li><a href="stop-107410.html">107410</a> - Hoboken Berkenrodelei 17:12</li><li><a href="stop-20653.html">20653</a> - Hoboken Kioskplaats 17:13</li><li><a href="stop-20557.html">20557</a> - Hoboken Kapelstraat 17:14</li><li><a href="stop-107321.html">107321</a> - Hoboken D. Baginierlaan 17:15</li><li><a href="stop-21494.html">21494</a> - Hoboken K. Du Boislaan 17:16</li><li><a href="stop-21496.html">21496</a> - Hoboken Boombekelaan 17:17</li><li><a href="stop-21499.html">21499</a> - Hoboken Smallandlaan 17:17</li><li><a href="stop-21501.html">21501</a> - Hoboken Van Traynellaan 17:18</li><li><a href="stop-108273.html">108273</a> - Hoboken Polderstad 17:19</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2711.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Gent - Eeklo - Brugge - 20698365</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gent - Eeklo - Brugge - 20698365</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-127924.html">127924</a> - Brugge Station perron 2 17:07</li><li><a href="stop-36771.html">36771</a> - Brugge Katelijnepoort 17:11</li><li><a href="stop-103853.html">103853</a> - Brugge Gentpoort 17:12</li><li><a href="stop-125701.html">125701</a> - Brugge Kruispoort 17:13</li><li><a href="stop-110658.html">110658</a> - Brugge Altebijstraat 17:14</li><li><a href="stop-127280.html">127280</a> - Sint-Kruis Watertoren 17:16</li><li><a href="stop-127279.html">127279</a> - Sint-Kruis Vossensteert 17:18</li><li><a href="stop-105059.html">105059</a> - Sint-Kruis Bos En Lommer 17:19</li><li><a href="stop-98064.html">98064</a> - Sint-Kruis Vijversdreef 17:20</li><li><a href="stop-127896.html">127896</a> - Sint-Kruis Abdij Male 17:21</li><li><a href="stop-98055.html">98055</a> - Sint-Kruis Malesteenweg 556 17:22</li><li><a href="stop-127272.html">127272</a> - Sijsele Hekhoek 17:22</li><li><a href="stop-100886.html">100886</a> - Sijsele Kazerne 17:23</li><li><a href="stop-125702.html">125702</a> - Sijsele Dorp 17:24</li><li><a href="stop-127315.html">127315</a> - Sijsele Zwaanstraat 17:25</li><li><a href="stop-105067.html">105067</a> - Sijsele Gentsesteenweg 27 17:26</li><li><a href="stop-105066.html">105066</a> - Sijsele Veldhoek 17:27</li><li><a href="stop-127314.html">127314</a> - Sijsele Ziekenhuis 17:29</li><li><a href="stop-112998.html">112998</a> - Maldegem De Swaeflaan 17:29</li><li><a href="stop-112997.html">112997</a> - Maldegem Barbarastraat 17:30</li><li><a href="stop-112996.html">112996</a> - Maldegem Zandhoogte 17:32</li><li><a href="stop-112995.html">112995</a> - Maldegem Oude Kasteeldreef 17:34</li><li><a href="stop-112994.html">112994</a> - Maldegem Reesinghelaan 17:35</li><li><a href="stop-125412.html">125412</a> - Maldegem Markt perron 2 17:36</li><li><a href="stop-125164.html">125164</a> - Maldegem Zwarte Zusterslaan 17:38</li><li><a href="stop-112991.html">112991</a> - Maldegem Godshuis 17:39</li><li><a href="stop-112990.html">112990</a> - Maldegem Ommeloper 17:40</li><li><a href="stop-112989.html">112989</a> - Maldegem Radestraat 17:41</li><li><a href="stop-112988.html">112988</a> - Maldegem Harlingenhof 17:42</li><li><a href="stop-112987.html">112987</a> - Adegem Dorp 17:44</li><li><a href="stop-112986.html">112986</a> - Adegem Root 17:46</li><li><a href="stop-112985.html">112985</a> - Adegem Dr. Herreboutlaan 17:47</li><li><a href="stop-127588.html">127588</a> - Balgerhoeke Kerk 17:48</li><li><a href="stop-112983.html">112983</a> - Eeklo School 17:49</li><li><a href="stop-112982.html">112982</a> - Eeklo Kerkhof 17:50</li><li><a href="stop-113067.html">113067</a> - Eeklo Galgenakker 17:53</li><li><a href="stop-113066.html">113066</a> - Eeklo Droomschip 17:54</li><li><a href="stop-112980.html">112980</a> - Eeklo Blakstraat 17:54</li><li><a href="stop-112979.html">112979</a> - Eeklo Brugsesteenweg 17:55</li><li><a href="stop-112978.html">112978</a> - Eeklo Eikelstraat 17:56</li><li><a href="stop-112977.html">112977</a> - Eeklo Markt 17:57</li><li><a href="stop-126610.html">126610</a> - Eeklo Station perron 9 18:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./362.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

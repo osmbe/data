@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Deinze - Gent - Lochristi - Beervelde - 20703580</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Deinze - Gent - Lochristi - Beervelde - 20703580</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126672.html">126672</a> - Gent Sint-Pietersstation perron 5 17:58</li><li><a href="stop-111261.html">111261</a> - Gent Hogeschool Gent 18:01</li><li><a href="stop-111262.html">111262</a> - Gent Textielinstituut 18:04</li><li><a href="stop-111398.html">111398</a> - Gent Sterre 18:05</li><li><a href="stop-111263.html">111263</a> - Gent Maaltebruggestraat 18:06</li><li><a href="stop-111264.html">111264</a> - Gent M. Middelares - Maalte 18:07</li><li><a href="stop-120122.html">120122</a> - Sint-Denijs-Westrem Flanders Expo 18:09</li><li><a href="stop-115618.html">115618</a> - Gent Bovenhove 18:10</li><li><a href="stop-111402.html">111402</a> - Sint-Denijs-Westrem E40 Autoweg 18:12</li><li><a href="stop-111404.html">111404</a> - Sint-Denijs-Westrem Soenenspark 18:14</li><li><a href="stop-111405.html">111405</a> - Sint-Denijs-Westrem Dorp 18:15</li><li><a href="stop-120289.html">120289</a> - Sint-Denijs-Westrem Drie Sleutels 18:16</li><li><a href="stop-120497.html">120497</a> - Sint-Denijs-Westrem Grand Noble 18:17</li><li><a href="stop-113121.html">113121</a> - Sint-Denijs-Westrem Rosdamstraat 18:18</li><li><a href="stop-113122.html">113122</a> - Sint-Martens-Latem Maenhoutstraat 18:19</li><li><a href="stop-111999.html">111999</a> - Sint-Martens-Latem Paddenhoek 18:20</li><li><a href="stop-112415.html">112415</a> - Sint-Martens-Latem De Kroon 18:21</li><li><a href="stop-112001.html">112001</a> - Sint-Martens-Latem Bowling 18:22</li><li><a href="stop-113124.html">113124</a> - Sint-Martens-Latem Twee Dreven 18:23</li><li><a href="stop-112000.html">112000</a> - Sint-Martens-Latem Overmeerspark 18:24</li><li><a href="stop-113125.html">113125</a> - Deurle Broekstraat 18:25</li><li><a href="stop-112002.html">112002</a> - Deurle Vierschaar 18:27</li><li><a href="stop-113133.html">113133</a> - Deurle Clauslaan 18:29</li><li><a href="stop-113134.html">113134</a> - Astene Beekstraat 18:30</li><li><a href="stop-113135.html">113135</a> - Astene Oudestraat 18:31</li><li><a href="stop-113136.html">113136</a> - Astene Edekestraat 18:32</li><li><a href="stop-113137.html">113137</a> - Astene Pontstraat 18:33</li><li><a href="stop-113138.html">113138</a> - Astene Dorp 18:34</li><li><a href="stop-113140.html">113140</a> - Astene Gampelaeredreef 18:37</li><li><a href="stop-111540.html">111540</a> - Deinze Gentstraat 18:40</li><li><a href="stop-114114.html">114114</a> - Deinze Knok 18:42</li><li><a href="stop-126813.html">126813</a> - Deinze Station perron 1 18:43</li><li><a href="stop-113141.html">113141</a> - Deinze Gezellelaan 18:44</li><li><a href="stop-113142.html">113142</a> - Deinze Gentpoortstraat Grammat 18:46</li><li><a href="stop-113251.html">113251</a> - Deinze Kerkhof 18:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./600.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Aalst - Hofstade - Lede - Oordegem - Wetteren - 20717132</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aalst - Hofstade - Lede - Oordegem - Wetteren - 20717132</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-118198.html">118198</a> - Lede Station 17:12</li><li><a href="stop-117649.html">117649</a> - Lede Kleine Ommegangweg 17:14</li><li><a href="stop-117648.html">117648</a> - Lede Pastorijstraat 17:15</li><li><a href="stop-117967.html">117967</a> - Lede Ziekenhuis 17:17</li><li><a href="stop-118210.html">118210</a> - Lede Damstraat 17:18</li><li><a href="stop-117347.html">117347</a> - Lede Smesweg 17:18</li><li><a href="stop-117271.html">117271</a> - Lede Molenbergstraat 17:19</li><li><a href="stop-117270.html">117270</a> - Lede Kapel 17:20</li><li><a href="stop-118207.html">118207</a> - Impe Kerk 17:22</li><li><a href="stop-117953.html">117953</a> - Impe Dorp 17:22</li><li><a href="stop-117954.html">117954</a> - Impe Hofsmeer 17:23</li><li><a href="stop-117955.html">117955</a> - Impe Serskampstraat 17:24</li><li><a href="stop-117956.html">117956</a> - Smetlede Kerk 17:25</li><li><a href="stop-119362.html">119362</a> - Smetlede Pontweg 17:26</li><li><a href="stop-117957.html">117957</a> - Smetlede Kapelleweg 17:27</li><li><a href="stop-117958.html">117958</a> - Oordegem Rodtstraat 17:28</li><li><a href="stop-118199.html">118199</a> - Oordegem Dorp 17:29</li><li><a href="stop-117946.html">117946</a> - Oordegem Grote Steenweg 17:30</li><li><a href="stop-117268.html">117268</a> - Oordegem Dries 17:31</li><li><a href="stop-117267.html">117267</a> - Oordegem Blekte 17:32</li><li><a href="stop-117366.html">117366</a> - Oordegem Klinkaard 17:33</li><li><a href="stop-117266.html">117266</a> - Massemen Oordegemsesteenweg 17:35</li><li><a href="stop-120621.html">120621</a> - Massemen Loweestraat 17:36</li><li><a href="stop-120620.html">120620</a> - Massemen Dorp 17:38</li><li><a href="stop-116870.html">116870</a> - Massemen Maelbroekstraat 17:39</li><li><a href="stop-113797.html">113797</a> - Wetteren Diepenbroekstraat 17:41</li><li><a href="stop-113798.html">113798</a> - Wetteren Zuidlaan 17:41</li><li><a href="stop-113665.html">113665</a> - Wetteren Oordegemsesteenweg 17:42</li><li><a href="stop-124357.html">124357</a> - Wetteren Buyssestraat 17:43</li><li><a href="stop-126623.html">126623</a> - Wetteren Station perron 3 17:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1241.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

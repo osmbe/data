@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Berchem Station - Hove - Vremde - 22504543</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Berchem Station - Hove - Vremde - 22504543</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-20339.html">20339</a> - Vremde Don Bosco 14:03</li><li><a href="stop-20337.html">20337</a> - Vremde Withofstraat 14:04</li><li><a href="stop-20335.html">20335</a> - Vremde Marcel De Ridderstraat 14:05</li><li><a href="stop-92387.html">92387</a> - Vremde Kerk 14:05</li><li><a href="stop-107808.html">107808</a> - Vremde Boechoutveldweg 14:06</li><li><a href="stop-23823.html">23823</a> - Vremde Rozenlaan 14:07</li><li><a href="stop-23825.html">23825</a> - Vremde Azalealaan 14:08</li><li><a href="stop-23824.html">23824</a> - Vremde Rozenlaan 14:09</li><li><a href="stop-107810.html">107810</a> - Vremde Boechoutveldweg 14:09</li><li><a href="stop-109319.html">109319</a> - Vremde Kerk 14:10</li><li><a href="stop-23821.html">23821</a> - Vremde Berthoutstraat 14:11</li><li><a href="stop-23819.html">23819</a> - Vremde Veldeweg 14:12</li><li><a href="stop-92261.html">92261</a> - Boechout Sneppenbosweg 14:13</li><li><a href="stop-109318.html">109318</a> - Boechout Groenstraat 14:14</li><li><a href="stop-109317.html">109317</a> - Boechout Mussenhoevelaan 14:14</li><li><a href="stop-109012.html">109012</a> - Boechout Schransstraat 14:15</li><li><a href="stop-127460.html">127460</a> - Boechout P+R Boechout 14:16</li><li><a href="stop-23707.html">23707</a> - Boechout Vremdesteenweg 14:18</li><li><a href="stop-20324.html">20324</a> - Boechout Gemeentehuis 14:18</li><li><a href="stop-107479.html">107479</a> - Boechout Molenlei 14:19</li><li><a href="stop-23046.html">23046</a> - Boechout Heuvelstraat 14:20</li><li><a href="stop-109013.html">109013</a> - Boechout Kerk 14:21</li><li><a href="stop-100379.html">100379</a> - Boechout Ropstocklei 14:22</li><li><a href="stop-23051.html">23051</a> - Boechout Kerkhof 14:22</li><li><a href="stop-23053.html">23053</a> - Hove Weldadigheidstraat 14:24</li><li><a href="stop-109253.html">109253</a> - Hove Kerk 14:25</li><li><a href="stop-23675.html">23675</a> - Hove Lambrechtslei 14:26</li><li><a href="stop-108060.html">108060</a> - Hove Wouwstraat 14:27</li><li><a href="stop-109251.html">109251</a> - Mortsel Boechoutselei 14:27</li><li><a href="stop-109250.html">109250</a> - Mortsel Rubensstraat 14:28</li><li><a href="stop-109681.html">109681</a> - Mortsel Sint-Jozefkliniek 14:30</li><li><a href="stop-19793.html">19793</a> - Mortsel Molenlei 14:31</li><li><a href="stop-19949.html">19949</a> - Mortsel Floralaan 14:32</li><li><a href="stop-20044.html">20044</a> - Mortsel Gemeenteplein 14:33</li><li><a href="stop-107552.html">107552</a> - Mortsel Gemeenteplein 14:34</li><li><a href="stop-108555.html">108555</a> - Mortsel T. Reynlaan 14:37</li><li><a href="stop-108236.html">108236</a> - Mortsel Osylei 14:38</li><li><a href="stop-21088.html">21088</a> - Mortsel Station 14:41</li><li><a href="stop-108419.html">108419</a> - Mortsel Sint-Amedeuskliniek 14:42</li><li><a href="stop-108107.html">108107</a> - Deurne Luchthaven 14:44</li><li><a href="stop-108106.html">108106</a> - Berchem Vosstraat 14:45</li><li><a href="stop-107420.html">107420</a> - Berchem Bikschotelaan 14:46</li><li><a href="stop-107596.html">107596</a> - Berchem Dianalaan 14:47</li><li><a href="stop-108046.html">108046</a> - Berchem Minervastraat 14:48</li><li><a href="stop-107744.html">107744</a> - Berchem Groenenhoek 14:48</li><li><a href="stop-107631.html">107631</a> - Berchem Station perron 2 14:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2825.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

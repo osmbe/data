@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Diksmuide-Houthulst-Roeselare - 22639753</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Diksmuide-Houthulst-Roeselare - 22639753</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126367.html">126367</a> - Roeselare Station perron 6 17:15</li><li><a href="stop-123488.html">123488</a> - Roeselare De Coninckplein 17:18</li><li><a href="stop-88638.html">88638</a> - Roeselare Sint-Amandsstraat 17:19</li><li><a href="stop-104996.html">104996</a> - Roeselare A.Rodenbachstraat 17:20</li><li><a href="stop-101111.html">101111</a> - Roeselare Boldershof 17:21</li><li><a href="stop-42067.html">42067</a> - Roeselare Koortskapel 17:23</li><li><a href="stop-42053.html">42053</a> - Roeselare Hallen 17:24</li><li><a href="stop-123685.html">123685</a> - Roeselare Schiervelde 17:25</li><li><a href="stop-42055.html">42055</a> - Roeselare Hellestraat 17:26</li><li><a href="stop-40910.html">40910</a> - Hooglede Vergeldermolen 17:27</li><li><a href="stop-42558.html">42558</a> - Hooglede Meiboomstraat 17:28</li><li><a href="stop-40907.html">40907</a> - Hooglede Sleyhage 17:29</li><li><a href="stop-123485.html">123485</a> - Staden Kristus Koning 17:30</li><li><a href="stop-104997.html">104997</a> - Staden Lindeken 17:32</li><li><a href="stop-104998.html">104998</a> - Staden Voorstad 17:34</li><li><a href="stop-38184.html">38184</a> - Staden Dorp 17:35</li><li><a href="stop-42152.html">42152</a> - Staden Mortelbak 17:36</li><li><a href="stop-41933.html">41933</a> - Staden Houthulststraat 56 17:36</li><li><a href="stop-42156.html">42156</a> - Staden Stampkotstraat 17:37</li><li><a href="stop-42155.html">42155</a> - Staden Soetestraat 17:38</li><li><a href="stop-42153.html">42153</a> - Staden Reke 17:39</li><li><a href="stop-42435.html">42435</a> - Houthulst Fabrieksput 17:41</li><li><a href="stop-125746.html">125746</a> - Houthulst Plaats 17:42</li><li><a href="stop-42434.html">42434</a> - Houthulst Brouwershof 17:43</li><li><a href="stop-42446.html">42446</a> - Houthulst Zegestraat 17:44</li><li><a href="stop-42445.html">42445</a> - Houthulst Vijverstraat 17:44</li><li><a href="stop-42440.html">42440</a> - Houthulst Nieuw Kerkhof 17:45</li><li><a href="stop-101128.html">101128</a> - Houthulst Jagershof 17:45</li><li><a href="stop-101139.html">101139</a> - Houthulst Jonkershove 17:47</li><li><a href="stop-42546.html">42546</a> - Merkem Sneppe 17:48</li><li><a href="stop-42538.html">42538</a> - Merkem Grote Abri 17:50</li><li><a href="stop-123695.html">123695</a> - Merkem Kippe 17:52</li><li><a href="stop-42537.html">42537</a> - Merkem Gemeentehuis 17:53</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6134.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

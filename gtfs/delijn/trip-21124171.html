@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Marktbus Ternat - 21124171</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Marktbus Ternat - 21124171</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-13559.html">13559</a> - Ternat Markt 09:31</li><li><a href="stop-13551.html">13551</a> - Ternat Café Afspanning 09:34</li><li><a href="stop-17125.html">17125</a> - Sint-Katharina-Lombeek Industriezone 09:35</li><li><a href="stop-17127.html">17127</a> - Sint-Katharina-Lombeek Wei 09:36</li><li><a href="stop-127504.html">127504</a> - Essene Kapelleke 09:38</li><li><a href="stop-9425.html">9425</a> - Essene Houwijkstraat 09:39</li><li><a href="stop-9435.html">9435</a> - Essene Paddeputstraat 09:40</li><li><a href="stop-9433.html">9433</a> - Essene Lombeekstraat 09:41</li><li><a href="stop-17129.html">17129</a> - Essene OLV-Kerk 09:43</li><li><a href="stop-10452.html">10452</a> - Essene Lombeekstraat 09:44</li><li><a href="stop-87246.html">87246</a> - Essene Stuikberg 09:45</li><li><a href="stop-87247.html">87247</a> - Essene Asbroeklos 09:45</li><li><a href="stop-110640.html">110640</a> - Essene Langhaagstraat 09:47</li><li><a href="stop-87240.html">87240</a> - Essene Bellemolen 09:48</li><li><a href="stop-87242.html">87242</a> - Sint-Katharina-Lombeek Station 09:49</li><li><a href="stop-15200.html">15200</a> - Sint-Katharina-Lombeek Sluisvijverstraat 09:50</li><li><a href="stop-15198.html">15198</a> - Sint-Katharina-Lombeek School 09:51</li><li><a href="stop-15196.html">15196</a> - Sint-Katharina-Lombeek Bosstraat 09:51</li><li><a href="stop-15194.html">15194</a> - Sint-Katharina-Lombeek Meerstraat 09:53</li><li><a href="stop-15192.html">15192</a> - Sint-Katharina-Lombeek Broekstraat 09:55</li><li><a href="stop-15190.html">15190</a> - Sint-Katharina-Lombeek Lippensputweg 09:56</li><li><a href="stop-17123.html">17123</a> - Sint-Katharina-Lombeek Spoorweg 09:57</li><li><a href="stop-13563.html">13563</a> - Ternat Station 09:59</li><li><a href="stop-93386.html">93386</a> - Ternat Klooster - Scholen 10:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1530.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

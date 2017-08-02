@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - Gruitrode - Kinrooi - 22479823</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - Gruitrode - Kinrooi - 22479823</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-33097.html">33097</a> - Maaseik Van Eycklaan 15:38</li><li><a href="stop-123118.html">123118</a> - Maaseik Plantage 15:40</li><li><a href="stop-32289.html">32289</a> - Maaseik Stationsstraat 15:41</li><li><a href="stop-32298.html">32298</a> - Maaseik Verloren Kost 15:42</li><li><a href="stop-123130.html">123130</a> - Maaseik Pieter Geunsstraat 15:42</li><li><a href="stop-123082.html">123082</a> - Maaseik Campus H en R 15:43</li><li><a href="stop-32296.html">32296</a> - Maaseik Venweg 15:44</li><li><a href="stop-32292.html">32292</a> - Maaseik 't Gremelslo 15:45</li><li><a href="stop-31008.html">31008</a> - Ophoven Jettenweg 15:48</li><li><a href="stop-30960.html">30960</a> - Kinrooi Leuerbroek 15:49</li><li><a href="stop-123048.html">123048</a> - Kinrooi Dorpsplein 15:51</li><li><a href="stop-30952.html">30952</a> - Kinrooi Molenweg 15:52</li><li><a href="stop-30900.html">30900</a> - Kinrooi Breeërsteenweg 15:52</li><li><a href="stop-30962.html">30962</a> - Kinrooi Luitestraat 15:53</li><li><a href="stop-27665.html">27665</a> - Tongerlo 't Hasselt Kiezel 15:54</li><li><a href="stop-27685.html">27685</a> - Tongerlo Klaverblad 15:55</li><li><a href="stop-27695.html">27695</a> - Tongerlo Vogelsdonk 15:56</li><li><a href="stop-27521.html">27521</a> - Bree Processieweg 15:57</li><li><a href="stop-27523.html">27523</a> - Bree 't Hasselt Kerk 15:58</li><li><a href="stop-27522.html">27522</a> - Bree 't Hasselt Kerk 15:58</li><li><a href="stop-27520.html">27520</a> - Bree Processieweg 15:59</li><li><a href="stop-105173.html">105173</a> - Tongerlo Veestraat 16:02</li><li><a href="stop-105169.html">105169</a> - Tongerlo Bosstraat 16:03</li><li><a href="stop-27680.html">27680</a> - Tongerlo Kerkhofstraat 16:04</li><li><a href="stop-27671.html">27671</a> - Tongerlo Brug 16:05</li><li><a href="stop-27617.html">27617</a> - Opitter Dreelweg 16:06</li><li><a href="stop-27615.html">27615</a> - Opitter Dorp 16:07</li><li><a href="stop-27621.html">27621</a> - Opitter Kapel 16:08</li><li><a href="stop-27641.html">27641</a> - Opitter Roeren 16:10</li><li><a href="stop-27510.html">27510</a> - Bree Roterstraat 16:13</li><li><a href="stop-123466.html">123466</a> - Bree Busstation Perron 4 16:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4576.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

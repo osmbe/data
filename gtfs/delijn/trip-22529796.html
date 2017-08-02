@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Turnhout-Geel-Westerlo-Aarschot - 22529796</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Turnhout-Geel-Westerlo-Aarschot - 22529796</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-105085.html">105085</a> - Aarschot Station perron 4 17:15</li><li><a href="stop-94823.html">94823</a> - Aarschot Sancta Maria 17:17</li><li><a href="stop-109912.html">109912</a> - Aarschot Kerk 17:18</li><li><a href="stop-9323.html">9323</a> - Aarschot Moederhuis 17:19</li><li><a href="stop-128816.html">128816</a> - Aarschot Sint-Jozefscollege 17:20</li><li><a href="stop-15898.html">15898</a> - Aarschot Heilaakstraat 17:21</li><li><a href="stop-128921.html">128921</a> - Aarschot Bareel 17:22</li><li><a href="stop-15894.html">15894</a> - Aarschot Lindekensstraat 17:23</li><li><a href="stop-15892.html">15892</a> - Aarschot Oude Mechelsebaan 17:25</li><li><a href="stop-25513.html">25513</a> - Ramsel Madestraat 17:26</li><li><a href="stop-25244.html">25244</a> - Ramsel Truitseinde Aarschotsestwg. 17:27</li><li><a href="stop-25241.html">25241</a> - Ramsel Bosstraat 17:28</li><li><a href="stop-25239.html">25239</a> - Herselt Oude Steenovenweg 17:29</li><li><a href="stop-25236.html">25236</a> - Herselt Molenvloed 17:30</li><li><a href="stop-25234.html">25234</a> - Herselt Stoppelblokken garage 17:31</li><li><a href="stop-25231.html">25231</a> - Herselt Ramselsesteenweg 17:32</li><li><a href="stop-25229.html">25229</a> - Herselt Neerstraat 17:32</li><li><a href="stop-25226.html">25226</a> - Herselt Stap 17:33</li><li><a href="stop-109775.html">109775</a> - Herselt Dorp 17:34</li><li><a href="stop-25221.html">25221</a> - Herselt Stippelberg 17:35</li><li><a href="stop-109773.html">109773</a> - Herselt Vijverstraat 17:36</li><li><a href="stop-93656.html">93656</a> - Herselt Ollemanshoek 17:37</li><li><a href="stop-25217.html">25217</a> - Herselt Provinciebaan 17:38</li><li><a href="stop-25215.html">25215</a> - Herselt Oude Baan Kaaistraat 17:40</li><li><a href="stop-88324.html">88324</a> - Westerlo Stelplaats 17:42</li><li><a href="stop-109934.html">109934</a> - Westerlo de Merodedreef 17:43</li><li><a href="stop-109938.html">109938</a> - Westerlo Dorp 17:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3426.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

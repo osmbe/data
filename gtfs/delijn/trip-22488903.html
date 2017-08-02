@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Herst.-Lauw-Konin-Tongeren-Nerem-Vreren-Diets-Heur - 22488903</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Herst.-Lauw-Konin-Tongeren-Nerem-Vreren-Diets-Heur - 22488903</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-123198.html">123198</a> - Herstappe Kerk 13:04</li><li><a href="stop-34529.html">34529</a> - Lauw Kraaibornstraat nr 69 13:11</li><li><a href="stop-34530.html">34530</a> - Lauw Kraaibornstraat 13:11</li><li><a href="stop-91101.html">91101</a> - Lauw Brug 13:12</li><li><a href="stop-34714.html">34714</a> - Lauw Donkelstraat 13:13</li><li><a href="stop-34713.html">34713</a> - Lauw Daalbroek 13:13</li><li><a href="stop-34511.html">34511</a> - Koninksem Kapel 13:16</li><li><a href="stop-34754.html">34754</a> - Koninksem Hoogveldstraat 13:17</li><li><a href="stop-31658.html">31658</a> - Koninksem Klaproosstraat 13:17</li><li><a href="stop-123208.html">123208</a> - Koninksem Kerkstraat 13:18</li><li><a href="stop-34751.html">34751</a> - Tongeren Thijslaan 13:20</li><li><a href="stop-34690.html">34690</a> - Tongeren Paspoel Kerk 13:21</li><li><a href="stop-34577.html">34577</a> - Tongeren Nieuwe Wijk 13:22</li><li><a href="stop-34593.html">34593</a> - Tongeren Kleine Kasteeltjes 13:23</li><li><a href="stop-91238.html">91238</a> - Tongeren Sint-Truiderpoort 13:25</li><li><a href="stop-34447.html">34447</a> - Tongeren Bilzerpoort 13:27</li><li><a href="stop-93475.html">93475</a> - Tongeren Koemarkt 13:28</li><li><a href="stop-34484.html">34484</a> - Tongeren Station 13:32</li><li><a href="stop-34507.html">34507</a> - Tongeren Koemarkt 13:33</li><li><a href="stop-34448.html">34448</a> - Tongeren Bilzerpoort 13:34</li><li><a href="stop-91239.html">91239</a> - Tongeren Sint-Truiderpoort 13:36</li><li><a href="stop-34539.html">34539</a> - Tongeren Luikerpoort 13:37</li><li><a href="stop-123194.html">123194</a> - Tongeren Wijkstraat 13:38</li><li><a href="stop-31847.html">31847</a> - Tongeren Clarastraat 13:38</li><li><a href="stop-122879.html">122879</a> - Tongeren Oudstrijdersstraat 13:39</li><li><a href="stop-34571.html">34571</a> - Tongeren Neremweg 13:40</li><li><a href="stop-34711.html">34711</a> - Tongeren Begijnestraat 13:40</li><li><a href="stop-34673.html">34673</a> - Tongeren Weg naar Industrieterrein 13:41</li><li><a href="stop-34459.html">34459</a> - Tongeren De Jeker 13:41</li><li><a href="stop-34569.html">34569</a> - Nerem Nieuwe Wijk 13:44</li><li><a href="stop-89667.html">89667</a> - Nerem Kremersstraat 13:45</li><li><a href="stop-34561.html">34561</a> - Nerem Brug Henrotte 13:45</li><li><a href="stop-89630.html">89630</a> - Nerem Brug Henrotte 13:46</li><li><a href="stop-89633.html">89633</a> - Nerem Kremersstraat 13:47</li><li><a href="stop-123180.html">123180</a> - Nerem Basisschool 13:47</li><li><a href="stop-127445.html">127445</a> - Vreren Molenplein 13:49</li><li><a href="stop-34654.html">34654</a> - Vreren Kapel 13:50</li><li><a href="stop-34662.html">34662</a> - Vreren Kruispunt 13:50</li><li><a href="stop-96601.html">96601</a> - Diets-Heur Kapel 13:51</li><li><a href="stop-123108.html">123108</a> - Diets-Heur Kerk 13:52</li><li><a href="stop-97352.html">97352</a> - Diets-Heur Heurstraat 13:53</li><li><a href="stop-97710.html">97710</a> - Diets-Heur Kuilenstraat 13:53</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5378.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

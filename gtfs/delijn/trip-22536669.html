@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Mechelen Gandhi - Elzestraat - 22536669</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mechelen Gandhi - Elzestraat - 22536669</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-108380.html">108380</a> - Mechelen M. Gandhistraat 15:17</li><li><a href="stop-108381.html">108381</a> - Mechelen Apotheek 15:18</li><li><a href="stop-109968.html">109968</a> - Mechelen Verbertstraat 15:19</li><li><a href="stop-109967.html">109967</a> - Mechelen Matigheidsstraat 15:19</li><li><a href="stop-108377.html">108377</a> - Mechelen Abeelstraat 15:20</li><li><a href="stop-108375.html">108375</a> - Mechelen Beukstraat 15:20</li><li><a href="stop-108373.html">108373</a> - Mechelen Wilgenstraat 15:21</li><li><a href="stop-108371.html">108371</a> - Mechelen Sint-Jozefstraat 15:22</li><li><a href="stop-108370.html">108370</a> - Mechelen Geerdegemvaart 15:23</li><li><a href="stop-21646.html">21646</a> - Mechelen Europalaan 15:25</li><li><a href="stop-108450.html">108450</a> - Mechelen Station perron 1 15:27</li><li><a href="stop-25813.html">25813</a> - Mechelen Raghenoplein 15:29</li><li><a href="stop-108356.html">108356</a> - Mechelen Zandpoortvest 15:30</li><li><a href="stop-108357.html">108357</a> - Mechelen Bleekstraat 15:31</li><li><a href="stop-108455.html">108455</a> - Mechelen Veemarkt 15:33</li><li><a href="stop-108390.html">108390</a> - Mechelen Biest 15:34</li><li><a href="stop-108392.html">108392</a> - Mechelen Caputsteenstraat 15:35</li><li><a href="stop-21658.html">21658</a> - Mechelen Kerkhoflei 15:36</li><li><a href="stop-21660.html">21660</a> - Mechelen Oude Liersebaan 15:38</li><li><a href="stop-108363.html">108363</a> - Mechelen Eikestraat 15:39</li><li><a href="stop-108396.html">108396</a> - Mechelen Kabouterstraat 15:40</li><li><a href="stop-21668.html">21668</a> - Mechelen Feeënstraat 15:40</li><li><a href="stop-108398.html">108398</a> - Mechelen Meerminnenstraat 15:41</li><li><a href="stop-21673.html">21673</a> - Mechelen Laathofstraat 15:42</li><li><a href="stop-108400.html">108400</a> - Mechelen Duivenstraat 15:43</li><li><a href="stop-108402.html">108402</a> - Mechelen Groot Veld 15:44</li><li><a href="stop-108404.html">108404</a> - Sint-Katelijne-Waver Clemenceaustraat 15:45</li><li><a href="stop-109902.html">109902</a> - Sint-Katelijne-Waver Ekelenhoek 15:46</li><li><a href="stop-125845.html">125845</a> - Sint-Katelijne-Waver Elzestraat Kerk 15:46</li><li><a href="stop-25663.html">25663</a> - Sint-Katelijne-Waver Schouwvelden 15:47</li><li><a href="stop-23423.html">23423</a> - Sint-Katelijne-Waver Albertstraat 15:48</li><li><a href="stop-24022.html">24022</a> - Sint-Katelijne-Waver Hoge Velden 15:48</li><li><a href="stop-24025.html">24025</a> - Sint-Katelijne-Waver Kanadastraat 15:49</li><li><a href="stop-109420.html">109420</a> - Sint-Katelijne-Waver Kievitstraat 15:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3580.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

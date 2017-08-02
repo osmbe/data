@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel-Asse-Aalst - 21132374</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel-Asse-Aalst - 21132374</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-10097.html">10097</a> - Brussel Noord Perron 2 21:20</li><li><a href="stop-99470.html">99470</a> - Brussel Rogier 21:22</li><li><a href="stop-10071.html">10071</a> - Brussel Albert-II-laan 21:24</li><li><a href="stop-10069.html">10069</a> - Brussel IJzer 21:25</li><li><a href="stop-90802.html">90802</a> - Sint-Jans-Molenbeek Sainctelette 21:27</li><li><a href="stop-90799.html">90799</a> - Sint-Jans-Molenbeek Ribaucourt 21:28</li><li><a href="stop-90797.html">90797</a> - Sint-Jans-Molenbeek Ourthe 21:30</li><li><a href="stop-10193.html">10193</a> - Koekelberg Simonis 21:32</li><li><a href="stop-10195.html">10195</a> - Koekelberg Elisabeth Park 21:33</li><li><a href="stop-10179.html">10179</a> - Ganshoren Riethuisen 21:35</li><li><a href="stop-10177.html">10177</a> - Ganshoren H.Hart College 21:36</li><li><a href="stop-10247.html">10247</a> - Sint-Agatha-Berchem Beeckmans 21:37</li><li><a href="stop-10255.html">10255</a> - Sint-Agatha-Berchem Pampoel 21:38</li><li><a href="stop-10253.html">10253</a> - Sint-Agatha-Berchem Marg.v.Oostenrijk 21:39</li><li><a href="stop-90789.html">90789</a> - Sint-Agatha-Berchem Shopping 21:40</li><li><a href="stop-127199.html">127199</a> - Groot-Bijgaarden Tieboutstraat 21:41</li><li><a href="stop-88181.html">88181</a> - Zellik Pleinstraat 21:42</li><li><a href="stop-9565.html">9565</a> - Zellik Maalbeek 21:43</li><li><a href="stop-92572.html">92572</a> - Zellik Den Hoorinck 21:44</li><li><a href="stop-15924.html">15924</a> - Zellik Centrum 21:44</li><li><a href="stop-9557.html">9557</a> - Zellik Drie Koningen 21:45</li><li><a href="stop-15923.html">15923</a> - Zellik Dorp 21:46</li><li><a href="stop-9573.html">9573</a> - Zellik Station 21:46</li><li><a href="stop-9568.html">9568</a> - Zellik Moleken 21:48</li><li><a href="stop-9553.html">9553</a> - Zellik Industriezone Broekooi 21:49</li><li><a href="stop-9516.html">9516</a> - Kobbegem De Breukeleer 21:50</li><li><a href="stop-9525.html">9525</a> - Kobbegem Kobbegem 21:51</li><li><a href="stop-9494.html">9494</a> - Asse Walfergem 21:52</li><li><a href="stop-9477.html">9477</a> - Asse Kruiskouterbaan 21:53</li><li><a href="stop-9484.html">9484</a> - Asse Ten Berg 21:54</li><li><a href="stop-110155.html">110155</a> - Asse Bergveld 21:54</li><li><a href="stop-9482.html">9482</a> - Asse Station 21:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1852.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

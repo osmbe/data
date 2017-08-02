@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>NMBS - Kortrijk - Eeklo - L166020651</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Kortrijk - Eeklo - L166020651</h1>
+    <div style="height: 300px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8896008_6.html">8896008:6</a> - Kortrijk 10:04</li><li><a href="stop-8896230_1.html">8896230:1</a> - Vichte 10:12</li><li><a href="stop-8892734_2.html">8892734:2</a> - Anzegem 10:19</li><li><a href="stop-8892601_4.html">8892601:4</a> - Oudenaarde 10:31</li><li><a href="stop-8892627_1.html">8892627:1</a> - Eine 10:35</li><li><a href="stop-8892635_2.html">8892635:2</a> - Zingem 10:40</li><li><a href="stop-8892643_2.html">8892643:2</a> - Gavere-Asper 10:44</li><li><a href="stop-8892650_1.html">8892650:1</a> - Eke-Nazareth 10:48</li><li><a href="stop-8892080_2.html">8892080:2</a> - De Pinte 10:53</li><li><a href="stop-8892007_1.html">8892007:1</a> - Gent-Sint-Pieters 11:11</li><li><a href="stop-8893179_2.html">8893179:2</a> - Gentbrugge 11:17</li><li><a href="stop-8893120_2.html">8893120:2</a> - Gent-Dampoort 11:21</li><li><a href="stop-8893211_1.html">8893211:1</a> - Wondelgem 11:31</li><li><a href="stop-8893252_1.html">8893252:1</a> - Evergem 11:34</li><li><a href="stop-8893260_1.html">8893260:1</a> - Sleidinge 11:38</li><li><a href="stop-8893815_1.html">8893815:1</a> - Waarschoot 11:43</li><li><a href="stop-8893708_1.html">8893708:1</a> - Eeklo 11:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./798.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Eeklo - Ertvelde - Zelzate - 20705835</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eeklo - Ertvelde - Zelzate - 20705835</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-120183.html">120183</a> - Zelzate Busstation perron 5 13:23</li><li><a href="stop-113359.html">113359</a> - Zelzate Albertlaan 13:26</li><li><a href="stop-114586.html">114586</a> - Zelzate Debbautshoek 13:27</li><li><a href="stop-114585.html">114585</a> - Zelzate Ooievaarslaan 13:28</li><li><a href="stop-114584.html">114584</a> - Zelzate Molenstraat 13:28</li><li><a href="stop-114583.html">114583</a> - Assenede Trieststraat 13:30</li><li><a href="stop-112999.html">112999</a> - Assenede Meelstraat 13:31</li><li><a href="stop-114594.html">114594</a> - Assenede Kapelhof 13:32</li><li><a href="stop-113801.html">113801</a> - Ertvelde Klein Kapittellei 13:32</li><li><a href="stop-113800.html">113800</a> - Ertvelde Kapoenstraat 13:33</li><li><a href="stop-113588.html">113588</a> - Ertvelde Kerk 13:34</li><li><a href="stop-114172.html">114172</a> - Ertvelde Molenwegel 13:35</li><li><a href="stop-114542.html">114542</a> - Ertvelde Biezenkouter 13:35</li><li><a href="stop-114543.html">114543</a> - Oosteeklo Ertveldesteenweg 13:37</li><li><a href="stop-114544.html">114544</a> - Oosteeklo Bijsterveld 13:38</li><li><a href="stop-114545.html">114545</a> - Oosteeklo Vlasgaardstraat 13:38</li><li><a href="stop-114546.html">114546</a> - Oosteeklo Gemeenteschool 13:39</li><li><a href="stop-114593.html">114593</a> - Oosteeklo Dorp 13:40</li><li><a href="stop-114592.html">114592</a> - Oosteeklo Rijkestraat 13:40</li><li><a href="stop-114591.html">114591</a> - Lembeke Weststraat 13:42</li><li><a href="stop-114590.html">114590</a> - Lembeke Kaprijkestraat 13:43</li><li><a href="stop-114589.html">114589</a> - Lembeke Ongereehoek 13:45</li><li><a href="stop-113995.html">113995</a> - Lembeke Dorp 13:46</li><li><a href="stop-113024.html">113024</a> - Lembeke Nieuwstraat 13:47</li><li><a href="stop-113199.html">113199</a> - Lembeke Kapel 13:48</li><li><a href="stop-113993.html">113993</a> - Lembeke D'Alcantaralaan 13:48</li><li><a href="stop-114559.html">114559</a> - Lembeke Windgatstraat 13:49</li><li><a href="stop-114422.html">114422</a> - Eeklo Lazarijstraat 13:51</li><li><a href="stop-114558.html">114558</a> - Eeklo Oostveldstraat 13:51</li><li><a href="stop-114557.html">114557</a> - Eeklo Kriekmoerstraat 13:52</li><li><a href="stop-114556.html">114556</a> - Eeklo Zwembadstraat 13:52</li><li><a href="stop-114599.html">114599</a> - Eeklo Overweg 13:53</li><li><a href="stop-113947.html">113947</a> - Eeklo Markt 13:55</li><li><a href="stop-114287.html">114287</a> - Eeklo Kliniek 13:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./688.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

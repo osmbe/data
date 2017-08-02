@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Oudenaarde - Mater - Sint-Maria-Horebeke - 20720270</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oudenaarde - Mater - Sint-Maria-Horebeke - 20720270</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-121626.html">121626</a> - Sint-Maria-Horebeke Broekestraat 07:18</li><li><a href="stop-119955.html">119955</a> - Sint-Maria-Horebeke Pierkestraat 07:19</li><li><a href="stop-119438.html">119438</a> - Sint-Maria-Horebeke Tonnestraat 07:21</li><li><a href="stop-119439.html">119439</a> - Sint-Maria-Horebeke Melkerij 07:22</li><li><a href="stop-121630.html">121630</a> - Sint-Maria-Horebeke Kerk 07:23</li><li><a href="stop-118468.html">118468</a> - Mater Brouwerij Roman 07:25</li><li><a href="stop-118471.html">118471</a> - Mater Klokkeveld 07:27</li><li><a href="stop-119543.html">119543</a> - Mater Kerk 07:29</li><li><a href="stop-119956.html">119956</a> - Mater Ruitersstraat 07:30</li><li><a href="stop-119957.html">119957</a> - Mater Kleistraat 07:31</li><li><a href="stop-119542.html">119542</a> - Mater Casterstraat 07:33</li><li><a href="stop-121637.html">121637</a> - Mater Boskantstraat 07:34</li><li><a href="stop-119959.html">119959</a> - Mater Blote 07:35</li><li><a href="stop-119544.html">119544</a> - Mater Katteberg 07:36</li><li><a href="stop-119960.html">119960</a> - Ename Wolvenstraat 07:38</li><li><a href="stop-119961.html">119961</a> - Ename Lijnwaadmarkt 07:38</li><li><a href="stop-119461.html">119461</a> - Ename Dorp 07:39</li><li><a href="stop-119462.html">119462</a> - Ename Van Torhoutstraat 07:40</li><li><a href="stop-119463.html">119463</a> - Ename Rekkemstraat 07:41</li><li><a href="stop-128742.html">128742</a> - Edelare Smissestraat 07:42</li><li><a href="stop-128743.html">128743</a> - Edelare Vandefonteynelaan 07:44</li><li><a href="stop-119467.html">119467</a> - Oudenaarde Bergstraat 07:45</li><li><a href="stop-119468.html">119468</a> - Oudenaarde Raepsaetplein 07:46</li><li><a href="stop-120381.html">120381</a> - Oudenaarde Smallendam 07:49</li><li><a href="stop-119355.html">119355</a> - Oudenaarde Markt 07:50</li><li><a href="stop-119356.html">119356</a> - Oudenaarde Tacambaro 07:53</li><li><a href="stop-126753.html">126753</a> - Oudenaarde Station perron 6 07:55</li><li><a href="stop-121648.html">121648</a> - Oudenaarde V.T.I. 07:57</li><li><a href="stop-118481.html">118481</a> - Oudenaarde Sportcentrum 08:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1407.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

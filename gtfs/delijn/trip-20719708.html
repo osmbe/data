@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Zottegem - Erwetegem - Ronse/Renaix - 20719708</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Zottegem - Erwetegem - Ronse/Renaix - 20719708</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126746.html">126746</a> - Zottegem Station perron 1 22:30</li><li><a href="stop-119753.html">119753</a> - Zottegem Weidestraat 22:33</li><li><a href="stop-118436.html">118436</a> - Zottegem Luchtbal 22:34</li><li><a href="stop-118437.html">118437</a> - Zottegem Atheneum 22:34</li><li><a href="stop-119379.html">119379</a> - Strijpen Meerlaan 22:35</li><li><a href="stop-119380.html">119380</a> - Erwetegem Kerk 22:36</li><li><a href="stop-119381.html">119381</a> - Erwetegem Klooster 22:36</li><li><a href="stop-119382.html">119382</a> - Erwetegem Ragestraat 22:37</li><li><a href="stop-119383.html">119383</a> - Erwetegem Gaverland 22:38</li><li><a href="stop-119384.html">119384</a> - Erwetegem Station 22:38</li><li><a href="stop-119385.html">119385</a> - Erwetegem Keiberg 22:39</li><li><a href="stop-119386.html">119386</a> - Erwetegem Terheiden 22:40</li><li><a href="stop-119430.html">119430</a> - Sint-Maria-Oudenhove Faliestraat 22:41</li><li><a href="stop-128459.html">128459</a> - Sint-Maria-Oudenhove Dorp 22:41</li><li><a href="stop-119472.html">119472</a> - Sint-Maria-Oudenhove Lilarestraat 22:41</li><li><a href="stop-119390.html">119390</a> - Sint-Maria-Oudenhove Ruggebeekstraat 22:42</li><li><a href="stop-119391.html">119391</a> - Sint-Maria-Oudenhove Kasteeldreef 22:43</li><li><a href="stop-128545.html">128545</a> - Sint-Maria-Oudenhove Meierij 22:44</li><li><a href="stop-119393.html">119393</a> - Nederbrakel Neerhofstraat 22:45</li><li><a href="stop-119394.html">119394</a> - Nederbrakel Driehoekstraat 22:46</li><li><a href="stop-119395.html">119395</a> - Nederbrakel Brusselsestraat 22:47</li><li><a href="stop-119240.html">119240</a> - Nederbrakel Markt 22:47</li><li><a href="stop-118457.html">118457</a> - Nederbrakel Station 22:48</li><li><a href="stop-118363.html">118363</a> - Nederbrakel Kasteelstraat 22:49</li><li><a href="stop-119336.html">119336</a> - Nederbrakel Scholen 22:49</li><li><a href="stop-119396.html">119396</a> - Nederbrakel Herreweg 22:50</li><li><a href="stop-119397.html">119397</a> - Nederbrakel Ekeveldstraat 22:50</li><li><a href="stop-119398.html">119398</a> - Opbrakel Sint-Martensstraat 22:51</li><li><a href="stop-119647.html">119647</a> - Opbrakel Sadonepad 22:51</li><li><a href="stop-119399.html">119399</a> - Opbrakel Riebeke 22:52</li><li><a href="stop-119400.html">119400</a> - Opbrakel Boekkouter 22:52</li><li><a href="stop-119401.html">119401</a> - Opbrakel Landuitweg 22:53</li><li><a href="stop-119402.html">119402</a> - Opbrakel Hutte 22:54</li><li><a href="stop-128546.html">128546</a> - Flobecq Laaistok 22:55</li><li><a href="stop-128550.html">128550</a> - Flobecq La Houppe 22:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1365.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

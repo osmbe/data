@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Edegem - Rooseveltplaats - 22499737</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Edegem - Rooseveltplaats - 22499737</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-125286.html">125286</a> - Antwerpen F. Rooseveltplaats perron 41 15:35</li><li><a href="stop-107700.html">107700</a> - Antwerpen Centraal Station perron 11 15:40</li><li><a href="stop-107701.html">107701</a> - Antwerpen Lange Kievitstraat 15:41</li><li><a href="stop-108269.html">108269</a> - Antwerpen Mercatorstraat 15:42</li><li><a href="stop-107780.html">107780</a> - Antwerpen Lamorinièrestraat 15:43</li><li><a href="stop-108825.html">108825</a> - Antwerpen Zurenborgstraat 15:44</li><li><a href="stop-108069.html">108069</a> - Antwerpen Cuperus 15:45</li><li><a href="stop-107454.html">107454</a> - Berchem Station perron 24 15:47</li><li><a href="stop-108325.html">108325</a> - Berchem Station perron 22 15:48</li><li><a href="stop-107858.html">107858</a> - Berchem Meibloemstraat 15:51</li><li><a href="stop-43605.html">43605</a> - Berchem De Villegasstraat 15:52</li><li><a href="stop-107859.html">107859</a> - Berchem Sint-Willibrordus 15:53</li><li><a href="stop-108019.html">108019</a> - Berchem Elisabethlaan 15:55</li><li><a href="stop-19954.html">19954</a> - Antwerpen Koninklijkelaan 15:56</li><li><a href="stop-108144.html">108144</a> - Berchem Floraliënlaan 15:57</li><li><a href="stop-107846.html">107846</a> - Wilrijk Hindenstraat 15:58</li><li><a href="stop-21219.html">21219</a> - Wilrijk Oosterveldlaan 15:59</li><li><a href="stop-107696.html">107696</a> - Wilrijk F. Van Dunlaan 15:59</li><li><a href="stop-107562.html">107562</a> - Wilrijk De Burletlaan 16:00</li><li><a href="stop-107874.html">107874</a> - Edegem Kerk 16:01</li><li><a href="stop-108597.html">108597</a> - Edegem Ter Tommenstraat 16:02</li><li><a href="stop-107580.html">107580</a> - Edegem Den Eeckhofstraat 16:02</li><li><a href="stop-108568.html">108568</a> - Edegem Noulaertsplein 16:03</li><li><a href="stop-107720.html">107720</a> - Edegem Baron De Celleslaan 16:04</li><li><a href="stop-108004.html">108004</a> - Edegem Kladdenbergstraat 16:05</li><li><a href="stop-21925.html">21925</a> - Edegem Hof Ter Linden 16:06</li><li><a href="stop-107866.html">107866</a> - Edegem Gemeentehuis 16:07</li><li><a href="stop-108150.html">108150</a> - Edegem Mgr. Cardijnlaan 16:08</li><li><a href="stop-20891.html">20891</a> - Edegem Posdijk 16:09</li><li><a href="stop-107906.html">107906</a> - Edegem J. Notestraat 16:10</li><li><a href="stop-19833.html">19833</a> - Edegem Elsbos 16:11</li><li><a href="stop-21743.html">21743</a> - Edegem Sint-Goriksplein 16:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2776.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

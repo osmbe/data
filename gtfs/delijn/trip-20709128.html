@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Antwerpen L.O.-Beveren-Westakkers-St-Nikl-Lokeren - 20709128</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Antwerpen L.O.-Beveren-Westakkers-St-Nikl-Lokeren - 20709128</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-126690.html">126690</a> - Sint-Niklaas Station perron 3 16:01</li><li><a href="stop-116306.html">116306</a> - Sint-Niklaas Uitgang Noordlaan 16:02</li><li><a href="stop-115674.html">115674</a> - Sint-Niklaas Hofstraat 16:06</li><li><a href="stop-115762.html">115762</a> - Sint-Niklaas Markt 16:09</li><li><a href="stop-115763.html">115763</a> - Sint-Niklaas Park 16:10</li><li><a href="stop-114859.html">114859</a> - Sint-Niklaas Atheneum/Zwembad 16:12</li><li><a href="stop-127595.html">127595</a> - Sint-Niklaas Waasland Shopping perron 2 16:15</li><li><a href="stop-115768.html">115768</a> - Sint-Niklaas Kapelstraat 16:16</li><li><a href="stop-115454.html">115454</a> - Sint-Niklaas Smisstraat 16:17</li><li><a href="stop-116098.html">116098</a> - Sint-Niklaas Baenslandstraat 16:18</li><li><a href="stop-116097.html">116097</a> - Sint-Niklaas Driegaaienhoek 16:19</li><li><a href="stop-116096.html">116096</a> - Sint-Niklaas Heimolenstraat 19 16:21</li><li><a href="stop-116077.html">116077</a> - Sint-Niklaas Syntra 16:21</li><li><a href="stop-116078.html">116078</a> - Sint-Niklaas Heimolenstraat 92 16:22</li><li><a href="stop-116079.html">116079</a> - Sint-Niklaas Heimolenstraat 138 16:23</li><li><a href="stop-116081.html">116081</a> - Sint-Niklaas Heimolen 16:23</li><li><a href="stop-116080.html">116080</a> - Sint-Niklaas Weverstraat 16:25</li><li><a href="stop-116082.html">116082</a> - Sint-Niklaas Roskamstraat 16:25</li><li><a href="stop-116083.html">116083</a> - Sint-Niklaas Parkbegraafplaats 16:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./840.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

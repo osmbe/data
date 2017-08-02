@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Geel - Dessel - Retie - Arendonk/Oud-Turnhout - 22518894</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Geel - Dessel - Retie - Arendonk/Oud-Turnhout - 22518894</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-109894.html">109894</a> - Mol SCK Europaschool 12:50</li><li><a href="stop-25613.html">25613</a> - Geel Castelsebaan 12:57</li><li><a href="stop-25611.html">25611</a> - Dessel Heide 12:59</li><li><a href="stop-25609.html">25609</a> - Dessel MMN Europalaan 12:59</li><li><a href="stop-109893.html">109893</a> - Dessel Kastelsedijk 13:00</li><li><a href="stop-87488.html">87488</a> - Retie Brasel 13:01</li><li><a href="stop-25603.html">25603</a> - Dessel Delstraat 13:03</li><li><a href="stop-20748.html">20748</a> - Dessel Sportcentrum 13:04</li><li><a href="stop-109891.html">109891</a> - Dessel Berkestraat 13:05</li><li><a href="stop-109377.html">109377</a> - Dessel Markt 13:07</li><li><a href="stop-23974.html">23974</a> - Dessel Koolvenstraat 13:08</li><li><a href="stop-23972.html">23972</a> - Dessel Kuilstraat 13:09</li><li><a href="stop-23970.html">23970</a> - Retie Werbeek 13:11</li><li><a href="stop-109374.html">109374</a> - Retie Nieuwstraat 13:13</li><li><a href="stop-109372.html">109372</a> - Retie Markt 13:14</li><li><a href="stop-24122.html">24122</a> - Retie Hovenstraat 13:15</li><li><a href="stop-24120.html">24120</a> - Retie Boesdijk 13:15</li><li><a href="stop-24118.html">24118</a> - Retie Oude Arendonksebaan 13:16</li><li><a href="stop-19606.html">19606</a> - Retie Plas 13:17</li><li><a href="stop-24116.html">24116</a> - Retie Obroek 13:17</li><li><a href="stop-24114.html">24114</a> - Arendonk Nieuwendijk 13:19</li><li><a href="stop-109429.html">109429</a> - Arendonk Berendonk 13:21</li><li><a href="stop-20709.html">20709</a> - Arendonk Hertevelden 13:22</li><li><a href="stop-24109.html">24109</a> - Arendonk Kerkstraat 13:22</li><li><a href="stop-109224.html">109224</a> - Arendonk Wezenstraat 13:23</li><li><a href="stop-109223.html">109223</a> - Arendonk Gemeentehuis 13:24</li><li><a href="stop-23611.html">23611</a> - Arendonk De Daries 13:25</li><li><a href="stop-23608.html">23608</a> - Arendonk Akkerstraat 13:26</li><li><a href="stop-23606.html">23606</a> - Arendonk Hoge Pedestraat 13:27</li><li><a href="stop-23604.html">23604</a> - Arendonk Leeuwerfstraat 13:27</li><li><a href="stop-23602.html">23602</a> - Arendonk Spiebosch 13:27</li><li><a href="stop-23599.html">23599</a> - Arendonk Delstraat 13:28</li><li><a href="stop-23597.html">23597</a> - Oud-Turnhout Spreeuwendreef 13:29</li><li><a href="stop-25561.html">25561</a> - Oud-Turnhout Engelstraat 13:30</li><li><a href="stop-25560.html">25560</a> - Oud-Turnhout Oude Retiese baan 13:31</li><li><a href="stop-23946.html">23946</a> - Oud-Turnhout Lentedreef 13:31</li><li><a href="stop-23589.html">23589</a> - Oud-Turnhout Zwanevenstraat 13:32</li><li><a href="stop-109218.html">109218</a> - Oud-Turnhout Staprijk 13:33</li><li><a href="stop-109217.html">109217</a> - Oud-Turnhout Driedostraat 13:34</li><li><a href="stop-109215.html">109215</a> - Oud-Turnhout Molenbergen 13:35</li><li><a href="stop-23579.html">23579</a> - Oud-Turnhout Dorp 13:36</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3115.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

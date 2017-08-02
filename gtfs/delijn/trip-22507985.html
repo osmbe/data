@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Lier - Kontich scholen - Wilrijk - 22507985</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Lier - Kontich scholen - Wilrijk - 22507985</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-107866.html">107866</a> - Edegem Gemeentehuis 15:53</li><li><a href="stop-108150.html">108150</a> - Edegem Mgr. Cardijnlaan 15:54</li><li><a href="stop-20891.html">20891</a> - Edegem Posdijk 15:55</li><li><a href="stop-108340.html">108340</a> - Kontich VTI 15:57</li><li><a href="stop-108088.html">108088</a> - Kontich De Villermontstraat 15:58</li><li><a href="stop-109243.html">109243</a> - Kontich Edegemsesteenweg 15:58</li><li><a href="stop-109120.html">109120</a> - Kontich Kerk 15:59</li><li><a href="stop-25993.html">25993</a> - Kontich Sint-Ritacollege 16:01</li><li><a href="stop-109117.html">109117</a> - Kontich Rubensstraat 16:02</li><li><a href="stop-23344.html">23344</a> - Kontich Kruisstraat 16:04</li><li><a href="stop-23345.html">23345</a> - Kontich Kerk 16:05</li><li><a href="stop-109242.html">109242</a> - Kontich Edegemsesteenweg 16:06</li><li><a href="stop-109121.html">109121</a> - Kontich Duivenstraat 16:06</li><li><a href="stop-109123.html">109123</a> - Kontich Hofstraat 16:07</li><li><a href="stop-23351.html">23351</a> - Kontich Kon. Astridlaan 16:08</li><li><a href="stop-108093.html">108093</a> - Kontich Hof Van Spruytlaan 16:09</li><li><a href="stop-109125.html">109125</a> - Kontich Weg op Lint 16:11</li><li><a href="stop-126939.html">126939</a> - Kontich Station perron 3 16:12</li><li><a href="stop-23354.html">23354</a> - Kontich Weg op Lint 16:13</li><li><a href="stop-20910.html">20910</a> - Kontich Elshagenlaan 16:14</li><li><a href="stop-20896.html">20896</a> - Kontich Hoge Akker 16:15</li><li><a href="stop-109126.html">109126</a> - Lint Reynaertshof 16:16</li><li><a href="stop-109127.html">109127</a> - Lint Kasteelplein 16:17</li><li><a href="stop-109129.html">109129</a> - Lint Kerk 16:18</li><li><a href="stop-109131.html">109131</a> - Lint Brouwerijstraat 16:19</li><li><a href="stop-109133.html">109133</a> - Lint Bouwenstraat 16:19</li><li><a href="stop-109135.html">109135</a> - Lint Zevenhuizenstraat 16:20</li><li><a href="stop-23369.html">23369</a> - Lint Haakveld 16:21</li><li><a href="stop-23371.html">23371</a> - Lint Trommelbaan 16:22</li><li><a href="stop-100166.html">100166</a> - Lier Hulststraat 16:24</li><li><a href="stop-100168.html">100168</a> - Lier Maaikeneveld 16:25</li><li><a href="stop-109137.html">109137</a> - Lier Oudstrijderslaan 16:26</li><li><a href="stop-19713.html">19713</a> - Lier Frans Boogaertslaan 16:27</li><li><a href="stop-19717.html">19717</a> - Lier Pieter Breughellaan 16:28</li><li><a href="stop-19721.html">19721</a> - Lier Boomlaarstraat 16:29</li><li><a href="stop-107622.html">107622</a> - Lier Zwembad 16:30</li><li><a href="stop-106801.html">106801</a> - Lier Station perron 8 16:31</li><li><a href="stop-108994.html">108994</a> - Lier Rolwagenstraat 16:32</li><li><a href="stop-23006.html">23006</a> - Lier Kliniek 16:34</li><li><a href="stop-108995.html">108995</a> - Lier Markt 16:36</li><li><a href="stop-23736.html">23736</a> - Lier Leopold III-laan 16:37</li><li><a href="stop-25845.html">25845</a> - Lier Molenstraat 16:40</li><li><a href="stop-108094.html">108094</a> - Lier Veemarkt perron 4 16:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2856.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

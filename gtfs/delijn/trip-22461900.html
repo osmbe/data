@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt - Diest / Tessenderlo - 22461900</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt - Diest / Tessenderlo - 22461900</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-32095.html">32095</a> - Lummen Frederickxstraat 06:46</li><li><a href="stop-32161.html">32161</a> - Lummen Pastoor Winterstraat 06:47</li><li><a href="stop-30186.html">30186</a> - Schulen Station 06:50</li><li><a href="stop-30179.html">30179</a> - Schulen Neerstraat 06:51</li><li><a href="stop-30172.html">30172</a> - Schulen Kerk 06:52</li><li><a href="stop-30190.html">30190</a> - Schulen Van Arenberglaan 06:53</li><li><a href="stop-30177.html">30177</a> - Schulen Muggenhoekstraat 06:53</li><li><a href="stop-30189.html">30189</a> - Schulen Tichelstraat 06:54</li><li><a href="stop-30181.html">30181</a> - Schulen Reyerstraat I 06:54</li><li><a href="stop-30174.html">30174</a> - Schulen Leemkuilstraat 06:55</li><li><a href="stop-30184.html">30184</a> - Schulen Sint-Jorislaan 06:56</li><li><a href="stop-30170.html">30170</a> - Schulen Grotestraat 06:56</li><li><a href="stop-30121.html">30121</a> - Berbroek Lindestraat 06:57</li><li><a href="stop-30116.html">30116</a> - Berbroek Centrum 06:58</li><li><a href="stop-30118.html">30118</a> - Berbroek Heidestraat I 06:59</li><li><a href="stop-29544.html">29544</a> - Spalbeek Molenstraat kapel 07:00</li><li><a href="stop-29533.html">29533</a> - Spalbeek Centrum 07:01</li><li><a href="stop-29367.html">29367</a> - Kermt Hommelbergstraat 07:02</li><li><a href="stop-29368.html">29368</a> - Kermt Meistraat 07:03</li><li><a href="stop-29363.html">29363</a> - Kermt De Willeman 07:04</li><li><a href="stop-29361.html">29361</a> - Kermt Centrum 07:05</li><li><a href="stop-29358.html">29358</a> - Kermt Heerstraat 07:06</li><li><a href="stop-29570.html">29570</a> - Kermt Asfaltfabriek 07:07</li><li><a href="stop-29378.html">29378</a> - Kermt Station 07:08</li><li><a href="stop-94959.html">94959</a> - Kuringen Stevoortse Kiezel 07:09</li><li><a href="stop-29448.html">29448</a> - Kuringen McDonald's 07:12</li><li><a href="stop-29282.html">29282</a> - Hasselt Crutzenstraat 07:13</li><li><a href="stop-128974.html">128974</a> - Hasselt Station perron 13 07:16</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5271.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

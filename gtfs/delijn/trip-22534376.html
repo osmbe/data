@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Heist op den Berg - Tremelo - 22534376</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Heist op den Berg - Tremelo - 22534376</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-25780.html">25780</a> - Heist-op-den-Berg KTA 13:15</li><li><a href="stop-23801.html">23801</a> - Heist-op-den-Berg E. Woutersstraat 13:16</li><li><a href="stop-24288.html">24288</a> - Heist-op-den-Berg Kruispunt Lo 13:18</li><li><a href="stop-105041.html">105041</a> - Heist-op-den-Berg Oudestraat 13:19</li><li><a href="stop-24292.html">24292</a> - Heist-op-den-Berg Heide Lo station 13:21</li><li><a href="stop-109638.html">109638</a> - Heist-op-den-Berg Liersesteenweg 13:22</li><li><a href="stop-109640.html">109640</a> - Heist-op-den-Berg Wipstraat 13:23</li><li><a href="stop-24706.html">24706</a> - Heist-op-den-Berg Goor Kerk 13:24</li><li><a href="stop-24708.html">24708</a> - Heist-op-den-Berg Lammeneelstraat 13:25</li><li><a href="stop-24711.html">24711</a> - Schriek Schriekstraat 13:27</li><li><a href="stop-24696.html">24696</a> - Schriek Sint-Bernardus Kapel 13:28</li><li><a href="stop-109636.html">109636</a> - Schriek Kerk 13:29</li><li><a href="stop-24700.html">24700</a> - Schriek Ommeweg 13:30</li><li><a href="stop-24738.html">24738</a> - Schriek Puttestraat 13:31</li><li><a href="stop-24741.html">24741</a> - Schriek Langstraat 13:32</li><li><a href="stop-24743.html">24743</a> - Schriek Grootlo Kerk 13:33</li><li><a href="stop-15106.html">15106</a> - Tremelo Kruispunt Grote Bollostraat 13:34</li><li><a href="stop-15108.html">15108</a> - Tremelo Hazenbergstraat 13:35</li><li><a href="stop-15120.html">15120</a> - Baal Grootlostraat 13:36</li><li><a href="stop-15118.html">15118</a> - Baal Lange Vennestraat 13:37</li><li><a href="stop-15116.html">15116</a> - Baal Kerkhof 13:38</li><li><a href="stop-15114.html">15114</a> - Baal Kerk 13:39</li><li><a href="stop-15112.html">15112</a> - Baal Montystraat 13:40</li><li><a href="stop-15110.html">15110</a> - Baal Domstraat 13:41</li><li><a href="stop-15096.html">15096</a> - Tremelo Heidelaan 13:43</li><li><a href="stop-15094.html">15094</a> - Tremelo Kalvennestraat 13:44</li><li><a href="stop-15092.html">15092</a> - Tremelo Baalsebaan 13:45</li><li><a href="stop-15131.html">15131</a> - Tremelo Gemeentehuis 13:46</li><li><a href="stop-15130.html">15130</a> - Tremelo Gemeentehuis 13:46</li><li><a href="stop-93861.html">93861</a> - Tremelo Vinneweg 13:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3505.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

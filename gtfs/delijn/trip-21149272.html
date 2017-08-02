@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Schoolbus Nieuwrode - Holsbeek - Montfortcollege - 21149272</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Schoolbus Nieuwrode - Holsbeek - Montfortcollege - 21149272</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-15368.html">15368</a> - Rotselaar College 12:25</li><li><a href="stop-11465.html">11465</a> - Holsbeek Sportschuur 12:30</li><li><a href="stop-11463.html">11463</a> - Holsbeek Asseltveld 12:31</li><li><a href="stop-11459.html">11459</a> - Holsbeek Boomkwekerij 12:32</li><li><a href="stop-11469.html">11469</a> - Holsbeek Smisstraat 12:33</li><li><a href="stop-11461.html">11461</a> - Holsbeek Dutselhoek 12:34</li><li><a href="stop-11479.html">11479</a> - Kortrijk-Dutsel Dutsel 12:36</li><li><a href="stop-11477.html">11477</a> - Kortrijk-Dutsel Brouwerij 12:37</li><li><a href="stop-11483.html">11483</a> - Kortrijk-Dutsel Gemeentehuis 12:39</li><li><a href="stop-11501.html">11501</a> - Kortrijk-Dutsel Kouter 12:40</li><li><a href="stop-11503.html">11503</a> - Sint-Pieters-Rode Horst 12:42</li><li><a href="stop-11487.html">11487</a> - Nieuwrode Hertstraat 12:44</li><li><a href="stop-11491.html">11491</a> - Nieuwrode Kerkebos 12:44</li><li><a href="stop-11485.html">11485</a> - Nieuwrode School 12:45</li><li><a href="stop-11489.html">11489</a> - Nieuwrode Pastorie 12:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2387.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

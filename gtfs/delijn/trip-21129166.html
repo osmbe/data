@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Leerbeek - Vollezele - Ninove - 21129166</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Leerbeek - Vollezele - Ninove - 21129166</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-10870.html">10870</a> - Leerbeek Stelplaats Kaai 3 16:05</li><li><a href="stop-14821.html">14821</a> - Gooik Meintjes 16:06</li><li><a href="stop-10816.html">10816</a> - Gooik Kwakenbeek 16:06</li><li><a href="stop-10834.html">10834</a> - Gooik Wijngaardstraat 16:07</li><li><a href="stop-10809.html">10809</a> - Gooik Gooikeveldstraat 16:08</li><li><a href="stop-10813.html">10813</a> - Gooik Koekoekstraat 16:09</li><li><a href="stop-10821.html">10821</a> - Gooik Paddenbroekstraat 16:10</li><li><a href="stop-10823.html">10823</a> - Gooik Steenberg 16:11</li><li><a href="stop-10827.html">10827</a> - Gooik Terlo 16:12</li><li><a href="stop-10811.html">10811</a> - Gooik Hoezenbroekstraat 16:13</li><li><a href="stop-9974.html">9974</a> - Gooik Sporthal Koornmolen 16:13</li><li><a href="stop-87245.html">87245</a> - Gooik Strijland School 16:13</li><li><a href="stop-10825.html">10825</a> - Gooik Strijland Kerk 16:14</li><li><a href="stop-10829.html">10829</a> - Gooik Weg naar Lieferinge 16:15</li><li><a href="stop-10817.html">10817</a> - Gooik Lingerenweg 16:16</li><li><a href="stop-15793.html">15793</a> - Gooik Bea-Meubelen 16:16</li><li><a href="stop-10835.html">10835</a> - Gooik Zwart Schaap 16:17</li><li><a href="stop-10883.html">10883</a> - Oetingen Oude Plaats 16:18</li><li><a href="stop-10879.html">10879</a> - Oetingen Lenniksestraat 55 16:19</li><li><a href="stop-10881.html">10881</a> - Oetingen Warandestraat 16:20</li><li><a href="stop-99855.html">99855</a> - Oetingen Kervijn 16:20</li><li><a href="stop-10877.html">10877</a> - Oetingen Kerk 16:21</li><li><a href="stop-16226.html">16226</a> - Oetingen Hazelaarswijk 16:22</li><li><a href="stop-10875.html">10875</a> - Oetingen Gracht 16:22</li><li><a href="stop-10885.html">10885</a> - Oetingen Vollezelestraat 16:24</li><li><a href="stop-10663.html">10663</a> - Vollezele Zavelenberg 16:25</li><li><a href="stop-10646.html">10646</a> - Vollezele Drachestraat 16:26</li><li><a href="stop-10654.html">10654</a> - Vollezele Molenstraat 16:27</li><li><a href="stop-43990.html">43990</a> - Vollezele Kerk 16:28</li><li><a href="stop-44037.html">44037</a> - Vollezele De Zwaluw 16:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1756.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

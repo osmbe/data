@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Jeuk - Montenaken - 22466856</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jeuk - Montenaken - 22466856</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-28816.html">28816</a> - Montenaken Markt 17:30</li><li><a href="stop-28854.html">28854</a> - Montenaken Gemeentehuis 17:31</li><li><a href="stop-28812.html">28812</a> - Montenaken Goyenslaan 17:31</li><li><a href="stop-28819.html">28819</a> - Montenaken Oud Tramstation 17:31</li><li><a href="stop-88057.html">88057</a> - Montenaken Klein Vorsen 17:32</li><li><a href="stop-100253.html">100253</a> - Kortijs Weg naar Hannuit 17:34</li><li><a href="stop-96782.html">96782</a> - Kortijs Vorsenberg 17:35</li><li><a href="stop-96802.html">96802</a> - Vorsen Kerkstraat 17:36</li><li><a href="stop-26995.html">26995</a> - Berloz Route du Village 17:38</li><li><a href="stop-105129.html">105129</a> - Berloz Rue de la Gare 17:40</li><li><a href="stop-95068.html">95068</a> - Jeuk Kasteelstraat 17:41</li><li><a href="stop-28779.html">28779</a> - Jeuk Langestraat 17:42</li><li><a href="stop-28773.html">28773</a> - Jeuk Kapel 17:43</li><li><a href="stop-28769.html">28769</a> - Jeuk H. Stassenstraat 17:44</li><li><a href="stop-28776.html">28776</a> - Jeuk Kerk 17:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4527.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

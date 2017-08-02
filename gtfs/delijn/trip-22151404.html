@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Ieper-Veurne - 22151404</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ieper-Veurne - 22151404</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-42815.html">42815</a> - Zillebeke Bellewaerde 17:58</li><li><a href="stop-42819.html">42819</a> - Zillebeke Begijnenbosstraat 18:01</li><li><a href="stop-42461.html">42461</a> - Ieper Kruiskalsijde 18:03</li><li><a href="stop-42477.html">42477</a> - Ieper Watertoren 18:04</li><li><a href="stop-42473.html">42473</a> - Ieper Sint-Jozef 18:05</li><li><a href="stop-42449.html">42449</a> - Ieper Bascule 18:06</li><li><a href="stop-38536.html">38536</a> - Ieper Markt 18:08</li><li><a href="stop-104777.html">104777</a> - Ieper Gevangenis 18:11</li><li><a href="stop-126390.html">126390</a> - Ieper Station perron 3 18:13</li><li><a href="stop-105019.html">105019</a> - Ieper Stelplaats 18:14</li><li><a href="stop-105015.html">105015</a> - Ieper Hoekje 18:15</li><li><a href="stop-98425.html">98425</a> - Brielen Omloopstraat 18:17</li><li><a href="stop-98424.html">98424</a> - Brielen Dorp 18:18</li><li><a href="stop-98426.html">98426</a> - Brielen Smidse 18:19</li><li><a href="stop-98423.html">98423</a> - Brielen De Krikke 18:20</li><li><a href="stop-42391.html">42391</a> - Elverdinge Brouwerij 18:21</li><li><a href="stop-42394.html">42394</a> - Elverdinge Kerk 18:22</li><li><a href="stop-94497.html">94497</a> - Elverdinge Kemmelbeek 18:22</li><li><a href="stop-42396.html">42396</a> - Elverdinge Wandeling 18:23</li><li><a href="stop-105010.html">105010</a> - Elverdinge Leegte 18:24</li><li><a href="stop-42785.html">42785</a> - Woesten Elverdingestraat Nr.5 18:24</li><li><a href="stop-42784.html">42784</a> - Woesten Dorp 18:25</li><li><a href="stop-42789.html">42789</a> - Woesten Stadion 18:26</li><li><a href="stop-42786.html">42786</a> - Woesten Far-West 18:26</li><li><a href="stop-42787.html">42787</a> - Woesten Meiboom 18:27</li><li><a href="stop-42582.html">42582</a> - Oostvleteren Lion Belge 18:28</li><li><a href="stop-42576.html">42576</a> - Oostvleteren Comte De Flandre 18:30</li><li><a href="stop-42584.html">42584</a> - Oostvleteren Station 18:32</li><li><a href="stop-90777.html">90777</a> - Oostvleteren De Lelie 18:33</li><li><a href="stop-42581.html">42581</a> - Oostvleteren Kapelhof 18:34</li><li><a href="stop-42579.html">42579</a> - Oostvleteren Elzendamme 18:34</li><li><a href="stop-104548.html">104548</a> - Hoogstade Linde 18:36</li><li><a href="stop-42422.html">42422</a> - Hoogstade Rustoord Clep 18:37</li><li><a href="stop-42616.html">42616</a> - Pollinkhove Gapaard 18:38</li><li><a href="stop-42420.html">42420</a> - Hoogstade Dorp 18:39</li><li><a href="stop-42423.html">42423</a> - Hoogstade Weg Op Sint-Rijkers 18:40</li><li><a href="stop-42690.html">42690</a> - Sint-Rijkers Kruisstraat 18:40</li><li><a href="stop-105007.html">105007</a> - Alveringem Nieuwe Herberg 18:42</li><li><a href="stop-42716.html">42716</a> - Vinkem Zwart Peerd 18:43</li><li><a href="stop-42811.html">42811</a> - Wulveringem Weg Naar Dorp 18:44</li><li><a href="stop-42698.html">42698</a> - Steenkerke Presende 18:45</li><li><a href="stop-42697.html">42697</a> - Steenkerke Brug 18:46</li><li><a href="stop-38851.html">38851</a> - Veurne Ziekenhuis 18:48</li><li><a href="stop-38858.html">38858</a> - Veurne Technische School Sint-Idesbald 18:49</li><li><a href="stop-38859.html">38859</a> - Veurne Voorstad 18:50</li><li><a href="stop-42703.html">42703</a> - Veurne Lindendreef 18:51</li><li><a href="stop-38857.html">38857</a> - Veurne Station 18:53</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4173.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

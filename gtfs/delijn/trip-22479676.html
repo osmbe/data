@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Genk - As - Neeroeteren - Maaseik - 22479676</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genk - As - Neeroeteren - Maaseik - 22479676</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-88463.html">88463</a> - Genk Sint-Lodewijkstraat 16:30</li><li><a href="stop-43839.html">43839</a> - Genk Campus Bret 16:31</li><li><a href="stop-28512.html">28512</a> - Genk Mispelaarstraat 16:33</li><li><a href="stop-96693.html">96693</a> - Waterschei Waterbleekstraat 16:34</li><li><a href="stop-96695.html">96695</a> - Waterschei Bascule 16:36</li><li><a href="stop-96647.html">96647</a> - Waterschei Geenhornstraat 16:37</li><li><a href="stop-96708.html">96708</a> - Waterschei Springstraat 16:38</li><li><a href="stop-26553.html">26553</a> - As Oeleinde 16:40</li><li><a href="stop-26533.html">26533</a> - As Klooster 16:41</li><li><a href="stop-26529.html">26529</a> - As Kerk 16:43</li><li><a href="stop-93474.html">93474</a> - As Gemeentehuis 16:45</li><li><a href="stop-91111.html">91111</a> - As Drieschaar 16:46</li><li><a href="stop-99151.html">99151</a> - As Station 16:47</li><li><a href="stop-26551.html">26551</a> - As Nielerbaan 16:48</li><li><a href="stop-26555.html">26555</a> - As Onze Lieve Vrouwstraat 16:49</li><li><a href="stop-93781.html">93781</a> - Niel-bij-As Centrum 16:50</li><li><a href="stop-26545.html">26545</a> - Niel-bij-As Grotstraat 16:51</li><li><a href="stop-26547.html">26547</a> - Niel-bij-As Kapelstraat 16:52</li><li><a href="stop-32261.html">32261</a> - Opoeteren Dorne Zonneheim 16:54</li><li><a href="stop-32255.html">32255</a> - Opoeteren Dorne 16:56</li><li><a href="stop-32257.html">32257</a> - Opoeteren Berg 16:56</li><li><a href="stop-32259.html">32259</a> - Opoeteren Wouterbron 16:58</li><li><a href="stop-32267.html">32267</a> - Opoeteren Mariapark 17:00</li><li><a href="stop-32265.html">32265</a> - Opoeteren Kerkstraat 17:01</li><li><a href="stop-32322.html">32322</a> - Opoeteren Dorp 17:03</li><li><a href="stop-32263.html">32263</a> - Opoeteren Kabienstraat 17:03</li><li><a href="stop-32269.html">32269</a> - Opoeteren Neeroeterenstraat 17:04</li><li><a href="stop-32273.html">32273</a> - Opoeteren Roosterberg 17:04</li><li><a href="stop-32272.html">32272</a> - Opoeteren Roeren 17:05</li><li><a href="stop-32245.html">32245</a> - Neeroeteren Op den Berg 17:06</li><li><a href="stop-32225.html">32225</a> - Neeroeteren Brugstraat 17:07</li><li><a href="stop-91234.html">91234</a> - Neeroeteren Kanaalstraat 17:09</li><li><a href="stop-106146.html">106146</a> - Neeroeteren Dorp 17:10</li><li><a href="stop-32239.html">32239</a> - Neeroeteren Meerkenshoeve 17:11</li><li><a href="stop-32237.html">32237</a> - Neeroeteren Hoogvonderen 17:12</li><li><a href="stop-32227.html">32227</a> - Neeroeteren Diestersteenweg 17:13</li><li><a href="stop-32193.html">32193</a> - Neeroeteren Jagershof 17:13</li><li><a href="stop-32191.html">32191</a> - Maaseik Jagersborg 17:15</li><li><a href="stop-32299.html">32299</a> - Maaseik Wurfeld 17:15</li><li><a href="stop-32197.html">32197</a> - Maaseik Kazerne 17:17</li><li><a href="stop-32290.html">32290</a> - Maaseik Stationsstraat 17:17</li><li><a href="stop-123117.html">123117</a> - Maaseik Plantage 17:18</li><li><a href="stop-33097.html">33097</a> - Maaseik Van Eycklaan 17:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4483.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

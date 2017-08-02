@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brussel - Grimbergen - Humbeek - 22765088</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brussel - Grimbergen - Humbeek - 22765088</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-26251.html">26251</a> - Humbeek Steenstraat 06:24</li><li><a href="stop-26250.html">26250</a> - Humbeek Brug 06:24</li><li><a href="stop-10978.html">10978</a> - Humbeek Benedestraat 06:25</li><li><a href="stop-15290.html">15290</a> - Humbeek Delhaize 06:26</li><li><a href="stop-10982.html">10982</a> - Humbeek Gemeenteschool 06:26</li><li><a href="stop-10988.html">10988</a> - Humbeek Kerk 06:27</li><li><a href="stop-10998.html">10998</a> - Humbeek Steeneik 06:28</li><li><a href="stop-10990.html">10990</a> - Humbeek Kruis 06:29</li><li><a href="stop-10904.html">10904</a> - Beigem Dries 06:31</li><li><a href="stop-10906.html">10906</a> - Beigem Gemeentehuisstraat 06:32</li><li><a href="stop-10908.html">10908</a> - Beigem Stationsstraat 06:33</li><li><a href="stop-10938.html">10938</a> - Grimbergen Kerselaar 06:34</li><li><a href="stop-10936.html">10936</a> - Grimbergen Keienberglaan 06:35</li><li><a href="stop-10961.html">10961</a> - Grimbergen Stelplaats 06:36</li><li><a href="stop-10929.html">10929</a> - Grimbergen Dorp 06:37</li><li><a href="stop-10966.html">10966</a> - Grimbergen Triohofstraat 06:37</li><li><a href="stop-10950.html">10950</a> - Grimbergen Nieuwelaan 06:38</li><li><a href="stop-10958.html">10958</a> - Grimbergen Spaanse Linde 06:39</li><li><a href="stop-10910.html">10910</a> - Grimbergen Alexianen 06:40</li><li><a href="stop-10932.html">10932</a> - Grimbergen Haneveld 06:41</li><li><a href="stop-11035.html">11035</a> - Strombeek-Bever Station 06:41</li><li><a href="stop-11020.html">11020</a> - Strombeek-Bever Kerk 06:42</li><li><a href="stop-11030.html">11030</a> - Strombeek-Bever Rijkendal 06:43</li><li><a href="stop-11006.html">11006</a> - Strombeek-Bever Bloemendal 06:44</li><li><a href="stop-10093.html">10093</a> - Strombeek-Bever Mutsaard 06:45</li><li><a href="stop-10132.html">10132</a> - Brussel Wannecouter 06:47</li><li><a href="stop-87748.html">87748</a> - Brussel De Wand 06:48</li><li><a href="stop-15452.html">15452</a> - Brussel Koninklijke Serres 06:50</li><li><a href="stop-10074.html">10074</a> - Brussel Kadetten 06:52</li><li><a href="stop-10077.html">10077</a> - Brussel Kunstenaars 06:52</li><li><a href="stop-15139.html">15139</a> - Brussel Karel Bogaerd 06:54</li><li><a href="stop-90785.html">90785</a> - Brussel Bockstael B 06:54</li><li><a href="stop-10056.html">10056</a> - Brussel Bockstael 06:55</li><li><a href="stop-15694.html">15694</a> - Brussel Nekkersdal 06:56</li><li><a href="stop-10103.html">10103</a> - Brussel Poesjkin 06:57</li><li><a href="stop-10297.html">10297</a> - Sint-Jans-Molenbeek Schelde 06:58</li><li><a href="stop-10279.html">10279</a> - Sint-Jans-Molenbeek Belgica 06:59</li><li><a href="stop-10300.html">10300</a> - Sint-Jans-Molenbeek Jubelfeest 07:01</li><li><a href="stop-90801.html">90801</a> - Sint-Jans-Molenbeek Ribaucourt 07:02</li><li><a href="stop-90803.html">90803</a> - Sint-Jans-Molenbeek Sainctelette 07:03</li><li><a href="stop-10070.html">10070</a> - Brussel IJzer 07:04</li><li><a href="stop-10072.html">10072</a> - Brussel Albert-II-laan 07:05</li><li><a href="stop-10135.html">10135</a> - Brussel Rogier 07:06</li><li><a href="stop-14574.html">14574</a> - Brussel Noord Perron 8 07:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1885.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

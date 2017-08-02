@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Brugge Centrum-Station-Sint-Andries (De Prange) - 22607685</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Brugge Centrum-Station-Sint-Andries (De Prange) - 22607685</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-100725.html">100725</a> - Brugge Stadsschouwburg 09:18</li><li><a href="stop-37226.html">37226</a> - Brugge Kipstraat 09:19</li><li><a href="stop-36792.html">36792</a> - Brugge Poitevinstraat 09:20</li><li><a href="stop-90316.html">90316</a> - Brugge Howest 09:21</li><li><a href="stop-36783.html">36783</a> - Brugge N.Gombertstraat 09:22</li><li><a href="stop-37271.html">37271</a> - Brugge N. Gombertstraat 09:23</li><li><a href="stop-98660.html">98660</a> - Brugge Ezelpoort 09:24</li><li><a href="stop-40821.html">40821</a> - Brugge Beenhouwerstraat 09:25</li><li><a href="stop-41337.html">41337</a> - Brugge Hoefijzer 09:27</li><li><a href="stop-126320.html">126320</a> - Brugge 'T Zand perron 3 09:28</li><li><a href="stop-128942.html">128942</a> - Brugge Station perron 2 09:30</li><li><a href="stop-98039.html">98039</a> - Sint-Andries Sint-Lodewijk 09:33</li><li><a href="stop-98037.html">98037</a> - Sint-Andries Phare 09:35</li><li><a href="stop-98038.html">98038</a> - Sint-Andries Sint-Baafskerk 09:35</li><li><a href="stop-98030.html">98030</a> - Sint-Andries Lange Munt 09:37</li><li><a href="stop-98031.html">98031</a> - Sint-Andries Manitoba 09:37</li><li><a href="stop-98017.html">98017</a> - Sint-Andries De Nieulant 09:38</li><li><a href="stop-98012.html">98012</a> - Sint-Andries Boeverbos 09:40</li><li><a href="stop-98026.html">98026</a> - Sint-Andries Kerk 09:41</li><li><a href="stop-98033.html">98033</a> - Sint-Andries Molendorp 09:42</li><li><a href="stop-98028.html">98028</a> - Sint-Andries Korte Molen 09:43</li><li><a href="stop-98042.html">98042</a> - Sint-Andries Zandstraat 09:43</li><li><a href="stop-98086.html">98086</a> - Sint-Andries Koude Keuken 09:44</li><li><a href="stop-98085.html">98085</a> - Sint-Andries Patrijzenweg 09:44</li><li><a href="stop-98084.html">98084</a> - Sint-Andries Gruitstraat 09:45</li><li><a href="stop-98083.html">98083</a> - Sint-Andries Blijmare 09:46</li><li><a href="stop-98344.html">98344</a> - Sint-Andries Ter Zale 09:46</li><li><a href="stop-98332.html">98332</a> - Sint-Andries Knotwilgen 09:47</li><li><a href="stop-98325.html">98325</a> - Sint-Andries De Prange 09:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5802.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

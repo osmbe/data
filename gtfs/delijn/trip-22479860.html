@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>De Lijn - Hasselt/Zonhoven - Boxbergheide - Genk - 22479860</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hasselt/Zonhoven - Boxbergheide - Genk - 22479860</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-30629.html">30629</a> - Helchteren Technische School 12:20</li><li><a href="stop-123220.html">123220</a> - Zonhoven Dorpsplein 12:29</li><li><a href="stop-31670.html">31670</a> - Zonhoven Genkerbaan 12:30</li><li><a href="stop-35219.html">35219</a> - Zonhoven Melkerij 12:31</li><li><a href="stop-35209.html">35209</a> - Zonhoven Katschotseweg 12:33</li><li><a href="stop-35197.html">35197</a> - Zonhoven Herestraat 12:33</li><li><a href="stop-35211.html">35211</a> - Zonhoven Korenmolenweg 12:35</li><li><a href="stop-35217.html">35217</a> - Zonhoven Manerikweg 12:36</li><li><a href="stop-35233.html">35233</a> - Zonhoven Termolen school 12:37</li><li><a href="stop-35187.html">35187</a> - Zonhoven Elstrekenweg 12:39</li><li><a href="stop-35215.html">35215</a> - Zonhoven Kruisstraat 12:40</li><li><a href="stop-97381.html">97381</a> - Boxberg Vlasberg 12:41</li><li><a href="stop-97382.html">97382</a> - Boxberg Klotbroek 12:43</li><li><a href="stop-97384.html">97384</a> - Boxberg Klotstraat 12:44</li><li><a href="stop-96678.html">96678</a> - Boxberg Turfstraat 12:45</li><li><a href="stop-123265.html">123265</a> - Boxberg Don Bosco Genk 12:46</li><li><a href="stop-96668.html">96668</a> - Boxberg Jongensschool 12:47</li><li><a href="stop-96670.html">96670</a> - Boxberg Boogstraat 12:47</li><li><a href="stop-96674.html">96674</a> - Boxberg De Vroente 12:48</li><li><a href="stop-96756.html">96756</a> - Boxberg Ankerstraat 12:49</li><li><a href="stop-96758.html">96758</a> - Boxberg Roerstraat 12:50</li><li><a href="stop-96672.html">96672</a> - Boxberg De Heuvel 12:50</li><li><a href="stop-96732.html">96732</a> - Winterslag Zandoerstraat 12:52</li><li><a href="stop-96717.html">96717</a> - Winterslag Erabelstraat 12:53</li><li><a href="stop-96724.html">96724</a> - Winterslag Spoorwegstraat 12:54</li><li><a href="stop-96726.html">96726</a> - Winterslag Sportlaan 12:55</li><li><a href="stop-96720.html">96720</a> - Winterslag Margaretalaan 12:56</li><li><a href="stop-121604.html">121604</a> - Winterslag Kerk 12:58</li><li><a href="stop-96718.html">96718</a> - Winterslag Kerkstraat 12:59</li><li><a href="stop-96730.html">96730</a> - Winterslag Vennestraat 13:00</li><li><a href="stop-96728.html">96728</a> - Winterslag Stiemerbeek 13:01</li><li><a href="stop-28526.html">28526</a> - Genk Nieuwe Kuilenweg 13:02</li><li><a href="stop-123238.html">123238</a> - Genk Bochtlaan 13:03</li><li><a href="stop-125475.html">125475</a> - Genk Station perron 10 13:06</li><li><a href="stop-28345.html">28345</a> - Genk Shopping Center perron 1 13:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5466.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>
