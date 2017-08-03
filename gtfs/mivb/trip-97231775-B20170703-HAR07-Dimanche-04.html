@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - VIADUC E40 - MUSEE DU TRAM - 97231775-B20170703-HAR07-Dimanche-04</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: VIADUC E40 - MUSEE DU TRAM - 97231775-B20170703-HAR07-Dimanche-04</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-2015.html">2015</a> - VIADUC E40 07:23</li><li><a href="stop-2029.html">2029</a> - THUMAS 07:23</li><li><a href="stop-2017.html">2017</a> - SAINT-ANTOINE 07:24</li><li><a href="stop-2025.html">2025</a> - ANNECY 07:25</li><li><a href="stop-9851.html">9851</a> - LENNEKE MARE 07:26</li><li><a href="stop-2069.html">2069</a> - UCL SAINT-LUC 07:28</li><li><a href="stop-2027.html">2027</a> - DUNETTE 07:28</li><li><a href="stop-9853.html">9853</a> - HOF TER MUSSCHEN 07:29</li><li><a href="stop-2028.html">2028</a> - THIRY-WOLUWE 07:31</li><li><a href="stop-1553.html">1553</a> - MARCEL THIRY 07:32</li><li><a href="stop-1554.html">1554</a> - PEUPLIERS 07:32</li><li><a href="stop-1550.html">1550</a> - CHARMILLE 07:33</li><li><a href="stop-6478.html">6478</a> - ROODEBEEK 07:35</li><li><a href="stop-1305.html">1305</a> - VELLEMOLEN 07:35</li><li><a href="stop-1998.html">1998</a> - DEBECKER 07:36</li><li><a href="stop-2003.html">2003</a> - VOOT 07:38</li><li><a href="stop-2004.html">2004</a> - FABRY 07:39</li><li><a href="stop-5287.html">5287</a> - MUSEE DU TRAM 07:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./042b0002.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

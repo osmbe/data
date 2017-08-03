@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - BOONDAEL GARE - ROGIER - 97353313-T20170703-025t-Semaine-00</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: BOONDAEL GARE - ROGIER - 97353313-T20170703-025t-Semaine-00</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-5200p.html">5200p</a> - ROFFIAEN 11:33</li><li><a href="stop-5261.html">5261</a> - ETTERBEEK GARE 11:34</li><li><a href="stop-5265F.html">5265F</a> - VUB 11:36</li><li><a href="stop-5267.html">5267</a> - ARSENAL 11:37</li><li><a href="stop-5352.html">5352</a> - PETILLON 11:39</li><li><a href="stop-0906.html">0906</a> - BOILEAU 11:40</li><li><a href="stop-0806.html">0806</a> - MONTGOMERY 11:42</li><li><a href="stop-0816.html">0816</a> - GEORGES HENRI 11:43</li><li><a href="stop-0826.html">0826</a> - DIAMANT 11:45</li><li><a href="stop-2241G.html">2241G</a> - MEISER 11:47</li><li><a href="stop-6258.html">6258</a> - PATRIE 11:48</li><li><a href="stop-3308F.html">3308F</a> - BIENFAITEURS 11:51</li><li><a href="stop-3309F.html">3309F</a> - COTEAUX 11:52</li><li><a href="stop-6419F.html">6419F</a> - ROBIANO 11:55</li><li><a href="stop-6260.html">6260</a> - LEFRANCQ 11:55</li><li><a href="stop-1644F.html">1644F</a> - LIEDTS 11:57</li><li><a href="stop-5714.html">5714</a> - THOMAS 11:59</li><li><a href="stop-0521.html">0521</a> - GARE DU NORD 12:01</li><li><a href="stop-0539.html">0539</a> - ROGIER 12:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./025t0048.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

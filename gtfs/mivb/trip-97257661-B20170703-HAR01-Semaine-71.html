@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - GARE DU MIDI - ANDROMEDE - 97257661-B20170703-HAR01-Semaine-71</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GARE DU MIDI - ANDROMEDE - 97257661-B20170703-HAR01-Semaine-71</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-1539.html">1539</a> - ANDROMEDE 08:29</li><li><a href="stop-3909.html">3909</a> - SAINTE-FAMILLE 08:30</li><li><a href="stop-3910.html">3910</a> - MOONENS 08:31</li><li><a href="stop-3919.html">3919</a> - VERHEYLEWEGHEN 08:32</li><li><a href="stop-1150.html">1150</a> - ZEPHYR 08:32</li><li><a href="stop-1152.html">1152</a> - MEUDON 08:34</li><li><a href="stop-1153.html">1153</a> - DEGROOFF 08:35</li><li><a href="stop-1154.html">1154</a> - GEORGES HENRI 08:37</li><li><a href="stop-2287.html">2287</a> - MONTGOMERY 08:40</li><li><a href="stop-1156.html">1156</a> - MERODE 08:42</li><li><a href="stop-1157.html">1157</a> - GAULOIS 08:43</li><li><a href="stop-1158.html">1158</a> - NERVIENS 08:45</li><li><a href="stop-1476.html">1476</a> - FROISSART 08:46</li><li><a href="stop-1497B.html">1497B</a> - TOULOUSE 08:49</li><li><a href="stop-1185.html">1185</a> - TREVES 08:50</li><li><a href="stop-1162C.html">1162C</a> - LUXEMBOURG 08:52</li><li><a href="stop-1776.html">1776</a> - SCIENCE 08:53</li><li><a href="stop-6432.html">6432</a> - TRONE 08:54</li><li><a href="stop-1124.html">1124</a> - TRONE 08:55</li><li><a href="stop-1165.html">1165</a> - ROYALE 08:57</li><li><a href="stop-1166.html">1166</a> - GRAND SABLON 08:59</li><li><a href="stop-1167.html">1167</a> - CHAPELLE 09:00</li><li><a href="stop-1168.html">1168</a> - JEU DE BALLE 09:02</li><li><a href="stop-1169.html">1169</a> - PORTE DE HAL 09:04</li><li><a href="stop-2500.html">2500</a> - GARE DU MIDI 09:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./027b0084.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - GARE CENTRALE - CIMETIERE DE BRUXELLES - 97258536-B20170703-HAR06-Samedi-01</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GARE CENTRALE - CIMETIERE DE BRUXELLES - 97258536-B20170703-HAR06-Samedi-01</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-6443.html">6443</a> - GARE CENTRALE 24:51</li><li><a href="stop-2301.html">2301</a> - ARENBERG 24:52</li><li><a href="stop-2302.html">2302</a> - DE BROUCKERE 24:54</li><li><a href="stop-2303.html">2303</a> - DE BROUCKERE 24:55</li><li><a href="stop-2212.html">2212</a> - BOURSE 24:56</li><li><a href="stop-2255.html">2255</a> - SIX JETONS 24:57</li><li><a href="stop-2245.html">2245</a> - ANNEESSENS 24:58</li><li><a href="stop-1063.html">1063</a> - CESAR DE PAEPE 24:59</li><li><a href="stop-1376B.html">1376B</a> - GRAND SABLON 25:01</li><li><a href="stop-1128.html">1128</a> - PETIT SABLON 25:02</li><li><a href="stop-1129.html">1129</a> - ROYALE 25:04</li><li><a href="stop-6355.html">6355</a> - PALAIS 25:05</li><li><a href="stop-6356.html">6356</a> - PARC 25:07</li><li><a href="stop-6357.html">6357</a> - CONGRES 25:08</li><li><a href="stop-6435.html">6435</a> - BOTANIQUE 25:10</li><li><a href="stop-6359.html">6359</a> - GILLON 25:10</li><li><a href="stop-6410.html">6410</a> - SAINTE-MARIE 25:11</li><li><a href="stop-6418.html">6418</a> - ROBIANO 25:12</li><li><a href="stop-6203.html">6203</a> - COTEAUX 25:14</li><li><a href="stop-6210.html">6210</a> - BIENFAITEURS 25:15</li><li><a href="stop-6214.html">6214</a> - PATRIE 25:17</li><li><a href="stop-2249.html">2249</a> - MEISER 25:18</li><li><a href="stop-3761.html">3761</a> - LEOPOLD III 25:20</li><li><a href="stop-3762.html">3762</a> - FRANS COURTENS 25:20</li><li><a href="stop-3763.html">3763</a> - PAUL LEDUC 25:22</li><li><a href="stop-3766.html">3766</a> - OPTIMISME 25:22</li><li><a href="stop-3460.html">3460</a> - GUILLAUME 25:23</li><li><a href="stop-3272.html">3272</a> - PADUWA 25:24</li><li><a href="stop-3273.html">3273</a> - ARTEMIS 25:24</li><li><a href="stop-3274.html">3274</a> - CIM. DE BRUXELLES 25:25</li><li><a href="stop-3285.html">3285</a> - DIABLOTINS 25:26</li><li><a href="stop-3401.html">3401</a> - CIM. DE BRUXELLES 25:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./204b0092.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

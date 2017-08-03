@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - EUROCONTROL - CIMETIERE DE JETTE - 97268883-T20170703-556232t-Semaine-50</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: EUROCONTROL - CIMETIERE DE JETTE - 97268883-T20170703-556232t-Semaine-50</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-3335F.html">3335F</a> - EUROCONTROL 19:33</li><li><a href="stop-3330F.html">3330F</a> - BOURGET 19:33</li><li><a href="stop-3326F.html">3326F</a> - NATO 19:36</li><li><a href="stop-5042.html">5042</a> - DA VINCI 19:38</li><li><a href="stop-5874F.html">5874F</a> - LEKAERTS 19:39</li><li><a href="stop-5275F.html">5275F</a> - EVERE SHOPPING 19:40</li><li><a href="stop-5274F.html">5274F</a> - PENTATHLON 19:42</li><li><a href="stop-5308F.html">5308F</a> - LEOPOLD III 19:45</li><li><a href="stop-2241G.html">2241G</a> - MEISER 19:47</li><li><a href="stop-6258.html">6258</a> - PATRIE 19:48</li><li><a href="stop-3308F.html">3308F</a> - BIENFAITEURS 19:51</li><li><a href="stop-3309F.html">3309F</a> - COTEAUX 19:52</li><li><a href="stop-6419F.html">6419F</a> - ROBIANO 19:55</li><li><a href="stop-6260.html">6260</a> - LEFRANCQ 19:56</li><li><a href="stop-1644F.html">1644F</a> - LIEDTS 19:58</li><li><a href="stop-6177.html">6177</a> - THOMAS 20:00</li><li><a href="stop-6179.html">6179</a> - MASUI 20:01</li><li><a href="stop-6168F.html">6168F</a> - JULES DE TROOZ 20:03</li><li><a href="stop-1076.html">1076</a> - OUTRE-PONTS 20:05</li><li><a href="stop-6174F.html">6174F</a> - PRINC. CLEMENTINE 20:06</li><li><a href="stop-6171.html">6171</a> - MOORSLEDE 20:08</li><li><a href="stop-4126F.html">4126F</a> - BOCKSTAEL 20:09</li><li><a href="stop-6172.html">6172</a> - JACOBS FONTAINE 20:10</li><li><a href="stop-6552.html">6552</a> - FOYER JETTOIS 20:11</li><li><a href="stop-6553.html">6553</a> - CIM. DE JETTE 20:13</li><li><a href="stop-6502.html">6502</a> - CIM. DE JETTE 20:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./062t0312.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

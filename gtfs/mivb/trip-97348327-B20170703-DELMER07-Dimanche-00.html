@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - DE BROUCKERE - DELTA - 97348327-B20170703-DELMER07-Dimanche-00</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DE BROUCKERE - DELTA - 97348327-B20170703-DELMER07-Dimanche-00</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-3521.html">3521</a> - BEAULIEU 23:47</li><li><a href="stop-3556.html">3556</a> - DELTA 23:48</li><li><a href="stop-3557.html">3557</a> - FRAITEUR 23:49</li><li><a href="stop-3558.html">3558</a> - CIM. D'IXELLES 23:51</li><li><a href="stop-3559.html">3559</a> - ULB 23:52</li><li><a href="stop-3525.html">3525</a> - JEANNE 23:53</li><li><a href="stop-7531.html">7531</a> - CAMBRE-ETOILE 23:55</li><li><a href="stop-7372.html">7372</a> - ABBAYE 23:56</li><li><a href="stop-3562P.html">3562P</a> - GEO BERNIER 23:57</li><li><a href="stop-3570.html">3570</a> - ETANGS D'IXELLES 23:59</li><li><a href="stop-3572.html">3572</a> - FLAGEY 24:01</li><li><a href="stop-1980.html">1980</a> - MALIBRAN 24:02</li><li><a href="stop-1981.html">1981</a> - BLYCKAERTS 24:03</li><li><a href="stop-1291.html">1291</a> - IDALIE 24:05</li><li><a href="stop-1292.html">1292</a> - QUART.ST-BONIFACE 24:06</li><li><a href="stop-2967B.html">2967B</a> - MATONGE-PTE NAMUR 24:08</li><li><a href="stop-1124.html">1124</a> - TRONE 24:10</li><li><a href="stop-3567.html">3567</a> - ROYALE 24:12</li><li><a href="stop-6447.html">6447</a> - GARE CENTRALE 24:14</li><li><a href="stop-2301.html">2301</a> - ARENBERG 24:15</li><li><a href="stop-2302.html">2302</a> - DE BROUCKERE 24:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./071b0008.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

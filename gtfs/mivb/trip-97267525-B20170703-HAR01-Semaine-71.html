@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - SCHAERBEEK GARE - JULES BORDET - 97267525-B20170703-HAR01-Semaine-71</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: SCHAERBEEK GARE - JULES BORDET - 97267525-B20170703-HAR01-Semaine-71</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-3107.html">3107</a> - SCHAERBEEK GARE 15:17</li><li><a href="stop-3177.html">3177</a> - SCHAERBEEK GARE 15:18</li><li><a href="stop-3171.html">3171</a> - ZENOBE GRAMME 15:19</li><li><a href="stop-3172.html">3172</a> - CHAUMONTEL 15:20</li><li><a href="stop-3173.html">3173</a> - CARLI 15:21</li><li><a href="stop-3174.html">3174</a> - PICARDIE 15:21</li><li><a href="stop-3175B.html">3175B</a> - SAINT-VINCENT 15:23</li><li><a href="stop-3176.html">3176</a> - VANDENHOVEN 15:24</li><li><a href="stop-5362.html">5362</a> - BORDET STATION 15:25</li><li><a href="stop-5045.html">5045</a> - DA VINCI 15:26</li><li><a href="stop-9311.html">9311</a> - JULES BORDET 15:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./069b0002.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

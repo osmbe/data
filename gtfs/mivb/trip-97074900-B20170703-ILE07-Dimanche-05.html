@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - OBSERVATOIRE - KAUWBERG - 97074900-B20170703-ILE07-Dimanche-05</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: OBSERVATOIRE - KAUWBERG - 97074900-B20170703-ILE07-Dimanche-05</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-4854C.html">4854C</a> - OBSERVATOIRE 16:18</li><li><a href="stop-1250.html">1250</a> - HOUZEAU 16:18</li><li><a href="stop-1921.html">1921</a> - HOUZEAU 16:19</li><li><a href="stop-1942.html">1942</a> - STATUAIRES 16:20</li><li><a href="stop-2355.html">2355</a> - HEROS 16:21</li><li><a href="stop-7550.html">7550</a> - MARLOW 16:22</li><li><a href="stop-7329.html">7329</a> - WOLVENDAEL 16:23</li><li><a href="stop-7330.html">7330</a> - DIEWEG 16:25</li><li><a href="stop-1737.html">1737</a> - DROSSART 16:26</li><li><a href="stop-2769.html">2769</a> - CHENAIE 16:27</li><li><a href="stop-2770.html">2770</a> - HELLEVELT 16:28</li><li><a href="stop-2771.html">2771</a> - GROELSTVELD 16:29</li><li><a href="stop-1949.html">1949</a> - ENGELAND 16:30</li><li><a href="stop-1937.html">1937</a> - BOURDON 16:31</li><li><a href="stop-1931.html">1931</a> - BIGARREAUX 16:32</li><li><a href="stop-1932.html">1932</a> - GRIOTTES 16:33</li><li><a href="stop-1933B.html">1933B</a> - MOENSBERG GARE 16:34</li><li><a href="stop-1939.html">1939</a> - VIEUX CHEMIN 16:34</li><li><a href="stop-1935.html">1935</a> - BRAVES 16:35</li><li><a href="stop-1936.html">1936</a> - LINKEBEEK GARE 16:36</li><li><a href="stop-1944.html">1944</a> - HOSPICES 16:37</li><li><a href="stop-1938.html">1938</a> - HOMBORCH 16:39</li><li><a href="stop-2099.html">2099</a> - GAZELLE 16:40</li><li><a href="stop-2112.html">2112</a> - PASTEUR 16:41</li><li><a href="stop-2103.html">2103</a> - VERREWINKEL 16:42</li><li><a href="stop-2104.html">2104</a> - GUI 16:44</li><li><a href="stop-2116B.html">2116B</a> - SAINTE-ALLIANCE 16:45</li><li><a href="stop-2117B.html">2117B</a> - NAPOLEON 16:47</li><li><a href="stop-2118.html">2118</a> - PRINCE D'ORANGE 16:48</li><li><a href="stop-2119.html">2119</a> - VAN BEVER 16:48</li><li><a href="stop-2120.html">2120</a> - RONCES 16:50</li><li><a href="stop-2136.html">2136</a> - FORT-JACO 16:50</li><li><a href="stop-2137.html">2137</a> - RACING 16:51</li><li><a href="stop-2138B.html">2138B</a> - VIVIER D'OIE 16:52</li><li><a href="stop-2109B.html">2109B</a> - VIVIER D'OIE 16:53</li><li><a href="stop-2152.html">2152</a> - PLACE SAINT-JOB 16:54</li><li><a href="stop-1742.html">1742</a> - BENAETS 16:55</li><li><a href="stop-1736.html">1736</a> - DE WANSIJN 16:56</li><li><a href="stop-2151.html">2151</a> - KAUWBERG 16:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./043b0019.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

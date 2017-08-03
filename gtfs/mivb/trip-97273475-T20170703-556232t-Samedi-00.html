@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - DA VINCI - ROGIER - 97273475-T20170703-556232t-Samedi-00</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DA VINCI - ROGIER - 97273475-T20170703-556232t-Samedi-00</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-0529.html">0529</a> - ROGIER 07:40</li><li><a href="stop-0536.html">0536</a> - GARE DU NORD 07:41</li><li><a href="stop-5762.html">5762</a> - THOMAS 07:43</li><li><a href="stop-1642F.html">1642F</a> - LIEDTS 07:45</li><li><a href="stop-5765F.html">5765F</a> - PAVILLON 07:46</li><li><a href="stop-5766.html">5766</a> - VERBOEKHOVEN 07:48</li><li><a href="stop-5865.html">5865</a> - WAELHEM 07:49</li><li><a href="stop-5866.html">5866</a> - FOYER SCHAERBEEK. 07:50</li><li><a href="stop-5867F.html">5867F</a> - HELMET 07:51</li><li><a href="stop-5868.html">5868</a> - TILLEUL 07:52</li><li><a href="stop-5801.html">5801</a> - PAIX 07:55</li><li><a href="stop-2900F.html">2900F</a> - FONSON 07:56</li><li><a href="stop-2901.html">2901</a> - VAN CUTSEM 07:56</li><li><a href="stop-5362F.html">5362F</a> - BORDET STATION 07:58</li><li><a href="stop-5039.html">5039</a> - DA VINCI 08:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./055t0257.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - DE BROUCKERE - HEYSEL - 97249018-B20170703-BRESIM01-Semaine-73</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DE BROUCKERE - HEYSEL - 97249018-B20170703-BRESIM01-Semaine-73</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-2828.html">2828</a> - DE BROUCKERE 17:40</li><li><a href="stop-2830.html">2830</a> - ROGIER 17:41</li><li><a href="stop-2837.html">2837</a> - YSER 17:44</li><li><a href="stop-2269.html">2269</a> - NICOLAY 17:45</li><li><a href="stop-1052.html">1052</a> - WTC 17:47</li><li><a href="stop-1051.html">1051</a> - WILLEBROEK 17:49</li><li><a href="stop-1391.html">1391</a> - ARMATEURS 17:51</li><li><a href="stop-2304.html">2304</a> - STEAMERS 17:52</li><li><a href="stop-2305.html">2305</a> - ENTREPOT 17:52</li><li><a href="stop-4252.html">4252</a> - DIEUDONNE LEFEVRE 17:54</li><li><a href="stop-4258.html">4258</a> - POUCHKINE 17:56</li><li><a href="stop-4266.html">4266</a> - NEKKERSDAL 17:58</li><li><a href="stop-4127.html">4127</a> - BOCKSTAEL 17:59</li><li><a href="stop-4126.html">4126</a> - BOCKSTAEL 18:01</li><li><a href="stop-2502.html">2502</a> - BREESCH 18:02</li><li><a href="stop-2503.html">2503</a> - LOYAUTE 18:04</li><li><a href="stop-2504.html">2504</a> - WOESTE 18:06</li><li><a href="stop-2505.html">2505</a> - LEOPOLD I 18:08</li><li><a href="stop-2515B.html">2515B</a> - VERBEYST 18:10</li><li><a href="stop-2498.html">2498</a> - DEMINEURS 18:11</li><li><a href="stop-6869.html">6869</a> - JETTE GARE 18:12</li><li><a href="stop-2871.html">2871</a> - LORGE 18:14</li><li><a href="stop-2867.html">2867</a> - HOPITAL BRUGMANN 18:17</li><li><a href="stop-4250.html">4250</a> - CROCQ 18:17</li><li><a href="stop-9044.html">9044</a> - CITE JARDIN 18:18</li><li><a href="stop-9047.html">9047</a> - STIENON 18:19</li><li><a href="stop-4259.html">4259</a> - PATTIJN 18:20</li><li><a href="stop-4260.html">4260</a> - TIRCHER 18:21</li><li><a href="stop-4261.html">4261</a> - PALFYN 18:22</li><li><a href="stop-4268.html">4268</a> - AMETHYSTE 18:23</li><li><a href="stop-6482.html">6482</a> - ROI BAUDOUIN 18:24</li><li><a href="stop-4265.html">4265</a> - HEYSEL 18:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./088b0069.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

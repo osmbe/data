@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - OBSERVATOIRE - KAUWBERG - 97136520-B20170703-ILE01-Semaine-72</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: OBSERVATOIRE - KAUWBERG - 97136520-B20170703-ILE01-Semaine-72</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-2168.html">2168</a> - HOMBORCH 19:39</li><li><a href="stop-2169.html">2169</a> - BICHES 19:40</li><li><a href="stop-1953.html">1953</a> - CABRIS 19:40</li><li><a href="stop-1954.html">1954</a> - LINKEBEEK GARE 19:41</li><li><a href="stop-1955.html">1955</a> - BRAVES 19:42</li><li><a href="stop-1963.html">1963</a> - VIEUX CHEMIN 19:43</li><li><a href="stop-1957B.html">1957B</a> - MOENSBERG GARE 19:44</li><li><a href="stop-1958B.html">1958B</a> - GRIOTTES 19:45</li><li><a href="stop-1959.html">1959</a> - BIGARREAUX 19:46</li><li><a href="stop-1965.html">1965</a> - BOURDON 19:47</li><li><a href="stop-7657.html">7657</a> - ENGELAND 19:49</li><li><a href="stop-2702.html">2702</a> - GROELSTVELD 19:49</li><li><a href="stop-2703.html">2703</a> - PAPENKASTEEL 19:50</li><li><a href="stop-2704.html">2704</a> - HELLEVELT 19:51</li><li><a href="stop-2705.html">2705</a> - CHENAIE 19:52</li><li><a href="stop-1738.html">1738</a> - DROSSART 19:53</li><li><a href="stop-7279.html">7279</a> - DIEWEG 19:56</li><li><a href="stop-7954.html">7954</a> - WOLVENDAEL 19:56</li><li><a href="stop-7658.html">7658</a> - MARLOW 19:58</li><li><a href="stop-4075.html">4075</a> - HEROS 19:59</li><li><a href="stop-1943.html">1943</a> - STATUAIRES 20:00</li><li><a href="stop-1968.html">1968</a> - ZEECRABBE 20:01</li><li><a href="stop-1969.html">1969</a> - HOUZEAU 20:02</li><li><a href="stop-1251.html">1251</a> - HOUZEAU 20:02</li><li><a href="stop-4854C.html">4854C</a> - OBSERVATOIRE 20:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./043b0027.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

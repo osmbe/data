@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - CAMPUS CERIA - BON AIR - 97874431-B20170703-BRESIM01-Semaine-73</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CAMPUS CERIA - BON AIR - 97874431-B20170703-BRESIM01-Semaine-73</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-1486B.html">1486B</a> - BON AIR 12:18</li><li><a href="stop-1487.html">1487</a> - POMMIER 12:19</li><li><a href="stop-1488.html">1488</a> - WESTLAND SHOPPING 12:20</li><li><a href="stop-1204.html">1204</a> - FRUITS 12:21</li><li><a href="stop-1489.html">1489</a> - RENE HENRY 12:23</li><li><a href="stop-2375.html">2375</a> - HOPITAL BRACOPS 12:24</li><li><a href="stop-1490.html">1490</a> - VAN BEETHOVEN 12:26</li><li><a href="stop-5296B.html">5296B</a> - BIZET 12:28</li><li><a href="stop-1492.html">1492</a> - WAXWEILER 12:28</li><li><a href="stop-1493.html">1493</a> - WAUTERS 12:31</li><li><a href="stop-1541.html">1541</a> - CERIA 12:32</li><li><a href="stop-1499.html">1499</a> - CAMPUS CERIA 12:33</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./075b0003.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

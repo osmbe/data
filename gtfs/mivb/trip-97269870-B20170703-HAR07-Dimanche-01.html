@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - PORTE DE NAMUR - MAES - 97269870-B20170703-HAR07-Dimanche-01</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: PORTE DE NAMUR - MAES - 97269870-B20170703-HAR07-Dimanche-01</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-1705.html">1705</a> - PORTE DE NAMUR 15:26</li><li><a href="stop-6433.html">6433</a> - TRONE 15:27</li><li><a href="stop-1729.html">1729</a> - SCIENCE 15:27</li><li><a href="stop-1233.html">1233</a> - LUXEMBOURG 15:29</li><li><a href="stop-1706.html">1706</a> - IDALIE 15:31</li><li><a href="stop-1728.html">1728</a> - MUSEUM 15:32</li><li><a href="stop-3922.html">3922</a> - JOURDAN 15:33</li><li><a href="stop-3159.html">3159</a> - PARC LEOPOLD 15:35</li><li><a href="stop-1802.html">1802</a> - NERVIENS 15:36</li><li><a href="stop-1803.html">1803</a> - LEMAN 15:37</li><li><a href="stop-1135.html">1135</a> - GAULOIS 15:39</li><li><a href="stop-1136.html">1136</a> - MERODE 15:41</li><li><a href="stop-2283.html">2283</a> - MONTGOMERY 15:43</li><li><a href="stop-1113.html">1113</a> - ICHEC 15:43</li><li><a href="stop-1139.html">1139</a> - GEORGES HENRI 15:45</li><li><a href="stop-1140.html">1140</a> - DEGROOFF 15:46</li><li><a href="stop-1141.html">1141</a> - MEUDON 15:48</li><li><a href="stop-3954.html">3954</a> - HEYDENBERG 15:49</li><li><a href="stop-3952.html">3952</a> - FEVRIER 15:50</li><li><a href="stop-3956.html">3956</a> - COLONEL BOURG 15:51</li><li><a href="stop-3957.html">3957</a> - CARENE 15:52</li><li><a href="stop-3272.html">3272</a> - PADUWA 15:55</li><li><a href="stop-3273.html">3273</a> - ARTEMIS 15:55</li><li><a href="stop-3274.html">3274</a> - CIM. DE BRUXELLES 15:57</li><li><a href="stop-3285.html">3285</a> - DIABLOTINS 15:57</li><li><a href="stop-3276.html">3276</a> - JULES BORDET 15:59</li><li><a href="stop-5046.html">5046</a> - DA VINCI 16:00</li><li><a href="stop-5363.html">5363</a> - BORDET STATION 16:02</li><li><a href="stop-3279.html">3279</a> - SABCA 16:03</li><li><a href="stop-3280.html">3280</a> - MIDDELWEG 16:03</li><li><a href="stop-3201.html">3201</a> - MAES 16:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./080b0285.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - GARE CENTRALE - WIENER - 97534726-B20170703-HAR05-Semaine-03</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GARE CENTRALE - WIENER - 97534726-B20170703-HAR05-Semaine-03</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-6447.html">6447</a> - GARE CENTRALE 25:25</li><li><a href="stop-2301.html">2301</a> - ARENBERG 25:26</li><li><a href="stop-2302.html">2302</a> - DE BROUCKERE 25:28</li><li><a href="stop-2303.html">2303</a> - DE BROUCKERE 25:29</li><li><a href="stop-2212.html">2212</a> - BOURSE 25:30</li><li><a href="stop-2255.html">2255</a> - SIX JETONS 25:31</li><li><a href="stop-2245.html">2245</a> - ANNEESSENS 25:32</li><li><a href="stop-1063.html">1063</a> - CESAR DE PAEPE 25:33</li><li><a href="stop-1376B.html">1376B</a> - GRAND SABLON 25:35</li><li><a href="stop-1128.html">1128</a> - PETIT SABLON 25:36</li><li><a href="stop-1726.html">1726</a> - LOUISE 25:39</li><li><a href="stop-3621B.html">3621B</a> - CLIQUET 25:39</li><li><a href="stop-4952.html">4952</a> - PORTE DE NAMUR 25:41</li><li><a href="stop-3620B.html">3620B</a> - LONDRES 25:43</li><li><a href="stop-1906.html">1906</a> - IDALIE 25:44</li><li><a href="stop-1909.html">1909</a> - BLYCKAERTS 25:45</li><li><a href="stop-4303.html">4303</a> - GERMOIR 25:46</li><li><a href="stop-4304.html">4304</a> - RODIN 25:47</li><li><a href="stop-4305.html">4305</a> - DELPORTE 25:49</li><li><a href="stop-4306.html">4306</a> - ETTERBEEK GARE 25:50</li><li><a href="stop-4307.html">4307</a> - THYS 25:52</li><li><a href="stop-3558.html">3558</a> - CIM. D'IXELLES 25:53</li><li><a href="stop-4308.html">4308</a> - RELAIS 25:54</li><li><a href="stop-4309.html">4309</a> - ARCADES 25:55</li><li><a href="stop-4310.html">4310</a> - KEYM 25:57</li><li><a href="stop-4311.html">4311</a> - VANDER ELST 25:58</li><li><a href="stop-4312.html">4312</a> - ORTOLANS 25:59</li><li><a href="stop-4313.html">4313</a> - LES 3 TILLEULS 26:00</li><li><a href="stop-4347.html">4347</a> - MIRAVAL 26:00</li><li><a href="stop-4349.html">4349</a> - WIENER 26:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./208b0092.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

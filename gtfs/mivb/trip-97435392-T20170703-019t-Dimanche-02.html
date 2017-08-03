@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - GROOT-BIJGAARDEN - DE WAND - 97435392-T20170703-019t-Dimanche-02</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GROOT-BIJGAARDEN - DE WAND - 97435392-T20170703-019t-Dimanche-02</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-9801.html">9801</a> - GROOT-BIJGAARDEN 14:06</li><li><a href="stop-9802.html">9802</a> - BAYENS 14:06</li><li><a href="stop-5103.html">5103</a> - HUNDERENVELD 14:07</li><li><a href="stop-5102F.html">5102F</a> - AZUR 14:08</li><li><a href="stop-5105F.html">5105F</a> - VEREMAN 14:09</li><li><a href="stop-1306F.html">1306F</a> - SCHWEITZER 14:10</li><li><a href="stop-1094F.html">1094F</a> - VALIDA 14:11</li><li><a href="stop-1064.html">1064</a> - GOFFIN 14:13</li><li><a href="stop-1111.html">1111</a> - COLLEGE S.-COEUR 14:15</li><li><a href="stop-5108.html">5108</a> - BOSSAERT-BASILIQ. 14:16</li><li><a href="stop-5109.html">5109</a> - BESME 14:18</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./019t0027.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - GARE CENTRALE - UCCLE CALEVOET - 97535324-B20170703-DELMER06-Samedi-02</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GARE CENTRALE - UCCLE CALEVOET - 97535324-B20170703-DELMER06-Samedi-02</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-2701.html">2701</a> - UCCLE CALEVOET 25:10</li><li><a href="stop-7657.html">7657</a> - ENGELAND 25:10</li><li><a href="stop-2702.html">2702</a> - GROELSTVELD 25:11</li><li><a href="stop-2703.html">2703</a> - PAPENKASTEEL 25:11</li><li><a href="stop-2704.html">2704</a> - HELLEVELT 25:12</li><li><a href="stop-2705.html">2705</a> - CHENAIE 25:12</li><li><a href="stop-1738.html">1738</a> - DROSSART 25:12</li><li><a href="stop-7279.html">7279</a> - DIEWEG 25:14</li><li><a href="stop-7954.html">7954</a> - WOLVENDAEL 25:14</li><li><a href="stop-7658.html">7658</a> - MARLOW 25:15</li><li><a href="stop-7277.html">7277</a> - HEROS 25:16</li><li><a href="stop-1295.html">1295</a> - BENS 25:17</li><li><a href="stop-1296.html">1296</a> - ROOSENDAEL 25:17</li><li><a href="stop-1297.html">1297</a> - COGHEN 25:18</li><li><a href="stop-5858.html">5858</a> - MOLIERE-LONGCHAMP 25:19</li><li><a href="stop-5859.html">5859</a> - TIMMERMANS 25:19</li><li><a href="stop-1221.html">1221</a> - ALBERT 25:20</li><li><a href="stop-2965.html">2965</a> - PRISON 25:21</li><li><a href="stop-2959.html">2959</a> - MA CAMPAGNE 25:23</li><li><a href="stop-6430.html">6430</a> - JANSON 25:24</li><li><a href="stop-5066.html">5066</a> - FAIDER 25:25</li><li><a href="stop-5067.html">5067</a> - STEPHANIE 25:26</li><li><a href="stop-1726.html">1726</a> - LOUISE 25:28</li><li><a href="stop-3621B.html">3621B</a> - CLIQUET 25:28</li><li><a href="stop-4952.html">4952</a> - PORTE DE NAMUR 25:29</li><li><a href="stop-1124.html">1124</a> - TRONE 25:30</li><li><a href="stop-3567.html">3567</a> - ROYALE 25:32</li><li><a href="stop-6447.html">6447</a> - GARE CENTRALE 25:34</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./211b0006.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

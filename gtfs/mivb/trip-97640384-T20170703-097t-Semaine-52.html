@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - LOUISE - DIEWEG - 97640384-T20170703-097t-Semaine-52</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: LOUISE - DIEWEG - 97640384-T20170703-097t-Semaine-52</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-6314.html">6314</a> - LOUISE 23:28</li><li><a href="stop-5016F.html">5016F</a> - STEPHANIE 23:29</li><li><a href="stop-5018F.html">5018F</a> - FAIDER 23:30</li><li><a href="stop-6428F.html">6428F</a> - JANSON 23:32</li><li><a href="stop-6162.html">6162</a> - MORIS 23:33</li><li><a href="stop-6078.html">6078</a> - LOMBARDIE 23:34</li><li><a href="stop-2336G.html">2336G</a> - BARRIERE 23:36</li><li><a href="stop-2334F.html">2334F</a> - BARRIERE 23:37</li><li><a href="stop-2404F.html">2404F</a> - COMBAZ 23:38</li><li><a href="stop-5115F.html">5115F</a> - ROCHEFORT 23:39</li><li><a href="stop-5116.html">5116</a> - BERTHELOT 23:40</li><li><a href="stop-5123.html">5123</a> - WIELS 23:42</li><li><a href="stop-5120.html">5120</a> - UNION 23:43</li><li><a href="stop-5119.html">5119</a> - CHATAIGNES 23:44</li><li><a href="stop-2603.html">2603</a> - ZAMAN-FOREST NAT. 23:45</li><li><a href="stop-2604F.html">2604F</a> - MONACO 23:46</li><li><a href="stop-5121F.html">5121F</a> - FOREST CENTRE 23:47</li><li><a href="stop-5719H.html">5719H</a> - SAINT-DENIS 23:48</li><li><a href="stop-5720F.html">5720F</a> - MAX WALLER 23:49</li><li><a href="stop-2608F.html">2608F</a> - BEMPT 23:50</li><li><a href="stop-5721G.html">5721G</a> - NEERSTALLE 23:51</li><li><a href="stop-5722F.html">5722F</a> - MERLO 23:51</li><li><a href="stop-5723G.html">5723G</a> - CARREFOUR STALLE 23:53</li><li><a href="stop-5920H.html">5920H</a> - CARREFOUR STALLE 23:54</li><li><a href="stop-4502F.html">4502F</a> - STALLE (P) 23:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./097t0044.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

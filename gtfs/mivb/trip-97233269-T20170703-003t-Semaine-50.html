@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - ESPLANADE - CHURCHILL - 97233269-T20170703-003t-Semaine-50</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: ESPLANADE - CHURCHILL - 97233269-T20170703-003t-Semaine-50</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-5701.html">5701</a> - ESPLANADE 16:13</li><li><a href="stop-5700G.html">5700G</a> - DE WAND 16:15</li><li><a href="stop-5704F.html">5704F</a> - ARAUCARIA 16:16</li><li><a href="stop-5705.html">5705</a> - BUISSONNETS 16:17</li><li><a href="stop-5706.html">5706</a> - HEEMBEEK 16:19</li><li><a href="stop-5707.html">5707</a> - VAN PRAET 16:21</li><li><a href="stop-2338F.html">2338F</a> - DOCKS BRUXSEL 16:23</li><li><a href="stop-2318F.html">2318F</a> - MABRU 16:25</li><li><a href="stop-6103F.html">6103F</a> - JULES DE TROOZ 16:26</li><li><a href="stop-6178.html">6178</a> - MASUI 16:27</li><li><a href="stop-5714.html">5714</a> - THOMAS 16:30</li><li><a href="stop-0531.html">0531</a> - GARE DU NORD 16:32</li><li><a href="stop-0511.html">0511</a> - ROGIER 16:34</li><li><a href="stop-0501.html">0501</a> - DE BROUCKERE 16:35</li><li><a href="stop-0601.html">0601</a> - BOURSE 16:37</li><li><a href="stop-0611.html">0611</a> - ANNEESSENS 16:38</li><li><a href="stop-0621.html">0621</a> - LEMONNIER 16:40</li><li><a href="stop-0702.html">0702</a> - GARE DU MIDI 16:43</li><li><a href="stop-0703.html">0703</a> - PORTE DE HAL 16:44</li><li><a href="stop-0704.html">0704</a> - PARVIS ST-GILLES 16:45</li><li><a href="stop-0705.html">0705</a> - HORTA 16:47</li><li><a href="stop-0706.html">0706</a> - ALBERT 16:49</li><li><a href="stop-6253.html">6253</a> - BERKENDAEL 16:50</li><li><a href="stop-6422F.html">6422F</a> - VANDERKINDERE 16:53</li><li><a href="stop-5221F.html">5221F</a> - CHURCHILL 16:54</li><li><a href="stop-9959F.html">9959F</a> - CHURCHILL 16:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./003t0424.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

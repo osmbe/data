@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - GARE CENTRALE - BERCHEM STATION - 97535261-B20170703-BRESIM06-Samedi-04</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GARE CENTRALE - BERCHEM STATION - 97535261-B20170703-BRESIM06-Samedi-04</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-1144.html">1144</a> - GARE CENTRALE 24:20</li><li><a href="stop-2301.html">2301</a> - ARENBERG 24:21</li><li><a href="stop-2302.html">2302</a> - DE BROUCKERE 24:23</li><li><a href="stop-2303.html">2303</a> - DE BROUCKERE 24:24</li><li><a href="stop-3320B.html">3320B</a> - BOURSE 24:25</li><li><a href="stop-3221.html">3221</a> - DANSAERT 24:26</li><li><a href="stop-3222.html">3222</a> - PORTE DE FLANDRE 24:28</li><li><a href="stop-1245.html">1245</a> - TRIANGLE 24:29</li><li><a href="stop-1237.html">1237</a> - ELEPHANT 24:31</li><li><a href="stop-1244.html">1244</a> - GROENINGHE 24:32</li><li><a href="stop-1202.html">1202</a> - OSSEGHEM 24:33</li><li><a href="stop-6470.html">6470</a> - ETANGS NOIRS 24:35</li><li><a href="stop-1179.html">1179</a> - AUTRIQUE 24:35</li><li><a href="stop-1180.html">1180</a> - VANHUFFEL 24:36</li><li><a href="stop-1183.html">1183</a> - SIMONIS 24:38</li><li><a href="stop-4152.html">4152</a> - PARC ELISABETH 24:39</li><li><a href="stop-4154.html">4154</a> - RIETHUISEN 24:42</li><li><a href="stop-4153.html">4153</a> - COLLEGE S.-COEUR 24:43</li><li><a href="stop-1199.html">1199</a> - GOFFIN 24:44</li><li><a href="stop-1236.html">1236</a> - VALIDA 24:45</li><li><a href="stop-1307.html">1307</a> - SCHWEITZER 24:46</li><li><a href="stop-5168.html">5168</a> - VEREMAN 24:47</li><li><a href="stop-5174.html">5174</a> - AZUR 24:48</li><li><a href="stop-1195.html">1195</a> - HUNDERENVELD 24:50</li><li><a href="stop-1196.html">1196</a> - PARC MONNET 24:51</li><li><a href="stop-4059.html">4059</a> - BERCHEM-SHOPPING 24:53</li><li><a href="stop-4011.html">4011</a> - BERCHEM STATION 24:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./216b0072.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

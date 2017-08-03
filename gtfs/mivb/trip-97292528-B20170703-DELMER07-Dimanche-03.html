@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - PORTE DE NAMUR - SAINTE-ANNE - 97292528-B20170703-DELMER07-Dimanche-03</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: PORTE DE NAMUR - SAINTE-ANNE - 97292528-B20170703-DELMER07-Dimanche-03</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-2728.html">2728</a> - SAINTE-ANNE 12:42</li><li><a href="stop-2752.html">2752</a> - DEUX CHAUSSEES 12:42</li><li><a href="stop-2753.html">2753</a> - BERGOJE 12:44</li><li><a href="stop-1751.html">1751</a> - AUDERGHEM-SHOP. 12:45</li><li><a href="stop-1756B.html">1756B</a> - VALDUC 12:46</li><li><a href="stop-1757.html">1757</a> - VANDROMME 12:47</li><li><a href="stop-1758B.html">1758B</a> - EGLISE ST-JULIEN 12:49</li><li><a href="stop-2290B.html">2290B</a> - HANKAR 12:50</li><li><a href="stop-1760.html">1760</a> - STRATEGIE 12:51</li><li><a href="stop-1779.html">1779</a> - ARSENAL 12:52</li><li><a href="stop-1762.html">1762</a> - BUEDTS 12:54</li><li><a href="stop-1278.html">1278</a> - LA CHASSE 12:55</li><li><a href="stop-1764.html">1764</a> - FETIS 12:56</li><li><a href="stop-1777B.html">1777B</a> - ETANGS 12:59</li><li><a href="stop-1769.html">1769</a> - MUSEUM 13:00</li><li><a href="stop-1983.html">1983</a> - IDALIE 13:02</li><li><a href="stop-4367B.html">4367B</a> - LUXEMBOURG 13:04</li><li><a href="stop-1776.html">1776</a> - SCIENCE 13:05</li><li><a href="stop-6432.html">6432</a> - TRONE 13:06</li><li><a href="stop-3504.html">3504</a> - PORTE DE NAMUR 13:08</li><li><a href="stop-1770.html">1770</a> - PORTE DE NAMUR 13:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./034b0003.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - KRAAINEM - SCHUMAN - 97284079-B20170703-HAR06-Samedi-02</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: KRAAINEM - SCHUMAN - 97284079-B20170703-HAR06-Samedi-02</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-1474B.html">1474B</a> - SCHUMAN 12:45</li><li><a href="stop-1418B.html">1418B</a> - SCHUMAN 12:46</li><li><a href="stop-1402B.html">1402B</a> - MICHEL-ANGE 12:47</li><li><a href="stop-1419.html">1419</a> - GUEUX 12:49</li><li><a href="stop-1403.html">1403</a> - JAMBLINNE DE MEUX 12:50</li><li><a href="stop-1404.html">1404</a> - VICTOR HUGO 12:51</li><li><a href="stop-6448.html">6448</a> - DIAMANT 12:54</li><li><a href="stop-4550.html">4550</a> - RTBF 12:54</li><li><a href="stop-3956.html">3956</a> - COLONEL BOURG 12:55</li><li><a href="stop-3957.html">3957</a> - CARENE 12:57</li><li><a href="stop-3958.html">3958</a> - PLEIADES 12:58</li><li><a href="stop-3959.html">3959</a> - CAPRICORNE 12:59</li><li><a href="stop-3962.html">3962</a> - ANDROMEDE 13:00</li><li><a href="stop-3463.html">3463</a> - GULLEDELLE 13:02</li><li><a href="stop-3464.html">3464</a> - TRACTEBEL 13:02</li><li><a href="stop-1551.html">1551</a> - MARCEL THIRY 13:04</li><li><a href="stop-2022.html">2022</a> - THIRY-WOLUWE 13:06</li><li><a href="stop-1043.html">1043</a> - HOF TER MUSSCHEN 13:06</li><li><a href="stop-2037.html">2037</a> - CLINIQUES-UCL 13:08</li><li><a href="stop-2038.html">2038</a> - AUDITOIRES-UCL 13:09</li><li><a href="stop-2039.html">2039</a> - MOUNIER 13:09</li><li><a href="stop-1637.html">1637</a> - KRAAINEM 13:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./079b0003.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

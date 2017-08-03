@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - STADE - LEGRAND - 97668023-T20170703-093t-Semaine-01</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: STADE - LEGRAND - 97668023-T20170703-093t-Semaine-01</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-5400.html">5400</a> - STADE 18:12</li><li><a href="stop-5402.html">5402</a> - STIENON 18:13</li><li><a href="stop-4209.html">4209</a> - KUFFERATH 18:14</li><li><a href="stop-5403.html">5403</a> - HOPITAL BRUGMANN 18:15</li><li><a href="stop-5010.html">5010</a> - GUILL. DE GREEF 18:17</li><li><a href="stop-6501.html">6501</a> - CIM. DE JETTE 18:18</li><li><a href="stop-6505.html">6505</a> - FOYER JETTOIS 18:19</li><li><a href="stop-6504.html">6504</a> - JACOBS FONTAINE 18:20</li><li><a href="stop-4130F.html">4130F</a> - BOCKSTAEL 18:23</li><li><a href="stop-6100.html">6100</a> - MOORSLEDE 18:24</li><li><a href="stop-6122.html">6122</a> - PRINC. CLEMENTINE 18:25</li><li><a href="stop-1073.html">1073</a> - OUTRE-PONTS 18:28</li><li><a href="stop-6103F.html">6103F</a> - JULES DE TROOZ 18:30</li><li><a href="stop-6178.html">6178</a> - MASUI 18:31</li><li><a href="stop-5762.html">5762</a> - THOMAS 18:33</li><li><a href="stop-1646F.html">1646F</a> - LIEDTS 18:35</li><li><a href="stop-6012F.html">6012F</a> - LEFRANCQ 18:36</li><li><a href="stop-6412F.html">6412F</a> - SAINTE-MARIE 18:39</li><li><a href="stop-6014.html">6014</a> - GILLON 18:39</li><li><a href="stop-6437F.html">6437F</a> - BOTANIQUE 18:41</li><li><a href="stop-6308F.html">6308F</a> - CONGRES 18:42</li><li><a href="stop-6309F.html">6309F</a> - PARC 18:44</li><li><a href="stop-6310F.html">6310F</a> - PALAIS 18:45</li><li><a href="stop-6311.html">6311</a> - ROYALE 18:47</li><li><a href="stop-6312.html">6312</a> - PETIT SABLON 18:48</li><li><a href="stop-6313.html">6313</a> - POELAERT 18:50</li><li><a href="stop-6314.html">6314</a> - LOUISE 18:51</li><li><a href="stop-5405.html">5405</a> - STEPHANIE 18:52</li><li><a href="stop-5406.html">5406</a> - DEFACQZ 18:54</li><li><a href="stop-5404.html">5404</a> - BAILLI 18:55</li><li><a href="stop-5408.html">5408</a> - VLEURGAT 18:56</li><li><a href="stop-5409.html">5409</a> - ABBAYE 18:58</li><li><a href="stop-1047F.html">1047F</a> - LEGRAND 19:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./093t0370.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

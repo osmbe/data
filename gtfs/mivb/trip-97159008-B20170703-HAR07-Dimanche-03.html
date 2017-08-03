@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - PORTE DE NAMUR - MACHELEN - 97159008-B20170703-HAR07-Dimanche-03</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: PORTE DE NAMUR - MACHELEN - 97159008-B20170703-HAR07-Dimanche-03</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-3042.html">3042</a> - MACHELEN 18:50</li><li><a href="stop-9702.html">9702</a> - RAEDEMAEKERS 18:51</li><li><a href="stop-9703.html">9703</a> - KASTEEL BEAULIEU 18:53</li><li><a href="stop-2899.html">2899</a> - WITLOOF 18:55</li><li><a href="stop-2905.html">2905</a> - TWYENINCK 18:56</li><li><a href="stop-2895.html">2895</a> - OMNISPORTS HAREN 18:58</li><li><a href="stop-2988.html">2988</a> - CORTENBACH 18:59</li><li><a href="stop-2292B.html">2292B</a> - HAREN-SUD 19:01</li><li><a href="stop-2908.html">2908</a> - BIPLAN 19:02</li><li><a href="stop-3182.html">3182</a> - VANDENHOVEN 19:03</li><li><a href="stop-2909.html">2909</a> - SAINT-VINCENT 19:04</li><li><a href="stop-2903.html">2903</a> - FONSON 19:05</li><li><a href="stop-2910.html">2910</a> - PAIX 19:05</li><li><a href="stop-2924.html">2924</a> - OUD KAPELLEKE 19:07</li><li><a href="stop-2912.html">2912</a> - NOTRE-DAME 19:09</li><li><a href="stop-2996.html">2996</a> - CONSCIENCE 19:09</li><li><a href="stop-2926.html">2926</a> - BICHON 19:12</li><li><a href="stop-2915.html">2915</a> - JOSAPHAT 19:13</li><li><a href="stop-2916.html">2916</a> - CHAZAL 19:14</li><li><a href="stop-2917.html">2917</a> - PATRIE 19:15</li><li><a href="stop-2918.html">2918</a> - DAILLY 19:17</li><li><a href="stop-6191.html">6191</a> - BRABANCONNE 19:18</li><li><a href="stop-2920.html">2920</a> - AMBIORIX 19:21</li><li><a href="stop-2921.html">2921</a> - PALMERSTON 19:21</li><li><a href="stop-2922.html">2922</a> - LIVINGSTONE 19:23</li><li><a href="stop-6465.html">6465</a> - MAELBEEK 19:24</li><li><a href="stop-1497B.html">1497B</a> - TOULOUSE 19:24</li><li><a href="stop-1185.html">1185</a> - TREVES 19:25</li><li><a href="stop-1162C.html">1162C</a> - LUXEMBOURG 19:27</li><li><a href="stop-1776.html">1776</a> - SCIENCE 19:28</li><li><a href="stop-6432.html">6432</a> - TRONE 19:29</li><li><a href="stop-3532.html">3532</a> - PORTE DE NAMUR 19:31</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./064b0193.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

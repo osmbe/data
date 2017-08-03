@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - LOUISE - MUSEE DU TRAM - 97259989-T20170703-094t-Semaine-00</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: LOUISE - MUSEE DU TRAM - 97259989-T20170703-094t-Semaine-00</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-5281F.html">5281F</a> - MUSEE DU TRAM 15:48</li><li><a href="stop-5282F.html">5282F</a> - EMPAIN 15:50</li><li><a href="stop-5283F.html">5283F</a> - ROND-PT SOUVERAIN 15:52</li><li><a href="stop-5284F.html">5284F</a> - AUDERGHEM-SHOP. 15:53</li><li><a href="stop-5427.html">5427</a> - HERRMANN-DEBROUX 15:55</li><li><a href="stop-2014.html">2014</a> - PARC SENY 15:56</li><li><a href="stop-2026.html">2026</a> - TENREUKEN 15:57</li><li><a href="stop-5430.html">5430</a> - FAUCONNERIE 15:58</li><li><a href="stop-5452.html">5452</a> - WIENER 16:00</li><li><a href="stop-5453.html">5453</a> - DELLEUR 16:01</li><li><a href="stop-5454F.html">5454F</a> - BOITSFORT GARE 16:02</li><li><a href="stop-5455.html">5455</a> - COCCINELLES 16:04</li><li><a href="stop-5456.html">5456</a> - HIPPOD. BOITSFORT 16:05</li><li><a href="stop-5451F.html">5451F</a> - BOONDAEL GARE 16:07</li><li><a href="stop-5459F.html">5459F</a> - BRESIL 16:07</li><li><a href="stop-5460F.html">5460F</a> - MARIE-JOSE 16:09</li><li><a href="stop-5461F.html">5461F</a> - SOLBOSCH 16:10</li><li><a href="stop-5462F.html">5462F</a> - ULB 16:12</li><li><a href="stop-5468.html">5468</a> - JEANNE 16:12</li><li><a href="stop-3478p.html">3478p</a> - BUYL 16:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./094t0060.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

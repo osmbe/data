@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - GRAND-PLACE - WIENER - 97087068-B20170703-DELMER06-Samedi-02</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GRAND-PLACE - WIENER - 97087068-B20170703-DELMER06-Samedi-02</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-2278.html">2278</a> - GRAND-PLACE 08:09</li><li><a href="stop-2268.html">2268</a> - BIBLIOTHEQUE 08:09</li><li><a href="stop-1703.html">1703</a> - GRAND SABLON 08:10</li><li><a href="stop-1128.html">1128</a> - PETIT SABLON 08:11</li><li><a href="stop-6354B.html">6354B</a> - ROYALE 08:12</li><li><a href="stop-6433.html">6433</a> - TRONE 08:16</li><li><a href="stop-1729.html">1729</a> - SCIENCE 08:16</li><li><a href="stop-1233.html">1233</a> - LUXEMBOURG 08:18</li><li><a href="stop-1906.html">1906</a> - IDALIE 08:19</li><li><a href="stop-1909.html">1909</a> - BLYCKAERTS 08:21</li><li><a href="stop-4303.html">4303</a> - GERMOIR 08:22</li><li><a href="stop-4304.html">4304</a> - RODIN 08:24</li><li><a href="stop-4305.html">4305</a> - DELPORTE 08:25</li><li><a href="stop-4306.html">4306</a> - ETTERBEEK GARE 08:27</li><li><a href="stop-4307.html">4307</a> - THYS 08:28</li><li><a href="stop-3558.html">3558</a> - CIM. D'IXELLES 08:29</li><li><a href="stop-4308.html">4308</a> - RELAIS 08:31</li><li><a href="stop-4309.html">4309</a> - ARCADES 08:32</li><li><a href="stop-4310.html">4310</a> - KEYM 08:35</li><li><a href="stop-4311.html">4311</a> - VANDER ELST 08:36</li><li><a href="stop-4312.html">4312</a> - ORTOLANS 08:37</li><li><a href="stop-4313.html">4313</a> - LES 3 TILLEULS 08:38</li><li><a href="stop-4314.html">4314</a> - CERISAIE 08:39</li><li><a href="stop-4315.html">4315</a> - FAUCONNERIE 08:40</li><li><a href="stop-4318.html">4318</a> - WIENER 08:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./095b0198.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

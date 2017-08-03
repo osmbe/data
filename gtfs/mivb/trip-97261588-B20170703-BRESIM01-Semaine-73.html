@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - MACHTENS - GARE CENTRALE - 97261588-B20170703-BRESIM01-Semaine-73</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: MACHTENS - GARE CENTRALE - 97261588-B20170703-BRESIM01-Semaine-73</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-7677.html">7677</a> - GARE DE L'OUEST 16:04</li><li><a href="stop-3257.html">3257</a> - QUATRE-VENTS 16:05</li><li><a href="stop-3263B.html">3263B</a> - DUCHESSE BRABANT 16:06</li><li><a href="stop-6648.html">6648</a> - TRIANGLE 16:09</li><li><a href="stop-3259.html">3259</a> - PORTE DE NINOVE 16:11</li><li><a href="stop-3260.html">3260</a> - PORTE DE FLANDRE 16:14</li><li><a href="stop-3261.html">3261</a> - DANSAERT 16:16</li><li><a href="stop-2212.html">2212</a> - BOURSE 16:19</li><li><a href="stop-2255.html">2255</a> - SIX JETONS 16:21</li><li><a href="stop-2245.html">2245</a> - ANNEESSENS 16:22</li><li><a href="stop-1063.html">1063</a> - CESAR DE PAEPE 16:23</li><li><a href="stop-2234.html">2234</a> - BIBLIOTHEQUE 16:24</li><li><a href="stop-1144.html">1144</a> - GARE CENTRALE 16:26</li><li><a href="stop-3347.html">3347</a> - GARE CENTRALE 16:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./086b0007.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

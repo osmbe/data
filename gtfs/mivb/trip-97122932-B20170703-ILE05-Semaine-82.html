@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - GRAND-PLACE - DECROLY - 97122932-B20170703-ILE05-Semaine-82</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GRAND-PLACE - DECROLY - 97122932-B20170703-ILE05-Semaine-82</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-2306.html">2306</a> - DECROLY 09:38</li><li><a href="stop-2322.html">2322</a> - FORESTOISE 09:38</li><li><a href="stop-2455.html">2455</a> - DOMAINE 09:40</li><li><a href="stop-2954B.html">2954B</a> - MYSTERE 09:41</li><li><a href="stop-2456.html">2456</a> - DUDEN 09:41</li><li><a href="stop-2457.html">2457</a> - ALTITUDE CENT 09:42</li><li><a href="stop-5858.html">5858</a> - MOLIERE-LONGCHAMP 09:44</li><li><a href="stop-5859.html">5859</a> - TIMMERMANS 09:45</li><li><a href="stop-2934.html">2934</a> - ALBERT 09:47</li><li><a href="stop-2459.html">2459</a> - MONT KEMMEL 09:48</li><li><a href="stop-2460.html">2460</a> - LAINE 09:49</li><li><a href="stop-2462.html">2462</a> - ROCHEFORT 09:51</li><li><a href="stop-2463.html">2463</a> - COMBAZ 09:52</li><li><a href="stop-2333.html">2333</a> - BARRIERE 09:53</li><li><a href="stop-2465.html">2465</a> - PARVIS ST-GILLES 09:55</li><li><a href="stop-2467.html">2467</a> - PORTE DE HAL 09:57</li><li><a href="stop-1125.html">1125</a> - HOP. SAINT-PIERRE 09:59</li><li><a href="stop-1126.html">1126</a> - JEU DE BALLE 10:00</li><li><a href="stop-1127.html">1127</a> - CHAPELLE 10:03</li><li><a href="stop-1376B.html">1376B</a> - GRAND SABLON 10:04</li><li><a href="stop-1781.html">1781</a> - GRAND-PLACE 10:06</li><li><a href="stop-2276.html">2276</a> - BOURSE 10:08</li><li><a href="stop-2279.html">2279</a> - GRAND-PLACE 10:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./048b0184.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - GARE DU MIDI - BOCKSTAEL - 97128683-B20170703-ILE07-Dimanche-01</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GARE DU MIDI - BOCKSTAEL - 97128683-B20170703-ILE07-Dimanche-01</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-4126.html">4126</a> - BOCKSTAEL 14:36</li><li><a href="stop-2502.html">2502</a> - BREESCH 14:37</li><li><a href="stop-2503.html">2503</a> - LOYAUTE 14:38</li><li><a href="stop-2504.html">2504</a> - WOESTE 14:40</li><li><a href="stop-2505.html">2505</a> - LEOPOLD I 14:42</li><li><a href="stop-2506B.html">2506B</a> - MIROIR 14:44</li><li><a href="stop-2507.html">2507</a> - SIMPSON 14:45</li><li><a href="stop-2508.html">2508</a> - RIETHUISEN 14:46</li><li><a href="stop-2509.html">2509</a> - BOSSAERT-BASILIQ. 14:47</li><li><a href="stop-2510.html">2510</a> - BASTOGNE 14:49</li><li><a href="stop-2511.html">2511</a> - CIM. DE MOLENBEEK 14:50</li><li><a href="stop-2512.html">2512</a> - LEROY 14:50</li><li><a href="stop-2513.html">2513</a> - CANDRIES 14:51</li><li><a href="stop-2514.html">2514</a> - MACHTENS 14:53</li><li><a href="stop-2522.html">2522</a> - PRINCE DE LIEGE 14:55</li><li><a href="stop-2536.html">2536</a> - PETERBOS 14:56</li><li><a href="stop-1207.html">1207</a> - PAULSEN 14:57</li><li><a href="stop-2532.html">2532</a> - JAKOB SMITS 14:59</li><li><a href="stop-2533.html">2533</a> - BEAUTE 15:00</li><li><a href="stop-2534.html">2534</a> - BROEREN 15:01</li><li><a href="stop-3709.html">3709</a> - RESISTANCE 15:03</li><li><a href="stop-2535B.html">2535B</a> - SAINT-GUIDON 15:06</li><li><a href="stop-2223.html">2223</a> - MEIR 15:07</li><li><a href="stop-6484B.html">6484B</a> - VEEWEYDE 15:09</li><li><a href="stop-2225.html">2225</a> - ARISTIDE BRIAND 15:10</li><li><a href="stop-2226.html">2226</a> - VAN KALKEN 15:11</li><li><a href="stop-3682.html">3682</a> - DIGUE DU CANAL 15:13</li><li><a href="stop-2523.html">2523</a> - ILE SAINTE-HELENE 15:14</li><li><a href="stop-2524.html">2524</a> - CHARROI 15:15</li><li><a href="stop-5159.html">5159</a> - WIELS 15:17</li><li><a href="stop-5757.html">5757</a> - ORBAN 15:18</li><li><a href="stop-2672.html">2672</a> - IMPRIMERIE 15:19</li><li><a href="stop-2670.html">2670</a> - AVENUE DU ROI 15:20</li><li><a href="stop-2671.html">2671</a> - SUEDE 15:21</li><li><a href="stop-2500.html">2500</a> - GARE DU MIDI 15:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./049b0130.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

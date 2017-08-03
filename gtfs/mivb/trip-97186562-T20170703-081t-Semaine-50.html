@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - MARIUS RENARD - MONTGOMERY - 97186562-T20170703-081t-Semaine-50</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: MARIUS RENARD - MONTGOMERY - 97186562-T20170703-081t-Semaine-50</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-3611F.html">3611F</a> - MARIUS RENARD 14:14</li><li><a href="stop-3612F.html">3612F</a> - PARC VIVES 14:14</li><li><a href="stop-3613F.html">3613F</a> - FRANS HALS 14:15</li><li><a href="stop-6799F.html">6799F</a> - VAN BEETHOVEN 14:15</li><li><a href="stop-6856.html">6856</a> - YSAYE 14:16</li><li><a href="stop-6857.html">6857</a> - MEIR 14:18</li><li><a href="stop-2256F.html">2256F</a> - SAINT-GUIDON 14:20</li><li><a href="stop-2257G.html">2257G</a> - RESISTANCE 14:22</li><li><a href="stop-6858G.html">6858G</a> - DOUVRES 14:23</li><li><a href="stop-2259F.html">2259F</a> - CUREGHEM 14:25</li><li><a href="stop-2260F.html">2260F</a> - ALBERT I 14:28</li><li><a href="stop-6860G.html">6860G</a> - CONSEIL 14:29</li><li><a href="stop-6861G.html">6861G</a> - FIENNES 14:30</li><li><a href="stop-6705F.html">6705F</a> - BARA 14:32</li><li><a href="stop-0631.html">0631</a> - GARE DU MIDI 14:34</li><li><a href="stop-2539F.html">2539F</a> - SUEDE 14:36</li><li><a href="stop-6099.html">6099</a> - AVENUE DU ROI 14:39</li><li><a href="stop-6106.html">6106</a> - BETHLEEM 14:40</li><li><a href="stop-6121F.html">6121F</a> - GUILLAUME TELL 14:42</li><li><a href="stop-2331F.html">2331F</a> - BARRIERE 14:43</li><li><a href="stop-6077F.html">6077F</a> - LOMBARDIE 14:44</li><li><a href="stop-6109.html">6109</a> - MORIS 14:46</li><li><a href="stop-6427F.html">6427F</a> - JANSON 14:48</li><li><a href="stop-2960F.html">2960F</a> - TRINITE 14:49</li><li><a href="stop-2966F.html">2966F</a> - BAILLI 14:52</li><li><a href="stop-6120.html">6120</a> - DAUTZENBERG 14:53</li><li><a href="stop-3508F.html">3508F</a> - FLAGEY 14:56</li><li><a href="stop-3123.html">3123</a> - LEVURE 14:58</li><li><a href="stop-6113F.html">6113F</a> - GERMOIR 14:59</li><li><a href="stop-6114F.html">6114F</a> - EGLISE ST-ANTOINE 15:01</li><li><a href="stop-6115F.html">6115F</a> - LA CHASSE 15:02</li><li><a href="stop-6008.html">6008</a> - ACACIAS 15:04</li><li><a href="stop-6117.html">6117</a> - PLACE ST-PIERRE 15:05</li><li><a href="stop-6463F.html">6463F</a> - MERODE 15:07</li><li><a href="stop-2285G.html">2285G</a> - MONTGOMERY 15:08</li><li><a href="stop-1042.html">1042</a> - ICHEC 15:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./081t0466.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

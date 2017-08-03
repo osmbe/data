@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - DE BROUCKERE - PEAGE - 97306753-B20170703-HAR01-Semaine-71</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DE BROUCKERE - PEAGE - 97306753-B20170703-HAR01-Semaine-71</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-3284.html">3284</a> - PEAGE 07:36</li><li><a href="stop-3661.html">3661</a> - CIM. DE BRUXELLES 07:38</li><li><a href="stop-3210B.html">3210B</a> - ARTEMIS 07:39</li><li><a href="stop-1535.html">1535</a> - PADUWA 07:41</li><li><a href="stop-3402.html">3402</a> - GUILLAUME 07:41</li><li><a href="stop-3403.html">3403</a> - DUNANT 07:43</li><li><a href="stop-3417.html">3417</a> - EVERE SHOPPING 07:44</li><li><a href="stop-3419.html">3419</a> - CONSCIENCE 07:45</li><li><a href="stop-3411.html">3411</a> - KURTH 07:46</li><li><a href="stop-3407.html">3407</a> - KENNIS 07:48</li><li><a href="stop-3408.html">3408</a> - LATINIS 07:49</li><li><a href="stop-3409.html">3409</a> - LOUIS BERTRAND 07:50</li><li><a href="stop-3410.html">3410</a> - CROSSING 07:51</li><li><a href="stop-3414.html">3414</a> - AZALEES 07:52</li><li><a href="stop-3309.html">3309</a> - COTEAUX 07:54</li><li><a href="stop-6416.html">6416</a> - ROBIANO 07:57</li><li><a href="stop-3325.html">3325</a> - MERIDIEN 07:58</li><li><a href="stop-6062.html">6062</a> - RUE TRAVERSIERE 07:59</li><li><a href="stop-3313.html">3313</a> - QUETELET 08:00</li><li><a href="stop-3332.html">3332</a> - MADOU 08:02</li><li><a href="stop-3358.html">3358</a> - PRESSE 08:03</li><li><a href="stop-3359.html">3359</a> - TREURENBERG 08:05</li><li><a href="stop-3331.html">3331</a> - PARC 08:06</li><li><a href="stop-6442.html">6442</a> - GARE CENTRALE 08:08</li><li><a href="stop-6447.html">6447</a> - GARE CENTRALE 08:09</li><li><a href="stop-2301.html">2301</a> - ARENBERG 08:11</li><li><a href="stop-2302.html">2302</a> - DE BROUCKERE 08:13</li><li><a href="stop-2303.html">2303</a> - DE BROUCKERE 08:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./066b0107.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

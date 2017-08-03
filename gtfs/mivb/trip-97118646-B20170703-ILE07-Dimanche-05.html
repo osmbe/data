@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - GARE DU MIDI - LOT STATION - 97118646-B20170703-ILE07-Dimanche-05</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GARE DU MIDI - LOT STATION - 97118646-B20170703-ILE07-Dimanche-05</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-9658.html">9658</a> - LOT STATION 12:24</li><li><a href="stop-9659.html">9659</a> - STATION LOT 12:25</li><li><a href="stop-9677.html">9677</a> - WATERBURY 12:27</li><li><a href="stop-9678.html">9678</a> - BEKA 12:28</li><li><a href="stop-9679.html">9679</a> - VOETBALCLUB 12:29</li><li><a href="stop-9680.html">9680</a> - KAPEL RUISBROEK 12:30</li><li><a href="stop-9685.html">9685</a> - SPORTCENTRUM 12:31</li><li><a href="stop-9682.html">9682</a> - RUISBROEK CENTRUM 12:32</li><li><a href="stop-9683.html">9683</a> - KERK RUISBROEK 12:34</li><li><a href="stop-2659.html">2659</a> - GILSON 12:37</li><li><a href="stop-2661.html">2661</a> - RUE LONGUE 12:37</li><li><a href="stop-2662B.html">2662B</a> - UCCLE SPORT 12:38</li><li><a href="stop-2663.html">2663</a> - NEERSTALLE 12:40</li><li><a href="stop-2669.html">2669</a> - BEMPT 12:40</li><li><a href="stop-2665.html">2665</a> - MAX WALLER 12:42</li><li><a href="stop-5152.html">5152</a> - SAINT-DENIS 12:43</li><li><a href="stop-5161.html">5161</a> - FOREST CENTRE 12:44</li><li><a href="stop-1085.html">1085</a> - BERVOETS 12:46</li><li><a href="stop-2524.html">2524</a> - CHARROI 12:48</li><li><a href="stop-5159.html">5159</a> - WIELS 12:50</li><li><a href="stop-5757.html">5757</a> - ORBAN 12:51</li><li><a href="stop-2672.html">2672</a> - IMPRIMERIE 12:52</li><li><a href="stop-2670.html">2670</a> - AVENUE DU ROI 12:53</li><li><a href="stop-2671.html">2671</a> - SUEDE 12:54</li><li><a href="stop-2500.html">2500</a> - GARE DU MIDI 12:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./050b0021.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

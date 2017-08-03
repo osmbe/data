@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - BEAULIEU - HEILIGENBORRE - 97238498-B20170703-DELMER05-Semaine-02</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: BEAULIEU - HEILIGENBORRE - 97238498-B20170703-DELMER05-Semaine-02</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-9059.html">9059</a> - HEILIGENBORRE 24:27</li><li><a href="stop-4287.html">4287</a> - INTERNAT. SCHOOL 24:27</li><li><a href="stop-4292.html">4292</a> - ETANGS BOITSFORT 24:28</li><li><a href="stop-4341.html">4341</a> - DIABOLO 24:29</li><li><a href="stop-4351.html">4351</a> - WIENER 24:30</li><li><a href="stop-4348.html">4348</a> - MIRAVAL 24:31</li><li><a href="stop-4355.html">4355</a> - LES 3 TILLEULS 24:32</li><li><a href="stop-4356.html">4356</a> - ORTOLANS 24:32</li><li><a href="stop-4357.html">4357</a> - VANDER ELST 24:33</li><li><a href="stop-4358.html">4358</a> - KEYM 24:35</li><li><a href="stop-4293.html">4293</a> - BRILLANT 24:35</li><li><a href="stop-4294.html">4294</a> - TERCOIGNE 24:36</li><li><a href="stop-4295.html">4295</a> - GARDON 24:37</li><li><a href="stop-4296.html">4296</a> - BERENSHEIDE 24:38</li><li><a href="stop-4297.html">4297</a> - BEAULIEU 24:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./017b0011.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

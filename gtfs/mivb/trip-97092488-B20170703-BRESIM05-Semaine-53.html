@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - WESTLAND SHOPPING - BOCKSTAEL - 97092488-B20170703-BRESIM05-Semaine-53</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: WESTLAND SHOPPING - BOCKSTAEL - 97092488-B20170703-BRESIM05-Semaine-53</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-1201.html">1201</a> - MOORTEBEEK 24:07</li><li><a href="stop-4215.html">4215</a> - WESTLAND SHOPPING 24:08</li><li><a href="stop-1204.html">1204</a> - FRUITS 24:08</li><li><a href="stop-1205.html">1205</a> - WILLEMYNS 24:10</li><li><a href="stop-1206.html">1206</a> - PETERBOS 24:11</li><li><a href="stop-1207.html">1207</a> - PAULSEN 24:11</li><li><a href="stop-1208.html">1208</a> - HENRI REY 24:12</li><li><a href="stop-3760.html">3760</a> - VETERANS COLON. 24:14</li><li><a href="stop-1211B.html">1211B</a> - JACQUES BREL 24:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./089b0113.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

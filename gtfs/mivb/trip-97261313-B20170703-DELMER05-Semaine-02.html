@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - KRAAINEM - OPPEM - 97261313-B20170703-DELMER05-Semaine-02</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: KRAAINEM - OPPEM - 97261313-B20170703-DELMER05-Semaine-02</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-1638B.html">1638B</a> - KRAAINEM 17:13</li><li><a href="stop-1601.html">1601</a> - REINE ASTRID 17:14</li><li><a href="stop-1613.html">1613</a> - WEZEMBEEK-SHOP. 17:16</li><li><a href="stop-1614.html">1614</a> - RING O 17:17</li><li><a href="stop-1615.html">1615</a> - GERGEL 17:18</li><li><a href="stop-1605.html">1605</a> - LOUIS MARCELIS 17:19</li><li><a href="stop-1617.html">1617</a> - PLAINE DES SPORTS 17:21</li><li><a href="stop-1602.html">1602</a> - VIOLETTES 17:22</li><li><a href="stop-1620.html">1620</a> - HERNALSTEEN 17:23</li><li><a href="stop-1627.html">1627</a> - STIJN STREUVELS 17:24</li><li><a href="stop-9164.html">9164</a> - MARMOTTE 17:25</li><li><a href="stop-1629.html">1629</a> - OPPEM 17:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./076b0008.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - BERCHEM STATION - DROGENBOS CHATEAU - 97275180-T20170703-3282t-Dimanche-00</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: BERCHEM STATION - DROGENBOS CHATEAU - 97275180-T20170703-3282t-Dimanche-00</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-5731F.html">5731F</a> - DROGENBOS CHATEAU 11:48</li><li><a href="stop-5751.html">5751</a> - GRAND'ROUTE 11:48</li><li><a href="stop-5753F.html">5753F</a> - RODTS 11:49</li><li><a href="stop-5754.html">5754</a> - KEYENBEMPT 11:50</li><li><a href="stop-1258G.html">1258G</a> - CARREFOUR STALLE 11:52</li><li><a href="stop-5756F.html">5756F</a> - MERLO 11:53</li><li><a href="stop-2663G.html">2663G</a> - NEERSTALLE 11:54</li><li><a href="stop-2669F.html">2669F</a> - BEMPT 11:54</li><li><a href="stop-2665F.html">2665F</a> - MAX WALLER 11:56</li><li><a href="stop-5152G.html">5152G</a> - SAINT-DENIS 11:58</li><li><a href="stop-5161F.html">5161F</a> - FOREST CENTRE 11:58</li><li><a href="stop-2667F.html">2667F</a> - MONACO 11:59</li><li><a href="stop-2668.html">2668</a> - ZAMAN-FOREST NAT. 12:00</li><li><a href="stop-5155.html">5155</a> - CHATAIGNES 12:01</li><li><a href="stop-5151.html">5151</a> - UNION 12:03</li><li><a href="stop-5159F.html">5159F</a> - WIELS 12:05</li><li><a href="stop-5757F.html">5757F</a> - ORBAN 12:05</li><li><a href="stop-2672F.html">2672F</a> - IMPRIMERIE 12:07</li><li><a href="stop-2670F.html">2670F</a> - AVENUE DU ROI 12:08</li><li><a href="stop-2671F.html">2671F</a> - SUEDE 12:09</li><li><a href="stop-0636.html">0636</a> - GARE DU MIDI 12:11</li><li><a href="stop-6601.html">6601</a> - LEMONNIER 12:14</li><li><a href="stop-6602.html">6602</a> - BODEGHEM 12:16</li><li><a href="stop-6603.html">6603</a> - PTE D'ANDERLECHT 12:17</li><li><a href="stop-6608F.html">6608F</a> - ARTS ET METIERS 12:19</li><li><a href="stop-3228F.html">3228F</a> - TRIANGLE 12:21</li><li><a href="stop-3226F.html">3226F</a> - DUCHESSE BRABANT 12:24</li><li><a href="stop-3225F.html">3225F</a> - QUATRE-VENTS 12:26</li><li><a href="stop-3230F.html">3230F</a> - GARE DE L'OUEST 12:28</li><li><a href="stop-6070.html">6070</a> - JOSEPH BAECK 12:29</li><li><a href="stop-6071.html">6071</a> - MENNEKENS 12:31</li><li><a href="stop-4053G.html">4053G</a> - KARREVELD 12:33</li><li><a href="stop-4054G.html">4054G</a> - CIM. DE MOLENBEEK 12:34</li><li><a href="stop-4055G.html">4055G</a> - VAN ZANDE 12:35</li><li><a href="stop-4066F.html">4066F</a> - GENOT 12:36</li><li><a href="stop-1310.html">1310</a> - SCHWEITZER 12:38</li><li><a href="stop-4058F.html">4058F</a> - ALCYONS 12:39</li><li><a href="stop-4059F.html">4059F</a> - BERCHEM-SHOPPING 12:41</li><li><a href="stop-4270F.html">4270F</a> - BERCHEM STATION 12:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./082t0120.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

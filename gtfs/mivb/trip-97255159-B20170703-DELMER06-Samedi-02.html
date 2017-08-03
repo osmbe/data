@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - HEROS - TRANSVAAL - 97255159-B20170703-DELMER06-Samedi-02</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: HEROS - TRANSVAAL - 97255159-B20170703-DELMER06-Samedi-02</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-4076.html">4076</a> - HEROS 16:17</li><li><a href="stop-1943.html">1943</a> - STATUAIRES 16:18</li><li><a href="stop-1968.html">1968</a> - ZEECRABBE 16:19</li><li><a href="stop-1969.html">1969</a> - HOUZEAU 16:20</li><li><a href="stop-1970.html">1970</a> - FLORIDE 16:21</li><li><a href="stop-2714.html">2714</a> - HOP.STE-ELISABETH 16:23</li><li><a href="stop-2715.html">2715</a> - VERT CHASSEUR 16:26</li><li><a href="stop-6440.html">6440</a> - MONTANA 16:28</li><li><a href="stop-2717.html">2717</a> - GENDARMES 16:29</li><li><a href="stop-2718.html">2718</a> - RESERVOIR 16:30</li><li><a href="stop-5424.html">5424</a> - HIPPOD. BOITSFORT 16:32</li><li><a href="stop-5415.html">5415</a> - BRESIL 16:35</li><li><a href="stop-5416.html">5416</a> - BOONDAEL GARE 16:36</li><li><a href="stop-2074.html">2074</a> - FUTAIE 16:37</li><li><a href="stop-2076.html">2076</a> - DRIES 16:38</li><li><a href="stop-2115.html">2115</a> - BIEN-FAIRE 16:39</li><li><a href="stop-2080.html">2080</a> - WATERMAEL GARE 16:41</li><li><a href="stop-4310.html">4310</a> - KEYM 16:42</li><li><a href="stop-4401.html">4401</a> - LOUTRIER 16:43</li><li><a href="stop-4402.html">4402</a> - HANNETONS 16:44</li><li><a href="stop-4403.html">4403</a> - ARCHIDUCS 16:46</li><li><a href="stop-4408.html">4408</a> - TRITOMAS 16:46</li><li><a href="stop-4405.html">4405</a> - PECHERIES 16:47</li><li><a href="stop-3549.html">3549</a> - VIGNETTE 16:48</li><li><a href="stop-6469.html">6469</a> - DEMEY 16:49</li><li><a href="stop-2046.html">2046</a> - HERRMANN-DEBROUX 16:51</li><li><a href="stop-1723.html">1723</a> - SCHOONEJANS 16:51</li><li><a href="stop-1724.html">1724</a> - SACRE-COEUR 16:53</li><li><a href="stop-1725.html">1725</a> - TRANSVAAL 16:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./041b0166.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

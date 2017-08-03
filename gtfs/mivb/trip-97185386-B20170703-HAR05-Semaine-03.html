@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - HOPITAL MILITAIRE - DIELEGHEM - 97185386-B20170703-HAR05-Semaine-03</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: HOPITAL MILITAIRE - DIELEGHEM - 97185386-B20170703-HAR05-Semaine-03</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-3001B.html">3001B</a> - HOP. MILITAIRE 09:28</li><li><a href="stop-2352.html">2352</a> - HOP. MILITAIRE 09:28</li><li><a href="stop-2823B.html">2823B</a> - FERME NOS PILIFS 09:29</li><li><a href="stop-2822.html">2822</a> - VAL MARIA 09:31</li><li><a href="stop-2362B.html">2362B</a> - PETER BENOIT 09:32</li><li><a href="stop-2363.html">2363</a> - ZAVELPUT 09:34</li><li><a href="stop-2852.html">2852</a> - KRUIPWEG 09:34</li><li><a href="stop-2853.html">2853</a> - BEYSEGHEM 09:36</li><li><a href="stop-2854.html">2854</a> - VERSAILLES 09:37</li><li><a href="stop-2855.html">2855</a> - LONG BONNIER 09:40</li><li><a href="stop-2856B.html">2856B</a> - PAGODES 09:41</li><li><a href="stop-2857B.html">2857B</a> - DE WAND 09:43</li><li><a href="stop-2875.html">2875</a> - SERRES ROYALES 09:45</li><li><a href="stop-2861.html">2861</a> - SCHOLA EUROPEA 09:47</li><li><a href="stop-2860.html">2860</a> - ARTISTES 09:48</li><li><a href="stop-2545.html">2545</a> - KAREL BOGAERD 09:49</li><li><a href="stop-4131B.html">4131B</a> - BOCKSTAEL GARE 09:50</li><li><a href="stop-4126.html">4126</a> - BOCKSTAEL 09:52</li><li><a href="stop-2577.html">2577</a> - BREESCH 09:53</li><li><a href="stop-2863.html">2863</a> - JACOBS FONTAINE 09:54</li><li><a href="stop-6173.html">6173</a> - PRINCE LEOPOLD 09:55</li><li><a href="stop-5295.html">5295</a> - DUYSBURGH 09:57</li><li><a href="stop-2859.html">2859</a> - GUILL. DE GREEF 09:58</li><li><a href="stop-2877.html">2877</a> - CIM. DE JETTE 09:59</li><li><a href="stop-6869.html">6869</a> - JETTE GARE 10:01</li><li><a href="stop-2871.html">2871</a> - LORGE 10:02</li><li><a href="stop-2867.html">2867</a> - HOPITAL BRUGMANN 10:04</li><li><a href="stop-2872.html">2872</a> - CROCQ 10:04</li><li><a href="stop-1068.html">1068</a> - BONAVENTURE 10:07</li><li><a href="stop-1069.html">1069</a> - SOETENS 10:07</li><li><a href="stop-1599.html">1599</a> - DIELEGHEM 10:08</li><li><a href="stop-1026.html">1026</a> - LIEBRECHT 10:09</li><li><a href="stop-1080.html">1080</a> - DEMUNTER 10:09</li><li><a href="stop-4224.html">4224</a> - ARBRE BALLON 10:10</li><li><a href="stop-1075.html">1075</a> - POMPIERS-UZ BRUS. 10:11</li><li><a href="stop-4225.html">4225</a> - LAERBEEK-UZ BRUS. 10:12</li><li><a href="stop-1044.html">1044</a> - UZ BRUSSEL 10:13</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./053b0278.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

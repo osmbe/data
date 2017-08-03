@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - SCHAERBEEK GARE - FORT-JACO - 97270637-T20170703-092t-Samedi-00</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: SCHAERBEEK GARE - FORT-JACO - 97270637-T20170703-092t-Samedi-00</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-6934F.html">6934F</a> - FORT-JACO 13:47</li><li><a href="stop-5053G.html">5053G</a> - ALPHONSE XIII 13:48</li><li><a href="stop-5054F.html">5054F</a> - PLACE SAINT-JOB 13:50</li><li><a href="stop-6956G.html">6956G</a> - SAINT-JOB GARE 13:51</li><li><a href="stop-5056.html">5056</a> - LANCASTER 13:53</li><li><a href="stop-5057.html">5057</a> - THEVENET 13:54</li><li><a href="stop-2708G.html">2708G</a> - DIEWEG 13:57</li><li><a href="stop-2709F.html">2709F</a> - WOLVENDAEL 13:57</li><li><a href="stop-2710G.html">2710G</a> - MARLOW 13:59</li><li><a href="stop-5058F.html">5058F</a> - HEROS 14:00</li><li><a href="stop-5059.html">5059</a> - BOETENDAEL 14:01</li><li><a href="stop-5060.html">5060</a> - MESSIDOR 14:03</li><li><a href="stop-6420G.html">6420G</a> - VANDERKINDERE 14:05</li><li><a href="stop-5062.html">5062</a> - MOLIERE 14:05</li><li><a href="stop-5063.html">5063</a> - DARWIN 14:06</li><li><a href="stop-5064.html">5064</a> - MA CAMPAGNE 14:08</li><li><a href="stop-6430F.html">6430F</a> - JANSON 14:11</li><li><a href="stop-5066F.html">5066F</a> - FAIDER 14:13</li><li><a href="stop-5068F.html">5068F</a> - STEPHANIE 14:15</li><li><a href="stop-6361.html">6361</a> - LOUISE 14:17</li><li><a href="stop-6352.html">6352</a> - POELAERT 14:19</li><li><a href="stop-6353F.html">6353F</a> - PETIT SABLON 14:20</li><li><a href="stop-6354.html">6354</a> - ROYALE 14:22</li><li><a href="stop-6355F.html">6355F</a> - PALAIS 14:23</li><li><a href="stop-6356F.html">6356F</a> - PARC 14:25</li><li><a href="stop-6357F.html">6357F</a> - CONGRES 14:27</li><li><a href="stop-6434F.html">6434F</a> - BOTANIQUE 14:29</li><li><a href="stop-6359F.html">6359F</a> - GILLON 14:30</li><li><a href="stop-6409F.html">6409F</a> - SAINTE-MARIE 14:32</li><li><a href="stop-6418F.html">6418F</a> - ROBIANO 14:34</li><li><a href="stop-6363.html">6363</a> - EGLISE ST-SERVAIS 14:36</li><li><a href="stop-6364.html">6364</a> - POGGE 14:38</li><li><a href="stop-6365.html">6365</a> - EENENS 14:39</li><li><a href="stop-5766.html">5766</a> - VERBOEKHOVEN 14:41</li><li><a href="stop-6459F.html">6459F</a> - PRINC. ELISABETH 14:42</li><li><a href="stop-5320.html">5320</a> - SCHAERBEEK GARE 14:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./092t0004.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

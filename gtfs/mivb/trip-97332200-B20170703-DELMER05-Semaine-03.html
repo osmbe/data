@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - AMBIORIX - UCCLE CALEVOET - 97332200-B20170703-DELMER05-Semaine-03</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: AMBIORIX - UCCLE CALEVOET - 97332200-B20170703-DELMER05-Semaine-03</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-2701.html">2701</a> - UCCLE CALEVOET 11:18</li><li><a href="stop-1929.html">1929</a> - ENGELAND 11:18</li><li><a href="stop-2702.html">2702</a> - GROELSTVELD 11:19</li><li><a href="stop-2703.html">2703</a> - PAPENKASTEEL 11:20</li><li><a href="stop-2704.html">2704</a> - HELLEVELT 11:21</li><li><a href="stop-2705.html">2705</a> - CHENAIE 11:22</li><li><a href="stop-1738.html">1738</a> - DROSSART 11:23</li><li><a href="stop-1739.html">1739</a> - DE WANSIJN 11:24</li><li><a href="stop-1741.html">1741</a> - BENAETS 11:26</li><li><a href="stop-6956B.html">6956B</a> - SAINT-JOB GARE 11:26</li><li><a href="stop-4804B.html">4804B</a> - MERCURE 11:28</li><li><a href="stop-4857B.html">4857B</a> - OBSERVATOIRE 11:29</li><li><a href="stop-1250.html">1250</a> - HOUZEAU 11:30</li><li><a href="stop-2131.html">2131</a> - LANGEVELD 11:31</li><li><a href="stop-2132.html">2132</a> - BRUNARD 11:32</li><li><a href="stop-2133.html">2133</a> - CAVELL 11:34</li><li><a href="stop-2129.html">2129</a> - CLINIQUE CAVELL 11:35</li><li><a href="stop-2134.html">2134</a> - GEORGES BRUGMANN 11:37</li><li><a href="stop-6406.html">6406</a> - LEPOUTRE 11:39</li><li><a href="stop-6453.html">6453</a> - WASHINGTON 11:40</li><li><a href="stop-1976.html">1976</a> - VAN EYCK 11:41</li><li><a href="stop-1977.html">1977</a> - VLEURGAT 11:43</li><li><a href="stop-1986.html">1986</a> - BIARRITZ 11:43</li><li><a href="stop-6112.html">6112</a> - FLAGEY 11:45</li><li><a href="stop-1980.html">1980</a> - MALIBRAN 11:46</li><li><a href="stop-1884.html">1884</a> - BLYCKAERTS 11:47</li><li><a href="stop-1883.html">1883</a> - VARIA 11:48</li><li><a href="stop-3160.html">3160</a> - ETANGS 11:50</li><li><a href="stop-3158.html">3158</a> - JOURDAN 11:50</li><li><a href="stop-1416.html">1416</a> - FROISSART 11:52</li><li><a href="stop-1418B.html">1418B</a> - SCHUMAN 11:55</li><li><a href="stop-1425.html">1425</a> - AMBIORIX 11:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./060b0150.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

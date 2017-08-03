@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - SCHUMAN - KONKEL - 97254979-B20170703-DELMER01-Semaine-71</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: SCHUMAN - KONKEL - 97254979-B20170703-DELMER01-Semaine-71</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-1587.html">1587</a> - KRAAINEM 07:18</li><li><a href="stop-7831.html">7831</a> - STOCKEL 07:22</li><li><a href="stop-1840.html">1840</a> - BOULEAUX 07:23</li><li><a href="stop-1850.html">1850</a> - PADDOCK 07:24</li><li><a href="stop-1851.html">1851</a> - SAINTE-ALIX 07:26</li><li><a href="stop-1852.html">1852</a> - VANDER MEERSCHEN 07:27</li><li><a href="stop-1853.html">1853</a> - MANOIR D'ANJOU 07:29</li><li><a href="stop-1854.html">1854</a> - RUE AU BOIS 07:30</li><li><a href="stop-1841.html">1841</a> - MAREYDE 07:31</li><li><a href="stop-1856.html">1856</a> - MERTENS 07:32</li><li><a href="stop-1857.html">1857</a> - KELLE 07:34</li><li><a href="stop-5273.html">5273</a> - MUSEE DU TRAM 07:36</li><li><a href="stop-1859.html">1859</a> - CHIEN VERT 07:37</li><li><a href="stop-1860.html">1860</a> - JULES CESAR 07:39</li><li><a href="stop-1861.html">1861</a> - OCEAN ATLANTIQUE 07:40</li><li><a href="stop-1862.html">1862</a> - CHANT D'OISEAU 07:41</li><li><a href="stop-1863.html">1863</a> - MOUETTES 07:43</li><li><a href="stop-1864.html">1864</a> - DREVE DE NIVELLES 07:43</li><li><a href="stop-1865.html">1865</a> - BARON DE CASTRO 07:45</li><li><a href="stop-1866.html">1866</a> - BOILEAU 07:47</li><li><a href="stop-6472.html">6472</a> - THIEFFRY 07:48</li><li><a href="stop-1868.html">1868</a> - ROI VAINQUEUR 07:48</li><li><a href="stop-1869.html">1869</a> - ONZE NOVEMBRE 07:49</li><li><a href="stop-1870.html">1870</a> - LA CHASSE 07:52</li><li><a href="stop-1871B.html">1871B</a> - LOUIS HAP 07:53</li><li><a href="stop-1872B.html">1872B</a> - LEMAN 07:54</li><li><a href="stop-1873.html">1873</a> - NERVIENS 07:55</li><li><a href="stop-1416.html">1416</a> - FROISSART 07:56</li><li><a href="stop-1148C.html">1148C</a> - SCHUMAN 07:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./036b0016.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

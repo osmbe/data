@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - AMBIORIX - UCCLE CALEVOET - 97476910-B20170703-DELMER07-Dimanche-03</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: AMBIORIX - UCCLE CALEVOET - 97476910-B20170703-DELMER07-Dimanche-03</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-2920.html">2920</a> - AMBIORIX 23:23</li><li><a href="stop-2921.html">2921</a> - PALMERSTON 23:23</li><li><a href="stop-1273.html">1273</a> - AMBIORIX 23:24</li><li><a href="stop-1270B.html">1270B</a> - SCHUMAN 23:25</li><li><a href="stop-1271B.html">1271B</a> - FROISSART 23:26</li><li><a href="stop-3921.html">3921</a> - JOURDAN 23:28</li><li><a href="stop-1880.html">1880</a> - VARIA 23:29</li><li><a href="stop-1881.html">1881</a> - BLYCKAERTS 23:30</li><li><a href="stop-1910.html">1910</a> - MALIBRAN 23:30</li><li><a href="stop-3122.html">3122</a> - FLAGEY 23:32</li><li><a href="stop-1903.html">1903</a> - BIARRITZ 23:33</li><li><a href="stop-1912.html">1912</a> - VLEURGAT 23:34</li><li><a href="stop-4705.html">4705</a> - WASHINGTON 23:35</li><li><a href="stop-6408.html">6408</a> - LEPOUTRE 23:36</li><li><a href="stop-2122.html">2122</a> - GEORGES BRUGMANN 23:37</li><li><a href="stop-2128.html">2128</a> - CLINIQUE CAVELL 23:38</li><li><a href="stop-2123.html">2123</a> - CAVELL 23:39</li><li><a href="stop-2124.html">2124</a> - BRUNARD 23:40</li><li><a href="stop-2125.html">2125</a> - LANGEVELD 23:40</li><li><a href="stop-1251.html">1251</a> - HOUZEAU 23:42</li><li><a href="stop-4856B.html">4856B</a> - OBSERVATOIRE 23:43</li><li><a href="stop-4853.html">4853</a> - MERCURE 23:43</li><li><a href="stop-6931B.html">6931B</a> - SAINT-JOB GARE 23:45</li><li><a href="stop-1742.html">1742</a> - BENAETS 23:46</li><li><a href="stop-1736.html">1736</a> - DE WANSIJN 23:46</li><li><a href="stop-1737.html">1737</a> - DROSSART 23:47</li><li><a href="stop-2769.html">2769</a> - CHENAIE 23:48</li><li><a href="stop-2770.html">2770</a> - HELLEVELT 23:49</li><li><a href="stop-2771.html">2771</a> - GROELSTVELD 23:49</li><li><a href="stop-1949.html">1949</a> - ENGELAND 23:50</li><li><a href="stop-1962.html">1962</a> - UCCLE CALEVOET 23:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./060b0149.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

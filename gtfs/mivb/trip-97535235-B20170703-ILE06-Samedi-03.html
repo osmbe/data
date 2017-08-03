@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - GARE CENTRALE - FORT-JACO - 97535235-B20170703-ILE06-Samedi-03</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GARE CENTRALE - FORT-JACO - 97535235-B20170703-ILE06-Samedi-03</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-2150.html">2150</a> - FORT-JACO 26:00</li><li><a href="stop-5053B.html">5053B</a> - ALPHONSE XIII 26:00</li><li><a href="stop-2002.html">2002</a> - PLACE SAINT-JOB 26:01</li><li><a href="stop-6956B.html">6956B</a> - SAINT-JOB GARE 26:03</li><li><a href="stop-4804B.html">4804B</a> - MERCURE 26:04</li><li><a href="stop-4857B.html">4857B</a> - OBSERVATOIRE 26:05</li><li><a href="stop-1250.html">1250</a> - HOUZEAU 26:06</li><li><a href="stop-2131.html">2131</a> - LANGEVELD 26:07</li><li><a href="stop-2132.html">2132</a> - BRUNARD 26:08</li><li><a href="stop-2133.html">2133</a> - CAVELL 26:09</li><li><a href="stop-2129.html">2129</a> - CLINIQUE CAVELL 26:10</li><li><a href="stop-2134.html">2134</a> - GEORGES BRUGMANN 26:11</li><li><a href="stop-6406.html">6406</a> - LEPOUTRE 26:12</li><li><a href="stop-6453.html">6453</a> - WASHINGTON 26:13</li><li><a href="stop-1976.html">1976</a> - VAN EYCK 26:14</li><li><a href="stop-1977.html">1977</a> - VLEURGAT 26:15</li><li><a href="stop-1986.html">1986</a> - BIARRITZ 26:16</li><li><a href="stop-6112.html">6112</a> - FLAGEY 26:17</li><li><a href="stop-1980.html">1980</a> - MALIBRAN 26:17</li><li><a href="stop-1981.html">1981</a> - BLYCKAERTS 26:18</li><li><a href="stop-1291.html">1291</a> - IDALIE 26:19</li><li><a href="stop-1292.html">1292</a> - QUART.ST-BONIFACE 26:20</li><li><a href="stop-2967B.html">2967B</a> - MATONGE-PTE NAMUR 26:22</li><li><a href="stop-3622B.html">3622B</a> - CLIQUET 26:23</li><li><a href="stop-1087.html">1087</a> - LOUISE 26:24</li><li><a href="stop-6353.html">6353</a> - PETIT SABLON 26:25</li><li><a href="stop-3567.html">3567</a> - ROYALE 26:27</li><li><a href="stop-6447.html">6447</a> - GARE CENTRALE 26:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./210b0007.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

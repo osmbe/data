@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - DE BROUCKERE - VILVOORDE STATION - 97302775-B20170703-HAR05-Semaine-03</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DE BROUCKERE - VILVOORDE STATION - 97302775-B20170703-HAR05-Semaine-03</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-2828.html">2828</a> - DE BROUCKERE 15:38</li><li><a href="stop-2830.html">2830</a> - ROGIER 15:39</li><li><a href="stop-2837.html">2837</a> - YSER 15:41</li><li><a href="stop-2269.html">2269</a> - NICOLAY 15:42</li><li><a href="stop-9026.html">9026</a> - WTC 15:44</li><li><a href="stop-2271.html">2271</a> - GLIBERT 15:44</li><li><a href="stop-2204.html">2204</a> - DESTOUVELLES 15:45</li><li><a href="stop-2237.html">2237</a> - MASUI 15:47</li><li><a href="stop-5288.html">5288</a> - JULES DE TROOZ 15:49</li><li><a href="stop-1084.html">1084</a> - OUTRE-PONTS 15:49</li><li><a href="stop-2308.html">2308</a> - VAN PRAET 15:53</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./047b0223.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

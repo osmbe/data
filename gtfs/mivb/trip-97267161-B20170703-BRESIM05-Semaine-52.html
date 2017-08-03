@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - CAMPUS CERIA - BON AIR - 97267161-B20170703-BRESIM05-Semaine-52</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CAMPUS CERIA - BON AIR - 97267161-B20170703-BRESIM05-Semaine-52</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-1499.html">1499</a> - CAMPUS CERIA 19:08</li><li><a href="stop-1479.html">1479</a> - COLOMBOPHILES 19:09</li><li><a href="stop-1498.html">1498</a> - HUIT HEURES 19:09</li><li><a href="stop-1480.html">1480</a> - WAXWEILER 19:11</li><li><a href="stop-5297B.html">5297B</a> - BIZET 19:12</li><li><a href="stop-1495.html">1495</a> - VAN BEETHOVEN 19:13</li><li><a href="stop-6856B.html">6856B</a> - YSAYE 19:14</li><li><a href="stop-2319.html">2319</a> - HOPITAL BRACOPS 19:16</li><li><a href="stop-1482.html">1482</a> - RENE HENRY 19:16</li><li><a href="stop-1260.html">1260</a> - FRUITS 19:18</li><li><a href="stop-1483.html">1483</a> - WESTLAND SHOPPING 19:19</li><li><a href="stop-1484.html">1484</a> - POMMIER 19:20</li><li><a href="stop-1018.html">1018</a> - BON AIR 19:22</li><li><a href="stop-1486B.html">1486B</a> - BON AIR 19:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./075b0044.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

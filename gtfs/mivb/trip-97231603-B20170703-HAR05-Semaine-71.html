@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - HOPITAL ETTERBEEK-IXELLES - BORDET STATION - 97231603-B20170703-HAR05-Semaine-71</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: HOPITAL ETTERBEEK-IXELLES - BORDET STATION - 97231603-B20170703-HAR05-Semaine-71</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-3125.html">3125</a> - HOP. ETT.-IXELLES 18:15</li><li><a href="stop-6158.html">6158</a> - LEVURE 18:16</li><li><a href="stop-1280B.html">1280B</a> - FLAGEY 18:18</li><li><a href="stop-3155.html">3155</a> - WERY 18:19</li><li><a href="stop-3156.html">3156</a> - NATATION 18:20</li><li><a href="stop-3160.html">3160</a> - ETANGS 18:22</li><li><a href="stop-3158.html">3158</a> - JOURDAN 18:23</li><li><a href="stop-3159.html">3159</a> - PARC LEOPOLD 18:24</li><li><a href="stop-6464.html">6464</a> - MAELBEEK 18:26</li><li><a href="stop-2970.html">2970</a> - LIVINGSTONE 18:26</li><li><a href="stop-1569B.html">1569B</a> - GUTENBERG 18:29</li><li><a href="stop-1582.html">1582</a> - SAINT-JOSSE 18:30</li><li><a href="stop-3162.html">3162</a> - HOUWAERT 18:32</li><li><a href="stop-3163.html">3163</a> - GEEFS 18:35</li><li><a href="stop-3164.html">3164</a> - COTEAUX 18:37</li><li><a href="stop-3165.html">3165</a> - HERMAN 18:39</li><li><a href="stop-3166.html">3166</a> - ERNEST LAUDE 18:40</li><li><a href="stop-3167.html">3167</a> - EENENS 18:42</li><li><a href="stop-3168.html">3168</a> - VERBOEKHOVEN 18:44</li><li><a href="stop-6459.html">6459</a> - PRINC. ELISABETH 18:45</li><li><a href="stop-3177.html">3177</a> - SCHAERBEEK GARE 18:47</li><li><a href="stop-3180.html">3180</a> - HUART- HAMOIR 18:47</li><li><a href="stop-3181.html">3181</a> - ANATOLE FRANCE 18:48</li><li><a href="stop-3172.html">3172</a> - CHAUMONTEL 18:50</li><li><a href="stop-3173.html">3173</a> - CARLI 18:50</li><li><a href="stop-3174.html">3174</a> - PICARDIE 18:51</li><li><a href="stop-3175B.html">3175B</a> - SAINT-VINCENT 18:52</li><li><a href="stop-3176.html">3176</a> - VANDENHOVEN 18:53</li><li><a href="stop-5299.html">5299</a> - BORDET STATION 18:54</li><li><a href="stop-3179.html">3179</a> - HAREN-ATELIER 18:55</li><li><a href="stop-3130.html">3130</a> - HAREN-STIB 18:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./059b0082.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

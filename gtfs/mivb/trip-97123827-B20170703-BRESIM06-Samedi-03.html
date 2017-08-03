@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - HUNDERENVELD - ETANGS NOIRS - 97123827-B20170703-BRESIM06-Samedi-03</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: HUNDERENVELD - ETANGS NOIRS - 97123827-B20170703-BRESIM06-Samedi-03</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-1142.html">1142</a> - HUNDERENVELD 12:44</li><li><a href="stop-1102.html">1102</a> - SEPT ETOILES 12:45</li><li><a href="stop-4598.html">4598</a> - BROEK 12:45</li><li><a href="stop-1095.html">1095</a> - PLACE DE L'EGLISE 12:46</li><li><a href="stop-1105.html">1105</a> - COMHAIRE 12:47</li><li><a href="stop-1306.html">1306</a> - SCHWEITZER 12:49</li><li><a href="stop-1094.html">1094</a> - VALIDA 12:51</li><li><a href="stop-1108.html">1108</a> - GOFFIN 12:52</li><li><a href="stop-1096.html">1096</a> - BENES 12:54</li><li><a href="stop-1097.html">1097</a> - BASTOGNE 12:56</li><li><a href="stop-1098.html">1098</a> - SIPPELBERG 12:58</li><li><a href="stop-1172.html">1172</a> - LIBERTE 12:59</li><li><a href="stop-1112.html">1112</a> - SIMONIS 13:01</li><li><a href="stop-1114B.html">1114B</a> - VANHUFFEL 13:03</li><li><a href="stop-1115.html">1115</a> - AUTRIQUE 13:04</li><li><a href="stop-4111.html">4111</a> - ETANGS NOIRS 13:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./020b0002.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

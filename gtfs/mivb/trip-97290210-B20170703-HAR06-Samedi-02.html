@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - DE BROUCKERE - VILVOORDE STATION - 97290210-B20170703-HAR06-Samedi-02</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DE BROUCKERE - VILVOORDE STATION - 97290210-B20170703-HAR06-Samedi-02</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-9784B.html">9784B</a> - VILVOORDE STATION 22:13</li><li><a href="stop-9786.html">9786</a> - HELDENPLEIN 22:14</li><li><a href="stop-9787.html">9787</a> - KERK VILVOORDE 22:14</li><li><a href="stop-9788.html">9788</a> - SPORTCOMPLEX 22:16</li><li><a href="stop-9707.html">9707</a> - JORDAEN 22:17</li><li><a href="stop-9605.html">9605</a> - MINNEMOLEN 22:18</li><li><a href="stop-9606.html">9606</a> - ENNEPETAL 22:18</li><li><a href="stop-9632.html">9632</a> - TWEE LEEUWENWEG 22:19</li><li><a href="stop-9634.html">9634</a> - VTM 22:21</li><li><a href="stop-9635.html">9635</a> - HOOGVELD 22:23</li><li><a href="stop-2352.html">2352</a> - HOP. MILITAIRE 22:24</li><li><a href="stop-2329.html">2329</a> - SAO 22:24</li><li><a href="stop-3002.html">3002</a> - DGHR DOMAINE MIL. 22:25</li><li><a href="stop-2358.html">2358</a> - ANTOON VAN OSS 22:26</li><li><a href="stop-2359.html">2359</a> - TRASSERSWEG 22:27</li><li><a href="stop-2360.html">2360</a> - CHEMIN VERT 22:28</li><li><a href="stop-2361.html">2361</a> - RAMIER 22:29</li><li><a href="stop-2362B.html">2362B</a> - PETER BENOIT 22:30</li><li><a href="stop-2363.html">2363</a> - ZAVELPUT 22:31</li><li><a href="stop-2364.html">2364</a> - PRES COMMUNS 22:32</li><li><a href="stop-2299.html">2299</a> - HEEMBEEK 22:34</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./047b0234.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

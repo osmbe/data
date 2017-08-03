@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - GROOT-BIJGAARDEN - DE WAND - 97439602-B20170703-HAR07-Dimanche-03</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GROOT-BIJGAARDEN - DE WAND - 97439602-B20170703-HAR07-Dimanche-03</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-7955.html">7955</a> - DE WAND 11:16</li><li><a href="stop-2875.html">2875</a> - SERRES ROYALES 11:19</li><li><a href="stop-2861.html">2861</a> - SCHOLA EUROPEA 11:20</li><li><a href="stop-2860.html">2860</a> - ARTISTES 11:22</li><li><a href="stop-2545.html">2545</a> - KAREL BOGAERD 11:23</li><li><a href="stop-1342.html">1342</a> - STUYVENBERGH 11:25</li><li><a href="stop-5295.html">5295</a> - DUYSBURGH 11:26</li><li><a href="stop-2859.html">2859</a> - GUILL. DE GREEF 11:28</li><li><a href="stop-2877.html">2877</a> - CIM. DE JETTE 11:30</li><li><a href="stop-2586.html">2586</a> - VERBEYST 11:31</li><li><a href="stop-1299.html">1299</a> - SIMPSON 11:36</li><li><a href="stop-1343.html">1343</a> - BROUSTIN 11:36</li><li><a href="stop-4116.html">4116</a> - PARC ELISABETH 11:38</li><li><a href="stop-1112.html">1112</a> - SIMONIS 11:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./119b0040.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

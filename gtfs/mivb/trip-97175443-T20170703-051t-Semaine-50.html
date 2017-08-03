@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - STADE - VAN HAELEN - 97175443-T20170703-051t-Semaine-50</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: STADE - VAN HAELEN - 97175443-T20170703-051t-Semaine-50</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-1290.html">1290</a> - STADE 14:36</li><li><a href="stop-5402.html">5402</a> - STIENON 14:37</li><li><a href="stop-4209.html">4209</a> - KUFFERATH 14:38</li><li><a href="stop-5403.html">5403</a> - HOPITAL BRUGMANN 14:39</li><li><a href="stop-5010.html">5010</a> - GUILL. DE GREEF 14:41</li><li><a href="stop-2869.html">2869</a> - CIM. DE JETTE 14:42</li><li><a href="stop-5006.html">5006</a> - DEMINEURS 14:42</li><li><a href="stop-5007F.html">5007F</a> - WOESTE 14:44</li><li><a href="stop-5008F.html">5008F</a> - ODON WARLAND 14:45</li><li><a href="stop-5009F.html">5009F</a> - BELGICA 14:47</li><li><a href="stop-5011F.html">5011F</a> - VANDERSTICHELEN 14:48</li><li><a href="stop-5015.html">5015</a> - JUBILE 14:50</li><li><a href="stop-5013.html">5013</a> - RIBAUCOURT 14:51</li><li><a href="stop-5014.html">5014</a> - SAINCTELETTE 14:53</li><li><a href="stop-6651.html">6651</a> - YSER 14:54</li><li><a href="stop-6652.html">6652</a> - YPRES 14:56</li><li><a href="stop-6654F.html">6654F</a> - PORTE DE FLANDRE 14:58</li><li><a href="stop-3223G.html">3223G</a> - PORTE DE NINOVE 15:00</li><li><a href="stop-6650F.html">6650F</a> - ARTS ET METIERS 15:02</li><li><a href="stop-6655.html">6655</a> - PTE D'ANDERLECHT 15:03</li><li><a href="stop-6656.html">6656</a> - BODEGHEM 15:05</li><li><a href="stop-6657.html">6657</a> - LEMONNIER 15:07</li><li><a href="stop-0702.html">0702</a> - GARE DU MIDI 15:09</li><li><a href="stop-0703.html">0703</a> - PORTE DE HAL 15:10</li><li><a href="stop-0704.html">0704</a> - PARVIS ST-GILLES 15:11</li><li><a href="stop-0705.html">0705</a> - HORTA 15:13</li><li><a href="stop-0707.html">0707</a> - ALBERT 15:15</li><li><a href="stop-2956.html">2956</a> - JUPITER 15:16</li><li><a href="stop-5848.html">5848</a> - ALTITUDE CENT 15:17</li><li><a href="stop-5812F.html">5812F</a> - COGHEN 15:19</li><li><a href="stop-5813F.html">5813F</a> - ROOSENDAEL 15:21</li><li><a href="stop-5814F.html">5814F</a> - BENS 15:22</li><li><a href="stop-5815F.html">5815F</a> - XAVIER DE BUE 15:25</li><li><a href="stop-5816F.html">5816F</a> - GLOBE 15:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./051t0080.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

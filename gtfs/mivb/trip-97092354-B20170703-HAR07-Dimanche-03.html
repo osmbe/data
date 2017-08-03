@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - DE BROUCKERE - HOF TEN BERG - 97092354-B20170703-HAR07-Dimanche-03</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DE BROUCKERE - HOF TEN BERG - 97092354-B20170703-HAR07-Dimanche-03</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-2295.html">2295</a> - DE BROUCKERE 11:26</li><li><a href="stop-2296.html">2296</a> - ARENBERG 11:28</li><li><a href="stop-6445.html">6445</a> - GARE CENTRALE 11:30</li><li><a href="stop-3351.html">3351</a> - PARC 11:32</li><li><a href="stop-3353.html">3353</a> - TREURENBERG 11:32</li><li><a href="stop-3354.html">3354</a> - PRESSE 11:34</li><li><a href="stop-1508.html">1508</a> - MADOU 11:35</li><li><a href="stop-1509.html">1509</a> - SAINT-JOSSE 11:36</li><li><a href="stop-1510.html">1510</a> - GUTENBERG 11:37</li><li><a href="stop-1511.html">1511</a> - CLOVIS 11:39</li><li><a href="stop-1512.html">1512</a> - VINCOTTE 11:41</li><li><a href="stop-1513.html">1513</a> - DAILLY 11:43</li><li><a href="stop-1514.html">1514</a> - RADIUM 11:43</li><li><a href="stop-1515.html">1515</a> - PLASKY 11:44</li><li><a href="stop-1516.html">1516</a> - OPALE 11:46</li><li><a href="stop-6451.html">6451</a> - DIAMANT 11:47</li><li><a href="stop-1518.html">1518</a> - LEVIE 11:48</li><li><a href="stop-1519.html">1519</a> - MAI 11:50</li><li><a href="stop-1520.html">1520</a> - HEYDENBERG 11:51</li><li><a href="stop-1521.html">1521</a> - SPEECKAERT 11:52</li><li><a href="stop-1522.html">1522</a> - VERHEYLEWEGHEN 11:53</li><li><a href="stop-3899.html">3899</a> - MOONENS 11:54</li><li><a href="stop-1529.html">1529</a> - HYMANS 11:55</li><li><a href="stop-6480.html">6480</a> - ROODEBEEK 11:57</li><li><a href="stop-1540.html">1540</a> - CHARMILLE 11:58</li><li><a href="stop-1525.html">1525</a> - PEUPLIERS 11:59</li><li><a href="stop-1526.html">1526</a> - MARCEL THIRY 12:00</li><li><a href="stop-1527.html">1527</a> - JESPERS 12:00</li><li><a href="stop-1528.html">1528</a> - HOF TEN BERG 12:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./029b0001.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

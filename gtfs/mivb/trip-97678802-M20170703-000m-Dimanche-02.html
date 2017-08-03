@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - ERASME - HERRMANN-DEBROUX - 97678802-M20170703-000m-Dimanche-02</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: ERASME - HERRMANN-DEBROUX - 97678802-M20170703-000m-Dimanche-02</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8642.html">8642</a> - ERASME 16:24</li><li><a href="stop-8652.html">8652</a> - EDDY MERCKX 16:25</li><li><a href="stop-8662.html">8662</a> - CERIA 16:26</li><li><a href="stop-8672.html">8672</a> - LA ROUE 16:27</li><li><a href="stop-8682.html">8682</a> - BIZET 16:28</li><li><a href="stop-8692.html">8692</a> - VEEWEYDE 16:30</li><li><a href="stop-8702.html">8702</a> - SAINT-GUIDON 16:31</li><li><a href="stop-8712.html">8712</a> - AUMALE 16:32</li><li><a href="stop-8722.html">8722</a> - JACQUES BREL 16:34</li><li><a href="stop-8732.html">8732</a> - GARE DE L'OUEST 16:35</li><li><a href="stop-8742.html">8742</a> - BEEKKANT 16:36</li><li><a href="stop-8292.html">8292</a> - ETANGS NOIRS 16:38</li><li><a href="stop-8282.html">8282</a> - COMTE DE FLANDRE 16:39</li><li><a href="stop-8272.html">8272</a> - SAINTE-CATHERINE 16:40</li><li><a href="stop-8012.html">8012</a> - DE BROUCKERE 16:42</li><li><a href="stop-8022.html">8022</a> - GARE CENTRALE 16:43</li><li><a href="stop-8032.html">8032</a> - PARC 16:44</li><li><a href="stop-8042.html">8042</a> - ARTS-LOI 16:45</li><li><a href="stop-8052.html">8052</a> - MAELBEEK 16:46</li><li><a href="stop-8062.html">8062</a> - SCHUMAN 16:47</li><li><a href="stop-8072.html">8072</a> - MERODE 16:49</li><li><a href="stop-8202.html">8202</a> - THIEFFRY 16:50</li><li><a href="stop-8212.html">8212</a> - PETILLON 16:52</li><li><a href="stop-8222.html">8222</a> - HANKAR 16:53</li><li><a href="stop-8232.html">8232</a> - DELTA 16:54</li><li><a href="stop-8242.html">8242</a> - BEAULIEU 16:55</li><li><a href="stop-8252.html">8252</a> - DEMEY 16:57</li><li><a href="stop-8262.html">8262</a> - HERRMANN-DEBROUX 16:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./005m0057.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

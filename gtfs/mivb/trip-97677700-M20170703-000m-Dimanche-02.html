@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - GARE DE L'OUEST - STOCKEL - 97677700-M20170703-000m-Dimanche-02</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GARE DE L'OUEST - STOCKEL - 97677700-M20170703-000m-Dimanche-02</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-8161.html">8161</a> - STOCKEL 19:04</li><li><a href="stop-8151.html">8151</a> - CRAINHEM 19:06</li><li><a href="stop-8141.html">8141</a> - ALMA 19:07</li><li><a href="stop-8131.html">8131</a> - VANDERVELDE 19:08</li><li><a href="stop-8121.html">8121</a> - ROODEBEEK 19:09</li><li><a href="stop-8111.html">8111</a> - TOMBERG 19:11</li><li><a href="stop-8101.html">8101</a> - GRIBAUMONT 19:12</li><li><a href="stop-8091.html">8091</a> - JOSEPH.-CHARLOTTE 19:13</li><li><a href="stop-8081.html">8081</a> - MONTGOMERY 19:14</li><li><a href="stop-8071.html">8071</a> - MERODE 19:16</li><li><a href="stop-8061.html">8061</a> - SCHUMAN 19:18</li><li><a href="stop-8051.html">8051</a> - MAELBEEK 19:19</li><li><a href="stop-8041.html">8041</a> - ARTS-LOI 19:20</li><li><a href="stop-8031.html">8031</a> - PARC 19:21</li><li><a href="stop-8021.html">8021</a> - GARE CENTRALE 19:22</li><li><a href="stop-8011.html">8011</a> - DE BROUCKERE 19:23</li><li><a href="stop-8271.html">8271</a> - SAINTE-CATHERINE 19:25</li><li><a href="stop-8281.html">8281</a> - COMTE DE FLANDRE 19:26</li><li><a href="stop-8291.html">8291</a> - ETANGS NOIRS 19:27</li><li><a href="stop-8741.html">8741</a> - BEEKKANT 19:29</li><li><a href="stop-8731.html">8731</a> - GARE DE L'OUEST 19:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./001m0190.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

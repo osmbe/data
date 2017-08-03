@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - MONTGOMERY - TERVUREN STATION - 97874942-T20170703-03944t-Semaine-03</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: MONTGOMERY - TERVUREN STATION - 97874942-T20170703-03944t-Semaine-03</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-9557.html">9557</a> - TERVUREN STATION 13:32</li><li><a href="stop-9575.html">9575</a> - OPPEMSTRAAT 13:33</li><li><a href="stop-9577.html">9577</a> - BRUSSELSESTEENWEG 13:35</li><li><a href="stop-9578.html">9578</a> - RAVENSTEIN 13:37</li><li><a href="stop-5655.html">5655</a> - QUATRE BRAS 13:39</li><li><a href="stop-5656.html">5656</a> - TIR AUX PIGEONS 13:40</li><li><a href="stop-5657.html">5657</a> - DREVE DES BRULES 13:41</li><li><a href="stop-5658.html">5658</a> - AUDERGHEM-FORET 13:42</li><li><a href="stop-5659.html">5659</a> - TROIS COULEURS 13:42</li><li><a href="stop-5555.html">5555</a> - MADOUX 13:44</li><li><a href="stop-5556.html">5556</a> - DE VILLALOBAR 13:45</li><li><a href="stop-5273F.html">5273F</a> - MUSEE DU TRAM 13:47</li><li><a href="stop-5559.html">5559</a> - CHIEN VERT 13:48</li><li><a href="stop-5560.html">5560</a> - JULES CESAR 13:50</li><li><a href="stop-5561F.html">5561F</a> - LEOPOLD II 13:52</li><li><a href="stop-5562.html">5562</a> - GJ MARTIN 13:53</li><li><a href="stop-0089.html">0089</a> - MONTGOMERY 13:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./044t0056.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

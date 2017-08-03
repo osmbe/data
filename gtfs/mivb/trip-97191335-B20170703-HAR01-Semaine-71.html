@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - GARE CENTRALE - CIMETIERE DE BRUXELLES - 97191335-B20170703-HAR01-Semaine-71</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GARE CENTRALE - CIMETIERE DE BRUXELLES - 97191335-B20170703-HAR01-Semaine-71</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-3401.html">3401</a> - CIM. DE BRUXELLES 22:52</li><li><a href="stop-3702.html">3702</a> - ARBRE UNIQUE 22:53</li><li><a href="stop-3240.html">3240</a> - OPTIMISME 22:54</li><li><a href="stop-3704.html">3704</a> - PAUL LEDUC 22:55</li><li><a href="stop-3705.html">3705</a> - FRANS COURTENS 22:56</li><li><a href="stop-5308.html">5308</a> - LEOPOLD III 22:57</li><li><a href="stop-2250.html">2250</a> - MEISER 22:59</li><li><a href="stop-3216.html">3216</a> - PLASKY 23:00</li><li><a href="stop-3707.html">3707</a> - JAMBLINNE DE MEUX 23:01</li><li><a href="stop-3217.html">3217</a> - GUEUX 23:02</li><li><a href="stop-3218.html">3218</a> - MARGUERITE 23:03</li><li><a href="stop-2920.html">2920</a> - AMBIORIX 23:04</li><li><a href="stop-3219.html">3219</a> - WATERLOO WILSON 23:04</li><li><a href="stop-1569B.html">1569B</a> - GUTENBERG 23:05</li><li><a href="stop-1570.html">1570</a> - SAINT-JOSSE 23:06</li><li><a href="stop-1571.html">1571</a> - MADOU 23:08</li><li><a href="stop-3358.html">3358</a> - PRESSE 23:09</li><li><a href="stop-3359.html">3359</a> - TREURENBERG 23:10</li><li><a href="stop-3331.html">3331</a> - PARC 23:11</li><li><a href="stop-6442.html">6442</a> - GARE CENTRALE 23:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./063b0074.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

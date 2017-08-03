@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - DE BROUCKERE - HOF TEN BERG - 97092427-B20170703-HAR07-Dimanche-01</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DE BROUCKERE - HOF TEN BERG - 97092427-B20170703-HAR07-Dimanche-01</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-1528.html">1528</a> - HOF TEN BERG 15:46</li><li><a href="stop-1552.html">1552</a> - JESPERS 15:46</li><li><a href="stop-1553.html">1553</a> - MARCEL THIRY 15:48</li><li><a href="stop-1554.html">1554</a> - PEUPLIERS 15:48</li><li><a href="stop-1550.html">1550</a> - CHARMILLE 15:49</li><li><a href="stop-6478.html">6478</a> - ROODEBEEK 15:51</li><li><a href="stop-1578.html">1578</a> - HYMANS 15:52</li><li><a href="stop-3910.html">3910</a> - MOONENS 15:54</li><li><a href="stop-1557.html">1557</a> - VERHEYLEWEGHEN 15:55</li><li><a href="stop-1558.html">1558</a> - SPEECKAERT 15:56</li><li><a href="stop-1559.html">1559</a> - HEYDENBERG 15:57</li><li><a href="stop-1560.html">1560</a> - MAI 15:58</li><li><a href="stop-1561.html">1561</a> - LEVIE 15:59</li><li><a href="stop-6454.html">6454</a> - DIAMANT 16:02</li><li><a href="stop-1563.html">1563</a> - OPALE 16:03</li><li><a href="stop-3216.html">3216</a> - PLASKY 16:04</li><li><a href="stop-1565.html">1565</a> - RADIUM 16:05</li><li><a href="stop-1566.html">1566</a> - DAILLY 16:07</li><li><a href="stop-1567.html">1567</a> - VINCOTTE 16:08</li><li><a href="stop-1568.html">1568</a> - CLOVIS 16:10</li><li><a href="stop-3219.html">3219</a> - WATERLOO WILSON 16:11</li><li><a href="stop-1569B.html">1569B</a> - GUTENBERG 16:13</li><li><a href="stop-1570.html">1570</a> - SAINT-JOSSE 16:14</li><li><a href="stop-1571.html">1571</a> - MADOU 16:16</li><li><a href="stop-3358.html">3358</a> - PRESSE 16:17</li><li><a href="stop-3359.html">3359</a> - TREURENBERG 16:19</li><li><a href="stop-3331.html">3331</a> - PARC 16:20</li><li><a href="stop-6442.html">6442</a> - GARE CENTRALE 16:21</li><li><a href="stop-6447.html">6447</a> - GARE CENTRALE 16:22</li><li><a href="stop-2301.html">2301</a> - ARENBERG 16:24</li><li><a href="stop-2302.html">2302</a> - DE BROUCKERE 16:26</li><li><a href="stop-2303.html">2303</a> - DE BROUCKERE 16:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./029b0080.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - MOORTEBEEK - ANNEESSENS - 97202718-B20170703-ILE05-Semaine-82</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: MOORTEBEEK - ANNEESSENS - 97202718-B20170703-ILE05-Semaine-82</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-1201.html">1201</a> - MOORTEBEEK 13:08</li><li><a href="stop-1203.html">1203</a> - WESTLAND SHOPPING 13:09</li><li><a href="stop-1487.html">1487</a> - POMMIER 13:11</li><li><a href="stop-3752.html">3752</a> - SIBELIUS 13:12</li><li><a href="stop-3751.html">3751</a> - NEERPEDE 13:13</li><li><a href="stop-3756.html">3756</a> - VANHELLEMONT 13:15</li><li><a href="stop-3755.html">3755</a> - SCHERDEMAEL 13:16</li><li><a href="stop-2319.html">2319</a> - HOPITAL BRACOPS 13:17</li><li><a href="stop-2518.html">2518</a> - DE LINDE 13:19</li><li><a href="stop-2256B.html">2256B</a> - SAINT-GUIDON 13:21</li><li><a href="stop-2257B.html">2257B</a> - RESISTANCE 13:23</li><li><a href="stop-6858C.html">6858C</a> - DOUVRES 13:24</li><li><a href="stop-2259.html">2259</a> - CUREGHEM 13:26</li><li><a href="stop-2260.html">2260</a> - ALBERT I 13:28</li><li><a href="stop-2261.html">2261</a> - CLEMENCEAU 13:32</li><li><a href="stop-2262.html">2262</a> - LIVERPOOL 13:34</li><li><a href="stop-2263.html">2263</a> - PTE D'ANDERLECHT 13:37</li><li><a href="stop-2264.html">2264</a> - BUANDERIE 13:39</li><li><a href="stop-2255.html">2255</a> - SIX JETONS 13:40</li><li><a href="stop-2181.html">2181</a> - ANNEESSENS 13:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./046b0003.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

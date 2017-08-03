@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>STIB - BRABANCONNE - KONKEL - 97283905-B20170703-DELMER07-Dimanche-00</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: BRABANCONNE - KONKEL - 97283905-B20170703-DELMER07-Dimanche-00</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-2919.html">2919</a> - BRABANCONNE 14:43</li><li><a href="stop-6021.html">6021</a> - CHASSEURS ARDEN. 14:44</li><li><a href="stop-1403.html">1403</a> - JAMBLINNE DE MEUX 14:45</li><li><a href="stop-1404.html">1404</a> - VICTOR HUGO 14:46</li><li><a href="stop-6449.html">6449</a> - DIAMANT 14:48</li><li><a href="stop-1406.html">1406</a> - VERGOTE 14:49</li><li><a href="stop-1424.html">1424</a> - GEORGES HENRI 14:51</li><li><a href="stop-1140.html">1140</a> - DEGROOFF 14:52</li><li><a href="stop-1141.html">1141</a> - MEUDON 14:54</li><li><a href="stop-1408.html">1408</a> - MONTALD 14:55</li><li><a href="stop-6476.html">6476</a> - TOMBERG 14:56</li><li><a href="stop-1410.html">1410</a> - MELARD 14:56</li><li><a href="stop-1421.html">1421</a> - SLEGERS 14:57</li><li><a href="stop-1412.html">1412</a> - VOOT 14:58</li><li><a href="stop-1422.html">1422</a> - DEPORTES 14:59</li><li><a href="stop-1423.html">1423</a> - PARC MALOU 15:00</li><li><a href="stop-1415.html">1415</a> - STADE FALLON 15:01</li><li><a href="stop-1831.html">1831</a> - DON BOSCO 15:02</li><li><a href="stop-7991.html">7991</a> - KONKEL 15:03</li><li><a href="stop-1846.html">1846</a> - VAL DES SEIGNEURS 15:04</li><li><a href="stop-1847.html">1847</a> - GERSIS 15:05</li><li><a href="stop-1252.html">1252</a> - STOCKEL 15:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./028b0014.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>
