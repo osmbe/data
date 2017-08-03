@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Eupen - Welkenraedt - Kelmis - 5163:TEC:LV:4801</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eupen - Welkenraedt - Kelmis - 5163:TEC:LV:4801</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LeUbush1.html">TEC:LeUbush1</a> - Eupen Bushof 17:33</li><li><a href="stop-TEC_LeUrath2.html">TEC:LeUrath2</a> - Eupen Rathaus 17:34</li><li><a href="stop-TEC_LeUgend1.html">TEC:LeUgend1</a> - Eupen Gendarmerie 17:35</li><li><a href="stop-TEC_LeUdepo1.html">TEC:LeUdepo1</a> - Eupen Busdepot 17:35</li><li><a href="stop-TEC_LeUgb--1.html">TEC:LeUgb--1</a> - Eupen GB 17:37</li><li><a href="stop-TEC_LeUgutl1.html">TEC:LeUgutl1</a> - Eupen Gut Lommerich 17:39</li><li><a href="stop-TEC_LeUindu1.html">TEC:LeUindu1</a> - Eupen Industriestrasse 17:39</li><li><a href="stop-TEC_LeUgeme1.html">TEC:LeUgeme1</a> - Eupen Gemehret 17:40</li><li><a href="stop-TEC_LeUbael1.html">TEC:LeUbael1</a> - Eupen Baelenerweg 17:41</li><li><a href="stop-TEC_LhEauto1.html">TEC:LhEauto1</a> - Herbesthal Autobahn 17:42</li><li><a href="stop-TEC_LhEherb1.html">TEC:LhEherb1</a> - Herbesthal Herbesthalerbaum 17:42</li><li><a href="stop-TEC_LhElont1.html">TEC:LhElont1</a> - Herbesthal Lontzenerweg 17:42</li><li><a href="stop-TEC_LhEcolo1.html">TEC:LhEcolo1</a> - Herbesthal Colonie 17:43</li><li><a href="stop-TEC_LhEbruc1.html">TEC:LhEbruc1</a> - Herbesthal Brücke 17:43</li><li><a href="stop-TEC_LWEcool1.html">TEC:LWEcool1</a> - Welkenraedt Rue J-H Cool 17:45</li><li><a href="stop-TEC_LWEpl--1.html">TEC:LWEpl--1</a> - Welkenraedt Place des Combattants 17:46</li><li><a href="stop-TEC_LWEgare1.html">TEC:LWEgare1</a> - Welkenraedt Gare SNCB 17:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3998.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

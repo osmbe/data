@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHARLEROI - PHILIPPEVILLE - COUVIN - 5163:TEC:NA:10762</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHARLEROI - PHILIPPEVILLE - COUVIN - 5163:TEC:NA:10762</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N155afb.html">TEC:N155afb</a> - Somzee Eglise 07:34</li><li><a href="stop-TEC_N155agb.html">TEC:N155agb</a> - Somzee Ste-Barbe 07:36</li><li><a href="stop-TEC_N155aab.html">TEC:N155aab</a> - Laneffe Les falises 07:38</li><li><a href="stop-TEC_N155acb.html">TEC:N155acb</a> - Laneffe Pont N5 07:40</li><li><a href="stop-TEC_N155adb.html">TEC:N155adb</a> - Laneffe Gadin 07:41</li><li><a href="stop-TEC_N155akb.html">TEC:N155akb</a> - Laneffe Cité 07:42</li><li><a href="stop-TEC_N118ayb.html">TEC:N118ayb</a> - Fraire Barrière 07:44</li><li><a href="stop-TEC_N118acb.html">TEC:N118acb</a> - Fraire Monument 07:45</li><li><a href="stop-TEC_N118aga.html">TEC:N118aga</a> - Fraire Chapelle 07:46</li><li><a href="stop-TEC_N118aha.html">TEC:N118aha</a> - Fraire Route de Fairoul 07:47</li><li><a href="stop-TEC_N118atb.html">TEC:N118atb</a> - Yves-Gomezee Rue Neuve 07:49</li><li><a href="stop-TEC_N118ana.html">TEC:N118ana</a> - Yves-Gomezee La folie 07:49</li><li><a href="stop-TEC_N118apa.html">TEC:N118apa</a> - Yves-Gomezee Pont berlanger 07:50</li><li><a href="stop-TEC_N118aqb.html">TEC:N118aqb</a> - Yves-Gomezee Mimbercée 07:50</li><li><a href="stop-TEC_N118bab.html">TEC:N118bab</a> - Yves-Gomezee St-Joseph 07:50</li><li><a href="stop-TEC_N101adb.html">TEC:N101adb</a> - Jamagne Carrefour 07:55</li><li><a href="stop-TEC_N101adb.html">TEC:N101adb</a> - Jamagne Carrefour 07:55</li><li><a href="stop-TEC_N101aib.html">TEC:N101aib</a> - Philippeville Quatre bras 08:01</li><li><a href="stop-TEC_N101agc.html">TEC:N101agc</a> - Philippeville Polyclinique 08:02</li><li><a href="stop-TEC_N101aua.html">TEC:N101aua</a> - Philippeville Rue de la Reine 08:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6060.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

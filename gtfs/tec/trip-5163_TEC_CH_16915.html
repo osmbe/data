@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - GERPINNES - IMTR - CHARLEROI - 5163:TEC:CH:16915</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GERPINNES - IMTR - CHARLEROI - 5163:TEC:CH:16915</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Clvimtr4.html">TEC:Clvimtr4</a> - Loverval IMTR 18:16</li><li><a href="stop-TEC_Ccifies2.html">TEC:Ccifies2</a> - Couillet Fiestaux 18:17</li><li><a href="stop-TEC_Cci22ao2.html">TEC:Cci22ao2</a> - Couillet 22 Août 18:18</li><li><a href="stop-TEC_Cciethi2.html">TEC:Cciethi2</a> - Couillet Parentville ULB 18:18</li><li><a href="stop-TEC_Cciferr2.html">TEC:Cciferr2</a> - Couillet Rue Ferrer 18:19</li><li><a href="stop-TEC_Ccipano2.html">TEC:Ccipano2</a> - Couillet Panorama 18:20</li><li><a href="stop-TEC_Ccisart2.html">TEC:Ccisart2</a> - Couillet Les Sarts 18:21</li><li><a href="stop-TEC_Cciecol2.html">TEC:Cciecol2</a> - Couillet Ecoles 18:22</li><li><a href="stop-TEC_Ccinali2.html">TEC:Ccinali2</a> - Couillet Rue de Nalinnes 18:23</li><li><a href="stop-TEC_Cci4bra2.html">TEC:Cci4bra2</a> - Couillet 4 Bras 18:25</li><li><a href="stop-TEC_Cmlhauc2.html">TEC:Cmlhauc2</a> - Marcinelle Hauchies 18:26</li><li><a href="stop-TEC_Cmldeto2.html">TEC:Cmldeto2</a> - Marcinelle Detombay 18:27</li><li><a href="stop-TEC_Cmlpbay2.html">TEC:Cmlpbay2</a> - Marcinelle Rue P. Bailly 18:28</li><li><a href="stop-TEC_Cmlcent2.html">TEC:Cmlcent2</a> - Marcinelle Centre 18:29</li><li><a href="stop-TEC_Cmlecha2.html">TEC:Cmlecha2</a> - Marcinelle Rue E. Charles 18:30</li><li><a href="stop-TEC_Cchsud0.html">TEC:Cchsud0</a> - Charleroi Sud 18:33</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./748.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

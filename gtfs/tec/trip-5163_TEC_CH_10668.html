@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHARLEROI SUD - NALINNES - GOURDINNE - 5163:TEC:CH:10668</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHARLEROI SUD - NALINNES - GOURDINNE - 5163:TEC:CH:10668</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cchsud08.html">TEC:Cchsud08</a> - Charleroi Sud 19:40</li><li><a href="stop-TEC_Cmlecha1.html">TEC:Cmlecha1</a> - Marcinelle Rue E. Charles 19:42</li><li><a href="stop-TEC_Cmlcent1.html">TEC:Cmlcent1</a> - Marcinelle Centre 19:43</li><li><a href="stop-TEC_Cmlrang1.html">TEC:Cmlrang1</a> - Marcinelle Rue de l'Ange 19:44</li><li><a href="stop-TEC_Cmldupu1.html">TEC:Cmldupu1</a> - Marcinelle Dupuis 19:44</li><li><a href="stop-TEC_Cmlhauc3.html">TEC:Cmlhauc3</a> - Marcinelle Rue Brisack 19:45</li><li><a href="stop-TEC_Cmlvesp1.html">TEC:Cmlvesp1</a> - Marcinelle Marché Vespéral 19:46</li><li><a href="stop-TEC_Cmlener1.html">TEC:Cmlener1</a> - Marcinelle Energie 19:46</li><li><a href="stop-TEC_Cmlcaya1.html">TEC:Cmlcaya1</a> - Marcinelle Cayat Masson 19:47</li><li><a href="stop-TEC_Cmlours1.html">TEC:Cmlours1</a> - Marcinelle Rue Ry Oursel 19:48</li><li><a href="stop-TEC_Cmlphai1.html">TEC:Cmlphai1</a> - Marcinelle Place des Haies 19:49</li><li><a href="stop-TEC_Cmlcazi1.html">TEC:Cmlcazi1</a> - Marcinelle Cazier 19:50</li><li><a href="stop-TEC_Cmlasie1.html">TEC:Cmlasie1</a> - Marcinelle Rue de l'Asie 19:51</li><li><a href="stop-TEC_Cmlstni1.html">TEC:Cmlstni1</a> - Marcinelle Sart Saint-Nicolas 19:52</li><li><a href="stop-TEC_Cmlsart1.html">TEC:Cmlsart1</a> - Marcinelle Rue du Sart 19:53</li><li><a href="stop-TEC_Cmlrbru1.html">TEC:Cmlrbru1</a> - Marcinelle Champ de Course 19:54</li><li><a href="stop-TEC_Cmlbruy1.html">TEC:Cmlbruy1</a> - Marcinelle La Bruyère 19:55</li><li><a href="stop-TEC_Cmlsana1.html">TEC:Cmlsana1</a> - Marcinelle Sanatorium 19:56</li><li><a href="stop-TEC_Cml5ave1.html">TEC:Cml5ave1</a> - Marcinelle 5ème Avenue 19:57</li><li><a href="stop-TEC_Cnachcu1.html">TEC:Cnachcu1</a> - Nalinnes Chapeau du Curé 19:59</li><li><a href="stop-TEC_Cnagrro1.html">TEC:Cnagrro1</a> - Nalinnes Grand Route 20:00</li><li><a href="stop-TEC_Cnathib1.html">TEC:Cnathib1</a> - Nalinnes Ferme Thibaut 20:01</li><li><a href="stop-TEC_Cna4che1.html">TEC:Cna4che1</a> - Nalinnes 4 Chemins 20:02</li><li><a href="stop-TEC_Cnapetr1.html">TEC:Cnapetr1</a> - Nalinnes Rue du Pétria 20:03</li><li><a href="stop-TEC_Cna6che1.html">TEC:Cna6che1</a> - Nalinnes Etang des 6 Chemins 20:04</li><li><a href="stop-TEC_Cnawari1.html">TEC:Cnawari1</a> - Nalinnes Warinaue 20:05</li><li><a href="stop-TEC_Cnahahe1.html">TEC:Cnahahe1</a> - Nalinnes Rue d'Ham-sur-Heure 20:06</li><li><a href="stop-TEC_Cnadepo1.html">TEC:Cnadepo1</a> - Nalinnes Dépôt T.E.C. 20:07</li><li><a href="stop-TEC_Cnacent1.html">TEC:Cnacent1</a> - Nalinnes Place du Centre 20:08</li><li><a href="stop-TEC_Cnaha561.html">TEC:Cnaha561</a> - Nalinnes Habitation n° 56 20:09</li><li><a href="stop-TEC_Cnating1.html">TEC:Cnating1</a> - Nalinnes Rue Tingremont 20:10</li><li><a href="stop-TEC_Cnapair1.html">TEC:Cnapair1</a> - Nalinnes Pairain 20:11</li><li><a href="stop-TEC_Cnalava3.html">TEC:Cnalava3</a> - Nalinnes Lavalle 20:13</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./797.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

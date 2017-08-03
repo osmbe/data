@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bastogne - Martelange - Fauvillers - 5163:TEC:LU:5610</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bastogne - Martelange - Fauvillers - 5163:TEC:LU:5610</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X666ama.html">TEC:X666ama</a> - Martelange Dépôt TEC 17:03</li><li><a href="stop-TEC_X666ala.html">TEC:X666ala</a> - Martelange La Roche Percée 17:06</li><li><a href="stop-TEC_X729aab.html">TEC:X729aab</a> - Warnach N4 17:08</li><li><a href="stop-TEC_X729aca.html">TEC:X729aca</a> - Tintange Eglise 17:16</li><li><a href="stop-TEC_X729abb.html">TEC:X729abb</a> - Warnach Centre 17:21</li><li><a href="stop-TEC_X729ada.html">TEC:X729ada</a> - Warnach Ecole 17:22</li><li><a href="stop-TEC_X729aac.html">TEC:X729aac</a> - Warnach N4 17:23</li><li><a href="stop-TEC_X666alb.html">TEC:X666alb</a> - Martelange La Roche Percée 17:25</li><li><a href="stop-TEC_X666ama.html">TEC:X666ama</a> - Martelange Dépôt TEC 17:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3094.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

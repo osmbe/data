@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Eghezée - Perwez - Louvain-la-Neuve - Ottignies - 5163:TEC:BW:9537</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eghezée - Perwez - Louvain-la-Neuve - Ottignies - 5163:TEC:BW:9537</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bperpla2.html">TEC:Bperpla2</a> - Perwez Place 11:52</li><li><a href="stop-TEC_Bpergar2.html">TEC:Bpergar2</a> - Perwez Gare 11:53</li><li><a href="stop-TEC_Bperrma2.html">TEC:Bperrma2</a> - Perwez Rue des Marronniers 11:54</li><li><a href="stop-TEC_Bpersyn2.html">TEC:Bpersyn2</a> - Perwez Syndicat 11:54</li><li><a href="stop-TEC_Btstw752.html">TEC:Btstw752</a> - Thorembais-Saint-Trond Chaussée de Wavre 75 11:55</li><li><a href="stop-TEC_Btstcar1.html">TEC:Btstcar1</a> - Thorembais-Saint-Trond Carrefour 11:57</li><li><a href="stop-TEC_Borblim2.html">TEC:Borblim2</a> - Orbais Limite 11:59</li><li><a href="stop-TEC_Btslpic5.html">TEC:Btslpic5</a> - Tourinnes-Saint-Lambert Picaute 12:02</li><li><a href="stop-TEC_Bchgcha1.html">TEC:Bchgcha1</a> - Chaumont-Gistoux Champtaine 12:03</li><li><a href="stop-TEC_Bchgqve1.html">TEC:Bchgqve1</a> - Chaumont-Gistoux Queue de Veau 12:04</li><li><a href="stop-TEC_Bchgbru1.html">TEC:Bchgbru1</a> - Chaumont-Gistoux La Brûle 12:05</li><li><a href="stop-TEC_Bchgbel1.html">TEC:Bchgbel1</a> - Chaumont-Gistoux Belvédère 12:06</li><li><a href="stop-TEC_Bchgpap1.html">TEC:Bchgpap1</a> - Chaumont-Gistoux Rue des Papeteries 12:07</li><li><a href="stop-TEC_Bchgrco1.html">TEC:Bchgrco1</a> - Chaumont-Gistoux  Rue de Corroy 12:08</li><li><a href="stop-TEC_Bgisber1.html">TEC:Bgisber1</a> - Gistoux Sentier du Berger 12:10</li><li><a href="stop-TEC_Bgisman1.html">TEC:Bgisman1</a> - Gistoux Manypré 12:10</li><li><a href="stop-TEC_Bclgeco1.html">TEC:Bclgeco1</a> - Corroy-le-Grand Ecole 12:13</li><li><a href="stop-TEC_Bclgfva1.html">TEC:Bclgfva1</a> - Corroy-le-Grand Ferme Vanderschrik 12:14</li><li><a href="stop-TEC_Bclgavi2.html">TEC:Bclgavi2</a> - Corroy-le-Grand Almez Vicinal 12:14</li><li><a href="stop-TEC_Bclglbu2.html">TEC:Bclglbu2</a> - Corroy-le-Grand Laid Burniaux 12:16</li><li><a href="stop-TEC_Bclgvse2.html">TEC:Bclgvse2</a> - Vieux-Sart Eglise 12:17</li><li><a href="stop-TEC_Bclgpla2.html">TEC:Bclgpla2</a> - Vieusart Place 12:18</li><li><a href="stop-TEC_Bclgmev2.html">TEC:Bclgmev2</a> - Vieusart  Rue de Mêves 12:19</li><li><a href="stop-TEC_Bclgpch2.html">TEC:Bclgpch2</a> - Vieusart Petit Champ 12:21</li><li><a href="stop-TEC_Bllnrge2.html">TEC:Bllnrge2</a> - Louvain-la-Neuve Rue Genistroit 12:23</li><li><a href="stop-TEC_Bllncom1.html">TEC:Bllncom1</a> - Louvain-la-Neuve Centre Commercial 12:26</li><li><a href="stop-TEC_Bllngar8.html">TEC:Bllngar8</a> - Louvain-la-Neuve Gare d'Autobus 12:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./643.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

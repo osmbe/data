@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Court-Saint-Etienne - Rixensart - Ixelles - 5163:TEC:BW:8679</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Court-Saint-Etienne - Rixensart - Ixelles - 5163:TEC:BW:8679</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bgnvgar1.html">TEC:Bgnvgar1</a> - Genval Gare 06:40</li><li><a href="stop-TEC_Bgnvpap2.html">TEC:Bgnvpap2</a> - Genval Papeterie 06:41</li><li><a href="stop-TEC_Brixala2.html">TEC:Brixala2</a> - Rixensart Rue Auguste Lannoye 06:43</li><li><a href="stop-TEC_Brixpro4.html">TEC:Brixpro4</a> - Rixensart Route Provinciale 06:44</li><li><a href="stop-TEC_Brixaug2.html">TEC:Brixaug2</a> - Rixensart Rue de l'Augette 06:45</li><li><a href="stop-TEC_Brixwav2.html">TEC:Brixwav2</a> - Rixensart Chaussée de Wavre 06:46</li><li><a href="stop-TEC_Brixbai2.html">TEC:Brixbai2</a> - Rixensart Avenue Bel Air 06:47</li><li><a href="stop-TEC_Blimrof2.html">TEC:Blimrof2</a> - Limelette Rofessart 06:49</li><li><a href="stop-TEC_Blimchâ2.html">TEC:Blimchâ2</a> - Limelette Château 06:50</li><li><a href="stop-TEC_Bottpry2.html">TEC:Bottpry2</a> - Ottignies Petit Ry 06:51</li><li><a href="stop-TEC_Bottpin2.html">TEC:Bottpin2</a> - Ottignies Pinchart 06:51</li><li><a href="stop-TEC_Bcer4br2.html">TEC:Bcer4br2</a> - Ceroux Quatre Bras 06:53</li><li><a href="stop-TEC_Bcerldo2.html">TEC:Bcerldo2</a> - Limauge Domaine 06:54</li><li><a href="stop-TEC_Bcercsa2.html">TEC:Bcercsa2</a> - Ceroux Chapelle aux Sabots 06:55</li><li><a href="stop-TEC_Bcsepes2.html">TEC:Bcsepes2</a> - Court-Saint-Etienne Rue Petite Escavée 06:57</li><li><a href="stop-TEC_Bcsecar2.html">TEC:Bcsecar2</a> - Court-Saint-Etienne Carrefour 06:58</li><li><a href="stop-TEC_Bcseeco3.html">TEC:Bcseeco3</a> - Court-Saint-Etienne Ecole Provinciale 06:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./453.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

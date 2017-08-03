@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - FLORENNES - PHILIPPEVILLE - RANCE - 5163:TEC:NA:10953</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: FLORENNES - PHILIPPEVILLE - RANCE - 5163:TEC:NA:10953</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Crcpla1.html">TEC:Crcpla1</a> - Rance Place François 16:35</li><li><a href="stop-TEC_NH03agb.html">TEC:NH03agb</a> - Rance Gare 16:36</li><li><a href="stop-TEC_NH03afb.html">TEC:NH03afb</a> - Rance Ferme 16:36</li><li><a href="stop-TEC_NH03aeb.html">TEC:NH03aeb</a> - Rance Ronce barrière 16:38</li><li><a href="stop-TEC_NH03adb.html">TEC:NH03adb</a> - Rance Ronce centre 16:39</li><li><a href="stop-TEC_Cfbcabi2.html">TEC:Cfbcabi2</a> - Fourbechies Cabine 16:40</li><li><a href="stop-TEC_Cfbcal2.html">TEC:Cfbcal2</a> - Fourbechies Calvaire 16:41</li><li><a href="stop-TEC_Cfcecol2.html">TEC:Cfcecol2</a> - Froidchapelle Ecoles 16:44</li><li><a href="stop-TEC_Cfcpla2.html">TEC:Cfcpla2</a> - Froidchapelle Place 16:44</li><li><a href="stop-TEC_Cfccabi1.html">TEC:Cfccabi1</a> - Froidchapelle Cabine 16:45</li><li><a href="stop-TEC_Cfcctru1.html">TEC:Cfcctru1</a> - Froidchapelle Champ de la Truie 16:47</li><li><a href="stop-TEC_Cfcrerp1.html">TEC:Cfcrerp1</a> - Froidchapelle Route d'Erpion 16:48</li><li><a href="stop-TEC_N103aeb.html">TEC:N103aeb</a> - Cerfontaine Cabine 16:50</li><li><a href="stop-TEC_N103agb.html">TEC:N103agb</a> - Cerfontaine Mon plaisir 16:52</li><li><a href="stop-TEC_N103afb.html">TEC:N103afb</a> - Cerfontaine Au-delà de l'eau 16:53</li><li><a href="stop-TEC_N103acc.html">TEC:N103acc</a> - Cerfontaine Place 16:54</li><li><a href="stop-TEC_N103aba.html">TEC:N103aba</a> - Cerfontaine Dr Leclercq 16:55</li><li><a href="stop-TEC_N103aaa.html">TEC:N103aaa</a> - Cerfontaine Cimetière 16:55</li><li><a href="stop-TEC_N102acb.html">TEC:N102acb</a> - Senzeilles Route de la gare 17:01</li><li><a href="stop-TEC_N102abb.html">TEC:N102abb</a> - Senzeilles Eglise 17:01</li><li><a href="stop-TEC_N102aab.html">TEC:N102aab</a> - Senzeilles Cimetière 17:02</li><li><a href="stop-TEC_N116acb.html">TEC:N116acb</a> - Villers-Deux-Eglises Bas du village 17:03</li><li><a href="stop-TEC_N116adb.html">TEC:N116adb</a> - Villers-Deux-Eglises Eglise 17:04</li><li><a href="stop-TEC_N116abb.html">TEC:N116abb</a> - Villers-Deux-Eglises Le chesneau 17:04</li><li><a href="stop-TEC_N116aab.html">TEC:N116aab</a> - Villers-Deux-Eglises Le chasseur 17:05</li><li><a href="stop-TEC_N101ajb.html">TEC:N101ajb</a> - Philippeville Beauregard 17:07</li><li><a href="stop-TEC_N101aib.html">TEC:N101aib</a> - Philippeville Quatre bras 17:09</li><li><a href="stop-TEC_N101agc.html">TEC:N101agc</a> - Philippeville Polyclinique 17:09</li><li><a href="stop-TEC_N101aua.html">TEC:N101aua</a> - Philippeville Rue de la Reine 17:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6129.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

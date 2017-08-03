@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - PHILIPPEVILLE - MATAGNE-LA-GRANDE - 5163:TEC:NA:7480</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: PHILIPPEVILLE - MATAGNE-LA-GRANDE - 5163:TEC:NA:7480</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N101aua.html">TEC:N101aua</a> - Philippeville Rue de la Reine 16:33</li><li><a href="stop-TEC_N101ala.html">TEC:N101ala</a> - Philippeville Ecole d'Enseignement Spécial 16:35</li><li><a href="stop-TEC_N153aaa.html">TEC:N153aaa</a> - Sautour Vieux moulin 16:38</li><li><a href="stop-TEC_N153aba.html">TEC:N153aba</a> - Sautour Village 16:40</li><li><a href="stop-TEC_N153aca.html">TEC:N153aca</a> - Sautour La Pompe 16:41</li><li><a href="stop-TEC_N153aea.html">TEC:N153aea</a> - Sautour Vieux Sautour 16:41</li><li><a href="stop-TEC_N153ada.html">TEC:N153ada</a> - Sautour Gueule du loup 16:44</li><li><a href="stop-TEC_N154aaa.html">TEC:N154aaa</a> - Villers-en-Fagne Village 16:46</li><li><a href="stop-TEC_N154aba.html">TEC:N154aba</a> - Villers-en-Fagne Rue de Matagne 16:47</li><li><a href="stop-TEC_N125aca.html">TEC:N125aca</a> - Matagne-la-Grande Poudreries 16:52</li><li><a href="stop-TEC_N125aba.html">TEC:N125aba</a> - Matagne-la-Grande Gare 16:53</li><li><a href="stop-TEC_N125aab.html">TEC:N125aab</a> - Matagne-la-Grande Rue de la Gare 16:55</li><li><a href="stop-TEC_N124aac.html">TEC:N124aac</a> - Matagne-la-Petite Eglise 16:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6072.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

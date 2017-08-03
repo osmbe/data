@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Jupille - Barchon - Dalhem - Visé - 5163:TEC:LV:40900</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Jupille - Barchon - Dalhem - Visé - 5163:TEC:LV:40900</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LVIdepo2.html">TEC:LVIdepo2</a> - Vise Place des Déportés 13:00</li><li><a href="stop-TEC_LVIsacr1.html">TEC:LVIsacr1</a> - Vise Institut du Sacré-Coeur 13:01</li><li><a href="stop-TEC_LVIeg--4.html">TEC:LVIeg--4</a> - Vise Eglise 13:03</li><li><a href="stop-TEC_LVIlore2.html">TEC:LVIlore2</a> - Vise Porte de Lorette 13:06</li><li><a href="stop-TEC_LDAbois2.html">TEC:LDAbois2</a> - Dalhem Sur-le-Bois 13:08</li><li><a href="stop-TEC_LDArich2.html">TEC:LDArich2</a> - Dalhem Route de Richelle 13:09</li><li><a href="stop-TEC_LDAptbo2.html">TEC:LDAptbo2</a> - Dalhem Pont de Bolland 13:10</li><li><a href="stop-TEC_LDAchau1.html">TEC:LDAchau1</a> - Dalhem Château 13:11</li><li><a href="stop-TEC_LDAandr2.html">TEC:LDAandr2</a> - Dalhem Chemin de St-André 13:12</li><li><a href="stop-TEC_LMucarr3.html">TEC:LMucarr3</a> - Mortroux Carrefour 13:16</li><li><a href="stop-TEC_LMubras1.html">TEC:LMubras1</a> - Mortroux Brassines 13:17</li><li><a href="stop-TEC_LAuchau1.html">TEC:LAuchau1</a> - Aubin-Neufchateau Château 13:18</li><li><a href="stop-TEC_LAufech1.html">TEC:LAufech1</a> - Aubin-Neufchateau Fechereux carrefour 13:19</li><li><a href="stop-TEC_LAumari1.html">TEC:LAumari1</a> - Aubin-Neufchateau Rue Marnières 13:20</li><li><a href="stop-TEC_LAuvill1.html">TEC:LAuvill1</a> - Aubin-Neufchateau Village 13:20</li><li><a href="stop-TEC_LAuvici1.html">TEC:LAuvici1</a> - Aubin-Neufchateau Rue du Vicinal 2 13:21</li><li><a href="stop-TEC_LAugara1.html">TEC:LAugara1</a> - Aubin-Neufchateau Garage Baguette 13:21</li><li><a href="stop-TEC_LAuchau2.html">TEC:LAuchau2</a> - Aubin-Neufchateau Château 13:22</li><li><a href="stop-TEC_LMubras2.html">TEC:LMubras2</a> - Mortroux Brassines 13:23</li><li><a href="stop-TEC_LMupont2.html">TEC:LMupont2</a> - Mortroux Pont 13:24</li><li><a href="stop-TEC_LMuvill2.html">TEC:LMuvill2</a> - Mortroux Chemin du Voué 13:26</li><li><a href="stop-TEC_LSDheus2.html">TEC:LSDheus2</a> - Saint-Andre Heusières 13:27</li><li><a href="stop-TEC_LSDvill2.html">TEC:LSDvill2</a> - Saint-Andre Chemin du Village 13:29</li><li><a href="stop-TEC_LSDgris2.html">TEC:LSDgris2</a> - Saint-Andre Grise Pierre 13:30</li><li><a href="stop-TEC_LJuhaie2.html">TEC:LJuhaie2</a> - Julemont La Haie 13:31</li><li><a href="stop-TEC_LJueg--2.html">TEC:LJueg--2</a> - Julemont Eglise 13:32</li><li><a href="stop-TEC_LMolone2.html">TEC:LMolone2</a> - Mortier Chemin de Loneux 13:33</li><li><a href="stop-TEC_LMovich2.html">TEC:LMovich2</a> - Mortier Vieux Chemin 13:34</li><li><a href="stop-TEC_LMoelno2.html">TEC:LMoelno2</a> - Mortier El Nooz 13:34</li><li><a href="stop-TEC_LMomonc2.html">TEC:LMomonc2</a> - Mortier Monceau 13:35</li><li><a href="stop-TEC_LMovieu2.html">TEC:LMovieu2</a> - Mortier Vieux Mayeur 13:36</li><li><a href="stop-TEC_LMoeg--2.html">TEC:LMoeg--2</a> - Mortier Eglise 13:36</li><li><a href="stop-TEC_LMotrem2.html">TEC:LMotrem2</a> - Mortier Route de Trembleur 13:37</li><li><a href="stop-TEC_LBLplas2.html">TEC:LBLplas2</a> - Blegny Usine Plastic Armé 13:40</li><li><a href="stop-TEC_LBLplac2.html">TEC:LBLplac2</a> - Blegny Place 13:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4535.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

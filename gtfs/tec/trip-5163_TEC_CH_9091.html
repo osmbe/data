@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - GILLY CIMETIERE - LOVERVAL I.M.T.R. - 5163:TEC:CH:9091</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GILLY CIMETIERE - LOVERVAL I.M.T.R. - 5163:TEC:CH:9091</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cgygazo7.html">TEC:Cgygazo7</a> - Gilly Gazomètre (Ch. de Montignies) 06:16</li><li><a href="stop-TEC_Cgyaudu1.html">TEC:Cgyaudu1</a> - Gilly Auduins 06:18</li><li><a href="stop-TEC_Cgystjo3.html">TEC:Cgystjo3</a> - Gilly Saint-Joseph 06:19</li><li><a href="stop-TEC_Cgyrjau1.html">TEC:Cgyrjau1</a> - Gilly Rue J. Jaurès 06:19</li><li><a href="stop-TEC_Cgycorv2.html">TEC:Cgycorv2</a> - Gilly Corvées 06:20</li><li><a href="stop-TEC_Ccucorb3.html">TEC:Ccucorb3</a> - Chatelineau Corbeau 06:21</li><li><a href="stop-TEC_Ccucora1.html">TEC:Ccucora1</a> - Chatelineau Cora 06:22</li><li><a href="stop-TEC_Cmtmoul1.html">TEC:Cmtmoul1</a> - Montignies-sur-Sambre Rue du Moulin 06:23</li><li><a href="stop-TEC_Cmtduch2.html">TEC:Cmtduch2</a> - Montignies-sur-Sambre Duchère 06:24</li><li><a href="stop-TEC_Cmtmath2.html">TEC:Cmtmath2</a> - Montignies-sur-Sambre Marie-Thérèse 06:25</li><li><a href="stop-TEC_Cmtstth2.html">TEC:Cmtstth2</a> - Montignies-sur-Sambre Sainte-Thérèse 06:25</li><li><a href="stop-TEC_Cmtfabi2.html">TEC:Cmtfabi2</a> - Montignies-sur-Sambre Reine Fabiola 06:26</li><li><a href="stop-TEC_Cmtplac5.html">TEC:Cmtplac5</a> - Montignies-sur-Sambre Place 06:28</li><li><a href="stop-TEC_Cmtpblo1.html">TEC:Cmtpblo1</a> - Montignies-sur-Sambre Place du Blot 06:28</li><li><a href="stop-TEC_Ccisolv1.html">TEC:Ccisolv1</a> - Couillet Solvay 06:30</li><li><a href="stop-TEC_Ccipier2.html">TEC:Ccipier2</a> - Couillet Rue des Pierres 06:31</li><li><a href="stop-TEC_Ccicent2.html">TEC:Ccicent2</a> - Couillet Centre 06:33</li><li><a href="stop-TEC_Ccivill2.html">TEC:Ccivill2</a> - Couillet Rue de Villers 06:34</li><li><a href="stop-TEC_Ccircar2.html">TEC:Ccircar2</a> - Couillet Rue des Carrières 06:35</li><li><a href="stop-TEC_Cciethi1.html">TEC:Cciethi1</a> - Couillet Parentville ULB 06:35</li><li><a href="stop-TEC_Cci22ao1.html">TEC:Cci22ao1</a> - Couillet 22 Août 06:36</li><li><a href="stop-TEC_Ccifies1.html">TEC:Ccifies1</a> - Couillet Fiestaux 06:37</li><li><a href="stop-TEC_Clvimtr3.html">TEC:Clvimtr3</a> - Loverval IMTR 06:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./861.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

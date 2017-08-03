@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHARLEROI- BEAUMONT-CHIMAY - 5163:TEC:CH:8302</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHARLEROI- BEAUMONT-CHIMAY - 5163:TEC:CH:8302</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Csyplac2.html">TEC:Csyplac2</a> - Sivry Place 07:08</li><li><a href="stop-TEC_Csychap3.html">TEC:Csychap3</a> - Sivry Chapelle 07:09</li><li><a href="stop-TEC_Csycant1.html">TEC:Csycant1</a> - Sivry Cantonnier 07:11</li><li><a href="stop-TEC_Csygare3.html">TEC:Csygare3</a> - Sivry Gare 07:13</li><li><a href="stop-TEC_Csurela2.html">TEC:Csurela2</a> - Sautin Café Relais 07:15</li><li><a href="stop-TEC_Crcfdom2.html">TEC:Crcfdom2</a> - Rance Forêt Domaniale 07:16</li><li><a href="stop-TEC_Crcverr2.html">TEC:Crcverr2</a> - Rance Verrerie 07:18</li><li><a href="stop-TEC_Crcegli2.html">TEC:Crcegli2</a> - Rance Eglise 07:19</li><li><a href="stop-TEC_Crcpcom2.html">TEC:Crcpcom2</a> - Rance Place Communale 07:19</li><li><a href="stop-TEC_Crcplac4.html">TEC:Crcplac4</a> - Rance Place François 07:20</li><li><a href="stop-TEC_Crcgare2.html">TEC:Crcgare2</a> - Rance Gare 07:22</li><li><a href="stop-TEC_Crcrgar2.html">TEC:Crcrgar2</a> - Rance Route Gare 07:22</li><li><a href="stop-TEC_Crcgmah2.html">TEC:Crcgmah2</a> - Rance Garage Mahy 07:23</li><li><a href="stop-TEC_Crccarr2.html">TEC:Crccarr2</a> - Rance Carrières 07:24</li><li><a href="stop-TEC_Cfcmass2.html">TEC:Cfcmass2</a> - Froidchapelle Massut 07:25</li><li><a href="stop-TEC_Cfcgar1.html">TEC:Cfcgar1</a> - Froidchapelle Gare 07:27</li><li><a href="stop-TEC_Cfcpcov2.html">TEC:Cfcpcov2</a> - Froidchapelle Pool Cover 07:28</li><li><a href="stop-TEC_Cfcrdpr2.html">TEC:Cfcrdpr2</a> - Froidchapelle Rue des Prisonniers 07:29</li><li><a href="stop-TEC_Cfcplac4.html">TEC:Cfcplac4</a> - Froidchapelle Place 07:30</li><li><a href="stop-TEC_Cfcleco2.html">TEC:Cfcleco2</a> - Froidchapelle Le Coq 07:31</li><li><a href="stop-TEC_Cfcgrat2.html">TEC:Cfcgrat2</a> - Froidchapelle La Grattière 07:32</li><li><a href="stop-TEC_Cfcstan2.html">TEC:Cfcstan2</a> - Froidchapelle Ferme Saint-Antoine 07:33</li><li><a href="stop-TEC_Cfcchas2.html">TEC:Cfcchas2</a> - Froidchapelle Le Chasseur 07:34</li><li><a href="stop-TEC_Cvlstan2.html">TEC:Cvlstan2</a> - Virelles Ferme Sainte-Anne 07:36</li><li><a href="stop-TEC_Cvllerm2.html">TEC:Cvllerm2</a> - Virelles Ferme Lerminiaux 07:37</li><li><a href="stop-TEC_Cvlgrta2.html">TEC:Cvlgrta2</a> - Virelles Ferme Grande Taille 07:37</li><li><a href="stop-TEC_Cvlbvir2.html">TEC:Cvlbvir2</a> - Virelles Bois de Virelles 07:38</li><li><a href="stop-TEC_Cvlpeau2.html">TEC:Cvlpeau2</a> - Virelles La Peau 07:40</li><li><a href="stop-TEC_Cvlcen2.html">TEC:Cvlcen2</a> - Virelles Centre 07:40</li><li><a href="stop-TEC_Cvlcalv2.html">TEC:Cvlcalv2</a> - Virelles Calvaire 07:41</li><li><a href="stop-TEC_Ccypetv2.html">TEC:Ccypetv2</a> - Chimay Petit Virelles 07:43</li><li><a href="stop-TEC_Ccycoll2.html">TEC:Ccycoll2</a> - Chimay Collège 07:44</li><li><a href="stop-TEC_Ccyga1.html">TEC:Ccyga1</a> - Chimay Gare Quai 01 07:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1017.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

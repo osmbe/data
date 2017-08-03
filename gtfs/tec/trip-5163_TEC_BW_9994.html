@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Proxibus Grez-Doiceau - 5163:TEC:BW:9994</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Proxibus Grez-Doiceau - 5163:TEC:BW:9994</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bnetrec2.html">TEC:Bnetrec2</a> - Nethen Rue de l'Ecole 07:14</li><li><a href="stop-TEC_Bnettou1.html">TEC:Bnettou1</a> - Nethen Toussaint 07:15</li><li><a href="stop-TEC_Bnettir1.html">TEC:Bnettir1</a> - Nethen Tirlemont 07:16</li><li><a href="stop-TEC_Bnetvan1.html">TEC:Bnetvan1</a> - Nethen Vandervelde 07:17</li><li><a href="stop-TEC_Bnetcor1.html">TEC:Bnetcor1</a> - Nethen Rue de la Cortaie 07:18</li><li><a href="stop-TEC_Bnetrtb2.html">TEC:Bnetrtb2</a> - Nethen Rue Tienne Binnard 07:18</li><li><a href="stop-TEC_Bnetrbr2.html">TEC:Bnetrbr2</a> - Nethen Rue des Bruyères 07:19</li><li><a href="stop-TEC_Bnetrec2.html">TEC:Bnetrec2</a> - Nethen Rue de l'Ecole 07:20</li><li><a href="stop-TEC_Bnetegl4.html">TEC:Bnetegl4</a> - Nethen Eglise 07:21</li><li><a href="stop-TEC_Bpecsta2.html">TEC:Bpecsta2</a> - Pecrot Station 07:34</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./718.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

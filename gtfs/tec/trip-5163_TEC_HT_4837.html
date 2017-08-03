@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tournai City : Tournai - Chercq - Vaulx - 5163:TEC:HT:4837</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tournai City : Tournai - Chercq - Vaulx - 5163:TEC:HT:4837</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4ty305d.html">TEC:H4ty305d</a> - Tournai SNCB 12:25</li><li><a href="stop-TEC_H4ty295a.html">TEC:H4ty295a</a> - Tournai Boulevard des Nerviens 12:26</li><li><a href="stop-TEC_H4ty290a.html">TEC:H4ty290a</a> - Tournai Dépôt 12:28</li><li><a href="stop-TEC_H4ty330b.html">TEC:H4ty330b</a> - Tournai Rond Point 12:29</li><li><a href="stop-TEC_H4ty302b.html">TEC:H4ty302b</a> - Tournai Floc à Brebis 12:29</li><li><a href="stop-TEC_H4ty264b.html">TEC:H4ty264b</a> - Tournai 4 Coins Saint-Jacques 12:30</li><li><a href="stop-TEC_H4ty320b.html">TEC:H4ty320b</a> - Tournai Rue Perdue 12:32</li><li><a href="stop-TEC_H4ty306a.html">TEC:H4ty306a</a> - Tournai Grand-Place 12:33</li><li><a href="stop-TEC_H4ty274a.html">TEC:H4ty274a</a> - Tournai Beffroi 12:35</li><li><a href="stop-TEC_H4ty291a.html">TEC:H4ty291a</a> - Tournai Dôme 12:36</li><li><a href="stop-TEC_H4ty351b.html">TEC:H4ty351b</a> - Tournai Saint-Brice 12:37</li><li><a href="stop-TEC_H4ty296b.html">TEC:H4ty296b</a> - Tournai Ecole Industrielle 12:38</li><li><a href="stop-TEC_H4ty314c.html">TEC:H4ty314c</a> - Tournai Marvis 12:39</li><li><a href="stop-TEC_H4ty280a.html">TEC:H4ty280a</a> - Tournai Chaussée de Bruxelles 12:40</li><li><a href="stop-TEC_H4ty265a.html">TEC:H4ty265a</a> - Tournai 7 Fontaines 12:41</li><li><a href="stop-TEC_H4ty355a.html">TEC:H4ty355a</a> - Tournai Bastions Quai 2 12:42</li><li><a href="stop-TEC_H4ty353c.html">TEC:H4ty353c</a> - Tournai Rue de la Lys (IESPP) 12:43</li><li><a href="stop-TEC_H4ty303a.html">TEC:H4ty303a</a> - Tournai Galterie Saint-Jean 12:44</li><li><a href="stop-TEC_H4ty293b.html">TEC:H4ty293b</a> - Tournai Dorcas 12:45</li><li><a href="stop-TEC_H4ty324a.html">TEC:H4ty324a</a> - Tournai Prison 12:46</li><li><a href="stop-TEC_H4ty318a.html">TEC:H4ty318a</a> - Tournai Pédiatrie 12:47</li><li><a href="stop-TEC_H4ty321b.html">TEC:H4ty321b</a> - Tournai Polyclinique 12:48</li><li><a href="stop-TEC_H4ch115b.html">TEC:H4ch115b</a> - Chercq Californie 12:49</li><li><a href="stop-TEC_H4ch116b.html">TEC:H4ch116b</a> - Chercq Cité 12:50</li><li><a href="stop-TEC_H4ch119b.html">TEC:H4ch119b</a> - Chercq Place 12:51</li><li><a href="stop-TEC_H4ch118b.html">TEC:H4ch118b</a> - Chercq Monument 12:52</li><li><a href="stop-TEC_H4ch120c.html">TEC:H4ch120c</a> - Chercq Pont de Vaulx 12:52</li><li><a href="stop-TEC_H4vx364d.html">TEC:H4vx364d</a> - Vaulx Eglise 12:53</li><li><a href="stop-TEC_H4vx363a.html">TEC:H4vx363a</a> - Vaulx Ecoles 12:54</li><li><a href="stop-TEC_H4vx362a.html">TEC:H4vx362a</a> - Vaulx Brasserie 12:54</li><li><a href="stop-TEC_H4vx365b.html">TEC:H4vx365b</a> - Vaulx Résidence Bonne Rencontre 12:55</li><li><a href="stop-TEC_H4vx361b.html">TEC:H4vx361b</a> - Vaulx Avenue des Merisiers 12:55</li><li><a href="stop-TEC_H4vx366b.html">TEC:H4vx366b</a> - Vaulx Vieux Chemin de Mons 12:56</li><li><a href="stop-TEC_H4vx360a.html">TEC:H4vx360a</a> - Vaulx Ancienne Gare 12:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1379.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

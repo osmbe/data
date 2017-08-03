@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Stavelot - Malmedy - Bütgenbach via Chôdes - Sourb - 5163:TEC:LV:42892</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Stavelot - Malmedy - Bütgenbach via Chôdes - Sourb - 5163:TEC:LV:42892</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LSogare2.html">TEC:LSogare2</a> - Sourbrodt Gare 09:03</li><li><a href="stop-TEC_LSokrin2.html">TEC:LSokrin2</a> - Sourbrodt Maison Krings 09:04</li><li><a href="stop-TEC_LSoeg--2.html">TEC:LSoeg--2</a> - Sourbrodt Eglise 09:05</li><li><a href="stop-TEC_LSoboul2.html">TEC:LSoboul2</a> - Sourbrodt Boulangerie Toussaint 09:05</li><li><a href="stop-TEC_LSomonu2.html">TEC:LSomonu2</a> - Sourbrodt Monument Pietkain 09:06</li><li><a href="stop-TEC_LSorobe2.html">TEC:LSorobe2</a> - Sourbrodt Route de Robertville 09:07</li><li><a href="stop-TEC_LROhaie2.html">TEC:LROhaie2</a> - Roberville Haies de la Croix 09:07</li><li><a href="stop-TEC_LROandr2.html">TEC:LROandr2</a> - Robertville Andrifosse 09:08</li><li><a href="stop-TEC_LROchap2.html">TEC:LROchap2</a> - Robertville Chapelle 09:10</li><li><a href="stop-TEC_LROcent2.html">TEC:LROcent2</a> - Robertville Centre 09:11</li><li><a href="stop-TEC_LROrtba1.html">TEC:LROrtba1</a> - Robertville Route du Barrage 09:12</li><li><a href="stop-TEC_LOV62--1.html">TEC:LOV62--1</a> - Ovifat Maison 62 09:13</li><li><a href="stop-TEC_LOV48--1.html">TEC:LOV48--1</a> - Ovifat Maison 48 09:13</li><li><a href="stop-TEC_LOVchen1.html">TEC:LOVchen1</a> - Ovifat Route de Cheneux 09:14</li><li><a href="stop-TEC_LOVeg--1.html">TEC:LOVeg--1</a> - Ovifat Eglise 09:15</li><li><a href="stop-TEC_LOVchen2.html">TEC:LOVchen2</a> - Ovifat Route de Cheneux 09:16</li><li><a href="stop-TEC_LOV48--2.html">TEC:LOV48--2</a> - Ovifat Maison 48 09:16</li><li><a href="stop-TEC_LOV62--2.html">TEC:LOV62--2</a> - Ovifat Maison 62 09:17</li><li><a href="stop-TEC_LROrtba2.html">TEC:LROrtba2</a> - Robertville Route du Barrage 09:17</li><li><a href="stop-TEC_LRObarr2.html">TEC:LRObarr2</a> - Robertville Barrage 09:19</li><li><a href="stop-TEC_LWLeg--2.html">TEC:LWLeg--2</a> - Walk Eglise 09:20</li><li><a href="stop-TEC_LWLtamb2.html">TEC:LWLtamb2</a> - Walk Rue du Tambourin 09:21</li><li><a href="stop-TEC_LWLhagi2.html">TEC:LWLhagi2</a> - Walk Hagister 09:23</li><li><a href="stop-TEC_LGDgdou2.html">TEC:LGDgdou2</a> - Doumont G'doumont 09:25</li><li><a href="stop-TEC_LCdchod2.html">TEC:LCdchod2</a> - Chodes Chôdes 09:27</li><li><a href="stop-TEC_LMAchod2.html">TEC:LMAchod2</a> - Malmedy Route de Chôdes 7a 09:28</li><li><a href="stop-TEC_LMAbruy2.html">TEC:LMAbruy2</a> - Malmedy Hé del Bruyères 09:30</li><li><a href="stop-TEC_LMAptne2.html">TEC:LMAptne2</a> - Malmedy Pont Neuf 09:31</li><li><a href="stop-TEC_LMAgare0.html">TEC:LMAgare0</a> - Malmedy gare 09:32</li><li><a href="stop-TEC_LMApl--2.html">TEC:LMApl--2</a> - Malmedy Place Albert 1er 09:33</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5388.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

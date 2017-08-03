@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Arlon - Ligne urbaine Semois - 5163:TEC:LU:3469</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Arlon - Ligne urbaine Semois - 5163:TEC:LU:3469</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X601arb.html">TEC:X601arb</a> - Arlon Rond-Point du Knappchen 10:16</li><li><a href="stop-TEC_X601asb.html">TEC:X601asb</a> - Arlon Liedel 10:18</li><li><a href="stop-TEC_X601atb.html">TEC:X601atb</a> - Arlon Av de Longwy - Clairefontaine 10:20</li><li><a href="stop-TEC_X601aua.html">TEC:X601aua</a> - Arlon Clinique 10:20</li><li><a href="stop-TEC_X601baa.html">TEC:X601baa</a> - Arlon Avenue Tesch 10:22</li><li><a href="stop-TEC_X601apa.html">TEC:X601apa</a> - Arlon Gare Urbain 10:24</li><li><a href="stop-TEC_X601bca.html">TEC:X601bca</a> - Arlon Avenue Nothomb 10:26</li><li><a href="stop-TEC_X601bda.html">TEC:X601bda</a> - Arlon Xxv Août 10:27</li><li><a href="stop-TEC_X601bcb.html">TEC:X601bcb</a> - Arlon Avenue Nothomb 10:28</li><li><a href="stop-TEC_X601bpb.html">TEC:X601bpb</a> - Arlon Place de l'Yser 10:29</li><li><a href="stop-TEC_X601dda.html">TEC:X601dda</a> - Arlon Rue Halbardier 27 10:30</li><li><a href="stop-TEC_X601dea.html">TEC:X601dea</a> - Arlon Rue Halbardier 65 10:31</li><li><a href="stop-TEC_X601dfa.html">TEC:X601dfa</a> - Arlon Ville-en-Pré 10:32</li><li><a href="stop-TEC_X601bra.html">TEC:X601bra</a> - Arlon Rue de Sesselich 10:32</li><li><a href="stop-TEC_X601bka.html">TEC:X601bka</a> - Arlon Athénée 10:33</li><li><a href="stop-TEC_X601aza.html">TEC:X601aza</a> - Arlon Espace Semois 10:35</li><li><a href="stop-TEC_X601ayb.html">TEC:X601ayb</a> - Arlon ISI 10:36</li><li><a href="stop-TEC_X601axb.html">TEC:X601axb</a> - Arlon Avenue Patton 10:37</li><li><a href="stop-TEC_X601awa.html">TEC:X601awa</a> - Arlon Av de Longwy - Patton 10:37</li><li><a href="stop-TEC_X601aua.html">TEC:X601aua</a> - Arlon Clinique 10:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2500.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

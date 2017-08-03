@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Momalle - Waremme - 5163:TEC:LV:2365</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Momalle - Waremme - 5163:TEC:LV:2365</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LWAgare_.html">TEC:LWAgare*</a> - Waremme Gare 05:53</li><li><a href="stop-TEC_LWAlong5.html">TEC:LWAlong5</a> - Waremme Place Longchamps 05:55</li><li><a href="stop-TEC_LWAloui1.html">TEC:LWAloui1</a> - Waremme Collège St-Louis 05:55</li><li><a href="stop-TEC_LWArege1.html">TEC:LWArege1</a> - Waremme Avenue du Prince Régent 05:56</li><li><a href="stop-TEC_LWAfabr1.html">TEC:LWAfabr1</a> - Waremme Rue des Fabriques 05:57</li><li><a href="stop-TEC_LWAathe1.html">TEC:LWAathe1</a> - Waremme Athénée 05:58</li><li><a href="stop-TEC_LWAvand1.html">TEC:LWAvand1</a> - Waremme Avenue E. Vandervelde 05:58</li><li><a href="stop-TEC_LWAlieg1.html">TEC:LWAlieg1</a> - Waremme Porte de Liège 05:58</li><li><a href="stop-TEC_LWAor--2.html">TEC:LWAor--2</a> - Waremme Rue Fond d'Or 05:59</li><li><a href="stop-TEC_LWAclos2.html">TEC:LWAclos2</a> - Waremme Clos de Hesbaye 05:59</li><li><a href="stop-TEC_LWAeloi2.html">TEC:LWAeloi2</a> - Waremme Chapelle St-Eloi 06:00</li><li><a href="stop-TEC_LBKmoes2.html">TEC:LBKmoes2</a> - Bleret Ferme Moës 06:01</li><li><a href="stop-TEC_LBKmare2.html">TEC:LBKmare2</a> - Bleret Rue L. Maréchal 06:03</li><li><a href="stop-TEC_LPUlecl2.html">TEC:LPUlecl2</a> - Pousset Ferme Leclercq 06:05</li><li><a href="stop-TEC_LPUalbe2.html">TEC:LPUalbe2</a> - Pousset Place du Roi Albert 06:06</li><li><a href="stop-TEC_LPUmer-2.html">TEC:LPUmer-2</a> - Pousset Rue de la Mer 06:06</li><li><a href="stop-TEC_LPUmang2.html">TEC:LPUmang2</a> - Pousset Rue Mangon 06:07</li><li><a href="stop-TEC_LPUchpl2.html">TEC:LPUchpl2</a> - Pousset Chapelle 06:07</li><li><a href="stop-TEC_LRepous2.html">TEC:LRepous2</a> - Remicourt Rue de Pousset 06:08</li><li><a href="stop-TEC_LRemorr2.html">TEC:LRemorr2</a> - Remicourt Meubles Morren 06:09</li><li><a href="stop-TEC_LLmwaut1.html">TEC:LLmwaut1</a> - Lamine Rue J. Wauters 06:10</li><li><a href="stop-TEC_LLmcarr1.html">TEC:LLmcarr1</a> - Lamine Carrefour 06:11</li><li><a href="stop-TEC_LLmetat1.html">TEC:LLmetat1</a> - Lamine Rue de l'Etat 84 06:12</li><li><a href="stop-TEC_LHDpota2.html">TEC:LHDpota2</a> - Hodeige Potale 06:12</li><li><a href="stop-TEC_LHDmc--2.html">TEC:LHDmc--2</a> - Hodeige Maison Communale 06:13</li><li><a href="stop-TEC_LHDlibi2.html">TEC:LHDlibi2</a> - Hodeige Magasin Libioulle 06:14</li><li><a href="stop-TEC_LHDchar4.html">TEC:LHDchar4</a> - Hodeige rue A. Charlier 06:14</li><li><a href="stop-TEC_LMOpiss2.html">TEC:LMOpiss2</a> - Momalle Carrefour Pissoule 06:17</li><li><a href="stop-TEC_LMOlens2.html">TEC:LMOlens2</a> - Momalle Rue de Lens 06:17</li><li><a href="stop-TEC_LMOeg--2.html">TEC:LMOeg--2</a> - Momalle Eglise 06:18</li><li><a href="stop-TEC_LMOelva2.html">TEC:LMOelva2</a> - Momalle Rue El'Vau 06:19</li><li><a href="stop-TEC_LMOcorn2.html">TEC:LMOcorn2</a> - Momalle Rue Cornet 06:19</li><li><a href="stop-TEC_LMOchpl2.html">TEC:LMOchpl2</a> - Momalle Chapelle 06:20</li><li><a href="stop-TEC_LMOfrel2.html">TEC:LMOfrel2</a> - Momalle Route de Freloux 06:20</li><li><a href="stop-TEC_LMObouh1.html">TEC:LMObouh1</a> - Momalle Le Bouhet 06:22</li><li><a href="stop-TEC_LKmcabi2.html">TEC:LKmcabi2</a> - Kemexhe Cabine électrique 06:24</li><li><a href="stop-TEC_LKmmelo2.html">TEC:LKmmelo2</a> - Kemexhe Rue Léon Melon 06:25</li><li><a href="stop-TEC_LFOchab2.html">TEC:LFOchab2</a> - Fooz Ferme Chabot 06:29</li><li><a href="stop-TEC_LFOcomb4.html">TEC:LFOcomb4</a> - Fooz Rue des Combattants 06:30</li><li><a href="stop-TEC_LFOmc--2.html">TEC:LFOmc--2</a> - Fooz Maison Communale 06:30</li><li><a href="stop-TEC_LFOchpl2.html">TEC:LFOchpl2</a> - Fooz Chapelle 06:31</li><li><a href="stop-TEC_LHGleje2.html">TEC:LHGleje2</a> - Hognoul Ferme Lejeune 06:32</li><li><a href="stop-TEC_LAWchpl2.html">TEC:LAWchpl2</a> - Awans Chapelle 06:34</li><li><a href="stop-TEC_LAWdefu4.html">TEC:LAWdefu4</a> - Awans rue A. Defuisseau 06:35</li><li><a href="stop-TEC_LAWmc--2.html">TEC:LAWmc--2</a> - Awans Maison Communale 06:36</li><li><a href="stop-TEC_LAWvill2.html">TEC:LAWvill2</a> - Awans Place de la Ville 06:37</li><li><a href="stop-TEC_LAWlonc2.html">TEC:LAWlonc2</a> - Awans rue de Loncin 58 06:37</li><li><a href="stop-TEC_LAWcorn2.html">TEC:LAWcorn2</a> - Awans Rue F. Cornet 06:38</li><li><a href="stop-TEC_LAWxhen2.html">TEC:LAWxhen2</a> - Awans rue de Xhendremael 06:39</li><li><a href="stop-TEC_LAWhein2.html">TEC:LAWhein2</a> - Awans Rue N. Heine 06:40</li><li><a href="stop-TEC_LAWkone2.html">TEC:LAWkone2</a> - Awans Köne 06:41</li><li><a href="stop-TEC_Llofort2.html">TEC:Llofort2</a> - Loncin Fort 06:42</li><li><a href="stop-TEC_Lloauto2.html">TEC:Lloauto2</a> - Loncin Autoroute 06:43</li><li><a href="stop-TEC_Lloretr2.html">TEC:Lloretr2</a> - Loncin Maison de Retraite 06:44</li><li><a href="stop-TEC_Llojeme2.html">TEC:Llojeme2</a> - Loncin Rue de Jemeppe 06:45</li><li><a href="stop-TEC_Lanstat2.html">TEC:Lanstat2</a> - Ans rue de la Station 06:46</li><li><a href="stop-TEC_Lanplat2.html">TEC:Lanplat2</a> - Ans Eglise du Plateau 06:49</li><li><a href="stop-TEC_Lanfran4.html">TEC:Lanfran4</a> - Ans Rue des Français 06:51</li><li><a href="stop-TEC_Lannico2.html">TEC:Lannico2</a> - Ans Place Nicolaï 06:53</li><li><a href="stop-TEC_Llgchau2.html">TEC:Llgchau2</a> - Liege Basse Chaussée 06:55</li><li><a href="stop-TEC_Llgbaro4.html">TEC:Llgbaro4</a> - Liege Rue H. Baron 06:56</li><li><a href="stop-TEC_Llgfont2.html">TEC:Llgfont2</a> - Liege Fontainebleau 06:57</li><li><a href="stop-TEC_Llghoch2.html">TEC:Llghoch2</a> - Liege Hocheporte 06:58</li><li><a href="stop-TEC_Llgcadr4.html">TEC:Llgcadr4</a> - Liege Cadran 06:59</li><li><a href="stop-TEC_LlgLAMB3.html">TEC:LlgLAMB3</a> - Liege Place St-Lambert 07:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4256.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

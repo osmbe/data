@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - ANDENNE-SEILLES - CINEY - 5163:TEC:NA:5511</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: ANDENNE-SEILLES - CINEY - 5163:TEC:NA:5511</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N506bqb.html">TEC:N506bqb</a> - Seilles Gare des bus 10:10</li><li><a href="stop-TEC_N506bna.html">TEC:N506bna</a> - Seilles Rue du Vigna 10:11</li><li><a href="stop-TEC_N506bhb.html">TEC:N506bhb</a> - Seilles Institut technique 10:13</li><li><a href="stop-TEC_N506bkb.html">TEC:N506bkb</a> - Seilles Rue Hendschel 10:14</li><li><a href="stop-TEC_N506bja.html">TEC:N506bja</a> - Seilles Rue Godfrind 10:15</li><li><a href="stop-TEC_N506bma.html">TEC:N506bma</a> - Seilles Rue de la Station 10:17</li><li><a href="stop-TEC_N506bac.html">TEC:N506bac</a> - Andenne Ville - 4 coins 10:19</li><li><a href="stop-TEC_N506ata.html">TEC:N506ata</a> - Andenne Place des Tilleuls 10:20</li><li><a href="stop-TEC_N506arb.html">TEC:N506arb</a> - Andenne Palais de Justice 10:21</li><li><a href="stop-TEC_N506alb.html">TEC:N506alb</a> - Andenne Chaussée de Ciney 10:22</li><li><a href="stop-TEC_N506agb.html">TEC:N506agb</a> - Andenne Haute-bise 10:23</li><li><a href="stop-TEC_N506ahb.html">TEC:N506ahb</a> - Andenne Pergola 10:24</li><li><a href="stop-TEC_N506asb.html">TEC:N506asb</a> - Andenne Peu d'eau 10:24</li><li><a href="stop-TEC_N506ajb.html">TEC:N506ajb</a> - Andenne Bois des Dames 10:25</li><li><a href="stop-TEC_N506afb.html">TEC:N506afb</a> - Andenne Ecole de Peu d'eau 10:26</li><li><a href="stop-TEC_N556adb.html">TEC:N556adb</a> - Coutisse Sainte-Begge 10:27</li><li><a href="stop-TEC_N556afb.html">TEC:N556afb</a> - Coutisse Pelu 10:29</li><li><a href="stop-TEC_N556aeb.html">TEC:N556aeb</a> - Coutisse Nalamont 10:30</li><li><a href="stop-TEC_N557adb.html">TEC:N557adb</a> - Ohey Taille-Guéry 10:31</li><li><a href="stop-TEC_N557agb.html">TEC:N557agb</a> - Ohey Bois d'Ohey 10:32</li><li><a href="stop-TEC_N557afa.html">TEC:N557afa</a> - Ohey Try 10:33</li><li><a href="stop-TEC_N557ahb.html">TEC:N557ahb</a> - Ohey Eglise 10:33</li><li><a href="stop-TEC_N557aab.html">TEC:N557aab</a> - Ohey Route de Haillot 10:34</li><li><a href="stop-TEC_N557aca.html">TEC:N557aca</a> - Ohey Dépôt 10:36</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5926.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

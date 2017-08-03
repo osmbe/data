@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Esneux - Tavier - Warzée - 5163:TEC:LV:40758</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Esneux - Tavier - Warzée - 5163:TEC:LV:40758</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LESecco1.html">TEC:LESecco1</a> - Esneux Ecole communale 12:48</li><li><a href="stop-TEC_LESathe1.html">TEC:LESathe1</a> - Esneux Athénée 12:49</li><li><a href="stop-TEC_LESpont3.html">TEC:LESpont3</a> - Esneux Pont d'Esneux 12:50</li><li><a href="stop-TEC_LESmont1.html">TEC:LESmont1</a> - Esneux Avenue Montefiore 12:50</li><li><a href="stop-TEC_LESfoot1.html">TEC:LESfoot1</a> - Esneux Terrain de Football 12:51</li><li><a href="stop-TEC_LEScham1.html">TEC:LEScham1</a> - Esneux Champay 12:52</li><li><a href="stop-TEC_LEScarr1.html">TEC:LEScarr1</a> - Esneux Carrière 12:53</li><li><a href="stop-TEC_LESoneu3.html">TEC:LESoneu3</a> - Esneux Ry d'Oneux 12:54</li><li><a href="stop-TEC_LVtchai1.html">TEC:LVtchai1</a> - Villers-Aux-Tours Fond Chainay 12:59</li><li><a href="stop-TEC_LVtespo1.html">TEC:LVtespo1</a> - Villers-Aux-Tours Salle l'Espoir 12:59</li><li><a href="stop-TEC_LVthest2.html">TEC:LVthest2</a> - Villers-Aux-Tours Route de Hestreux 13:00</li><li><a href="stop-TEC_LVttarg2.html">TEC:LVttarg2</a> - Villers-Aux-Tours Chemin de Targnon 13:01</li><li><a href="stop-TEC_LLOhest2.html">TEC:LLOhest2</a> - Limont Hestreux 13:02</li><li><a href="stop-TEC_LLOspin2.html">TEC:LLOspin2</a> - Limont Spineux 13:04</li><li><a href="stop-TEC_LLOcreu2.html">TEC:LLOcreu2</a> - Limont Rue Del Creu 13:05</li><li><a href="stop-TEC_LTatult2.html">TEC:LTatult2</a> - Tavier Tultay 13:06</li><li><a href="stop-TEC_LTaeg--1.html">TEC:LTaeg--1</a> - Tavier Eglise 13:08</li><li><a href="stop-TEC_LTaouch1.html">TEC:LTaouch1</a> - Tavier Houchenée 13:09</li><li><a href="stop-TEC_LTamag1.html">TEC:LTamag1</a> - Tavier rue de la Magrée 13:09</li><li><a href="stop-TEC_LTamoul1.html">TEC:LTamoul1</a> - Tavier Moulin 13:10</li><li><a href="stop-TEC_LTaxhos1.html">TEC:LTaxhos1</a> - Tavier Xhos 13:11</li><li><a href="stop-TEC_LElverl1.html">TEC:LElverl1</a> - Ellemelle Rue Verlée 34 13:13</li><li><a href="stop-TEC_LElcent1.html">TEC:LElcent1</a> - Ellemelle Centre 13:13</li><li><a href="stop-TEC_LElgerd3.html">TEC:LElgerd3</a> - Ellemelle Garage Gerday 13:13</li><li><a href="stop-TEC_LTaabba1.html">TEC:LTaabba1</a> - Tavier A l'Abbaye 13:15</li><li><a href="stop-TEC_LHdkenn1.html">TEC:LHdkenn1</a> - Hody Rond-point Kennedy 13:18</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5553.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

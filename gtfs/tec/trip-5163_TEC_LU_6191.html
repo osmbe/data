@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Lavaux - Assenois - 5163:TEC:LU:6191</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Lavaux - Assenois - 5163:TEC:LU:6191</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X672apa.html">TEC:X672apa</a> - Assenois Ecole (Léglise) 12:06</li><li><a href="stop-TEC_X672aeb.html">TEC:X672aeb</a> - Assenois Eglise (Léglise) 12:06</li><li><a href="stop-TEC_X669agd.html">TEC:X669agd</a> - Assenois Chapelle (Léglise) 12:07</li><li><a href="stop-TEC_X672aia.html">TEC:X672aia</a> - Habaru Route de Chevaudos 12:08</li><li><a href="stop-TEC_X672aja.html">TEC:X672aja</a> - Habaru Centre 12:08</li><li><a href="stop-TEC_X672agb.html">TEC:X672agb</a> - Bernimont Rue du Fet (Léglise) 12:09</li><li><a href="stop-TEC_X672aca.html">TEC:X672aca</a> - Cousteumont Centre 12:10</li><li><a href="stop-TEC_X672ala.html">TEC:X672ala</a> - Cousteumont Les Wés 12:10</li><li><a href="stop-TEC_X672aob.html">TEC:X672aob</a> - Assenois Rue du Rond Pré (Léglise) 12:12</li><li><a href="stop-TEC_X672adb.html">TEC:X672adb</a> - Assenois Route de Cousteumont (Léglise) 12:12</li><li><a href="stop-TEC_X672apa.html">TEC:X672apa</a> - Assenois Ecole (Léglise) 12:13</li><li><a href="stop-TEC_X672aeb.html">TEC:X672aeb</a> - Assenois Eglise (Léglise) 12:13</li><li><a href="stop-TEC_X669agb.html">TEC:X669agb</a> - Assenois Chapelle (Léglise) 12:14</li><li><a href="stop-TEC_X669afa.html">TEC:X669afa</a> - Chevaudos Grand'Route 12:15</li><li><a href="stop-TEC_X669abd.html">TEC:X669abd</a> - Les Fosses Carrefour 12:18</li><li><a href="stop-TEC_X669aca.html">TEC:X669aca</a> - Les Fosses Ancienne Ecole 12:18</li><li><a href="stop-TEC_X669aaa.html">TEC:X669aaa</a> - Les Fosses Ecole 12:19</li><li><a href="stop-TEC_X669ada.html">TEC:X669ada</a> - Les Fosses Eglise 12:22</li><li><a href="stop-TEC_X669aea.html">TEC:X669aea</a> - Les Fosses Cimetière 12:23</li><li><a href="stop-TEC_X659aab.html">TEC:X659aab</a> - Lavaux Pont 12:25</li><li><a href="stop-TEC_X659ayb.html">TEC:X659ayb</a> - Lavaux Gare 12:25</li><li><a href="stop-TEC_X659axb.html">TEC:X659axb</a> - Lavaux Centre 12:27</li><li><a href="stop-TEC_X659bab.html">TEC:X659bab</a> - Nivelet Centre 12:28</li><li><a href="stop-TEC_X659awb.html">TEC:X659awb</a> - Nivelet Rue de la Hazette 12:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3433.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Gouvy - Deiffelt - Beho - Commanster - Vielsalm - 5163:TEC:LU:5584</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gouvy - Deiffelt - Beho - Commanster - Vielsalm - 5163:TEC:LU:5584</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X790aib.html">TEC:X790aib</a> - Gouvy Ecole des Soeurs 11:28</li><li><a href="stop-TEC_X790ajb.html">TEC:X790ajb</a> - Gouvy Gendarmerie 11:29</li><li><a href="stop-TEC_X790aka.html">TEC:X790aka</a> - Gouvy Gare 11:30</li><li><a href="stop-TEC_X790alb.html">TEC:X790alb</a> - Gouvy Route d'Ourthe 11:30</li><li><a href="stop-TEC_X790amb.html">TEC:X790amb</a> - Gouvy Maison Fraselle 11:31</li><li><a href="stop-TEC_X793aaa.html">TEC:X793aaa</a> - Ourthe Route de Gouvy 12 11:33</li><li><a href="stop-TEC_X793aba.html">TEC:X793aba</a> - Ourthe Eglise 11:34</li><li><a href="stop-TEC_X793apb.html">TEC:X793apb</a> - Ourthe Ecole 11:34</li><li><a href="stop-TEC_X793acb.html">TEC:X793acb</a> - Ourthe Route de Wathermal 11:35</li><li><a href="stop-TEC_X793ada.html">TEC:X793ada</a> - Wathermal Carrefour 11:36</li><li><a href="stop-TEC_X793aca.html">TEC:X793aca</a> - Ourthe Route de Wathermal 11:36</li><li><a href="stop-TEC_X793apa.html">TEC:X793apa</a> - Ourthe Ecole 11:37</li><li><a href="stop-TEC_X793aeb.html">TEC:X793aeb</a> - Ourthe Route de Deiffelt 77 11:38</li><li><a href="stop-TEC_X793afb.html">TEC:X793afb</a> - Deiffelt Carrefour 11:41</li><li><a href="stop-TEC_X793agb.html">TEC:X793agb</a> - Beho Maison Peeters 11:45</li><li><a href="stop-TEC_X793ahb.html">TEC:X793ahb</a> - Beho Route de Deiffelt 24a 11:45</li><li><a href="stop-TEC_X793aia.html">TEC:X793aia</a> - Beho Route de Deiffelt 11 11:46</li><li><a href="stop-TEC_X793ajb.html">TEC:X793ajb</a> - Beho Rue de l'Eglise 11:46</li><li><a href="stop-TEC_X793akb.html">TEC:X793akb</a> - Beho Chapelle 11:46</li><li><a href="stop-TEC_X793aoa.html">TEC:X793aoa</a> - Beho Route de Rogery 11:47</li><li><a href="stop-TEC_X780aja.html">TEC:X780aja</a> - Rogery Eglise 11:53</li><li><a href="stop-TEC_X780aia.html">TEC:X780aia</a> - Cierreux Centre 11:56</li><li><a href="stop-TEC_X750aaa.html">TEC:X750aaa</a> - Salmchateau Cabine Electrique 11:57</li><li><a href="stop-TEC_X750abb.html">TEC:X750abb</a> - Salmchateau Résidence du Vieux Moulin 11:58</li><li><a href="stop-TEC_X750acb.html">TEC:X750acb</a> - Salmchateau Route de Provedroux 11:58</li><li><a href="stop-TEC_X750afb.html">TEC:X750afb</a> - Salmchateau Route de Sainte-Marie 11:59</li><li><a href="stop-TEC_X750aia.html">TEC:X750aia</a> - Beche Route de Salmchâteau 84 12:00</li><li><a href="stop-TEC_X750aka.html">TEC:X750aka</a> - Beche Pont 12:00</li><li><a href="stop-TEC_X750aja.html">TEC:X750aja</a> - Beche Eglise 12:01</li><li><a href="stop-TEC_X750aha.html">TEC:X750aha</a> - Salmchateau Eglise 12:03</li><li><a href="stop-TEC_X750ala.html">TEC:X750ala</a> - Vielsalm Garage van Noppen 12:08</li><li><a href="stop-TEC_X750agb.html">TEC:X750agb</a> - Vielsalm Route de la Gare 12:10</li><li><a href="stop-TEC_X750ava.html">TEC:X750ava</a> - Vielsalm Institut du Sacré Coeur 12:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3216.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

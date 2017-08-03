@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Visé - Maastricht - 5163:TEC:LV:25488</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Visé - Maastricht - 5163:TEC:LV:25488</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lviweri1.html">TEC:Lviweri1</a> - Vivegnis Wérihet 07:50</li><li><a href="stop-TEC_LHAstal1.html">TEC:LHAstal1</a> - Hermalle Rue Stalis 07:51</li><li><a href="stop-TEC_LHApthe1.html">TEC:LHApthe1</a> - Hermalle Pont de Hermalle 07:52</li><li><a href="stop-TEC_LHAarge1.html">TEC:LHAarge1</a> - Hermalle Rue d'Argenteau 9 07:54</li><li><a href="stop-TEC_LHAmonu1.html">TEC:LHAmonu1</a> - Hermalle Monument 07:55</li><li><a href="stop-TEC_LHAbont1.html">TEC:LHAbont1</a> - Hermalle Rue Bontemps 07:56</li><li><a href="stop-TEC_LHAvall1.html">TEC:LHAvall1</a> - Hermalle Rue Vallée 07:56</li><li><a href="stop-TEC_LHAprei1.html">TEC:LHAprei1</a> - Hermalle Prelixhe 07:58</li><li><a href="stop-TEC_LHAcite1.html">TEC:LHAcite1</a> - Hermalle Cité 07:59</li><li><a href="stop-TEC_LHAclin1.html">TEC:LHAclin1</a> - Hermalle Clinique Notre-Dame 08:00</li><li><a href="stop-TEC_LVIhala3.html">TEC:LVIhala3</a> - Vise Quai du Halage 08:01</li><li><a href="stop-TEC_LVIgare1.html">TEC:LVIgare1</a> - Vise Gare SNCB 08:02</li><li><a href="stop-TEC_LVIdepo3.html">TEC:LVIdepo3</a> - Vise Place des Déportés 08:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5179.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

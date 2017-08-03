@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Vaux - Romsée - Fléron - Trooz - Péry - 5163:TEC:LV:31935</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Vaux - Romsée - Fléron - Trooz - Péry - 5163:TEC:LV:31935</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lflgare1.html">TEC:Lflgare1</a> - Fleron Gare 06:33</li><li><a href="stop-TEC_Lflcle-5.html">TEC:Lflcle-5</a> - Fleron La Clé 06:34</li><li><a href="stop-TEC_Lflhott1.html">TEC:Lflhott1</a> - Fleron Chemin de Hotteux 06:35</li><li><a href="stop-TEC_LAyfren1.html">TEC:LAyfren1</a> - Ayeneux Cour des Frenaux 06:35</li><li><a href="stop-TEC_LAyheid1.html">TEC:LAyheid1</a> - Ayeneux Carrières des Heids 06:36</li><li><a href="stop-TEC_LPRfour1.html">TEC:LPRfour1</a> - Prayon Fours à Chaux 06:38</li><li><a href="stop-TEC_LPRbayb1.html">TEC:LPRbayb1</a> - Prayon Forêt Bay Bonnet 06:39</li><li><a href="stop-TEC_LPRmoul1.html">TEC:LPRmoul1</a> - Prayon Moulin Maréchal 06:40</li><li><a href="stop-TEC_LFfeg--1.html">TEC:LFfeg--1</a> - Foret Eglise 06:40</li><li><a href="stop-TEC_LPRfond1.html">TEC:LPRfond1</a> - Prayon Fonds de Forêt 06:41</li><li><a href="stop-TEC_LPRpeti1.html">TEC:LPRpeti1</a> - Prayon Petit pont cité 06:42</li><li><a href="stop-TEC_LPRmc--1.html">TEC:LPRmc--1</a> - Prayon Maison Communale 06:44</li><li><a href="stop-TEC_LPRvill1.html">TEC:LPRvill1</a> - Prayon Villa Jean 06:45</li><li><a href="stop-TEC_LPRcasi1.html">TEC:LPRcasi1</a> - Prayon Casino 06:45</li><li><a href="stop-TEC_LPRecol1.html">TEC:LPRecol1</a> - Prayon Ecole 06:46</li><li><a href="stop-TEC_LTRgare1.html">TEC:LTRgare1</a> - Trooz Gare S.N.C.B. 06:47</li><li><a href="stop-TEC_LTRfica1.html">TEC:LTRfica1</a> - Trooz Avenue Fica 06:48</li><li><a href="stop-TEC_LTResse1.html">TEC:LTResse1</a> - Trooz Esseler 06:48</li><li><a href="stop-TEC_LTRlonh1.html">TEC:LTRlonh1</a> - Trooz Sentier Lonhienne 06:49</li><li><a href="stop-TEC_LTRsain1.html">TEC:LTRsain1</a> - Trooz Sainry 06:50</li><li><a href="stop-TEC_LTRoasi1.html">TEC:LTRoasi1</a> - Trooz Café de l'Oasis 06:50</li><li><a href="stop-TEC_LTRespe1.html">TEC:LTRespe1</a> - Trooz Rue de l'Espérance 06:52</li><li><a href="stop-TEC_LTRpery1.html">TEC:LTRpery1</a> - Trooz Péry 06:53</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3929.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

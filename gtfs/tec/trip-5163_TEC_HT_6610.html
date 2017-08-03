@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - La Louvière - Morlanwelz - Binche - 5163:TEC:HT:6610</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: La Louvière - Morlanwelz - Binche - 5163:TEC:HT:6610</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H3bi100a.html">TEC:H3bi100a</a> - Binche Athénée 16:15</li><li><a href="stop-TEC_H3bi112a.html">TEC:H3bi112a</a> - Binche Place de Battignies 16:18</li><li><a href="stop-TEC_H3bi118a.html">TEC:H3bi118a</a> - Binche Rue Z. Fontaine 16:19</li><li><a href="stop-TEC_H2pe154a.html">TEC:H2pe154a</a> - PERONNES(-LEZ-BINCHE) Barrière Julien 16:21</li><li><a href="stop-TEC_H2pe159a.html">TEC:H2pe159a</a> - PERONNES(-LEZ-BINCHE) Fosse Ste-Barbe 16:22</li><li><a href="stop-TEC_H2pe158a.html">TEC:H2pe158a</a> - PERONNES(-LEZ-BINCHE) Fosse St-Albert 16:23</li><li><a href="stop-TEC_H2pe156a.html">TEC:H2pe156a</a> - PERONNES(-LEZ-BINCHE) Chaussée Brunehault 16:24</li><li><a href="stop-TEC_H2pe157a.html">TEC:H2pe157a</a> - PERONNES(-LEZ-BINCHE) Cité Ste-Marie 16:25</li><li><a href="stop-TEC_H2pe155a.html">TEC:H2pe155a</a> - PERONNES(-LEZ-BINCHE) Blanc Coron 16:25</li><li><a href="stop-TEC_H2pe160a.html">TEC:H2pe160a</a> - PERONNES(-LEZ-BINCHE) Gendarmerie 16:27</li><li><a href="stop-TEC_H2pe162c.html">TEC:H2pe162c</a> - PERONNES(-LEZ-BINCHE) Ste Marguerite 16:28</li><li><a href="stop-TEC_H2sv217a.html">TEC:H2sv217a</a> - Saint-Vaast Pont St-Vaast 16:29</li><li><a href="stop-TEC_H2sv221a.html">TEC:H2sv221a</a> - Saint-Vaast Nordic 16:30</li><li><a href="stop-TEC_H2sv214a.html">TEC:H2sv214a</a> - Saint-Vaast Château Marcq 16:30</li><li><a href="stop-TEC_H2hl111a.html">TEC:H2hl111a</a> - Haine-St-Paul Ets Devergnies 16:31</li><li><a href="stop-TEC_H2hl110a.html">TEC:H2hl110a</a> - Haine-St-Paul Coron Paulette 16:32</li><li><a href="stop-TEC_H2hl113a.html">TEC:H2hl113a</a> - Haine-St-Paul Rue Vandervelde 16:33</li><li><a href="stop-TEC_H2hl112a.html">TEC:H2hl112a</a> - Haine-St-Paul Rue  Quéniau 16:34</li><li><a href="stop-TEC_H2hp116a.html">TEC:H2hp116a</a> - Haine-St-Pierre Houssu 16:36</li><li><a href="stop-TEC_H2ll197a.html">TEC:H2ll197a</a> - La Louviere Rue des Champs 16:38</li><li><a href="stop-TEC_H2ll189c.html">TEC:H2ll189c</a> - La Louviere Place Mattéotti 16:39</li><li><a href="stop-TEC_H2ll177a.html">TEC:H2ll177a</a> - La Louviere Rue du Parc 16:40</li><li><a href="stop-TEC_H2ll188b.html">TEC:H2ll188b</a> - La Louviere Place Mansart 16:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2404.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

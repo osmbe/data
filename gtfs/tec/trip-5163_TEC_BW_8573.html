@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Braine-l'Alleud - Hal - 5163:TEC:BW:8573</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Braine-l'Alleud - Hal - 5163:TEC:BW:8573</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bblagar6.html">TEC:Bblagar6</a> - Alleud Gare 15:38</li><li><a href="stop-TEC_Bblagar5.html">TEC:Bblagar5</a> - Alleud Gare 15:38</li><li><a href="stop-TEC_Bblaljo1.html">TEC:Bblaljo1</a> - Alleud Avenue L. Jourez 15:39</li><li><a href="stop-TEC_Bblaelo1.html">TEC:Bblaelo1</a> - Alleud Rue Jean Volders 15:40</li><li><a href="stop-TEC_Bblacha1.html">TEC:Bblacha1</a> - Alleud La Chapelle 15:42</li><li><a href="stop-TEC_Bblamsp1.html">TEC:Bblamsp1</a> - Alleud Mont-Saint-Pont 15:43</li><li><a href="stop-TEC_Bblaphi1.html">TEC:Bblaphi1</a> - Alleud Philippe 15:44</li><li><a href="stop-TEC_Bblasmo1.html">TEC:Bblasmo1</a> - Alleud Sart-Moulin 15:45</li><li><a href="stop-TEC_Bblabos1.html">TEC:Bblabos1</a> - Alleud Bosquet 15:46</li><li><a href="stop-TEC_Bblacar1.html">TEC:Bblacar1</a> - Alleud Carron 15:47</li><li><a href="stop-TEC_Bblapra1.html">TEC:Bblapra1</a> - Alleud Chemin de la Praye 15:48</li><li><a href="stop-TEC_Bwaunou1.html">TEC:Bwaunou1</a> - Wauthier-Braine Chemin de Noucelles 15:49</li><li><a href="stop-TEC_Bwaubru1.html">TEC:Bwaubru1</a> - Wauthier-Braine La Bruyère 15:50</li><li><a href="stop-TEC_Bwaucig1.html">TEC:Bwaucig1</a> - Wauthier-Braine Cigarettes 15:51</li><li><a href="stop-TEC_Bwaucan1.html">TEC:Bwaucan1</a> - Wauthier-Braine Cantine 15:53</li><li><a href="stop-TEC_Bbchdra1.html">TEC:Bbchdra1</a> - Braine-le-Chateau Le Drabbe 15:55</li><li><a href="stop-TEC_Bbchrra3.html">TEC:Bbchrra3</a> - Braine-le-Chateau Rue des Radoux 15:56</li><li><a href="stop-TEC_Bbch4br3.html">TEC:Bbch4br3</a> - Braine-le-Chateau Quatre Bras 15:57</li><li><a href="stop-TEC_Bbchcbl1.html">TEC:Bbchcbl1</a> - Braine-le-Chateau Cheval Blanc 15:58</li><li><a href="stop-TEC_Bbchm381.html">TEC:Bbchm381</a> - Braine-le-Chateau Maison 38 15:59</li><li><a href="stop-TEC_Bhalvla1.html">TEC:Bhalvla1</a> - Halle Vlasmarkt 16:00</li><li><a href="stop-TEC_Bhaltre1.html">TEC:Bhaltre1</a> - Halle Treimeleer 16:01</li><li><a href="stop-TEC_Bhalcbr1.html">TEC:Bhalcbr1</a> - Halle Café Bracke 16:02</li><li><a href="stop-TEC_Bhalvel1.html">TEC:Bhalvel1</a> - Halle Van De Velde 16:03</li><li><a href="stop-TEC_Bhaless1.html">TEC:Bhaless1</a> - Halle Nijvelsesteenweg 16:05</li><li><a href="stop-TEC_Bhalomo1.html">TEC:Bhalomo1</a> - Halle Kruisstraat 16:06</li><li><a href="stop-TEC_Bhalwat1.html">TEC:Bhalwat1</a> - Halle Leopoldstraat 16:07</li><li><a href="stop-TEC_Bhalalb1.html">TEC:Bhalalb1</a> - Halle Albertstraat 16:09</li><li><a href="stop-TEC_Bhalsro1.html">TEC:Bhalsro1</a> - Halle Sint-Rochus 16:11</li><li><a href="stop-TEC_Bhalgar1.html">TEC:Bhalgar1</a> - Halle Station 16:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./370.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

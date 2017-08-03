@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - JAMBES (Amée)  -  SAINT-SERVAIS (Beau-Vallon) - 5163:TEC:NA:12015</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: JAMBES (Amée)  -  SAINT-SERVAIS (Beau-Vallon) - 5163:TEC:NA:12015</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501dja.html">TEC:N501dja</a> - Jambes Amée terminus 18:43</li><li><a href="stop-TEC_N501dga.html">TEC:N501dga</a> - Jambes Amée avenue du Parc 18:44</li><li><a href="stop-TEC_N501dia.html">TEC:N501dia</a> - Jambes Amée plage 18:44</li><li><a href="stop-TEC_N501dha.html">TEC:N501dha</a> - Jambes Amée chapelle 18:45</li><li><a href="stop-TEC_N501eza.html">TEC:N501eza</a> - Jambes Rue Pierre du diable 18:46</li><li><a href="stop-TEC_N501jra.html">TEC:N501jra</a> - Jambes Velaine rue va-s-t'y frotte 18:47</li><li><a href="stop-TEC_N501eia.html">TEC:N501eia</a> - Jambes Caserne du génie 18:47</li><li><a href="stop-TEC_N501kqa.html">TEC:N501kqa</a> - Jambes Etablissements Bister 18:49</li><li><a href="stop-TEC_N501epa.html">TEC:N501epa</a> - Jambes CPAS 18:49</li><li><a href="stop-TEC_N501eda.html">TEC:N501eda</a> - Jambes Avenue de la Citadelle 18:50</li><li><a href="stop-TEC_N501kba.html">TEC:N501kba</a> - Jambes Rue de Coppin 18:51</li><li><a href="stop-TEC_N501eba.html">TEC:N501eba</a> - Jambes Avenue Materne 18:52</li><li><a href="stop-TEC_N501fwa.html">TEC:N501fwa</a> - Namur Boulevard Ad Aquam 18:53</li><li><a href="stop-TEC_N501gia.html">TEC:N501gia</a> - Namur Pont de France 18:54</li><li><a href="stop-TEC_N501hia.html">TEC:N501hia</a> - Namur Rue de la Tour 18:55</li><li><a href="stop-TEC_N501mqa.html">TEC:N501mqa</a> - Namur Rue Emile Cuvelier 18:56</li><li><a href="stop-TEC_N501mha.html">TEC:N501mha</a> - Namur Rue de Bruxelles 18:57</li><li><a href="stop-TEC_N501gra.html">TEC:N501gra</a> - Namur Pl. de la Station - Quai A 19:00</li><li><a href="stop-TEC_N501fta.html">TEC:N501fta</a> - Namur Avenue des Combattants 19:01</li><li><a href="stop-TEC_N501hxa.html">TEC:N501hxa</a> - Saint-Servais Collège St-Servais 19:03</li><li><a href="stop-TEC_N501ica.html">TEC:N501ica</a> - Saint-Servais Polyclinique 19:04</li><li><a href="stop-TEC_N501iha.html">TEC:N501iha</a> - Saint-Servais Rue Hicguet 19:05</li><li><a href="stop-TEC_N501iea.html">TEC:N501iea</a> - Saint-Servais Pont des Français 19:06</li><li><a href="stop-TEC_N501hsa.html">TEC:N501hsa</a> - Saint-Servais Cimetière de Namur 19:07</li><li><a href="stop-TEC_N501bfa.html">TEC:N501bfa</a> - Belgrade Rue des Champs 19:08</li><li><a href="stop-TEC_N501nba.html">TEC:N501nba</a> - Belgrade Rue de la Gaillarde 19:08</li><li><a href="stop-TEC_N501ida.html">TEC:N501ida</a> - Saint-Servais Pont Béguin 19:09</li><li><a href="stop-TEC_N501ima.html">TEC:N501ima</a> - Saint-Servais Rue de Bricgniot 19:10</li><li><a href="stop-TEC_N501hpa.html">TEC:N501hpa</a> - Saint-Servais Beau-Vallon 19:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6053.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

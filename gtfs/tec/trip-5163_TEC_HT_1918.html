@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Proxibus Quévy - 5163:TEC:HT:1918</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Proxibus Quévy - 5163:TEC:HT:1918</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1fr123b.html">TEC:H1fr123b</a> - Frameries Place 09:21</li><li><a href="stop-TEC_H1fr152a.html">TEC:H1fr152a</a> - Frameries Maison de l'Emploi 09:23</li><li><a href="stop-TEC_H1fr133b.html">TEC:H1fr133b</a> - Frameries Zoning - Warner 09:27</li><li><a href="stop-TEC_H1ge116a.html">TEC:H1ge116a</a> - Genly Fontaine 09:30</li><li><a href="stop-TEC_H1ge151a.html">TEC:H1ge151a</a> - Genly Maïeur Renard 09:32</li><li><a href="stop-TEC_H1bn114b.html">TEC:H1bn114b</a> - Bougnies Terminus 09:36</li><li><a href="stop-TEC_H1bn148b.html">TEC:H1bn148b</a> - Bougnies Rue Piérard 09:37</li><li><a href="stop-TEC_H1bn113b.html">TEC:H1bn113b</a> - Bougnies Place 09:37</li><li><a href="stop-TEC_H1as100a.html">TEC:H1as100a</a> - Asquillies La Cigogne 09:39</li><li><a href="stop-TEC_H1as104a.html">TEC:H1as104a</a> - Asquillies Rue de la Rivière 09:40</li><li><a href="stop-TEC_H1as101a.html">TEC:H1as101a</a> - Asquillies Place 09:41</li><li><a href="stop-TEC_H1as102a.html">TEC:H1as102a</a> - Asquillies Relais 09:43</li><li><a href="stop-TEC_H1gi154b.html">TEC:H1gi154b</a> - Givry Pâturages 09:47</li><li><a href="stop-TEC_H1gi122b.html">TEC:H1gi122b</a> - Givry Place 09:48</li><li><a href="stop-TEC_H1gi121b.html">TEC:H1gi121b</a> - Givry Rue du Moulin 09:49</li><li><a href="stop-TEC_H1gi123a.html">TEC:H1gi123a</a> - Givry Esquerbion 09:51</li><li><a href="stop-TEC_H1hy128a.html">TEC:H1hy128a</a> - Havay Place 09:54</li><li><a href="stop-TEC_H1hy130b.html">TEC:H1hy130b</a> - Havay Rue Derrière les Haies 09:55</li><li><a href="stop-TEC_H1hy127b.html">TEC:H1hy127b</a> - Havay La Rose 09:55</li><li><a href="stop-TEC_H1qy135b.html">TEC:H1qy135b</a> - Quevy Route d'Havay 09:56</li><li><a href="stop-TEC_H1hy126a.html">TEC:H1hy126a</a> - Havay Bonnet 09:58</li><li><a href="stop-TEC_H1hy125a.html">TEC:H1hy125a</a> - Havay Bois Bourdon 09:59</li><li><a href="stop-TEC_H1gc123a.html">TEC:H1gc123a</a> - Goegnies-Chaussee La Wampe 10:01</li><li><a href="stop-TEC_H1go118b.html">TEC:H1go118b</a> - Gognies Rue Fournier 10:02</li><li><a href="stop-TEC_H1go169a.html">TEC:H1go169a</a> - Gognies République 10:02</li><li><a href="stop-TEC_H1go118a.html">TEC:H1go118a</a> - Gognies Rue Fournier 10:03</li><li><a href="stop-TEC_H1gc124a.html">TEC:H1gc124a</a> - Goegnies-Chaussee Route de Quévy-le-Grand 10:03</li><li><a href="stop-TEC_H1gc122a.html">TEC:H1gc122a</a> - Goegnies-Chaussee Entrée du Village 10:03</li><li><a href="stop-TEC_H1qy136a.html">TEC:H1qy136a</a> - Quevy Saint Pierre 10:04</li><li><a href="stop-TEC_H1qy134a.html">TEC:H1qy134a</a> - Quevy Pharmacie 10:05</li><li><a href="stop-TEC_H1qg138c.html">TEC:H1qg138c</a> - Quevy-le-Grand Route de Quévy-le-Petit 10:06</li><li><a href="stop-TEC_H1qp139b.html">TEC:H1qp139b</a> - Quevy-le-Petit Eglise 10:08</li><li><a href="stop-TEC_H1qp150b.html">TEC:H1qp150b</a> - Quevy-le-Petit Place 10:08</li><li><a href="stop-TEC_H1qp143b.html">TEC:H1qp143b</a> - Quevy-le-Petit Rue du Cerisier 10:09</li><li><a href="stop-TEC_H1bs110a.html">TEC:H1bs110a</a> - Blaregnies Eglise 10:15</li><li><a href="stop-TEC_H1al107a.html">TEC:H1al107a</a> - Aulnois Gendarmerie 10:17</li><li><a href="stop-TEC_H1al105a.html">TEC:H1al105a</a> - Aulnois Eglise 10:18</li><li><a href="stop-TEC_H1al145a.html">TEC:H1al145a</a> - Aulnois Rue Basse 10:18</li><li><a href="stop-TEC_H1al146a.html">TEC:H1al146a</a> - Aulnois Rue du Faubourg 10:19</li><li><a href="stop-TEC_H1al147a.html">TEC:H1al147a</a> - Aulnois Chemin Fie 10:19</li><li><a href="stop-TEC_H1al106a.html">TEC:H1al106a</a> - Aulnois SNCB 10:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2199.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

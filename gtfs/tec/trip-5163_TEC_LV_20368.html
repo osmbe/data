@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Montegnée - Tilleur - St-Nicolas - 5163:TEC:LV:20368</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Montegnée - Tilleur - St-Nicolas - 5163:TEC:LV:20368</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lsnferr1.html">TEC:Lsnferr1</a> - Saint-Nicolas Rue F. Ferrer 15:25</li><li><a href="stop-TEC_Lmopave1.html">TEC:Lmopave1</a> - Montegnee Rue Pavé du Gosson 15:27</li><li><a href="stop-TEC_Lsnpaqu2.html">TEC:Lsnpaqu2</a> - Saint-Nicolas Rue L. Pâques 15:28</li><li><a href="stop-TEC_Lmohomv1.html">TEC:Lmohomv1</a> - Montegnee Homvent 15:30</li><li><a href="stop-TEC_Lmofays1.html">TEC:Lmofays1</a> - Montegnee Rue Fays 15:31</li><li><a href="stop-TEC_Lmolama1.html">TEC:Lmolama1</a> - Montegnee Rue Lamay 15:32</li><li><a href="stop-TEC_Lmojoan1.html">TEC:Lmojoan1</a> - Montegnee Rue F. Joannes 15:34</li><li><a href="stop-TEC_Lmopans1.html">TEC:Lmopans1</a> - Montegnee Place du Pansy 15:35</li><li><a href="stop-TEC_Lmobrac1.html">TEC:Lmobrac1</a> - Montegnee Rue F. Braconnier 15:36</li><li><a href="stop-TEC_Ltibure2.html">TEC:Ltibure2</a> - Tilleur Rue Bureaufosse 15:38</li><li><a href="stop-TEC_Lsnhorl1.html">TEC:Lsnhorl1</a> - Saint-Nicolas Rue du Horloz 97 15:40</li><li><a href="stop-TEC_Lsnvand1.html">TEC:Lsnvand1</a> - Saint-Nicolas Place Vandervelde 15:41</li><li><a href="stop-TEC_Lsn130-1.html">TEC:Lsn130-1</a> - Saint-Nicolas Rue du Centre 130 15:44</li><li><a href="stop-TEC_Lsn184-1.html">TEC:Lsn184-1</a> - Saint-Nicolas Rue du Centre 184 15:45</li><li><a href="stop-TEC_Lsnagne1.html">TEC:Lsnagne1</a> - Saint-Nicolas Rue Trixhes aux Agneaux 15:47</li><li><a href="stop-TEC_Lsnmala1.html">TEC:Lsnmala1</a> - Saint-Nicolas Rue Malaise 15:49</li><li><a href="stop-TEC_Lsnferr1.html">TEC:Lsnferr1</a> - Saint-Nicolas Rue F. Ferrer 15:50</li><li><a href="stop-TEC_Lmomarr4.html">TEC:Lmomarr4</a> - Montegnee Place des Marronniers 15:55</li><li><a href="stop-TEC_Lglmoul2.html">TEC:Lglmoul2</a> - Glain Cité du Moulin 15:56</li><li><a href="stop-TEC_Lglvict2.html">TEC:Lglvict2</a> - Glain Place de la Victoire 15:56</li><li><a href="stop-TEC_Lglcoun2.html">TEC:Lglcoun2</a> - Glain Rue H. Coune 15:58</li><li><a href="stop-TEC_Lglsana2.html">TEC:Lglsana2</a> - Glain Sanatorium 15:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4516.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

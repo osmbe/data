@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Eupen - Monschau - Kalterherberg - 5163:TEC:LV:10753</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eupen - Monschau - Kalterherberg - 5163:TEC:LV:10753</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LeUbush1.html">TEC:LeUbush1</a> - Eupen Bushof 10:00</li><li><a href="stop-TEC_LeUbahn3.html">TEC:LeUbahn3</a> - Eupen Bahnhof 10:01</li><li><a href="stop-TEC_LeUwert2.html">TEC:LeUwert2</a> - Eupen Werthplatz 10:02</li><li><a href="stop-TEC_LeUkehr2.html">TEC:LeUkehr2</a> - Eupen Kehrweg 10:03</li><li><a href="stop-TEC_LeUschi1.html">TEC:LeUschi1</a> - Eupen Schilsweg 10:03</li><li><a href="stop-TEC_LeUmeie1.html">TEC:LeUmeie1</a> - Eupen Meier-Dael-Weg 10:05</li><li><a href="stop-TEC_LeUarno1.html">TEC:LeUarno1</a> - Eupen Kaplan-Arnold-Strasse 10:06</li><li><a href="stop-TEC_LeUclou1.html">TEC:LeUclou1</a> - Eupen Zur Clouse 10:06</li><li><a href="stop-TEC_LeUmeye1.html">TEC:LeUmeye1</a> - Eupen Meyerskreuz 10:08</li><li><a href="stop-TEC_LtEnatu1.html">TEC:LtEnatu1</a> - Ternell Naturzentrum 10:11</li><li><a href="stop-TEC_LtEnach1.html">TEC:LtEnach1</a> - Ternell Nachtsief 10:13</li><li><a href="stop-TEC_LmTzoll1.html">TEC:LmTzoll1</a> - Mutzenich Zoll 10:15</li><li><a href="stop-TEC_LmTreic1.html">TEC:LmTreic1</a> - Mutzenich Reichensteiner Strasse 10:17</li><li><a href="stop-TEC_LmTkirc1.html">TEC:LmTkirc1</a> - Mutzenich Kirche 10:18</li><li><a href="stop-TEC_LmTschi1.html">TEC:LmTschi1</a> - Mutzenich Schiffenborn 10:19</li><li><a href="stop-TEC_LmTgers1.html">TEC:LmTgers1</a> - Mutzenich Alter Gerstenhof 10:20</li><li><a href="stop-TEC_LmHbahn1.html">TEC:LmHbahn1</a> - Monschau Bahnhof 10:21</li><li><a href="stop-TEC_LmHflor1.html">TEC:LmHflor1</a> - Monschau Flora 10:23</li><li><a href="stop-TEC_LmHschm1.html">TEC:LmHschm1</a> - Monschau Schmiede 10:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4005.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

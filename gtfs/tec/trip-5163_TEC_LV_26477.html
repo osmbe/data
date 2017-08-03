@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Wihogne - 5163:TEC:LV:26477</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Wihogne - 5163:TEC:LV:26477</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LWidepo2.html">TEC:LWidepo2</a> - Wihogne Dépôt vicinal 08:04</li><li><a href="stop-TEC_LWibare2.html">TEC:LWibare2</a> - Wihogne Moulin Bare 08:05</li><li><a href="stop-TEC_LWipaif4.html">TEC:LWipaif4</a> - Wihogne Route de Paifve 08:05</li><li><a href="stop-TEC_LPAmosa1.html">TEC:LPAmosa1</a> - Paifve Clos Mosan 08:07</li><li><a href="stop-TEC_LPAeg--1.html">TEC:LPAeg--1</a> - Paifve Eglise 08:09</li><li><a href="stop-TEC_LPAmc--1.html">TEC:LPAmc--1</a> - Paifve Ancienne Maison Communale 08:10</li><li><a href="stop-TEC_LPAvill2.html">TEC:LPAvill2</a> - Paifve Chemin du Village 08:11</li><li><a href="stop-TEC_LPAbrun2.html">TEC:LPAbrun2</a> - Paifve Chaussée de Brunehaut 08:11</li><li><a href="stop-TEC_LPAchpl2.html">TEC:LPAchpl2</a> - Paifve Chapelle 08:12</li><li><a href="stop-TEC_LVSpota2.html">TEC:LVSpota2</a> - Villers-St-Simeon Potale 08:13</li><li><a href="stop-TEC_LVSeg--1.html">TEC:LVSeg--1</a> - Villers-St-Simeon Eglise 08:15</li><li><a href="stop-TEC_LVSslin4.html">TEC:LVSslin4</a> - Villers-St-Simeon Route de Slins 08:18</li><li><a href="stop-TEC_LJUmc--2.html">TEC:LJUmc--2</a> - Juprelle Maison Communale 08:19</li><li><a href="stop-TEC_LJUxhen2.html">TEC:LJUxhen2</a> - Juprelle Route de Xhendremael 08:20</li><li><a href="stop-TEC_LJUmate2.html">TEC:LJUmate2</a> - Juprelle Maison Materne 08:21</li><li><a href="stop-TEC_LJU51--2.html">TEC:LJU51--2</a> - Juprelle Chaussée de Tongres 51 08:22</li><li><a href="stop-TEC_LJUfort2.html">TEC:LJUfort2</a> - Juprelle Route du Fort de Lantin 08:23</li><li><a href="stop-TEC_Llabriq2.html">TEC:Llabriq2</a> - Lantin Briqueterie 08:24</li><li><a href="stop-TEC_Lvovent2.html">TEC:Lvovent2</a> - Voroux-Lez-Liers Café Plein Vent 08:24</li><li><a href="stop-TEC_Lvomoul1.html">TEC:Lvomoul1</a> - Voroux-Lez-Liers Vieux Moulin 08:25</li><li><a href="stop-TEC_Lvopaqu1.html">TEC:Lvopaqu1</a> - Voroux-Lez-Liers Rue Y. Pâques 08:26</li><li><a href="stop-TEC_Lvoeg--1.html">TEC:Lvoeg--1</a> - Voroux-Lez-Liers Eglise 08:27</li><li><a href="stop-TEC_Lvoec--2.html">TEC:Lvoec--2</a> - Voroux-Lez-Liers Ecole 08:28</li><li><a href="stop-TEC_Lrcvinc2.html">TEC:Lrcvinc2</a> - Rocourt Clinique St-Vincent 08:28</li><li><a href="stop-TEC_Lrcprin6.html">TEC:Lrcprin6</a> - Rocourt Rue Principale 08:29</li><li><a href="stop-TEC_Lrcarse2.html">TEC:Lrcarse2</a> - Rocourt Arsenal 08:30</li><li><a href="stop-TEC_Lrcastr2.html">TEC:Lrcastr2</a> - Rocourt Place Reine Astrid 08:31</li><li><a href="stop-TEC_Lrclant2.html">TEC:Lrclant2</a> - Rocourt Rue de Lantin 08:31</li><li><a href="stop-TEC_Lrchype2.html">TEC:Lrchype2</a> - Rocourt Hypermarché 08:32</li><li><a href="stop-TEC_Lrctec-2.html">TEC:Lrctec-2</a> - Rocourt Dépôt TEC 08:33</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5363.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

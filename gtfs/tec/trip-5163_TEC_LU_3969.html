@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Libramont -  Redu - 5163:TEC:LU:3969</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Libramont -  Redu - 5163:TEC:LU:3969</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X801bdb.html">TEC:X801bdb</a> - Libramont Gare - Quai 4 08:15</li><li><a href="stop-TEC_X801bbb.html">TEC:X801bbb</a> - Libramont Sodelux 08:16</li><li><a href="stop-TEC_X801baa.html">TEC:X801baa</a> - Libramont Rue des Alliés 57 08:16</li><li><a href="stop-TEC_X801bia.html">TEC:X801bia</a> - Libramont Rue du Village 35 08:17</li><li><a href="stop-TEC_X801bfa.html">TEC:X801bfa</a> - Libramont Maison Communale 08:17</li><li><a href="stop-TEC_X801cla.html">TEC:X801cla</a> - Libramont Rue du Monument 08:18</li><li><a href="stop-TEC_X801bza.html">TEC:X801bza</a> - Libramont Outigros 08:19</li><li><a href="stop-TEC_X801bxb.html">TEC:X801bxb</a> - Libramont Gendarmerie 08:20</li><li><a href="stop-TEC_X801bwb.html">TEC:X801bwb</a> - Libramont Le Blancheau 08:20</li><li><a href="stop-TEC_X802ayb.html">TEC:X802ayb</a> - Recogne Carrefour 08:21</li><li><a href="stop-TEC_X802asb.html">TEC:X802asb</a> - Recogne Route de Libin 30 08:22</li><li><a href="stop-TEC_X802apa.html">TEC:X802apa</a> - Recogne Route de Libin 68 08:22</li><li><a href="stop-TEC_X882aha.html">TEC:X882aha</a> - Ochamps Gerbaifet 08:25</li><li><a href="stop-TEC_X882aca.html">TEC:X882aca</a> - Ochamps Congo - Chapelle 08:28</li><li><a href="stop-TEC_X882ada.html">TEC:X882ada</a> - Ochamps Congo 08:28</li><li><a href="stop-TEC_X882aea.html">TEC:X882aea</a> - Ochamps Congo 6 08:29</li><li><a href="stop-TEC_X882afa.html">TEC:X882afa</a> - Ochamps La Riviera 08:30</li><li><a href="stop-TEC_X882amb.html">TEC:X882amb</a> - Ochamps Eglise 08:30</li><li><a href="stop-TEC_X882amb.html">TEC:X882amb</a> - Ochamps Eglise 08:30</li><li><a href="stop-TEC_X882aga.html">TEC:X882aga</a> - Ochamps Maubeuge 08:33</li><li><a href="stop-TEC_X870aga.html">TEC:X870aga</a> - Anloy Wachamp 08:35</li><li><a href="stop-TEC_X870aha.html">TEC:X870aha</a> - Anloy Vieille Voie 08:36</li><li><a href="stop-TEC_X870afa.html">TEC:X870afa</a> - Anloy Rue Vieille Voie 6 08:36</li><li><a href="stop-TEC_X870acb.html">TEC:X870acb</a> - Anloy Eglise 08:37</li><li><a href="stop-TEC_X870aba.html">TEC:X870aba</a> - Anloy Rue Lavaux 08:37</li><li><a href="stop-TEC_X870aaa.html">TEC:X870aaa</a> - Anloy La Rochette 08:39</li><li><a href="stop-TEC_X870aeb.html">TEC:X870aeb</a> - Glaireuse Eglise 08:41</li><li><a href="stop-TEC_X880agb.html">TEC:X880agb</a> - Anloy Gare 08:43</li><li><a href="stop-TEC_X880afa.html">TEC:X880afa</a> - Villance Rue de la Gare 08:44</li><li><a href="stop-TEC_X880aea.html">TEC:X880aea</a> - Villance Eglise 08:44</li><li><a href="stop-TEC_X880aha.html">TEC:X880aha</a> - Villance Rue de la Bolette 7 08:45</li><li><a href="stop-TEC_X879apa.html">TEC:X879apa</a> - Libin Rue Fond des Vaux 183 08:48</li><li><a href="stop-TEC_X879aob.html">TEC:X879aob</a> - Libin Bas 08:49</li><li><a href="stop-TEC_X879ama.html">TEC:X879ama</a> - Libin Maison Communale 08:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2839.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

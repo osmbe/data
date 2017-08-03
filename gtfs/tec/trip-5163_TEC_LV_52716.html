@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Gare Léopold - Herstal - Wandre - Cheratte - 5163:TEC:LV:52716</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gare Léopold - Herstal - Wandre - Cheratte - 5163:TEC:LV:52716</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LlgLEOP2.html">TEC:LlgLEOP2</a> - Liege Gare Léopold 13:04</li><li><a href="stop-TEC_Llgcite1.html">TEC:Llgcite1</a> - Liege Rue de la Cité 13:05</li><li><a href="stop-TEC_Llghong1.html">TEC:Llghong1</a> - Liege Rue Hongrée 13:06</li><li><a href="stop-TEC_Llgdepo5.html">TEC:Llgdepo5</a> - Liege Place des Déportés 13:07</li><li><a href="stop-TEC_Llgmare5.html">TEC:Llgmare5</a> - Liege Rue Marengo 13:09</li><li><a href="stop-TEC_Llgarmu3.html">TEC:Llgarmu3</a> - Liege Rue des Armuriers 13:10</li><li><a href="stop-TEC_Llgatla1.html">TEC:Llgatla1</a> - Liege Pont Atlas 13:10</li><li><a href="stop-TEC_Llgauxc1.html">TEC:Llgauxc1</a> - Liege Rue Aux Chevaux 13:11</li><li><a href="stop-TEC_Llgcoro4.html">TEC:Llgcoro4</a> - Liege Place Coronmeuse 13:13</li><li><a href="stop-TEC_Lhrpaix1.html">TEC:Lhrpaix1</a> - Herstal Esplanade de la Paix 13:14</li><li><a href="stop-TEC_Lhrecol1.html">TEC:Lhrecol1</a> - Herstal Rue des Ecoles 13:15</li><li><a href="stop-TEC_Lhrbell1.html">TEC:Lhrbell1</a> - Herstal Charbonnage Belle-Vue 13:16</li><li><a href="stop-TEC_Lhrmare1.html">TEC:Lhrmare1</a> - Herstal Rue Marexhe 13:17</li><li><a href="stop-TEC_Lhrlalo1.html">TEC:Lhrlalo1</a> - Herstal Rue N. Laloux 13:18</li><li><a href="stop-TEC_Lhrlamb1.html">TEC:Lhrlamb1</a> - Herstal Collège St-Lambert 13:19</li><li><a href="stop-TEC_Lhrjaur1.html">TEC:Lhrjaur1</a> - Herstal Place J. Jaurès 13:20</li><li><a href="stop-TEC_Lhrpepi1.html">TEC:Lhrpepi1</a> - Herstal Rue Pépin 13:21</li><li><a href="stop-TEC_Lhrtilm1.html">TEC:Lhrtilm1</a> - Herstal Rue Tilman 13:22</li><li><a href="stop-TEC_Lhrlico1.html">TEC:Lhrlico1</a> - Herstal Place Licour 13:23</li><li><a href="stop-TEC_Lhrpwan1.html">TEC:Lhrpwan1</a> - Herstal Pont de Wandre 13:23</li><li><a href="stop-TEC_Lwachal1.html">TEC:Lwachal1</a> - Wandre Chalet 13:26</li><li><a href="stop-TEC_Lwaeau-1.html">TEC:Lwaeau-1</a> - Wandre Rue de l'Eau 13:27</li><li><a href="stop-TEC_Lwaelme1.html">TEC:Lwaelme1</a> - Wandre Place d'Elmer 13:28</li><li><a href="stop-TEC_Lwagare1.html">TEC:Lwagare1</a> - Wandre Rue de la Gare 13:29</li><li><a href="stop-TEC_Lwapont1.html">TEC:Lwapont1</a> - Wandre Rue du Pont 13:29</li><li><a href="stop-TEC_Lwakipe1.html">TEC:Lwakipe1</a> - Wandre Rue Kipelle 13:30</li><li><a href="stop-TEC_Lchacie1.html">TEC:Lchacie1</a> - Cheratte Acieries de la Meuse 13:31</li><li><a href="stop-TEC_Lchchau1.html">TEC:Lchchau1</a> - Cheratte Château 13:32</li><li><a href="stop-TEC_Lchec--1.html">TEC:Lchec--1</a> - Cheratte Ecoles 13:33</li><li><a href="stop-TEC_Lcheg--1.html">TEC:Lcheg--1</a> - Cheratte Eglise 13:34</li><li><a href="stop-TEC_Lchpniv1.html">TEC:Lchpniv1</a> - Cheratte Passage à niveau 13:35</li><li><a href="stop-TEC_Lchstat_.html">TEC:Lchstat*</a> - Cheratte Stationnement 13:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4157.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

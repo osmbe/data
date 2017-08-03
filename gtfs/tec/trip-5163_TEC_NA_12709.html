@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - JEMELLE - WELLIN - GRUPONT - 5163:TEC:NA:12709</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: JEMELLE - WELLIN - GRUPONT - 5163:TEC:NA:12709</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N874aeb.html">TEC:N874aeb</a> - Wellin Place 13:09</li><li><a href="stop-TEC_N874aba.html">TEC:N874aba</a> - Wellin Dépôt TEC 13:10</li><li><a href="stop-TEC_N874aka.html">TEC:N874aka</a> - Halma Rue de Wellin 13:11</li><li><a href="stop-TEC_N874ajb.html">TEC:N874ajb</a> - Halma Carrefour 13:11</li><li><a href="stop-TEC_N874aia.html">TEC:N874aia</a> - Halma Route de Recogne 13:12</li><li><a href="stop-TEC_N874ala.html">TEC:N874ala</a> - Halma Hôtel Finet 13:12</li><li><a href="stop-TEC_N874ama.html">TEC:N874ama</a> - Chanly Rue de France 13:13</li><li><a href="stop-TEC_N874ana.html">TEC:N874ana</a> - Chanly Eglise 13:14</li><li><a href="stop-TEC_N988aca.html">TEC:N988aca</a> - Resteigne Chemin de Thioré 13:17</li><li><a href="stop-TEC_N988aba.html">TEC:N988aba</a> - Resteigne Eglise 13:18</li><li><a href="stop-TEC_N988aaa.html">TEC:N988aaa</a> - Resteigne Le Cruckay 13:19</li><li><a href="stop-TEC_X989aea.html">TEC:X989aea</a> - Tellin Delvoie 13:22</li><li><a href="stop-TEC_X989afa.html">TEC:X989afa</a> - Tellin Eglise 13:23</li><li><a href="stop-TEC_X989aga.html">TEC:X989aga</a> - Tellin Carrefour Route de Marche 13:24</li><li><a href="stop-TEC_X989aba.html">TEC:X989aba</a> - Tellin Rue de Bure 13:24</li><li><a href="stop-TEC_X994aga.html">TEC:X994aga</a> - Bure Entrée du Village 13:26</li><li><a href="stop-TEC_X994aeb.html">TEC:X994aeb</a> - Bure Eglise 13:27</li><li><a href="stop-TEC_X994afa.html">TEC:X994afa</a> - Bure Chemin du Cimetière 13:28</li><li><a href="stop-TEC_X994ala.html">TEC:X994ala</a> - Grupont Vieux Chemin de Grupont 13:30</li><li><a href="stop-TEC_X994aia.html">TEC:X994aia</a> - Grupont Centre 13:31</li><li><a href="stop-TEC_X994aja.html">TEC:X994aja</a> - Grupont Gare 13:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5755.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

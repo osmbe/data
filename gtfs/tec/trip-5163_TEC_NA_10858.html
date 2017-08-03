@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - METTET - BIESME - 5163:TEC:NA:10858</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: METTET - BIESME - 5163:TEC:NA:10858</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N573aab.html">TEC:N573aab</a> - Biesme Mont 06:46</li><li><a href="stop-TEC_N571adb.html">TEC:N571adb</a> - Biesme Gahy 06:47</li><li><a href="stop-TEC_N571acb.html">TEC:N571acb</a> - Biesme Prée 06:48</li><li><a href="stop-TEC_N571abb.html">TEC:N571abb</a> - Biesme Wagnée 06:49</li><li><a href="stop-TEC_N571aab.html">TEC:N571aab</a> - Biesme Bruyère 06:50</li><li><a href="stop-TEC_N571akb.html">TEC:N571akb</a> - Oret Route de Biesme 06:51</li><li><a href="stop-TEC_N571ajb.html">TEC:N571ajb</a> - Oret Hastir 06:51</li><li><a href="stop-TEC_N571agb.html">TEC:N571agb</a> - Oret Place 06:52</li><li><a href="stop-TEC_N571afb.html">TEC:N571afb</a> - Oret Trinoy 06:53</li><li><a href="stop-TEC_N548afb.html">TEC:N548afb</a> - Mettet Saint-Donat Zoning 06:55</li><li><a href="stop-TEC_N548agb.html">TEC:N548agb</a> - Mettet Saint-Donat Carrefour 06:57</li><li><a href="stop-TEC_N548ahb.html">TEC:N548ahb</a> - Mettet Hennevauche 06:58</li><li><a href="stop-TEC_N548aib.html">TEC:N548aib</a> - Mettet Garage 06:58</li><li><a href="stop-TEC_N548akb.html">TEC:N548akb</a> - Mettet Estroit 06:59</li><li><a href="stop-TEC_N548adb.html">TEC:N548adb</a> - Mettet Place 07:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6101.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

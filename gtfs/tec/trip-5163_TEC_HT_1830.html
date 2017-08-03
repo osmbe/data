@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ath - Ellezelles - 5163:TEC:HT:1830</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ath - Ellezelles - 5163:TEC:HT:1830</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4re225a.html">TEC:H4re225a</a> - Rebaix Place 09:05</li><li><a href="stop-TEC_H4re224b.html">TEC:H4re224b</a> - Rebaix Ferme 09:06</li><li><a href="stop-TEC_H4re227b.html">TEC:H4re227b</a> - Rebaix Princesse Astrid 09:06</li><li><a href="stop-TEC_H4re229b.html">TEC:H4re229b</a> - Rebaix Station 09:07</li><li><a href="stop-TEC_H5is176b.html">TEC:H5is176b</a> - Isieres Usine 09:08</li><li><a href="stop-TEC_H5is173b.html">TEC:H5is173b</a> - Isieres La Cavée 09:09</li><li><a href="stop-TEC_H5is172b.html">TEC:H5is172b</a> - Isieres Grand-Marais 09:10</li><li><a href="stop-TEC_H5is168b.html">TEC:H5is168b</a> - Isieres Cambry 09:11</li><li><a href="stop-TEC_H5is171b.html">TEC:H5is171b</a> - Isieres Eglise 09:11</li><li><a href="stop-TEC_H5is174b.html">TEC:H5is174b</a> - Isieres Route de Lessines 09:11</li><li><a href="stop-TEC_H5is169b.html">TEC:H5is169b</a> - Isieres Castillon 09:12</li><li><a href="stop-TEC_H5la177b.html">TEC:H5la177b</a> - Lanquesaint Place 09:13</li><li><a href="stop-TEC_H5at122b.html">TEC:H5at122b</a> - Ath Limite de Lanquesaint 09:14</li><li><a href="stop-TEC_H5at133b.html">TEC:H5at133b</a> - Ath Rue des Matelots 09:16</li><li><a href="stop-TEC_H5at114a.html">TEC:H5at114a</a> - Ath Delhaize - Lorette 09:17</li><li><a href="stop-TEC_H5at107a.html">TEC:H5at107a</a> - Ath Avenue Jouret 09:18</li><li><a href="stop-TEC_H5at134a.html">TEC:H5at134a</a> - Ath Rue du Centenaire 09:18</li><li><a href="stop-TEC_H5at118a.html">TEC:H5at118a</a> - Ath Ch EpiCURA 09:19</li><li><a href="stop-TEC_H5at120b.html">TEC:H5at120b</a> - Ath Institut Technique 09:21</li><li><a href="stop-TEC_H5at116a.html">TEC:H5at116a</a> - Ath SNCB 09:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2178.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

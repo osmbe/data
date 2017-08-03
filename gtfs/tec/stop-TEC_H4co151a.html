@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Houthem Résidence Ma Campagne</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Houthem Résidence Ma Campagne</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-5163_TEC_HT_10471.html">5163:TEC:HT:10471</a> - 5163:TEC:HT:10471 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_10472.html">5163:TEC:HT:10472</a> - 5163:TEC:HT:10472 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_10473.html">5163:TEC:HT:10473</a> - 5163:TEC:HT:10473 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_10474.html">5163:TEC:HT:10474</a> - 5163:TEC:HT:10474 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_10475.html">5163:TEC:HT:10475</a> - 5163:TEC:HT:10475 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_10476.html">5163:TEC:HT:10476</a> - 5163:TEC:HT:10476 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_2155.html">5163:TEC:HT:2155</a> - 5163:TEC:HT:2155 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_2156.html">5163:TEC:HT:2156</a> - 5163:TEC:HT:2156 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_2157.html">5163:TEC:HT:2157</a> - 5163:TEC:HT:2157 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_2158.html">5163:TEC:HT:2158</a> - 5163:TEC:HT:2158 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_2159.html">5163:TEC:HT:2159</a> - 5163:TEC:HT:2159 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_2160.html">5163:TEC:HT:2160</a> - 5163:TEC:HT:2160 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_2161.html">5163:TEC:HT:2161</a> - 5163:TEC:HT:2161 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_2162.html">5163:TEC:HT:2162</a> - 5163:TEC:HT:2162 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_2163.html">5163:TEC:HT:2163</a> - 5163:TEC:HT:2163 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_2164.html">5163:TEC:HT:2164</a> - 5163:TEC:HT:2164 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_5021.html">5163:TEC:HT:5021</a> - 5163:TEC:HT:5021 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_5022.html">5163:TEC:HT:5022</a> - 5163:TEC:HT:5022 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_5023.html">5163:TEC:HT:5023</a> - 5163:TEC:HT:5023 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_5024.html">5163:TEC:HT:5024</a> - 5163:TEC:HT:5024 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_5025.html">5163:TEC:HT:5025</a> - 5163:TEC:HT:5025 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_5026.html">5163:TEC:HT:5026</a> - 5163:TEC:HT:5026 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_5027.html">5163:TEC:HT:5027</a> - 5163:TEC:HT:5027 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_5028.html">5163:TEC:HT:5028</a> - 5163:TEC:HT:5028 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_5029.html">5163:TEC:HT:5029</a> - 5163:TEC:HT:5029 - Proxibus Comines/Komen</li><li><a href="trip-5163_TEC_HT_5030.html">5163:TEC:HT:5030</a> - 5163:TEC:HT:5030 - Proxibus Comines/Komen</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.788731, 2.955856], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.788731, 2.955856]).addTo(map);
+    </script>
+</body>
+
+</html>

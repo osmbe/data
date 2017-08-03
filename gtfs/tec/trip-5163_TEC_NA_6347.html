@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - ANDENNE-SEILLES - MAIZERET - 5163:TEC:NA:6347</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: ANDENNE-SEILLES - MAIZERET - 5163:TEC:NA:6347</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N503aka.html">TEC:N503aka</a> - Maizeret Eglise 09:10</li><li><a href="stop-TEC_N503aja.html">TEC:N503aja</a> - Maizeret La biche 09:11</li><li><a href="stop-TEC_N580afa.html">TEC:N580afa</a> - Mozet Girembois 09:13</li><li><a href="stop-TEC_N580aca.html">TEC:N580aca</a> - Mozet Comognes 09:14</li><li><a href="stop-TEC_N580aba.html">TEC:N580aba</a> - Mozet Carrefour 09:15</li><li><a href="stop-TEC_N580aea.html">TEC:N580aea</a> - Mozet Eglise 09:16</li><li><a href="stop-TEC_N580ada.html">TEC:N580ada</a> - Mozet Ecole 09:17</li><li><a href="stop-TEC_N580aaa.html">TEC:N580aaa</a> - Mozet Calvaire 09:19</li><li><a href="stop-TEC_N580aha.html">TEC:N580aha</a> - Mozet Hospice 09:20</li><li><a href="stop-TEC_N579afa.html">TEC:N579afa</a> - Thon Sur les forges 09:22</li><li><a href="stop-TEC_N579aaa.html">TEC:N579aaa</a> - Thon Camping 09:24</li><li><a href="stop-TEC_N579aea.html">TEC:N579aea</a> - Thon Samson église 09:25</li><li><a href="stop-TEC_N579ada.html">TEC:N579ada</a> - Thon Route de Thon 09:26</li><li><a href="stop-TEC_N579aca.html">TEC:N579aca</a> - Thon Institut Ste-Begge 09:27</li><li><a href="stop-TEC_N579aba.html">TEC:N579aba</a> - Thon Carrefour de Bonneville 09:27</li><li><a href="stop-TEC_N505aoa.html">TEC:N505aoa</a> - Bonneville Pelé Tienne 09:29</li><li><a href="stop-TEC_N505aca.html">TEC:N505aca</a> - Bonneville Cité 09:30</li><li><a href="stop-TEC_N505aba.html">TEC:N505aba</a> - Bonneville Chauffour 09:31</li><li><a href="stop-TEC_N505aia.html">TEC:N505aia</a> - Bonneville Rue des bruyères 09:31</li><li><a href="stop-TEC_N505afa.html">TEC:N505afa</a> - Bonneville Route du centre 09:32</li><li><a href="stop-TEC_N505aaa.html">TEC:N505aaa</a> - Bonneville Chaudin 09:35</li><li><a href="stop-TEC_N505ada.html">TEC:N505ada</a> - Bonneville Chemin de Rouvroy 09:35</li><li><a href="stop-TEC_N505aha.html">TEC:N505aha</a> - Bonneville Rouvroy chapelle 09:36</li><li><a href="stop-TEC_N506aob.html">TEC:N506aob</a> - Andenne Chemin de Stud 09:37</li><li><a href="stop-TEC_N506apb.html">TEC:N506apb</a> - Andenne Ferme de Vaudaigle 09:38</li><li><a href="stop-TEC_N506ana.html">TEC:N506ana</a> - Andenne Chemin de Bonneville 09:40</li><li><a href="stop-TEC_N506bpa.html">TEC:N506bpa</a> - Andenne Groynne 09:41</li><li><a href="stop-TEC_N506aqa.html">TEC:N506aqa</a> - Andenne Nouveau cimetière 09:42</li><li><a href="stop-TEC_N506ara.html">TEC:N506ara</a> - Andenne Palais de Justice 09:45</li><li><a href="stop-TEC_N506atb.html">TEC:N506atb</a> - Andenne Place des Tilleuls 09:47</li><li><a href="stop-TEC_N506bad.html">TEC:N506bad</a> - Andenne Ville - 4 coins 09:48</li><li><a href="stop-TEC_N506bqa.html">TEC:N506bqa</a> - Seilles Gare des bus 09:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6720.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

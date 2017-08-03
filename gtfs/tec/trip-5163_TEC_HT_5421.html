@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tournai - Ath - 5163:TEC:HT:5421</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tournai - Ath - 5163:TEC:HT:5421</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4fa124a.html">TEC:H4fa124a</a> - Frasnes-Lez-Anvaing Ancienne Gare 15:56</li><li><a href="stop-TEC_H4fa126c.html">TEC:H4fa126c</a> - Frasnes-Lez-Anvaing Hôtel de Ville 15:57</li><li><a href="stop-TEC_H4fa126a.html">TEC:H4fa126a</a> - Frasnes-Lez-Anvaing Belle Eau 15:57</li><li><a href="stop-TEC_H4fa128a.html">TEC:H4fa128a</a> - Frasnes-Lez-Anvaing Rue de Moustier 15:58</li><li><a href="stop-TEC_H4bu109a.html">TEC:H4bu109a</a> - Buissenal Village 16:00</li><li><a href="stop-TEC_H4bu108a.html">TEC:H4bu108a</a> - Buissenal Lieu Pire 16:01</li><li><a href="stop-TEC_H4hg155a.html">TEC:H4hg155a</a> - Houtaing Bois 16:03</li><li><a href="stop-TEC_H4hg157a.html">TEC:H4hg157a</a> - Houtaing Jonction 16:04</li><li><a href="stop-TEC_H4hg160a.html">TEC:H4hg160a</a> - Houtaing Village 16:04</li><li><a href="stop-TEC_H4hg158a.html">TEC:H4hg158a</a> - Houtaing Place 16:05</li><li><a href="stop-TEC_H4hg159a.html">TEC:H4hg159a</a> - Houtaing Terminus 16:05</li><li><a href="stop-TEC_H4hg156a.html">TEC:H4hg156a</a> - Houtaing Eglise 16:06</li><li><a href="stop-TEC_H4hg159b.html">TEC:H4hg159b</a> - Houtaing Terminus 16:07</li><li><a href="stop-TEC_H4hg158b.html">TEC:H4hg158b</a> - Houtaing Place 16:08</li><li><a href="stop-TEC_H4hg160b.html">TEC:H4hg160b</a> - Houtaing Village 16:09</li><li><a href="stop-TEC_H4hg157b.html">TEC:H4hg157b</a> - Houtaing Jonction 16:10</li><li><a href="stop-TEC_H4hg154b.html">TEC:H4hg154b</a> - Houtaing Bifurcation 16:10</li><li><a href="stop-TEC_H4mv189c.html">TEC:H4mv189c</a> - Mainvault Coucou 16:11</li><li><a href="stop-TEC_H4mv194b.html">TEC:H4mv194b</a> - Mainvault Paradis 16:14</li><li><a href="stop-TEC_H4mv197b.html">TEC:H4mv197b</a> - Mainvault Rue du Chêne 16:15</li><li><a href="stop-TEC_H4mv195b.html">TEC:H4mv195b</a> - Mainvault Place 16:16</li><li><a href="stop-TEC_H4mv196a.html">TEC:H4mv196a</a> - Mainvault Route d'Ostiches 16:16</li><li><a href="stop-TEC_H4mv193b.html">TEC:H4mv193b</a> - Mainvault N° 253 16:17</li><li><a href="stop-TEC_H4va232b.html">TEC:H4va232b</a> - Villers-St-Amand Chemin de Bouvignies 16:18</li><li><a href="stop-TEC_H5at129b.html">TEC:H5at129b</a> - Ath Route de Frasnes 16:20</li><li><a href="stop-TEC_H5at141b.html">TEC:H5at141b</a> - Ath Tir 16:20</li><li><a href="stop-TEC_H5at115b.html">TEC:H5at115b</a> - Ath Faubourg de Tournai 16:20</li><li><a href="stop-TEC_H5at120b.html">TEC:H5at120b</a> - Ath Institut Technique 16:21</li><li><a href="stop-TEC_H5at116a.html">TEC:H5at116a</a> - Ath SNCB 16:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1446.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tivoli - La Louv. - Haine-St-P. - Manage -Seneffe - 5163:TEC:HT:1263</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tivoli - La Louv. - Haine-St-P. - Manage -Seneffe - 5163:TEC:HT:1263</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H2ll184a.html">TEC:H2ll184a</a> - La Louviere Kéramis 04:51</li><li><a href="stop-TEC_H2ll188a.html">TEC:H2ll188a</a> - La Louviere Place Mansart 04:53</li><li><a href="stop-TEC_H2ll177b.html">TEC:H2ll177b</a> - La Louviere Rue du Parc 04:55</li><li><a href="stop-TEC_H2ll189b.html">TEC:H2ll189b</a> - La Louviere Place Mattéotti 04:56</li><li><a href="stop-TEC_H2ll197b.html">TEC:H2ll197b</a> - La Louviere Rue des Champs 04:59</li><li><a href="stop-TEC_H2ll179a.html">TEC:H2ll179a</a> - La Louviere SNCB Sud 05:01</li><li><a href="stop-TEC_H2ll179d.html">TEC:H2ll179d</a> - La Louviere SNCB Sud 05:01</li><li><a href="stop-TEC_H2hp116b.html">TEC:H2hp116b</a> - Haine-St-Pierre Houssu 05:04</li><li><a href="stop-TEC_H2hp125b.html">TEC:H2hp125b</a> - Haine-St-Pierre Souterrain 05:05</li><li><a href="stop-TEC_H2hp114b.html">TEC:H2hp114b</a> - Haine-St-Pierre Habitation N°388 05:06</li><li><a href="stop-TEC_H2hp119b.html">TEC:H2hp119b</a> - Haine-St-Pierre Pont Brogniez 05:07</li><li><a href="stop-TEC_H2jo163b.html">TEC:H2jo163b</a> - Jolimont Ecoles 05:09</li><li><a href="stop-TEC_H2jo162b.html">TEC:H2jo162b</a> - Jolimont Coopérative 05:11</li><li><a href="stop-TEC_H2jo161c.html">TEC:H2jo161c</a> - Jolimont Bifurcation 05:12</li><li><a href="stop-TEC_H2fy123d.html">TEC:H2fy123d</a> - Fayt-Lez-Manage Tordoir 05:13</li><li><a href="stop-TEC_H2fy119b.html">TEC:H2fy119b</a> - Fayt-Lez-Manage Chemin de Fontaine 05:14</li><li><a href="stop-TEC_H2fy120d.html">TEC:H2fy120d</a> - Fayt-Lez-Manage Place Communale 05:15</li><li><a href="stop-TEC_H2mg142b.html">TEC:H2mg142b</a> - Manage Rue de Binche 05:16</li><li><a href="stop-TEC_H2mg136b.html">TEC:H2mg136b</a> - Manage Brasserie Bougard 05:17</li><li><a href="stop-TEC_H2mg140b.html">TEC:H2mg140b</a> - Manage Place 05:18</li><li><a href="stop-TEC_H2mg138a.html">TEC:H2mg138a</a> - Manage SNCB 05:19</li><li><a href="stop-TEC_H2mg138d.html">TEC:H2mg138d</a> - Manage SNCB 05:19</li><li><a href="stop-TEC_H2mg140c.html">TEC:H2mg140c</a> - Manage Place 05:20</li><li><a href="stop-TEC_Bmanfbg2.html">TEC:Bmanfbg2</a> - Manage Faubourg 05:21</li><li><a href="stop-TEC_H2mg139c.html">TEC:H2mg139c</a> - Manage Gendarmerie 05:22</li><li><a href="stop-TEC_H2mg149a.html">TEC:H2mg149a</a> - Manage Verreries 05:24</li><li><a href="stop-TEC_H2se113a.html">TEC:H2se113a</a> - Seneffe Parc Industriel 05:26</li><li><a href="stop-TEC_H2se114a.html">TEC:H2se114a</a> - Seneffe C.Richet 05:27</li><li><a href="stop-TEC_H2se115a.html">TEC:H2se115a</a> - Seneffe J.Bordet 05:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2120.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

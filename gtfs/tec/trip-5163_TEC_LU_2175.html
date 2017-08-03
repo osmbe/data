@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Circuit des écoles de Bourdon et Hotton - 5163:TEC:LU:2175</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Circuit des écoles de Bourdon et Hotton - 5163:TEC:LU:2175</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X923aia.html">TEC:X923aia</a> - Hotton Ecole de l'Etat 15:30</li><li><a href="stop-TEC_X923afa.html">TEC:X923afa</a> - Hotton Rue des Ecoles 15:32</li><li><a href="stop-TEC_X923aba.html">TEC:X923aba</a> - Hotton Route de Marche 87 15:33</li><li><a href="stop-TEC_X923aaa.html">TEC:X923aaa</a> - Hotton Route de Marenne 15:34</li><li><a href="stop-TEC_X923aka.html">TEC:X923aka</a> - Hotton Route de la Carrière 15:34</li><li><a href="stop-TEC_X922ama.html">TEC:X922ama</a> - Marenne Carrières 15:37</li><li><a href="stop-TEC_X922ajb.html">TEC:X922ajb</a> - Marenne Eglise 15:38</li><li><a href="stop-TEC_X922aha.html">TEC:X922aha</a> - Bourdon Cité Belle-Vue 15:41</li><li><a href="stop-TEC_X922agb.html">TEC:X922agb</a> - Bourdon Route de Marenne 11 15:42</li><li><a href="stop-TEC_X922afb.html">TEC:X922afb</a> - Bourdon Eglise 15:44</li><li><a href="stop-TEC_X922aeb.html">TEC:X922aeb</a> - Bourdon Ecole 15:44</li><li><a href="stop-TEC_X922adb.html">TEC:X922adb</a> - Bourdon Route de Marche 94 15:45</li><li><a href="stop-TEC_X922aca.html">TEC:X922aca</a> - Bourdon Station 15:45</li><li><a href="stop-TEC_X922aaa.html">TEC:X922aaa</a> - Bourdon Longues Aires 15:46</li><li><a href="stop-TEC_X922acb.html">TEC:X922acb</a> - Bourdon Station 15:49</li><li><a href="stop-TEC_X922ada.html">TEC:X922ada</a> - Bourdon Route de Marche 94 15:49</li><li><a href="stop-TEC_X922aea.html">TEC:X922aea</a> - Bourdon Ecole 15:50</li><li><a href="stop-TEC_X922afa.html">TEC:X922afa</a> - Bourdon Eglise 15:51</li><li><a href="stop-TEC_X922aga.html">TEC:X922aga</a> - Bourdon Route de Marenne 11 15:52</li><li><a href="stop-TEC_X922ahb.html">TEC:X922ahb</a> - Bourdon Cité Belle-Vue 15:54</li><li><a href="stop-TEC_X922aka.html">TEC:X922aka</a> - Verdenne Centre 15:58</li><li><a href="stop-TEC_X922alb.html">TEC:X922alb</a> - Verdenne Rue de Noel 1944 15:59</li><li><a href="stop-TEC_X922aib.html">TEC:X922aib</a> - Marenne Ecole 16:01</li><li><a href="stop-TEC_X922aja.html">TEC:X922aja</a> - Marenne Eglise 16:02</li><li><a href="stop-TEC_X922aha.html">TEC:X922aha</a> - Bourdon Cité Belle-Vue 16:05</li><li><a href="stop-TEC_X922afb.html">TEC:X922afb</a> - Bourdon Eglise 16:08</li><li><a href="stop-TEC_X922aeb.html">TEC:X922aeb</a> - Bourdon Ecole 16:08</li><li><a href="stop-TEC_X922adb.html">TEC:X922adb</a> - Bourdon Route de Marche 94 16:09</li><li><a href="stop-TEC_X922aca.html">TEC:X922aca</a> - Bourdon Station 16:09</li><li><a href="stop-TEC_X922aaa.html">TEC:X922aaa</a> - Bourdon Longues Aires 16:10</li><li><a href="stop-TEC_X922abb.html">TEC:X922abb</a> - Bourdon Longues Aires N86 16:11</li><li><a href="stop-TEC_X901bmb.html">TEC:X901bmb</a> - Marche Rue de Hotton 187 16:12</li><li><a href="stop-TEC_X901blb.html">TEC:X901blb</a> - Marche Chaussée de l'Ourthe 139 16:13</li><li><a href="stop-TEC_X901aqb.html">TEC:X901aqb</a> - Marche Camp Militaire (Ch. de l'Ourthe) 16:13</li><li><a href="stop-TEC_X901apb.html">TEC:X901apb</a> - Marche Centre Sportif 16:14</li><li><a href="stop-TEC_X901aoa.html">TEC:X901aoa</a> - Marche Cimetière 16:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2973.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

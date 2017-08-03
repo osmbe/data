@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Libramont - Jemelle - 5163:TEC:LU:3728</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Libramont - Jemelle - 5163:TEC:LU:3728</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X897ala.html">TEC:X897ala</a> - Saint-Hubert Place de la Libération 11:17</li><li><a href="stop-TEC_X897amb.html">TEC:X897amb</a> - Saint-Hubert Av. des Chasseurs Ardennais 11:18</li><li><a href="stop-TEC_X897aqa.html">TEC:X897aqa</a> - Saint-Hubert Route de Rochefort 19 11:19</li><li><a href="stop-TEC_X896afa.html">TEC:X896afa</a> - Lorcy Route de Rochefort 8 11:20</li><li><a href="stop-TEC_X896aeb.html">TEC:X896aeb</a> - Arville Fermes 11:22</li><li><a href="stop-TEC_X995aca.html">TEC:X995aca</a> - Awenne Eglise 11:29</li><li><a href="stop-TEC_X995aab.html">TEC:X995aab</a> - Awenne Grand'Rue 29 11:29</li><li><a href="stop-TEC_X995abb.html">TEC:X995abb</a> - Awenne Chemin de la Comène 11:30</li><li><a href="stop-TEC_X995ada.html">TEC:X995ada</a> - Awenne Carrefour du Sartay 11:31</li><li><a href="stop-TEC_X995add.html">TEC:X995add</a> - Awenne Carrefour du Sartay 11:31</li><li><a href="stop-TEC_X995afb.html">TEC:X995afb</a> - Mirwart Rue du Bois d'Oingt 11:34</li><li><a href="stop-TEC_X995aga.html">TEC:X995aga</a> - Mirwart Eglise 11:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3597.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

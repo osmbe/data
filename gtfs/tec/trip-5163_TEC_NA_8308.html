@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - ANDENNE-SEILLES - CINEY - 5163:TEC:NA:8308</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: ANDENNE-SEILLES - CINEY - 5163:TEC:NA:8308</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N557acb.html">TEC:N557acb</a> - Ohey Dépôt 06:18</li><li><a href="stop-TEC_N557aaa.html">TEC:N557aaa</a> - Ohey Route de Haillot 06:20</li><li><a href="stop-TEC_N557aha.html">TEC:N557aha</a> - Ohey Eglise 06:21</li><li><a href="stop-TEC_N557afb.html">TEC:N557afb</a> - Ohey Try 06:21</li><li><a href="stop-TEC_N557aga.html">TEC:N557aga</a> - Ohey Bois d'Ohey 06:22</li><li><a href="stop-TEC_N557ada.html">TEC:N557ada</a> - Ohey Taille-Guéry 06:23</li><li><a href="stop-TEC_N556aea.html">TEC:N556aea</a> - Coutisse Nalamont 06:24</li><li><a href="stop-TEC_N556afa.html">TEC:N556afa</a> - Coutisse Pelu 06:25</li><li><a href="stop-TEC_N556ada.html">TEC:N556ada</a> - Coutisse Sainte-Begge 06:27</li><li><a href="stop-TEC_N506afa.html">TEC:N506afa</a> - Andenne Ecole de Peu d'eau 06:28</li><li><a href="stop-TEC_N506aja.html">TEC:N506aja</a> - Andenne Bois des Dames 06:29</li><li><a href="stop-TEC_N506asa.html">TEC:N506asa</a> - Andenne Peu d'eau 06:30</li><li><a href="stop-TEC_N506aha.html">TEC:N506aha</a> - Andenne Pergola 06:30</li><li><a href="stop-TEC_N506aga.html">TEC:N506aga</a> - Andenne Haute-bise 06:30</li><li><a href="stop-TEC_N506ala.html">TEC:N506ala</a> - Andenne Chaussée de Ciney 06:32</li><li><a href="stop-TEC_N506ara.html">TEC:N506ara</a> - Andenne Palais de Justice 06:33</li><li><a href="stop-TEC_N506atb.html">TEC:N506atb</a> - Andenne Place des Tilleuls 06:34</li><li><a href="stop-TEC_N506bad.html">TEC:N506bad</a> - Andenne Ville - 4 coins 06:35</li><li><a href="stop-TEC_N506bqa.html">TEC:N506bqa</a> - Seilles Gare des bus 06:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6548.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - GESVES - CINEY - 5163:TEC:NA:752</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - GESVES - CINEY - 5163:TEC:NA:752</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N562afa.html">TEC:N562afa</a> - Brionsart Fond 07:25</li><li><a href="stop-TEC_N562aea.html">TEC:N562aea</a> - Brionsart Brionsart 07:26</li><li><a href="stop-TEC_N562aca.html">TEC:N562aca</a> - Brionsart Michaux 07:28</li><li><a href="stop-TEC_N562aga.html">TEC:N562aga</a> - Gesves Café des sports 07:29</li><li><a href="stop-TEC_N562ama.html">TEC:N562ama</a> - Gesves Impasse des chalets 07:31</li><li><a href="stop-TEC_N562asa.html">TEC:N562asa</a> - Gesves Ry des fonds 07:33</li><li><a href="stop-TEC_N562bwa.html">TEC:N562bwa</a> - Gesves Rue Monjoie 07:35</li><li><a href="stop-TEC_N562alc.html">TEC:N562alc</a> - Gesves Forges 07:36</li><li><a href="stop-TEC_N562akb.html">TEC:N562akb</a> - Gesves Fond 07:38</li><li><a href="stop-TEC_N562atb.html">TEC:N562atb</a> - Gesves Saint-Hubert 07:39</li><li><a href="stop-TEC_N562aib.html">TEC:N562aib</a> - Gesves Ecole moyenne 07:40</li><li><a href="stop-TEC_N562azb.html">TEC:N562azb</a> - Gesves Ecole libre - Ch. de Gramptinne 07:41</li><li><a href="stop-TEC_N562aya.html">TEC:N562aya</a> - Gesves Ecole libre - rue Petite 07:43</li><li><a href="stop-TEC_N562bfb.html">TEC:N562bfb</a> - Gesves Petit Pourrain 07:46</li><li><a href="stop-TEC_N570aab.html">TEC:N570aab</a> - Assesse Carrières 07:48</li><li><a href="stop-TEC_N570abb.html">TEC:N570abb</a> - Assesse Pourrain 07:49</li><li><a href="stop-TEC_N570acb.html">TEC:N570acb</a> - Assesse Grotte 07:51</li><li><a href="stop-TEC_N570agb.html">TEC:N570agb</a> - Assesse Pont Nationale 4 07:52</li><li><a href="stop-TEC_N254aab.html">TEC:N254aab</a> - Natoye Mianoye 07:57</li><li><a href="stop-TEC_N254abb.html">TEC:N254abb</a> - Natoye Jeu de balle 07:59</li><li><a href="stop-TEC_N254acb.html">TEC:N254acb</a> - Natoye Rue du Rond-Point 08:00</li><li><a href="stop-TEC_N254adb.html">TEC:N254adb</a> - Natoye Rue Belle-Vue 08:01</li><li><a href="stop-TEC_N254aeb.html">TEC:N254aeb</a> - Natoye Rue du Pont 08:02</li><li><a href="stop-TEC_N254afb.html">TEC:N254afb</a> - Natoye Rue Saint-Donat 08:04</li><li><a href="stop-TEC_N254agb.html">TEC:N254agb</a> - Natoye Eglise 08:06</li><li><a href="stop-TEC_N254ahb.html">TEC:N254ahb</a> - Natoye Château 08:07</li><li><a href="stop-TEC_N202aca.html">TEC:N202aca</a> - Emptinne Emptinnal 08:12</li><li><a href="stop-TEC_N201aga.html">TEC:N201aga</a> - Ciney Champs-Elysées 08:14</li><li><a href="stop-TEC_N201aha.html">TEC:N201aha</a> - Ciney Rue du Cimetière 08:15</li><li><a href="stop-TEC_N201ada.html">TEC:N201ada</a> - Ciney Hôtel de ville 08:16</li><li><a href="stop-TEC_N201aca.html">TEC:N201aca</a> - Ciney Centre médical 08:17</li><li><a href="stop-TEC_N201ava.html">TEC:N201ava</a> - Ciney Place de la Gare 08:18</li><li><a href="stop-TEC_N201aef.html">TEC:N201aef</a> - Ciney Gare d'autobus 08:18</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6131.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

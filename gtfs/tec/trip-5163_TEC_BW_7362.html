@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tubize - Virginal - Ittre Croiseau - 5163:TEC:BW:7362</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tubize - Virginal - Ittre Croiseau - 5163:TEC:BW:7362</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Btubga02.html">TEC:Btubga02</a> - Tubize Gare 19:53</li><li><a href="stop-TEC_Btubdeh1.html">TEC:Btubdeh1</a> - Tubize Rue Dehase 19:54</li><li><a href="stop-TEC_Btubcvi1.html">TEC:Btubcvi1</a> - Tubize Café Virginal 19:55</li><li><a href="stop-TEC_Btubois1.html">TEC:Btubois1</a> - Tubize Rue de Oisquercq 19:56</li><li><a href="stop-TEC_Btubegy1.html">TEC:Btubegy1</a> - Tubize Egypte 19:57</li><li><a href="stop-TEC_Btubpir1.html">TEC:Btubpir1</a> - Tubize Rue du Pire 19:58</li><li><a href="stop-TEC_Bosqcar1.html">TEC:Bosqcar1</a> - Oisquercq Carrefour 19:59</li><li><a href="stop-TEC_Bosqcim1.html">TEC:Bosqcim1</a> - Oisquercq Cimetière 20:00</li><li><a href="stop-TEC_Bosqpco1.html">TEC:Bosqpco1</a> - Oisquercq Place Communale 20:01</li><li><a href="stop-TEC_Bosqgar1.html">TEC:Bosqgar1</a> - Oisquercq Gare 20:02</li><li><a href="stop-TEC_Bosqsam1.html">TEC:Bosqsam1</a> - Oisquercq Rue de Samme 20:03</li><li><a href="stop-TEC_Bvirdco1.html">TEC:Bvirdco1</a> - Virginal Dépôt Communal 20:04</li><li><a href="stop-TEC_Bvirduj1.html">TEC:Bvirduj1</a> - Virginal Rue Dujacquier 20:05</li><li><a href="stop-TEC_Bvirrbo1.html">TEC:Bvirrbo1</a> - Virginal Rouge Bouton 20:06</li><li><a href="stop-TEC_Bvirhsa1.html">TEC:Bvirhsa1</a> - Virginal Hameau de Samme 20:07</li><li><a href="stop-TEC_Bvirbie4.html">TEC:Bvirbie4</a> - Virginal Bierny 20:08</li><li><a href="stop-TEC_Bvirpos1.html">TEC:Bvirpos1</a> - Virginal Poste 20:09</li><li><a href="stop-TEC_Bvirbru1.html">TEC:Bvirbru1</a> - Virginal Rue de la Bruyère 20:09</li><li><a href="stop-TEC_Bvircsj1.html">TEC:Bvircsj1</a> - Virginal Chapelle Jonas 20:10</li><li><a href="stop-TEC_Bvirmbr1.html">TEC:Bvirmbr1</a> - Virginal Rue Maurice Brancart 20:11</li><li><a href="stop-TEC_Bvirvol1.html">TEC:Bvirvol1</a> - Virginal La Vollée 20:12</li><li><a href="stop-TEC_Bvirflu1.html">TEC:Bvirflu1</a> - Fauquez Chapelle Sainte-Lutgarde 20:14</li><li><a href="stop-TEC_Bvirfpo1.html">TEC:Bvirfpo1</a> - Fauquez Portique 20:15</li><li><a href="stop-TEC_Bitrcro3.html">TEC:Bitrcro3</a> - Ittre Rue du Croiseau 20:18</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./212.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

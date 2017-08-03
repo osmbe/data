@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Jemeppe - Seraing (La Chatqueue) - 5163:TEC:LV:28041</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jemeppe - Seraing (La Chatqueue) - 5163:TEC:LV:28041</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LjeGRPMD.html">TEC:LjeGRPMD</a> - Jemeppe gare routière 13:30</li><li><a href="stop-TEC_Lsekubo2.html">TEC:Lsekubo2</a> - Seraing Place Kuborn 13:32</li><li><a href="stop-TEC_Lseaven2.html">TEC:Lseaven2</a> - Seraing Esplanade de l'Avenir 13:34</li><li><a href="stop-TEC_Lsecoll2.html">TEC:Lsecoll2</a> - Seraing Pont Collard 13:35</li><li><a href="stop-TEC_Lsephar2.html">TEC:Lsephar2</a> - Seraing Pharmacie Cockerill 13:36</li><li><a href="stop-TEC_Lsebegu2.html">TEC:Lsebegu2</a> - Seraing Place des Béguines 13:37</li><li><a href="stop-TEC_Lsehcoc2.html">TEC:Lsehcoc2</a> - Seraing Hôpital Cockerill 13:38</li><li><a href="stop-TEC_Lsebrun2.html">TEC:Lsebrun2</a> - Seraing Place G. Bruno 13:39</li><li><a href="stop-TEC_Lsepapi1.html">TEC:Lsepapi1</a> - Seraing Rue du Papillon 13:40</li><li><a href="stop-TEC_Lsehya-1.html">TEC:Lsehya-1</a> - Seraing Rue Hya 13:41</li><li><a href="stop-TEC_Lsepair1.html">TEC:Lsepair1</a> - Seraing Place du Pairay 13:42</li><li><a href="stop-TEC_Lsevecq1.html">TEC:Lsevecq1</a> - Seraing Rue de la Vecquée 13:43</li><li><a href="stop-TEC_Lsechan1.html">TEC:Lsechan1</a> - Seraing Rue des Chanterelles 13:44</li><li><a href="stop-TEC_Lsemaqu1.html">TEC:Lsemaqu1</a> - Seraing Rue du Maquis 13:45</li><li><a href="stop-TEC_Lsepcha3.html">TEC:Lsepcha3</a> - Seraing Place de la Chatqueue 13:46</li><li><a href="stop-TEC_Lseserv1.html">TEC:Lseserv1</a> - Seraing Rue M. Servet 13:47</li><li><a href="stop-TEC_Lsedese1.html">TEC:Lsedese1</a> - Seraing Rue du Désert 13:50</li><li><a href="stop-TEC_Lsemyrt1.html">TEC:Lsemyrt1</a> - Seraing Rue des Myrtilles 13:51</li><li><a href="stop-TEC_Lseblan_.html">TEC:Lseblan*</a> - Seraing Maison Blanche 13:52</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4195.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

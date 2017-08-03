@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - SPY - ONOZ - VELAINE - 5163:TEC:NA:12066</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - SPY - ONOZ - VELAINE - 5163:TEC:NA:12066</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N530ada.html">TEC:N530ada</a> - Velaine-sur-Sambre Ecole 18:04</li><li><a href="stop-TEC_N530aja.html">TEC:N530aja</a> - Velaine-sur-Sambre Hurlevent 18:04</li><li><a href="stop-TEC_N530aca.html">TEC:N530aca</a> - Velaine-sur-Sambre Jeanmart 18:05</li><li><a href="stop-TEC_N530aia.html">TEC:N530aia</a> - Velaine-sur-Sambre Chapelle St-Antoine 18:05</li><li><a href="stop-TEC_N530afa.html">TEC:N530afa</a> - Velaine-sur-Sambre Rue Destrée 18:06</li><li><a href="stop-TEC_N530aea.html">TEC:N530aea</a> - Velaine-sur-Sambre Place de l'Eglise 18:07</li><li><a href="stop-TEC_N530aba.html">TEC:N530aba</a> - Velaine-sur-Sambre Aux Combattants 18:07</li><li><a href="stop-TEC_N530aab.html">TEC:N530aab</a> - Velaine-sur-Sambre Gare vicinale 18:09</li><li><a href="stop-TEC_N530ahb.html">TEC:N530ahb</a> - Velaine-sur-Sambre Route de Balâtre 18:09</li><li><a href="stop-TEC_N530agb.html">TEC:N530agb</a> - Velaine-sur-Sambre Prahy 18:11</li><li><a href="stop-TEC_N534bgb.html">TEC:N534bgb</a> - Jemeppe Les Termes 18:13</li><li><a href="stop-TEC_N534arb.html">TEC:N534arb</a> - Jemeppe Café potier 18:14</li><li><a href="stop-TEC_N534aub.html">TEC:N534aub</a> - Jemeppe Route de Fayat 18:14</li><li><a href="stop-TEC_N534bwa.html">TEC:N534bwa</a> - Onoz Gare 18:16</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6299.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

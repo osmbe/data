@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Nivelles - Braine-l'Alleud - 5163:TEC:BW:4542</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Nivelles - Braine-l'Alleud - 5163:TEC:BW:4542</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bblagar4.html">TEC:Bblagar4</a> - Alleud Gare 09:05</li><li><a href="stop-TEC_Bblapje1.html">TEC:Bblapje1</a> - Alleud Rue de Petit Jean 09:07</li><li><a href="stop-TEC_Bblague2.html">TEC:Bblague2</a> - Alleud Rue au Gué 09:08</li><li><a href="stop-TEC_Bblaqsj1.html">TEC:Bblaqsj1</a> - Alleud Quartier Saint Jacques 09:08</li><li><a href="stop-TEC_Bblafab1.html">TEC:Bblafab1</a> - Alleud Fabrique 09:09</li><li><a href="stop-TEC_Bblatet1.html">TEC:Bblatet1</a> - Alleud Timpe et Tard 09:11</li><li><a href="stop-TEC_Bbsibou1.html">TEC:Bbsibou1</a> - Ophain Bouvrée 09:12</li><li><a href="stop-TEC_Bbsivil1.html">TEC:Bbsivil1</a> - Ophain Village 09:13</li><li><a href="stop-TEC_Bbsigaz1.html">TEC:Bbsigaz1</a> - Ophain - BOIS-SEIGNEUR-ISAAC Les Gazons 09:14</li><li><a href="stop-TEC_Bbsicul1.html">TEC:Bbsicul1</a> - Ophain - BOIS-SEIGNEUR-ISAAC Les Culots 09:15</li><li><a href="stop-TEC_Bbsicas1.html">TEC:Bbsicas1</a> - Ophain - BOIS-SEIGNEUR-ISAAC Rue du Castor 09:16</li><li><a href="stop-TEC_Bbsiabb1.html">TEC:Bbsiabb1</a> - Ophain - BOIS-SEIGNEUR-ISAAC Abbaye 09:17</li><li><a href="stop-TEC_Bbsicen1.html">TEC:Bbsicen1</a> - Bois-Seigneur-Isaac Centre 09:18</li><li><a href="stop-TEC_Bbsicen1.html">TEC:Bbsicen1</a> - Bois-Seigneur-Isaac Centre 09:18</li><li><a href="stop-TEC_Bbsimpl1.html">TEC:Bbsimpl1</a> - Ophain - BOIS-SEIGNEUR-ISAAC Maison Plasman 09:19</li><li><a href="stop-TEC_Bbsifml1.html">TEC:Bbsifml1</a> - Ophain - BOIS-SEIGNEUR-ISAAC Ferme du Moulin 09:19</li><li><a href="stop-TEC_Bnivlpa1.html">TEC:Bnivlpa1</a> - Nivelles Laid Patard 09:20</li><li><a href="stop-TEC_Bnivzon1.html">TEC:Bnivzon1</a> - Nivelles Zoning Nord 09:21</li><li><a href="stop-TEC_Bnivfhu1.html">TEC:Bnivfhu1</a> - Nivelles Ferme Huart 09:22</li><li><a href="stop-TEC_Bnivchh1.html">TEC:Bnivchh1</a> - Nivelles Chaussée de Hal 09:22</li><li><a href="stop-TEC_Bnivspi1.html">TEC:Bnivspi1</a> - Nivelles Chemin Saint-Pierre 09:23</li><li><a href="stop-TEC_Bnivbau1.html">TEC:Bnivbau1</a> - Nivelles Chemin de Baudémont 09:24</li><li><a href="stop-TEC_Bnivmet1.html">TEC:Bnivmet1</a> - Nivelles Métallurgie 09:25</li><li><a href="stop-TEC_Bnivgam1.html">TEC:Bnivgam1</a> - Nivelles Chemin de Gambrais 09:26</li><li><a href="stop-TEC_Bnivsoi2.html">TEC:Bnivsoi2</a> - Nivelles Rue de Soignies 09:26</li><li><a href="stop-TEC_Bnivgpl2.html">TEC:Bnivgpl2</a> - Nivelles Grand Place 09:27</li><li><a href="stop-TEC_Bnivpso1.html">TEC:Bnivpso1</a> - Nivelles Place du Souvenir 09:28</li><li><a href="stop-TEC_Bnivpla2.html">TEC:Bnivpla2</a> - Nivelles Place de Lalieux 09:29</li><li><a href="stop-TEC_Bnivga31.html">TEC:Bnivga31</a> - Nivelles Gare 09:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./110.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

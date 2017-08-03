@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Manhay - Lierneux - 5163:TEC:LU:1991</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Manhay - Lierneux - 5163:TEC:LU:1991</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X547aeb.html">TEC:X547aeb</a> - Lierneux Ecole 15:30</li><li><a href="stop-TEC_X547afb.html">TEC:X547afb</a> - Lierneux Eglise 15:30</li><li><a href="stop-TEC_X547ahb.html">TEC:X547ahb</a> - Lierneux Bibliothèque 15:31</li><li><a href="stop-TEC_X547aib.html">TEC:X547aib</a> - Lierneux Carrefour 15:31</li><li><a href="stop-TEC_X547aja.html">TEC:X547aja</a> - Lierneux Colonie Principale 15:31</li><li><a href="stop-TEC_X547aka.html">TEC:X547aka</a> - Lierneux Rue Doyard 15:32</li><li><a href="stop-TEC_X576agb.html">TEC:X576agb</a> - Jevigne Rue de Lierneux 15:33</li><li><a href="stop-TEC_X576acb.html">TEC:X576acb</a> - Jevigne Coreux 15:34</li><li><a href="stop-TEC_LJveg--1.html">TEC:LJveg--1</a> - Jevigne Eglise 15:34</li><li><a href="stop-TEC_LLLvill1.html">TEC:LLLvill1</a> - Lansival Village 15:35</li><li><a href="stop-TEC_X576afb.html">TEC:X576afb</a> - Hierlot Poteau 15:37</li><li><a href="stop-TEC_X561aab.html">TEC:X561aab</a> - Hierlot Centre 15:38</li><li><a href="stop-TEC_X561aeb.html">TEC:X561aeb</a> - La Chapelle 15:39</li><li><a href="stop-TEC_X561abb.html">TEC:X561abb</a> - Odrimont Centre 15:40</li><li><a href="stop-TEC_LODvill1.html">TEC:LODvill1</a> - Odrimont Village 15:41</li><li><a href="stop-TEC_LODamco1.html">TEC:LODamco1</a> - Odrimont Amcômont carrefour 15:43</li><li><a href="stop-TEC_X561ada.html">TEC:X561ada</a> - Les Villettes Noirefontaine 15:47</li><li><a href="stop-TEC_X575aaa.html">TEC:X575aaa</a> - Les Villettes Route de Fosse 15:48</li><li><a href="stop-TEC_LLVboss1.html">TEC:LLVboss1</a> - Les Villettes La Bosse 15:51</li><li><a href="stop-TEC_LLVerri1.html">TEC:LLVerri1</a> - Les Villettes Erria carrefour 15:51</li><li><a href="stop-TEC_LLVe75-1.html">TEC:LLVe75-1</a> - Les Villettes Erria 75 15:51</li><li><a href="stop-TEC_LLVeg--1.html">TEC:LLVeg--1</a> - Les Villettes Eglise 15:52</li><li><a href="stop-TEC_LLVcent1.html">TEC:LLVcent1</a> - Les Villettes Centre 15:52</li><li><a href="stop-TEC_LLVfour1.html">TEC:LLVfour1</a> - Les Villettes Les Fourirs 15:53</li><li><a href="stop-TEC_LBjvill3.html">TEC:LBjvill3</a> - Bra-sur-Lienne Pont de Villettes 15:54</li><li><a href="stop-TEC_LBjcent1.html">TEC:LBjcent1</a> - Bra-sur-Lienne Centre 15:56</li><li><a href="stop-TEC_X715ajb.html">TEC:X715ajb</a> - Vaux-Chavanne Carrefour 16:00</li><li><a href="stop-TEC_X715aib.html">TEC:X715aib</a> - Vaux-Chavanne Haut Vâ 16:01</li><li><a href="stop-TEC_X715alb.html">TEC:X715alb</a> - Manhay Athénée 16:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2860.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

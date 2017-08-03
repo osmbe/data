@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Libramont - Bastogne - 5163:TEC:LU:6582</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Libramont - Bastogne - 5163:TEC:LU:6582</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X757adb.html">TEC:X757adb</a> - Vaux-sur-Sure Eglise 12:50</li><li><a href="stop-TEC_X757aea.html">TEC:X757aea</a> - Vaux-sur-Sure Route de Sûre 12:50</li><li><a href="stop-TEC_X757ama.html">TEC:X757ama</a> - Rosiere-la-Petite Grand'Route 77 12:51</li><li><a href="stop-TEC_X756ahb.html">TEC:X756ahb</a> - Rosiere-la-Petite Grand Route 86 12:52</li><li><a href="stop-TEC_X756aib.html">TEC:X756aib</a> - Nives Route de Cobreville 12:52</li><li><a href="stop-TEC_X756ajb.html">TEC:X756ajb</a> - Nives Grand Pré 12:53</li><li><a href="stop-TEC_X779ahb.html">TEC:X779ahb</a> - Morhet Poteau 12:54</li><li><a href="stop-TEC_X754aab.html">TEC:X754aab</a> - Sibret Belleau 4 12:55</li><li><a href="stop-TEC_X754abb.html">TEC:X754abb</a> - Sibret Ferme Lequeux 12:56</li><li><a href="stop-TEC_X754acb.html">TEC:X754acb</a> - Sibret Route de Jodenville 12:56</li><li><a href="stop-TEC_X754adb.html">TEC:X754adb</a> - Sibret Rue du Pont 12:57</li><li><a href="stop-TEC_X754aeb.html">TEC:X754aeb</a> - Sibret Carrefour - Route de la Gare 12:58</li><li><a href="stop-TEC_X754afb.html">TEC:X754afb</a> - Sibret Chaussée de Bastogne 27 12:58</li><li><a href="stop-TEC_X754agb.html">TEC:X754agb</a> - Sibret Chaussée de Bastogne 1 12:59</li><li><a href="stop-TEC_X754ahb.html">TEC:X754ahb</a> - Villeroux Centrale Electrique 13:00</li><li><a href="stop-TEC_X754ajb.html">TEC:X754ajb</a> - Villeroux Zoning Artisanal 13:01</li><li><a href="stop-TEC_X725aaa.html">TEC:X725aaa</a> - Isle-le-Pre Bachmes 13:01</li><li><a href="stop-TEC_X725aba.html">TEC:X725aba</a> - Isle-le-Pre Grand Route 13:02</li><li><a href="stop-TEC_X725aca.html">TEC:X725aca</a> - Bastogne Station Fina 13:03</li><li><a href="stop-TEC_X725adb.html">TEC:X725adb</a> - Bastogne Route de Neufchâteau 101 13:04</li><li><a href="stop-TEC_X725bgb.html">TEC:X725bgb</a> - Bastogne Avenue de la Gare 13:04</li><li><a href="stop-TEC_X725afh.html">TEC:X725afh</a> - Bastogne Gare du Sud - Quai 6 13:05</li><li><a href="stop-TEC_X725aob.html">TEC:X725aob</a> - Bastogne Hôtel de Ville 13:09</li><li><a href="stop-TEC_X725aea.html">TEC:X725aea</a> - Bastogne Pépinière - Quai 1 13:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3855.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

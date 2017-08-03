@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Aywaille - Lierneux - Verleumont - 5163:TEC:LV:52021</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aywaille - Lierneux - Verleumont - 5163:TEC:LV:52021</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LCvmonu1.html">TEC:LCvmonu1</a> - Chevron Monument 12:35</li><li><a href="stop-TEC_LCvneu-2.html">TEC:LCvneu-2</a> - Chevron Neuville 12:37</li><li><a href="stop-TEC_LCvneuv4.html">TEC:LCvneuv4</a> - Chevron Chemin de Neuville 12:39</li><li><a href="stop-TEC_LWblesp2.html">TEC:LWblesp2</a> - Werbomont Place Capitaine Lespagnard 12:42</li><li><a href="stop-TEC_LWbcarr2.html">TEC:LWbcarr2</a> - Werbomont Carrefour 12:43</li><li><a href="stop-TEC_LWbregn2.html">TEC:LWbregn2</a> - Werbomont Regnier 12:43</li><li><a href="stop-TEC_LWbboeg2.html">TEC:LWbboeg2</a> - Werbomont Bosson Eglise 12:44</li><li><a href="stop-TEC_LWbburn2.html">TEC:LWbburn2</a> - Werbomont Chemin de Burnontige 12:45</li><li><a href="stop-TEC_LWberno2.html">TEC:LWberno2</a> - Werbomont Chemin d'Ernonheid 12:45</li><li><a href="stop-TEC_LERboss2.html">TEC:LERboss2</a> - Ernonheid Trou de Bosson 12:46</li><li><a href="stop-TEC_LERpouh2.html">TEC:LERpouh2</a> - Ernonheid Pouhon 12:48</li><li><a href="stop-TEC_LERdeho2.html">TEC:LERdeho2</a> - Ernonheid Arrêt Dehossay 12:49</li><li><a href="stop-TEC_LHseg--2.html">TEC:LHseg--2</a> - Houssonloge Eglise 12:50</li><li><a href="stop-TEC_LHrreal2.html">TEC:LHrreal2</a> - Harze Station Réal 12:52</li><li><a href="stop-TEC_LHrbast2.html">TEC:LHrbast2</a> - Harze Route de Bastogne 39 12:52</li><li><a href="stop-TEC_LHrchez2.html">TEC:LHrchez2</a> - Harze Place de Chézy 12:53</li><li><a href="stop-TEC_LHreg--2.html">TEC:LHreg--2</a> - Harze Eglise 12:53</li><li><a href="stop-TEC_LHrchat2.html">TEC:LHrchat2</a> - Harze Château 12:54</li><li><a href="stop-TEC_LHrrard2.html">TEC:LHrrard2</a> - Harze route des Ardennes 113 12:54</li><li><a href="stop-TEC_LAYthir2.html">TEC:LAYthir2</a> - Aywaille Pré Thiriart 12:55</li><li><a href="stop-TEC_LAYharz2.html">TEC:LAYharz2</a> - Aywaille Fond de Harzé 12:56</li><li><a href="stop-TEC_LAYnias2.html">TEC:LAYnias2</a> - Aywaille Niaster 12:57</li><li><a href="stop-TEC_LAYwerb2.html">TEC:LAYwerb2</a> - Aywaille Route de Werbomont 12:58</li><li><a href="stop-TEC_LAYcont2.html">TEC:LAYcont2</a> - Aywaille Bureau des Contributions 12:59</li><li><a href="stop-TEC_LAYchal2.html">TEC:LAYchal2</a> - Aywaille Rue du Chalet 14 12:59</li><li><a href="stop-TEC_LAYpl--3.html">TEC:LAYpl--3</a> - Aywaille Place 13:00</li><li><a href="stop-TEC_LAYgare1.html">TEC:LAYgare1</a> - Aywaille Gare SNCB 13:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4113.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

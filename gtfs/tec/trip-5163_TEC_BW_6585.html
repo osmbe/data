@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Baulers - Nivelles - Manage - 5163:TEC:BW:6585</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Baulers - Nivelles - Manage - 5163:TEC:BW:6585</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bnivga51.html">TEC:Bnivga51</a> - Nivelles Gare 14:47</li><li><a href="stop-TEC_Bnivga41.html">TEC:Bnivga41</a> - Nivelles Gare 14:47</li><li><a href="stop-TEC_Bnivsse1.html">TEC:Bnivsse1</a> - Nivelles Saint-Sépulcre 14:48</li><li><a href="stop-TEC_Bnivbxl2.html">TEC:Bnivbxl2</a> - Nivelles Rue de Bruxelles 14:50</li><li><a href="stop-TEC_Bnivpla1.html">TEC:Bnivpla1</a> - Nivelles Place de Lalieux 14:51</li><li><a href="stop-TEC_Bnivpso2.html">TEC:Bnivpso2</a> - Nivelles Place du Souvenir 14:53</li><li><a href="stop-TEC_Bnivgpl3.html">TEC:Bnivgpl3</a> - Nivelles Grand Place 14:54</li><li><a href="stop-TEC_Bnivcol1.html">TEC:Bnivcol1</a> - Nivelles Collège 14:55</li><li><a href="stop-TEC_Bnivasa1.html">TEC:Bnivasa1</a> - Nivelles Allée du Sablon 14:56</li><li><a href="stop-TEC_Bnivpro1.html">TEC:Bnivpro1</a> - Nivelles Route de Petit-Roeulx 14:56</li><li><a href="stop-TEC_Bnivsho1.html">TEC:Bnivsho1</a> - Nivelles Shopping 14:57</li><li><a href="stop-TEC_Bnivmon1.html">TEC:Bnivmon1</a> - Nivelles Chemin de Monstreux 14:59</li><li><a href="stop-TEC_Barqbar1.html">TEC:Barqbar1</a> - Arquennes Bois d'Arpes 15:00</li><li><a href="stop-TEC_Barqhpe1.html">TEC:Barqhpe1</a> - Arquennes Hameau Petit 15:01</li><li><a href="stop-TEC_Barqres1.html">TEC:Barqres1</a> - Arquennes Résidence 15:02</li><li><a href="stop-TEC_Barqpwa1.html">TEC:Barqpwa1</a> - Arquennes Pont de Warchais 15:03</li><li><a href="stop-TEC_Barqhro1.html">TEC:Barqhro1</a> - Arquennes Hameau Roland 15:04</li><li><a href="stop-TEC_Bfelada1.html">TEC:Bfelada1</a> - Feluy Auberge du Dauphin 15:05</li><li><a href="stop-TEC_Bfelrav1.html">TEC:Bfelrav1</a> - Feluy La Ravisée 15:06</li><li><a href="stop-TEC_Bsengma1.html">TEC:Bsengma1</a> - Seneffe Grande Marie 15:07</li><li><a href="stop-TEC_Bsenpeu1.html">TEC:Bsenpeu1</a> - Seneffe Les Peupliers 15:08</li><li><a href="stop-TEC_Bsences1.html">TEC:Bsences1</a> - Seneffe Château de l'Espinette 15:08</li><li><a href="stop-TEC_Bsencen1.html">TEC:Bsencen1</a> - Seneffe Centre 15:09</li><li><a href="stop-TEC_Bsensab1.html">TEC:Bsensab1</a> - Seneffe Sabotier 15:10</li><li><a href="stop-TEC_Bsenpbi1.html">TEC:Bsenpbi1</a> - Seneffe Pont de Binche 15:11</li><li><a href="stop-TEC_Bsenbmc1.html">TEC:Bsenbmc1</a> - Seneffe BMC 15:12</li><li><a href="stop-TEC_Bmanati1.html">TEC:Bmanati1</a> - Manage ATI 15:13</li><li><a href="stop-TEC_Bmangen1.html">TEC:Bmangen1</a> - Manage Gendarmerie 15:14</li><li><a href="stop-TEC_Bmanfbg1.html">TEC:Bmanfbg1</a> - Manage Faubourg 15:15</li><li><a href="stop-TEC_Bmangar1.html">TEC:Bmangar1</a> - Manage Gare 15:16</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./566.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

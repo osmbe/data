@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Anderlues - Thieu - 5163:TEC:HT:11231</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Anderlues - Thieu - 5163:TEC:HT:11231</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H2ll181a.html">TEC:H2ll181a</a> - La Louviere Gendarmerie 12:30</li><li><a href="stop-TEC_H2ll177a.html">TEC:H2ll177a</a> - La Louviere Rue du Parc 12:32</li><li><a href="stop-TEC_H2ll188b.html">TEC:H2ll188b</a> - La Louviere Place Mansart 12:34</li><li><a href="stop-TEC_H2ll258b.html">TEC:H2ll258b</a> - La Louviere Carrefour du Gazomètre 12:36</li><li><a href="stop-TEC_H2ll186b.html">TEC:H2ll186b</a> - La Louviere O.N.E.M. 12:38</li><li><a href="stop-TEC_H2ll176b.html">TEC:H2ll176b</a> - La Louviere Dépôt  TEC 12:39</li><li><a href="stop-TEC_H2hg144b.html">TEC:H2hg144b</a> - Houdeng-Goegnies Ascenseur 12:41</li><li><a href="stop-TEC_H2hg158b.html">TEC:H2hg158b</a> - Houdeng-Goegnies Ancienne Gare 12:41</li><li><a href="stop-TEC_H2hg147b.html">TEC:H2hg147b</a> - Houdeng-Goegnies Couturelle 12:42</li><li><a href="stop-TEC_H2hg156b.html">TEC:H2hg156b</a> - Houdeng-Goegnies Rue Houtart 12:43</li><li><a href="stop-TEC_H2ha142b.html">TEC:H2ha142b</a> - Houdeng-Aimeries Tombelle 12:44</li><li><a href="stop-TEC_H2ha128b.html">TEC:H2ha128b</a> - Houdeng-Aimeries Fonderie 12:45</li><li><a href="stop-TEC_H2ha133b.html">TEC:H2ha133b</a> - Houdeng-Aimeries Pont du Sart 12:46</li><li><a href="stop-TEC_H2sb257b.html">TEC:H2sb257b</a> - Strepy-Bracquegnies Zoning 12:49</li><li><a href="stop-TEC_H2sb258b.html">TEC:H2sb258b</a> - Strepy-Bracquegnies Electrabel 12:50</li><li><a href="stop-TEC_H3th133a.html">TEC:H3th133a</a> - Thieu SNCV 12:55</li><li><a href="stop-TEC_H3th126a.html">TEC:H3th126a</a> - Thieu Cité 12:56</li><li><a href="stop-TEC_H3th129a.html">TEC:H3th129a</a> - Thieu Rue  Aulnois 12:58</li><li><a href="stop-TEC_H3th127a.html">TEC:H3th127a</a> - Thieu Eglise 12:59</li><li><a href="stop-TEC_H3th130a.html">TEC:H3th130a</a> - Thieu Traversée à Niveau 13:01</li><li><a href="stop-TEC_H3th131a.html">TEC:H3th131a</a> - Thieu Saint-Jean 13:02</li><li><a href="stop-TEC_H2ma208a.html">TEC:H2ma208a</a> - Maurage Ste Anne 13:03</li><li><a href="stop-TEC_H2sb231a.html">TEC:H2sb231a</a> - Strepy-Bracquegnies Place de Strépy 13:05</li><li><a href="stop-TEC_H2sb234a.html">TEC:H2sb234a</a> - Strepy-Bracquegnies Puits Saint-Julien 13:07</li><li><a href="stop-TEC_H2sb236c.html">TEC:H2sb236c</a> - Strepy-Bracquegnies Rue Coffé 13:10</li><li><a href="stop-TEC_H2sb239c.html">TEC:H2sb239c</a> - Strepy-Bracquegnies SNCB 13:12</li><li><a href="stop-TEC_H2sb223a.html">TEC:H2sb223a</a> - Strepy-Bracquegnies Borain 13:13</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1836.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

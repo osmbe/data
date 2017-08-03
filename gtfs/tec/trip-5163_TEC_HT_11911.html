@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mouscron/Moeskroen - Roubaix - 5163:TEC:HT:11911</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mouscron/Moeskroen - Roubaix - 5163:TEC:HT:11911</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4mo142d.html">TEC:H4mo142d</a> - Moeskroen SNCB/Station 07:42</li><li><a href="stop-TEC_H4mo172a.html">TEC:H4mo172a</a> - Moeskroen Rue de Rollegem/Rollegemstraat 07:43</li><li><a href="stop-TEC_H4mo186a.html">TEC:H4mo186a</a> - Moeskroen Rue Léopold/Leopoldstraat 07:44</li><li><a href="stop-TEC_H4mo180a.html">TEC:H4mo180a</a> - Moeskroen Rue du Luxembourg/Luxemburgstr. 07:46</li><li><a href="stop-TEC_H4mo144a.html">TEC:H4mo144a</a> - Moeskroen Grand-Place/Grote Markt 07:47</li><li><a href="stop-TEC_H4mo147a.html">TEC:H4mo147a</a> - Moeskroen Hôpital/Ziekenhuis 07:48</li><li><a href="stop-TEC_H4mo169a.html">TEC:H4mo169a</a> - Moeskroen Rue Pépinière/Boomkwekerijstr. 07:50</li><li><a href="stop-TEC_H4mo153d.html">TEC:H4mo153d</a> - Moeskroen L'Ours 07:51</li><li><a href="stop-TEC_H4mo163a.html">TEC:H4mo163a</a> - Moeskroen Place de Picardie/Picardieplein 07:52</li><li><a href="stop-TEC_H4mo136a.html">TEC:H4mo136a</a> - Moeskroen Casino 07:53</li><li><a href="stop-TEC_H4mo161a.html">TEC:H4mo161a</a> - Moeskroen Place de la Justice/Justitiepl. 07:54</li><li><a href="stop-TEC_H4mo160a.html">TEC:H4mo160a</a> - Moeskroen Phénix 07:55</li><li><a href="stop-TEC_H4mo142a.html">TEC:H4mo142a</a> - Moeskroen SNCB/Station 08:00</li><li><a href="stop-TEC_H4lu127a.html">TEC:H4lu127a</a> - Luingne La Carpe/De Karper 08:02</li><li><a href="stop-TEC_H4lu126a.html">TEC:H4lu126a</a> - Luingne Eglise St Amand/Kerk 08:03</li><li><a href="stop-TEC_H4lu125a.html">TEC:H4lu125a</a> - Luingne Au Chevalier/De Ridder 08:04</li><li><a href="stop-TEC_H4hx113a.html">TEC:H4hx113a</a> - Herseaux Chapelle/Kapel 08:06</li><li><a href="stop-TEC_H4hx122a.html">TEC:H4hx122a</a> - Herseaux Place/Plaats 08:07</li><li><a href="stop-TEC_H4hx117b.html">TEC:H4hx117b</a> - Herseaux Ferme Lassus 08:09</li><li><a href="stop-TEC_H4hx120a.html">TEC:H4hx120a</a> - Herseaux Les Glycines 08:10</li><li><a href="stop-TEC_H4hx114b.html">TEC:H4hx114b</a> - Herseaux Citadelle 08:12</li><li><a href="stop-TEC_H4wa153a.html">TEC:H4wa153a</a> - Wattrelos La Houzarde 08:13</li><li><a href="stop-TEC_H4wa149a.html">TEC:H4wa149a</a> - Wattrelos Carrière André 08:14</li><li><a href="stop-TEC_H4wa151a.html">TEC:H4wa151a</a> - Wattrelos Flandre 08:14</li><li><a href="stop-TEC_H4wa159a.html">TEC:H4wa159a</a> - Wattrelos Saint Liévin 08:16</li><li><a href="stop-TEC_H4wa150a.html">TEC:H4wa150a</a> - Wattrelos De Gaulle 08:17</li><li><a href="stop-TEC_H4wa161a.html">TEC:H4wa161a</a> - Wattrelos Place 08:19</li><li><a href="stop-TEC_H4wa155a.html">TEC:H4wa155a</a> - Wattrelos Centre Commercial 08:21</li><li><a href="stop-TEC_H4wa156a.html">TEC:H4wa156a</a> - Wattrelos République 08:22</li><li><a href="stop-TEC_H4wa148a.html">TEC:H4wa148a</a> - Wattrelos Carnot 08:23</li><li><a href="stop-TEC_H4rx176a.html">TEC:H4rx176a</a> - Roubaix Avelghem 08:25</li><li><a href="stop-TEC_H4rx141a.html">TEC:H4rx141a</a> - Roubaix Place Chaptal 08:27</li><li><a href="stop-TEC_H4rx143a.html">TEC:H4rx143a</a> - Roubaix Galon d'eau 08:28</li><li><a href="stop-TEC_H4rx175a.html">TEC:H4rx175a</a> - Roubaix Nations Unies 08:29</li><li><a href="stop-TEC_H4rx142a.html">TEC:H4rx142a</a> - Roubaix Eurotéléport 08:31</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1985.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

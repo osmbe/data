@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - FLEURUS-CHARLEROI - 5163:TEC:CH:343</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: FLEURUS-CHARLEROI - 5163:TEC:CH:343</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Ccupdes4.html">TEC:Ccupdes4</a> - Chatelineau Place Destrée 21:28</li><li><a href="stop-TEC_Ccumasu2.html">TEC:Ccumasu2</a> - Chatelineau Rue des Masuirs 21:29</li><li><a href="stop-TEC_Ccugrtr2.html">TEC:Ccugrtr2</a> - Chatelineau Grand Trieu 21:30</li><li><a href="stop-TEC_Ccunove2.html">TEC:Ccunove2</a> - Chatelineau 11 Novembre 21:30</li><li><a href="stop-TEC_Ccuplai2.html">TEC:Ccuplai2</a> - Chatelineau Rue de la Plaine 21:31</li><li><a href="stop-TEC_Ccutail2.html">TEC:Ccutail2</a> - Chatelineau Taillis Prés 21:32</li><li><a href="stop-TEC_Ccugilb2.html">TEC:Ccugilb2</a> - Chatelineau Avenue Gilbert 21:33</li><li><a href="stop-TEC_Cflvxsa2.html">TEC:Cflvxsa2</a> - Fleurus Vieux Saule 21:33</li><li><a href="stop-TEC_Cflsabl2.html">TEC:Cflsabl2</a> - Fleurus Sablonnière 21:34</li><li><a href="stop-TEC_Cflecga2.html">TEC:Cflecga2</a> - Fleurus Ecoles des Garçons 21:35</li><li><a href="stop-TEC_Cflvxca2.html">TEC:Cflvxca2</a> - Fleurus Vieux Campinaire 21:36</li><li><a href="stop-TEC_Cflglav2.html">TEC:Cflglav2</a> - Fleurus Glaverbel 21:37</li><li><a href="stop-TEC_Cflcoro2.html">TEC:Cflcoro2</a> - Fleurus Coron du Marquis 21:37</li><li><a href="stop-TEC_Cflmart2.html">TEC:Cflmart2</a> - Fleurus Martinroux 21:38</li><li><a href="stop-TEC_Cfldand2.html">TEC:Cfldand2</a> - Fleurus Camp Dandois 21:40</li><li><a href="stop-TEC_Cflfaub2.html">TEC:Cflfaub2</a> - Fleurus Faubourg 21:40</li><li><a href="stop-TEC_Cflathe2.html">TEC:Cflathe2</a> - Fleurus Athénée 21:41</li><li><a href="stop-TEC_Cflcent2.html">TEC:Cflcent2</a> - Fleurus Centre 21:42</li><li><a href="stop-TEC_Cflchel2.html">TEC:Cflchel2</a> - Fleurus Champs Elysées 21:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./732.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

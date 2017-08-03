@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Eupen - Raeren - Eynatten - Köpfchen/Lichtenbusch - 5163:TEC:LV:39776</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eupen - Raeren - Eynatten - Köpfchen/Lichtenbusch - 5163:TEC:LV:39776</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LeUbush1.html">TEC:LeUbush1</a> - Eupen Bushof 12:20</li><li><a href="stop-TEC_LeUbahn5.html">TEC:LeUbahn5</a> - Eupen Bahnhof 12:21</li><li><a href="stop-TEC_LeUschn1.html">TEC:LeUschn1</a> - Eupen Schnellewindgasse 12:22</li><li><a href="stop-TEC_LkTschö1.html">TEC:LkTschö1</a> - Kettenis Schöne Aussicht 12:22</li><li><a href="stop-TEC_LkTtal-1.html">TEC:LkTtal-1</a> - Kettenis Tal 12:23</li><li><a href="stop-TEC_LkTdorf1.html">TEC:LkTdorf1</a> - Kettenis Dorf 12:24</li><li><a href="stop-TEC_LkTlibe1.html">TEC:LkTlibe1</a> - Kettenis Libermé 12:25</li><li><a href="stop-TEC_LkTgutl1.html">TEC:LkTgutl1</a> - Kettenis Gut Luft 12:26</li><li><a href="stop-TEC_LkTraer1.html">TEC:LkTraer1</a> - Kettenis Raerenpfad 12:26</li><li><a href="stop-TEC_LkTweih1.html">TEC:LkTweih1</a> - Kettenis An den Weihern 12:27</li><li><a href="stop-TEC_LeYmero1.html">TEC:LeYmero1</a> - Eynatten Merols 12:28</li><li><a href="stop-TEC_LeYloos1.html">TEC:LeYloos1</a> - Eynatten Loos 12:29</li><li><a href="stop-TEC_LeYteeh1.html">TEC:LeYteeh1</a> - Eynatten Teeheide 12:29</li><li><a href="stop-TEC_LeYfeld1.html">TEC:LeYfeld1</a> - Eynatten Eynattener Feld 12:30</li><li><a href="stop-TEC_LeYdepo1.html">TEC:LeYdepo1</a> - Eynatten Depot 12:31</li><li><a href="stop-TEC_LeYdorf1.html">TEC:LeYdorf1</a> - Eynatten Dorf 12:31</li><li><a href="stop-TEC_LeYmosc1.html">TEC:LeYmosc1</a> - Eynatten Möschenberg 12:32</li><li><a href="stop-TEC_LeYraaf1.html">TEC:LeYraaf1</a> - Eynatten Raafstrasse 12:33</li><li><a href="stop-TEC_LeYberl1.html">TEC:LeYberl1</a> - Eynatten Berlotte 12:34</li><li><a href="stop-TEC_LeYwess1.html">TEC:LeYwess1</a> - Eynatten Wesselbend 12:36</li><li><a href="stop-TEC_LlCland1.html">TEC:LlCland1</a> - Lichtenbusch Landwehring 12:37</li><li><a href="stop-TEC_LlChebs1.html">TEC:LlChebs1</a> - Lichtenbusch Hebscheiderheide 12:37</li><li><a href="stop-TEC_LlCgren1.html">TEC:LlCgren1</a> - Lichtenbusch Grenze 12:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4913.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

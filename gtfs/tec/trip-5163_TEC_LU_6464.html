@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Wibrin - Houffalize - 5163:TEC:LU:6464</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Wibrin - Houffalize - 5163:TEC:LU:6464</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X721afb.html">TEC:X721afb</a> - Houffalize Lycée Reine Fabiola 12:11</li><li><a href="stop-TEC_X721agc.html">TEC:X721agc</a> - Houffalize Place Albert 1er 12:16</li><li><a href="stop-TEC_X721akb.html">TEC:X721akb</a> - Houffalize Spar 12:17</li><li><a href="stop-TEC_X721ala.html">TEC:X721ala</a> - Houffalize Barrière N30 12:17</li><li><a href="stop-TEC_X721amb.html">TEC:X721amb</a> - Houffalize Cimetière 12:18</li><li><a href="stop-TEC_X721atb.html">TEC:X721atb</a> - Taverneux Route d'Houffalize 12:18</li><li><a href="stop-TEC_X721aoa.html">TEC:X721aoa</a> - Taverneux Eglise 12:19</li><li><a href="stop-TEC_X721apa.html">TEC:X721apa</a> - Taverneux Ecole 12:19</li><li><a href="stop-TEC_X721asa.html">TEC:X721asa</a> - Fontenaille Eglise 12:22</li><li><a href="stop-TEC_X719aaa.html">TEC:X719aaa</a> - Dinez N30 12:24</li><li><a href="stop-TEC_X719afb.html">TEC:X719afb</a> - Dinez La Maisale 23 12:25</li><li><a href="stop-TEC_X719aea.html">TEC:X719aea</a> - Dinez Centre 12:25</li><li><a href="stop-TEC_X719ada.html">TEC:X719ada</a> - Wilogne Haut 36 12:27</li><li><a href="stop-TEC_X719abb.html">TEC:X719abb</a> - Wilogne Centre 12:28</li><li><a href="stop-TEC_X719aca.html">TEC:X719aca</a> - Dinez Eglise 12:28</li><li><a href="stop-TEC_X719aeb.html">TEC:X719aeb</a> - Dinez Centre 12:29</li><li><a href="stop-TEC_X719afa.html">TEC:X719afa</a> - Dinez La Maisale 23 12:30</li><li><a href="stop-TEC_X719aab.html">TEC:X719aab</a> - Dinez N30 12:30</li><li><a href="stop-TEC_X720aaa.html">TEC:X720aaa</a> - Mont Chemin de Fontenaille 12:33</li><li><a href="stop-TEC_X720abb.html">TEC:X720abb</a> - Mont (HOUFFALIZE) Eglise 12:34</li><li><a href="stop-TEC_X720aca.html">TEC:X720aca</a> - Mont (HOUFFALIZE) Centre 12:35</li><li><a href="stop-TEC_X720adb.html">TEC:X720adb</a> - Mont Maison Raveaux 4 12:35</li><li><a href="stop-TEC_X720aeb.html">TEC:X720aeb</a> - Mont Route de Wibrin 14 12:36</li><li><a href="stop-TEC_X733aaa.html">TEC:X733aaa</a> - Achouffe Hôtel 12:39</li><li><a href="stop-TEC_X733aba.html">TEC:X733aba</a> - Achouffe Maison Pirotte 63 12:41</li><li><a href="stop-TEC_X733acb.html">TEC:X733acb</a> - Wibrin Cimetière 12:43</li><li><a href="stop-TEC_X733aeb.html">TEC:X733aeb</a> - Wibrin Rue du Bourg 12 12:43</li><li><a href="stop-TEC_X733afb.html">TEC:X733afb</a> - Wibrin Rue du Bourg 26 12:44</li><li><a href="stop-TEC_X733agb.html">TEC:X733agb</a> - Wibrin Centre 12:44</li><li><a href="stop-TEC_X733akb.html">TEC:X733akb</a> - Wibrin Route de Mormont 7 12:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2656.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Lambert - Thier à Liège - Vottem - 5163:TEC:LV:1993</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Lambert - Thier à Liège - Vottem - 5163:TEC:LV:1993</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LlgLAMB1.html">TEC:LlgLAMB1</a> - Liege Place St-Lambert 13:59</li><li><a href="stop-TEC_Llgmarc1.html">TEC:Llgmarc1</a> - Liege Place du Marché 14:00</li><li><a href="stop-TEC_Llgjean1.html">TEC:Llgjean1</a> - Liege Rue St-Jean Baptiste 14:01</li><li><a href="stop-TEC_Llgcurt1.html">TEC:Llgcurt1</a> - Liege Grand Curtius 14:03</li><li><a href="stop-TEC_Llgdepo1.html">TEC:Llgdepo1</a> - Liege Place des Déportés 14:04</li><li><a href="stop-TEC_Llgmare1.html">TEC:Llgmare1</a> - Liege Rue Marengo 14:05</li><li><a href="stop-TEC_Llggosw1.html">TEC:Llggosw1</a> - Liege Rue Goswin 14:06</li><li><a href="stop-TEC_Llgarmu1.html">TEC:Llgarmu1</a> - Liege Rue des Armuriers 14:06</li><li><a href="stop-TEC_Llgfoy-1.html">TEC:Llgfoy-1</a> - Liege Eglise Ste-Foy 14:07</li><li><a href="stop-TEC_Llgbaya1.html">TEC:Llgbaya1</a> - Liege Rue des Bayards 14:08</li><li><a href="stop-TEC_Llgpbay1.html">TEC:Llgpbay1</a> - Liege Pont des Bayards 14:09</li><li><a href="stop-TEC_Llghori1.html">TEC:Llghori1</a> - Liege Rue C. Horion 14:11</li><li><a href="stop-TEC_Llgbry-1.html">TEC:Llgbry-1</a> - Liege Rue T. de Bry 14:12</li><li><a href="stop-TEC_Llgthie1.html">TEC:Llgthie1</a> - Liege Thier à Liège écoles 14:13</li><li><a href="stop-TEC_Llgmair1.html">TEC:Llgmair1</a> - Liege Mairie du thier à Liège 14:14</li><li><a href="stop-TEC_Llgherm1.html">TEC:Llgherm1</a> - Liege Rue de l'Ermitage 14:14</li><li><a href="stop-TEC_Llgboux1.html">TEC:Llgboux1</a> - Liege Rue du Bouxthay 14:15</li><li><a href="stop-TEC_Lvtnico1.html">TEC:Lvtnico1</a> - Vottem Rue F. Nicolay 14:16</li><li><a href="stop-TEC_Lvtfrai1.html">TEC:Lvtfrai1</a> - Vottem Rue des Fraisiers 14:17</li><li><a href="stop-TEC_Lvteg--1.html">TEC:Lvteg--1</a> - Vottem Eglise 14:19</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4147.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Trois-Ponts - Waimes - Büllingen - 5163:TEC:LV:42734</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Trois-Ponts - Waimes - Büllingen - 5163:TEC:LV:42734</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LSTec--1.html">TEC:LSTec--1</a> - Stavelot Ecoles 12:40</li><li><a href="stop-TEC_LSTchal1.html">TEC:LSTchal1</a> - Stavelot Chemin de Challes 12:41</li><li><a href="stop-TEC_LSTcomm1.html">TEC:LSTcomm1</a> - Stavelot Petites Communes 12:41</li><li><a href="stop-TEC_LSTchef1.html">TEC:LSTchef1</a> - Stavelot Chefosse viaduc 12:42</li><li><a href="stop-TEC_LSTdero1.html">TEC:LSTdero1</a> - Stavelot Maison Deroanne 12:42</li><li><a href="stop-TEC_LSTchen1.html">TEC:LSTchen1</a> - Stavelot Route de Cheneux 12:43</li><li><a href="stop-TEC_LSTmast1.html">TEC:LSTmast1</a> - Stavelot Masta 12:44</li><li><a href="stop-TEC_LSTmeiz1.html">TEC:LSTmeiz1</a> - Stavelot Route de Meiz 12:45</li><li><a href="stop-TEC_LMAwavr1.html">TEC:LMAwavr1</a> - Malmedy Route de Wavreumont 12:46</li><li><a href="stop-TEC_LMApape1.html">TEC:LMApape1</a> - Malmedy Papeterie 12:49</li><li><a href="stop-TEC_LMAhall1.html">TEC:LMAhall1</a> - Malmedy Hall des Sports 12:50</li><li><a href="stop-TEC_LMAcite1.html">TEC:LMAcite1</a> - Malmedy Cité des Grands Prés 12:51</li><li><a href="stop-TEC_LMAcomm1.html">TEC:LMAcomm1</a> - Malmedy complexe commercial 12:52</li><li><a href="stop-TEC_LMAalli1.html">TEC:LMAalli1</a> - Malmedy avenue des Alliés 12:53</li><li><a href="stop-TEC_LMAgdfa1.html">TEC:LMAgdfa1</a> - Malmedy Grand Fa 12:54</li><li><a href="stop-TEC_LMAgare_.html">TEC:LMAgare*</a> - Malmedy Gare 12:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5433.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Angleur - Streupas / Belle-Ile / Chênée - 5163:TEC:LV:9517</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Angleur - Streupas / Belle-Ile / Chênée - 5163:TEC:LV:9517</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lagstre1.html">TEC:Lagstre1</a> - Angleur Streupas 19:36</li><li><a href="stop-TEC_Lagpass2.html">TEC:Lagpass2</a> - Angleur Passage à niveau 19:37</li><li><a href="stop-TEC_Lagviad2.html">TEC:Lagviad2</a> - Angleur Streupas viaduc 19:38</li><li><a href="stop-TEC_Lagtilf2.html">TEC:Lagtilf2</a> - Angleur Rue de Tilff 19:39</li><li><a href="stop-TEC_Lagcler2.html">TEC:Lagcler2</a> - Angleur Rue Clerembaut 19:39</li><li><a href="stop-TEC_Lagjado2.html">TEC:Lagjado2</a> - Angleur Place A. Jadoulle 19:40</li><li><a href="stop-TEC_Lagpaix2.html">TEC:Lagpaix2</a> - Angleur Square de la Paix 19:41</li><li><a href="stop-TEC_Lagresi2.html">TEC:Lagresi2</a> - Angleur Rue de la Résidence 19:42</li><li><a href="stop-TEC_Lagvall2.html">TEC:Lagvall2</a> - Angleur Rue du Vallon 19:42</li><li><a href="stop-TEC_Lagfour2.html">TEC:Lagfour2</a> - Angleur Rue du Fourchufossé 19:43</li><li><a href="stop-TEC_Lagkink2.html">TEC:Lagkink2</a> - Angleur Rue de Kinkempois 19:44</li><li><a href="stop-TEC_Lagmair4.html">TEC:Lagmair4</a> - Angleur Mairie d'Angleur 19:45</li><li><a href="stop-TEC_Lagbeno2.html">TEC:Lagbeno2</a> - Angleur Pont du Val Benoît 19:46</li><li><a href="stop-TEC_Lagmoli2.html">TEC:Lagmoli2</a> - Angleur Rue P. Molinghen 19:46</li><li><a href="stop-TEC_Llggram4.html">TEC:Llggram4</a> - Liege Monument Gramme 19:47</li><li><a href="stop-TEC_Llgstvi2.html">TEC:Llgstvi2</a> - Liege Eglise St-Vincent 19:48</li><li><a href="stop-TEC_Llgbrab2.html">TEC:Llgbrab2</a> - Liege Brabançons 19:48</li><li><a href="stop-TEC_Llghoub2.html">TEC:Llghoub2</a> - Liege Rue des Houblonnières 19:48</li><li><a href="stop-TEC_Llghopo2.html">TEC:Llghopo2</a> - Liege Hôtel de Police 19:49</li><li><a href="stop-TEC_Llgdoth2.html">TEC:Llgdoth2</a> - Liege Rue Dothée 19:50</li><li><a href="stop-TEC_Llgcong2.html">TEC:Llgcong2</a> - Liege Palais des Congrès 19:51</li><li><a href="stop-TEC_Llgqmar2.html">TEC:Llgqmar2</a> - Liege Quai Marcellis 19:53</li><li><a href="stop-TEC_Llgptlo2.html">TEC:Llgptlo2</a> - Liege Pont de Longdoz 19:54</li><li><a href="stop-TEC_Llgcroi4.html">TEC:Llgcroi4</a> - Liege Rue des Croisiers 19:55</li><li><a href="stop-TEC_Llgcock2.html">TEC:Llgcock2</a> - Liege Place Cockerill 19:56</li><li><a href="stop-TEC_LlgR-Fr3.html">TEC:LlgR-Fr3</a> - Liege République Française 19:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4248.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

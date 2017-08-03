@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Nivelles - Braine-le-Château - 5163:TEC:BW:6805</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Nivelles - Braine-le-Château - 5163:TEC:BW:6805</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bnivga32.html">TEC:Bnivga32</a> - Nivelles Gare 06:54</li><li><a href="stop-TEC_Bnivga31.html">TEC:Bnivga31</a> - Nivelles Gare 06:54</li><li><a href="stop-TEC_Bnivsse1.html">TEC:Bnivsse1</a> - Nivelles Saint-Sépulcre 06:55</li><li><a href="stop-TEC_Bnivbxl2.html">TEC:Bnivbxl2</a> - Nivelles Rue de Bruxelles 06:57</li><li><a href="stop-TEC_Bnivpla1.html">TEC:Bnivpla1</a> - Nivelles Place de Lalieux 06:58</li><li><a href="stop-TEC_Bnivpso2.html">TEC:Bnivpso2</a> - Nivelles Place du Souvenir 07:00</li><li><a href="stop-TEC_Bnivgpl3.html">TEC:Bnivgpl3</a> - Nivelles Grand Place 07:01</li><li><a href="stop-TEC_Bnivsoi1.html">TEC:Bnivsoi1</a> - Nivelles Rue de Soignies 07:02</li><li><a href="stop-TEC_Bnivgam2.html">TEC:Bnivgam2</a> - Nivelles Chemin de Gambrais 07:02</li><li><a href="stop-TEC_Bnivmet2.html">TEC:Bnivmet2</a> - Nivelles Métallurgie 07:03</li><li><a href="stop-TEC_Bnivbau2.html">TEC:Bnivbau2</a> - Nivelles Chemin de Baudémont 07:04</li><li><a href="stop-TEC_Bnivspi2.html">TEC:Bnivspi2</a> - Nivelles Chemin Saint-Pierre 07:05</li><li><a href="stop-TEC_Bnivchh2.html">TEC:Bnivchh2</a> - Nivelles Chaussée de Hal 07:06</li><li><a href="stop-TEC_Bnivfhu2.html">TEC:Bnivfhu2</a> - Nivelles Ferme Huart 07:06</li><li><a href="stop-TEC_Bnivzon2.html">TEC:Bnivzon2</a> - Nivelles Zoning Nord 07:07</li><li><a href="stop-TEC_Bnivlpa2.html">TEC:Bnivlpa2</a> - Nivelles Laid Patard 07:08</li><li><a href="stop-TEC_Bbsifml2.html">TEC:Bbsifml2</a> - Ophain - BOIS-SEIGNEUR-ISAAC Ferme du Moulin 07:08</li><li><a href="stop-TEC_Bbsimpl2.html">TEC:Bbsimpl2</a> - Ophain - BOIS-SEIGNEUR-ISAAC Maison Plasman 07:09</li><li><a href="stop-TEC_Bbsicen1.html">TEC:Bbsicen1</a> - Bois-Seigneur-Isaac Centre 07:10</li><li><a href="stop-TEC_Bbsipos2.html">TEC:Bbsipos2</a> - Ophain - BOIS-SEIGNEUR-ISAAC Poste 07:10</li><li><a href="stop-TEC_Bbsifmo2.html">TEC:Bbsifmo2</a> - Ophain - BOIS-SEIGNEUR-ISAAC Ferme du Mont 07:12</li><li><a href="stop-TEC_Bhtipir2.html">TEC:Bhtipir2</a> - Haut-Ittre Boulevard Piron 07:12</li><li><a href="stop-TEC_Bbchsac1.html">TEC:Bbchsac1</a> - Braine-le-Chateau Rue du Sacrement 07:13</li><li><a href="stop-TEC_Bbchboi1.html">TEC:Bbchboi1</a> - Braine-le-Chateau Les Boignées 07:14</li><li><a href="stop-TEC_Bbchtry1.html">TEC:Bbchtry1</a> - Wauthier-Braine Rue du Try 07:15</li><li><a href="stop-TEC_Bwaurge1.html">TEC:Bwaurge1</a> - Wauthier-Braine Rue Gérard 07:15</li><li><a href="stop-TEC_Bbchdra1.html">TEC:Bbchdra1</a> - Braine-le-Chateau Le Drabbe 07:18</li><li><a href="stop-TEC_Bbchrra3.html">TEC:Bbchrra3</a> - Braine-le-Chateau Rue des Radoux 07:20</li><li><a href="stop-TEC_Bbch4br6.html">TEC:Bbch4br6</a> - Braine-le-Chateau Quatre Bras 07:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./162.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

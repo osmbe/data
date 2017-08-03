@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Werbomont Route de Hamoir</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Werbomont Route de Hamoir</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-5163_TEC_LU_1073.html">5163:TEC:LU:1073</a> - 5163:TEC:LU:1073 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_1989.html">5163:TEC:LU:1989</a> - 5163:TEC:LU:1989 - Chevron - Manhay</li><li><a href="trip-5163_TEC_LU_1992.html">5163:TEC:LU:1992</a> - 5163:TEC:LU:1992 - Chevron - Manhay</li><li><a href="trip-5163_TEC_LU_3103.html">5163:TEC:LU:3103</a> - 5163:TEC:LU:3103 - Chevron - Manhay</li><li><a href="trip-5163_TEC_LU_3109.html">5163:TEC:LU:3109</a> - 5163:TEC:LU:3109 - Manhay - St-Roch - Bomal - Barvaux</li><li><a href="trip-5163_TEC_LU_3116.html">5163:TEC:LU:3116</a> - 5163:TEC:LU:3116 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_3117.html">5163:TEC:LU:3117</a> - 5163:TEC:LU:3117 - Chevron - Manhay</li><li><a href="trip-5163_TEC_LU_3239.html">5163:TEC:LU:3239</a> - 5163:TEC:LU:3239 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_374.html">5163:TEC:LU:374</a> - 5163:TEC:LU:374 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_4013.html">5163:TEC:LU:4013</a> - 5163:TEC:LU:4013 - Chevron - Manhay</li><li><a href="trip-5163_TEC_LU_4016.html">5163:TEC:LU:4016</a> - 5163:TEC:LU:4016 - Chevron - Manhay</li><li><a href="trip-5163_TEC_LU_488.html">5163:TEC:LU:488</a> - 5163:TEC:LU:488 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_5094.html">5163:TEC:LU:5094</a> - 5163:TEC:LU:5094 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_5108.html">5163:TEC:LU:5108</a> - 5163:TEC:LU:5108 - Chevron - Manhay</li><li><a href="trip-5163_TEC_LU_5114.html">5163:TEC:LU:5114</a> - 5163:TEC:LU:5114 - Manhay - St-Roch - Bomal - Barvaux</li><li><a href="trip-5163_TEC_LU_5121.html">5163:TEC:LU:5121</a> - 5163:TEC:LU:5121 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_5122.html">5163:TEC:LU:5122</a> - 5163:TEC:LU:5122 - Chevron - Manhay</li><li><a href="trip-5163_TEC_LU_5894.html">5163:TEC:LU:5894</a> - 5163:TEC:LU:5894 - Chevron - Manhay</li><li><a href="trip-5163_TEC_LU_5897.html">5163:TEC:LU:5897</a> - 5163:TEC:LU:5897 - Chevron - Manhay</li><li><a href="trip-5163_TEC_LU_5898.html">5163:TEC:LU:5898</a> - 5163:TEC:LU:5898 - Chevron - Manhay</li><li><a href="trip-5163_TEC_LU_6530.html">5163:TEC:LU:6530</a> - 5163:TEC:LU:6530 - Chevron - Manhay</li><li><a href="trip-5163_TEC_LU_6532.html">5163:TEC:LU:6532</a> - 5163:TEC:LU:6532 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_6548.html">5163:TEC:LU:6548</a> - 5163:TEC:LU:6548 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_6554.html">5163:TEC:LU:6554</a> - 5163:TEC:LU:6554 - Manhay - St-Roch - Bomal - Barvaux</li><li><a href="trip-5163_TEC_LU_6563.html">5163:TEC:LU:6563</a> - 5163:TEC:LU:6563 - Chevron - Manhay</li><li><a href="trip-5163_TEC_LU_7213.html">5163:TEC:LU:7213</a> - 5163:TEC:LU:7213 - Manhay - Aywaille</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.381106, 5.680282], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.381106, 5.680282]).addTo(map);
+    </script>
+</body>
+
+</html>

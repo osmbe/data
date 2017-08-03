@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Jupille - Barchon - Dalhem - Visé - 5163:TEC:LV:4365</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Jupille - Barchon - Dalhem - Visé - 5163:TEC:LV:4365</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LBApak2_.html">TEC:LBApak2*</a> - Barchon Pak 2 16:44</li><li><a href="stop-TEC_LBAcent2.html">TEC:LBAcent2</a> - Barchon centre commercial 16:46</li><li><a href="stop-TEC_LBAtign2.html">TEC:LBAtign2</a> - Barchon Rue de Tignée 16:47</li><li><a href="stop-TEC_LSAchef2.html">TEC:LSAchef2</a> - Saive Chefneux 16:47</li><li><a href="stop-TEC_LSAvieu2.html">TEC:LSAvieu2</a> - Saive Vieux Château 16:49</li><li><a href="stop-TEC_LSAeg--2.html">TEC:LSAeg--2</a> - Saive Eglise 16:50</li><li><a href="stop-TEC_LSAjacq2.html">TEC:LSAjacq2</a> - Saive Rue Maître Jacques 16:52</li><li><a href="stop-TEC_LSAtrih2.html">TEC:LSAtrih2</a> - Saive Voie du Trihay 16:53</li><li><a href="stop-TEC_LSAhaye2.html">TEC:LSAhaye2</a> - Saive Voie de la Hayette 16:54</li><li><a href="stop-TEC_Lqbeg--2.html">TEC:Lqbeg--2</a> - Queue-Du-Bois Eglise 16:55</li><li><a href="stop-TEC_Lqbecco2.html">TEC:Lqbecco2</a> - Queue-Du-Bois Ecole Communale 16:56</li><li><a href="stop-TEC_Lbeloui2.html">TEC:Lbeloui2</a> - Bellaire Rue Louis 16:58</li><li><a href="stop-TEC_Lbemc--2.html">TEC:Lbemc--2</a> - Bellaire Maison Communale 16:59</li><li><a href="stop-TEC_Ljufler2.html">TEC:Ljufler2</a> - Jupille Rue de Fléron 17:02</li><li><a href="stop-TEC_Ljuroch2.html">TEC:Ljuroch2</a> - Jupille Chapelle St-Roch 17:03</li><li><a href="stop-TEC_Ljubods2.html">TEC:Ljubods2</a> - Jupille Place Bodson 17:04</li><li><a href="stop-TEC_Ljuchaf2.html">TEC:Ljuchaf2</a> - Jupille Rue Chafnay 17:05</li><li><a href="stop-TEC_Ljuhava2.html">TEC:Ljuhava2</a> - Jupille Place Havart 17:06</li><li><a href="stop-TEC_Ljudeme2.html">TEC:Ljudeme2</a> - Jupille Rue Demeuse 17:06</li><li><a href="stop-TEC_Ljuinte2.html">TEC:Ljuinte2</a> - Jupille Interbrew 17:07</li><li><a href="stop-TEC_Ljuprev2.html">TEC:Ljuprev2</a> - Jupille Avenue Prévers 17:08</li><li><a href="stop-TEC_Ljuchap2.html">TEC:Ljuchap2</a> - Jupille Chapelle Momelette 17:10</li><li><a href="stop-TEC_Ljulieg2.html">TEC:Ljulieg2</a> - Jupille Rue de Liège 17:11</li><li><a href="stop-TEC_Lbrgrot2.html">TEC:Lbrgrot2</a> - Bressoux Grotte 17:12</li><li><a href="stop-TEC_Llgrass2.html">TEC:Llgrass2</a> - Liege Rue Rassenfosse 17:14</li><li><a href="stop-TEC_Llgbarb2.html">TEC:Llgbarb2</a> - Liege Quai du Barbou 17:18</li><li><a href="stop-TEC_Llgongr4.html">TEC:Llgongr4</a> - Liege Place du Congrès 17:20</li><li><a href="stop-TEC_Llgsime2.html">TEC:Llgsime2</a> - Liege Rue G. Simenon 17:20</li><li><a href="stop-TEC_Llgphol2.html">TEC:Llgphol2</a> - Liege Eglise St-Pholien 17:21</li><li><a href="stop-TEC_Llgcite4.html">TEC:Llgcite4</a> - Liege Rue de la Cité 17:22</li><li><a href="stop-TEC_LlgLEOP3.html">TEC:LlgLEOP3</a> - Liege Gare Léopold 17:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5623.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

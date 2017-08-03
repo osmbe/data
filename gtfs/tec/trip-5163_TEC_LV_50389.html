@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Glons / Emael - Bassenge - Visé - 5163:TEC:LV:50389</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Glons / Emael - Bassenge - Visé - 5163:TEC:LV:50389</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LVIdepo2.html">TEC:LVIdepo2</a> - Vise Place des Déportés 08:35</li><li><a href="stop-TEC_LVIgare2.html">TEC:LVIgare2</a> - Vise Gare SNCB 08:36</li><li><a href="stop-TEC_LVIdeva1.html">TEC:LVIdeva1</a> - Vise Devant-le-Pont RG 08:37</li><li><a href="stop-TEC_LVIvert2.html">TEC:LVIvert2</a> - Vise Allée Verte 08:38</li><li><a href="stop-TEC_LHTbaud2.html">TEC:LHTbaud2</a> - Haccourt Square Roi Baudouin 08:39</li><li><a href="stop-TEC_LHTdelh2.html">TEC:LHTdelh2</a> - Haccourt Delhaize 08:39</li><li><a href="stop-TEC_LHTeg--2.html">TEC:LHTeg--2</a> - Haccourt Eglise 08:40</li><li><a href="stop-TEC_LHTmoul2.html">TEC:LHTmoul2</a> - Haccourt Rue du Moulin 08:42</li><li><a href="stop-TEC_LHehacc2.html">TEC:LHehacc2</a> - Heure-le-Romain Rue de Haccourt 08:43</li><li><a href="stop-TEC_LHegame4.html">TEC:LHegame4</a> - Heure-le-Romain Rue Gamet 08:44</li><li><a href="stop-TEC_LHexhav1.html">TEC:LHexhav1</a> - Heure-le-Romain Rue de la Xhavée 08:44</li><li><a href="stop-TEC_LHe3com1.html">TEC:LHe3com1</a> - Heure-le-Romain Place des 3 Comtés 08:45</li><li><a href="stop-TEC_LHecime1.html">TEC:LHecime1</a> - Heure-le-Romain Cimetière 08:46</li><li><a href="stop-TEC_LHSheur1.html">TEC:LHSheur1</a> - Houtain-St-Simeon Route d'Heure 08:48</li><li><a href="stop-TEC_LHStrez1.html">TEC:LHStrez1</a> - Houtain-St-Simeon Rue de Trez 08:48</li><li><a href="stop-TEC_LHSvina1.html">TEC:LHSvina1</a> - Houtain-St-Simeon Rue Haut Vinâve 08:49</li><li><a href="stop-TEC_LHSlava1.html">TEC:LHSlava1</a> - Houtain-St-Simeon Rue Lavaux 08:50</li><li><a href="stop-TEC_LHSfexh1.html">TEC:LHSfexh1</a> - Houtain-St-Simeon Route de Fexhe-Slins 08:50</li><li><a href="stop-TEC_LHScite1.html">TEC:LHScite1</a> - Houtain-St-Simeon Cité 08:52</li><li><a href="stop-TEC_LBSneuv1.html">TEC:LBSneuv1</a> - Bassenge Rue Neuve (Chapelle) 08:53</li><li><a href="stop-TEC_LBSkann1.html">TEC:LBSkann1</a> - Bassenge Route de Kanne 08:54</li><li><a href="stop-TEC_LBSchar1.html">TEC:LBSchar1</a> - Bassenge La Charmille 08:54</li><li><a href="stop-TEC_LBStec-1.html">TEC:LBStec-1</a> - Bassenge Dépôt TEC 08:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3917.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Chastre - Walhain - Mont-Saint-Guibert - LLN - 5163:TEC:BW:8481</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Chastre - Walhain - Mont-Saint-Guibert - LLN - 5163:TEC:BW:8481</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bchadpt1.html">TEC:Bchadpt1</a> - Chastre Dépôt 17:35</li><li><a href="stop-TEC_Bwlhppg1.html">TEC:Bwlhppg1</a> - Perbais Place de la Gare 17:36</li><li><a href="stop-TEC_Bwlhpma1.html">TEC:Bwlhpma1</a> - Perbais Moulin Art 17:36</li><li><a href="stop-TEC_Bwlhpec1.html">TEC:Bwlhpec1</a> - Perbais Ecoles 17:37</li><li><a href="stop-TEC_Bwlhpmt4.html">TEC:Bwlhpmt4</a> - Walhain Maugré To 17:38</li><li><a href="stop-TEC_Bnil3fo2.html">TEC:Bnil3fo2</a> - Nil-St-Vincent Ch des 3 Fontaines 17:43</li><li><a href="stop-TEC_Bcrbgro2.html">TEC:Bcrbgro2</a> - Corbais Grand Route 17:44</li><li><a href="stop-TEC_Bcrbtho2.html">TEC:Bcrbtho2</a> - Corbais Rue Thomas 17:44</li><li><a href="stop-TEC_Bmsgaxp1.html">TEC:Bmsgaxp1</a> - Mont-Saint-Guibert Axis Parc 17:50</li><li><a href="stop-TEC_Bllnrro2.html">TEC:Bllnrro2</a> - Louvain-la-Neuve Rue Fonds Cattelain 17:51</li><li><a href="stop-TEC_Bllnpaf4.html">TEC:Bllnpaf4</a> - Louvain-la-Neuve Parc d'Affaires 17:52</li><li><a href="stop-TEC_Bllngar5.html">TEC:Bllngar5</a> - Louvain-la-Neuve Gare d'Autobus 17:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./659.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

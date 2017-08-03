@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Ans - Loncin - Awans - 5163:TEC:LV:46513</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Ans - Loncin - Awans - 5163:TEC:LV:46513</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Llochar_.html">TEC:Llochar*</a> - Loncin Rue A. Charlet 17:20</li><li><a href="stop-TEC_Lloross2.html">TEC:Lloross2</a> - Loncin Rue du Rossignol 17:21</li><li><a href="stop-TEC_Llonaes2.html">TEC:Llonaes2</a> - Loncin Rue Commandant Naessens 17:22</li><li><a href="stop-TEC_Llojeme4.html">TEC:Llojeme4</a> - Loncin Rue de Jemeppe 17:22</li><li><a href="stop-TEC_Lanstat2.html">TEC:Lanstat2</a> - Ans rue de la Station 17:24</li><li><a href="stop-TEC_Lanpast2.html">TEC:Lanpast2</a> - Ans Rue Pasteur 17:25</li><li><a href="stop-TEC_Lanplat2.html">TEC:Lanplat2</a> - Ans Eglise du Plateau 17:26</li><li><a href="stop-TEC_Lanyser2.html">TEC:Lanyser2</a> - Ans Rue de l'Yser 119 17:27</li><li><a href="stop-TEC_Lanfran4.html">TEC:Lanfran4</a> - Ans Rue des Français 17:29</li><li><a href="stop-TEC_Lanpisc2.html">TEC:Lanpisc2</a> - Ans Piscine 17:30</li><li><a href="stop-TEC_Lannico2.html">TEC:Lannico2</a> - Ans Place Nicolaï 17:31</li><li><a href="stop-TEC_Lanfont2.html">TEC:Lanfont2</a> - Ans Rue de la Fontaine 17:32</li><li><a href="stop-TEC_Llgchau2.html">TEC:Llgchau2</a> - Liege Basse Chaussée 17:33</li><li><a href="stop-TEC_Llgglai2.html">TEC:Llgglai2</a> - Liege Rue en Glain 17:34</li><li><a href="stop-TEC_Llgbaro4.html">TEC:Llgbaro4</a> - Liege Rue H. Baron 17:35</li><li><a href="stop-TEC_Llgfont2.html">TEC:Llgfont2</a> - Liege Fontainebleau 17:36</li><li><a href="stop-TEC_Llghoch2.html">TEC:Llghoch2</a> - Liege Hocheporte 17:38</li><li><a href="stop-TEC_Llgcadr4.html">TEC:Llgcadr4</a> - Liege Cadran 17:39</li><li><a href="stop-TEC_LlgLAMB3.html">TEC:LlgLAMB3</a> - Liege Place St-Lambert 17:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4180.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

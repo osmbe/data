@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - JODOIGNE - EGHEZEE - 5163:TEC:NA:4993</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: JODOIGNE - EGHEZEE - 5163:TEC:NA:4993</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bramgar1.html">TEC:Bramgar1</a> - Ramillies Gare 07:23</li><li><a href="stop-TEC_Baegd742.html">TEC:Baegd742</a> - Gerompont Avenue des Déportés 74 07:24</li><li><a href="stop-TEC_Bgercen2.html">TEC:Bgercen2</a> - Gerompont Centre 07:25</li><li><a href="stop-TEC_Bgermco2.html">TEC:Bgermco2</a> - Gerompont Maison Communale 07:26</li><li><a href="stop-TEC_Bgerd322.html">TEC:Bgerd322</a> - Gerompont Avenue des Déportés 32 07:26</li><li><a href="stop-TEC_Bgerprg2.html">TEC:Bgerprg2</a> - Petit-Rosiere Gare 07:27</li><li><a href="stop-TEC_NB33aea.html">TEC:NB33aea</a> - Petit-Rosiere Notre-Dame de Hal 07:29</li><li><a href="stop-TEC_NB33afa.html">TEC:NB33afa</a> - Mont-Saint-Andre Route de Geest 07:31</li><li><a href="stop-TEC_Bmsaegl1.html">TEC:Bmsaegl1</a> - Mont-Saint-Andre Eglise 07:32</li><li><a href="stop-TEC_NB33aha.html">TEC:NB33aha</a> - Mont-Saint-Andre Petite goyarde 07:33</li><li><a href="stop-TEC_NB33aia.html">TEC:NB33aia</a> - Mont-Saint-Andre Grande goyarde 07:34</li><li><a href="stop-TEC_NB33aja.html">TEC:NB33aja</a> - Mont-Saint-Andre Laloux 07:35</li><li><a href="stop-TEC_NB33aka.html">TEC:NB33aka</a> - Bomal Maison communale 07:36</li><li><a href="stop-TEC_NB33aka.html">TEC:NB33aka</a> - Bomal Maison communale 07:36</li><li><a href="stop-TEC_NB33ala.html">TEC:NB33ala</a> - Bomal Ma campagnette 07:36</li><li><a href="stop-TEC_NR21aea.html">TEC:NR21aea</a> - Huppaye Au maréchal 07:40</li><li><a href="stop-TEC_NR21afa.html">TEC:NR21afa</a> - Huppaye Place bacchus 07:41</li><li><a href="stop-TEC_NR21abc.html">TEC:NR21abc</a> - Huppaye Gare 07:41</li><li><a href="stop-TEC_NR21aga.html">TEC:NR21aga</a> - Huppaye Saint Pierre 07:42</li><li><a href="stop-TEC_NR21aha.html">TEC:NR21aha</a> - Huppaye Hirondelles 07:43</li><li><a href="stop-TEC_NR21aia.html">TEC:NR21aia</a> - Enines Route de Jauche 07:45</li><li><a href="stop-TEC_NR21aja.html">TEC:NR21aja</a> - Enines Rue grand roo 07:46</li><li><a href="stop-TEC_Benimar2.html">TEC:Benimar2</a> - Enines Route de Marilles 07:47</li><li><a href="stop-TEC_Bmrlsau2.html">TEC:Bmrlsau2</a> - Marilles Saussoy 07:48</li><li><a href="stop-TEC_Bjodfco2.html">TEC:Bjodfco2</a> - Jodoigne Ferme de la Comté 07:48</li><li><a href="stop-TEC_Bjodcoi1.html">TEC:Bjodcoi1</a> - Jodoigne Chant des Oiseaux 07:50</li><li><a href="stop-TEC_Bjodint1.html">TEC:Bjodint1</a> - Jodoigne Internat 07:51</li><li><a href="stop-TEC_Bjodath2.html">TEC:Bjodath2</a> - Jodoigne Athénée Royal 07:52</li><li><a href="stop-TEC_Bjodcad2.html">TEC:Bjodcad2</a> - Jodoigne Centre Administratif 07:53</li><li><a href="stop-TEC_Bjodsje1.html">TEC:Bjodsje1</a> - Jodoigne Rue Saint-Jean 07:53</li><li><a href="stop-TEC_Bjodrdp2.html">TEC:Bjodrdp2</a> - Jodoigne Rue de Piétrain 07:53</li><li><a href="stop-TEC_Bjodgar1.html">TEC:Bjodgar1</a> - Jodoigne Gare d'Autobus 07:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5824.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - SUD - OUEST - MADELEINE - GOSSELIES - 5163:TEC:CH:12601</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: SUD - OUEST - MADELEINE - GOSSELIES - 5163:TEC:CH:12601</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_CMsud2.html">TEC:CMsud2</a> - Charleroi Sud 13:01</li><li><a href="stop-TEC_CMvil2.html">TEC:CMvil2</a> - Charleroi Villette (M) 13:02</li><li><a href="stop-TEC_CMoues2.html">TEC:CMoues2</a> - Charleroi Ouest (M) 13:03</li><li><a href="stop-TEC_CMba1.html">TEC:CMba1</a> - Charleroi Beaux-Arts (M) 13:06</li><li><a href="stop-TEC_CMpige2.html">TEC:CMpige2</a> - Dampremy Piges (M) 13:07</li><li><a href="stop-TEC_CMsacm2.html">TEC:CMsacm2</a> - Dampremy Sacré-Madame (M) 13:08</li><li><a href="stop-TEC_CMlpla2.html">TEC:CMlpla2</a> - Dampremy La Planche (M) 13:09</li><li><a href="stop-TEC_CMdesc2.html">TEC:CMdesc2</a> - Lodelinsart Deschassis (M) 13:11</li><li><a href="stop-TEC_CMmari2.html">TEC:CMmari2</a> - Lodelinsart Marie Curie (M) 13:12</li><li><a href="stop-TEC_CMtsan2.html">TEC:CMtsan2</a> - Lodelinsart Saint-Antoine (M) 13:14</li><li><a href="stop-TEC_CMpuis2.html">TEC:CMpuis2</a> - Jumet Puissant (M) 13:15</li><li><a href="stop-TEC_CMchag2.html">TEC:CMchag2</a> - Jumet Chaussée de Gilly (M) 13:15</li><li><a href="stop-TEC_CMbert2.html">TEC:CMbert2</a> - Jumet Rue Bertaux (M) 13:16</li><li><a href="stop-TEC_CMmade2.html">TEC:CMmade2</a> - Jumet Madeleine (M) 13:19</li><li><a href="stop-TEC_CMcarr2.html">TEC:CMcarr2</a> - Jumet Carrosse (M) 13:21</li><li><a href="stop-TEC_CMleop2.html">TEC:CMleop2</a> - Gosselies Léopold (M) 13:23</li><li><a href="stop-TEC_CMcalv2.html">TEC:CMcalv2</a> - Gosselies Calvaire (M) 13:25</li><li><a href="stop-TEC_CMbruy2.html">TEC:CMbruy2</a> - Gosselies Bruyerre (M) 13:27</li><li><a href="stop-TEC_CMfbru2.html">TEC:CMfbru2</a> - Gosselies Faubourg de Bruxelles (M) 13:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./813.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

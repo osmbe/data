@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - DINANT - ERMETON-SUR-BIERT - 5163:TEC:NA:9802</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DINANT - ERMETON-SUR-BIERT - 5163:TEC:NA:9802</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N565aea.html">TEC:N565aea</a> - Ermeton-sur-Biert Place 12:42</li><li><a href="stop-TEC_N565aab.html">TEC:N565aab</a> - Ermeton-sur-Biert Bonsin 12:44</li><li><a href="stop-TEC_N550amb.html">TEC:N550amb</a> - Maredret Station 12:47</li><li><a href="stop-TEC_N550aab.html">TEC:N550aab</a> - Denee Château Desclée 12:48</li><li><a href="stop-TEC_N550abe.html">TEC:N550abe</a> - Maredsous Carrefour 12:50</li><li><a href="stop-TEC_N550ana.html">TEC:N550ana</a> - Denee Try du Moulin 12:52</li><li><a href="stop-TEC_N550afb.html">TEC:N550afb</a> - Denee Ecole 12:53</li><li><a href="stop-TEC_N549aeb.html">TEC:N549aeb</a> - Bioul La barrière 12:55</li><li><a href="stop-TEC_N549adb.html">TEC:N549adb</a> - Bioul Chafor 12:56</li><li><a href="stop-TEC_N549afb.html">TEC:N549afb</a> - Bioul Place 12:57</li><li><a href="stop-TEC_N549ahb.html">TEC:N549ahb</a> - Bioul Route de Warnant 12:58</li><li><a href="stop-TEC_N549agb.html">TEC:N549agb</a> - Bioul Quatre bras 12:58</li><li><a href="stop-TEC_N549acb.html">TEC:N549acb</a> - Bioul Crucifix 12:59</li><li><a href="stop-TEC_N549aab.html">TEC:N549aab</a> - Bioul Belle-vue 12:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6709.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

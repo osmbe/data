@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Circuit Scolaire de Libramont (Wisbeley) - 5163:TEC:LU:6159</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Circuit Scolaire de Libramont (Wisbeley) - 5163:TEC:LU:6159</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X802ayb.html">TEC:X802ayb</a> - Recogne Carrefour 08:09</li><li><a href="stop-TEC_X802asb.html">TEC:X802asb</a> - Recogne Route de Libin 30 08:10</li><li><a href="stop-TEC_X802apa.html">TEC:X802apa</a> - Recogne Route de Libin 68 08:11</li><li><a href="stop-TEC_X802aqa.html">TEC:X802aqa</a> - Recogne Wisbeley - Manège 08:12</li><li><a href="stop-TEC_X802ara.html">TEC:X802ara</a> - Recogne Wisbeley 9 08:13</li><li><a href="stop-TEC_X802ata.html">TEC:X802ata</a> - Recogne Wisbeley 08:13</li><li><a href="stop-TEC_X802acb.html">TEC:X802acb</a> - Neuvillers Hydro-Pièces 08:17</li><li><a href="stop-TEC_X802aeb.html">TEC:X802aeb</a> - Neuvillers La Spinette 80 08:20</li><li><a href="stop-TEC_X802afb.html">TEC:X802afb</a> - Neuvillers La Spinette 23 08:21</li><li><a href="stop-TEC_X802aga.html">TEC:X802aga</a> - Neuvillers Ecole 08:22</li><li><a href="stop-TEC_X802aib.html">TEC:X802aib</a> - Neuvillers Rue de Grandvoir 12 08:24</li><li><a href="stop-TEC_X802azb.html">TEC:X802azb</a> - Recogne Rue Le Chêne 66 08:25</li><li><a href="stop-TEC_X801cba.html">TEC:X801cba</a> - Libramont Rue A. Lefèvre 37 08:27</li><li><a href="stop-TEC_X801cca.html">TEC:X801cca</a> - Libramont Rue A. Lefèvre 23 08:27</li><li><a href="stop-TEC_X801ceb.html">TEC:X801ceb</a> - Libramont Rue Courteroie 32 08:28</li><li><a href="stop-TEC_X801cfb.html">TEC:X801cfb</a> - Libramont Rue Pie Martin 08:29</li><li><a href="stop-TEC_X801cmb.html">TEC:X801cmb</a> - Libramont Rue Pie Martin 60G 08:30</li><li><a href="stop-TEC_X801bga.html">TEC:X801bga</a> - Libramont E.P.C.F. 08:32</li><li><a href="stop-TEC_X801bha.html">TEC:X801bha</a> - Libramont Rue de la Fontaine 08:33</li><li><a href="stop-TEC_X801bia.html">TEC:X801bia</a> - Libramont Rue du Village 35 08:33</li><li><a href="stop-TEC_X801bfa.html">TEC:X801bfa</a> - Libramont Maison Communale 08:34</li><li><a href="stop-TEC_X801bea.html">TEC:X801bea</a> - Libramont I.S.J. - Grand'Rue 08:35</li><li><a href="stop-TEC_X801bdb.html">TEC:X801bdb</a> - Libramont Gare - Quai 4 08:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3003.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

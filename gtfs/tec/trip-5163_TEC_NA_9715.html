@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - BEAURAING - GEDINNE - BOURSEIGNE-VIEILLE - 5163:TEC:NA:9715</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: BEAURAING - GEDINNE - BOURSEIGNE-VIEILLE - 5163:TEC:NA:9715</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N312adb.html">TEC:N312adb</a> - Voneche Jonction 12:17</li><li><a href="stop-TEC_N313aab.html">TEC:N313aab</a> - Vencimont Village de vacances 12:20</li><li><a href="stop-TEC_N313abb.html">TEC:N313abb</a> - Vencimont La Ramée 12:22</li><li><a href="stop-TEC_N313acb.html">TEC:N313acb</a> - Vencimont Cabine 12:23</li><li><a href="stop-TEC_N313adb.html">TEC:N313adb</a> - Vencimont Centre 12:24</li><li><a href="stop-TEC_N313aeb.html">TEC:N313aeb</a> - Vencimont Jonction 12:24</li><li><a href="stop-TEC_N309aab.html">TEC:N309aab</a> - Sart-Custinne Eglise 12:31</li><li><a href="stop-TEC_N309abb.html">TEC:N309abb</a> - Sart-Custinne Route de Malvoisin 12:32</li><li><a href="stop-TEC_N309aca.html">TEC:N309aca</a> - Sart-Custinne Pré Lavaux 12:34</li><li><a href="stop-TEC_N343aaa.html">TEC:N343aaa</a> - Gedinne Point de vue 12:35</li><li><a href="stop-TEC_N343aba.html">TEC:N343aba</a> - Gedinne Pommier Mathys 12:35</li><li><a href="stop-TEC_N343ana.html">TEC:N343ana</a> - Gedinne Ecole primaire 12:36</li><li><a href="stop-TEC_N343amb.html">TEC:N343amb</a> - Gedinne Lycée 12:37</li><li><a href="stop-TEC_N343ada.html">TEC:N343ada</a> - Gedinne Terminus 12:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6757.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

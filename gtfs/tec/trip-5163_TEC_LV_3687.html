@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ensival - Place Verte - Heusy - Jehanster - 5163:TEC:LV:3687</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ensival - Place Verte - Heusy - Jehanster - 5163:TEC:LV:3687</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Ljhjeha_.html">TEC:Ljhjeha*</a> - Jehanster Terminus 14:48</li><li><a href="stop-TEC_Ljhsart2.html">TEC:Ljhsart2</a> - Jehanster Rue des Sarts 14:49</li><li><a href="stop-TEC_Ljhcarr2.html">TEC:Ljhcarr2</a> - Jehanster Carrefour de Jehanster 14:50</li><li><a href="stop-TEC_Lhubarl2.html">TEC:Lhubarl2</a> - Heusy Rue Barla 14:51</li><li><a href="stop-TEC_Lhufila2.html">TEC:Lhufila2</a> - Heusy Rue Filanneux 14:51</li><li><a href="stop-TEC_Lhutran2.html">TEC:Lhutran2</a> - Heusy Transvaal 14:52</li><li><a href="stop-TEC_Lhujonc2.html">TEC:Lhujonc2</a> - Heusy Petit Jonckeu 14:53</li><li><a href="stop-TEC_Lhufays2.html">TEC:Lhufays2</a> - Heusy Fays 14:53</li><li><a href="stop-TEC_Lhurfay2.html">TEC:Lhurfay2</a> - Heusy Route de Fays 14:53</li><li><a href="stop-TEC_Lhuferm2.html">TEC:Lhuferm2</a> - Heusy Fays Ferme 14:54</li><li><a href="stop-TEC_Lhuchev2.html">TEC:Lhuchev2</a> - Heusy Cheval Blanc 14:55</li><li><a href="stop-TEC_Lhulibe2.html">TEC:Lhulibe2</a> - Heusy Rue de la Libération 14:56</li><li><a href="stop-TEC_Lhubouq2.html">TEC:Lhubouq2</a> - Heusy Bouquette 14:58</li><li><a href="stop-TEC_Lhueg--2.html">TEC:Lhueg--2</a> - Heusy Eglise 14:59</li><li><a href="stop-TEC_Lhuderu2.html">TEC:Lhuderu2</a> - Heusy Place A. Deru 15:00</li><li><a href="stop-TEC_Lhuleke2.html">TEC:Lhuleke2</a> - Heusy Rue G. Lekeu 15:01</li><li><a href="stop-TEC_Lvegend2.html">TEC:Lvegend2</a> - Verviers Gendarmerie 15:01</li><li><a href="stop-TEC_Lve-isi2.html">TEC:Lve-isi2</a> - Verviers I.S.I. 15:02</li><li><a href="stop-TEC_Lvefran2.html">TEC:Lvefran2</a> - Verviers Rue de Francorchamps 15:03</li><li><a href="stop-TEC_Lvealbe2.html">TEC:Lvealbe2</a> - Verviers Place Albert 1er 15:04</li><li><a href="stop-TEC_Lveecol2.html">TEC:Lveecol2</a> - Verviers Rue des Ecoles 15:06</li><li><a href="stop-TEC_Lvepala2.html">TEC:Lvepala2</a> - Verviers Palais 15:07</li><li><a href="stop-TEC_Lvehv--1.html">TEC:Lvehv--1</a> - Verviers Hôtel de Ville 15:08</li><li><a href="stop-TEC_Lvevert1.html">TEC:Lvevert1</a> - Verviers Place Verte 15:09</li><li><a href="stop-TEC_Lvexhav1.html">TEC:Lvexhav1</a> - Verviers Rue Xhavée 15:10</li><li><a href="stop-TEC_Lvethea1.html">TEC:Lvethea1</a> - Verviers Théâtre 15:11</li><li><a href="stop-TEC_Lvegc--4.html">TEC:Lvegc--4</a> - Verviers Gare Centrale 15:12</li><li><a href="stop-TEC_Lveensi2.html">TEC:Lveensi2</a> - Verviers Rue d'Ensival 15:13</li><li><a href="stop-TEC_Lveoctr2.html">TEC:Lveoctr2</a> - Verviers Octroi 15:14</li><li><a href="stop-TEC_Lengran2.html">TEC:Lengran2</a> - Ensival Rue Grand'Ville 15:16</li><li><a href="stop-TEC_Lenmare2.html">TEC:Lenmare2</a> - Ensival Rue Maréchal 15:17</li><li><a href="stop-TEC_Lenplac4.html">TEC:Lenplac4</a> - Ensival place 15:17</li><li><a href="stop-TEC_Lenmivi_.html">TEC:Lenmivi*</a> - Ensival En Mi-Ville 15:18</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4216.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

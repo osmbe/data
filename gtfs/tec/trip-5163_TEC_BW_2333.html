@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Braine-l'Alleud - Tubize - 5163:TEC:BW:2333</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Braine-l'Alleud - Tubize - 5163:TEC:BW:2333</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bblagar6.html">TEC:Bblagar6</a> - Alleud Gare 16:32</li><li><a href="stop-TEC_Bblagar5.html">TEC:Bblagar5</a> - Alleud Gare 16:32</li><li><a href="stop-TEC_Bblaljo1.html">TEC:Bblaljo1</a> - Alleud Avenue L. Jourez 16:33</li><li><a href="stop-TEC_Bblaelo1.html">TEC:Bblaelo1</a> - Alleud Rue Jean Volders 16:34</li><li><a href="stop-TEC_Bblacha1.html">TEC:Bblacha1</a> - Alleud La Chapelle 16:36</li><li><a href="stop-TEC_Bblamsp1.html">TEC:Bblamsp1</a> - Alleud Mont-Saint-Pont 16:37</li><li><a href="stop-TEC_Bblaphi1.html">TEC:Bblaphi1</a> - Alleud Philippe 16:37</li><li><a href="stop-TEC_Bblasmo1.html">TEC:Bblasmo1</a> - Alleud Sart-Moulin 16:38</li><li><a href="stop-TEC_Bblabos1.html">TEC:Bblabos1</a> - Alleud Bosquet 16:39</li><li><a href="stop-TEC_Bblacar1.html">TEC:Bblacar1</a> - Alleud Carron 16:40</li><li><a href="stop-TEC_Bblapra1.html">TEC:Bblapra1</a> - Alleud Chemin de la Praye 16:41</li><li><a href="stop-TEC_Bwaunou1.html">TEC:Bwaunou1</a> - Wauthier-Braine Chemin de Noucelles 16:42</li><li><a href="stop-TEC_Bwaubru1.html">TEC:Bwaubru1</a> - Wauthier-Braine La Bruyère 16:43</li><li><a href="stop-TEC_Bwaucig1.html">TEC:Bwaucig1</a> - Wauthier-Braine Cigarettes 16:44</li><li><a href="stop-TEC_Bwaucan1.html">TEC:Bwaucan1</a> - Wauthier-Braine Cantine 16:46</li><li><a href="stop-TEC_Bbchdra1.html">TEC:Bbchdra1</a> - Braine-le-Chateau Le Drabbe 16:48</li><li><a href="stop-TEC_Bbchrra3.html">TEC:Bbchrra3</a> - Braine-le-Chateau Rue des Radoux 16:49</li><li><a href="stop-TEC_Bbch4br1.html">TEC:Bbch4br1</a> - Braine-le-Chateau Quatre Bras 16:49</li><li><a href="stop-TEC_Bbchpil1.html">TEC:Bbchpil1</a> - Braine-le-Chateau Pilori 16:49</li><li><a href="stop-TEC_Bbchndb1.html">TEC:Bbchndb1</a> - Braine-le-Chateau Rue Notre Dame au Bois 16:50</li><li><a href="stop-TEC_Bbchgod1.html">TEC:Bbchgod1</a> - Braine-le-Chateau Godeaux 16:51</li><li><a href="stop-TEC_Bbchume1.html">TEC:Bbchume1</a> - Braine-le-Chateau Usines Meurice 16:51</li><li><a href="stop-TEC_Bcbqtub1.html">TEC:Bcbqtub1</a> - Clabecq Rue de Tubize 157 16:51</li><li><a href="stop-TEC_Bcbqrog1.html">TEC:Bcbqrog1</a> - Clabecq Rogissart 16:52</li><li><a href="stop-TEC_Bcbqh451.html">TEC:Bcbqh451</a> - Clabecq Hameau 45 16:53</li><li><a href="stop-TEC_Bcbqpon1.html">TEC:Bcbqpon1</a> - Clabecq Pont 16:55</li><li><a href="stop-TEC_Bcbqufo1.html">TEC:Bcbqufo1</a> - Clabecq Usines Forges 16:56</li><li><a href="stop-TEC_Bcbqgar1.html">TEC:Bcbqgar1</a> - Clabecq Gare 16:56</li><li><a href="stop-TEC_Btubnav1.html">TEC:Btubnav1</a> - Tubize Rue Navet 16:57</li><li><a href="stop-TEC_Btubga05.html">TEC:Btubga05</a> - Tubize Gare 16:58</li><li><a href="stop-TEC_Btubga06.html">TEC:Btubga06</a> - Tubize Gare 16:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./280.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

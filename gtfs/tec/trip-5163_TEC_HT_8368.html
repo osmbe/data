@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ath - Saint-Ghislain - 5163:TEC:HT:8368</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ath - Saint-Ghislain - 5163:TEC:HT:8368</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1ch141a.html">TEC:H1ch141a</a> - Chievres Eglise de Vaudignies 06:20</li><li><a href="stop-TEC_H1ch143a.html">TEC:H1ch143a</a> - Chievres Les Ruelles 06:21</li><li><a href="stop-TEC_H1ch142a.html">TEC:H1ch142a</a> - Chievres Gare de Vaudignies 06:22</li><li><a href="stop-TEC_H1nm141b.html">TEC:H1nm141b</a> - Neufmaison Maréchal Ferrant 06:24</li><li><a href="stop-TEC_H1nm140b.html">TEC:H1nm140b</a> - Neufmaison Eglise 06:25</li><li><a href="stop-TEC_H1nm139b.html">TEC:H1nm139b</a> - Neufmaison Ecoles 06:26</li><li><a href="stop-TEC_H1nm138b.html">TEC:H1nm138b</a> - Neufmaison Chapelle Notre-Dame 06:26</li><li><a href="stop-TEC_H1si164b.html">TEC:H1si164b</a> - Sirault Passage à Niveau 06:28</li><li><a href="stop-TEC_H1si152b.html">TEC:H1si152b</a> - Sirault Au Noir Bonnet 06:29</li><li><a href="stop-TEC_H1si162b.html">TEC:H1si162b</a> - Sirault Ancienne Gare 06:30</li><li><a href="stop-TEC_H1si167b.html">TEC:H1si167b</a> - Sirault Postes 06:31</li><li><a href="stop-TEC_H1si157b.html">TEC:H1si157b</a> - Sirault Chapelle 06:32</li><li><a href="stop-TEC_H1si155b.html">TEC:H1si155b</a> - Sirault Cahot 06:32</li><li><a href="stop-TEC_H1vt195b.html">TEC:H1vt195b</a> - Villerot Rue de la Chasse 06:35</li><li><a href="stop-TEC_H1vt196b.html">TEC:H1vt196b</a> - Villerot Rue Gaillet N°78 06:36</li><li><a href="stop-TEC_H1vt193b.html">TEC:H1vt193b</a> - Villerot Place 06:37</li><li><a href="stop-TEC_H1vt194b.html">TEC:H1vt194b</a> - Villerot Pont Bergère 06:38</li><li><a href="stop-TEC_H1vt192b.html">TEC:H1vt192b</a> - Villerot Passerelle 06:40</li><li><a href="stop-TEC_H1te190b.html">TEC:H1te190b</a> - Tertre Rue Solvay 06:40</li><li><a href="stop-TEC_H1te184b.html">TEC:H1te184b</a> - Tertre Ets Martens 06:41</li><li><a href="stop-TEC_H1ba106b.html">TEC:H1ba106b</a> - Baudour Esso 06:42</li><li><a href="stop-TEC_H1te185a.html">TEC:H1te185a</a> - Tertre SNCB 06:43</li><li><a href="stop-TEC_H1te187a.html">TEC:H1te187a</a> - Tertre Le Manant 06:44</li><li><a href="stop-TEC_H1te188a.html">TEC:H1te188a</a> - Tertre Place 06:45</li><li><a href="stop-TEC_H1te176a.html">TEC:H1te176a</a> - Tertre Carrefour 06:46</li><li><a href="stop-TEC_H1sg149a.html">TEC:H1sg149a</a> - Tertre Route de Tournai 06:47</li><li><a href="stop-TEC_H1sg150a.html">TEC:H1sg150a</a> - Saint-Ghislain Rue du Sas 06:50</li><li><a href="stop-TEC_H1sg142a.html">TEC:H1sg142a</a> - Saint-Ghislain 4 ème Rue 06:50</li><li><a href="stop-TEC_H1sg147a.html">TEC:H1sg147a</a> - Saint-Ghislain SNCB 06:52</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2256.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

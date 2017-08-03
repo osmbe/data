@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Jolimont - Soignies - 5163:TEC:HT:6013</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jolimont - Soignies - 5163:TEC:HT:6013</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H2ll201a.html">TEC:H2ll201a</a> - La Louviere Tivoli 13:32</li><li><a href="stop-TEC_H2ll172a.html">TEC:H2ll172a</a> - La Louviere Bas de Baume 13:34</li><li><a href="stop-TEC_H2ll181a.html">TEC:H2ll181a</a> - La Louviere Gendarmerie 13:35</li><li><a href="stop-TEC_H2ll177a.html">TEC:H2ll177a</a> - La Louviere Rue du Parc 13:37</li><li><a href="stop-TEC_H2ll188b.html">TEC:H2ll188b</a> - La Louviere Place Mansart 13:39</li><li><a href="stop-TEC_H2ll258b.html">TEC:H2ll258b</a> - La Louviere Carrefour du Gazomètre 13:41</li><li><a href="stop-TEC_H2ll186b.html">TEC:H2ll186b</a> - La Louviere O.N.E.M. 13:43</li><li><a href="stop-TEC_H2ll176b.html">TEC:H2ll176b</a> - La Louviere Dépôt  TEC 13:44</li><li><a href="stop-TEC_H2hg144b.html">TEC:H2hg144b</a> - Houdeng-Goegnies Ascenseur 13:46</li><li><a href="stop-TEC_H2hg158b.html">TEC:H2hg158b</a> - Houdeng-Goegnies Ancienne Gare 13:46</li><li><a href="stop-TEC_H2hg147b.html">TEC:H2hg147b</a> - Houdeng-Goegnies Couturelle 13:47</li><li><a href="stop-TEC_H2hg156b.html">TEC:H2hg156b</a> - Houdeng-Goegnies Rue Houtart 13:48</li><li><a href="stop-TEC_H2ha142b.html">TEC:H2ha142b</a> - Houdeng-Aimeries Tombelle 13:49</li><li><a href="stop-TEC_H2ha128b.html">TEC:H2ha128b</a> - Houdeng-Aimeries Fonderie 13:50</li><li><a href="stop-TEC_H2ha133b.html">TEC:H2ha133b</a> - Houdeng-Aimeries Pont du Sart 13:50</li><li><a href="stop-TEC_H3lr108b.html">TEC:H3lr108b</a> - Le Roeulx Bois du Roeulx 13:53</li><li><a href="stop-TEC_H3lr110b.html">TEC:H3lr110b</a> - Le Roeulx Cimetière 13:54</li><li><a href="stop-TEC_H3lr109c.html">TEC:H3lr109c</a> - Le Roeulx Centre 13:55</li><li><a href="stop-TEC_H3lr117b.html">TEC:H3lr117b</a> - Le Roeulx Postes-Place du Souvenir 13:57</li><li><a href="stop-TEC_H3lr116b.html">TEC:H3lr116b</a> - Le Roeulx Montauban 14:00</li><li><a href="stop-TEC_H3go102b.html">TEC:H3go102b</a> - Gottignies Mont-Blanc 14:01</li><li><a href="stop-TEC_H3go104b.html">TEC:H3go104b</a> - Gottignies Rue de Gottignies 14:02</li><li><a href="stop-TEC_H3go101b.html">TEC:H3go101b</a> - Gottignies Habitation N°157 14:04</li><li><a href="stop-TEC_H2na131a.html">TEC:H2na131a</a> - Naast Café Saaz 14:05</li><li><a href="stop-TEC_H2na132a.html">TEC:H2na132a</a> - Naast Carrefour Haute Folie 14:06</li><li><a href="stop-TEC_H2na133a.html">TEC:H2na133a</a> - Naast Chalet des Roses 14:07</li><li><a href="stop-TEC_H2na136a.html">TEC:H2na136a</a> - Naast Monument 14:08</li><li><a href="stop-TEC_H2na134a.html">TEC:H2na134a</a> - Naast Château Baillon 14:09</li><li><a href="stop-TEC_H2na135a.html">TEC:H2na135a</a> - Naast Escarmotte 14:10</li><li><a href="stop-TEC_H3so169a.html">TEC:H3so169a</a> - Soignies Habitation N° 379 14:11</li><li><a href="stop-TEC_H3so172a.html">TEC:H3so172a</a> - Soignies Les Trois Tilleuls 14:12</li><li><a href="stop-TEC_H3so163a.html">TEC:H3so163a</a> - Soignies Eglise des Carmes 14:14</li><li><a href="stop-TEC_H3so166a.html">TEC:H3so166a</a> - Soignies Gare 14:15</li><li><a href="stop-TEC_H3so166d.html">TEC:H3so166d</a> - Soignies Gare 14:15</li><li><a href="stop-TEC_H3so155a.html">TEC:H3so155a</a> - Soignies Belle Vue 14:17</li><li><a href="stop-TEC_H3so175a.html">TEC:H3so175a</a> - Soignies Place du Jeu de Balle 14:18</li><li><a href="stop-TEC_H3so170a.html">TEC:H3so170a</a> - Soignies Hôpital 14:19</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1821.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Fléron - Herve - Battice - Verviers - 5163:TEC:LV:43478</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Fléron - Herve - Battice - Verviers - 5163:TEC:LV:43478</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LHEnaza1.html">TEC:LHEnaza1</a> - Herve Nazareth 12:32</li><li><a href="stop-TEC_LHEecmo1.html">TEC:LHEecmo1</a> - Herve Ecole Moyenne 12:33</li><li><a href="stop-TEC_LHEches1.html">TEC:LHEches1</a> - Herve Rue de Chesseroux 12:34</li><li><a href="stop-TEC_LHEbeau1.html">TEC:LHEbeau1</a> - Herve Beau Vallon 12:35</li><li><a href="stop-TEC_LBTcarr2.html">TEC:LBTcarr2</a> - Battice Carrefour 12:37</li><li><a href="stop-TEC_LBTnors2.html">TEC:LBTnors2</a> - Battice Rue Général Norstadt 12:37</li><li><a href="stop-TEC_LBTxhen4.html">TEC:LBTxhen4</a> - Battice Chemin de Xheneumont 12:39</li><li><a href="stop-TEC_LBTchai2.html">TEC:LBTchai2</a> - Battice Route de Chaineux 12:40</li><li><a href="stop-TEC_LCHsaul2.html">TEC:LCHsaul2</a> - Chaineux rue des Saules 12:41</li><li><a href="stop-TEC_LCHeg--2.html">TEC:LCHeg--2</a> - Chaineux Eglise 12:42</li><li><a href="stop-TEC_LCHfond2.html">TEC:LCHfond2</a> - Chaineux Fond du Village 12:42</li><li><a href="stop-TEC_LCHgele2.html">TEC:LCHgele2</a> - Chaineux Rue de la Gelée 12:43</li><li><a href="stop-TEC_LCHrhou2.html">TEC:LCHrhou2</a> - Chaineux Route de Houlteau 12:44</li><li><a href="stop-TEC_Ldicorb2.html">TEC:Ldicorb2</a> - Dison Corbeau 12:46</li><li><a href="stop-TEC_Ldidefo2.html">TEC:Ldidefo2</a> - Dison Usines Deforges 12:47</li><li><a href="stop-TEC_Ldipl--2.html">TEC:Ldipl--2</a> - Dison Place 12:49</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5612.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

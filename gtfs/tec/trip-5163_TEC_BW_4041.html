@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Jodoigne - Wavre - 5163:TEC:BW:4041</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jodoigne - Wavre - 5163:TEC:BW:4041</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bgzdast2.html">TEC:Bgzdast2</a> - Grez-Doiceau Ancienne Station 06:46</li><li><a href="stop-TEC_Bbiemor2.html">TEC:Bbiemor2</a> - Biez Route de Morsaint 06:47</li><li><a href="stop-TEC_Bbiecim2.html">TEC:Bbiecim2</a> - Biez Cimetière 06:48</li><li><a href="stop-TEC_Bbiepre2.html">TEC:Bbiepre2</a> - Biez Préventorium 06:49</li><li><a href="stop-TEC_Bbiehev2.html">TEC:Bbiehev2</a> - Heze Entrée Village 06:50</li><li><a href="stop-TEC_Bbiehec2.html">TEC:Bbiehec2</a> - Heze Ecoles 06:51</li><li><a href="stop-TEC_Bbiehpo2.html">TEC:Bbiehpo2</a> - Heze Les Pommiers 06:51</li><li><a href="stop-TEC_Bbiehss2.html">TEC:Bbiehss2</a> - Heze Chapelle du Saint-Sang 06:52</li><li><a href="stop-TEC_Blontry2.html">TEC:Blontry2</a> - Longueville Le Try 06:54</li><li><a href="stop-TEC_Blonegl2.html">TEC:Blonegl2</a> - Longueville Eglise 06:55</li><li><a href="stop-TEC_Bincfer2.html">TEC:Bincfer2</a> - Incourt Ferme 06:59</li><li><a href="stop-TEC_Binclon2.html">TEC:Binclon2</a> - Incourt Longpré 06:59</li><li><a href="stop-TEC_Binclib2.html">TEC:Binclib2</a> - Incourt Rue de la Liberté 07:00</li><li><a href="stop-TEC_Bincegl2.html">TEC:Bincegl2</a> - Incourt Eglise 07:01</li><li><a href="stop-TEC_Bincbbo2.html">TEC:Bincbbo2</a> - Incourt Rue Baron Bouvier 07:02</li><li><a href="stop-TEC_Bincdon2.html">TEC:Bincdon2</a> - Incourt Route de Dongelberg 07:03</li><li><a href="stop-TEC_Bdoncar2.html">TEC:Bdoncar2</a> - Dongelberg Carrières 07:04</li><li><a href="stop-TEC_Bdoncen2.html">TEC:Bdoncen2</a> - Dongelberg Centre 07:06</li><li><a href="stop-TEC_Bdonlat2.html">TEC:Bdonlat2</a> - Dongelberg Route de Lathuy 07:07</li><li><a href="stop-TEC_Bjdsbro2.html">TEC:Bjdsbro2</a> - Jodoigne-Souveraine Chemin de Brocuy 07:08</li><li><a href="stop-TEC_Bjdssta2.html">TEC:Bjdssta2</a> - Jodoigne-Souveraine Stade 07:09</li><li><a href="stop-TEC_Bjdscnd2.html">TEC:Bjdscnd2</a> - Jodoigne-Souveraine Chapelle Notre-Dame 07:10</li><li><a href="stop-TEC_Bjodmal2.html">TEC:Bjodmal2</a> - Jodoigne La Maladrerie 07:11</li><li><a href="stop-TEC_Bjodppe1.html">TEC:Bjodppe1</a> - Jodoigne Place du Peuple 07:12</li><li><a href="stop-TEC_Bjodpvi1.html">TEC:Bjodpvi1</a> - Jodoigne Place de la Victoire 07:13</li><li><a href="stop-TEC_Bjodcad1.html">TEC:Bjodcad1</a> - Jodoigne Centre Administratif 07:14</li><li><a href="stop-TEC_Bjodgar1.html">TEC:Bjodgar1</a> - Jodoigne Gare d'Autobus 07:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./533.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

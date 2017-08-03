@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Waremme - Geer - Hannut - 5163:TEC:LV:51770</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Waremme - Geer - Hannut - 5163:TEC:LV:51770</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LHNhall2.html">TEC:LHNhall2</a> - Hannut Place H. Hallet 06:32</li><li><a href="stop-TEC_LHNwaut2.html">TEC:LHNwaut2</a> - Hannut Rue J. Wauters 06:33</li><li><a href="stop-TEC_LHNgare2.html">TEC:LHNgare2</a> - Hannut Gare 06:34</li><li><a href="stop-TEC_LHNgend2.html">TEC:LHNgend2</a> - Hannut Gendarmerie 06:35</li><li><a href="stop-TEC_LVParal2.html">TEC:LVParal2</a> - Villers-le-Peuplier Station Aral 06:36</li><li><a href="stop-TEC_LVPgrot2.html">TEC:LVPgrot2</a> - Villers-le-Peuplier Grotte 06:36</li><li><a href="stop-TEC_LVPbleh2.html">TEC:LVPbleh2</a> - Villers-le-Peuplier rue de Blehen 21 06:37</li><li><a href="stop-TEC_LLRbleh2.html">TEC:LLRbleh2</a> - Lens-Saint-Remy Blehen 06:39</li><li><a href="stop-TEC_LLRptma2.html">TEC:LLRptma2</a> - Lens-Saint-Remy Petit Marais 06:40</li><li><a href="stop-TEC_LLR4bra2.html">TEC:LLR4bra2</a> - Lens-Saint-Remy Quatre Bras 06:41</li><li><a href="stop-TEC_LLReg--2.html">TEC:LLReg--2</a> - Lens-Saint-Remy Eglise 06:42</li><li><a href="stop-TEC_LLSbajo2.html">TEC:LLSbajo2</a> - Lens-Saint-Servais Rue H. Bajot 06:45</li><li><a href="stop-TEC_LLStrid2.html">TEC:LLStrid2</a> - Lens-Saint-Servais Rue des Tridaines 06:46</li><li><a href="stop-TEC_LGEwalk2.html">TEC:LGEwalk2</a> - Geer Rue G. Walkens 06:47</li><li><a href="stop-TEC_LGEvill2.html">TEC:LGEvill2</a> - Geer Village 06:47</li><li><a href="stop-TEC_LGEcent2.html">TEC:LGEcent2</a> - Geer Centre 06:47</li><li><a href="stop-TEC_LGEbern2.html">TEC:LGEbern2</a> - Geer Centre Bernadette 06:48</li><li><a href="stop-TEC_LGEpt--2.html">TEC:LGEpt--2</a> - Geer Rue du Pont 06:48</li><li><a href="stop-TEC_LLYcham2.html">TEC:LLYcham2</a> - Ligney Champinotte 06:48</li><li><a href="stop-TEC_LLYhoch2.html">TEC:LLYhoch2</a> - Ligney Chez Hoche 06:49</li><li><a href="stop-TEC_LLYcalv2.html">TEC:LLYcalv2</a> - Ligney Calvaire 06:49</li><li><a href="stop-TEC_LLYpeup2.html">TEC:LLYpeup2</a> - Ligney Rue des Peupliers 06:50</li><li><a href="stop-TEC_LLYplac2.html">TEC:LLYplac2</a> - Ligney Place 06:50</li><li><a href="stop-TEC_LOMcabi2.html">TEC:LOMcabi2</a> - Omal Rue de la Cabine 06:51</li><li><a href="stop-TEC_LOMdTEC1.html">TEC:LOMdTEC1</a> - Omal Dépôt TEC 06:52</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5656.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

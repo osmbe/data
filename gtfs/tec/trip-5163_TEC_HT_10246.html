@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tournai - La Glanerie - 5163:TEC:HT:10246</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tournai - La Glanerie - 5163:TEC:HT:10246</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4ty305d.html">TEC:H4ty305d</a> - Tournai SNCB 12:20</li><li><a href="stop-TEC_H4ty295a.html">TEC:H4ty295a</a> - Tournai Boulevard des Nerviens 12:21</li><li><a href="stop-TEC_H4ty295b.html">TEC:H4ty295b</a> - Tournai Ecole du Château 12:22</li><li><a href="stop-TEC_H4ty416a.html">TEC:H4ty416a</a> - Tournai Athénée 12:24</li><li><a href="stop-TEC_H4ty351a.html">TEC:H4ty351a</a> - Tournai Saint-Brice 12:24</li><li><a href="stop-TEC_H4ty291b.html">TEC:H4ty291b</a> - Tournai Dôme 12:25</li><li><a href="stop-TEC_H4ty274b.html">TEC:H4ty274b</a> - Tournai Beffroi 12:26</li><li><a href="stop-TEC_H4ty317b.html">TEC:H4ty317b</a> - Tournai Palais de Justice 12:28</li><li><a href="stop-TEC_H4ty308c.html">TEC:H4ty308c</a> - Tournai Chwapi Lalaing 12:30</li><li><a href="stop-TEC_H4ty272b.html">TEC:H4ty272b</a> - Tournai Bavaro 12:31</li><li><a href="stop-TEC_H4ty344b.html">TEC:H4ty344b</a> - Tournai Rue Hennebicq 12:31</li><li><a href="stop-TEC_H4ty336b.html">TEC:H4ty336b</a> - Tournai Rue de la Culture 12:32</li><li><a href="stop-TEC_H4ty329b.html">TEC:H4ty329b</a> - Tournai Romulus 12:33</li><li><a href="stop-TEC_H4ty300b.html">TEC:H4ty300b</a> - Tournai Eureka 12:33</li><li><a href="stop-TEC_H4ty331a.html">TEC:H4ty331a</a> - Tournai Route d' Ere 12:34</li><li><a href="stop-TEC_H4er121b.html">TEC:H4er121b</a> - Tournai Daphica 12:34</li><li><a href="stop-TEC_H4wu376a.html">TEC:H4wu376a</a> - Willemeau Pic-au-Vent 12:35</li><li><a href="stop-TEC_H4wu375a.html">TEC:H4wu375a</a> - Willemeau Chaussée de Douai 12:36</li><li><a href="stop-TEC_H4ft138b.html">TEC:H4ft138b</a> - Froidmont Tannerie 12:37</li><li><a href="stop-TEC_H4ft137b.html">TEC:H4ft137b</a> - Froidmont Pont Royal 12:37</li><li><a href="stop-TEC_H4ft135c.html">TEC:H4ft135c</a> - Froidmont Gare 12:38</li><li><a href="stop-TEC_H4rm108a.html">TEC:H4rm108a</a> - Rumes Chapelle 12:42</li><li><a href="stop-TEC_H4rm107c.html">TEC:H4rm107c</a> - Rumes 4 Bras 12:43</li><li><a href="stop-TEC_H4rm113a.html">TEC:H4rm113a</a> - Rumes Place 12:44</li><li><a href="stop-TEC_H4rm109a.html">TEC:H4rm109a</a> - Rumes Clos de l' Europe 12:44</li><li><a href="stop-TEC_H4rm114a.html">TEC:H4rm114a</a> - Rumes Rue du Sentier 12:45</li><li><a href="stop-TEC_H4rm110a.html">TEC:H4rm110a</a> - Rumes Couture de Bray 12:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1386.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

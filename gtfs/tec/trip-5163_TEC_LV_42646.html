@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Gd-Rechain - Nessonvaux - Ayeneux - Olne - Herve - 5163:TEC:LV:42646</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gd-Rechain - Nessonvaux - Ayeneux - Olne - Herve - 5163:TEC:LV:42646</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LHEecmo2.html">TEC:LHEecmo2</a> - Herve Ecole Moyenne 12:10</li><li><a href="stop-TEC_LHEcoll2.html">TEC:LHEcoll2</a> - Herve rue du Collège 12:12</li><li><a href="stop-TEC_LHEepur1.html">TEC:LHEepur1</a> - Herve Station d'épuration 12:14</li><li><a href="stop-TEC_LHEelva1.html">TEC:LHEelva1</a> - Herve Elvaux Carrefour 12:15</li><li><a href="stop-TEC_LBYegli1.html">TEC:LBYegli1</a> - Bruyeres Eglise 12:18</li><li><a href="stop-TEC_LBYwez-2.html">TEC:LBYwez-2</a> - Bruyeres En Wez 12:20</li><li><a href="stop-TEC_LXHbois2.html">TEC:LXHbois2</a> - Xhendelesse Bois de Herve 12:22</li><li><a href="stop-TEC_LXHbell2.html">TEC:LXHbell2</a> - Xhendelesse Belle Pierre 12:24</li><li><a href="stop-TEC_LSOvoie4.html">TEC:LSOvoie4</a> - Soumagne Voie de l'Eau 12:25</li><li><a href="stop-TEC_LSOferr4.html">TEC:LSOferr4</a> - Soumagne Place Ferrer 12:27</li><li><a href="stop-TEC_LSOchau2.html">TEC:LSOchau2</a> - Soumagne Château de Wégimont 12:28</li><li><a href="stop-TEC_LSOdowé2.html">TEC:LSOdowé2</a> - Soumagne Domaine de Wégimont 12:29</li><li><a href="stop-TEC_LSOgott2.html">TEC:LSOgott2</a> - Soumagne Fond des Gottes 12:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5572.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

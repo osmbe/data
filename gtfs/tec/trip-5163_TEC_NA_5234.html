@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - DINABUS : DINANT - AWAGNE - LISOGNE - 5163:TEC:NA:5234</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DINABUS : DINANT - AWAGNE - LISOGNE - 5163:TEC:NA:5234</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N232aqb.html">TEC:N232aqb</a> - Dinant Gare 11:52</li><li><a href="stop-TEC_N232aza.html">TEC:N232aza</a> - Dinant Place Collard 11:53</li><li><a href="stop-TEC_N232bab.html">TEC:N232bab</a> - Dinant Rue Saint-Jacques 11:54</li><li><a href="stop-TEC_N232bbb.html">TEC:N232bbb</a> - Dinant Pont d'Amour 11:56</li><li><a href="stop-TEC_N232bga.html">TEC:N232bga</a> - Dinant Clinique Ste-Anne 11:57</li><li><a href="stop-TEC_N232bla.html">TEC:N232bla</a> - Dinant Entrée d'Herbuchenne 11:58</li><li><a href="stop-TEC_N232bha.html">TEC:N232bha</a> - Dinant Rue des vergers 11:58</li><li><a href="stop-TEC_N232bia.html">TEC:N232bia</a> - Dinant Rue des Grands prés 11:59</li><li><a href="stop-TEC_N232cbb.html">TEC:N232cbb</a> - Dinant Rue du Pont de Pierre 12:00</li><li><a href="stop-TEC_N232bja.html">TEC:N232bja</a> - Dinant Drève des Peupliers 12:01</li><li><a href="stop-TEC_N232cba.html">TEC:N232cba</a> - Dinant Rue du Pont de Pierre 12:02</li><li><a href="stop-TEC_N232bib.html">TEC:N232bib</a> - Dinant Rue des Grands prés 12:03</li><li><a href="stop-TEC_N232bhb.html">TEC:N232bhb</a> - Dinant Rue des vergers 12:04</li><li><a href="stop-TEC_N232blb.html">TEC:N232blb</a> - Dinant Entrée d'Herbuchenne 12:04</li><li><a href="stop-TEC_N232bgb.html">TEC:N232bgb</a> - Dinant Clinique Ste-Anne 12:05</li><li><a href="stop-TEC_N232bcb.html">TEC:N232bcb</a> - Dinant Grand champ 12:07</li><li><a href="stop-TEC_N232bdb.html">TEC:N232bdb</a> - Dinant Arsenal 12:09</li><li><a href="stop-TEC_N232beb.html">TEC:N232beb</a> - Dinant Hôpital Saint-Vincent 12:10</li><li><a href="stop-TEC_N232bfb.html">TEC:N232bfb</a> - Dinant Gemechenne 12:10</li><li><a href="stop-TEC_N215acd.html">TEC:N215acd</a> - Sorinnes Route de Thynes 12:12</li><li><a href="stop-TEC_N228acb.html">TEC:N228acb</a> - Thynes Chapelle 12:14</li><li><a href="stop-TEC_N228aba.html">TEC:N228aba</a> - Thynes Barbion 12:14</li><li><a href="stop-TEC_N228aab.html">TEC:N228aab</a> - Thynes Eglise 12:15</li><li><a href="stop-TEC_N260adb.html">TEC:N260adb</a> - Lisogne Eglise 12:19</li><li><a href="stop-TEC_N260acb.html">TEC:N260acb</a> - Lisogne Ferme horizon 12:21</li><li><a href="stop-TEC_N260abc.html">TEC:N260abc</a> - Lisogne Freche Try route d'Awagne 12:24</li><li><a href="stop-TEC_N260aab.html">TEC:N260aab</a> - Awagne Centre 12:26</li><li><a href="stop-TEC_N260abb.html">TEC:N260abb</a> - Lisogne Freche Try route d'Awagne 12:30</li><li><a href="stop-TEC_N260afb.html">TEC:N260afb</a> - Loyers Haut 12:32</li><li><a href="stop-TEC_N260aeb.html">TEC:N260aeb</a> - Loyers Bas 12:32</li><li><a href="stop-TEC_N232asb.html">TEC:N232asb</a> - Dinant Quatre chemins 12:35</li><li><a href="stop-TEC_N232arb.html">TEC:N232arb</a> - Leffe Place 12:37</li><li><a href="stop-TEC_N232bma.html">TEC:N232bma</a> - Dinant Boulevard Sasserath 12:40</li><li><a href="stop-TEC_N232ata.html">TEC:N232ata</a> - Dinant Collégiale 12:42</li><li><a href="stop-TEC_N232aqa.html">TEC:N232aqa</a> - Dinant Gare 12:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6659.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Baugnez - Lasnenville - Malmedy - 5163:TEC:LV:25509</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Baugnez - Lasnenville - Malmedy - 5163:TEC:LV:25509</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LLbpt--2.html">TEC:LLbpt--2</a> - Ligneuville Pont de l'Amblève 07:27</li><li><a href="stop-TEC_LLbmalm2.html">TEC:LLbmalm2</a> - Ligneuville Route de Malmedy 07:28</li><li><a href="stop-TEC_LLbvith2.html">TEC:LLbvith2</a> - Ligneuville Route de St-Vith 07:29</li><li><a href="stop-TEC_LBglign2.html">TEC:LBglign2</a> - Baugnez Route de Ligneuville 07:31</li><li><a href="stop-TEC_LBgcroi5.html">TEC:LBgcroi5</a> - Baugnez Croix des Américains 07:32</li><li><a href="stop-TEC_LHmcite1.html">TEC:LHmcite1</a> - Hedomont Cité 07:34</li><li><a href="stop-TEC_LHmcarr1.html">TEC:LHmcarr1</a> - Hedomont Carrefour 07:34</li><li><a href="stop-TEC_LHmferm1.html">TEC:LHmferm1</a> - Hedomont Ferme 20 07:35</li><li><a href="stop-TEC_LLocruc1.html">TEC:LLocruc1</a> - Lamonriville Crucifix 07:36</li><li><a href="stop-TEC_LRchaie1.html">TEC:LRchaie1</a> - Reculemont Haie 07:40</li><li><a href="stop-TEC_LRccent1.html">TEC:LRccent1</a> - Reculemont Centre 07:41</li><li><a href="stop-TEC_LRcsilo1.html">TEC:LRcsilo1</a> - Reculemont Silo 07:42</li><li><a href="stop-TEC_LLscent1.html">TEC:LLscent1</a> - Lasnenville Centre 07:45</li><li><a href="stop-TEC_LBVplan1.html">TEC:LBVplan1</a> - Bellevaux Rte de Planche 07:47</li><li><a href="stop-TEC_LBVcent1.html">TEC:LBVcent1</a> - Bellevaux Centre 07:48</li><li><a href="stop-TEC_LBVzand1.html">TEC:LBVzand1</a> - Bellevaux Salle Zander 07:49</li><li><a href="stop-TEC_LBVronx1.html">TEC:LBVronx1</a> - Bellevaux Chemin de Ronxhy 07:52</li><li><a href="stop-TEC_LBVclig1.html">TEC:LBVclig1</a> - Bellevaux Chemin de Cligneval 07:54</li><li><a href="stop-TEC_LMAfali1.html">TEC:LMAfali1</a> - Malmedy Falize 07:57</li><li><a href="stop-TEC_LMAroch1.html">TEC:LMAroch1</a> - Malmedy Rocher de Falize 08:00</li><li><a href="stop-TEC_LMAbrag1.html">TEC:LMAbrag1</a> - Malmedy Rue Bragard 08:01</li><li><a href="stop-TEC_LMAcite1.html">TEC:LMAcite1</a> - Malmedy Cité des Grands Prés 08:02</li><li><a href="stop-TEC_LMAcomm1.html">TEC:LMAcomm1</a> - Malmedy complexe commercial 08:02</li><li><a href="stop-TEC_LMAalli1.html">TEC:LMAalli1</a> - Malmedy avenue des Alliés 08:03</li><li><a href="stop-TEC_LMApl--1.html">TEC:LMApl--1</a> - Malmedy Place Albert 1er 08:05</li><li><a href="stop-TEC_LMAgare0.html">TEC:LMAgare0</a> - Malmedy gare 08:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5192.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

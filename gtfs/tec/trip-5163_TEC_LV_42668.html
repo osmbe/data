@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Huy - Hannut - Landen - 5163:TEC:LV:42668</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Huy - Hannut - Landen - 5163:TEC:LV:42668</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LLasta-_.html">TEC:LLasta-*</a> - Landen Station 07:38</li><li><a href="stop-TEC_LLaover4.html">TEC:LLaover4</a> - Landen Overweg 07:40</li><li><a href="stop-TEC_Blaneli2.html">TEC:Blaneli2</a> - Landen Elisabethsquare 07:40</li><li><a href="stop-TEC_Bwaanwi2.html">TEC:Bwaanwi2</a> - Waasmont Nieuwe Wijk 07:42</li><li><a href="stop-TEC_Bwaakap2.html">TEC:Bwaakap2</a> - Waasmont Kapel 07:43</li><li><a href="stop-TEC_LWSstat2.html">TEC:LWSstat2</a> - Waasmont Station 07:44</li><li><a href="stop-TEC_LWHwaas4.html">TEC:LWHwaas4</a> - Walshoutem Weg op Waasmont 07:45</li><li><a href="stop-TEC_LWHzave2.html">TEC:LWHzave2</a> - Walshoutem Zavelberg 07:47</li><li><a href="stop-TEC_LWHkerk2.html">TEC:LWHkerk2</a> - Walshoutem Kerk 07:48</li><li><a href="stop-TEC_LWHkape2.html">TEC:LWHkape2</a> - Walshoutem Kapel 07:48</li><li><a href="stop-TEC_LWHmath2.html">TEC:LWHmath2</a> - Walshoutem Chantier Mathieu 07:49</li><li><a href="stop-TEC_LBegare2.html">TEC:LBegare2</a> - Bertree Gare 07:51</li><li><a href="stop-TEC_LBevill2.html">TEC:LBevill2</a> - Bertree Village 07:53</li><li><a href="stop-TEC_LCAwals2.html">TEC:LCAwals2</a> - Cras-Avernas Route de Walshoutem 07:56</li><li><a href="stop-TEC_LCAeg--2.html">TEC:LCAeg--2</a> - Cras-Avernas Eglise 07:57</li><li><a href="stop-TEC_LCAcruc2.html">TEC:LCAcruc2</a> - Cras-Avernas Crucifix 07:58</li><li><a href="stop-TEC_LTGvill2.html">TEC:LTGvill2</a> - Trognee Village 07:59</li><li><a href="stop-TEC_LTGsucr2.html">TEC:LTGsucr2</a> - Trognee Sucrerie 08:00</li><li><a href="stop-TEC_LPctrog1.html">TEC:LPctrog1</a> - Poucet Route de Trognée 08:01</li><li><a href="stop-TEC_LPcforg1.html">TEC:LPcforg1</a> - Poucet La Forge 08:02</li><li><a href="stop-TEC_LHNhv--2.html">TEC:LHNhv--2</a> - Hannut Hôtel de Ville 08:05</li><li><a href="stop-TEC_LHNathe1.html">TEC:LHNathe1</a> - Hannut Athénée Royal 08:07</li><li><a href="stop-TEC_LHNecpr1.html">TEC:LHNecpr1</a> - Hannut Ecole primaire 08:08</li><li><a href="stop-TEC_LHNhall2.html">TEC:LHNhall2</a> - Hannut Place H. Hallet 08:10</li><li><a href="stop-TEC_LHNwaut2.html">TEC:LHNwaut2</a> - Hannut Rue J. Wauters 08:11</li><li><a href="stop-TEC_LHNgare2.html">TEC:LHNgare2</a> - Hannut Gare 08:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5143.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

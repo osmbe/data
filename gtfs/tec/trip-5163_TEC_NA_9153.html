@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - BELGRADE - JAMBES / ERPENT - 5163:TEC:NA:9153</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: BELGRADE - JAMBES / ERPENT - 5163:TEC:NA:9153</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501eea.html">TEC:N501eea</a> - Jambes Avenue de la Sauge 16:31</li><li><a href="stop-TEC_N501kja.html">TEC:N501kja</a> - Jambes Rue du Garde 16:32</li><li><a href="stop-TEC_N501eva.html">TEC:N501eva</a> - Jambes Rue Haut Pré 16:33</li><li><a href="stop-TEC_N501kfa.html">TEC:N501kfa</a> - Jambes Rue des Fougères 16:34</li><li><a href="stop-TEC_N501kia.html">TEC:N501kia</a> - Jambes Avenue du Bois carré 16:35</li><li><a href="stop-TEC_N501kka.html">TEC:N501kka</a> - Jambes Rue du Vieux Bon Dieu 16:35</li><li><a href="stop-TEC_N501ema.html">TEC:N501ema</a> - Jambes Clos des Sarts 16:36</li><li><a href="stop-TEC_N501eha.html">TEC:N501eha</a> - Jambes Avenue du Petit-Sart 16:36</li><li><a href="stop-TEC_N501dra.html">TEC:N501dra</a> - Jambes Maibelle rue de l'Herbage 16:38</li><li><a href="stop-TEC_N501dqa.html">TEC:N501dqa</a> - Jambes Maibelle rue J. Servais 16:39</li><li><a href="stop-TEC_N501mva.html">TEC:N501mva</a> - Jambes Cimetière 16:40</li><li><a href="stop-TEC_N501kna.html">TEC:N501kna</a> - Jambes Montagne Sainte-Barbe 16:42</li><li><a href="stop-TEC_N501kma.html">TEC:N501kma</a> - Jambes Station Nord 16:43</li><li><a href="stop-TEC_N501etc.html">TEC:N501etc</a> - Jambes Place de la Wallonie 16:44</li><li><a href="stop-TEC_N501eba.html">TEC:N501eba</a> - Jambes Avenue Materne 16:45</li><li><a href="stop-TEC_N501fwa.html">TEC:N501fwa</a> - Namur Boulevard Ad Aquam 16:46</li><li><a href="stop-TEC_N501gia.html">TEC:N501gia</a> - Namur Pont de France 16:47</li><li><a href="stop-TEC_N501hia.html">TEC:N501hia</a> - Namur Rue de la Tour 16:49</li><li><a href="stop-TEC_N501mqa.html">TEC:N501mqa</a> - Namur Rue Emile Cuvelier 16:50</li><li><a href="stop-TEC_N501mha.html">TEC:N501mha</a> - Namur Rue de Bruxelles 16:51</li><li><a href="stop-TEC_N501gra.html">TEC:N501gra</a> - Namur Pl. de la Station - Quai A 16:55</li><li><a href="stop-TEC_N501fta.html">TEC:N501fta</a> - Namur Avenue des Combattants 16:56</li><li><a href="stop-TEC_N501hxa.html">TEC:N501hxa</a> - Saint-Servais Collège St-Servais 16:58</li><li><a href="stop-TEC_N501ica.html">TEC:N501ica</a> - Saint-Servais Polyclinique 16:59</li><li><a href="stop-TEC_N501iha.html">TEC:N501iha</a> - Saint-Servais Rue Hicguet 17:00</li><li><a href="stop-TEC_N501iea.html">TEC:N501iea</a> - Saint-Servais Pont des Français 17:01</li><li><a href="stop-TEC_N501hsa.html">TEC:N501hsa</a> - Saint-Servais Cimetière de Namur 17:02</li><li><a href="stop-TEC_N501bfa.html">TEC:N501bfa</a> - Belgrade Rue des Champs 17:04</li><li><a href="stop-TEC_N501mba.html">TEC:N501mba</a> - Belgrade Village 17:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6179.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

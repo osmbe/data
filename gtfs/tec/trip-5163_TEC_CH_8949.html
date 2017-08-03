@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - BEAUMONT - PHILIPPEVILLE - 5163:TEC:CH:8949</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: BEAUMONT - PHILIPPEVILLE - 5163:TEC:CH:8949</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cbmind2.html">TEC:Cbmind2</a> - Beaumont Athénée 07:20</li><li><a href="stop-TEC_Cbmind3.html">TEC:Cbmind3</a> - Beaumont Athénée 07:20</li><li><a href="stop-TEC_Cbbcrbo1.html">TEC:Cbbcrbo1</a> - Barbencon Croix de Bon Air 07:23</li><li><a href="stop-TEC_Cbbcent1.html">TEC:Cbbcent1</a> - Barbencon Le Pavé (Centre) 07:25</li><li><a href="stop-TEC_Cclbarb2.html">TEC:Cclbarb2</a> - Clermont Rue de Barbençon 07:31</li><li><a href="stop-TEC_Cclplac2.html">TEC:Cclplac2</a> - Clermont Place 07:32</li><li><a href="stop-TEC_Cclrgiv2.html">TEC:Cclrgiv2</a> - Clermont Rue des Givrys 07:33</li><li><a href="stop-TEC_Cmregli4.html">TEC:Cmregli4</a> - Mertenne Eglise 07:38</li><li><a href="stop-TEC_Ccaegli3.html">TEC:Ccaegli3</a> - Castillon Eglise 07:42</li><li><a href="stop-TEC_Ccacoup2.html">TEC:Ccacoup2</a> - Castillon Rue du Coupiat 07:43</li><li><a href="stop-TEC_Cfnegli2.html">TEC:Cfnegli2</a> - Fontenelle Eglise 07:45</li><li><a href="stop-TEC_Cfnsenz2.html">TEC:Cfnsenz2</a> - Fontenelle Rue de Senzeilles 07:46</li><li><a href="stop-TEC_Cbuplac4.html">TEC:Cbuplac4</a> - Boussu-Lez-Walcourt Place 07:50</li><li><a href="stop-TEC_Cbupla1.html">TEC:Cbupla1</a> - Boussu-Lez-Walcourt Place 07:50</li><li><a href="stop-TEC_Cbugara1.html">TEC:Cbugara1</a> - Boussu-Lez-Walcourt Garage 07:52</li><li><a href="stop-TEC_Csiegli1.html">TEC:Csiegli1</a> - Silenrieux Eglise 07:54</li><li><a href="stop-TEC_N106agb.html">TEC:N106agb</a> - Silenrieux Bethléem 07:56</li><li><a href="stop-TEC_N104ada.html">TEC:N104ada</a> - Daussois Route de Philippeville 07:58</li><li><a href="stop-TEC_N104aba.html">TEC:N104aba</a> - Daussois Rue des rocailles 07:59</li><li><a href="stop-TEC_N104aad.html">TEC:N104aad</a> - Daussois Barrière 08:00</li><li><a href="stop-TEC_N116aac.html">TEC:N116aac</a> - Villers-Deux-Eglises Le chasseur 08:03</li><li><a href="stop-TEC_N101ajb.html">TEC:N101ajb</a> - Philippeville Beauregard 08:06</li><li><a href="stop-TEC_N101aib.html">TEC:N101aib</a> - Philippeville Quatre bras 08:09</li><li><a href="stop-TEC_N101agc.html">TEC:N101agc</a> - Philippeville Polyclinique 08:09</li><li><a href="stop-TEC_N101aua.html">TEC:N101aua</a> - Philippeville Rue de la Reine 08:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1033.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

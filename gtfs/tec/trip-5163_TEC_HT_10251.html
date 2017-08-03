@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mons - Casteau - 5163:TEC:HT:10251</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mons - Casteau - 5163:TEC:HT:10251</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1ca100b.html">TEC:H1ca100b</a> - Casteau Dépôt 07:13</li><li><a href="stop-TEC_H1ca104b.html">TEC:H1ca104b</a> - Casteau Monument 07:14</li><li><a href="stop-TEC_H1ca109b.html">TEC:H1ca109b</a> - Casteau Village 07:14</li><li><a href="stop-TEC_H1ca101b.html">TEC:H1ca101b</a> - Casteau Entrée du Village 07:15</li><li><a href="stop-TEC_H1ca186b.html">TEC:H1ca186b</a> - Casteau Chemin des Princes 07:15</li><li><a href="stop-TEC_H1ma230b.html">TEC:H1ma230b</a> - Maisieres Brisée St Denis 07:16</li><li><a href="stop-TEC_H1ma237b.html">TEC:H1ma237b</a> - Maisieres Zoé 07:17</li><li><a href="stop-TEC_H1ma233c.html">TEC:H1ma233c</a> - Maisieres Le Maisières 07:18</li><li><a href="stop-TEC_H1ma234b.html">TEC:H1ma234b</a> - Maisieres Place 07:20</li><li><a href="stop-TEC_H1ma231b.html">TEC:H1ma231b</a> - Maisieres Chapelle 07:21</li><li><a href="stop-TEC_H1ni315b.html">TEC:H1ni315b</a> - Nimy Battard 07:22</li><li><a href="stop-TEC_H1ni321b.html">TEC:H1ni321b</a> - Nimy Route d' Ath 07:23</li><li><a href="stop-TEC_H1ni320b.html">TEC:H1ni320b</a> - Nimy Place 07:24</li><li><a href="stop-TEC_H1ni323b.html">TEC:H1ni323b</a> - Nimy Rue Gérard 07:26</li><li><a href="stop-TEC_H1ni322b.html">TEC:H1ni322b</a> - Nimy Rue de la Limite 07:28</li><li><a href="stop-TEC_H1ms267b.html">TEC:H1ms267b</a> - Mons Chemin de la Procession 07:29</li><li><a href="stop-TEC_H1ms290a.html">TEC:H1ms290a</a> - Mons Lycée 07:32</li><li><a href="stop-TEC_H1ms299a.html">TEC:H1ms299a</a> - Mons Prison 07:33</li><li><a href="stop-TEC_H1ms400a.html">TEC:H1ms400a</a> - Mons SNCB 07:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1392.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

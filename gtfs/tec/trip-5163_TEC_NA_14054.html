@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - TAMINES - ERMETON-SUR-BIERT - 5163:TEC:NA:14054</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: TAMINES - ERMETON-SUR-BIERT - 5163:TEC:NA:14054</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N553aab.html">TEC:N553aab</a> - Fosses-la-Ville Quatre bras 07:36</li><li><a href="stop-TEC_N553abc.html">TEC:N553abc</a> - Fosses-la-Ville Gare 07:38</li><li><a href="stop-TEC_N553aia.html">TEC:N553aia</a> - Fosses-la-Ville Avenue des Combattants 07:39</li><li><a href="stop-TEC_N553ajb.html">TEC:N553ajb</a> - Fosses-la-Ville Jeu de balle 07:40</li><li><a href="stop-TEC_N553aob.html">TEC:N553aob</a> - Nevremont Grand'route 07:42</li><li><a href="stop-TEC_N553ahb.html">TEC:N553ahb</a> - Nevremont Ecole 07:44</li><li><a href="stop-TEC_N566afb.html">TEC:N566afb</a> - Aisemont Rue du Fays 07:46</li><li><a href="stop-TEC_N566aeb.html">TEC:N566aeb</a> - Aisemont Place 07:47</li><li><a href="stop-TEC_N566adb.html">TEC:N566adb</a> - Aisemont Grosse haie 07:49</li><li><a href="stop-TEC_N543byb.html">TEC:N543byb</a> - Arsimont Clé d'or 07:51</li><li><a href="stop-TEC_N543bxb.html">TEC:N543bxb</a> - Arsimont Place 07:52</li><li><a href="stop-TEC_N543acb.html">TEC:N543acb</a> - Arsimont Rue de Fer 07:54</li><li><a href="stop-TEC_N543bdb.html">TEC:N543bdb</a> - Falisolle Pompe de cuivre 07:55</li><li><a href="stop-TEC_N543bgd.html">TEC:N543bgd</a> - Falisolle Rue grande Pierrière 07:56</li><li><a href="stop-TEC_N543bfb.html">TEC:N543bfb</a> - Falisolle Rue Wauters 07:57</li><li><a href="stop-TEC_N543bbb.html">TEC:N543bbb</a> - Falisolle Eglise 07:58</li><li><a href="stop-TEC_N543bab.html">TEC:N543bab</a> - Falisolle Place du Centenaire 08:00</li><li><a href="stop-TEC_N543cpa.html">TEC:N543cpa</a> - Tamines Avenue des Français 08:02</li><li><a href="stop-TEC_N543bka.html">TEC:N543bka</a> - Tamines Place St-Martin 08:04</li><li><a href="stop-TEC_N543cbb.html">TEC:N543cbb</a> - Tamines Gare SNCB 08:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6444.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - HUY - HAVELANGE - 5163:TEC:NA:5168</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: HUY - HAVELANGE - 5163:TEC:NA:5168</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LHUgare_.html">TEC:LHUgare*</a> - Huy Gare 07:38</li><li><a href="stop-TEC_LHUpost3.html">TEC:LHUpost3</a> - Huy Poste 07:39</li><li><a href="stop-TEC_LHUlieg1.html">TEC:LHUlieg1</a> - Huy Chaussée de Liège 07:39</li><li><a href="stop-TEC_LHUlebe0.html">TEC:LHUlebe0</a> - Huy Place Lebeau 07:40</li><li><a href="stop-TEC_LHUaron1.html">TEC:LHUaron1</a> - Huy Quai d'Arona 07:40</li><li><a href="stop-TEC_NL80ahb.html">TEC:NL80ahb</a> - Huy Collégiale 07:41</li><li><a href="stop-TEC_NL80aib.html">TEC:NL80aib</a> - Huy Pont-rail 07:41</li><li><a href="stop-TEC_NL80acb.html">TEC:NL80acb</a> - Ben-Ahin Fontaine 07:43</li><li><a href="stop-TEC_NL80abb.html">TEC:NL80abb</a> - Ben-Ahin Ahin village 07:44</li><li><a href="stop-TEC_NL80aab.html">TEC:NL80aab</a> - Ben-Ahin Château 07:44</li><li><a href="stop-TEC_NL76acb.html">TEC:NL76acb</a> - Ben-Ahin St-Léonard Ecoles 07:47</li><li><a href="stop-TEC_NL76adb.html">TEC:NL76adb</a> - Ben-Ahin Baraque 07:49</li><li><a href="stop-TEC_NL76aea.html">TEC:NL76aea</a> - Ben-Ahin Château de Fléron 07:52</li><li><a href="stop-TEC_NL76arb.html">TEC:NL76arb</a> - Ronheuville Likin 07:54</li><li><a href="stop-TEC_NL76asb.html">TEC:NL76asb</a> - Ronheuville Centre 07:55</li><li><a href="stop-TEC_NL76aab.html">TEC:NL76aab</a> - Bellaire Castor 07:56</li><li><a href="stop-TEC_NL76abb.html">TEC:NL76abb</a> - Bellaire Ecole 07:57</li><li><a href="stop-TEC_NL76afb.html">TEC:NL76afb</a> - Marchin Ry de Wappe 07:57</li><li><a href="stop-TEC_NL76agd.html">TEC:NL76agd</a> - Belle-Maison Ecole primaire 07:59</li><li><a href="stop-TEC_NL76aha.html">TEC:NL76aha</a> - Belle-Maison Lavoir 08:00</li><li><a href="stop-TEC_NL76aia.html">TEC:NL76aia</a> - Marchin Athénée 08:02</li><li><a href="stop-TEC_NL76aja.html">TEC:NL76aja</a> - Marchin Cité Senones 08:03</li><li><a href="stop-TEC_NL76aka.html">TEC:NL76aka</a> - Marchin Forge goffin 08:03</li><li><a href="stop-TEC_NL76ala.html">TEC:NL76ala</a> - Marchin Jonction route de Huy 08:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5965.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

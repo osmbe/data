@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Marloie - Melreux - 5163:TEC:LU:2863</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Marloie - Melreux - 5163:TEC:LU:2863</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X902afa.html">TEC:X902afa</a> - Marloie Gare - Quai 1 10:40</li><li><a href="stop-TEC_X902aab.html">TEC:X902aab</a> - Marloie Eglise 10:41</li><li><a href="stop-TEC_X902anb.html">TEC:X902anb</a> - Marloie Spar 10:41</li><li><a href="stop-TEC_X902acb.html">TEC:X902acb</a> - Marloie Maison Glatigny 10:42</li><li><a href="stop-TEC_X902abb.html">TEC:X902abb</a> - Marloie Point du Jour 10:43</li><li><a href="stop-TEC_X902bba.html">TEC:X902bba</a> - Marloie Ma Campagne 10:44</li><li><a href="stop-TEC_X901aib.html">TEC:X901aib</a> - Marche Pirire 10:46</li><li><a href="stop-TEC_X901bsa.html">TEC:X901bsa</a> - Marche Pont N4 10:46</li><li><a href="stop-TEC_X901boa.html">TEC:X901boa</a> - Marche Boulevard - Hôtel de Ville 10:47</li><li><a href="stop-TEC_X901bra.html">TEC:X901bra</a> - Marche Boulevard - Palace 10:47</li><li><a href="stop-TEC_X901aha.html">TEC:X901aha</a> - Marche Boulevard du Nord 10:47</li><li><a href="stop-TEC_X901bna.html">TEC:X901bna</a> - Marche Porte Basse 10:48</li><li><a href="stop-TEC_X901ana.html">TEC:X901ana</a> - Marche Route de Liège 10:49</li><li><a href="stop-TEC_X901bqa.html">TEC:X901bqa</a> - Marche Carmel 10:50</li><li><a href="stop-TEC_X901aua.html">TEC:X901aua</a> - Marche Cabine Electrique 10:51</li><li><a href="stop-TEC_X901aqa.html">TEC:X901aqa</a> - Marche Camp Militaire (Ch. de l'Ourthe) 10:53</li><li><a href="stop-TEC_X901bla.html">TEC:X901bla</a> - Marche Chaussée de l'Ourthe 139 10:53</li><li><a href="stop-TEC_X901bma.html">TEC:X901bma</a> - Marche Rue de Hotton 187 10:54</li><li><a href="stop-TEC_X922aba.html">TEC:X922aba</a> - Bourdon Longues Aires N86 10:56</li><li><a href="stop-TEC_X922acb.html">TEC:X922acb</a> - Bourdon Station 10:56</li><li><a href="stop-TEC_X922ada.html">TEC:X922ada</a> - Bourdon Route de Marche 94 10:56</li><li><a href="stop-TEC_X922aea.html">TEC:X922aea</a> - Bourdon Ecole 10:57</li><li><a href="stop-TEC_X922afa.html">TEC:X922afa</a> - Bourdon Eglise 10:57</li><li><a href="stop-TEC_X923aab.html">TEC:X923aab</a> - Hotton Route de Marenne 11:01</li><li><a href="stop-TEC_X923abb.html">TEC:X923abb</a> - Hotton Route de Marche 87 11:01</li><li><a href="stop-TEC_X923aea.html">TEC:X923aea</a> - Hotton Pont - Rive Droite 11:02</li><li><a href="stop-TEC_X923agb.html">TEC:X923agb</a> - Hotton Chapelle Saint-Roch 11:03</li><li><a href="stop-TEC_X923aha.html">TEC:X923aha</a> - Hotton Ecole de l'Etat - Grand'Route 11:04</li><li><a href="stop-TEC_X923ajb.html">TEC:X923ajb</a> - Melreux Ecole Libre 11:05</li><li><a href="stop-TEC_X923ala.html">TEC:X923ala</a> - Melreux Gare Quai 1 11:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2533.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

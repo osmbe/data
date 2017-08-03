@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - P+R Saint-Nicolas - P+R Namur Expo - 5163:TEC:NA:6787</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: P+R Saint-Nicolas - P+R Namur Expo - 5163:TEC:NA:6787</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501lzb.html">TEC:N501lzb</a> - Salzinnes P+R Namur Expo 07:05</li><li><a href="stop-TEC_N501fdc.html">TEC:N501fdc</a> - Salzinnes Place Wiertz 07:07</li><li><a href="stop-TEC_N501mra.html">TEC:N501mra</a> - Namur Reine Astrid 07:08</li><li><a href="stop-TEC_N501mta.html">TEC:N501mta</a> - Namur Evêché 07:09</li><li><a href="stop-TEC_N501msa.html">TEC:N501msa</a> - Namur Place Saint-Aubain 07:10</li><li><a href="stop-TEC_N501gpb.html">TEC:N501gpb</a> - Namur Omalius 07:12</li><li><a href="stop-TEC_N501grg.html">TEC:N501grg</a> - Namur Pl. de la Station - Quai D 07:13</li><li><a href="stop-TEC_N501grg.html">TEC:N501grg</a> - Namur Pl. de la Station - Quai D 07:13</li><li><a href="stop-TEC_N501heb.html">TEC:N501heb</a> - Namur Rue de Fer 07:14</li><li><a href="stop-TEC_N501hhb.html">TEC:N501hhb</a> - Namur Rue de l'Ange 07:15</li><li><a href="stop-TEC_N501gsa.html">TEC:N501gsa</a> - Namur Place l'Ilon 07:16</li><li><a href="stop-TEC_N501hba.html">TEC:N501hba</a> - Namur Rue St-Nicolas 07:17</li><li><a href="stop-TEC_N501gqb.html">TEC:N501gqb</a> - Namur Place de l'Ecole des Cadets 07:18</li><li><a href="stop-TEC_N501hcc.html">TEC:N501hcc</a> - Namur Rue de Balart 07:19</li><li><a href="stop-TEC_N501hka.html">TEC:N501hka</a> - Namur P+R Saint-Nicolas 07:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6247.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

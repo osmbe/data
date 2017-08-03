@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Lambert - Citadelle - Vottem - Milmort - 5163:TEC:LV:29622</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Lambert - Citadelle - Vottem - Milmort - 5163:TEC:LV:29622</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LlgLAMB7.html">TEC:LlgLAMB7</a> - Liege Place St-Lambert 07:10</li><li><a href="stop-TEC_Llgcadr3.html">TEC:Llgcadr3</a> - Liege Cadran 07:11</li><li><a href="stop-TEC_Llghoch3.html">TEC:Llghoch3</a> - Liege Hocheporte 07:12</li><li><a href="stop-TEC_Llgangl1.html">TEC:Llgangl1</a> - Liege Rue des Anglais 07:13</li><li><a href="stop-TEC_Llgelis1.html">TEC:Llgelis1</a> - Liege Clinique Ste-Elisabeth 07:15</li><li><a href="stop-TEC_Llgcita1.html">TEC:Llgcita1</a> - Liege Hôpital de la Citadelle 07:18</li><li><a href="stop-TEC_Llgchal2.html">TEC:Llgchal2</a> - Liege Chalet 07:19</li><li><a href="stop-TEC_Llgegwa1.html">TEC:Llgegwa1</a> - Liege Eglise Ste-Walburge 07:20</li><li><a href="stop-TEC_Llgwild1.html">TEC:Llgwild1</a> - Liege Place J. de Wilde 07:21</li><li><a href="stop-TEC_Llgcrah1.html">TEC:Llgcrah1</a> - Liege Rue Fosse Crahay 07:22</li><li><a href="stop-TEC_Llgcime1.html">TEC:Llgcime1</a> - Liege Cimetière Ste-Walburge 07:22</li><li><a href="stop-TEC_Llggerm1.html">TEC:Llggerm1</a> - Liege Germeau 07:23</li><li><a href="stop-TEC_Llgplop1.html">TEC:Llgplop1</a> - Liege Rue du Plope 07:24</li><li><a href="stop-TEC_Lvtchpl1.html">TEC:Lvtchpl1</a> - Vottem Chapelle 07:25</li><li><a href="stop-TEC_Lvtegli_.html">TEC:Lvtegli*</a> - Vottem Eglise 07:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4338.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

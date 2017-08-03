@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - MAREDSOUS - 5163:TEC:NA:9808</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - MAREDSOUS - 5163:TEC:NA:9808</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N549afb.html">TEC:N549afb</a> - Bioul Place 17:05</li><li><a href="stop-TEC_N549ahb.html">TEC:N549ahb</a> - Bioul Route de Warnant 17:06</li><li><a href="stop-TEC_N549agb.html">TEC:N549agb</a> - Bioul Quatre bras 17:06</li><li><a href="stop-TEC_N549acb.html">TEC:N549acb</a> - Bioul Crucifix 17:07</li><li><a href="stop-TEC_N549aab.html">TEC:N549aab</a> - Bioul Belle-vue 17:08</li><li><a href="stop-TEC_N549abb.html">TEC:N549abb</a> - Bioul Mossiat 17:08</li><li><a href="stop-TEC_N540abb.html">TEC:N540abb</a> - Annevoie Route de Fraire 17:10</li><li><a href="stop-TEC_N540aab.html">TEC:N540aab</a> - Annevoie Chemin de l'église 17:10</li><li><a href="stop-TEC_N540afb.html">TEC:N540afb</a> - Annevoie Jardins d'Annevoie 17:11</li><li><a href="stop-TEC_N540acb.html">TEC:N540acb</a> - Annevoie Route de Dinant 17:13</li><li><a href="stop-TEC_N540ada.html">TEC:N540ada</a> - Annevoie Bois des Trys 17:15</li><li><a href="stop-TEC_N540aia.html">TEC:N540aia</a> - Riviere Grande île 17:15</li><li><a href="stop-TEC_N540aja.html">TEC:N540aja</a> - Riviere Virage 17:16</li><li><a href="stop-TEC_N540aga.html">TEC:N540aga</a> - Profondeville Burnot 17:17</li><li><a href="stop-TEC_N539afa.html">TEC:N539afa</a> - Profondeville Pont de Lustin 17:18</li><li><a href="stop-TEC_N539aha.html">TEC:N539aha</a> - Profondeville Chaussée de Dinant 17:20</li><li><a href="stop-TEC_N539aga.html">TEC:N539aga</a> - Profondeville Hôtel de ville 17:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6605.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

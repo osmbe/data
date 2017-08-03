@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - ACOZ - METTET - 5163:TEC:NA:13094</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: ACOZ - METTET - 5163:TEC:NA:13094</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cacgare2.html">TEC:Cacgare2</a> - Acoz Gare 10:08</li><li><a href="stop-TEC_NC44aab.html">TEC:NC44aab</a> - Villers-Poterie Six Bonniers 10:11</li><li><a href="stop-TEC_NC44ahb.html">TEC:NC44ahb</a> - Villers-Poterie Rue du Bayau 10:11</li><li><a href="stop-TEC_NC44afb.html">TEC:NC44afb</a> - Villers-Poterie Figotterie 10:12</li><li><a href="stop-TEC_NC44agb.html">TEC:NC44agb</a> - Villers-Poterie Rue de Châtelet 10:13</li><li><a href="stop-TEC_NC44abb.html">TEC:NC44abb</a> - Gougnies Cité 10:14</li><li><a href="stop-TEC_NC44acb.html">TEC:NC44acb</a> - Gougnies Place 10:15</li><li><a href="stop-TEC_NC44adb.html">TEC:NC44adb</a> - Gougnies Rue de la gare 10:15</li><li><a href="stop-TEC_N573abb.html">TEC:N573abb</a> - Biesme Carrières 10:16</li><li><a href="stop-TEC_N573acb.html">TEC:N573acb</a> - Biesme Château 10:17</li><li><a href="stop-TEC_N573adb.html">TEC:N573adb</a> - Biesme Route de Gougnies 10:18</li><li><a href="stop-TEC_N573aeb.html">TEC:N573aeb</a> - Biesme Carrefour 10:19</li><li><a href="stop-TEC_N573ahb.html">TEC:N573ahb</a> - Biesme Piscine 10:19</li><li><a href="stop-TEC_N573aia.html">TEC:N573aia</a> - Biesme Noéchamps 10:20</li><li><a href="stop-TEC_N573amb.html">TEC:N573amb</a> - Biesme Planois 10:21</li><li><a href="stop-TEC_N573aob.html">TEC:N573aob</a> - Biesme Quinet 10:22</li><li><a href="stop-TEC_N573arb.html">TEC:N573arb</a> - Devant-les-Bois La Culée 10:22</li><li><a href="stop-TEC_N573aqb.html">TEC:N573aqb</a> - Devant-les-Bois Abreuvoir 10:23</li><li><a href="stop-TEC_N573apb.html">TEC:N573apb</a> - Devant-les-Bois Bois du Prince 10:24</li><li><a href="stop-TEC_N547ajb.html">TEC:N547ajb</a> - Pontaury Route de Scry 10:25</li><li><a href="stop-TEC_N547ahb.html">TEC:N547ahb</a> - Pontaury Quatre bras 10:25</li><li><a href="stop-TEC_N547aia.html">TEC:N547aia</a> - Pontaury Garage 10:26</li><li><a href="stop-TEC_N548awa.html">TEC:N548awa</a> - Scry Pont 10:27</li><li><a href="stop-TEC_N548aya.html">TEC:N548aya</a> - Scry Trois bras 10:28</li><li><a href="stop-TEC_N548asa.html">TEC:N548asa</a> - Mettet St-Roch 10:29</li><li><a href="stop-TEC_N548ada.html">TEC:N548ada</a> - Mettet Place 10:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5666.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

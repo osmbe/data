@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Oizy Rue de la Chapelle</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Oizy Rue de la Chapelle</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-5163_TEC_LU_1739.html">5163:TEC:LU:1739</a> - 5163:TEC:LU:1739 - Bellefontaine - Paliseul</li><li><a href="trip-5163_TEC_LU_1798.html">5163:TEC:LU:1798</a> - 5163:TEC:LU:1798 - Bohan - Alle - Menuchenet</li><li><a href="trip-5163_TEC_LU_3803.html">5163:TEC:LU:3803</a> - 5163:TEC:LU:3803 - Bellefontaine - Paliseul</li><li><a href="trip-5163_TEC_LU_3862.html">5163:TEC:LU:3862</a> - 5163:TEC:LU:3862 - Bohan - Alle - Menuchenet</li><li><a href="trip-5163_TEC_LU_5407.html">5163:TEC:LU:5407</a> - 5163:TEC:LU:5407 - Bellefontaine - Paliseul</li><li><a href="trip-5163_TEC_LU_5447.html">5163:TEC:LU:5447</a> - 5163:TEC:LU:5447 - Bohan - Alle - Menuchenet</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([49.893272, 5.009963], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([49.893272, 5.009963]).addTo(map);
+    </script>
+</body>
+
+</html>

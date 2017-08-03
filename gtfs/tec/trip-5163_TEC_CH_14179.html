@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - PIETON-FONTAINE-LANDELIES-CHARLEROI Sud - 5163:TEC:CH:14179</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: PIETON-FONTAINE-LANDELIES-CHARLEROI Sud - 5163:TEC:CH:14179</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cmmplac2.html">TEC:Cmmplac2</a> - Mont-sur-Marchienne Place 07:45</li><li><a href="stop-TEC_Cmmptno2.html">TEC:Cmmptno2</a> - Mont-sur-Marchienne Pont à Nole 07:46</li><li><a href="stop-TEC_Cmmramb2.html">TEC:Cmmramb2</a> - Mont-sur-Marchienne Rue Ramboux 07:47</li><li><a href="stop-TEC_Cmysncb2.html">TEC:Cmysncb2</a> - Montigny-le-Tilleul S.N.C.B. 07:48</li><li><a href="stop-TEC_Cmyquen2.html">TEC:Cmyquen2</a> - Montigny-le-Tilleul Rue Quenne 07:48</li><li><a href="stop-TEC_Cmyfoym2.html">TEC:Cmyfoym2</a> - Montigny-le-Tilleul Foyer Montagnard 07:49</li><li><a href="stop-TEC_Cmypost2.html">TEC:Cmypost2</a> - Montigny-le-Tilleul Poste 07:50</li><li><a href="stop-TEC_Cmycime2.html">TEC:Cmycime2</a> - Montigny-le-Tilleul Cimetière 07:50</li><li><a href="stop-TEC_Cmyland4.html">TEC:Cmyland4</a> - Montigny-le-Tilleul Rue de Landelies 07:52</li><li><a href="stop-TEC_Clddeve2.html">TEC:Clddeve2</a> - Landelies Déversoir 07:54</li><li><a href="stop-TEC_Cldplac2.html">TEC:Cldplac2</a> - Landelies Place 07:55</li><li><a href="stop-TEC_Clddelh1.html">TEC:Clddelh1</a> - Landelies Rue Delhaye 07:56</li><li><a href="stop-TEC_Cldvign2.html">TEC:Cldvign2</a> - Landelies Vignia 07:56</li><li><a href="stop-TEC_Clrecol2.html">TEC:Clrecol2</a> - Leernes Rue des Ecoles 07:58</li><li><a href="stop-TEC_Clrwesp2.html">TEC:Clrwesp2</a> - Leernes Place des Wespes 07:59</li><li><a href="stop-TEC_Clrrhau2.html">TEC:Clrrhau2</a> - Leernes Rue Haute 08:00</li><li><a href="stop-TEC_Clrhava2.html">TEC:Clrhava2</a> - Leernes Rue de Havay 08:01</li><li><a href="stop-TEC_Clrcomb2.html">TEC:Clrcomb2</a> - Leernes Rue des Combattants 08:01</li><li><a href="stop-TEC_Clrplac2.html">TEC:Clrplac2</a> - Leernes Place Communale 08:02</li><li><a href="stop-TEC_Clrmarl2.html">TEC:Clrmarl2</a> - Leernes Place Marlière 08:03</li><li><a href="stop-TEC_Clrcite2.html">TEC:Clrcite2</a> - Leernes Cité 08:05</li><li><a href="stop-TEC_Clrcime2.html">TEC:Clrcime2</a> - Leernes Cimetière 08:06</li><li><a href="stop-TEC_Clrmarl4.html">TEC:Clrmarl4</a> - Leernes Place Marlière 08:07</li><li><a href="stop-TEC_Clrpast2.html">TEC:Clrpast2</a> - Leernes Rue Pastur 08:08</li><li><a href="stop-TEC_Cfometr2.html">TEC:Cfometr2</a> - Eveque Fontaine (M) 08:09</li><li><a href="stop-TEC_Cfocant2.html">TEC:Cfocant2</a> - Eveque Cantonnier 08:10</li><li><a href="stop-TEC_Cfopetr2.html">TEC:Cfopetr2</a> - Eveque Pétria 08:11</li><li><a href="stop-TEC_Cforpet2.html">TEC:Cforpet2</a> - Eveque Rue du Pétria 08:13</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1070.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

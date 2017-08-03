@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Quiévrain - Hensies - 5163:TEC:HT:7048</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Quiévrain - Hensies - 5163:TEC:HT:7048</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1qv111b.html">TEC:H1qv111b</a> - Quievrain Gare SNCB 05:36</li><li><a href="stop-TEC_H1qv112a.html">TEC:H1qv112a</a> - Quievrain Passage à Niveau 05:36</li><li><a href="stop-TEC_H1qv116a.html">TEC:H1qv116a</a> - Quievrain Séchoir Meyskens 05:38</li><li><a href="stop-TEC_H1he109a.html">TEC:H1he109a</a> - Hensies Séminaire 05:39</li><li><a href="stop-TEC_H1he110a.html">TEC:H1he110a</a> - Hensies Square la Fontaine 05:40</li><li><a href="stop-TEC_H1he104a.html">TEC:H1he104a</a> - Hensies Entrée du Village 05:40</li><li><a href="stop-TEC_H1he106a.html">TEC:H1he106a</a> - Hensies Place 05:41</li><li><a href="stop-TEC_H1he101a.html">TEC:H1he101a</a> - Hensies Avenue de l'Europe 05:42</li><li><a href="stop-TEC_H1he108b.html">TEC:H1he108b</a> - Hensies Rue Haute 05:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1772.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

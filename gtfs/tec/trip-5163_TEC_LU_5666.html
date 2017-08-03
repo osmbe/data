@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Florenville - Arlon - 5163:TEC:LU:5666</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Florenville - Arlon - 5163:TEC:LU:5666</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X638aba.html">TEC:X638aba</a> - Bellefontaine Eglise (Tintigny) 07:53</li><li><a href="stop-TEC_X638aca.html">TEC:X638aca</a> - Bellefontaine Carrefour  (Tintigny) 07:53</li><li><a href="stop-TEC_X638afa.html">TEC:X638afa</a> - Bellefontaine Rue de Villemont (Tintigny) 07:54</li><li><a href="stop-TEC_X638aga.html">TEC:X638aga</a> - Saint-Vincent Rue des Rappes 07:55</li><li><a href="stop-TEC_X638aha.html">TEC:X638aha</a> - Saint-Vincent Rue des Chasseurs Ardennais 07:55</li><li><a href="stop-TEC_X638aia.html">TEC:X638aia</a> - Saint-Vincent Eglise 07:56</li><li><a href="stop-TEC_X638ama.html">TEC:X638ama</a> - Saint-Vincent Rue de la Tayette 07:56</li><li><a href="stop-TEC_X638ara.html">TEC:X638ara</a> - Frenois Lavoir 07:58</li><li><a href="stop-TEC_X639abb.html">TEC:X639abb</a> - Prouvy Rue de Termes 08:00</li><li><a href="stop-TEC_X639aca.html">TEC:X639aca</a> - Prouvy Rue de Valansart 08:01</li><li><a href="stop-TEC_X639aub.html">TEC:X639aub</a> - Valansart Centre 08:04</li><li><a href="stop-TEC_X639aia.html">TEC:X639aia</a> - Jamoigne rue de Virton 08:05</li><li><a href="stop-TEC_X639aqa.html">TEC:X639aqa</a> - Romponcelle Centre 08:07</li><li><a href="stop-TEC_X639aoc.html">TEC:X639aoc</a> - Jamoigne Rue de la Chavée 08:08</li><li><a href="stop-TEC_X639aka.html">TEC:X639aka</a> - Jamoigne Centre 08:09</li><li><a href="stop-TEC_X639aja.html">TEC:X639aja</a> - Jamoigne Camping 08:10</li><li><a href="stop-TEC_X640aia.html">TEC:X640aia</a> - Izel 4 Vents 08:12</li><li><a href="stop-TEC_X640aha.html">TEC:X640aha</a> - Izel Athénée 08:13</li><li><a href="stop-TEC_X640afa.html">TEC:X640afa</a> - Izel Centre 08:14</li><li><a href="stop-TEC_X640akb.html">TEC:X640akb</a> - Pin Avenue Gilson 08:15</li><li><a href="stop-TEC_X640alb.html">TEC:X640alb</a> - Pin Rue de l'Auwy 08:16</li><li><a href="stop-TEC_X640ama.html">TEC:X640ama</a> - Pin Eglise 08:16</li><li><a href="stop-TEC_X640ana.html">TEC:X640ana</a> - Pin Rue Albert 1er 86 08:16</li><li><a href="stop-TEC_X640aoa.html">TEC:X640aoa</a> - Pin Passage à Niveau 08:17</li><li><a href="stop-TEC_X641aia.html">TEC:X641aia</a> - Florenville Zoning I 08:18</li><li><a href="stop-TEC_X641aha.html">TEC:X641aha</a> - Florenville Zoning II 08:19</li><li><a href="stop-TEC_X641aga.html">TEC:X641aga</a> - Florenville Gendarmerie 08:21</li><li><a href="stop-TEC_X641afd.html">TEC:X641afd</a> - Florenville Place du Miroir - Quai 3 08:22</li><li><a href="stop-TEC_X641aea.html">TEC:X641aea</a> - Florenville EPE 08:23</li><li><a href="stop-TEC_X641aka.html">TEC:X641aka</a> - Florenville Chapelle Sainte-Anne 08:24</li><li><a href="stop-TEC_X641alb.html">TEC:X641alb</a> - Florenville Chemin du Bon Pays 08:25</li><li><a href="stop-TEC_X641amb.html">TEC:X641amb</a> - Florenville Gare 08:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2992.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

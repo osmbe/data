@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Stembert - Pl. Verte - Harmonie - Dison - Rechain - 5163:TEC:LV:35121</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Stembert - Pl. Verte - Harmonie - Dison - Rechain - 5163:TEC:LV:35121</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lsmcime_.html">TEC:Lsmcime*</a> - Stembert Cimetière 19:18</li><li><a href="stop-TEC_Lsmrcim1.html">TEC:Lsmrcim1</a> - Stembert Rue du Cimetière 19:19</li><li><a href="stop-TEC_Lsmecol1.html">TEC:Lsmecol1</a> - Stembert Ecole 19:20</li><li><a href="stop-TEC_Lsmeg--1.html">TEC:Lsmeg--1</a> - Stembert Eglise 19:21</li><li><a href="stop-TEC_Lsmpost1.html">TEC:Lsmpost1</a> - Stembert Poste 19:22</li><li><a href="stop-TEC_Lsmberg1.html">TEC:Lsmberg1</a> - Stembert Rue A. de Berghes 19:22</li><li><a href="stop-TEC_Lsmgdry1.html">TEC:Lsmgdry1</a> - Stembert Rue Grand Ry 19:23</li><li><a href="stop-TEC_Lvecase1.html">TEC:Lvecase1</a> - Verviers Caserne 19:23</li><li><a href="stop-TEC_Lvewall1.html">TEC:Lvewall1</a> - Verviers Rue des Wallons 19:24</li><li><a href="stop-TEC_Lvebiol1.html">TEC:Lvebiol1</a> - Verviers Rue Biolley 19:25</li><li><a href="stop-TEC_Lvepala1.html">TEC:Lvepala1</a> - Verviers Palais 19:25</li><li><a href="stop-TEC_Lvehv--1.html">TEC:Lvehv--1</a> - Verviers Hôtel de Ville 19:26</li><li><a href="stop-TEC_Lvevert1.html">TEC:Lvevert1</a> - Verviers Place Verte 19:26</li><li><a href="stop-TEC_Lvexhav1.html">TEC:Lvexhav1</a> - Verviers Rue Xhavée 19:28</li><li><a href="stop-TEC_Lvethea1.html">TEC:Lvethea1</a> - Verviers Théâtre 19:29</li><li><a href="stop-TEC_Lveharm1.html">TEC:Lveharm1</a> - Verviers Harmonie 19:30</li><li><a href="stop-TEC_Lveanto1.html">TEC:Lveanto1</a> - Verviers Eglise St-Antoine 19:31</li><li><a href="stop-TEC_Ladfran3.html">TEC:Ladfran3</a> - Andrimont Rue des Franchimontois 19:32</li><li><a href="stop-TEC_Ldimont1.html">TEC:Ldimont1</a> - Dison Montagne de l'Invasion 19:32</li><li><a href="stop-TEC_Ldineuf1.html">TEC:Ldineuf1</a> - Dison Rue Neufmoulin 19:33</li><li><a href="stop-TEC_Ldipiss1.html">TEC:Ldipiss1</a> - Dison Pisseroule 19:33</li><li><a href="stop-TEC_Ldipost1.html">TEC:Ldipost1</a> - Dison Poste 19:34</li><li><a href="stop-TEC_Ldiinte1.html">TEC:Ldiinte1</a> - Dison Interlac 19:35</li><li><a href="stop-TEC_Ldihote2.html">TEC:Ldihote2</a> - Dison rue des Ecoles 19:35</li><li><a href="stop-TEC_Ldipl--3.html">TEC:Ldipl--3</a> - Dison Place 19:36</li><li><a href="stop-TEC_Ldihusq1.html">TEC:Ldihusq1</a> - Dison Rue du Husquet 19:37</li><li><a href="stop-TEC_Ldichat1.html">TEC:Ldichat1</a> - Dison Chatelet 19:37</li><li><a href="stop-TEC_Ldifoye1.html">TEC:Ldifoye1</a> - Dison Avenue du Foyer 19:38</li><li><a href="stop-TEC_Lprorph1.html">TEC:Lprorph1</a> - Petit-Rechain Orphéon 19:39</li><li><a href="stop-TEC_Lprperr1.html">TEC:Lprperr1</a> - Petit-Rechain Garage du Perron 19:39</li><li><a href="stop-TEC_Lprchat1.html">TEC:Lprchat1</a> - Petit-Rechain Château d'Eau 19:40</li><li><a href="stop-TEC_Lprceri1.html">TEC:Lprceri1</a> - Petit-Rechain Les Cerisiers 19:41</li><li><a href="stop-TEC_Lprmana2.html">TEC:Lprmana2</a> - Petit-Rechain Manaihant carrefour 19:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4260.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

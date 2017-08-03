@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Pont d'Avroy - Guillemins - Chênée - Embourg - 5163:TEC:LV:30788</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Pont d'Avroy - Guillemins - Chênée - Embourg - 5163:TEC:LV:30788</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LlgOPER2.html">TEC:LlgOPER2</a> - Liege Opéra 08:56</li><li><a href="stop-TEC_LlgPTAV3.html">TEC:LlgPTAV3</a> - Liege Pont d'Avroy 08:59</li><li><a href="stop-TEC_Llgchar1.html">TEC:Llgchar1</a> - Liege Charlemagne 09:00</li><li><a href="stop-TEC_Llgblon1.html">TEC:Llgblon1</a> - Liege Avenue Blonden 09:02</li><li><a href="stop-TEC_LlgguilD.html">TEC:LlgguilD</a> - Liege Gare des Guillemins Quai D 09:04</li><li><a href="stop-TEC_Llglema1.html">TEC:Llglema1</a> - Liege Place Général Leman 09:07</li><li><a href="stop-TEC_Llggram1.html">TEC:Llggram1</a> - Liege Monument Gramme 09:08</li><li><a href="stop-TEC_Llgstvi3.html">TEC:Llgstvi3</a> - Liege Eglise St-Vincent 09:09</li><li><a href="stop-TEC_Llgnati1.html">TEC:Llgnati1</a> - Liege Place des Nations Unies 09:09</li><li><a href="stop-TEC_Llggrav1.html">TEC:Llggrav1</a> - Liege Rue des Gravillons 09:10</li><li><a href="stop-TEC_Llgstap1.html">TEC:Llgstap1</a> - Liege Rue Stappers 09:11</li><li><a href="stop-TEC_Llgdesa1.html">TEC:Llgdesa1</a> - Liege Rue Désamoré 09:12</li><li><a href="stop-TEC_Lagarde1.html">TEC:Lagarde1</a> - Angleur quai des Ardennes 09:14</li><li><a href="stop-TEC_Lcejobe1.html">TEC:Lcejobe1</a> - Chenee Arrêt Jobette 09:15</li><li><a href="stop-TEC_Lcebois1.html">TEC:Lcebois1</a> - Chenee Rue du Boisselier 09:16</li><li><a href="stop-TEC_Lcepont1.html">TEC:Lcepont1</a> - Chenee Pont 09:16</li><li><a href="stop-TEC_Lcegare1.html">TEC:Lcegare1</a> - Chenee Gare 09:17</li><li><a href="stop-TEC_Lcepoul1.html">TEC:Lcepoul1</a> - Chenee Rue A. Poulet 09:18</li><li><a href="stop-TEC_Lemacac1.html">TEC:Lemacac1</a> - Embourg Rue des Acacias 09:21</li><li><a href="stop-TEC_Lemmeha1.html">TEC:Lemmeha1</a> - Embourg Mehagne-Critchons 09:22</li><li><a href="stop-TEC_Lemcarm1.html">TEC:Lemcarm1</a> - Embourg Rue du Carmel 09:23</li><li><a href="stop-TEC_Lemhenn1.html">TEC:Lemhenn1</a> - Embourg Rue de Henne 09:24</li><li><a href="stop-TEC_Lemmusc1.html">TEC:Lemmusc1</a> - Embourg Rue Musch 09:25</li><li><a href="stop-TEC_Lemboul1.html">TEC:Lemboul1</a> - Embourg Avenue des Bouleaux (Bleurmont) 09:26</li><li><a href="stop-TEC_Lemarde1.html">TEC:Lemarde1</a> - Embourg Carr. voie de l'Ardenne-av. des Bouleaux 09:27</li><li><a href="stop-TEC_Lemcort1.html">TEC:Lemcort1</a> - Embourg Rue Grand Cortil 09:28</li><li><a href="stop-TEC_Lemparc1.html">TEC:Lemparc1</a> - Embourg Allée du Parc 09:29</li><li><a href="stop-TEC_Lemambi1.html">TEC:Lemambi1</a> - Embourg Allée Ambiorix 09:30</li><li><a href="stop-TEC_Lemlacr1.html">TEC:Lemlacr1</a> - Embourg Café Lacroix 09:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4183.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

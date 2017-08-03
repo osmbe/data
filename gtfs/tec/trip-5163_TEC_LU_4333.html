@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Jamoigne / St-Vincent - Ste-Marie-Etalle / Habay - 5163:TEC:LU:4333</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jamoigne / St-Vincent - Ste-Marie-Etalle / Habay - 5163:TEC:LU:4333</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X670ada.html">TEC:X670ada</a> - Habay-la-Neuve Place Nothomb 16:25</li><li><a href="stop-TEC_X670akb.html">TEC:X670akb</a> - Habay-la-Neuve Saint-Benoît 16:28</li><li><a href="stop-TEC_X670alb.html">TEC:X670alb</a> - Habay-la-Neuve L'Auberge du Vivier 16:30</li><li><a href="stop-TEC_X670amb.html">TEC:X670amb</a> - Habay Gare 16:30</li><li><a href="stop-TEC_X670aoa.html">TEC:X670aoa</a> - Habay-la-Vieille Rue des Roses 16:32</li><li><a href="stop-TEC_X670apa.html">TEC:X670apa</a> - Habay-la-Vieille Rue de Nantimont 16:33</li><li><a href="stop-TEC_X670asb.html">TEC:X670asb</a> - Habay-la-Vieille Rue de Mageroy 16:34</li><li><a href="stop-TEC_X670aqb.html">TEC:X670aqb</a> - Nantimont Centre 16:37</li><li><a href="stop-TEC_X649aaa.html">TEC:X649aaa</a> - Mortinsart Centre 16:40</li><li><a href="stop-TEC_X649aba.html">TEC:X649aba</a> - Villers-sur-Semois Rue du Tru 16:44</li><li><a href="stop-TEC_X636beb.html">TEC:X636beb</a> - Sainte-Marie Rue des Tilleuls (Etalle) 16:47</li><li><a href="stop-TEC_X636aka.html">TEC:X636aka</a> - Sainte-Marie N83 (Etalle) 16:48</li><li><a href="stop-TEC_X636bfa.html">TEC:X636bfa</a> - Sainte-Marie Rue de la Gare 23 (Etalle) 16:48</li><li><a href="stop-TEC_X636bga.html">TEC:X636bga</a> - Sainte-Marie Gare (Etalle) 16:49</li><li><a href="stop-TEC_X637arb.html">TEC:X637arb</a> - Poncelle Rue du Plane 16:50</li><li><a href="stop-TEC_X637apa.html">TEC:X637apa</a> - Poncelle Monument 16:52</li><li><a href="stop-TEC_X637ara.html">TEC:X637ara</a> - Poncelle Rue du Plane 16:54</li><li><a href="stop-TEC_X637aaa.html">TEC:X637aaa</a> - Tintigny Route de Poncelle 16:54</li><li><a href="stop-TEC_X637aba.html">TEC:X637aba</a> - Tintigny Rue de la Station 49 16:55</li><li><a href="stop-TEC_X637aca.html">TEC:X637aca</a> - Tintigny Route de Han 16:57</li><li><a href="stop-TEC_X637ada.html">TEC:X637ada</a> - Tintigny Grand-Rue 39 16:58</li><li><a href="stop-TEC_X637aea.html">TEC:X637aea</a> - Tintigny Maison Communale 16:59</li><li><a href="stop-TEC_X637agd.html">TEC:X637agd</a> - Tintigny Carrefour 16:59</li><li><a href="stop-TEC_X637ala.html">TEC:X637ala</a> - Ansart Grand-Route 17:00</li><li><a href="stop-TEC_X637ama.html">TEC:X637ama</a> - Ansart Rue du Chapon 17:00</li><li><a href="stop-TEC_X637aoa.html">TEC:X637aoa</a> - Ansart Rue du Centenaire 17:01</li><li><a href="stop-TEC_X638aqb.html">TEC:X638aqb</a> - Breuvanne Chapelle 17:04</li><li><a href="stop-TEC_X638apb.html">TEC:X638apb</a> - Breuvanne Carrefour Haut des Fagots 17:05</li><li><a href="stop-TEC_X638aob.html">TEC:X638aob</a> - Breuvanne Haut des Fagots 17:05</li><li><a href="stop-TEC_X637ajb.html">TEC:X637ajb</a> - Tintigny Grand'Rue 122 17:07</li><li><a href="stop-TEC_X637agc.html">TEC:X637agc</a> - Tintigny Carrefour 17:07</li><li><a href="stop-TEC_X637akb.html">TEC:X637akb</a> - Tintigny Ecole 17:08</li><li><a href="stop-TEC_X638aeb.html">TEC:X638aeb</a> - Bellefontaine Rue de la Montante Roye 3 (Tintigny) 17:09</li><li><a href="stop-TEC_X638adb.html">TEC:X638adb</a> - Bellefontaine Rue de la Montante Roye 37 (Tintig.) 17:09</li><li><a href="stop-TEC_X638aca.html">TEC:X638aca</a> - Bellefontaine Carrefour  (Tintigny) 17:10</li><li><a href="stop-TEC_X638afa.html">TEC:X638afa</a> - Bellefontaine Rue de Villemont (Tintigny) 17:11</li><li><a href="stop-TEC_X638afa.html">TEC:X638afa</a> - Bellefontaine Rue de Villemont (Tintigny) 17:11</li><li><a href="stop-TEC_X638aga.html">TEC:X638aga</a> - Saint-Vincent Rue des Rappes 17:11</li><li><a href="stop-TEC_X638aha.html">TEC:X638aha</a> - Saint-Vincent Rue des Chasseurs Ardennais 17:12</li><li><a href="stop-TEC_X638aia.html">TEC:X638aia</a> - Saint-Vincent Eglise 17:13</li><li><a href="stop-TEC_X638aia.html">TEC:X638aia</a> - Saint-Vincent Eglise 17:13</li><li><a href="stop-TEC_X638ama.html">TEC:X638ama</a> - Saint-Vincent Rue de la Tayette 17:14</li><li><a href="stop-TEC_X638ara.html">TEC:X638ara</a> - Frenois Lavoir 17:17</li><li><a href="stop-TEC_X639aab.html">TEC:X639aab</a> - Prouvy Route d'Arlon 17:18</li><li><a href="stop-TEC_X652aja.html">TEC:X652aja</a> - Termes Buisson des Roses 17:20</li><li><a href="stop-TEC_X652afa.html">TEC:X652afa</a> - Termes Ecole 17:21</li><li><a href="stop-TEC_X652aga.html">TEC:X652aga</a> - Termes Rue Sainte-Anne 17:21</li><li><a href="stop-TEC_X652aha.html">TEC:X652aha</a> - Termes Pont Charreau 17:22</li><li><a href="stop-TEC_X639asa.html">TEC:X639asa</a> - Les Bulles Rue de la Chevrette 17:24</li><li><a href="stop-TEC_X639arb.html">TEC:X639arb</a> - Les Bulles Rue du Lieutenant Crépy 17:25</li><li><a href="stop-TEC_X639ama.html">TEC:X639ama</a> - Jamoigne La Hailleule 17:27</li><li><a href="stop-TEC_X639alb.html">TEC:X639alb</a> - Jamoigne Pont 17:28</li><li><a href="stop-TEC_X639aob.html">TEC:X639aob</a> - Jamoigne Rue de la Chavée 17:29</li><li><a href="stop-TEC_X639apb.html">TEC:X639apb</a> - Jamoigne Rue de Grigny 17:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3076.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Noiseux - Hotton - 5163:TEC:LU:4903</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Noiseux - Hotton - 5163:TEC:LU:4903</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X923aia.html">TEC:X923aia</a> - Hotton Ecole de l'Etat 15:30</li><li><a href="stop-TEC_X923afb.html">TEC:X923afb</a> - Hotton Rue des Ecoles 15:32</li><li><a href="stop-TEC_X923ara.html">TEC:X923ara</a> - Hotton Ecole Communale 15:32</li><li><a href="stop-TEC_X923afa.html">TEC:X923afa</a> - Hotton Rue des Ecoles 15:33</li><li><a href="stop-TEC_X923ama.html">TEC:X923ama</a> - Hotton Ecole Libre 15:34</li><li><a href="stop-TEC_X923aea.html">TEC:X923aea</a> - Hotton Pont - Rive Droite 15:35</li><li><a href="stop-TEC_X923agb.html">TEC:X923agb</a> - Hotton Chapelle Saint-Roch 15:35</li><li><a href="stop-TEC_X923aha.html">TEC:X923aha</a> - Hotton Ecole de l'Etat - Grand'Route 15:36</li><li><a href="stop-TEC_X923ajb.html">TEC:X923ajb</a> - Melreux Ecole Libre 15:36</li><li><a href="stop-TEC_X923ala.html">TEC:X923ala</a> - Melreux Gare Quai 1 15:37</li><li><a href="stop-TEC_X923apa.html">TEC:X923apa</a> - Melreux Route de Durbuy 48 15:38</li><li><a href="stop-TEC_X921apa.html">TEC:X921apa</a> - Melreux Centre de Réfugiés 15:39</li><li><a href="stop-TEC_X923apb.html">TEC:X923apb</a> - Melreux Route de Durbuy 48 15:41</li><li><a href="stop-TEC_X923anb.html">TEC:X923anb</a> - Monville Grand'Route 26 15:42</li><li><a href="stop-TEC_X923aob.html">TEC:X923aob</a> - Monville Rue du Ban 15:42</li><li><a href="stop-TEC_X921acb.html">TEC:X921acb</a> - Fronville Eglise 15:44</li><li><a href="stop-TEC_X921amb.html">TEC:X921amb</a> - Fronville Carrefour Rue Lava 15:44</li><li><a href="stop-TEC_X921aaa.html">TEC:X921aaa</a> - Fronville Camping Mayette 15:45</li><li><a href="stop-TEC_X921anb.html">TEC:X921anb</a> - Fronville Rue du Monument 15:46</li><li><a href="stop-TEC_X917ada.html">TEC:X917ada</a> - Deulin Centre 15:47</li><li><a href="stop-TEC_X917aca.html">TEC:X917aca</a> - Deulin Camping 15:48</li><li><a href="stop-TEC_X917aha.html">TEC:X917aha</a> - Noiseux Eglise 15:49</li><li><a href="stop-TEC_X917ajb.html">TEC:X917ajb</a> - Noiseux Chez Fernand 15:50</li><li><a href="stop-TEC_X917aka.html">TEC:X917aka</a> - Noiseux Ecole 15:50</li><li><a href="stop-TEC_X917aja.html">TEC:X917aja</a> - Noiseux Chez Fernand 15:51</li><li><a href="stop-TEC_X917aga.html">TEC:X917aga</a> - Noiseux Rue de l'Ecole 15:52</li><li><a href="stop-TEC_X917afa.html">TEC:X917afa</a> - Noiseux Centre 15:53</li><li><a href="stop-TEC_X917aeb.html">TEC:X917aeb</a> - Monteuville Centre 15:58</li><li><a href="stop-TEC_X917apb.html">TEC:X917apb</a> - Monteuville Plain de Holset 15:59</li><li><a href="stop-TEC_X917apa.html">TEC:X917apa</a> - Monteuville Plain de Holset 16:00</li><li><a href="stop-TEC_X921aba.html">TEC:X921aba</a> - Grandhan Rue Colonel Vanderpeere 16:03</li><li><a href="stop-TEC_X921ada.html">TEC:X921ada</a> - Grandhan Place 16:04</li><li><a href="stop-TEC_X919afa.html">TEC:X919afa</a> - Petite Enneille Chêne à Han 16:06</li><li><a href="stop-TEC_X919aea.html">TEC:X919aea</a> - Petite Enneille Carrefour 16:07</li><li><a href="stop-TEC_X917aab.html">TEC:X917aab</a> - Grande Enneille Croix Saint-Pierre 16:07</li><li><a href="stop-TEC_X917abb.html">TEC:X917abb</a> - Grande Enneille Centre 16:08</li><li><a href="stop-TEC_X917aoa.html">TEC:X917aoa</a> - Noiseux Domaine de Stoqueux 16:11</li><li><a href="stop-TEC_X917ana.html">TEC:X917ana</a> - Noiseux Rue de Larmont 16:14</li><li><a href="stop-TEC_X917afa.html">TEC:X917afa</a> - Noiseux Centre 16:17</li><li><a href="stop-TEC_X917aha.html">TEC:X917aha</a> - Noiseux Eglise 16:17</li><li><a href="stop-TEC_X917ajb.html">TEC:X917ajb</a> - Noiseux Chez Fernand 16:18</li><li><a href="stop-TEC_X917ala.html">TEC:X917ala</a> - Noiseux Domaine de l'Ourthe 16:18</li><li><a href="stop-TEC_X917ama.html">TEC:X917ama</a> - Noiseux Domaine des Monts 16:20</li><li><a href="stop-TEC_X396acb.html">TEC:X396acb</a> - Baillonville Maison Communale 16:22</li><li><a href="stop-TEC_X396afb.html">TEC:X396afb</a> - Baillonville Carrefour 16:24</li><li><a href="stop-TEC_X917ahb.html">TEC:X917ahb</a> - Noiseux Eglise 16:26</li><li><a href="stop-TEC_X917afb.html">TEC:X917afb</a> - Noiseux Centre 16:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3423.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

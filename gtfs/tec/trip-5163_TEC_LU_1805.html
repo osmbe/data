@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Arlon - Martelange - 5163:TEC:LU:1805</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Arlon - Martelange - 5163:TEC:LU:1805</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X601bka.html">TEC:X601bka</a> - Arlon Athénée 16:05</li><li><a href="stop-TEC_X601azb.html">TEC:X601azb</a> - Arlon Espace Semois 16:08</li><li><a href="stop-TEC_X601bqa.html">TEC:X601bqa</a> - Arlon Rue de la Semois 16:11</li><li><a href="stop-TEC_X601bba.html">TEC:X601bba</a> - Arlon Gare - Quai 6 16:15</li><li><a href="stop-TEC_X601bda.html">TEC:X601bda</a> - Arlon Xxv Août 16:17</li><li><a href="stop-TEC_X601bfa.html">TEC:X601bfa</a> - Arlon Sq Astrid - R de Bastogne 16:21</li><li><a href="stop-TEC_X601bga.html">TEC:X601bga</a> - Arlon ISMA 16:22</li><li><a href="stop-TEC_X601aab.html">TEC:X601aab</a> - Arlon R des 2 Luxembourg 11 16:23</li><li><a href="stop-TEC_X601ala.html">TEC:X601ala</a> - Arlon R des 2 Luxembourg 16:23</li><li><a href="stop-TEC_X601ctb.html">TEC:X601ctb</a> - Arlon Cimetière 16:24</li><li><a href="stop-TEC_X662aoa.html">TEC:X662aoa</a> - Frassem Route de Diekirch 16:24</li><li><a href="stop-TEC_X662anb.html">TEC:X662anb</a> - Frassem Carrefour 16:25</li><li><a href="stop-TEC_X662afa.html">TEC:X662afa</a> - Frassem Rue de la Cova 16:26</li><li><a href="stop-TEC_X662aga.html">TEC:X662aga</a> - Bonnert Rue du Maitrank 16:27</li><li><a href="stop-TEC_X662aca.html">TEC:X662aca</a> - Bonnert Eglise 16:29</li><li><a href="stop-TEC_X662aeb.html">TEC:X662aeb</a> - Bonnert Rue du Vicinal 7 16:29</li><li><a href="stop-TEC_X662arb.html">TEC:X662arb</a> - Bonnert Rue du Vicinal 79 16:30</li><li><a href="stop-TEC_X662aqb.html">TEC:X662aqb</a> - Bonnert Rue du Vicinal 125 16:31</li><li><a href="stop-TEC_X601afa.html">TEC:X601afa</a> - Bonnert Rond-Point - Rue du Vicinal 16:31</li><li><a href="stop-TEC_X662atb.html">TEC:X662atb</a> - Arlon Route de Bastogne - N4 16:32</li><li><a href="stop-TEC_X662aba.html">TEC:X662aba</a> - Bonnert 4 Vents 16:33</li><li><a href="stop-TEC_X663aia.html">TEC:X663aia</a> - Metzert N4 16:35</li><li><a href="stop-TEC_X663aoa.html">TEC:X663aoa</a> - Attert Spetz 16:38</li><li><a href="stop-TEC_X663aqa.html">TEC:X663aqa</a> - Attert Camping 16:39</li><li><a href="stop-TEC_X663aqb.html">TEC:X663aqb</a> - Attert Camping 16:39</li><li><a href="stop-TEC_X663awa.html">TEC:X663awa</a> - Schadeck Bretelle N4 16:40</li><li><a href="stop-TEC_X663ama.html">TEC:X663ama</a> - Metzert Rue Neuve 16:45</li><li><a href="stop-TEC_X663akb.html">TEC:X663akb</a> - Metzert Fontaine 16:47</li><li><a href="stop-TEC_X663ajb.html">TEC:X663ajb</a> - Metzert Rue de Beynert 16:49</li><li><a href="stop-TEC_X663ahd.html">TEC:X663ahd</a> - Metzert Carrefour 16:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2784.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - PESCHE - COUVIN - CUL-DES-SARTS - CHIMAY - 5163:TEC:NA:1155</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: PESCHE - COUVIN - CUL-DES-SARTS - CHIMAY - 5163:TEC:NA:1155</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N135adc.html">TEC:N135adc</a> - Couvin Gare SNCB 15:58</li><li><a href="stop-TEC_N135akb.html">TEC:N135akb</a> - Couvin Saint-Joseph 15:59</li><li><a href="stop-TEC_N135aib.html">TEC:N135aib</a> - Couvin Grand Pont 16:00</li><li><a href="stop-TEC_N135alb.html">TEC:N135alb</a> - Couvin Home 16:01</li><li><a href="stop-TEC_N135ajb.html">TEC:N135ajb</a> - Couvin Cité Donnay 16:03</li><li><a href="stop-TEC_N135afb.html">TEC:N135afb</a> - Couvin Pont du Roy 16:04</li><li><a href="stop-TEC_N135aob.html">TEC:N135aob</a> - Couvin Scieries 16:04</li><li><a href="stop-TEC_N135aeb.html">TEC:N135aeb</a> - Couvin Pernelle 16:05</li><li><a href="stop-TEC_N140aab.html">TEC:N140aab</a> - Bruly Forge du prince 16:11</li><li><a href="stop-TEC_N139aeb.html">TEC:N139aeb</a> - Bruly Château Claes 16:14</li><li><a href="stop-TEC_N139adb.html">TEC:N139adb</a> - Bruly Place communale 16:14</li><li><a href="stop-TEC_N139acb.html">TEC:N139acb</a> - Bruly Ancienne station vicinale 16:14</li><li><a href="stop-TEC_N139abb.html">TEC:N139abb</a> - Bruly Douane 16:15</li><li><a href="stop-TEC_N139aab.html">TEC:N139aab</a> - Bruly Tauminerie 16:16</li><li><a href="stop-TEC_N146aeb.html">TEC:N146aeb</a> - Petite-Chapelle Douane 16:18</li><li><a href="stop-TEC_N146adb.html">TEC:N146adb</a> - Petite-Chapelle Eglise 16:19</li><li><a href="stop-TEC_N146afb.html">TEC:N146afb</a> - Petite-Chapelle Calvaire 16:20</li><li><a href="stop-TEC_N146abb.html">TEC:N146abb</a> - Petite-Chapelle Verte place 16:21</li><li><a href="stop-TEC_N146aab.html">TEC:N146aab</a> - Petite-Chapelle Route de Cul des Sarts 16:21</li><li><a href="stop-TEC_N141aob.html">TEC:N141aob</a> - Cul-Des-Sarts Laid trou 16:22</li><li><a href="stop-TEC_N141anb.html">TEC:N141anb</a> - Cul-Des-Sarts Gué des Bagniaux 16:23</li><li><a href="stop-TEC_N141amc.html">TEC:N141amc</a> - Cul-Des-Sarts Moulin 16:23</li><li><a href="stop-TEC_N141adb.html">TEC:N141adb</a> - Cul-Des-Sarts Les Rièzes et les Sarts 16:25</li><li><a href="stop-TEC_N141abb.html">TEC:N141abb</a> - Cul-Des-Sarts Hôtel petit château 16:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5674.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

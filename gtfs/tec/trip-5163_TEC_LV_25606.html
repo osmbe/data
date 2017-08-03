@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Vith - Steinebrück - Rödgen - 5163:TEC:LV:25606</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Vith - Steinebrück - Rödgen - 5163:TEC:LV:25606</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LrGzent2.html">TEC:LrGzent2</a> - Rodgen Zentrum 07:15</li><li><a href="stop-TEC_LaFbruc2.html">TEC:LaFbruc2</a> - Alfersteg Brücke 07:16</li><li><a href="stop-TEC_LwPdorf2.html">TEC:LwPdorf2</a> - Weppeler Dorf 07:19</li><li><a href="stop-TEC_LsTgren2.html">TEC:LsTgren2</a> - Steinebruck Grenze 07:22</li><li><a href="stop-TEC_LlOkreu1.html">TEC:LlOkreu1</a> - Lommersweiler Kreuz 07:29</li><li><a href="stop-TEC_LlOpfar1.html">TEC:LlOpfar1</a> - Lommersweiler Pfarrhaus 07:30</li><li><a href="stop-TEC_LlOkreu2.html">TEC:LlOkreu2</a> - Lommersweiler Kreuz 07:31</li><li><a href="stop-TEC_LlOdrei2.html">TEC:LlOdrei2</a> - Lommersweiler Dreihütten 07:32</li><li><a href="stop-TEC_LnDthel1.html">TEC:LnDthel1</a> - Neidingen Haus Thelen 07:36</li><li><a href="stop-TEC_LnDrund1.html">TEC:LnDrund1</a> - Neidingen Runder Platz 07:37</li><li><a href="stop-TEC_LnDdorf1.html">TEC:LnDdorf1</a> - Neidingen Dorf 07:37</li><li><a href="stop-TEC_LnDrund2.html">TEC:LnDrund2</a> - Neidingen Runder Platz 07:37</li><li><a href="stop-TEC_LnDthel2.html">TEC:LnDthel2</a> - Neidingen Haus Thelen 07:39</li><li><a href="stop-TEC_LnDkreu2.html">TEC:LnDkreu2</a> - Neidingen Kreuzung 07:40</li><li><a href="stop-TEC_LwSbrei2.html">TEC:LwSbrei2</a> - Wiesenbach Breitfeld 07:41</li><li><a href="stop-TEC_LwSgeme2.html">TEC:LwSgeme2</a> - Wiesenbach Gemeindehaus 07:42</li><li><a href="stop-TEC_LwSschw2.html">TEC:LwSschw2</a> - Wiesenbach Schwimmbad 07:43</li><li><a href="stop-TEC_LsVsage2.html">TEC:LsVsage2</a> - Sankt-Vith Sägerei 07:44</li><li><a href="stop-TEC_LsVlind_.html">TEC:LsVlind*</a> - Sankt-Vith An den Linden 07:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5209.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

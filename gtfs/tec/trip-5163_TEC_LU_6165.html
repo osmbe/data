@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Maissin - Libin - Saint-Hubert - 5163:TEC:LU:6165</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Maissin - Libin - Saint-Hubert - 5163:TEC:LU:6165</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X897alc.html">TEC:X897alc</a> - Saint-Hubert Place de la Libération 12:35</li><li><a href="stop-TEC_X897aic.html">TEC:X897aic</a> - Saint-Hubert IND - Quai 1 12:39</li><li><a href="stop-TEC_X897aja.html">TEC:X897aja</a> - Saint-Hubert Centre Administratif 12:39</li><li><a href="stop-TEC_X897anb.html">TEC:X897anb</a> - Saint-Hubert Avenue Nestor Martin 12:40</li><li><a href="stop-TEC_X897aoa.html">TEC:X897aoa</a> - Saint-Hubert Route de Lorcy 12:40</li><li><a href="stop-TEC_X897apa.html">TEC:X897apa</a> - Saint-Hubert Le Colombier 12:41</li><li><a href="stop-TEC_X898aga.html">TEC:X898aga</a> - Poix Moulin d'en Bas 12:42</li><li><a href="stop-TEC_X898adb.html">TEC:X898adb</a> - Poix Hôtel 12:48</li><li><a href="stop-TEC_X898abb.html">TEC:X898abb</a> - Poix Quartier Sud 12:49</li><li><a href="stop-TEC_X898aab.html">TEC:X898aab</a> - Poix Maison Blanche 12:50</li><li><a href="stop-TEC_X879anb.html">TEC:X879anb</a> - Libin Route de Poix 149 12:52</li><li><a href="stop-TEC_X879aha.html">TEC:X879aha</a> - Libin Devant le Monty 12:53</li><li><a href="stop-TEC_X879ala.html">TEC:X879ala</a> - Libin Ecole Communale 12:56</li><li><a href="stop-TEC_X879aka.html">TEC:X879aka</a> - Libin Rue Périgeay 12:59</li><li><a href="stop-TEC_X879asb.html">TEC:X879asb</a> - Libin Route de Villance 101 13:02</li><li><a href="stop-TEC_X879arb.html">TEC:X879arb</a> - Libin Route de Villance 121 13:02</li><li><a href="stop-TEC_X880ahb.html">TEC:X880ahb</a> - Villance Rue de la Bolette 7 13:04</li><li><a href="stop-TEC_X880aeb.html">TEC:X880aeb</a> - Villance Eglise 13:04</li><li><a href="stop-TEC_X880ada.html">TEC:X880ada</a> - Villance Place 13:04</li><li><a href="stop-TEC_X880acb.html">TEC:X880acb</a> - Villance Cimetière 13:05</li><li><a href="stop-TEC_X871aea.html">TEC:X871aea</a> - Maissin Route de Villance 13:08</li><li><a href="stop-TEC_X871ada.html">TEC:X871ada</a> - Maissin Dépôt TEC 13:09</li><li><a href="stop-TEC_X871acb.html">TEC:X871acb</a> - Maissin Eglise 13:09</li><li><a href="stop-TEC_X871aba.html">TEC:X871aba</a> - Maissin Avenue de France 17 13:09</li><li><a href="stop-TEC_X871aaa.html">TEC:X871aaa</a> - Maissin Route d'Our 10 13:10</li><li><a href="stop-TEC_X872agb.html">TEC:X872agb</a> - Our Pont 13:15</li><li><a href="stop-TEC_X872afb.html">TEC:X872afb</a> - Our Le Buisson 13:16</li><li><a href="stop-TEC_X872adb.html">TEC:X872adb</a> - Beth Les Glaïeuls 13:18</li><li><a href="stop-TEC_X872acb.html">TEC:X872acb</a> - Opont Ecoles 13:21</li><li><a href="stop-TEC_X872aba.html">TEC:X872aba</a> - Opont Rue de la Scierie 14 13:21</li><li><a href="stop-TEC_X872aab.html">TEC:X872aab</a> - Opont Frênes 13:22</li><li><a href="stop-TEC_X873acb.html">TEC:X873acb</a> - Framont Les Aspèches 13:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2837.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

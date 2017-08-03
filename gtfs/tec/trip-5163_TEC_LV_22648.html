@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ningloheid - Thiervaux - Place Verte - Andrimont - 5163:TEC:LV:22648</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ningloheid - Thiervaux - Place Verte - Andrimont - 5163:TEC:LV:22648</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lveharm1.html">TEC:Lveharm1</a> - Verviers Harmonie 06:17</li><li><a href="stop-TEC_Lveanto1.html">TEC:Lveanto1</a> - Verviers Eglise St-Antoine 06:18</li><li><a href="stop-TEC_Ladfran1.html">TEC:Ladfran1</a> - Andrimont Rue des Franchimontois 06:19</li><li><a href="stop-TEC_Ladlimi1.html">TEC:Ladlimi1</a> - Andrimont Rue de la Limite 06:20</li><li><a href="stop-TEC_Ladgath1.html">TEC:Ladgath1</a> - Andrimont Place S. Gathoye 06:20</li><li><a href="stop-TEC_Ladclem1.html">TEC:Ladclem1</a> - Andrimont Rue Clément XIV 06:21</li><li><a href="stop-TEC_Ladpire1.html">TEC:Ladpire1</a> - Andrimont Rue M. Pire 06:22</li><li><a href="stop-TEC_Ladjaur1.html">TEC:Ladjaur1</a> - Andrimont Rue J. Jaurès 06:22</li><li><a href="stop-TEC_Ladotto1.html">TEC:Ladotto1</a> - Andrimont Ottomont 06:23</li><li><a href="stop-TEC_Ladmoul1.html">TEC:Ladmoul1</a> - Andrimont Petit Moulin 06:24</li><li><a href="stop-TEC_Ladhomb1.html">TEC:Ladhomb1</a> - Andrimont Hombiet 06:24</li><li><a href="stop-TEC_Ladfoot1.html">TEC:Ladfoot1</a> - Andrimont Terrain de Football 06:25</li><li><a href="stop-TEC_Ladegli1.html">TEC:Ladegli1</a> - Andrimont Eglise 06:26</li><li><a href="stop-TEC_Ladlaur1.html">TEC:Ladlaur1</a> - Andrimont St-Laurent 06:26</li><li><a href="stop-TEC_Ladneuv1.html">TEC:Ladneuv1</a> - Andrimont Neuville Terminus 06:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4752.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

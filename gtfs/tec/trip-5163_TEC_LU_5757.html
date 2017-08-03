@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Florenville - Bertrix - 5163:TEC:LU:5757</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Florenville - Bertrix - 5163:TEC:LU:5757</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X804aga.html">TEC:X804aga</a> - Bertrix Grand'Place 07:26</li><li><a href="stop-TEC_X804ala.html">TEC:X804ala</a> - Bertrix Gare - Quai 4 07:29</li><li><a href="stop-TEC_X804ana.html">TEC:X804ana</a> - Bertrix Rue de la Gare 252 07:30</li><li><a href="stop-TEC_X804btb.html">TEC:X804btb</a> - Bertrix Rue du Wahy 13 07:30</li><li><a href="stop-TEC_X818aaa.html">TEC:X818aaa</a> - Orgeo Rue d'Orgeo 37 07:31</li><li><a href="stop-TEC_X818aba.html">TEC:X818aba</a> - Orgeo Les Ferrues 07:32</li><li><a href="stop-TEC_X818aca.html">TEC:X818aca</a> - Orgeo Rue de Minimpré 6 07:33</li><li><a href="stop-TEC_X818ada.html">TEC:X818ada</a> - Orgeo Rue du Briga 32 07:34</li><li><a href="stop-TEC_X818aea.html">TEC:X818aea</a> - Orgeo Rue du Briga 8 07:34</li><li><a href="stop-TEC_X818afb.html">TEC:X818afb</a> - Orgeo Rue de la Vierre 26 07:35</li><li><a href="stop-TEC_X818aua.html">TEC:X818aua</a> - Gribomont Rue d'Orgeo 12 07:37</li><li><a href="stop-TEC_X818asc.html">TEC:X818asc</a> - Gribomont Place 07:37</li><li><a href="stop-TEC_X818aqa.html">TEC:X818aqa</a> - Saint-Medard Eglise 07:39</li><li><a href="stop-TEC_X818aob.html">TEC:X818aob</a> - Saint-Medard Lavoir 07:40</li><li><a href="stop-TEC_X818anb.html">TEC:X818anb</a> - Saint-Medard Grand-Rue 65 07:41</li><li><a href="stop-TEC_X820amb.html">TEC:X820amb</a> - Straimont Gare - Rte de Martilly 07:42</li><li><a href="stop-TEC_X820acb.html">TEC:X820acb</a> - Martilly Rue de la Pierrée 07:46</li><li><a href="stop-TEC_X820aba.html">TEC:X820aba</a> - Martilly Centre 07:46</li><li><a href="stop-TEC_X820aib.html">TEC:X820aib</a> - Straimont Rue du Château d'Eau 07:48</li><li><a href="stop-TEC_X820ahb.html">TEC:X820ahb</a> - Straimont Rue Marie-Thérèse 07:49</li><li><a href="stop-TEC_X820agc.html">TEC:X820agc</a> - Straimont Foulouze 07:52</li><li><a href="stop-TEC_X821aaa.html">TEC:X821aaa</a> - Les Epioux 07:59</li><li><a href="stop-TEC_X641atb.html">TEC:X641atb</a> - Lacuisine Rue de la Forêt 08:03</li><li><a href="stop-TEC_X641aub.html">TEC:X641aub</a> - Lacuisine Le Daguet 08:03</li><li><a href="stop-TEC_X641avb.html">TEC:X641avb</a> - Lacuisine Eglise 08:04</li><li><a href="stop-TEC_X641awb.html">TEC:X641awb</a> - Lacuisine Ecole 08:05</li><li><a href="stop-TEC_X641axb.html">TEC:X641axb</a> - Lacuisine Rue des Isles 08:05</li><li><a href="stop-TEC_X641amb.html">TEC:X641amb</a> - Florenville Gare 08:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3044.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

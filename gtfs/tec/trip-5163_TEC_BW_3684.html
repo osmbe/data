@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Hannut - Jodoigne - 5163:TEC:BW:3684</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hannut - Jodoigne - 5163:TEC:BW:3684</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bjodeco3.html">TEC:Bjodeco3</a> - Jodoigne Ecole Normale 16:05</li><li><a href="stop-TEC_Bjodrdp2.html">TEC:Bjodrdp2</a> - Jodoigne Rue de Piétrain 16:06</li><li><a href="stop-TEC_Bjodgar1.html">TEC:Bjodgar1</a> - Jodoigne Gare d'Autobus 16:07</li><li><a href="stop-TEC_Bjodath1.html">TEC:Bjodath1</a> - Jodoigne Athénée Royal 16:08</li><li><a href="stop-TEC_Bjodint2.html">TEC:Bjodint2</a> - Jodoigne Internat 16:09</li><li><a href="stop-TEC_Bjodcoi2.html">TEC:Bjodcoi2</a> - Jodoigne Chant des Oiseaux 16:10</li><li><a href="stop-TEC_Bjodfco1.html">TEC:Bjodfco1</a> - Jodoigne Ferme de la Comté 16:12</li><li><a href="stop-TEC_Bmrlsau1.html">TEC:Bmrlsau1</a> - Marilles Saussoy 16:13</li><li><a href="stop-TEC_Benimar1.html">TEC:Benimar1</a> - Enines Route de Marilles 16:14</li><li><a href="stop-TEC_Bjauvch1.html">TEC:Bjauvch1</a> - Jauche Vert Chasseur 16:20</li><li><a href="stop-TEC_Bjaugar1.html">TEC:Bjaugar1</a> - Jauche Gare 16:21</li><li><a href="stop-TEC_Bjaupro1.html">TEC:Bjaupro1</a> - Jauche Place de la Roulette 16:22</li><li><a href="stop-TEC_Bjaurgo1.html">TEC:Bjaurgo1</a> - Jauche Avenue R. Gossia 16:23</li><li><a href="stop-TEC_Bjanegl4.html">TEC:Bjanegl4</a> - Jandrain Eglise 16:25</li><li><a href="stop-TEC_Bjaneco2.html">TEC:Bjaneco2</a> - Jandrain Ecoles 16:26</li><li><a href="stop-TEC_Bjanfer2.html">TEC:Bjanfer2</a> - Jandrain Ferme 16:27</li><li><a href="stop-TEC_Bwanorp2.html">TEC:Bwanorp2</a> - Wansin Route d'Orp 16:28</li><li><a href="stop-TEC_Bwancal2.html">TEC:Bwancal2</a> - Wansin Calvaire 16:29</li><li><a href="stop-TEC_Bthspha2.html">TEC:Bthspha2</a> - Thisnes Rue Petit Hallet 16:30</li><li><a href="stop-TEC_Bthsset2.html">TEC:Bthsset2</a> - Thisnes Saint-Etienne 16:31</li><li><a href="stop-TEC_Bthsvil2.html">TEC:Bthsvil2</a> - Thisnes Village 16:31</li><li><a href="stop-TEC_Bthscbl2.html">TEC:Bthscbl2</a> - Thisnes Rue de la Croix Blanche 16:32</li><li><a href="stop-TEC_Bhanwav2.html">TEC:Bhanwav2</a> - Hannut Chaussée de Wavre 50 16:34</li><li><a href="stop-TEC_Bhancre2.html">TEC:Bhancre2</a> - Hannut Route de Crehen 16:35</li><li><a href="stop-TEC_LHNecpr4.html">TEC:LHNecpr4</a> - Hannut Ecole Primaire 16:36</li><li><a href="stop-TEC_LHNhall2.html">TEC:LHNhall2</a> - Hannut Place H. Hallet 16:37</li><li><a href="stop-TEC_LHNwaut2.html">TEC:LHNwaut2</a> - Hannut Rue J. Wauters 16:38</li><li><a href="stop-TEC_LHNgare2.html">TEC:LHNgare2</a> - Hannut Gare 16:38</li><li><a href="stop-TEC_LHNgend2.html">TEC:LHNgend2</a> - Hannut Gendarmerie 16:39</li><li><a href="stop-TEC_Bhancom2.html">TEC:Bhancom2</a> - Hannut Centre Commercial 16:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./463.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

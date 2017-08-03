@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Aywaille - Banneux - Theux - Spa - 5163:TEC:LV:26021</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aywaille - Banneux - Theux - Spa - 5163:TEC:LV:26021</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LSpfond2.html">TEC:LSpfond2</a> - Sprimont Fond Leval 07:50</li><li><a href="stop-TEC_LSpogne2.html">TEC:LSpogne2</a> - Sprimont Chemin d'Ogné 07:52</li><li><a href="stop-TEC_LHYec--2.html">TEC:LHYec--2</a> - Hornay Ecole 07:53</li><li><a href="stop-TEC_LHYlinc2.html">TEC:LHYlinc2</a> - Hornay Route de Lincé 07:53</li><li><a href="stop-TEC_LHYnoid1.html">TEC:LHYnoid1</a> - Hornay Chemin de Noidre 07:54</li><li><a href="stop-TEC_LHYdogn1.html">TEC:LHYdogn1</a> - Hornay Maison Dogne 07:54</li><li><a href="stop-TEC_LSEquar1.html">TEC:LSEquar1</a> - Sendrogne Nouveau quartier 07:55</li><li><a href="stop-TEC_LSEvill1.html">TEC:LSEvill1</a> - Sendrogne Haut du Village 07:56</li><li><a href="stop-TEC_LSEcent1.html">TEC:LSEcent1</a> - Sendrogne Centre 07:57</li><li><a href="stop-TEC_LSEec--1.html">TEC:LSEec--1</a> - Sendrogne Ecole 07:58</li><li><a href="stop-TEC_LBlplac1.html">TEC:LBlplac1</a> - Blindef Place 07:58</li><li><a href="stop-TEC_LBlchin1.html">TEC:LBlchin1</a> - Blindef Rue de la China 63 07:59</li><li><a href="stop-TEC_LBlhaut1.html">TEC:LBlhaut1</a> - Blindef Haut 08:00</li><li><a href="stop-TEC_LLUpier1.html">TEC:LLUpier1</a> - Louveigne Rue sur Pierry 08:00</li><li><a href="stop-TEC_LLUreut1.html">TEC:LLUreut1</a> - Louveigne Maison Reuter 08:01</li><li><a href="stop-TEC_LLUtill1.html">TEC:LLUtill1</a> - Louveigne Tilleul 08:02</li><li><a href="stop-TEC_LLUvent5.html">TEC:LLUvent5</a> - Louveigne Plein Vent 08:03</li><li><a href="stop-TEC_LLUalou1.html">TEC:LLUalou1</a> - Louveigne Rue des Alouettes 08:05</li><li><a href="stop-TEC_LBahome1.html">TEC:LBahome1</a> - Banneux Home 08:05</li><li><a href="stop-TEC_LBalacr1.html">TEC:LBalacr1</a> - Banneux La Croix 08:06</li><li><a href="stop-TEC_LBamate1.html">TEC:LBamate1</a> - Banneux Mater Deï 08:06</li><li><a href="stop-TEC_LBabeco3.html">TEC:LBabeco3</a> - Banneux Garage Beco 08:06</li><li><a href="stop-TEC_LBapeup1.html">TEC:LBapeup1</a> - Banneux Camping des Peupliers 08:08</li><li><a href="stop-TEC_LBahaut1.html">TEC:LBahaut1</a> - Banneux Route de Hautregard 08:09</li><li><a href="stop-TEC_LTHmont1.html">TEC:LTHmont1</a> - Theux Mont 08:13</li><li><a href="stop-TEC_LTHcime1.html">TEC:LTHcime1</a> - Theux Cimetière 08:17</li><li><a href="stop-TEC_LTHjevo1.html">TEC:LTHjevo1</a> - Theux Route de Jevoumont 08:20</li><li><a href="stop-TEC_LTHbelv1.html">TEC:LTHbelv1</a> - Theux Belvédère 08:21</li><li><a href="stop-TEC_LTHroch1.html">TEC:LTHroch1</a> - Theux St-Roch 08:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5313.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Hannut - Tirlemont - 5163:TEC:BW:520</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hannut - Tirlemont - 5163:TEC:BW:520</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Btiegar1.html">TEC:Btiegar1</a> - Tienen Station 18:02</li><li><a href="stop-TEC_Btieast1.html">TEC:Btieast1</a> - Tienen 4de Lansierslaan 18:03</li><li><a href="stop-TEC_Btiegma1.html">TEC:Btiegma1</a> - Tienen Grote Markt 18:04</li><li><a href="stop-TEC_Btiegoo2.html">TEC:Btiegoo2</a> - Tienen Goossensvest 18:05</li><li><a href="stop-TEC_Bbosdra2.html">TEC:Bbosdra2</a> - Bost Dragonder 18:08</li><li><a href="stop-TEC_Bbosgar2.html">TEC:Bbosgar2</a> - Bost Station 18:09</li><li><a href="stop-TEC_Bboseco2.html">TEC:Bboseco2</a> - Bost School 18:10</li><li><a href="stop-TEC_Bgoekaz2.html">TEC:Bgoekaz2</a> - Goetsenhoven Kazernen 18:11</li><li><a href="stop-TEC_Bgoevli2.html">TEC:Bgoevli2</a> - Goetsenhoven Vliegplein 18:12</li><li><a href="stop-TEC_Bgoestu2.html">TEC:Bgoestu2</a> - Goetsenhoven Stukens 18:13</li><li><a href="stop-TEC_Bgoegma2.html">TEC:Bgoegma2</a> - Goetsenhoven Grote Markt 18:13</li><li><a href="stop-TEC_Bgoesch3.html">TEC:Bgoesch3</a> - Goetsenhoven Scholen 18:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./494.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

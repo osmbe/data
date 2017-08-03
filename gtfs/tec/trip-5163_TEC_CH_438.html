@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CITY DOCHERIE-CHARLEROI - 5163:TEC:CH:438</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CITY DOCHERIE-CHARLEROI - 5163:TEC:CH:438</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cchba03.html">TEC:Cchba03</a> - Charleroi Beaux-Arts Quai 03 13:45</li><li><a href="stop-TEC_Cchoues2.html">TEC:Cchoues2</a> - Charleroi Ouest 13:46</li><li><a href="stop-TEC_Cchviad2.html">TEC:Cchviad2</a> - Charleroi Viaduc 13:47</li><li><a href="stop-TEC_Cdapige2.html">TEC:Cdapige2</a> - Dampremy Piges (M) 13:48</li><li><a href="stop-TEC_Cdacolu2.html">TEC:Cdacolu2</a> - Dampremy Colruyt 13:49</li><li><a href="stop-TEC_Cdadest2.html">TEC:Cdadest2</a> - Dampremy Rue Jules Destrée 13:50</li><li><a href="stop-TEC_Cdamest2.html">TEC:Cdamest2</a> - Dampremy Mestdagh 13:51</li><li><a href="stop-TEC_Cdamare2.html">TEC:Cdamare2</a> - Dampremy Rue Maret 13:52</li><li><a href="stop-TEC_Clolidl2.html">TEC:Clolidl2</a> - Lodelinsart Lidl 13:54</li><li><a href="stop-TEC_Clooues3.html">TEC:Clooues3</a> - Lodelinsart Ouest 13:55</li><li><a href="stop-TEC_Cjucouc2.html">TEC:Cjucouc2</a> - Jumet Rue du Coucou 13:57</li><li><a href="stop-TEC_Cjudest4.html">TEC:Cjudest4</a> - Jumet Rue Destrée 13:57</li><li><a href="stop-TEC_Cjumest1.html">TEC:Cjumest1</a> - Jumet Rue Mestdagh 13:58</li><li><a href="stop-TEC_Cjuloos2.html">TEC:Cjuloos2</a> - Jumet Rue Loos 13:59</li><li><a href="stop-TEC_Cjuplco2.html">TEC:Cjuplco2</a> - Jumet Place de la Coupe 14:00</li><li><a href="stop-TEC_Cjubien2.html">TEC:Cjubien2</a> - Jumet Rue de la Bienfaisance 14:01</li><li><a href="stop-TEC_Cjugohi1.html">TEC:Cjugohi1</a> - Jumet Gohissart 14:02</li><li><a href="stop-TEC_Cjumarc1.html">TEC:Cjumarc1</a> - Jumet Rue de Marchienne 14:03</li><li><a href="stop-TEC_Cjucpui1.html">TEC:Cjucpui1</a> - Jumet Cour Puissant 14:03</li><li><a href="stop-TEC_Cmaacac1.html">TEC:Cmaacac1</a> - Marchienne-Au-Pont Rue des Acacias 14:04</li><li><a href="stop-TEC_Cmapeet1.html">TEC:Cmapeet1</a> - Marchienne-Au-Pont Rue Peetermans 14:05</li><li><a href="stop-TEC_Cmarroy1.html">TEC:Cmarroy1</a> - Marchienne-Au-Pont Rue Royer 14:05</li><li><a href="stop-TEC_Cmaegli1.html">TEC:Cmaegli1</a> - Marchienne-Au-Pont Eglise 14:06</li><li><a href="stop-TEC_Cmastch4.html">TEC:Cmastch4</a> - Marchienne-Au-Pont Puits-St-Charles 14:07</li><li><a href="stop-TEC_Cmachau1.html">TEC:Cmachau1</a> - Marchienne-Au-Pont Rue Veine Chauwe 14:09</li><li><a href="stop-TEC_Cmastni1.html">TEC:Cmastni1</a> - Marchienne-Au-Pont Terril St-Nicolas 14:10</li><li><a href="stop-TEC_Cmaegal1.html">TEC:Cmaegal1</a> - Marchienne-Au-Pont Rue de l'Egalité 14:11</li><li><a href="stop-TEC_Cmaplas3.html">TEC:Cmaplas3</a> - Marchienne-Au-Pont Place Astrid 14:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./824.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

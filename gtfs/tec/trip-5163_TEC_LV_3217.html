@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Lambert - Rocourt - Liers - Slins - 5163:TEC:LV:3217</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Lambert - Rocourt - Liers - Slins - 5163:TEC:LV:3217</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Llianix2.html">TEC:Llianix2</a> - Liers Rue d'Anixhe 21:06</li><li><a href="stop-TEC_Lligare2.html">TEC:Lligare2</a> - Liers Gare 21:07</li><li><a href="stop-TEC_Llieg--2.html">TEC:Llieg--2</a> - Liers Eglise 21:08</li><li><a href="stop-TEC_Lvochev2.html">TEC:Lvochev2</a> - Voroux-Lez-Liers Cheval 21:08</li><li><a href="stop-TEC_Lvoplac2.html">TEC:Lvoplac2</a> - Voroux-Lez-Liers Place 21:09</li><li><a href="stop-TEC_Lvoec--2.html">TEC:Lvoec--2</a> - Voroux-Lez-Liers Ecole 21:10</li><li><a href="stop-TEC_Lrcvinc2.html">TEC:Lrcvinc2</a> - Rocourt Clinique St-Vincent 21:10</li><li><a href="stop-TEC_Lrcprin6.html">TEC:Lrcprin6</a> - Rocourt Rue Principale 21:11</li><li><a href="stop-TEC_Lrcarse2.html">TEC:Lrcarse2</a> - Rocourt Arsenal 21:12</li><li><a href="stop-TEC_Lrcastr2.html">TEC:Lrcastr2</a> - Rocourt Place Reine Astrid 21:13</li><li><a href="stop-TEC_Lrclant2.html">TEC:Lrclant2</a> - Rocourt Rue de Lantin 21:14</li><li><a href="stop-TEC_Lrchype2.html">TEC:Lrchype2</a> - Rocourt Hypermarché 21:15</li><li><a href="stop-TEC_Lrctec-2.html">TEC:Lrctec-2</a> - Rocourt Dépôt TEC 21:16</li><li><a href="stop-TEC_Lrcvill2.html">TEC:Lrcvill2</a> - Rocourt Rue du Village 21:17</li><li><a href="stop-TEC_Llgverg2.html">TEC:Llgverg2</a> - Liege Rue des 14 Verges 21:18</li><li><a href="stop-TEC_Llgbois2.html">TEC:Llgbois2</a> - Liege Rue Jambe de Bois 21:19</li><li><a href="stop-TEC_Llgwild8.html">TEC:Llgwild8</a> - Liege Place J. de Wilde 21:20</li><li><a href="stop-TEC_Llglimb2.html">TEC:Llglimb2</a> - Liege Rue du Limbourg 21:21</li><li><a href="stop-TEC_Llghugo2.html">TEC:Llghugo2</a> - Liege Avenue V. Hugo 21:21</li><li><a href="stop-TEC_Llglefe2.html">TEC:Llglefe2</a> - Liege Lefer 21:22</li><li><a href="stop-TEC_Llgpire2.html">TEC:Llgpire2</a> - Liege Rue Fond Pirette 21:23</li><li><a href="stop-TEC_Llgcamp2.html">TEC:Llgcamp2</a> - Liege Rue de Campine 154 21:24</li><li><a href="stop-TEC_Llgbatt2.html">TEC:Llgbatt2</a> - Liege Batterie 21:25</li><li><a href="stop-TEC_Llghoch4.html">TEC:Llghoch4</a> - Liege Hocheporte 21:26</li><li><a href="stop-TEC_Llgcadr4.html">TEC:Llgcadr4</a> - Liege Cadran 21:26</li><li><a href="stop-TEC_LlgLAMB7.html">TEC:LlgLAMB7</a> - Liege Place St-Lambert 21:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4361.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

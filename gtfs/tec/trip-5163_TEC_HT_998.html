@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tournai - Gaurain - Bonsecours - 5163:TEC:HT:998</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tournai - Gaurain - Bonsecours - 5163:TEC:HT:998</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4ty305d.html">TEC:H4ty305d</a> - Tournai SNCB 12:21</li><li><a href="stop-TEC_H4ty347b.html">TEC:H4ty347b</a> - Tournai Rue Royale 12:24</li><li><a href="stop-TEC_H4ty351a.html">TEC:H4ty351a</a> - Tournai Saint-Brice 12:25</li><li><a href="stop-TEC_H4ty291c.html">TEC:H4ty291c</a> - Tournai Dôme 12:26</li><li><a href="stop-TEC_H4ty310a.html">TEC:H4ty310a</a> - Tournai Hospice 12:27</li><li><a href="stop-TEC_H4ty324a.html">TEC:H4ty324a</a> - Tournai Prison 12:29</li><li><a href="stop-TEC_H4ty293a.html">TEC:H4ty293a</a> - Tournai Dorcas 12:30</li><li><a href="stop-TEC_H4ty354a.html">TEC:H4ty354a</a> - Tournai Bastions Quai 1 12:31</li><li><a href="stop-TEC_H4ty314d.html">TEC:H4ty314d</a> - Tournai Marvis 12:32</li><li><a href="stop-TEC_H4ty280a.html">TEC:H4ty280a</a> - Tournai Chaussée de Bruxelles 12:33</li><li><a href="stop-TEC_H4ty278a.html">TEC:H4ty278a</a> - Tournai Aqua-Tournai 12:36</li><li><a href="stop-TEC_H4ty299f.html">TEC:H4ty299f</a> - Tournai Rue de l'Orient 12:36</li><li><a href="stop-TEC_H4ty326b.html">TEC:H4ty326b</a> - Tournai Red Star 12:37</li><li><a href="stop-TEC_H4ty311b.html">TEC:H4ty311b</a> - Tournai L' Orient 12:39</li><li><a href="stop-TEC_H4ga154b.html">TEC:H4ga154b</a> - Gaurain Crampon 12:40</li><li><a href="stop-TEC_H4ga163a.html">TEC:H4ga163a</a> - Gaurain Providence 12:41</li><li><a href="stop-TEC_H4ga150a.html">TEC:H4ga150a</a> - Gaurain Café Ermitage 12:41</li><li><a href="stop-TEC_H4ga166a.html">TEC:H4ga166a</a> - Gaurain Tonton 12:41</li><li><a href="stop-TEC_H4ga153a.html">TEC:H4ga153a</a> - Gaurain Coiffeur 12:42</li><li><a href="stop-TEC_H4ga170a.html">TEC:H4ga170a</a> - Gaurain Ramecroix Eglise 12:43</li><li><a href="stop-TEC_H4ga169a.html">TEC:H4ga169a</a> - Gaurain R.U.S.T.A. 12:44</li><li><a href="stop-TEC_H4ga168a.html">TEC:H4ga168a</a> - Gaurain Les Wiots 12:45</li><li><a href="stop-TEC_H4ga167a.html">TEC:H4ga167a</a> - Gaurain La Fontaine 12:45</li><li><a href="stop-TEC_H4ga161a.html">TEC:H4ga161a</a> - Gaurain Place 12:46</li><li><a href="stop-TEC_H4ga165b.html">TEC:H4ga165b</a> - Gaurain Serrurier 12:47</li><li><a href="stop-TEC_H4ga171a.html">TEC:H4ga171a</a> - Gaurain Route Industrielle 12:47</li><li><a href="stop-TEC_H4ga148b.html">TEC:H4ga148b</a> - Gaurain Brasserie 12:48</li><li><a href="stop-TEC_H4ga157a.html">TEC:H4ga157a</a> - Gaurain Gendarmerie 12:49</li><li><a href="stop-TEC_H4ga414a.html">TEC:H4ga414a</a> - Gaurain La Baraka 12:50</li><li><a href="stop-TEC_H4ga151a.html">TEC:H4ga151a</a> - Gaurain Chaussée de Bruxelles 12:51</li><li><a href="stop-TEC_H4ga156a.html">TEC:H4ga156a</a> - Gaurain Ferme Graux 12:51</li><li><a href="stop-TEC_H4ga158a.html">TEC:H4ga158a</a> - Gaurain Hameau 12:52</li><li><a href="stop-TEC_H4ga160a.html">TEC:H4ga160a</a> - Gaurain Marais de Wirie 12:53</li><li><a href="stop-TEC_H4ga148d.html">TEC:H4ga148d</a> - Gaurain Brasserie 12:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1503.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

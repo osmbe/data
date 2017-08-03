@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Trois-Ponts - Waimes - Büllingen - 5163:TEC:LV:44981</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Trois-Ponts - Waimes - Büllingen - 5163:TEC:LV:44981</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LWagare_.html">TEC:LWagare*</a> - Waimes Gare 15:00</li><li><a href="stop-TEC_LWamass1.html">TEC:LWamass1</a> - Waimes Garage Masson 15:02</li><li><a href="stop-TEC_LFyec--1.html">TEC:LFyec--1</a> - Faymonville Ecole 15:03</li><li><a href="stop-TEC_LFypont1.html">TEC:LFypont1</a> - Faymonville Pont 15:03</li><li><a href="stop-TEC_LFyWarc1.html">TEC:LFyWarc1</a> - Faymonville Rue de la Warchenne 15:03</li><li><a href="stop-TEC_LFyanto1.html">TEC:LFyanto1</a> - Faymonville Antönchen 15:05</li><li><a href="stop-TEC_LFypfei1.html">TEC:LFypfei1</a> - Faymonville Maison Pfeiffer 15:06</li><li><a href="stop-TEC_LwYkreu1.html">TEC:LwYkreu1</a> - Weywertz Kreuzung 15:08</li><li><a href="stop-TEC_LwYboui1.html">TEC:LwYboui1</a> - Weywertz Haus Bouillon 15:09</li><li><a href="stop-TEC_LwYcafe1.html">TEC:LwYcafe1</a> - Weywertz Cafe Zur Alten Linde 15:09</li><li><a href="stop-TEC_LwYkirc2.html">TEC:LwYkirc2</a> - Weywertz Kirche 15:10</li><li><a href="stop-TEC_LwYcafe2.html">TEC:LwYcafe2</a> - Weywertz Cafe Zur Alten Linde 15:11</li><li><a href="stop-TEC_LwYboui2.html">TEC:LwYboui2</a> - Weywertz Haus Bouillon 15:12</li><li><a href="stop-TEC_LwYkreu1.html">TEC:LwYkreu1</a> - Weywertz Kreuzung 15:13</li><li><a href="stop-TEC_LbTgeme1.html">TEC:LbTgeme1</a> - Butgenbach Gemeindehaus 15:14</li><li><a href="stop-TEC_LbTaral1.html">TEC:LbTaral1</a> - Butgenbach Aral Tankstelle 15:16</li><li><a href="stop-TEC_LbThutt1.html">TEC:LbThutt1</a> - Butgenbach Strasse zur Hütte 15:17</li><li><a href="stop-TEC_LbTkreu1.html">TEC:LbTkreu1</a> - Butgenbach Kreuzung 15:17</li><li><a href="stop-TEC_LbThau11.html">TEC:LbThau11</a> - Butgenbach Haus 222A 15:19</li><li><a href="stop-TEC_LbTdoma1.html">TEC:LbTdoma1</a> - Butgenbach Domäne 15:20</li><li><a href="stop-TEC_LbTcarm1.html">TEC:LbTcarm1</a> - Butgenbach Karmel 15:20</li><li><a href="stop-TEC_LbTschw1.html">TEC:LbTschw1</a> - Butgenbach Schwartzenbach 15:21</li><li><a href="stop-TEC_LbTweyn1.html">TEC:LbTweyn1</a> - Butgenbach Haus Weynand 15:22</li><li><a href="stop-TEC_LbUmalm1.html">TEC:LbUmalm1</a> - Bullingen Malmeyder Strasse 15:22</li><li><a href="stop-TEC_LbUbutg1.html">TEC:LbUbutg1</a> - Bullingen Bütgenbacher Strasse 299 15:23</li><li><a href="stop-TEC_LbUpost1.html">TEC:LbUpost1</a> - Bullingen Alte Post 15:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5390.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - SPY - ONOZ - VELAINE - 5163:TEC:NA:8415</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - SPY - ONOZ - VELAINE - 5163:TEC:NA:8415</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N532ama.html">TEC:N532ama</a> - Temploux Saussin 19:47</li><li><a href="stop-TEC_N531aaa.html">TEC:N531aaa</a> - Spy Zoning 19:48</li><li><a href="stop-TEC_N531aba.html">TEC:N531aba</a> - Spy Rue du Château 19:49</li><li><a href="stop-TEC_N531ara.html">TEC:N531ara</a> - Spy Rue de Floreffe 19:50</li><li><a href="stop-TEC_N531aia.html">TEC:N531aia</a> - Spy Vieille place 19:51</li><li><a href="stop-TEC_N531aia.html">TEC:N531aia</a> - Spy Vieille place 19:51</li><li><a href="stop-TEC_N531acb.html">TEC:N531acb</a> - Spy Rue Bas de la place 19:52</li><li><a href="stop-TEC_N531aeb.html">TEC:N531aeb</a> - Spy Rue de Namur 19:53</li><li><a href="stop-TEC_N531adb.html">TEC:N531adb</a> - Spy Rue des Pirettes 19:54</li><li><a href="stop-TEC_N531amb.html">TEC:N531amb</a> - Spy Rue Sauvenière 19:55</li><li><a href="stop-TEC_N531alb.html">TEC:N531alb</a> - Spy Rue de Soye 19:55</li><li><a href="stop-TEC_N531aub.html">TEC:N531aub</a> - Spy Rue des Hirondelles 19:56</li><li><a href="stop-TEC_N532abb.html">TEC:N532abb</a> - Temploux Ferme Goffaux 19:57</li><li><a href="stop-TEC_N532aab.html">TEC:N532aab</a> - Temploux Cimetière 19:58</li><li><a href="stop-TEC_N532aeb.html">TEC:N532aeb</a> - Temploux Village 19:59</li><li><a href="stop-TEC_N532adb.html">TEC:N532adb</a> - Temploux Delchevalerie 20:01</li><li><a href="stop-TEC_N533aqb.html">TEC:N533aqb</a> - Suarlee Chemin de Moustier 20:02</li><li><a href="stop-TEC_N533amb.html">TEC:N533amb</a> - Suarlee ITCAA 20:02</li><li><a href="stop-TEC_N533alb.html">TEC:N533alb</a> - Suarlee Marronnier 20:02</li><li><a href="stop-TEC_N501mxb.html">TEC:N501mxb</a> - Flawinne Superconfex 20:03</li><li><a href="stop-TEC_N501myb.html">TEC:N501myb</a> - Flawinne Jaumaux 20:04</li><li><a href="stop-TEC_N501mub.html">TEC:N501mub</a> - Flawinne Les lauriers 20:04</li><li><a href="stop-TEC_N501dcb.html">TEC:N501dcb</a> - Flawinne La drève 20:05</li><li><a href="stop-TEC_N501awb.html">TEC:N501awb</a> - Belgrade Avenue J. Pochet 20:05</li><li><a href="stop-TEC_N501bab.html">TEC:N501bab</a> - Belgrade Chemin de la plaine 20:06</li><li><a href="stop-TEC_N501beb.html">TEC:N501beb</a> - Belgrade Avenue Abras 20:06</li><li><a href="stop-TEC_N501anz.html">TEC:N501anz</a> - Belgrade Rue des Renoncules 20:07</li><li><a href="stop-TEC_N501bfz.html">TEC:N501bfz</a> - Belgrade Rue des Champs 20:08</li><li><a href="stop-TEC_N501hsz.html">TEC:N501hsz</a> - Saint-Servais Cimetière de Namur 20:09</li><li><a href="stop-TEC_N501iez.html">TEC:N501iez</a> - Saint-Servais Pont des Français 20:11</li><li><a href="stop-TEC_N501ihz.html">TEC:N501ihz</a> - Saint-Servais Rue Hicguet 20:12</li><li><a href="stop-TEC_N501icz.html">TEC:N501icz</a> - Saint-Servais Polyclinique 20:13</li><li><a href="stop-TEC_N501hxz.html">TEC:N501hxz</a> - Saint-Servais Collège St-Servais 20:14</li><li><a href="stop-TEC_N501fuz.html">TEC:N501fuz</a> - Namur Avenue des croix du feu 20:15</li><li><a href="stop-TEC_N501gpz.html">TEC:N501gpz</a> - Namur Omalius 20:16</li><li><a href="stop-TEC_N501grf.html">TEC:N501grf</a> - Namur Pl. de la Station - Coupole 20:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6287.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

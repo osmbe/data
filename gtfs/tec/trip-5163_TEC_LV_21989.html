@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Jemeppe - Verlaine - 5163:TEC:LV:21989</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jemeppe - Verlaine - 5163:TEC:LV:21989</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LjeGRPME.html">TEC:LjeGRPME</a> - Jemeppe gare routière 11:11</li><li><a href="stop-TEC_Ljelamb2.html">TEC:Ljelamb2</a> - Jemeppe Lambotte 11:11</li><li><a href="stop-TEC_Ljeegli3.html">TEC:Ljeegli3</a> - Jemeppe Eglise 11:13</li><li><a href="stop-TEC_Ljelexh2.html">TEC:Ljelexh2</a> - Jemeppe Rue A. de Lexhy 11:14</li><li><a href="stop-TEC_Ljegare2.html">TEC:Ljegare2</a> - Jemeppe Gare S.N.C.B. 11:15</li><li><a href="stop-TEC_Ljetout2.html">TEC:Ljetout2</a> - Jemeppe Rue Toute-Voie 11:16</li><li><a href="stop-TEC_Ljerouy2.html">TEC:Ljerouy2</a> - Jemeppe Rue Rouyer 11:17</li><li><a href="stop-TEC_Ljemake2.html">TEC:Ljemake2</a> - Jemeppe Rue des Makets 11:19</li><li><a href="stop-TEC_Lghgend2.html">TEC:Lghgend2</a> - Grace-Hollogne Gendarmerie 11:19</li><li><a href="stop-TEC_Lghgoll2.html">TEC:Lghgoll2</a> - Grace-Hollogne Rue Golet 11:21</li><li><a href="stop-TEC_Lghprea3.html">TEC:Lghprea3</a> - Grace-Hollogne Préalles 11:22</li><li><a href="stop-TEC_Lghneuv1.html">TEC:Lghneuv1</a> - Grace-Hollogne Rue Neuve 11:23</li><li><a href="stop-TEC_Lghfors1.html">TEC:Lghfors1</a> - Grace-Hollogne Rue Forsvache 11:23</li><li><a href="stop-TEC_Lmlbaro1.html">TEC:Lmlbaro1</a> - Mons-Lez-Liege Rue Baron 11:24</li><li><a href="stop-TEC_Lmldama1.html">TEC:Lmldama1</a> - Mons-Lez-Liege Rue R. Damas 11:25</li><li><a href="stop-TEC_Lmlec--1.html">TEC:Lmlec--1</a> - Mons-Lez-Liege Place V. Mottard 11:26</li><li><a href="stop-TEC_Lmlhaut2.html">TEC:Lmlhaut2</a> - Mons-Lez-Liege Rue Haute 11:26</li><li><a href="stop-TEC_Lmlmaqu1.html">TEC:Lmlmaqu1</a> - Mons-Lez-Liege Flot Maquoy 11:27</li><li><a href="stop-TEC_Lmlcher1.html">TEC:Lmlcher1</a> - Mons-Lez-Liege Rue Chéry 11:27</li><li><a href="stop-TEC_Lmlmich1.html">TEC:Lmlmich1</a> - Mons-Lez-Liege Arbre St-Michel 11:28</li><li><a href="stop-TEC_Lmlrosa1.html">TEC:Lmlrosa1</a> - Mons-Lez-Liege Rosart 11:30</li><li><a href="stop-TEC_LCaalou1.html">TEC:LCaalou1</a> - Cahottes Alouette 11:31</li><li><a href="stop-TEC_LCacoop1.html">TEC:LCacoop1</a> - Cahottes Coopérative 11:32</li><li><a href="stop-TEC_LCaresi1.html">TEC:LCaresi1</a> - Cahottes Rue de la Résistance 11:32</li><li><a href="stop-TEC_LHZpara1.html">TEC:LHZpara1</a> - Hozemont Rue du Paradis 11:33</li><li><a href="stop-TEC_LHZcime1.html">TEC:LHZcime1</a> - Hozemont Cimetière 11:34</li><li><a href="stop-TEC_LHZbren1.html">TEC:LHZbren1</a> - Hozemont Rue Brennée 11:35</li><li><a href="stop-TEC_LHZcouv1.html">TEC:LHZcouv1</a> - Hozemont Rue du Couvent 11:36</li><li><a href="stop-TEC_LHZ8mai1.html">TEC:LHZ8mai1</a> - Hozemont Rue du Huit Mai 11:37</li><li><a href="stop-TEC_LHZec--1.html">TEC:LHZec--1</a> - Hozemont Ecoles 11:37</li><li><a href="stop-TEC_LHolone1.html">TEC:LHolone1</a> - Horion Chemin Vicinal 11:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4706.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

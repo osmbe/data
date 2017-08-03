@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mons - Aulnois - 5163:TEC:HT:1972</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mons - Aulnois - 5163:TEC:HT:1972</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1ms400d.html">TEC:H1ms400d</a> - Mons SNCB 06:40</li><li><a href="stop-TEC_H1ms256a.html">TEC:H1ms256a</a> - Mons Bd Sainctelette 06:42</li><li><a href="stop-TEC_H1ms296c.html">TEC:H1ms296c</a> - Mons Place des Chasseurs 06:43</li><li><a href="stop-TEC_H1ms276a.html">TEC:H1ms276a</a> - Mons Ecole Normale 06:44</li><li><a href="stop-TEC_H1ms253a.html">TEC:H1ms253a</a> - Mons Banque 06:45</li><li><a href="stop-TEC_H1ms252d.html">TEC:H1ms252d</a> - Mons St-Pierre 06:46</li><li><a href="stop-TEC_H1ms278a.html">TEC:H1ms278a</a> - Mons Faculté 06:47</li><li><a href="stop-TEC_H1ms287a.html">TEC:H1ms287a</a> - Mons Joncquois 06:47</li><li><a href="stop-TEC_H1hn208a.html">TEC:H1hn208a</a> - Hyon Route de Mons 06:48</li><li><a href="stop-TEC_H1hn210a.html">TEC:H1hn210a</a> - Hyon Rue Houzeau 06:49</li><li><a href="stop-TEC_H1hn209a.html">TEC:H1hn209a</a> - Hyon Rue Astrid 06:49</li><li><a href="stop-TEC_H1hn203a.html">TEC:H1hn203a</a> - Hyon Chaussée de Maubeuge 06:49</li><li><a href="stop-TEC_H1hn202a.html">TEC:H1hn202a</a> - Hyon Chasse Royale 06:50</li><li><a href="stop-TEC_H1ci102a.html">TEC:H1ci102a</a> - Ciply Ancienne Gare 06:51</li><li><a href="stop-TEC_H1hn206a.html">TEC:H1hn206a</a> - Hyon Route de Bavay 06:52</li><li><a href="stop-TEC_H1fr151a.html">TEC:H1fr151a</a> - Frameries Thompson 06:54</li><li><a href="stop-TEC_H1fr117a.html">TEC:H1fr117a</a> - Frameries Dimequip 06:54</li><li><a href="stop-TEC_H1fr119a.html">TEC:H1fr119a</a> - Frameries Gardinal 06:55</li><li><a href="stop-TEC_H1fr118b.html">TEC:H1fr118b</a> - Frameries Zoning-Forem 06:55</li><li><a href="stop-TEC_H1fr112a.html">TEC:H1fr112a</a> - Frameries Cité Floréal 06:57</li><li><a href="stop-TEC_H1fr124a.html">TEC:H1fr124a</a> - Frameries Pont du Berger 06:58</li><li><a href="stop-TEC_H1fr130a.html">TEC:H1fr130a</a> - Frameries Sacré Coeur 06:59</li><li><a href="stop-TEC_H1fr107e.html">TEC:H1fr107e</a> - Frameries 4 Pavés 07:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1678.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - City-Bus CHARLEROI Ville Haute - Ville Basse - 5163:TEC:CH:17989</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: City-Bus CHARLEROI Ville Haute - Ville Basse - 5163:TEC:CH:17989</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cchvil1.html">TEC:Cchvil1</a> - Charleroi Villette 12:24</li><li><a href="stop-TEC_Cchtram2.html">TEC:Cchtram2</a> - Charleroi Place des Tramways 12:26</li><li><a href="stop-TEC_Cchdagn2.html">TEC:Cchdagn2</a> - Charleroi Rue Dagnelies 12:27</li><li><a href="stop-TEC_Cchriga2.html">TEC:Cchriga2</a> - Charleroi Rive Gauche 12:29</li><li><a href="stop-TEC_Cchprun2.html">TEC:Cchprun2</a> - Charleroi Rue Pruniau 12:30</li><li><a href="stop-TEC_Cchparc5.html">TEC:Cchparc5</a> - Charleroi Parc 12:32</li><li><a href="stop-TEC_Cchmont2.html">TEC:Cchmont2</a> - Charleroi Rue de Montigny 12:34</li><li><a href="stop-TEC_Cchpala2.html">TEC:Cchpala2</a> - Charleroi rue du Palais 12:35</li><li><a href="stop-TEC_Cchrmon4.html">TEC:Cchrmon4</a> - Charleroi Rue de la Montagne 12:35</li><li><a href="stop-TEC_Cchfran2.html">TEC:Cchfran2</a> - Charleroi Rue de France 12:36</li><li><a href="stop-TEC_Cchture2.html">TEC:Cchture2</a> - Charleroi Rue Turenne 12:37</li><li><a href="stop-TEC_Cchba2.html">TEC:Cchba2</a> - Charleroi Beaux-Arts (M) 12:38</li><li><a href="stop-TEC_Cchmonu3.html">TEC:Cchmonu3</a> - Charleroi Monument 12:39</li><li><a href="stop-TEC_Cchhopi1.html">TEC:Cchhopi1</a> - Charleroi Hôpital Civil 12:41</li><li><a href="stop-TEC_Cchhopi4.html">TEC:Cchhopi4</a> - Charleroi Hôpitaux 12:42</li><li><a href="stop-TEC_Cchwate4.html">TEC:Cchwate4</a> - Charleroi Waterloo Métro 12:43</li><li><a href="stop-TEC_Cchbaza2.html">TEC:Cchbaza2</a> - Charleroi Bazar 12:44</li><li><a href="stop-TEC_Cchccom2.html">TEC:Cchccom2</a> - Charleroi Centre Commercial (Ville 2) 12:45</li><li><a href="stop-TEC_Cchwarm2.html">TEC:Cchwarm2</a> - Charleroi Warmonceau 12:49</li><li><a href="stop-TEC_Cmtdepo2.html">TEC:Cmtdepo2</a> - Montignies-sur-Sambre Dépôt T.E.C. 12:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./811.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

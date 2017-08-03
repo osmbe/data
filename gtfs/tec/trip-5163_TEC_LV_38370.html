@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Oreye - Otrange - 5163:TEC:LV:38370</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Oreye - Otrange - 5163:TEC:LV:38370</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LORdtec_.html">TEC:LORdtec*</a> - Oreye Dépôt TEC 11:45</li><li><a href="stop-TEC_LORec--_.html">TEC:LORec--*</a> - Oreye Ecole 11:50</li><li><a href="stop-TEC_LORroma1.html">TEC:LORroma1</a> - Oreye Chaussée Romaine 11:52</li><li><a href="stop-TEC_LORherl1.html">TEC:LORherl1</a> - Oreye Clos d'Herlonvée 11:53</li><li><a href="stop-TEC_LLGramk3.html">TEC:LLGramk3</a> - Lens-sur-Geer Rue Ramkin 11:54</li><li><a href="stop-TEC_LLGec--_.html">TEC:LLGec--*</a> - Lens-sur-Geer Ecole 11:55</li><li><a href="stop-TEC_LORthie1.html">TEC:LORthie1</a> - Oreye Rue des thiers 11:56</li><li><a href="stop-TEC_LORruis1.html">TEC:LORruis1</a> - Oreye Rue du ruisseau 11:57</li><li><a href="stop-TEC_LORlieg1.html">TEC:LORlieg1</a> - Oreye Rue de Liège 11:58</li><li><a href="stop-TEC_LORmont2.html">TEC:LORmont2</a> - Oreye Thier du Mont 11:58</li><li><a href="stop-TEC_LORcomb2.html">TEC:LORcomb2</a> - Oreye Rue des Combattants 11:59</li><li><a href="stop-TEC_LOrchau2.html">TEC:LOrchau2</a> - Otrange Château 11:59</li><li><a href="stop-TEC_LOrpont2.html">TEC:LOrpont2</a> - Otrange Pont 12:00</li><li><a href="stop-TEC_LOreg--2.html">TEC:LOreg--2</a> - Otrange Eglise 12:05</li><li><a href="stop-TEC_LOrpont1.html">TEC:LOrpont1</a> - Otrange Pont 12:10</li><li><a href="stop-TEC_LOrchau1.html">TEC:LOrchau1</a> - Otrange Château 12:11</li><li><a href="stop-TEC_LORcomb1.html">TEC:LORcomb1</a> - Oreye Rue des Combattants 12:12</li><li><a href="stop-TEC_LORmont1.html">TEC:LORmont1</a> - Oreye Thier du Mont 12:13</li><li><a href="stop-TEC_LOReg--1.html">TEC:LOReg--1</a> - Oreye Eglise 12:14</li><li><a href="stop-TEC_LORvill3.html">TEC:LORvill3</a> - Oreye Chemin du Village 12:14</li><li><a href="stop-TEC_LORdtec_.html">TEC:LORdtec*</a> - Oreye Dépôt TEC 12:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4758.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

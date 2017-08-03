@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bierwart Carrefour</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Bierwart Carrefour</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-5163_TEC_NA_1298.html">5163:TEC:NA:1298</a> - 5163:TEC:NA:1298 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_1304.html">5163:TEC:NA:1304</a> - 5163:TEC:NA:1304 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_2509.html">5163:TEC:NA:2509</a> - 5163:TEC:NA:2509 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_2510.html">5163:TEC:NA:2510</a> - 5163:TEC:NA:2510 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_2512.html">5163:TEC:NA:2512</a> - 5163:TEC:NA:2512 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_2514.html">5163:TEC:NA:2514</a> - 5163:TEC:NA:2514 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_2515.html">5163:TEC:NA:2515</a> - 5163:TEC:NA:2515 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_2517.html">5163:TEC:NA:2517</a> - 5163:TEC:NA:2517 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_2519.html">5163:TEC:NA:2519</a> - 5163:TEC:NA:2519 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_2522.html">5163:TEC:NA:2522</a> - 5163:TEC:NA:2522 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_2524.html">5163:TEC:NA:2524</a> - 5163:TEC:NA:2524 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_2529.html">5163:TEC:NA:2529</a> - 5163:TEC:NA:2529 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_2531.html">5163:TEC:NA:2531</a> - 5163:TEC:NA:2531 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_2537.html">5163:TEC:NA:2537</a> - 5163:TEC:NA:2537 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_2539.html">5163:TEC:NA:2539</a> - 5163:TEC:NA:2539 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_2544.html">5163:TEC:NA:2544</a> - 5163:TEC:NA:2544 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_2546.html">5163:TEC:NA:2546</a> - 5163:TEC:NA:2546 - HUY - FORVILLE</li><li><a href="trip-5163_TEC_NA_2551.html">5163:TEC:NA:2551</a> - 5163:TEC:NA:2551 - HUY - FORVILLE</li><li><a href="trip-5163_TEC_NA_2552.html">5163:TEC:NA:2552</a> - 5163:TEC:NA:2552 - HUY - FORVILLE</li><li><a href="trip-5163_TEC_NA_2553.html">5163:TEC:NA:2553</a> - 5163:TEC:NA:2553 - HUY - FORVILLE</li><li><a href="trip-5163_TEC_NA_2554.html">5163:TEC:NA:2554</a> - 5163:TEC:NA:2554 - HUY - FORVILLE</li><li><a href="trip-5163_TEC_NA_3174.html">5163:TEC:NA:3174</a> - 5163:TEC:NA:3174 - HUY - FORVILLE</li><li><a href="trip-5163_TEC_NA_3176.html">5163:TEC:NA:3176</a> - 5163:TEC:NA:3176 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_3178.html">5163:TEC:NA:3178</a> - 5163:TEC:NA:3178 - HUY - FORVILLE</li><li><a href="trip-5163_TEC_NA_3180.html">5163:TEC:NA:3180</a> - 5163:TEC:NA:3180 - HUY - FORVILLE</li><li><a href="trip-5163_TEC_NA_3182.html">5163:TEC:NA:3182</a> - 5163:TEC:NA:3182 - HUY - FORVILLE</li><li><a href="trip-5163_TEC_NA_3901.html">5163:TEC:NA:3901</a> - 5163:TEC:NA:3901 - ANDENNE - FORVILLE</li><li><a href="trip-5163_TEC_NA_3903.html">5163:TEC:NA:3903</a> - 5163:TEC:NA:3903 - ANDENNE - FORVILLE</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.555763, 5.03514], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.555763, 5.03514]).addTo(map);
+    </script>
+</body>
+
+</html>

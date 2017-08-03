@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - JAMBES / ERPENT (Renforcement) - 5163:TEC:NA:11084</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - JAMBES / ERPENT (Renforcement) - 5163:TEC:NA:11084</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501cpa.html">TEC:N501cpa</a> - Erpent Collège N.-D. de la Paix 12:05</li><li><a href="stop-TEC_N501kkd.html">TEC:N501kkd</a> - Jambes Rue du Vieux Bon Dieu 12:06</li><li><a href="stop-TEC_N501ema.html">TEC:N501ema</a> - Jambes Clos des Sarts 12:06</li><li><a href="stop-TEC_N501ega.html">TEC:N501ega</a> - Jambes Avenue du Luxembourg 12:10</li><li><a href="stop-TEC_N501dva.html">TEC:N501dva</a> - Jambes Assurances du Crédit 12:11</li><li><a href="stop-TEC_N501esa.html">TEC:N501esa</a> - Jambes Place Joséphine-Charlotte 12:12</li><li><a href="stop-TEC_N501fva.html">TEC:N501fva</a> - Namur Boulevard I. Brunell 12:13</li><li><a href="stop-TEC_N501hia.html">TEC:N501hia</a> - Namur Rue de la Tour 12:14</li><li><a href="stop-TEC_N501mqa.html">TEC:N501mqa</a> - Namur Rue Emile Cuvelier 12:15</li><li><a href="stop-TEC_N501mha.html">TEC:N501mha</a> - Namur Rue de Bruxelles 12:17</li><li><a href="stop-TEC_N501grd.html">TEC:N501grd</a> - Namur Pl. de la Station - Quai D 12:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6163.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

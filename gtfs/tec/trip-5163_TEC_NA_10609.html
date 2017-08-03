@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - DINANT - THYNES - SPONTIN - 5163:TEC:NA:10609</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DINANT - THYNES - SPONTIN - 5163:TEC:NA:10609</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N235aba.html">TEC:N235aba</a> - Spontin Centre 07:22</li><li><a href="stop-TEC_N235acb.html">TEC:N235acb</a> - Spontin Maison communale 07:22</li><li><a href="stop-TEC_N235adb.html">TEC:N235adb</a> - Spontin Rue du Ry d'Août 07:23</li><li><a href="stop-TEC_N235aeb.html">TEC:N235aeb</a> - Spontin Terre madame 07:24</li><li><a href="stop-TEC_N270aab.html">TEC:N270aab</a> - Dorinne Carrefour 07:27</li><li><a href="stop-TEC_N270abb.html">TEC:N270abb</a> - Dorinne Place communale 07:28</li><li><a href="stop-TEC_N270acb.html">TEC:N270acb</a> - Dorinne Château d'eau 07:29</li><li><a href="stop-TEC_N270adb.html">TEC:N270adb</a> - Purnode Chapelle 07:32</li><li><a href="stop-TEC_N270aea.html">TEC:N270aea</a> - Purnode Eglise 07:34</li><li><a href="stop-TEC_N270afc.html">TEC:N270afc</a> - Purnode Centre 07:34</li><li><a href="stop-TEC_N260aab.html">TEC:N260aab</a> - Awagne Centre 07:36</li><li><a href="stop-TEC_N260abb.html">TEC:N260abb</a> - Lisogne Freche Try route d'Awagne 07:38</li><li><a href="stop-TEC_N260afb.html">TEC:N260afb</a> - Loyers Haut 07:41</li><li><a href="stop-TEC_N260aca.html">TEC:N260aca</a> - Lisogne Ferme horizon 07:46</li><li><a href="stop-TEC_N260ada.html">TEC:N260ada</a> - Lisogne Eglise 07:48</li><li><a href="stop-TEC_N228aaa.html">TEC:N228aaa</a> - Thynes Eglise 07:50</li><li><a href="stop-TEC_N228abb.html">TEC:N228abb</a> - Thynes Barbion 07:51</li><li><a href="stop-TEC_N228aca.html">TEC:N228aca</a> - Thynes Chapelle 07:52</li><li><a href="stop-TEC_N232cea.html">TEC:N232cea</a> - Dinant (Lisonette) 07:54</li><li><a href="stop-TEC_N232bwb.html">TEC:N232bwb</a> - Dinant Le petit coin-coin 07:56</li><li><a href="stop-TEC_N232bvb.html">TEC:N232bvb</a> - Dinant Château del Marmol 07:58</li><li><a href="stop-TEC_N232bub.html">TEC:N232bub</a> - Leffe Fond 08:00</li><li><a href="stop-TEC_N232btb.html">TEC:N232btb</a> - Leffe La Nationale 08:01</li><li><a href="stop-TEC_N232bsb.html">TEC:N232bsb</a> - Leffe Feret 08:02</li><li><a href="stop-TEC_N232brb.html">TEC:N232brb</a> - Leffe Rue du Fond 08:03</li><li><a href="stop-TEC_N232arb.html">TEC:N232arb</a> - Leffe Place 08:04</li><li><a href="stop-TEC_N232bma.html">TEC:N232bma</a> - Dinant Boulevard Sasserath 08:07</li><li><a href="stop-TEC_N232ata.html">TEC:N232ata</a> - Dinant Collégiale 08:09</li><li><a href="stop-TEC_N232aqa.html">TEC:N232aqa</a> - Dinant Gare 08:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6001.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

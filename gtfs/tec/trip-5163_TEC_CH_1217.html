@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHARLEROI-COURCELLES-GOSSELIES-JUMET MADELEINE - 5163:TEC:CH:1217</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHARLEROI-COURCELLES-GOSSELIES-JUMET MADELEINE - 5163:TEC:CH:1217</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cchba09.html">TEC:Cchba09</a> - Charleroi Beaux-Arts Quai 09 16:56</li><li><a href="stop-TEC_Cchoues2.html">TEC:Cchoues2</a> - Charleroi Ouest 16:57</li><li><a href="stop-TEC_Cchheig2.html">TEC:Cchheig2</a> - Charleroi Rue de Heigne 16:58</li><li><a href="stop-TEC_Cdaptca4.html">TEC:Cdaptca4</a> - Dampremy Pont du Canal 16:59</li><li><a href="stop-TEC_Cdametr1.html">TEC:Cdametr1</a> - Dampremy Dampremy (M) 17:00</li><li><a href="stop-TEC_Cdamarc1.html">TEC:Cdamarc1</a> - Dampremy Rue de Marchienne 17:01</li><li><a href="stop-TEC_Cdaviol1.html">TEC:Cdaviol1</a> - Dampremy La Violette 17:02</li><li><a href="stop-TEC_Cdahtvi1.html">TEC:Cdahtvi1</a> - Dampremy Haut du Village 17:03</li><li><a href="stop-TEC_Cloravi1.html">TEC:Cloravi1</a> - Lodelinsart Ravin 17:04</li><li><a href="stop-TEC_Clooues1.html">TEC:Clooues1</a> - Lodelinsart Ouest 17:05</li><li><a href="stop-TEC_Cjupuis1.html">TEC:Cjupuis1</a> - Jumet Rue Puissant 17:07</li><li><a href="stop-TEC_Cjumarc2.html">TEC:Cjumarc2</a> - Jumet Rue de Marchienne 17:07</li><li><a href="stop-TEC_Cjugohi4.html">TEC:Cjugohi4</a> - Jumet Gohissart 17:08</li><li><a href="stop-TEC_Cjuvpla1.html">TEC:Cjuvpla1</a> - Jumet Vieille Place 17:08</li><li><a href="stop-TEC_Cromonn1.html">TEC:Cromonn1</a> - Roux Place du Monny 17:10</li><li><a href="stop-TEC_Crobass1.html">TEC:Crobass1</a> - Roux Place de la Bassée 17:11</li><li><a href="stop-TEC_Crojume1.html">TEC:Crojume1</a> - Roux Rue de Jumet 17:12</li><li><a href="stop-TEC_Croheig1.html">TEC:Croheig1</a> - Roux Rue de Heigne 17:14</li><li><a href="stop-TEC_Cropcan1.html">TEC:Cropcan1</a> - Roux S.N.C.B. 17:15</li><li><a href="stop-TEC_Croegli1.html">TEC:Croegli1</a> - Roux Eglise 17:15</li><li><a href="stop-TEC_Croplom7.html">TEC:Croplom7</a> - Roux Plomcot 17:16</li><li><a href="stop-TEC_Crofrio1.html">TEC:Crofrio1</a> - Roux Rue Jean Friot 17:17</li><li><a href="stop-TEC_Crolema3.html">TEC:Crolema3</a> - Roux Rue Général Leman 17:18</li><li><a href="stop-TEC_Crodebr1.html">TEC:Crodebr1</a> - Roux Rue L. Debrouckère 17:19</li><li><a href="stop-TEC_Crolach1.html">TEC:Crolach1</a> - Roux Cité de la Lache 17:20</li><li><a href="stop-TEC_Crowall1.html">TEC:Crowall1</a> - Roux Rue de Wallonie 17:21</li><li><a href="stop-TEC_Cronova1.html">TEC:Cronova1</a> - Roux Rue Novale 17:22</li><li><a href="stop-TEC_Crodrai1.html">TEC:Crodrai1</a> - Roux Rue Draily 17:23</li><li><a href="stop-TEC_Crowilb1.html">TEC:Crowilb1</a> - Roux Wilbeauroux 17:24</li><li><a href="stop-TEC_Ccotemp1.html">TEC:Ccotemp1</a> - Courcelles Rue du Temple 17:26</li><li><a href="stop-TEC_Ccoacar1.html">TEC:Ccoacar1</a> - Courcelles Rue Antoine Carnière 17:27</li><li><a href="stop-TEC_Ccotrie1.html">TEC:Ccotrie1</a> - Courcelles Place des Trieux 17:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./923.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Verviers - Hèvremont - Dolhain - Membach - Eupen - 5163:TEC:LV:23719</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Verviers - Hèvremont - Dolhain - Membach - Eupen - 5163:TEC:LV:23719</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lsmeg--2.html">TEC:Lsmeg--2</a> - Stembert Eglise 07:30</li><li><a href="stop-TEC_Lsmcime2.html">TEC:Lsmcime2</a> - Stembert Rue du Cimetière 07:31</li><li><a href="stop-TEC_Lsmh1802.html">TEC:Lsmh1802</a> - Stembert Route de Hèvremont 180 07:31</li><li><a href="stop-TEC_Lsmh3022.html">TEC:Lsmh3022</a> - Stembert Route de Hèvremont 302 07:32</li><li><a href="stop-TEC_LHVgoro1.html">TEC:LHVgoro1</a> - Hevremont Goronnes 07:33</li><li><a href="stop-TEC_LHVetoi1.html">TEC:LHVetoi1</a> - Hevremont Etoile 07:34</li><li><a href="stop-TEC_LHVeg--1.html">TEC:LHVeg--1</a> - Hevremont Eglise 07:35</li><li><a href="stop-TEC_LGOdelv1.html">TEC:LGOdelv1</a> - Goe Ferme Delvaux 07:36</li><li><a href="stop-TEC_LGOcana1.html">TEC:LGOcana1</a> - Goe Au canal 07:36</li><li><a href="stop-TEC_LGOhevr1.html">TEC:LGOhevr1</a> - Goe Route de Hèvremont 07:38</li><li><a href="stop-TEC_LGOmonu1.html">TEC:LGOmonu1</a> - Goe Monument 07:39</li><li><a href="stop-TEC_LGOvill1.html">TEC:LGOvill1</a> - Goe Village 07:39</li><li><a href="stop-TEC_LGOmous1.html">TEC:LGOmous1</a> - Goe Sous le Moustier 07:40</li><li><a href="stop-TEC_LDOordi1.html">TEC:LDOordi1</a> - Dolhain Firme Ordibel 07:41</li><li><a href="stop-TEC_LDOanes1.html">TEC:LDOanes1</a> - Dolhain Pont des Anes 07:43</li><li><a href="stop-TEC_LDOdavi1.html">TEC:LDOdavi1</a> - Dolhain Avenue David 07:44</li><li><a href="stop-TEC_LDOandr3.html">TEC:LDOandr3</a> - Dolhain Place d'Andrimont 07:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4794.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

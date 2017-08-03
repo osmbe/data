@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Eupen - Kelmis - Vaals - 5163:TEC:LV:43118</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eupen - Kelmis - Vaals - 5163:TEC:LV:43118</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LGepeck2.html">TEC:LGepeck2</a> - Gemmenich Place Peckham 12:14</li><li><a href="stop-TEC_LGeforg2.html">TEC:LGeforg2</a> - Gemmenich La Forge 12:14</li><li><a href="stop-TEC_LGesent2.html">TEC:LGesent2</a> - Gemmenich Sentier des Cendres 12:15</li><li><a href="stop-TEC_LGevygh2.html">TEC:LGevygh2</a> - Gemmenich Maison Vyghen 12:16</li><li><a href="stop-TEC_LGemari2.html">TEC:LGemari2</a> - Gemmenich Maria Hilf 12:17</li><li><a href="stop-TEC_LMschap2.html">TEC:LMschap2</a> - Moresnet Chapelle 12:19</li><li><a href="stop-TEC_LMsgara2.html">TEC:LMsgara2</a> - Moresnet Garage 12:19</li><li><a href="stop-TEC_LMsbusc2.html">TEC:LMsbusc2</a> - Moresnet Buschhausen pont 12:20</li><li><a href="stop-TEC_LkEbran2.html">TEC:LkEbran2</a> - Kelmis Brandenhövel 12:21</li><li><a href="stop-TEC_LkEsouf2.html">TEC:LkEsouf2</a> - Kelmis Soufflet 12:22</li><li><a href="stop-TEC_LkEspor1.html">TEC:LkEspor1</a> - Kelmis Sportzentrum 12:23</li><li><a href="stop-TEC_LkEgss-2.html">TEC:LkEgss-2</a> - Kelmis Gemeinschaftsschule 12:24</li><li><a href="stop-TEC_LkEneus1.html">TEC:LkEneus1</a> - Kelmis Neustrasse 12:25</li><li><a href="stop-TEC_LkEkric1.html">TEC:LkEkric1</a> - Kelmis Krickelstein 12:25</li><li><a href="stop-TEC_LkEbruc1.html">TEC:LkEbruc1</a> - Kelmis Bruch 12:27</li><li><a href="stop-TEC_LkEsada1.html">TEC:LkEsada1</a> - Kelmis SADAR 12:27</li><li><a href="stop-TEC_LkEbbl-2.html">TEC:LkEbbl-2</a> - Kelmis B.B.L. (Fischenich) 12:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5597.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

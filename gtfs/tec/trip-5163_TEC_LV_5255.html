@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Sourbrodt - Waimes - St-Vith - 5163:TEC:LV:5255</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sourbrodt - Waimes - St-Vith - 5163:TEC:LV:5255</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LSogare2.html">TEC:LSogare2</a> - Sourbrodt Gare 18:35</li><li><a href="stop-TEC_LSokrin2.html">TEC:LSokrin2</a> - Sourbrodt Maison Krings 18:36</li><li><a href="stop-TEC_LSoeg--2.html">TEC:LSoeg--2</a> - Sourbrodt Eglise 18:37</li><li><a href="stop-TEC_LSoboul2.html">TEC:LSoboul2</a> - Sourbrodt Boulangerie Toussaint 18:37</li><li><a href="stop-TEC_LSomonu2.html">TEC:LSomonu2</a> - Sourbrodt Monument Pietkain 18:38</li><li><a href="stop-TEC_LOVhetr1.html">TEC:LOVhetr1</a> - Ovifat Vieux Hêtre 18:39</li><li><a href="stop-TEC_LOVeg--1.html">TEC:LOVeg--1</a> - Ovifat Eglise 18:40</li><li><a href="stop-TEC_LOVchen2.html">TEC:LOVchen2</a> - Ovifat Route de Cheneux 18:41</li><li><a href="stop-TEC_LOV48--2.html">TEC:LOV48--2</a> - Ovifat Maison 48 18:42</li><li><a href="stop-TEC_LOV62--2.html">TEC:LOV62--2</a> - Ovifat Maison 62 18:42</li><li><a href="stop-TEC_LROrtba2.html">TEC:LROrtba2</a> - Robertville Route du Barrage 18:43</li><li><a href="stop-TEC_LROcent1.html">TEC:LROcent1</a> - Robertville Centre 18:44</li><li><a href="stop-TEC_LROhael1.html">TEC:LROhael1</a> - Robertville Pont de Haelen 18:46</li><li><a href="stop-TEC_LROcham1.html">TEC:LROcham1</a> - Robertville Route de Champagne 18:47</li><li><a href="stop-TEC_LRObruy1.html">TEC:LRObruy1</a> - Robertville Bruyères 18:48</li><li><a href="stop-TEC_LROmons1.html">TEC:LROmons1</a> - Robertville Monsoru 18:49</li><li><a href="stop-TEC_LROgeuz1.html">TEC:LROgeuz1</a> - Robertville Geuzaine 18:50</li><li><a href="stop-TEC_LWacime3.html">TEC:LWacime3</a> - Waimes Cimetière 18:51</li><li><a href="stop-TEC_LWalibo2.html">TEC:LWalibo2</a> - Waimes Route de Libomont 18:52</li><li><a href="stop-TEC_LWapl--1.html">TEC:LWapl--1</a> - Waimes Place communale 18:53</li><li><a href="stop-TEC_LWaanto1.html">TEC:LWaanto1</a> - Waimes Rue Antoine 23 18:54</li><li><a href="stop-TEC_LWathir1.html">TEC:LWathir1</a> - Waimes Route de Thirimont 18:54</li><li><a href="stop-TEC_LWagare_.html">TEC:LWagare*</a> - Waimes Gare 18:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5089.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

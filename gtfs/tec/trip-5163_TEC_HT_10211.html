@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tournai - Renaix/Ronse - 5163:TEC:HT:10211</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tournai - Renaix/Ronse - 5163:TEC:HT:10211</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4ty305d.html">TEC:H4ty305d</a> - Tournai SNCB 06:10</li><li><a href="stop-TEC_H4ty295a.html">TEC:H4ty295a</a> - Tournai Boulevard des Nerviens 06:11</li><li><a href="stop-TEC_H4ty359b.html">TEC:H4ty359b</a> - Tournai Viaduc 06:12</li><li><a href="stop-TEC_H4ty270a.html">TEC:H4ty270a</a> - Tournai Avenue Elisabeth 06:12</li><li><a href="stop-TEC_H4ka181a.html">TEC:H4ka181a</a> - Kain Champ des Oiseaux 06:13</li><li><a href="stop-TEC_H4ka176a.html">TEC:H4ka176a</a> - Kain Au Musicien 06:15</li><li><a href="stop-TEC_H4ka188a.html">TEC:H4ka188a</a> - Kain Place Renard 06:16</li><li><a href="stop-TEC_H4ka182a.html">TEC:H4ka182a</a> - Kain Cité 06:17</li><li><a href="stop-TEC_H4ka183a.html">TEC:H4ka183a</a> - Kain Clos de l'Espinette 06:18</li><li><a href="stop-TEC_H4ka175a.html">TEC:H4ka175a</a> - Kain Au Français 06:18</li><li><a href="stop-TEC_H4ob108a.html">TEC:H4ob108a</a> - Obigies Bruyères 06:19</li><li><a href="stop-TEC_H4ob110a.html">TEC:H4ob110a</a> - Obigies Havron 06:19</li><li><a href="stop-TEC_H4ob109a.html">TEC:H4ob109a</a> - Obigies Halte 06:20</li><li><a href="stop-TEC_H4ob124a.html">TEC:H4ob124a</a> - Obigies Eglise 06:21</li><li><a href="stop-TEC_H4he106a.html">TEC:H4he106a</a> - Herinnes Léaucourt 06:23</li><li><a href="stop-TEC_H4he102a.html">TEC:H4he102a</a> - Herinnes Charron 06:24</li><li><a href="stop-TEC_H4he105a.html">TEC:H4he105a</a> - Herinnes Gare 06:25</li><li><a href="stop-TEC_H4he103a.html">TEC:H4he103a</a> - Herinnes Corps de Garde 06:26</li><li><a href="stop-TEC_H4he107a.html">TEC:H4he107a</a> - Herinnes Route de  Molenbaix 06:27</li><li><a href="stop-TEC_H4he104a.html">TEC:H4he104a</a> - Herinnes Eglise 06:28</li><li><a href="stop-TEC_H4he101a.html">TEC:H4he101a</a> - Herinnes Cavrinnes 06:30</li><li><a href="stop-TEC_H4po130b.html">TEC:H4po130b</a> - Pottes Terrain de Football 06:31</li><li><a href="stop-TEC_H4po126b.html">TEC:H4po126b</a> - Pottes Marais de Lannoy 06:31</li><li><a href="stop-TEC_H4po124b.html">TEC:H4po124b</a> - Pottes Café Laebens 06:32</li><li><a href="stop-TEC_H4po129b.html">TEC:H4po129b</a> - Pottes Route d'Helchin 06:33</li><li><a href="stop-TEC_H4po125b.html">TEC:H4po125b</a> - Pottes Cité 06:34</li><li><a href="stop-TEC_H4po128b.html">TEC:H4po128b</a> - Pottes Place 06:35</li><li><a href="stop-TEC_H4po127b.html">TEC:H4po127b</a> - Pottes Petit Marais 06:36</li><li><a href="stop-TEC_H4ef111b.html">TEC:H4ef111b</a> - Escanaffles Mouton d' Or 06:38</li><li><a href="stop-TEC_H4ef109b.html">TEC:H4ef109b</a> - Escanaffles Arbre Vert 06:38</li><li><a href="stop-TEC_H4ef138b.html">TEC:H4ef138b</a> - Escanaffles Pont à l'Haies 06:39</li><li><a href="stop-TEC_H4ef113d.html">TEC:H4ef113d</a> - Escanaffles Village 06:40</li><li><a href="stop-TEC_H4ae101b.html">TEC:H4ae101b</a> - Avelgem Nijverheidslaan/Avenue de l'Industrie 06:42</li><li><a href="stop-TEC_H4ae100b.html">TEC:H4ae100b</a> - Avelgem Centre Sportif/Sportcentrum 06:43</li><li><a href="stop-TEC_H4ae102a.html">TEC:H4ae102a</a> - Avelgem Station (aankomst)/SNCB (arrivée) 06:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1359.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

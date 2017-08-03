@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHARLEROI SUD - MONCEAU-SUR-SAMBRE MOULIN - 5163:TEC:CH:15630</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHARLEROI SUD - MONCEAU-SUR-SAMBRE MOULIN - 5163:TEC:CH:15630</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cchba06.html">TEC:Cchba06</a> - Charleroi Beaux-Arts Quai 06 13:16</li><li><a href="stop-TEC_Cchmonu3.html">TEC:Cchmonu3</a> - Charleroi Monument 13:18</li><li><a href="stop-TEC_Cchhopi1.html">TEC:Cchhopi1</a> - Charleroi Hôpital Civil 13:19</li><li><a href="stop-TEC_Cchcase3.html">TEC:Cchcase3</a> - Charleroi Casernes 13:20</li><li><a href="stop-TEC_Cchparc3.html">TEC:Cchparc3</a> - Charleroi Parc (M) 13:21</li><li><a href="stop-TEC_Cchtiro3.html">TEC:Cchtiro3</a> - Charleroi Tirou (M) 13:23</li><li><a href="stop-TEC_Cchsud13.html">TEC:Cchsud13</a> - Charleroi Sud 13:25</li><li><a href="stop-TEC_Cmlvitf1.html">TEC:Cmlvitf1</a> - Marcinelle Rue Vital Françoisse 13:27</li><li><a href="stop-TEC_Cmlrous1.html">TEC:Cmlrous1</a> - Marcinelle Avenue Rousseau 13:27</li><li><a href="stop-TEC_Cmlbeau1.html">TEC:Cmlbeau1</a> - Marcinelle Chapelle Beaussart 13:28</li><li><a href="stop-TEC_Cmmbsit1.html">TEC:Cmmbsit1</a> - Mont-sur-Marchienne Beau Site 13:29</li><li><a href="stop-TEC_Cmmn1171.html">TEC:Cmmn1171</a> - Mont-sur-Marchienne n° 117 13:30</li><li><a href="stop-TEC_Cmmtomb1.html">TEC:Cmmtomb1</a> - Mont-sur-Marchienne Rue de la Tombe 13:31</li><li><a href="stop-TEC_Cmmecol1.html">TEC:Cmmecol1</a> - Mont-sur-Marchienne Rue des Ecoles 13:32</li><li><a href="stop-TEC_Cmmegli1.html">TEC:Cmmegli1</a> - Mont-sur-Marchienne Rue de l'Eglise 13:33</li><li><a href="stop-TEC_Cmmplac2.html">TEC:Cmmplac2</a> - Mont-sur-Marchienne Place 13:34</li><li><a href="stop-TEC_Cmmcarr1.html">TEC:Cmmcarr1</a> - Mont-sur-Marchienne Rue des Carrières 13:35</li><li><a href="stop-TEC_Cmmp2051.html">TEC:Cmmp2051</a> - Mont-sur-Marchienne Poteau 205 13:35</li><li><a href="stop-TEC_Cmmmarl1.html">TEC:Cmmmarl1</a> - Mont-sur-Marchienne Marlaires 13:36</li><li><a href="stop-TEC_Cmmgadi1.html">TEC:Cmmgadi1</a> - Mont-sur-Marchienne Gadin 13:37</li><li><a href="stop-TEC_Cmmheur1.html">TEC:Cmmheur1</a> - Mont-sur-Marchienne Avenue Heureux 13:38</li><li><a href="stop-TEC_Cmygbbo1.html">TEC:Cmygbbo1</a> - Montigny-le-Tilleul GB Bomerée 13:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1130.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

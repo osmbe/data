@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Verviers - Theux - Spa - 5163:TEC:LV:25826</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Verviers - Theux - Spa - 5163:TEC:LV:25826</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LLrc_ip4.html">TEC:LLrc_ip4</a> - La Reid Institut Provincial 16:21</li><li><a href="stop-TEC_LLrrmaq1.html">TEC:LLrrmaq1</a> - La Reid Route du Maquisard 92 16:22</li><li><a href="stop-TEC_LLrcomb1.html">TEC:LLrcomb1</a> - La Reid Les Combles 16:22</li><li><a href="stop-TEC_LLrmc--2.html">TEC:LLrmc--2</a> - La Reid Maison Communale 16:23</li><li><a href="stop-TEC_LLrvill2.html">TEC:LLrvill2</a> - La Reid Village 16:23</li><li><a href="stop-TEC_LLrelec2.html">TEC:LLrelec2</a> - La Reid Cabine Electrique 16:25</li><li><a href="stop-TEC_LLrhest2.html">TEC:LLrhest2</a> - La Reid Hestroumont 16:26</li><li><a href="stop-TEC_LTHturo4.html">TEC:LTHturo4</a> - Theux Le Turon 16:28</li><li><a href="stop-TEC_LLrgare1.html">TEC:LLrgare1</a> - La Reid Gare 16:29</li><li><a href="stop-TEC_LLrscie1.html">TEC:LLrscie1</a> - La Reid Scierie 16:29</li><li><a href="stop-TEC_LLrdigu1.html">TEC:LLrdigu1</a> - La Reid Les Digues 16:30</li><li><a href="stop-TEC_LLrgara1.html">TEC:LLrgara1</a> - La Reid Garage des Digues 16:31</li><li><a href="stop-TEC_LSPmart1.html">TEC:LSPmart1</a> - Spa Marteau 16:32</li><li><a href="stop-TEC_LSPecho1.html">TEC:LSPecho1</a> - Spa Ecole d'Hôtellerie 16:34</li><li><a href="stop-TEC_LSPgend1.html">TEC:LSPgend1</a> - Spa Gendarmerie 16:34</li><li><a href="stop-TEC_LSPclai1.html">TEC:LSPclai1</a> - Spa Heures Claires 16:36</li><li><a href="stop-TEC_LSPastr1.html">TEC:LSPastr1</a> - Spa Avenue Reine Astrid 16:37</li><li><a href="stop-TEC_LSProya1.html">TEC:LSProya1</a> - Spa Place Royale 16:37</li><li><a href="stop-TEC_LSParca1.html">TEC:LSParca1</a> - Spa Arcades 16:38</li><li><a href="stop-TEC_LSPpomp2.html">TEC:LSPpomp2</a> - Spa Pompea 16:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5254.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

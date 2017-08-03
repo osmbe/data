@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Attre - Blaton - 5163:TEC:HT:1850</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Attre - Blaton - 5163:TEC:HT:1850</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H5at116d.html">TEC:H5at116d</a> - Ath SNCB 12:02</li><li><a href="stop-TEC_H5at106a.html">TEC:H5at106a</a> - Ath Athénée 12:03</li><li><a href="stop-TEC_H5at112a.html">TEC:H5at112a</a> - Ath Clinique de l'Esplanade 12:04</li><li><a href="stop-TEC_H5at124a.html">TEC:H5at124a</a> - Ath Pharmacie 12:05</li><li><a href="stop-TEC_H5at123a.html">TEC:H5at123a</a> - Ath Match 12:05</li><li><a href="stop-TEC_H5at105a.html">TEC:H5at105a</a> - Ath Aldi 12:06</li><li><a href="stop-TEC_H5at113a.html">TEC:H5at113a</a> - Ath Colruyt 12:06</li><li><a href="stop-TEC_H5at114a.html">TEC:H5at114a</a> - Ath Delhaize - Lorette 12:06</li><li><a href="stop-TEC_H5at107a.html">TEC:H5at107a</a> - Ath Avenue Jouret 12:07</li><li><a href="stop-TEC_H5at134a.html">TEC:H5at134a</a> - Ath Rue du Centenaire 12:07</li><li><a href="stop-TEC_H5at118a.html">TEC:H5at118a</a> - Ath Ch EpiCURA 12:08</li><li><a href="stop-TEC_H5at120b.html">TEC:H5at120b</a> - Ath Institut Technique 12:10</li><li><a href="stop-TEC_H5at116a.html">TEC:H5at116a</a> - Ath SNCB 12:14</li><li><a href="stop-TEC_H5at116d.html">TEC:H5at116d</a> - Ath SNCB 12:14</li><li><a href="stop-TEC_H5at106a.html">TEC:H5at106a</a> - Ath Athénée 12:15</li><li><a href="stop-TEC_H5at112a.html">TEC:H5at112a</a> - Ath Clinique de l'Esplanade 12:15</li><li><a href="stop-TEC_H5at124a.html">TEC:H5at124a</a> - Ath Pharmacie 12:15</li><li><a href="stop-TEC_H5at137b.html">TEC:H5at137b</a> - Ath Shopping Center 12:16</li><li><a href="stop-TEC_H5at110a.html">TEC:H5at110a</a> - Ath Cimetière 12:17</li><li><a href="stop-TEC_H5at132a.html">TEC:H5at132a</a> - Ath Rue de Soignies 12:17</li><li><a href="stop-TEC_H5ma185a.html">TEC:H5ma185a</a> - Maffle Pont du Chemin de Fer 12:19</li><li><a href="stop-TEC_H5ma180b.html">TEC:H5ma180b</a> - Maffle Centre 12:20</li><li><a href="stop-TEC_H4ab101a.html">TEC:H4ab101a</a> - Arbre Petit Chièvres 12:21</li><li><a href="stop-TEC_H4ab100a.html">TEC:H4ab100a</a> - Arbre Chapelle 12:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2184.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

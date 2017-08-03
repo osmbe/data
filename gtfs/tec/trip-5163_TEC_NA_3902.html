@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - ANDENNE - FORVILLE - 5163:TEC:NA:3902</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: ANDENNE - FORVILLE - 5163:TEC:NA:3902</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N506awa.html">TEC:N506awa</a> - Andenne Pré des Dames 14:10</li><li><a href="stop-TEC_N506aua.html">TEC:N506aua</a> - Andenne Place du Chapitre 14:10</li><li><a href="stop-TEC_N506ara.html">TEC:N506ara</a> - Andenne Palais de Justice 14:11</li><li><a href="stop-TEC_N506atb.html">TEC:N506atb</a> - Andenne Place des Tilleuls 14:12</li><li><a href="stop-TEC_N506bad.html">TEC:N506bad</a> - Andenne Ville - 4 coins 14:12</li><li><a href="stop-TEC_N506bmb.html">TEC:N506bmb</a> - Seilles Rue de la Station 14:13</li><li><a href="stop-TEC_N506bjb.html">TEC:N506bjb</a> - Seilles Rue Godfrind 14:15</li><li><a href="stop-TEC_N506bka.html">TEC:N506bka</a> - Seilles Rue Hendschel 14:15</li><li><a href="stop-TEC_N506bha.html">TEC:N506bha</a> - Seilles Institut technique 14:16</li><li><a href="stop-TEC_N506bnb.html">TEC:N506bnb</a> - Seilles Rue du Vigna 14:17</li><li><a href="stop-TEC_N506bqa.html">TEC:N506bqa</a> - Seilles Gare des bus 14:19</li><li><a href="stop-TEC_N506bqb.html">TEC:N506bqb</a> - Seilles Gare des bus 14:19</li><li><a href="stop-TEC_N506bca.html">TEC:N506bca</a> - Seilles Casernes 14:20</li><li><a href="stop-TEC_N506bda.html">TEC:N506bda</a> - Seilles Chemin de Surlemez 14:21</li><li><a href="stop-TEC_N506bba.html">TEC:N506bba</a> - Seilles Tramaka 14:22</li><li><a href="stop-TEC_N506bfa.html">TEC:N506bfa</a> - Seilles Chemin du Poilsart 14:23</li><li><a href="stop-TEC_N512aga.html">TEC:N512aga</a> - Landenne Velaine 14:25</li><li><a href="stop-TEC_N512aca.html">TEC:N512aca</a> - Landenne La casserole 14:26</li><li><a href="stop-TEC_N512aba.html">TEC:N512aba</a> - Landenne Place 14:28</li><li><a href="stop-TEC_N512afa.html">TEC:N512afa</a> - Landenne Rue Jean Tousseul 14:28</li><li><a href="stop-TEC_N512aea.html">TEC:N512aea</a> - Landenne Croix Bieltot 14:29</li><li><a href="stop-TEC_N512ada.html">TEC:N512ada</a> - Landenne Thier du bois de Namur 14:29</li><li><a href="stop-TEC_N512ara.html">TEC:N512ara</a> - Petit-Waret Château d'eau 14:30</li><li><a href="stop-TEC_N512aqa.html">TEC:N512aqa</a> - Petit-Waret Carrefour 14:30</li><li><a href="stop-TEC_N512atc.html">TEC:N512atc</a> - Petit-Waret Ecole communale 14:31</li><li><a href="stop-TEC_N512ana.html">TEC:N512ana</a> - Petit-Waret Place 14:31</li><li><a href="stop-TEC_N512aoa.html">TEC:N512aoa</a> - Petit-Waret Pompe publique 14:31</li><li><a href="stop-TEC_N512aic.html">TEC:N512aic</a> - Landenne Route de Petit-Waret 14:32</li><li><a href="stop-TEC_N507aka.html">TEC:N507aka</a> - Pontillas Rue du Vert bois 14:35</li><li><a href="stop-TEC_N507alc.html">TEC:N507alc</a> - Pontillas Masoin 14:35</li><li><a href="stop-TEC_N507aba.html">TEC:N507aba</a> - Bierwart Carrefour 14:36</li><li><a href="stop-TEC_N507aib.html">TEC:N507aib</a> - Forville Route de Gochenée 14:38</li><li><a href="stop-TEC_N507agb.html">TEC:N507agb</a> - Forville Av. de la Libération 14:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6477.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

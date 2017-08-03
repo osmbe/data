@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Awans - Hognoul - Fooz- Crisnée - 5163:TEC:LV:38025</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Awans - Hognoul - Fooz- Crisnée - 5163:TEC:LV:38025</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LAWhein1.html">TEC:LAWhein1</a> - Awans Rue N. Heine 08:15</li><li><a href="stop-TEC_LAWcorn1.html">TEC:LAWcorn1</a> - Awans Rue F. Cornet 08:17</li><li><a href="stop-TEC_LAWaube1.html">TEC:LAWaube1</a> - Awans Clos des Aubépines 08:19</li><li><a href="stop-TEC_LAWcite3.html">TEC:LAWcite3</a> - Awans Cité 67/1 08:19</li><li><a href="stop-TEC_LHGtige1.html">TEC:LHGtige1</a> - Hognoul Place du Tige 08:22</li><li><a href="stop-TEC_LHGleje1.html">TEC:LHGleje1</a> - Hognoul Ferme Lejeune 08:23</li><li><a href="stop-TEC_LFOchpl1.html">TEC:LFOchpl1</a> - Fooz Chapelle 08:24</li><li><a href="stop-TEC_LFOmc--1.html">TEC:LFOmc--1</a> - Fooz Maison Communale 08:25</li><li><a href="stop-TEC_LFOcomb3.html">TEC:LFOcomb3</a> - Fooz Rue des Combattants 08:26</li><li><a href="stop-TEC_LFOchab1.html">TEC:LFOchab1</a> - Fooz Ferme Chabot 08:26</li><li><a href="stop-TEC_LVlfooz1.html">TEC:LVlfooz1</a> - Eveque Route de Fooz 08:29</li><li><a href="stop-TEC_LKmcite1.html">TEC:LKmcite1</a> - Kemexhe Cité 50 08:33</li><li><a href="stop-TEC_LKmdani1.html">TEC:LKmdani1</a> - Kemexhe Cité Daniels 08:33</li><li><a href="stop-TEC_LKmdrie1.html">TEC:LKmdrie1</a> - Kemexhe rue Driesmans 08:34</li><li><a href="stop-TEC_LKmeg--1.html">TEC:LKmeg--1</a> - Kemexhe Eglise 08:34</li><li><a href="stop-TEC_LKmcabi1.html">TEC:LKmcabi1</a> - Kemexhe Cabine électrique 08:35</li><li><a href="stop-TEC_LFmcarr1.html">TEC:LFmcarr1</a> - Fize-le-Marsal Carrefour Genot 08:36</li><li><a href="stop-TEC_LFmgeno1.html">TEC:LFmgeno1</a> - Fize-le-Marsal Rue L. Genot 08:37</li><li><a href="stop-TEC_LFmroye1.html">TEC:LFmroye1</a> - Fize-le-Marsal Rue N. Royer 08:37</li><li><a href="stop-TEC_LFmeg--1.html">TEC:LFmeg--1</a> - Fize-le-Marsal Eglise 08:38</li><li><a href="stop-TEC_LFmceli2.html">TEC:LFmceli2</a> - Fize-le-Marsal Ecole Libre 08:38</li><li><a href="stop-TEC_LFmpoin2.html">TEC:LFmpoin2</a> - Fize-le-Marsal Rond-point 08:39</li><li><a href="stop-TEC_LCRecmo2.html">TEC:LCRecmo2</a> - Crisnee Ecole moyenne 08:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4526.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

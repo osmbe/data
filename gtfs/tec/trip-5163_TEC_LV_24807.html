@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Verviers-Battice-Thimister-Aubel - 5163:TEC:LV:24807</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Verviers-Battice-Thimister-Aubel - 5163:TEC:LV:24807</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LAUvict4.html">TEC:LAUvict4</a> - Aubel Place de la Victoire 06:12</li><li><a href="stop-TEC_LAUnico2.html">TEC:LAUnico2</a> - Aubel Place Antoine Ernst 06:13</li><li><a href="stop-TEC_LAUtism2.html">TEC:LAUtism2</a> - Aubel Rue Tisman 06:13</li><li><a href="stop-TEC_LAUhost2.html">TEC:LAUhost2</a> - Aubel Hostert 06:14</li><li><a href="stop-TEC_LAUpind2.html">TEC:LAUpind2</a> - Aubel Parc Industriel 06:15</li><li><a href="stop-TEC_LAUcarr2.html">TEC:LAUcarr2</a> - Aubel La Carrière 06:15</li><li><a href="stop-TEC_LFdchau4.html">TEC:LFdchau4</a> - Froidthier Chaussée 06:17</li><li><a href="stop-TEC_LFdeg--2.html">TEC:LFdeg--2</a> - Froidthier Eglise 06:17</li><li><a href="stop-TEC_LClange2.html">TEC:LClange2</a> - Clermont Chapelle des Anges 06:18</li><li><a href="stop-TEC_LCljose2.html">TEC:LCljose2</a> - Clermont Chapelle St-Joseph 06:19</li><li><a href="stop-TEC_LClbloc2.html">TEC:LClbloc2</a> - Clermont Blockhouse 06:20</li><li><a href="stop-TEC_LCltrib2.html">TEC:LCltrib2</a> - Clermont Tribezone 06:21</li><li><a href="stop-TEC_LCleg--2.html">TEC:LCleg--2</a> - Clermont Eglise 06:22</li><li><a href="stop-TEC_LThnouv2.html">TEC:LThnouv2</a> - Thimister Nouveau Quartier 06:23</li><li><a href="stop-TEC_LThgare2.html">TEC:LThgare2</a> - Thimister Ancienne Gare 06:25</li><li><a href="stop-TEC_LTheg--2.html">TEC:LTheg--2</a> - Thimister Eglise 06:27</li><li><a href="stop-TEC_LThbatt2.html">TEC:LThbatt2</a> - Thimister Route de Battice 06:28</li><li><a href="stop-TEC_LThsere2.html">TEC:LThsere2</a> - Thimister Serezée 06:29</li><li><a href="stop-TEC_LThhoul2.html">TEC:LThhoul2</a> - Thimister Houlteau 06:30</li><li><a href="stop-TEC_LThplen2.html">TEC:LThplen2</a> - Thimister Route de Plenesses 06:31</li><li><a href="stop-TEC_LCHrhou2.html">TEC:LCHrhou2</a> - Chaineux Route de Houlteau 06:32</li><li><a href="stop-TEC_Ldicorb2.html">TEC:Ldicorb2</a> - Dison Corbeau 06:34</li><li><a href="stop-TEC_Ldidefo2.html">TEC:Ldidefo2</a> - Dison Usines Deforges 06:35</li><li><a href="stop-TEC_Ldipl--2.html">TEC:Ldipl--2</a> - Dison Place 06:37</li><li><a href="stop-TEC_Ldijean2.html">TEC:Ldijean2</a> - Dison Jeangette 06:39</li><li><a href="stop-TEC_Ldipiss2.html">TEC:Ldipiss2</a> - Dison Pisseroule 06:40</li><li><a href="stop-TEC_Ldimont2.html">TEC:Ldimont2</a> - Dison Montagne de l'Invasion 06:41</li><li><a href="stop-TEC_Lvehodi4.html">TEC:Lvehodi4</a> - Verviers Rue de Hodimont 06:42</li><li><a href="stop-TEC_Lveharm2.html">TEC:Lveharm2</a> - Verviers Harmonie 06:44</li><li><a href="stop-TEC_Lvegc-1_.html">TEC:Lvegc-1*</a> - Verviers Gare Centrale 06:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4956.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

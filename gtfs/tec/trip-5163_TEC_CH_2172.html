@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - ANDERLUES - SUD - PARC - BEAUX-ARTS - ANDERLUES - 5163:TEC:CH:2172</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: ANDERLUES - SUD - PARC - BEAUX-ARTS - ANDERLUES - 5163:TEC:CH:2172</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_CMsud1.html">TEC:CMsud1</a> - Charleroi Sud 07:17</li><li><a href="stop-TEC_CMtirou2.html">TEC:CMtirou2</a> - Charleroi Tirou (M) 07:18</li><li><a href="stop-TEC_CMparc2.html">TEC:CMparc2</a> - Charleroi Parc (M) 07:21</li><li><a href="stop-TEC_CMjans2.html">TEC:CMjans2</a> - Charleroi Janson (M) 07:22</li><li><a href="stop-TEC_CMwate1.html">TEC:CMwate1</a> - Charleroi Waterloo (M) 07:24</li><li><a href="stop-TEC_CMba1.html">TEC:CMba1</a> - Charleroi Beaux-Arts (M) 07:26</li><li><a href="stop-TEC_CMpige2.html">TEC:CMpige2</a> - Dampremy Piges (M) 07:27</li><li><a href="stop-TEC_CMdamp2.html">TEC:CMdamp2</a> - Dampremy Dampremy (M) 07:29</li><li><a href="stop-TEC_CMprov2.html">TEC:CMprov2</a> - Marchienne-Au-Pont Providence (M) 07:31</li><li><a href="stop-TEC_CMcart2.html">TEC:CMcart2</a> - Marchienne-Au-Pont De Cartier (M) 07:34</li><li><a href="stop-TEC_CMmoul2.html">TEC:CMmoul2</a> - Monceau-sur-Sambre Moulin (M) 07:35</li><li><a href="stop-TEC_CMmorg2.html">TEC:CMmorg2</a> - Goutroux Morgnies (M) 07:38</li><li><a href="stop-TEC_CMleer2.html">TEC:CMleer2</a> - Leernes Leernes (M) 07:40</li><li><a href="stop-TEC_CMpara2.html">TEC:CMpara2</a> - Eveque Paradis (M) 07:42</li><li><a href="stop-TEC_CMfont2.html">TEC:CMfont2</a> - Eveque Fontaine (M) 07:43</li><li><a href="stop-TEC_CMpetr2.html">TEC:CMpetr2</a> - Eveque Pétria (M) 07:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./774.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

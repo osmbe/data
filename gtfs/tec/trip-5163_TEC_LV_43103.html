@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Visé - Aubel - Montzen - Welkenraedt - 5163:TEC:LV:43103</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Visé - Aubel - Montzen - Welkenraedt - 5163:TEC:LV:43103</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LVIdepo2.html">TEC:LVIdepo2</a> - Vise Place des Déportés 12:35</li><li><a href="stop-TEC_LVIsacr1.html">TEC:LVIsacr1</a> - Vise Institut du Sacré-Coeur 12:36</li><li><a href="stop-TEC_LVIjacq1.html">TEC:LVIjacq1</a> - Vise Ecole Lieutenant Jacquemin 12:38</li><li><a href="stop-TEC_LVIhall1.html">TEC:LVIhall1</a> - Vise Hall Omnisport 12:38</li><li><a href="stop-TEC_LVIferm1.html">TEC:LVIferm1</a> - Vise Ferme des Trois Rois 12:39</li><li><a href="stop-TEC_LVImons1.html">TEC:LVImons1</a> - Vise Route de Mons 12:40</li><li><a href="stop-TEC_LBWviad1.html">TEC:LBWviad1</a> - Berneau Viaduc 12:41</li><li><a href="stop-TEC_LBWeg--3.html">TEC:LBWeg--3</a> - Berneau Eglise 12:42</li><li><a href="stop-TEC_LFCkerk1.html">TEC:LFCkerk1</a> - S Gravenvoeren Kerk 12:49</li><li><a href="stop-TEC_LFCalte1.html">TEC:LFCalte1</a> - S Gravenvoeren Weg Op Altenbroek 12:49</li><li><a href="stop-TEC_LFCvoer1.html">TEC:LFCvoer1</a> - S Gravenvoeren Voerenberg 12:50</li><li><a href="stop-TEC_LFCkett1.html">TEC:LFCkett1</a> - S Gravenvoeren Ketten 12:50</li><li><a href="stop-TEC_LFCvoge3.html">TEC:LFCvoge3</a> - S Gravenvoeren Vogelgats 12:51</li><li><a href="stop-TEC_LFCscho1.html">TEC:LFCscho1</a> - S Gravenvoeren Schophem 12:51</li><li><a href="stop-TEC_LFCotte1.html">TEC:LFCotte1</a> - S Gravenvoeren Ottegraeven 12:52</li><li><a href="stop-TEC_LFMrijk1.html">TEC:LFMrijk1</a> - St-Martens-Voeren Rijkswacht / Gendarmerie 12:53</li><li><a href="stop-TEC_LFMvoge1.html">TEC:LFMvoge1</a> - St-Martens-Voeren Vogelstang 12:54</li><li><a href="stop-TEC_LFMstat1.html">TEC:LFMstat1</a> - St-Martens-Voeren Station 12:54</li><li><a href="stop-TEC_LFPknap1.html">TEC:LFPknap1</a> - St-Pieters-Voeren Knap 12:55</li><li><a href="stop-TEC_LFPkape3.html">TEC:LFPkape3</a> - St-Pieters-Voeren Sint-Annakapel / Chap. Ste Anne 12:56</li><li><a href="stop-TEC_LFPkerk1.html">TEC:LFPkerk1</a> - St-Pieters-Voeren Kerk / Eglise 12:57</li><li><a href="stop-TEC_LFPgeme1.html">TEC:LFPgeme1</a> - St-Pieters-Voeren Gemeenteschool 12:57</li><li><a href="stop-TEC_LFPzwaa1.html">TEC:LFPzwaa1</a> - St-Pieters-Voeren Zwaen 12:58</li><li><a href="stop-TEC_LFPdeme1.html">TEC:LFPdeme1</a> - St-Pieters-Voeren Hoeve Demez 12:59</li><li><a href="stop-TEC_LFProt-1.html">TEC:LFProt-1</a> - St-Pieters-Voeren Rot 12:59</li><li><a href="stop-TEC_LFPloob1.html">TEC:LFPloob1</a> - St-Pieters-Voeren Loobos 13:00</li><li><a href="stop-TEC_LSJ38--1.html">TEC:LSJ38--1</a> - St-Jean-Sart 38 13:01</li><li><a href="stop-TEC_LSJeg--1.html">TEC:LSJeg--1</a> - St-Jean-Sart Eglise 13:01</li><li><a href="stop-TEC_LSJlabe1.html">TEC:LSJlabe1</a> - St-Jean-Sart La Bel 13:02</li><li><a href="stop-TEC_LAUscha1.html">TEC:LAUscha1</a> - Aubel Rue Schaens 13:08</li><li><a href="stop-TEC_LAUneuv5.html">TEC:LAUneuv5</a> - Aubel Rue Neuve 13:09</li><li><a href="stop-TEC_LAUvict3.html">TEC:LAUvict3</a> - Aubel Place de la Victoire 13:12</li><li><a href="stop-TEC_LAUbour1.html">TEC:LAUbour1</a> - Aubel Croix de Bourgogne 13:13</li><li><a href="stop-TEC_LAUabat1.html">TEC:LAUabat1</a> - Aubel Abattoirs 13:13</li><li><a href="stop-TEC_LAUmerc1.html">TEC:LAUmerc1</a> - Aubel Merckhof 13:15</li><li><a href="stop-TEC_LHMa2321.html">TEC:LHMa2321</a> - Hombourg Route d'Aubel 232 13:16</li><li><a href="stop-TEC_LHMaube1.html">TEC:LHMaube1</a> - Hombourg Route d'Aubel 13:17</li><li><a href="stop-TEC_LHMchev1.html">TEC:LHMchev1</a> - Hombourg Chevémont 13:18</li><li><a href="stop-TEC_LHMbach1.html">TEC:LHMbach1</a> - Hombourg La Bach 13:19</li><li><a href="stop-TEC_LHMec--1.html">TEC:LHMec--1</a> - Hombourg Ecole 13:20</li><li><a href="stop-TEC_LHMbelv1.html">TEC:LHMbelv1</a> - Hombourg Belven 13:22</li><li><a href="stop-TEC_LMNswar1.html">TEC:LMNswar1</a> - Montzen Swarteberg 13:23</li><li><a href="stop-TEC_LMNheme1.html">TEC:LMNheme1</a> - Montzen Hemelsbroek 13:24</li><li><a href="stop-TEC_LMNpann1.html">TEC:LMNpann1</a> - Montzen Pannesheydt 13:25</li><li><a href="stop-TEC_LMNeg--1.html">TEC:LMNeg--1</a> - Montzen Eglise 13:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5596.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

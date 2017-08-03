@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tournai - Ronse/Renaix - 5163:TEC:HT:10806</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tournai - Ronse/Renaix - 5163:TEC:HT:10806</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4ty305d.html">TEC:H4ty305d</a> - Tournai SNCB 19:23</li><li><a href="stop-TEC_H4ty295a.html">TEC:H4ty295a</a> - Tournai Boulevard des Nerviens 19:24</li><li><a href="stop-TEC_H4ty295b.html">TEC:H4ty295b</a> - Tournai Ecole du Château 19:24</li><li><a href="stop-TEC_H4ty342a.html">TEC:H4ty342a</a> - Tournai Rue du Nord 19:26</li><li><a href="stop-TEC_H4ty349a.html">TEC:H4ty349a</a> - Tournai Sacré Coeur 19:26</li><li><a href="stop-TEC_H4ru246b.html">TEC:H4ru246b</a> - Tournai Verte Feuille 19:27</li><li><a href="stop-TEC_H4ru236a.html">TEC:H4ru236a</a> - Rumillies Garage Mercier 19:28</li><li><a href="stop-TEC_H4ru243a.html">TEC:H4ru243a</a> - Rumillies Rue du Follet 19:29</li><li><a href="stop-TEC_H4ka178a.html">TEC:H4ka178a</a> - Kain Cantonnier 19:29</li><li><a href="stop-TEC_H4mt218a.html">TEC:H4mt218a</a> - Mourcourt Evêché 19:31</li><li><a href="stop-TEC_H4mt220b.html">TEC:H4mt220b</a> - Mourcourt Pont Royal 19:32</li><li><a href="stop-TEC_H4mt216a.html">TEC:H4mt216a</a> - Mourcourt Cabine 19:33</li><li><a href="stop-TEC_H4mt215a.html">TEC:H4mt215a</a> - Mourcourt Briqueterie 19:34</li><li><a href="stop-TEC_H4mt219a.html">TEC:H4mt219a</a> - Mourcourt Julie 19:35</li><li><a href="stop-TEC_H4ve131b.html">TEC:H4ve131b</a> - Velaines Clipet 19:37</li><li><a href="stop-TEC_H4mx118b.html">TEC:H4mx118b</a> - Molenbaix Ferme Delcroix 19:40</li><li><a href="stop-TEC_H4mx120a.html">TEC:H4mx120a</a> - Molenbaix Place 19:41</li><li><a href="stop-TEC_H4mx119b.html">TEC:H4mx119b</a> - Molenbaix Parapette 19:45</li><li><a href="stop-TEC_H4ce100b.html">TEC:H4ce100b</a> - CELLES(LEZ-TOURNAI) Château Cazerie 19:46</li><li><a href="stop-TEC_H4ce106b.html">TEC:H4ce106b</a> - CELLES(LEZ-TOURNAI) Postes 19:49</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1636.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Grez-Doiceau - Jodoigne - 5163:TEC:BW:4062</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Grez-Doiceau - Jodoigne - 5163:TEC:BW:4062</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bjodath3.html">TEC:Bjodath3</a> - Jodoigne Athénée Royal 16:05</li><li><a href="stop-TEC_Bjodath2.html">TEC:Bjodath2</a> - Jodoigne Athénée Royal 16:06</li><li><a href="stop-TEC_Bjodcad2.html">TEC:Bjodcad2</a> - Jodoigne Centre Administratif 16:09</li><li><a href="stop-TEC_Bjodsme1.html">TEC:Bjodsme1</a> - Jodoigne Saint-Médard 16:10</li><li><a href="stop-TEC_Bjodced1.html">TEC:Bjodced1</a> - Jodoigne Cèdre Bleu 16:11</li><li><a href="stop-TEC_Bjodbat1.html">TEC:Bjodbat1</a> - Jodoigne Batavia 16:11</li><li><a href="stop-TEC_Bjodpce1.html">TEC:Bjodpce1</a> - Jodoigne Pharmacie Centrale 16:12</li><li><a href="stop-TEC_Bjdsjso1.html">TEC:Bjdsjso1</a> - Jodoigne Rte de Jodoigne-Souveraine 16:15</li><li><a href="stop-TEC_Bjdspon1.html">TEC:Bjdspon1</a> - Jodoigne-Souveraine Pont 16:16</li><li><a href="stop-TEC_Bjcljau1.html">TEC:Bjcljau1</a> - Jauchelette Route de Jauchelette 16:17</li><li><a href="stop-TEC_Bgligli1.html">TEC:Bgligli1</a> - Glimes Route de Glimes 16:18</li><li><a href="stop-TEC_Bgliegl1.html">TEC:Bgliegl1</a> - Glimes Eglise 16:20</li><li><a href="stop-TEC_Bglitro1.html">TEC:Bglitro1</a> - Glimes Tombe Romaine 16:21</li><li><a href="stop-TEC_Bglicsm1.html">TEC:Bglicsm1</a> - Glimes Carrefour Saint-Michel 16:23</li><li><a href="stop-TEC_Bgliaau1.html">TEC:Bgliaau1</a> - Glimes A l'Ancienne Auberge 16:24</li><li><a href="stop-TEC_Bgliopp1.html">TEC:Bgliopp1</a> - Glimes Route d'Opprebais 16:24</li><li><a href="stop-TEC_Bincbbo3.html">TEC:Bincbbo3</a> - Incourt Rue Baron Bouvier 16:25</li><li><a href="stop-TEC_Binccha1.html">TEC:Binccha1</a> - Incourt Rue des Charrous 16:26</li><li><a href="stop-TEC_Brxmhai1.html">TEC:Brxmhai1</a> - Roux-Miroir La Haie 16:28</li><li><a href="stop-TEC_Brxmcna1.html">TEC:Brxmcna1</a> - Roux-Miroir Chaussée de Namur 16:28</li><li><a href="stop-TEC_Bptbbie1.html">TEC:Bptbbie1</a> - Pietrebais Bienvenu 16:30</li><li><a href="stop-TEC_Bptbmco1.html">TEC:Bptbmco1</a> - Pietrebais Maison Communale 16:31</li><li><a href="stop-TEC_Bptblma1.html">TEC:Bptblma1</a> - Pietrebais Rue Louis Marcel 16:32</li><li><a href="stop-TEC_Bptbsar1.html">TEC:Bptbsar1</a> - Pietrebais Rue de Sart 16:33</li><li><a href="stop-TEC_Bbiesbi1.html">TEC:Bbiesbi1</a> - Biez Sart-Biez 16:34</li><li><a href="stop-TEC_Bbiefon1.html">TEC:Bbiefon1</a> - Biez Rue du Fond 16:36</li><li><a href="stop-TEC_Bbiecoc1.html">TEC:Bbiecoc1</a> - Biez Cocrou 16:37</li><li><a href="stop-TEC_Bgzdast1.html">TEC:Bgzdast1</a> - Grez-Doiceau Ancienne Station 16:39</li><li><a href="stop-TEC_Bgzdpos3.html">TEC:Bgzdpos3</a> - Grez-Doiceau Poste 16:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./539.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ath - Enghien/Edingen - 5163:TEC:HT:10101</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ath - Enghien/Edingen - 5163:TEC:HT:10101</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H5at116d.html">TEC:H5at116d</a> - Ath SNCB 11:25</li><li><a href="stop-TEC_H5at120a.html">TEC:H5at120a</a> - Ath Institut Technique 11:27</li><li><a href="stop-TEC_H5at118b.html">TEC:H5at118b</a> - Ath Ch EpiCURA 11:28</li><li><a href="stop-TEC_H5at134b.html">TEC:H5at134b</a> - Ath Rue du Centenaire 11:28</li><li><a href="stop-TEC_H5at107b.html">TEC:H5at107b</a> - Ath Avenue Jouret 11:29</li><li><a href="stop-TEC_H5at124a.html">TEC:H5at124a</a> - Ath Pharmacie 11:29</li><li><a href="stop-TEC_H5at123a.html">TEC:H5at123a</a> - Ath Match 11:30</li><li><a href="stop-TEC_H5at105a.html">TEC:H5at105a</a> - Ath Aldi 11:30</li><li><a href="stop-TEC_H5at113a.html">TEC:H5at113a</a> - Ath Colruyt 11:30</li><li><a href="stop-TEC_H5at133a.html">TEC:H5at133a</a> - Ath Rue des Matelots 11:31</li><li><a href="stop-TEC_H5at122a.html">TEC:H5at122a</a> - Ath Limite de Lanquesaint 11:33</li><li><a href="stop-TEC_H5la177a.html">TEC:H5la177a</a> - Lanquesaint Place 11:34</li><li><a href="stop-TEC_H5is169a.html">TEC:H5is169a</a> - Isieres Castillon 11:37</li><li><a href="stop-TEC_H5is174a.html">TEC:H5is174a</a> - Isieres Route de Lessines 11:37</li><li><a href="stop-TEC_H5is171a.html">TEC:H5is171a</a> - Isieres Eglise 11:38</li><li><a href="stop-TEC_H5is168a.html">TEC:H5is168a</a> - Isieres Cambry 11:39</li><li><a href="stop-TEC_H5is174b.html">TEC:H5is174b</a> - Isieres Route de Lessines 11:39</li><li><a href="stop-TEC_H5is170a.html">TEC:H5is170a</a> - Isieres Castillon, 45 11:42</li><li><a href="stop-TEC_H1mq198b.html">TEC:H1mq198b</a> - Eveque Eglise 11:45</li><li><a href="stop-TEC_H1mq200b.html">TEC:H1mq200b</a> - Eveque Preuscamp 11:46</li><li><a href="stop-TEC_H1gn152b.html">TEC:H1gn152b</a> - Ghislenghien Zoning 11:48</li><li><a href="stop-TEC_H1gn149b.html">TEC:H1gn149b</a> - Ghislenghien Nouveau Parc 11:48</li><li><a href="stop-TEC_H1gn151b.html">TEC:H1gn151b</a> - Ghislenghien Waldico 11:49</li><li><a href="stop-TEC_H1gn147a.html">TEC:H1gn147a</a> - Ghislenghien Eglise 11:50</li><li><a href="stop-TEC_H1gn150a.html">TEC:H1gn150a</a> - Ghislenghien Rue d'Hellebecq 11:51</li><li><a href="stop-TEC_H1hq126b.html">TEC:H1hq126b</a> - Hellebecq Place 11:53</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1283.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

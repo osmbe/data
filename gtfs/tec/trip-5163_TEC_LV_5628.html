@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Lambert - Citadelle - Vottem - Milmort - 5163:TEC:LV:5628</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Lambert - Citadelle - Vottem - Milmort - 5163:TEC:LV:5628</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lmitech2.html">TEC:Lmitech2</a> - Milmort Techspace Aero 10:10</li><li><a href="stop-TEC_Lmimili2.html">TEC:Lmimili2</a> - Milmort Dépôt Militaire 10:11</li><li><a href="stop-TEC_Lmihale2.html">TEC:Lmihale2</a> - Milmort Rue de la Halette 10:12</li><li><a href="stop-TEC_Lmicoop3.html">TEC:Lmicoop3</a> - Milmort Coopérative 10:13</li><li><a href="stop-TEC_Lmidarc2.html">TEC:Lmidarc2</a> - Milmort Rue L. Darchis 10:13</li><li><a href="stop-TEC_Lvtlimi2.html">TEC:Lvtlimi2</a> - Vottem Rue de la Limite 10:14</li><li><a href="stop-TEC_Lvtpata2.html">TEC:Lvtpata2</a> - Vottem Rue du Patar 10:15</li><li><a href="stop-TEC_Lvtauna2.html">TEC:Lvtauna2</a> - Vottem Rue de l'Aunaye 10:16</li><li><a href="stop-TEC_Lvtmeun2.html">TEC:Lvtmeun2</a> - Vottem Rue des Meuniers 10:16</li><li><a href="stop-TEC_Lvtboux2.html">TEC:Lvtboux2</a> - Vottem Rue du Bouxthay 10:17</li><li><a href="stop-TEC_Lvtbocl2.html">TEC:Lvtbocl2</a> - Vottem Rue Boclinville 10:18</li><li><a href="stop-TEC_Lvtlomb2.html">TEC:Lvtlomb2</a> - Vottem Rue Lombard 10:19</li><li><a href="stop-TEC_Lvtathe2.html">TEC:Lvtathe2</a> - Vottem Athénée 10:20</li><li><a href="stop-TEC_Lvtcime2.html">TEC:Lvtcime2</a> - Vottem Cimetière 10:20</li><li><a href="stop-TEC_Lvtcalv1.html">TEC:Lvtcalv1</a> - Vottem Calvaire 10:21</li><li><a href="stop-TEC_Lvteg--2.html">TEC:Lvteg--2</a> - Vottem Eglise 10:22</li><li><a href="stop-TEC_Lvtcalv2.html">TEC:Lvtcalv2</a> - Vottem Calvaire 10:23</li><li><a href="stop-TEC_Lvtchpl2.html">TEC:Lvtchpl2</a> - Vottem Chapelle 10:24</li><li><a href="stop-TEC_Llgplop2.html">TEC:Llgplop2</a> - Liege Rue du Plope 10:25</li><li><a href="stop-TEC_Llggerm2.html">TEC:Llggerm2</a> - Liege Germeau 10:26</li><li><a href="stop-TEC_Llgcime2.html">TEC:Llgcime2</a> - Liege Cimetière Ste-Walburge 10:27</li><li><a href="stop-TEC_Llgcrah2.html">TEC:Llgcrah2</a> - Liege Rue Fosse Crahay 10:28</li><li><a href="stop-TEC_Llgwild8.html">TEC:Llgwild8</a> - Liege Place J. de Wilde 10:29</li><li><a href="stop-TEC_Llglimb2.html">TEC:Llglimb2</a> - Liege Rue du Limbourg 10:30</li><li><a href="stop-TEC_Llghugo2.html">TEC:Llghugo2</a> - Liege Avenue V. Hugo 10:31</li><li><a href="stop-TEC_Llgchal1.html">TEC:Llgchal1</a> - Liege Chalet 10:33</li><li><a href="stop-TEC_Llgcita2.html">TEC:Llgcita2</a> - Liege Hôpital de la Citadelle 10:34</li><li><a href="stop-TEC_Llgelis2.html">TEC:Llgelis2</a> - Liege Clinique Ste-Elisabeth 10:37</li><li><a href="stop-TEC_Llgangl2.html">TEC:Llgangl2</a> - Liege Rue des Anglais 10:39</li><li><a href="stop-TEC_Llghoch4.html">TEC:Llghoch4</a> - Liege Hocheporte 10:39</li><li><a href="stop-TEC_Llgcadr4.html">TEC:Llgcadr4</a> - Liege Cadran 10:40</li><li><a href="stop-TEC_LlgLAMB7.html">TEC:LlgLAMB7</a> - Liege Place St-Lambert 10:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4341.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

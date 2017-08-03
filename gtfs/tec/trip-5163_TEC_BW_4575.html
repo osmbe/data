@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Braine-le-Comte - B.S.I.- Braine-l'Alleud/Nivelles - 5163:TEC:BW:4575</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Braine-le-Comte - B.S.I.- Braine-l'Alleud/Nivelles - 5163:TEC:BW:4575</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bblagar4.html">TEC:Bblagar4</a> - Alleud Gare 18:35</li><li><a href="stop-TEC_Bblapje1.html">TEC:Bblapje1</a> - Alleud Rue de Petit Jean 18:37</li><li><a href="stop-TEC_Bblague2.html">TEC:Bblague2</a> - Alleud Rue au Gué 18:38</li><li><a href="stop-TEC_Bblaqsj1.html">TEC:Bblaqsj1</a> - Alleud Quartier Saint Jacques 18:38</li><li><a href="stop-TEC_Bblafab1.html">TEC:Bblafab1</a> - Alleud Fabrique 18:39</li><li><a href="stop-TEC_Bblatet1.html">TEC:Bblatet1</a> - Alleud Timpe et Tard 18:41</li><li><a href="stop-TEC_Bbsibou1.html">TEC:Bbsibou1</a> - Ophain Bouvrée 18:42</li><li><a href="stop-TEC_Bbsivil1.html">TEC:Bbsivil1</a> - Ophain Village 18:43</li><li><a href="stop-TEC_Bbsigaz1.html">TEC:Bbsigaz1</a> - Ophain - BOIS-SEIGNEUR-ISAAC Les Gazons 18:44</li><li><a href="stop-TEC_Bbsicul1.html">TEC:Bbsicul1</a> - Ophain - BOIS-SEIGNEUR-ISAAC Les Culots 18:45</li><li><a href="stop-TEC_Bbsicas1.html">TEC:Bbsicas1</a> - Ophain - BOIS-SEIGNEUR-ISAAC Rue du Castor 18:46</li><li><a href="stop-TEC_Bbsiabb1.html">TEC:Bbsiabb1</a> - Ophain - BOIS-SEIGNEUR-ISAAC Abbaye 18:47</li><li><a href="stop-TEC_Bbsicen1.html">TEC:Bbsicen1</a> - Bois-Seigneur-Isaac Centre 18:49</li><li><a href="stop-TEC_Bbsipos2.html">TEC:Bbsipos2</a> - Ophain - BOIS-SEIGNEUR-ISAAC Poste 18:49</li><li><a href="stop-TEC_Bbsifmo2.html">TEC:Bbsifmo2</a> - Ophain - BOIS-SEIGNEUR-ISAAC Ferme du Mont 18:51</li><li><a href="stop-TEC_Bhtipir2.html">TEC:Bhtipir2</a> - Haut-Ittre Boulevard Piron 18:52</li><li><a href="stop-TEC_Bhtihau2.html">TEC:Bhtihau2</a> - Haut-Ittre Hauts du Ry-Ternel 18:53</li><li><a href="stop-TEC_Bhticbr2.html">TEC:Bhticbr2</a> - Haut-Ittre Chemin de la Bruyère 18:54</li><li><a href="stop-TEC_Bitrfsc2.html">TEC:Bitrfsc2</a> - Ittre Ferme de Schoote 18:55</li><li><a href="stop-TEC_Bitrmon2.html">TEC:Bitrmon2</a> - Ittre Rue de la Montagne 18:56</li><li><a href="stop-TEC_Bitreco2.html">TEC:Bitreco2</a> - Ittre Ecole 18:57</li><li><a href="stop-TEC_Bitrcen2.html">TEC:Bitrcen2</a> - Ittre Centre 18:58</li><li><a href="stop-TEC_Bitrecu2.html">TEC:Bitrecu2</a> - Ittre Rond-point d'Ecueillée 18:59</li><li><a href="stop-TEC_Bitrmde2.html">TEC:Bitrmde2</a> - Ittre Moulin Delval 19:00</li><li><a href="stop-TEC_Bitrcan2.html">TEC:Bitrcan2</a> - Ittre Canal 19:02</li><li><a href="stop-TEC_Bvirgar2.html">TEC:Bvirgar2</a> - Virginal Ancienne Gare 19:03</li><li><a href="stop-TEC_Bviravi2.html">TEC:Bviravi2</a> - Virginal Ancien Viaduc 19:05</li><li><a href="stop-TEC_Bvircen2.html">TEC:Bvircen2</a> - Virginal Centre 19:06</li><li><a href="stop-TEC_Bvirmav2.html">TEC:Bvirmav2</a> - Virginal Moulin-à-Vent 19:06</li><li><a href="stop-TEC_Bvirpla2.html">TEC:Bvirpla2</a> - Virginal Plateau du Tram 19:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./164.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

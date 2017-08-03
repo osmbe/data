@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Braine-l'Alleud - Tubize - 5163:TEC:BW:8581</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Braine-l'Alleud - Tubize - 5163:TEC:BW:8581</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bbsivi11.html">TEC:Bbsivi11</a> - Ophain Village n°1 06:55</li><li><a href="stop-TEC_Bbsicea2.html">TEC:Bbsicea2</a> - Ophain - BOIS-SEIGNEUR-ISAAC Château d'eau 06:55</li><li><a href="stop-TEC_Bbsihau2.html">TEC:Bbsihau2</a> - Ophain - BOIS-SEIGNEUR-ISAAC Hautmont 06:56</li><li><a href="stop-TEC_Bwaunop1.html">TEC:Bwaunop1</a> - Noucelles Chaussée d'Ophain 06:57</li><li><a href="stop-TEC_Bwaunce1.html">TEC:Bwaunce1</a> - Noucelles Centre 06:58</li><li><a href="stop-TEC_Bblapra2.html">TEC:Bblapra2</a> - Alleud Chemin de la Praye 07:01</li><li><a href="stop-TEC_Bblacar2.html">TEC:Bblacar2</a> - Alleud Carron 07:02</li><li><a href="stop-TEC_Bblabos2.html">TEC:Bblabos2</a> - Alleud Bosquet 07:03</li><li><a href="stop-TEC_Bblasmo2.html">TEC:Bblasmo2</a> - Alleud Sart-Moulin 07:04</li><li><a href="stop-TEC_Bblaphi2.html">TEC:Bblaphi2</a> - Alleud Philippe 07:05</li><li><a href="stop-TEC_Bblamsp2.html">TEC:Bblamsp2</a> - Alleud Mont-Saint-Pont 07:06</li><li><a href="stop-TEC_Bblacha2.html">TEC:Bblacha2</a> - Alleud La Chapelle 07:07</li><li><a href="stop-TEC_Bblavol2.html">TEC:Bblavol2</a> - Alleud Rue Jean Volders 07:08</li><li><a href="stop-TEC_Bblacim2.html">TEC:Bblacim2</a> - Alleud Cimetière 07:09</li><li><a href="stop-TEC_Bblagar6.html">TEC:Bblagar6</a> - Alleud Gare 07:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./373.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

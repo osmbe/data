@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Ans - Loncin - Awans - 5163:TEC:LV:28971</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Ans - Loncin - Awans - 5163:TEC:LV:28971</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LAWjaur1.html">TEC:LAWjaur1</a> - Awans Rue J. Jaurès 17:43</li><li><a href="stop-TEC_LAWcite2.html">TEC:LAWcite2</a> - Awans Rue de la Cité 17:43</li><li><a href="stop-TEC_LAWcorn4.html">TEC:LAWcorn4</a> - Awans Rue F. Cornet 17:44</li><li><a href="stop-TEC_LAWmc--2.html">TEC:LAWmc--2</a> - Awans Maison Communale 17:45</li><li><a href="stop-TEC_LAWvill2.html">TEC:LAWvill2</a> - Awans Place de la Ville 17:46</li><li><a href="stop-TEC_LAWlonc2.html">TEC:LAWlonc2</a> - Awans rue de Loncin 58 17:46</li><li><a href="stop-TEC_LAWchau2.html">TEC:LAWchau2</a> - Awans Rue du Château 17:47</li><li><a href="stop-TEC_LAWroug2.html">TEC:LAWroug2</a> - Awans Maison Rouge 17:47</li><li><a href="stop-TEC_Llocime2.html">TEC:Llocime2</a> - Loncin Cimetière 17:49</li><li><a href="stop-TEC_Llochar2.html">TEC:Llochar2</a> - Loncin Rue A. Charlet 17:50</li><li><a href="stop-TEC_Lloross2.html">TEC:Lloross2</a> - Loncin Rue du Rossignol 17:51</li><li><a href="stop-TEC_Llonaes2.html">TEC:Llonaes2</a> - Loncin Rue Commandant Naessens 17:51</li><li><a href="stop-TEC_Llojeme4.html">TEC:Llojeme4</a> - Loncin Rue de Jemeppe 17:52</li><li><a href="stop-TEC_Lanstat2.html">TEC:Lanstat2</a> - Ans rue de la Station 17:53</li><li><a href="stop-TEC_Lanpast2.html">TEC:Lanpast2</a> - Ans Rue Pasteur 17:54</li><li><a href="stop-TEC_Lanplat2.html">TEC:Lanplat2</a> - Ans Eglise du Plateau 17:55</li><li><a href="stop-TEC_Lanyser2.html">TEC:Lanyser2</a> - Ans Rue de l'Yser 119 17:56</li><li><a href="stop-TEC_Lanfran4.html">TEC:Lanfran4</a> - Ans Rue des Français 17:58</li><li><a href="stop-TEC_Lanpisc2.html">TEC:Lanpisc2</a> - Ans Piscine 17:59</li><li><a href="stop-TEC_Lannico2.html">TEC:Lannico2</a> - Ans Place Nicolaï 18:00</li><li><a href="stop-TEC_Lanfont2.html">TEC:Lanfont2</a> - Ans Rue de la Fontaine 18:01</li><li><a href="stop-TEC_Llgchau2.html">TEC:Llgchau2</a> - Liege Basse Chaussée 18:02</li><li><a href="stop-TEC_Llgglai2.html">TEC:Llgglai2</a> - Liege Rue en Glain 18:03</li><li><a href="stop-TEC_Llgbaro4.html">TEC:Llgbaro4</a> - Liege Rue H. Baron 18:04</li><li><a href="stop-TEC_Llgfont2.html">TEC:Llgfont2</a> - Liege Fontainebleau 18:05</li><li><a href="stop-TEC_Llghoch2.html">TEC:Llghoch2</a> - Liege Hocheporte 18:07</li><li><a href="stop-TEC_Llgcadr4.html">TEC:Llgcadr4</a> - Liege Cadran 18:08</li><li><a href="stop-TEC_LlgLAMB3.html">TEC:LlgLAMB3</a> - Liege Place St-Lambert 18:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3946.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

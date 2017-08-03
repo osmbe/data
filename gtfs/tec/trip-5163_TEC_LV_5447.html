@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Eupen - Welkenraedt - Kelmis - 5163:TEC:LV:5447</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eupen - Welkenraedt - Kelmis - 5163:TEC:LV:5447</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LWEgare1.html">TEC:LWEgare1</a> - Welkenraedt Gare SNCB 16:57</li><li><a href="stop-TEC_LWEcool2.html">TEC:LWEcool2</a> - Welkenraedt Rue J-H Cool 16:58</li><li><a href="stop-TEC_LWEgend1.html">TEC:LWEgend1</a> - Welkenraedt Gendarmerie 16:59</li><li><a href="stop-TEC_LWEcite1.html">TEC:LWEcite1</a> - Welkenraedt Cité 17:00</li><li><a href="stop-TEC_LWEcomp1.html">TEC:LWEcomp1</a> - Welkenraedt Complexe 17:00</li><li><a href="stop-TEC_LWEfati1.html">TEC:LWEfati1</a> - Welkenraedt Fatima 17:01</li><li><a href="stop-TEC_LWEmito1.html">TEC:LWEmito1</a> - Welkenraedt Rue Mitoyenne 17:03</li><li><a href="stop-TEC_LHCmais1.html">TEC:LHCmais1</a> - Henri-Chapelle Maison-Blanche 17:03</li><li><a href="stop-TEC_LBkwind1.html">TEC:LBkwind1</a> - Birken Wind 17:04</li><li><a href="stop-TEC_LBkjenn1.html">TEC:LBkjenn1</a> - Birken Jennesco 17:04</li><li><a href="stop-TEC_LBkgrae1.html">TEC:LBkgrae1</a> - Birken Graetweg 17:05</li><li><a href="stop-TEC_LBkcarr3.html">TEC:LBkcarr3</a> - Birken Carrefour 17:06</li><li><a href="stop-TEC_LBk79--1.html">TEC:LBk79--1</a> - Birken 79 17:07</li><li><a href="stop-TEC_LMNpt--1.html">TEC:LMNpt--1</a> - Montzen Pont 17:08</li><li><a href="stop-TEC_LMNeg--1.html">TEC:LMNeg--1</a> - Montzen Eglise 17:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5009.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

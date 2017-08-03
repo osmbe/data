@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - JAMBES (Souvenir) - 5163:TEC:NA:8898</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - JAMBES (Souvenir) - 5163:TEC:NA:8898</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501eua.html">TEC:N501eua</a> - Jambes Rue Commandant Tilot 09:02</li><li><a href="stop-TEC_N501exa.html">TEC:N501exa</a> - Jambes Rue Mazy 09:02</li><li><a href="stop-TEC_N501ewa.html">TEC:N501ewa</a> - Jambes Rue Lamquet 09:03</li><li><a href="stop-TEC_N501ela.html">TEC:N501ela</a> - Jambes Cité Souvenir 09:04</li><li><a href="stop-TEC_N501dpa.html">TEC:N501dpa</a> - Jambes Haute-Enhaive 09:05</li><li><a href="stop-TEC_N501kla.html">TEC:N501kla</a> - Jambes Chapelle d'Enhaive 09:05</li><li><a href="stop-TEC_N501eja.html">TEC:N501eja</a> - Jambes Pensionnat Sainte-Marie 09:05</li><li><a href="stop-TEC_N501kpa.html">TEC:N501kpa</a> - Jambes Viaduc 09:06</li><li><a href="stop-TEC_N501kma.html">TEC:N501kma</a> - Jambes Station Nord 09:08</li><li><a href="stop-TEC_N501etc.html">TEC:N501etc</a> - Jambes Place de la Wallonie 09:10</li><li><a href="stop-TEC_N501eba.html">TEC:N501eba</a> - Jambes Avenue Materne 09:11</li><li><a href="stop-TEC_N501fwa.html">TEC:N501fwa</a> - Namur Boulevard Ad Aquam 09:12</li><li><a href="stop-TEC_N501gia.html">TEC:N501gia</a> - Namur Pont de France 09:14</li><li><a href="stop-TEC_N501fvb.html">TEC:N501fvb</a> - Namur Boulevard I. Brunell 09:15</li><li><a href="stop-TEC_N501hla.html">TEC:N501hla</a> - Namur Rue du Premier Lanciers 09:17</li><li><a href="stop-TEC_N501grg.html">TEC:N501grg</a> - Namur Pl. de la Station - Quai D 09:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6505.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

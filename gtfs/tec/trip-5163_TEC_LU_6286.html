@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Marloie - Melreux - 5163:TEC:LU:6286</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Marloie - Melreux - 5163:TEC:LU:6286</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X923ala.html">TEC:X923ala</a> - Melreux Gare Quai 1 07:41</li><li><a href="stop-TEC_X923aka.html">TEC:X923aka</a> - Hotton Route de la Carrière 07:46</li><li><a href="stop-TEC_X922ama.html">TEC:X922ama</a> - Marenne Carrières 07:49</li><li><a href="stop-TEC_X922ajb.html">TEC:X922ajb</a> - Marenne Eglise 07:50</li><li><a href="stop-TEC_X922aia.html">TEC:X922aia</a> - Marenne Ecole 07:51</li><li><a href="stop-TEC_X922ala.html">TEC:X922ala</a> - Verdenne Rue de Noel 1944 07:54</li><li><a href="stop-TEC_X922akb.html">TEC:X922akb</a> - Verdenne Centre 07:55</li><li><a href="stop-TEC_X922aha.html">TEC:X922aha</a> - Bourdon Cité Belle-Vue 07:57</li><li><a href="stop-TEC_X922agb.html">TEC:X922agb</a> - Bourdon Route de Marenne 11 07:58</li><li><a href="stop-TEC_X922afb.html">TEC:X922afb</a> - Bourdon Eglise 07:59</li><li><a href="stop-TEC_X922aeb.html">TEC:X922aeb</a> - Bourdon Ecole 07:59</li><li><a href="stop-TEC_X922adb.html">TEC:X922adb</a> - Bourdon Route de Marche 94 08:00</li><li><a href="stop-TEC_X922aca.html">TEC:X922aca</a> - Bourdon Station 08:00</li><li><a href="stop-TEC_X922abb.html">TEC:X922abb</a> - Bourdon Longues Aires N86 08:01</li><li><a href="stop-TEC_X901bmb.html">TEC:X901bmb</a> - Marche Rue de Hotton 187 08:03</li><li><a href="stop-TEC_X901blb.html">TEC:X901blb</a> - Marche Chaussée de l'Ourthe 139 08:04</li><li><a href="stop-TEC_X901aqb.html">TEC:X901aqb</a> - Marche Camp Militaire (Ch. de l'Ourthe) 08:04</li><li><a href="stop-TEC_X901apb.html">TEC:X901apb</a> - Marche Centre Sportif 08:04</li><li><a href="stop-TEC_X901aoa.html">TEC:X901aoa</a> - Marche Cimetière 08:05</li><li><a href="stop-TEC_X901aob.html">TEC:X901aob</a> - Marche Cimetière 08:05</li><li><a href="stop-TEC_X901aka.html">TEC:X901aka</a> - Marche Institut St-Laurent 08:05</li><li><a href="stop-TEC_X901ajc.html">TEC:X901ajc</a> - Marche IND 08:07</li><li><a href="stop-TEC_X901ajb.html">TEC:X901ajb</a> - Marche IND 08:07</li><li><a href="stop-TEC_X901aja.html">TEC:X901aja</a> - Marche IND 08:07</li><li><a href="stop-TEC_X901ada.html">TEC:X901ada</a> - Marche Avenue de la Toison d'Or 08:09</li><li><a href="stop-TEC_X901aeb.html">TEC:X901aeb</a> - Marche Athénée 08:11</li><li><a href="stop-TEC_X901afa.html">TEC:X901afa</a> - Marche Rue Pierre Saint-Hubert 08:12</li><li><a href="stop-TEC_X901aga.html">TEC:X901aga</a> - Marche Les His 08:12</li><li><a href="stop-TEC_X902bbb.html">TEC:X902bbb</a> - Marloie Ma Campagne 08:13</li><li><a href="stop-TEC_X902aba.html">TEC:X902aba</a> - Marloie Point du Jour 08:13</li><li><a href="stop-TEC_X902aca.html">TEC:X902aca</a> - Marloie Maison Glatigny 08:14</li><li><a href="stop-TEC_X902ana.html">TEC:X902ana</a> - Marloie Spar 08:15</li><li><a href="stop-TEC_X902aaa.html">TEC:X902aaa</a> - Marloie Eglise 08:15</li><li><a href="stop-TEC_X902afc.html">TEC:X902afc</a> - Marloie Gare - Quai 3 08:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3414.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

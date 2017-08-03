@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Desserte de Mouscron/Moeskroen (SNCB - La Planche) - 5163:TEC:HT:3484</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Desserte de Mouscron/Moeskroen (SNCB - La Planche) - 5163:TEC:HT:3484</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4mo142d.html">TEC:H4mo142d</a> - Moeskroen SNCB/Station 10:45</li><li><a href="stop-TEC_H4mo172a.html">TEC:H4mo172a</a> - Moeskroen Rue de Rollegem/Rollegemstraat 10:46</li><li><a href="stop-TEC_H4mo186a.html">TEC:H4mo186a</a> - Moeskroen Rue Léopold/Leopoldstraat 10:46</li><li><a href="stop-TEC_H4mo180a.html">TEC:H4mo180a</a> - Moeskroen Rue du Luxembourg/Luxemburgstr. 10:47</li><li><a href="stop-TEC_H4mo144a.html">TEC:H4mo144a</a> - Moeskroen Grand-Place/Grote Markt 10:48</li><li><a href="stop-TEC_H4mo147a.html">TEC:H4mo147a</a> - Moeskroen Hôpital/Ziekenhuis 10:49</li><li><a href="stop-TEC_H4mo169a.html">TEC:H4mo169a</a> - Moeskroen Rue Pépinière/Boomkwekerijstr. 10:50</li><li><a href="stop-TEC_H4mo153d.html">TEC:H4mo153d</a> - Moeskroen L'Ours 10:51</li><li><a href="stop-TEC_H4mo178a.html">TEC:H4mo178a</a> - Moeskroen Rue du Dragon/Dragonderstraat 10:53</li><li><a href="stop-TEC_H4mo198a.html">TEC:H4mo198a</a> - Moeskroen Rue du Christ/Christusstraat 10:54</li><li><a href="stop-TEC_H4mo185a.html">TEC:H4mo185a</a> - Moeskroen Rue Haute/Hoogstraat 10:55</li><li><a href="stop-TEC_H4mo179a.html">TEC:H4mo179a</a> - Moeskroen Rue du Labyrinthe/Doolhofstraat 10:55</li><li><a href="stop-TEC_H4mo134a.html">TEC:H4mo134a</a> - Moeskroen Blanc Pignon 10:56</li><li><a href="stop-TEC_H4mo181d.html">TEC:H4mo181d</a> - Moeskroen Rue du Printemps/Lentestraat 10:57</li><li><a href="stop-TEC_H4mo171a.html">TEC:H4mo171a</a> - Moeskroen Rue de Neuville/Neuvillestraat 10:59</li><li><a href="stop-TEC_H4mo183a.html">TEC:H4mo183a</a> - Moeskroen Rue du Théâtre/Theaterstraat 11:00</li><li><a href="stop-TEC_H4mo174a.html">TEC:H4mo174a</a> - Moeskroen Rue Calvaire/Kalvariebergstr. 11:00</li><li><a href="stop-TEC_H4mo167a.html">TEC:H4mo167a</a> - Moeskroen Rue de la Colline/Heuvelstraat 11:01</li><li><a href="stop-TEC_H4mo149a.html">TEC:H4mo149a</a> - Moeskroen La Planche 11:02</li><li><a href="stop-TEC_H4mo135a.html">TEC:H4mo135a</a> - Moeskroen Bleuze Tartine 11:03</li><li><a href="stop-TEC_H4mo162a.html">TEC:H4mo162a</a> - Moeskroen Place de Liberté/Vrijheidsplein 11:03</li><li><a href="stop-TEC_H4mo177a.html">TEC:H4mo177a</a> - Moeskroen Rue du Couët/Coüetstraat 11:04</li><li><a href="stop-TEC_H4mo166a.html">TEC:H4mo166a</a> - Moeskroen Rue de Bruges/Bruggestraat 11:04</li><li><a href="stop-TEC_H4mo152a.html">TEC:H4mo152a</a> - Moeskroen Le Refuge 11:05</li><li><a href="stop-TEC_H4mo150b.html">TEC:H4mo150b</a> - Moeskroen Le Christ 11:07</li><li><a href="stop-TEC_H4mo163a.html">TEC:H4mo163a</a> - Moeskroen Place de Picardie/Picardieplein 11:09</li><li><a href="stop-TEC_H4mo136a.html">TEC:H4mo136a</a> - Moeskroen Casino 11:10</li><li><a href="stop-TEC_H4mo161a.html">TEC:H4mo161a</a> - Moeskroen Place de la Justice/Justitiepl. 11:12</li><li><a href="stop-TEC_H4mo160a.html">TEC:H4mo160a</a> - Moeskroen Phénix 11:13</li><li><a href="stop-TEC_H4mo142a.html">TEC:H4mo142a</a> - Moeskroen SNCB/Station 11:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1428.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

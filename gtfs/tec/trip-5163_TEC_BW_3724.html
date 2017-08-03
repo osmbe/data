@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Hannut - Tirlemont - 5163:TEC:BW:3724</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hannut - Tirlemont - 5163:TEC:BW:3724</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bhancom1.html">TEC:Bhancom1</a> - Hannut Centre Commercial 10:40</li><li><a href="stop-TEC_LHNgend1.html">TEC:LHNgend1</a> - Hannut Gendarmerie 10:41</li><li><a href="stop-TEC_LHNgare1.html">TEC:LHNgare1</a> - Hannut Gare 10:42</li><li><a href="stop-TEC_LHNwaut1.html">TEC:LHNwaut1</a> - Hannut Rue J. Wauters 10:42</li><li><a href="stop-TEC_LHNhall3.html">TEC:LHNhall3</a> - Hannut Place H. Hallet 10:43</li><li><a href="stop-TEC_Bhanath2.html">TEC:Bhanath2</a> - Hannut Athénée Royal 10:44</li><li><a href="stop-TEC_Bhanmou2.html">TEC:Bhanmou2</a> - Hannut Rue du Moulin 10:44</li><li><a href="stop-TEC_Bhandub2.html">TEC:Bhandub2</a> - Hannut Rue Dubois 10:46</li><li><a href="stop-TEC_Bhantui2.html">TEC:Bhantui2</a> - Hannut Rue des Tuileries 10:47</li><li><a href="stop-TEC_Bgdhbvu2.html">TEC:Bgdhbvu2</a> - Grand-Hallet Belle Vue 10:48</li><li><a href="stop-TEC_Bgdhdet1.html">TEC:Bgdhdet1</a> - Grand-Hallet Detiste 10:49</li><li><a href="stop-TEC_Blinhue1.html">TEC:Blinhue1</a> - Lincent Route de Huez 10:50</li><li><a href="stop-TEC_Blindel3.html">TEC:Blindel3</a> - Lincent Delvaux 10:51</li><li><a href="stop-TEC_Blingar1.html">TEC:Blingar1</a> - Lincent Gare 10:52</li><li><a href="stop-TEC_Bpelegl3.html">TEC:Bpelegl3</a> - Pellaines Eglise 10:55</li><li><a href="stop-TEC_Bpelegl1.html">TEC:Bpelegl1</a> - Pellaines Eglise 10:55</li><li><a href="stop-TEC_Blsmvan1.html">TEC:Blsmvan1</a> - Linsmeau Vandalle 10:57</li><li><a href="stop-TEC_Blsmcha1.html">TEC:Blsmcha1</a> - Linsmeau Chapelle 10:58</li><li><a href="stop-TEC_Blsmbfe1.html">TEC:Blsmbfe1</a> - Linsmeau Belle Femme 10:58</li><li><a href="stop-TEC_Boplham1.html">TEC:Boplham1</a> - Opheylissem Hampteau 11:00</li><li><a href="stop-TEC_Boplcar3.html">TEC:Boplcar3</a> - Opheylissem Carrefour 11:01</li><li><a href="stop-TEC_Boplcar1.html">TEC:Boplcar1</a> - Opheylissem Carrefour 11:01</li><li><a href="stop-TEC_Bneecha1.html">TEC:Bneecha1</a> - Neerheylissem Château 11:02</li><li><a href="stop-TEC_Bneeegl1.html">TEC:Bneeegl1</a> - Neerheylissem Eglise 11:03</li><li><a href="stop-TEC_Bneesan1.html">TEC:Bneesan1</a> - Neerheylissem Sainte-Anne 11:03</li><li><a href="stop-TEC_Bneepne1.html">TEC:Bneepne1</a> - Neerheylissem Pont Neuf 11:04</li><li><a href="stop-TEC_Bneehou1.html">TEC:Bneehou1</a> - Ardevoor Rue des Houilles 11:04</li><li><a href="stop-TEC_Bneeace1.html">TEC:Bneeace1</a> - Ardevoor Centre 11:04</li><li><a href="stop-TEC_Bneelaa1.html">TEC:Bneelaa1</a> - Ardevoor Route de Laar 11:05</li><li><a href="stop-TEC_Bezeksj1.html">TEC:Bezeksj1</a> - Ezemaal Kapel Sint-Job 11:06</li><li><a href="stop-TEC_Bezeksj4.html">TEC:Bezeksj4</a> - Ezemaal Kapel Sint-Job 11:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./480.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

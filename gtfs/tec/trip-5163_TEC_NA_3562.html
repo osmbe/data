@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CINEY - MONT-GAUTHIER - 5163:TEC:NA:3562</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CINEY - MONT-GAUTHIER - 5163:TEC:NA:3562</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N201afa.html">TEC:N201afa</a> - Ciney Place Monseu 13:11</li><li><a href="stop-TEC_N201ada.html">TEC:N201ada</a> - Ciney Hôtel de ville 13:13</li><li><a href="stop-TEC_N201aca.html">TEC:N201aca</a> - Ciney Centre médical 13:14</li><li><a href="stop-TEC_N201aec.html">TEC:N201aec</a> - Ciney Gare d'autobus 13:16</li><li><a href="stop-TEC_N201ajb.html">TEC:N201ajb</a> - Ciney Piscine 13:18</li><li><a href="stop-TEC_N201ala.html">TEC:N201ala</a> - Ciney Route de Custinne 13:19</li><li><a href="stop-TEC_N201amb.html">TEC:N201amb</a> - Ciney Golinvaux 13:20</li><li><a href="stop-TEC_N211aib.html">TEC:N211aib</a> - Leignon Station 13:22</li><li><a href="stop-TEC_N211aha.html">TEC:N211aha</a> - Leignon Route de Rochefort 157 13:23</li><li><a href="stop-TEC_N211aca.html">TEC:N211aca</a> - Chapois Passage à niveau 13:25</li><li><a href="stop-TEC_N211adb.html">TEC:N211adb</a> - Chapois N° 120 13:26</li><li><a href="stop-TEC_N211aeb.html">TEC:N211aeb</a> - Chapois N° 109 13:26</li><li><a href="stop-TEC_N211awb.html">TEC:N211awb</a> - Ychippe Nouveau quartier 13:27</li><li><a href="stop-TEC_N211ava.html">TEC:N211ava</a> - Ychippe Eglise 13:29</li><li><a href="stop-TEC_N211agb.html">TEC:N211agb</a> - Leignon Maison Bodart 13:30</li><li><a href="stop-TEC_N212agc.html">TEC:N212agc</a> - Chevetogne Tige de Ronvaux 13:33</li><li><a href="stop-TEC_N212aea.html">TEC:N212aea</a> - Chevetogne Pirlot 13:34</li><li><a href="stop-TEC_N212aca.html">TEC:N212aca</a> - Chevetogne Chemin d'Enhet 13:34</li><li><a href="stop-TEC_N212afa.html">TEC:N212afa</a> - Chevetogne Poncia 13:35</li><li><a href="stop-TEC_N212aha.html">TEC:N212aha</a> - Chevetogne Tour de France 13:35</li><li><a href="stop-TEC_N212aib.html">TEC:N212aib</a> - Chevetogne Village 13:36</li><li><a href="stop-TEC_N212aba.html">TEC:N212aba</a> - Chevetogne Chapelle 13:37</li><li><a href="stop-TEC_N212ala.html">TEC:N212ala</a> - Chevetogne Domaine 13:44</li><li><a href="stop-TEC_N212adb.html">TEC:N212adb</a> - Chevetogne Chemin du monastère 13:46</li><li><a href="stop-TEC_N213abb.html">TEC:N213abb</a> - Mont-Gauthier Entrée du village 13:47</li><li><a href="stop-TEC_N213aab.html">TEC:N213aab</a> - Mont-Gauthier Eglise 13:48</li><li><a href="stop-TEC_N213aca.html">TEC:N213aca</a> - Mont-Gauthier Place 13:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6569.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

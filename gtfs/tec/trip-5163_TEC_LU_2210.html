@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bastogne - Mageret - Wardin - 5163:TEC:LU:2210</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bastogne - Mageret - Wardin - 5163:TEC:LU:2210</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X769anb.html">TEC:X769anb</a> - Wardin Ecole 15:42</li><li><a href="stop-TEC_X769apb.html">TEC:X769apb</a> - Wardin Eglise 15:43</li><li><a href="stop-TEC_X769aob.html">TEC:X769aob</a> - Harzy Centre 15:44</li><li><a href="stop-TEC_X769aib.html">TEC:X769aib</a> - Benonchamps Pont 15:47</li><li><a href="stop-TEC_X769ajb.html">TEC:X769ajb</a> - Benonchamps 19 15:48</li><li><a href="stop-TEC_X769aka.html">TEC:X769aka</a> - Benonchamps Centre 15:49</li><li><a href="stop-TEC_X769ala.html">TEC:X769ala</a> - Benonchamps Route de Mageret 2a 15:50</li><li><a href="stop-TEC_X769amb.html">TEC:X769amb</a> - Benonchamps Route de Mageret 108 15:50</li><li><a href="stop-TEC_X768afa.html">TEC:X768afa</a> - Mageret Ecole 15:52</li><li><a href="stop-TEC_X768aeb.html">TEC:X768aeb</a> - Mageret Carrefour 15:53</li><li><a href="stop-TEC_X768adb.html">TEC:X768adb</a> - Mageret Grand Route 30 15:54</li><li><a href="stop-TEC_X768acb.html">TEC:X768acb</a> - Mageret Grand Route 250 15:55</li><li><a href="stop-TEC_X767aaa.html">TEC:X767aaa</a> - Neffe Chapelle 15:57</li><li><a href="stop-TEC_X767abb.html">TEC:X767abb</a> - Neffe Route de Mont 166 15:58</li><li><a href="stop-TEC_X725ata.html">TEC:X725ata</a> - Mont Lavoir 16:01</li><li><a href="stop-TEC_X725asa.html">TEC:X725asa</a> - Bastogne Route de Mont 130 16:02</li><li><a href="stop-TEC_X725arb.html">TEC:X725arb</a> - Bastogne Route de Mont 105 16:03</li><li><a href="stop-TEC_X725aqa.html">TEC:X725aqa</a> - Bastogne Route de Mont 71 16:04</li><li><a href="stop-TEC_X725apb.html">TEC:X725apb</a> - Bastogne Porte de Trèves 16:05</li><li><a href="stop-TEC_X725aea.html">TEC:X725aea</a> - Bastogne Pépinière - Quai 1 16:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2995.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mons - Saint-Ghislain - 5163:TEC:HT:581</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mons - Saint-Ghislain - 5163:TEC:HT:581</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1ms400d.html">TEC:H1ms400d</a> - Mons SNCB 21:37</li><li><a href="stop-TEC_H1ms314a.html">TEC:H1ms314a</a> - Mons Warocqué 21:38</li><li><a href="stop-TEC_H1ms250a.html">TEC:H1ms250a</a> - Mons Avenue des Canadiens 21:40</li><li><a href="stop-TEC_H1ms297a.html">TEC:H1ms297a</a> - Mons Pont de la Haine 21:41</li><li><a href="stop-TEC_H1gh149a.html">TEC:H1gh149a</a> - Ghlin Casino 21:42</li><li><a href="stop-TEC_H1gh151a.html">TEC:H1gh151a</a> - Ghlin Chaussée 21:43</li><li><a href="stop-TEC_H1gh150a.html">TEC:H1gh150a</a> - Ghlin Charbonnage 21:44</li><li><a href="stop-TEC_H1gh145a.html">TEC:H1gh145a</a> - Ghlin Barrière 21:45</li><li><a href="stop-TEC_H1gh157a.html">TEC:H1gh157a</a> - Ghlin Marais à Criquelions 21:47</li><li><a href="stop-TEC_H1gh158a.html">TEC:H1gh158a</a> - Ghlin Pharmacie 21:48</li><li><a href="stop-TEC_H1gh159a.html">TEC:H1gh159a</a> - Ghlin Place 21:49</li><li><a href="stop-TEC_H1gh160a.html">TEC:H1gh160a</a> - Ghlin Poste 21:50</li><li><a href="stop-TEC_H1gh165c.html">TEC:H1gh165c</a> - Ghlin Rue Jacquemotte 21:51</li><li><a href="stop-TEC_H1gh147a.html">TEC:H1gh147a</a> - Ghlin Brasserie 21:52</li><li><a href="stop-TEC_H1gh168a.html">TEC:H1gh168a</a> - Ghlin Stewart Warner 21:53</li><li><a href="stop-TEC_H1gh171a.html">TEC:H1gh171a</a> - Ghlin Verlipack 21:54</li><li><a href="stop-TEC_H1gh143a.html">TEC:H1gh143a</a> - Ghlin Aleurope 21:55</li><li><a href="stop-TEC_H1ba113a.html">TEC:H1ba113a</a> - Ghlin Pirelli 21:56</li><li><a href="stop-TEC_H1ba107a.html">TEC:H1ba107a</a> - Ghlin Euro M 21:56</li><li><a href="stop-TEC_H1ba110a.html">TEC:H1ba110a</a> - Ghlin Knogo 21:57</li><li><a href="stop-TEC_H1gh371a.html">TEC:H1gh371a</a> - Ghlin Air Liquide 21:57</li><li><a href="stop-TEC_H1ba116a.html">TEC:H1ba116a</a> - Baudour Rue de l' Enfer 21:58</li><li><a href="stop-TEC_H1ba120a.html">TEC:H1ba120a</a> - Baudour Temple 22:00</li><li><a href="stop-TEC_H1ba119a.html">TEC:H1ba119a</a> - Baudour Rue des Juifs 22:00</li><li><a href="stop-TEC_H1ba104a.html">TEC:H1ba104a</a> - Baudour Ch EpiCURA 22:01</li><li><a href="stop-TEC_H1ba109a.html">TEC:H1ba109a</a> - Baudour Jonction 22:02</li><li><a href="stop-TEC_H1ba115a.html">TEC:H1ba115a</a> - Baudour  Pont 22:03</li><li><a href="stop-TEC_H1ba108a.html">TEC:H1ba108a</a> - Baudour Gendarmerie 22:04</li><li><a href="stop-TEC_H1ba114a.html">TEC:H1ba114a</a> - Baudour Place 22:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1625.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

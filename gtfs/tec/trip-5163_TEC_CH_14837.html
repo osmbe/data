@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - MONTIGNIES Pl.-CHARLEROI Sud-JAMIOULX Prison - 5163:TEC:CH:14837</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: MONTIGNIES Pl.-CHARLEROI Sud-JAMIOULX Prison - 5163:TEC:CH:14837</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cjxpris2.html">TEC:Cjxpris2</a> - Jamioulx Prison 09:02</li><li><a href="stop-TEC_Cml5ave2.html">TEC:Cml5ave2</a> - Marcinelle 5ème Avenue 09:03</li><li><a href="stop-TEC_Cmlsana2.html">TEC:Cmlsana2</a> - Marcinelle Sanatorium 09:04</li><li><a href="stop-TEC_Cmlbruy2.html">TEC:Cmlbruy2</a> - Marcinelle La Bruyère 09:04</li><li><a href="stop-TEC_Cmlrbru2.html">TEC:Cmlrbru2</a> - Marcinelle Champ de Course 09:05</li><li><a href="stop-TEC_Cmlipsm2.html">TEC:Cmlipsm2</a> - Marcinelle I.P.S.M.A. 09:07</li><li><a href="stop-TEC_Cmlfeba2.html">TEC:Cmlfeba2</a> - Marcinelle Ferme Bal 09:09</li><li><a href="stop-TEC_Cml3fon2.html">TEC:Cml3fon2</a> - Marcinelle 3 Fontaines 09:11</li><li><a href="stop-TEC_Cmlmatc2.html">TEC:Cmlmatc2</a> - Marcinelle Match Center 09:13</li><li><a href="stop-TEC_Cmltomb2.html">TEC:Cmltomb2</a> - Marcinelle Rue de la Tombe 09:15</li><li><a href="stop-TEC_Cmltemp2.html">TEC:Cmltemp2</a> - Marcinelle Rue du Temple (Avenue Mascaux) 09:17</li><li><a href="stop-TEC_Cmlvpla2.html">TEC:Cmlvpla2</a> - Marcinelle Vieille Place 09:18</li><li><a href="stop-TEC_Cmlhotv2.html">TEC:Cmlhotv2</a> - Marcinelle Hôtel de Ville 09:19</li><li><a href="stop-TEC_Cmlbras2.html">TEC:Cmlbras2</a> - Marcinelle Rue de la Brasserie 09:20</li><li><a href="stop-TEC_Cmlcent2.html">TEC:Cmlcent2</a> - Marcinelle Centre 09:21</li><li><a href="stop-TEC_Cmlecha2.html">TEC:Cmlecha2</a> - Marcinelle Rue E. Charles 09:22</li><li><a href="stop-TEC_Cchsud03.html">TEC:Cchsud03</a> - Charleroi Sud 09:25</li><li><a href="stop-TEC_Cchtiro4.html">TEC:Cchtiro4</a> - Charleroi Tirou (M) 09:27</li><li><a href="stop-TEC_Cchparc4.html">TEC:Cchparc4</a> - Charleroi Parc (M) 09:29</li><li><a href="stop-TEC_Cchcase2.html">TEC:Cchcase2</a> - Charleroi Casernes 09:30</li><li><a href="stop-TEC_Cmtrneu2.html">TEC:Cmtrneu2</a> - Montignies-sur-Sambre Rue Neuve 09:31</li><li><a href="stop-TEC_Cmtpire1.html">TEC:Cmtpire1</a> - Montignies-sur-Sambre Place Piret 09:33</li><li><a href="stop-TEC_Cmtpaix1.html">TEC:Cmtpaix1</a> - Montignies-sur-Sambre Paix 09:34</li><li><a href="stop-TEC_Cmtneuv1.html">TEC:Cmtneuv1</a> - Montignies-sur-Sambre Neuville Place 09:35</li><li><a href="stop-TEC_Cmtchet1.html">TEC:Cmtchet1</a> - Montignies-sur-Sambre Chet 09:36</li><li><a href="stop-TEC_Cmtyern1.html">TEC:Cmtyern1</a> - Montignies-sur-Sambre Stade Yernaux 09:38</li><li><a href="stop-TEC_Cmtgrim1.html">TEC:Cmtgrim1</a> - Montignies-sur-Sambre Grimard 09:39</li><li><a href="stop-TEC_Cmtfoye1.html">TEC:Cmtfoye1</a> - Montignies-sur-Sambre Foyer Montagnard 09:39</li><li><a href="stop-TEC_Cmtstth2.html">TEC:Cmtstth2</a> - Montignies-sur-Sambre Sainte-Thérèse 09:40</li><li><a href="stop-TEC_Cmtfabi2.html">TEC:Cmtfabi2</a> - Montignies-sur-Sambre Reine Fabiola 09:41</li><li><a href="stop-TEC_Cmtplac8.html">TEC:Cmtplac8</a> - Montignies-sur-Sambre Place 09:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./909.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

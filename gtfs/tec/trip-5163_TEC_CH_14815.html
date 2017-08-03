@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - WALCOURT - FROIDCHAPELLE - 5163:TEC:CH:14815</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: WALCOURT - FROIDCHAPELLE - 5163:TEC:CH:14815</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N106apa.html">TEC:N106apa</a> - Walcourt Gare 18:44</li><li><a href="stop-TEC_N106aob.html">TEC:N106aob</a> - Walcourt Rue de la Gare 18:45</li><li><a href="stop-TEC_N106anb.html">TEC:N106anb</a> - Walcourt Passage à niveau 18:45</li><li><a href="stop-TEC_N106alb.html">TEC:N106alb</a> - Walcourt Basilique 18:46</li><li><a href="stop-TEC_N106akb.html">TEC:N106akb</a> - Walcourt Gerlimpont 18:47</li><li><a href="stop-TEC_N106aib.html">TEC:N106aib</a> - Silenrieux Battefer 18:49</li><li><a href="stop-TEC_N106ahb.html">TEC:N106ahb</a> - Silenrieux Pisselotte 18:50</li><li><a href="stop-TEC_N106afa.html">TEC:N106afa</a> - Silenrieux Rue de la Gare 18:51</li><li><a href="stop-TEC_Csiegli2.html">TEC:Csiegli2</a> - Silenrieux Eglise 18:51</li><li><a href="stop-TEC_Cbugara2.html">TEC:Cbugara2</a> - Boussu-Lez-Walcourt Garage 18:53</li><li><a href="stop-TEC_Cbupla2.html">TEC:Cbupla2</a> - Boussu-Lez-Walcourt Place 18:54</li><li><a href="stop-TEC_Cbuegl2.html">TEC:Cbuegl2</a> - Boussu-Lez-Walcourt Eglise 18:55</li><li><a href="stop-TEC_Ceregl2.html">TEC:Ceregl2</a> - Erpion Eglise 19:00</li><li><a href="stop-TEC_Cerrver4.html">TEC:Cerrver4</a> - Erpion Route de Vergnies 19:01</li><li><a href="stop-TEC_Cvrchap2.html">TEC:Cvrchap2</a> - Vergnies Chapelle 19:05</li><li><a href="stop-TEC_Cvregl2.html">TEC:Cvregl2</a> - Vergnies Eglise 19:05</li><li><a href="stop-TEC_Cvrhaie2.html">TEC:Cvrhaie2</a> - Vergnies Haiewys 19:06</li><li><a href="stop-TEC_Cvrfcho2.html">TEC:Cvrfcho2</a> - Vergnies Ferme Chonrieux 19:06</li><li><a href="stop-TEC_Cvretan2.html">TEC:Cvretan2</a> - Vergnies Etang 19:07</li><li><a href="stop-TEC_Cvrhab22.html">TEC:Cvrhab22</a> - Vergnies Habitation n° 2 19:07</li><li><a href="stop-TEC_Cvrfema2.html">TEC:Cvrfema2</a> - Vergnies Ferme de Manensart 19:08</li><li><a href="stop-TEC_Cfccuch2.html">TEC:Cfccuch2</a> - Froidchapelle Cul de Cheval 19:09</li><li><a href="stop-TEC_Cfcbobr2.html">TEC:Cfcbobr2</a> - Froidchapelle Rue du Bois Brûlé 19:09</li><li><a href="stop-TEC_Cfcsaut4.html">TEC:Cfcsaut4</a> - Froidchapelle Rue de Sautizelle 19:10</li><li><a href="stop-TEC_Cfcbosq2.html">TEC:Cfcbosq2</a> - Froidchapelle Bosquet 19:10</li><li><a href="stop-TEC_Cfcchen2.html">TEC:Cfcchen2</a> - Froidchapelle Le Chéniat 19:11</li><li><a href="stop-TEC_Cfcecol4.html">TEC:Cfcecol4</a> - Froidchapelle Les Ecoles 19:11</li><li><a href="stop-TEC_Cfbegli2.html">TEC:Cfbegli2</a> - Fourbechies Eglise 19:11</li><li><a href="stop-TEC_Cfbcabi2.html">TEC:Cfbcabi2</a> - Fourbechies Cabine 19:12</li><li><a href="stop-TEC_Cfbcal2.html">TEC:Cfbcal2</a> - Fourbechies Calvaire 19:12</li><li><a href="stop-TEC_Cfcecol2.html">TEC:Cfcecol2</a> - Froidchapelle Ecoles 19:16</li><li><a href="stop-TEC_Cfcpla2.html">TEC:Cfcpla2</a> - Froidchapelle Place 19:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1104.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

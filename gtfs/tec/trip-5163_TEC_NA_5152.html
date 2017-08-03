@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CINEY - LEIGNON - 5163:TEC:NA:5152</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CINEY - LEIGNON - 5163:TEC:NA:5152</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N201afa.html">TEC:N201afa</a> - Ciney Place Monseu 08:15</li><li><a href="stop-TEC_N201ada.html">TEC:N201ada</a> - Ciney Hôtel de ville 08:16</li><li><a href="stop-TEC_N201aca.html">TEC:N201aca</a> - Ciney Centre médical 08:17</li><li><a href="stop-TEC_N201ajb.html">TEC:N201ajb</a> - Ciney Piscine 08:19</li><li><a href="stop-TEC_N201ala.html">TEC:N201ala</a> - Ciney Route de Custinne 08:21</li><li><a href="stop-TEC_N201amb.html">TEC:N201amb</a> - Ciney Golinvaux 08:22</li><li><a href="stop-TEC_N211ala.html">TEC:N211ala</a> - Leignon Ecole libre 08:25</li><li><a href="stop-TEC_N211ana.html">TEC:N211ana</a> - Leignon Rue de Custinne 08:27</li><li><a href="stop-TEC_N211bca.html">TEC:N211bca</a> - Corbion Centre 08:28</li><li><a href="stop-TEC_N211ara.html">TEC:N211ara</a> - Leignon Rue de Corbion 16 08:28</li><li><a href="stop-TEC_N211apa.html">TEC:N211apa</a> - Leignon Rue Somelette 2 08:30</li><li><a href="stop-TEC_N211baa.html">TEC:N211baa</a> - Leignon Rue Somelette 18 08:30</li><li><a href="stop-TEC_N211aza.html">TEC:N211aza</a> - Leignon Rue Somelette 25 08:30</li><li><a href="stop-TEC_N211aha.html">TEC:N211aha</a> - Leignon Route de Rochefort 157 08:32</li><li><a href="stop-TEC_N211bba.html">TEC:N211bba</a> - Chapois Passage à niveau 08:34</li><li><a href="stop-TEC_N211afa.html">TEC:N211afa</a> - Chapois Eglise 08:35</li><li><a href="stop-TEC_N211acb.html">TEC:N211acb</a> - Chapois Passage à niveau 08:36</li><li><a href="stop-TEC_N211asa.html">TEC:N211asa</a> - Leignon Ecole communale 08:37</li><li><a href="stop-TEC_N211ahb.html">TEC:N211ahb</a> - Leignon Route de Rochefort 157 08:37</li><li><a href="stop-TEC_N211aia.html">TEC:N211aia</a> - Leignon Station 08:39</li><li><a href="stop-TEC_N211ala.html">TEC:N211ala</a> - Leignon Ecole libre 08:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5847.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

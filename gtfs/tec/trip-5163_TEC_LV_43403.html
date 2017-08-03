@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Welkenraedt / Montzen - Birken - Kelmis - 5163:TEC:LV:43403</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Welkenraedt / Montzen - Birken - Kelmis - 5163:TEC:LV:43403</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LBkcare_.html">TEC:LBkcare*</a> - Birken Carrefour (Terminus L715) 07:56</li><li><a href="stop-TEC_LBkdahl1.html">TEC:LBkdahl1</a> - Birken Dahlienstrasse 07:57</li><li><a href="stop-TEC_LBkbamb1.html">TEC:LBkbamb1</a> - Birken Bambusch 07:57</li><li><a href="stop-TEC_LkEl3251.html">TEC:LkEl3251</a> - Kelmis Lütticher Strasse 325 07:58</li><li><a href="stop-TEC_LkEl1211.html">TEC:LkEl1211</a> - Kelmis Lütticher Strasse 121 07:59</li><li><a href="stop-TEC_LkEhaag1.html">TEC:LkEhaag1</a> - Kelmis Haag Weg 08:00</li><li><a href="stop-TEC_LkEkric2.html">TEC:LkEkric2</a> - Kelmis Krickelstein 08:01</li><li><a href="stop-TEC_LkEneus2.html">TEC:LkEneus2</a> - Kelmis Neustrasse 08:01</li><li><a href="stop-TEC_LkEgend2.html">TEC:LkEgend2</a> - Kelmis Gendarmerie 08:04</li><li><a href="stop-TEC_LkEkirc2.html">TEC:LkEkirc2</a> - Kelmis Kirchplatz 08:04</li><li><a href="stop-TEC_LkEbbl-2.html">TEC:LkEbbl-2</a> - Kelmis B.B.L. (Fischenich) 08:05</li><li><a href="stop-TEC_LkEheyg2.html">TEC:LkEheyg2</a> - Kelmis Heygraben 08:07</li><li><a href="stop-TEC_LkEspor1.html">TEC:LkEspor1</a> - Kelmis Sportzentrum 08:08</li><li><a href="stop-TEC_LkEgds-1.html">TEC:LkEgds-1</a> - Kelmis Gemeindeschule 08:09</li><li><a href="stop-TEC_LkEgss-2.html">TEC:LkEgss-2</a> - Kelmis Gemeinschaftsschule 08:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4967.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

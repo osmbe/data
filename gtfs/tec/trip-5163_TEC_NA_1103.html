@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - FLORENNES - YVES-GOMEZEE - WALCOURT - 5163:TEC:NA:1103</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: FLORENNES - YVES-GOMEZEE - WALCOURT - 5163:TEC:NA:1103</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N106ala.html">TEC:N106ala</a> - Walcourt Basilique 07:37</li><li><a href="stop-TEC_N106ana.html">TEC:N106ana</a> - Walcourt Passage à niveau 07:38</li><li><a href="stop-TEC_N106aoa.html">TEC:N106aoa</a> - Walcourt Rue de la Gare 07:39</li><li><a href="stop-TEC_N106apa.html">TEC:N106apa</a> - Walcourt Gare 07:40</li><li><a href="stop-TEC_N106aqb.html">TEC:N106aqb</a> - Walcourt Cantonnier 07:42</li><li><a href="stop-TEC_N106adb.html">TEC:N106adb</a> - Chastres Route de Walcourt 07:43</li><li><a href="stop-TEC_N106acb.html">TEC:N106acb</a> - Chastres Briqueterie 07:43</li><li><a href="stop-TEC_N106abb.html">TEC:N106abb</a> - Chastres Quatre bras 07:44</li><li><a href="stop-TEC_N106aab.html">TEC:N106aab</a> - Chastres Route de Laneffe 07:45</li><li><a href="stop-TEC_N118abb.html">TEC:N118abb</a> - Fairoul Route de Chastrès 07:48</li><li><a href="stop-TEC_N118aab.html">TEC:N118aab</a> - Fairoul Centre 07:49</li><li><a href="stop-TEC_N118aib.html">TEC:N118aib</a> - Fraire Minière 07:50</li><li><a href="stop-TEC_N118agb.html">TEC:N118agb</a> - Fraire Chapelle 07:52</li><li><a href="stop-TEC_N118aca.html">TEC:N118aca</a> - Fraire Monument 07:53</li><li><a href="stop-TEC_N118aya.html">TEC:N118aya</a> - Fraire Barrière 07:53</li><li><a href="stop-TEC_N118atb.html">TEC:N118atb</a> - Yves-Gomezee Rue Neuve 07:57</li><li><a href="stop-TEC_N118ana.html">TEC:N118ana</a> - Yves-Gomezee La folie 07:57</li><li><a href="stop-TEC_N118apa.html">TEC:N118apa</a> - Yves-Gomezee Pont berlanger 07:58</li><li><a href="stop-TEC_N118aqb.html">TEC:N118aqb</a> - Yves-Gomezee Mimbercée 07:58</li><li><a href="stop-TEC_N118bab.html">TEC:N118bab</a> - Yves-Gomezee St-Joseph 07:58</li><li><a href="stop-TEC_N118aza.html">TEC:N118aza</a> - Yves-Gomezee St-Lambert gare 07:59</li><li><a href="stop-TEC_N118anc.html">TEC:N118anc</a> - Yves-Gomezee La folie 07:59</li><li><a href="stop-TEC_N118aob.html">TEC:N118aob</a> - Yves-Gomezee Champsfossés 08:00</li><li><a href="stop-TEC_N118ata.html">TEC:N118ata</a> - Yves-Gomezee Rue Neuve 08:01</li><li><a href="stop-TEC_N118alb.html">TEC:N118alb</a> - Yves-Gomezee La reinette 08:03</li><li><a href="stop-TEC_N118akb.html">TEC:N118akb</a> - Yves-Gomezee Maison du garde 08:04</li><li><a href="stop-TEC_N147afb.html">TEC:N147afb</a> - Saint-Aubin Carrefour St-Fiacre 08:06</li><li><a href="stop-TEC_N147aeb.html">TEC:N147aeb</a> - Saint-Aubin Rue St-Fiacre 08:07</li><li><a href="stop-TEC_N147acb.html">TEC:N147acb</a> - Saint-Aubin Pont 08:08</li><li><a href="stop-TEC_N147adb.html">TEC:N147adb</a> - Saint-Aubin Route de Florennes 08:10</li><li><a href="stop-TEC_N117azb.html">TEC:N117azb</a> - Saint-Aubin Ber-aux-fosses 08:11</li><li><a href="stop-TEC_N117aud.html">TEC:N117aud</a> - Florennes Saint-Roch 08:12</li><li><a href="stop-TEC_N117aqb.html">TEC:N117aqb</a> - Florennes Pont 08:14</li><li><a href="stop-TEC_N117bcd.html">TEC:N117bcd</a> - Florennes Place de la Chapelle 08:14</li><li><a href="stop-TEC_N117ama.html">TEC:N117ama</a> - Florennes Gare d'autobus 08:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6142.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

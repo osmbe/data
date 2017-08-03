@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - WALCOURT - CERFONTAINE - PHILIPPEVILLE - 5163:TEC:NA:12410</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: WALCOURT - CERFONTAINE - PHILIPPEVILLE - 5163:TEC:NA:12410</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N106apa.html">TEC:N106apa</a> - Walcourt Gare 17:48</li><li><a href="stop-TEC_N106aob.html">TEC:N106aob</a> - Walcourt Rue de la Gare 17:49</li><li><a href="stop-TEC_N106anb.html">TEC:N106anb</a> - Walcourt Passage à niveau 17:49</li><li><a href="stop-TEC_N106alb.html">TEC:N106alb</a> - Walcourt Basilique 17:50</li><li><a href="stop-TEC_N106akb.html">TEC:N106akb</a> - Walcourt Gerlimpont 17:51</li><li><a href="stop-TEC_N106aib.html">TEC:N106aib</a> - Silenrieux Battefer 17:53</li><li><a href="stop-TEC_N106ahb.html">TEC:N106ahb</a> - Silenrieux Pisselotte 17:53</li><li><a href="stop-TEC_N106afa.html">TEC:N106afa</a> - Silenrieux Rue de la Gare 17:54</li><li><a href="stop-TEC_N106agb.html">TEC:N106agb</a> - Silenrieux Bethléem 17:55</li><li><a href="stop-TEC_N104ada.html">TEC:N104ada</a> - Daussois Route de Philippeville 17:57</li><li><a href="stop-TEC_N104aba.html">TEC:N104aba</a> - Daussois Rue des rocailles 17:57</li><li><a href="stop-TEC_N104aac.html">TEC:N104aac</a> - Daussois Barrière 17:58</li><li><a href="stop-TEC_N104acb.html">TEC:N104acb</a> - Daussois Place des trieux 17:59</li><li><a href="stop-TEC_N104aad.html">TEC:N104aad</a> - Daussois Barrière 18:01</li><li><a href="stop-TEC_N116aaa.html">TEC:N116aaa</a> - Villers-Deux-Eglises Le chasseur 18:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6372.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

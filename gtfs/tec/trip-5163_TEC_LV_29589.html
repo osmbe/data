@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Lambert - Citadelle - Fond des Tawes - 5163:TEC:LV:29589</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Lambert - Citadelle - Fond des Tawes - 5163:TEC:LV:29589</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Llgcita2.html">TEC:Llgcita2</a> - Liege Hôpital de la Citadelle 11:19</li><li><a href="stop-TEC_Llgplat2.html">TEC:Llgplat2</a> - Liege Plateau 11:21</li><li><a href="stop-TEC_Llglefe2.html">TEC:Llglefe2</a> - Liege Lefer 11:22</li><li><a href="stop-TEC_Llgpire2.html">TEC:Llgpire2</a> - Liege Rue Fond Pirette 11:23</li><li><a href="stop-TEC_Llgcamp2.html">TEC:Llgcamp2</a> - Liege Rue de Campine 154 11:24</li><li><a href="stop-TEC_Llgbatt2.html">TEC:Llgbatt2</a> - Liege Batterie 11:25</li><li><a href="stop-TEC_Llghoch4.html">TEC:Llghoch4</a> - Liege Hocheporte 11:26</li><li><a href="stop-TEC_Llgcadr4.html">TEC:Llgcadr4</a> - Liege Cadran 11:26</li><li><a href="stop-TEC_LlgLAMB7.html">TEC:LlgLAMB7</a> - Liege Place St-Lambert 11:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4343.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

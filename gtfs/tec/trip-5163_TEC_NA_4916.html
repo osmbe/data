@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - BEAURAING - GIVET - DOISCHE - 5163:TEC:NA:4916</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: BEAURAING - GIVET - DOISCHE - 5163:TEC:NA:4916</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N340adb.html">TEC:N340adb</a> - Heer Pont 17:01</li><li><a href="stop-TEC_N340aeb.html">TEC:N340aeb</a> - Heer Hiat 17:03</li><li><a href="stop-TEC_N340afb.html">TEC:N340afb</a> - Heer Place communale 17:04</li><li><a href="stop-TEC_N340ahb.html">TEC:N340ahb</a> - Heer Faubourg 17:05</li><li><a href="stop-TEC_N340aib.html">TEC:N340aib</a> - Heer Au gros caillou 17:06</li><li><a href="stop-TEC_N301aab.html">TEC:N301aab</a> - Givet Cimetière 17:08</li><li><a href="stop-TEC_N301abb.html">TEC:N301abb</a> - Givet Eglise Notre-Dame 17:09</li><li><a href="stop-TEC_N301acb.html">TEC:N301acb</a> - Givet Place de la République 17:09</li><li><a href="stop-TEC_N301adb.html">TEC:N301adb</a> - Givet Pont 17:10</li><li><a href="stop-TEC_N301afb.html">TEC:N301afb</a> - Givet St-Hilaire place Méhul 17:11</li><li><a href="stop-TEC_N301ajb.html">TEC:N301ajb</a> - Givet Gare 17:12</li><li><a href="stop-TEC_N301ajb.html">TEC:N301ajb</a> - Givet Gare 17:12</li><li><a href="stop-TEC_N301afc.html">TEC:N301afc</a> - Givet St-Hilaire place Méhul 17:13</li><li><a href="stop-TEC_N301ada.html">TEC:N301ada</a> - Givet Pont 17:14</li><li><a href="stop-TEC_N302aaa.html">TEC:N302aaa</a> - Rancennes Porte de Rancennes 17:17</li><li><a href="stop-TEC_N302aba.html">TEC:N302aba</a> - Rancennes Chemin des Buissons 17:18</li><li><a href="stop-TEC_N302aca.html">TEC:N302aca</a> - Rancennes Allée des Orchidées 17:19</li><li><a href="stop-TEC_N302ada.html">TEC:N302ada</a> - Rancennes Chemin des Meules 17:20</li><li><a href="stop-TEC_N302aeb.html">TEC:N302aeb</a> - Rancennes Place de l'Eglise 17:21</li><li><a href="stop-TEC_N302aea.html">TEC:N302aea</a> - Rancennes Place de l'Eglise 17:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6650.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

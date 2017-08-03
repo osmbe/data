@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Neuville - Esneux - 5163:TEC:LV:25857</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Neuville - Esneux - 5163:TEC:LV:25857</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LESecco1.html">TEC:LESecco1</a> - Esneux Ecole communale 16:42</li><li><a href="stop-TEC_LESathe1.html">TEC:LESathe1</a> - Esneux Athénée 16:43</li><li><a href="stop-TEC_LESpont3.html">TEC:LESpont3</a> - Esneux Pont d'Esneux 16:44</li><li><a href="stop-TEC_LESamos2.html">TEC:LESamos2</a> - Esneux Route d'Amostrennes 16:45</li><li><a href="stop-TEC_LESmagr2.html">TEC:LESmagr2</a> - Esneux La Magrée 16:45</li><li><a href="stop-TEC_LESmart2.html">TEC:LESmart2</a> - Esneux Fond de Martin 16:46</li><li><a href="stop-TEC_LPLhout2.html">TEC:LPLhout2</a> - Plainevaux Hout-si-Plout 16:47</li><li><a href="stop-TEC_LPLstat2.html">TEC:LPLstat2</a> - Plainevaux Station 16:48</li><li><a href="stop-TEC_LPLaube2.html">TEC:LPLaube2</a> - Plainevaux La Vielle Auberge 16:48</li><li><a href="stop-TEC_LPLroth2.html">TEC:LPLroth2</a> - Plainevaux Route de Rotheux 16:49</li><li><a href="stop-TEC_LPLarbo2.html">TEC:LPLarbo2</a> - Plainevaux Rue de l'Arbois 16:50</li><li><a href="stop-TEC_LPLheid2.html">TEC:LPLheid2</a> - Plainevaux Heid du Moulin 16:50</li><li><a href="stop-TEC_LPLfp2-2.html">TEC:LPLfp2-2</a> - Plainevaux Rue Fine Pierre 2 16:51</li><li><a href="stop-TEC_LPLstri2.html">TEC:LPLstri2</a> - Plainevaux Route de Strivay 16:51</li><li><a href="stop-TEC_LPLmonu2.html">TEC:LPLmonu2</a> - Plainevaux Monument 16:52</li><li><a href="stop-TEC_LPLcite2.html">TEC:LPLcite2</a> - Plainevaux Cité 16:54</li><li><a href="stop-TEC_LPLcroi2.html">TEC:LPLcroi2</a> - Plainevaux Rue de la Croisette 60 16:55</li><li><a href="stop-TEC_LPLphar1.html">TEC:LPLphar1</a> - Plainevaux Pharmacie 16:57</li><li><a href="stop-TEC_LPLruis2.html">TEC:LPLruis2</a> - Plainevaux Rue du Ruisseau 16:58</li><li><a href="stop-TEC_LPLline2.html">TEC:LPLline2</a> - Plainevaux Rue Linette 16:58</li><li><a href="stop-TEC_LPLbiol2.html">TEC:LPLbiol2</a> - Plainevaux Heid de Bioleux 16:59</li><li><a href="stop-TEC_LRRroth1.html">TEC:LRRroth1</a> - Rotheux-Rimiere Bout de Rotheux 17:01</li><li><a href="stop-TEC_LRRlimi1.html">TEC:LRRlimi1</a> - Rotheux-Rimiere Rue de la Limite 17:01</li><li><a href="stop-TEC_LRRpost1.html">TEC:LRRpost1</a> - Rotheux-Rimiere Poste 17:02</li><li><a href="stop-TEC_LRRelec1.html">TEC:LRRelec1</a> - Rotheux-Rimiere Centrale Electrique 17:03</li><li><a href="stop-TEC_LRRmanc1.html">TEC:LRRmanc1</a> - Rotheux-Rimiere Rue Tige Manchère 17:04</li><li><a href="stop-TEC_LRRbuta1.html">TEC:LRRbuta1</a> - Rotheux-Rimiere Butay 17:04</li><li><a href="stop-TEC_LRRrimi1.html">TEC:LRRrimi1</a> - Rotheux-Rimiere Petite Rimière 17:05</li><li><a href="stop-TEC_LRRmeta1.html">TEC:LRRmeta1</a> - Rotheux Avenue de la Métairie 17:06</li><li><a href="stop-TEC_LRRoser2.html">TEC:LRRoser2</a> - Rotheux-Rimiere Rue de l'Oseraie 17:08</li><li><a href="stop-TEC_LRRandr2.html">TEC:LRRandr2</a> - Rotheux-Rimiere Croix André 17:08</li><li><a href="stop-TEC_LRRrimi2.html">TEC:LRRrimi2</a> - Rotheux-Rimiere Petite Rimière 17:09</li><li><a href="stop-TEC_LRRbuta2.html">TEC:LRRbuta2</a> - Rotheux-Rimiere Butay 17:10</li><li><a href="stop-TEC_LRRchea1.html">TEC:LRRchea1</a> - Rotheux-Rimiere Rue du Château d'eau 17:11</li><li><a href="stop-TEC_LNCfawe1.html">TEC:LNCfawe1</a> - Neuville-en-Condroz Sentier des 7 Fawes 17:11</li><li><a href="stop-TEC_LNCesne1.html">TEC:LNCesne1</a> - Neuville-en-Condroz Route d'Esneux 17:12</li><li><a href="stop-TEC_LNCvill1.html">TEC:LNCvill1</a> - Neuville-en-Condroz Rue du Village 17:14</li><li><a href="stop-TEC_LNCchau1.html">TEC:LNCchau1</a> - Neuville-en-Condroz Allée du Château 17:15</li><li><a href="stop-TEC_LNCmada2.html">TEC:LNCmada2</a> - Neuville-en-Condroz Chemin Madame 17:15</li><li><a href="stop-TEC_LNCsart2.html">TEC:LNCsart2</a> - Neuville-en-Condroz Rue des Grands Sarts 17:16</li><li><a href="stop-TEC_LNCneuv2.html">TEC:LNCneuv2</a> - Neuville-en-Condroz Drève du Bois de Neuville 17:18</li><li><a href="stop-TEC_LNCchev4.html">TEC:LNCchev4</a> - Neuville-en-Condroz Avenue de la Chevauchée 17:21</li><li><a href="stop-TEC_LNCgene2.html">TEC:LNCgene2</a> - Neuville-en-Condroz Rue des Genêts 17:21</li><li><a href="stop-TEC_LNClila1.html">TEC:LNClila1</a> - Neuville-en-Condroz Avenue des Lilas 17:22</li><li><a href="stop-TEC_LNCdoma3.html">TEC:LNCdoma3</a> - Neuville-en-Condroz Domaine 17:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5266.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

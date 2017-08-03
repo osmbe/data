@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - SMV/FSM - Teuven - Remersdaal - Aubel - 5163:TEC:LV:24845</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: SMV/FSM - Teuven - Remersdaal - Aubel - 5163:TEC:LV:24845</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LFMvoge_.html">TEC:LFMvoge*</a> - St-Martens-Voeren Vogelstang 15:35</li><li><a href="stop-TEC_LFMstat1.html">TEC:LFMstat1</a> - St-Martens-Voeren Station 15:35</li><li><a href="stop-TEC_LFPknap1.html">TEC:LFPknap1</a> - St-Pieters-Voeren Knap 15:36</li><li><a href="stop-TEC_LFPkape1.html">TEC:LFPkape1</a> - St-Pieters-Voeren Sint-Annakapel / Chap. Ste Anne 15:37</li><li><a href="stop-TEC_LFMkrut1.html">TEC:LFMkrut1</a> - St-Martens-Voeren Crutzberg 15:38</li><li><a href="stop-TEC_LFMkrin1.html">TEC:LFMkrin1</a> - St-Martens-Voeren Krindaal 15:38</li><li><a href="stop-TEC_LDpulve1.html">TEC:LDpulve1</a> - De Planck Weg op Ulvend 15:39</li><li><a href="stop-TEC_LDpzol-1.html">TEC:LDpzol-1</a> - De Planck Zol 15:40</li><li><a href="stop-TEC_LDppana1.html">TEC:LDppana1</a> - De Planck Panalpina 15:40</li><li><a href="stop-TEC_LTErest1.html">TEC:LTErest1</a> - Teuven Restaurant Rode Bos 15:41</li><li><a href="stop-TEC_LTEcamp1.html">TEC:LTEcamp1</a> - Teuven Camping Bergzicht 15:42</li><li><a href="stop-TEC_LTEnuro1.html">TEC:LTEnuro1</a> - Teuven Weg op Nurop 15:43</li><li><a href="stop-TEC_LTEkerk1.html">TEC:LTEkerk1</a> - Teuven Kerk / Eglise 15:44</li><li><a href="stop-TEC_LTEzinn1.html">TEC:LTEzinn1</a> - Teuven Sinnich 15:45</li><li><a href="stop-TEC_LRmkast_.html">TEC:LRmkast*</a> - Remersdaal Kasteel 15:47</li><li><a href="stop-TEC_LTEzinn2.html">TEC:LTEzinn2</a> - Teuven Sinnich 15:49</li><li><a href="stop-TEC_LTEziho1.html">TEC:LTEziho1</a> - Teuven Sinnicherhof 15:49</li><li><a href="stop-TEC_LTEkl121.html">TEC:LTEkl121</a> - Teuven Kloosterhof 12 15:51</li><li><a href="stop-TEC_LTEkl161.html">TEC:LTEkl161</a> - Teuven Kloosterhof 16 15:53</li><li><a href="stop-TEC_LRmrode1.html">TEC:LRmrode1</a> - Remersdaal Roodbos / Bois Rouge 15:54</li><li><a href="stop-TEC_LRmsmvo1.html">TEC:LRmsmvo1</a> - Remersdaal Weg op St-Martens-Voeren 15:56</li><li><a href="stop-TEC_LRmkult1.html">TEC:LRmkult1</a> - Remersdaal Kultjen 15:58</li><li><a href="stop-TEC_LRmkerk1.html">TEC:LRmkerk1</a> - Remersdaal Kerk / Eglise 15:59</li><li><a href="stop-TEC_LRmmabr1.html">TEC:LRmmabr1</a> - Remersdaal Mabroek 15a 16:02</li><li><a href="stop-TEC_LRmha262.html">TEC:LRmha262</a> - Remersdaal Hagelstein 26 16:06</li><li><a href="stop-TEC_LRmhage8.html">TEC:LRmhage8</a> - Remersdaal Hagelstein 16:07</li><li><a href="stop-TEC_LAUcent2.html">TEC:LAUcent2</a> - Aubel Centre médical 16:09</li><li><a href="stop-TEC_LAUneuv4.html">TEC:LAUneuv4</a> - Aubel Rue Neuve 16:09</li><li><a href="stop-TEC_LAUvict3.html">TEC:LAUvict3</a> - Aubel Place de la Victoire 16:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4983.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

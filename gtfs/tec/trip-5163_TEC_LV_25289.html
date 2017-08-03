@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Trois-Ponts - Waimes - Büllingen - 5163:TEC:LV:25289</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Trois-Ponts - Waimes - Büllingen - 5163:TEC:LV:25289</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LbTathe2.html">TEC:LbTathe2</a> - Butgenbach Athenäum 15:30</li><li><a href="stop-TEC_LbTkreu4.html">TEC:LbTkreu4</a> - Butgenbach Kreuzung 15:31</li><li><a href="stop-TEC_LbThutt2.html">TEC:LbThutt2</a> - Butgenbach Strasse zur Hütte 15:31</li><li><a href="stop-TEC_LbTaral2.html">TEC:LbTaral2</a> - Butgenbach Aral Tankstelle 15:32</li><li><a href="stop-TEC_LbTgeme2.html">TEC:LbTgeme2</a> - Butgenbach Gemeindehaus 15:34</li><li><a href="stop-TEC_LwYkreu3.html">TEC:LwYkreu3</a> - Weywertz Kreuzung 15:35</li><li><a href="stop-TEC_LwYboui1.html">TEC:LwYboui1</a> - Weywertz Haus Bouillon 15:36</li><li><a href="stop-TEC_LwYcafe1.html">TEC:LwYcafe1</a> - Weywertz Cafe Zur Alten Linde 15:36</li><li><a href="stop-TEC_LwYkirc1.html">TEC:LwYkirc1</a> - Weywertz Kirche 15:37</li><li><a href="stop-TEC_LwYneue1.html">TEC:LwYneue1</a> - Weywertz Neuer Weg 15:39</li><li><a href="stop-TEC_LwYnr261.html">TEC:LwYnr261</a> - Weywertz Haus Nr. 26 15:41</li><li><a href="stop-TEC_LwYbruc4.html">TEC:LwYbruc4</a> - Weywertz Brückberg 15:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5108.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

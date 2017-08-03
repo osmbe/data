@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Trois-Ponts - Waimes - Büllingen - 5163:TEC:LV:27197</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Trois-Ponts - Waimes - Büllingen - 5163:TEC:LV:27197</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LwYbruc1.html">TEC:LwYbruc1</a> - Weywertz Brückberg 07:05</li><li><a href="stop-TEC_LwYnr262.html">TEC:LwYnr262</a> - Weywertz Haus Nr. 26 07:06</li><li><a href="stop-TEC_LwYneue2.html">TEC:LwYneue2</a> - Weywertz Neuer Weg 07:09</li><li><a href="stop-TEC_LwYkirc2.html">TEC:LwYkirc2</a> - Weywertz Kirche 07:10</li><li><a href="stop-TEC_LwYcafe2.html">TEC:LwYcafe2</a> - Weywertz Cafe Zur Alten Linde 07:11</li><li><a href="stop-TEC_LwYboui2.html">TEC:LwYboui2</a> - Weywertz Haus Bouillon 07:13</li><li><a href="stop-TEC_LwYkreu4.html">TEC:LwYkreu4</a> - Weywertz Kreuzung 07:15</li><li><a href="stop-TEC_LwYsarl2.html">TEC:LwYsarl2</a> - Weywertz Haus Sarlette 07:16</li><li><a href="stop-TEC_LWaruth2.html">TEC:LWaruth2</a> - Waimes Ruthier 07:18</li><li><a href="stop-TEC_LWargeu2.html">TEC:LWargeu2</a> - Waimes Route de Geuzaine (Belair) 07:19</li><li><a href="stop-TEC_LWabela2.html">TEC:LWabela2</a> - Waimes Belair 1 07:19</li><li><a href="stop-TEC_LWacime2.html">TEC:LWacime2</a> - Waimes Cimetière 07:21</li><li><a href="stop-TEC_LWalibo2.html">TEC:LWalibo2</a> - Waimes Route de Libomont 07:22</li><li><a href="stop-TEC_LWagare_.html">TEC:LWagare*</a> - Waimes Gare 07:24</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5430.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

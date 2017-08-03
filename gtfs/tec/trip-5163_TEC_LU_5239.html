@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Florenville - Lacuisine - Florenville - 5163:TEC:LU:5239</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Florenville - Lacuisine - Florenville - 5163:TEC:LU:5239</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X641aqa.html">TEC:X641aqa</a> - Martue Chapelle 08:10</li><li><a href="stop-TEC_X641arb.html">TEC:X641arb</a> - Martue Route de Neufchâteau 64 08:10</li><li><a href="stop-TEC_X641azb.html">TEC:X641azb</a> - Martue Route de Neufchâteau 81 08:11</li><li><a href="stop-TEC_X641asb.html">TEC:X641asb</a> - Lacuisine Devant le Bois 08:12</li><li><a href="stop-TEC_X641atb.html">TEC:X641atb</a> - Lacuisine Rue de la Forêt 08:12</li><li><a href="stop-TEC_X641aub.html">TEC:X641aub</a> - Lacuisine Le Daguet 08:12</li><li><a href="stop-TEC_X641avb.html">TEC:X641avb</a> - Lacuisine Eglise 08:13</li><li><a href="stop-TEC_X641awb.html">TEC:X641awb</a> - Lacuisine Ecole 08:14</li><li><a href="stop-TEC_X641axb.html">TEC:X641axb</a> - Lacuisine Rue des Isles 08:15</li><li><a href="stop-TEC_X641amb.html">TEC:X641amb</a> - Florenville Gare 08:16</li><li><a href="stop-TEC_X641ala.html">TEC:X641ala</a> - Florenville Chemin du Bon Pays 08:18</li><li><a href="stop-TEC_X641ajb.html">TEC:X641ajb</a> - Florenville Champagnat 08:19</li><li><a href="stop-TEC_X641afb.html">TEC:X641afb</a> - Florenville Place du Miroir - Quai 1 08:20</li><li><a href="stop-TEC_X641aea.html">TEC:X641aea</a> - Florenville EPE 08:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3565.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

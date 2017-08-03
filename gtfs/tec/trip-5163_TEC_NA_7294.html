@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - GEMBLOUX - CORROY - SOMBREFFE - 5163:TEC:NA:7294</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GEMBLOUX - CORROY - SOMBREFFE - 5163:TEC:NA:7294</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N584atb.html">TEC:N584atb</a> - Sombreffe Place du stain 17:01</li><li><a href="stop-TEC_N584avb.html">TEC:N584avb</a> - Sombreffe Château 17:04</li><li><a href="stop-TEC_N584awb.html">TEC:N584awb</a> - Sombreffe Pont-au-rieu 17:05</li><li><a href="stop-TEC_N584axb.html">TEC:N584axb</a> - Sombreffe Basse vaux 41 17:06</li><li><a href="stop-TEC_N584ayb.html">TEC:N584ayb</a> - Sombreffe Chaussée de nivelles 17:07</li><li><a href="stop-TEC_N584ata.html">TEC:N584ata</a> - Sombreffe Place du stain 17:08</li><li><a href="stop-TEC_N584bna.html">TEC:N584bna</a> - Sombreffe Ecole-calvaire 17:09</li><li><a href="stop-TEC_N584asa.html">TEC:N584asa</a> - Sombreffe Poste 17:10</li><li><a href="stop-TEC_N584bra.html">TEC:N584bra</a> - Tongrinne Docq 17:11</li><li><a href="stop-TEC_N584bra.html">TEC:N584bra</a> - Tongrinne Docq 17:11</li><li><a href="stop-TEC_N584aba.html">TEC:N584aba</a> - Tongrinne Garage Evrard 17:12</li><li><a href="stop-TEC_N584aca.html">TEC:N584aca</a> - Tongrinne Grand'route 59 17:13</li><li><a href="stop-TEC_N529ada.html">TEC:N529ada</a> - Corroy-le-Chateau La ronce 17:14</li><li><a href="stop-TEC_N529aia.html">TEC:N529aia</a> - Corroy-le-Chateau Cité marvel 17:15</li><li><a href="stop-TEC_N529aha.html">TEC:N529aha</a> - Corroy-le-Chateau Eglise 17:18</li><li><a href="stop-TEC_N529aga.html">TEC:N529aga</a> - Corroy-le-Chateau Place communale 17:19</li><li><a href="stop-TEC_N529afa.html">TEC:N529afa</a> - Corroy-le-Chateau Chapelle 17:19</li><li><a href="stop-TEC_N529aea.html">TEC:N529aea</a> - Corroy-le-Chateau Villez 17:20</li><li><a href="stop-TEC_N529abc.html">TEC:N529abc</a> - Corroy-le-Chateau Grand'route 17:21</li><li><a href="stop-TEC_N529aaa.html">TEC:N529aaa</a> - Corroy-le-Chateau Maison dricot 17:22</li><li><a href="stop-TEC_N522aua.html">TEC:N522aua</a> - Grand-Manil Ecole d'horticulture 17:22</li><li><a href="stop-TEC_N522ata.html">TEC:N522ata</a> - Grand-Manil Clos Normand 17:23</li><li><a href="stop-TEC_N522asa.html">TEC:N522asa</a> - Grand-Manil Chaussée de Charleroi 17:24</li><li><a href="stop-TEC_N522aka.html">TEC:N522aka</a> - Gembloux Le Rallye 17:25</li><li><a href="stop-TEC_N522aja.html">TEC:N522aja</a> - Gembloux Distillerie Descamps 17:26</li><li><a href="stop-TEC_N522adc.html">TEC:N522adc</a> - Gembloux Gare 17:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6341.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - AISCHE - EGHEZEE - 5163:TEC:NA:13713</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - AISCHE - EGHEZEE - 5163:TEC:NA:13713</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501grf.html">TEC:N501grf</a> - Namur Pl. de la Station - Coupole 18:30</li><li><a href="stop-TEC_N501fta.html">TEC:N501fta</a> - Namur Avenue des Combattants 18:32</li><li><a href="stop-TEC_N501goa.html">TEC:N501goa</a> - Namur Place d'Hastedon 18:33</li><li><a href="stop-TEC_N501ika.html">TEC:N501ika</a> - Saint-Servais Rue Saint-Donat 18:34</li><li><a href="stop-TEC_N501hza.html">TEC:N501hza</a> - Saint-Servais Hall omnisports 18:35</li><li><a href="stop-TEC_N501ifa.html">TEC:N501ifa</a> - Saint-Servais Route de Perwez 18:36</li><li><a href="stop-TEC_N501hra.html">TEC:N501hra</a> - Saint-Servais Rue de l'Escaille 18:36</li><li><a href="stop-TEC_N501ioa.html">TEC:N501ioa</a> - Saint-Servais Bowling 18:37</li><li><a href="stop-TEC_N501ira.html">TEC:N501ira</a> - Saint-Marc Usines de Frizet 18:37</li><li><a href="stop-TEC_N501ixc.html">TEC:N501ixc</a> - Saint-Marc Chemin de Vedrin 18:40</li><li><a href="stop-TEC_N521aha.html">TEC:N521aha</a> - Emines Sacré-coeur 18:43</li><li><a href="stop-TEC_N521aga.html">TEC:N521aga</a> - Emines Centre 18:44</li><li><a href="stop-TEC_N521aia.html">TEC:N521aia</a> - Emines La gloriette 18:45</li><li><a href="stop-TEC_N521apa.html">TEC:N521apa</a> - Villers-Lez-Heest Chemin de Vedrin 18:46</li><li><a href="stop-TEC_N521aoa.html">TEC:N521aoa</a> - Villers-Lez-Heest Village 18:47</li><li><a href="stop-TEC_N523aaa.html">TEC:N523aaa</a> - Warisoulx Place 18:49</li><li><a href="stop-TEC_N523aba.html">TEC:N523aba</a> - Warisoulx Chemin du try de Hu 18:50</li><li><a href="stop-TEC_N523aca.html">TEC:N523aca</a> - Warisoulx Chemin des Saules 18:51</li><li><a href="stop-TEC_N520aea.html">TEC:N520aea</a> - Dhuy Chemin du Château 18:53</li><li><a href="stop-TEC_N520ada.html">TEC:N520ada</a> - Dhuy Village 18:53</li><li><a href="stop-TEC_N520aca.html">TEC:N520aca</a> - Dhuy Carrefour 18:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5886.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

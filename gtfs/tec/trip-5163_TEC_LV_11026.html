@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Verviers - Jalhay - Charneux - 5163:TEC:LV:11026</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Verviers - Jalhay - Charneux - 5163:TEC:LV:11026</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lvegc-1_.html">TEC:Lvegc-1*</a> - Verviers Gare Centrale 14:45</li><li><a href="stop-TEC_Lvepala8.html">TEC:Lvepala8</a> - Verviers Palais 14:46</li><li><a href="stop-TEC_Lvearle4.html">TEC:Lvearle4</a> - Verviers Place d'Arles 14:48</li><li><a href="stop-TEC_Lmnhorl2.html">TEC:Lmnhorl2</a> - Mangombroux Horloge 14:49</li><li><a href="stop-TEC_Lmntast2.html">TEC:Lmntast2</a> - Mangombroux Avenue J. Tasté 14:50</li><li><a href="stop-TEC_Lmneg--2.html">TEC:Lmneg--2</a> - Mangombroux Eglise 14:50</li><li><a href="stop-TEC_Lmnmart1.html">TEC:Lmnmart1</a> - Mangombroux Martinval 14:52</li><li><a href="stop-TEC_Lmnsech1.html">TEC:Lmnsech1</a> - Mangombroux Secheval 14:52</li><li><a href="stop-TEC_Lmnchal1.html">TEC:Lmnchal1</a> - Mangombroux Châlet du Lac 14:54</li><li><a href="stop-TEC_LJAbois1.html">TEC:LJAbois1</a> - Jalhay Au-dessus du Bois 14:56</li><li><a href="stop-TEC_LJAroue1.html">TEC:LJAroue1</a> - Jalhay Rouet 14:57</li><li><a href="stop-TEC_LJAverv1.html">TEC:LJAverv1</a> - Jalhay Vervifontaine 14:57</li><li><a href="stop-TEC_LJAsuri1.html">TEC:LJAsuri1</a> - Jalhay Route de Surister 14:58</li><li><a href="stop-TEC_LSUhage1.html">TEC:LSUhage1</a> - Surister Hageman 14:59</li><li><a href="stop-TEC_LSUvill2.html">TEC:LSUvill2</a> - Surister Village 15:00</li><li><a href="stop-TEC_LJAgoff1.html">TEC:LJAgoff1</a> - Jalhay Goffoy 15:02</li><li><a href="stop-TEC_LJAdeho3.html">TEC:LJAdeho3</a> - Jalhay Dehottay 15:02</li><li><a href="stop-TEC_LFothie1.html">TEC:LFothie1</a> - Fouir Thier Paquay 15:03</li><li><a href="stop-TEC_LFocent1.html">TEC:LFocent1</a> - Fouir Centre 15:04</li><li><a href="stop-TEC_LFochap1.html">TEC:LFochap1</a> - Fouir Chapelle 15:06</li><li><a href="stop-TEC_LJAhanq3.html">TEC:LJAhanq3</a> - Jalhay Hanquinet 15:08</li><li><a href="stop-TEC_LJAcent1.html">TEC:LJAcent1</a> - Jalhay Centre 15:09</li><li><a href="stop-TEC_LHbcent1.html">TEC:LHbcent1</a> - Herbiester Centre 15:14</li><li><a href="stop-TEC_LJAherb3.html">TEC:LJAherb3</a> - Jalhay Carrefour de Herbiester 15:15</li><li><a href="stop-TEC_LJAcime1.html">TEC:LJAcime1</a> - Jalhay Cimetière 15:16</li><li><a href="stop-TEC_LJAfawe1.html">TEC:LJAfawe1</a> - Jalhay Fawetay 15:17</li><li><a href="stop-TEC_LJA65h-1.html">TEC:LJA65h-1</a> - Jalhay Route de Charneux 65h 15:18</li><li><a href="stop-TEC_LChxhav1.html">TEC:LChxhav1</a> - Charneux Route de la Xhavée 15:18</li><li><a href="stop-TEC_LChvill_.html">TEC:LChvill*</a> - Charneux Village 15:19</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4054.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

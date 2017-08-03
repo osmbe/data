@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - ANDENNE - VEZIN - MARCHE-LES-DAMES - NAMECHE - 5163:TEC:NA:5276</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: ANDENNE - VEZIN - MARCHE-LES-DAMES - NAMECHE - 5163:TEC:NA:5276</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N506ava.html">TEC:N506ava</a> - Andenne Poste 16:15</li><li><a href="stop-TEC_N506awa.html">TEC:N506awa</a> - Andenne Pré des Dames 16:16</li><li><a href="stop-TEC_N506aua.html">TEC:N506aua</a> - Andenne Place du Chapitre 16:17</li><li><a href="stop-TEC_N506ara.html">TEC:N506ara</a> - Andenne Palais de Justice 16:18</li><li><a href="stop-TEC_N506atb.html">TEC:N506atb</a> - Andenne Place des Tilleuls 16:19</li><li><a href="stop-TEC_N506bad.html">TEC:N506bad</a> - Andenne Ville - 4 coins 16:20</li><li><a href="stop-TEC_N506bqb.html">TEC:N506bqb</a> - Seilles Gare des bus 16:23</li><li><a href="stop-TEC_N506bna.html">TEC:N506bna</a> - Seilles Rue du Vigna 16:24</li><li><a href="stop-TEC_N506bhb.html">TEC:N506bhb</a> - Seilles Institut technique 16:26</li><li><a href="stop-TEC_N506bkb.html">TEC:N506bkb</a> - Seilles Rue Hendschel 16:27</li><li><a href="stop-TEC_N506bea.html">TEC:N506bea</a> - Seilles Chemin de messe 16:27</li><li><a href="stop-TEC_N506bia.html">TEC:N506bia</a> - Seilles Place Rivage 16:28</li><li><a href="stop-TEC_N506bla.html">TEC:N506bla</a> - Seilles Rue du Rivage 16:29</li><li><a href="stop-TEC_N512aua.html">TEC:N512aua</a> - Sclaigneaux Rue Renard 16:33</li><li><a href="stop-TEC_N512ava.html">TEC:N512ava</a> - Sclaigneaux Rue de la Limite 16:33</li><li><a href="stop-TEC_N512awa.html">TEC:N512awa</a> - Sclaigneaux Gare 16:34</li><li><a href="stop-TEC_N511aia.html">TEC:N511aia</a> - Vezin Rue du Poncia 16:36</li><li><a href="stop-TEC_N511asa.html">TEC:N511asa</a> - Vezin Ecoles 16:37</li><li><a href="stop-TEC_N511aja.html">TEC:N511aja</a> - Vezin Eglise 16:37</li><li><a href="stop-TEC_N511aka.html">TEC:N511aka</a> - Vezin Garage 16:38</li><li><a href="stop-TEC_N511ala.html">TEC:N511ala</a> - Vezin Boucher 16:38</li><li><a href="stop-TEC_N511ama.html">TEC:N511ama</a> - Vezin Bellaire 16:40</li><li><a href="stop-TEC_N511ana.html">TEC:N511ana</a> - Vezin Ferme d'Ans 16:41</li><li><a href="stop-TEC_N511aob.html">TEC:N511aob</a> - Vezin Château d'eau 16:41</li><li><a href="stop-TEC_N511apa.html">TEC:N511apa</a> - Vezin Hautes Communes 16:42</li><li><a href="stop-TEC_N511aqa.html">TEC:N511aqa</a> - Vezin Bois Gillet 16:43</li><li><a href="stop-TEC_N511aoc.html">TEC:N511aoc</a> - Vezin Château d'eau 16:45</li><li><a href="stop-TEC_N511ara.html">TEC:N511ara</a> - Vezin Boulanger 16:46</li><li><a href="stop-TEC_N511ata.html">TEC:N511ata</a> - Vezin Houssoy 16:47</li><li><a href="stop-TEC_N511aua.html">TEC:N511aua</a> - Ville-en-Waret Eglise 16:47</li><li><a href="stop-TEC_N511ava.html">TEC:N511ava</a> - Ville-en-Waret Place 16:48</li><li><a href="stop-TEC_N509awa.html">TEC:N509awa</a> - Wartet Fond des Maréchaux 16:49</li><li><a href="stop-TEC_N509axa.html">TEC:N509axa</a> - Wartet Pont 16:50</li><li><a href="stop-TEC_N511afa.html">TEC:N511afa</a> - Nameche Dolomies 16:55</li><li><a href="stop-TEC_N511aga.html">TEC:N511aga</a> - Nameche Gendarmerie 16:57</li><li><a href="stop-TEC_N511ahb.html">TEC:N511ahb</a> - Nameche Pont 16:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5953.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

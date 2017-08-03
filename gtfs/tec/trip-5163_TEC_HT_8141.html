@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ronse/Renaix - Leuze - 5163:TEC:HT:8141</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ronse/Renaix - Leuze - 5163:TEC:HT:8141</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4lz121d.html">TEC:H4lz121d</a> - Leuze-en-Hainaut SNCB 16:44</li><li><a href="stop-TEC_H4lz158a.html">TEC:H4lz158a</a> - Leuze-en-Hainaut Les Joncs 16:46</li><li><a href="stop-TEC_H4lz126a.html">TEC:H4lz126a</a> - Leuze-en-Hainaut Rond Point 16:47</li><li><a href="stop-TEC_H4th137a.html">TEC:H4th137a</a> - Thieulain Bascule 16:51</li><li><a href="stop-TEC_H4th140a.html">TEC:H4th140a</a> - Thieulain Place 16:52</li><li><a href="stop-TEC_H4th141a.html">TEC:H4th141a</a> - Thieulain Rue Dargis 16:53</li><li><a href="stop-TEC_H4th138a.html">TEC:H4th138a</a> - Thieulain Ferme Leterme 16:54</li><li><a href="stop-TEC_H4hs136b.html">TEC:H4hs136b</a> - Herquegies Place 16:57</li><li><a href="stop-TEC_H4hs137b.html">TEC:H4hs137b</a> - Herquegies Rue du Chêne 16:57</li><li><a href="stop-TEC_H4hs135b.html">TEC:H4hs135b</a> - Herquegies Les Blancs Arbres 16:58</li><li><a href="stop-TEC_H4ms145b.html">TEC:H4ms145b</a> - MOUSTIER-(LEZ-FRASNES) Les Prés 16:59</li><li><a href="stop-TEC_H4ms146b.html">TEC:H4ms146b</a> - MOUSTIER-(LEZ-FRASNES) Place 17:00</li><li><a href="stop-TEC_H4fa124b.html">TEC:H4fa124b</a> - Frasnes-Lez-Anvaing Ancienne Gare 17:02</li><li><a href="stop-TEC_H4fa125b.html">TEC:H4fa125b</a> - Frasnes-Lez-Anvaing Gendarmerie 17:03</li><li><a href="stop-TEC_H4hq133d.html">TEC:H4hq133d</a> - Hacquegnies Longue Saule 17:04</li><li><a href="stop-TEC_H4ef163b.html">TEC:H4ef163b</a> - Ellignies-Lez-Frasnes Ferme d'Hondt 17:06</li><li><a href="stop-TEC_H4ef165c.html">TEC:H4ef165c</a> - Ellignies-Lez-Frasnes Village 17:07</li><li><a href="stop-TEC_H4av104b.html">TEC:H4av104b</a> - Anvaing Château 17:09</li><li><a href="stop-TEC_H4av106c.html">TEC:H4av106c</a> - Anvaing Eglise 17:11</li><li><a href="stop-TEC_H4cr111b.html">TEC:H4cr111b</a> - Cordes Route de Forest 17:14</li><li><a href="stop-TEC_H4cr110a.html">TEC:H4cr110a</a> - Cordes Eglise 17:16</li><li><a href="stop-TEC_H4ff120a.html">TEC:H4ff120a</a> - FOREST(-LEZ-FRASNES) Hameau du Moulin 17:19</li><li><a href="stop-TEC_H4ff118a.html">TEC:H4ff118a</a> - FOREST(-LEZ-FRASNES) Eglise 17:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2455.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

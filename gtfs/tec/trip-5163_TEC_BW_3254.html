@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Braine-l'Alleud - Tubize - 5163:TEC:BW:3254</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Braine-l'Alleud - Tubize - 5163:TEC:BW:3254</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Btubga06.html">TEC:Btubga06</a> - Tubize Gare 14:51</li><li><a href="stop-TEC_Btubnav2.html">TEC:Btubnav2</a> - Tubize Rue Navet 14:53</li><li><a href="stop-TEC_Bcbqgar2.html">TEC:Bcbqgar2</a> - Clabecq Gare 14:54</li><li><a href="stop-TEC_Bcbqufo2.html">TEC:Bcbqufo2</a> - Clabecq Usines Forges 14:55</li><li><a href="stop-TEC_Bcbqpon2.html">TEC:Bcbqpon2</a> - Clabecq Pont 14:55</li><li><a href="stop-TEC_Bcbqh452.html">TEC:Bcbqh452</a> - Clabecq Hameau 45 14:57</li><li><a href="stop-TEC_Bcbqrog2.html">TEC:Bcbqrog2</a> - Clabecq Rogissart 14:58</li><li><a href="stop-TEC_Bcbqtub2.html">TEC:Bcbqtub2</a> - Clabecq Rue de Tubize 157 14:59</li><li><a href="stop-TEC_Bbchume2.html">TEC:Bbchume2</a> - Braine-le-Chateau Usines Meurice 15:00</li><li><a href="stop-TEC_Bbchgod2.html">TEC:Bbchgod2</a> - Braine-le-Chateau Godeaux 15:00</li><li><a href="stop-TEC_Bbchndb2.html">TEC:Bbchndb2</a> - Braine-le-Chateau Rue Notre Dame au Bois 15:02</li><li><a href="stop-TEC_Bbchpil2.html">TEC:Bbchpil2</a> - Braine-le-Chateau Pilori 15:02</li><li><a href="stop-TEC_Bbch4br2.html">TEC:Bbch4br2</a> - Braine-le-Chateau Quatre Bras 15:03</li><li><a href="stop-TEC_Bbchrra2.html">TEC:Bbchrra2</a> - Braine-le-Chateau Rue des Radoux 15:04</li><li><a href="stop-TEC_Bbchdra2.html">TEC:Bbchdra2</a> - Braine-le-Chateau Le Drabbe 15:05</li><li><a href="stop-TEC_Bwaucan2.html">TEC:Bwaucan2</a> - Wauthier-Braine Cantine 15:07</li><li><a href="stop-TEC_Bwaucig2.html">TEC:Bwaucig2</a> - Wauthier-Braine Cigarettes 15:09</li><li><a href="stop-TEC_Bwaubru2.html">TEC:Bwaubru2</a> - Wauthier-Braine La Bruyère 15:10</li><li><a href="stop-TEC_Bwaunou2.html">TEC:Bwaunou2</a> - Wauthier-Braine Chemin de Noucelles 15:11</li><li><a href="stop-TEC_Bblapra2.html">TEC:Bblapra2</a> - Alleud Chemin de la Praye 15:12</li><li><a href="stop-TEC_Bblacar2.html">TEC:Bblacar2</a> - Alleud Carron 15:13</li><li><a href="stop-TEC_Bblabos2.html">TEC:Bblabos2</a> - Alleud Bosquet 15:14</li><li><a href="stop-TEC_Bblasmo2.html">TEC:Bblasmo2</a> - Alleud Sart-Moulin 15:15</li><li><a href="stop-TEC_Bblaphi2.html">TEC:Bblaphi2</a> - Alleud Philippe 15:16</li><li><a href="stop-TEC_Bblamsp2.html">TEC:Bblamsp2</a> - Alleud Mont-Saint-Pont 15:17</li><li><a href="stop-TEC_Bblacha2.html">TEC:Bblacha2</a> - Alleud La Chapelle 15:18</li><li><a href="stop-TEC_Bblavol2.html">TEC:Bblavol2</a> - Alleud Rue Jean Volders 15:19</li><li><a href="stop-TEC_Bblacim2.html">TEC:Bblacim2</a> - Alleud Cimetière 15:20</li><li><a href="stop-TEC_Bblagar6.html">TEC:Bblagar6</a> - Alleud Gare 15:22</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./281.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

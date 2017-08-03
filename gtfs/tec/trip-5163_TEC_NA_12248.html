@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - GEMBLOUX - ST-MARTIN - TONGRINNE / ONOZ - 5163:TEC:NA:12248</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GEMBLOUX - ST-MARTIN - TONGRINNE / ONOZ - 5163:TEC:NA:12248</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N522adc.html">TEC:N522adc</a> - Gembloux Gare 18:40</li><li><a href="stop-TEC_N522ajb.html">TEC:N522ajb</a> - Gembloux Distillerie Descamps 18:42</li><li><a href="stop-TEC_N522akb.html">TEC:N522akb</a> - Gembloux Le Rallye 18:43</li><li><a href="stop-TEC_N522asb.html">TEC:N522asb</a> - Grand-Manil Chaussée de Charleroi 18:44</li><li><a href="stop-TEC_N522atb.html">TEC:N522atb</a> - Grand-Manil Clos Normand 18:45</li><li><a href="stop-TEC_N522aub.html">TEC:N522aub</a> - Grand-Manil Ecole d'horticulture 18:46</li><li><a href="stop-TEC_N529aab.html">TEC:N529aab</a> - Corroy-le-Chateau Maison dricot 18:46</li><li><a href="stop-TEC_N529abd.html">TEC:N529abd</a> - Corroy-le-Chateau Grand'route 18:47</li><li><a href="stop-TEC_N529aeb.html">TEC:N529aeb</a> - Corroy-le-Chateau Villez 18:48</li><li><a href="stop-TEC_N529afb.html">TEC:N529afb</a> - Corroy-le-Chateau Chapelle 18:49</li><li><a href="stop-TEC_N529agb.html">TEC:N529agb</a> - Corroy-le-Chateau Place communale 18:49</li><li><a href="stop-TEC_N529ahb.html">TEC:N529ahb</a> - Corroy-le-Chateau Eglise 18:49</li><li><a href="stop-TEC_N529ajb.html">TEC:N529ajb</a> - Corroy-le-Chateau Au Chêne 18:51</li><li><a href="stop-TEC_N584aob.html">TEC:N584aob</a> - Bothey Chapelle ste-anne 18:52</li><li><a href="stop-TEC_N584apb.html">TEC:N584apb</a> - Bothey Chat botté 18:53</li><li><a href="stop-TEC_N561aab.html">TEC:N561aab</a> - Saint-Martin Ferme de villeret 18:55</li><li><a href="stop-TEC_N561aba.html">TEC:N561aba</a> - Saint-Martin Rue Descampe, 22 18:57</li><li><a href="stop-TEC_N561afa.html">TEC:N561afa</a> - Saint-Martin Centre 18:59</li><li><a href="stop-TEC_N561aca.html">TEC:N561aca</a> - Balatre Village 19:00</li><li><a href="stop-TEC_N561aea.html">TEC:N561aea</a> - Balatre Trou de Balâtre 19:01</li><li><a href="stop-TEC_N584ana.html">TEC:N584ana</a> - Boignee Dottiats 19:02</li><li><a href="stop-TEC_N584ama.html">TEC:N584ama</a> - Boignee Route de Tongrinne 19:03</li><li><a href="stop-TEC_N584ala.html">TEC:N584ala</a> - Boignee Place 19:04</li><li><a href="stop-TEC_N584aka.html">TEC:N584aka</a> - Boignee Chapelle Notre-Dame de Lourdes 19:05</li><li><a href="stop-TEC_N584afa.html">TEC:N584afa</a> - Tongrinne Pompe 19:06</li><li><a href="stop-TEC_N584ada.html">TEC:N584ada</a> - Tongrinne Hirondelle 19:06</li><li><a href="stop-TEC_N584aja.html">TEC:N584aja</a> - Tongrinne Tongrenelle Centre 19:07</li><li><a href="stop-TEC_N584aea.html">TEC:N584aea</a> - Tongrinne Rue du moulin,13 19:08</li><li><a href="stop-TEC_N584aha.html">TEC:N584aha</a> - Tongrinne Eglise 19:09</li><li><a href="stop-TEC_N584aga.html">TEC:N584aga</a> - Tongrinne Place 19:10</li><li><a href="stop-TEC_N584brc.html">TEC:N584brc</a> - Tongrinne Docq 19:13</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6355.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

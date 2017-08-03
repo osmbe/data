@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bohan - Alle - Menuchenet - 5163:TEC:LU:6831</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bohan - Alle - Menuchenet - 5163:TEC:LU:6831</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X808aba.html">TEC:X808aba</a> - Menuchenet Dépôt TEC Quai 3 10:48</li><li><a href="stop-TEC_X808abb.html">TEC:X808abb</a> - Menuchenet Dépôt TEC Quai 2 10:48</li><li><a href="stop-TEC_X808abc.html">TEC:X808abc</a> - Menuchenet Dépôt TEC Quai 1 10:48</li><li><a href="stop-TEC_X809ada.html">TEC:X809ada</a> - Mogimont Eglise 10:52</li><li><a href="stop-TEC_X809aeb.html">TEC:X809aeb</a> - Mogimont Route de Vivy 10:54</li><li><a href="stop-TEC_X858abb.html">TEC:X858abb</a> - Vivy Eglise 11:01</li><li><a href="stop-TEC_X858agb.html">TEC:X858agb</a> - Vivy Carrefour 11:02</li><li><a href="stop-TEC_X858aaa.html">TEC:X858aaa</a> - Rochehaut Eglise 11:08</li><li><a href="stop-TEC_X858ahb.html">TEC:X858ahb</a> - Rochehaut Laviot 11:12</li><li><a href="stop-TEC_X359aha.html">TEC:X359aha</a> - Alle Hôme 11:15</li><li><a href="stop-TEC_X359aga.html">TEC:X359aga</a> - Alle Ancien Dépôt TEC 11:16</li><li><a href="stop-TEC_X359ahb.html">TEC:X359ahb</a> - Alle Hôme 11:17</li><li><a href="stop-TEC_X359aib.html">TEC:X359aib</a> - Alle Route de Liboichamps 15 11:17</li><li><a href="stop-TEC_X359ala.html">TEC:X359ala</a> - Mouzaive Passerelle 11:18</li><li><a href="stop-TEC_X359ada.html">TEC:X359ada</a> - Chairiere Route de Alle 11:20</li><li><a href="stop-TEC_X359aca.html">TEC:X359aca</a> - Chairiere Centre 11:20</li><li><a href="stop-TEC_X359aba.html">TEC:X359aba</a> - Chairiere Rue Grande 11:20</li><li><a href="stop-TEC_X359aaa.html">TEC:X359aaa</a> - Chairiere La Haizette 11:22</li><li><a href="stop-TEC_X371aeb.html">TEC:X371aeb</a> - Vresse Eglise 11:24</li><li><a href="stop-TEC_X371aga.html">TEC:X371aga</a> - Vresse Gendarmerie 11:24</li><li><a href="stop-TEC_X364aab.html">TEC:X364aab</a> - Membre Rue de Vresse 99 11:28</li><li><a href="stop-TEC_X364abb.html">TEC:X364abb</a> - Membre Carrefour 11:29</li><li><a href="stop-TEC_X364aca.html">TEC:X364aca</a> - Membre Pont 11:30</li><li><a href="stop-TEC_X318abb.html">TEC:X318abb</a> - Bohan Rue de Membre 92 11:33</li><li><a href="stop-TEC_X318aca.html">TEC:X318aca</a> - Bohan Eglise 11:34</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2543.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

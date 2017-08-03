@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - DINANT - CINEY - 5163:TEC:NA:10311</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DINANT - CINEY - 5163:TEC:NA:10311</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N201afa.html">TEC:N201afa</a> - Ciney Place Monseu 15:50</li><li><a href="stop-TEC_N201ada.html">TEC:N201ada</a> - Ciney Hôtel de ville 15:54</li><li><a href="stop-TEC_N201aca.html">TEC:N201aca</a> - Ciney Centre médical 15:57</li><li><a href="stop-TEC_N201aea.html">TEC:N201aea</a> - Ciney Gare d'autobus 16:02</li><li><a href="stop-TEC_N201ajb.html">TEC:N201ajb</a> - Ciney Piscine 16:04</li><li><a href="stop-TEC_N201aia.html">TEC:N201aia</a> - Ciney Mont de la salle 16:06</li><li><a href="stop-TEC_N214aba.html">TEC:N214aba</a> - Fays Rue des Acacias 16:06</li><li><a href="stop-TEC_N214aaa.html">TEC:N214aaa</a> - Fays Ecole 16:07</li><li><a href="stop-TEC_N214aja.html">TEC:N214aja</a> - Achene Chemin de Gindron 16:08</li><li><a href="stop-TEC_N214aia.html">TEC:N214aia</a> - Achene Au Chêne 16:09</li><li><a href="stop-TEC_N214aha.html">TEC:N214aha</a> - Achene Route de Leignon 16:09</li><li><a href="stop-TEC_N214aga.html">TEC:N214aga</a> - Achene Eglise 16:10</li><li><a href="stop-TEC_N214afa.html">TEC:N214afa</a> - Achene Route de Celles 16:12</li><li><a href="stop-TEC_N214aea.html">TEC:N214aea</a> - Taviet Pavillon 16:13</li><li><a href="stop-TEC_N214ada.html">TEC:N214ada</a> - Achene Tige de Taviet 16:14</li><li><a href="stop-TEC_N215aaa.html">TEC:N215aaa</a> - Sorinnes Château 16:16</li><li><a href="stop-TEC_N215aba.html">TEC:N215aba</a> - Sorinnes Entrée du village 16:17</li><li><a href="stop-TEC_N215aca.html">TEC:N215aca</a> - Sorinnes Route de Thynes 16:18</li><li><a href="stop-TEC_N232bfa.html">TEC:N232bfa</a> - Dinant Gemechenne 16:19</li><li><a href="stop-TEC_N232bea.html">TEC:N232bea</a> - Dinant Hôpital Saint-Vincent 16:20</li><li><a href="stop-TEC_N232bda.html">TEC:N232bda</a> - Dinant Arsenal 16:21</li><li><a href="stop-TEC_N232bca.html">TEC:N232bca</a> - Dinant Grand champ 16:23</li><li><a href="stop-TEC_N232bba.html">TEC:N232bba</a> - Dinant Pont d'Amour 16:24</li><li><a href="stop-TEC_N232baa.html">TEC:N232baa</a> - Dinant Rue Saint-Jacques 16:26</li><li><a href="stop-TEC_N232bma.html">TEC:N232bma</a> - Dinant Boulevard Sasserath 16:27</li><li><a href="stop-TEC_N232ata.html">TEC:N232ata</a> - Dinant Collégiale 16:29</li><li><a href="stop-TEC_N232aqa.html">TEC:N232aqa</a> - Dinant Gare 16:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5853.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

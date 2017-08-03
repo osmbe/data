@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mons - Quiévrain - 5163:TEC:HT:11500</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mons - Quiévrain - 5163:TEC:HT:11500</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1ms280d.html">TEC:H1ms280d</a> - Mons SNCB 10:40</li><li><a href="stop-TEC_H1ms247a.html">TEC:H1ms247a</a> - Mons Avenue de Jemappes 10:42</li><li><a href="stop-TEC_H1je218a.html">TEC:H1je218a</a> - Jemappes Pont Canal 10:42</li><li><a href="stop-TEC_H1je212a.html">TEC:H1je212a</a> - Jemappes Camionneur 10:44</li><li><a href="stop-TEC_H1je215a.html">TEC:H1je215a</a> - Jemappes Lainière 10:46</li><li><a href="stop-TEC_H1je217a.html">TEC:H1je217a</a> - Jemappes Pont Beumier 10:47</li><li><a href="stop-TEC_H1je219b.html">TEC:H1je219b</a> - Jemappes Rue de Cuesmes 10:48</li><li><a href="stop-TEC_H1je369a.html">TEC:H1je369a</a> - Jemappes Place 10:48</li><li><a href="stop-TEC_H1je220a.html">TEC:H1je220a</a> - Jemappes Rue de la Station 10:49</li><li><a href="stop-TEC_H1je222a.html">TEC:H1je222a</a> - Jemappes Rue des Houillères 10:50</li><li><a href="stop-TEC_H1je216a.html">TEC:H1je216a</a> - Jemappes Pavé Richebé 10:52</li><li><a href="stop-TEC_H1qu101a.html">TEC:H1qu101a</a> - Quaregnon Central 10:53</li><li><a href="stop-TEC_H1qu100a.html">TEC:H1qu100a</a> - Quaregnon 4 Pavés 10:55</li><li><a href="stop-TEC_H1qu102a.html">TEC:H1qu102a</a> - Quaregnon Chemin du Tour 10:56</li><li><a href="stop-TEC_H1wl121a.html">TEC:H1wl121a</a> - Wasmuel Faïencerie 10:59</li><li><a href="stop-TEC_H1ho138a.html">TEC:H1ho138a</a> - Hornu Route 11:01</li><li><a href="stop-TEC_H1ho134a.html">TEC:H1ho134a</a> - Hornu Grand Hornu 11:02</li><li><a href="stop-TEC_H1ho122a.html">TEC:H1ho122a</a> - Hornu 4 Pavés 11:04</li><li><a href="stop-TEC_H1ho143a.html">TEC:H1ho143a</a> - Hornu Viaduc 11:05</li><li><a href="stop-TEC_H1sg147a.html">TEC:H1sg147a</a> - Saint-Ghislain SNCB 11:07</li><li><a href="stop-TEC_H1sg147d.html">TEC:H1sg147d</a> - Saint-Ghislain SNCB 11:07</li><li><a href="stop-TEC_H1sg145a.html">TEC:H1sg145a</a> - Saint-Ghislain Cité Ouvrière 11:09</li><li><a href="stop-TEC_H1bo103a.html">TEC:H1bo103a</a> - Boussu Chasse de Saint-Ghislain 11:09</li><li><a href="stop-TEC_H1bo110a.html">TEC:H1bo110a</a> - Boussu Rue de Saint-Ghislain 11:10</li><li><a href="stop-TEC_H1bo105a.html">TEC:H1bo105a</a> - Boussu Dépôt S.N.C.V. 11:11</li><li><a href="stop-TEC_H1bo106c.html">TEC:H1bo106c</a> - Boussu Place 11:12</li><li><a href="stop-TEC_H1bo109a.html">TEC:H1bo109a</a> - Boussu Route de Valenciennes 11:13</li><li><a href="stop-TEC_H1bo107a.html">TEC:H1bo107a</a> - Boussu Route de Dour 11:14</li><li><a href="stop-TEC_H1bb118a.html">TEC:H1bb118a</a> - Boussu-Bois Station 11:16</li><li><a href="stop-TEC_H1bb121a.html">TEC:H1bb121a</a> - Boussu-Bois Vedette 11:17</li><li><a href="stop-TEC_H1bb146a.html">TEC:H1bb146a</a> - Boussu-Bois St-Louis 11:18</li><li><a href="stop-TEC_H1do115b.html">TEC:H1do115b</a> - Dour Moulin Mollet 11:19</li><li><a href="stop-TEC_H1do113a.html">TEC:H1do113a</a> - Dour Grand-Rue 11:20</li><li><a href="stop-TEC_H1do117a.html">TEC:H1do117a</a> - Dour Place 11:21</li><li><a href="stop-TEC_H1do108a.html">TEC:H1do108a</a> - Dour Belvédère 11:22</li><li><a href="stop-TEC_H1do114a.html">TEC:H1do114a</a> - Dour Hôme Bon Repos 11:23</li><li><a href="stop-TEC_H1do121a.html">TEC:H1do121a</a> - Dour Rue d' Elouges 11:23</li><li><a href="stop-TEC_H1el137a.html">TEC:H1el137a</a> - Elouges Rue des Chauffours 11:24</li><li><a href="stop-TEC_H1el136a.html">TEC:H1el136a</a> - Elouges Rue de la Marlière 11:26</li><li><a href="stop-TEC_H1el133a.html">TEC:H1el133a</a> - Elouges Place 11:27</li><li><a href="stop-TEC_H1el138a.html">TEC:H1el138a</a> - Elouges Rue Ferrer 11:29</li><li><a href="stop-TEC_H1el134a.html">TEC:H1el134a</a> - Elouges Pont SNCB 11:30</li><li><a href="stop-TEC_H1el135a.html">TEC:H1el135a</a> - Elouges Rue de la Fontaine 11:31</li><li><a href="stop-TEC_H1wi152a.html">TEC:H1wi152a</a> - Wiheries Ferme 11:32</li><li><a href="stop-TEC_H1wi151a.html">TEC:H1wi151a</a> - Wiheries Cimetière 11:33</li><li><a href="stop-TEC_H1au102a.html">TEC:H1au102a</a> - Audregnies Place 11:35</li><li><a href="stop-TEC_H1au103a.html">TEC:H1au103a</a> - Audregnies Pont 11:36</li><li><a href="stop-TEC_H1au101a.html">TEC:H1au101a</a> - Audregnies Chaussée Brunehault 11:37</li><li><a href="stop-TEC_H1bx106a.html">TEC:H1bx106a</a> - Baisieux Gare Vicinale 11:38</li><li><a href="stop-TEC_H1bx105a.html">TEC:H1bx105a</a> - Baisieux Cimetière 11:39</li><li><a href="stop-TEC_H1qv115a.html">TEC:H1qv115a</a> - Quievrain Rue du  Foyer 11:41</li><li><a href="stop-TEC_H1qv113a.html">TEC:H1qv113a</a> - Quievrain Rinchon 11:41</li><li><a href="stop-TEC_H1qv114a.html">TEC:H1qv114a</a> - Quievrain Rue de Valenciennes 11:42</li><li><a href="stop-TEC_H1qv110a.html">TEC:H1qv110a</a> - Quievrain Ecole Moyenne 11:43</li><li><a href="stop-TEC_H1qv111a.html">TEC:H1qv111a</a> - Quievrain Gare SNCB 11:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1703.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - GEMBLOUX - ST-MARTIN - TONGRINNE / ONOZ - 5163:TEC:NA:8392</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GEMBLOUX - ST-MARTIN - TONGRINNE / ONOZ - 5163:TEC:NA:8392</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N522adc.html">TEC:N522adc</a> - Gembloux Gare 13:40</li><li><a href="stop-TEC_N522ajb.html">TEC:N522ajb</a> - Gembloux Distillerie Descamps 13:42</li><li><a href="stop-TEC_N522akb.html">TEC:N522akb</a> - Gembloux Le Rallye 13:43</li><li><a href="stop-TEC_N522asb.html">TEC:N522asb</a> - Grand-Manil Chaussée de Charleroi 13:44</li><li><a href="stop-TEC_N522atb.html">TEC:N522atb</a> - Grand-Manil Clos Normand 13:45</li><li><a href="stop-TEC_N522aub.html">TEC:N522aub</a> - Grand-Manil Ecole d'horticulture 13:46</li><li><a href="stop-TEC_N529aab.html">TEC:N529aab</a> - Corroy-le-Chateau Maison dricot 13:46</li><li><a href="stop-TEC_N529abd.html">TEC:N529abd</a> - Corroy-le-Chateau Grand'route 13:47</li><li><a href="stop-TEC_N529aeb.html">TEC:N529aeb</a> - Corroy-le-Chateau Villez 13:48</li><li><a href="stop-TEC_N529afb.html">TEC:N529afb</a> - Corroy-le-Chateau Chapelle 13:49</li><li><a href="stop-TEC_N529agb.html">TEC:N529agb</a> - Corroy-le-Chateau Place communale 13:49</li><li><a href="stop-TEC_N529ahb.html">TEC:N529ahb</a> - Corroy-le-Chateau Eglise 13:49</li><li><a href="stop-TEC_N529ajb.html">TEC:N529ajb</a> - Corroy-le-Chateau Au Chêne 13:51</li><li><a href="stop-TEC_N584aob.html">TEC:N584aob</a> - Bothey Chapelle ste-anne 13:52</li><li><a href="stop-TEC_N584apb.html">TEC:N584apb</a> - Bothey Chat botté 13:53</li><li><a href="stop-TEC_N561aad.html">TEC:N561aad</a> - Saint-Martin Ferme de villeret 13:55</li><li><a href="stop-TEC_N531asb.html">TEC:N531asb</a> - Mazy Golf 13:57</li><li><a href="stop-TEC_N534bxb.html">TEC:N534bxb</a> - Onoz Village 13:59</li><li><a href="stop-TEC_N534bwb.html">TEC:N534bwb</a> - Onoz Gare 14:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6171.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

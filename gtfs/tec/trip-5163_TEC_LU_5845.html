@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Gouvy - Tavigny - Bastogne - 5163:TEC:LU:5845</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gouvy - Tavigny - Bastogne - 5163:TEC:LU:5845</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X763ahb.html">TEC:X763ahb</a> - Vissoule Eglise 07:10</li><li><a href="stop-TEC_X763agb.html">TEC:X763agb</a> - Alhoumont Centre 07:11</li><li><a href="stop-TEC_X763afb.html">TEC:X763afb</a> - Tavigny Route de Vissoule 4 07:12</li><li><a href="stop-TEC_X763aeb.html">TEC:X763aeb</a> - Tavigny Ecole 07:13</li><li><a href="stop-TEC_X763aba.html">TEC:X763aba</a> - Tavigny Eglise 07:13</li><li><a href="stop-TEC_X763aaa.html">TEC:X763aaa</a> - Tavigny Route de Buret 36 07:14</li><li><a href="stop-TEC_X764aab.html">TEC:X764aab</a> - Buret Route de Bernistap 07:17</li><li><a href="stop-TEC_X764agb.html">TEC:X764agb</a> - Buret Route de Buret 3 07:17</li><li><a href="stop-TEC_X764ada.html">TEC:X764ada</a> - Buret Rue de la Gare 20 07:19</li><li><a href="stop-TEC_X764aea.html">TEC:X764aea</a> - Buret Rue de la Gare 24 07:20</li><li><a href="stop-TEC_X764afb.html">TEC:X764afb</a> - Buret Gare 07:21</li><li><a href="stop-TEC_X764aeb.html">TEC:X764aeb</a> - Buret Rue de la Gare 24 07:22</li><li><a href="stop-TEC_X764adb.html">TEC:X764adb</a> - Buret Rue de la Gare 20 07:23</li><li><a href="stop-TEC_X764abb.html">TEC:X764abb</a> - Buret Carrefour 07:24</li><li><a href="stop-TEC_X765aeb.html">TEC:X765aeb</a> - Boeur Route de Buret 6 07:27</li><li><a href="stop-TEC_X766acb.html">TEC:X766acb</a> - Bourcy Route de Moinet 200 07:36</li><li><a href="stop-TEC_X791abb.html">TEC:X791abb</a> - Moinet Centre 07:40</li><li><a href="stop-TEC_X791aca.html">TEC:X791aca</a> - Moinet Route de Longvilly 4 07:41</li><li><a href="stop-TEC_X791adb.html">TEC:X791adb</a> - Moinet Carrefour 07:41</li><li><a href="stop-TEC_X768ala.html">TEC:X768ala</a> - Al Hez Centre 07:43</li><li><a href="stop-TEC_X791aab.html">TEC:X791aab</a> - Longvilly Eglise 07:46</li><li><a href="stop-TEC_X768agb.html">TEC:X768agb</a> - Mageret Eglise 07:51</li><li><a href="stop-TEC_X768ahb.html">TEC:X768ahb</a> - Mageret Calvaire 07:52</li><li><a href="stop-TEC_X768abb.html">TEC:X768abb</a> - Bizory Rue de Mageret 14 07:54</li><li><a href="stop-TEC_X768aaa.html">TEC:X768aaa</a> - Bizory Centre 07:55</li><li><a href="stop-TEC_X725bea.html">TEC:X725bea</a> - Bastogne Complexe Sportif 07:58</li><li><a href="stop-TEC_X725aed.html">TEC:X725aed</a> - Bastogne Pépinière - Quai 4 07:59</li><li><a href="stop-TEC_X725afe.html">TEC:X725afe</a> - Bastogne Gare du Sud - Quai 3 08:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2993.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

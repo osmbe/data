@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - PROXIBUS ANHEE - 5163:TEC:NA:1244</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: PROXIBUS ANHEE - 5163:TEC:NA:1244</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N229akb.html">TEC:N229akb</a> - Yvoir Gare SNCB 16:59</li><li><a href="stop-TEC_N231adb.html">TEC:N231adb</a> - Anhee Route de Maredsous 17:03</li><li><a href="stop-TEC_N231abb.html">TEC:N231abb</a> - Anhee Place 17:04</li><li><a href="stop-TEC_N231afb.html">TEC:N231afb</a> - Anhee Rue Ste-Barbe 17:05</li><li><a href="stop-TEC_N231aha.html">TEC:N231aha</a> - Anhee Caillou 17:06</li><li><a href="stop-TEC_N231afa.html">TEC:N231afa</a> - Anhee Rue Ste-Barbe 17:08</li><li><a href="stop-TEC_N231aba.html">TEC:N231aba</a> - Anhee Place 17:09</li><li><a href="stop-TEC_N231ada.html">TEC:N231ada</a> - Anhee Route de Maredsous 17:09</li><li><a href="stop-TEC_N230aha.html">TEC:N230aha</a> - Warnant Rue du Moulin 17:10</li><li><a href="stop-TEC_N230aia.html">TEC:N230aia</a> - Warnant Moulins 17:11</li><li><a href="stop-TEC_N233aba.html">TEC:N233aba</a> - Haut-le-Wastia Rue du Centre 17:14</li><li><a href="stop-TEC_N233aaa.html">TEC:N233aaa</a> - Haut-le-Wastia Place 17:14</li><li><a href="stop-TEC_N230aja.html">TEC:N230aja</a> - Warnant La rosière 17:19</li><li><a href="stop-TEC_N230aga.html">TEC:N230aga</a> - Warnant Maison de pierres 17:19</li><li><a href="stop-TEC_N230aka.html">TEC:N230aka</a> - Warnant Rue du Fond 17:20</li><li><a href="stop-TEC_N230ama.html">TEC:N230ama</a> - Warnant Eglise 17:20</li><li><a href="stop-TEC_N230ada.html">TEC:N230ada</a> - Warnant Station 17:22</li><li><a href="stop-TEC_N230ala.html">TEC:N230ala</a> - Salet Eglise 17:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6373.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Virton - St-Mard - Lamorteau - Montmédy - 5163:TEC:LU:4510</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Virton - St-Mard - Lamorteau - Montmédy - 5163:TEC:LU:4510</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X611aca.html">TEC:X611aca</a> - Montmedy Place Poincaré 06:47</li><li><a href="stop-TEC_X611ada.html">TEC:X611ada</a> - Montmedy Gare S.N.C.F. 06:50</li><li><a href="stop-TEC_X611aba.html">TEC:X611aba</a> - VERNEUIL-LE-GRAND 06:55</li><li><a href="stop-TEC_X611aaa.html">TEC:X611aaa</a> - Ecouviez Centre 06:59</li><li><a href="stop-TEC_X610abb.html">TEC:X610abb</a> - Lamorteau Douane 07:02</li><li><a href="stop-TEC_X610aeb.html">TEC:X610aeb</a> - Torgny Rue de Lamorteau 07:07</li><li><a href="stop-TEC_X610aja.html">TEC:X610aja</a> - Torgny Terrain de football 07:08</li><li><a href="stop-TEC_X610afa.html">TEC:X610afa</a> - Torgny Lavoir 07:09</li><li><a href="stop-TEC_X610aea.html">TEC:X610aea</a> - Torgny Rue de Lamorteau 07:10</li><li><a href="stop-TEC_X610aab.html">TEC:X610aab</a> - Lamorteau Cimetière 07:15</li><li><a href="stop-TEC_X609adb.html">TEC:X609adb</a> - Dampicourt Rivage 07:19</li><li><a href="stop-TEC_X609aeb.html">TEC:X609aeb</a> - Dampicourt Champé 07:20</li><li><a href="stop-TEC_X608aib.html">TEC:X608aib</a> - Saint-Mard Rue de Dampicourt 07:21</li><li><a href="stop-TEC_X608afa.html">TEC:X608afa</a> - Virton ISF 07:23</li><li><a href="stop-TEC_X608aeb.html">TEC:X608aeb</a> - Virton Arcades 07:25</li><li><a href="stop-TEC_X608adb.html">TEC:X608adb</a> - Virton CNDB 07:26</li><li><a href="stop-TEC_X608acb.html">TEC:X608acb</a> - Virton Paradis des Enfants 07:27</li><li><a href="stop-TEC_X608abb.html">TEC:X608abb</a> - Virton Carrefour Avenue Bouvier 07:28</li><li><a href="stop-TEC_X608aaa.html">TEC:X608aaa</a> - Saint-Mard Gare 07:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3200.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

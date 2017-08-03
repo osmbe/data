@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Nivelles - Feluy - 5163:TEC:BW:1963</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Nivelles - Feluy - 5163:TEC:BW:1963</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bnivga51.html">TEC:Bnivga51</a> - Nivelles Gare 13:20</li><li><a href="stop-TEC_Bnivcma2.html">TEC:Bnivcma2</a> - Nivelles Cité Maillebotte 13:22</li><li><a href="stop-TEC_Bnivvri2.html">TEC:Bnivvri2</a> - Nivelles Val Riant 13:22</li><li><a href="stop-TEC_Bnivace1.html">TEC:Bnivace1</a> - Nivelles Avenue du Centenaire 13:23</li><li><a href="stop-TEC_Bnivaig1.html">TEC:Bnivaig1</a> - Nivelles Aiglon 13:24</li><li><a href="stop-TEC_Bnivath1.html">TEC:Bnivath1</a> - Nivelles Athénée 13:25</li><li><a href="stop-TEC_Bnivpso2.html">TEC:Bnivpso2</a> - Nivelles Place du Souvenir 13:27</li><li><a href="stop-TEC_Bnivgpl3.html">TEC:Bnivgpl3</a> - Nivelles Grand Place 13:28</li><li><a href="stop-TEC_Bnivcol1.html">TEC:Bnivcol1</a> - Nivelles Collège 13:29</li><li><a href="stop-TEC_Bnivasa1.html">TEC:Bnivasa1</a> - Nivelles Allée du Sablon 13:30</li><li><a href="stop-TEC_Bnivpro1.html">TEC:Bnivpro1</a> - Nivelles Route de Petit-Roeulx 13:30</li><li><a href="stop-TEC_Bnivwil1.html">TEC:Bnivwil1</a> - Nivelles Shopping 13:31</li><li><a href="stop-TEC_Bnivmon1.html">TEC:Bnivmon1</a> - Nivelles Chemin de Monstreux 13:33</li><li><a href="stop-TEC_Barqbar1.html">TEC:Barqbar1</a> - Arquennes Bois d'Arpes 13:34</li><li><a href="stop-TEC_Barqhpe1.html">TEC:Barqhpe1</a> - Arquennes Hameau Petit 13:35</li><li><a href="stop-TEC_Barqbco1.html">TEC:Barqbco1</a> - Arquennes Bon Conseil 13:36</li><li><a href="stop-TEC_Barqpla1.html">TEC:Barqpla1</a> - Arquennes Place 13:37</li><li><a href="stop-TEC_Bfelgar2.html">TEC:Bfelgar2</a> - Feluy Gare 13:39</li><li><a href="stop-TEC_Bfelbri1.html">TEC:Bfelbri1</a> - Feluy La Bride 13:40</li><li><a href="stop-TEC_Bfelequ2.html">TEC:Bfelequ2</a> - Feluy Equipée 13:41</li><li><a href="stop-TEC_Bfelpla2.html">TEC:Bfelpla2</a> - Feluy Place 13:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./173.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Verviers - Lambermont - Wegnez - Pepinster - 5163:TEC:LV:16269</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Verviers - Lambermont - Wegnez - Pepinster - 5163:TEC:LV:16269</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lpeathe_.html">TEC:Lpeathe*</a> - Pepinster Athénée 16:44</li><li><a href="stop-TEC_Lpeeg--2.html">TEC:Lpeeg--2</a> - Pepinster Eglise 16:45</li><li><a href="stop-TEC_Lpeptwa2.html">TEC:Lpeptwa2</a> - Pepinster Pont Walrand 16:46</li><li><a href="stop-TEC_Lpegole4.html">TEC:Lpegole4</a> - Pepinster Golettes 16:47</li><li><a href="stop-TEC_LWecorn2.html">TEC:LWecorn2</a> - Wegnez Route de Cornesse 16:48</li><li><a href="stop-TEC_LWegdry2.html">TEC:LWegdry2</a> - Wegnez Rue Grand Ry 16:48</li><li><a href="stop-TEC_LWeatel2.html">TEC:LWeatel2</a> - Wegnez Ateliers mécanique 16:49</li><li><a href="stop-TEC_LWeec--2.html">TEC:LWeec--2</a> - Wegnez Ecole 16:50</li><li><a href="stop-TEC_LWepost2.html">TEC:LWepost2</a> - Wegnez Postay 16:51</li><li><a href="stop-TEC_LWexhav2.html">TEC:LWexhav2</a> - Wegnez Rue Xhavée 16:52</li><li><a href="stop-TEC_Llmdela2.html">TEC:Llmdela2</a> - Lambermont Delacre 16:53</li><li><a href="stop-TEC_Llmdeba2.html">TEC:Llmdeba2</a> - Lambermont Rue L. Debatisse 16:54</li><li><a href="stop-TEC_Llmbouv2.html">TEC:Llmbouv2</a> - Lambermont Rue des Bouvreuils 16:55</li><li><a href="stop-TEC_Llmeg--2.html">TEC:Llmeg--2</a> - Lambermont Eglise 16:56</li><li><a href="stop-TEC_Llmcoop2.html">TEC:Llmcoop2</a> - Lambermont Rue de la Coopération 16:57</li><li><a href="stop-TEC_Llmlaro2.html">TEC:Llmlaro2</a> - Lambermont Larose 16:58</li><li><a href="stop-TEC_Llmvill2.html">TEC:Llmvill2</a> - Lambermont Rue des Villas 16:58</li><li><a href="stop-TEC_Llmbell2.html">TEC:Llmbell2</a> - Lambermont Rue Belle-Vue 16:59</li><li><a href="stop-TEC_Llmhalt2.html">TEC:Llmhalt2</a> - Lambermont Rue de la Halte 17:00</li><li><a href="stop-TEC_Llmdavi2.html">TEC:Llmdavi2</a> - Lambermont Rue David 17:00</li><li><a href="stop-TEC_Lenclar2.html">TEC:Lenclar2</a> - Ensival Clarisses 17:01</li><li><a href="stop-TEC_Lvehout2.html">TEC:Lvehout2</a> - Verviers Rue Houget 17:02</li><li><a href="stop-TEC_Lveleje2.html">TEC:Lveleje2</a> - Verviers Rue Lejeune 17:03</li><li><a href="stop-TEC_Lveensi1.html">TEC:Lveensi1</a> - Verviers Rue d'Ensival 17:04</li><li><a href="stop-TEC_Lvegc--3.html">TEC:Lvegc--3</a> - Verviers Gare Centrale 17:05</li><li><a href="stop-TEC_Lvethea2.html">TEC:Lvethea2</a> - Verviers Théâtre 17:06</li><li><a href="stop-TEC_Lvevert4.html">TEC:Lvevert4</a> - Verviers Place Verte 17:08</li><li><a href="stop-TEC_Lvehv--2.html">TEC:Lvehv--2</a> - Verviers Hôtel de Ville 17:09</li><li><a href="stop-TEC_Lverain1.html">TEC:Lverain1</a> - Verviers Rue des Raines 17:10</li><li><a href="stop-TEC_Lvesomm3.html">TEC:Lvesomm3</a> - Verviers Place Sommeleville 17:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4221.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

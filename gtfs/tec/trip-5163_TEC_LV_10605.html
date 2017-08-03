@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Eupen - Kelmis - Vaals - 5163:TEC:LV:10605</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eupen - Kelmis - Vaals - 5163:TEC:LV:10605</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LkEbbl-2.html">TEC:LkEbbl-2</a> - Kelmis B.B.L. (Fischenich) 12:30</li><li><a href="stop-TEC_LkEmax-2.html">TEC:LkEmax-2</a> - Kelmis Maxstrasse 12:31</li><li><a href="stop-TEC_LhGcasi2.html">TEC:LhGcasi2</a> - Hergenrath Casinostrasse 12:32</li><li><a href="stop-TEC_LhGfrie2.html">TEC:LhGfrie2</a> - Hergenrath Friedhof 12:33</li><li><a href="stop-TEC_LhGgeme2.html">TEC:LhGgeme2</a> - Hergenrath Gemeindeschule 12:34</li><li><a href="stop-TEC_LhGkirc2.html">TEC:LhGkirc2</a> - Hergenrath Kirche 12:34</li><li><a href="stop-TEC_LhGlang2.html">TEC:LhGlang2</a> - Hergenrath Langhor 12:35</li><li><a href="stop-TEC_LaSneuh2.html">TEC:LaSneuh2</a> - Astenet Neuhaus (Katherina von Sienna) 12:36</li><li><a href="stop-TEC_LaSkape2.html">TEC:LaSkape2</a> - Astenet Kapelle 12:37</li><li><a href="stop-TEC_LaSbahn2.html">TEC:LaSbahn2</a> - Astenet Bahnhof 12:38</li><li><a href="stop-TEC_LwAprei2.html">TEC:LwAprei2</a> - Walhorn Preismühle 12:39</li><li><a href="stop-TEC_LwAlont2.html">TEC:LwAlont2</a> - Walhorn Lontzener Strasse 12:40</li><li><a href="stop-TEC_LwAschu2.html">TEC:LwAschu2</a> - Walhorn Schule 12:41</li><li><a href="stop-TEC_LwAstum2.html">TEC:LwAstum2</a> - Walhorn Stumpfenkreuz 12:42</li><li><a href="stop-TEC_LwAkett2.html">TEC:LwAkett2</a> - Walhorn Ketteniser Strasse 12:42</li><li><a href="stop-TEC_LkTkabi2.html">TEC:LkTkabi2</a> - Kettenis Elektrische Kabine 12:44</li><li><a href="stop-TEC_LkTdorf2.html">TEC:LkTdorf2</a> - Kettenis Dorf 12:45</li><li><a href="stop-TEC_LkTtal-2.html">TEC:LkTtal-2</a> - Kettenis Tal 12:46</li><li><a href="stop-TEC_LkTschö2.html">TEC:LkTschö2</a> - Kettenis Schöne Aussicht 12:47</li><li><a href="stop-TEC_LeUschn2.html">TEC:LeUschn2</a> - Eupen Schnellewindgasse 12:48</li><li><a href="stop-TEC_LeUbahn2.html">TEC:LeUbahn2</a> - Eupen Bahnhof 12:49</li><li><a href="stop-TEC_LeUbush1.html">TEC:LeUbush1</a> - Eupen Bushof 12:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3963.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

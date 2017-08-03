@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Büllingen - Manderfeld - 5163:TEC:LV:4748</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Büllingen - Manderfeld - 5163:TEC:LV:4748</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LbUpost1.html">TEC:LbUpost1</a> - Bullingen Alte Post 11:45</li><li><a href="stop-TEC_LbUhons1.html">TEC:LbUhons1</a> - Bullingen Honsfelder Strasse 11:45</li><li><a href="stop-TEC_LbUhuge1.html">TEC:LbUhuge1</a> - Bullingen Am Hügel 11:46</li><li><a href="stop-TEC_LbUverb1.html">TEC:LbUverb1</a> - Bullingen Verbindungsstrasse 11:46</li><li><a href="stop-TEC_LhObull1.html">TEC:LhObull1</a> - Honsfeld Büllingerstrasse 55b 11:49</li><li><a href="stop-TEC_LhOfrie1.html">TEC:LhOfrie1</a> - Honsfeld Friedhof 11:49</li><li><a href="stop-TEC_LhOzent1.html">TEC:LhOzent1</a> - Honsfeld Zentrum 11:50</li><li><a href="stop-TEC_LhOukat1.html">TEC:LhOukat1</a> - Honsfeld Auf Unterst Katzelder 11:51</li><li><a href="stop-TEC_LhOholz1.html">TEC:LhOholz1</a> - Honsfeld Holzheimerstrasse 11:51</li><li><a href="stop-TEC_LhUkape1.html">TEC:LhUkape1</a> - Hunningen Kapelle 11:54</li><li><a href="stop-TEC_LhUrich1.html">TEC:LhUrich1</a> - Hunningen Haus Richter 11:55</li><li><a href="stop-TEC_LhUdenk1.html">TEC:LhUdenk1</a> - Hunningen Denkmal 11:56</li><li><a href="stop-TEC_LbUjost1.html">TEC:LbUjost1</a> - Bullingen Josthaus 11:57</li><li><a href="stop-TEC_LmUzent1.html">TEC:LmUzent1</a> - Murringen Zentrum 11:59</li><li><a href="stop-TEC_LmUkape1.html">TEC:LmUkape1</a> - Murringen Kapelle 12:00</li><li><a href="stop-TEC_LmUvilz1.html">TEC:LmUvilz1</a> - Murringen Haus Vilz 12:01</li><li><a href="stop-TEC_LbUmurr1.html">TEC:LbUmurr1</a> - Bullingen Kreuzung nach Mürringen 12:02</li><li><a href="stop-TEC_LbUkrin1.html">TEC:LbUkrin1</a> - Bullingen Haus Krings 12:04</li><li><a href="stop-TEC_LlSzoll1.html">TEC:LlSzoll1</a> - Losheimergraben Zoll 12:05</li><li><a href="stop-TEC_LlSbuch1.html">TEC:LlSbuch1</a> - Losheimergraben Buchholzer Weg 12:08</li><li><a href="stop-TEC_LlZkirc1.html">TEC:LlZkirc1</a> - Lanzerath Kirche 12:09</li><li><a href="stop-TEC_LlZbell1.html">TEC:LlZbell1</a> - Lanzerath Belle-Vue 12:10</li><li><a href="stop-TEC_LmNmerl1.html">TEC:LmNmerl1</a> - Manderfeld Merlscheider Strasse 12:11</li><li><a href="stop-TEC_LmNha151.html">TEC:LmNha151</a> - Manderfeld Hasenvenn 15 12:12</li><li><a href="stop-TEC_LmNha221.html">TEC:LmNha221</a> - Manderfeld Hasenvenn 22 12:13</li><li><a href="stop-TEC_LmNstaa1.html">TEC:LmNstaa1</a> - Manderfeld Staatliche Schule 12:15</li><li><a href="stop-TEC_LmNpost2.html">TEC:LmNpost2</a> - Manderfeld Post 12:16</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5121.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

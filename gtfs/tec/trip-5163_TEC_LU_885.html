@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Proxibus de Marche-en-Famenne - 5163:TEC:LU:885</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Proxibus de Marche-en-Famenne - 5163:TEC:LU:885</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X942adb.html">TEC:X942adb</a> - Lignieres Eglise 09:20</li><li><a href="stop-TEC_X942abc.html">TEC:X942abc</a> - Lignieres 4 Bras 09:21</li><li><a href="stop-TEC_X942abb.html">TEC:X942abb</a> - Lignieres 4 Bras 09:21</li><li><a href="stop-TEC_X942aea.html">TEC:X942aea</a> - Grimbiemont Eglise 09:23</li><li><a href="stop-TEC_X942aab.html">TEC:X942aab</a> - Grimbiemont Grand'Route 09:24</li><li><a href="stop-TEC_X943aea.html">TEC:X943aea</a> - Roy Rue de Grusonne 09:26</li><li><a href="stop-TEC_X943adb.html">TEC:X943adb</a> - Roy Eglise 09:27</li><li><a href="stop-TEC_X943afb.html">TEC:X943afb</a> - Roy Haut 09:27</li><li><a href="stop-TEC_X943acb.html">TEC:X943acb</a> - Hollogne Rue de la Rochette 09:31</li><li><a href="stop-TEC_X901bca.html">TEC:X901bca</a> - Hollogne Route de La Roche 09:31</li><li><a href="stop-TEC_X901axa.html">TEC:X901axa</a> - Hollogne Rue de Bastogne 09:32</li><li><a href="stop-TEC_X901awa.html">TEC:X901awa</a> - Marche Rue de Luxembourg 46 09:33</li><li><a href="stop-TEC_X901ava.html">TEC:X901ava</a> - Marche Rue de la Campagnette 09:34</li><li><a href="stop-TEC_X901ata.html">TEC:X901ata</a> - Marche Gare 09:34</li><li><a href="stop-TEC_X901bpa.html">TEC:X901bpa</a> - Marche Carrefour Rue Nérette 09:35</li><li><a href="stop-TEC_X901ada.html">TEC:X901ada</a> - Marche Avenue de la Toison d'Or 09:36</li><li><a href="stop-TEC_X901aeb.html">TEC:X901aeb</a> - Marche Athénée 09:37</li><li><a href="stop-TEC_X901aib.html">TEC:X901aib</a> - Marche Pirire 09:39</li><li><a href="stop-TEC_X901bsa.html">TEC:X901bsa</a> - Marche Pont N4 09:40</li><li><a href="stop-TEC_X901boa.html">TEC:X901boa</a> - Marche Boulevard - Hôtel de Ville 09:41</li><li><a href="stop-TEC_X901bra.html">TEC:X901bra</a> - Marche Boulevard - Palace 09:41</li><li><a href="stop-TEC_X901aha.html">TEC:X901aha</a> - Marche Boulevard du Nord 09:42</li><li><a href="stop-TEC_X901bna.html">TEC:X901bna</a> - Marche Porte Basse 09:44</li><li><a href="stop-TEC_X901ana.html">TEC:X901ana</a> - Marche Route de Liège 09:45</li><li><a href="stop-TEC_X901bqa.html">TEC:X901bqa</a> - Marche Carmel 09:45</li><li><a href="stop-TEC_X901bqb.html">TEC:X901bqb</a> - Marche Carmel 09:46</li><li><a href="stop-TEC_X901anb.html">TEC:X901anb</a> - Marche Route de Liège 09:46</li><li><a href="stop-TEC_X901bnb.html">TEC:X901bnb</a> - Marche Porte Basse 09:47</li><li><a href="stop-TEC_X901aca.html">TEC:X901aca</a> - Marche Place de l'Etang 09:48</li><li><a href="stop-TEC_X901abb.html">TEC:X901abb</a> - Marche Palais de Justice 09:48</li><li><a href="stop-TEC_X901aab.html">TEC:X901aab</a> - Marche Inst des Pères Franciscains 09:48</li><li><a href="stop-TEC_X901ara.html">TEC:X901ara</a> - Marche Maison Médicale 09:49</li><li><a href="stop-TEC_X901amb.html">TEC:X901amb</a> - Marche Clinique 09:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3838.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

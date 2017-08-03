@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Soignies - Br.-le-Comte - Rebecq - Tubize - Hal - 5163:TEC:BW:5377</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Soignies - Br.-le-Comte - Rebecq - Tubize - Hal - 5163:TEC:BW:5377</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Brebgar1.html">TEC:Brebgar1</a> - Rebecq Gare 20:44</li><li><a href="stop-TEC_Brebraf2.html">TEC:Brebraf2</a> - Rebecq Rafeira 20:45</li><li><a href="stop-TEC_Bquegob2.html">TEC:Bquegob2</a> - Quenast Le Gobard 20:46</li><li><a href="stop-TEC_Bquegob3.html">TEC:Bquegob3</a> - Quenast Le Gobard 20:46</li><li><a href="stop-TEC_Bquecar1.html">TEC:Bquecar1</a> - Quenast Carrières 20:47</li><li><a href="stop-TEC_Bquereb1.html">TEC:Bquereb1</a> - Quenast Rue de Rebecq 20:49</li><li><a href="stop-TEC_Bquesta1.html">TEC:Bquesta1</a> - Quenast Rue de la Station 20:50</li><li><a href="stop-TEC_Bquepos1.html">TEC:Bquepos1</a> - Quenast Postes 20:51</li><li><a href="stop-TEC_Bqueblo1.html">TEC:Bqueblo1</a> - Quenast Chemin Bloquiau 20:52</li><li><a href="stop-TEC_Bquevel1.html">TEC:Bquevel1</a> - Quenast Vélodrome 20:53</li><li><a href="stop-TEC_Btubren1.html">TEC:Btubren1</a> - Tubize Au Renard 20:55</li><li><a href="stop-TEC_Btubbot1.html">TEC:Btubbot1</a> - Tubize Botman 20:57</li><li><a href="stop-TEC_Btubcim1.html">TEC:Btubcim1</a> - Tubize Cimetière 20:58</li><li><a href="stop-TEC_Btubbsc1.html">TEC:Btubbsc1</a> - Tubize Bloc Scolaire 20:59</li><li><a href="stop-TEC_Btubmon1.html">TEC:Btubmon1</a> - Tubize Monument 20:59</li><li><a href="stop-TEC_Btubind1.html">TEC:Btubind1</a> - Tubize Rue de l'Industrie 21:00</li><li><a href="stop-TEC_Btubpla1.html">TEC:Btubpla1</a> - Tubize Place 21:01</li><li><a href="stop-TEC_Btubmfa1.html">TEC:Btubmfa1</a> - Tubize Mur Fabelta 21:02</li><li><a href="stop-TEC_Btubga02.html">TEC:Btubga02</a> - Tubize Gare 21:02</li><li><a href="stop-TEC_Btubga03.html">TEC:Btubga03</a> - Tubize Gare 21:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./278.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

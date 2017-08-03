@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Gembloux - Ramillies - Landen - 5163:TEC:BW:614</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gembloux - Ramillies - Landen - 5163:TEC:BW:614</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bgemga12.html">TEC:Bgemga12</a> - Gembloux Gare 15:38</li><li><a href="stop-TEC_Bgemga11.html">TEC:Bgemga11</a> - Gembloux Gare 15:38</li><li><a href="stop-TEC_N522aeb.html">TEC:N522aeb</a> - Gembloux Rue des Volontaires 15:40</li><li><a href="stop-TEC_N522abb.html">TEC:N522abb</a> - Gembloux Quatre coins 15:41</li><li><a href="stop-TEC_Bgemcro2.html">TEC:Bgemcro2</a> - Gembloux La Croisée 15:43</li><li><a href="stop-TEC_Bgemman2.html">TEC:Bgemman2</a> - Gembloux Manufacturing 15:44</li><li><a href="stop-TEC_Bgemibb2.html">TEC:Bgemibb2</a> - Gembloux IBB 15:44</li><li><a href="stop-TEC_Bgemkal2.html">TEC:Bgemkal2</a> - Gembloux Kalorik 15:44</li><li><a href="stop-TEC_Bsaubbo2.html">TEC:Bsaubbo2</a> - Sauveniere Boute-Boute 15:45</li><li><a href="stop-TEC_Bsaubra2.html">TEC:Bsaubra2</a> - Sauveniere Brasserie 15:46</li><li><a href="stop-TEC_Bsaumlk2.html">TEC:Bsaumlk2</a> - Sauveniere Malakoff 15:47</li><li><a href="stop-TEC_Bsaumlp2.html">TEC:Bsaumlp2</a> - Sauveniere Malprouvé 15:48</li><li><a href="stop-TEC_Btstbbu2.html">TEC:Btstbbu2</a> - Thorembais-Saint-Trond Bois de Buis 15:50</li><li><a href="stop-TEC_Btstpch2.html">TEC:Btstpch2</a> - Thorembais-Saint-Trond Pavillon de Chasse 15:51</li><li><a href="stop-TEC_Btstche2.html">TEC:Btstche2</a> - Thorembais-Saint-Trond Chenidor 15:53</li><li><a href="stop-TEC_Btstbes2.html">TEC:Btstbes2</a> - Thorembais-Saint-Trond Bonne Espérance 15:54</li><li><a href="stop-TEC_Btstcar2.html">TEC:Btstcar2</a> - Thorembais-Saint-Trond Carrefour 15:55</li><li><a href="stop-TEC_Btstw751.html">TEC:Btstw751</a> - Thorembais-Saint-Trond Chaussée de Wavre 75 15:57</li><li><a href="stop-TEC_Bpersyn1.html">TEC:Bpersyn1</a> - Perwez Syndicat 15:58</li><li><a href="stop-TEC_Bperrma1.html">TEC:Bperrma1</a> - Perwez Rue des Marronniers 15:58</li><li><a href="stop-TEC_Bpergar1.html">TEC:Bpergar1</a> - Perwez Gare 15:59</li><li><a href="stop-TEC_Bperpla1.html">TEC:Bperpla1</a> - Perwez Place 16:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./104.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

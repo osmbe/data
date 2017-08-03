@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Visé - Aubel - Montzen - Welkenraedt - 5163:TEC:LV:43101</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Visé - Aubel - Montzen - Welkenraedt - 5163:TEC:LV:43101</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LAUvict4.html">TEC:LAUvict4</a> - Aubel Place de la Victoire 07:30</li><li><a href="stop-TEC_LAUnico2.html">TEC:LAUnico2</a> - Aubel Place Antoine Ernst 07:31</li><li><a href="stop-TEC_LAUneuv6.html">TEC:LAUneuv6</a> - Aubel Rue Neuve 07:31</li><li><a href="stop-TEC_LAUscha2.html">TEC:LAUscha2</a> - Aubel Rue Schaens 07:32</li><li><a href="stop-TEC_LSJlabe2.html">TEC:LSJlabe2</a> - St-Jean-Sart La Bel 07:36</li><li><a href="stop-TEC_LSJeg--2.html">TEC:LSJeg--2</a> - St-Jean-Sart Eglise 07:37</li><li><a href="stop-TEC_LSJ38--2.html">TEC:LSJ38--2</a> - St-Jean-Sart 38 07:38</li><li><a href="stop-TEC_LSJgrae2.html">TEC:LSJgrae2</a> - St-Jean-Sart Graedt 07:39</li><li><a href="stop-TEC_LWRtroi2.html">TEC:LWRtroi2</a> - Warsage Trois Cheminées 07:43</li><li><a href="stop-TEC_LWRferm2.html">TEC:LWRferm2</a> - Warsage Ferme d'Als 07:44</li><li><a href="stop-TEC_LWRheyd2.html">TEC:LWRheyd2</a> - Warsage La Heydt 07:45</li><li><a href="stop-TEC_LWRbois2.html">TEC:LWRbois2</a> - Warsage Bois du Roi 07:46</li><li><a href="stop-TEC_LWRvert2.html">TEC:LWRvert2</a> - Warsage Verte Haie 07:47</li><li><a href="stop-TEC_LWRchem2.html">TEC:LWRchem2</a> - Warsage Chemin du bois du Roi 8 07:49</li><li><a href="stop-TEC_LWRcruc2.html">TEC:LWRcruc2</a> - Warsage Crucifix Bouillon 07:51</li><li><a href="stop-TEC_LWRpl--2.html">TEC:LWRpl--2</a> - Warsage Place 07:52</li><li><a href="stop-TEC_LWRbomb2.html">TEC:LWRbomb2</a> - Warsage Route de Bombaye 07:53</li><li><a href="stop-TEC_LBOande2.html">TEC:LBOande2</a> - Bombaye Chemin de l'Andelaine 07:54</li><li><a href="stop-TEC_LBOholt2.html">TEC:LBOholt2</a> - Bombaye Holtrée 07:55</li><li><a href="stop-TEC_LBOec--2.html">TEC:LBOec--2</a> - Bombaye Ecole 07:56</li><li><a href="stop-TEC_LBWbatt2.html">TEC:LBWbatt2</a> - Berneau Chaussée de Battice 07:57</li><li><a href="stop-TEC_LBWeg--2.html">TEC:LBWeg--2</a> - Berneau Eglise 07:58</li><li><a href="stop-TEC_LBWviad2.html">TEC:LBWviad2</a> - Berneau Viaduc 07:59</li><li><a href="stop-TEC_LVImons2.html">TEC:LVImons2</a> - Vise Route de Mons 08:00</li><li><a href="stop-TEC_LVIferm2.html">TEC:LVIferm2</a> - Vise Ferme des Trois Rois 08:01</li><li><a href="stop-TEC_LVIhall2.html">TEC:LVIhall2</a> - Vise Hall Omnisport 08:02</li><li><a href="stop-TEC_LVIjacq2.html">TEC:LVIjacq2</a> - Vise Ecole Lieutenant Jacquemin 08:03</li><li><a href="stop-TEC_LVIsacr2.html">TEC:LVIsacr2</a> - Vise Institut du Sacré-Coeur 08:04</li><li><a href="stop-TEC_LVIastr1.html">TEC:LVIastr1</a> - Vise Place Reine Astrid 08:05</li><li><a href="stop-TEC_LVIacac1.html">TEC:LVIacac1</a> - Vise Rue des Acacias 08:06</li><li><a href="stop-TEC_LVItcm-1.html">TEC:LVItcm-1</a> - Vise Garage T.C.M. 08:06</li><li><a href="stop-TEC_LVIdepo2.html">TEC:LVIdepo2</a> - Vise Place des Déportés 08:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5007.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

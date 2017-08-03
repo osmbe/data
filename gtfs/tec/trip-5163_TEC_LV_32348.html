@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Verviers-Battice-Thimister-Aubel - 5163:TEC:LV:32348</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Verviers-Battice-Thimister-Aubel - 5163:TEC:LV:32348</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lvegc-1_.html">TEC:Lvegc-1*</a> - Verviers Gare Centrale 15:50</li><li><a href="stop-TEC_Lveharm1.html">TEC:Lveharm1</a> - Verviers Harmonie 15:51</li><li><a href="stop-TEC_Lveanto1.html">TEC:Lveanto1</a> - Verviers Eglise St-Antoine 15:52</li><li><a href="stop-TEC_Ldimont1.html">TEC:Ldimont1</a> - Dison Montagne de l'Invasion 15:54</li><li><a href="stop-TEC_Ldipiss1.html">TEC:Ldipiss1</a> - Dison Pisseroule 15:55</li><li><a href="stop-TEC_Ldiinte1.html">TEC:Ldiinte1</a> - Dison Interlac 15:57</li><li><a href="stop-TEC_Ldipl--5.html">TEC:Ldipl--5</a> - Dison Place 15:58</li><li><a href="stop-TEC_Ldidefo1.html">TEC:Ldidefo1</a> - Dison Usines Deforges 15:59</li><li><a href="stop-TEC_Ldicorb1.html">TEC:Ldicorb1</a> - Dison Corbeau 16:00</li><li><a href="stop-TEC_LCHrhou1.html">TEC:LCHrhou1</a> - Chaineux Route de Houlteau 16:02</li><li><a href="stop-TEC_LCHgele1.html">TEC:LCHgele1</a> - Chaineux Rue de la Gelée 16:03</li><li><a href="stop-TEC_LCHfond1.html">TEC:LCHfond1</a> - Chaineux Fond du Village 16:04</li><li><a href="stop-TEC_LCHeg--1.html">TEC:LCHeg--1</a> - Chaineux Eglise 16:04</li><li><a href="stop-TEC_LCHsaul1.html">TEC:LCHsaul1</a> - Chaineux rue des Saules 16:05</li><li><a href="stop-TEC_LBTchai1.html">TEC:LBTchai1</a> - Battice Route de Chaineux 16:06</li><li><a href="stop-TEC_LBTxhen1.html">TEC:LBTxhen1</a> - Battice Chemin de Xheneumont 16:08</li><li><a href="stop-TEC_LBTnors1.html">TEC:LBTnors1</a> - Battice Rue Général Norstadt 16:10</li><li><a href="stop-TEC_LBTcarr1.html">TEC:LBTcarr1</a> - Battice Carrefour 16:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3976.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

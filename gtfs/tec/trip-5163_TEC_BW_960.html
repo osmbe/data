@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Soignies - Br.-le-Comte - Rebecq - Tubize - Hal - 5163:TEC:BW:960</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Soignies - Br.-le-Comte - Rebecq - Tubize - Hal - 5163:TEC:BW:960</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bhalgar2.html">TEC:Bhalgar2</a> - Halle Station 18:39</li><li><a href="stop-TEC_Bhalgar1.html">TEC:Bhalgar1</a> - Halle Station 18:39</li><li><a href="stop-TEC_Bhalpar2.html">TEC:Bhalpar2</a> - Halle Park 18:40</li><li><a href="stop-TEC_Bhalark2.html">TEC:Bhalark2</a> - Halle Arkenvest 18:41</li><li><a href="stop-TEC_Bhalber2.html">TEC:Bhalber2</a> - Halle Bergensepoort 18:41</li><li><a href="stop-TEC_Bhalrat2.html">TEC:Bhalrat2</a> - Halle Rattenput 18:43</li><li><a href="stop-TEC_Bhaleur2.html">TEC:Bhaleur2</a> - Halle Europalaan 18:45</li><li><a href="stop-TEC_Bhalker2.html">TEC:Bhalker2</a> - Halle Kerkhof 18:45</li><li><a href="stop-TEC_Blemsta2.html">TEC:Blemsta2</a> - Lembeek Stationstraat 18:47</li><li><a href="stop-TEC_Btubcal2.html">TEC:Btubcal2</a> - Tubize Caltex 18:48</li><li><a href="stop-TEC_Btubsam2.html">TEC:Btubsam2</a> - Tubize Stock Americain 18:49</li><li><a href="stop-TEC_Btubfab2.html">TEC:Btubfab2</a> - Tubize Fabelta 18:50</li><li><a href="stop-TEC_Btubmfa1.html">TEC:Btubmfa1</a> - Tubize Mur Fabelta 18:51</li><li><a href="stop-TEC_Btubga02.html">TEC:Btubga02</a> - Tubize Gare 18:52</li><li><a href="stop-TEC_Btubga03.html">TEC:Btubga03</a> - Tubize Gare 18:52</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./29.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège-Ougrée-Boncelles-Neuville-Tinlot-Warzée - 5163:TEC:LV:40729</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège-Ougrée-Boncelles-Neuville-Tinlot-Warzée - 5163:TEC:LV:40729</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lbomc--5.html">TEC:Lbomc--5</a> - Boncelles Maison Communale 06:34</li><li><a href="stop-TEC_Lbooffe1.html">TEC:Lbooffe1</a> - Boncelles Voie Offenbach 06:35</li><li><a href="stop-TEC_Lbomidi1.html">TEC:Lbomidi1</a> - Boncelles Rue du Midi 06:36</li><li><a href="stop-TEC_Lbogonh3.html">TEC:Lbogonh3</a> - Boncelles Gonhy 06:37</li><li><a href="stop-TEC_Lbocarr1.html">TEC:Lbocarr1</a> - Boncelles Carrefour 06:37</li><li><a href="stop-TEC_LPLcarr1.html">TEC:LPLcarr1</a> - Plainevaux Carrefour 06:41</li><li><a href="stop-TEC_LPLc65-1.html">TEC:LPLc65-1</a> - Plainevaux route du Condroz 65 06:42</li><li><a href="stop-TEC_LPLc49-1.html">TEC:LPLc49-1</a> - Plainevaux route du Condroz 49 06:42</li><li><a href="stop-TEC_LPLcond1.html">TEC:LPLcond1</a> - Plainevaux Sentier du Condroz 06:43</li><li><a href="stop-TEC_LRRcarr1.html">TEC:LRRcarr1</a> - Rotheux-Rimiere Carrefour 06:43</li><li><a href="stop-TEC_LRRchea5.html">TEC:LRRchea5</a> - Rotheux-Rimiere Rue du Château d'eau 06:45</li><li><a href="stop-TEC_LSSvill1.html">TEC:LSSvill1</a> - Saint-Severin Route du Village 06:48</li><li><a href="stop-TEC_LSSfrai1.html">TEC:LSSfrai1</a> - Saint-Severin Petit-Fraineux 06:48</li><li><a href="stop-TEC_LSSfont1.html">TEC:LSSfont1</a> - Saint-Severin St-Lambert Fontaine 06:49</li><li><a href="stop-TEC_LYEphar1.html">TEC:LYEphar1</a> - Yernee-Fraineux Pharmacie 06:49</li><li><a href="stop-TEC_LNAbras5.html">TEC:LNAbras5</a> - Nandrin Quatre Bras 06:50</li><li><a href="stop-TEC_LTechpl1.html">TEC:LTechpl1</a> - Terwagne Chapelle 06:58</li><li><a href="stop-TEC_LTecent1.html">TEC:LTecent1</a> - Terwagne Centre 06:59</li><li><a href="stop-TEC_LTestat1.html">TEC:LTestat1</a> - Terwagne Rue de la Station 07:00</li><li><a href="stop-TEC_LCLgend1.html">TEC:LCLgend1</a> - Clavier Gendarmerie 07:01</li><li><a href="stop-TEC_LCLstat1.html">TEC:LCLstat1</a> - Clavier Station 07:02</li><li><a href="stop-TEC_LCLstat2.html">TEC:LCLstat2</a> - Clavier Station 07:02</li><li><a href="stop-TEC_LCLgend2.html">TEC:LCLgend2</a> - Clavier Gendarmerie 07:03</li><li><a href="stop-TEC_LOccarr1.html">TEC:LOccarr1</a> - Ochain Carrefour 07:04</li><li><a href="stop-TEC_LOcgdro1.html">TEC:LOcgdro1</a> - Ochain Grand-Route 07:05</li><li><a href="stop-TEC_LOcchat1.html">TEC:LOcchat1</a> - Ochain Château 07:07</li><li><a href="stop-TEC_LPrcarr1.html">TEC:LPrcarr1</a> - Pair Carrefour 07:10</li><li><a href="stop-TEC_LWZbeem1.html">TEC:LWZbeem1</a> - Warzee Beemont 07:10</li><li><a href="stop-TEC_LWZdtec1.html">TEC:LWZdtec1</a> - Warzee Dépôt TEC 07:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4851.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

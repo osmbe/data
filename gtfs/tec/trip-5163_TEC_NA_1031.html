@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - DINANT - ERMETON-SUR-BIERT - 5163:TEC:NA:1031</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DINANT - ERMETON-SUR-BIERT - 5163:TEC:NA:1031</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N232aqb.html">TEC:N232aqb</a> - Dinant Gare 16:40</li><li><a href="stop-TEC_N232aib.html">TEC:N232aib</a> - Bouvignes Garage 16:43</li><li><a href="stop-TEC_N232ajb.html">TEC:N232ajb</a> - Bouvignes Monument 16:44</li><li><a href="stop-TEC_N232cdb.html">TEC:N232cdb</a> - Bouvignes Station 16:45</li><li><a href="stop-TEC_N231aga.html">TEC:N231aga</a> - Anhee Rue de l'Ecluse 16:48</li><li><a href="stop-TEC_N231afa.html">TEC:N231afa</a> - Anhee Rue Ste-Barbe 16:49</li><li><a href="stop-TEC_N231aba.html">TEC:N231aba</a> - Anhee Place 16:50</li><li><a href="stop-TEC_N231ada.html">TEC:N231ada</a> - Anhee Route de Maredsous 16:51</li><li><a href="stop-TEC_N230aha.html">TEC:N230aha</a> - Warnant Rue du Moulin 16:52</li><li><a href="stop-TEC_N230aia.html">TEC:N230aia</a> - Warnant Moulins 16:53</li><li><a href="stop-TEC_N230aja.html">TEC:N230aja</a> - Warnant La rosière 16:55</li><li><a href="stop-TEC_N230aga.html">TEC:N230aga</a> - Warnant Maison de pierres 16:56</li><li><a href="stop-TEC_N230ada.html">TEC:N230ada</a> - Warnant Station 16:57</li><li><a href="stop-TEC_N230aea.html">TEC:N230aea</a> - Warnant Chemin de Salet 16:59</li><li><a href="stop-TEC_N230afa.html">TEC:N230afa</a> - Warnant Four à chaux 17:00</li><li><a href="stop-TEC_N234ada.html">TEC:N234ada</a> - Falaen Château de Montaigle 17:03</li><li><a href="stop-TEC_N234aba.html">TEC:N234aba</a> - Falaen Station 17:04</li><li><a href="stop-TEC_N234aca.html">TEC:N234aca</a> - Falaen Camping 17:06</li><li><a href="stop-TEC_N234afa.html">TEC:N234afa</a> - Sosoye Station 17:08</li><li><a href="stop-TEC_N234aea.html">TEC:N234aea</a> - Sosoye Laid trou 17:09</li><li><a href="stop-TEC_N550aca.html">TEC:N550aca</a> - Maredsous Station 17:12</li><li><a href="stop-TEC_N550aca.html">TEC:N550aca</a> - Maredsous Station 17:12</li><li><a href="stop-TEC_N550aaa.html">TEC:N550aaa</a> - Denee Château Desclée 17:14</li><li><a href="stop-TEC_N550ama.html">TEC:N550ama</a> - Maredret Station 17:15</li><li><a href="stop-TEC_N565aaa.html">TEC:N565aaa</a> - Ermeton-sur-Biert Bonsin 17:18</li><li><a href="stop-TEC_N565aea.html">TEC:N565aea</a> - Ermeton-sur-Biert Place 17:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5773.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

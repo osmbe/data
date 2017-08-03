@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Waimes - Heppenbach - 5163:TEC:LV:27190</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Waimes - Heppenbach - 5163:TEC:LV:27190</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LhPkirc2.html">TEC:LhPkirc2</a> - Heppenbach Kirche 07:08</li><li><a href="stop-TEC_LhPprum2.html">TEC:LhPprum2</a> - Heppenbach Auf dem Prümmer 07:09</li><li><a href="stop-TEC_LhPheps2.html">TEC:LhPheps2</a> - Heppenbach Hepscheider Strasse 07:10</li><li><a href="stop-TEC_LhDkreu4.html">TEC:LhDkreu4</a> - Hepscheid Kreuzung 07:11</li><li><a href="stop-TEC_LmRkreu2.html">TEC:LmRkreu2</a> - Moderscheid Kreuzung 07:11</li><li><a href="stop-TEC_LmRhö812.html">TEC:LmRhö812</a> - Moderscheid In den Höfen 81 07:12</li><li><a href="stop-TEC_LmR50--2.html">TEC:LmR50--2</a> - Moderscheid 50 07:13</li><li><a href="stop-TEC_LmRkape2.html">TEC:LmRkape2</a> - Moderscheid Kapelle 07:14</li><li><a href="stop-TEC_LmR90--2.html">TEC:LmR90--2</a> - Moderscheid 90 07:14</li><li><a href="stop-TEC_LsHfrie2.html">TEC:LsHfrie2</a> - Schoppen Friedhof 07:16</li><li><a href="stop-TEC_LsHkirc2.html">TEC:LsHkirc2</a> - Schoppen Kirche 07:17</li><li><a href="stop-TEC_LsHkreu4.html">TEC:LsHkreu4</a> - Schoppen Kreuzung 07:17</li><li><a href="stop-TEC_LsHthom2.html">TEC:LsHthom2</a> - Schoppen Haus Thome 07:18</li><li><a href="stop-TEC_LsHlenz2.html">TEC:LsHlenz2</a> - Schoppen Haus Lenz 07:20</li><li><a href="stop-TEC_LFychpl2.html">TEC:LFychpl2</a> - Faymonville Chapelle St-Hubert 07:25</li><li><a href="stop-TEC_LFymare4.html">TEC:LFymare4</a> - Faymonville Café Maréchal 07:26</li><li><a href="stop-TEC_LFyec--2.html">TEC:LFyec--2</a> - Faymonville Ecole 07:26</li><li><a href="stop-TEC_LWamass2.html">TEC:LWamass2</a> - Waimes Garage Masson 07:27</li><li><a href="stop-TEC_LWagare_.html">TEC:LWagare*</a> - Waimes Gare 07:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5424.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

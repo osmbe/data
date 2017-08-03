@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - HUY - FORVILLE - 5163:TEC:NA:8114</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: HUY - FORVILLE - 5163:TEC:NA:8114</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LHUaron1.html">TEC:LHUaron1</a> - Huy Quai d'Arona 12:30</li><li><a href="stop-TEC_LHUneuv1.html">TEC:LHUneuv1</a> - Huy Rue Neuve 12:32</li><li><a href="stop-TEC_LHUaveu1.html">TEC:LHUaveu1</a> - Huy Porte des Aveugles 12:34</li><li><a href="stop-TEC_LSteg--1.html">TEC:LSteg--1</a> - Statte Eglise 12:37</li><li><a href="stop-TEC_LStroch1.html">TEC:LStroch1</a> - Statte Sous les Roches 12:38</li><li><a href="stop-TEC_LWNwavr5.html">TEC:LWNwavr5</a> - Wanze Chaussée de Wavre 12:39</li><li><a href="stop-TEC_LWNfani1.html">TEC:LWNfani1</a> - Wanze Place Faniel 12:40</li><li><a href="stop-TEC_LWNbeto1.html">TEC:LWNbeto1</a> - Wanze Bétonval 12:40</li><li><a href="stop-TEC_LWNcime1.html">TEC:LWNcime1</a> - Wanze Cimetière 12:41</li><li><a href="stop-TEC_LWNcham1.html">TEC:LWNcham1</a> - Wanze Champia 12:41</li><li><a href="stop-TEC_LMHoha-1.html">TEC:LMHoha-1</a> - Moha Chemin d'Oha 12:42</li><li><a href="stop-TEC_LMHtill1.html">TEC:LMHtill1</a> - Moha Tilleul 12:42</li><li><a href="stop-TEC_NL73aeb.html">TEC:NL73aeb</a> - Moha Râperie 12:43</li><li><a href="stop-TEC_NL73adb.html">TEC:NL73adb</a> - Moha Envoz dépôt 12:44</li><li><a href="stop-TEC_NL73acb.html">TEC:NL73acb</a> - Moha Rue Foulia 12:45</li><li><a href="stop-TEC_NL73abb.html">TEC:NL73abb</a> - Moha Longpré 12:46</li><li><a href="stop-TEC_NL73aab.html">TEC:NL73aab</a> - Moha Longpré mines 12:46</li><li><a href="stop-TEC_NL57alb.html">TEC:NL57alb</a> - Lavoir Ecole 12:48</li><li><a href="stop-TEC_NL57amb.html">TEC:NL57amb</a> - Lavoir Route de Vissoul 12:49</li><li><a href="stop-TEC_NL57aib.html">TEC:NL57aib</a> - Heron Brichette 12:50</li><li><a href="stop-TEC_NL57ajb.html">TEC:NL57ajb</a> - Heron Route de Petit-Waret 12:51</li><li><a href="stop-TEC_NL57akb.html">TEC:NL57akb</a> - Heron Chemin de Boingt 12:53</li><li><a href="stop-TEC_NL68abb.html">TEC:NL68abb</a> - Eveque Gare est 12:54</li><li><a href="stop-TEC_NL68afb.html">TEC:NL68afb</a> - Eveque Carrefour 12:55</li><li><a href="stop-TEC_NL68aeb.html">TEC:NL68aeb</a> - Eveque Maison communale 12:55</li><li><a href="stop-TEC_NL68aab.html">TEC:NL68aab</a> - Eveque Halbosa 12:55</li><li><a href="stop-TEC_N507aab.html">TEC:N507aab</a> - Bierwart Jonction - Route d'Andenne 12:56</li><li><a href="stop-TEC_N507aba.html">TEC:N507aba</a> - Bierwart Carrefour 12:57</li><li><a href="stop-TEC_N507aib.html">TEC:N507aib</a> - Forville Route de Gochenée 12:59</li><li><a href="stop-TEC_N507aga.html">TEC:N507aga</a> - Forville Av. de la Libération 13:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6462.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

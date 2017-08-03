@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Théatre-Seraing-Engihoul-Flône-Tihange-Huy - 5163:TEC:LV:30501</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Théatre-Seraing-Engihoul-Flône-Tihange-Huy - 5163:TEC:LV:30501</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LlgOPER2.html">TEC:LlgOPER2</a> - Liege Opéra 09:21</li><li><a href="stop-TEC_LlgPTAV1.html">TEC:LlgPTAV1</a> - Liege Pont d'Avroy 09:24</li><li><a href="stop-TEC_Llgblon1.html">TEC:Llgblon1</a> - Liege Avenue Blonden 09:27</li><li><a href="stop-TEC_LlgguilD.html">TEC:LlgguilD</a> - Liege Gare des Guillemins Quai D 09:28</li><li><a href="stop-TEC_Llglema3.html">TEC:Llglema3</a> - Liege Place Général Leman 09:31</li><li><a href="stop-TEC_Lscstan3.html">TEC:Lscstan3</a> - Sclessin Standard 09:36</li><li><a href="stop-TEC_Loutras1.html">TEC:Loutras1</a> - Ougree Rue Trasenster 09:38</li><li><a href="stop-TEC_Louhauf1.html">TEC:Louhauf1</a> - Ougree Place des Hauts-Fourneaux 09:39</li><li><a href="stop-TEC_Louense1.html">TEC:Louense1</a> - Ougree Rue de l'Enseignement 09:39</li><li><a href="stop-TEC_Lougare1.html">TEC:Lougare1</a> - Ougree Gare 09:40</li><li><a href="stop-TEC_Loucham3.html">TEC:Loucham3</a> - Ougree Rue des Champs du Mont 09:41</li><li><a href="stop-TEC_Lsebelv1.html">TEC:Lsebelv1</a> - Seraing Voie du Belvédère 09:42</li><li><a href="stop-TEC_Lsebrun3.html">TEC:Lsebrun3</a> - Seraing Place G. Bruno 09:44</li><li><a href="stop-TEC_Lseaven1.html">TEC:Lseaven1</a> - Seraing Esplanade de l'Avenir 09:46</li><li><a href="stop-TEC_Lsekubo3.html">TEC:Lsekubo3</a> - Seraing Place Kuborn 09:46</li><li><a href="stop-TEC_Lsetroq1.html">TEC:Lsetroq1</a> - Seraing Rue de la Troque 09:49</li><li><a href="stop-TEC_Lsemany1.html">TEC:Lsemany1</a> - Seraing Many 09:50</li><li><a href="stop-TEC_Lseegva1.html">TEC:Lseegva1</a> - Seraing Eglise du Val 09:51</li><li><a href="stop-TEC_Lsecris3.html">TEC:Lsecris3</a> - Seraing Cristalleries 09:51</li><li><a href="stop-TEC_Livgera1.html">TEC:Livgera1</a> - Ivoz Place Gérard 09:56</li><li><a href="stop-TEC_Livpost1.html">TEC:Livpost1</a> - Ivoz Poste 09:57</li><li><a href="stop-TEC_LRacime1.html">TEC:LRacime1</a> - Ramet Cimetière 09:58</li><li><a href="stop-TEC_LRaplac1.html">TEC:LRaplac1</a> - Ramet Place 09:59</li><li><a href="stop-TEC_LRarami1.html">TEC:LRarami1</a> - Ramet Chaussée de Ramioul 77 10:00</li><li><a href="stop-TEC_LRAcouv1.html">TEC:LRAcouv1</a> - Ramioul Couvent 10:01</li><li><a href="stop-TEC_LRAgrot1.html">TEC:LRAgrot1</a> - Ramioul Grottes 10:02</li><li><a href="stop-TEC_LRArami1.html">TEC:LRArami1</a> - Ramioul Chaussée de Ramioul 287 10:02</li><li><a href="stop-TEC_LENengi1.html">TEC:LENengi1</a> - Engis Engihoul 10:04</li><li><a href="stop-TEC_LCSpoud1.html">TEC:LCSpoud1</a> - Clermont-Sous-Huy Poudrerie 10:07</li><li><a href="stop-TEC_LCSgend1.html">TEC:LCSgend1</a> - Clermont-Sous-Huy Gendarmerie 10:08</li><li><a href="stop-TEC_LHHroua1.html">TEC:LHHroua1</a> - Hermalle-Sous-Huy Roua 10:08</li><li><a href="stop-TEC_LHHcite1.html">TEC:LHHcite1</a> - Hermalle-Sous-Huy Cité 10:09</li><li><a href="stop-TEC_LHHtill1.html">TEC:LHHtill1</a> - Hermalle-Sous-Huy Tilleul 10:10</li><li><a href="stop-TEC_LHHplac1.html">TEC:LHHplac1</a> - Hermalle-Sous-Huy Place 10:10</li><li><a href="stop-TEC_LHHecol1.html">TEC:LHHecol1</a> - Hermalle-Sous-Huy Ecole Communale 10:10</li><li><a href="stop-TEC_LHHindu1.html">TEC:LHHindu1</a> - Hermalle-Sous-Huy Zoning Industriel 10:11</li><li><a href="stop-TEC_LHHpt--1.html">TEC:LHHpt--1</a> - Hermalle-Sous-Huy Pont 10:12</li><li><a href="stop-TEC_LFlabba1.html">TEC:LFlabba1</a> - Flone Abbaye 10:14</li><li><a href="stop-TEC_LAMhaut1.html">TEC:LAMhaut1</a> - Amay Rue Haute 10:15</li><li><a href="stop-TEC_LAMfrai1.html">TEC:LAMfrai1</a> - Amay Rue des Fraisiers 10:16</li><li><a href="stop-TEC_LAMmc--1.html">TEC:LAMmc--1</a> - Amay Maison Communale 10:17</li><li><a href="stop-TEC_LAMcloc1.html">TEC:LAMcloc1</a> - Amay Rue de la Cloche 10:18</li><li><a href="stop-TEC_LAMceri1.html">TEC:LAMceri1</a> - Amay Rue des Cerisiers 10:18</li><li><a href="stop-TEC_LOmvill1.html">TEC:LOmvill1</a> - Ombret-Rawsa Village 10:20</li><li><a href="stop-TEC_LOmecol1.html">TEC:LOmecol1</a> - Ombret-Rawsa Ecole communale 10:20</li><li><a href="stop-TEC_LOmpont1.html">TEC:LOmpont1</a> - Ombret-Rawsa Ponthière 10:21</li><li><a href="stop-TEC_LOmrela1.html">TEC:LOmrela1</a> - Ombret-Rawsa Relais 10:22</li><li><a href="stop-TEC_LOmmer-1.html">TEC:LOmmer-1</a> - Ombret-Rawsa Ry de Mer 10:23</li><li><a href="stop-TEC_LNHbarr1.html">TEC:LNHbarr1</a> - Neuville-Sous-Huy Barrage 10:25</li><li><a href="stop-TEC_LNHhome1.html">TEC:LNHhome1</a> - Neuville-Sous-Huy Home 10:26</li><li><a href="stop-TEC_LTipont1.html">TEC:LTipont1</a> - Tihange Ponton 10:27</li><li><a href="stop-TEC_LTiterr1.html">TEC:LTiterr1</a> - Tihange Malles-Terres 10:28</li><li><a href="stop-TEC_LTiforg1.html">TEC:LTiforg1</a> - Tihange Forges 10:28</li><li><a href="stop-TEC_LTieg--1.html">TEC:LTieg--1</a> - Tihange Eglise 10:29</li><li><a href="stop-TEC_LTimalv1.html">TEC:LTimalv1</a> - Tihange Rue E. Malvoz 10:30</li><li><a href="stop-TEC_LHUec--1.html">TEC:LHUec--1</a> - Huy Ecole 10:31</li><li><a href="stop-TEC_LHUathe1.html">TEC:LHUathe1</a> - Huy Athénée 10:33</li><li><a href="stop-TEC_LHUeuro1.html">TEC:LHUeuro1</a> - Huy Pont de l'Europe 10:34</li><li><a href="stop-TEC_LHUlebe8.html">TEC:LHUlebe8</a> - Huy Place Lebeau 10:34</li><li><a href="stop-TEC_LHUpost4.html">TEC:LHUpost4</a> - Huy Poste 10:37</li><li><a href="stop-TEC_LHUgare_.html">TEC:LHUgare*</a> - Huy Gare 10:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4353.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

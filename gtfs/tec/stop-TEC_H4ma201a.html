@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Marquain Centre</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Marquain Centre</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-5163_TEC_HT_10553.html">5163:TEC:HT:10553</a> - 5163:TEC:HT:10553 - Tournai - Baisieux</li><li><a href="trip-5163_TEC_HT_10565.html">5163:TEC:HT:10565</a> - 5163:TEC:HT:10565 - Tournai - Baisieux</li><li><a href="trip-5163_TEC_HT_4966.html">5163:TEC:HT:4966</a> - 5163:TEC:HT:4966 - Tournai - Baisieux</li><li><a href="trip-5163_TEC_HT_5103.html">5163:TEC:HT:5103</a> - 5163:TEC:HT:5103 - Tournai - Baisieux</li><li><a href="trip-5163_TEC_HT_7167.html">5163:TEC:HT:7167</a> - 5163:TEC:HT:7167 - Tournai - Baisieux</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.607769, 3.32202], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.607769, 3.32202]).addTo(map);
+    </script>
+</body>
+
+</html>

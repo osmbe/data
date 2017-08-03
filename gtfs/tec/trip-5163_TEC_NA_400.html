@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - SALZINNES (Hayettes) - BEEZ - 5163:TEC:NA:400</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: SALZINNES (Hayettes) - BEEZ - 5163:TEC:NA:400</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501fna.html">TEC:N501fna</a> - Salzinnes Rue des Arbalétriers 17:04</li><li><a href="stop-TEC_N501ltb.html">TEC:N501ltb</a> - Salzinnes Hayettes 17:05</li><li><a href="stop-TEC_N501fhb.html">TEC:N501fhb</a> - Salzinnes Rue H. Lecocq 17:06</li><li><a href="stop-TEC_N501fbb.html">TEC:N501fbb</a> - Salzinnes Clinique Ste-Elisabeth 17:07</li><li><a href="stop-TEC_N501fqb.html">TEC:N501fqb</a> - Salzinnes Eglise Ste Julienne 17:08</li><li><a href="stop-TEC_N501fdb.html">TEC:N501fdb</a> - Salzinnes Place Wiertz 17:09</li><li><a href="stop-TEC_N501fab.html">TEC:N501fab</a> - Salzinnes Place Falmagne 17:11</li><li><a href="stop-TEC_N501gpd.html">TEC:N501gpd</a> - Namur Omalius 17:13</li><li><a href="stop-TEC_N501grg.html">TEC:N501grg</a> - Namur Pl. de la Station - Quai D 17:15</li><li><a href="stop-TEC_N501heb.html">TEC:N501heb</a> - Namur Rue de Fer 17:16</li><li><a href="stop-TEC_N501hhb.html">TEC:N501hhb</a> - Namur Rue de l'Ange 17:18</li><li><a href="stop-TEC_N501gsa.html">TEC:N501gsa</a> - Namur Place l'Ilon 17:20</li><li><a href="stop-TEC_N501hba.html">TEC:N501hba</a> - Namur Rue St-Nicolas 17:21</li><li><a href="stop-TEC_N501gqb.html">TEC:N501gqb</a> - Namur Place de l'Ecole des Cadets 17:22</li><li><a href="stop-TEC_N501hcb.html">TEC:N501hcb</a> - Namur Rue de Balart 17:24</li><li><a href="stop-TEC_N501hkb.html">TEC:N501hkb</a> - Namur P+R Saint-Nicolas 17:25</li><li><a href="stop-TEC_N501geb.html">TEC:N501geb</a> - Namur CHR 17:26</li><li><a href="stop-TEC_N501ggb.html">TEC:N501ggb</a> - Namur Faubourg St-Nicolas 17:27</li><li><a href="stop-TEC_N501lqb.html">TEC:N501lqb</a> - Namur Plomcot rue du Wisconsin 17:28</li><li><a href="stop-TEC_N501lpb.html">TEC:N501lpb</a> - Namur Plomcot Cité 17:28</li><li><a href="stop-TEC_N501lra.html">TEC:N501lra</a> - Namur Plomcot terminus 17:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5780.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

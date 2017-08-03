@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bastogne - Arlon - Luxembourg - 5163:TEC:LU:6706</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bastogne - Arlon - Luxembourg - 5163:TEC:LU:6706</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X685acb.html">TEC:X685acb</a> - Luxembourg Heentze Park 18:12</li><li><a href="stop-TEC_X685ajb.html">TEC:X685ajb</a> - Luxembourg Rheinsheim 18:17</li><li><a href="stop-TEC_X685aaa.html">TEC:X685aaa</a> - Luxembourg Charly's Gare 18:21</li><li><a href="stop-TEC_X685agb.html">TEC:X685agb</a> - Luxembourg Wandmillen 18:25</li><li><a href="stop-TEC_X685afb.html">TEC:X685afb</a> - Strassen Kesseler 18:29</li><li><a href="stop-TEC_X684abb.html">TEC:X684abb</a> - Bertrange Belle Etoile 18:34</li><li><a href="stop-TEC_X684aab.html">TEC:X684aab</a> - Mamer Mambra 18:40</li><li><a href="stop-TEC_X688aab.html">TEC:X688aab</a> - Capellen Police 18:45</li><li><a href="stop-TEC_X688abb.html">TEC:X688abb</a> - Windhof 18:50</li><li><a href="stop-TEC_X626aea.html">TEC:X626aea</a> - Steinfort Douane 18:55</li><li><a href="stop-TEC_X601dba.html">TEC:X601dba</a> - Arlon Wolberg 19:00</li><li><a href="stop-TEC_X601dca.html">TEC:X601dca</a> - Arlon Royer 19:02</li><li><a href="stop-TEC_X601aua.html">TEC:X601aua</a> - Arlon Clinique 19:06</li><li><a href="stop-TEC_X601bba.html">TEC:X601bba</a> - Arlon Gare - Quai 6 19:10</li><li><a href="stop-TEC_X601bda.html">TEC:X601bda</a> - Arlon Xxv Août 19:12</li><li><a href="stop-TEC_X601bfa.html">TEC:X601bfa</a> - Arlon Sq Astrid - R de Bastogne 19:15</li><li><a href="stop-TEC_X601bga.html">TEC:X601bga</a> - Arlon ISMA 19:15</li><li><a href="stop-TEC_X601ada.html">TEC:X601ada</a> - Arlon Tec - Rue de Bastogne 19:16</li><li><a href="stop-TEC_X601aea.html">TEC:X601aea</a> - Arlon Rue de Bastogne 19:17</li><li><a href="stop-TEC_X662atb.html">TEC:X662atb</a> - Arlon Route de Bastogne - N4 19:18</li><li><a href="stop-TEC_X662aba.html">TEC:X662aba</a> - Bonnert 4 Vents 19:20</li><li><a href="stop-TEC_X663aia.html">TEC:X663aia</a> - Metzert N4 19:22</li><li><a href="stop-TEC_X663aoa.html">TEC:X663aoa</a> - Attert Spetz 19:25</li><li><a href="stop-TEC_X663apa.html">TEC:X663apa</a> - Attert Voie de la Liberté 8 19:26</li><li><a href="stop-TEC_X663aqa.html">TEC:X663aqa</a> - Attert Camping 19:26</li><li><a href="stop-TEC_X663ara.html">TEC:X663ara</a> - Attert Maison Communale 19:27</li><li><a href="stop-TEC_X663asa.html">TEC:X663asa</a> - Attert Voie de la Liberté 38 19:28</li><li><a href="stop-TEC_X664ama.html">TEC:X664ama</a> - Schockville N4 19:28</li><li><a href="stop-TEC_X664aka.html">TEC:X664aka</a> - Rodenhoff N4 19:29</li><li><a href="stop-TEC_X665aaa.html">TEC:X665aaa</a> - La Folie 19:33</li><li><a href="stop-TEC_X665aba.html">TEC:X665aba</a> - Chemin de Perlé 19:35</li><li><a href="stop-TEC_X666aaa.html">TEC:X666aaa</a> - Martelange Rue de la Frontière 19:36</li><li><a href="stop-TEC_X666aba.html">TEC:X666aba</a> - Martelange Total - Route d'Arlon 19:36</li><li><a href="stop-TEC_X666aca.html">TEC:X666aca</a> - Martelange Texaco 19:37</li><li><a href="stop-TEC_X666ada.html">TEC:X666ada</a> - Martelange Pont de la Sûre 19:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3695.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bastogne - Houffalize - Gouvy - 5163:TEC:LU:2009</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bastogne - Houffalize - Gouvy - 5163:TEC:LU:2009</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X790aka.html">TEC:X790aka</a> - Gouvy Gare 08:44</li><li><a href="stop-TEC_X790aja.html">TEC:X790aja</a> - Gouvy Gendarmerie 08:44</li><li><a href="stop-TEC_X790aia.html">TEC:X790aia</a> - Gouvy Ecole des Soeurs 08:45</li><li><a href="stop-TEC_X790afb.html">TEC:X790afb</a> - Gouvy Eglise 08:46</li><li><a href="stop-TEC_X790adb.html">TEC:X790adb</a> - Gouvy Voie de Salm 08:46</li><li><a href="stop-TEC_X790acb.html">TEC:X790acb</a> - Gouvy Scierie 08:46</li><li><a href="stop-TEC_X790anb.html">TEC:X790anb</a> - Gouvy Route d'Halconreux 08:47</li><li><a href="stop-TEC_X790aba.html">TEC:X790aba</a> - Halconreux Chemin de Limerlé 08:48</li><li><a href="stop-TEC_X788aha.html">TEC:X788aha</a> - Sterpigny Route de Gouvy 08:50</li><li><a href="stop-TEC_X788aga.html">TEC:X788aga</a> - Sterpigny Grand Route 08:51</li><li><a href="stop-TEC_X788afb.html">TEC:X788afb</a> - Sterpigny Eglise 08:51</li><li><a href="stop-TEC_X788adb.html">TEC:X788adb</a> - Sterpigny Chapelle 08:52</li><li><a href="stop-TEC_X788acb.html">TEC:X788acb</a> - Cherain Route de Bovigny 5 08:53</li><li><a href="stop-TEC_X788abb.html">TEC:X788abb</a> - Cherain Eglise 08:54</li><li><a href="stop-TEC_X786aib.html">TEC:X786aib</a> - Vaux Grand Route 08:55</li><li><a href="stop-TEC_X786adb.html">TEC:X786adb</a> - Sommerain Route de Gouvy 56 08:57</li><li><a href="stop-TEC_X786acb.html">TEC:X786acb</a> - Sommerain Centre 37 08:58</li><li><a href="stop-TEC_X786abb.html">TEC:X786abb</a> - Sommerain Muisson Cara 19 08:58</li><li><a href="stop-TEC_X786aab.html">TEC:X786aab</a> - Sommerain Pont 08:59</li><li><a href="stop-TEC_X721aqa.html">TEC:X721aqa</a> - Taverneux Route de Gouvy 09:01</li><li><a href="stop-TEC_X721arb.html">TEC:X721arb</a> - Houffalize Aux Cheras 09:01</li><li><a href="stop-TEC_X721anb.html">TEC:X721anb</a> - Taverneux Grand Route 09:02</li><li><a href="stop-TEC_X721ama.html">TEC:X721ama</a> - Houffalize Cimetière 09:02</li><li><a href="stop-TEC_X721alb.html">TEC:X721alb</a> - Houffalize Barrière N30 09:02</li><li><a href="stop-TEC_X721aka.html">TEC:X721aka</a> - Houffalize Spar 09:03</li><li><a href="stop-TEC_X721agb.html">TEC:X721agb</a> - Houffalize Place Albert 1er 09:03</li><li><a href="stop-TEC_X721aia.html">TEC:X721aia</a> - Houffalize Rue de Bastogne 42 09:03</li><li><a href="stop-TEC_X721abb.html">TEC:X721abb</a> - Houffalize Chemin de Tavigny 09:04</li><li><a href="stop-TEC_X721aab.html">TEC:X721aab</a> - Houffalize La Charmille 09:05</li><li><a href="stop-TEC_X723akb.html">TEC:X723akb</a> - Wicourt Chemin de Neufmoulin 09:07</li><li><a href="stop-TEC_X723ajb.html">TEC:X723ajb</a> - Wicourt Fond de Wicourt 09:07</li><li><a href="stop-TEC_X723agb.html">TEC:X723agb</a> - Wicourt Grand Route 09:08</li><li><a href="stop-TEC_X723aca.html">TEC:X723aca</a> - Vaux Chemin de Rachamps 09:10</li><li><a href="stop-TEC_X723abb.html">TEC:X723abb</a> - N30 Route d'Houffalize 09:10</li><li><a href="stop-TEC_X724ahb.html">TEC:X724ahb</a> - Noville (BASTOGNE) Eglise 09:12</li><li><a href="stop-TEC_X724aib.html">TEC:X724aib</a> - Foy Grand Route 09:13</li><li><a href="stop-TEC_X724aab.html">TEC:X724aab</a> - Foy Carrefour 09:15</li><li><a href="stop-TEC_X725bfa.html">TEC:X725bfa</a> - Luzery Garage Zune 09:17</li><li><a href="stop-TEC_X725bbb.html">TEC:X725bbb</a> - Luzery Carrefour 09:19</li><li><a href="stop-TEC_X725bab.html">TEC:X725bab</a> - Bastogne EPE 09:20</li><li><a href="stop-TEC_X725aza.html">TEC:X725aza</a> - Bastogne Clinique 09:20</li><li><a href="stop-TEC_X725aed.html">TEC:X725aed</a> - Bastogne Pépinière - Quai 4 09:21</li><li><a href="stop-TEC_X725aoa.html">TEC:X725aoa</a> - Bastogne Hôtel de Ville 09:23</li><li><a href="stop-TEC_X725afe.html">TEC:X725afe</a> - Bastogne Gare du Sud - Quai 3 09:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2643.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

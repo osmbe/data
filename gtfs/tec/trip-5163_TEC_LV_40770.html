@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Lambert - Grâce-Hollogne - Jemeppe - 5163:TEC:LV:40770</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Lambert - Grâce-Hollogne - Jemeppe - 5163:TEC:LV:40770</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lghterm_.html">TEC:Lghterm*</a> - Grace-Hollogne Aulichamps terminus 06:21</li><li><a href="stop-TEC_Lghpara2.html">TEC:Lghpara2</a> - Grace-Hollogne Paradis aux Chevaux 06:22</li><li><a href="stop-TEC_Lghomni2.html">TEC:Lghomni2</a> - Grace-Hollogne Hall Omnisport 06:23</li><li><a href="stop-TEC_Lghencl2.html">TEC:Lghencl2</a> - Grace-Hollogne Rue sous l'Enclos 06:24</li><li><a href="stop-TEC_Lghflot2.html">TEC:Lghflot2</a> - Grace-Hollogne Cité du Flot 06:25</li><li><a href="stop-TEC_Lghbonn2.html">TEC:Lghbonn2</a> - Grace-Hollogne Charbonnage du Bonnier 06:26</li><li><a href="stop-TEC_Lghremy2.html">TEC:Lghremy2</a> - Grace-Hollogne Eglise St-Remy 06:27</li><li><a href="stop-TEC_Lghpero2.html">TEC:Lghpero2</a> - Grace-Hollogne Pérou 06:27</li><li><a href="stop-TEC_Lghsimo2.html">TEC:Lghsimo2</a> - Grace-Hollogne Rue Simon 06:28</li><li><a href="stop-TEC_Lmolagu2.html">TEC:Lmolagu2</a> - Montegnee Laguesse 06:29</li><li><a href="stop-TEC_Lmopech2.html">TEC:Lmopech2</a> - Montegnee Péchalle 06:30</li><li><a href="stop-TEC_Lmobras2.html">TEC:Lmobras2</a> - Montegnee Brasserie Nizet 06:31</li><li><a href="stop-TEC_Lmochpl2.html">TEC:Lmochpl2</a> - Montegnee Chapelle 06:32</li><li><a href="stop-TEC_Lmoboeu2.html">TEC:Lmoboeu2</a> - Montegnee Tête de Boeuf 06:32</li><li><a href="stop-TEC_Lmomarr2.html">TEC:Lmomarr2</a> - Montegnee Place des Marronniers 06:33</li><li><a href="stop-TEC_Lmochar2.html">TEC:Lmochar2</a> - Montegnee Charbonnage de l'Espérance 06:34</li><li><a href="stop-TEC_Llgbobu6.html">TEC:Llgbobu6</a> - Liege Rue des Bons Buveurs 06:35</li><li><a href="stop-TEC_Llgdelc2.html">TEC:Llgdelc2</a> - Liege Rue Delchef 06:35</li><li><a href="stop-TEC_Llgnico2.html">TEC:Llgnico2</a> - Liege Place St-Nicolas 06:36</li><li><a href="stop-TEC_Llgsnap2.html">TEC:Llgsnap2</a> - Liege Rue du Snapeux 06:37</li><li><a href="stop-TEC_Llgform2.html">TEC:Llgform2</a> - Liege Formation P.M.E. 06:37</li><li><a href="stop-TEC_Llggill2.html">TEC:Llggill2</a> - Liege St-Gilles carrefour 06:38</li><li><a href="stop-TEC_Llghaye2.html">TEC:Llghaye2</a> - Liege Rue de La Haye 06:39</li><li><a href="stop-TEC_Llgsorb2.html">TEC:Llgsorb2</a> - Liege Rue des Sorbiers 06:40</li><li><a href="stop-TEC_Llgmass2.html">TEC:Llgmass2</a> - Liege Rue château Massart 06:41</li><li><a href="stop-TEC_Llglaur2.html">TEC:Llglaur2</a> - Liege St-Laurent carrefour 06:42</li><li><a href="stop-TEC_Llgerac2.html">TEC:Llgerac2</a> - Liege Rue Eracle 06:43</li><li><a href="stop-TEC_Llgfoss2.html">TEC:Llgfoss2</a> - Liege Rue des Fossés 06:44</li><li><a href="stop-TEC_Llgmart2.html">TEC:Llgmart2</a> - Liege Mont St-Martin 06:45</li><li><a href="stop-TEC_Llgcadr2.html">TEC:Llgcadr2</a> - Liege Cadran 06:45</li><li><a href="stop-TEC_LlgLAMB5.html">TEC:LlgLAMB5</a> - Liege Place St-Lambert 06:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4551.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

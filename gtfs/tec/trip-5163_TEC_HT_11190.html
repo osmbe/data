@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - La Louvière - Trivières - 5163:TEC:HT:11190</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: La Louvière - Trivières - 5163:TEC:HT:11190</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H2tr249a.html">TEC:H2tr249a</a> - Trivieres Origine 13:06</li><li><a href="stop-TEC_H2tr250a.html">TEC:H2tr250a</a> - Trivieres Nouvelle Cité 13:07</li><li><a href="stop-TEC_H2tr256b.html">TEC:H2tr256b</a> - Trivieres Rue Quertinmont 13:07</li><li><a href="stop-TEC_H2tr251b.html">TEC:H2tr251b</a> - Trivieres Place 13:08</li><li><a href="stop-TEC_H2tr255b.html">TEC:H2tr255b</a> - Trivieres  Rue V. LAROCK 13:09</li><li><a href="stop-TEC_H2tr247a.html">TEC:H2tr247a</a> - Trivieres Chemin Vert 13:09</li><li><a href="stop-TEC_H2tr248a.html">TEC:H2tr248a</a> - Trivieres La Moussière 13:11</li><li><a href="stop-TEC_H2sb226a.html">TEC:H2sb226a</a> - Strepy-Bracquegnies Château d' Eau 13:13</li><li><a href="stop-TEC_H2sb231d.html">TEC:H2sb231d</a> - Strepy-Bracquegnies Place de Strépy 13:14</li><li><a href="stop-TEC_H2sb266b.html">TEC:H2sb266b</a> - Strepy-Bracquegnies Rue de la Renaissance 13:15</li><li><a href="stop-TEC_H2sb242a.html">TEC:H2sb242a</a> - Strepy-Bracquegnies Trou au Sable 13:16</li><li><a href="stop-TEC_H2sb228c.html">TEC:H2sb228c</a> - Strepy-Bracquegnies Cité Partage 13:18</li><li><a href="stop-TEC_H2sb221a.html">TEC:H2sb221a</a> - Strepy-Bracquegnies 4 Chemins 13:19</li><li><a href="stop-TEC_H2ha132a.html">TEC:H2ha132a</a> - Houdeng-Aimeries Pont Balasse 13:21</li><li><a href="stop-TEC_H2ha141a.html">TEC:H2ha141a</a> - Houdeng-Aimeries Saint Amand 13:23</li><li><a href="stop-TEC_H2ha136a.html">TEC:H2ha136a</a> - Houdeng-Aimeries Rue Infante Isabelle 13:24</li><li><a href="stop-TEC_H2ha137a.html">TEC:H2ha137a</a> - Houdeng-Aimeries Rue Infante Isabelle N° 13:24</li><li><a href="stop-TEC_H2hg153a.html">TEC:H2hg153a</a> - Houdeng-Goegnies Place Saint-Nicolas 13:25</li><li><a href="stop-TEC_H2hg155c.html">TEC:H2hg155c</a> - Houdeng-Goegnies Rue du Tir 13:26</li><li><a href="stop-TEC_H2ll195a.html">TEC:H2ll195a</a> - La Louviere Rue de l'Abattoir 13:28</li><li><a href="stop-TEC_H2ll176a.html">TEC:H2ll176a</a> - La Louviere Dépôt  TEC 13:29</li><li><a href="stop-TEC_H2ll186a.html">TEC:H2ll186a</a> - La Louviere O.N.E.M. 13:30</li><li><a href="stop-TEC_H2ll258a.html">TEC:H2ll258a</a> - La Louviere Carrefour du Gazomètre 13:32</li><li><a href="stop-TEC_H2ll188a.html">TEC:H2ll188a</a> - La Louviere Place Mansart 13:34</li><li><a href="stop-TEC_H2ll177b.html">TEC:H2ll177b</a> - La Louviere Rue du Parc 13:36</li><li><a href="stop-TEC_H2ll181b.html">TEC:H2ll181b</a> - La Louviere Gendarmerie 13:38</li><li><a href="stop-TEC_H2ll172b.html">TEC:H2ll172b</a> - La Louviere Bas de Baume 13:39</li><li><a href="stop-TEC_H2ll201b.html">TEC:H2ll201b</a> - La Louviere Tivoli 13:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1797.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

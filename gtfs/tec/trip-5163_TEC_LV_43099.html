@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Verviers-Battice-Thimister-Aubel - 5163:TEC:LV:43099</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Verviers-Battice-Thimister-Aubel - 5163:TEC:LV:43099</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LHEnaza1.html">TEC:LHEnaza1</a> - Herve Nazareth 12:22</li><li><a href="stop-TEC_LHEecmo1.html">TEC:LHEecmo1</a> - Herve Ecole Moyenne 12:23</li><li><a href="stop-TEC_LHEches1.html">TEC:LHEches1</a> - Herve Rue de Chesseroux 12:24</li><li><a href="stop-TEC_LHEbeau1.html">TEC:LHEbeau1</a> - Herve Beau Vallon 12:25</li><li><a href="stop-TEC_LBTcarr1.html">TEC:LBTcarr1</a> - Battice Carrefour 12:27</li><li><a href="stop-TEC_LBTfoot1.html">TEC:LBTfoot1</a> - Battice Terrain de Football 12:28</li><li><a href="stop-TEC_LBTwauc1.html">TEC:LBTwauc1</a> - Battice Hameau de Waucomont 12:28</li><li><a href="stop-TEC_LThpoli1.html">TEC:LThpoli1</a> - Thimister Croix Polinard 12:30</li><li><a href="stop-TEC_LThbatt1.html">TEC:LThbatt1</a> - Thimister Route de Battice 12:31</li><li><a href="stop-TEC_LTheg--1.html">TEC:LTheg--1</a> - Thimister Eglise 12:32</li><li><a href="stop-TEC_LThgare1.html">TEC:LThgare1</a> - Thimister Ancienne Gare 12:33</li><li><a href="stop-TEC_LThnouv1.html">TEC:LThnouv1</a> - Thimister Nouveau Quartier 12:34</li><li><a href="stop-TEC_LCleg--1.html">TEC:LCleg--1</a> - Clermont Eglise 12:35</li><li><a href="stop-TEC_LCltrib1.html">TEC:LCltrib1</a> - Clermont Tribezone 12:36</li><li><a href="stop-TEC_LClbloc1.html">TEC:LClbloc1</a> - Clermont Blockhouse 12:38</li><li><a href="stop-TEC_LCljose1.html">TEC:LCljose1</a> - Clermont Chapelle St-Joseph 12:39</li><li><a href="stop-TEC_LClange1.html">TEC:LClange1</a> - Clermont Chapelle des Anges 12:40</li><li><a href="stop-TEC_LFdeg--1.html">TEC:LFdeg--1</a> - Froidthier Eglise 12:41</li><li><a href="stop-TEC_LFdchau3.html">TEC:LFdchau3</a> - Froidthier Chaussée 12:42</li><li><a href="stop-TEC_LAUcarr1.html">TEC:LAUcarr1</a> - Aubel La Carrière 12:44</li><li><a href="stop-TEC_LAUpind1.html">TEC:LAUpind1</a> - Aubel Parc Industriel 12:44</li><li><a href="stop-TEC_LAUhost1.html">TEC:LAUhost1</a> - Aubel Hostert 12:45</li><li><a href="stop-TEC_LAUtism1.html">TEC:LAUtism1</a> - Aubel Rue Tisman 12:46</li><li><a href="stop-TEC_LAUnico1.html">TEC:LAUnico1</a> - Aubel Place Antoine Ernst 12:46</li><li><a href="stop-TEC_LAUvict3.html">TEC:LAUvict3</a> - Aubel Place de la Victoire 12:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4973.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

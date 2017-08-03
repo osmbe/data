@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Saint-Hubert - Poix - 5163:TEC:LU:1722</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Saint-Hubert - Poix - 5163:TEC:LU:1722</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X897alc.html">TEC:X897alc</a> - Saint-Hubert Place de la Libération 17:35</li><li><a href="stop-TEC_X897aib.html">TEC:X897aib</a> - Saint-Hubert IND - Quai 2 17:37</li><li><a href="stop-TEC_X897aja.html">TEC:X897aja</a> - Saint-Hubert Centre Administratif 17:39</li><li><a href="stop-TEC_X897anb.html">TEC:X897anb</a> - Saint-Hubert Avenue Nestor Martin 17:39</li><li><a href="stop-TEC_X897aod.html">TEC:X897aod</a> - Saint-Hubert Route de Lorcy 17:40</li><li><a href="stop-TEC_X896ahb.html">TEC:X896ahb</a> - Lorcy Eglise 17:41</li><li><a href="stop-TEC_X896afa.html">TEC:X896afa</a> - Lorcy Route de Rochefort 8 17:42</li><li><a href="stop-TEC_X896aec.html">TEC:X896aec</a> - Arville Fermes 17:43</li><li><a href="stop-TEC_X896aib.html">TEC:X896aib</a> - Arville Rue du Poteau 21 17:44</li><li><a href="stop-TEC_X896adb.html">TEC:X896adb</a> - Arville Rue du Paradis 15 17:45</li><li><a href="stop-TEC_X896acb.html">TEC:X896acb</a> - Arville L'Alix 17:46</li><li><a href="stop-TEC_X896abb.html">TEC:X896abb</a> - Arville Eglise 17:47</li><li><a href="stop-TEC_X896aab.html">TEC:X896aab</a> - Arville Rue de la Rochette 18 17:48</li><li><a href="stop-TEC_X898aoa.html">TEC:X898aoa</a> - Poix Camping 17:50</li><li><a href="stop-TEC_X898adb.html">TEC:X898adb</a> - Poix Hôtel 17:51</li><li><a href="stop-TEC_X898aca.html">TEC:X898aca</a> - Poix Gare 17:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2720.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

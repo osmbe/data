@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mons - Saint-Denis - 5163:TEC:HT:4126</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mons - Saint-Denis - 5163:TEC:HT:4126</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1ms400d.html">TEC:H1ms400d</a> - Mons SNCB 15:33</li><li><a href="stop-TEC_H1ms256a.html">TEC:H1ms256a</a> - Mons Bd Sainctelette 15:35</li><li><a href="stop-TEC_H1ms296c.html">TEC:H1ms296c</a> - Mons Place des Chasseurs 15:36</li><li><a href="stop-TEC_H1ms276a.html">TEC:H1ms276a</a> - Mons Ecole Normale 15:37</li><li><a href="stop-TEC_H1ms253a.html">TEC:H1ms253a</a> - Mons Banque 15:38</li><li><a href="stop-TEC_H1ms294c.html">TEC:H1ms294c</a> - Mons Place de Flandre 15:40</li><li><a href="stop-TEC_H1ms285a.html">TEC:H1ms285a</a> - Mons Hôpital Civil 15:41</li><li><a href="stop-TEC_H1ms304a.html">TEC:H1ms304a</a> - Mons Rue Valenciennoise 15:41</li><li><a href="stop-TEC_H1ms251a.html">TEC:H1ms251a</a> - Mons Avenue du Tir 15:42</li><li><a href="stop-TEC_H1ms309a.html">TEC:H1ms309a</a> - Mons Stade 15:43</li><li><a href="stop-TEC_H1ms281a.html">TEC:H1ms281a</a> - Mons Gendarmerie 15:43</li><li><a href="stop-TEC_H1ms268b.html">TEC:H1ms268b</a> - Mons Chemin du Canon 15:44</li><li><a href="stop-TEC_H1ms275a.html">TEC:H1ms275a</a> - Mons Drève des Prophètes 15:46</li><li><a href="stop-TEC_H1ms310a.html">TEC:H1ms310a</a> - Mons Ste Anne 15:46</li><li><a href="stop-TEC_H1ms313a.html">TEC:H1ms313a</a> - Mons Vieux Chemin de Binche 15:47</li><li><a href="stop-TEC_H1ms271a.html">TEC:H1ms271a</a> - Mons Clinique Psychiatrique 15:48</li><li><a href="stop-TEC_H1ms263a.html">TEC:H1ms263a</a> - Mons Chapelle Ste Anne 15:49</li><li><a href="stop-TEC_H1ms269a.html">TEC:H1ms269a</a> - Mons Cimetière 15:50</li><li><a href="stop-TEC_H1ms264a.html">TEC:H1ms264a</a> - Mons Chaussée du Roeulx 15:52</li><li><a href="stop-TEC_H1ms266a.html">TEC:H1ms266a</a> - Mons Chemin d'Obourg 15:53</li><li><a href="stop-TEC_H1ms288a.html">TEC:H1ms288a</a> - Mons Jonquille 15:54</li><li><a href="stop-TEC_H1ms305a.html">TEC:H1ms305a</a> - Mons Sablières 15:54</li><li><a href="stop-TEC_H1ob361a.html">TEC:H1ob361a</a> - Obourg Café des Bruyères 15:56</li><li><a href="stop-TEC_H1ob334a.html">TEC:H1ob334a</a> - Obourg Peupliers 15:56</li><li><a href="stop-TEC_H1ob341a.html">TEC:H1ob341a</a> - Obourg Viaduc 15:57</li><li><a href="stop-TEC_H1ob335c.html">TEC:H1ob335c</a> - Obourg Place 15:59</li><li><a href="stop-TEC_H1ob331a.html">TEC:H1ob331a</a> - Obourg Cimenterie 16:00</li><li><a href="stop-TEC_H1ob333a.html">TEC:H1ob333a</a> - Obourg Mairesse 16:01</li><li><a href="stop-TEC_H1ob327a.html">TEC:H1ob327a</a> - Obourg Cabine 16:02</li><li><a href="stop-TEC_H1ob339a.html">TEC:H1ob339a</a> - Obourg Rue St Denis 16:03</li><li><a href="stop-TEC_H1sd344a.html">TEC:H1sd344a</a> - Saint-Denis Cour des Dames 16:05</li><li><a href="stop-TEC_H1sd366b.html">TEC:H1sd366b</a> - Saint-Denis Sainte-Appoline 16:05</li><li><a href="stop-TEC_H1sd346a.html">TEC:H1sd346a</a> - Saint-Denis Pont de l'Autoroute 16:06</li><li><a href="stop-TEC_H1sd347a.html">TEC:H1sd347a</a> - Saint-Denis Rue Grand Coron 16:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1706.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

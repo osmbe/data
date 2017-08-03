@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Saint-Ghislain - Péruwelz - 5163:TEC:HT:7689</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Saint-Ghislain - Péruwelz - 5163:TEC:HT:7689</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H5pe137d.html">TEC:H5pe137d</a> - Peruwelz SNCB 17:01</li><li><a href="stop-TEC_H5pe147a.html">TEC:H5pe147a</a> - Peruwelz Place 17:03</li><li><a href="stop-TEC_H5pe133a.html">TEC:H5pe133a</a> - Peruwelz Eglise 17:04</li><li><a href="stop-TEC_H5pe141a.html">TEC:H5pe141a</a> - Peruwelz Institut Technique 17:05</li><li><a href="stop-TEC_H5pe145a.html">TEC:H5pe145a</a> - Peruwelz N° 100 17:06</li><li><a href="stop-TEC_H5bs102a.html">TEC:H5bs102a</a> - Bon-Secours Basilique 17:07</li><li><a href="stop-TEC_H5bs104a.html">TEC:H5bs104a</a> - Bon-Secours Rue Taillez 17:08</li><li><a href="stop-TEC_H5bs103a.html">TEC:H5bs103a</a> - Bon-Secours Garde 17:09</li><li><a href="stop-TEC_H5bl116b.html">TEC:H5bl116b</a> - Blaton Calvaire 17:12</li><li><a href="stop-TEC_H5bl123b.html">TEC:H5bl123b</a> - Blaton Potager 17:13</li><li><a href="stop-TEC_H5bl115b.html">TEC:H5bl115b</a> - Blaton Belvédère 17:14</li><li><a href="stop-TEC_H5bl119a.html">TEC:H5bl119a</a> - Blaton SNCB 17:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2081.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

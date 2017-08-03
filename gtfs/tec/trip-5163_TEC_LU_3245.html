@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bastogne - Martelange - Fauvillers - 5163:TEC:LU:3245</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bastogne - Martelange - Fauvillers - 5163:TEC:LU:3245</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X744ada.html">TEC:X744ada</a> - Fauvillers Place 12:40</li><li><a href="stop-TEC_X744aeb.html">TEC:X744aeb</a> - Fauvillers Delhaize 12:40</li><li><a href="stop-TEC_X745aba.html">TEC:X745aba</a> - Bodange Traquebois - Pont 12:42</li><li><a href="stop-TEC_X745acb.html">TEC:X745acb</a> - Bodange Pont 12:43</li><li><a href="stop-TEC_X745ada.html">TEC:X745ada</a> - Wisembach Route de Bodange 4 12:44</li><li><a href="stop-TEC_X745aeb.html">TEC:X745aeb</a> - Wisembach Eglise 12:45</li><li><a href="stop-TEC_X666akb.html">TEC:X666akb</a> - Radelange Route de Wisembach 12:46</li><li><a href="stop-TEC_X666ajb.html">TEC:X666ajb</a> - Radelange Eglise 12:47</li><li><a href="stop-TEC_X666aib.html">TEC:X666aib</a> - Martelange Pont de Radelange 12:48</li><li><a href="stop-TEC_X666ahb.html">TEC:X666ahb</a> - Martelange Le Pré Fleuri 12:48</li><li><a href="stop-TEC_X666agb.html">TEC:X666agb</a> - Martelange Police 12:49</li><li><a href="stop-TEC_X666aeb.html">TEC:X666aeb</a> - Martelange Rue de la Poste 12:49</li><li><a href="stop-TEC_X666ama.html">TEC:X666ama</a> - Martelange Dépôt TEC 12:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2532.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

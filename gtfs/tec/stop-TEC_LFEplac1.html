@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ferrieres Place</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Ferrieres Place</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-5163_TEC_LU_1072.html">5163:TEC:LU:1072</a> - 5163:TEC:LU:1072 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_3105.html">5163:TEC:LU:3105</a> - 5163:TEC:LU:3105 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_3110.html">5163:TEC:LU:3110</a> - 5163:TEC:LU:3110 - Manhay - St-Roch - Bomal - Barvaux</li><li><a href="trip-5163_TEC_LU_3112.html">5163:TEC:LU:3112</a> - 5163:TEC:LU:3112 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_3113.html">5163:TEC:LU:3113</a> - 5163:TEC:LU:3113 - Aywaille - Hamoir - Durbuy - Barvaux - Bomal</li><li><a href="trip-5163_TEC_LU_3238.html">5163:TEC:LU:3238</a> - 5163:TEC:LU:3238 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_373.html">5163:TEC:LU:373</a> - 5163:TEC:LU:373 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_487.html">5163:TEC:LU:487</a> - 5163:TEC:LU:487 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_5093.html">5163:TEC:LU:5093</a> - 5163:TEC:LU:5093 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_5110.html">5163:TEC:LU:5110</a> - 5163:TEC:LU:5110 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_5115.html">5163:TEC:LU:5115</a> - 5163:TEC:LU:5115 - Manhay - St-Roch - Bomal - Barvaux</li><li><a href="trip-5163_TEC_LU_5117.html">5163:TEC:LU:5117</a> - 5163:TEC:LU:5117 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_5118.html">5163:TEC:LU:5118</a> - 5163:TEC:LU:5118 - Aywaille - Hamoir - Durbuy - Barvaux - Bomal</li><li><a href="trip-5163_TEC_LU_6526.html">5163:TEC:LU:6526</a> - 5163:TEC:LU:6526 - Manhay - St-Roch - Bomal - Barvaux</li><li><a href="trip-5163_TEC_LU_6531.html">5163:TEC:LU:6531</a> - 5163:TEC:LU:6531 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_6543.html">5163:TEC:LU:6543</a> - 5163:TEC:LU:6543 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_6552.html">5163:TEC:LU:6552</a> - 5163:TEC:LU:6552 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LU_7212.html">5163:TEC:LU:7212</a> - 5163:TEC:LU:7212 - Manhay - Aywaille</li><li><a href="trip-5163_TEC_LV_25841.html">5163:TEC:LV:25841</a> - 5163:TEC:LV:25841 - Barvaux - Bomal - Aywaille - La Reid</li><li><a href="trip-5163_TEC_LV_25845.html">5163:TEC:LV:25845</a> - 5163:TEC:LV:25845 - Barvaux - Bomal - Aywaille - La Reid</li><li><a href="trip-5163_TEC_LV_26051.html">5163:TEC:LV:26051</a> - 5163:TEC:LV:26051 - Barvaux - Bomal - Aywaille - La Reid</li><li><a href="trip-5163_TEC_LV_43522.html">5163:TEC:LV:43522</a> - 5163:TEC:LV:43522 - Barvaux - Bomal - Aywaille - La Reid</li><li><a href="trip-5163_TEC_LV_43734.html">5163:TEC:LV:43734</a> - 5163:TEC:LV:43734 - Barvaux - Bomal - Aywaille - La Reid</li><li><a href="trip-5163_TEC_LV_43735.html">5163:TEC:LV:43735</a> - 5163:TEC:LV:43735 - Barvaux - Bomal - Aywaille - La Reid</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.400385, 5.606579], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.400385, 5.606579]).addTo(map);
+    </script>
+</body>
+
+</html>

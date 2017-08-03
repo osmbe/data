@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Proxibus de Daverdisse - 5163:TEC:LU:5151</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Proxibus de Daverdisse - 5163:TEC:LU:5151</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N874aeb.html">TEC:N874aeb</a> - Wellin Place 11:06</li><li><a href="stop-TEC_X887aaa.html">TEC:X887aaa</a> - Daverdisse Centre 11:22</li><li><a href="stop-TEC_X890abb.html">TEC:X890abb</a> - Porcheresse (DAVERDISSE) Eglise 11:32</li><li><a href="stop-TEC_X890aaa.html">TEC:X890aaa</a> - Porcheresse Laloux 11:33</li><li><a href="stop-TEC_X890ada.html">TEC:X890ada</a> - Porcheresse Vicinal 11:34</li><li><a href="stop-TEC_X891aaa.html">TEC:X891aaa</a> - Gembes Pont 11:37</li><li><a href="stop-TEC_X891aba.html">TEC:X891aba</a> - Gembes Centre 11:37</li><li><a href="stop-TEC_X891aca.html">TEC:X891aca</a> - Gembes Route de Mont 11:38</li><li><a href="stop-TEC_X892aba.html">TEC:X892aba</a> - Haut-Fays Sclassin 11:39</li><li><a href="stop-TEC_X892aca.html">TEC:X892aca</a> - Haut-Fays Rue de Burnaifontaine 11:41</li><li><a href="stop-TEC_X892ada.html">TEC:X892ada</a> - Haut-Fays Monument 11:42</li><li><a href="stop-TEC_X892aha.html">TEC:X892aha</a> - Haut-Fays Rue Nouvelle 11:43</li><li><a href="stop-TEC_X892aea.html">TEC:X892aea</a> - Haut-Fays Eglise 11:44</li><li><a href="stop-TEC_X892afa.html">TEC:X892afa</a> - Haut-Fays Rue du Cimetière 11:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2494.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

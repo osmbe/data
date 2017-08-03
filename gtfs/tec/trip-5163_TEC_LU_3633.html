@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Proxibus de Durbuy - 5163:TEC:LU:3633</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Proxibus de Durbuy - 5163:TEC:LU:3633</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X261ada.html">TEC:X261ada</a> - Oneux Centre 08:00</li><li><a href="stop-TEC_X223aca.html">TEC:X223aca</a> - Borlon Centre 08:05</li><li><a href="stop-TEC_X979aia.html">TEC:X979aia</a> - Palenge Ferme 08:09</li><li><a href="stop-TEC_X979aha.html">TEC:X979aha</a> - Palenge Carrefour 08:09</li><li><a href="stop-TEC_X919ada.html">TEC:X919ada</a> - Septon Route de Palenge 35 08:10</li><li><a href="stop-TEC_X919acb.html">TEC:X919acb</a> - Septon Monument 08:10</li><li><a href="stop-TEC_X919aca.html">TEC:X919aca</a> - Septon Monument 08:11</li><li><a href="stop-TEC_X919adb.html">TEC:X919adb</a> - Septon Route de Palenge 35 08:11</li><li><a href="stop-TEC_X979ahb.html">TEC:X979ahb</a> - Palenge Carrefour 08:11</li><li><a href="stop-TEC_X979aib.html">TEC:X979aib</a> - Palenge Ferme 08:12</li><li><a href="stop-TEC_X979ajb.html">TEC:X979ajb</a> - Palenge Centre 08:12</li><li><a href="stop-TEC_X979aka.html">TEC:X979aka</a> - Palenge Rue de la Forêt 13 08:13</li><li><a href="stop-TEC_X982bsb.html">TEC:X982bsb</a> - Warre Domaine de la Haisse 08:20</li><li><a href="stop-TEC_X982aaa.html">TEC:X982aaa</a> - Longueville Centre 08:22</li><li><a href="stop-TEC_X982aba.html">TEC:X982aba</a> - Houmart Centre 08:24</li><li><a href="stop-TEC_X982acb.html">TEC:X982acb</a> - Houmart Petite Houmart 4 08:24</li><li><a href="stop-TEC_X982bta.html">TEC:X982bta</a> - Hermanne Route des Tiges 08:25</li><li><a href="stop-TEC_X982adb.html">TEC:X982adb</a> - Hermanne Château d'Eau 08:26</li><li><a href="stop-TEC_X982aea.html">TEC:X982aea</a> - Hermanne 25 08:26</li><li><a href="stop-TEC_X982bza.html">TEC:X982bza</a> - Hermanne 30 08:28</li><li><a href="stop-TEC_X982afa.html">TEC:X982afa</a> - Verlaine-sur-Ourthe Grand Route 6 08:31</li><li><a href="stop-TEC_X982bxa.html">TEC:X982bxa</a> - Verlaine-sur-Ourthe Cabine Electrique 08:31</li><li><a href="stop-TEC_X982aga.html">TEC:X982aga</a> - Verlaine-sur-Ourthe Place Vendôme 7 08:32</li><li><a href="stop-TEC_X982ahb.html">TEC:X982ahb</a> - Verlaine-sur-Ourthe Ecole 08:32</li><li><a href="stop-TEC_X982aib.html">TEC:X982aib</a> - Verlaine-sur-Ourthe Maison de Village 08:32</li><li><a href="stop-TEC_X982bub.html">TEC:X982bub</a> - Verlaine-sur-Ourthe Chemin de la Pyramide 08:33</li><li><a href="stop-TEC_X982bra.html">TEC:X982bra</a> - Tohogne Route de Hamoir 08:35</li><li><a href="stop-TEC_X982apa.html">TEC:X982apa</a> - Tohogne Rue de l'Abbé Deldef 08:36</li><li><a href="stop-TEC_X982aqb.html">TEC:X982aqb</a> - Tohogne Centre 08:36</li><li><a href="stop-TEC_X982anb.html">TEC:X982anb</a> - Tohogne Route de Bomal 34 08:37</li><li><a href="stop-TEC_X982amb.html">TEC:X982amb</a> - Tohogne Carrefour 08:38</li><li><a href="stop-TEC_X982ala.html">TEC:X982ala</a> - Warre Val Mèlèye 08:40</li><li><a href="stop-TEC_X979afb.html">TEC:X979afb</a> - Warre 47 08:41</li><li><a href="stop-TEC_X979adb.html">TEC:X979adb</a> - Durbuy Pont 08:43</li><li><a href="stop-TEC_X979aba.html">TEC:X979aba</a> - Durbuy Kiosque 08:43</li><li><a href="stop-TEC_X979aca.html">TEC:X979aca</a> - Durbuy Route du Comte d'Ursel 08:43</li><li><a href="stop-TEC_X979aaa.html">TEC:X979aaa</a> - Durbuy Route de Petithan - Camping 08:45</li><li><a href="stop-TEC_X921akb.html">TEC:X921akb</a> - Petithan Barrière 08:46</li><li><a href="stop-TEC_X921ajd.html">TEC:X921ajd</a> - Petithan Carrefour 08:47</li><li><a href="stop-TEC_X921aja.html">TEC:X921aja</a> - Petithan Carrefour 08:47</li><li><a href="stop-TEC_X921aib.html">TEC:X921aib</a> - Petithan Rue Saint-Monon 08:48</li><li><a href="stop-TEC_X921alb.html">TEC:X921alb</a> - Rome Détente 08:50</li><li><a href="stop-TEC_X921aob.html">TEC:X921aob</a> - Rome Rue du Gibet 08:51</li><li><a href="stop-TEC_X979aoa.html">TEC:X979aoa</a> - Durbuy Hôtel 08:52</li><li><a href="stop-TEC_X982bwa.html">TEC:X982bwa</a> - Bohon Piscine 08:55</li><li><a href="stop-TEC_X982bba.html">TEC:X982bba</a> - Barvaux Poste 08:59</li><li><a href="stop-TEC_X982awa.html">TEC:X982awa</a> - Barvaux GB 09:00</li><li><a href="stop-TEC_X982asb.html">TEC:X982asb</a> - Barvaux Rue du Marais 09:01</li><li><a href="stop-TEC_X982ayb.html">TEC:X982ayb</a> - Barvaux Vieux Chemin de Petithan 09:03</li><li><a href="stop-TEC_X982azb.html">TEC:X982azb</a> - Barvaux Eglise 09:04</li><li><a href="stop-TEC_X982atb.html">TEC:X982atb</a> - Barvaux Gare 09:05</li><li><a href="stop-TEC_X982axa.html">TEC:X982axa</a> - Barvaux Route de Bomal 09:06</li><li><a href="stop-TEC_X982aua.html">TEC:X982aua</a> - Barvaux Station 09:06</li><li><a href="stop-TEC_X982caa.html">TEC:X982caa</a> - Barvaux Camping 09:07</li><li><a href="stop-TEC_X982bcb.html">TEC:X982bcb</a> - Bomal Route de Barvaux 127 09:08</li><li><a href="stop-TEC_X982bda.html">TEC:X982bda</a> - Bomal Route de Barvaux 92 09:09</li><li><a href="stop-TEC_X982bka.html">TEC:X982bka</a> - Bomal Clairval 09:10</li><li><a href="stop-TEC_X982bla.html">TEC:X982bla</a> - Bomal Quatre Bras 09:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2630.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Rochefort - Tellin - Grupont - Mirwart - 5163:TEC:LU:1919</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Rochefort - Tellin - Grupont - Mirwart - 5163:TEC:LU:1919</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X991aha.html">TEC:X991aha</a> - Forrieres Gare 16:13</li><li><a href="stop-TEC_X991aaa.html">TEC:X991aaa</a> - Forrieres Rue de France 16:14</li><li><a href="stop-TEC_X358acb.html">TEC:X358acb</a> - Wavreille Carrefour 16:15</li><li><a href="stop-TEC_X358adb.html">TEC:X358adb</a> - Wavreille Eglise 16:16</li><li><a href="stop-TEC_X358aea.html">TEC:X358aea</a> - Wavreille Route de Tellin 16:16</li><li><a href="stop-TEC_X994ada.html">TEC:X994ada</a> - Bure Les Cambuses 16:18</li><li><a href="stop-TEC_X989aca.html">TEC:X989aca</a> - Tellin Centre sportif 16:19</li><li><a href="stop-TEC_X989afa.html">TEC:X989afa</a> - Tellin Eglise 16:19</li><li><a href="stop-TEC_X989aga.html">TEC:X989aga</a> - Tellin Carrefour Route de Marche 16:20</li><li><a href="stop-TEC_X989aba.html">TEC:X989aba</a> - Tellin Rue de Bure 16:21</li><li><a href="stop-TEC_X994aga.html">TEC:X994aga</a> - Bure Entrée du Village 16:22</li><li><a href="stop-TEC_X994aba.html">TEC:X994aba</a> - Bure Collège d'Alzon 16:23</li><li><a href="stop-TEC_X994aeb.html">TEC:X994aeb</a> - Bure Eglise 16:24</li><li><a href="stop-TEC_X994afa.html">TEC:X994afa</a> - Bure Chemin du Cimetière 16:25</li><li><a href="stop-TEC_X994ala.html">TEC:X994ala</a> - Grupont Vieux Chemin de Grupont 16:26</li><li><a href="stop-TEC_X994aia.html">TEC:X994aia</a> - Grupont Centre 16:27</li><li><a href="stop-TEC_X994akb.html">TEC:X994akb</a> - Grupont Garage Clément 16:28</li><li><a href="stop-TEC_X995adb.html">TEC:X995adb</a> - Awenne Carrefour du Sartay 16:31</li><li><a href="stop-TEC_X995aba.html">TEC:X995aba</a> - Awenne Chemin de la Comène 16:32</li><li><a href="stop-TEC_X995aaa.html">TEC:X995aaa</a> - Awenne Grand'Rue 29 16:32</li><li><a href="stop-TEC_X995acb.html">TEC:X995acb</a> - Awenne Eglise 16:32</li><li><a href="stop-TEC_X995aca.html">TEC:X995aca</a> - Awenne Eglise 16:32</li><li><a href="stop-TEC_X995aab.html">TEC:X995aab</a> - Awenne Grand'Rue 29 16:33</li><li><a href="stop-TEC_X995abb.html">TEC:X995abb</a> - Awenne Chemin de la Comène 16:33</li><li><a href="stop-TEC_X995ada.html">TEC:X995ada</a> - Awenne Carrefour du Sartay 16:34</li><li><a href="stop-TEC_X995add.html">TEC:X995add</a> - Awenne Carrefour du Sartay 16:34</li><li><a href="stop-TEC_X995afb.html">TEC:X995afb</a> - Mirwart Rue du Bois d'Oingt 16:37</li><li><a href="stop-TEC_X995aga.html">TEC:X995aga</a> - Mirwart Eglise 16:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2831.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

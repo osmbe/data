@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Bierset - Stockay - Amay - Huy - 5163:TEC:LV:49883</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Bierset - Stockay - Amay - Huy - 5163:TEC:LV:49883</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LHUlebe4.html">TEC:LHUlebe4</a> - Huy Place Lebeau 20:03</li><li><a href="stop-TEC_LHUpost2.html">TEC:LHUpost2</a> - Huy Poste 20:04</li><li><a href="stop-TEC_LHUcomp2.html">TEC:LHUcomp2</a> - Huy quai de Compiègne 50 20:06</li><li><a href="stop-TEC_LATcorp2.html">TEC:LATcorp2</a> - Antheit Corphalie 20:07</li><li><a href="stop-TEC_LAmeclu2.html">TEC:LAmeclu2</a> - Ampsin Ecluse 20:09</li><li><a href="stop-TEC_LAmwaut2.html">TEC:LAmwaut2</a> - Ampsin Rue J. Wauters 20:10</li><li><a href="stop-TEC_LAmeg--2.html">TEC:LAmeg--2</a> - Ampsin Rue de l'Eglise 20:11</li><li><a href="stop-TEC_LAmcorn2.html">TEC:LAmcorn2</a> - Ampsin Maison Cornet 20:12</li><li><a href="stop-TEC_LAmshel2.html">TEC:LAmshel2</a> - Ampsin Dépôt Shell 20:13</li><li><a href="stop-TEC_LAMweha2.html">TEC:LAMweha2</a> - Amay Rue Wéhairon 20:14</li><li><a href="stop-TEC_LAMdelh2.html">TEC:LAMdelh2</a> - Amay Super Delhaize 20:14</li><li><a href="stop-TEC_LAMhopi2.html">TEC:LAMhopi2</a> - Amay Rue de l'Hôpital 20:15</li><li><a href="stop-TEC_LAMgare2.html">TEC:LAMgare2</a> - Amay Gare 20:16</li><li><a href="stop-TEC_LAMgreg1.html">TEC:LAMgreg1</a> - Amay Place Grégoire 20:18</li><li><a href="stop-TEC_LAMjaur2.html">TEC:LAMjaur2</a> - Amay Place J. Jaures 20:19</li><li><a href="stop-TEC_LAMusin2.html">TEC:LAMusin2</a> - Amay Thier de l'Usine 20:20</li><li><a href="stop-TEC_LAMfroi2.html">TEC:LAMfroi2</a> - Amay Rue Froidebise 20:21</li><li><a href="stop-TEC_LAMcime2.html">TEC:LAMcime2</a> - Amay Cimetière 20:22</li><li><a href="stop-TEC_LAMpirk2.html">TEC:LAMpirk2</a> - Amay Pirka 20:23</li><li><a href="stop-TEC_LAMcoll2.html">TEC:LAMcoll2</a> - Amay Rue Collinet 20:23</li><li><a href="stop-TEC_LAMviam2.html">TEC:LAMviam2</a> - Amay Place Viamont 20:24</li><li><a href="stop-TEC_LAMrich2.html">TEC:LAMrich2</a> - Amay Rue Richemont 20:25</li><li><a href="stop-TEC_LAMjeha2.html">TEC:LAMjeha2</a> - Amay Rue de Jehay 20:26</li><li><a href="stop-TEC_LJEtige2.html">TEC:LJEtige2</a> - Jehay Rue du Tige 20:28</li><li><a href="stop-TEC_LJEloum2.html">TEC:LJEloum2</a> - Jehay Rue Loumaye 20:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4693.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHATELETJustice-MARCHIENNE AU PONT De Cartier - 5163:TEC:CH:16011</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHATELETJustice-MARCHIENNE AU PONT De Cartier - 5163:TEC:CH:16011</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cmahotv2.html">TEC:Cmahotv2</a> - Marchienne-Au-Pont Hôtel de Ville 19:44</li><li><a href="stop-TEC_Cmacart3.html">TEC:Cmacart3</a> - Marchienne-Au-Pont De Cartier 19:46</li><li><a href="stop-TEC_Cmadeli1.html">TEC:Cmadeli1</a> - Marchienne-Au-Pont Rue Delire 19:47</li><li><a href="stop-TEC_Cmastfi1.html">TEC:Cmastfi1</a> - Marchienne-Au-Pont Saint-Fiacre (S.N.C.B.) 19:49</li><li><a href="stop-TEC_Cmocalv4.html">TEC:Cmocalv4</a> - Monceau-sur-Sambre Calvaire 19:50</li><li><a href="stop-TEC_Cmabegh2.html">TEC:Cmabegh2</a> - Marchienne-Au-Pont Fond Beghin 19:53</li><li><a href="stop-TEC_Cmastch2.html">TEC:Cmastch2</a> - Marchienne-Au-Pont Puits St-Charles 19:54</li><li><a href="stop-TEC_Cmaroya2.html">TEC:Cmaroya2</a> - Marchienne-Au-Pont Rue Royale 19:56</li><li><a href="stop-TEC_Cmacoll2.html">TEC:Cmacoll2</a> - Marchienne-Au-Pont Rue de la Colline 19:56</li><li><a href="stop-TEC_Cjucpui2.html">TEC:Cjucpui2</a> - Jumet Cour Puissant 19:57</li><li><a href="stop-TEC_Cjumarc3.html">TEC:Cjumarc3</a> - Jumet Rue de Marchienne 19:58</li><li><a href="stop-TEC_Cjulucq2.html">TEC:Cjulucq2</a> - Jumet Rue Victor Lucq 19:59</li><li><a href="stop-TEC_Cjuvand2.html">TEC:Cjuvand2</a> - Jumet Rue Vandam 20:00</li><li><a href="stop-TEC_Cjumest2.html">TEC:Cjumest2</a> - Jumet Rue Mestdagh 20:01</li><li><a href="stop-TEC_Cjudest2.html">TEC:Cjudest2</a> - Jumet Rue Destrée 20:01</li><li><a href="stop-TEC_Cjupn4.html">TEC:Cjupn4</a> - Jumet Passage à Niveau 20:02</li><li><a href="stop-TEC_Cjucomb2.html">TEC:Cjucomb2</a> - Jumet Rue des Combattants 20:03</li><li><a href="stop-TEC_Cjuathe2.html">TEC:Cjuathe2</a> - Jumet Athénée Royale 20:04</li><li><a href="stop-TEC_Cjufour4.html">TEC:Cjufour4</a> - Jumet Puissant 20:04</li><li><a href="stop-TEC_Clostan1.html">TEC:Clostan1</a> - Lodelinsart Saint-Antoine 20:05</li><li><a href="stop-TEC_Clomari1.html">TEC:Clomari1</a> - Lodelinsart Marie Curie 20:07</li><li><a href="stop-TEC_Clomart1.html">TEC:Clomart1</a> - Lodelinsart Marteau 20:08</li><li><a href="stop-TEC_Clodrio3.html">TEC:Clodrio3</a> - Lodelinsart Drion 20:09</li><li><a href="stop-TEC_Clojone2.html">TEC:Clojone2</a> - Lodelinsart Jonet 20:11</li><li><a href="stop-TEC_Cgyrdid2.html">TEC:Cgyrdid2</a> - Gilly Rue Didi 20:12</li><li><a href="stop-TEC_Cgystbe2.html">TEC:Cgystbe2</a> - Gilly Saint-Bernard 20:12</li><li><a href="stop-TEC_Cgyhaie2.html">TEC:Cgyhaie2</a> - Gilly Haies 20:13</li><li><a href="stop-TEC_Cgylouv2.html">TEC:Cgylouv2</a> - Gilly Louvy 20:14</li><li><a href="stop-TEC_Cgymetr2.html">TEC:Cgymetr2</a> - Gilly Métro 20:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./760.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Jodoigne - Wavre - 5163:TEC:BW:1158</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jodoigne - Wavre - 5163:TEC:BW:1158</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bjodgar1.html">TEC:Bjodgar1</a> - Jodoigne Gare d'Autobus 05:20</li><li><a href="stop-TEC_Bjodcad2.html">TEC:Bjodcad2</a> - Jodoigne Centre Administratif 05:21</li><li><a href="stop-TEC_Bjodpvi2.html">TEC:Bjodpvi2</a> - Jodoigne Place de la Victoire 05:22</li><li><a href="stop-TEC_Bjodppe2.html">TEC:Bjodppe2</a> - Jodoigne Place du Peuple 05:23</li><li><a href="stop-TEC_Bjodmal1.html">TEC:Bjodmal1</a> - Jodoigne La Maladrerie 05:24</li><li><a href="stop-TEC_Bjdscnd1.html">TEC:Bjdscnd1</a> - Jodoigne-Souveraine Chapelle Notre-Dame 05:25</li><li><a href="stop-TEC_Bjdssta1.html">TEC:Bjdssta1</a> - Jodoigne-Souveraine Stade 05:26</li><li><a href="stop-TEC_Bjdsbro1.html">TEC:Bjdsbro1</a> - Jodoigne-Souveraine Chemin de Brocuy 05:27</li><li><a href="stop-TEC_Bdonlat1.html">TEC:Bdonlat1</a> - Dongelberg Route de Lathuy 05:28</li><li><a href="stop-TEC_Bdoncen1.html">TEC:Bdoncen1</a> - Dongelberg Centre 05:29</li><li><a href="stop-TEC_Bdoncar1.html">TEC:Bdoncar1</a> - Dongelberg Carrières 05:31</li><li><a href="stop-TEC_Bincdon1.html">TEC:Bincdon1</a> - Incourt Route de Dongelberg 05:32</li><li><a href="stop-TEC_Bincbbo1.html">TEC:Bincbbo1</a> - Incourt Rue Baron Bouvier 05:33</li><li><a href="stop-TEC_Bincegl1.html">TEC:Bincegl1</a> - Incourt Eglise 05:34</li><li><a href="stop-TEC_Binclib1.html">TEC:Binclib1</a> - Incourt Rue de la Liberté 05:35</li><li><a href="stop-TEC_Binclon1.html">TEC:Binclon1</a> - Incourt Longpré 05:36</li><li><a href="stop-TEC_Bincfer1.html">TEC:Bincfer1</a> - Incourt Ferme 05:36</li><li><a href="stop-TEC_Blonegl1.html">TEC:Blonegl1</a> - Longueville Eglise 05:40</li><li><a href="stop-TEC_Blontry1.html">TEC:Blontry1</a> - Longueville Le Try 05:41</li><li><a href="stop-TEC_Bbiehss1.html">TEC:Bbiehss1</a> - Heze Chapelle du Saint-Sang 05:43</li><li><a href="stop-TEC_Bbiehpo1.html">TEC:Bbiehpo1</a> - Heze Les Pommiers 05:44</li><li><a href="stop-TEC_Bbiehec1.html">TEC:Bbiehec1</a> - Heze Ecoles 05:44</li><li><a href="stop-TEC_Bbiehev1.html">TEC:Bbiehev1</a> - Heze Entrée Village 05:45</li><li><a href="stop-TEC_Bbiepre1.html">TEC:Bbiepre1</a> - Biez Préventorium 05:46</li><li><a href="stop-TEC_Bbiecim1.html">TEC:Bbiecim1</a> - Biez Cimetière 05:47</li><li><a href="stop-TEC_Bbiemor1.html">TEC:Bbiemor1</a> - Biez Route de Morsaint 05:48</li><li><a href="stop-TEC_Bgzdast1.html">TEC:Bgzdast1</a> - Grez-Doiceau Ancienne Station 05:49</li><li><a href="stop-TEC_Bgzdpco1.html">TEC:Bgzdpco1</a> - Grez-Doiceau Place Communale 05:50</li><li><a href="stop-TEC_Bgzdcen1.html">TEC:Bgzdcen1</a> - Grez-Doiceau Centry 05:51</li><li><a href="stop-TEC_Barcast1.html">TEC:Barcast1</a> - Archennes Ancienne Station 05:54</li><li><a href="stop-TEC_Bgzdcwa1.html">TEC:Bgzdcwa1</a> - Grez-Doiceau Chaussée de Wavre 05:55</li><li><a href="stop-TEC_Bgzdgli1.html">TEC:Bgzdgli1</a> - Grez-Doiceau Garage Libouton 05:56</li><li><a href="stop-TEC_Bgzddmo1.html">TEC:Bgzddmo1</a> - Doiceau Chemin des Monts 05:57</li><li><a href="stop-TEC_Bgzddge1.html">TEC:Bgzddge1</a> - Doiceau Rue des Genêts 05:58</li><li><a href="stop-TEC_Bgzdgth1.html">TEC:Bgzdgth1</a> - Gastuche La Thermogène 05:59</li><li><a href="stop-TEC_Bgzdgst1.html">TEC:Bgzdgst1</a> - Gastuche Rue de la Station 06:00</li><li><a href="stop-TEC_Bgzdgpa1.html">TEC:Bgzdgpa1</a> - Gastuche Papeteries 06:01</li><li><a href="stop-TEC_Bwavlon1.html">TEC:Bwavlon1</a> - Wavre Lonchamps 06:03</li><li><a href="stop-TEC_Bwavbwa1.html">TEC:Bwavbwa1</a> - Wavre Basse-Wavre 06:04</li><li><a href="stop-TEC_Bwavdel1.html">TEC:Bwavdel1</a> - Wavre Delhaize 06:05</li><li><a href="stop-TEC_Bwavfbe1.html">TEC:Bwavfbe1</a> - Wavre Fin Bec 06:05</li><li><a href="stop-TEC_Bwavpao1.html">TEC:Bwavpao1</a> - Wavre Place A. Bosch 06:06</li><li><a href="stop-TEC_Bwavgar6.html">TEC:Bwavgar6</a> - Wavre Gare 06:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./54.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Manage - La Louvière - Besonrieux- Familleureux - 5163:TEC:HT:7438</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Manage - La Louvière - Besonrieux- Familleureux - 5163:TEC:HT:7438</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H2mg138d.html">TEC:H2mg138d</a> - Manage SNCB 20:10</li><li><a href="stop-TEC_H2mg140c.html">TEC:H2mg140c</a> - Manage Place 20:11</li><li><a href="stop-TEC_H2mg136a.html">TEC:H2mg136a</a> - Manage Brasserie Bougard 20:12</li><li><a href="stop-TEC_H2mg142a.html">TEC:H2mg142a</a> - Manage Rue de Binche 20:13</li><li><a href="stop-TEC_H2fy120c.html">TEC:H2fy120c</a> - Fayt-Lez-Manage Place Communale 20:14</li><li><a href="stop-TEC_H2fy119a.html">TEC:H2fy119a</a> - Fayt-Lez-Manage Chemin de Fontaine 20:15</li><li><a href="stop-TEC_H2fy123c.html">TEC:H2fy123c</a> - Fayt-Lez-Manage Tordoir 20:16</li><li><a href="stop-TEC_H2jo161d.html">TEC:H2jo161d</a> - Jolimont Bifurcation 20:17</li><li><a href="stop-TEC_H2jo162a.html">TEC:H2jo162a</a> - Jolimont Coopérative 20:18</li><li><a href="stop-TEC_H2jo164a.html">TEC:H2jo164a</a> - Jolimont Hôpital 20:21</li><li><a href="stop-TEC_H2ll194a.html">TEC:H2ll194a</a> - La Louviere Rue Casterman 20:23</li><li><a href="stop-TEC_H2ll201a.html">TEC:H2ll201a</a> - La Louviere Tivoli 20:24</li><li><a href="stop-TEC_H2ll172a.html">TEC:H2ll172a</a> - La Louviere Bas de Baume 20:26</li><li><a href="stop-TEC_H2ll181a.html">TEC:H2ll181a</a> - La Louviere Gendarmerie 20:27</li><li><a href="stop-TEC_H2ll177a.html">TEC:H2ll177a</a> - La Louviere Rue du Parc 20:29</li><li><a href="stop-TEC_H2ll188b.html">TEC:H2ll188b</a> - La Louviere Place Mansart 20:31</li><li><a href="stop-TEC_H2ll184b.html">TEC:H2ll184b</a> - La Louviere Kéramis 20:33</li><li><a href="stop-TEC_H2ll190b.html">TEC:H2ll190b</a> - La Louviere Place Maugrétout 20:34</li><li><a href="stop-TEC_H2ll257c.html">TEC:H2ll257c</a> - La Louviere Hocquet 20:37</li><li><a href="stop-TEC_H2ll182b.html">TEC:H2ll182b</a> - La Louviere Gratinne 20:39</li><li><a href="stop-TEC_H2ll200b.html">TEC:H2ll200b</a> - La Louviere Rue Piérard 20:40</li><li><a href="stop-TEC_H2lc171b.html">TEC:H2lc171b</a> - La Croyere Rue Parmentier 20:41</li><li><a href="stop-TEC_H2lc145b.html">TEC:H2lc145b</a> - La Croyere Franco-Belge 20:42</li><li><a href="stop-TEC_H2lc146b.html">TEC:H2lc146b</a> - La Croyere Ancienne Gare 20:43</li><li><a href="stop-TEC_H2bh117b.html">TEC:H2bh117b</a> - La Croyere Pont du Thiriau 20:44</li><li><a href="stop-TEC_H2bh109b.html">TEC:H2bh109b</a> - Haine Nouvelle Place 20:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1960.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

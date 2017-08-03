@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Arlon - Athus - Virton - 5163:TEC:LU:4478</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Arlon - Athus - Virton - 5163:TEC:LU:4478</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X601aba.html">TEC:X601aba</a> - Arlon Tec - Rue des Genêts 14:03</li><li><a href="stop-TEC_X601bgb.html">TEC:X601bgb</a> - Arlon ISMA 14:04</li><li><a href="stop-TEC_X601bfb.html">TEC:X601bfb</a> - Arlon Sq Astrid - R de Bastogne 14:04</li><li><a href="stop-TEC_X601bea.html">TEC:X601bea</a> - Arlon Rue Léon Castilhon 14:06</li><li><a href="stop-TEC_X601bbc.html">TEC:X601bbc</a> - Arlon Gare - Quai 3 14:07</li><li><a href="stop-TEC_X601bda.html">TEC:X601bda</a> - Arlon Xxv Août 14:09</li><li><a href="stop-TEC_X601bia.html">TEC:X601bia</a> - Arlon INDA 14:10</li><li><a href="stop-TEC_X601asb.html">TEC:X601asb</a> - Arlon Liedel 14:12</li><li><a href="stop-TEC_X601atb.html">TEC:X601atb</a> - Arlon Av de Longwy - Clairefontaine 14:13</li><li><a href="stop-TEC_X601awb.html">TEC:X601awb</a> - Arlon Av de Longwy - Patton 14:16</li><li><a href="stop-TEC_X612aab.html">TEC:X612aab</a> - Weyler Grand-Route 14:18</li><li><a href="stop-TEC_X623aab.html">TEC:X623aab</a> - Wolkrange Chapelle N81 14:20</li><li><a href="stop-TEC_X614aab.html">TEC:X614aab</a> - Differt Cora N81 14:24</li><li><a href="stop-TEC_X614abb.html">TEC:X614abb</a> - Messancy Rue d'Arlon 156 14:26</li><li><a href="stop-TEC_X614acb.html">TEC:X614acb</a> - Messancy Rue d'Arlon 46 14:27</li><li><a href="stop-TEC_X614adb.html">TEC:X614adb</a> - Messancy Maison Communale 14:28</li><li><a href="stop-TEC_X614aeb.html">TEC:X614aeb</a> - Messancy Clinique 14:29</li><li><a href="stop-TEC_X614afb.html">TEC:X614afb</a> - Messancy Avenue de Longwy 14:31</li><li><a href="stop-TEC_X614agb.html">TEC:X614agb</a> - Messancy La Hard 14:32</li><li><a href="stop-TEC_X615bhb.html">TEC:X615bhb</a> - Aubange Rue de Messancy 120 14:33</li><li><a href="stop-TEC_X615bgb.html">TEC:X615bgb</a> - Aubange Rue de Messancy 70 14:34</li><li><a href="stop-TEC_X615awb.html">TEC:X615awb</a> - Aubange Place 14:35</li><li><a href="stop-TEC_X615avb.html">TEC:X615avb</a> - Aubange Rue du Village 14:36</li><li><a href="stop-TEC_X615aub.html">TEC:X615aub</a> - Aubange Rue d'Athus 14:37</li><li><a href="stop-TEC_X615acb.html">TEC:X615acb</a> - Athus Clinique 14:38</li><li><a href="stop-TEC_X615aba.html">TEC:X615aba</a> - Athus Gare 14:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3177.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

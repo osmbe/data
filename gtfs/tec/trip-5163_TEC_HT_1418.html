@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Seneffe -Manage - Haine-St-P. - La Louv. - Tivoli - 5163:TEC:HT:1418</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Seneffe -Manage - Haine-St-P. - La Louv. - Tivoli - 5163:TEC:HT:1418</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H2mg138d.html">TEC:H2mg138d</a> - Manage SNCB 19:25</li><li><a href="stop-TEC_H2mg140c.html">TEC:H2mg140c</a> - Manage Place 19:26</li><li><a href="stop-TEC_H2mg136a.html">TEC:H2mg136a</a> - Manage Brasserie Bougard 19:27</li><li><a href="stop-TEC_H2mg142a.html">TEC:H2mg142a</a> - Manage Rue de Binche 19:28</li><li><a href="stop-TEC_H2fy120c.html">TEC:H2fy120c</a> - Fayt-Lez-Manage Place Communale 19:29</li><li><a href="stop-TEC_H2fy119a.html">TEC:H2fy119a</a> - Fayt-Lez-Manage Chemin de Fontaine 19:30</li><li><a href="stop-TEC_H2fy123c.html">TEC:H2fy123c</a> - Fayt-Lez-Manage Tordoir 19:31</li><li><a href="stop-TEC_H2jo161d.html">TEC:H2jo161d</a> - Jolimont Bifurcation 19:32</li><li><a href="stop-TEC_H2jo162a.html">TEC:H2jo162a</a> - Jolimont Coopérative 19:33</li><li><a href="stop-TEC_H2jo163a.html">TEC:H2jo163a</a> - Jolimont Ecoles 19:35</li><li><a href="stop-TEC_H2hp119a.html">TEC:H2hp119a</a> - Haine-St-Pierre Pont Brogniez 19:37</li><li><a href="stop-TEC_H2hp114a.html">TEC:H2hp114a</a> - Haine-St-Pierre Habitation N°388 19:38</li><li><a href="stop-TEC_H2hp125a.html">TEC:H2hp125a</a> - Haine-St-Pierre Souterrain 19:39</li><li><a href="stop-TEC_H2hp116a.html">TEC:H2hp116a</a> - Haine-St-Pierre Houssu 19:40</li><li><a href="stop-TEC_H2ll179a.html">TEC:H2ll179a</a> - La Louviere SNCB Sud 19:44</li><li><a href="stop-TEC_H2ll179d.html">TEC:H2ll179d</a> - La Louviere SNCB Sud 19:44</li><li><a href="stop-TEC_H2ll197a.html">TEC:H2ll197a</a> - La Louviere Rue des Champs 19:47</li><li><a href="stop-TEC_H2ll189c.html">TEC:H2ll189c</a> - La Louviere Place Mattéotti 19:49</li><li><a href="stop-TEC_H2ll177a.html">TEC:H2ll177a</a> - La Louviere Rue du Parc 19:50</li><li><a href="stop-TEC_H2ll188b.html">TEC:H2ll188b</a> - La Louviere Place Mansart 19:52</li><li><a href="stop-TEC_H2ll258b.html">TEC:H2ll258b</a> - La Louviere Carrefour du Gazomètre 19:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2132.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Marcourt - Rendeux - 5163:TEC:LU:4506</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Marcourt - Rendeux - 5163:TEC:LU:4506</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X948ada.html">TEC:X948ada</a> - Marcourt Poste 08:16</li><li><a href="stop-TEC_X948aea.html">TEC:X948aea</a> - Marcourt Pont 08:17</li><li><a href="stop-TEC_X948afa.html">TEC:X948afa</a> - Marcourt Carrefour 08:17</li><li><a href="stop-TEC_X946aib.html">TEC:X946aib</a> - Jupille Route de Vecpré 08:19</li><li><a href="stop-TEC_X946ada.html">TEC:X946ada</a> - Jupille Chanteclair 08:20</li><li><a href="stop-TEC_X946aca.html">TEC:X946aca</a> - Warizy Ecole 08:22</li><li><a href="stop-TEC_X946abb.html">TEC:X946abb</a> - Warizy Eglise 08:22</li><li><a href="stop-TEC_X946acb.html">TEC:X946acb</a> - Warizy Ecole 08:23</li><li><a href="stop-TEC_X946adb.html">TEC:X946adb</a> - Jupille Chanteclair 08:24</li><li><a href="stop-TEC_X946aib.html">TEC:X946aib</a> - Jupille Route de Vecpré 08:25</li><li><a href="stop-TEC_X948afb.html">TEC:X948afb</a> - Marcourt Carrefour 08:27</li><li><a href="stop-TEC_X948aua.html">TEC:X948aua</a> - Ronzon Eglise 08:32</li><li><a href="stop-TEC_X948asb.html">TEC:X948asb</a> - Rendeux La Golette 23 08:33</li><li><a href="stop-TEC_X948ara.html">TEC:X948ara</a> - Rendeux La Golette 2A 08:34</li><li><a href="stop-TEC_X948apa.html">TEC:X948apa</a> - Rendeux Haut Eglise 08:35</li><li><a href="stop-TEC_X948baa.html">TEC:X948baa</a> - Rendeux Ecole Libre 08:35</li><li><a href="stop-TEC_X948bba.html">TEC:X948bba</a> - Rendeux Rue du Petit Bois 08:35</li><li><a href="stop-TEC_X948aab.html">TEC:X948aab</a> - Rendeux Haut Route de Marche 08:36</li><li><a href="stop-TEC_X948avb.html">TEC:X948avb</a> - Rendeux Haut Carrefour Rue de Chetenne 08:37</li><li><a href="stop-TEC_X948awa.html">TEC:X948awa</a> - Rendeux Haut Rue de Chetenne 23 08:38</li><li><a href="stop-TEC_X948ava.html">TEC:X948ava</a> - Rendeux Haut Carrefour Rue de Chetenne 08:39</li><li><a href="stop-TEC_X948aaa.html">TEC:X948aaa</a> - Rendeux Haut Route de Marche 08:41</li><li><a href="stop-TEC_X948apa.html">TEC:X948apa</a> - Rendeux Haut Eglise 08:43</li><li><a href="stop-TEC_X948ajb.html">TEC:X948ajb</a> - Rendeux Haut Maison Communale 08:44</li><li><a href="stop-TEC_X948aib.html">TEC:X948aib</a> - Rendeux Haut Ecole Communale 08:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3196.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

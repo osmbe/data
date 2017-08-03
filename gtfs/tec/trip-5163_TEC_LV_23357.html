@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Pt d'Avroy  Guillemins  Cointe  Bruyères  Sclessin - 5163:TEC:LV:23357</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Pt d'Avroy  Guillemins  Cointe  Bruyères  Sclessin - 5163:TEC:LV:23357</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Llgcmes4.html">TEC:Llgcmes4</a> - Liege carr. Mésanges-Charmilles 14:08</li><li><a href="stop-TEC_Llgcmes2.html">TEC:Llgcmes2</a> - Liege Carr. Mésanges-Charmilles 14:08</li><li><a href="stop-TEC_Llgbruy2.html">TEC:Llgbruy2</a> - Liege Bruyères 14:09</li><li><a href="stop-TEC_Llgmont2.html">TEC:Llgmont2</a> - Liege Boulevard Montéfiore 14:10</li><li><a href="stop-TEC_Llgjasm2.html">TEC:Llgjasm2</a> - Liege Rue des Jasmins 14:11</li><li><a href="stop-TEC_Llgbour2.html">TEC:Llgbour2</a> - Liege Rue de Bourgogne 14:12</li><li><a href="stop-TEC_Llgcbat2.html">TEC:Llgcbat2</a> - Liege Place du Batty 14:13</li><li><a href="stop-TEC_Llgoise2.html">TEC:Llgoise2</a> - Liege Rue du Champs des Oiseaux 14:15</li><li><a href="stop-TEC_Llgancd2.html">TEC:Llgancd2</a> - Liege Ancien Dépôt 14:16</li><li><a href="stop-TEC_Llgjoie2.html">TEC:Llgjoie2</a> - Liege Rue de Joie 14:17</li><li><a href="stop-TEC_LlgguilE.html">TEC:LlgguilE</a> - Liege Gare des Guillemins Quai E 14:19</li><li><a href="stop-TEC_Llgdart4.html">TEC:Llgdart4</a> - Liege Rue Dartois 14:20</li><li><a href="stop-TEC_Llgbron2.html">TEC:Llgbron2</a> - Liege Place de Bronckart 14:21</li><li><a href="stop-TEC_Llgvero2.html">TEC:Llgvero2</a> - Liege Rue Ste-Véronique 14:23</li><li><a href="stop-TEC_Llgfusc6.html">TEC:Llgfusc6</a> - Liege Rue Fusch 14:23</li><li><a href="stop-TEC_Llgchar2.html">TEC:Llgchar2</a> - Liege Charlemagne 14:25</li><li><a href="stop-TEC_Llgdarc2.html">TEC:Llgdarc2</a> - Liege Rue Darchis 14:26</li><li><a href="stop-TEC_LlgPTAV6.html">TEC:LlgPTAV6</a> - Liege Pont d'Avroy (débarquement) 14:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4273.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

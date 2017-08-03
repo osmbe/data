@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Quiévrain - Hensies - 5163:TEC:HT:11143</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Quiévrain - Hensies - 5163:TEC:HT:11143</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1qv111b.html">TEC:H1qv111b</a> - Quievrain Gare SNCB 13:45</li><li><a href="stop-TEC_H1qv112a.html">TEC:H1qv112a</a> - Quievrain Passage à Niveau 13:45</li><li><a href="stop-TEC_H1qv116a.html">TEC:H1qv116a</a> - Quievrain Séchoir Meyskens 13:47</li><li><a href="stop-TEC_H1he109a.html">TEC:H1he109a</a> - Hensies Séminaire 13:48</li><li><a href="stop-TEC_H1he110a.html">TEC:H1he110a</a> - Hensies Square la Fontaine 13:49</li><li><a href="stop-TEC_H1he104a.html">TEC:H1he104a</a> - Hensies Entrée du Village 13:49</li><li><a href="stop-TEC_H1he106a.html">TEC:H1he106a</a> - Hensies Place 13:50</li><li><a href="stop-TEC_H1he102a.html">TEC:H1he102a</a> - Hensies Chée Brunehault 13:51</li><li><a href="stop-TEC_H1he100a.html">TEC:H1he100a</a> - Hensies 4 Chemins 13:52</li><li><a href="stop-TEC_H1mh116a.html">TEC:H1mh116a</a> - Montroeul-sur-Haine Rue d' Hensies 13:53</li><li><a href="stop-TEC_H1mh112a.html">TEC:H1mh112a</a> - Montroeul-sur-Haine Café Saaz 13:54</li><li><a href="stop-TEC_H1mh117a.html">TEC:H1mh117a</a> - Montroeul-sur-Haine Rue des Prés 13:55</li><li><a href="stop-TEC_H1mh114a.html">TEC:H1mh114a</a> - Montroeul-sur-Haine Maison Communale 13:56</li><li><a href="stop-TEC_H1mh113a.html">TEC:H1mh113a</a> - Montroeul-sur-Haine Eglise 13:57</li><li><a href="stop-TEC_H1mh115a.html">TEC:H1mh115a</a> - Montroeul-sur-Haine Point du Jour 13:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1775.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

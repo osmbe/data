@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Leuze - Blaton - 5163:TEC:HT:5193</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Leuze - Blaton - 5163:TEC:HT:5193</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H5bl119d.html">TEC:H5bl119d</a> - Blaton SNCB 08:56</li><li><a href="stop-TEC_H5qu182a.html">TEC:H5qu182a</a> - Quevaucamps Avenue de l'Europe 08:58</li><li><a href="stop-TEC_H5qu143d.html">TEC:H5qu143d</a> - Quevaucamps La Bécasse 08:58</li><li><a href="stop-TEC_H5qu156a.html">TEC:H5qu156a</a> - Quevaucamps Stop 08:59</li><li><a href="stop-TEC_H5qu149a.html">TEC:H5qu149a</a> - Quevaucamps Oasis 09:00</li><li><a href="stop-TEC_H5qu148a.html">TEC:H5qu148a</a> - Quevaucamps Nouvelle Cité 09:00</li><li><a href="stop-TEC_H4bc104a.html">TEC:H4bc104a</a> - Basecles Cheval Blanc 09:01</li><li><a href="stop-TEC_H4bc106a.html">TEC:H4bc106a</a> - Basecles Eglise 09:02</li><li><a href="stop-TEC_H4bc108b.html">TEC:H4bc108b</a> - Basecles Place de la Victoire 09:04</li><li><a href="stop-TEC_H4wr176a.html">TEC:H4wr176a</a> - Wadelincourt Rue de Basècles 09:05</li><li><a href="stop-TEC_H4wr173c.html">TEC:H4wr173c</a> - Wadelincourt Aubette 09:06</li><li><a href="stop-TEC_H4wr177b.html">TEC:H4wr177b</a> - Wadelincourt Rue de Ramegnies 09:07</li><li><a href="stop-TEC_H4wr175b.html">TEC:H4wr175b</a> - Wadelincourt La Cadie 09:07</li><li><a href="stop-TEC_H4wr174b.html">TEC:H4wr174b</a> - Wadelincourt Doaire 09:08</li><li><a href="stop-TEC_H4ra159b.html">TEC:H4ra159b</a> - Ramegnies Château 09:09</li><li><a href="stop-TEC_H4tu171b.html">TEC:H4tu171b</a> - Thumaide Place 09:10</li><li><a href="stop-TEC_H4tu170b.html">TEC:H4tu170b</a> - Thumaide Cimetière 09:11</li><li><a href="stop-TEC_H4tu172c.html">TEC:H4tu172c</a> - Thumaide Sainte Brigitte 09:12</li><li><a href="stop-TEC_H4bc101c.html">TEC:H4bc101c</a> - Basecles Bataille 09:14</li><li><a href="stop-TEC_H5pe128a.html">TEC:H5pe128a</a> - Peruwelz Chemin de Basècles 09:16</li><li><a href="stop-TEC_H5pe148a.html">TEC:H5pe148a</a> - Peruwelz Pont Français 09:17</li><li><a href="stop-TEC_H5pe125a.html">TEC:H5pe125a</a> - Peruwelz Rue Ponchau 09:18</li><li><a href="stop-TEC_H5pe126a.html">TEC:H5pe126a</a> - Peruwelz La Loquette 09:19</li><li><a href="stop-TEC_H5pe147c.html">TEC:H5pe147c</a> - Peruwelz Place 09:20</li><li><a href="stop-TEC_H5pe175a.html">TEC:H5pe175a</a> - Peruwelz Astrid 09:20</li><li><a href="stop-TEC_H5pe137a.html">TEC:H5pe137a</a> - Peruwelz SNCB 09:22</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2226.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

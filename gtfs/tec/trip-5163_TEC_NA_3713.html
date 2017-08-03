@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - JAMBES (Velaine) - SAINT-MARC (Pl. Communale) - 5163:TEC:NA:3713</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: JAMBES (Velaine) - SAINT-MARC (Pl. Communale) - 5163:TEC:NA:3713</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501iwb.html">TEC:N501iwb</a> - Saint-Marc Place communale 13:17</li><li><a href="stop-TEC_N501ivb.html">TEC:N501ivb</a> - Saint-Marc Eglise 13:17</li><li><a href="stop-TEC_N501isb.html">TEC:N501isb</a> - Saint-Marc Rue du parc 13:18</li><li><a href="stop-TEC_N501itb.html">TEC:N501itb</a> - Saint-Marc Pharmacie 13:19</li><li><a href="stop-TEC_N501iub.html">TEC:N501iub</a> - Saint-Marc Rue des colonies 13:20</li><li><a href="stop-TEC_N501htb.html">TEC:N501htb</a> - Saint-Servais Cité Cornet 13:21</li><li><a href="stop-TEC_N501hob.html">TEC:N501hob</a> - Saint-Servais Hôtel de Police 13:22</li><li><a href="stop-TEC_N501hqb.html">TEC:N501hqb</a> - Saint-Servais Belle-vue 13:23</li><li><a href="stop-TEC_N501ifb.html">TEC:N501ifb</a> - Saint-Servais Route de Perwez 13:24</li><li><a href="stop-TEC_N501hzc.html">TEC:N501hzc</a> - Saint-Servais Hall omnisports 13:26</li><li><a href="stop-TEC_N501hub.html">TEC:N501hub</a> - Saint-Servais Cité Floréal 13:27</li><li><a href="stop-TEC_N501hyb.html">TEC:N501hyb</a> - Saint-Servais Ets Marcq-Gérard 13:28</li><li><a href="stop-TEC_N501hvb.html">TEC:N501hvb</a> - Saint-Servais Cité Germinal 13:30</li><li><a href="stop-TEC_N501fyb.html">TEC:N501fyb</a> - Namur Boulevard de Merckem 13:31</li><li><a href="stop-TEC_N501gpb.html">TEC:N501gpb</a> - Namur Omalius 13:33</li><li><a href="stop-TEC_N501grc.html">TEC:N501grc</a> - Namur Pl. de la Station - Quai C 13:35</li><li><a href="stop-TEC_N501gza.html">TEC:N501gza</a> - Namur Rue Rogier 13:37</li><li><a href="stop-TEC_N501hlb.html">TEC:N501hlb</a> - Namur Rue du Premier Lanciers 13:38</li><li><a href="stop-TEC_N501esb.html">TEC:N501esb</a> - Jambes Place Joséphine-Charlotte 13:39</li><li><a href="stop-TEC_N501etd.html">TEC:N501etd</a> - Jambes Place de la Wallonie 13:42</li><li><a href="stop-TEC_N501kmb.html">TEC:N501kmb</a> - Jambes Station Nord 13:43</li><li><a href="stop-TEC_N501kea.html">TEC:N501kea</a> - Jambes Rue de la Dame 13:44</li><li><a href="stop-TEC_N501dwb.html">TEC:N501dwb</a> - Jambes Athénée 13:46</li><li><a href="stop-TEC_N501eab.html">TEC:N501eab</a> - Jambes Avenue Mascaux 5 13:47</li><li><a href="stop-TEC_N501dzb.html">TEC:N501dzb</a> - Jambes Avenue Mascaux 25 13:48</li><li><a href="stop-TEC_N501dsb.html">TEC:N501dsb</a> - Jambes Velaine PN 13:49</li><li><a href="stop-TEC_N501dtb.html">TEC:N501dtb</a> - Jambes Velaine Petit-Ry 13:49</li><li><a href="stop-TEC_N501dua.html">TEC:N501dua</a> - Jambes Velaine rond-point 13:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6579.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

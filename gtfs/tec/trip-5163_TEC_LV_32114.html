@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Vaux - Romsée - Fléron - Trooz - Péry - 5163:TEC:LV:32114</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Vaux - Romsée - Fléron - Trooz - Péry - 5163:TEC:LV:32114</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lvcvesd_.html">TEC:Lvcvesd*</a> - Vaux-Sous-Chevremont Rue de la Vesdre 15:03</li><li><a href="stop-TEC_Lvcfogu6.html">TEC:Lvcfogu6</a> - Vaux-Sous-Chevremont place T. Foguenne 15:04</li><li><a href="stop-TEC_Lvcecol2.html">TEC:Lvcecol2</a> - Vaux-Sous-Chevremont Rue des Ecoles 15:05</li><li><a href="stop-TEC_Lvcbalt2.html">TEC:Lvcbalt2</a> - Vaux-Sous-Chevremont Place Balthasart 15:06</li><li><a href="stop-TEC_Lvc4bra2.html">TEC:Lvc4bra2</a> - Vaux-Sous-Chevremont Quatre Bras 15:06</li><li><a href="stop-TEC_Lcepass2.html">TEC:Lcepass2</a> - Chenee Passage d'eau 15:07</li><li><a href="stop-TEC_Lcefoxh2.html">TEC:Lcefoxh2</a> - Chenee Rue Foxhalle 15:09</li><li><a href="stop-TEC_Lcelhon2.html">TEC:Lcelhon2</a> - Chenee Pont de Lhonneux 15:09</li><li><a href="stop-TEC_Lceegli_.html">TEC:Lceegli*</a> - Chenee Rue de l'Eglise (écoles) 15:10</li><li><a href="stop-TEC_Lcemc--2.html">TEC:Lcemc--2</a> - Chenee Maison Communale 15:11</li><li><a href="stop-TEC_Lcepont6.html">TEC:Lcepont6</a> - Chenee Pont 15:11</li><li><a href="stop-TEC_Lcebarr2.html">TEC:Lcebarr2</a> - Chenee Vieille Barrière 15:12</li><li><a href="stop-TEC_Lceconf2.html">TEC:Lceconf2</a> - Chenee Rue du Confluent 15:13</li><li><a href="stop-TEC_Lgrjobe2.html">TEC:Lgrjobe2</a> - Grivegnee Arrêt Jobette 15:13</li><li><a href="stop-TEC_Lgrgoff2.html">TEC:Lgrgoff2</a> - Grivegnee Goffinet (Artisans) 15:14</li><li><a href="stop-TEC_Lgreg--2.html">TEC:Lgreg--2</a> - Grivegnee Eglise 15:15</li><li><a href="stop-TEC_Lgrside2.html">TEC:Lgrside2</a> - Grivegnee Rue de la Sidérurgie 15:16</li><li><a href="stop-TEC_Lgrmc--2.html">TEC:Lgrmc--2</a> - Grivegnee Maison Communale 15:16</li><li><a href="stop-TEC_Lgrstou2.html">TEC:Lgrstou2</a> - Grivegnee Arrêt Stoumont 15:17</li><li><a href="stop-TEC_Lgrfalc2.html">TEC:Lgrfalc2</a> - Grivegnee Rue du Falchena 15:18</li><li><a href="stop-TEC_Lgrramp2.html">TEC:Lgrramp2</a> - Grivegnee Rampe Chaudoir 15:19</li><li><a href="stop-TEC_Lgrbonn2.html">TEC:Lgrbonn2</a> - Grivegnee Bonne Femme 15:20</li><li><a href="stop-TEC_Lgrlimi2.html">TEC:Lgrlimi2</a> - Grivegnee Rue de la Limite 15:21</li><li><a href="stop-TEC_Llgcham8.html">TEC:Llgcham8</a> - Liege Rue des Champs 15:22</li><li><a href="stop-TEC_Llgmédi2.html">TEC:Llgmédi2</a> - Liege Médiacité 15:23</li><li><a href="stop-TEC_Llglibo4.html">TEC:Llglibo4</a> - Liege Rue Libotte 15:24</li><li><a href="stop-TEC_Llgptlo3.html">TEC:Llgptlo3</a> - Liege Pont de Longdoz 15:25</li><li><a href="stop-TEC_Llgcroi4.html">TEC:Llgcroi4</a> - Liege Rue des Croisiers 15:26</li><li><a href="stop-TEC_Llgcock2.html">TEC:Llgcock2</a> - Liege Place Cockerill 15:28</li><li><a href="stop-TEC_LlgR-F1_.html">TEC:LlgR-F1*</a> - Liege République Française 15:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3922.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

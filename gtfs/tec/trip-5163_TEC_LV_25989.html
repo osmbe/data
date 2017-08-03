@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Barvaux - Bomal - Aywaille - La Reid - 5163:TEC:LV:25989</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Barvaux - Bomal - Aywaille - La Reid - 5163:TEC:LV:25989</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LAYgare1.html">TEC:LAYgare1</a> - Aywaille Gare SNCB 08:01</li><li><a href="stop-TEC_LAYpl--1.html">TEC:LAYpl--1</a> - Aywaille Place 08:02</li><li><a href="stop-TEC_LAYecol1.html">TEC:LAYecol1</a> - Aywaille Avenue Libert 08:02</li><li><a href="stop-TEC_LAYdieu1.html">TEC:LAYdieu1</a> - Aywaille Dieupart Eglise 08:04</li><li><a href="stop-TEC_LAYsupe1.html">TEC:LAYsupe1</a> - Aywaille Super Delhaize 08:05</li><li><a href="stop-TEC_LREraph3.html">TEC:LREraph3</a> - Remouchamps Institut St-Raphaël 08:07</li><li><a href="stop-TEC_LREhenu1.html">TEC:LREhenu1</a> - Remouchamps Route de Henumont 08:09</li><li><a href="stop-TEC_LREsoug3.html">TEC:LREsoug3</a> - Remouchamps Pont de Sougné 08:10</li><li><a href="stop-TEC_LREgrot1.html">TEC:LREgrot1</a> - Remouchamps Grottes 08:11</li><li><a href="stop-TEC_LREgar-1.html">TEC:LREgar-1</a> - Remouchamps Gare 08:13</li><li><a href="stop-TEC_LREsp301.html">TEC:LREsp301</a> - Remouchamps Route de Spa 30 08:14</li><li><a href="stop-TEC_LREsp901.html">TEC:LREsp901</a> - Remouchamps Route de Spa 90 08:15</li><li><a href="stop-TEC_LRErive1.html">TEC:LRErive1</a> - Remouchamps Rue des Riveux 08:16</li><li><a href="stop-TEC_LREchif1.html">TEC:LREchif1</a> - Remouchamps Rue Chifgotte 08:16</li><li><a href="stop-TEC_LRE154-1.html">TEC:LRE154-1</a> - Remouchamps Rue de Spa 154 08:17</li><li><a href="stop-TEC_LREhaut1.html">TEC:LREhaut1</a> - Remouchamps Hautregard 08:18</li><li><a href="stop-TEC_LLrhaut3.html">TEC:LLrhaut3</a> - La Reid Hautregard carrefour 08:20</li><li><a href="stop-TEC_LLrmc--3.html">TEC:LLrmc--3</a> - La Reid Maison Communale 08:22</li><li><a href="stop-TEC_LLrc_ip3.html">TEC:LLrc_ip3</a> - La Reid Institut Provincial 08:24</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5306.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

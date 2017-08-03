@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Manhay - Hébronval - 5163:TEC:LU:5125</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Manhay - Hébronval - 5163:TEC:LU:5125</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X782agb.html">TEC:X782agb</a> - Hebronval Route de Bihain 08:17</li><li><a href="stop-TEC_X782afa.html">TEC:X782afa</a> - Hebronval Route de Regné 08:17</li><li><a href="stop-TEC_X782aea.html">TEC:X782aea</a> - Hebronval Pousseroux 08:18</li><li><a href="stop-TEC_X782adb.html">TEC:X782adb</a> - Regne Chemin de l'Eglise 08:19</li><li><a href="stop-TEC_X782aaa.html">TEC:X782aaa</a> - Regne Route de la Baraque Fraiture 08:19</li><li><a href="stop-TEC_X782apa.html">TEC:X782apa</a> - Regne Route de la Baraque Fraiture 36 08:20</li><li><a href="stop-TEC_X717aea.html">TEC:X717aea</a> - Fraiture N89 08:21</li><li><a href="stop-TEC_X717aga.html">TEC:X717aga</a> - Fraiture Baraque 08:22</li><li><a href="stop-TEC_X717agf.html">TEC:X717agf</a> - Fraiture Baraque 08:22</li><li><a href="stop-TEC_X717afb.html">TEC:X717afb</a> - Petites-Tailles Domaine des Casseroles 08:23</li><li><a href="stop-TEC_X718aaa.html">TEC:X718aaa</a> - Tailles Pisserotte 08:26</li><li><a href="stop-TEC_X718abb.html">TEC:X718abb</a> - Tailles Coullée 08:28</li><li><a href="stop-TEC_X718afa.html">TEC:X718afa</a> - Tailles Route de Chabrehez 15 08:29</li><li><a href="stop-TEC_X718aga.html">TEC:X718aga</a> - Tailles Eglise 08:29</li><li><a href="stop-TEC_X718aha.html">TEC:X718aha</a> - Tailles Chapelle 08:30</li><li><a href="stop-TEC_X718aia.html">TEC:X718aia</a> - Chabrehez Moulin 08:32</li><li><a href="stop-TEC_X718aja.html">TEC:X718aja</a> - Chabrehez Centre 08:33</li><li><a href="stop-TEC_X716aca.html">TEC:X716aca</a> - Chabrehez Poteau 08:35</li><li><a href="stop-TEC_X716afa.html">TEC:X716afa</a> - Odeigne Route de Chabrehez 08:39</li><li><a href="stop-TEC_X716aba.html">TEC:X716aba</a> - Odeigne Rue de la Jonction 11 08:40</li><li><a href="stop-TEC_X716aaa.html">TEC:X716aaa</a> - Odeigne Centre 08:40</li><li><a href="stop-TEC_X716aeb.html">TEC:X716aeb</a> - Odeigne Sur le Falhi 08:41</li><li><a href="stop-TEC_X781aha.html">TEC:X781aha</a> - Malempre Ecole Communale 08:45</li><li><a href="stop-TEC_X781aga.html">TEC:X781aga</a> - Malempre Eglise 08:45</li><li><a href="stop-TEC_X781aeb.html">TEC:X781aeb</a> - Malempre Les Quatre Saisons 08:46</li><li><a href="stop-TEC_X715aqa.html">TEC:X715aqa</a> - Manhay Chemin de Giveur 08:49</li><li><a href="stop-TEC_X715alb.html">TEC:X715alb</a> - Manhay Athénée 08:52</li><li><a href="stop-TEC_X715ada.html">TEC:X715ada</a> - Manhay Route de Vaux-Chavanne 08:53</li><li><a href="stop-TEC_X715aea.html">TEC:X715aea</a> - Manhay Dépôt TEC 08:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3559.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

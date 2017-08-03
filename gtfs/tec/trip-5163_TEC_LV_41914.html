@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Nicolas - Tilleur - 5163:TEC:LV:41914</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Nicolas - Tilleur - 5163:TEC:LV:41914</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Ltihala2.html">TEC:Ltihala2</a> - Tilleur Quai du Halage 12:10</li><li><a href="stop-TEC_Ltiegli3.html">TEC:Ltiegli3</a> - Tilleur Eglise 12:11</li><li><a href="stop-TEC_Ltichif3.html">TEC:Ltichif3</a> - Tilleur Ecole Chiff d'Or 12:14</li><li><a href="stop-TEC_Ltichif2.html">TEC:Ltichif2</a> - Tilleur Rue Chiff d'Or 12:14</li><li><a href="stop-TEC_Ltigare2.html">TEC:Ltigare2</a> - Tilleur Gare 12:15</li><li><a href="stop-TEC_Ltiegl-_.html">TEC:Ltiegl-*</a> - Tilleur Eglise 12:16</li><li><a href="stop-TEC_Ltihala2.html">TEC:Ltihala2</a> - Tilleur Quai du Halage 12:18</li><li><a href="stop-TEC_Ltiegli3.html">TEC:Ltiegli3</a> - Tilleur Eglise 12:19</li><li><a href="stop-TEC_Ltinico1.html">TEC:Ltinico1</a> - Tilleur Rue F. Nicolay 12:21</li><li><a href="stop-TEC_Lticime1.html">TEC:Lticime1</a> - Tilleur Nouveau Cimetière 12:22</li><li><a href="stop-TEC_Lsnbure1.html">TEC:Lsnbure1</a> - Saint-Nicolas Rue Bureaufosse 12:24</li><li><a href="stop-TEC_Lmobrac2.html">TEC:Lmobrac2</a> - Montegnee Rue F. Braconnier 12:26</li><li><a href="stop-TEC_Lsnbrac4.html">TEC:Lsnbrac4</a> - Saint-Nicolas Rue F. Braconnier 296 12:26</li><li><a href="stop-TEC_Lsnbrac2.html">TEC:Lsnbrac2</a> - Saint-Nicolas Rue F. Braconnier 12:27</li><li><a href="stop-TEC_Lsnvand1.html">TEC:Lsnvand1</a> - Saint-Nicolas Place Vandervelde 12:28</li><li><a href="stop-TEC_Lsn130-1.html">TEC:Lsn130-1</a> - Saint-Nicolas Rue du Centre 130 12:31</li><li><a href="stop-TEC_Lsntvbi3.html">TEC:Lsntvbi3</a> - Saint-Nicolas Rue Tout-va-Bien 12:34</li><li><a href="stop-TEC_Lsnhoco1.html">TEC:Lsnhoco1</a> - Saint-Nicolas Rue de l'Hôtel Communal 12:36</li><li><a href="stop-TEC_Lsn184-1.html">TEC:Lsn184-1</a> - Saint-Nicolas Rue du Centre 184 12:40</li><li><a href="stop-TEC_Lsnlibe2.html">TEC:Lsnlibe2</a> - Saint-Nicolas Rue de la Libération 12:45</li><li><a href="stop-TEC_Lsnecco3.html">TEC:Lsnecco3</a> - Saint-Nicolas Ecole Communale Coopération 12:49</li><li><a href="stop-TEC_Lsnferr2.html">TEC:Lsnferr2</a> - Saint-Nicolas Rue F. Ferrer 12:51</li><li><a href="stop-TEC_Lsnmala4.html">TEC:Lsnmala4</a> - Saint-Nicolas Rue Malaise 12:52</li><li><a href="stop-TEC_Lsnlhon2.html">TEC:Lsnlhon2</a> - Saint-Nicolas Rue Lhoneux 218 12:54</li><li><a href="stop-TEC_Lsnvand1.html">TEC:Lsnvand1</a> - Saint-Nicolas Place Vandervelde 12:56</li><li><a href="stop-TEC_Lsn130-1.html">TEC:Lsn130-1</a> - Saint-Nicolas Rue du Centre 130 12:57</li><li><a href="stop-TEC_Lsn184-1.html">TEC:Lsn184-1</a> - Saint-Nicolas Rue du Centre 184 12:58</li><li><a href="stop-TEC_Lsnlibe2.html">TEC:Lsnlibe2</a> - Saint-Nicolas Rue de la Libération 12:59</li><li><a href="stop-TEC_Llgnico2.html">TEC:Llgnico2</a> - Liege Place St-Nicolas 13:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5566.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

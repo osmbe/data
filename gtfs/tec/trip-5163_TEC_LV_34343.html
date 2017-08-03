@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Fléron - Fort - Magnée - Romsée - 5163:TEC:LV:34343</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Fléron - Fort - Magnée - Romsée - 5163:TEC:LV:34343</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lflterm1.html">TEC:Lflterm1</a> - Fleron Terminus 14:35</li><li><a href="stop-TEC_Lfllapi2.html">TEC:Lfllapi2</a> - Fleron Rue Lapierre 14:36</li><li><a href="stop-TEC_Lflroms2.html">TEC:Lflroms2</a> - Fleron Rue de Romsée 14:37</li><li><a href="stop-TEC_Lflprev2.html">TEC:Lflprev2</a> - Fleron Rue J. Prévôt 14:38</li><li><a href="stop-TEC_Lbhbalt2.html">TEC:Lbhbalt2</a> - Beyne-Heusay Usine Balteau 14:39</li><li><a href="stop-TEC_Lbhpeti2.html">TEC:Lbhpeti2</a> - Beyne-Heusay Arrêt Petit 14:40</li><li><a href="stop-TEC_Lbhgare2.html">TEC:Lbhgare2</a> - Beyne-Heusay Avenue de la Gare 14:41</li><li><a href="stop-TEC_Lbhmc--2.html">TEC:Lbhmc--2</a> - Beyne-Heusay Maison Communale 14:42</li><li><a href="stop-TEC_Lbhhomv2.html">TEC:Lbhhomv2</a> - Beyne-Heusay Homvent 14:43</li><li><a href="stop-TEC_Lbhsion2.html">TEC:Lbhsion2</a> - Beyne-Heusay Arrêt Sion 14:43</li><li><a href="stop-TEC_Lbhfaye2.html">TEC:Lbhfaye2</a> - Beyne-Heusay Fayenbois 14:44</li><li><a href="stop-TEC_Lbbviad2.html">TEC:Lbbviad2</a> - Bois-de-Breux Viaduc 14:44</li><li><a href="stop-TEC_Lbbremy2.html">TEC:Lbbremy2</a> - Bois-de-Breux Arrêt Remy 14:45</li><li><a href="stop-TEC_Lbbgare2.html">TEC:Lbbgare2</a> - Bois-de-Breux Gare 14:45</li><li><a href="stop-TEC_Lgrdefr2.html">TEC:Lgrdefr2</a> - Grivegnee Arrêt Defrère 14:46</li><li><a href="stop-TEC_Lgrspir2.html">TEC:Lgrspir2</a> - Grivegnee Rue N. Spiroux 14:48</li><li><a href="stop-TEC_Lgrfrai2.html">TEC:Lgrfrai2</a> - Grivegnee Rue Fraischamps 14:49</li><li><a href="stop-TEC_Lbrrobe2.html">TEC:Lbrrobe2</a> - Bressoux Robermont Cimetière 14:50</li><li><a href="stop-TEC_Lbrfusi2.html">TEC:Lbrfusi2</a> - Bressoux Rue des Fusillés 14:51</li><li><a href="stop-TEC_Lbrcard2.html">TEC:Lbrcard2</a> - Bressoux Place Cardinal Mercier 14:52</li><li><a href="stop-TEC_Lbrlama2.html">TEC:Lbrlama2</a> - Bressoux Rue Lamarche 14:53</li><li><a href="stop-TEC_Llgcorn2.html">TEC:Llgcorn2</a> - Liege Cornillon 14:54</li><li><a href="stop-TEC_Llgrema2.html">TEC:Llgrema2</a> - Liege Eglise St-Remacle 14:55</li><li><a href="stop-TEC_Llgamer2.html">TEC:Llgamer2</a> - Liege Pont d'Amercoeur 14:57</li><li><a href="stop-TEC_Llgoutr3.html">TEC:Llgoutr3</a> - Liege Rue J. d'Outremeuse 14:58</li><li><a href="stop-TEC_Llgtcha2.html">TEC:Llgtcha2</a> - Liege Monument Tchantchès 14:59</li><li><a href="stop-TEC_Llgphol2.html">TEC:Llgphol2</a> - Liege Eglise St-Pholien 15:00</li><li><a href="stop-TEC_Llgcite4.html">TEC:Llgcite4</a> - Liege Rue de la Cité 15:02</li><li><a href="stop-TEC_LlgLEOP1.html">TEC:LlgLEOP1</a> - Liege Gare Léopold 15:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4162.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

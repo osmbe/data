@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Virton - Buzenol - Etalle - Habay - 5163:TEC:LU:2683</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Virton - Buzenol - Etalle - Habay - 5163:TEC:LU:2683</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X608aeb.html">TEC:X608aeb</a> - Virton Arcades 07:40</li><li><a href="stop-TEC_X608adb.html">TEC:X608adb</a> - Virton CNDB 07:41</li><li><a href="stop-TEC_X608acb.html">TEC:X608acb</a> - Virton Paradis des Enfants 07:42</li><li><a href="stop-TEC_X608abb.html">TEC:X608abb</a> - Virton Carrefour Avenue Bouvier 07:42</li><li><a href="stop-TEC_X629acb.html">TEC:X629acb</a> - Croix Rouge Passage à Niveau 07:48</li><li><a href="stop-TEC_X629abb.html">TEC:X629abb</a> - Huombois 07:48</li><li><a href="stop-TEC_X636aqd.html">TEC:X636aqd</a> - Buzenol Grand-Route 07:51</li><li><a href="stop-TEC_X636apb.html">TEC:X636apb</a> - Buzenol Rue des Hauts Jardins 07:52</li><li><a href="stop-TEC_X636aob.html">TEC:X636aob</a> - Buzenol Eglise 07:52</li><li><a href="stop-TEC_X636aoa.html">TEC:X636aoa</a> - Buzenol Eglise 07:53</li><li><a href="stop-TEC_X636apa.html">TEC:X636apa</a> - Buzenol Rue des Hauts Jardins 07:53</li><li><a href="stop-TEC_X636ara.html">TEC:X636ara</a> - Fratin Rue des Alouettes 07:58</li><li><a href="stop-TEC_X636ata.html">TEC:X636ata</a> - Fratin Place 07:59</li><li><a href="stop-TEC_X636aua.html">TEC:X636aua</a> - Sainte-Marie Zoning (Etalle) 08:01</li><li><a href="stop-TEC_X636ava.html">TEC:X636ava</a> - Sainte-Marie Lavoir (Etalle) 08:02</li><li><a href="stop-TEC_X636awa.html">TEC:X636awa</a> - Sainte-Marie Rue de la Rigole (Etalle) 08:02</li><li><a href="stop-TEC_X636bba.html">TEC:X636bba</a> - Sainte-Marie Ecole (Etalle) 08:03</li><li><a href="stop-TEC_X636bca.html">TEC:X636bca</a> - Sainte-Marie Grand-Rue (Etalle) 08:06</li><li><a href="stop-TEC_X636bdb.html">TEC:X636bdb</a> - Sainte-Marie Rue de la Gare (Etalle) 08:07</li><li><a href="stop-TEC_X636amb.html">TEC:X636amb</a> - Etalle Ferme du Moulin 08:09</li><li><a href="stop-TEC_X670ala.html">TEC:X670ala</a> - Habay-la-Neuve L'Auberge du Vivier 08:17</li><li><a href="stop-TEC_X670adb.html">TEC:X670adb</a> - Habay-la-Neuve Place Nothomb 08:19</li><li><a href="stop-TEC_X670akb.html">TEC:X670akb</a> - Habay-la-Neuve Saint-Benoît 08:22</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3302.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

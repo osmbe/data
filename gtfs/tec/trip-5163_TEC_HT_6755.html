@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mons - Soignies - 5163:TEC:HT:6755</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mons - Soignies - 5163:TEC:HT:6755</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H3so166d.html">TEC:H3so166d</a> - Soignies Gare 19:31</li><li><a href="stop-TEC_H3so159b.html">TEC:H3so159b</a> - Soignies Chemin de Prévost 19:32</li><li><a href="stop-TEC_H3so157b.html">TEC:H3so157b</a> - Soignies Chasse Royale 19:33</li><li><a href="stop-TEC_H3so158b.html">TEC:H3so158b</a> - Soignies Chaussée de Mons, 219 19:34</li><li><a href="stop-TEC_H3so162b.html">TEC:H3so162b</a> - Soignies Cognebeau 19:34</li><li><a href="stop-TEC_H3so160b.html">TEC:H3so160b</a> - Soignies Chemin du Gibet 19:35</li><li><a href="stop-TEC_H1ca102b.html">TEC:H1ca102b</a> - Casteau Home St Alfred 19:36</li><li><a href="stop-TEC_H1ca103b.html">TEC:H1ca103b</a> - Casteau Langrenée 19:37</li><li><a href="stop-TEC_H1ca106b.html">TEC:H1ca106b</a> - Casteau Reine de Hongrie 19:38</li><li><a href="stop-TEC_H1ca108b.html">TEC:H1ca108b</a> - Casteau Station Essence 19:39</li><li><a href="stop-TEC_H1ca100b.html">TEC:H1ca100b</a> - Casteau Dépôt 19:40</li><li><a href="stop-TEC_H1ca104b.html">TEC:H1ca104b</a> - Casteau Monument 19:41</li><li><a href="stop-TEC_H1ca109b.html">TEC:H1ca109b</a> - Casteau Village 19:41</li><li><a href="stop-TEC_H1ca101b.html">TEC:H1ca101b</a> - Casteau Entrée du Village 19:42</li><li><a href="stop-TEC_H1ca186b.html">TEC:H1ca186b</a> - Casteau Chemin des Princes 19:42</li><li><a href="stop-TEC_H1ma230b.html">TEC:H1ma230b</a> - Maisieres Brisée St Denis 19:43</li><li><a href="stop-TEC_H1ma237b.html">TEC:H1ma237b</a> - Maisieres Zoé 19:44</li><li><a href="stop-TEC_H1ma233c.html">TEC:H1ma233c</a> - Maisieres Le Maisières 19:45</li><li><a href="stop-TEC_H1ma234b.html">TEC:H1ma234b</a> - Maisieres Place 19:47</li><li><a href="stop-TEC_H1ma231b.html">TEC:H1ma231b</a> - Maisieres Chapelle 19:48</li><li><a href="stop-TEC_H1ni315b.html">TEC:H1ni315b</a> - Nimy Battard 19:49</li><li><a href="stop-TEC_H1ni321b.html">TEC:H1ni321b</a> - Nimy Route d' Ath 19:50</li><li><a href="stop-TEC_H1ni320b.html">TEC:H1ni320b</a> - Nimy Place 19:51</li><li><a href="stop-TEC_H1ni323b.html">TEC:H1ni323b</a> - Nimy Rue Gérard 19:53</li><li><a href="stop-TEC_H1ni322b.html">TEC:H1ni322b</a> - Nimy Rue de la Limite 19:55</li><li><a href="stop-TEC_H1ms267b.html">TEC:H1ms267b</a> - Mons Chemin de la Procession 19:56</li><li><a href="stop-TEC_H1ms290a.html">TEC:H1ms290a</a> - Mons Lycée 19:59</li><li><a href="stop-TEC_H1ms299a.html">TEC:H1ms299a</a> - Mons Prison 20:00</li><li><a href="stop-TEC_H1ms400a.html">TEC:H1ms400a</a> - Mons SNCB 20:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1883.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

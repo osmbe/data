@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - PESCHE - COUVIN - MAZEE - HEER - 5163:TEC:NA:5424</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: PESCHE - COUVIN - MAZEE - HEER - 5163:TEC:NA:5424</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N135ada.html">TEC:N135ada</a> - Couvin Gare SNCB 18:15</li><li><a href="stop-TEC_N135akb.html">TEC:N135akb</a> - Couvin Saint-Joseph 18:16</li><li><a href="stop-TEC_N135aga.html">TEC:N135aga</a> - Couvin Grand'place 18:18</li><li><a href="stop-TEC_N135aqb.html">TEC:N135aqb</a> - Couvin Piège 18:19</li><li><a href="stop-TEC_N135bbb.html">TEC:N135bbb</a> - Petigny Côte de Couvin 18:20</li><li><a href="stop-TEC_N135beb.html">TEC:N135beb</a> - Petigny Village 18:23</li><li><a href="stop-TEC_N135bdb.html">TEC:N135bdb</a> - Petigny Bouvreuils 18:24</li><li><a href="stop-TEC_N127acb.html">TEC:N127acb</a> - Nismes Baty 18:27</li><li><a href="stop-TEC_N127adb.html">TEC:N127adb</a> - Nismes Eglise 18:28</li><li><a href="stop-TEC_N127ada.html">TEC:N127ada</a> - Nismes Eglise 18:28</li><li><a href="stop-TEC_N127aca.html">TEC:N127aca</a> - Nismes Baty 18:29</li><li><a href="stop-TEC_N127aeb.html">TEC:N127aeb</a> - Nismes Saint-Joseph 18:30</li><li><a href="stop-TEC_N111aab.html">TEC:N111aab</a> - Olloy-sur-Viroin Café des pêcheurs 18:32</li><li><a href="stop-TEC_N111abb.html">TEC:N111abb</a> - Olloy-sur-Viroin Ancienne gare 18:34</li><li><a href="stop-TEC_N111afb.html">TEC:N111afb</a> - Olloy-sur-Viroin Village 18:34</li><li><a href="stop-TEC_N111adb.html">TEC:N111adb</a> - Olloy-sur-Viroin Pont 18:34</li><li><a href="stop-TEC_N110ahb.html">TEC:N110ahb</a> - Vierves-sur-Viroin Champiat 18:37</li><li><a href="stop-TEC_N110afb.html">TEC:N110afb</a> - Vierves-sur-Viroin Eglise 18:38</li><li><a href="stop-TEC_N110agb.html">TEC:N110agb</a> - Vierves-sur-Viroin Route de Matagne - l 18:40</li><li><a href="stop-TEC_N110aab.html">TEC:N110aab</a> - Treignes Bruyères 18:42</li><li><a href="stop-TEC_N110abb.html">TEC:N110abb</a> - Treignes Eglise 18:43</li><li><a href="stop-TEC_N110acb.html">TEC:N110acb</a> - Treignes Malgré-tout 18:44</li><li><a href="stop-TEC_N110adb.html">TEC:N110adb</a> - Treignes Gare 18:45</li><li><a href="stop-TEC_N109aab.html">TEC:N109aab</a> - Mazee Moulin 18:46</li><li><a href="stop-TEC_N109adc.html">TEC:N109adc</a> - Mazee Place du Bucq 18:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5689.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

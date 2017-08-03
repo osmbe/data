@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Lambert-Ans Pl. Nicolay-Cité Lonay-XIV Verges - 5163:TEC:LV:30978</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Lambert-Ans Pl. Nicolay-Cité Lonay-XIV Verges - 5163:TEC:LV:30978</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lanc14v1.html">TEC:Lanc14v1</a> - Ans Carrefour XIV Verges-Tonne 16:56</li><li><a href="stop-TEC_Lanetie2.html">TEC:Lanetie2</a> - Ans Rue Etienne 16:58</li><li><a href="stop-TEC_Lan14ve2.html">TEC:Lan14ve2</a> - Ans Rue des XIV Verges 16:59</li><li><a href="stop-TEC_Lanclon2.html">TEC:Lanclon2</a> - Ans Cité Lonay 16:59</li><li><a href="stop-TEC_Lanlona2.html">TEC:Lanlona2</a> - Ans Avenue Lonay (écoles) 17:01</li><li><a href="stop-TEC_Lantonn2.html">TEC:Lantonn2</a> - Ans Carrefour Tonne-Lonay 17:01</li><li><a href="stop-TEC_Lanrois2.html">TEC:Lanrois2</a> - Ans Rue des Trois Rois 17:02</li><li><a href="stop-TEC_Landeja2.html">TEC:Landeja2</a> - Ans Rue Dejardin 17:04</li><li><a href="stop-TEC_Lanegal2.html">TEC:Lanegal2</a> - Ans Rue de l'Egalité 17:05</li><li><a href="stop-TEC_Lanmouf2.html">TEC:Lanmouf2</a> - Ans Rue Mouffart 17:05</li><li><a href="stop-TEC_Landolh2.html">TEC:Landolh2</a> - Ans Rue L. Dolhen 17:06</li><li><a href="stop-TEC_Lanhoud2.html">TEC:Lanhoud2</a> - Ans Rue Houdret 17:07</li><li><a href="stop-TEC_Lannico4.html">TEC:Lannico4</a> - Ans Place Nicolaï 17:08</li><li><a href="stop-TEC_Lanfont2.html">TEC:Lanfont2</a> - Ans Rue de la Fontaine 17:09</li><li><a href="stop-TEC_Llgchau2.html">TEC:Llgchau2</a> - Liege Basse Chaussée 17:10</li><li><a href="stop-TEC_Llgglai2.html">TEC:Llgglai2</a> - Liege Rue en Glain 17:10</li><li><a href="stop-TEC_Llgbaro4.html">TEC:Llgbaro4</a> - Liege Rue H. Baron 17:11</li><li><a href="stop-TEC_Llgfont4.html">TEC:Llgfont4</a> - Liege Fontainebleau 17:12</li><li><a href="stop-TEC_Llghull2.html">TEC:Llghull2</a> - Liege Rue Hullos 17:13</li><li><a href="stop-TEC_Llgsevr2.html">TEC:Llgsevr2</a> - Liege Place St-Severin 17:16</li><li><a href="stop-TEC_Llgcadr6.html">TEC:Llgcadr6</a> - Liege Cadran 17:17</li><li><a href="stop-TEC_LlgLAMB3.html">TEC:LlgLAMB3</a> - Liege Place St-Lambert 17:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3958.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

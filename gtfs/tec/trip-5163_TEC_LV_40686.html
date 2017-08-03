@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Huy - Strée - Ouffet - Hamoir - 5163:TEC:LV:40686</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Huy - Strée - Ouffet - Hamoir - 5163:TEC:LV:40686</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LWZdtec1.html">TEC:LWZdtec1</a> - Warzee Dépôt TEC 12:12</li><li><a href="stop-TEC_LWZeg--1.html">TEC:LWZeg--1</a> - Warzee Eglise 12:13</li><li><a href="stop-TEC_LOucarr2.html">TEC:LOucarr2</a> - Ouffet Carrefour 12:16</li><li><a href="stop-TEC_LOuplac1.html">TEC:LOuplac1</a> - Ouffet Grand-Place 12:18</li><li><a href="stop-TEC_LOuilc-_.html">TEC:LOuilc-*</a> - Ouffet I.L.C. 12:19</li><li><a href="stop-TEC_LOucuve1.html">TEC:LOucuve1</a> - Ouffet Rue Cuvelier 12:20</li><li><a href="stop-TEC_LOuathe1.html">TEC:LOuathe1</a> - Ouffet Athénée 12:20</li><li><a href="stop-TEC_LOucarr4.html">TEC:LOucarr4</a> - Ouffet Carrefour 12:21</li><li><a href="stop-TEC_LOumaro2.html">TEC:LOumaro2</a> - Ouffet Sentier de Maroye 12:22</li><li><a href="stop-TEC_LVnvieg2.html">TEC:LVnvieg2</a> - Vien Viegeay 12:26</li><li><a href="stop-TEC_LVnflox2.html">TEC:LVnflox2</a> - Vien Les Floxhes 12:26</li><li><a href="stop-TEC_LVnetan2.html">TEC:LVnetan2</a> - Vien Place des Etangs 12:27</li><li><a href="stop-TEC_LVnourt2.html">TEC:LVnourt2</a> - Vien Rue de l'Ourthe 12:27</li><li><a href="stop-TEC_LVncarr2.html">TEC:LVncarr2</a> - Vien Carrière 12:28</li><li><a href="stop-TEC_LAnfall1.html">TEC:LAnfall1</a> - Anthisnes Rue Falloise 12:31</li><li><a href="stop-TEC_LAncoup1.html">TEC:LAncoup1</a> - Anthisnes Coupole 12:32</li><li><a href="stop-TEC_LAnchat1.html">TEC:LAnchat1</a> - Anthisnes Vieux Château 12:33</li><li><a href="stop-TEC_LAnvien1.html">TEC:LAnvien1</a> - Anthisnes Route de Vien 12:33</li><li><a href="stop-TEC_LVnroch1.html">TEC:LVnroch1</a> - Vien Rue St-Roch 12:34</li><li><a href="stop-TEC_LVncarr1.html">TEC:LVncarr1</a> - Vien Carrière 12:35</li><li><a href="stop-TEC_LVnourt4.html">TEC:LVnourt4</a> - Vien Rue de l'Ourthe 12:36</li><li><a href="stop-TEC_LVnrock2.html">TEC:LVnrock2</a> - Vien La Rock 12:39</li><li><a href="stop-TEC_LCF1spa2.html">TEC:LCF1spa2</a> - Comblain-Fairon 1ère route de Sparmont 12:40</li><li><a href="stop-TEC_LCF2spa2.html">TEC:LCF2spa2</a> - Comblain-Fairon 2ème route de Sparmont 12:41</li><li><a href="stop-TEC_LCFmoul2.html">TEC:LCFmoul2</a> - Comblain-Fairon Moulin du Blockay 12:42</li><li><a href="stop-TEC_LCFcafe2.html">TEC:LCFcafe2</a> - Comblain-Fairon Café du Blockay 12:43</li><li><a href="stop-TEC_LCFcarr2.html">TEC:LCFcarr2</a> - Comblain-Fairon Carrefour 12:44</li><li><a href="stop-TEC_LHaodei2.html">TEC:LHaodei2</a> - Hamoir Château d'Odeigne 12:45</li><li><a href="stop-TEC_LHarenn1.html">TEC:LHarenn1</a> - Hamoir Auberge des Rennes 12:47</li><li><a href="stop-TEC_LHanest1.html">TEC:LHanest1</a> - Hamoir Usine Nestlé 12:48</li><li><a href="stop-TEC_LHaeg--1.html">TEC:LHaeg--1</a> - Hamoir Eglise 12:49</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5541.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

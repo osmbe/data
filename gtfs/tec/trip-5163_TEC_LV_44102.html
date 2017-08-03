@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Lambert - Rocourt - Liers - Slins - 5163:TEC:LV:44102</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Lambert - Rocourt - Liers - Slins - 5163:TEC:LV:44102</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Llianix2.html">TEC:Llianix2</a> - Liers Rue d'Anixhe 17:49</li><li><a href="stop-TEC_Lligare2.html">TEC:Lligare2</a> - Liers Gare 17:50</li><li><a href="stop-TEC_Llieg--2.html">TEC:Llieg--2</a> - Liers Eglise 17:51</li><li><a href="stop-TEC_Lvochev2.html">TEC:Lvochev2</a> - Voroux-Lez-Liers Cheval 17:51</li><li><a href="stop-TEC_Lvoplac2.html">TEC:Lvoplac2</a> - Voroux-Lez-Liers Place 17:52</li><li><a href="stop-TEC_Lvoec--2.html">TEC:Lvoec--2</a> - Voroux-Lez-Liers Ecole 17:53</li><li><a href="stop-TEC_Lrcvinc2.html">TEC:Lrcvinc2</a> - Rocourt Clinique St-Vincent 17:53</li><li><a href="stop-TEC_Lrcprin6.html">TEC:Lrcprin6</a> - Rocourt Rue Principale 17:54</li><li><a href="stop-TEC_Lrcarse2.html">TEC:Lrcarse2</a> - Rocourt Arsenal 17:55</li><li><a href="stop-TEC_Lrcastr2.html">TEC:Lrcastr2</a> - Rocourt Place Reine Astrid 17:56</li><li><a href="stop-TEC_Lrclant2.html">TEC:Lrclant2</a> - Rocourt Rue de Lantin 17:57</li><li><a href="stop-TEC_Lrchype2.html">TEC:Lrchype2</a> - Rocourt Hypermarché 17:58</li><li><a href="stop-TEC_Lrctec-2.html">TEC:Lrctec-2</a> - Rocourt Dépôt TEC 17:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4362.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ath - Enghien/Edingen - 5163:TEC:HT:10142</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ath - Enghien/Edingen - 5163:TEC:HT:10142</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1sy143d.html">TEC:H1sy143d</a> - Silly SNCB 18:31</li><li><a href="stop-TEC_H1sy139a.html">TEC:H1sy139a</a> - Silly Carmoi 18:32</li><li><a href="stop-TEC_H1sy150a.html">TEC:H1sy150a</a> - Silly Rue St Marcoult 18:34</li><li><a href="stop-TEC_H1sy144a.html">TEC:H1sy144a</a> - Silly Place 18:35</li><li><a href="stop-TEC_H1sy147a.html">TEC:H1sy147a</a> - Silly Rue de la Station 18:36</li><li><a href="stop-TEC_H1sy137d.html">TEC:H1sy137d</a> - Silly 4 Saules 18:38</li><li><a href="stop-TEC_H1sy148b.html">TEC:H1sy148b</a> - Silly Rue de la Sylle 18:40</li><li><a href="stop-TEC_H1hq129a.html">TEC:H1hq129a</a> - Hellebecq Rue de Wallonie 18:41</li><li><a href="stop-TEC_H1hq128a.html">TEC:H1hq128a</a> - Hellebecq Rue Bourlon 18:42</li><li><a href="stop-TEC_H1hq124a.html">TEC:H1hq124a</a> - Hellebecq Calvaire 18:42</li><li><a href="stop-TEC_H1hq126a.html">TEC:H1hq126a</a> - Hellebecq Place 18:43</li><li><a href="stop-TEC_H1gn150b.html">TEC:H1gn150b</a> - Ghislenghien Rue d'Hellebecq 18:45</li><li><a href="stop-TEC_H1gn147b.html">TEC:H1gn147b</a> - Ghislenghien Eglise 18:46</li><li><a href="stop-TEC_H1gn151a.html">TEC:H1gn151a</a> - Ghislenghien Waldico 18:47</li><li><a href="stop-TEC_H1gn149a.html">TEC:H1gn149a</a> - Ghislenghien Nouveau Parc 18:48</li><li><a href="stop-TEC_H1gn152a.html">TEC:H1gn152a</a> - Ghislenghien Zoning 18:48</li><li><a href="stop-TEC_H1mq200a.html">TEC:H1mq200a</a> - Eveque Preuscamp 18:50</li><li><a href="stop-TEC_H1mq198a.html">TEC:H1mq198a</a> - Eveque Eglise 18:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1313.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

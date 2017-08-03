@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - GEDINNE - WILLERZIE - VENCIMONT - 5163:TEC:NA:1768</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GEDINNE - WILLERZIE - VENCIMONT - 5163:TEC:NA:1768</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N343amb.html">TEC:N343amb</a> - Gedinne Lycée 17:29</li><li><a href="stop-TEC_N343ada.html">TEC:N343ada</a> - Gedinne Terminus 17:30</li><li><a href="stop-TEC_N343acb.html">TEC:N343acb</a> - Gedinne Centre 17:31</li><li><a href="stop-TEC_N343abb.html">TEC:N343abb</a> - Gedinne Pommier Mathys 17:32</li><li><a href="stop-TEC_N343aab.html">TEC:N343aab</a> - Gedinne Point de vue 17:32</li><li><a href="stop-TEC_N309acb.html">TEC:N309acb</a> - Sart-Custinne Pré Lavaux 17:34</li><li><a href="stop-TEC_N309aba.html">TEC:N309aba</a> - Sart-Custinne Route de Malvoisin 17:36</li><li><a href="stop-TEC_N309aaa.html">TEC:N309aaa</a> - Sart-Custinne Eglise 17:36</li><li><a href="stop-TEC_N365acb.html">TEC:N365acb</a> - Rienne Boiron 17:39</li><li><a href="stop-TEC_N365abb.html">TEC:N365abb</a> - Rienne Eglise 17:40</li><li><a href="stop-TEC_N365aab.html">TEC:N365aab</a> - Rienne Ecole communale 17:40</li><li><a href="stop-TEC_N315aab.html">TEC:N315aab</a> - Willerzie Douane 17:44</li><li><a href="stop-TEC_N304abb.html">TEC:N304abb</a> - Bourseigne-Neuve Eglise 17:50</li><li><a href="stop-TEC_N304aab.html">TEC:N304aab</a> - Bourseigne-Neuve Chapelle 17:50</li><li><a href="stop-TEC_N329aab.html">TEC:N329aab</a> - Bourseigne-Vieille Eglise 17:53</li><li><a href="stop-TEC_N313aec.html">TEC:N313aec</a> - Vencimont Jonction 17:59</li><li><a href="stop-TEC_N313ada.html">TEC:N313ada</a> - Vencimont Centre 17:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5913.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

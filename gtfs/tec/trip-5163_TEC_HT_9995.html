@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Wasmes - Baudour - 5163:TEC:HT:9995</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Wasmes - Baudour - 5163:TEC:HT:9995</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1wa155c.html">TEC:H1wa155c</a> - Wasmes Rue de Maubeuge 10:34</li><li><a href="stop-TEC_H1pa116a.html">TEC:H1pa116a</a> - Paturages Rue du Hameau 10:35</li><li><a href="stop-TEC_H1pa108a.html">TEC:H1pa108a</a> - Paturages Maison du Peuple 10:36</li><li><a href="stop-TEC_H1pa111a.html">TEC:H1pa111a</a> - Paturages Roinge 10:36</li><li><a href="stop-TEC_H1pa106c.html">TEC:H1pa106c</a> - Paturages Grand Bouillon 10:37</li><li><a href="stop-TEC_H1pa120a.html">TEC:H1pa120a</a> - Paturages Rue Grand Passage 10:38</li><li><a href="stop-TEC_H1pa117a.html">TEC:H1pa117a</a> - Paturages Rue Maroille 10:39</li><li><a href="stop-TEC_H1pa118a.html">TEC:H1pa118a</a> - Paturages Rue Wauters 10:39</li><li><a href="stop-TEC_H1pa100a.html">TEC:H1pa100a</a> - Paturages ATEA 10:40</li><li><a href="stop-TEC_H1pa103a.html">TEC:H1pa103a</a> - Paturages Cul du Qu' Vau 10:41</li><li><a href="stop-TEC_H1wa138a.html">TEC:H1wa138a</a> - Wasmes Cité Maréchal Joffre 10:42</li><li><a href="stop-TEC_H1wa163a.html">TEC:H1wa163a</a> - Wasmes Ruelle Giquebon 10:43</li><li><a href="stop-TEC_H1wa156a.html">TEC:H1wa156a</a> - Wasmes Rue Delhaye 10:44</li><li><a href="stop-TEC_H1wa160a.html">TEC:H1wa160a</a> - Wasmes Rue Jean Jean 10:44</li><li><a href="stop-TEC_H1wa149a.html">TEC:H1wa149a</a> - Wasmes Place St Pierre 10:45</li><li><a href="stop-TEC_H1wa152a.html">TEC:H1wa152a</a> - Wasmes Rue Artus 10:46</li><li><a href="stop-TEC_H1wa158a.html">TEC:H1wa158a</a> - Wasmes Rue du Bois 10:47</li><li><a href="stop-TEC_H1wa154a.html">TEC:H1wa154a</a> - Wasmes Rue de la Louise 10:48</li><li><a href="stop-TEC_H1wg124a.html">TEC:H1wg124a</a> - Warquignies Chapelle Parent 10:49</li><li><a href="stop-TEC_H1wg131a.html">TEC:H1wg131a</a> - Warquignies Temple 10:50</li><li><a href="stop-TEC_H1pw121a.html">TEC:H1pw121a</a> - Petit-Wasmes Rue du Petit Wasmes 10:51</li><li><a href="stop-TEC_H1pw120a.html">TEC:H1pw120a</a> - Petit-Wasmes Rue Depaepe 10:51</li><li><a href="stop-TEC_H1wa144a.html">TEC:H1wa144a</a> - Wasmes Librairie 10:52</li><li><a href="stop-TEC_H1wa135a.html">TEC:H1wa135a</a> - Wasmes Cité Croix Rouge 10:52</li><li><a href="stop-TEC_H1wa137a.html">TEC:H1wa137a</a> - Wasmes Cité Dubuisson 10:53</li><li><a href="stop-TEC_H1wa136a.html">TEC:H1wa136a</a> - Wasmes Cité de l' Abbaye 10:53</li><li><a href="stop-TEC_H1wa164a.html">TEC:H1wa164a</a> - Wasmes Stade 10:55</li><li><a href="stop-TEC_H1wa142b.html">TEC:H1wa142b</a> - Wasmes Hornu-Wasmes 10:56</li><li><a href="stop-TEC_H1wa147a.html">TEC:H1wa147a</a> - Wasmes Place 10:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1724.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

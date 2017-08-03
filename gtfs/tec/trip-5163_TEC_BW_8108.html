@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Services de Marché - 5163:TEC:BW:8108</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Services de Marché - 5163:TEC:BW:8108</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Btgrdoc1.html">TEC:Btgrdoc1</a> - Tongrinne Docq 08:33</li><li><a href="stop-TEC_Btgrpla1.html">TEC:Btgrpla1</a> - Tongrinne Place 08:35</li><li><a href="stop-TEC_Btgregl1.html">TEC:Btgregl1</a> - Tongrinne Eglise 08:35</li><li><a href="stop-TEC_Bsomtce1.html">TEC:Bsomtce1</a> - Tongrinne Tongrenelle Centre 08:37</li><li><a href="stop-TEC_Bsomthi1.html">TEC:Bsomthi1</a> - Tongrinne Hirondelle 08:37</li><li><a href="stop-TEC_Bsomtpm1.html">TEC:Bsomtpm1</a> - Tongrinne Pompe 08:38</li><li><a href="stop-TEC_Bsomtnd1.html">TEC:Bsomtnd1</a> - Boignee Chapelle Notre-Dame de Lourdes 08:38</li><li><a href="stop-TEC_Bbgnpla1.html">TEC:Bbgnpla1</a> - Boignee Place 08:39</li><li><a href="stop-TEC_Bbgnton1.html">TEC:Bbgnton1</a> - Boignee Route de Tongrinne 08:40</li><li><a href="stop-TEC_Bbaldot1.html">TEC:Bbaldot1</a> - Boignee Dottiats 08:41</li><li><a href="stop-TEC_Bbaltba1.html">TEC:Bbaltba1</a> - Balatre Trou de Balâtre 08:41</li><li><a href="stop-TEC_Bbalvil1.html">TEC:Bbalvil1</a> - Balatre Village 08:43</li><li><a href="stop-TEC_Bstmpla1.html">TEC:Bstmpla1</a> - Saint-Martin Place 08:48</li><li><a href="stop-TEC_N534aua.html">TEC:N534aua</a> - Jemeppe Route de Fayat 08:52</li><li><a href="stop-TEC_N534ara.html">TEC:N534ara</a> - Jemeppe Café potier 08:53</li><li><a href="stop-TEC_N534bga.html">TEC:N534bga</a> - Jemeppe Les Termes 08:54</li><li><a href="stop-TEC_N530aga.html">TEC:N530aga</a> - Velaine-sur-Sambre Prahy 08:56</li><li><a href="stop-TEC_N530aha.html">TEC:N530aha</a> - Velaine-sur-Sambre Route de Balâtre 08:57</li><li><a href="stop-TEC_Cvssncv2.html">TEC:Cvssncv2</a> - Velaine-sur-Sambre S.N.C.V. 08:58</li><li><a href="stop-TEC_Cvsduve2.html">TEC:Cvsduve2</a> - Velaine-sur-Sambre La Duve 08:59</li><li><a href="stop-TEC_Cvsbois2.html">TEC:Cvsbois2</a> - Velaine-sur-Sambre Culot du Bois 09:00</li><li><a href="stop-TEC_Cauwauq2.html">TEC:Cauwauq2</a> - Auvelais Boulangerie Wauquier 09:02</li><li><a href="stop-TEC_Caujonc2.html">TEC:Caujonc2</a> - Auvelais Jonction 09:04</li><li><a href="stop-TEC_Causart2.html">TEC:Causart2</a> - Auvelais La Sarthe 09:05</li><li><a href="stop-TEC_Cauromi2.html">TEC:Cauromi2</a> - Auvelais Rominet 09:06</li><li><a href="stop-TEC_N543awg.html">TEC:N543awg</a> - Auvelais Rue Dr Romedenne - Gare SNCB 09:07</li><li><a href="stop-TEC_N543ajb.html">TEC:N543ajb</a> - Auvelais Gare SNCB 09:08</li><li><a href="stop-TEC_N543cga.html">TEC:N543cga</a> - Auvelais Centre 09:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./700.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

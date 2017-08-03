@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mons - Trazegnies - 5163:TEC:HT:5567</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mons - Trazegnies - 5163:TEC:HT:5567</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1ms280d.html">TEC:H1ms280d</a> - Mons SNCB 16:48</li><li><a href="stop-TEC_H1ms256a.html">TEC:H1ms256a</a> - Mons Bd Sainctelette 16:50</li><li><a href="stop-TEC_H1ms296c.html">TEC:H1ms296c</a> - Mons Place des Chasseurs 16:51</li><li><a href="stop-TEC_H1ms276a.html">TEC:H1ms276a</a> - Mons Ecole Normale 16:52</li><li><a href="stop-TEC_H1ms253a.html">TEC:H1ms253a</a> - Mons Banque 16:53</li><li><a href="stop-TEC_H1ms294a.html">TEC:H1ms294a</a> - Mons Place de Flandre 16:55</li><li><a href="stop-TEC_H1ms308a.html">TEC:H1ms308a</a> - Mons Saint-Fiacre 16:57</li><li><a href="stop-TEC_H1ms245a.html">TEC:H1ms245a</a> - Mons Arbre Vert 16:58</li><li><a href="stop-TEC_H1ms266a.html">TEC:H1ms266a</a> - Mons Chemin d'Obourg 16:59</li><li><a href="stop-TEC_H1ms258a.html">TEC:H1ms258a</a> - Mons Bon Pasteur 17:00</li><li><a href="stop-TEC_H1ms261a.html">TEC:H1ms261a</a> - Mons Bruyères 17:02</li><li><a href="stop-TEC_H1ms270a.html">TEC:H1ms270a</a> - Mons Clef du Bois 17:03</li><li><a href="stop-TEC_H1ha193a.html">TEC:H1ha193a</a> - Havre Longue Roïe 17:04</li><li><a href="stop-TEC_H1ha201a.html">TEC:H1ha201a</a> - Havre Saint-Antoine 17:05</li><li><a href="stop-TEC_H1ha184a.html">TEC:H1ha184a</a> - Havre Bon Vouloir 17:08</li><li><a href="stop-TEC_H1ha186a.html">TEC:H1ha186a</a> - Havre Château 17:08</li><li><a href="stop-TEC_H1ha195a.html">TEC:H1ha195a</a> - Havre Monument 17:09</li><li><a href="stop-TEC_H1ha196a.html">TEC:H1ha196a</a> - Havre Place 17:09</li><li><a href="stop-TEC_H1ha191a.html">TEC:H1ha191a</a> - Havre Hameau du Pir 17:10</li><li><a href="stop-TEC_H1ha199a.html">TEC:H1ha199a</a> - Havre Rue 4 Bonniers 17:11</li><li><a href="stop-TEC_H1ha188a.html">TEC:H1ha188a</a> - Havre Ecoles Communales 17:11</li><li><a href="stop-TEC_H1ha198a.html">TEC:H1ha198a</a> - Havre Riau 17:13</li><li><a href="stop-TEC_H1ha182a.html">TEC:H1ha182a</a> - Havre Ave Wauters, 90 17:14</li><li><a href="stop-TEC_H1ha183a.html">TEC:H1ha183a</a> - Havre Beaulieu 17:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2349.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

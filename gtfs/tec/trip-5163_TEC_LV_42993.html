@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Medell-Amel-Mirfeld-Möderscheid-Schoppen-Amel - 5163:TEC:LV:42993</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Medell-Amel-Mirfeld-Möderscheid-Schoppen-Amel - 5163:TEC:LV:42993</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LaMgeme_.html">TEC:LaMgeme*</a> - Amel Gemeindeschule 12:05</li><li><a href="stop-TEC_LaMpark1.html">TEC:LaMpark1</a> - Amel Parking 12:05</li><li><a href="stop-TEC_LaMahof2.html">TEC:LaMahof2</a> - Amel Alte Hofstrasse 12:06</li><li><a href="stop-TEC_LmRmuhl2.html">TEC:LmRmuhl2</a> - Moderscheid Mühle 12:08</li><li><a href="stop-TEC_LsHkirc1.html">TEC:LsHkirc1</a> - Schoppen Kirche 12:12</li><li><a href="stop-TEC_LsHfrie1.html">TEC:LsHfrie1</a> - Schoppen Friedhof 12:13</li><li><a href="stop-TEC_LmR90--1.html">TEC:LmR90--1</a> - Moderscheid 90 12:14</li><li><a href="stop-TEC_LmRkape1.html">TEC:LmRkape1</a> - Moderscheid Kapelle 12:14</li><li><a href="stop-TEC_LmRhöfe1.html">TEC:LmRhöfe1</a> - Moderscheid In den Höfen 12:15</li><li><a href="stop-TEC_LmR50--1.html">TEC:LmR50--1</a> - Moderscheid 50 12:15</li><li><a href="stop-TEC_LmRhö811.html">TEC:LmRhö811</a> - Moderscheid In den Höfen 81 12:16</li><li><a href="stop-TEC_LmRkreu1.html">TEC:LmRkreu1</a> - Moderscheid Kreuzung 12:17</li><li><a href="stop-TEC_LmImirf1.html">TEC:LmImirf1</a> - Mirfeld Mirfelderbusch 12:19</li><li><a href="stop-TEC_LmI36--1.html">TEC:LmI36--1</a> - Mirfeld 136 12:21</li><li><a href="stop-TEC_LmI129-1.html">TEC:LmI129-1</a> - Mirfeld 129 12:21</li><li><a href="stop-TEC_LmIkirc2.html">TEC:LmIkirc2</a> - Mirfeld Kirche 12:21</li><li><a href="stop-TEC_LmIzent2.html">TEC:LmIzent2</a> - Mirfeld Zentrum 12:22</li><li><a href="stop-TEC_LmI82--1.html">TEC:LmI82--1</a> - Mirfeld 82 12:22</li><li><a href="stop-TEC_LaMadam1.html">TEC:LaMadam1</a> - Amel Haus Adam 119 12:23</li><li><a href="stop-TEC_LaMjous1.html">TEC:LaMjous1</a> - Amel Haus Jousten 12:24</li><li><a href="stop-TEC_LaMbull1.html">TEC:LaMbull1</a> - Amel Büllinger Strasse 12:25</li><li><a href="stop-TEC_LaMbrei1.html">TEC:LaMbrei1</a> - Amel Zur Breitenbach 12:26</li><li><a href="stop-TEC_LaMades1.html">TEC:LaMades1</a> - Amel Adesberg 12:26</li><li><a href="stop-TEC_LmDkoel1.html">TEC:LmDkoel1</a> - Medell Im Koelchen 12:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5126.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Jodoigne - Ezemaal - 5163:TEC:BW:6160</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jodoigne - Ezemaal - 5163:TEC:BW:6160</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bjodgar1.html">TEC:Bjodgar1</a> - Jodoigne Gare d'Autobus 18:10</li><li><a href="stop-TEC_Bjodcar1.html">TEC:Bjodcar1</a> - Jodoigne Chapelle à l'Arbre 18:11</li><li><a href="stop-TEC_Bjodtpo1.html">TEC:Bjodtpo1</a> - Jodoigne Tienne Potet 18:12</li><li><a href="stop-TEC_Bpiejus1.html">TEC:Bpiejus1</a> - Pietrain Justice 18:13</li><li><a href="stop-TEC_Bpielon2.html">TEC:Bpielon2</a> - Pietrain Rue Longue 18:13</li><li><a href="stop-TEC_Bpiepla1.html">TEC:Bpiepla1</a> - Pietrain Rue de la Place 18:14</li><li><a href="stop-TEC_Bpiesta1.html">TEC:Bpiesta1</a> - Pietrain Rue de la Station 18:15</li><li><a href="stop-TEC_Bpiepnd1.html">TEC:Bpiepnd1</a> - Pietremeau Rue Notre Dame 18:17</li><li><a href="stop-TEC_Bpienod1.html">TEC:Bpienod1</a> - Pietrain Route de Noduwez 18:18</li><li><a href="stop-TEC_Boplcsj1.html">TEC:Boplcsj1</a> - Opheylissem Carrefour Saint-Joseph 18:20</li><li><a href="stop-TEC_Bnodblt1.html">TEC:Bnodblt1</a> - Noduwez Bois Larges Tailles 18:21</li><li><a href="stop-TEC_Bnodcab1.html">TEC:Bnodcab1</a> - Noduwez Cabine 18:22</li><li><a href="stop-TEC_Bnodegl1.html">TEC:Bnodegl1</a> - Noduwez Eglise 18:23</li><li><a href="stop-TEC_Bnodeco1.html">TEC:Bnodeco1</a> - Noduwez Ecoles 18:23</li><li><a href="stop-TEC_Bnodtir4.html">TEC:Bnodtir4</a> - Noduwez Rue de Tirlemont 18:24</li><li><a href="stop-TEC_Bnodblt2.html">TEC:Bnodblt2</a> - Noduwez Bois Larges Tailles 18:25</li><li><a href="stop-TEC_Boplcsj3.html">TEC:Boplcsj3</a> - Opheylissem Carrefour Saint-Joseph 18:26</li><li><a href="stop-TEC_Boplsma3.html">TEC:Boplsma3</a> - Opheylissem Rue Armand Dewolf 18:27</li><li><a href="stop-TEC_Boplcar1.html">TEC:Boplcar1</a> - Opheylissem Carrefour 18:28</li><li><a href="stop-TEC_Bneecha1.html">TEC:Bneecha1</a> - Neerheylissem Château 18:29</li><li><a href="stop-TEC_Bneeegl1.html">TEC:Bneeegl1</a> - Neerheylissem Eglise 18:30</li><li><a href="stop-TEC_Bneesan1.html">TEC:Bneesan1</a> - Neerheylissem Sainte-Anne 18:31</li><li><a href="stop-TEC_Bneeblo1.html">TEC:Bneeblo1</a> - Neerheylissem Bois Lowet 18:31</li><li><a href="stop-TEC_Bneesjo1.html">TEC:Bneesjo1</a> - Neerheylissem Rue Saint-Job 18:32</li><li><a href="stop-TEC_Bneesj32.html">TEC:Bneesj32</a> - Neerheylissem Rue Saint-Job n°3 18:33</li><li><a href="stop-TEC_Bezegar2.html">TEC:Bezegar2</a> - Ezemaal Station 18:37</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./107.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHARLEROI Sud - GILLY Soleilmont - 5163:TEC:CH:6319</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHARLEROI Sud - GILLY Soleilmont - 5163:TEC:CH:6319</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cchsud04.html">TEC:Cchsud04</a> - Charleroi Sud 11:58</li><li><a href="stop-TEC_Cchtiro4.html">TEC:Cchtiro4</a> - Charleroi Tirou (M) 12:00</li><li><a href="stop-TEC_Cchparc4.html">TEC:Cchparc4</a> - Charleroi Parc (M) 12:02</li><li><a href="stop-TEC_Cchcase2.html">TEC:Cchcase2</a> - Charleroi Casernes 12:03</li><li><a href="stop-TEC_Cmtrneu2.html">TEC:Cmtrneu2</a> - Montignies-sur-Sambre Rue Neuve 12:04</li><li><a href="stop-TEC_Cmtrbra2.html">TEC:Cmtrbra2</a> - Montignies-sur-Sambre Rue de la Brasserie 12:05</li><li><a href="stop-TEC_Cmtrdec2.html">TEC:Cmtrdec2</a> - Montignies-sur-Sambre Rue R. Decooman 12:07</li><li><a href="stop-TEC_Cmttrie2.html">TEC:Cmttrie2</a> - Montignies-sur-Sambre Trieux 12:08</li><li><a href="stop-TEC_Cmtstan2.html">TEC:Cmtstan2</a> - Montignies-sur-Sambre Saint-André 12:09</li><li><a href="stop-TEC_Cmtcapi2.html">TEC:Cmtcapi2</a> - Montignies-sur-Sambre Rue du Capitaine 12:10</li><li><a href="stop-TEC_Cmtplac4.html">TEC:Cmtplac4</a> - Montignies-sur-Sambre Place 12:11</li><li><a href="stop-TEC_Cmtprey2.html">TEC:Cmtprey2</a> - Montignies-sur-Sambre Rue des Preys 12:12</li><li><a href="stop-TEC_Cmtchas2.html">TEC:Cmtchas2</a> - Montignies-sur-Sambre Rue de la Chasse 12:14</li><li><a href="stop-TEC_Cmtproc2.html">TEC:Cmtproc2</a> - Montignies-sur-Sambre Place du Roctiau 12:15</li><li><a href="stop-TEC_Ccucora2.html">TEC:Ccucora2</a> - Chatelineau Cora 12:17</li><li><a href="stop-TEC_Ccubric2.html">TEC:Ccubric2</a> - Chatelineau Bricoman 12:18</li><li><a href="stop-TEC_Ccupays2.html">TEC:Ccupays2</a> - Chatelineau Pays-Bas 12:19</li><li><a href="stop-TEC_Ccurtra2.html">TEC:Ccurtra2</a> - Chatelineau Rue du Travail 12:20</li><li><a href="stop-TEC_Ccunvus2.html">TEC:Ccunvus2</a> - Chatelineau Nouvelle Usine 12:21</li><li><a href="stop-TEC_Ccutrav2.html">TEC:Ccutrav2</a> - Chatelineau Traversée 12:22</li><li><a href="stop-TEC_Cculgeo2.html">TEC:Cculgeo2</a> - Chatelineau Lloyd Georges 12:23</li><li><a href="stop-TEC_Ccugend2.html">TEC:Ccugend2</a> - Chatelineau Rue Gendebien 12:24</li><li><a href="stop-TEC_Ccuwil2.html">TEC:Ccuwil2</a> - Chatelineau Place Wilson 12:25</li><li><a href="stop-TEC_Ccuhaie2.html">TEC:Ccuhaie2</a> - Chatelineau Rue des Haies 12:25</li><li><a href="stop-TEC_Ccuphai4.html">TEC:Ccuphai4</a> - Chatelineau Place des Haies 12:26</li><li><a href="stop-TEC_Cculpre1.html">TEC:Cculpre1</a> - Chatelineau Longs Prés 12:27</li><li><a href="stop-TEC_Ccucroi2.html">TEC:Ccucroi2</a> - Chatelineau Rue de la Croix 12:28</li><li><a href="stop-TEC_Ccugail2.html">TEC:Ccugail2</a> - Chatelineau Rue Gailly 12:29</li><li><a href="stop-TEC_Ccusole1.html">TEC:Ccusole1</a> - Gilly Soleilmont 12:31</li><li><a href="stop-TEC_Cgysole2.html">TEC:Cgysole2</a> - Gilly Soleilmont (M) 12:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./784.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mons - Trazegnies - 5163:TEC:HT:5696</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mons - Trazegnies - 5163:TEC:HT:5696</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1ms280d.html">TEC:H1ms280d</a> - Mons SNCB 17:20</li><li><a href="stop-TEC_H1ms256a.html">TEC:H1ms256a</a> - Mons Bd Sainctelette 17:22</li><li><a href="stop-TEC_H1ms296c.html">TEC:H1ms296c</a> - Mons Place des Chasseurs 17:23</li><li><a href="stop-TEC_H1ms276a.html">TEC:H1ms276a</a> - Mons Ecole Normale 17:24</li><li><a href="stop-TEC_H1ms253a.html">TEC:H1ms253a</a> - Mons Banque 17:25</li><li><a href="stop-TEC_H1ms294a.html">TEC:H1ms294a</a> - Mons Place de Flandre 17:27</li><li><a href="stop-TEC_H1ms308a.html">TEC:H1ms308a</a> - Mons Saint-Fiacre 17:29</li><li><a href="stop-TEC_H1ms245a.html">TEC:H1ms245a</a> - Mons Arbre Vert 17:30</li><li><a href="stop-TEC_H1ms266a.html">TEC:H1ms266a</a> - Mons Chemin d'Obourg 17:31</li><li><a href="stop-TEC_H1ms258a.html">TEC:H1ms258a</a> - Mons Bon Pasteur 17:32</li><li><a href="stop-TEC_H1ms261a.html">TEC:H1ms261a</a> - Mons Bruyères 17:34</li><li><a href="stop-TEC_H1ms270a.html">TEC:H1ms270a</a> - Mons Clef du Bois 17:35</li><li><a href="stop-TEC_H1ha193a.html">TEC:H1ha193a</a> - Havre Longue Roïe 17:36</li><li><a href="stop-TEC_H1ha201a.html">TEC:H1ha201a</a> - Havre Saint-Antoine 17:37</li><li><a href="stop-TEC_H1ha184a.html">TEC:H1ha184a</a> - Havre Bon Vouloir 17:40</li><li><a href="stop-TEC_H1ha186a.html">TEC:H1ha186a</a> - Havre Château 17:40</li><li><a href="stop-TEC_H1ha195a.html">TEC:H1ha195a</a> - Havre Monument 17:41</li><li><a href="stop-TEC_H1ha196a.html">TEC:H1ha196a</a> - Havre Place 17:41</li><li><a href="stop-TEC_H1ha191a.html">TEC:H1ha191a</a> - Havre Hameau du Pir 17:42</li><li><a href="stop-TEC_H1ha185a.html">TEC:H1ha185a</a> - Havre Charbonnage 17:43</li><li><a href="stop-TEC_H1ha189a.html">TEC:H1ha189a</a> - Havre SNCB 17:44</li><li><a href="stop-TEC_H1ha200a.html">TEC:H1ha200a</a> - Havre Rue A. Collier 17:46</li><li><a href="stop-TEC_H1ha194a.html">TEC:H1ha194a</a> - Havre Ma Campagne 17:47</li><li><a href="stop-TEC_H3bo102a.html">TEC:H3bo102a</a> - Boussoit Rue Grande, 11 17:48</li><li><a href="stop-TEC_H3bo101a.html">TEC:H3bo101a</a> - Boussoit Entrée du Village 17:49</li><li><a href="stop-TEC_H3bo100c.html">TEC:H3bo100c</a> - Boussoit Eglise 17:50</li><li><a href="stop-TEC_H3bo103a.html">TEC:H3bo103a</a> - Boussoit Saint-Julien 17:51</li><li><a href="stop-TEC_H2ma209a.html">TEC:H2ma209a</a> - Maurage Viaduc 17:52</li><li><a href="stop-TEC_H2ma210a.html">TEC:H2ma210a</a> - Maurage Vieux Chêne 17:53</li><li><a href="stop-TEC_H2ma203a.html">TEC:H2ma203a</a> - Maurage Place 17:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2030.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

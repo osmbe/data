@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Fléron-Chaudfontaine-Beaufays-Tilff-Sart-Tilman - 5163:TEC:LV:21825</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Fléron-Chaudfontaine-Beaufays-Tilff-Sart-Tilman - 5163:TEC:LV:21825</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lflterm2.html">TEC:Lflterm2</a> - Fleron Terminus (stationnement) 14:23</li><li><a href="stop-TEC_Lfllapi3.html">TEC:Lfllapi3</a> - Fleron Rue Lapierre 14:23</li><li><a href="stop-TEC_Lflchan1.html">TEC:Lflchan1</a> - Fleron Rue Chantraine 14:24</li><li><a href="stop-TEC_Lroeg--3.html">TEC:Lroeg--3</a> - Romsee Eglise 14:26</li><li><a href="stop-TEC_Lromc--1.html">TEC:Lromc--1</a> - Romsee Maison Communale 14:27</li><li><a href="stop-TEC_Lroboeg1.html">TEC:Lroboeg1</a> - Romsee Bouny église 14:29</li><li><a href="stop-TEC_Lrofont1.html">TEC:Lrofont1</a> - Romsee Fontaine d'Amour 14:30</li><li><a href="stop-TEC_Lcaboun4.html">TEC:Lcaboun4</a> - Chaudfontaine Route de Bouny 14:33</li><li><a href="stop-TEC_Lcacasi2.html">TEC:Lcacasi2</a> - Chaudfontaine Casino 14:36</li><li><a href="stop-TEC_Lcacris2.html">TEC:Lcacris2</a> - Chaudfontaine Fond des Cris 14:37</li><li><a href="stop-TEC_LNipla4.html">TEC:LNipla4</a> - Ninane Place 14:41</li><li><a href="stop-TEC_LBEpier2.html">TEC:LBEpier2</a> - Beaufays Grosses Pierres 14:44</li><li><a href="stop-TEC_LBEnina6.html">TEC:LBEnina6</a> - Beaufays Route de Ninane 14:46</li><li><a href="stop-TEC_LBEtilf2.html">TEC:LBEtilf2</a> - Beaufays Route de Tilff 14:48</li><li><a href="stop-TEC_LTIchev2.html">TEC:LTIchev2</a> - Tilff Bois des Chevreuils 14:50</li><li><a href="stop-TEC_LTIpire1.html">TEC:LTIpire1</a> - Tilff Parking du Pireux 14:53</li><li><a href="stop-TEC_LTIpora2.html">TEC:LTIpora2</a> - Tilff Place des Porais 14:55</li><li><a href="stop-TEC_LTIgare4.html">TEC:LTIgare4</a> - Tilff Gare 14:56</li><li><a href="stop-TEC_Lstchu-4.html">TEC:Lstchu-4</a> - Sart-Tilman C.H.U. - Escaliers 15:01</li><li><a href="stop-TEC_Lstamph2.html">TEC:Lstamph2</a> - Sart-Tilman Amphithéâtres 15:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4669.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

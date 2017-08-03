@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Manhay - Melreux - 5163:TEC:LU:5090</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Manhay - Melreux - 5163:TEC:LU:5090</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X923ala.html">TEC:X923ala</a> - Melreux Gare Quai 1 17:07</li><li><a href="stop-TEC_X923aja.html">TEC:X923aja</a> - Melreux Ecole Libre 17:08</li><li><a href="stop-TEC_X923ahb.html">TEC:X923ahb</a> - Hotton Ecole de l'Etat - Grand'Route 17:09</li><li><a href="stop-TEC_X923aga.html">TEC:X923aga</a> - Hotton Chapelle Saint-Roch 17:09</li><li><a href="stop-TEC_X923aeb.html">TEC:X923aeb</a> - Hotton Pont - Rive Droite 17:10</li><li><a href="stop-TEC_X923afb.html">TEC:X923afb</a> - Hotton Rue des Ecoles 17:10</li><li><a href="stop-TEC_X923aqb.html">TEC:X923aqb</a> - Hotton Route de Ny 17:12</li><li><a href="stop-TEC_X925amb.html">TEC:X925amb</a> - Ny Centre 17:14</li><li><a href="stop-TEC_X925alb.html">TEC:X925alb</a> - Soy Camping 17:17</li><li><a href="stop-TEC_X925agb.html">TEC:X925agb</a> - Soy Rue Grand Mont 20 17:19</li><li><a href="stop-TEC_X925aha.html">TEC:X925aha</a> - Soy Place 17:19</li><li><a href="stop-TEC_X925aib.html">TEC:X925aib</a> - Fisenne Rue du Château 4 17:20</li><li><a href="stop-TEC_X925aja.html">TEC:X925aja</a> - Fisenne Centre 17:21</li><li><a href="stop-TEC_X927aaa.html">TEC:X927aaa</a> - Erezee Pont 17:23</li><li><a href="stop-TEC_X927abb.html">TEC:X927abb</a> - Erezee Rue des Combattants 29 17:24</li><li><a href="stop-TEC_X927acb.html">TEC:X927acb</a> - Erezee Maison Communale 17:25</li><li><a href="stop-TEC_X927ada.html">TEC:X927ada</a> - Erezee Eglise 17:25</li><li><a href="stop-TEC_X927aba.html">TEC:X927aba</a> - Erezee Rue des Combattants 29 17:26</li><li><a href="stop-TEC_X927aab.html">TEC:X927aab</a> - Erezee Pont 17:27</li><li><a href="stop-TEC_X926aaa.html">TEC:X926aaa</a> - Blier Val d'Aisne 17:28</li><li><a href="stop-TEC_X926aba.html">TEC:X926aba</a> - Amonines Chapelle 17:30</li><li><a href="stop-TEC_X926acb.html">TEC:X926acb</a> - Amonines Chemin de Beffe 17:31</li><li><a href="stop-TEC_X926ada.html">TEC:X926ada</a> - Amonines Parfondry 17:32</li><li><a href="stop-TEC_X928aaa.html">TEC:X928aaa</a> - Lamormenil Forge à la Plez 17:34</li><li><a href="stop-TEC_X753aab.html">TEC:X753aab</a> - Dochamps Ecole 17:39</li><li><a href="stop-TEC_X753aba.html">TEC:X753aba</a> - Dochamps Carrefour 17:39</li><li><a href="stop-TEC_X730aaa.html">TEC:X730aaa</a> - Lamormenil Poteau 17:42</li><li><a href="stop-TEC_X730aba.html">TEC:X730aba</a> - Lamormenil Euro Camping 17:42</li><li><a href="stop-TEC_X730aca.html">TEC:X730aca</a> - Lamormenil Route de Dochamps 24 17:43</li><li><a href="stop-TEC_X730ada.html">TEC:X730ada</a> - Lamormenil Ecole 17:43</li><li><a href="stop-TEC_X730aea.html">TEC:X730aea</a> - Lamormenil Route de Freyneux 25 17:44</li><li><a href="stop-TEC_X730afa.html">TEC:X730afa</a> - Freyneux Quatre Bras 17:45</li><li><a href="stop-TEC_X730agb.html">TEC:X730agb</a> - Freyneux Route du Moulin Crahay 4 17:46</li><li><a href="stop-TEC_X731aha.html">TEC:X731aha</a> - Oster Moulin Crahay 17:47</li><li><a href="stop-TEC_X731aga.html">TEC:X731aga</a> - Oster Eglise 17:49</li><li><a href="stop-TEC_X731ama.html">TEC:X731ama</a> - Oster Cimetière 17:50</li><li><a href="stop-TEC_X731aka.html">TEC:X731aka</a> - La Fosse Route du Fagnou 17:50</li><li><a href="stop-TEC_X731afa.html">TEC:X731afa</a> - La Fosse Quatre Bras 17:51</li><li><a href="stop-TEC_X731aeb.html">TEC:X731aeb</a> - La Fosse Route du Châmont 3 17:52</li><li><a href="stop-TEC_X731ada.html">TEC:X731ada</a> - Grandmenil Route de La Fosse 17:54</li><li><a href="stop-TEC_X731aca.html">TEC:X731aca</a> - Grandmenil Tank 17:55</li><li><a href="stop-TEC_X731aba.html">TEC:X731aba</a> - Grandmenil Route d'Erezée 2 17:56</li><li><a href="stop-TEC_X715apb.html">TEC:X715apb</a> - Manhay Spar 17:56</li><li><a href="stop-TEC_X715acb.html">TEC:X715acb</a> - Manhay Carrefour 17:57</li><li><a href="stop-TEC_X715aea.html">TEC:X715aea</a> - Manhay Dépôt TEC 17:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3530.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

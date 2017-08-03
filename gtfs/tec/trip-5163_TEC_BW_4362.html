@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Nivelles - Ronquières - Braine-le-Comte - 5163:TEC:BW:4362</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Nivelles - Ronquières - Braine-le-Comte - 5163:TEC:BW:4362</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bnivga32.html">TEC:Bnivga32</a> - Nivelles Gare 06:18</li><li><a href="stop-TEC_Bnivga31.html">TEC:Bnivga31</a> - Nivelles Gare 06:18</li><li><a href="stop-TEC_Bnivsse1.html">TEC:Bnivsse1</a> - Nivelles Saint-Sépulcre 06:19</li><li><a href="stop-TEC_Bnivbxl2.html">TEC:Bnivbxl2</a> - Nivelles Rue de Bruxelles 06:21</li><li><a href="stop-TEC_Bnivpla1.html">TEC:Bnivpla1</a> - Nivelles Place de Lalieux 06:22</li><li><a href="stop-TEC_Bnivpso2.html">TEC:Bnivpso2</a> - Nivelles Place du Souvenir 06:24</li><li><a href="stop-TEC_Bnivgpl3.html">TEC:Bnivgpl3</a> - Nivelles Grand Place 06:25</li><li><a href="stop-TEC_Bnivsoi1.html">TEC:Bnivsoi1</a> - Nivelles Rue de Soignies 06:26</li><li><a href="stop-TEC_Bnivaba1.html">TEC:Bnivaba1</a> - Nivelles Abattoir 06:27</li><li><a href="stop-TEC_Bnivlai1.html">TEC:Bnivlai1</a> - Nivelles Laiterie 06:28</li><li><a href="stop-TEC_Bmonbri1.html">TEC:Bmonbri1</a> - Monstreux Briqueterie 06:29</li><li><a href="stop-TEC_Bmonbor1.html">TEC:Bmonbor1</a> - Monstreux Borne 06:30</li><li><a href="stop-TEC_Bmoncab1.html">TEC:Bmoncab1</a> - Monstreux Cabine 06:30</li><li><a href="stop-TEC_Bborche1.html">TEC:Bborche1</a> - Bornival Le Chêne 06:32</li><li><a href="stop-TEC_Bborbif1.html">TEC:Bborbif1</a> - Bornival Bifurcation 06:32</li><li><a href="stop-TEC_Bborppa1.html">TEC:Bborppa1</a> - Bornival Petit Paradis 06:33</li><li><a href="stop-TEC_Bborcro1.html">TEC:Bborcro1</a> - Bornival Croiseau 06:34</li><li><a href="stop-TEC_Bronpfe1.html">TEC:Bronpfe1</a> - Ronquieres Pont de Fer 06:35</li><li><a href="stop-TEC_Bronn391.html">TEC:Bronn391</a> - Ronquieres Rue de Nivelles 39 06:36</li><li><a href="stop-TEC_Broncan1.html">TEC:Broncan1</a> - Ronquieres Canal 06:37</li><li><a href="stop-TEC_Bronrch1.html">TEC:Bronrch1</a> - Ronquieres Rue de Chenu 06:38</li><li><a href="stop-TEC_Broneco1.html">TEC:Broneco1</a> - Ronquieres Ecole 06:38</li><li><a href="stop-TEC_Bronfou1.html">TEC:Bronfou1</a> - Ronquieres Foubert 06:39</li><li><a href="stop-TEC_Broncli1.html">TEC:Broncli1</a> - Ronquieres Clipotia 06:41</li><li><a href="stop-TEC_Bhptcha1.html">TEC:Bhptcha1</a> - Henripont La Chapelle 06:43</li><li><a href="stop-TEC_Bhptegl1.html">TEC:Bhptegl1</a> - Henripont Eglise 06:44</li><li><a href="stop-TEC_Bhptpla1.html">TEC:Bhptpla1</a> - Henripont Place 06:44</li><li><a href="stop-TEC_Bbcocvb1.html">TEC:Bbcocvb1</a> - Braine-le-Comte Clos du Vert Bois 06:46</li><li><a href="stop-TEC_Bbcomar1.html">TEC:Bbcomar1</a> - Braine-le-Comte Marouset 06:47</li><li><a href="stop-TEC_Bbcohou3.html">TEC:Bbcohou3</a> - Braine-le-Comte Houssière 06:48</li><li><a href="stop-TEC_Bbcodam3.html">TEC:Bbcodam3</a> - Braine-le-Comte Chemin des Dames 06:49</li><li><a href="stop-TEC_Bbcoubo3.html">TEC:Bbcoubo3</a> - Braine-le-Comte Bourleau 06:51</li><li><a href="stop-TEC_Bbcogar2.html">TEC:Bbcogar2</a> - Braine-le-Comte Gare 06:52</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./144.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

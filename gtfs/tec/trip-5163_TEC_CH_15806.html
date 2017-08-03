@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - SUD- MONCEAU-TRAZEGNIES-COURCELLES-SUD - 5163:TEC:CH:15806</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: SUD- MONCEAU-TRAZEGNIES-COURCELLES-SUD - 5163:TEC:CH:15806</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Ccotrie3.html">TEC:Ccotrie3</a> - Courcelles Place des Trieux 07:13</li><li><a href="stop-TEC_Ccoacar2.html">TEC:Ccoacar2</a> - Courcelles Rue Antoine Carnière 07:14</li><li><a href="stop-TEC_Ccotemp2.html">TEC:Ccotemp2</a> - Courcelles Rue du Temple 07:14</li><li><a href="stop-TEC_Crowilb2.html">TEC:Crowilb2</a> - Roux Wilbeauroux 07:16</li><li><a href="stop-TEC_Crolema2.html">TEC:Crolema2</a> - Roux Rue Général Leman 07:17</li><li><a href="stop-TEC_Crofrio2.html">TEC:Crofrio2</a> - Roux Rue Jean Friot 07:18</li><li><a href="stop-TEC_Croplom5.html">TEC:Croplom5</a> - Roux Plomcot 07:19</li><li><a href="stop-TEC_Crocona1.html">TEC:Crocona1</a> - Roux Rue Conard 07:20</li><li><a href="stop-TEC_Cromart2.html">TEC:Cromart2</a> - Roux Martinet 07:21</li><li><a href="stop-TEC_Cmobeau1.html">TEC:Cmobeau1</a> - Monceau-sur-Sambre Rue Beaussart 07:23</li><li><a href="stop-TEC_Cmovies1.html">TEC:Cmovies1</a> - Monceau-sur-Sambre Monument 07:24</li><li><a href="stop-TEC_Cmoruau1.html">TEC:Cmoruau1</a> - Monceau-sur-Sambre Ruau 07:25</li><li><a href="stop-TEC_Cmocalv2.html">TEC:Cmocalv2</a> - Monceau-sur-Sambre Calvaire 07:26</li><li><a href="stop-TEC_Cmasncb2.html">TEC:Cmasncb2</a> - Marchienne-Au-Pont S.N.C.B. 07:27</li><li><a href="stop-TEC_Cmamons2.html">TEC:Cmamons2</a> - Marchienne-Au-Pont Route de Mons 07:28</li><li><a href="stop-TEC_Cmadeli2.html">TEC:Cmadeli2</a> - Marchienne-Au-Pont Rue Delire 07:31</li><li><a href="stop-TEC_Cmacart2.html">TEC:Cmacart2</a> - Marchienne-Au-Pont De Cartier 07:33</li><li><a href="stop-TEC_Cmareun2.html">TEC:Cmareun2</a> - Marchienne-Au-Pont Rue de la Réunion 07:34</li><li><a href="stop-TEC_Cmacreu2.html">TEC:Cmacreu2</a> - Marchienne-Au-Pont Pont du Creusot 07:35</li><li><a href="stop-TEC_Cmaest2.html">TEC:Cmaest2</a> - Marchienne-Au-Pont Est 07:36</li><li><a href="stop-TEC_Cmafafe2.html">TEC:Cmafafe2</a> - Marchienne-Au-Pont Fabrique de Fer 07:38</li><li><a href="stop-TEC_Cmlthym2.html">TEC:Cmlthym2</a> - Marcinelle Usine de Thy-Marcinelle 07:39</li><li><a href="stop-TEC_Cmlfstt2.html">TEC:Cmlfstt2</a> - Marcinelle Faubourg Ste-Thérèse 07:39</li><li><a href="stop-TEC_Cchsud11.html">TEC:Cchsud11</a> - Charleroi Sud 07:42</li><li><a href="stop-TEC_Cchtram2.html">TEC:Cchtram2</a> - Charleroi Place des Tramways 07:44</li><li><a href="stop-TEC_Cchdigu2.html">TEC:Cchdigu2</a> - Charleroi Place de la Digue 07:45</li><li><a href="stop-TEC_Cchoues1.html">TEC:Cchoues1</a> - Charleroi Ouest 07:46</li><li><a href="stop-TEC_Ccheden1.html">TEC:Ccheden1</a> - Charleroi Eden 07:47</li><li><a href="stop-TEC_Cchba02.html">TEC:Cchba02</a> - Charleroi Beaux-Arts Quai 02 07:49</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1144.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

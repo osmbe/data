@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Arlon - Ligne urbaine Callemeyn - 5163:TEC:LU:3438</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Arlon - Ligne urbaine Callemeyn - 5163:TEC:LU:3438</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X601bsa.html">TEC:X601bsa</a> - Arlon Hydrion 1 11:13</li><li><a href="stop-TEC_X601dga.html">TEC:X601dga</a> - Arlon Hydrion 2 11:14</li><li><a href="stop-TEC_X601bva.html">TEC:X601bva</a> - Arlon ADEPS 11:16</li><li><a href="stop-TEC_X601bub.html">TEC:X601bub</a> - Arlon Rue de l'Hydrion 11:16</li><li><a href="stop-TEC_X601dha.html">TEC:X601dha</a> - Arlon La Bascule 11:17</li><li><a href="stop-TEC_X601apa.html">TEC:X601apa</a> - Arlon Gare Urbain 11:19</li><li><a href="stop-TEC_X601bca.html">TEC:X601bca</a> - Arlon Avenue Nothomb 11:20</li><li><a href="stop-TEC_X601bda.html">TEC:X601bda</a> - Arlon Xxv Août 11:21</li><li><a href="stop-TEC_X601bia.html">TEC:X601bia</a> - Arlon INDA 11:22</li><li><a href="stop-TEC_X601bwa.html">TEC:X601bwa</a> - Arlon Place des Chasseurs Ardennais 11:24</li><li><a href="stop-TEC_X601csb.html">TEC:X601csb</a> - Arlon Avenue du 10ème de Ligne 11:25</li><li><a href="stop-TEC_X601dia.html">TEC:X601dia</a> - Arlon Callemeyn 11:26</li><li><a href="stop-TEC_X601bjb.html">TEC:X601bjb</a> - Arlon Rue de Rédange 11:27</li><li><a href="stop-TEC_X601cta.html">TEC:X601cta</a> - Arlon Cimetière 11:28</li><li><a href="stop-TEC_X601alb.html">TEC:X601alb</a> - Arlon R des 2 Luxembourg 11:29</li><li><a href="stop-TEC_X601aaa.html">TEC:X601aaa</a> - Arlon R des 2 Luxembourg 11 11:30</li><li><a href="stop-TEC_X601abb.html">TEC:X601abb</a> - Arlon Tec - Rue des Genêts 11:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2504.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

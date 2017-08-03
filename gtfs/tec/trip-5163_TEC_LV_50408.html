@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Herstal - Hermée - Bassenge - Emael - 5163:TEC:LV:50408</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Herstal - Hermée - Bassenge - Emael - 5163:TEC:LV:50408</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LBStec-1.html">TEC:LBStec-1</a> - Bassenge Dépôt TEC 08:55</li><li><a href="stop-TEC_LWOpier1.html">TEC:LWOpier1</a> - Wonck Rue du Pierreux 08:56</li><li><a href="stop-TEC_LWOruis1.html">TEC:LWOruis1</a> - Wonck Rue du Ruisseau 08:57</li><li><a href="stop-TEC_LWOwaer1.html">TEC:LWOwaer1</a> - Wonck Rue sous Waer 08:58</li><li><a href="stop-TEC_LWOrout1.html">TEC:LWOrout1</a> - Wonck Grand'Route 251 08:58</li><li><a href="stop-TEC_LWOwonc1.html">TEC:LWOwonc1</a> - Wonck Route de Wonck 08:59</li><li><a href="stop-TEC_LEBmoul1.html">TEC:LEBmoul1</a> - Eben Moulin 09:01</li><li><a href="stop-TEC_LEBeg--1.html">TEC:LEBeg--1</a> - Eben Eglise 09:01</li><li><a href="stop-TEC_LEBdoct1.html">TEC:LEBdoct1</a> - Eben Docteur 09:02</li><li><a href="stop-TEC_LEMec--1.html">TEC:LEMec--1</a> - Emael Ecole 09:03</li><li><a href="stop-TEC_LEMeg--1.html">TEC:LEMeg--1</a> - Emael Eglise 09:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3918.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

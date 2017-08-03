@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Paliseul - Ochamps - Bertrix - 5163:TEC:LU:3735</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Paliseul - Ochamps - Bertrix - 5163:TEC:LU:3735</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X806aab.html">TEC:X806aab</a> - Paliseul Gare 07:50</li><li><a href="stop-TEC_X806aac.html">TEC:X806aac</a> - Paliseul Gare 07:50</li><li><a href="stop-TEC_X806aba.html">TEC:X806aba</a> - Paliseul Hutte Lurette 07:51</li><li><a href="stop-TEC_X806aca.html">TEC:X806aca</a> - Paliseul Gendarmerie 07:51</li><li><a href="stop-TEC_X806ada.html">TEC:X806ada</a> - Paliseul Eglise 07:52</li><li><a href="stop-TEC_X806aeb.html">TEC:X806aeb</a> - Paliseul Chapelle Saint-Roch 07:52</li><li><a href="stop-TEC_X869aeb.html">TEC:X869aeb</a> - Sart Fontaine (Bertrix) 07:56</li><li><a href="stop-TEC_X869afb.html">TEC:X869afb</a> - Jehonville Salle des Fêtes 07:57</li><li><a href="stop-TEC_X869afb.html">TEC:X869afb</a> - Jehonville Salle des Fêtes 07:57</li><li><a href="stop-TEC_X805adb.html">TEC:X805adb</a> - Assenois Ecole Communale (Bertrix) 08:00</li><li><a href="stop-TEC_X805acb.html">TEC:X805acb</a> - Glaumont Passage à Niveau 08:00</li><li><a href="stop-TEC_X805abb.html">TEC:X805abb</a> - La Flèche 08:03</li><li><a href="stop-TEC_X804bzb.html">TEC:X804bzb</a> - Bertrix Rue de La Flèche 44 08:04</li><li><a href="stop-TEC_X804adb.html">TEC:X804adb</a> - Bertrix Rue de la Fèche 8 08:05</li><li><a href="stop-TEC_X804aeb.html">TEC:X804aeb</a> - Bertrix Rue de la Fontinelle 08:05</li><li><a href="stop-TEC_X804afa.html">TEC:X804afa</a> - Bertrix Rue de Renaumont 08:06</li><li><a href="stop-TEC_X804aga.html">TEC:X804aga</a> - Bertrix Grand'Place 08:07</li><li><a href="stop-TEC_X804aib.html">TEC:X804aib</a> - Bertrix IND 08:09</li><li><a href="stop-TEC_X804aja.html">TEC:X804aja</a> - Bertrix Rue des Chasseurs Ardennais 08:11</li><li><a href="stop-TEC_X804aka.html">TEC:X804aka</a> - Bertrix Athénée 08:12</li><li><a href="stop-TEC_X804alb.html">TEC:X804alb</a> - Bertrix Gare - Quai 3 08:16</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2705.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Proxibus Waterloo - 5163:TEC:BW:10042</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Proxibus Waterloo - 5163:TEC:BW:10042</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bwatgar5.html">TEC:Bwatgar5</a> - Waterloo Gare (Parking) 18:56</li><li><a href="stop-TEC_Bwatfia1.html">TEC:Bwatfia1</a> - Waterloo Fiat 18:58</li><li><a href="stop-TEC_Bwatath2.html">TEC:Bwatath2</a> - Waterloo Athénée 18:59</li><li><a href="stop-TEC_Bwatdmo1.html">TEC:Bwatdmo1</a> - Waterloo Drève du Moulin 19:01</li><li><a href="stop-TEC_Bwatmco2.html">TEC:Bwatmco2</a> - Waterloo Maison Communale 19:02</li><li><a href="stop-TEC_Bwategb1.html">TEC:Bwategb1</a> - Waterloo G.B. 19:04</li><li><a href="stop-TEC_Bwatsuc1.html">TEC:Bwatsuc1</a> - Waterloo Sucrerie 19:05</li><li><a href="stop-TEC_Bwatpro1.html">TEC:Bwatpro1</a> - Waterloo Prince royal 19:06</li><li><a href="stop-TEC_Bwatprp1.html">TEC:Bwatprp1</a> - Waterloo Princesse Paola 19:07</li><li><a href="stop-TEC_Bwatjbo1.html">TEC:Bwatjbo1</a> - Waterloo Joli-Bois 19:09</li><li><a href="stop-TEC_Bwatbno1.html">TEC:Bwatbno1</a> - Waterloo Chemin des Noces 19:10</li><li><a href="stop-TEC_Bwatgib1.html">TEC:Bwatgib1</a> - Waterloo Bon Dieu de Gibloux 19:11</li><li><a href="stop-TEC_Bwatnrs1.html">TEC:Bwatnrs1</a> - Waterloo Roi Soleil 19:12</li><li><a href="stop-TEC_Bwatcpr1.html">TEC:Bwatcpr1</a> - Waterloo Cense - Printemps 19:13</li><li><a href="stop-TEC_Bwatavo1.html">TEC:Bwatavo1</a> - Waterloo Avenue de l'Avocat 19:14</li><li><a href="stop-TEC_Bwatclo1.html">TEC:Bwatclo1</a> - Waterloo Champ de Mai 19:15</li><li><a href="stop-TEC_Bwatath3.html">TEC:Bwatath3</a> - Waterloo Athenée (Av. Theys) 19:17</li><li><a href="stop-TEC_Bwatfia2.html">TEC:Bwatfia2</a> - Waterloo Fiat 19:18</li><li><a href="stop-TEC_Bwatgar4.html">TEC:Bwatgar4</a> - Waterloo Gare (Parking) 19:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./8.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

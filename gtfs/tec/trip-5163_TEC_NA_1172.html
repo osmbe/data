@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHIMAY - GONRIEUX - COUVIN - 5163:TEC:NA:1172</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHIMAY - GONRIEUX - COUVIN - 5163:TEC:NA:1172</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_NH01aca.html">TEC:NH01aca</a> - Chimay Gare 12:25</li><li><a href="stop-TEC_Ccyfroi2.html">TEC:Ccyfroi2</a> - Chimay Place Froissart 12:27</li><li><a href="stop-TEC_NH01aea.html">TEC:NH01aea</a> - Chimay Clinique 12:28</li><li><a href="stop-TEC_NH01aka.html">TEC:NH01aka</a> - Chimay Route de Forges 12:28</li><li><a href="stop-TEC_NH01ala.html">TEC:NH01ala</a> - Chimay Le gibet 12:29</li><li><a href="stop-TEC_NH01aia.html">TEC:NH01aia</a> - Forges Laiterie 12:30</li><li><a href="stop-TEC_NH01aoa.html">TEC:NH01aoa</a> - Forges Bas du village 12:31</li><li><a href="stop-TEC_NH01apa.html">TEC:NH01apa</a> - Forges Cimetière 12:32</li><li><a href="stop-TEC_NH01aqa.html">TEC:NH01aqa</a> - Forges Village 12:33</li><li><a href="stop-TEC_NH01ara.html">TEC:NH01ara</a> - Forges Dépôt 12:33</li><li><a href="stop-TEC_NH01aub.html">TEC:NH01aub</a> - Forges La poterie 12:34</li><li><a href="stop-TEC_NH01anb.html">TEC:NH01anb</a> - Forges Cité 12:35</li><li><a href="stop-TEC_NH01abc.html">TEC:NH01abc</a> - Bourlers Place communale 12:36</li><li><a href="stop-TEC_N423aeb.html">TEC:N423aeb</a> - Baileux Cimetière 12:39</li><li><a href="stop-TEC_N423aaa.html">TEC:N423aaa</a> - Baileux Eglise 12:40</li><li><a href="stop-TEC_N423acb.html">TEC:N423acb</a> - Baileux Route de Rocroi 12:42</li><li><a href="stop-TEC_N423abb.html">TEC:N423abb</a> - Baileux Cité 12:43</li><li><a href="stop-TEC_N423afa.html">TEC:N423afa</a> - Baileux Zoning 12:46</li><li><a href="stop-TEC_N423aga.html">TEC:N423aga</a> - Baileux Boutonville bas 12:48</li><li><a href="stop-TEC_N138aac.html">TEC:N138aac</a> - Gonrieux Bas 12:51</li><li><a href="stop-TEC_N138afa.html">TEC:N138afa</a> - Presgaux Culot 12:53</li><li><a href="stop-TEC_N138aga.html">TEC:N138aga</a> - Presgaux Village 12:54</li><li><a href="stop-TEC_N138aha.html">TEC:N138aha</a> - Presgaux Rue des Forges 12:55</li><li><a href="stop-TEC_N138aia.html">TEC:N138aia</a> - Presgaux Rue de Pesche 12:56</li><li><a href="stop-TEC_N138aea.html">TEC:N138aea</a> - Gonrieux Haut 12:57</li><li><a href="stop-TEC_N138aca.html">TEC:N138aca</a> - Gonrieux Eglise 12:58</li><li><a href="stop-TEC_N138aaa.html">TEC:N138aaa</a> - Gonrieux Bas 12:59</li><li><a href="stop-TEC_N138ajb.html">TEC:N138ajb</a> - Gonrieux Résidence Kennedy 13:01</li><li><a href="stop-TEC_N131aaa.html">TEC:N131aaa</a> - Dailly Chapelle 13:03</li><li><a href="stop-TEC_N131aba.html">TEC:N131aba</a> - Dailly Place 13:04</li><li><a href="stop-TEC_N131aja.html">TEC:N131aja</a> - Dailly Route de Pesche 13:05</li><li><a href="stop-TEC_N136aba.html">TEC:N136aba</a> - Pesche Village 13:09</li><li><a href="stop-TEC_N136aca.html">TEC:N136aca</a> - Pesche Eglise 13:10</li><li><a href="stop-TEC_N136ada.html">TEC:N136ada</a> - Pesche Couvent 13:10</li><li><a href="stop-TEC_N135aaa.html">TEC:N135aaa</a> - Couvin Champagnat 13:12</li><li><a href="stop-TEC_N135aba.html">TEC:N135aba</a> - Couvin Côte de Chimay 13:13</li><li><a href="stop-TEC_N135adb.html">TEC:N135adb</a> - Couvin Gare SNCB 13:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5677.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

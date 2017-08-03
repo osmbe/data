@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Saint-Ghislain - Herchies - 5163:TEC:HT:5582</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Saint-Ghislain - Herchies - 5163:TEC:HT:5582</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1sg147d.html">TEC:H1sg147d</a> - Saint-Ghislain SNCB 16:37</li><li><a href="stop-TEC_H1sg148b.html">TEC:H1sg148b</a> - Saint-Ghislain Place 16:39</li><li><a href="stop-TEC_H1sg150c.html">TEC:H1sg150c</a> - Saint-Ghislain Rue du Sas 16:40</li><li><a href="stop-TEC_H1sg149b.html">TEC:H1sg149b</a> - Tertre Route de Tournai 16:43</li><li><a href="stop-TEC_H1te176b.html">TEC:H1te176b</a> - Tertre Carrefour 16:44</li><li><a href="stop-TEC_H1te183a.html">TEC:H1te183a</a> - Tertre Ecoles 16:45</li><li><a href="stop-TEC_H1te182a.html">TEC:H1te182a</a> - Tertre Cité Wauters 16:47</li><li><a href="stop-TEC_H1te183b.html">TEC:H1te183b</a> - Tertre Ecoles 16:49</li><li><a href="stop-TEC_H1te188b.html">TEC:H1te188b</a> - Tertre Place 16:49</li><li><a href="stop-TEC_H1te187b.html">TEC:H1te187b</a> - Tertre Le Manant 16:50</li><li><a href="stop-TEC_H1te185b.html">TEC:H1te185b</a> - Tertre SNCB 16:51</li><li><a href="stop-TEC_H1ba101b.html">TEC:H1ba101b</a> - Baudour Chapelle 16:52</li><li><a href="stop-TEC_H1ba102b.html">TEC:H1ba102b</a> - Baudour Chemin de Condé 16:54</li><li><a href="stop-TEC_H1ba114d.html">TEC:H1ba114d</a> - Baudour Place 16:55</li><li><a href="stop-TEC_H1ba118b.html">TEC:H1ba118b</a> - Baudour Rue des Acacias 16:56</li><li><a href="stop-TEC_H1ba103b.html">TEC:H1ba103b</a> - Baudour Cité Bon logis 16:57</li><li><a href="stop-TEC_H1ba100b.html">TEC:H1ba100b</a> - Baudour Cérabel 16:57</li><li><a href="stop-TEC_H1ba111a.html">TEC:H1ba111a</a> - Baudour La Clairière 16:58</li><li><a href="stop-TEC_H1ba112a.html">TEC:H1ba112a</a> - Baudour La Jardinière 17:00</li><li><a href="stop-TEC_H1hh112b.html">TEC:H1hh112b</a> - Herchies Moulin 17:03</li><li><a href="stop-TEC_H1hh118b.html">TEC:H1hh118b</a> - Herchies Vacresse 17:04</li><li><a href="stop-TEC_H1hh114b.html">TEC:H1hh114b</a> - Herchies Petite Vacresse 17:06</li><li><a href="stop-TEC_H1hh111b.html">TEC:H1hh111b</a> - Herchies Laiterie 17:07</li><li><a href="stop-TEC_H1hh115a.html">TEC:H1hh115a</a> - Herchies Route d' Erbaut 17:07</li><li><a href="stop-TEC_H1hh109b.html">TEC:H1hh109b</a> - Herchies Eglise 17:08</li><li><a href="stop-TEC_H1hh113b.html">TEC:H1hh113b</a> - Herchies Nord 17:09</li><li><a href="stop-TEC_H1hh116a.html">TEC:H1hh116a</a> - Herchies Rue de Bauffe 17:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2353.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

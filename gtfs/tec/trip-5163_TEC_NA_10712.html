@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CINEY - HAVELANGE - 5163:TEC:NA:10712</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CINEY - HAVELANGE - 5163:TEC:NA:10712</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N201aea.html">TEC:N201aea</a> - Ciney Gare d'autobus 08:17</li><li><a href="stop-TEC_N201afa.html">TEC:N201afa</a> - Ciney Place Monseu 08:18</li><li><a href="stop-TEC_N201ara.html">TEC:N201ara</a> - Ciney Rue Sauvenière 08:19</li><li><a href="stop-TEC_N201aqa.html">TEC:N201aqa</a> - Ciney Clinique 08:20</li><li><a href="stop-TEC_N201apa.html">TEC:N201apa</a> - Ciney Biron 08:21</li><li><a href="stop-TEC_N201aoa.html">TEC:N201aoa</a> - Ciney Zoning entrée 08:22</li><li><a href="stop-TEC_N201ana.html">TEC:N201ana</a> - Ciney Vivaco 08:23</li><li><a href="stop-TEC_N202aia.html">TEC:N202aia</a> - Emptinne Carrefour fontaine 08:24</li><li><a href="stop-TEC_N204aja.html">TEC:N204aja</a> - Hamois Grand route 08:27</li><li><a href="stop-TEC_N204aia.html">TEC:N204aia</a> - Hamois Trou maroie 08:28</li><li><a href="stop-TEC_N204aha.html">TEC:N204aha</a> - Hamois Gare 08:29</li><li><a href="stop-TEC_N204aga.html">TEC:N204aga</a> - Hamois Gendarmerie 08:29</li><li><a href="stop-TEC_N204afa.html">TEC:N204afa</a> - Hamois Mars-au-frêne 08:30</li><li><a href="stop-TEC_N204aea.html">TEC:N204aea</a> - Hamois Les Hazettes 08:31</li><li><a href="stop-TEC_N208aaa.html">TEC:N208aaa</a> - Flostoy Route de Bormenville 08:32</li><li><a href="stop-TEC_N209ala.html">TEC:N209ala</a> - Havelange Ferme d'Offoux 08:35</li><li><a href="stop-TEC_N209aka.html">TEC:N209aka</a> - Havelange Tourterelles 08:35</li><li><a href="stop-TEC_N209aja.html">TEC:N209aja</a> - Havelange Dépôt 08:36</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6041.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

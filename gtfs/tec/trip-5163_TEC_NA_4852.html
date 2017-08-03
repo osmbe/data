@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - BEAURAING - GIVET - DOISCHE - 5163:TEC:NA:4852</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: BEAURAING - GIVET - DOISCHE - 5163:TEC:NA:4852</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N301ajb.html">TEC:N301ajb</a> - Givet Gare 11:32</li><li><a href="stop-TEC_N301afc.html">TEC:N301afc</a> - Givet St-Hilaire place Méhul 11:33</li><li><a href="stop-TEC_N301ada.html">TEC:N301ada</a> - Givet Pont 11:34</li><li><a href="stop-TEC_N301aca.html">TEC:N301aca</a> - Givet Place de la République 11:34</li><li><a href="stop-TEC_N301abd.html">TEC:N301abd</a> - Givet Eglise Notre-Dame 11:35</li><li><a href="stop-TEC_N301apa.html">TEC:N301apa</a> - Givet Pont d'Houille 11:36</li><li><a href="stop-TEC_N301aob.html">TEC:N301aob</a> - Fromelennes Cité la Presle 11:36</li><li><a href="stop-TEC_N301anb.html">TEC:N301anb</a> - Fromelennes Ripel 11:37</li><li><a href="stop-TEC_N301amb.html">TEC:N301amb</a> - Fromelennes Place des Rentiers 11:38</li><li><a href="stop-TEC_N302afa.html">TEC:N302afa</a> - Flohimont Place des Vieilles Forges 11:40</li><li><a href="stop-TEC_N301ama.html">TEC:N301ama</a> - Fromelennes Place des Rentiers 11:42</li><li><a href="stop-TEC_N301ana.html">TEC:N301ana</a> - Fromelennes Ripel 11:43</li><li><a href="stop-TEC_N301aoa.html">TEC:N301aoa</a> - Fromelennes Cité la Presle 11:44</li><li><a href="stop-TEC_N301asb.html">TEC:N301asb</a> - Givet Rives d'Europe 11:45</li><li><a href="stop-TEC_N301akb.html">TEC:N301akb</a> - Fromelennes Pavillons 11:46</li><li><a href="stop-TEC_N331aeb.html">TEC:N331aeb</a> - Dion Douane belge 11:47</li><li><a href="stop-TEC_N331adb.html">TEC:N331adb</a> - Dion Petit caporal 11:48</li><li><a href="stop-TEC_N308bcb.html">TEC:N308bcb</a> - Baronville Route de Baronville 11:52</li><li><a href="stop-TEC_N308aib.html">TEC:N308aib</a> - Beauraing Rond-point 11:55</li><li><a href="stop-TEC_N308aja.html">TEC:N308aja</a> - Beauraing Route de la gare 11:56</li><li><a href="stop-TEC_N308aha.html">TEC:N308aha</a> - Beauraing Place Berry 11:57</li><li><a href="stop-TEC_N308aga.html">TEC:N308aga</a> - Beauraing Place St-Roch 11:59</li><li><a href="stop-TEC_N308afc.html">TEC:N308afc</a> - Beauraing INDSC 12:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6430.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

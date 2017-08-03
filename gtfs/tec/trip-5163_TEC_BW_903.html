@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Hannut - Jodoigne - 5163:TEC:BW:903</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hannut - Jodoigne - 5163:TEC:BW:903</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bjodeco3.html">TEC:Bjodeco3</a> - Jodoigne Ecole Normale 07:24</li><li><a href="stop-TEC_Bjodrdp2.html">TEC:Bjodrdp2</a> - Jodoigne Rue de Piétrain 07:25</li><li><a href="stop-TEC_Bjodgar1.html">TEC:Bjodgar1</a> - Jodoigne Gare d'Autobus 07:26</li><li><a href="stop-TEC_Bjodath1.html">TEC:Bjodath1</a> - Jodoigne Athénée Royal 07:27</li><li><a href="stop-TEC_Bjodint2.html">TEC:Bjodint2</a> - Jodoigne Internat 07:28</li><li><a href="stop-TEC_Bjodcoi2.html">TEC:Bjodcoi2</a> - Jodoigne Chant des Oiseaux 07:29</li><li><a href="stop-TEC_Bjodfco1.html">TEC:Bjodfco1</a> - Jodoigne Ferme de la Comté 07:31</li><li><a href="stop-TEC_Bmrlsau1.html">TEC:Bmrlsau1</a> - Marilles Saussoy 07:32</li><li><a href="stop-TEC_Benimar1.html">TEC:Benimar1</a> - Enines Route de Marilles 07:33</li><li><a href="stop-TEC_Bmrlcch1.html">TEC:Bmrlcch1</a> - Marilles Cinq chemins 07:34</li><li><a href="stop-TEC_Bmrllgr1.html">TEC:Bmrllgr1</a> - Marilles Rue Léon Gramme 07:35</li><li><a href="stop-TEC_Bmrlhan1.html">TEC:Bmrlhan1</a> - Marilles Rue de Hannut 07:36</li><li><a href="stop-TEC_Bmrleco2.html">TEC:Bmrleco2</a> - Marilles Ecoles 07:37</li><li><a href="stop-TEC_Bmrl4ch2.html">TEC:Bmrl4ch2</a> - Marilles Quatre chemins 07:39</li><li><a href="stop-TEC_Bolgcsa2.html">TEC:Bolgcsa2</a> - Orp-le-Grand Chapelle Sainte-Adèle 07:41</li><li><a href="stop-TEC_Bolgrsa1.html">TEC:Bolgrsa1</a> - Orp-le-Grand Gare (Ste-Adèle) 07:42</li><li><a href="stop-TEC_Bolgsha1.html">TEC:Bolgsha1</a> - Orp-le-Grand Rue Soldat Haccourt 07:42</li><li><a href="stop-TEC_Bolgegl1.html">TEC:Bolgegl1</a> - Orp-le-Grand Eglise 07:43</li><li><a href="stop-TEC_Bolgfon1.html">TEC:Bolgfon1</a> - Orp-le-Grand Rue de Fontigny 07:44</li><li><a href="stop-TEC_Bolppla3.html">TEC:Bolppla3</a> - Orp-le-Petit Place 07:46</li><li><a href="stop-TEC_Bolppla2.html">TEC:Bolppla2</a> - Orp-le-Petit Place 07:46</li><li><a href="stop-TEC_Bolppsn2.html">TEC:Bolppsn2</a> - Orp-le-Petit Pont S.N.C.B. 07:46</li><li><a href="stop-TEC_Bolphgr2.html">TEC:Bolphgr2</a> - Orp-le-Petit Rue Henri Grenier 07:47</li><li><a href="stop-TEC_Bjaugaz2.html">TEC:Bjaugaz2</a> - Jauche Gazomètre 07:49</li><li><a href="stop-TEC_Bjaugar5.html">TEC:Bjaugar5</a> - Jauche Gare 07:49</li><li><a href="stop-TEC_Bjaupro1.html">TEC:Bjaupro1</a> - Jauche Place de la Roulette 07:50</li><li><a href="stop-TEC_Bjaurgo1.html">TEC:Bjaurgo1</a> - Jauche Avenue R. Gossia 07:51</li><li><a href="stop-TEC_Bjanegl4.html">TEC:Bjanegl4</a> - Jandrain Eglise 07:53</li><li><a href="stop-TEC_Bjaneco2.html">TEC:Bjaneco2</a> - Jandrain Ecoles 07:54</li><li><a href="stop-TEC_Bjanfer2.html">TEC:Bjanfer2</a> - Jandrain Ferme 07:55</li><li><a href="stop-TEC_Bwanorp2.html">TEC:Bwanorp2</a> - Wansin Route d'Orp 07:56</li><li><a href="stop-TEC_Bwancal2.html">TEC:Bwancal2</a> - Wansin Calvaire 07:57</li><li><a href="stop-TEC_Bthspha2.html">TEC:Bthspha2</a> - Thisnes Rue Petit Hallet 07:58</li><li><a href="stop-TEC_Bthsset2.html">TEC:Bthsset2</a> - Thisnes Saint-Etienne 07:59</li><li><a href="stop-TEC_Bthsvil2.html">TEC:Bthsvil2</a> - Thisnes Village 07:59</li><li><a href="stop-TEC_Bthscbl2.html">TEC:Bthscbl2</a> - Thisnes Rue de la Croix Blanche 08:00</li><li><a href="stop-TEC_Bhanwav2.html">TEC:Bhanwav2</a> - Hannut Chaussée de Wavre 50 08:02</li><li><a href="stop-TEC_Bhancre2.html">TEC:Bhancre2</a> - Hannut Route de Crehen 08:03</li><li><a href="stop-TEC_LHNecpr4.html">TEC:LHNecpr4</a> - Hannut Ecole Primaire 08:04</li><li><a href="stop-TEC_LHNhall2.html">TEC:LHNhall2</a> - Hannut Place H. Hallet 08:05</li><li><a href="stop-TEC_LHNwaut2.html">TEC:LHNwaut2</a> - Hannut Rue J. Wauters 08:06</li><li><a href="stop-TEC_LHNgare2.html">TEC:LHNgare2</a> - Hannut Gare 08:06</li><li><a href="stop-TEC_LHNgend2.html">TEC:LHNgend2</a> - Hannut Gendarmerie 08:07</li><li><a href="stop-TEC_Bhancom2.html">TEC:Bhancom2</a> - Hannut Centre Commercial 08:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./468.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

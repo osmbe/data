@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Comines/Komen - Houplines - 5163:TEC:HT:12224</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Comines/Komen - Houplines - 5163:TEC:HT:12224</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4fg116b.html">TEC:H4fg116b</a> - Frelinghien Centre 06:25</li><li><a href="stop-TEC_H4wn125b.html">TEC:H4wn125b</a> - Waasten La Marmite/De Ketel 06:26</li><li><a href="stop-TEC_H4wn127b.html">TEC:H4wn127b</a> - Waasten Le Touquet 06:28</li><li><a href="stop-TEC_H4pl111b.html">TEC:H4pl111b</a> - Ploegsteert Au Bon Coin 06:29</li><li><a href="stop-TEC_H4pl117b.html">TEC:H4pl117b</a> - Ploegsteert Epine Indépendante 06:30</li><li><a href="stop-TEC_H4pl120a.html">TEC:H4pl120a</a> - Le Bizet Rue des Trois Evêchés 06:32</li><li><a href="stop-TEC_H4pl114b.html">TEC:H4pl114b</a> - Ploegsteert Château Nonet Kasteel 06:34</li><li><a href="stop-TEC_H4pl115b.html">TEC:H4pl115b</a> - Ploegsteert Ecole de l'Etat/Rijksschool 06:35</li><li><a href="stop-TEC_H4pl122b.html">TEC:H4pl122b</a> - Ploegsteert Palais des Meubles/Meubelpaleis 06:37</li><li><a href="stop-TEC_H4pl116b.html">TEC:H4pl116b</a> - Ploegsteert Eglise / Kerk 06:38</li><li><a href="stop-TEC_H4pl137a.html">TEC:H4pl137a</a> - Ploegsteert Home CPAS/OCMW 06:38</li><li><a href="stop-TEC_H4pl121b.html">TEC:H4pl121b</a> - Ploegsteert Résidence Beau Site 06:39</li><li><a href="stop-TEC_H4pl112b.html">TEC:H4pl112b</a> - Ploegsteert Belle promenade/Schone Wandeling 06:40</li><li><a href="stop-TEC_H4wn126b.html">TEC:H4wn126b</a> - Ploegsteert Le Gheer 06:41</li><li><a href="stop-TEC_H4wn129b.html">TEC:H4wn129b</a> - Waasten Pont Rouge 06:44</li><li><a href="stop-TEC_H4wn123b.html">TEC:H4wn123b</a> - Waasten Au Bon Fermier 06:45</li><li><a href="stop-TEC_H4wn138b.html">TEC:H4wn138b</a> - Waasten Home La Sérénité 06:45</li><li><a href="stop-TEC_H4wn130b.html">TEC:H4wn130b</a> - Waasten Route de Messines/Messinesweg 06:46</li><li><a href="stop-TEC_H4wn128b.html">TEC:H4wn128b</a> - Waasten Place/Markt 06:47</li><li><a href="stop-TEC_H4wn124a.html">TEC:H4wn124a</a> - Waasten Ancienne Gare/Station 06:48</li><li><a href="stop-TEC_H4wn124d.html">TEC:H4wn124d</a> - Waasten Ancienne Gare/Station 06:48</li><li><a href="stop-TEC_H4wn131b.html">TEC:H4wn131b</a> - Waasten Villa Blanche 06:49</li><li><a href="stop-TEC_H4bw102b.html">TEC:H4bw102b</a> - Neerwaasten Place/Markt 06:50</li><li><a href="stop-TEC_H4bw101b.html">TEC:H4bw101b</a> - Neerwaasten Chaussée de Warneton 06:51</li><li><a href="stop-TEC_H4bw100b.html">TEC:H4bw100b</a> - Neerwaasten Mai Cornet 06:52</li><li><a href="stop-TEC_H4co103b.html">TEC:H4co103b</a> - Komen Athénée Royal 06:54</li><li><a href="stop-TEC_H4co110b.html">TEC:H4co110b</a> - Komen Place Sainte-Anne/Sint-Annaplein 06:55</li><li><a href="stop-TEC_H4co106a.html">TEC:H4co106a</a> - Komen SNCB/Station 06:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1649.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

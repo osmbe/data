@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - ANDERLUES-CHARLEROI - 5163:TEC:CH:5009</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: ANDERLUES-CHARLEROI - 5163:TEC:CH:5009</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cchsud11.html">TEC:Cchsud11</a> - Charleroi Sud 20:55</li><li><a href="stop-TEC_Cchtiro4.html">TEC:Cchtiro4</a> - Charleroi Tirou (M) 20:58</li><li><a href="stop-TEC_Cchparc4.html">TEC:Cchparc4</a> - Charleroi Parc (M) 20:59</li><li><a href="stop-TEC_Cchcase4.html">TEC:Cchcase4</a> - Charleroi Casernes 21:00</li><li><a href="stop-TEC_Cchhopi2.html">TEC:Cchhopi2</a> - Charleroi Hôpital Civil 21:01</li><li><a href="stop-TEC_Cchmonu4.html">TEC:Cchmonu4</a> - Charleroi Monument 21:03</li><li><a href="stop-TEC_Cchba08.html">TEC:Cchba08</a> - Charleroi Beaux-Arts Quai 08 21:04</li><li><a href="stop-TEC_Cchoues2.html">TEC:Cchoues2</a> - Charleroi Ouest 21:05</li><li><a href="stop-TEC_Cchheig2.html">TEC:Cchheig2</a> - Charleroi Rue de Heigne 21:06</li><li><a href="stop-TEC_Cdaptca2.html">TEC:Cdaptca2</a> - Dampremy Pont du Canal 21:07</li><li><a href="stop-TEC_Cdanvpr2.html">TEC:Cdanvpr2</a> - Dampremy Nouvelle Providence 21:09</li><li><a href="stop-TEC_Cdagoss2.html">TEC:Cdagoss2</a> - Dampremy Route de Gosselies 21:10</li><li><a href="stop-TEC_Cmaprov2.html">TEC:Cmaprov2</a> - Marchienne-Au-Pont Providence (M) 21:10</li><li><a href="stop-TEC_Cmamons2.html">TEC:Cmamons2</a> - Marchienne-Au-Pont Route de Mons 21:12</li><li><a href="stop-TEC_Cmomoul3.html">TEC:Cmomoul3</a> - Monceau-sur-Sambre Moulin (M) 21:13</li><li><a href="stop-TEC_Cgxmorg2.html">TEC:Cgxmorg2</a> - Goutroux Morgnies (M) 21:18</li><li><a href="stop-TEC_Cfodepo2.html">TEC:Cfodepo2</a> - Eveque Rue des Déportés 21:21</li><li><a href="stop-TEC_Cfometr2.html">TEC:Cfometr2</a> - Eveque Fontaine (M) 21:23</li><li><a href="stop-TEC_Cfocant2.html">TEC:Cfocant2</a> - Eveque Cantonnier 21:24</li><li><a href="stop-TEC_Cfopetr2.html">TEC:Cfopetr2</a> - Eveque Pétria 21:25</li><li><a href="stop-TEC_Cfocobe2.html">TEC:Cfocobe2</a> - Eveque Coron du Berger 21:26</li><li><a href="stop-TEC_Cfosurs2.html">TEC:Cfosurs2</a> - Eveque Surschiste 21:27</li><li><a href="stop-TEC_Canrobe2.html">TEC:Canrobe2</a> - Anderlues Roi des Belges 21:29</li><li><a href="stop-TEC_Canrtth2.html">TEC:Canrtth2</a> - Anderlues Route de Thuin 21:29</li><li><a href="stop-TEC_Canjon2.html">TEC:Canjon2</a> - Anderlues Jonction (M) 21:30</li><li><a href="stop-TEC_Canrsta2.html">TEC:Canrsta2</a> - Anderlues Rue de la Station (M) 21:31</li><li><a href="stop-TEC_Canmonu3.html">TEC:Canmonu3</a> - Anderlues Monument 21:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./874.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

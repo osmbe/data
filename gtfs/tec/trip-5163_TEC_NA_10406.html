@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHEVETOGNE - LEIGNON - 5163:TEC:NA:10406</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHEVETOGNE - LEIGNON - 5163:TEC:NA:10406</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N212aka.html">TEC:N212aka</a> - Chevetogne Enhet Eglise 08:22</li><li><a href="stop-TEC_N212ata.html">TEC:N212ata</a> - Chevetogne Croix Laurent 08:24</li><li><a href="stop-TEC_N212aja.html">TEC:N212aja</a> - Chevetogne Ecole 08:26</li><li><a href="stop-TEC_N212ahb.html">TEC:N212ahb</a> - Chevetogne Tour de France 08:26</li><li><a href="stop-TEC_N212afb.html">TEC:N212afb</a> - Chevetogne Poncia 08:27</li><li><a href="stop-TEC_N212acb.html">TEC:N212acb</a> - Chevetogne Chemin d'Enhet 08:28</li><li><a href="stop-TEC_N212aeb.html">TEC:N212aeb</a> - Chevetogne Pirlot 08:28</li><li><a href="stop-TEC_N212agb.html">TEC:N212agb</a> - Chevetogne Tige de Ronvaux 08:29</li><li><a href="stop-TEC_N211aga.html">TEC:N211aga</a> - Leignon Maison Bodart 08:32</li><li><a href="stop-TEC_N211avb.html">TEC:N211avb</a> - Ychippe Eglise 08:33</li><li><a href="stop-TEC_N211awa.html">TEC:N211awa</a> - Ychippe Nouveau quartier 08:35</li><li><a href="stop-TEC_N211aea.html">TEC:N211aea</a> - Chapois N° 109 08:36</li><li><a href="stop-TEC_N211ada.html">TEC:N211ada</a> - Chapois N° 120 08:37</li><li><a href="stop-TEC_N211acb.html">TEC:N211acb</a> - Chapois Passage à niveau 08:38</li><li><a href="stop-TEC_N211asa.html">TEC:N211asa</a> - Leignon Ecole communale 08:39</li><li><a href="stop-TEC_N211ahb.html">TEC:N211ahb</a> - Leignon Route de Rochefort 157 08:39</li><li><a href="stop-TEC_N211aia.html">TEC:N211aia</a> - Leignon Station 08:41</li><li><a href="stop-TEC_N211ala.html">TEC:N211ala</a> - Leignon Ecole libre 08:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5916.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

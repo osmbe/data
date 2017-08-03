@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tournai - Renaix/Ronse - 5163:TEC:HT:4757</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tournai - Renaix/Ronse - 5163:TEC:HT:4757</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4wg122b.html">TEC:H4wg122b</a> - Warcoing Place 07:10</li><li><a href="stop-TEC_H4pq112b.html">TEC:H4pq112b</a> - Pecq 4 Moulins 07:12</li><li><a href="stop-TEC_H4pq116b.html">TEC:H4pq116b</a> - Pecq Gendarmerie 07:14</li><li><a href="stop-TEC_H4pq118a.html">TEC:H4pq118a</a> - Pecq Place 07:15</li><li><a href="stop-TEC_H4he105b.html">TEC:H4he105b</a> - Herinnes Gare 07:18</li><li><a href="stop-TEC_H4he102b.html">TEC:H4he102b</a> - Herinnes Charron 07:19</li><li><a href="stop-TEC_H4he106b.html">TEC:H4he106b</a> - Herinnes Léaucourt 07:20</li><li><a href="stop-TEC_H4ob124b.html">TEC:H4ob124b</a> - Obigies Eglise 07:22</li><li><a href="stop-TEC_H4ob109b.html">TEC:H4ob109b</a> - Obigies Halte 07:23</li><li><a href="stop-TEC_H4ob110b.html">TEC:H4ob110b</a> - Obigies Havron 07:24</li><li><a href="stop-TEC_H4ob108b.html">TEC:H4ob108b</a> - Obigies Bruyères 07:24</li><li><a href="stop-TEC_H4ka175b.html">TEC:H4ka175b</a> - Kain Au Français 07:25</li><li><a href="stop-TEC_H4ka183b.html">TEC:H4ka183b</a> - Kain Clos de l'Espinette 07:26</li><li><a href="stop-TEC_H4ka182b.html">TEC:H4ka182b</a> - Kain Cité 07:26</li><li><a href="stop-TEC_H4ka188b.html">TEC:H4ka188b</a> - Kain Place Renard 07:27</li><li><a href="stop-TEC_H4ka174b.html">TEC:H4ka174b</a> - Kain 4 Chemins 07:28</li><li><a href="stop-TEC_H4ka192b.html">TEC:H4ka192b</a> - Kain Tombe 07:29</li><li><a href="stop-TEC_H4ka191b.html">TEC:H4ka191b</a> - Kain Station 07:29</li><li><a href="stop-TEC_H4ka193b.html">TEC:H4ka193b</a> - Kain Union 07:30</li><li><a href="stop-TEC_H4ty333b.html">TEC:H4ty333b</a> - Tournai Rue Charlier 07:30</li><li><a href="stop-TEC_H4ty273c.html">TEC:H4ty273c</a> - Tournai Bd Eisenhower 07:32</li><li><a href="stop-TEC_H4ty357a.html">TEC:H4ty357a</a> - Tournai Tunnel SNCB 07:33</li><li><a href="stop-TEC_H4ty406a.html">TEC:H4ty406a</a> - Tournai Pont Vendeens 07:34</li><li><a href="stop-TEC_H4ty305a.html">TEC:H4ty305a</a> - Tournai SNCB 07:36</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1360.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mons - Trazegnies - 5163:TEC:HT:3445</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mons - Trazegnies - 5163:TEC:HT:3445</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1ms280d.html">TEC:H1ms280d</a> - Mons SNCB 20:50</li><li><a href="stop-TEC_H1ms256a.html">TEC:H1ms256a</a> - Mons Bd Sainctelette 20:52</li><li><a href="stop-TEC_H1ms296c.html">TEC:H1ms296c</a> - Mons Place des Chasseurs 20:53</li><li><a href="stop-TEC_H1ms276a.html">TEC:H1ms276a</a> - Mons Ecole Normale 20:54</li><li><a href="stop-TEC_H1ms253a.html">TEC:H1ms253a</a> - Mons Banque 20:55</li><li><a href="stop-TEC_H1ms294a.html">TEC:H1ms294a</a> - Mons Place de Flandre 20:57</li><li><a href="stop-TEC_H1ms308a.html">TEC:H1ms308a</a> - Mons Saint-Fiacre 20:59</li><li><a href="stop-TEC_H1ms245a.html">TEC:H1ms245a</a> - Mons Arbre Vert 21:00</li><li><a href="stop-TEC_H1ms266a.html">TEC:H1ms266a</a> - Mons Chemin d'Obourg 21:01</li><li><a href="stop-TEC_H1ms258a.html">TEC:H1ms258a</a> - Mons Bon Pasteur 21:02</li><li><a href="stop-TEC_H1ms261a.html">TEC:H1ms261a</a> - Mons Bruyères 21:04</li><li><a href="stop-TEC_H1ms270a.html">TEC:H1ms270a</a> - Mons Clef du Bois 21:05</li><li><a href="stop-TEC_H1ha193a.html">TEC:H1ha193a</a> - Havre Longue Roïe 21:06</li><li><a href="stop-TEC_H1ha201a.html">TEC:H1ha201a</a> - Havre Saint-Antoine 21:07</li><li><a href="stop-TEC_H1ha184a.html">TEC:H1ha184a</a> - Havre Bon Vouloir 21:10</li><li><a href="stop-TEC_H1ha186a.html">TEC:H1ha186a</a> - Havre Château 21:10</li><li><a href="stop-TEC_H1ha195a.html">TEC:H1ha195a</a> - Havre Monument 21:11</li><li><a href="stop-TEC_H1ha196a.html">TEC:H1ha196a</a> - Havre Place 21:11</li><li><a href="stop-TEC_H1ha191a.html">TEC:H1ha191a</a> - Havre Hameau du Pir 21:12</li><li><a href="stop-TEC_H1ha185a.html">TEC:H1ha185a</a> - Havre Charbonnage 21:13</li><li><a href="stop-TEC_H1ha189a.html">TEC:H1ha189a</a> - Havre SNCB 21:14</li><li><a href="stop-TEC_H1ha200a.html">TEC:H1ha200a</a> - Havre Rue A. Collier 21:15</li><li><a href="stop-TEC_H1ha194a.html">TEC:H1ha194a</a> - Havre Ma Campagne 21:16</li><li><a href="stop-TEC_H3bo102a.html">TEC:H3bo102a</a> - Boussoit Rue Grande, 11 21:17</li><li><a href="stop-TEC_H3bo101a.html">TEC:H3bo101a</a> - Boussoit Entrée du Village 21:18</li><li><a href="stop-TEC_H3bo100c.html">TEC:H3bo100c</a> - Boussoit Eglise 21:19</li><li><a href="stop-TEC_H3bo103a.html">TEC:H3bo103a</a> - Boussoit Saint-Julien 21:20</li><li><a href="stop-TEC_H2ma209a.html">TEC:H2ma209a</a> - Maurage Viaduc 21:21</li><li><a href="stop-TEC_H2ma210a.html">TEC:H2ma210a</a> - Maurage Vieux Chêne 21:22</li><li><a href="stop-TEC_H2ma203a.html">TEC:H2ma203a</a> - Maurage Place 21:23</li><li><a href="stop-TEC_H2ma206a.html">TEC:H2ma206a</a> - Maurage Rue des Garennes 21:24</li><li><a href="stop-TEC_H2ma204a.html">TEC:H2ma204a</a> - Maurage Reine Astrid 21:25</li><li><a href="stop-TEC_H2ma208a.html">TEC:H2ma208a</a> - Maurage Ste Anne 21:26</li><li><a href="stop-TEC_H2sb231a.html">TEC:H2sb231a</a> - Strepy-Bracquegnies Place de Strépy 21:28</li><li><a href="stop-TEC_H2sb234a.html">TEC:H2sb234a</a> - Strepy-Bracquegnies Puits Saint-Julien 21:30</li><li><a href="stop-TEC_H2sb236c.html">TEC:H2sb236c</a> - Strepy-Bracquegnies Rue Coffé 21:32</li><li><a href="stop-TEC_H2sb239c.html">TEC:H2sb239c</a> - Strepy-Bracquegnies SNCB 21:34</li><li><a href="stop-TEC_H2sb223a.html">TEC:H2sb223a</a> - Strepy-Bracquegnies Borain 21:35</li><li><a href="stop-TEC_H2sb235a.html">TEC:H2sb235a</a> - Strepy-Bracquegnies Route de Thieu 21:37</li><li><a href="stop-TEC_H2ha139a.html">TEC:H2ha139a</a> - Houdeng-Aimeries Rue Neuve 21:38</li><li><a href="stop-TEC_H2ha129c.html">TEC:H2ha129c</a> - Houdeng-Aimeries Jobrette 21:39</li><li><a href="stop-TEC_H2ha138a.html">TEC:H2ha138a</a> - Houdeng-Aimeries Rue Monoyer 21:40</li><li><a href="stop-TEC_H2ha127b.html">TEC:H2ha127b</a> - Houdeng-Aimeries Coron Grand'Peine 21:41</li><li><a href="stop-TEC_H2ha143b.html">TEC:H2ha143b</a> - Houdeng-Aimeries Bastogne 21:42</li><li><a href="stop-TEC_H2ha128a.html">TEC:H2ha128a</a> - Houdeng-Aimeries Fonderie 21:43</li><li><a href="stop-TEC_H2ha142a.html">TEC:H2ha142a</a> - Houdeng-Aimeries Tombelle 21:44</li><li><a href="stop-TEC_H2hg156a.html">TEC:H2hg156a</a> - Houdeng-Goegnies Rue Houtart 21:45</li><li><a href="stop-TEC_H2hg147a.html">TEC:H2hg147a</a> - Houdeng-Goegnies Couturelle 21:46</li><li><a href="stop-TEC_H2hg158a.html">TEC:H2hg158a</a> - Houdeng-Goegnies Ancienne Gare 21:47</li><li><a href="stop-TEC_H2hg144a.html">TEC:H2hg144a</a> - Houdeng-Goegnies Ascenseur 21:47</li><li><a href="stop-TEC_H2ll176a.html">TEC:H2ll176a</a> - La Louviere Dépôt  TEC 21:49</li><li><a href="stop-TEC_H2ll186a.html">TEC:H2ll186a</a> - La Louviere O.N.E.M. 21:50</li><li><a href="stop-TEC_H2ll258a.html">TEC:H2ll258a</a> - La Louviere Carrefour du Gazomètre 21:51</li><li><a href="stop-TEC_H2ll188a.html">TEC:H2ll188a</a> - La Louviere Place Mansart 21:53</li><li><a href="stop-TEC_H2ll177b.html">TEC:H2ll177b</a> - La Louviere Rue du Parc 21:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1972.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

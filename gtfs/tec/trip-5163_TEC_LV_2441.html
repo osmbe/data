@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Waremme - Haneffe - Verlaine - 5163:TEC:LV:2441</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Waremme - Haneffe - Verlaine - 5163:TEC:LV:2441</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LVEstat1.html">TEC:LVEstat1</a> - Verlaine Rue de la Station 13:25</li><li><a href="stop-TEC_LVEdTEC2.html">TEC:LVEdTEC2</a> - Verlaine Dépôt TEC 13:27</li><li><a href="stop-TEC_LVEphar2.html">TEC:LVEphar2</a> - Verlaine Pharmacie 13:28</li><li><a href="stop-TEC_LVEfize2.html">TEC:LVEfize2</a> - Verlaine Route de Fize 13:28</li><li><a href="stop-TEC_LVEeg--2.html">TEC:LVEeg--2</a> - Verlaine Eglise 13:30</li><li><a href="stop-TEC_LVErtt-2.html">TEC:LVErtt-2</a> - Verlaine R.T.T. 13:31</li><li><a href="stop-TEC_LVEhali1.html">TEC:LVEhali1</a> - Verlaine Rue Halin 13:31</li><li><a href="stop-TEC_LVEtomb1.html">TEC:LVEtomb1</a> - Verlaine La Tombe 13:32</li><li><a href="stop-TEC_LSCeg--1.html">TEC:LSCeg--1</a> - Seraing-le-Chateau Eglise 13:34</li><li><a href="stop-TEC_LSChane1.html">TEC:LSChane1</a> - Seraing-le-Chateau rue de Haneffe 36 13:34</li><li><a href="stop-TEC_LHFappe1.html">TEC:LHFappe1</a> - Haneffe Café Appeltans 13:36</li><li><a href="stop-TEC_LHFwaut1.html">TEC:LHFwaut1</a> - Haneffe Place J. Wauters 13:37</li><li><a href="stop-TEC_LHFec--3.html">TEC:LHFec--3</a> - Haneffe Ecole 13:38</li><li><a href="stop-TEC_LHFcaqu1.html">TEC:LHFcaqu1</a> - Haneffe Caquin 13:39</li><li><a href="stop-TEC_LDoeg--1.html">TEC:LDoeg--1</a> - Donceel Eglise 13:40</li><li><a href="stop-TEC_LDomoul1.html">TEC:LDomoul1</a> - Donceel Route du Moulin 13:41</li><li><a href="stop-TEC_LListie1.html">TEC:LListie1</a> - Limont Stiers 13:42</li><li><a href="stop-TEC_LLiforg1.html">TEC:LLiforg1</a> - Limont La Forge 13:43</li><li><a href="stop-TEC_LLirout1.html">TEC:LLirout1</a> - Limont Rue des Combattants 13:44</li><li><a href="stop-TEC_LBvnico1.html">TEC:LBvnico1</a> - Bovenistier Rue J. Nicolas 13:45</li><li><a href="stop-TEC_LBveg--1.html">TEC:LBveg--1</a> - Bovenistier Eglise 13:46</li><li><a href="stop-TEC_LBvviem3.html">TEC:LBvviem3</a> - Bovenistier Route de Viemme 13:47</li><li><a href="stop-TEC_LVMchpl1.html">TEC:LVMchpl1</a> - Viemme Chapelle 13:49</li><li><a href="stop-TEC_LVMborl1.html">TEC:LVMborl1</a> - Viemme Route de Borlez 13:50</li><li><a href="stop-TEC_LVMcent1.html">TEC:LVMcent1</a> - Viemme Centre 13:51</li><li><a href="stop-TEC_LVMrout1.html">TEC:LVMrout1</a> - Viemme Grand-Route 13:52</li><li><a href="stop-TEC_LVMfoli1.html">TEC:LVMfoli1</a> - Viemme La Folie 13:53</li><li><a href="stop-TEC_LCewaut2.html">TEC:LCewaut2</a> - Celles Place J. Wauters 13:56</li><li><a href="stop-TEC_LCelabi2.html">TEC:LCelabi2</a> - Celles Rue de Labia 13:57</li><li><a href="stop-TEC_LFabraa2.html">TEC:LFabraa2</a> - Faimes Rue A. Braas 13:57</li><li><a href="stop-TEC_LFacruc2.html">TEC:LFacruc2</a> - Faimes Crucifix 13:58</li><li><a href="stop-TEC_LFalieg1.html">TEC:LFalieg1</a> - Faimes Route de Liège 13:59</li><li><a href="stop-TEC_LFarhuy1.html">TEC:LFarhuy1</a> - Faimes rue de Huy 274 14:00</li><li><a href="stop-TEC_LWAipes1.html">TEC:LWAipes1</a> - Waremme I.P.E.S. 14:01</li><li><a href="stop-TEC_LWAloui2.html">TEC:LWAloui2</a> - Waremme Collège St-Louis 14:02</li><li><a href="stop-TEC_LWAlong2.html">TEC:LWAlong2</a> - Waremme Place Longchamps 14:02</li><li><a href="stop-TEC_LWAgare_.html">TEC:LWAgare*</a> - Waremme Gare 14:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4709.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

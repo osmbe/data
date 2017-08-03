@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - BEAURAING - HOUYET - 5163:TEC:NA:10292</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: BEAURAING - HOUYET - 5163:TEC:NA:10292</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N337aea.html">TEC:N337aea</a> - Finnevaux Les Tiges 07:29</li><li><a href="stop-TEC_N337afa.html">TEC:N337afa</a> - Finnevaux Centre 07:30</li><li><a href="stop-TEC_N337aga.html">TEC:N337aga</a> - Finnevaux Château 07:31</li><li><a href="stop-TEC_N337aha.html">TEC:N337aha</a> - Mesnil-Eglise Eglise 07:34</li><li><a href="stop-TEC_N337aia.html">TEC:N337aia</a> - Ferage Eglise 07:40</li><li><a href="stop-TEC_N338aib.html">TEC:N338aib</a> - Herhet Eglise 07:44</li><li><a href="stop-TEC_N338aha.html">TEC:N338aha</a> - Houyet Saint-Roch 07:49</li><li><a href="stop-TEC_N338aab.html">TEC:N338aab</a> - Houyet Ecole 07:50</li><li><a href="stop-TEC_N338agb.html">TEC:N338agb</a> - Houyet Centre 07:51</li><li><a href="stop-TEC_N338afb.html">TEC:N338afb</a> - Houyet Gendarmerie 07:51</li><li><a href="stop-TEC_N338aeb.html">TEC:N338aeb</a> - Houyet Route de Hour 07:52</li><li><a href="stop-TEC_N339aab.html">TEC:N339aab</a> - Wiesme Eglise 08:01</li><li><a href="stop-TEC_N339acb.html">TEC:N339acb</a> - Wiesme Maisoncelle 08:02</li><li><a href="stop-TEC_N308asb.html">TEC:N308asb</a> - Beauraing Rue des Sorbiers 08:05</li><li><a href="stop-TEC_N308bab.html">TEC:N308bab</a> - Beauraing Cité des Ardennes 08:05</li><li><a href="stop-TEC_N308alb.html">TEC:N308alb</a> - Beauraing Quartier des Ardennes 08:06</li><li><a href="stop-TEC_N308aib.html">TEC:N308aib</a> - Beauraing Rond-point 08:07</li><li><a href="stop-TEC_N308aja.html">TEC:N308aja</a> - Beauraing Route de la gare 08:09</li><li><a href="stop-TEC_N308aha.html">TEC:N308aha</a> - Beauraing Place Berry 08:10</li><li><a href="stop-TEC_N308ama.html">TEC:N308ama</a> - Beauraing Athénée 08:11</li><li><a href="stop-TEC_N308aka.html">TEC:N308aka</a> - Beauraing Institut 08:13</li><li><a href="stop-TEC_N308aga.html">TEC:N308aga</a> - Beauraing Place St-Roch 08:15</li><li><a href="stop-TEC_N308afc.html">TEC:N308afc</a> - Beauraing INDSC 08:16</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5839.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

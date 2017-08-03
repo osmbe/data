@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Verviers - Malmedy - Reuland - 5163:TEC:LV:27149</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Verviers - Malmedy - Reuland - 5163:TEC:LV:27149</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LrUbahn2.html">TEC:LrUbahn2</a> - Reuland Bahnhof 06:00</li><li><a href="stop-TEC_LrUbrac2.html">TEC:LrUbrac2</a> - Reuland Brachter Weg 06:01</li><li><a href="stop-TEC_LrUkult2.html">TEC:LrUkult2</a> - Reuland Kulturhaus 06:02</li><li><a href="stop-TEC_LrUgeme2.html">TEC:LrUgeme2</a> - Reuland Gemeindehaus 06:02</li><li><a href="stop-TEC_LrUlasc2.html">TEC:LrUlasc2</a> - Reuland Lascheider Weg 06:03</li><li><a href="stop-TEC_LrUoudl2.html">TEC:LrUoudl2</a> - Reuland Oudler Strasse 06:05</li><li><a href="stop-TEC_LoDmuhl2.html">TEC:LoDmuhl2</a> - Oudler Mühlenbusch 06:07</li><li><a href="stop-TEC_LoDkoll2.html">TEC:LoDkoll2</a> - Oudler Kollenweg 06:07</li><li><a href="stop-TEC_LoDschu2.html">TEC:LoDschu2</a> - Oudler Schule 06:08</li><li><a href="stop-TEC_LoDcorn2.html">TEC:LoDcorn2</a> - Oudler Hof Cornelis 06:09</li><li><a href="stop-TEC_LoDscha2.html">TEC:LoDscha2</a> - Oudler Hof Schauben 06:10</li><li><a href="stop-TEC_LgRzent2.html">TEC:LgRzent2</a> - Grufflingen Zentrum 06:12</li><li><a href="stop-TEC_LgRha212.html">TEC:LgRha212</a> - Grufflingen Haus 21 06:12</li><li><a href="stop-TEC_LgRhouf2.html">TEC:LgRhouf2</a> - Grufflingen Houffalizer Strasse 06:13</li><li><a href="stop-TEC_LnUhohe2.html">TEC:LnUhohe2</a> - Neubruck Hohenbusch 06:14</li><li><a href="stop-TEC_LnUcamp2.html">TEC:LnUcamp2</a> - Neubruck Hohenbusch Camping 06:15</li><li><a href="stop-TEC_LnUneun2.html">TEC:LnUneun2</a> - Neubruck Neundorfer Straße 06:16</li><li><a href="stop-TEC_LsVlust2.html">TEC:LsVlust2</a> - Sankt-Vith Mein Lust 06:18</li><li><a href="stop-TEC_LsVgesc2.html">TEC:LsVgesc2</a> - Sankt-Vith Geschäftskomplex 06:20</li><li><a href="stop-TEC_LsVsimo2.html">TEC:LsVsimo2</a> - Sankt-Vith Garage Simons 06:20</li><li><a href="stop-TEC_LsVlind_.html">TEC:LsVlind*</a> - Sankt-Vith An den Linden 06:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3984.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

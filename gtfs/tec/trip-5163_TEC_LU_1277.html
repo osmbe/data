@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Boucle Urbaine - WAHA - 5163:TEC:LU:1277</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boucle Urbaine - WAHA - 5163:TEC:LU:1277</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X902afb.html">TEC:X902afb</a> - Marloie Gare - Quai 2 13:40</li><li><a href="stop-TEC_X902aab.html">TEC:X902aab</a> - Marloie Eglise 13:41</li><li><a href="stop-TEC_X902anb.html">TEC:X902anb</a> - Marloie Spar 13:41</li><li><a href="stop-TEC_X902acb.html">TEC:X902acb</a> - Marloie Maison Glatigny 13:42</li><li><a href="stop-TEC_X902abb.html">TEC:X902abb</a> - Marloie Point du Jour 13:43</li><li><a href="stop-TEC_X902bba.html">TEC:X902bba</a> - Marloie Ma Campagne 13:43</li><li><a href="stop-TEC_X901aib.html">TEC:X901aib</a> - Marche Pirire 13:45</li><li><a href="stop-TEC_X901bsa.html">TEC:X901bsa</a> - Marche Pont N4 13:46</li><li><a href="stop-TEC_X901boa.html">TEC:X901boa</a> - Marche Boulevard - Hôtel de Ville 13:46</li><li><a href="stop-TEC_X901bra.html">TEC:X901bra</a> - Marche Boulevard - Palace 13:47</li><li><a href="stop-TEC_X901aha.html">TEC:X901aha</a> - Marche Boulevard du Nord 13:47</li><li><a href="stop-TEC_X901bna.html">TEC:X901bna</a> - Marche Porte Basse 13:48</li><li><a href="stop-TEC_X901ana.html">TEC:X901ana</a> - Marche Route de Liège 13:49</li><li><a href="stop-TEC_X901bqa.html">TEC:X901bqa</a> - Marche Carmel 13:50</li><li><a href="stop-TEC_X901ala.html">TEC:X901ala</a> - Marche Centre de Détention 13:55</li><li><a href="stop-TEC_X901btb.html">TEC:X901btb</a> - Marche Rond-Point WEX 13:59</li><li><a href="stop-TEC_X901aya.html">TEC:X901aya</a> - Marche WEX 14:00</li><li><a href="stop-TEC_X901bea.html">TEC:X901bea</a> - Marche WEX-Poste 14:01</li><li><a href="stop-TEC_X901bta.html">TEC:X901bta</a> - Marche Rond-Point WEX 14:02</li><li><a href="stop-TEC_X901aua.html">TEC:X901aua</a> - Marche Cabine Electrique 14:04</li><li><a href="stop-TEC_X901apb.html">TEC:X901apb</a> - Marche Centre Sportif 14:05</li><li><a href="stop-TEC_X901aoa.html">TEC:X901aoa</a> - Marche Cimetière 14:06</li><li><a href="stop-TEC_X901aca.html">TEC:X901aca</a> - Marche Place de l'Etang 14:07</li><li><a href="stop-TEC_X901bob.html">TEC:X901bob</a> - Marche Boulevard - Hôtel de Ville 14:08</li><li><a href="stop-TEC_X901bsc.html">TEC:X901bsc</a> - Marche Pont N4 14:08</li><li><a href="stop-TEC_X901bsb.html">TEC:X901bsb</a> - Marche Pont N4 14:08</li><li><a href="stop-TEC_X901aia.html">TEC:X901aia</a> - Marche Pirire 14:09</li><li><a href="stop-TEC_X901aea.html">TEC:X901aea</a> - Marche Athénée 14:10</li><li><a href="stop-TEC_X901adb.html">TEC:X901adb</a> - Marche Avenue de la Toison d'Or 14:11</li><li><a href="stop-TEC_X901atb.html">TEC:X901atb</a> - Marche Gare 14:12</li><li><a href="stop-TEC_X901avb.html">TEC:X901avb</a> - Marche Rue de la Campagnette 14:12</li><li><a href="stop-TEC_X901awb.html">TEC:X901awb</a> - Marche Rue de Luxembourg 46 14:12</li><li><a href="stop-TEC_X901axb.html">TEC:X901axb</a> - Hollogne Rue de Bastogne 14:13</li><li><a href="stop-TEC_X901asb.html">TEC:X901asb</a> - Hollogne Route de Waha 14:13</li><li><a href="stop-TEC_X902bfa.html">TEC:X902bfa</a> - Waha Rue Saint-Denis 7 14:15</li><li><a href="stop-TEC_X902bga.html">TEC:X902bga</a> - Waha Rue Saint-Denis 22 14:16</li><li><a href="stop-TEC_X902aza.html">TEC:X902aza</a> - Waha Eglise 14:16</li><li><a href="stop-TEC_X902bab.html">TEC:X902bab</a> - Waha Route de Marloie 14:16</li><li><a href="stop-TEC_X902aua.html">TEC:X902aua</a> - Waha Rue du Maquis 14:17</li><li><a href="stop-TEC_X902ata.html">TEC:X902ata</a> - Marloie Chemin de Waha 14:18</li><li><a href="stop-TEC_X902aca.html">TEC:X902aca</a> - Marloie Maison Glatigny 14:19</li><li><a href="stop-TEC_X902ana.html">TEC:X902ana</a> - Marloie Spar 14:20</li><li><a href="stop-TEC_X902aaa.html">TEC:X902aaa</a> - Marloie Eglise 14:20</li><li><a href="stop-TEC_X902afd.html">TEC:X902afd</a> - Marloie Gare - Quai 4 14:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2599.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

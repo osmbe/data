@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tournai - Rongy / Guignies - 5163:TEC:HT:5131</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tournai - Rongy / Guignies - 5163:TEC:HT:5131</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4ty313b.html">TEC:H4ty313b</a> - Tournai Maison de la Culture 16:10</li><li><a href="stop-TEC_H4ty292a.html">TEC:H4ty292a</a> - Tournai Don Bosco 16:12</li><li><a href="stop-TEC_H4ty330c.html">TEC:H4ty330c</a> - Tournai Rond Point 16:14</li><li><a href="stop-TEC_H4ty290b.html">TEC:H4ty290b</a> - Tournai Dépôt 16:15</li><li><a href="stop-TEC_H4ty295b.html">TEC:H4ty295b</a> - Tournai Ecole du Château 16:18</li><li><a href="stop-TEC_H4ty305a.html">TEC:H4ty305a</a> - Tournai SNCB 16:22</li><li><a href="stop-TEC_H4ty305d.html">TEC:H4ty305d</a> - Tournai SNCB 16:23</li><li><a href="stop-TEC_H4ty347b.html">TEC:H4ty347b</a> - Tournai Rue Royale 16:24</li><li><a href="stop-TEC_H4ty351a.html">TEC:H4ty351a</a> - Tournai Saint-Brice 16:25</li><li><a href="stop-TEC_H4ty291b.html">TEC:H4ty291b</a> - Tournai Dôme 16:28</li><li><a href="stop-TEC_H4ty274b.html">TEC:H4ty274b</a> - Tournai Beffroi 16:29</li><li><a href="stop-TEC_H4ty317b.html">TEC:H4ty317b</a> - Tournai Palais de Justice 16:31</li><li><a href="stop-TEC_H4ty308c.html">TEC:H4ty308c</a> - Tournai Chwapi Lalaing 16:33</li><li><a href="stop-TEC_H4ty272b.html">TEC:H4ty272b</a> - Tournai Bavaro 16:34</li><li><a href="stop-TEC_H4ty344b.html">TEC:H4ty344b</a> - Tournai Rue Hennebicq 16:34</li><li><a href="stop-TEC_H4ty307b.html">TEC:H4ty307b</a> - Tournai Guinguette 16:35</li><li><a href="stop-TEC_H4ty332c.html">TEC:H4ty332c</a> - Tournai Rue Allard l'Olivier 16:36</li><li><a href="stop-TEC_H4ty283b.html">TEC:H4ty283b</a> - Tournai Chemin de Rongy 16:37</li><li><a href="stop-TEC_H4ty322a.html">TEC:H4ty322a</a> - Tournai Pont à Rieu 16:38</li><li><a href="stop-TEC_H4sm247a.html">TEC:H4sm247a</a> - Saint-Maur Place 16:41</li><li><a href="stop-TEC_H4jm116b.html">TEC:H4jm116b</a> - Jollain-Merlin Bise 16:44</li><li><a href="stop-TEC_H4we137c.html">TEC:H4we137c</a> - Wez Place 16:45</li><li><a href="stop-TEC_H4we135a.html">TEC:H4we135a</a> - Wez Calvaire 16:46</li><li><a href="stop-TEC_H4we139a.html">TEC:H4we139a</a> - Wez Ruisseau 16:48</li><li><a href="stop-TEC_H4le128a.html">TEC:H4le128a</a> - Lesdain Rue Paradis 16:52</li><li><a href="stop-TEC_H4le127a.html">TEC:H4le127a</a> - Lesdain Place 16:54</li><li><a href="stop-TEC_H4ry133b.html">TEC:H4ry133b</a> - Rongy Sentier 16:55</li><li><a href="stop-TEC_H4ry140b.html">TEC:H4ry140b</a> - Rongy Rue de Sallenelles 16:56</li><li><a href="stop-TEC_H4ry131b.html">TEC:H4ry131b</a> - Rongy Garage 16:57</li><li><a href="stop-TEC_H4ry132b.html">TEC:H4ry132b</a> - Rongy Maricouque 16:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2049.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

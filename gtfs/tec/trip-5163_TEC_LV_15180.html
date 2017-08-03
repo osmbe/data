@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Trois-Ponts - Waimes - Büllingen - 5163:TEC:LV:15180</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Trois-Ponts - Waimes - Büllingen - 5163:TEC:LV:15180</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LTPgare_.html">TEC:LTPgare*</a> - Trois-Ponts Gare SNCB 17:10</li><li><a href="stop-TEC_LTPsalm1.html">TEC:LTPsalm1</a> - Trois-Ponts Pont de la Salm 17:10</li><li><a href="stop-TEC_LTPcarr1.html">TEC:LTPcarr1</a> - Trois-Ponts Carrefour 17:11</li><li><a href="stop-TEC_LTPspay1.html">TEC:LTPspay1</a> - Trois-Ponts Pont du Petit Spay 17:12</li><li><a href="stop-TEC_LTPpres1.html">TEC:LTPpres1</a> - Trois-Ponts Longs Prés 17:13</li><li><a href="stop-TEC_LTPlegr1.html">TEC:LTPlegr1</a> - Trois-Ponts Ferme Legros 17:15</li><li><a href="stop-TEC_LTPtroi1.html">TEC:LTPtroi1</a> - Trois-Ponts Route de Trois-Ponts 24-26 17:15</li><li><a href="stop-TEC_LSTparf1.html">TEC:LSTparf1</a> - Stavelot Route de Parfondry 17:16</li><li><a href="stop-TEC_LSTgran1.html">TEC:LSTgran1</a> - Stavelot Place E. Grandprez 17:17</li><li><a href="stop-TEC_LSTec--1.html">TEC:LSTec--1</a> - Stavelot Ecoles 17:18</li><li><a href="stop-TEC_LSTchal1.html">TEC:LSTchal1</a> - Stavelot Chemin de Challes 17:19</li><li><a href="stop-TEC_LSTcomm1.html">TEC:LSTcomm1</a> - Stavelot Petites Communes 17:19</li><li><a href="stop-TEC_LSTchef1.html">TEC:LSTchef1</a> - Stavelot Chefosse viaduc 17:20</li><li><a href="stop-TEC_LSTdero1.html">TEC:LSTdero1</a> - Stavelot Maison Deroanne 17:20</li><li><a href="stop-TEC_LSTchen1.html">TEC:LSTchen1</a> - Stavelot Route de Cheneux 17:21</li><li><a href="stop-TEC_LSTmast1.html">TEC:LSTmast1</a> - Stavelot Masta 17:22</li><li><a href="stop-TEC_LSTmeiz1.html">TEC:LSTmeiz1</a> - Stavelot Route de Meiz 17:23</li><li><a href="stop-TEC_LMAwavr1.html">TEC:LMAwavr1</a> - Malmedy Route de Wavreumont 17:24</li><li><a href="stop-TEC_LMApape1.html">TEC:LMApape1</a> - Malmedy Papeterie 17:26</li><li><a href="stop-TEC_LMAhall1.html">TEC:LMAhall1</a> - Malmedy Hall des Sports 17:27</li><li><a href="stop-TEC_LMAcite1.html">TEC:LMAcite1</a> - Malmedy Cité des Grands Prés 17:28</li><li><a href="stop-TEC_LMAcomm1.html">TEC:LMAcomm1</a> - Malmedy complexe commercial 17:29</li><li><a href="stop-TEC_LMAalli1.html">TEC:LMAalli1</a> - Malmedy avenue des Alliés 17:30</li><li><a href="stop-TEC_LMApl--1.html">TEC:LMApl--1</a> - Malmedy Place Albert 1er 17:31</li><li><a href="stop-TEC_LMAgare_.html">TEC:LMAgare*</a> - Malmedy Gare 17:34</li><li><a href="stop-TEC_LMAgb--1.html">TEC:LMAgb--1</a> - Malmedy Super GB 17:35</li><li><a href="stop-TEC_LMAbijo1.html">TEC:LMAbijo1</a> - Malmedy Mon Bijou 17:36</li><li><a href="stop-TEC_LMAbell1.html">TEC:LMAbell1</a> - Malmedy Bellevue 17:37</li><li><a href="stop-TEC_LGmloti1.html">TEC:LGmloti1</a> - Geromont Lotissement Henkes 17:38</li><li><a href="stop-TEC_LGmeg--1.html">TEC:LGmeg--1</a> - Geromont Eglise 17:38</li><li><a href="stop-TEC_LGmhedo1.html">TEC:LGmhedo1</a> - Geromont Route de Hédomont 17:38</li><li><a href="stop-TEC_LBgcroi1.html">TEC:LBgcroi1</a> - Baugnez Croix des Américains 17:39</li><li><a href="stop-TEC_LBgnach1.html">TEC:LBgnach1</a> - Baugnez Garage Nachsem 17:40</li><li><a href="stop-TEC_LBgbaga1.html">TEC:LBgbaga1</a> - Baugnez Bagatelle 17:40</li><li><a href="stop-TEC_LWahott1.html">TEC:LWahott1</a> - Waimes Hottleux 17:41</li><li><a href="stop-TEC_LWazoni1.html">TEC:LWazoni1</a> - Waimes Zoning 17:42</li><li><a href="stop-TEC_LWaatel1.html">TEC:LWaatel1</a> - Waimes Atelier Dethier 17:43</li><li><a href="stop-TEC_LWaccom1.html">TEC:LWaccom1</a> - Waimes Centre Commercial 17:43</li><li><a href="stop-TEC_LWahetr1.html">TEC:LWahetr1</a> - Waimes Rue des Hêtres 17:44</li><li><a href="stop-TEC_LWapl--1.html">TEC:LWapl--1</a> - Waimes Place communale 17:45</li><li><a href="stop-TEC_LWaanto1.html">TEC:LWaanto1</a> - Waimes Rue Antoine 23 17:46</li><li><a href="stop-TEC_LWathir1.html">TEC:LWathir1</a> - Waimes Route de Thirimont 17:46</li><li><a href="stop-TEC_LWagare_.html">TEC:LWagare*</a> - Waimes Gare 17:47</li><li><a href="stop-TEC_LWamass1.html">TEC:LWamass1</a> - Waimes Garage Masson 17:49</li><li><a href="stop-TEC_LFyec--1.html">TEC:LFyec--1</a> - Faymonville Ecole 17:50</li><li><a href="stop-TEC_LFypont1.html">TEC:LFypont1</a> - Faymonville Pont 17:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3971.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

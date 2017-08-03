@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mons - Aulnois - 5163:TEC:HT:10949</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mons - Aulnois - 5163:TEC:HT:10949</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1qp141b.html">TEC:H1qp141b</a> - Quevy-le-Petit Maison Communale 05:38</li><li><a href="stop-TEC_H1qp142b.html">TEC:H1qp142b</a> - Quevy-le-Petit Rue du Moulin 05:39</li><li><a href="stop-TEC_H1qp140b.html">TEC:H1qp140b</a> - Quevy-le-Petit Entrée du Village 05:39</li><li><a href="stop-TEC_H1ge117b.html">TEC:H1ge117b</a> - Genly Rue Petite 05:42</li><li><a href="stop-TEC_H1ge116b.html">TEC:H1ge116b</a> - Genly Fontaine 05:43</li><li><a href="stop-TEC_H1ge115a.html">TEC:H1ge115a</a> - Genly 4 Pavés 05:44</li><li><a href="stop-TEC_H1fr111a.html">TEC:H1fr111a</a> - Frameries Chemin Vert 05:45</li><li><a href="stop-TEC_H1fr127a.html">TEC:H1fr127a</a> - Frameries Rue Ferrer 05:46</li><li><a href="stop-TEC_H1fr124a.html">TEC:H1fr124a</a> - Frameries Pont du Berger 05:46</li><li><a href="stop-TEC_H1fr130a.html">TEC:H1fr130a</a> - Frameries Sacré Coeur 05:47</li><li><a href="stop-TEC_H1fr107e.html">TEC:H1fr107e</a> - Frameries 4 Pavés 05:49</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1670.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

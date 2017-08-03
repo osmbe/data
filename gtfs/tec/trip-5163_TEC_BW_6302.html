@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Gembloux - Chastre - Marbais - 5163:TEC:BW:6302</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gembloux - Chastre - Marbais - 5163:TEC:BW:6302</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bgntpla2.html">TEC:Bgntpla2</a> - Gentinnes Place 16:44</li><li><a href="stop-TEC_Bgntcha2.html">TEC:Bgntcha2</a> - Gentinnes Rue Charlemont 16:45</li><li><a href="stop-TEC_Bsgeegl2.html">TEC:Bsgeegl2</a> - Saint-Gery Eglise 16:46</li><li><a href="stop-TEC_Bcrnsge2.html">TEC:Bcrnsge2</a> - Cortil-Noirmont Rue de Saint Géry 16:49</li><li><a href="stop-TEC_Bcrnnpl1.html">TEC:Bcrnnpl1</a> - Noirmont Place 16:50</li><li><a href="stop-TEC_Bcrnncb1.html">TEC:Bcrnncb1</a> - Noirmont Ch. Brasserie 16:51</li><li><a href="stop-TEC_Bcrnnra1.html">TEC:Bcrnnra1</a> - Noirmont Rue Rauwez 16:51</li><li><a href="stop-TEC_Bcrnnca1.html">TEC:Bcrnnca1</a> - Noirmont Cantonnier 16:53</li><li><a href="stop-TEC_Bchadpt1.html">TEC:Bchadpt1</a> - Chastre Dépôt 16:54</li><li><a href="stop-TEC_Bcrnnca2.html">TEC:Bcrnnca2</a> - Noirmont Cantonnier 16:55</li><li><a href="stop-TEC_Bcrnnra2.html">TEC:Bcrnnra2</a> - Noirmont Rue Rauwez 16:57</li><li><a href="stop-TEC_Bcrnncb2.html">TEC:Bcrnncb2</a> - Noirmont Ch. Brasserie 16:57</li><li><a href="stop-TEC_Bcrnnpl2.html">TEC:Bcrnnpl2</a> - Noirmont Place 16:58</li><li><a href="stop-TEC_Bcrnegl2.html">TEC:Bcrnegl2</a> - Cortil Eglise 16:59</li><li><a href="stop-TEC_Bcrncen2.html">TEC:Bcrncen2</a> - Cortil Rue du Centre 17:00</li><li><a href="stop-TEC_Bcrnpla2.html">TEC:Bcrnpla2</a> - Cortil Place 17:01</li><li><a href="stop-TEC_Bcrnvic2.html">TEC:Bcrnvic2</a> - Cortil Rue aux Vichaux 17:02</li><li><a href="stop-TEC_Bcrnrpc2.html">TEC:Bcrnrpc2</a> - Cortil Rond Point Colonie 17:02</li><li><a href="stop-TEC_Bcrntru2.html">TEC:Bcrntru2</a> - Cortil Try des Rudes 17:03</li><li><a href="stop-TEC_Bcrncjo2.html">TEC:Bcrncjo2</a> - Cortil Champ de la Joncquière 17:04</li><li><a href="stop-TEC_Bgrmfga2.html">TEC:Bgrmfga2</a> - Grand-Manil Ferme de la Gatte 17:06</li><li><a href="stop-TEC_Bgrmpsn2.html">TEC:Bgrmpsn2</a> - Grand-Manil Penteville S.N.C.B 17:06</li><li><a href="stop-TEC_Bgrmfon2.html">TEC:Bgrmfon2</a> - Grand-Manil Fontenelle 17:07</li><li><a href="stop-TEC_Bgemcha1.html">TEC:Bgemcha1</a> - Grand-Manil Chaussée de Charleroi 17:08</li><li><a href="stop-TEC_N522aka.html">TEC:N522aka</a> - Gembloux Le Rallye 17:08</li><li><a href="stop-TEC_Bgemga10.html">TEC:Bgemga10</a> - Gembloux Gare 17:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./228.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

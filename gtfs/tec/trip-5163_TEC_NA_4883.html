@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - JEMELLE - VILLERS-SUR-LESSE - CIERGNON - 5163:TEC:NA:4883</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: JEMELLE - VILLERS-SUR-LESSE - CIERGNON - 5163:TEC:NA:4883</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N367ada.html">TEC:N367ada</a> - Ciergnon Village 13:18</li><li><a href="stop-TEC_N321afb.html">TEC:N321afb</a> - Ciergnon Vignée route vers Vignée 13:20</li><li><a href="stop-TEC_N352afa.html">TEC:N352afa</a> - Villers-sur-Lesse La Louette 13:26</li><li><a href="stop-TEC_N352aea.html">TEC:N352aea</a> - Villers-sur-Lesse Café Victoire 13:27</li><li><a href="stop-TEC_N352ada.html">TEC:N352ada</a> - Villers-sur-Lesse Ferme royale 13:27</li><li><a href="stop-TEC_N352aca.html">TEC:N352aca</a> - Villers-sur-Lesse Chemin de la gare 13:29</li><li><a href="stop-TEC_N352aja.html">TEC:N352aja</a> - Villers-sur-Lesse Jamblinne Eglise 13:30</li><li><a href="stop-TEC_N352aba.html">TEC:N352aba</a> - Villers-sur-Lesse Rte de l'hôtel Oasis 13:31</li><li><a href="stop-TEC_N353awa.html">TEC:N353awa</a> - Rochefort Bois de l'Espérance 13:34</li><li><a href="stop-TEC_N351ala.html">TEC:N351ala</a> - Rochefort Route de Dinant, 80 13:39</li><li><a href="stop-TEC_N351aka.html">TEC:N351aka</a> - Rochefort Carrefour route vers Dinant 13:39</li><li><a href="stop-TEC_N351aua.html">TEC:N351aua</a> - Rochefort Rue de la Libération 13:40</li><li><a href="stop-TEC_N351ajd.html">TEC:N351ajd</a> - Rochefort Pont de la Lhomme 13:41</li><li><a href="stop-TEC_N351aib.html">TEC:N351aib</a> - Rochefort Poste 13:42</li><li><a href="stop-TEC_N351aaa.html">TEC:N351aaa</a> - Rochefort Ancienne Gare 13:43</li><li><a href="stop-TEC_N351afb.html">TEC:N351afb</a> - Rochefort Camping 13:44</li><li><a href="stop-TEC_N351atb.html">TEC:N351atb</a> - Rochefort Lidl 13:45</li><li><a href="stop-TEC_N390amb.html">TEC:N390amb</a> - Jemelle Hall Omnisports 13:46</li><li><a href="stop-TEC_N390afb.html">TEC:N390afb</a> - Jemelle Rue de la Vallée 13:46</li><li><a href="stop-TEC_N390abb.html">TEC:N390abb</a> - Jemelle Rue Salvé 13:47</li><li><a href="stop-TEC_N390aab.html">TEC:N390aab</a> - Jemelle Rue du Centenaire 13:47</li><li><a href="stop-TEC_N390acb.html">TEC:N390acb</a> - Jemelle Place communale 13:48</li><li><a href="stop-TEC_N390aeb.html">TEC:N390aeb</a> - Jemelle Tunnel SNCB 13:49</li><li><a href="stop-TEC_N390adb.html">TEC:N390adb</a> - Rochefort - JEMELLE Gare 13:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5829.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

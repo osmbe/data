@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Rosières - Genval - Wavre - Basse-Wavre - 5163:TEC:BW:5941</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Rosières - Genval - Wavre - Basse-Wavre - 5163:TEC:BW:5941</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Brsregl3.html">TEC:Brsregl3</a> - Rosieres Eglise 07:35</li><li><a href="stop-TEC_Brsreco1.html">TEC:Brsreco1</a> - Rosieres Ecole 07:36</li><li><a href="stop-TEC_Brsrpmo1.html">TEC:Brsrpmo1</a> - Rosieres Place du monument 07:36</li><li><a href="stop-TEC_Brsrpch1.html">TEC:Brsrpch1</a> - Rosieres Place de la Chapelle 07:37</li><li><a href="stop-TEC_Brsrfen1.html">TEC:Brsrfen1</a> - Rosieres Ferme Englebert 07:38</li><li><a href="stop-TEC_Brsrrcu1.html">TEC:Brsrrcu1</a> - Rosieres Rue du Curé 07:40</li><li><a href="stop-TEC_Brsrpar1.html">TEC:Brsrpar1</a> - Rosieres Avenue du Parc 07:41</li><li><a href="stop-TEC_Bgnvgar1.html">TEC:Bgnvgar1</a> - Genval Gare 07:44</li><li><a href="stop-TEC_Bgnvpap2.html">TEC:Bgnvpap2</a> - Genval Papeterie 07:45</li><li><a href="stop-TEC_Brixala2.html">TEC:Brixala2</a> - Rixensart Rue Auguste Lannoye 07:49</li><li><a href="stop-TEC_Brixpro4.html">TEC:Brixpro4</a> - Rixensart Route Provinciale 07:50</li><li><a href="stop-TEC_Brixaug2.html">TEC:Brixaug2</a> - Rixensart Rue de l'Augette 07:51</li><li><a href="stop-TEC_Brixape2.html">TEC:Brixape2</a> - Rixensart Avenue des Pèlerins 07:56</li><li><a href="stop-TEC_Blmlvex1.html">TEC:Blmlvex1</a> - Limal Village Expo 08:02</li><li><a href="stop-TEC_Bbgerlr1.html">TEC:Bbgerlr1</a> - Bierges Rue de La Roche 08:08</li><li><a href="stop-TEC_Bbgeegl1.html">TEC:Bbgeegl1</a> - Bierges Eglise 08:10</li><li><a href="stop-TEC_Bbgepau1.html">TEC:Bbgepau1</a> - Bierges Pont Autoroute 08:13</li><li><a href="stop-TEC_Bwavgar1.html">TEC:Bwavgar1</a> - Wavre Gare 08:15</li><li><a href="stop-TEC_Bwaveur1.html">TEC:Bwaveur1</a> - Wavre Boulevard de l'Europe 08:17</li><li><a href="stop-TEC_Bwavpao2.html">TEC:Bwavpao2</a> - Wavre Place A. Bosch 08:19</li><li><a href="stop-TEC_Bwavfbe2.html">TEC:Bwavfbe2</a> - Wavre Fin Bec 08:21</li><li><a href="stop-TEC_Bwavdel2.html">TEC:Bwavdel2</a> - Wavre Delhaize 08:21</li><li><a href="stop-TEC_Bwavbwa2.html">TEC:Bwavbwa2</a> - Wavre Basse-Wavre 08:24</li><li><a href="stop-TEC_Bbwacol1.html">TEC:Bbwacol1</a> - Basse-Wavre Collège 08:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./459.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

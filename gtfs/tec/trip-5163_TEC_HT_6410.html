@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - La Louvière Sud - Houdeng (Garocentre) - 5163:TEC:HT:6410</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: La Louvière Sud - Houdeng (Garocentre) - 5163:TEC:HT:6410</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H2ll179d.html">TEC:H2ll179d</a> - La Louviere SNCB Sud 19:49</li><li><a href="stop-TEC_H2ll197a.html">TEC:H2ll197a</a> - La Louviere Rue des Champs 19:52</li><li><a href="stop-TEC_H2ll189c.html">TEC:H2ll189c</a> - La Louviere Place Mattéotti 19:54</li><li><a href="stop-TEC_H2ll177a.html">TEC:H2ll177a</a> - La Louviere Rue du Parc 19:55</li><li><a href="stop-TEC_H2ll188b.html">TEC:H2ll188b</a> - La Louviere Place Mansart 19:57</li><li><a href="stop-TEC_H2ll258b.html">TEC:H2ll258b</a> - La Louviere Carrefour du Gazomètre 19:59</li><li><a href="stop-TEC_H2ll186b.html">TEC:H2ll186b</a> - La Louviere O.N.E.M. 20:00</li><li><a href="stop-TEC_H2ll176b.html">TEC:H2ll176b</a> - La Louviere Dépôt  TEC 20:01</li><li><a href="stop-TEC_H2hg144b.html">TEC:H2hg144b</a> - Houdeng-Goegnies Ascenseur 20:03</li><li><a href="stop-TEC_H2hg158b.html">TEC:H2hg158b</a> - Houdeng-Goegnies Ancienne Gare 20:03</li><li><a href="stop-TEC_H2hg147b.html">TEC:H2hg147b</a> - Houdeng-Goegnies Couturelle 20:04</li><li><a href="stop-TEC_H2hg156b.html">TEC:H2hg156b</a> - Houdeng-Goegnies Rue Houtart 20:05</li><li><a href="stop-TEC_H2hg152b.html">TEC:H2hg152b</a> - Houdeng-Goegnies Place du Trieu 20:06</li><li><a href="stop-TEC_H2hg157c.html">TEC:H2hg157c</a> - Houdeng-Goegnies Rue Decroly 20:06</li><li><a href="stop-TEC_H2hg265a.html">TEC:H2hg265a</a> - Houdeng-Goegnies Lait Beurré 20:07</li><li><a href="stop-TEC_H2hg270a.html">TEC:H2hg270a</a> - Houdeng-Goegnies Gros Saule 20:07</li><li><a href="stop-TEC_H2hg266b.html">TEC:H2hg266b</a> - Houdeng-Goegnies Magna Park 20:08</li><li><a href="stop-TEC_H2hg271b.html">TEC:H2hg271b</a> - Houdeng-Goegnies Cité Glaverbel 20:09</li><li><a href="stop-TEC_H2hg267b.html">TEC:H2hg267b</a> - Houdeng-Goegnies Pharma Belgium 20:11</li><li><a href="stop-TEC_H2hg266a.html">TEC:H2hg266a</a> - Houdeng-Goegnies Magna Park 20:12</li><li><a href="stop-TEC_H2hg272a.html">TEC:H2hg272a</a> - Houdeng-Goegnies Bois de la Hutte 20:13</li><li><a href="stop-TEC_H2hg268b.html">TEC:H2hg268b</a> - Houdeng-Goegnies Chemin de Familleureux 20:14</li><li><a href="stop-TEC_H2hg269b.html">TEC:H2hg269b</a> - Houdeng-Goegnies Garocentre 20:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1800.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

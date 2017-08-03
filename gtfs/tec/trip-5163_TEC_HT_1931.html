@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Proxibus Bernissart - 5163:TEC:HT:1931</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Proxibus Bernissart - 5163:TEC:HT:1931</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1po137b.html">TEC:H1po137b</a> - Pommeroeul Rond Point 16:15</li><li><a href="stop-TEC_H1po153b.html">TEC:H1po153b</a> - Pommeroeul Notre-Dame 16:16</li><li><a href="stop-TEC_H1hc127a.html">TEC:H1hc127a</a> - Harchies Croix 16:22</li><li><a href="stop-TEC_H1hc125a.html">TEC:H1hc125a</a> - Harchies Chaussée Brunehault 16:24</li><li><a href="stop-TEC_H1hc126a.html">TEC:H1hc126a</a> - Harchies Cité Charbonnage 16:25</li><li><a href="stop-TEC_H1hc152b.html">TEC:H1hc152b</a> - Harchies Jardin 16:26</li><li><a href="stop-TEC_H1hc151b.html">TEC:H1hc151b</a> - Harchies Rivage 16:29</li><li><a href="stop-TEC_H1hc150b.html">TEC:H1hc150b</a> - Harchies Buissonnet 16:30</li><li><a href="stop-TEC_H4be149a.html">TEC:H4be149a</a> - Bernissart Préau 16:34</li><li><a href="stop-TEC_H4be112a.html">TEC:H4be112a</a> - Bernissart Fraity 16:35</li><li><a href="stop-TEC_H4be103a.html">TEC:H4be103a</a> - Bernissart Rue Grande 16:36</li><li><a href="stop-TEC_H4be109a.html">TEC:H4be109a</a> - Bernissart Place 16:37</li><li><a href="stop-TEC_H4be148b.html">TEC:H4be148b</a> - Bernissart Lotard 16:38</li><li><a href="stop-TEC_H4be147b.html">TEC:H4be147b</a> - Bernissart Iguanodons 16:40</li><li><a href="stop-TEC_H4be104b.html">TEC:H4be104b</a> - Bernissart Calvaire 16:41</li><li><a href="stop-TEC_H4be102b.html">TEC:H4be102b</a> - Bernissart Café de Basècles 16:42</li><li><a href="stop-TEC_H4be107b.html">TEC:H4be107b</a> - Bernissart Ferme Martin 16:43</li><li><a href="stop-TEC_H4be145a.html">TEC:H4be145a</a> - Bernissart Pan 16:45</li><li><a href="stop-TEC_H4be146b.html">TEC:H4be146b</a> - Bernissart Bon Air 16:47</li><li><a href="stop-TEC_H5bl120b.html">TEC:H5bl120b</a> - Blaton La Buche 16:48</li><li><a href="stop-TEC_H5bl118b.html">TEC:H5bl118b</a> - Blaton Chez Germain 16:49</li><li><a href="stop-TEC_H5bl117c.html">TEC:H5bl117c</a> - Blaton Chapelle 16:50</li><li><a href="stop-TEC_H5bl144b.html">TEC:H5bl144b</a> - Blaton Lemoine 16:51</li><li><a href="stop-TEC_H5bl124b.html">TEC:H5bl124b</a> - Blaton Rue Haute 16:52</li><li><a href="stop-TEC_H5bl143b.html">TEC:H5bl143b</a> - Blaton Paix 16:53</li><li><a href="stop-TEC_H5bl142b.html">TEC:H5bl142b</a> - Blaton Fraternité 16:54</li><li><a href="stop-TEC_H5bl123b.html">TEC:H5bl123b</a> - Blaton Potager 16:55</li><li><a href="stop-TEC_H5bl115b.html">TEC:H5bl115b</a> - Blaton Belvédère 16:56</li><li><a href="stop-TEC_H5bl141a.html">TEC:H5bl141a</a> - Blaton Station 16:56</li><li><a href="stop-TEC_H5bl119a.html">TEC:H5bl119a</a> - Blaton SNCB 16:58</li><li><a href="stop-TEC_H5bl119d.html">TEC:H5bl119d</a> - Blaton SNCB 16:58</li><li><a href="stop-TEC_H5qu182a.html">TEC:H5qu182a</a> - Quevaucamps Avenue de l'Europe 17:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2200.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

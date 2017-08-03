@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - GEMBLOUX - ST-MARTIN - TONGRINNE / ONOZ - 5163:TEC:NA:7358</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GEMBLOUX - ST-MARTIN - TONGRINNE / ONOZ - 5163:TEC:NA:7358</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N522adc.html">TEC:N522adc</a> - Gembloux Gare 16:11</li><li><a href="stop-TEC_N522aeb.html">TEC:N522aeb</a> - Gembloux Rue des Volontaires 16:13</li><li><a href="stop-TEC_N522apb.html">TEC:N522apb</a> - Gembloux Place de l'Orneau 16:16</li><li><a href="stop-TEC_N522ara.html">TEC:N522ara</a> - Gembloux Rue Gustave Masset 16:18</li><li><a href="stop-TEC_N522ana.html">TEC:N522ana</a> - Gembloux Rue Pierquin 16:21</li><li><a href="stop-TEC_N522ama.html">TEC:N522ama</a> - Gembloux Athénée 16:23</li><li><a href="stop-TEC_N522ala.html">TEC:N522ala</a> - Gembloux Rue Sigebert 16:24</li><li><a href="stop-TEC_N522aea.html">TEC:N522aea</a> - Gembloux Rue des Volontaires 16:26</li><li><a href="stop-TEC_N522adc.html">TEC:N522adc</a> - Gembloux Gare 16:40</li><li><a href="stop-TEC_N522ajb.html">TEC:N522ajb</a> - Gembloux Distillerie Descamps 16:42</li><li><a href="stop-TEC_N522akb.html">TEC:N522akb</a> - Gembloux Le Rallye 16:43</li><li><a href="stop-TEC_N522asb.html">TEC:N522asb</a> - Grand-Manil Chaussée de Charleroi 16:44</li><li><a href="stop-TEC_N522atb.html">TEC:N522atb</a> - Grand-Manil Clos Normand 16:45</li><li><a href="stop-TEC_N522aub.html">TEC:N522aub</a> - Grand-Manil Ecole d'horticulture 16:46</li><li><a href="stop-TEC_N529aab.html">TEC:N529aab</a> - Corroy-le-Chateau Maison dricot 16:46</li><li><a href="stop-TEC_N529abb.html">TEC:N529abb</a> - Corroy-le-Chateau Grand'route 16:47</li><li><a href="stop-TEC_N529acb.html">TEC:N529acb</a> - Corroy-le-Chateau Bruynette 16:48</li><li><a href="stop-TEC_N529adb.html">TEC:N529adb</a> - Corroy-le-Chateau La ronce 16:49</li><li><a href="stop-TEC_N584acb.html">TEC:N584acb</a> - Tongrinne Grand'route 59 16:49</li><li><a href="stop-TEC_N584abb.html">TEC:N584abb</a> - Tongrinne Garage Evrard 16:50</li><li><a href="stop-TEC_N584brb.html">TEC:N584brb</a> - Tongrinne Docq 16:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6337.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Opéra - Guillemins - Sart-Tilman Université - CHU - 5163:TEC:LV:15801</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Opéra - Guillemins - Sart-Tilman Université - CHU - 5163:TEC:LV:15801</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LlgOPER1.html">TEC:LlgOPER1</a> - Liege Opéra 22:27</li><li><a href="stop-TEC_LlgPTAV1.html">TEC:LlgPTAV1</a> - Liege Pont d'Avroy 22:30</li><li><a href="stop-TEC_Llgchar1.html">TEC:Llgchar1</a> - Liege Charlemagne 22:32</li><li><a href="stop-TEC_Llgblon1.html">TEC:Llgblon1</a> - Liege Avenue Blonden 22:34</li><li><a href="stop-TEC_LlgguilB.html">TEC:LlgguilB</a> - Liege Gare des Guillemins Quai B 22:36</li><li><a href="stop-TEC_Llglema1.html">TEC:Llglema1</a> - Liege Place Général Leman 22:39</li><li><a href="stop-TEC_Llggram3.html">TEC:Llggram3</a> - Liege Monument Gramme 22:41</li><li><a href="stop-TEC_Lagbeno5.html">TEC:Lagbeno5</a> - Angleur Pont du Val Benoît 22:42</li><li><a href="stop-TEC_Lagchen1.html">TEC:Lagchen1</a> - Angleur Rue du Chêne 22:43</li><li><a href="stop-TEC_Lagmair1.html">TEC:Lagmair1</a> - Angleur Mairie d'Angleur 22:43</li><li><a href="stop-TEC_Lagjard1.html">TEC:Lagjard1</a> - Angleur Rue Belle Jardinière 22:45</li><li><a href="stop-TEC_Lagtenn1.html">TEC:Lagtenn1</a> - Angleur Chemin du Tennis Club 22:46</li><li><a href="stop-TEC_Laghetr1.html">TEC:Laghetr1</a> - Angleur Beau Hêtre 22:47</li><li><a href="stop-TEC_Lagindu1.html">TEC:Lagindu1</a> - Angleur Parc industriel 22:47</li><li><a href="stop-TEC_Lagorch1.html">TEC:Lagorch1</a> - Angleur Orchidée Blanche 22:48</li><li><a href="stop-TEC_Lsteg--1.html">TEC:Lsteg--1</a> - Sart-Tilman Eglise 22:49</li><li><a href="stop-TEC_Lstetud1.html">TEC:Lstetud1</a> - Sart-Tilman Home Etudiants (Mésanges) 22:49</li><li><a href="stop-TEC_Lstauna1.html">TEC:Lstauna1</a> - Sart-Tilman Rue de l'Aunaie 22:49</li><li><a href="stop-TEC_Lstamph1.html">TEC:Lstamph1</a> - Sart-Tilman Amphithéâtres 22:50</li><li><a href="stop-TEC_Lstchim1.html">TEC:Lstchim1</a> - Sart-Tilman Chimie (amphis) 22:51</li><li><a href="stop-TEC_Lstphys1.html">TEC:Lstphys1</a> - Sart-Tilman Physique 22:51</li><li><a href="stop-TEC_Lstfer-1.html">TEC:Lstfer-1</a> - Sart-Tilman Croix de Fer 22:51</li><li><a href="stop-TEC_Lstatel1.html">TEC:Lstatel1</a> - Sart-Tilman Ateliers 22:52</li><li><a href="stop-TEC_Lstbarb3.html">TEC:Lstbarb3</a> - Sart-Tilman Barbecue-Golf 22:53</li><li><a href="stop-TEC_Lsteduc1.html">TEC:Lsteduc1</a> - Sart-Tilman Education Physique 22:55</li><li><a href="stop-TEC_Lstbota1.html">TEC:Lstbota1</a> - Sart-Tilman Botanique 22:56</li><li><a href="stop-TEC_Lstchu-1.html">TEC:Lstchu-1</a> - Sart-Tilman C.H.U. 22:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4202.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Gouvy - Tavigny - Bastogne - 5163:TEC:LU:2038</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gouvy - Tavigny - Bastogne - 5163:TEC:LU:2038</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X725afe.html">TEC:X725afe</a> - Bastogne Gare du Sud - Quai 3 16:10</li><li><a href="stop-TEC_X725aed.html">TEC:X725aed</a> - Bastogne Pépinière - Quai 4 16:15</li><li><a href="stop-TEC_X725beb.html">TEC:X725beb</a> - Bastogne Complexe Sportif 16:17</li><li><a href="stop-TEC_X766aea.html">TEC:X766aea</a> - Bourcy Route de Tavigny 103 16:44</li><li><a href="stop-TEC_X765aaa.html">TEC:X765aaa</a> - Boeur Route de Bourcy 33 16:48</li><li><a href="stop-TEC_X765aba.html">TEC:X765aba</a> - Boeur Route de Bourcy 31 16:48</li><li><a href="stop-TEC_X765aca.html">TEC:X765aca</a> - Boeur Route de Bourcy 26 16:48</li><li><a href="stop-TEC_X765adb.html">TEC:X765adb</a> - Boeur Centre 16:49</li><li><a href="stop-TEC_X765afb.html">TEC:X765afb</a> - Wandebourcy Centre 16:50</li><li><a href="stop-TEC_X765agb.html">TEC:X765agb</a> - Wandebourcy Route de Tavigny 16:51</li><li><a href="stop-TEC_X763acb.html">TEC:X763acb</a> - Tavigny Route de Cetturu 16:56</li><li><a href="stop-TEC_X763adb.html">TEC:X763adb</a> - Tavigny Ferme du Ruy 16:57</li><li><a href="stop-TEC_X762aaa.html">TEC:X762aaa</a> - Cetturu Auberge 16:58</li><li><a href="stop-TEC_X762abb.html">TEC:X762abb</a> - Cetturu Eglise 17:00</li><li><a href="stop-TEC_X762aca.html">TEC:X762aca</a> - Cetturu Route de Cherain 17:01</li><li><a href="stop-TEC_X762adb.html">TEC:X762adb</a> - Liherin Château 17:02</li><li><a href="stop-TEC_X762aea.html">TEC:X762aea</a> - Steinbach Rue de Liherin 17:04</li><li><a href="stop-TEC_X762afa.html">TEC:X762afa</a> - Steinbach Eglise 17:05</li><li><a href="stop-TEC_X762agb.html">TEC:X762agb</a> - Steinbach Rue de la Grotte 10 17:06</li><li><a href="stop-TEC_X761aab.html">TEC:X761aab</a> - Limerle Gare 17:08</li><li><a href="stop-TEC_X761abb.html">TEC:X761abb</a> - Limerle Rue de Roy 41 17:09</li><li><a href="stop-TEC_X761acb.html">TEC:X761acb</a> - Limerle Eglise 17:10</li><li><a href="stop-TEC_X761ada.html">TEC:X761ada</a> - Limerle Route de Gouvy 17:11</li><li><a href="stop-TEC_X790ahb.html">TEC:X790ahb</a> - Gouvy Ferme Burnotte 17:13</li><li><a href="stop-TEC_X790aga.html">TEC:X790aga</a> - Gouvy Lac de Chérapont 17:14</li><li><a href="stop-TEC_X790aeb.html">TEC:X790aeb</a> - Gouvy Rue du Centre 17:15</li><li><a href="stop-TEC_X790afa.html">TEC:X790afa</a> - Gouvy Eglise 17:16</li><li><a href="stop-TEC_X790aib.html">TEC:X790aib</a> - Gouvy Ecole des Soeurs 17:17</li><li><a href="stop-TEC_X790ajb.html">TEC:X790ajb</a> - Gouvy Gendarmerie 17:17</li><li><a href="stop-TEC_X790aka.html">TEC:X790aka</a> - Gouvy Gare 17:18</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2891.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

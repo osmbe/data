@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Rochefort - Marche - 5163:TEC:LU:869</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Rochefort - Marche - 5163:TEC:LU:869</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X999aia.html">TEC:X999aia</a> - Aye Gare 13:15</li><li><a href="stop-TEC_X999aka.html">TEC:X999aka</a> - Aye Rue du Vivier - Saulcy 13:15</li><li><a href="stop-TEC_X999ala.html">TEC:X999ala</a> - Aye Rue du Vivier 45 13:16</li><li><a href="stop-TEC_X999aqa.html">TEC:X999aqa</a> - Aye Rue du Vivier 31 13:17</li><li><a href="stop-TEC_X901ama.html">TEC:X901ama</a> - Marche Clinique 13:17</li><li><a href="stop-TEC_X901arb.html">TEC:X901arb</a> - Marche Maison Médicale 13:18</li><li><a href="stop-TEC_X901aaa.html">TEC:X901aaa</a> - Marche Inst des Pères Franciscains 13:19</li><li><a href="stop-TEC_X901aba.html">TEC:X901aba</a> - Marche Palais de Justice 13:20</li><li><a href="stop-TEC_X901aha.html">TEC:X901aha</a> - Marche Boulevard du Nord 13:21</li><li><a href="stop-TEC_X901bna.html">TEC:X901bna</a> - Marche Porte Basse 13:22</li><li><a href="stop-TEC_X901ana.html">TEC:X901ana</a> - Marche Route de Liège 13:23</li><li><a href="stop-TEC_X901bqa.html">TEC:X901bqa</a> - Marche Carmel 13:24</li><li><a href="stop-TEC_X901bqb.html">TEC:X901bqb</a> - Marche Carmel 13:25</li><li><a href="stop-TEC_X901anb.html">TEC:X901anb</a> - Marche Route de Liège 13:26</li><li><a href="stop-TEC_X901bnb.html">TEC:X901bnb</a> - Marche Porte Basse 13:27</li><li><a href="stop-TEC_X901acb.html">TEC:X901acb</a> - Marche Place de l'Etang 13:28</li><li><a href="stop-TEC_X901acb.html">TEC:X901acb</a> - Marche Place de l'Etang 13:28</li><li><a href="stop-TEC_X901bob.html">TEC:X901bob</a> - Marche Boulevard - Hôtel de Ville 13:29</li><li><a href="stop-TEC_X901bsc.html">TEC:X901bsc</a> - Marche Pont N4 13:29</li><li><a href="stop-TEC_X901bsb.html">TEC:X901bsb</a> - Marche Pont N4 13:29</li><li><a href="stop-TEC_X901aia.html">TEC:X901aia</a> - Marche Pirire 13:30</li><li><a href="stop-TEC_X902bbb.html">TEC:X902bbb</a> - Marloie Ma Campagne 13:32</li><li><a href="stop-TEC_X902aba.html">TEC:X902aba</a> - Marloie Point du Jour 13:32</li><li><a href="stop-TEC_X902aca.html">TEC:X902aca</a> - Marloie Maison Glatigny 13:33</li><li><a href="stop-TEC_X902ana.html">TEC:X902ana</a> - Marloie Spar 13:34</li><li><a href="stop-TEC_X902aaa.html">TEC:X902aaa</a> - Marloie Eglise 13:34</li><li><a href="stop-TEC_X902afc.html">TEC:X902afc</a> - Marloie Gare - Quai 3 13:35</li><li><a href="stop-TEC_X902afc.html">TEC:X902afc</a> - Marloie Gare - Quai 3 13:35</li><li><a href="stop-TEC_X902aab.html">TEC:X902aab</a> - Marloie Eglise 13:36</li><li><a href="stop-TEC_X902aea.html">TEC:X902aea</a> - Marloie Rue des Sinistrés 13:37</li><li><a href="stop-TEC_X902aga.html">TEC:X902aga</a> - Hargimont Scierie 13:39</li><li><a href="stop-TEC_X902aha.html">TEC:X902aha</a> - Hargimont Ferme France 13:40</li><li><a href="stop-TEC_X390aia.html">TEC:X390aia</a> - On Ferme Jadot 13:41</li><li><a href="stop-TEC_X390aha.html">TEC:X390aha</a> - On Pont de la Wamme 13:42</li><li><a href="stop-TEC_X390aja.html">TEC:X390aja</a> - On Chemin de Baty 13:44</li><li><a href="stop-TEC_X390aka.html">TEC:X390aka</a> - On Cité des Italiens 13:45</li><li><a href="stop-TEC_X390ala.html">TEC:X390ala</a> - On Chemin de Wée 13:46</li><li><a href="stop-TEC_X390ana.html">TEC:X390ana</a> - On Belgacom 13:47</li><li><a href="stop-TEC_N390aea.html">TEC:N390aea</a> - Jemelle Tunnel SNCB 13:47</li><li><a href="stop-TEC_N390aca.html">TEC:N390aca</a> - Jemelle Place communale 13:48</li><li><a href="stop-TEC_N390aaa.html">TEC:N390aaa</a> - Jemelle Rue du Centenaire 13:49</li><li><a href="stop-TEC_N390aba.html">TEC:N390aba</a> - Jemelle Rue Salvé 13:49</li><li><a href="stop-TEC_N390afa.html">TEC:N390afa</a> - Jemelle Rue de la Vallée 13:50</li><li><a href="stop-TEC_N390ama.html">TEC:N390ama</a> - Jemelle Hall Omnisports 13:50</li><li><a href="stop-TEC_N351ata.html">TEC:N351ata</a> - Rochefort Lidl 13:51</li><li><a href="stop-TEC_N351afa.html">TEC:N351afa</a> - Rochefort Camping 13:53</li><li><a href="stop-TEC_N351aaa.html">TEC:N351aaa</a> - Rochefort Ancienne Gare 13:54</li><li><a href="stop-TEC_N351aia.html">TEC:N351aia</a> - Rochefort Poste 13:56</li><li><a href="stop-TEC_N351ajc.html">TEC:N351ajc</a> - Rochefort Pont de la Lhomme 13:57</li><li><a href="stop-TEC_N351aub.html">TEC:N351aub</a> - Rochefort Rue de la Libération 13:58</li><li><a href="stop-TEC_N351akc.html">TEC:N351akc</a> - Rochefort Carrefour route vers Dinant 13:59</li><li><a href="stop-TEC_X351aob.html">TEC:X351aob</a> - Rochefort Cimetière 14:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2515.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

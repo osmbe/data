@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Libramont - Jemelle - 5163:TEC:LU:2546</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Libramont - Jemelle - 5163:TEC:LU:2546</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X897alc.html">TEC:X897alc</a> - Saint-Hubert Place de la Libération 18:22</li><li><a href="stop-TEC_X897aca.html">TEC:X897aca</a> - Saint-Hubert Rue d'Hatrival 1 18:23</li><li><a href="stop-TEC_X897abb.html">TEC:X897abb</a> - Saint-Hubert Rue d'Hatrival 30 18:24</li><li><a href="stop-TEC_X897aab.html">TEC:X897aab</a> - Saint-Hubert Moulin d'en Haut 18:26</li><li><a href="stop-TEC_X898aha.html">TEC:X898aha</a> - Hatrival Rue de Saint-Hubert 42 18:27</li><li><a href="stop-TEC_X898aia.html">TEC:X898aia</a> - Hatrival Rue de Saint-Hubert 13 18:28</li><li><a href="stop-TEC_X898ajb.html">TEC:X898ajb</a> - Hatrival Ecole 18:29</li><li><a href="stop-TEC_X898ana.html">TEC:X898ana</a> - Hatrival Rue de Bras 19 18:29</li><li><a href="stop-TEC_X898amb.html">TEC:X898amb</a> - Hatrival Rue de Bras 44 18:30</li><li><a href="stop-TEC_X899aea.html">TEC:X899aea</a> - Bras Haut Route d'Hatrival 18:32</li><li><a href="stop-TEC_X899acb.html">TEC:X899acb</a> - Bras Haut Rue de Mochamps 18:34</li><li><a href="stop-TEC_X899abb.html">TEC:X899abb</a> - Bras Haut Escale 18:34</li><li><a href="stop-TEC_X801aaa.html">TEC:X801aaa</a> - Libramont L'Oréal 18:39</li><li><a href="stop-TEC_X802aub.html">TEC:X802aub</a> - Recogne Route de Saint-Hubert - N89 18:39</li><li><a href="stop-TEC_X802aya.html">TEC:X802aya</a> - Recogne Carrefour 18:40</li><li><a href="stop-TEC_X801bwa.html">TEC:X801bwa</a> - Libramont Le Blancheau 18:41</li><li><a href="stop-TEC_X801bxa.html">TEC:X801bxa</a> - Libramont Gendarmerie 18:42</li><li><a href="stop-TEC_X801bzb.html">TEC:X801bzb</a> - Libramont Outigros 18:43</li><li><a href="stop-TEC_X801clb.html">TEC:X801clb</a> - Libramont Avenue de Bouillon 59 18:44</li><li><a href="stop-TEC_X801bma.html">TEC:X801bma</a> - Libramont Avenue de Bouillon 13 18:44</li><li><a href="stop-TEC_X801bde.html">TEC:X801bde</a> - Libramont Gare - Quai 3 18:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2527.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

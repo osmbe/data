@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - BEAURAING - GIVET - DOISCHE - 5163:TEC:NA:6777</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: BEAURAING - GIVET - DOISCHE - 5163:TEC:NA:6777</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N308afc.html">TEC:N308afc</a> - Beauraing INDSC 16:00</li><li><a href="stop-TEC_N308agb.html">TEC:N308agb</a> - Beauraing Place St-Roch 16:02</li><li><a href="stop-TEC_N308ama.html">TEC:N308ama</a> - Beauraing Athénée 16:03</li><li><a href="stop-TEC_N308aka.html">TEC:N308aka</a> - Beauraing Institut 16:05</li><li><a href="stop-TEC_N308ahb.html">TEC:N308ahb</a> - Beauraing Place Berry 16:07</li><li><a href="stop-TEC_N308ajb.html">TEC:N308ajb</a> - Beauraing Route de la gare 16:08</li><li><a href="stop-TEC_N308aia.html">TEC:N308aia</a> - Beauraing Rond-point 16:09</li><li><a href="stop-TEC_N308ala.html">TEC:N308ala</a> - Beauraing Quartier des Ardennes 16:11</li><li><a href="stop-TEC_N308aca.html">TEC:N308aca</a> - Baronville Dessus du village 16:12</li><li><a href="stop-TEC_N308aaa.html">TEC:N308aaa</a> - Baronville Ma campagne 16:12</li><li><a href="stop-TEC_N308beb.html">TEC:N308beb</a> - Baronville Fontaine 16:13</li><li><a href="stop-TEC_N308bfb.html">TEC:N308bfb</a> - Baronville Château 16:13</li><li><a href="stop-TEC_N308bgb.html">TEC:N308bgb</a> - Baronville Pylone 16:14</li><li><a href="stop-TEC_N308bhb.html">TEC:N308bhb</a> - Baronville Ry du moulin 16:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6726.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

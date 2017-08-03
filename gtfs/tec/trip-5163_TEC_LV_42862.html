@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Eupen - Kelmis - Vaals - 5163:TEC:LV:42862</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eupen - Kelmis - Vaals - 5163:TEC:LV:42862</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LVAbuss1.html">TEC:LVAbuss1</a> - Vaals Busstation 18:03</li><li><a href="stop-TEC_LVAstjo1.html">TEC:LVAstjo1</a> - Vaals St. Jozef Kerk 18:04</li><li><a href="stop-TEC_LVApark2.html">TEC:LVApark2</a> - Vaals Parklaan 18:05</li><li><a href="stop-TEC_LVAakke2.html">TEC:LVAakke2</a> - Vaals De Lange Akker 18:06</li><li><a href="stop-TEC_LVAflat2.html">TEC:LVAflat2</a> - Vaals Flat 18:06</li><li><a href="stop-TEC_LVAgemm2.html">TEC:LVAgemm2</a> - Vaals Gemmenicherweg 18:07</li><li><a href="stop-TEC_LVAwolf2.html">TEC:LVAwolf2</a> - Vaals Wolfhaag 18:10</li><li><a href="stop-TEC_LGefron2.html">TEC:LGefron2</a> - Gemmenich Frontière 18:11</li><li><a href="stop-TEC_LGeduc-2.html">TEC:LGeduc-2</a> - Gemmenich Chemin du Duc 18:12</li><li><a href="stop-TEC_LGegare2.html">TEC:LGegare2</a> - Gemmenich Ancienne gare 18:13</li><li><a href="stop-TEC_LGeborn2.html">TEC:LGeborn2</a> - Gemmenich Aux Trois Bornes 18:13</li><li><a href="stop-TEC_LGepeck2.html">TEC:LGepeck2</a> - Gemmenich Place Peckham 18:14</li><li><a href="stop-TEC_LGeforg2.html">TEC:LGeforg2</a> - Gemmenich La Forge 18:14</li><li><a href="stop-TEC_LGesent2.html">TEC:LGesent2</a> - Gemmenich Sentier des Cendres 18:15</li><li><a href="stop-TEC_LGevygh2.html">TEC:LGevygh2</a> - Gemmenich Maison Vyghen 18:16</li><li><a href="stop-TEC_LGemari2.html">TEC:LGemari2</a> - Gemmenich Maria Hilf 18:17</li><li><a href="stop-TEC_LMschap2.html">TEC:LMschap2</a> - Moresnet Chapelle 18:19</li><li><a href="stop-TEC_LMsgara2.html">TEC:LMsgara2</a> - Moresnet Garage 18:19</li><li><a href="stop-TEC_LMsbusc2.html">TEC:LMsbusc2</a> - Moresnet Buschhausen pont 18:21</li><li><a href="stop-TEC_LkEbran2.html">TEC:LkEbran2</a> - Kelmis Brandenhövel 18:21</li><li><a href="stop-TEC_LkEwolf2.html">TEC:LkEwolf2</a> - Kelmis Wolfsweg 18:22</li><li><a href="stop-TEC_LkEcoop2.html">TEC:LkEcoop2</a> - Kelmis Coopérative 18:23</li><li><a href="stop-TEC_LkEgend2.html">TEC:LkEgend2</a> - Kelmis Gendarmerie 18:24</li><li><a href="stop-TEC_LkEkirc2.html">TEC:LkEkirc2</a> - Kelmis Kirchplatz 18:25</li><li><a href="stop-TEC_LkEbbl-2.html">TEC:LkEbbl-2</a> - Kelmis B.B.L. (Fischenich) 18:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3965.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

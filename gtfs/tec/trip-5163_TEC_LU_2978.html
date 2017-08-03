@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Havelange - Marche - 5163:TEC:LU:2978</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Havelange - Marche - 5163:TEC:LU:2978</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X222alb.html">TEC:X222alb</a> - Maffe Route de Méan 07:27</li><li><a href="stop-TEC_X222aza.html">TEC:X222aza</a> - Mean Eglise 07:30</li><li><a href="stop-TEC_N222aeb.html">TEC:N222aeb</a> - Mean Vieux logis 07:31</li><li><a href="stop-TEC_N222acb.html">TEC:N222acb</a> - Mean Chaussée de Liège 07:32</li><li><a href="stop-TEC_X222adc.html">TEC:X222adc</a> - Mean Gros Chêne 07:32</li><li><a href="stop-TEC_X919aja.html">TEC:X919aja</a> - Somme-Leuze Carrefour (Route de Durbuy) 07:34</li><li><a href="stop-TEC_X919aka.html">TEC:X919aka</a> - Somme-Leuze Eglise 07:35</li><li><a href="stop-TEC_X919ana.html">TEC:X919ana</a> - Somme-Leuze Rue de Liège 38 07:36</li><li><a href="stop-TEC_X919ama.html">TEC:X919ama</a> - Somme-Leuze Mirlipinpin 07:38</li><li><a href="stop-TEC_X396acb.html">TEC:X396acb</a> - Baillonville Maison Communale 07:41</li><li><a href="stop-TEC_X396aba.html">TEC:X396aba</a> - Rabozee Carrefour 07:43</li><li><a href="stop-TEC_X396aaa.html">TEC:X396aaa</a> - Rabozee La Main Verte 07:44</li><li><a href="stop-TEC_X901bqb.html">TEC:X901bqb</a> - Marche Carmel 07:51</li><li><a href="stop-TEC_X901anb.html">TEC:X901anb</a> - Marche Route de Liège 07:52</li><li><a href="stop-TEC_X901bnb.html">TEC:X901bnb</a> - Marche Porte Basse 07:52</li><li><a href="stop-TEC_X901aob.html">TEC:X901aob</a> - Marche Cimetière 07:53</li><li><a href="stop-TEC_X901aka.html">TEC:X901aka</a> - Marche Institut St-Laurent 07:55</li><li><a href="stop-TEC_X901ajc.html">TEC:X901ajc</a> - Marche IND 07:57</li><li><a href="stop-TEC_X901ajb.html">TEC:X901ajb</a> - Marche IND 07:57</li><li><a href="stop-TEC_X901aja.html">TEC:X901aja</a> - Marche IND 07:57</li><li><a href="stop-TEC_X901aeb.html">TEC:X901aeb</a> - Marche Athénée 08:01</li><li><a href="stop-TEC_X901afa.html">TEC:X901afa</a> - Marche Rue Pierre Saint-Hubert 08:02</li><li><a href="stop-TEC_X901aga.html">TEC:X901aga</a> - Marche Les His 08:02</li><li><a href="stop-TEC_X902bbb.html">TEC:X902bbb</a> - Marloie Ma Campagne 08:03</li><li><a href="stop-TEC_X902aba.html">TEC:X902aba</a> - Marloie Point du Jour 08:03</li><li><a href="stop-TEC_X902aca.html">TEC:X902aca</a> - Marloie Maison Glatigny 08:04</li><li><a href="stop-TEC_X902ana.html">TEC:X902ana</a> - Marloie Spar 08:05</li><li><a href="stop-TEC_X902aea.html">TEC:X902aea</a> - Marloie Rue des Sinistrés 08:06</li><li><a href="stop-TEC_X902aga.html">TEC:X902aga</a> - Hargimont Scierie 08:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3466.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

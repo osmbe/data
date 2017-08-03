@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Eupen - Büllingen - Sankt-Vith - 5163:TEC:LV:25155</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eupen - Büllingen - Sankt-Vith - 5163:TEC:LV:25155</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LeUbush1.html">TEC:LeUbush1</a> - Eupen Bushof 16:55</li><li><a href="stop-TEC_LeUbahn4.html">TEC:LeUbahn4</a> - Eupen Bahnhof 16:56</li><li><a href="stop-TEC_LeUwert2.html">TEC:LeUwert2</a> - Eupen Werthplatz 16:57</li><li><a href="stop-TEC_LeUkehr4.html">TEC:LeUkehr4</a> - Eupen Kehrweg 16:59</li><li><a href="stop-TEC_LeUhaas3.html">TEC:LeUhaas3</a> - Eupen Haas 17:00</li><li><a href="stop-TEC_LeUmalm1.html">TEC:LeUmalm1</a> - Eupen Malmedyer Strasse 17:01</li><li><a href="stop-TEC_LeUcroi1.html">TEC:LeUcroi1</a> - Eupen Croix Noire 17:02</li><li><a href="stop-TEC_LHthest1.html">TEC:LHthest1</a> - Hestreux Hestreux 17:06</li><li><a href="stop-TEC_LHtdros1.html">TEC:LHtdros1</a> - Hestreux porte de Drossart 17:09</li><li><a href="stop-TEC_LJAbell1.html">TEC:LJAbell1</a> - Jalhay Belle Croix 17:12</li><li><a href="stop-TEC_LBmbara1.html">TEC:LBmbara1</a> - Baraque-Michel Arrêt TEC 17:14</li><li><a href="stop-TEC_LMRmont1.html">TEC:LMRmont1</a> - Mont-Rigi Arrêt TEC 17:15</li><li><a href="stop-TEC_LBhsign1.html">TEC:LBhsign1</a> - Botrange Signal de Botrange 17:17</li><li><a href="stop-TEC_LBhcent1.html">TEC:LBhcent1</a> - Botrange Centre Nature 17:18</li><li><a href="stop-TEC_LSochal1.html">TEC:LSochal1</a> - Sourbrodt Chalet 17:20</li><li><a href="stop-TEC_LSogite1.html">TEC:LSogite1</a> - Sourbrodt Gîte d'étape 17:21</li><li><a href="stop-TEC_LSopost1.html">TEC:LSopost1</a> - Sourbrodt Poste 17:21</li><li><a href="stop-TEC_LSoboul1.html">TEC:LSoboul1</a> - Sourbrodt Boulangerie Toussaint 17:22</li><li><a href="stop-TEC_LSoeg--1.html">TEC:LSoeg--1</a> - Sourbrodt Eglise 17:23</li><li><a href="stop-TEC_LSokrin1.html">TEC:LSokrin1</a> - Sourbrodt Maison Krings 17:23</li><li><a href="stop-TEC_LSogare1.html">TEC:LSogare1</a> - Sourbrodt Gare 17:24</li><li><a href="stop-TEC_LSoprom1.html">TEC:LSoprom1</a> - Sourbrodt Promopack 17:25</li><li><a href="stop-TEC_LeLcrem1.html">TEC:LeLcrem1</a> - Elsenborn Haus Cremer 17:26</li><li><a href="stop-TEC_LeLkalt1.html">TEC:LeLkalt1</a> - Elsenborn Kalterherberger Strasse 17:27</li><li><a href="stop-TEC_LeLsied1.html">TEC:LeLsied1</a> - Elsenborn Siedlung 17:29</li><li><a href="stop-TEC_LeLzost1.html">TEC:LeLzost1</a> - Elsenborn Zosterbach 17:29</li><li><a href="stop-TEC_LeLgrie1.html">TEC:LeLgrie1</a> - Elsenborn Griesdeck 17:30</li><li><a href="stop-TEC_LeLbegl1.html">TEC:LeLbegl1</a> - Elsenborn Begleitzentrum 17:31</li><li><a href="stop-TEC_LeLherz1.html">TEC:LeLherz1</a> - Elsenborn Herzebösch 17:31</li><li><a href="stop-TEC_LeLdorf1.html">TEC:LeLdorf1</a> - Elsenborn Dorf 17:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5057.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

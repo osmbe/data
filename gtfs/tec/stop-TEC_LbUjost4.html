@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bullingen Josthaus</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Bullingen Josthaus</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-5163_TEC_LV_27173.html">5163:TEC:LV:27173</a> - 5163:TEC:LV:27173 - Büllingen - Manderfeld</li><li><a href="trip-5163_TEC_LV_45080.html">5163:TEC:LV:45080</a> - 5163:TEC:LV:45080 - Büllingen - Manderfeld</li><li><a href="trip-5163_TEC_LV_51543.html">5163:TEC:LV:51543</a> - 5163:TEC:LV:51543 - Büllingen - Manderfeld</li><li><a href="trip-5163_TEC_LV_5328.html">5163:TEC:LV:5328</a> - 5163:TEC:LV:5328 - Büllingen - Manderfeld</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.400722, 6.293513], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.400722, 6.293513]).addTo(map);
+    </script>
+</body>
+
+</html>

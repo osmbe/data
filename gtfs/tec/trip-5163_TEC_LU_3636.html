@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Proxibus de Durbuy - 5163:TEC:LU:3636</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Proxibus de Durbuy - 5163:TEC:LU:3636</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X982ata.html">TEC:X982ata</a> - Barvaux Gare 12:55</li><li><a href="stop-TEC_X982aza.html">TEC:X982aza</a> - Barvaux Eglise 12:58</li><li><a href="stop-TEC_X982bba.html">TEC:X982bba</a> - Barvaux Poste 12:59</li><li><a href="stop-TEC_X982awa.html">TEC:X982awa</a> - Barvaux GB 13:01</li><li><a href="stop-TEC_X982asb.html">TEC:X982asb</a> - Barvaux Rue du Marais 13:01</li><li><a href="stop-TEC_X982ayb.html">TEC:X982ayb</a> - Barvaux Vieux Chemin de Petithan 13:02</li><li><a href="stop-TEC_X982azb.html">TEC:X982azb</a> - Barvaux Eglise 13:02</li><li><a href="stop-TEC_X982axa.html">TEC:X982axa</a> - Barvaux Route de Bomal 13:03</li><li><a href="stop-TEC_X982aua.html">TEC:X982aua</a> - Barvaux Station 13:03</li><li><a href="stop-TEC_X982caa.html">TEC:X982caa</a> - Barvaux Camping 13:04</li><li><a href="stop-TEC_X982bcb.html">TEC:X982bcb</a> - Bomal Route de Barvaux 127 13:06</li><li><a href="stop-TEC_X982bda.html">TEC:X982bda</a> - Bomal Route de Barvaux 92 13:07</li><li><a href="stop-TEC_X982bka.html">TEC:X982bka</a> - Bomal Clairval 13:08</li><li><a href="stop-TEC_X982bla.html">TEC:X982bla</a> - Bomal Quatre Bras 13:08</li><li><a href="stop-TEC_X982bqb.html">TEC:X982bqb</a> - Bomal Ecole Communale 13:08</li><li><a href="stop-TEC_X982bma.html">TEC:X982bma</a> - Juzaine Grand Route 142 13:09</li><li><a href="stop-TEC_X982bnb.html">TEC:X982bnb</a> - Juzaine Rue d'Onoz 13:09</li><li><a href="stop-TEC_X796aaa.html">TEC:X796aaa</a> - Ozo Centre 13:11</li><li><a href="stop-TEC_X796abb.html">TEC:X796abb</a> - Izier Route de Bomal 31 13:13</li><li><a href="stop-TEC_X796aca.html">TEC:X796aca</a> - Izier Eglise 13:14</li><li><a href="stop-TEC_X796adb.html">TEC:X796adb</a> - Izier Route de Werbomont 40 13:15</li><li><a href="stop-TEC_X796aeb.html">TEC:X796aeb</a> - Izier Rue de l'Argote 13:15</li><li><a href="stop-TEC_X796afb.html">TEC:X796afb</a> - Izier Route de Werbomont 1 13:15</li><li><a href="stop-TEC_X796aib.html">TEC:X796aib</a> - Malboutée 13:17</li><li><a href="stop-TEC_X796ahb.html">TEC:X796ahb</a> - Vieux Fourneau 13:19</li><li><a href="stop-TEC_X986amb.html">TEC:X986amb</a> - Grand Bru Centre 13:20</li><li><a href="stop-TEC_X986akb.html">TEC:X986akb</a> - Grand Bru Camping 13:21</li><li><a href="stop-TEC_X986agb.html">TEC:X986agb</a> - Villers-Sainte-Gertrude Eglise 13:23</li><li><a href="stop-TEC_X986acb.html">TEC:X986acb</a> - Aisne Carrefour de Heyd 13:24</li><li><a href="stop-TEC_X986adb.html">TEC:X986adb</a> - Aisne Eglise 13:25</li><li><a href="stop-TEC_X986ajb.html">TEC:X986ajb</a> - Roche-A-Frene Route de Mormont 13:27</li><li><a href="stop-TEC_X986alb.html">TEC:X986alb</a> - Deux-Rys Au Romain 13:27</li><li><a href="stop-TEC_X986aeb.html">TEC:X986aeb</a> - Heyd Bihay 13:29</li><li><a href="stop-TEC_X986afb.html">TEC:X986afb</a> - Heyd Centre 13:30</li><li><a href="stop-TEC_X986aba.html">TEC:X986aba</a> - Tour Centre 13:32</li><li><a href="stop-TEC_X986aaa.html">TEC:X986aaa</a> - Tour Carrefour 13:33</li><li><a href="stop-TEC_X986aha.html">TEC:X986aha</a> - Domaine de Hottemme 13:33</li><li><a href="stop-TEC_X983aab.html">TEC:X983aab</a> - Morville Centre 29 13:36</li><li><a href="stop-TEC_X983abb.html">TEC:X983abb</a> - Morville Route de Wéris 2 13:36</li><li><a href="stop-TEC_X983acb.html">TEC:X983acb</a> - Weris Route de Heyd 16 13:37</li><li><a href="stop-TEC_X983aga.html">TEC:X983aga</a> - Weris Eglise 13:37</li><li><a href="stop-TEC_X983adb.html">TEC:X983adb</a> - Weris Rue des Combattants 13:37</li><li><a href="stop-TEC_X983aeb.html">TEC:X983aeb</a> - Weris Rue d'Oppagne 5 13:37</li><li><a href="stop-TEC_X996agb.html">TEC:X996agb</a> - Pas-Bayard Carrefour 13:38</li><li><a href="stop-TEC_X996ada.html">TEC:X996ada</a> - Wenin Rue de Wéris 45 13:38</li><li><a href="stop-TEC_X996acb.html">TEC:X996acb</a> - Oppagne Rue de Wéris 21 13:39</li><li><a href="stop-TEC_X996aaa.html">TEC:X996aaa</a> - Oppagne Eglise 13:39</li><li><a href="stop-TEC_X996aba.html">TEC:X996aba</a> - Oppagne Grand Route 13:40</li><li><a href="stop-TEC_X982bab.html">TEC:X982bab</a> - Barvaux Golf 13:44</li><li><a href="stop-TEC_X982ata.html">TEC:X982ata</a> - Barvaux Gare 13:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2633.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

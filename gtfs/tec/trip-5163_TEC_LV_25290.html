@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Eupen - Büllingen - Sankt-Vith - 5163:TEC:LV:25290</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eupen - Büllingen - Sankt-Vith - 5163:TEC:LV:25290</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LbUbisc1.html">TEC:LbUbisc1</a> - Bullingen B.I.B. 16:08</li><li><a href="stop-TEC_LbUpost2.html">TEC:LbUpost2</a> - Bullingen Alte Post 16:09</li><li><a href="stop-TEC_LbUbutg2.html">TEC:LbUbutg2</a> - Bullingen Bütgenbacher Strasse 299 16:09</li><li><a href="stop-TEC_LbUmalm2.html">TEC:LbUmalm2</a> - Bullingen Malmeyder Strasse 16:10</li><li><a href="stop-TEC_LbTweyn2.html">TEC:LbTweyn2</a> - Butgenbach Haus Weynand 16:10</li><li><a href="stop-TEC_LbTschw2.html">TEC:LbTschw2</a> - Butgenbach Schwartzenbach 16:11</li><li><a href="stop-TEC_LbTcarm2.html">TEC:LbTcarm2</a> - Butgenbach Karmel 16:12</li><li><a href="stop-TEC_LbTdoma2.html">TEC:LbTdoma2</a> - Butgenbach Domäne 16:12</li><li><a href="stop-TEC_LbThau12.html">TEC:LbThau12</a> - Butgenbach Haus 222A 16:13</li><li><a href="stop-TEC_LbTkreu2.html">TEC:LbTkreu2</a> - Butgenbach Kreuzung 16:15</li><li><a href="stop-TEC_LbTkran2.html">TEC:LbTkran2</a> - Butgenbach Krankenhaus 16:16</li><li><a href="stop-TEC_LbTmons2.html">TEC:LbTmons2</a> - Butgenbach Monschauer Strasse 16:17</li><li><a href="stop-TEC_LbEkirc_.html">TEC:LbEkirc*</a> - Berg Kirche 16:22</li><li><a href="stop-TEC_LbTmuhl2.html">TEC:LbTmuhl2</a> - Butgenbach An der Mühle 16:25</li><li><a href="stop-TEC_LnIschw2.html">TEC:LnIschw2</a> - Nidrum Schwartzberg 16:27</li><li><a href="stop-TEC_LnIkirc2.html">TEC:LnIkirc2</a> - Nidrum Kirche 16:28</li><li><a href="stop-TEC_LnIfrie2.html">TEC:LnIfrie2</a> - Nidrum Friedhof 16:29</li><li><a href="stop-TEC_LeLbutg2.html">TEC:LeLbutg2</a> - Elsenborn Bütgenbacher Strasse 16:30</li><li><a href="stop-TEC_LeLdorf2.html">TEC:LeLdorf2</a> - Elsenborn Dorf 16:31</li><li><a href="stop-TEC_LeLherz2.html">TEC:LeLherz2</a> - Elsenborn Herzebösch 16:32</li><li><a href="stop-TEC_LeLbegl2.html">TEC:LeLbegl2</a> - Elsenborn Begleitzentrum 16:32</li><li><a href="stop-TEC_LeLgrie2.html">TEC:LeLgrie2</a> - Elsenborn Griesdeck 16:33</li><li><a href="stop-TEC_LeLzost2.html">TEC:LeLzost2</a> - Elsenborn Zosterbach 16:34</li><li><a href="stop-TEC_LeLsied2.html">TEC:LeLsied2</a> - Elsenborn Siedlung 16:34</li><li><a href="stop-TEC_LeLkalt2.html">TEC:LeLkalt2</a> - Elsenborn Kalterherberger Strasse 16:36</li><li><a href="stop-TEC_LeLcrem2.html">TEC:LeLcrem2</a> - Elsenborn Haus Cremer 16:37</li><li><a href="stop-TEC_LSoprom2.html">TEC:LSoprom2</a> - Sourbrodt Promopack 16:38</li><li><a href="stop-TEC_LSogare2.html">TEC:LSogare2</a> - Sourbrodt Gare 16:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5109.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

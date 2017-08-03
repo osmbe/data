@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR (Gare) - BOUGE (Sainte-Rita) - 5163:TEC:NA:8747</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR (Gare) - BOUGE (Sainte-Rita) - 5163:TEC:NA:8747</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501gra.html">TEC:N501gra</a> - Namur Pl. de la Station - Quai A 14:09</li><li><a href="stop-TEC_N501fta.html">TEC:N501fta</a> - Namur Avenue des Combattants 14:10</li><li><a href="stop-TEC_N501fya.html">TEC:N501fya</a> - Namur Boulevard de Merckem 14:10</li><li><a href="stop-TEC_N501gaa.html">TEC:N501gaa</a> - Namur Boulevard du Nord 14:11</li><li><a href="stop-TEC_N501fxa.html">TEC:N501fxa</a> - Namur Rue Léanne 14:12</li><li><a href="stop-TEC_N501hja.html">TEC:N501hja</a> - Namur Rue des Carrières 14:13</li><li><a href="stop-TEC_N501hfa.html">TEC:N501hfa</a> - Namur Rue de Sardanson 14:14</li><li><a href="stop-TEC_N501mwa.html">TEC:N501mwa</a> - Bouge Rue du Sanctuaire 14:14</li><li><a href="stop-TEC_N501brb.html">TEC:N501brb</a> - Bouge Moulin-à-vent 14:15</li><li><a href="stop-TEC_N501bsa.html">TEC:N501bsa</a> - Bouge Clinique Saint-Luc 14:16</li><li><a href="stop-TEC_N501bta.html">TEC:N501bta</a> - Bouge Place Baudouin 1er 14:17</li><li><a href="stop-TEC_N501bxa.html">TEC:N501bxa</a> - Bouge Rue Charles Simon 14:18</li><li><a href="stop-TEC_N501bwa.html">TEC:N501bwa</a> - Bouge Rue de Coquelet 14:19</li><li><a href="stop-TEC_N501bva.html">TEC:N501bva</a> - Bouge Quatre chemins 14:19</li><li><a href="stop-TEC_N501bha.html">TEC:N501bha</a> - Bouge Institut 14:20</li><li><a href="stop-TEC_N501bia.html">TEC:N501bia</a> - Bouge Eglise 14:21</li><li><a href="stop-TEC_N501bla.html">TEC:N501bla</a> - Bouge Sainte-Rita 14:22</li><li><a href="stop-TEC_N501bna.html">TEC:N501bna</a> - Bouge Rue Somal 14:22</li><li><a href="stop-TEC_N501bma.html">TEC:N501bma</a> - Bouge Pêcherie 14:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5723.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

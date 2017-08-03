@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Proxibus Grez-Doiceau - 5163:TEC:BW:9984</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Proxibus Grez-Doiceau - 5163:TEC:BW:9984</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Barcast1.html">TEC:Barcast1</a> - Archennes Ancienne Station 16:50</li><li><a href="stop-TEC_Barcbav1.html">TEC:Barcbav1</a> - Archennes Bavay 16:51</li><li><a href="stop-TEC_Barcpre1.html">TEC:Barcpre1</a> - Archennes Préval 16:51</li><li><a href="stop-TEC_Barchoc1.html">TEC:Barchoc1</a> - Archennes Hocaille 16:52</li><li><a href="stop-TEC_Barchez1.html">TEC:Barchez1</a> - Archennes Hézidelle 16:53</li><li><a href="stop-TEC_Barcsta1.html">TEC:Barcsta1</a> - Archennes Station 16:53</li><li><a href="stop-TEC_Bpecvme1.html">TEC:Bpecvme1</a> - Pecrot Léopold Vanmeerbeek 16:54</li><li><a href="stop-TEC_Bpecdel1.html">TEC:Bpecdel1</a> - Pecrot Delvaux 16:55</li><li><a href="stop-TEC_Bpechos1.html">TEC:Bpechos1</a> - Pecrot Hoslet 16:56</li><li><a href="stop-TEC_Bpecrob1.html">TEC:Bpecrob1</a> - Pecrot Chapelle Robert 16:57</li><li><a href="stop-TEC_Bpecabb1.html">TEC:Bpecabb1</a> - Pecrot Bruyère Abbée 16:58</li><li><a href="stop-TEC_Bpecqua1.html">TEC:Bpecqua1</a> - Pecrot Rue du Quartier 16:59</li><li><a href="stop-TEC_Bpecsta1.html">TEC:Bpecsta1</a> - Pecrot Station 17:00</li><li><a href="stop-TEC_Bnetegl3.html">TEC:Bnetegl3</a> - Nethen Eglise 17:03</li><li><a href="stop-TEC_Bnettou1.html">TEC:Bnettou1</a> - Nethen Toussaint 17:04</li><li><a href="stop-TEC_Bnettir1.html">TEC:Bnettir1</a> - Nethen Tirlemont 17:05</li><li><a href="stop-TEC_Bnetvan1.html">TEC:Bnetvan1</a> - Nethen Vandervelde 17:06</li><li><a href="stop-TEC_Bnetcor1.html">TEC:Bnetcor1</a> - Nethen Rue de la Cortaie 17:07</li><li><a href="stop-TEC_Bnetrtb2.html">TEC:Bnetrtb2</a> - Nethen Rue Tienne Binnard 17:07</li><li><a href="stop-TEC_Bnetrbr2.html">TEC:Bnetrbr2</a> - Nethen Rue des Bruyères 17:09</li><li><a href="stop-TEC_Bnetrec2.html">TEC:Bnetrec2</a> - Nethen Rue de l'Ecole 17:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./715.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

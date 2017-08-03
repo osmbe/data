@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Florenville - Muno - Bouillon - 5163:TEC:LU:2186</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Florenville - Muno - Bouillon - 5163:TEC:LU:2186</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X824abb.html">TEC:X824abb</a> - Fontenoille Monument 16:23</li><li><a href="stop-TEC_X824aac.html">TEC:X824aac</a> - Fontenoille 4 Arbres 16:24</li><li><a href="stop-TEC_X825aab.html">TEC:X825aab</a> - Lambermont Route de France 16:26</li><li><a href="stop-TEC_X825abb.html">TEC:X825abb</a> - Lambermont Eglise 16:27</li><li><a href="stop-TEC_X825ada.html">TEC:X825ada</a> - Lambermont Rue de la Petite Scierie 16:28</li><li><a href="stop-TEC_X825aea.html">TEC:X825aea</a> - Lambermont La Platinerie 16:29</li><li><a href="stop-TEC_X826aba.html">TEC:X826aba</a> - Muno Gendarmerie 16:30</li><li><a href="stop-TEC_X826aca.html">TEC:X826aca</a> - Muno Ecole 16:32</li><li><a href="stop-TEC_X826adb.html">TEC:X826adb</a> - Muno Eglise 16:32</li><li><a href="stop-TEC_X826aea.html">TEC:X826aea</a> - Muno Rue de l'Enfer 18 16:33</li><li><a href="stop-TEC_X826afa.html">TEC:X826afa</a> - Muno Cimetière 16:33</li><li><a href="stop-TEC_X826aga.html">TEC:X826aga</a> - Muno Route de Watrinsart 16:34</li><li><a href="stop-TEC_X824ajb.html">TEC:X824ajb</a> - Ferme de Pérensart 16:35</li><li><a href="stop-TEC_X824ala.html">TEC:X824ala</a> - Sainte-Cecile Route de Muno 16:36</li><li><a href="stop-TEC_X824aia.html">TEC:X824aia</a> - Sainte-Cecile Rue de Muno 27 16:36</li><li><a href="stop-TEC_X824ahb.html">TEC:X824ahb</a> - Sainte-Cecile Eglise 16:36</li><li><a href="stop-TEC_X824aga.html">TEC:X824aga</a> - Sainte-Cecile Rue Neuve 16:36</li><li><a href="stop-TEC_X824afa.html">TEC:X824afa</a> - Sainte-Cecile Hôtel 16:37</li><li><a href="stop-TEC_X824aeb.html">TEC:X824aeb</a> - Sainte-Cecile 4 Arbres 16:38</li><li><a href="stop-TEC_X823aeb.html">TEC:X823aeb</a> - Chassepierre Buisson des Cailles 16:40</li><li><a href="stop-TEC_X823afb.html">TEC:X823afb</a> - Chassepierre Barrière 16:41</li><li><a href="stop-TEC_X823agb.html">TEC:X823agb</a> - N83 Route de Laiche 16:43</li><li><a href="stop-TEC_X641aob.html">TEC:X641aob</a> - Florenville Zoning Commercial 16:44</li><li><a href="stop-TEC_X641afd.html">TEC:X641afd</a> - Florenville Place du Miroir - Quai 3 16:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2862.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

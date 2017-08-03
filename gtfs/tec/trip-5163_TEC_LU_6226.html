@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Rochefort - Tellin - Grupont - Mirwart - 5163:TEC:LU:6226</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Rochefort - Tellin - Grupont - Mirwart - 5163:TEC:LU:6226</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X993abd.html">TEC:X993abd</a> - Lesterny Centre 12:32</li><li><a href="stop-TEC_X993aca.html">TEC:X993aca</a> - Lesterny Route de Bure 12:32</li><li><a href="stop-TEC_X994ama.html">TEC:X994ama</a> - Bure Devant Herwy 12:34</li><li><a href="stop-TEC_X994alb.html">TEC:X994alb</a> - Grupont Vieux Chemin de Grupont 12:36</li><li><a href="stop-TEC_X994afb.html">TEC:X994afb</a> - Bure Chemin du Cimetière 12:37</li><li><a href="stop-TEC_X994aea.html">TEC:X994aea</a> - Bure Eglise 12:37</li><li><a href="stop-TEC_X994aba.html">TEC:X994aba</a> - Bure Collège d'Alzon 12:38</li><li><a href="stop-TEC_X994aeb.html">TEC:X994aeb</a> - Bure Eglise 12:38</li><li><a href="stop-TEC_X994afa.html">TEC:X994afa</a> - Bure Chemin du Cimetière 12:39</li><li><a href="stop-TEC_X994ala.html">TEC:X994ala</a> - Grupont Vieux Chemin de Grupont 12:40</li><li><a href="stop-TEC_X994aia.html">TEC:X994aia</a> - Grupont Centre 12:41</li><li><a href="stop-TEC_X994akb.html">TEC:X994akb</a> - Grupont Garage Clément 12:42</li><li><a href="stop-TEC_X995adb.html">TEC:X995adb</a> - Awenne Carrefour du Sartay 12:45</li><li><a href="stop-TEC_X995aba.html">TEC:X995aba</a> - Awenne Chemin de la Comène 12:46</li><li><a href="stop-TEC_X995aaa.html">TEC:X995aaa</a> - Awenne Grand'Rue 29 12:46</li><li><a href="stop-TEC_X995acb.html">TEC:X995acb</a> - Awenne Eglise 12:46</li><li><a href="stop-TEC_X995aca.html">TEC:X995aca</a> - Awenne Eglise 12:46</li><li><a href="stop-TEC_X995aab.html">TEC:X995aab</a> - Awenne Grand'Rue 29 12:47</li><li><a href="stop-TEC_X995abb.html">TEC:X995abb</a> - Awenne Chemin de la Comène 12:47</li><li><a href="stop-TEC_X995ada.html">TEC:X995ada</a> - Awenne Carrefour du Sartay 12:48</li><li><a href="stop-TEC_X995add.html">TEC:X995add</a> - Awenne Carrefour du Sartay 12:48</li><li><a href="stop-TEC_X995afb.html">TEC:X995afb</a> - Mirwart Rue du Bois d'Oingt 12:51</li><li><a href="stop-TEC_X995aga.html">TEC:X995aga</a> - Mirwart Eglise 12:52</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3812.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

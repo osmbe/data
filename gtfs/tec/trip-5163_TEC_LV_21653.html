@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Huy - Strée - Ouffet - Hamoir - 5163:TEC:LV:21653</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Huy - Strée - Ouffet - Hamoir - 5163:TEC:LV:21653</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LOuplac1.html">TEC:LOuplac1</a> - Ouffet Grand-Place 15:40</li><li><a href="stop-TEC_LOuilc-_.html">TEC:LOuilc-*</a> - Ouffet I.L.C. 15:41</li><li><a href="stop-TEC_LOucuve1.html">TEC:LOucuve1</a> - Ouffet Rue Cuvelier 15:42</li><li><a href="stop-TEC_LOuathe1.html">TEC:LOuathe1</a> - Ouffet Athénée 15:42</li><li><a href="stop-TEC_LOucarr4.html">TEC:LOucarr4</a> - Ouffet Carrefour 15:43</li><li><a href="stop-TEC_LWZeg--2.html">TEC:LWZeg--2</a> - Warzee Eglise 15:46</li><li><a href="stop-TEC_LWZdtec2.html">TEC:LWZdtec2</a> - Warzee Dépôt TEC 15:47</li><li><a href="stop-TEC_LSythie2.html">TEC:LSythie2</a> - Seny Les Gros Thiers 15:49</li><li><a href="stop-TEC_LSyec--2.html">TEC:LSyec--2</a> - Seny Ecole 15:49</li><li><a href="stop-TEC_LSyeg--2.html">TEC:LSyeg--2</a> - Seny Eglise 15:50</li><li><a href="stop-TEC_LTNmont2.html">TEC:LTNmont2</a> - Tinlot Le Monty 15:52</li><li><a href="stop-TEC_LTNcarr6.html">TEC:LTNcarr6</a> - Tinlot Carrefour 15:53</li><li><a href="stop-TEC_LTNeau-2.html">TEC:LTNeau-2</a> - Tinlot Château d'eau 15:54</li><li><a href="stop-TEC_LSevitu2.html">TEC:LSevitu2</a> - Stree Carrefour St-Vitu 15:57</li><li><a href="stop-TEC_LSemc--4.html">TEC:LSemc--4</a> - Stree Maison Communale 16:00</li><li><a href="stop-TEC_LSerout2.html">TEC:LSerout2</a> - Stree Grand-Route 94 16:00</li><li><a href="stop-TEC_LSetrix2.html">TEC:LSetrix2</a> - Stree Les Trixhes 16:01</li><li><a href="stop-TEC_LSeec--1.html">TEC:LSeec--1</a> - Stree Les Gottes (Ecoles) 16:02</li><li><a href="stop-TEC_LSeaque1.html">TEC:LSeaque1</a> - Stree Aqueduc 16:03</li><li><a href="stop-TEC_LSecomm1.html">TEC:LSecomm1</a> - Stree Les Communes 16:04</li><li><a href="stop-TEC_LHUtrin1.html">TEC:LHUtrin1</a> - Huy Chemin des Trinitaires 16:06</li><li><a href="stop-TEC_LHUhsar1.html">TEC:LHUhsar1</a> - Huy Haute Sarte 16:06</li><li><a href="stop-TEC_LHUbail1.html">TEC:LHUbail1</a> - Huy Chemin Bois du Bailli 16:07</li><li><a href="stop-TEC_LHUvege2.html">TEC:LHUvege2</a> - Huy Magasin Végé 16:08</li><li><a href="stop-TEC_LHUpsar2.html">TEC:LHUpsar2</a> - Huy Plaine de la Sarte 16:08</li><li><a href="stop-TEC_LHUsauv2.html">TEC:LHUsauv2</a> - Huy Chemin de la Sauvenière 16:09</li><li><a href="stop-TEC_LHUgole2.html">TEC:LHUgole2</a> - Huy Les Golettes 16:10</li><li><a href="stop-TEC_LHUdeni2.html">TEC:LHUdeni2</a> - Huy Place St-Denis 16:11</li><li><a href="stop-TEC_LHUgodi1.html">TEC:LHUgodi1</a> - Huy Avenue Godin 16:13</li><li><a href="stop-TEC_LHUlebe9.html">TEC:LHUlebe9</a> - Huy Place Lebeau 16:14</li><li><a href="stop-TEC_LHUlieg2.html">TEC:LHUlieg2</a> - Huy Chaussée de Liège 16:16</li><li><a href="stop-TEC_LHUpost4.html">TEC:LHUpost4</a> - Huy Poste 16:17</li><li><a href="stop-TEC_LHUgare_.html">TEC:LHUgare*</a> - Huy Gare 16:19</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4641.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Arlon - Martelange - 5163:TEC:LU:5062</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Arlon - Martelange - 5163:TEC:LU:5062</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X666ama.html">TEC:X666ama</a> - Martelange Dépôt TEC 17:23</li><li><a href="stop-TEC_X666acb.html">TEC:X666acb</a> - Martelange Texaco 17:24</li><li><a href="stop-TEC_X666abb.html">TEC:X666abb</a> - Martelange Total - Route d'Arlon 17:24</li><li><a href="stop-TEC_X666aab.html">TEC:X666aab</a> - Martelange Rue de la Frontière 17:25</li><li><a href="stop-TEC_X665aab.html">TEC:X665aab</a> - La Folie 17:27</li><li><a href="stop-TEC_X664aib.html">TEC:X664aib</a> - La Corne du Bois des Pendus 17:28</li><li><a href="stop-TEC_X664agb.html">TEC:X664agb</a> - Heinstert Route de Post 17:30</li><li><a href="stop-TEC_X664afb.html">TEC:X664afb</a> - Heinstert Grand-Rue 17:30</li><li><a href="stop-TEC_X664aeb.html">TEC:X664aeb</a> - Heinstert Hohenbusch 17:31</li><li><a href="stop-TEC_X664abb.html">TEC:X664abb</a> - Heinstert Rue de Vlessart 17:31</li><li><a href="stop-TEC_X664adc.html">TEC:X664adc</a> - Heinstert Eglise 17:31</li><li><a href="stop-TEC_X664acb.html">TEC:X664acb</a> - Heinstert Route de Nobressart 17:31</li><li><a href="stop-TEC_X667aba.html">TEC:X667aba</a> - Nobressart Calvaire 17:34</li><li><a href="stop-TEC_X667aca.html">TEC:X667aca</a> - Nobressart Eglise 17:35</li><li><a href="stop-TEC_X667abb.html">TEC:X667abb</a> - Nobressart Calvaire 17:36</li><li><a href="stop-TEC_X667adb.html">TEC:X667adb</a> - Nobressart Almeroth 17:37</li><li><a href="stop-TEC_X667aab.html">TEC:X667aab</a> - Louchert Centre 17:38</li><li><a href="stop-TEC_X663ava.html">TEC:X663ava</a> - Post Route de Nobressart 17:40</li><li><a href="stop-TEC_X663aub.html">TEC:X663aub</a> - Post Ecole 17:41</li><li><a href="stop-TEC_X663ayb.html">TEC:X663ayb</a> - Post Ferme Rose 17:42</li><li><a href="stop-TEC_X663aqc.html">TEC:X663aqc</a> - Attert Camping 17:45</li><li><a href="stop-TEC_X663arb.html">TEC:X663arb</a> - Attert Maison Communale 17:46</li><li><a href="stop-TEC_X663aqb.html">TEC:X663aqb</a> - Attert Camping 17:46</li><li><a href="stop-TEC_X663awa.html">TEC:X663awa</a> - Schadeck Bretelle N4 17:47</li><li><a href="stop-TEC_X663axa.html">TEC:X663axa</a> - Schadeck R de l'Inst Molitor 58 17:47</li><li><a href="stop-TEC_X663aob.html">TEC:X663aob</a> - Attert Spetz 17:48</li><li><a href="stop-TEC_X662abb.html">TEC:X662abb</a> - Bonnert 4 Vents 17:53</li><li><a href="stop-TEC_X662ata.html">TEC:X662ata</a> - Arlon Route de Bastogne - N4 17:54</li><li><a href="stop-TEC_X601aeb.html">TEC:X601aeb</a> - Arlon Rue de Bastogne 17:55</li><li><a href="stop-TEC_X601abb.html">TEC:X601abb</a> - Arlon Tec - Rue des Genêts 17:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3512.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Jemeppe-Flémalle-Ivoz-Engis-Hardémont-Fagnes - 5163:TEC:LV:3812</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jemeppe-Flémalle-Ivoz-Engis-Hardémont-Fagnes - 5163:TEC:LV:3812</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LjedTEC1.html">TEC:LjedTEC1</a> - Jemeppe Dépôt TEC 06:41</li><li><a href="stop-TEC_Ljeespe1.html">TEC:Ljeespe1</a> - Jemeppe Espérance 06:42</li><li><a href="stop-TEC_Ljemeca1.html">TEC:Ljemeca1</a> - Jemeppe Mécanique 06:42</li><li><a href="stop-TEC_Lfhpass1.html">TEC:Lfhpass1</a> - Flemalle Rue du Passage d'Eau 06:43</li><li><a href="stop-TEC_Lfhdonn1.html">TEC:Lfhdonn1</a> - Flemalle Place S. Donnay 06:44</li><li><a href="stop-TEC_Lfhbail1.html">TEC:Lfhbail1</a> - Flemalle Bailly 06:45</li><li><a href="stop-TEC_Lfh-sci1.html">TEC:Lfh-sci1</a> - Flemalle Caserne S.C.I. 06:45</li><li><a href="stop-TEC_Lfhdone1.html">TEC:Lfhdone1</a> - Flemalle Rue E. Doneux 06:46</li><li><a href="stop-TEC_Lfhborg1.html">TEC:Lfhborg1</a> - Flemalle Borgnet 06:47</li><li><a href="stop-TEC_Lfhmalv1.html">TEC:Lfhmalv1</a> - Flemalle Rue Malvoz 06:47</li><li><a href="stop-TEC_Lfhgare1.html">TEC:Lfhgare1</a> - Flemalle Flémalle-Haute Gare 06:48</li><li><a href="stop-TEC_Lfhchaf_.html">TEC:Lfhchaf*</a> - Flemalle Les Chaffours 06:49</li><li><a href="stop-TEC_Lcceg--1.html">TEC:Lcceg--1</a> - Chokier Eglise 06:51</li><li><a href="stop-TEC_Lcchala1.html">TEC:Lcchala1</a> - Chokier Quai du Halage 06:52</li><li><a href="stop-TEC_Lcceclu1.html">TEC:Lcceclu1</a> - Chokier Ecluse 06:52</li><li><a href="stop-TEC_Lccaigr1.html">TEC:Lccaigr1</a> - Chokier Verreries d'Aigremont 06:54</li><li><a href="stop-TEC_Lccuner1.html">TEC:Lccuner1</a> - Chokier UNERG 06:54</li><li><a href="stop-TEC_Lccawir1.html">TEC:Lccawir1</a> - Chokier Basses Awirs 06:55</li><li><a href="stop-TEC_LENgend1.html">TEC:LENgend1</a> - Engis Gendarmerie 06:56</li><li><a href="stop-TEC_LENcroi1.html">TEC:LENcroi1</a> - Engis Rue de la Croix Rouge 06:57</li><li><a href="stop-TEC_LENmc--1.html">TEC:LENmc--1</a> - Engis Maison Communale 06:57</li><li><a href="stop-TEC_LENecol1.html">TEC:LENecol1</a> - Engis Ecoles 06:58</li><li><a href="stop-TEC_LENarde1.html">TEC:LENarde1</a> - Engis Thier Ardent 07:00</li><li><a href="stop-TEC_LENalun1.html">TEC:LENalun1</a> - Engis Rue des Alunières 07:02</li><li><a href="stop-TEC_LENparc1.html">TEC:LENparc1</a> - Engis Rue du Parc 07:02</li><li><a href="stop-TEC_LENaout1.html">TEC:LENaout1</a> - Engis Rue du 15 Août 07:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4582.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

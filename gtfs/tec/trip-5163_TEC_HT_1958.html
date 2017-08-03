@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ghlin - Blaregnies - 5163:TEC:HT:1958</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ghlin - Blaregnies - 5163:TEC:HT:1958</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1fr123a.html">TEC:H1fr123a</a> - Frameries Place 18:00</li><li><a href="stop-TEC_H1fr107a.html">TEC:H1fr107a</a> - Frameries 4 Pavés 18:01</li><li><a href="stop-TEC_H1fr113a.html">TEC:H1fr113a</a> - La Bouverie Coq Chantant 18:03</li><li><a href="stop-TEC_H1lb136a.html">TEC:H1lb136a</a> - La Bouverie Couteaux 18:04</li><li><a href="stop-TEC_H1lb152a.html">TEC:H1lb152a</a> - La Bouverie Champ perdu 18:06</li><li><a href="stop-TEC_H1eu101a.html">TEC:H1eu101a</a> - Eugies Rue de l'Aisette 18:07</li><li><a href="stop-TEC_H1eu102a.html">TEC:H1eu102a</a> - Eugies Rue de la Gare-Dépôt 18:08</li><li><a href="stop-TEC_H1eu103a.html">TEC:H1eu103a</a> - Eugies Rue du Centre 18:09</li><li><a href="stop-TEC_H1eu105b.html">TEC:H1eu105b</a> - Eugies Rue du Peuple 18:10</li><li><a href="stop-TEC_H1eu107b.html">TEC:H1eu107b</a> - Eugies Rue du Sondage 18:11</li><li><a href="stop-TEC_H1sb144a.html">TEC:H1sb144a</a> - Sars-la-Bruyere Casino 18:12</li><li><a href="stop-TEC_H1sb145a.html">TEC:H1sb145a</a> - Sars-la-Bruyere Ecoles 18:15</li><li><a href="stop-TEC_H1sb151a.html">TEC:H1sb151a</a> - Sars-la-Bruyere Camping 18:15</li><li><a href="stop-TEC_H1sb149a.html">TEC:H1sb149a</a> - Sars-la-Bruyere Rue Taisnières 18:16</li><li><a href="stop-TEC_H1sb150a.html">TEC:H1sb150a</a> - Sars-la-Bruyere Sentier Rambourg 18:16</li><li><a href="stop-TEC_H1sb147a.html">TEC:H1sb147a</a> - Sars-la-Bruyere Les Plantis 18:17</li><li><a href="stop-TEC_H1sb146a.html">TEC:H1sb146a</a> - Sars-la-Bruyere Les Communes 18:18</li><li><a href="stop-TEC_H1sb148b.html">TEC:H1sb148b</a> - Sars-la-Bruyere Rambourg 18:19</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2203.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

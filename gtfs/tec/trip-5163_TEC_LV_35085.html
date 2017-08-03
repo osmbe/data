@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ningloheid - Thiervaux - Place Verte - Andrimont - 5163:TEC:LV:35085</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ningloheid - Thiervaux - Place Verte - Andrimont - 5163:TEC:LV:35085</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Ladneuv1.html">TEC:Ladneuv1</a> - Andrimont Neuville Terminus 11:44</li><li><a href="stop-TEC_Ladlaur2.html">TEC:Ladlaur2</a> - Andrimont St-Laurent 11:45</li><li><a href="stop-TEC_Ladjuif2.html">TEC:Ladjuif2</a> - Andrimont Ruelle des Juifs 11:45</li><li><a href="stop-TEC_Laddelc2.html">TEC:Laddelc2</a> - Andrimont Cité Delclisar 11:46</li><li><a href="stop-TEC_Ladchat2.html">TEC:Ladchat2</a> - Andrimont Sous le Château 11:47</li><li><a href="stop-TEC_Ladboti2.html">TEC:Ladboti2</a> - Andrimont Chemin de Botister 11:48</li><li><a href="stop-TEC_Ladandr2.html">TEC:Ladandr2</a> - Andrimont Rue d'Andrimont 11:48</li><li><a href="stop-TEC_Ldimeun2.html">TEC:Ldimeun2</a> - Dison Rue des Meuniers 11:49</li><li><a href="stop-TEC_Ldiinte1.html">TEC:Ldiinte1</a> - Dison Interlac 11:50</li><li><a href="stop-TEC_Ldihote2.html">TEC:Ldihote2</a> - Dison rue des Ecoles 11:50</li><li><a href="stop-TEC_Ldihvce2.html">TEC:Ldihvce2</a> - Dison Hôtel de Ville 11:51</li><li><a href="stop-TEC_Ldijean2.html">TEC:Ldijean2</a> - Dison Jeangette 11:52</li><li><a href="stop-TEC_Ldipiss2.html">TEC:Ldipiss2</a> - Dison Pisseroule 11:53</li><li><a href="stop-TEC_Ldineuf2.html">TEC:Ldineuf2</a> - Dison Rue Neufmoulin 11:53</li><li><a href="stop-TEC_Ldimont2.html">TEC:Ldimont2</a> - Dison Montagne de l'Invasion 11:54</li><li><a href="stop-TEC_Lvegrap2.html">TEC:Lvegrap2</a> - Verviers La Grappe 11:55</li><li><a href="stop-TEC_Lvehodi4.html">TEC:Lvehodi4</a> - Verviers Rue de Hodimont 11:55</li><li><a href="stop-TEC_Lveharm2.html">TEC:Lveharm2</a> - Verviers Harmonie 11:57</li><li><a href="stop-TEC_Lvevict1.html">TEC:Lvevict1</a> - Verviers Place de la Victoire 11:58</li><li><a href="stop-TEC_Lvethea2.html">TEC:Lvethea2</a> - Verviers Théâtre 11:59</li><li><a href="stop-TEC_Lvevert2.html">TEC:Lvevert2</a> - Verviers Place Verte 12:01</li><li><a href="stop-TEC_Lvehv--4.html">TEC:Lvehv--4</a> - Verviers Hôtel de Ville 12:02</li><li><a href="stop-TEC_Lvemull2.html">TEC:Lvemull2</a> - Verviers Avenue Mullendorf 12:03</li><li><a href="stop-TEC_Lvehoug2.html">TEC:Lvehoug2</a> - Verviers Rue des Vertes Hougnes 12:04</li><li><a href="stop-TEC_Lvearle2.html">TEC:Lvearle2</a> - Verviers Place d'Arles 12:05</li><li><a href="stop-TEC_Lvefluc2.html">TEC:Lvefluc2</a> - Verviers Rue P. Fluche 12:06</li><li><a href="stop-TEC_Lvecote2.html">TEC:Lvecote2</a> - Verviers Rue des Coteaux 12:06</li><li><a href="stop-TEC_Lvejeha2.html">TEC:Lvejeha2</a> - Verviers Rue de Jehanster 12:07</li><li><a href="stop-TEC_Lvelobe2.html">TEC:Lvelobe2</a> - Verviers Rue S. Lobet 12:08</li><li><a href="stop-TEC_Lvewaut2.html">TEC:Lvewaut2</a> - Verviers Rue J. Wauters 12:09</li><li><a href="stop-TEC_Lhurigu2.html">TEC:Lhurigu2</a> - Heusy Rigutto 12:10</li><li><a href="stop-TEC_Lhuecol2.html">TEC:Lhuecol2</a> - Heusy Ecole Notre-Dame 12:10</li><li><a href="stop-TEC_Lhubriq2.html">TEC:Lhubriq2</a> - Heusy Briqueterie 12:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4331.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

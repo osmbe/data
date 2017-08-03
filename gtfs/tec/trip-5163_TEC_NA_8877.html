@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - P+R Saint-Nicolas - P+R Namur Expo - 5163:TEC:NA:8877</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: P+R Saint-Nicolas - P+R Namur Expo - 5163:TEC:NA:8877</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501hka.html">TEC:N501hka</a> - Namur P+R Saint-Nicolas 15:29</li><li><a href="stop-TEC_N501hca.html">TEC:N501hca</a> - Namur Rue de Balart 15:30</li><li><a href="stop-TEC_N501gqa.html">TEC:N501gqa</a> - Namur Place de l'Ecole des Cadets 15:32</li><li><a href="stop-TEC_N501fva.html">TEC:N501fva</a> - Namur Boulevard I. Brunell 15:34</li><li><a href="stop-TEC_N501hia.html">TEC:N501hia</a> - Namur Rue de la Tour 15:36</li><li><a href="stop-TEC_N501mqa.html">TEC:N501mqa</a> - Namur Rue Emile Cuvelier 15:37</li><li><a href="stop-TEC_N501mha.html">TEC:N501mha</a> - Namur Rue de Bruxelles 15:38</li><li><a href="stop-TEC_N501grb.html">TEC:N501grb</a> - Namur Pl. de la Station - Quai B 15:42</li><li><a href="stop-TEC_N501grb.html">TEC:N501grb</a> - Namur Pl. de la Station - Quai B 15:42</li><li><a href="stop-TEC_N501gpc.html">TEC:N501gpc</a> - Namur Omalius 15:44</li><li><a href="stop-TEC_N501mtd.html">TEC:N501mtd</a> - Namur Evêché 15:46</li><li><a href="stop-TEC_N501mrb.html">TEC:N501mrb</a> - Namur Reine Astrid 15:49</li><li><a href="stop-TEC_N501fdd.html">TEC:N501fdd</a> - Salzinnes Place Wiertz 15:51</li><li><a href="stop-TEC_N501lzb.html">TEC:N501lzb</a> - Salzinnes P+R Namur Expo 15:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6587.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ochamps - Jéhonville - Paliseul - 5163:TEC:LU:3808</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ochamps - Jéhonville - Paliseul - 5163:TEC:LU:3808</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X850acb.html">TEC:X850acb</a> - Carlsbourg Institut 16:20</li><li><a href="stop-TEC_X850adb.html">TEC:X850adb</a> - Carlsbourg Eglise 16:20</li><li><a href="stop-TEC_X850aea.html">TEC:X850aea</a> - Carlsbourg Rue Joseph Jacques 16:21</li><li><a href="stop-TEC_X850alb.html">TEC:X850alb</a> - Carlsbourg Rue des Socquettes 16:22</li><li><a href="stop-TEC_X850amb.html">TEC:X850amb</a> - Merny Route de Paliseul Gare 16:24</li><li><a href="stop-TEC_X806aab.html">TEC:X806aab</a> - Paliseul Gare 16:26</li><li><a href="stop-TEC_X806aac.html">TEC:X806aac</a> - Paliseul Gare 16:26</li><li><a href="stop-TEC_X806akc.html">TEC:X806akc</a> - Paliseul Athénée - Quai 3 16:28</li><li><a href="stop-TEC_X806aca.html">TEC:X806aca</a> - Paliseul Gendarmerie 16:29</li><li><a href="stop-TEC_X806ada.html">TEC:X806ada</a> - Paliseul Eglise 16:29</li><li><a href="stop-TEC_X806afa.html">TEC:X806afa</a> - Paliseul Ecole Communale 16:30</li><li><a href="stop-TEC_X806aga.html">TEC:X806aga</a> - Paliseul Route de Framont 16:31</li><li><a href="stop-TEC_X873aba.html">TEC:X873aba</a> - Framont Rue de la Croix 16 16:33</li><li><a href="stop-TEC_X873aaa.html">TEC:X873aaa</a> - Framont Lavoir 16:34</li><li><a href="stop-TEC_X869aeb.html">TEC:X869aeb</a> - Sart Fontaine (Bertrix) 16:40</li><li><a href="stop-TEC_X869afb.html">TEC:X869afb</a> - Jehonville Salle des Fêtes 16:46</li><li><a href="stop-TEC_X869aab.html">TEC:X869aab</a> - Acremont Carrefour - Rue Bernifa 16:48</li><li><a href="stop-TEC_X869aba.html">TEC:X869aba</a> - Acremont Bac 16:48</li><li><a href="stop-TEC_X869aaa.html">TEC:X869aaa</a> - Acremont Carrefour - Rue Bernifa 16:48</li><li><a href="stop-TEC_X869acb.html">TEC:X869acb</a> - Jehonville Eglise 16:50</li><li><a href="stop-TEC_X870aja.html">TEC:X870aja</a> - Anloy Rue Burnaumont 16:55</li><li><a href="stop-TEC_X870acb.html">TEC:X870acb</a> - Anloy Eglise 16:56</li><li><a href="stop-TEC_X870aba.html">TEC:X870aba</a> - Anloy Rue Lavaux 16:56</li><li><a href="stop-TEC_X870aib.html">TEC:X870aib</a> - Anloy Rue de Chestelle 16:56</li><li><a href="stop-TEC_X870agb.html">TEC:X870agb</a> - Anloy Wachamp 16:58</li><li><a href="stop-TEC_X882agb.html">TEC:X882agb</a> - Ochamps Maubeuge 16:59</li><li><a href="stop-TEC_X882akb.html">TEC:X882akb</a> - Ochamps Chapelle 17:01</li><li><a href="stop-TEC_X882aba.html">TEC:X882aba</a> - Ochamps Ecole 17:02</li><li><a href="stop-TEC_X882ama.html">TEC:X882ama</a> - Ochamps Eglise 17:02</li><li><a href="stop-TEC_X882afb.html">TEC:X882afb</a> - Ochamps La Riviera 17:02</li><li><a href="stop-TEC_X882aeb.html">TEC:X882aeb</a> - Ochamps Congo 6 17:03</li><li><a href="stop-TEC_X882adb.html">TEC:X882adb</a> - Ochamps Congo 17:04</li><li><a href="stop-TEC_X882acb.html">TEC:X882acb</a> - Ochamps Congo - Chapelle 17:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2753.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

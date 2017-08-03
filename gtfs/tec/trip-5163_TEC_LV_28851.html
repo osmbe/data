@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Jemeppe - Ivoz - Flémalle - Stockay - 5163:TEC:LV:28851</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jemeppe - Ivoz - Flémalle - Stockay - 5163:TEC:LV:28851</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LSkrena3.html">TEC:LSkrena3</a> - Stockay Place A. Renard 18:30</li><li><a href="stop-TEC_LSkdouf2.html">TEC:LSkdouf2</a> - Stockay Place Douffet 18:31</li><li><a href="stop-TEC_LSkcomb2.html">TEC:LSkcomb2</a> - Stockay Boulevard des Combattants 18:32</li><li><a href="stop-TEC_LSkchwa2.html">TEC:LSkchwa2</a> - Stockay Sortie de la Drève 18:32</li><li><a href="stop-TEC_LSkwarf4.html">TEC:LSkwarf4</a> - Stockay Château de Warfusée 18:33</li><li><a href="stop-TEC_LSGcolo2.html">TEC:LSGcolo2</a> - Saint-Georges Rue Colombière 18:34</li><li><a href="stop-TEC_LSGfoua2.html">TEC:LSGfoua2</a> - Saint-Georges Rue Fouarge 18:35</li><li><a href="stop-TEC_LSGbail2.html">TEC:LSGbail2</a> - Saint-Georges Rue Bailesse 18:36</li><li><a href="stop-TEC_LSGcent2.html">TEC:LSGcent2</a> - Saint-Georges Rue du Centre 18:37</li><li><a href="stop-TEC_LSGeg--2.html">TEC:LSGeg--2</a> - Saint-Georges Eglise 18:37</li><li><a href="stop-TEC_LSGec--1.html">TEC:LSGec--1</a> - Saint-Georges Ecole 18:38</li><li><a href="stop-TEC_LSBdelc2.html">TEC:LSBdelc2</a> - Sur-les-Bois Rue E. Delcour 18:39</li><li><a href="stop-TEC_LSBrouf4.html">TEC:LSBrouf4</a> - Sur-les-Bois Rouffa 18:40</li><li><a href="stop-TEC_LSBjoli2.html">TEC:LSBjoli2</a> - Sur-les-Bois Les Jolis Bois 18:41</li><li><a href="stop-TEC_LSBsere4.html">TEC:LSBsere4</a> - Sur-les-Bois Catherine Seret 18:42</li><li><a href="stop-TEC_LGlwarf2.html">TEC:LGlwarf2</a> - Gleixhe Chemin de Warfusée 18:43</li><li><a href="stop-TEC_LGlbour2.html">TEC:LGlbour2</a> - Gleixhe Bourgmestre 18:44</li><li><a href="stop-TEC_LGlcite2.html">TEC:LGlcite2</a> - Gleixhe Cité 18:45</li><li><a href="stop-TEC_LGlcarr2.html">TEC:LGlcarr2</a> - Gleixhe Carrefour 18:46</li><li><a href="stop-TEC_LAipala2.html">TEC:LAipala2</a> - Awirs Rue du Palais 18:48</li><li><a href="stop-TEC_LAibego2.html">TEC:LAibego2</a> - Awirs Rue F. Begon 18:49</li><li><a href="stop-TEC_LAieg--2.html">TEC:LAieg--2</a> - Awirs Eglise 18:51</li><li><a href="stop-TEC_LAigrim2.html">TEC:LAigrim2</a> - Awirs Grimont 18:52</li><li><a href="stop-TEC_LAicarr2.html">TEC:LAicarr2</a> - Awirs Carrières 18:53</li><li><a href="stop-TEC_LAivill2.html">TEC:LAivill2</a> - Awirs Villas 18:54</li><li><a href="stop-TEC_Lccawir4.html">TEC:Lccawir4</a> - Chokier Basses Awirs 18:55</li><li><a href="stop-TEC_Lccuner2.html">TEC:Lccuner2</a> - Chokier UNERG 18:55</li><li><a href="stop-TEC_Lccaigr2.html">TEC:Lccaigr2</a> - Chokier Verreries d'Aigremont 18:56</li><li><a href="stop-TEC_Lcceclu2.html">TEC:Lcceclu2</a> - Chokier Ecluse 18:57</li><li><a href="stop-TEC_Lcchala2.html">TEC:Lcchala2</a> - Chokier Quai du Halage 18:58</li><li><a href="stop-TEC_Lcceg--2.html">TEC:Lcceg--2</a> - Chokier Eglise 18:59</li><li><a href="stop-TEC_Lfhchaf4.html">TEC:Lfhchaf4</a> - Flemalle Les Chaffours 19:00</li><li><a href="stop-TEC_Lfhgare2.html">TEC:Lfhgare2</a> - Flemalle Flémalle-Haute Gare 19:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4740.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

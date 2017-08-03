@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Braine-l'Alleud - Genval - 5163:TEC:BW:3277</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Braine-l'Alleud - Genval - 5163:TEC:BW:3277</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bgnvgar1.html">TEC:Bgnvgar1</a> - Genval Gare 15:14</li><li><a href="stop-TEC_Bgnvpos1.html">TEC:Bgnvpos1</a> - Genval Poste 15:15</li><li><a href="stop-TEC_Bgnvval1.html">TEC:Bgnvval1</a> - Genval Vallon 15:17</li><li><a href="stop-TEC_Bgnvdep1.html">TEC:Bgnvdep1</a> - Genval Déportés 15:18</li><li><a href="stop-TEC_Bgnvoha3.html">TEC:Bgnvoha3</a> - Genval Route d'Ohain 15:19</li><li><a href="stop-TEC_Bgnvgir1.html">TEC:Bgnvgir1</a> - Genval Gérondal 15:19</li><li><a href="stop-TEC_Bohngen1.html">TEC:Bohngen1</a> - Ohain Route de Genval 15:21</li><li><a href="stop-TEC_Bohnman1.html">TEC:Bohnman1</a> - Ohain Manhattan 15:22</li><li><a href="stop-TEC_Bohnmes1.html">TEC:Bohnmes1</a> - Ohain Messager 15:23</li><li><a href="stop-TEC_Bohnmon1.html">TEC:Bohnmon1</a> - Ohain Monument 15:24</li><li><a href="stop-TEC_Bohnrpl1.html">TEC:Bohnrpl1</a> - Ransbeck Place 15:26</li><li><a href="stop-TEC_Bohnrsc1.html">TEC:Bohnrsc1</a> - Ransbeck Square du Coq 15:27</li><li><a href="stop-TEC_Bwatgge1.html">TEC:Bwatgge1</a> - Waterloo Gros du Général 15:28</li><li><a href="stop-TEC_Bwatric1.html">TEC:Bwatric1</a> - Waterloo Drève Richelle 15:28</li><li><a href="stop-TEC_Bwatvco1.html">TEC:Bwatvco1</a> - Waterloo Vert Coucou 15:29</li><li><a href="stop-TEC_Bwatsan1.html">TEC:Bwatsan1</a> - Waterloo Chemin Sainte-Anne 15:31</li><li><a href="stop-TEC_Bwatmsj5.html">TEC:Bwatmsj5</a> - Waterloo Mont-Saint-Jean (Chée de Louvain) 15:33</li><li><a href="stop-TEC_Bwatwsc1.html">TEC:Bwatwsc1</a> - Waterloo Avenue Sir Walter Scott 15:34</li><li><a href="stop-TEC_Bblacco1.html">TEC:Bblacco1</a> - Alleud Côté du Collège 15:35</li><li><a href="stop-TEC_Bblamsj1.html">TEC:Bblamsj1</a> - Alleud Route de Mont-Saint-Jean 15:36</li><li><a href="stop-TEC_Bblavba1.html">TEC:Bblavba1</a> - Alleud Vallée Bailly 15:37</li><li><a href="stop-TEC_Bblagar9.html">TEC:Bblagar9</a> - Alleud Gare 15:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./382.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

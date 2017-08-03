@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Blaton - Quevaucamps / Bernissart - 5163:TEC:HT:230</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Blaton - Quevaucamps / Bernissart - 5163:TEC:HT:230</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H5bl119d.html">TEC:H5bl119d</a> - Blaton SNCB 18:50</li><li><a href="stop-TEC_H5bl115c.html">TEC:H5bl115c</a> - Blaton Belvédère 18:52</li><li><a href="stop-TEC_H5bl121a.html">TEC:H5bl121a</a> - Blaton Passerelle 18:53</li><li><a href="stop-TEC_H5bl124b.html">TEC:H5bl124b</a> - Blaton Rue Haute 18:53</li><li><a href="stop-TEC_H5bl122a.html">TEC:H5bl122a</a> - Blaton Pont du Progrès 18:54</li><li><a href="stop-TEC_H4be107a.html">TEC:H4be107a</a> - Bernissart Ferme Martin 18:56</li><li><a href="stop-TEC_H4be102a.html">TEC:H4be102a</a> - Bernissart Café de Basècles 18:57</li><li><a href="stop-TEC_H4be104a.html">TEC:H4be104a</a> - Bernissart Calvaire 18:58</li><li><a href="stop-TEC_H4be105a.html">TEC:H4be105a</a> - Bernissart Cité Royer 18:59</li><li><a href="stop-TEC_H4be113a.html">TEC:H4be113a</a> - Bernissart Rue Sénéchal 19:00</li><li><a href="stop-TEC_H4be111a.html">TEC:H4be111a</a> - Bernissart Rue des Sorbiers 19:01</li><li><a href="stop-TEC_H4be100a.html">TEC:H4be100a</a> - Bernissart Allée des Peupliers 19:01</li><li><a href="stop-TEC_H4be112a.html">TEC:H4be112a</a> - Bernissart Fraity 19:02</li><li><a href="stop-TEC_H4be103a.html">TEC:H4be103a</a> - Bernissart Rue Grande 19:03</li><li><a href="stop-TEC_H4be109a.html">TEC:H4be109a</a> - Bernissart Place 19:03</li><li><a href="stop-TEC_H4be106a.html">TEC:H4be106a</a> - Bernissart Cour Van Hoek 19:03</li><li><a href="stop-TEC_H4be110a.html">TEC:H4be110a</a> - Bernissart Pompe à Essence 19:04</li><li><a href="stop-TEC_H4be101a.html">TEC:H4be101a</a> - Bernissart Boucherie 19:04</li><li><a href="stop-TEC_H4be108a.html">TEC:H4be108a</a> - Bernissart Ancienne Gare 19:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1536.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

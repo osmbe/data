@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Jodoigne - Gembloux - 5163:TEC:BW:6124</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jodoigne - Gembloux - 5163:TEC:BW:6124</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bjodgar1.html">TEC:Bjodgar1</a> - Jodoigne Gare d'Autobus 06:40</li><li><a href="stop-TEC_Bjodcad2.html">TEC:Bjodcad2</a> - Jodoigne Centre Administratif 06:41</li><li><a href="stop-TEC_Bjodsme1.html">TEC:Bjodsme1</a> - Jodoigne Saint-Médard 06:42</li><li><a href="stop-TEC_Bjodced1.html">TEC:Bjodced1</a> - Jodoigne Cèdre Bleu 06:43</li><li><a href="stop-TEC_Bjodbat1.html">TEC:Bjodbat1</a> - Jodoigne Batavia 06:43</li><li><a href="stop-TEC_Bjodpce1.html">TEC:Bjodpce1</a> - Jodoigne Pharmacie Centrale 06:44</li><li><a href="stop-TEC_Bjdsjso1.html">TEC:Bjdsjso1</a> - Jodoigne Rte de Jodoigne-Souveraine 06:47</li><li><a href="stop-TEC_Bjdspon1.html">TEC:Bjdspon1</a> - Jodoigne-Souveraine Pont 06:48</li><li><a href="stop-TEC_Bjcljau1.html">TEC:Bjcljau1</a> - Jauchelette Route de Jauchelette 06:49</li><li><a href="stop-TEC_Bgligli1.html">TEC:Bgligli1</a> - Glimes Route de Glimes 06:49</li><li><a href="stop-TEC_Bglicsm1.html">TEC:Bglicsm1</a> - Glimes Carrefour Saint-Michel 06:50</li><li><a href="stop-TEC_Bgliaau1.html">TEC:Bgliaau1</a> - Glimes A l'Ancienne Auberge 06:52</li><li><a href="stop-TEC_Bgliopp3.html">TEC:Bgliopp3</a> - Glimes Route d'Opprebais 06:53</li><li><a href="stop-TEC_Boppcar1.html">TEC:Boppcar1</a> - Opprebais Carrière 06:55</li><li><a href="stop-TEC_Boppcen3.html">TEC:Boppcen3</a> - Opprebais Centre 06:57</li><li><a href="stop-TEC_Bopprju1.html">TEC:Bopprju1</a> - Opprebais Rue de la Justice 06:58</li><li><a href="stop-TEC_Bsrbtil1.html">TEC:Bsrbtil1</a> - Sart-Risbart Rue du Tilleul 07:00</li><li><a href="stop-TEC_Bsrbbas1.html">TEC:Bsrbbas1</a> - Sart-Risbart Rue Basse 07:01</li><li><a href="stop-TEC_Boppegl1.html">TEC:Boppegl1</a> - Opprebais Sentier de l'Eglise 07:02</li><li><a href="stop-TEC_Bopplon1.html">TEC:Bopplon1</a> - Opprebais Route de Longueville 07:03</li><li><a href="stop-TEC_Bchgflo1.html">TEC:Bchgflo1</a> - Chaumont-Gistoux Rue Florémond 07:06</li><li><a href="stop-TEC_Bchgbar1.html">TEC:Bchgbar1</a> - Chaumont-Gistoux Rue de la Barre 07:07</li><li><a href="stop-TEC_Bchgqve3.html">TEC:Bchgqve3</a> - Chaumont-Gistoux Queue de Veau 07:08</li><li><a href="stop-TEC_Bchgcha2.html">TEC:Bchgcha2</a> - Chaumont-Gistoux Champtaine 07:08</li><li><a href="stop-TEC_Btslpic6.html">TEC:Btslpic6</a> - Tourinnes-Saint-Lambert Picaute 07:10</li><li><a href="stop-TEC_Btsllbv1.html">TEC:Btsllbv1</a> - Tourinnes-Saint-Lambert Bout du Village 07:14</li><li><a href="stop-TEC_Btsllnd1.html">TEC:Btsllnd1</a> - Tourinnes-Saint-Lambert Chapelle ND Auxiliaire 07:15</li><li><a href="stop-TEC_Btsleco1.html">TEC:Btsleco1</a> - Tourinnes-Saint-Lambert Ecoles 07:17</li><li><a href="stop-TEC_Btslnil1.html">TEC:Btslnil1</a> - Tourinnes-Saint-Lambert Route de Nil 07:18</li><li><a href="stop-TEC_Btslpbr1.html">TEC:Btslpbr1</a> - Tourinnes-Saint-Lambert Place de Brou 07:19</li><li><a href="stop-TEC_Btslenf1.html">TEC:Btslenf1</a> - Tourinnes-Saint-Lambert Rue de l'Enfer 07:19</li><li><a href="stop-TEC_Btslegl1.html">TEC:Btslegl1</a> - Tourinnes-Saint-Lambert Eglise 07:20</li><li><a href="stop-TEC_Btslcej1.html">TEC:Btslcej1</a> - Tourinnes-Saint-Lambert Chapelle Enfant Jésus 07:21</li><li><a href="stop-TEC_Btslhau1.html">TEC:Btslhau1</a> - Tourinnes-Saint-Lambert Rue Aurimont 07:22</li><li><a href="stop-TEC_Btsllsc1.html">TEC:Btsllsc1</a> - Lerinnes Sacré Coeur 07:23</li><li><a href="stop-TEC_Btsllec1.html">TEC:Btsllec1</a> - Lerinnes Ecoles 07:24</li><li><a href="stop-TEC_Btsllfp1.html">TEC:Btsllfp1</a> - Lerinnes Ferme Piette 07:25</li><li><a href="stop-TEC_Btslcel1.html">TEC:Btslcel1</a> - Tourinnes-Saint-Lambert Cabine électrique 07:25</li><li><a href="stop-TEC_Bwlhswc1.html">TEC:Bwlhswc1</a> - Sart-Lez-Walhain Centre 07:26</li><li><a href="stop-TEC_Bwlhcsr1.html">TEC:Bwlhcsr1</a> - Walhain Chapelle Saint-Roch 07:26</li><li><a href="stop-TEC_Bwspm371.html">TEC:Bwspm371</a> - Walhain-Saint-Paul Maison n°37 07:28</li><li><a href="stop-TEC_Bwspbos1.html">TEC:Bwspbos1</a> - Walhain-Saint-Paul Rue Boscaille 07:29</li><li><a href="stop-TEC_Bwspmon3.html">TEC:Bwspmon3</a> - Walhain-Saint-Paul Monument 07:29</li><li><a href="stop-TEC_Bwspcar2.html">TEC:Bwspcar2</a> - Walhain-Saint-Paul Carmel 07:30</li><li><a href="stop-TEC_Bwspjon2.html">TEC:Bwspjon2</a> - Walhain-Saint-Paul Rue Jonquoi 07:31</li><li><a href="stop-TEC_Bwspspa1.html">TEC:Bwspspa1</a> - Walhain-Saint-Paul Saint-Paul 07:32</li><li><a href="stop-TEC_Bwspjon1.html">TEC:Bwspjon1</a> - Walhain-Saint-Paul Rue Jonquoi 07:33</li><li><a href="stop-TEC_Bwspcar1.html">TEC:Bwspcar1</a> - Walhain-Saint-Paul Carmel 07:35</li><li><a href="stop-TEC_Bwspmon4.html">TEC:Bwspmon4</a> - Walhain-Saint-Paul Monument 07:36</li><li><a href="stop-TEC_Bwspmon1.html">TEC:Bwspmon1</a> - Walhain-Saint-Paul Monument 07:36</li><li><a href="stop-TEC_Bwsppos1.html">TEC:Bwsppos1</a> - Walhain-Saint-Paul Poste 07:36</li><li><a href="stop-TEC_Bwspbbo1.html">TEC:Bwspbbo1</a> - Walhain-Saint-Paul Bois de Boulogne 07:37</li><li><a href="stop-TEC_Bwlhpmt1.html">TEC:Bwlhpmt1</a> - Walhain Maugré To 07:39</li><li><a href="stop-TEC_Berncim1.html">TEC:Berncim1</a> - Ernage Cimetière 07:41</li><li><a href="stop-TEC_Berngrt1.html">TEC:Berngrt1</a> - Ernage Grand' Route 07:42</li><li><a href="stop-TEC_Berneco1.html">TEC:Berneco1</a> - Ernage Ecoles Jules Lejeune 07:43</li><li><a href="stop-TEC_Bgemgcw1.html">TEC:Bgemgcw1</a> - Gembloux Gare (Ch. de Wavre) 07:45</li><li><a href="stop-TEC_N522aba.html">TEC:N522aba</a> - Gembloux Quatre coins 07:48</li><li><a href="stop-TEC_N522aea.html">TEC:N522aea</a> - Gembloux Rue des Volontaires 07:50</li><li><a href="stop-TEC_Bgemga09.html">TEC:Bgemga09</a> - Gembloux Gare 07:52</li><li><a href="stop-TEC_Bgemga08.html">TEC:Bgemga08</a> - Gembloux Gare 07:52</li><li><a href="stop-TEC_Bgemga07.html">TEC:Bgemga07</a> - Gembloux Gare 07:52</li><li><a href="stop-TEC_N522aeb.html">TEC:N522aeb</a> - Gembloux Rue des Volontaires 07:55</li><li><a href="stop-TEC_N522apb.html">TEC:N522apb</a> - Gembloux Place de l'Orneau 07:58</li><li><a href="stop-TEC_Bgrmver1.html">TEC:Bgrmver1</a> - Grand-Manil Rue Verlaine 08:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./521.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - HUY - HAVELANGE - 5163:TEC:NA:5190</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: HUY - HAVELANGE - 5163:TEC:NA:5190</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N209aja.html">TEC:N209aja</a> - Havelange Dépôt 17:20</li><li><a href="stop-TEC_N209aic.html">TEC:N209aic</a> - Havelange Hôtel de ville 17:21</li><li><a href="stop-TEC_N209aha.html">TEC:N209aha</a> - Havelange Eglise 17:22</li><li><a href="stop-TEC_N209ada.html">TEC:N209ada</a> - Havelange Detroche 17:22</li><li><a href="stop-TEC_N209aca.html">TEC:N209aca</a> - Havelange Pharmacie Philippe 17:23</li><li><a href="stop-TEC_N209aba.html">TEC:N209aba</a> - Havelange Gare 17:23</li><li><a href="stop-TEC_N209aaa.html">TEC:N209aaa</a> - Havelange Route de Miécret 17:23</li><li><a href="stop-TEC_N207adc.html">TEC:N207adc</a> - Miecret Poteau 17:24</li><li><a href="stop-TEC_N210aaa.html">TEC:N210aaa</a> - Verlee Ferme Deville 17:26</li><li><a href="stop-TEC_NL82aga.html">TEC:NL82aga</a> - Bois-et-Borsu Fontenoy 17:29</li><li><a href="stop-TEC_LBBodet2.html">TEC:LBBodet2</a> - Bois-et-Borsu Odet 17:31</li><li><a href="stop-TEC_LBBlaga2.html">TEC:LBBlaga2</a> - Bois-et-Borsu Rue de l'Agauche 17:32</li><li><a href="stop-TEC_LBBmc--2.html">TEC:LBBmc--2</a> - Bois-et-Borsu Eglise 17:33</li><li><a href="stop-TEC_LBBpech2.html">TEC:LBBpech2</a> - Bois-et-Borsu Pêcherie 17:34</li><li><a href="stop-TEC_LBBabat2.html">TEC:LBBabat2</a> - Bois-et-Borsu Abattoir 17:35</li><li><a href="stop-TEC_LBBcarr2.html">TEC:LBBcarr2</a> - Bois-et-Borsu Carrefour 17:36</li><li><a href="stop-TEC_NL35aga.html">TEC:NL35aga</a> - Clavier Maison communale 17:39</li><li><a href="stop-TEC_NL35aca.html">TEC:NL35aca</a> - Atrin Centre 17:40</li><li><a href="stop-TEC_NL35aba.html">TEC:NL35aba</a> - Atrin Auberge 17:41</li><li><a href="stop-TEC_LOchalo2.html">TEC:LOchalo2</a> - Ochain Rue du Hâlon 17:42</li><li><a href="stop-TEC_LOcgdro4.html">TEC:LOcgdro4</a> - Ochain Grand-Route 17:43</li><li><a href="stop-TEC_LOccarr2.html">TEC:LOccarr2</a> - Ochain Carrefour 17:44</li><li><a href="stop-TEC_LCLgend1.html">TEC:LCLgend1</a> - Clavier Gendarmerie 17:46</li><li><a href="stop-TEC_LCLstat1.html">TEC:LCLstat1</a> - Clavier Station 17:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6047.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

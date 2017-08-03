@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHATELINEAU - ACOZ - FROMIEE - 5163:TEC:NA:5682</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHATELINEAU - ACOZ - FROMIEE - 5163:TEC:NA:5682</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cacgare2.html">TEC:Cacgare2</a> - Acoz Gare 09:02</li><li><a href="stop-TEC_Caccera1.html">TEC:Caccera1</a> - Acoz Céracoz 09:03</li><li><a href="stop-TEC_Cbfchla1.html">TEC:Cbfchla1</a> - Bouffioulx Chaussée de Lausprelle 09:04</li><li><a href="stop-TEC_Cbfusin1.html">TEC:Cbfusin1</a> - Bouffioulx Usine Moncheret 09:04</li><li><a href="stop-TEC_Cbfcham1.html">TEC:Cbfcham1</a> - Bouffioulx Chamborgneau 09:06</li><li><a href="stop-TEC_Cbfpoti1.html">TEC:Cbfpoti1</a> - Bouffioulx Les Potiats 09:07</li><li><a href="stop-TEC_Cbfgare1.html">TEC:Cbfgare1</a> - Bouffioulx Gare 09:07</li><li><a href="stop-TEC_Cbfbies1.html">TEC:Cbfbies1</a> - Bouffioulx La Biesme 09:08</li><li><a href="stop-TEC_Cctsold1.html">TEC:Cctsold1</a> - Chatelet Rue des Soldats 09:09</li><li><a href="stop-TEC_Cctrobe1.html">TEC:Cctrobe1</a> - Chatelet Tienne Robau 09:10</li><li><a href="stop-TEC_Cctgaux2.html">TEC:Cctgaux2</a> - Chatelet Rue des Gaux 09:11</li><li><a href="stop-TEC_Cctpass2.html">TEC:Cctpass2</a> - Chatelet Passerelle 09:13</li><li><a href="stop-TEC_Cctsncb1.html">TEC:Cctsncb1</a> - Chatelineau SNCB 09:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5964.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

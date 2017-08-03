@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Glons / Emael - Bassenge - Visé - 5163:TEC:LV:50493</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Glons / Emael - Bassenge - Visé - 5163:TEC:LV:50493</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LGLgare_.html">TEC:LGLgare*</a> - Glons Gare 17:30</li><li><a href="stop-TEC_LGLchap2.html">TEC:LGLchap2</a> - Glons Rue de la Chapelle 17:31</li><li><a href="stop-TEC_LGLecol2.html">TEC:LGLecol2</a> - Glons Ecole Moyenne 17:31</li><li><a href="stop-TEC_LGLlaur2.html">TEC:LGLlaur2</a> - Glons Rue St-Laurent 17:32</li><li><a href="stop-TEC_LGLeg--2.html">TEC:LGLeg--2</a> - Glons Eglise 17:33</li><li><a href="stop-TEC_LGLgeer2.html">TEC:LGLgeer2</a> - Glons Galeries du Geer 17:34</li><li><a href="stop-TEC_LBPunic2.html">TEC:LBPunic2</a> - Boirs Carrefour Unic 17:34</li><li><a href="stop-TEC_LBPmili2.html">TEC:LBPmili2</a> - Boirs Domaine Militaire 17:35</li><li><a href="stop-TEC_LBPmais2.html">TEC:LBPmais2</a> - Boirs Maison 638B 17:36</li><li><a href="stop-TEC_LBPauto2.html">TEC:LBPauto2</a> - Boirs Autoroute 17:37</li><li><a href="stop-TEC_LBPboir2.html">TEC:LBPboir2</a> - Boirs Route de Boirs 17:38</li><li><a href="stop-TEC_LRGmoul2.html">TEC:LRGmoul2</a> - Roclenge Moulin 17:38</li><li><a href="stop-TEC_LRGeg--2.html">TEC:LRGeg--2</a> - Roclenge Eglise 17:39</li><li><a href="stop-TEC_LRGgend2.html">TEC:LRGgend2</a> - Roclenge Gendarmerie 17:40</li><li><a href="stop-TEC_LBStong2.html">TEC:LBStong2</a> - Bassenge Route de Tongres 17:41</li><li><a href="stop-TEC_LBSgeer2.html">TEC:LBSgeer2</a> - Bassenge Pont du Geer 17:42</li><li><a href="stop-TEC_LBSchar1.html">TEC:LBSchar1</a> - Bassenge La Charmille 17:42</li><li><a href="stop-TEC_LBStec-1.html">TEC:LBStec-1</a> - Bassenge Dépôt TEC 17:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3915.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

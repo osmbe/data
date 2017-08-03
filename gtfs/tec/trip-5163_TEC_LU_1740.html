@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bellefontaine - Paliseul - 5163:TEC:LU:1740</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bellefontaine - Paliseul - 5163:TEC:LU:1740</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X806akb.html">TEC:X806akb</a> - Paliseul Athénée - Quai 2 16:25</li><li><a href="stop-TEC_X806aab.html">TEC:X806aab</a> - Paliseul Gare 16:29</li><li><a href="stop-TEC_X806aac.html">TEC:X806aac</a> - Paliseul Gare 16:29</li><li><a href="stop-TEC_X850ama.html">TEC:X850ama</a> - Merny Route de Paliseul Gare 16:32</li><li><a href="stop-TEC_X850ala.html">TEC:X850ala</a> - Carlsbourg Rue des Socquettes 16:34</li><li><a href="stop-TEC_X850aeb.html">TEC:X850aeb</a> - Carlsbourg Rue Joseph Jacques 16:35</li><li><a href="stop-TEC_X850ada.html">TEC:X850ada</a> - Carlsbourg Eglise 16:35</li><li><a href="stop-TEC_X850aca.html">TEC:X850aca</a> - Carlsbourg Institut 16:36</li><li><a href="stop-TEC_X850aba.html">TEC:X850aba</a> - Carlsbourg Chanteclair 16:37</li><li><a href="stop-TEC_X370ada.html">TEC:X370ada</a> - Mon Idee Mon Idée 16:39</li><li><a href="stop-TEC_X369acb.html">TEC:X369acb</a> - Baillamont Ramelot 16:41</li><li><a href="stop-TEC_X369abb.html">TEC:X369abb</a> - Baillamont Rue de Sedan 16:42</li><li><a href="stop-TEC_X369aab.html">TEC:X369aab</a> - Baillamont Eglise 16:43</li><li><a href="stop-TEC_X354abb.html">TEC:X354abb</a> - Oizy Ecole 16:47</li><li><a href="stop-TEC_X354aaa.html">TEC:X354aaa</a> - Oizy Rue de la Chapelle 16:47</li><li><a href="stop-TEC_X342ahb.html">TEC:X342ahb</a> - Monceau En ARDENNE Rue de Oizy 73 16:51</li><li><a href="stop-TEC_X342aab.html">TEC:X342aab</a> - Monceau En ARDENNE Rue de Oizy 16:52</li><li><a href="stop-TEC_X342aea.html">TEC:X342aea</a> - Petit-Fays Eglise 16:56</li><li><a href="stop-TEC_X342afa.html">TEC:X342afa</a> - Petit-Fays Rue de Bellefontaine 16:56</li><li><a href="stop-TEC_X342ada.html">TEC:X342ada</a> - Bellefontaine Eglise (Bièvre) 17:01</li><li><a href="stop-TEC_X342acb.html">TEC:X342acb</a> - Monceau En ARDENNE Route de Bellefontaine 17:05</li><li><a href="stop-TEC_X342abb.html">TEC:X342abb</a> - Monceau En ARDENNE Eglise 17:05</li><li><a href="stop-TEC_X342aaa.html">TEC:X342aaa</a> - Monceau En ARDENNE Rue de Oizy 17:06</li><li><a href="stop-TEC_X342aha.html">TEC:X342aha</a> - Monceau En ARDENNE Rue de Oizy 73 17:06</li><li><a href="stop-TEC_X354abb.html">TEC:X354abb</a> - Oizy Ecole 17:11</li><li><a href="stop-TEC_X354abb.html">TEC:X354abb</a> - Oizy Ecole 17:11</li><li><a href="stop-TEC_X354aaa.html">TEC:X354aaa</a> - Oizy Rue de la Chapelle 17:11</li><li><a href="stop-TEC_X342ahb.html">TEC:X342ahb</a> - Monceau En ARDENNE Rue de Oizy 73 17:15</li><li><a href="stop-TEC_X342aab.html">TEC:X342aab</a> - Monceau En ARDENNE Rue de Oizy 17:16</li><li><a href="stop-TEC_X342aea.html">TEC:X342aea</a> - Petit-Fays Eglise 17:20</li><li><a href="stop-TEC_X342afa.html">TEC:X342afa</a> - Petit-Fays Rue de Bellefontaine 17:20</li><li><a href="stop-TEC_X342ada.html">TEC:X342ada</a> - Bellefontaine Eglise (Bièvre) 17:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2750.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

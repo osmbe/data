@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Gare Léopold - Herstal - La Préalle - 5163:TEC:LV:52588</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gare Léopold - Herstal - La Préalle - 5163:TEC:LV:52588</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lhrlico2.html">TEC:Lhrlico2</a> - Herstal Place Licour 04:34</li><li><a href="stop-TEC_Lhrtilm2.html">TEC:Lhrtilm2</a> - Herstal Rue Tilman 04:34</li><li><a href="stop-TEC_Lhrpepi2.html">TEC:Lhrpepi2</a> - Herstal Rue Pépin 04:35</li><li><a href="stop-TEC_Lhrjaur2.html">TEC:Lhrjaur2</a> - Herstal Place J. Jaurès 04:36</li><li><a href="stop-TEC_Lhrlamb2.html">TEC:Lhrlamb2</a> - Herstal Collège St-Lambert 04:36</li><li><a href="stop-TEC_Lhrlalo2.html">TEC:Lhrlalo2</a> - Herstal Rue N. Laloux 04:37</li><li><a href="stop-TEC_Lhrmare8.html">TEC:Lhrmare8</a> - Herstal Rue Marexhe 04:38</li><li><a href="stop-TEC_Lhrbell2.html">TEC:Lhrbell2</a> - Herstal Charbonnage Belle-Vue 04:38</li><li><a href="stop-TEC_Lhrecol2.html">TEC:Lhrecol2</a> - Herstal Rue des Ecoles 04:39</li><li><a href="stop-TEC_Lhrpaix2.html">TEC:Lhrpaix2</a> - Herstal Esplanade de la Paix 04:40</li><li><a href="stop-TEC_Llgcoro1.html">TEC:Llgcoro1</a> - Liege Place Coronmeuse 04:41</li><li><a href="stop-TEC_Llgauxc2.html">TEC:Llgauxc2</a> - Liege Rue Aux Chevaux 04:43</li><li><a href="stop-TEC_Llgatla2.html">TEC:Llgatla2</a> - Liege Pont Atlas 04:44</li><li><a href="stop-TEC_Llgarmu4.html">TEC:Llgarmu4</a> - Liege Rue des Armuriers 04:45</li><li><a href="stop-TEC_Llgmare6.html">TEC:Llgmare6</a> - Liege Rue Marengo 04:46</li><li><a href="stop-TEC_Llgdepo6.html">TEC:Llgdepo6</a> - Liege Place des Déportés 04:47</li><li><a href="stop-TEC_Llghong2.html">TEC:Llghong2</a> - Liege Rue Hongrée 04:48</li><li><a href="stop-TEC_Llgcite2.html">TEC:Llgcite2</a> - Liege Rue de la Cité 04:49</li><li><a href="stop-TEC_LlgLEOP2.html">TEC:LlgLEOP2</a> - Liege Gare Léopold 04:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5351.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

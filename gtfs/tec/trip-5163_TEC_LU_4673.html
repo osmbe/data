@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Devantave - Rendeux - 5163:TEC:LU:4673</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Devantave - Rendeux - 5163:TEC:LU:4673</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X948apb.html">TEC:X948apb</a> - Rendeux Haut Eglise 15:40</li><li><a href="stop-TEC_X948arb.html">TEC:X948arb</a> - Rendeux La Golette 2A 15:41</li><li><a href="stop-TEC_X948asa.html">TEC:X948asa</a> - Rendeux La Golette 23 15:42</li><li><a href="stop-TEC_X948aub.html">TEC:X948aub</a> - Ronzon Eglise 15:43</li><li><a href="stop-TEC_X948ahb.html">TEC:X948ahb</a> - Ronzon Grand Route 15:44</li><li><a href="stop-TEC_X948aia.html">TEC:X948aia</a> - Rendeux Haut Ecole Communale 15:45</li><li><a href="stop-TEC_X948aja.html">TEC:X948aja</a> - Rendeux Haut Maison Communale 15:46</li><li><a href="stop-TEC_X948aka.html">TEC:X948aka</a> - Rendeux Bas Abri 2000 15:48</li><li><a href="stop-TEC_X948ala.html">TEC:X948ala</a> - Rendeux Bas Terrain de Football 15:49</li><li><a href="stop-TEC_X948ama.html">TEC:X948ama</a> - Hamoul Centre 15:49</li><li><a href="stop-TEC_X949akb.html">TEC:X949akb</a> - Hampteau Bois de Mapas 95 15:50</li><li><a href="stop-TEC_X949ajb.html">TEC:X949ajb</a> - Hampteau Préalle 81 15:51</li><li><a href="stop-TEC_X949afb.html">TEC:X949afb</a> - Hampteau Route de La Roche 15:52</li><li><a href="stop-TEC_X949ada.html">TEC:X949ada</a> - Hampteau Eglise 15:52</li><li><a href="stop-TEC_X949ala.html">TEC:X949ala</a> - Hampteau Ecole Communale 15:55</li><li><a href="stop-TEC_X949adb.html">TEC:X949adb</a> - Hampteau Eglise 15:56</li><li><a href="stop-TEC_X949agb.html">TEC:X949agb</a> - Hampteau Route de Werpin 15:57</li><li><a href="stop-TEC_X949aha.html">TEC:X949aha</a> - Werpin Route d'Hampteau 15:58</li><li><a href="stop-TEC_X949aib.html">TEC:X949aib</a> - Werpin Eglise 15:59</li><li><a href="stop-TEC_X949amb.html">TEC:X949amb</a> - Werpin Rue des Monts 16:00</li><li><a href="stop-TEC_X947adb.html">TEC:X947adb</a> - Trinal Centre 16:06</li><li><a href="stop-TEC_X947acb.html">TEC:X947acb</a> - Beffe Chapelle 16:08</li><li><a href="stop-TEC_X947abc.html">TEC:X947abc</a> - Beffe Eglise 16:09</li><li><a href="stop-TEC_X947aeb.html">TEC:X947aeb</a> - Magoster Chapelle 16:11</li><li><a href="stop-TEC_X926afb.html">TEC:X926afb</a> - Amonines Carrefour Route de Beffe 16:15</li><li><a href="stop-TEC_X945abc.html">TEC:X945abc</a> - Devantave Eglise 16:20</li><li><a href="stop-TEC_X947aab.html">TEC:X947aab</a> - Bois D'ARLOGNE Village de Vacances 16:21</li><li><a href="stop-TEC_X948aqb.html">TEC:X948aqb</a> - Marcouray Eglise 16:25</li><li><a href="stop-TEC_X945aeb.html">TEC:X945aeb</a> - Cielle Eglise 16:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3285.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

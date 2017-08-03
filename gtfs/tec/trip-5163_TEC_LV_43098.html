@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Verviers-Battice-Thimister-Aubel - 5163:TEC:LV:43098</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Verviers-Battice-Thimister-Aubel - 5163:TEC:LV:43098</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LAUvict4.html">TEC:LAUvict4</a> - Aubel Place de la Victoire 07:30</li><li><a href="stop-TEC_LAUnico2.html">TEC:LAUnico2</a> - Aubel Place Antoine Ernst 07:31</li><li><a href="stop-TEC_LAUtism2.html">TEC:LAUtism2</a> - Aubel Rue Tisman 07:31</li><li><a href="stop-TEC_LAUhost2.html">TEC:LAUhost2</a> - Aubel Hostert 07:32</li><li><a href="stop-TEC_LAUpind2.html">TEC:LAUpind2</a> - Aubel Parc Industriel 07:33</li><li><a href="stop-TEC_LAUcarr2.html">TEC:LAUcarr2</a> - Aubel La Carrière 07:33</li><li><a href="stop-TEC_LFdchau4.html">TEC:LFdchau4</a> - Froidthier Chaussée 07:35</li><li><a href="stop-TEC_LFdeg--2.html">TEC:LFdeg--2</a> - Froidthier Eglise 07:35</li><li><a href="stop-TEC_LClange2.html">TEC:LClange2</a> - Clermont Chapelle des Anges 07:36</li><li><a href="stop-TEC_LCljose2.html">TEC:LCljose2</a> - Clermont Chapelle St-Joseph 07:37</li><li><a href="stop-TEC_LClbloc2.html">TEC:LClbloc2</a> - Clermont Blockhouse 07:38</li><li><a href="stop-TEC_LCltrib2.html">TEC:LCltrib2</a> - Clermont Tribezone 07:39</li><li><a href="stop-TEC_LCleg--2.html">TEC:LCleg--2</a> - Clermont Eglise 07:40</li><li><a href="stop-TEC_LThnouv2.html">TEC:LThnouv2</a> - Thimister Nouveau Quartier 07:41</li><li><a href="stop-TEC_LThgare2.html">TEC:LThgare2</a> - Thimister Ancienne Gare 07:43</li><li><a href="stop-TEC_LTheg--2.html">TEC:LTheg--2</a> - Thimister Eglise 07:45</li><li><a href="stop-TEC_LThbatt2.html">TEC:LThbatt2</a> - Thimister Route de Battice 07:46</li><li><a href="stop-TEC_LThpoli2.html">TEC:LThpoli2</a> - Thimister Croix Polinard 07:48</li><li><a href="stop-TEC_LBTwauc2.html">TEC:LBTwauc2</a> - Battice Hameau de Waucomont 07:50</li><li><a href="stop-TEC_LBTfoot2.html">TEC:LBTfoot2</a> - Battice Terrain de Football 07:50</li><li><a href="stop-TEC_LBTcarr4.html">TEC:LBTcarr4</a> - Battice Carrefour 07:51</li><li><a href="stop-TEC_LHEbeau2.html">TEC:LHEbeau2</a> - Herve Beau Vallon 07:52</li><li><a href="stop-TEC_LHEches2.html">TEC:LHEches2</a> - Herve Rue de Chesseroux 07:53</li><li><a href="stop-TEC_LHEecmo2.html">TEC:LHEecmo2</a> - Herve Ecole Moyenne 07:54</li><li><a href="stop-TEC_LHEnaza2.html">TEC:LHEnaza2</a> - Herve Nazareth 07:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5012.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

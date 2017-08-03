@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHARLEROI Sud - FARCIENNES L'Ysle Marais - 5163:TEC:CH:8736</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHARLEROI Sud - FARCIENNES L'Ysle Marais - 5163:TEC:CH:8736</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cchsud04.html">TEC:Cchsud04</a> - Charleroi Sud 05:13</li><li><a href="stop-TEC_Cchtiro4.html">TEC:Cchtiro4</a> - Charleroi Tirou (M) 05:15</li><li><a href="stop-TEC_Cchparc4.html">TEC:Cchparc4</a> - Charleroi Parc (M) 05:16</li><li><a href="stop-TEC_Cchcase2.html">TEC:Cchcase2</a> - Charleroi Casernes 05:17</li><li><a href="stop-TEC_Cmtrneu2.html">TEC:Cmtrneu2</a> - Montignies-sur-Sambre Rue Neuve 05:17</li><li><a href="stop-TEC_Cmtrbra2.html">TEC:Cmtrbra2</a> - Montignies-sur-Sambre Rue de la Brasserie 05:18</li><li><a href="stop-TEC_Cmtrdec2.html">TEC:Cmtrdec2</a> - Montignies-sur-Sambre Rue R. Decooman 05:20</li><li><a href="stop-TEC_Cmttrie2.html">TEC:Cmttrie2</a> - Montignies-sur-Sambre Trieux 05:21</li><li><a href="stop-TEC_Cmtstan2.html">TEC:Cmtstan2</a> - Montignies-sur-Sambre Saint-André 05:22</li><li><a href="stop-TEC_Cmtcapi2.html">TEC:Cmtcapi2</a> - Montignies-sur-Sambre Rue du Capitaine 05:23</li><li><a href="stop-TEC_Cmtplac4.html">TEC:Cmtplac4</a> - Montignies-sur-Sambre Place 05:24</li><li><a href="stop-TEC_Cmtprey2.html">TEC:Cmtprey2</a> - Montignies-sur-Sambre Rue des Preys 05:25</li><li><a href="stop-TEC_Cmtchas2.html">TEC:Cmtchas2</a> - Montignies-sur-Sambre Rue de la Chasse 05:26</li><li><a href="stop-TEC_Cmtproc2.html">TEC:Cmtproc2</a> - Montignies-sur-Sambre Place du Roctiau 05:27</li><li><a href="stop-TEC_Ccucora2.html">TEC:Ccucora2</a> - Chatelineau Cora 05:28</li><li><a href="stop-TEC_Ccubric2.html">TEC:Ccubric2</a> - Chatelineau Bricoman 05:29</li><li><a href="stop-TEC_Ccupays2.html">TEC:Ccupays2</a> - Chatelineau Pays-Bas 05:30</li><li><a href="stop-TEC_Ccurtra2.html">TEC:Ccurtra2</a> - Chatelineau Rue du Travail 05:31</li><li><a href="stop-TEC_Ccunvus2.html">TEC:Ccunvus2</a> - Chatelineau Nouvelle Usine 05:32</li><li><a href="stop-TEC_Ccutrav2.html">TEC:Ccutrav2</a> - Chatelineau Traversée 05:33</li><li><a href="stop-TEC_Cculgeo2.html">TEC:Cculgeo2</a> - Chatelineau Lloyd Georges 05:34</li><li><a href="stop-TEC_Ccugend2.html">TEC:Ccugend2</a> - Chatelineau Rue Gendebien 05:35</li><li><a href="stop-TEC_Ccuhsti2.html">TEC:Ccuhsti2</a> - Chatelineau Home Stilmant 05:36</li><li><a href="stop-TEC_Cpipost2.html">TEC:Cpipost2</a> - Pironchamps Poste 05:37</li><li><a href="stop-TEC_Cpiegli2.html">TEC:Cpiegli2</a> - Pironchamps Eglise 05:37</li><li><a href="stop-TEC_Cfaetoi2.html">TEC:Cfaetoi2</a> - Farciennes Etoile 05:39</li><li><a href="stop-TEC_Cfacamp4.html">TEC:Cfacamp4</a> - Farciennes Campinaire 05:40</li><li><a href="stop-TEC_Cfarcam2.html">TEC:Cfarcam2</a> - Farciennes Rue du Campinaire 05:41</li><li><a href="stop-TEC_Cfaheni4.html">TEC:Cfaheni4</a> - Farciennes Carlo Henin 05:42</li><li><a href="stop-TEC_Cfamonu8.html">TEC:Cfamonu8</a> - Farciennes Monument 05:43</li><li><a href="stop-TEC_Cfaamio1.html">TEC:Cfaamio1</a> - Farciennes Rue Amion 05:44</li><li><a href="stop-TEC_Cfaysle1.html">TEC:Cfaysle1</a> - Farciennes l'Ysle Marais 05:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./778.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

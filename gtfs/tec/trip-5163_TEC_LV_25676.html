@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Pont d'Avroy - Guillemins - Chênée - Embourg - 5163:TEC:LV:25676</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Pont d'Avroy - Guillemins - Chênée - Embourg - 5163:TEC:LV:25676</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lemlacr2.html">TEC:Lemlacr2</a> - Embourg Café Lacroix 09:42</li><li><a href="stop-TEC_Lemambi2.html">TEC:Lemambi2</a> - Embourg Allée Ambiorix 09:43</li><li><a href="stop-TEC_Lemparc2.html">TEC:Lemparc2</a> - Embourg Allée du Parc 09:44</li><li><a href="stop-TEC_Lemcort2.html">TEC:Lemcort2</a> - Embourg Rue Grand Cortil 09:45</li><li><a href="stop-TEC_Lemarde2.html">TEC:Lemarde2</a> - Embourg Carr. voie de l'Ardenne-av. des Bouleaux 09:46</li><li><a href="stop-TEC_Lemfort1.html">TEC:Lemfort1</a> - Embourg Fort 09:47</li><li><a href="stop-TEC_Lemarti2.html">TEC:Lemarti2</a> - Embourg Rue des Artilleurs 09:48</li><li><a href="stop-TEC_Lemboul2.html">TEC:Lemboul2</a> - Embourg Avenue des Bouleaux (Bleurmont) 09:48</li><li><a href="stop-TEC_Lemmusc2.html">TEC:Lemmusc2</a> - Embourg Rue Musch 09:49</li><li><a href="stop-TEC_Lemhenn2.html">TEC:Lemhenn2</a> - Embourg Rue de Henne 09:50</li><li><a href="stop-TEC_Lemcarm2.html">TEC:Lemcarm2</a> - Embourg Rue du Carmel 09:51</li><li><a href="stop-TEC_Lemmeha2.html">TEC:Lemmeha2</a> - Embourg Mehagne-Critchons 09:52</li><li><a href="stop-TEC_Lemacac2.html">TEC:Lemacac2</a> - Embourg Rue des Acacias 09:53</li><li><a href="stop-TEC_Lcepoul2.html">TEC:Lcepoul2</a> - Chenee Rue A. Poulet 09:56</li><li><a href="stop-TEC_Lcegare2.html">TEC:Lcegare2</a> - Chenee Gare 09:57</li><li><a href="stop-TEC_Lcepont2.html">TEC:Lcepont2</a> - Chenee Pont 09:58</li><li><a href="stop-TEC_Lcebois2.html">TEC:Lcebois2</a> - Chenee Rue du Boisselier 09:59</li><li><a href="stop-TEC_Lcejobe2.html">TEC:Lcejobe2</a> - Chenee Arrêt Jobette 09:59</li><li><a href="stop-TEC_Lagarde2.html">TEC:Lagarde2</a> - Angleur quai des Ardennes 10:00</li><li><a href="stop-TEC_Lagptba2.html">TEC:Lagptba2</a> - Angleur Pont des Grosses Battes 10:01</li><li><a href="stop-TEC_Llgpont2.html">TEC:Llgpont2</a> - Liege Pont de Belle-Île 10:03</li><li><a href="stop-TEC_Llgstap2.html">TEC:Llgstap2</a> - Liege Rue Stappers 10:04</li><li><a href="stop-TEC_Llggrav2.html">TEC:Llggrav2</a> - Liege Rue des Gravillons 10:04</li><li><a href="stop-TEC_Llgdelb2.html">TEC:Llgdelb2</a> - Liege Rue J. Delboeuf 10:05</li><li><a href="stop-TEC_Llgbrab1.html">TEC:Llgbrab1</a> - Liege Brabançons 10:07</li><li><a href="stop-TEC_Llgstvi1.html">TEC:Llgstvi1</a> - Liege Eglise St-Vincent 10:07</li><li><a href="stop-TEC_Llggram2.html">TEC:Llggram2</a> - Liege Monument Gramme 10:08</li><li><a href="stop-TEC_Llglema2.html">TEC:Llglema2</a> - Liege Place Général Leman 10:09</li><li><a href="stop-TEC_LlgguilA.html">TEC:LlgguilA</a> - Liege Gare des Guillemins Quai A 10:12</li><li><a href="stop-TEC_Llgblon4.html">TEC:Llgblon4</a> - Liege Avenue Blonden 10:15</li><li><a href="stop-TEC_Llgchar2.html">TEC:Llgchar2</a> - Liege Charlemagne 10:18</li><li><a href="stop-TEC_LlgPTAV6.html">TEC:LlgPTAV6</a> - Liege Pont d'Avroy (débarquement) 10:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4763.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

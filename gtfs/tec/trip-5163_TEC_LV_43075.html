@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Eupen - Büllingen - Sankt-Vith - 5163:TEC:LV:43075</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eupen - Büllingen - Sankt-Vith - 5163:TEC:LV:43075</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LbTkreu1.html">TEC:LbTkreu1</a> - Butgenbach Kreuzung 07:44</li><li><a href="stop-TEC_LbThau11.html">TEC:LbThau11</a> - Butgenbach Haus 222A 07:46</li><li><a href="stop-TEC_LbTdoma1.html">TEC:LbTdoma1</a> - Butgenbach Domäne 07:47</li><li><a href="stop-TEC_LbTcarm1.html">TEC:LbTcarm1</a> - Butgenbach Karmel 07:47</li><li><a href="stop-TEC_LhDkreu1.html">TEC:LhDkreu1</a> - Hepscheid Kreuzung 07:51</li><li><a href="stop-TEC_LmRkreu3.html">TEC:LmRkreu3</a> - Moderscheid Kreuzung 07:52</li><li><a href="stop-TEC_LmImirf1.html">TEC:LmImirf1</a> - Mirfeld Mirfelderbusch 07:53</li><li><a href="stop-TEC_LmI36--1.html">TEC:LmI36--1</a> - Mirfeld 136 07:55</li><li><a href="stop-TEC_LmIcafe1.html">TEC:LmIcafe1</a> - Mirfeld Cafe Mertes 07:55</li><li><a href="stop-TEC_LaMadam1.html">TEC:LaMadam1</a> - Amel Haus Adam 119 07:56</li><li><a href="stop-TEC_LaMjous1.html">TEC:LaMjous1</a> - Amel Haus Jousten 07:56</li><li><a href="stop-TEC_LaMbull1.html">TEC:LaMbull1</a> - Amel Büllinger Strasse 07:57</li><li><a href="stop-TEC_LaMbrei1.html">TEC:LaMbrei1</a> - Amel Zur Breitenbach 07:57</li><li><a href="stop-TEC_LmDkoel1.html">TEC:LmDkoel1</a> - Medell Im Koelchen 07:59</li><li><a href="stop-TEC_LmDwei31.html">TEC:LmDwei31</a> - Medell Weissenbrücke 08:01</li><li><a href="stop-TEC_LmD181-1.html">TEC:LmD181-1</a> - Medell 182 08:01</li><li><a href="stop-TEC_LmDhoch1.html">TEC:LmDhoch1</a> - Medell Hochkreuz 08:02</li><li><a href="stop-TEC_LmD163-1.html">TEC:LmD163-1</a> - Medell 163 08:03</li><li><a href="stop-TEC_LmYamel1.html">TEC:LmYamel1</a> - Wallerode Ameler Strasse 105 08:04</li><li><a href="stop-TEC_LmYwall1.html">TEC:LmYwall1</a> - Wallerode Walleroder Strasse 08:05</li><li><a href="stop-TEC_LsVgend1.html">TEC:LsVgend1</a> - Sankt-Vith Gendarmerie 08:07</li><li><a href="stop-TEC_LsVviel1.html">TEC:LsVviel1</a> - Sankt-Vith Vielsalmer Strasse 08:08</li><li><a href="stop-TEC_LsVlind_.html">TEC:LsVlind*</a> - Sankt-Vith An den Linden 08:09</li><li><a href="stop-TEC_LsVbs--_.html">TEC:LsVbs--*</a> - Sankt-Vith Bischöfliche Schule 08:11</li><li><a href="stop-TEC_LsVgore1.html">TEC:LsVgore1</a> - Sankt-Vith Maria Goretti 08:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5135.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Soignies - Br.-le-Comte - Rebecq - Tubize - Hal - 5163:TEC:BW:3355</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Soignies - Br.-le-Comte - Rebecq - Tubize - Hal - 5163:TEC:BW:3355</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Brebgar1.html">TEC:Brebgar1</a> - Rebecq Gare 16:53</li><li><a href="stop-TEC_Brebrha1.html">TEC:Brebrha1</a> - Rebecq Rue Haute 16:56</li><li><a href="stop-TEC_Brebchb1.html">TEC:Brebchb1</a> - Rebecq Chemin Bouvette 16:59</li><li><a href="stop-TEC_Brebrog1.html">TEC:Brebrog1</a> - Rebecq Rognon 17:01</li><li><a href="stop-TEC_Brebpca1.html">TEC:Brebpca1</a> - Rebecq Pont de Cabecq 17:07</li><li><a href="stop-TEC_Brebblo1.html">TEC:Brebblo1</a> - Rebecq Blocus 17:09</li><li><a href="stop-TEC_Brebras2.html">TEC:Brebras2</a> - Rebecq Rastadt 17:10</li><li><a href="stop-TEC_Brebvic2.html">TEC:Brebvic2</a> - Rebecq Victory 17:11</li><li><a href="stop-TEC_Brebcha1.html">TEC:Brebcha1</a> - Rebecq Rue de la Chapelle 17:11</li><li><a href="stop-TEC_Brebmtg1.html">TEC:Brebmtg1</a> - Rebecq Montgras 17:12</li><li><a href="stop-TEC_Brebeau1.html">TEC:Brebeau1</a> - Rebecq  Clos de l'Eau 17:14</li><li><a href="stop-TEC_Bquebre2.html">TEC:Bquebre2</a> - Quenast Breda 17:15</li><li><a href="stop-TEC_Bquebre1.html">TEC:Bquebre1</a> - Quenast Breda 17:15</li><li><a href="stop-TEC_Bquebth1.html">TEC:Bquebth1</a> - Quenast Bois de Thiembecq 17:17</li><li><a href="stop-TEC_Bquecro1.html">TEC:Bquecro1</a> - Quenast Le Croly 17:18</li><li><a href="stop-TEC_Bqueegl1.html">TEC:Bqueegl1</a> - Quenast Eglise 17:20</li><li><a href="stop-TEC_Bquepla1.html">TEC:Bquepla1</a> - Quenast Place 17:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./407.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Aix-sur-Cloie Centre</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Aix-sur-Cloie Centre</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-5163_TEC_LU_1609.html">5163:TEC:LU:1609</a> - 5163:TEC:LU:1609 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_1945.html">5163:TEC:LU:1945</a> - 5163:TEC:LU:1945 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_2140.html">5163:TEC:LU:2140</a> - 5163:TEC:LU:2140 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_2574.html">5163:TEC:LU:2574</a> - 5163:TEC:LU:2574 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_2693.html">5163:TEC:LU:2693</a> - 5163:TEC:LU:2693 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_337.html">5163:TEC:LU:337</a> - 5163:TEC:LU:337 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_3673.html">5163:TEC:LU:3673</a> - 5163:TEC:LU:3673 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_3978.html">5163:TEC:LU:3978</a> - 5163:TEC:LU:3978 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_4163.html">5163:TEC:LU:4163</a> - 5163:TEC:LU:4163 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_4595.html">5163:TEC:LU:4595</a> - 5163:TEC:LU:4595 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_4714.html">5163:TEC:LU:4714</a> - 5163:TEC:LU:4714 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_5615.html">5163:TEC:LU:5615</a> - 5163:TEC:LU:5615 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_5650.html">5163:TEC:LU:5650</a> - 5163:TEC:LU:5650 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_5664.html">5163:TEC:LU:5664</a> - 5163:TEC:LU:5664 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_5979.html">5163:TEC:LU:5979</a> - 5163:TEC:LU:5979 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_611.html">5163:TEC:LU:611</a> - 5163:TEC:LU:611 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_6154.html">5163:TEC:LU:6154</a> - 5163:TEC:LU:6154 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_6351.html">5163:TEC:LU:6351</a> - 5163:TEC:LU:6351 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_7062.html">5163:TEC:LU:7062</a> - 5163:TEC:LU:7062 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li><li><a href="trip-5163_TEC_LU_7320.html">5163:TEC:LU:7320</a> - 5163:TEC:LU:7320 - Saint-Léger - Baranzy - Athus - Turpange - Arlon</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([49.575895, 5.780981], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([49.575895, 5.780981]).addTo(map);
+    </script>
+</body>
+
+</html>

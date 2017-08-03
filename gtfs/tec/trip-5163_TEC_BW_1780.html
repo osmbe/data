@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tubize - Ittre Prison - Ittre Croiseau - 5163:TEC:BW:1780</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tubize - Ittre Prison - Ittre Croiseau - 5163:TEC:BW:1780</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bitrcro3.html">TEC:Bitrcro3</a> - Ittre Rue du Croiseau 06:47</li><li><a href="stop-TEC_Bitrhûl1.html">TEC:Bitrhûl1</a> - Ittre Huleu 06:48</li><li><a href="stop-TEC_Bitrpar1.html">TEC:Bitrpar1</a> - Ittre Paradou 06:49</li><li><a href="stop-TEC_Bitrhou1.html">TEC:Bitrhou1</a> - Ittre Hourdenge 06:49</li><li><a href="stop-TEC_Bitrecu1.html">TEC:Bitrecu1</a> - Ittre Rond-point d'Ecueillée 06:50</li><li><a href="stop-TEC_Bitrpsr2.html">TEC:Bitrpsr2</a> - Ittre Place Saint-Rémy 06:51</li><li><a href="stop-TEC_Bitregl2.html">TEC:Bitregl2</a> - Ittre Eglise 06:51</li><li><a href="stop-TEC_Bitrcen2.html">TEC:Bitrcen2</a> - Ittre Centre 06:51</li><li><a href="stop-TEC_Bitrecu2.html">TEC:Bitrecu2</a> - Ittre Rond-point d'Ecueillée 06:52</li><li><a href="stop-TEC_Bitrgnt1.html">TEC:Bitrgnt1</a> - Ittre Rue des Genêts 06:53</li><li><a href="stop-TEC_Bitrcha1.html">TEC:Bitrcha1</a> - Ittre Châtaigneraie 06:53</li><li><a href="stop-TEC_Bitrsar1.html">TEC:Bitrsar1</a> - Ittre Le Sart 06:56</li><li><a href="stop-TEC_Bitrbvo1.html">TEC:Bitrbvo1</a> - Ittre Bon Voisin 06:56</li><li><a href="stop-TEC_Bosqpqu1.html">TEC:Bosqpqu1</a> - Oisquercq Rue Plat Quentin 06:57</li><li><a href="stop-TEC_Bitrpri1.html">TEC:Bitrpri1</a> - Ittre Prison 06:58</li><li><a href="stop-TEC_Bitrnus1.html">TEC:Bitrnus1</a> - Ittre Nouvelle Usine 06:59</li><li><a href="stop-TEC_Bcbqhai1.html">TEC:Bcbqhai1</a> - Clabecq Rue du Hain 07:00</li><li><a href="stop-TEC_Bcbqh451.html">TEC:Bcbqh451</a> - Clabecq Hameau 45 07:01</li><li><a href="stop-TEC_Bcbqpon1.html">TEC:Bcbqpon1</a> - Clabecq Pont 07:02</li><li><a href="stop-TEC_Bcbqufo1.html">TEC:Bcbqufo1</a> - Clabecq Usines Forges 07:03</li><li><a href="stop-TEC_Bcbqgar1.html">TEC:Bcbqgar1</a> - Clabecq Gare 07:03</li><li><a href="stop-TEC_Btubnav1.html">TEC:Btubnav1</a> - Tubize Rue Navet 07:04</li><li><a href="stop-TEC_Btubga05.html">TEC:Btubga05</a> - Tubize Gare 07:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./214.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - JUMET MADELEINE - VILLERS-PERWIN TROIS TILLEULS - 5163:TEC:CH:18264</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: JUMET MADELEINE - VILLERS-PERWIN TROIS TILLEULS - 5163:TEC:CH:18264</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cjumade4.html">TEC:Cjumade4</a> - Jumet Madeleine 17:05</li><li><a href="stop-TEC_Cjucar02.html">TEC:Cjucar02</a> - Jumet Carrosse 17:07</li><li><a href="stop-TEC_Cgoleop2.html">TEC:Cgoleop2</a> - Gosselies Léopold 17:09</li><li><a href="stop-TEC_Cgocalv2.html">TEC:Cgocalv2</a> - Gosselies Calvaire 17:11</li><li><a href="stop-TEC_Cgofabr2.html">TEC:Cgofabr2</a> - Gosselies Rue des Fabriques 17:12</li><li><a href="stop-TEC_Cgobruy2.html">TEC:Cgobruy2</a> - Gosselies Bruyerre 17:13</li><li><a href="stop-TEC_Cgofbru2.html">TEC:Cgofbru2</a> - Gosselies Faubourg de Bruxelles 17:14</li><li><a href="stop-TEC_Cgopier2.html">TEC:Cgopier2</a> - Gosselies Grand Pièrsoû 17:14</li><li><a href="stop-TEC_Cgoetun1.html">TEC:Cgoetun1</a> - Gosselies Avenue des Etats-Unis 17:15</li><li><a href="stop-TEC_Cgoetun3.html">TEC:Cgoetun3</a> - Gosselies Avenue des Etats-Unis 17:15</li><li><a href="stop-TEC_Cgorobe1.html">TEC:Cgorobe1</a> - Gosselies Robesse 17:17</li><li><a href="stop-TEC_Cgonvro1.html">TEC:Cgonvro1</a> - Gosselies Nouvelle Route 17:18</li><li><a href="stop-TEC_Cwxchap1.html">TEC:Cwxchap1</a> - Wayaux Chapelle 17:20</li><li><a href="stop-TEC_Cwxplac1.html">TEC:Cwxplac1</a> - Wayaux Place 17:21</li><li><a href="stop-TEC_Cmeloti1.html">TEC:Cmeloti1</a> - Mellet Lotissement 17:23</li><li><a href="stop-TEC_Cmewaya1.html">TEC:Cmewaya1</a> - Mellet Chaussée de Wayaux 17:24</li><li><a href="stop-TEC_Cmeptmi1.html">TEC:Cmeptmi1</a> - Mellet Pont-à-Migneloux 17:25</li><li><a href="stop-TEC_Cmestas1.html">TEC:Cmestas1</a> - Mellet Villa Stassart 17:26</li><li><a href="stop-TEC_Cmecime1.html">TEC:Cmecime1</a> - Mellet Rue du Cimetière 17:27</li><li><a href="stop-TEC_Cmehels1.html">TEC:Cmehels1</a> - Mellet Rue Helsen 17:28</li><li><a href="stop-TEC_Cmecomb1.html">TEC:Cmecomb1</a> - Mellet Rue des Combattants 17:29</li><li><a href="stop-TEC_Cmecite1.html">TEC:Cmecite1</a> - Mellet Cité 17:30</li><li><a href="stop-TEC_Cmesncv1.html">TEC:Cmesncv1</a> - Mellet SNCV 17:31</li><li><a href="stop-TEC_Cvpcour1.html">TEC:Cvpcour1</a> - Villers-Perwin La Couronne 17:33</li><li><a href="stop-TEC_Cvpcime1.html">TEC:Cvpcime1</a> - Villers-Perwin Cimetière 17:33</li><li><a href="stop-TEC_Cvpsawe1.html">TEC:Cvpsawe1</a> - Villers-Perwin Sang-Wez 17:34</li><li><a href="stop-TEC_Cvppost1.html">TEC:Cvppost1</a> - Villers-Perwin Bureau des Postes 17:35</li><li><a href="stop-TEC_Cvp3til2.html">TEC:Cvp3til2</a> - Villers-Perwin Trois Tilleuls 17:36</li><li><a href="stop-TEC_Cvp3til6.html">TEC:Cvp3til6</a> - Villers-Perwin Trois Tilleuls 17:36</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./877.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

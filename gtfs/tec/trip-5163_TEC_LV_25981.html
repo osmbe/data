@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Verviers - Banneux - Aywaille - Houssonloge - 5163:TEC:LV:25981</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Verviers - Banneux - Aywaille - Houssonloge - 5163:TEC:LV:25981</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LLUtill2.html">TEC:LLUtill2</a> - Louveigne Tilleul 17:20</li><li><a href="stop-TEC_LLUreut2.html">TEC:LLUreut2</a> - Louveigne Maison Reuter 17:21</li><li><a href="stop-TEC_LLUpier2.html">TEC:LLUpier2</a> - Louveigne Rue sur Pierry 17:22</li><li><a href="stop-TEC_LBlhaut2.html">TEC:LBlhaut2</a> - Blindef Haut 17:22</li><li><a href="stop-TEC_LBlchin2.html">TEC:LBlchin2</a> - Blindef Rue de la China 63 17:23</li><li><a href="stop-TEC_LBlplac2.html">TEC:LBlplac2</a> - Blindef Place 17:24</li><li><a href="stop-TEC_LSEec--2.html">TEC:LSEec--2</a> - Sendrogne Ecole 17:24</li><li><a href="stop-TEC_LSEcent2.html">TEC:LSEcent2</a> - Sendrogne Centre 17:25</li><li><a href="stop-TEC_LSEvill2.html">TEC:LSEvill2</a> - Sendrogne Haut du Village 17:26</li><li><a href="stop-TEC_LSEquar2.html">TEC:LSEquar2</a> - Sendrogne Nouveau quartier 17:27</li><li><a href="stop-TEC_LHYdogn2.html">TEC:LHYdogn2</a> - Hornay Maison Dogne 17:28</li><li><a href="stop-TEC_LHYnoid2.html">TEC:LHYnoid2</a> - Hornay Chemin de Noidre 17:29</li><li><a href="stop-TEC_LHYlinc4.html">TEC:LHYlinc4</a> - Hornay Route de Lincé 17:29</li><li><a href="stop-TEC_LHYec--1.html">TEC:LHYec--1</a> - Hornay Ecole 17:30</li><li><a href="stop-TEC_LSpogne1.html">TEC:LSpogne1</a> - Sprimont Chemin d'Ogné 17:31</li><li><a href="stop-TEC_LSpfond1.html">TEC:LSpfond1</a> - Sprimont Fond Leval 17:32</li><li><a href="stop-TEC_LSphote1.html">TEC:LSphote1</a> - Sprimont Rue de l'Hôtel de Ville 17:33</li><li><a href="stop-TEC_LSpunio1.html">TEC:LSpunio1</a> - Sprimont Union Coopérative 17:33</li><li><a href="stop-TEC_LSpschi1.html">TEC:LSpschi1</a> - Sprimont Rue Schinler 37 17:34</li><li><a href="stop-TEC_LFLetoi1.html">TEC:LFLetoi1</a> - Florze Etoile 17:35</li><li><a href="stop-TEC_LFLcher1.html">TEC:LFLcher1</a> - Florze Résidence Chera 17:36</li><li><a href="stop-TEC_LFLcent1.html">TEC:LFLcent1</a> - Florze Centre 17:37</li><li><a href="stop-TEC_LFLgara1.html">TEC:LFLgara1</a> - Florze Garage AB Liégeois 17:38</li><li><a href="stop-TEC_LFLcarr1.html">TEC:LFLcarr1</a> - Florze Carrière des Hayettes 17:40</li><li><a href="stop-TEC_LAYcher1.html">TEC:LAYcher1</a> - Aywaille Rue du Chera 17:42</li><li><a href="stop-TEC_LAYpl--3.html">TEC:LAYpl--3</a> - Aywaille Place 17:43</li><li><a href="stop-TEC_LAYgare1.html">TEC:LAYgare1</a> - Aywaille Gare SNCB 17:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4096.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

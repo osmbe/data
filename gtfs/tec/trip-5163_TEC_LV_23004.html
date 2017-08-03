@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Velroux - Awans - Crisnée - 5163:TEC:LV:23004</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Velroux - Awans - Crisnée - 5163:TEC:LV:23004</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LCRecmo1.html">TEC:LCRecmo1</a> - Crisnee Ecole moyenne 15:35</li><li><a href="stop-TEC_LFmpoin1.html">TEC:LFmpoin1</a> - Fize-le-Marsal Rond-point 15:36</li><li><a href="stop-TEC_LFmlens2.html">TEC:LFmlens2</a> - Fize-le-Marsal rue de Lens 15:36</li><li><a href="stop-TEC_LFmceli2.html">TEC:LFmceli2</a> - Fize-le-Marsal Ecole Libre 15:37</li><li><a href="stop-TEC_LFmpoin2.html">TEC:LFmpoin2</a> - Fize-le-Marsal Rond-point 15:38</li><li><a href="stop-TEC_LCRecmo2.html">TEC:LCRecmo2</a> - Crisnee Ecole moyenne 15:39</li><li><a href="stop-TEC_LCRfize1.html">TEC:LCRfize1</a> - Crisnee Route de Fize 15:40</li><li><a href="stop-TEC_LTyhapp3.html">TEC:LTyhapp3</a> - Thys Rue L. Happart 15:42</li><li><a href="stop-TEC_LTyh51-1.html">TEC:LTyh51-1</a> - Thys rue Happart 51 15:43</li><li><a href="stop-TEC_LTyh24-1.html">TEC:LTyh24-1</a> - Thys rue Happart 24 15:43</li><li><a href="stop-TEC_LTywaut1.html">TEC:LTywaut1</a> - Thys Rue J. Wauters 15:45</li><li><a href="stop-TEC_LTyhall1.html">TEC:LTyhall1</a> - Thys Hallettes 15:45</li><li><a href="stop-TEC_LTyhapp2.html">TEC:LTyhapp2</a> - Thys Rue L. Happart 15:47</li><li><a href="stop-TEC_LCReg--2.html">TEC:LCReg--2</a> - Crisnee Eglise 15:48</li><li><a href="stop-TEC_LCRabbe2.html">TEC:LCRabbe2</a> - Crisnee Rue Abbé Coopmans 15:49</li><li><a href="stop-TEC_LOdcris2.html">TEC:LOdcris2</a> - Odeur Chemin de Crisnée 15:50</li><li><a href="stop-TEC_LOdmonu2.html">TEC:LOdmonu2</a> - Odeur Monument 15:50</li><li><a href="stop-TEC_LVlleme2.html">TEC:LVlleme2</a> - Eveque Rue G. Lemeer 15:52</li><li><a href="stop-TEC_LVleg--3.html">TEC:LVleg--3</a> - Eveque Eglise 15:52</li><li><a href="stop-TEC_LVltige2.html">TEC:LVltige2</a> - Eveque Tige 15:53</li><li><a href="stop-TEC_LVllieg2.html">TEC:LVllieg2</a> - Eveque Rue de Liège 15:53</li><li><a href="stop-TEC_LVlplan2.html">TEC:LVlplan2</a> - Eveque Rue du Plantin 5 15:54</li><li><a href="stop-TEC_LOTdelv2.html">TEC:LOTdelv2</a> - Othee Rue Delvaux 21 15:54</li><li><a href="stop-TEC_LOTcarr2.html">TEC:LOTcarr2</a> - Othee Carrefour 15:55</li><li><a href="stop-TEC_LOTawan2.html">TEC:LOTawan2</a> - Othee Rue d'Awans 15:56</li><li><a href="stop-TEC_LOTcloe2.html">TEC:LOTcloe2</a> - Othee Café Cloes 15:57</li><li><a href="stop-TEC_LXhvina2.html">TEC:LXhvina2</a> - Xhendremael Haut Vinâve 15:59</li><li><a href="stop-TEC_LXhjupr2.html">TEC:LXhjupr2</a> - Xhendremael Route de Juprelle 16:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4759.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - DINANT - BEAURAING - GEDINNE - GRAIDE - 5163:TEC:NA:10252</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DINANT - BEAURAING - GEDINNE - GRAIDE - 5163:TEC:NA:10252</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N308aib.html">TEC:N308aib</a> - Beauraing Rond-point 12:09</li><li><a href="stop-TEC_N308aja.html">TEC:N308aja</a> - Beauraing Route de la gare 12:10</li><li><a href="stop-TEC_N308aha.html">TEC:N308aha</a> - Beauraing Place Berry 12:11</li><li><a href="stop-TEC_N308ama.html">TEC:N308ama</a> - Beauraing Athénée 12:12</li><li><a href="stop-TEC_N308aka.html">TEC:N308aka</a> - Beauraing Institut 12:14</li><li><a href="stop-TEC_N308aga.html">TEC:N308aga</a> - Beauraing Place St-Roch 12:16</li><li><a href="stop-TEC_N308afc.html">TEC:N308afc</a> - Beauraing INDSC 12:17</li><li><a href="stop-TEC_N308agb.html">TEC:N308agb</a> - Beauraing Place St-Roch 12:19</li><li><a href="stop-TEC_N308ada.html">TEC:N308ada</a> - Beauraing Point de vue 12:20</li><li><a href="stop-TEC_N311aga.html">TEC:N311aga</a> - Pondrome Rue de Malakoff 12:21</li><li><a href="stop-TEC_N311aec.html">TEC:N311aec</a> - Pondrome Tilleul 12:22</li><li><a href="stop-TEC_N311afb.html">TEC:N311afb</a> - Pondrome Crapaury 12:23</li><li><a href="stop-TEC_N312abb.html">TEC:N312abb</a> - Voneche Café Sylva 12:26</li><li><a href="stop-TEC_N312acb.html">TEC:N312acb</a> - Voneche Chemin de la gare 12:27</li><li><a href="stop-TEC_N312adb.html">TEC:N312adb</a> - Voneche Jonction 12:28</li><li><a href="stop-TEC_N310aab.html">TEC:N310aab</a> - Malvoisin Quatre seigneurs 12:29</li><li><a href="stop-TEC_N310aba.html">TEC:N310aba</a> - Malvoisin Meunier 12:30</li><li><a href="stop-TEC_N343aea.html">TEC:N343aea</a> - Gedinne Gribelle 12:33</li><li><a href="stop-TEC_N343aoa.html">TEC:N343aoa</a> - Gedinne Ferme 12:34</li><li><a href="stop-TEC_N343aca.html">TEC:N343aca</a> - Gedinne Centre 12:36</li><li><a href="stop-TEC_N343amb.html">TEC:N343amb</a> - Gedinne Lycée 12:37</li><li><a href="stop-TEC_N343ada.html">TEC:N343ada</a> - Gedinne Terminus 12:38</li><li><a href="stop-TEC_N343akb.html">TEC:N343akb</a> - Gedinne Rue Gridlet 12:39</li><li><a href="stop-TEC_N343ajb.html">TEC:N343ajb</a> - Gedinne Cantonnier 12:41</li><li><a href="stop-TEC_N343aib.html">TEC:N343aib</a> - Gedinne Gare SNCB 12:43</li><li><a href="stop-TEC_N346adb.html">TEC:N346adb</a> - Bievre Rond-Point 12:48</li><li><a href="stop-TEC_N346aaa.html">TEC:N346aaa</a> - Bievre Cités du Douaire 12:50</li><li><a href="stop-TEC_N347aca.html">TEC:N347aca</a> - Graide Station 12:52</li><li><a href="stop-TEC_N347agb.html">TEC:N347agb</a> - Graide Rue du Progrès 54 12:53</li><li><a href="stop-TEC_N347afb.html">TEC:N347afb</a> - Graide Rue du Progrès 108 12:54</li><li><a href="stop-TEC_N347ada.html">TEC:N347ada</a> - Graide Boulangerie 12:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5809.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

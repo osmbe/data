@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - DINANT - ERMETON-SUR-BIERT - 5163:TEC:NA:7950</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DINANT - ERMETON-SUR-BIERT - 5163:TEC:NA:7950</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N232aqb.html">TEC:N232aqb</a> - Dinant Gare 18:54</li><li><a href="stop-TEC_N232aib.html">TEC:N232aib</a> - Bouvignes Garage 18:57</li><li><a href="stop-TEC_N232ajb.html">TEC:N232ajb</a> - Bouvignes Monument 18:58</li><li><a href="stop-TEC_N232cdb.html">TEC:N232cdb</a> - Bouvignes Station 18:59</li><li><a href="stop-TEC_N231aga.html">TEC:N231aga</a> - Anhee Rue de l'Ecluse 19:02</li><li><a href="stop-TEC_N231afa.html">TEC:N231afa</a> - Anhee Rue Ste-Barbe 19:03</li><li><a href="stop-TEC_N231aba.html">TEC:N231aba</a> - Anhee Place 19:04</li><li><a href="stop-TEC_N231ada.html">TEC:N231ada</a> - Anhee Route de Maredsous 19:05</li><li><a href="stop-TEC_N230aha.html">TEC:N230aha</a> - Warnant Rue du Moulin 19:06</li><li><a href="stop-TEC_N230aia.html">TEC:N230aia</a> - Warnant Moulins 19:07</li><li><a href="stop-TEC_N230aja.html">TEC:N230aja</a> - Warnant La rosière 19:09</li><li><a href="stop-TEC_N230aga.html">TEC:N230aga</a> - Warnant Maison de pierres 19:10</li><li><a href="stop-TEC_N230ada.html">TEC:N230ada</a> - Warnant Station 19:11</li><li><a href="stop-TEC_N230aea.html">TEC:N230aea</a> - Warnant Chemin de Salet 19:13</li><li><a href="stop-TEC_N230afa.html">TEC:N230afa</a> - Warnant Four à chaux 19:14</li><li><a href="stop-TEC_N234ada.html">TEC:N234ada</a> - Falaen Château de Montaigle 19:17</li><li><a href="stop-TEC_N234aba.html">TEC:N234aba</a> - Falaen Station 19:18</li><li><a href="stop-TEC_N234aca.html">TEC:N234aca</a> - Falaen Camping 19:20</li><li><a href="stop-TEC_N234afa.html">TEC:N234afa</a> - Sosoye Station 19:22</li><li><a href="stop-TEC_N234aea.html">TEC:N234aea</a> - Sosoye Laid trou 19:23</li><li><a href="stop-TEC_N550acc.html">TEC:N550acc</a> - Maredsous Station 19:26</li><li><a href="stop-TEC_N550ada.html">TEC:N550ada</a> - Maredsous Abbaye 19:29</li><li><a href="stop-TEC_N550ada.html">TEC:N550ada</a> - Maredsous Abbaye 19:29</li><li><a href="stop-TEC_N550aca.html">TEC:N550aca</a> - Maredsous Station 19:31</li><li><a href="stop-TEC_N550aaa.html">TEC:N550aaa</a> - Denee Château Desclée 19:33</li><li><a href="stop-TEC_N550ama.html">TEC:N550ama</a> - Maredret Station 19:34</li><li><a href="stop-TEC_N565aaa.html">TEC:N565aaa</a> - Ermeton-sur-Biert Bonsin 19:36</li><li><a href="stop-TEC_N565aea.html">TEC:N565aea</a> - Ermeton-sur-Biert Place 19:38</li><li><a href="stop-TEC_N565aca.html">TEC:N565aca</a> - Ermeton-sur-Biert Château 19:38</li><li><a href="stop-TEC_N565aba.html">TEC:N565aba</a> - Ermeton-sur-Biert Route du couvent 19:38</li><li><a href="stop-TEC_N565afa.html">TEC:N565afa</a> - Ermeton-sur-Biert Gare - dépôt TEC 19:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6378.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

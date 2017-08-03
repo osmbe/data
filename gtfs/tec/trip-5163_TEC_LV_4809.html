@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Huy - Hannut - Landen - 5163:TEC:LV:4809</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Huy - Hannut - Landen - 5163:TEC:LV:4809</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LHNgare1.html">TEC:LHNgare1</a> - Hannut Gare 06:43</li><li><a href="stop-TEC_LHNwaut1.html">TEC:LHNwaut1</a> - Hannut Rue J. Wauters 06:43</li><li><a href="stop-TEC_LHNhall3.html">TEC:LHNhall3</a> - Hannut Place H. Hallet 06:44</li><li><a href="stop-TEC_LHNathe1.html">TEC:LHNathe1</a> - Hannut Athénée Royal 06:45</li><li><a href="stop-TEC_LHNecpr1.html">TEC:LHNecpr1</a> - Hannut Ecole primaire 06:45</li><li><a href="stop-TEC_LHNcoll2.html">TEC:LHNcoll2</a> - Hannut Collège 06:45</li><li><a href="stop-TEC_LHNcreh2.html">TEC:LHNcreh2</a> - Hannut Route de Crehen 06:46</li><li><a href="stop-TEC_LHNvill2.html">TEC:LHNvill2</a> - Hannut Route de Villers 06:48</li><li><a href="stop-TEC_LMXempe2.html">TEC:LMXempe2</a> - Moxhe Empereur 06:50</li><li><a href="stop-TEC_LMXaven2.html">TEC:LMXaven2</a> - Moxhe Route d'Avennes 06:51</li><li><a href="stop-TEC_LMXroye2.html">TEC:LMXroye2</a> - Moxhe Café Royer 06:51</li><li><a href="stop-TEC_LAvcani2.html">TEC:LAvcani2</a> - Avin Canivet 06:52</li><li><a href="stop-TEC_LAvambr2.html">TEC:LAvambr2</a> - Avin Route d'Ambresin 06:53</li><li><a href="stop-TEC_LAvatri2.html">TEC:LAvatri2</a> - Avin Atrive 06:54</li><li><a href="stop-TEC_LAvchpl2.html">TEC:LAvchpl2</a> - Avin Chapelle 06:55</li><li><a href="stop-TEC_LAvrout2.html">TEC:LAvrout2</a> - Avin Grand-Route 06:56</li><li><a href="stop-TEC_LCIneuv2.html">TEC:LCIneuv2</a> - Ciplet Neuville 06:58</li><li><a href="stop-TEC_LCIcent2.html">TEC:LCIcent2</a> - Ciplet Centre 06:59</li><li><a href="stop-TEC_LCIpiet2.html">TEC:LCIpiet2</a> - Ciplet Croix Piette 07:00</li><li><a href="stop-TEC_LCIsucr2.html">TEC:LCIsucr2</a> - Ciplet Sucrerie 07:01</li><li><a href="stop-TEC_LAVdepr2.html">TEC:LAVdepr2</a> - Avennes Maison Deprez 07:01</li><li><a href="stop-TEC_LVHweri2.html">TEC:LVHweri2</a> - Ville-en-Hesbaye Wérihet 07:03</li><li><a href="stop-TEC_LVHcent2.html">TEC:LVHcent2</a> - Ville-en-Hesbaye Centre 07:04</li><li><a href="stop-TEC_LVHtill2.html">TEC:LVHtill2</a> - Ville-en-Hesbaye Tilleul 07:05</li><li><a href="stop-TEC_LVHbrai2.html">TEC:LVHbrai2</a> - Ville-en-Hesbaye Rue de Braives 47 07:05</li><li><a href="stop-TEC_LBRmout4.html">TEC:LBRmout4</a> - Braives Rue Bois Mouton 07:07</li><li><a href="stop-TEC_LBRgare2.html">TEC:LBRgare2</a> - Braives Gare 07:08</li><li><a href="stop-TEC_LBRpt--2.html">TEC:LBRpt--2</a> - Braives Pont 07:09</li><li><a href="stop-TEC_LBRruel2.html">TEC:LBRruel2</a> - Braives La Ruelle 07:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4645.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

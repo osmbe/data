@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Guillemins-Standard-Université-CHU-Boncelles - 5163:TEC:LV:40185</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Guillemins-Standard-Université-CHU-Boncelles - 5163:TEC:LV:40185</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LlgguilB.html">TEC:LlgguilB</a> - Liege Gare des Guillemins Quai B 15:00</li><li><a href="stop-TEC_Llglema3.html">TEC:Llglema3</a> - Liege Place Général Leman 15:02</li><li><a href="stop-TEC_Llgstev1.html">TEC:Llgstev1</a> - Liege Rue A. Stévart 15:04</li><li><a href="stop-TEC_Lscstan3.html">TEC:Lscstan3</a> - Sclessin Standard 15:08</li><li><a href="stop-TEC_Lousite7.html">TEC:Lousite7</a> - Ougree Beau Site 15:12</li><li><a href="stop-TEC_Lstscie1.html">TEC:Lstscie1</a> - Sart-Tilman Science Park 15:14</li><li><a href="stop-TEC_Lstchim1.html">TEC:Lstchim1</a> - Sart-Tilman Chimie (amphis) 15:16</li><li><a href="stop-TEC_Lstatel1.html">TEC:Lstatel1</a> - Sart-Tilman Ateliers 15:17</li><li><a href="stop-TEC_Lsteduc1.html">TEC:Lsteduc1</a> - Sart-Tilman Education Physique 15:20</li><li><a href="stop-TEC_Lstchu-3.html">TEC:Lstchu-3</a> - Sart-Tilman C.H.U. - Escaliers 15:20</li><li><a href="stop-TEC_Lbocarr2.html">TEC:Lbocarr2</a> - Boncelles Carrefour 15:24</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4757.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

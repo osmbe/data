@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Coronmeuse - St-Lambert - Guillemins - 5163:TEC:LV:38710</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Coronmeuse - St-Lambert - Guillemins - 5163:TEC:LV:38710</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LlgguilA.html">TEC:LlgguilA</a> - Liege Gare des Guillemins Quai A 19:40</li><li><a href="stop-TEC_Llgdart2.html">TEC:Llgdart2</a> - Liege Rue Dartois 19:41</li><li><a href="stop-TEC_Llgblon4.html">TEC:Llgblon4</a> - Liege Avenue Blonden 19:43</li><li><a href="stop-TEC_Llgvero4.html">TEC:Llgvero4</a> - Liege Rue Ste-Véronique 19:44</li><li><a href="stop-TEC_Llgchar2.html">TEC:Llgchar2</a> - Liege Charlemagne 19:45</li><li><a href="stop-TEC_Llgdarc2.html">TEC:Llgdarc2</a> - Liege Rue Darchis 19:46</li><li><a href="stop-TEC_LlgPTAV2.html">TEC:LlgPTAV2</a> - Liege Pont d'Avroy 19:47</li><li><a href="stop-TEC_Llglonh1.html">TEC:Llglonh1</a> - Liege Rue Lonhienne 19:48</li><li><a href="stop-TEC_LlgOPER6.html">TEC:LlgOPER6</a> - Liege Opéra 19:50</li><li><a href="stop-TEC_LlgLAMB1.html">TEC:LlgLAMB1</a> - Liege Place St-Lambert 19:52</li><li><a href="stop-TEC_Llgmarc1.html">TEC:Llgmarc1</a> - Liege Place du Marché 19:53</li><li><a href="stop-TEC_Llgjean1.html">TEC:Llgjean1</a> - Liege Rue St-Jean Baptiste 19:54</li><li><a href="stop-TEC_Llgcurt1.html">TEC:Llgcurt1</a> - Liege Grand Curtius 19:55</li><li><a href="stop-TEC_Llgdepo1.html">TEC:Llgdepo1</a> - Liege Place des Déportés 19:56</li><li><a href="stop-TEC_Llgmare1.html">TEC:Llgmare1</a> - Liege Rue Marengo 19:57</li><li><a href="stop-TEC_Llggosw1.html">TEC:Llggosw1</a> - Liege Rue Goswin 19:58</li><li><a href="stop-TEC_Llgarmu1.html">TEC:Llgarmu1</a> - Liege Rue des Armuriers 19:58</li><li><a href="stop-TEC_Llgfoy-1.html">TEC:Llgfoy-1</a> - Liege Eglise Ste-Foy 19:59</li><li><a href="stop-TEC_Llgbaya2.html">TEC:Llgbaya2</a> - Liege Rue des Bayards 19:59</li><li><a href="stop-TEC_Llgborg2.html">TEC:Llgborg2</a> - Liege Rue A. Borgnet 20:00</li><li><a href="stop-TEC_Llgtir-2.html">TEC:Llgtir-2</a> - Liege Rue du Tir 20:01</li><li><a href="stop-TEC_Llgcoro2.html">TEC:Llgcoro2</a> - Liege Place Coronmeuse 20:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4182.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

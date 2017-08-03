@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Louvain- Hamme-Mille - Jodoigne - 5163:TEC:BW:6175</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Louvain- Hamme-Mille - Jodoigne - 5163:TEC:BW:6175</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bmlnsms1.html">TEC:Bmlnsms1</a> - Sart-Melin La Sarte 07:35</li><li><a href="stop-TEC_Bmlnsmv1.html">TEC:Bmlnsmv1</a> - Sart-Melin Village 07:37</li><li><a href="stop-TEC_Bmlnbpr1.html">TEC:Bmlnbpr1</a> - Melin Rue des Beaux Prés 07:38</li><li><a href="stop-TEC_Bmlnmbo1.html">TEC:Bmlnmbo1</a> - Melin Maison du Bois 07:39</li><li><a href="stop-TEC_Bmlncha1.html">TEC:Bmlncha1</a> - Melin Chavia 07:40</li><li><a href="stop-TEC_Bmlnegl1.html">TEC:Bmlnegl1</a> - Melin Eglise 07:41</li><li><a href="stop-TEC_Bmlnegl3.html">TEC:Bmlnegl3</a> - Melin Eglise 07:41</li><li><a href="stop-TEC_Bmlngvi1.html">TEC:Bmlngvi1</a> - Melin Gobertange Village 07:43</li><li><a href="stop-TEC_Bmlngch1.html">TEC:Bmlngch1</a> - Melin Gobertange Chapelle 07:44</li><li><a href="stop-TEC_Bsrgcur1.html">TEC:Bsrgcur1</a> - Saint-Remy-Geest Cure 07:45</li><li><a href="stop-TEC_Bsrgegl1.html">TEC:Bsrgegl1</a> - Saint-Remy-Geest Eglise 07:45</li><li><a href="stop-TEC_Bsrgm101.html">TEC:Bsrgm101</a> - Saint-Remy-Geest Maison 10 07:46</li><li><a href="stop-TEC_Bzlucam1.html">TEC:Bzlucam1</a> - Zetrud-Lumay Campagne 07:47</li><li><a href="stop-TEC_Bzluqga1.html">TEC:Bzluqga1</a> - Zetrud-Lumay Quartier de la Gare 07:49</li><li><a href="stop-TEC_Bzluvil2.html">TEC:Bzluvil2</a> - Zetrud-Lumay Village 07:50</li><li><a href="stop-TEC_Bzlufbo2.html">TEC:Bzlufbo2</a> - Zetrud-Lumay Ferme Boxus 07:51</li><li><a href="stop-TEC_Bjodrrg2.html">TEC:Bjodrrg2</a> - Jodoigne Route de St Remy Geest 07:54</li><li><a href="stop-TEC_Bjodrga2.html">TEC:Bjodrga2</a> - Jodoigne Route Gare 07:55</li><li><a href="stop-TEC_Bjod7co2.html">TEC:Bjod7co2</a> - Jodoigne Sept Coins 07:57</li><li><a href="stop-TEC_Bjodeco2.html">TEC:Bjodeco2</a> - Jodoigne Ecole Normale 07:58</li><li><a href="stop-TEC_Bjodsje2.html">TEC:Bjodsje2</a> - Jodoigne Rue Saint-Jean 08:00</li><li><a href="stop-TEC_Bjodcad1.html">TEC:Bjodcad1</a> - Jodoigne Centre Administratif 08:02</li><li><a href="stop-TEC_Bjodath1.html">TEC:Bjodath1</a> - Jodoigne Athénée Royal 08:03</li><li><a href="stop-TEC_Bjodgar1.html">TEC:Bjodgar1</a> - Jodoigne Gare d'Autobus 08:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./531.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

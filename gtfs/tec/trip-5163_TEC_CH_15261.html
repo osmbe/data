@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - GOSSELIES Athénée-JUMET Gohissart-CHARLEROI Sud - 5163:TEC:CH:15261</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GOSSELIES Athénée-JUMET Gohissart-CHARLEROI Sud - 5163:TEC:CH:15261</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cchsud05.html">TEC:Cchsud05</a> - Charleroi Sud 10:54</li><li><a href="stop-TEC_Cchtiro4.html">TEC:Cchtiro4</a> - Charleroi Tirou (M) 10:58</li><li><a href="stop-TEC_Cchparc4.html">TEC:Cchparc4</a> - Charleroi Parc (M) 11:00</li><li><a href="stop-TEC_Cchcase4.html">TEC:Cchcase4</a> - Charleroi Casernes 11:01</li><li><a href="stop-TEC_Cchhopi2.html">TEC:Cchhopi2</a> - Charleroi Hôpital Civil 11:02</li><li><a href="stop-TEC_Cchmonu4.html">TEC:Cchmonu4</a> - Charleroi Monument 11:04</li><li><a href="stop-TEC_Cchba10.html">TEC:Cchba10</a> - Charleroi Beaux-Arts Quai 10 11:05</li><li><a href="stop-TEC_Cchoues2.html">TEC:Cchoues2</a> - Charleroi Ouest 11:06</li><li><a href="stop-TEC_Cchheig2.html">TEC:Cchheig2</a> - Charleroi Rue de Heigne 11:07</li><li><a href="stop-TEC_Cdaptca4.html">TEC:Cdaptca4</a> - Dampremy Pont du Canal 11:08</li><li><a href="stop-TEC_Cdajume2.html">TEC:Cdajume2</a> - Dampremy Rue de Jumet 11:10</li><li><a href="stop-TEC_Cmabegh2.html">TEC:Cmabegh2</a> - Marchienne-Au-Pont Fond Beghin 11:11</li><li><a href="stop-TEC_Cmastch2.html">TEC:Cmastch2</a> - Marchienne-Au-Pont Puits St-Charles 11:12</li><li><a href="stop-TEC_Cmaroya2.html">TEC:Cmaroya2</a> - Marchienne-Au-Pont Rue Royale 11:14</li><li><a href="stop-TEC_Cmacoll2.html">TEC:Cmacoll2</a> - Marchienne-Au-Pont Rue de la Colline 11:15</li><li><a href="stop-TEC_Cjucpui2.html">TEC:Cjucpui2</a> - Jumet Cour Puissant 11:15</li><li><a href="stop-TEC_Cjumarc4.html">TEC:Cjumarc4</a> - Jumet Rue de Marchienne 11:16</li><li><a href="stop-TEC_Cjugohi2.html">TEC:Cjugohi2</a> - Jumet Gohissart 11:17</li><li><a href="stop-TEC_Cjuquai2.html">TEC:Cjuquai2</a> - Jumet Quairelle 11:18</li><li><a href="stop-TEC_Cjuunio2.html">TEC:Cjuunio2</a> - Jumet Brasserie Union 11:19</li><li><a href="stop-TEC_Cjupier2.html">TEC:Cjupier2</a> - Jumet Rue des Pierres 11:20</li><li><a href="stop-TEC_Cjuheig4.html">TEC:Cjuheig4</a> - Jumet Heigne 11:21</li><li><a href="stop-TEC_Cjuspin2.html">TEC:Cjuspin2</a> - Jumet Spinois 11:22</li><li><a href="stop-TEC_Cjumall2.html">TEC:Cjumall2</a> - Jumet Mallavée 11:24</li><li><a href="stop-TEC_Cjuchli2.html">TEC:Cjuchli2</a> - Jumet Chef-lieu 11:26</li><li><a href="stop-TEC_Cjuhopi2.html">TEC:Cjuhopi2</a> - Jumet Notre-Dame des Affligés 11:28</li><li><a href="stop-TEC_Cjucar02.html">TEC:Cjucar02</a> - Jumet Carrosse 11:30</li><li><a href="stop-TEC_Cgoleop2.html">TEC:Cgoleop2</a> - Gosselies Léopold 11:33</li><li><a href="stop-TEC_Cgocalv2.html">TEC:Cgocalv2</a> - Gosselies Calvaire 11:34</li><li><a href="stop-TEC_Cgofabr2.html">TEC:Cgofabr2</a> - Gosselies Rue des Fabriques 11:35</li><li><a href="stop-TEC_Cgobruy2.html">TEC:Cgobruy2</a> - Gosselies Bruyerre 11:35</li><li><a href="stop-TEC_Cgoathe2.html">TEC:Cgoathe2</a> - Gosselies Athénée 11:37</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./794.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

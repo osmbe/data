@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Virton - St-Mard - Lamorteau - Montmédy - 5163:TEC:LU:686</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Virton - St-Mard - Lamorteau - Montmédy - 5163:TEC:LU:686</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X608aaa.html">TEC:X608aaa</a> - Saint-Mard Gare 16:16</li><li><a href="stop-TEC_X608aba.html">TEC:X608aba</a> - Virton Carrefour Avenue Bouvier 16:17</li><li><a href="stop-TEC_X608aca.html">TEC:X608aca</a> - Virton Paradis des Enfants 16:17</li><li><a href="stop-TEC_X608ada.html">TEC:X608ada</a> - Virton CNDB 16:18</li><li><a href="stop-TEC_X608aea.html">TEC:X608aea</a> - Virton Arcades 16:19</li><li><a href="stop-TEC_X608aua.html">TEC:X608aua</a> - Virton Rue des Fossés 16:20</li><li><a href="stop-TEC_X608afb.html">TEC:X608afb</a> - Virton ISF 16:21</li><li><a href="stop-TEC_X608aia.html">TEC:X608aia</a> - Saint-Mard Rue de Dampicourt 16:22</li><li><a href="stop-TEC_X609aea.html">TEC:X609aea</a> - Dampicourt Champé 16:24</li><li><a href="stop-TEC_X609afb.html">TEC:X609afb</a> - Dampicourt Rue du 8 Septembre 16:25</li><li><a href="stop-TEC_X609amb.html">TEC:X609amb</a> - Dampicourt Eglise 16:26</li><li><a href="stop-TEC_X609alb.html">TEC:X609alb</a> - Dampicourt Zoning 16:27</li><li><a href="stop-TEC_X609aja.html">TEC:X609aja</a> - Rouvroy Quartier des Ouyelis 16:28</li><li><a href="stop-TEC_X609akb.html">TEC:X609akb</a> - Harnoncourt Ecole 16:30</li><li><a href="stop-TEC_X610aib.html">TEC:X610aib</a> - Lamorteau Rue du Sauveur 16:33</li><li><a href="stop-TEC_X610ahb.html">TEC:X610ahb</a> - Lamorteau Grand-Rue 16:33</li><li><a href="stop-TEC_X610ada.html">TEC:X610ada</a> - Lamorteau Eglise 16:34</li><li><a href="stop-TEC_X610acb.html">TEC:X610acb</a> - Lamorteau Ecole 16:34</li><li><a href="stop-TEC_X610aba.html">TEC:X610aba</a> - Lamorteau Douane 16:35</li><li><a href="stop-TEC_X611aaa.html">TEC:X611aaa</a> - Ecouviez Centre 16:38</li><li><a href="stop-TEC_X611aba.html">TEC:X611aba</a> - VERNEUIL-LE-GRAND 16:40</li><li><a href="stop-TEC_X611ada.html">TEC:X611ada</a> - Montmedy Gare S.N.C.F. 16:47</li><li><a href="stop-TEC_X611aca.html">TEC:X611aca</a> - Montmedy Place Poincaré 16:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3866.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

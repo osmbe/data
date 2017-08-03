@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Binche - Estinnes - 5163:TEC:HT:9873</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Binche - Estinnes - 5163:TEC:HT:9873</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1em105b.html">TEC:H1em105b</a> - Estinnes-Au-Mont Place 06:45</li><li><a href="stop-TEC_H1em111d.html">TEC:H1em111d</a> - Estinnes-Au-Mont Traversée à Niveau 06:46</li><li><a href="stop-TEC_H1em104b.html">TEC:H1em104b</a> - Estinnes-Au-Mont N° 64 06:47</li><li><a href="stop-TEC_H1em108b.html">TEC:H1em108b</a> - Estinnes-Au-Mont Rue des Trieux 06:47</li><li><a href="stop-TEC_H1em106b.html">TEC:H1em106b</a> - Estinnes-Au-Mont Pont du Chemin de Fer 06:48</li><li><a href="stop-TEC_H1em103b.html">TEC:H1em103b</a> - Estinnes-Au-Mont Hameau Briscaille 06:49</li><li><a href="stop-TEC_H1fa120b.html">TEC:H1fa120b</a> - Fauroeulx Entrée du Village 06:50</li><li><a href="stop-TEC_H1fa117b.html">TEC:H1fa117b</a> - Fauroeulx 4 Chemins 06:52</li><li><a href="stop-TEC_H1fa121b.html">TEC:H1fa121b</a> - Fauroeulx Passage à Niveau 06:53</li><li><a href="stop-TEC_H1fa118b.html">TEC:H1fa118b</a> - Fauroeulx Calvaire 06:54</li><li><a href="stop-TEC_H1fa119b.html">TEC:H1fa119b</a> - Fauroeulx Carrefour 06:55</li><li><a href="stop-TEC_H1pe132b.html">TEC:H1pe132b</a> - Peissant La Praille 06:55</li><li><a href="stop-TEC_H1pe130b.html">TEC:H1pe130b</a> - Peissant Eglise 06:57</li><li><a href="stop-TEC_H1pe131b.html">TEC:H1pe131b</a> - Peissant La Bocca 06:59</li><li><a href="stop-TEC_H1pe133b.html">TEC:H1pe133b</a> - Peissant Sablière 07:00</li><li><a href="stop-TEC_H1vb140b.html">TEC:H1vb140b</a> - Vellereille-les-Brayeux Belle Maison 07:00</li><li><a href="stop-TEC_H1mm127b.html">TEC:H1mm127b</a> - MERBES-STE-MARIERue de l' Etat 07:02</li><li><a href="stop-TEC_H1mm123b.html">TEC:H1mm123b</a> - MERBES-STE-MARIECimetière 07:03</li><li><a href="stop-TEC_H1mm125c.html">TEC:H1mm125c</a> - Merbes-Ste-Marie Place de l'Eglise 07:04</li><li><a href="stop-TEC_H1mm122c.html">TEC:H1mm122c</a> - Merbes-Ste-Marie Carrefour 07:05</li><li><a href="stop-TEC_H1mm120a.html">TEC:H1mm120a</a> - Merbes-Ste-Marie Bois Montroeul 07:06</li><li><a href="stop-TEC_H1bi104a.html">TEC:H1bi104a</a> - Bienne-Lez-Happart Fontaine Valmont 07:09</li><li><a href="stop-TEC_H1bi100b.html">TEC:H1bi100b</a> - Bienne-Lez-Happart Centre 07:10</li><li><a href="stop-TEC_H1bi102a.html">TEC:H1bi102a</a> - Bienne-Lez-Happart Ferme Navez 07:11</li><li><a href="stop-TEC_H1bi101a.html">TEC:H1bi101a</a> - Bienne-Lez-Happart Centre  Regnier 07:11</li><li><a href="stop-TEC_H1bi105a.html">TEC:H1bi105a</a> - Bienne-Lez-Happart Route de Lobbes 07:12</li><li><a href="stop-TEC_H1mg111b.html">TEC:H1mg111b</a> - Mont-Ste-Genevieve Trou des Loups 07:14</li><li><a href="stop-TEC_H1bi103b.html">TEC:H1bi103b</a> - Bienne-Lez-Happart Inspection Auto 07:14</li><li><a href="stop-TEC_H1lo120a.html">TEC:H1lo120a</a> - Lobbes Les Bonniers 07:17</li><li><a href="stop-TEC_Clbecol2.html">TEC:Clbecol2</a> - Lobbes Ecoles 07:18</li><li><a href="stop-TEC_Clb4bra2.html">TEC:Clb4bra2</a> - Lobbes 4 Bras 07:19</li><li><a href="stop-TEC_Clbentr2.html">TEC:Clbentr2</a> - Lobbes Entreville 07:21</li><li><a href="stop-TEC_Clbhvil2.html">TEC:Clbhvil2</a> - Lobbes Hôtel de Ville 07:22</li><li><a href="stop-TEC_Clbptno3.html">TEC:Clbptno3</a> - Lobbes Pont du Nord 07:22</li><li><a href="stop-TEC_H1lo119a.html">TEC:H1lo119a</a> - Lobbes Gare 07:23</li><li><a href="stop-TEC_Clbptno1.html">TEC:Clbptno1</a> - Lobbes Pont du Nord 07:23</li><li><a href="stop-TEC_Clbhvil1.html">TEC:Clbhvil1</a> - Lobbes Hôtel de Ville 07:24</li><li><a href="stop-TEC_Clbentr1.html">TEC:Clbentr1</a> - Lobbes Entreville 07:25</li><li><a href="stop-TEC_Clb4bra1.html">TEC:Clb4bra1</a> - Lobbes 4 Bras 07:27</li><li><a href="stop-TEC_Clbecol1.html">TEC:Clbecol1</a> - Lobbes Ecoles 07:28</li><li><a href="stop-TEC_H1lo120b.html">TEC:H1lo120b</a> - Lobbes Les Bonniers 07:29</li><li><a href="stop-TEC_H1bi103a.html">TEC:H1bi103a</a> - Bienne-Lez-Happart Inspection Auto 07:32</li><li><a href="stop-TEC_H1mg111a.html">TEC:H1mg111a</a> - Mont-Ste-Genevieve Trou des Loups 07:33</li><li><a href="stop-TEC_H1mg108a.html">TEC:H1mg108a</a> - Mont-Ste-Genevieve Café des Alliés 07:34</li><li><a href="stop-TEC_H1mg109a.html">TEC:H1mg109a</a> - Mont-Ste-Genevieve Rue du Village 07:35</li><li><a href="stop-TEC_H1mg110a.html">TEC:H1mg110a</a> - Mont-Ste-Genevieve Rue Hautebise 07:36</li><li><a href="stop-TEC_H1bu143b.html">TEC:H1bu143b</a> - Buvrinnes Ancienne Gare 07:38</li><li><a href="stop-TEC_H1bu140b.html">TEC:H1bu140b</a> - Buvrinnes Les Walhains 07:38</li><li><a href="stop-TEC_H1bu139b.html">TEC:H1bu139b</a> - Buvrinnes La Cornette 07:40</li><li><a href="stop-TEC_H1bu141b.html">TEC:H1bu141b</a> - Buvrinnes Place de l'Eglise 07:41</li><li><a href="stop-TEC_H1bu142b.html">TEC:H1bu142b</a> - Buvrinnes Rue du Moulin 07:41</li><li><a href="stop-TEC_H1bu138b.html">TEC:H1bu138b</a> - Buvrinnes Entrée du Village 07:42</li><li><a href="stop-TEC_H1bu137b.html">TEC:H1bu137b</a> - Buvrinnes Entre Monts 07:44</li><li><a href="stop-TEC_H3bi113b.html">TEC:H3bi113b</a> - Binche Plage 07:45</li><li><a href="stop-TEC_H3bi105a.html">TEC:H3bi105a</a> - Binche SNCB 07:47</li><li><a href="stop-TEC_H3bi105d.html">TEC:H3bi105d</a> - Binche SNCB 07:47</li><li><a href="stop-TEC_H3bi119b.html">TEC:H3bi119b</a> - Binche Sacré-Coeur 07:48</li><li><a href="stop-TEC_H3bi100a.html">TEC:H3bi100a</a> - Binche Athénée 07:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2395.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

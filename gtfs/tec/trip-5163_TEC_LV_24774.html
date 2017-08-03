@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Hauset - Kelmis - 5163:TEC:LV:24774</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hauset - Kelmis - 5163:TEC:LV:24774</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LkEgss-2.html">TEC:LkEgss-2</a> - Kelmis Gemeinschaftsschule 16:30</li><li><a href="stop-TEC_LkEgend2.html">TEC:LkEgend2</a> - Kelmis Gendarmerie 16:33</li><li><a href="stop-TEC_LkEkirc2.html">TEC:LkEkirc2</a> - Kelmis Kirchplatz 16:33</li><li><a href="stop-TEC_LkEbbl-2.html">TEC:LkEbbl-2</a> - Kelmis B.B.L. (Fischenich) 16:34</li><li><a href="stop-TEC_LkEfrie2.html">TEC:LkEfrie2</a> - Kelmis Friedhof 16:34</li><li><a href="stop-TEC_LkEhatt2.html">TEC:LkEhatt2</a> - Kelmis Hattigweg 16:35</li><li><a href="stop-TEC_LkEzoll2.html">TEC:LkEzoll2</a> - Kelmis Zollamt Tülje 16:36</li><li><a href="stop-TEC_LkEherg2.html">TEC:LkEherg2</a> - Kelmis Hergenrather Weg 16:37</li><li><a href="stop-TEC_LkEschi1.html">TEC:LkEschi1</a> - Kelmis Schievenhövel 16:38</li><li><a href="stop-TEC_LhGrote1.html">TEC:LhGrote1</a> - Hergenrath Roter Pfuhl 16:39</li><li><a href="stop-TEC_LhGfl241.html">TEC:LhGfl241</a> - Hergenrath Flönnes 24 16:41</li><li><a href="stop-TEC_LhGscha_.html">TEC:LhGscha*</a> - Hergenrath Schampelheide 6 16:43</li><li><a href="stop-TEC_LhGfl242.html">TEC:LhGfl242</a> - Hergenrath Flönnes 24 16:45</li><li><a href="stop-TEC_LhGkirc4.html">TEC:LhGkirc4</a> - Hergenrath Kirche 16:47</li><li><a href="stop-TEC_LhGknip2.html">TEC:LhGknip2</a> - Hergenrath Knipstrasse 16:49</li><li><a href="stop-TEC_LhGbahn4.html">TEC:LhGbahn4</a> - Hergenrath Bahnhof 16:50</li><li><a href="stop-TEC_LhSfrei2.html">TEC:LhSfrei2</a> - Hauset Freient 16:53</li><li><a href="stop-TEC_LhSgete2.html">TEC:LhSgete2</a> - Hauset Getenberg 16:54</li><li><a href="stop-TEC_LhSkirc2.html">TEC:LhSkirc2</a> - Hauset Kirche 16:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4950.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

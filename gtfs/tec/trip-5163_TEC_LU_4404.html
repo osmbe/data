@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Vance - Etalle - Habay - 5163:TEC:LU:4404</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Vance - Etalle - Habay - 5163:TEC:LU:4404</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X633amb.html">TEC:X633amb</a> - Sampont Ecole 07:45</li><li><a href="stop-TEC_X633aka.html">TEC:X633aka</a> - Sampont Route d'Etalle 07:47</li><li><a href="stop-TEC_X634aaa.html">TEC:X634aaa</a> - Villers-Tortru Grand-Route 07:49</li><li><a href="stop-TEC_X634aba.html">TEC:X634aba</a> - Vance Carrefour 07:50</li><li><a href="stop-TEC_X634aca.html">TEC:X634aca</a> - Vance Eglise 07:51</li><li><a href="stop-TEC_X634aea.html">TEC:X634aea</a> - Vance Rue des Gamelles 07:54</li><li><a href="stop-TEC_X634afb.html">TEC:X634afb</a> - Vance Rue du Gibet 07:55</li><li><a href="stop-TEC_X634ala.html">TEC:X634ala</a> - Vance Rue de Habay 23 07:56</li><li><a href="stop-TEC_X634acb.html">TEC:X634acb</a> - Vance Eglise 07:57</li><li><a href="stop-TEC_X634aha.html">TEC:X634aha</a> - Vance Rue Chavez 07:59</li><li><a href="stop-TEC_X634aia.html">TEC:X634aia</a> - Chantemelle Cimetière 08:02</li><li><a href="stop-TEC_X634aja.html">TEC:X634aja</a> - Chantemelle Eglise 08:02</li><li><a href="stop-TEC_X636aaa.html">TEC:X636aaa</a> - Sivry Lavoir 08:07</li><li><a href="stop-TEC_X636aba.html">TEC:X636aba</a> - Sivry Route d'Etalle 08:08</li><li><a href="stop-TEC_X636aca.html">TEC:X636aca</a> - Etalle Gendarmerie 08:09</li><li><a href="stop-TEC_X636ada.html">TEC:X636ada</a> - Etalle Lenclos 08:10</li><li><a href="stop-TEC_X636afa.html">TEC:X636afa</a> - Etalle Eglise 08:11</li><li><a href="stop-TEC_X636baa.html">TEC:X636baa</a> - Etalle Rue Petit Routeux 08:13</li><li><a href="stop-TEC_X670ala.html">TEC:X670ala</a> - Habay-la-Neuve L'Auberge du Vivier 08:22</li><li><a href="stop-TEC_X670adb.html">TEC:X670adb</a> - Habay-la-Neuve Place Nothomb 08:25</li><li><a href="stop-TEC_X670aja.html">TEC:X670aja</a> - Habay-la-Neuve Ecole libre 08:26</li><li><a href="stop-TEC_X670akb.html">TEC:X670akb</a> - Habay-la-Neuve Saint-Benoît 08:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3122.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

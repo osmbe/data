@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Navette de La Hulpe - 5163:TEC:BW:1906</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Navette de La Hulpe - 5163:TEC:BW:1906</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Blhugar1.html">TEC:Blhugar1</a> - La Hulpe Gare 16:37</li><li><a href="stop-TEC_Blhupcl2.html">TEC:Blhupcl2</a> - La Hulpe Place C. Lemonnier 16:38</li><li><a href="stop-TEC_Blhupa14.html">TEC:Blhupa14</a> - La Hulpe Maison Communale 16:39</li><li><a href="stop-TEC_Blhueca2.html">TEC:Blhueca2</a> - La Hulpe Eugène Castaigne 16:41</li><li><a href="stop-TEC_Blhugmo2.html">TEC:Blhugmo2</a> - La Hulpe Gris Moulin 16:42</li><li><a href="stop-TEC_Blhucmo2.html">TEC:Blhucmo2</a> - La Hulpe Champ des Mottes 16:43</li><li><a href="stop-TEC_Blhubja1.html">TEC:Blhubja1</a> - La Hulpe Bois Jacob 16:44</li><li><a href="stop-TEC_Blhuswi1.html">TEC:Blhuswi1</a> - La Hulpe Swift 16:47</li><li><a href="stop-TEC_Blhuahe2.html">TEC:Blhuahe2</a> - La Hulpe Av. Antoinette Herlin 16:49</li><li><a href="stop-TEC_Blhudco2.html">TEC:Blhudco2</a> - La Hulpe Dow Corning 16:50</li><li><a href="stop-TEC_Blhugar1.html">TEC:Blhugar1</a> - La Hulpe Gare 16:53</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./234.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

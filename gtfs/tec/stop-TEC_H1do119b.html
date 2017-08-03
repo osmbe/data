@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Dour Préfeuillet</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Dour Préfeuillet</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-5163_TEC_HT_10925.html">5163:TEC:HT:10925</a> - 5163:TEC:HT:10925 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_10958.html">5163:TEC:HT:10958</a> - 5163:TEC:HT:10958 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_11030.html">5163:TEC:HT:11030</a> - 5163:TEC:HT:11030 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_11032.html">5163:TEC:HT:11032</a> - 5163:TEC:HT:11032 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_1132.html">5163:TEC:HT:1132</a> - 5163:TEC:HT:1132 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_1139.html">5163:TEC:HT:1139</a> - 5163:TEC:HT:1139 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_1148.html">5163:TEC:HT:1148</a> - 5163:TEC:HT:1148 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_11541.html">5163:TEC:HT:11541</a> - 5163:TEC:HT:11541 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_12026.html">5163:TEC:HT:12026</a> - 5163:TEC:HT:12026 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_1766.html">5163:TEC:HT:1766</a> - 5163:TEC:HT:1766 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_1768.html">5163:TEC:HT:1768</a> - 5163:TEC:HT:1768 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_1779.html">5163:TEC:HT:1779</a> - 5163:TEC:HT:1779 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_2009.html">5163:TEC:HT:2009</a> - 5163:TEC:HT:2009 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_472.html">5163:TEC:HT:472</a> - 5163:TEC:HT:472 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_5658.html">5163:TEC:HT:5658</a> - 5163:TEC:HT:5658 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_5660.html">5163:TEC:HT:5660</a> - 5163:TEC:HT:5660 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_5903.html">5163:TEC:HT:5903</a> - 5163:TEC:HT:5903 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_5972.html">5163:TEC:HT:5972</a> - 5163:TEC:HT:5972 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_5974.html">5163:TEC:HT:5974</a> - 5163:TEC:HT:5974 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_6770.html">5163:TEC:HT:6770</a> - 5163:TEC:HT:6770 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_6913.html">5163:TEC:HT:6913</a> - 5163:TEC:HT:6913 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_7381.html">5163:TEC:HT:7381</a> - 5163:TEC:HT:7381 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_7384.html">5163:TEC:HT:7384</a> - 5163:TEC:HT:7384 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_9789.html">5163:TEC:HT:9789</a> - 5163:TEC:HT:9789 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_9942.html">5163:TEC:HT:9942</a> - 5163:TEC:HT:9942 - Dour - Erquennes</li><li><a href="trip-5163_TEC_HT_9944.html">5163:TEC:HT:9944</a> - 5163:TEC:HT:9944 - Dour - Erquennes</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.374257, 3.776656], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.374257, 3.776656]).addTo(map);
+    </script>
+</body>
+
+</html>

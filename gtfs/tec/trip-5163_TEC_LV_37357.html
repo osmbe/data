@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Flémalle - Profondval - Mons - 5163:TEC:LV:37357</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Flémalle - Profondval - Mons - 5163:TEC:LV:37357</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lpomart1.html">TEC:Lpomart1</a> - Profondval Place des Martyrs 07:13</li><li><a href="stop-TEC_Lpoprie1.html">TEC:Lpoprie1</a> - Profondval Rue des Priesses 07:14</li><li><a href="stop-TEC_Lpocent1.html">TEC:Lpocent1</a> - Profondval Centrale 07:15</li><li><a href="stop-TEC_Lmlprie1.html">TEC:Lmlprie1</a> - Mons-Lez-Liege Rue des Priesses 281 07:16</li><li><a href="stop-TEC_Lmlec--1.html">TEC:Lmlec--1</a> - Mons-Lez-Liege Place V. Mottard 07:17</li><li><a href="stop-TEC_Lmlhaut2.html">TEC:Lmlhaut2</a> - Mons-Lez-Liege Rue Haute 07:17</li><li><a href="stop-TEC_Lmlmaqu1.html">TEC:Lmlmaqu1</a> - Mons-Lez-Liege Flot Maquoy 07:18</li><li><a href="stop-TEC_Lmlcher1.html">TEC:Lmlcher1</a> - Mons-Lez-Liege Rue Chéry 07:18</li><li><a href="stop-TEC_Lmlmich1.html">TEC:Lmlmich1</a> - Mons-Lez-Liege Arbre St-Michel 07:19</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4197.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

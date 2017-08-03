@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Cheneux - Meiz - Bernister - Burnenville - 5163:TEC:LV:45002</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Cheneux - Meiz - Bernister - Burnenville - 5163:TEC:LV:45002</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LSTmast1.html">TEC:LSTmast1</a> - Stavelot Masta 08:19</li><li><a href="stop-TEC_LMibouv3.html">TEC:LMibouv3</a> - Meiz Chemin de la Bouvière 08:23</li><li><a href="stop-TEC_LMisour1.html">TEC:LMisour1</a> - Meiz Chemin de la Source 08:23</li><li><a href="stop-TEC_LMipoti1.html">TEC:LMipoti1</a> - Meiz Chemin du Potier 08:24</li><li><a href="stop-TEC_LMici091.html">TEC:LMici091</a> - Meiz Route du Circuit 9 08:24</li><li><a href="stop-TEC_LBJapol1.html">TEC:LBJapol1</a> - Bernister Rue Apollinaire 16 08:29</li><li><a href="stop-TEC_LBJplan1.html">TEC:LBJplan1</a> - Bernister Route des Planeresses 19 08:30</li><li><a href="stop-TEC_LBJchau_.html">TEC:LBJchau*</a> - Bernister Chemin de Chaumont 08:30</li><li><a href="stop-TEC_LBJplan2.html">TEC:LBJplan2</a> - Bernister Route des Planeresses 19 08:31</li><li><a href="stop-TEC_LBJapol2.html">TEC:LBJapol2</a> - Bernister Rue Apollinaire 16 08:31</li><li><a href="stop-TEC_LBJlieg2.html">TEC:LBJlieg2</a> - Bernister Voie de Liège 08:32</li><li><a href="stop-TEC_LBrec--1.html">TEC:LBrec--1</a> - Burnenville Ecole 08:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5427.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

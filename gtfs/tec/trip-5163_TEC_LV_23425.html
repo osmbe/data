@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Jemeppe - Ivoz - Flémalle - Engis - Flône - Amay - 5163:TEC:LV:23425</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jemeppe - Ivoz - Flémalle - Engis - Flône - Amay - 5163:TEC:LV:23425</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LAMdelh_.html">TEC:LAMdelh*</a> - Amay Super Delhaize 06:58</li><li><a href="stop-TEC_LAMhopi2.html">TEC:LAMhopi2</a> - Amay Rue de l'Hôpital 06:59</li><li><a href="stop-TEC_LAMgare2.html">TEC:LAMgare2</a> - Amay Gare 07:00</li><li><a href="stop-TEC_LAMgreg2.html">TEC:LAMgreg2</a> - Amay Place Grégoire 07:01</li><li><a href="stop-TEC_LAMec--2.html">TEC:LAMec--2</a> - Amay Ecole Communale 07:01</li><li><a href="stop-TEC_LAMmc--2.html">TEC:LAMmc--2</a> - Amay Maison Communale 07:02</li><li><a href="stop-TEC_LAMfrai2.html">TEC:LAMfrai2</a> - Amay Rue des Fraisiers 07:03</li><li><a href="stop-TEC_LAMhaut2.html">TEC:LAMhaut2</a> - Amay Rue Haute 07:04</li><li><a href="stop-TEC_LFlabba2.html">TEC:LFlabba2</a> - Flone Abbaye 07:05</li><li><a href="stop-TEC_LHHpt--4.html">TEC:LHHpt--4</a> - Hermalle-Sous-Huy Pont 07:08</li><li><a href="stop-TEC_LHHgare2.html">TEC:LHHgare2</a> - Hermalle-Sous-Huy Gare 07:09</li><li><a href="stop-TEC_LSG111-2.html">TEC:LSG111-2</a> - Saint-Georges Rue Mallieue 111 07:09</li><li><a href="stop-TEC_LSG172-2.html">TEC:LSG172-2</a> - Saint-Georges Rue Mallieue 172 07:10</li><li><a href="stop-TEC_LSGmall2.html">TEC:LSGmall2</a> - Saint-Georges La Mallieue 07:11</li><li><a href="stop-TEC_LSGsurf2.html">TEC:LSGsurf2</a> - Saint-Georges Surface 07:11</li><li><a href="stop-TEC_LENindu2.html">TEC:LENindu2</a> - Engis Rue de l'Industrie 07:15</li><li><a href="stop-TEC_LENpt--2.html">TEC:LENpt--2</a> - Engis Pont 07:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4776.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

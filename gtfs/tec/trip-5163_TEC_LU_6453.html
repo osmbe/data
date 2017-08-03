@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Houffalize - Hébronval - Manhay - 5163:TEC:LU:6453</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Houffalize - Hébronval - Manhay - 5163:TEC:LU:6453</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X715alb.html">TEC:X715alb</a> - Manhay Athénée 16:20</li><li><a href="stop-TEC_X715ada.html">TEC:X715ada</a> - Manhay Route de Vaux-Chavanne 16:22</li><li><a href="stop-TEC_X715acc.html">TEC:X715acc</a> - Manhay Carrefour 16:22</li><li><a href="stop-TEC_X715apa.html">TEC:X715apa</a> - Manhay Spar 16:23</li><li><a href="stop-TEC_X731abb.html">TEC:X731abb</a> - Grandmenil Route d'Erezée 2 16:23</li><li><a href="stop-TEC_X731acb.html">TEC:X731acb</a> - Grandmenil Tank 16:24</li><li><a href="stop-TEC_X731acc.html">TEC:X731acc</a> - Grandmenil Tank 16:24</li><li><a href="stop-TEC_X731adb.html">TEC:X731adb</a> - Grandmenil Route de La Fosse 16:24</li><li><a href="stop-TEC_X731aea.html">TEC:X731aea</a> - La Fosse Route du Châmont 3 16:26</li><li><a href="stop-TEC_X731afb.html">TEC:X731afb</a> - La Fosse Quatre Bras 16:26</li><li><a href="stop-TEC_X731akb.html">TEC:X731akb</a> - La Fosse Route du Fagnou 16:27</li><li><a href="stop-TEC_X731amb.html">TEC:X731amb</a> - Oster Cimetière 16:27</li><li><a href="stop-TEC_X731agb.html">TEC:X731agb</a> - Oster Eglise 16:28</li><li><a href="stop-TEC_X731ahb.html">TEC:X731ahb</a> - Oster Moulin Crahay 16:29</li><li><a href="stop-TEC_X731aia.html">TEC:X731aia</a> - Odeigne Moulin 16:30</li><li><a href="stop-TEC_X716aaa.html">TEC:X716aaa</a> - Odeigne Centre 16:31</li><li><a href="stop-TEC_X716aeb.html">TEC:X716aeb</a> - Odeigne Sur le Falhi 16:31</li><li><a href="stop-TEC_X717agb.html">TEC:X717agb</a> - Fraiture Baraque 16:36</li><li><a href="stop-TEC_X717aja.html">TEC:X717aja</a> - Fraiture Saint-Hilaire 16:39</li><li><a href="stop-TEC_X717aia.html">TEC:X717aia</a> - Fraiture (Vielsalm) Eglise 16:40</li><li><a href="stop-TEC_X717aeb.html">TEC:X717aeb</a> - Fraiture N89 16:42</li><li><a href="stop-TEC_X782apb.html">TEC:X782apb</a> - Regne Route de la Baraque Fraiture 36 16:43</li><li><a href="stop-TEC_X782aab.html">TEC:X782aab</a> - Regne Route de la Baraque Fraiture 16:44</li><li><a href="stop-TEC_X782ada.html">TEC:X782ada</a> - Regne Chemin de l'Eglise 16:44</li><li><a href="stop-TEC_X782aeb.html">TEC:X782aeb</a> - Hebronval Pousseroux 16:45</li><li><a href="stop-TEC_X782afb.html">TEC:X782afb</a> - Hebronval Route de Regné 16:46</li><li><a href="stop-TEC_X782aga.html">TEC:X782aga</a> - Hebronval Route de Bihain 16:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3212.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

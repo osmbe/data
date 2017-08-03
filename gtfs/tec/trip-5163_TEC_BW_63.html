@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Genappe - Tangissart - Ottignies - 5163:TEC:BW:63</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Genappe - Tangissart - Ottignies - 5163:TEC:BW:63</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Btanpla4.html">TEC:Btanpla4</a> - Tangissart Place 05:57</li><li><a href="stop-TEC_Btannda2.html">TEC:Btannda2</a> - Tangissart Rue Notre Dame 05:57</li><li><a href="stop-TEC_Btancre2.html">TEC:Btancre2</a> - Tangissart Crequion 05:58</li><li><a href="stop-TEC_Btancnd2.html">TEC:Btancnd2</a> - Tangissart Chapelle Notre-Dame 05:59</li><li><a href="stop-TEC_Bbstbou2.html">TEC:Bbstbou2</a> - Baisy-Thy Chemin de Bousval 06:00</li><li><a href="stop-TEC_Bbstfch2.html">TEC:Bbstfch2</a> - Baisy-Thy Fond Chabau 06:00</li><li><a href="stop-TEC_Bbstcoi2.html">TEC:Bbstcoi2</a> - Baisy-Thy Chant des Oiseaux 06:02</li><li><a href="stop-TEC_Bbsthpl2.html">TEC:Bbsthpl2</a> - Baisy-Thy Hattain Place 06:03</li><li><a href="stop-TEC_Bbsttab2.html">TEC:Bbsttab2</a> - Baisy-Thy Tabaral 06:03</li><li><a href="stop-TEC_Bbstchn2.html">TEC:Bbstchn2</a> - Baisy-Thy Cheniat 06:04</li><li><a href="stop-TEC_Bbstrpo2.html">TEC:Bbstrpo2</a> - Baisy-Thy Rond Point 06:05</li><li><a href="stop-TEC_Bbstmco2.html">TEC:Bbstmco2</a> - Baisy-Thy Maison Communale 06:05</li><li><a href="stop-TEC_Bbstegl2.html">TEC:Bbstegl2</a> - Baisy-Thy Eglise 06:06</li><li><a href="stop-TEC_Bbstasa2.html">TEC:Bbstasa2</a> - Baisy-Thy Arbre Sainte-Anne 06:08</li><li><a href="stop-TEC_Bbstpan2.html">TEC:Bbstpan2</a> - Baisy-Thy Le Panier 06:10</li><li><a href="stop-TEC_Bbstbxl2.html">TEC:Bbstbxl2</a> - Baisy-Thy Route de Bruxelles 06:11</li><li><a href="stop-TEC_Bgnpgar2.html">TEC:Bgnpgar2</a> - Genappe Gare 06:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./654.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

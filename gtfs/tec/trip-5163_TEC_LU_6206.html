@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Arlon - Martelange - 5163:TEC:LU:6206</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Arlon - Martelange - 5163:TEC:LU:6206</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X666ama.html">TEC:X666ama</a> - Martelange Dépôt TEC 08:10</li><li><a href="stop-TEC_X663arb.html">TEC:X663arb</a> - Attert Maison Communale 08:21</li><li><a href="stop-TEC_X663aqb.html">TEC:X663aqb</a> - Attert Camping 08:22</li><li><a href="stop-TEC_X663awa.html">TEC:X663awa</a> - Schadeck Bretelle N4 08:22</li><li><a href="stop-TEC_X663axa.html">TEC:X663axa</a> - Schadeck R de l'Inst Molitor 58 08:23</li><li><a href="stop-TEC_X663aza.html">TEC:X663aza</a> - Schadeck R de l'Inst Molitor 9 08:24</li><li><a href="stop-TEC_X663aob.html">TEC:X663aob</a> - Attert Spetz 08:24</li><li><a href="stop-TEC_X662abb.html">TEC:X662abb</a> - Bonnert 4 Vents 08:28</li><li><a href="stop-TEC_X662ata.html">TEC:X662ata</a> - Arlon Route de Bastogne - N4 08:29</li><li><a href="stop-TEC_X601aeb.html">TEC:X601aeb</a> - Arlon Rue de Bastogne 08:30</li><li><a href="stop-TEC_X601adb.html">TEC:X601adb</a> - Arlon Tec - Rue de Bastogne 08:30</li><li><a href="stop-TEC_X601bgb.html">TEC:X601bgb</a> - Arlon ISMA 08:31</li><li><a href="stop-TEC_X601bfb.html">TEC:X601bfb</a> - Arlon Sq Astrid - R de Bastogne 08:31</li><li><a href="stop-TEC_X601bea.html">TEC:X601bea</a> - Arlon Rue Léon Castilhon 08:32</li><li><a href="stop-TEC_X601bba.html">TEC:X601bba</a> - Arlon Gare - Quai 6 08:33</li><li><a href="stop-TEC_X601bba.html">TEC:X601bba</a> - Arlon Gare - Quai 6 08:33</li><li><a href="stop-TEC_X601bda.html">TEC:X601bda</a> - Arlon Xxv Août 08:35</li><li><a href="stop-TEC_X601bia.html">TEC:X601bia</a> - Arlon INDA 08:36</li><li><a href="stop-TEC_X601aud.html">TEC:X601aud</a> - Arlon Clinique 08:39</li><li><a href="stop-TEC_X601awb.html">TEC:X601awb</a> - Arlon Av de Longwy - Patton 08:42</li><li><a href="stop-TEC_X601axa.html">TEC:X601axa</a> - Arlon Avenue Patton 08:43</li><li><a href="stop-TEC_X601aya.html">TEC:X601aya</a> - Arlon ISI 08:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3343.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

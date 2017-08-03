@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - JAMBES (Amée) - FLAWINNE - 5163:TEC:NA:6148</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: JAMBES (Amée) - FLAWINNE - 5163:TEC:NA:6148</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501dja.html">TEC:N501dja</a> - Jambes Amée terminus 06:22</li><li><a href="stop-TEC_N501dga.html">TEC:N501dga</a> - Jambes Amée avenue du Parc 06:23</li><li><a href="stop-TEC_N501dia.html">TEC:N501dia</a> - Jambes Amée plage 06:24</li><li><a href="stop-TEC_N501dha.html">TEC:N501dha</a> - Jambes Amée chapelle 06:25</li><li><a href="stop-TEC_N501eza.html">TEC:N501eza</a> - Jambes Rue Pierre du diable 06:26</li><li><a href="stop-TEC_N501jra.html">TEC:N501jra</a> - Jambes Velaine rue va-s-t'y frotte 06:26</li><li><a href="stop-TEC_N501eia.html">TEC:N501eia</a> - Jambes Caserne du génie 06:27</li><li><a href="stop-TEC_N501kqa.html">TEC:N501kqa</a> - Jambes Etablissements Bister 06:28</li><li><a href="stop-TEC_N501epa.html">TEC:N501epa</a> - Jambes CPAS 06:28</li><li><a href="stop-TEC_N501epd.html">TEC:N501epd</a> - Jambes Rue Lambin 06:28</li><li><a href="stop-TEC_N501etc.html">TEC:N501etc</a> - Jambes Place de la Wallonie 06:29</li><li><a href="stop-TEC_N501eba.html">TEC:N501eba</a> - Jambes Avenue Materne 06:30</li><li><a href="stop-TEC_N501fwa.html">TEC:N501fwa</a> - Namur Boulevard Ad Aquam 06:31</li><li><a href="stop-TEC_N501gia.html">TEC:N501gia</a> - Namur Pont de France 06:32</li><li><a href="stop-TEC_N501hia.html">TEC:N501hia</a> - Namur Rue de la Tour 06:34</li><li><a href="stop-TEC_N501mqa.html">TEC:N501mqa</a> - Namur Rue Emile Cuvelier 06:35</li><li><a href="stop-TEC_N501mha.html">TEC:N501mha</a> - Namur Rue de Bruxelles 06:36</li><li><a href="stop-TEC_N501grb.html">TEC:N501grb</a> - Namur Pl. de la Station - Quai B 06:39</li><li><a href="stop-TEC_N501fta.html">TEC:N501fta</a> - Namur Avenue des Combattants 06:40</li><li><a href="stop-TEC_N501lsa.html">TEC:N501lsa</a> - Namur Pn d'Hastedon 06:41</li><li><a href="stop-TEC_N501haa.html">TEC:N501haa</a> - Namur Rue Salzinnes-les-Moulins 06:43</li><li><a href="stop-TEC_N501bda.html">TEC:N501bda</a> - Belgrade Rue laide Coupe 06:45</li><li><a href="stop-TEC_N501aoa.html">TEC:N501aoa</a> - Belgrade Avenue Gourdin 06:47</li><li><a href="stop-TEC_N501apa.html">TEC:N501apa</a> - Belgrade Rue Godefroid 06:47</li><li><a href="stop-TEC_N501bca.html">TEC:N501bca</a> - Belgrade Rue Delhaye 06:48</li><li><a href="stop-TEC_N501ama.html">TEC:N501ama</a> - Belgrade Rue Arnould 06:49</li><li><a href="stop-TEC_N501cya.html">TEC:N501cya</a> - Flawinne Jeu de balle 06:50</li><li><a href="stop-TEC_N501cza.html">TEC:N501cza</a> - Flawinne Fond de Ronet 06:50</li><li><a href="stop-TEC_N501cxa.html">TEC:N501cxa</a> - Flawinne Eglise 06:51</li><li><a href="stop-TEC_N501cva.html">TEC:N501cva</a> - Flawinne Maison communale 06:52</li><li><a href="stop-TEC_N501cwa.html">TEC:N501cwa</a> - Flawinne Rue Vandervelde 06:53</li><li><a href="stop-TEC_N501daa.html">TEC:N501daa</a> - Flawinne Rue Hennuy 06:54</li><li><a href="stop-TEC_N501dea.html">TEC:N501dea</a> - Flawinne Comognes 06:55</li><li><a href="stop-TEC_N501dfa.html">TEC:N501dfa</a> - Flawinne Rue Emmanuel 06:56</li><li><a href="stop-TEC_N501dba.html">TEC:N501dba</a> - Flawinne Quatre Seigneurs 06:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6102.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

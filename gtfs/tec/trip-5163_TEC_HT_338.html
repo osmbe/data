@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mons - Jurbise - 5163:TEC:HT:338</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mons - Jurbise - 5163:TEC:HT:338</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1eo107a.html">TEC:H1eo107a</a> - Erbisoeul Route d'Erbisoeul 09:09</li><li><a href="stop-TEC_H1eo104a.html">TEC:H1eo104a</a> - Erbisoeul Château 09:10</li><li><a href="stop-TEC_H1eo106a.html">TEC:H1eo106a</a> - Erbisoeul Route d' Ath 09:11</li><li><a href="stop-TEC_H1ju119a.html">TEC:H1ju119a</a> - Jurbise Coiffeur 09:12</li><li><a href="stop-TEC_H1ju120d.html">TEC:H1ju120d</a> - Jurbise Gare 09:14</li><li><a href="stop-TEC_H1mj126a.html">TEC:H1mj126a</a> - Masnuy-St-Jean Château Blanc 09:15</li><li><a href="stop-TEC_H1mj127a.html">TEC:H1mj127a</a> - Masnuy-St-Jean Eglise 09:17</li><li><a href="stop-TEC_H1mj131a.html">TEC:H1mj131a</a> - Masnuy-St-Jean Rue de Masnuy 09:18</li><li><a href="stop-TEC_H1mj129a.html">TEC:H1mj129a</a> - Masnuy-St-Jean Ferme Plusquin 09:19</li><li><a href="stop-TEC_H1mj125a.html">TEC:H1mj125a</a> - Masnuy-St-Jean Chapelle 09:21</li><li><a href="stop-TEC_H1mj122a.html">TEC:H1mj122a</a> - Masnuy-St-Jean Bois Hasnon 09:22</li><li><a href="stop-TEC_H1mj130a.html">TEC:H1mj130a</a> - Masnuy-St-Jean Hameau 09:23</li><li><a href="stop-TEC_H1mj124a.html">TEC:H1mj124a</a> - Masnuy-St-Jean Café Colomb 09:23</li><li><a href="stop-TEC_H1mj123a.html">TEC:H1mj123a</a> - Masnuy-St-Jean Bruyères 09:24</li><li><a href="stop-TEC_H1mj132a.html">TEC:H1mj132a</a> - Masnuy-St-Jean Rue Dincq 09:25</li><li><a href="stop-TEC_H1mj128a.html">TEC:H1mj128a</a> - Masnuy-St-Jean Ferme 09:26</li><li><a href="stop-TEC_H1eo103a.html">TEC:H1eo103a</a> - Erbisoeul Carrefour 09:28</li><li><a href="stop-TEC_H1eo104b.html">TEC:H1eo104b</a> - Erbisoeul Château 09:30</li><li><a href="stop-TEC_H1eo107b.html">TEC:H1eo107b</a> - Erbisoeul Route d'Erbisoeul 09:30</li><li><a href="stop-TEC_H1eo105b.html">TEC:H1eo105b</a> - Erbisoeul Golf 09:31</li><li><a href="stop-TEC_H1eo108b.html">TEC:H1eo108b</a> - Erbisoeul Route de Jurbise 09:32</li><li><a href="stop-TEC_H1ni319b.html">TEC:H1ni319b</a> - Nimy Limite 09:34</li><li><a href="stop-TEC_H1ni316b.html">TEC:H1ni316b</a> - Nimy Chapelle 09:35</li><li><a href="stop-TEC_H1ni317b.html">TEC:H1ni317b</a> - Nimy Château 09:36</li><li><a href="stop-TEC_H1ni318b.html">TEC:H1ni318b</a> - Nimy Librairie 09:37</li><li><a href="stop-TEC_H1ni321b.html">TEC:H1ni321b</a> - Nimy Route d' Ath 09:38</li><li><a href="stop-TEC_H1ni320b.html">TEC:H1ni320b</a> - Nimy Place 09:39</li><li><a href="stop-TEC_H1ni323b.html">TEC:H1ni323b</a> - Nimy Rue Gérard 09:41</li><li><a href="stop-TEC_H1ni322b.html">TEC:H1ni322b</a> - Nimy Rue de la Limite 09:43</li><li><a href="stop-TEC_H1ms267b.html">TEC:H1ms267b</a> - Mons Chemin de la Procession 09:44</li><li><a href="stop-TEC_H1ms290a.html">TEC:H1ms290a</a> - Mons Lycée 09:47</li><li><a href="stop-TEC_H1ms299a.html">TEC:H1ms299a</a> - Mons Prison 09:48</li><li><a href="stop-TEC_H1ms400a.html">TEC:H1ms400a</a> - Mons SNCB 09:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2147.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

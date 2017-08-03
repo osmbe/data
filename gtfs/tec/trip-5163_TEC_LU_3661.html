@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Hallonru - Cherain - 5163:TEC:LU:3661</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hallonru - Cherain - 5163:TEC:LU:3661</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X789aga.html">TEC:X789aga</a> - Hallonru Centre 08:20</li><li><a href="stop-TEC_X786adb.html">TEC:X786adb</a> - Sommerain Route de Gouvy 56 08:25</li><li><a href="stop-TEC_X786aeb.html">TEC:X786aeb</a> - Sommerain Eglise 08:26</li><li><a href="stop-TEC_X786ajb.html">TEC:X786ajb</a> - Sommerain Route de Brisy 08:26</li><li><a href="stop-TEC_X760aaa.html">TEC:X760aaa</a> - Brisy Eglise 08:28</li><li><a href="stop-TEC_X760aeb.html">TEC:X760aeb</a> - Rettigny Chemin de Brisy 9a 08:30</li><li><a href="stop-TEC_X760aga.html">TEC:X760aga</a> - Rettigny Eglise 08:31</li><li><a href="stop-TEC_X760afa.html">TEC:X760afa</a> - Rettigny Route de Sterpigny 51 08:32</li><li><a href="stop-TEC_X788aea.html">TEC:X788aea</a> - Sterpigny Route de Rettigny 08:34</li><li><a href="stop-TEC_X788ada.html">TEC:X788ada</a> - Sterpigny Chapelle 08:34</li><li><a href="stop-TEC_X788afa.html">TEC:X788afa</a> - Sterpigny Eglise 08:35</li><li><a href="stop-TEC_X788adb.html">TEC:X788adb</a> - Sterpigny Chapelle 08:38</li><li><a href="stop-TEC_X788acb.html">TEC:X788acb</a> - Cherain Route de Bovigny 5 08:39</li><li><a href="stop-TEC_X788abb.html">TEC:X788abb</a> - Cherain Eglise 08:40</li><li><a href="stop-TEC_X788aaa.html">TEC:X788aaa</a> - Cherain Ecole 08:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2654.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

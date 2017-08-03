@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Regné - Ottré - Tailles - Fraiture - 5163:TEC:LU:2500</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Regné - Ottré - Tailles - Fraiture - 5163:TEC:LU:2500</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X782aba.html">TEC:X782aba</a> - Regne Ecole Primaire 15:20</li><li><a href="stop-TEC_X782aca.html">TEC:X782aca</a> - Regne Ecole Gardienne 15:20</li><li><a href="stop-TEC_X782aeb.html">TEC:X782aeb</a> - Hebronval Pousseroux 15:21</li><li><a href="stop-TEC_X782afb.html">TEC:X782afb</a> - Hebronval Route de Regné 15:22</li><li><a href="stop-TEC_X782aga.html">TEC:X782aga</a> - Hebronval Route de Bihain 15:22</li><li><a href="stop-TEC_X782aha.html">TEC:X782aha</a> - Hebronval Ecole 15:22</li><li><a href="stop-TEC_X782aia.html">TEC:X782aia</a> - Ottre Route de Bihain 15:24</li><li><a href="stop-TEC_X782akb.html">TEC:X782akb</a> - Ottre Centre 3 15:24</li><li><a href="stop-TEC_X782ala.html">TEC:X782ala</a> - Ottre Eglise 15:25</li><li><a href="stop-TEC_X782aka.html">TEC:X782aka</a> - Ottre Centre 3 15:27</li><li><a href="stop-TEC_X782aib.html">TEC:X782aib</a> - Ottre Route de Bihain 15:27</li><li><a href="stop-TEC_X782ajb.html">TEC:X782ajb</a> - Hebronval Route de Bihain 71 15:28</li><li><a href="stop-TEC_X717ahb.html">TEC:X717ahb</a> - Bihain Rue des Minières 15:29</li><li><a href="stop-TEC_X717adb.html">TEC:X717adb</a> - Bihain Centre 17 15:30</li><li><a href="stop-TEC_X717aca.html">TEC:X717aca</a> - Bihain Eglise 15:30</li><li><a href="stop-TEC_X717abb.html">TEC:X717abb</a> - Petites-Tailles Centre 15:33</li><li><a href="stop-TEC_X717aaa.html">TEC:X717aaa</a> - Petites-Tailles Route de Bihain 15:34</li><li><a href="stop-TEC_X718aaa.html">TEC:X718aaa</a> - Tailles Pisserotte 15:37</li><li><a href="stop-TEC_X718abb.html">TEC:X718abb</a> - Tailles Coullée 15:38</li><li><a href="stop-TEC_X718afa.html">TEC:X718afa</a> - Tailles Route de Chabrehez 15 15:39</li><li><a href="stop-TEC_X718aga.html">TEC:X718aga</a> - Tailles Eglise 15:39</li><li><a href="stop-TEC_X718aea.html">TEC:X718aea</a> - Censes Route de Colas 7 15:40</li><li><a href="stop-TEC_X718ada.html">TEC:X718ada</a> - Colas Centre 15:41</li><li><a href="stop-TEC_X718aca.html">TEC:X718aca</a> - Tailles Route de Colas 9 15:42</li><li><a href="stop-TEC_X718aba.html">TEC:X718aba</a> - Tailles Coullée 15:42</li><li><a href="stop-TEC_X718aab.html">TEC:X718aab</a> - Tailles Pisserotte 15:43</li><li><a href="stop-TEC_X717afa.html">TEC:X717afa</a> - Petites-Tailles Domaine des Casseroles 15:45</li><li><a href="stop-TEC_X717age.html">TEC:X717age</a> - Fraiture Baraque 15:46</li><li><a href="stop-TEC_X717agb.html">TEC:X717agb</a> - Fraiture Baraque 15:46</li><li><a href="stop-TEC_X717aja.html">TEC:X717aja</a> - Fraiture Saint-Hilaire 15:49</li><li><a href="stop-TEC_X717aia.html">TEC:X717aia</a> - Fraiture (Vielsalm) Eglise 15:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3211.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

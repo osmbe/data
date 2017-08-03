@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Marloie - Noiseux - Melreux - 5163:TEC:LU:6536</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Marloie - Noiseux - Melreux - 5163:TEC:LU:6536</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X923ala.html">TEC:X923ala</a> - Melreux Gare Quai 1 09:05</li><li><a href="stop-TEC_X923anb.html">TEC:X923anb</a> - Monville Grand'Route 26 09:06</li><li><a href="stop-TEC_X923aob.html">TEC:X923aob</a> - Monville Rue du Ban 09:06</li><li><a href="stop-TEC_X921acb.html">TEC:X921acb</a> - Fronville Eglise 09:07</li><li><a href="stop-TEC_X921amb.html">TEC:X921amb</a> - Fronville Carrefour Rue Lava 09:08</li><li><a href="stop-TEC_X921anb.html">TEC:X921anb</a> - Fronville Rue du Monument 09:09</li><li><a href="stop-TEC_X917ada.html">TEC:X917ada</a> - Deulin Centre 09:10</li><li><a href="stop-TEC_X917aca.html">TEC:X917aca</a> - Deulin Camping 09:11</li><li><a href="stop-TEC_X917aha.html">TEC:X917aha</a> - Noiseux Eglise 09:15</li><li><a href="stop-TEC_X917ajb.html">TEC:X917ajb</a> - Noiseux Chez Fernand 09:16</li><li><a href="stop-TEC_X396afa.html">TEC:X396afa</a> - Baillonville Carrefour 09:17</li><li><a href="stop-TEC_X396acb.html">TEC:X396acb</a> - Baillonville Maison Communale 09:18</li><li><a href="stop-TEC_X396aba.html">TEC:X396aba</a> - Rabozee Carrefour 09:20</li><li><a href="stop-TEC_X396aaa.html">TEC:X396aaa</a> - Rabozee La Main Verte 09:21</li><li><a href="stop-TEC_X901bqb.html">TEC:X901bqb</a> - Marche Carmel 09:25</li><li><a href="stop-TEC_X901anb.html">TEC:X901anb</a> - Marche Route de Liège 09:25</li><li><a href="stop-TEC_X901bnb.html">TEC:X901bnb</a> - Marche Porte Basse 09:26</li><li><a href="stop-TEC_X901acb.html">TEC:X901acb</a> - Marche Place de l'Etang 09:26</li><li><a href="stop-TEC_X901bob.html">TEC:X901bob</a> - Marche Boulevard - Hôtel de Ville 09:27</li><li><a href="stop-TEC_X901bsc.html">TEC:X901bsc</a> - Marche Pont N4 09:27</li><li><a href="stop-TEC_X901bsb.html">TEC:X901bsb</a> - Marche Pont N4 09:27</li><li><a href="stop-TEC_X901aia.html">TEC:X901aia</a> - Marche Pirire 09:28</li><li><a href="stop-TEC_X902bbb.html">TEC:X902bbb</a> - Marloie Ma Campagne 09:30</li><li><a href="stop-TEC_X902aba.html">TEC:X902aba</a> - Marloie Point du Jour 09:31</li><li><a href="stop-TEC_X902aca.html">TEC:X902aca</a> - Marloie Maison Glatigny 09:32</li><li><a href="stop-TEC_X902ana.html">TEC:X902ana</a> - Marloie Spar 09:33</li><li><a href="stop-TEC_X902aaa.html">TEC:X902aaa</a> - Marloie Eglise 09:33</li><li><a href="stop-TEC_X902afc.html">TEC:X902afc</a> - Marloie Gare - Quai 3 09:34</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3540.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

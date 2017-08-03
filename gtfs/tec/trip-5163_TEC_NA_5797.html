@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - FLORENNES - METTET / ERMETON-SUR-BIERT - 5163:TEC:NA:5797</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: FLORENNES - METTET / ERMETON-SUR-BIERT - 5163:TEC:NA:5797</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N548ada.html">TEC:N548ada</a> - Mettet Place 15:49</li><li><a href="stop-TEC_N548aaa.html">TEC:N548aaa</a> - Mettet Rue de Furnaux 15:50</li><li><a href="stop-TEC_N565aka.html">TEC:N565aka</a> - Furnaux Place 15:54</li><li><a href="stop-TEC_N565alb.html">TEC:N565alb</a> - Furnaux Centre 15:54</li><li><a href="stop-TEC_N565aja.html">TEC:N565aja</a> - Furnaux Rue de Fenal 15:55</li><li><a href="stop-TEC_N565aic.html">TEC:N565aic</a> - Furnaux Moulin 15:55</li><li><a href="stop-TEC_N565afb.html">TEC:N565afb</a> - Ermeton-sur-Biert Gare - dépôt TEC 15:56</li><li><a href="stop-TEC_N565abb.html">TEC:N565abb</a> - Ermeton-sur-Biert Route du couvent 15:57</li><li><a href="stop-TEC_N565acb.html">TEC:N565acb</a> - Ermeton-sur-Biert Château 15:58</li><li><a href="stop-TEC_N565aea.html">TEC:N565aea</a> - Ermeton-sur-Biert Place 15:58</li><li><a href="stop-TEC_N565aea.html">TEC:N565aea</a> - Ermeton-sur-Biert Place 15:58</li><li><a href="stop-TEC_N565aca.html">TEC:N565aca</a> - Ermeton-sur-Biert Château 15:58</li><li><a href="stop-TEC_N565aba.html">TEC:N565aba</a> - Ermeton-sur-Biert Route du couvent 15:58</li><li><a href="stop-TEC_N565afa.html">TEC:N565afa</a> - Ermeton-sur-Biert Gare - dépôt TEC 15:59</li><li><a href="stop-TEC_N565aib.html">TEC:N565aib</a> - Furnaux Moulin 15:59</li><li><a href="stop-TEC_N569afb.html">TEC:N569afb</a> - Biesmeree Rue du fourneau 16:00</li><li><a href="stop-TEC_N569aea.html">TEC:N569aea</a> - Biesmeree Rue de Terwagne 16:01</li><li><a href="stop-TEC_N569abb.html">TEC:N569abb</a> - Biesmeree Place 16:04</li><li><a href="stop-TEC_N569aab.html">TEC:N569aab</a> - Biesmeree Chapelle 16:05</li><li><a href="stop-TEC_N569anb.html">TEC:N569anb</a> - Stave Maison communale 16:07</li><li><a href="stop-TEC_N569ama.html">TEC:N569ama</a> - Stave Centre 16:08</li><li><a href="stop-TEC_N569ala.html">TEC:N569ala</a> - Stave Gare 16:09</li><li><a href="stop-TEC_N569aib.html">TEC:N569aib</a> - Stave Les Pottiats 16:11</li><li><a href="stop-TEC_N117atb.html">TEC:N117atb</a> - Florennes Ferme pavillon 16:12</li><li><a href="stop-TEC_N117asb.html">TEC:N117asb</a> - Florennes Pavillon gare 16:13</li><li><a href="stop-TEC_N117arb.html">TEC:N117arb</a> - Florennes Zoning 16:14</li><li><a href="stop-TEC_N117aqb.html">TEC:N117aqb</a> - Florennes Pont 16:16</li><li><a href="stop-TEC_N117bcd.html">TEC:N117bcd</a> - Florennes Place de la Chapelle 16:16</li><li><a href="stop-TEC_N117ama.html">TEC:N117ama</a> - Florennes Gare d'autobus 16:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6707.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

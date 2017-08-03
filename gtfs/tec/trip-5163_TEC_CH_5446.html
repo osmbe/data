@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - THUIN-RAGNIES-BIERCEE-THUIN - 5163:TEC:CH:5446</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: THUIN-RAGNIES-BIERCEE-THUIN - 5163:TEC:CH:5446</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cthvbas2.html">TEC:Cthvbas2</a> - Thuin Ville Basse 11:13</li><li><a href="stop-TEC_Cthoues1.html">TEC:Cthoues1</a> - Thuin Ouest S.N.C.B. 11:15</li><li><a href="stop-TEC_Cthpano1.html">TEC:Cthpano1</a> - Thuin Panorama 11:17</li><li><a href="stop-TEC_Cthgrat1.html">TEC:Cthgrat1</a> - Thuin Grattière 11:18</li><li><a href="stop-TEC_Clbchba2.html">TEC:Clbchba2</a> - Thuin Champ de Bataille 11:19</li><li><a href="stop-TEC_Cthstre2.html">TEC:Cthstre2</a> - Thuin Route de Strée 11:19</li><li><a href="stop-TEC_Cbcha652.html">TEC:Cbcha652</a> - Thuin Habitation n° 65 11:20</li><li><a href="stop-TEC_Cbcegli6.html">TEC:Cbcegli6</a> - Biercee Eglise 11:23</li><li><a href="stop-TEC_Clfpomm2.html">TEC:Clfpomm2</a> - Leers-et-Fosteau Pommeroeul 11:24</li><li><a href="stop-TEC_Clfbarr6.html">TEC:Clfbarr6</a> - Leers-et-Fosteau Barrière 11:25</li><li><a href="stop-TEC_Clfmonu3.html">TEC:Clfmonu3</a> - Leers-et-Fosteau Monument 11:28</li><li><a href="stop-TEC_Clftour2.html">TEC:Clftour2</a> - Leers-et-Fosteau Tournebride 11:30</li><li><a href="stop-TEC_Crglyre2.html">TEC:Crglyre2</a> - Ragnies Lyrée 11:34</li><li><a href="stop-TEC_Crgegli2.html">TEC:Crgegli2</a> - Ragnies Eglise 11:35</li><li><a href="stop-TEC_Crgmgri2.html">TEC:Crgmgri2</a> - Ragnies Maison Grise 11:36</li><li><a href="stop-TEC_Crg3arb2.html">TEC:Crg3arb2</a> - Ragnies 3 Arbres 11:37</li><li><a href="stop-TEC_Cbiferm2.html">TEC:Cbiferm2</a> - Biesme-Sous-Thuin La Ferme 11:38</li><li><a href="stop-TEC_Cbimonu2.html">TEC:Cbimonu2</a> - Biesme-Sous-Thuin Monument 11:40</li><li><a href="stop-TEC_Cthbifu2.html">TEC:Cthbifu2</a> - Thuin Bifurcation 11:42</li><li><a href="stop-TEC_Cthalli1.html">TEC:Cthalli1</a> - Thuin Drève des Alliés 11:43</li><li><a href="stop-TEC_Cthathe1.html">TEC:Cthathe1</a> - Thuin Athénée 11:43</li><li><a href="stop-TEC_Cthhvil1.html">TEC:Cthhvil1</a> - Thuin Hôtel de Ville 11:44</li><li><a href="stop-TEC_Cthbeff1.html">TEC:Cthbeff1</a> - Thuin Place du Beffroi 11:46</li><li><a href="stop-TEC_Cthvbas1.html">TEC:Cthvbas1</a> - Thuin Ville Basse 11:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1171.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

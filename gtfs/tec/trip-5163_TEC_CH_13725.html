@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - JUMET MADELEINE - TRAZEGNIES SENTIER MADAME - 5163:TEC:CH:13725</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: JUMET MADELEINE - TRAZEGNIES SENTIER MADAME - 5163:TEC:CH:13725</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cjumade4.html">TEC:Cjumade4</a> - Jumet Madeleine 12:11</li><li><a href="stop-TEC_Cjucar02.html">TEC:Cjucar02</a> - Jumet Carrosse 12:13</li><li><a href="stop-TEC_Cgoleop2.html">TEC:Cgoleop2</a> - Gosselies Léopold 12:15</li><li><a href="stop-TEC_Cgocalv2.html">TEC:Cgocalv2</a> - Gosselies Calvaire 12:17</li><li><a href="stop-TEC_Cgofabr2.html">TEC:Cgofabr2</a> - Gosselies Rue des Fabriques 12:18</li><li><a href="stop-TEC_Cgobruy2.html">TEC:Cgobruy2</a> - Gosselies Bruyerre 12:18</li><li><a href="stop-TEC_Cgoathe2.html">TEC:Cgoathe2</a> - Gosselies Athénée 12:20</li><li><a href="stop-TEC_Cgofabr1.html">TEC:Cgofabr1</a> - Gosselies Rue des Fabriques 12:21</li><li><a href="stop-TEC_Cgostro2.html">TEC:Cgostro2</a> - Gosselies Saint-Roch 12:22</li><li><a href="stop-TEC_Cgogrco2.html">TEC:Cgogrco2</a> - Gosselies Grand Conty 12:24</li><li><a href="stop-TEC_Cgorosa2.html">TEC:Cgorosa2</a> - Gosselies Rosaire 12:25</li><li><a href="stop-TEC_Cgofert2.html">TEC:Cgofert2</a> - Gosselies Rue de la Ferté 12:26</li><li><a href="stop-TEC_Ccoptca2.html">TEC:Ccoptca2</a> - Courcelles Pont du Canal 12:27</li><li><a href="stop-TEC_Ccomott2.html">TEC:Ccomott2</a> - Courcelles Motte S.N.C.B. 12:28</li><li><a href="stop-TEC_Ccofayt2.html">TEC:Ccofayt2</a> - Courcelles Rue Fay 12:28</li><li><a href="stop-TEC_Ccomiau2.html">TEC:Ccomiau2</a> - Courcelles Miaucourt 12:29</li><li><a href="stop-TEC_Ccoh1212.html">TEC:Ccoh1212</a> - Courcelles Habitation n° 121 12:30</li><li><a href="stop-TEC_Ccogode2.html">TEC:Ccogode2</a> - Courcelles Rue du Godet 12:30</li><li><a href="stop-TEC_Ccotrie4.html">TEC:Ccotrie4</a> - Courcelles Place des Trieux 12:31</li><li><a href="stop-TEC_Ccojaur4.html">TEC:Ccojaur4</a> - Courcelles Avenue Jean Jaurès 12:32</li><li><a href="stop-TEC_Ccogibr2.html">TEC:Ccogibr2</a> - Courcelles Rue de Gilbraltar 12:33</li><li><a href="stop-TEC_Ccopeti2.html">TEC:Ccopeti2</a> - Courcelles Petit 12:34</li><li><a href="stop-TEC_Ccobinc2.html">TEC:Ccobinc2</a> - Courcelles Rue de Binche 12:35</li><li><a href="stop-TEC_Ccoacie2.html">TEC:Ccoacie2</a> - Courcelles Aciéries 12:35</li><li><a href="stop-TEC_Ctrepin2.html">TEC:Ctrepin2</a> - Trazegnies Rue de l'Epine 12:36</li><li><a href="stop-TEC_Ctrleju2.html">TEC:Ctrleju2</a> - Trazegnies Rue Lejuste 12:38</li><li><a href="stop-TEC_Ctrecol2.html">TEC:Ctrecol2</a> - Trazegnies Les Ecoles 12:38</li><li><a href="stop-TEC_Ctrrpla2.html">TEC:Ctrrpla2</a> - Trazegnies Rue de la Place 12:39</li><li><a href="stop-TEC_Ctrsema2.html">TEC:Ctrsema2</a> - Trazegnies Sentier Madame 12:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./961.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

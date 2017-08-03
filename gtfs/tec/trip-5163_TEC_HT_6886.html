@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mons - Aulnois - 5163:TEC:HT:6886</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mons - Aulnois - 5163:TEC:HT:6886</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1fr151a.html">TEC:H1fr151a</a> - Frameries Thompson 10:47</li><li><a href="stop-TEC_H1fr117a.html">TEC:H1fr117a</a> - Frameries Dimequip 10:47</li><li><a href="stop-TEC_H1fr119a.html">TEC:H1fr119a</a> - Frameries Gardinal 10:48</li><li><a href="stop-TEC_H1fr118b.html">TEC:H1fr118b</a> - Frameries Zoning-Forem 10:48</li><li><a href="stop-TEC_H1fr112a.html">TEC:H1fr112a</a> - Frameries Cité Floréal 10:50</li><li><a href="stop-TEC_H1fr124a.html">TEC:H1fr124a</a> - Frameries Pont du Berger 10:51</li><li><a href="stop-TEC_H1fr130a.html">TEC:H1fr130a</a> - Frameries Sacré Coeur 10:52</li><li><a href="stop-TEC_H1fr107e.html">TEC:H1fr107e</a> - Frameries 4 Pavés 10:54</li><li><a href="stop-TEC_H1fr130b.html">TEC:H1fr130b</a> - Frameries Sacré Coeur 10:56</li><li><a href="stop-TEC_H1fr124b.html">TEC:H1fr124b</a> - Frameries Pont du Berger 10:57</li><li><a href="stop-TEC_H1fr127b.html">TEC:H1fr127b</a> - Frameries Rue Ferrer 10:57</li><li><a href="stop-TEC_H1fr111b.html">TEC:H1fr111b</a> - Frameries Chemin Vert 10:58</li><li><a href="stop-TEC_H1ge115b.html">TEC:H1ge115b</a> - Genly 4 Pavés 10:59</li><li><a href="stop-TEC_H1ge116a.html">TEC:H1ge116a</a> - Genly Fontaine 11:00</li><li><a href="stop-TEC_H1ge117a.html">TEC:H1ge117a</a> - Genly Rue Petite 11:01</li><li><a href="stop-TEC_H1qp140a.html">TEC:H1qp140a</a> - Quevy-le-Petit Entrée du Village 11:04</li><li><a href="stop-TEC_H1qp142a.html">TEC:H1qp142a</a> - Quevy-le-Petit Rue du Moulin 11:04</li><li><a href="stop-TEC_H1qp141a.html">TEC:H1qp141a</a> - Quevy-le-Petit Maison Communale 11:05</li><li><a href="stop-TEC_H1qp150a.html">TEC:H1qp150a</a> - Quevy-le-Petit Place 11:06</li><li><a href="stop-TEC_H1bs110a.html">TEC:H1bs110a</a> - Blaregnies Eglise 11:13</li><li><a href="stop-TEC_H1al107a.html">TEC:H1al107a</a> - Aulnois Gendarmerie 11:15</li><li><a href="stop-TEC_H1al105a.html">TEC:H1al105a</a> - Aulnois Eglise 11:16</li><li><a href="stop-TEC_H1al108a.html">TEC:H1al108a</a> - Aulnois Rue de L'Avenir 11:17</li><li><a href="stop-TEC_H1al106a.html">TEC:H1al106a</a> - Aulnois SNCB 11:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1272.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

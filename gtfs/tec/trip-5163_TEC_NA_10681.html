@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CINEY - DURNAL - YVOIR - 5163:TEC:NA:10681</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CINEY - DURNAL - YVOIR - 5163:TEC:NA:10681</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N235aba.html">TEC:N235aba</a> - Spontin Centre 06:32</li><li><a href="stop-TEC_N235afa.html">TEC:N235afa</a> - Spontin Rue des rivières 06:33</li><li><a href="stop-TEC_N235aga.html">TEC:N235aga</a> - Spontin Sources 06:34</li><li><a href="stop-TEC_N241aca.html">TEC:N241aca</a> - Durnal Camping 06:37</li><li><a href="stop-TEC_N241ada.html">TEC:N241ada</a> - Durnal Route du fond 06:37</li><li><a href="stop-TEC_N241aea.html">TEC:N241aea</a> - Durnal Baty 06:38</li><li><a href="stop-TEC_N241afa.html">TEC:N241afa</a> - Durnal Place 06:39</li><li><a href="stop-TEC_N241aga.html">TEC:N241aga</a> - Durnal Route de Herleuvaux 06:41</li><li><a href="stop-TEC_N241aaa.html">TEC:N241aaa</a> - Crupet Chapelle St-Roch 06:44</li><li><a href="stop-TEC_N241aba.html">TEC:N241aba</a> - Crupet Rue Basse 06:45</li><li><a href="stop-TEC_N229aec.html">TEC:N229aec</a> - Evrehailles Route de la Gare 06:49</li><li><a href="stop-TEC_N229afb.html">TEC:N229afb</a> - Evrehailles Bauche Gare 06:50</li><li><a href="stop-TEC_N229aea.html">TEC:N229aea</a> - Evrehailles Route de la Gare 06:51</li><li><a href="stop-TEC_N229ana.html">TEC:N229ana</a> - Yvoir Notre-Dame de Lourdes 06:53</li><li><a href="stop-TEC_N229ata.html">TEC:N229ata</a> - Yvoir Sacré-Coeur 06:54</li><li><a href="stop-TEC_N229ama.html">TEC:N229ama</a> - Yvoir Redeau 06:55</li><li><a href="stop-TEC_N229aoa.html">TEC:N229aoa</a> - Yvoir Carrières 06:56</li><li><a href="stop-TEC_N229alb.html">TEC:N229alb</a> - Yvoir Place 06:58</li><li><a href="stop-TEC_N229akc.html">TEC:N229akc</a> - Yvoir Gare SNCB 07:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5860.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

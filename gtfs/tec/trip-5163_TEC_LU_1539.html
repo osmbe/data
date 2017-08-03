@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Sugny - Bouillon - 5163:TEC:LU:1539</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sugny - Bouillon - 5163:TEC:LU:1539</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X812ata.html">TEC:X812ata</a> - Bouillon Pont de Germauchamps 09:03</li><li><a href="stop-TEC_X812aga.html">TEC:X812aga</a> - Bouillon Perimino 09:03</li><li><a href="stop-TEC_X812aja.html">TEC:X812aja</a> - Bouillon Faubourg de France 09:04</li><li><a href="stop-TEC_X812aka.html">TEC:X812aka</a> - Bouillon Rue des Bains 09:04</li><li><a href="stop-TEC_X812ama.html">TEC:X812ama</a> - Bouillon Auberge d'Alsace 09:05</li><li><a href="stop-TEC_X812ana.html">TEC:X812ana</a> - Bouillon Tunnel 09:05</li><li><a href="stop-TEC_X812bea.html">TEC:X812bea</a> - Bouillon Camping Halliru 09:07</li><li><a href="stop-TEC_X813abb.html">TEC:X813abb</a> - Corbion Carrefour 09:13</li><li><a href="stop-TEC_X813acb.html">TEC:X813acb</a> - Corbion Route de Sugny 22 09:13</li><li><a href="stop-TEC_X813adb.html">TEC:X813adb</a> - Corbion Route de Sugny 46 09:14</li><li><a href="stop-TEC_X314aaa.html">TEC:X314aaa</a> - Ban D'ALLE Carrefour 09:19</li><li><a href="stop-TEC_X307aaa.html">TEC:X307aaa</a> - Sugny Rue des Crutins 09:26</li><li><a href="stop-TEC_X307aba.html">TEC:X307aba</a> - Sugny Rue de Bouillon 09:26</li><li><a href="stop-TEC_X307aca.html">TEC:X307aca</a> - Sugny Ecole Communale 09:27</li><li><a href="stop-TEC_X317aaa.html">TEC:X317aaa</a> - Pussemange Anc. Maison Communale 09:32</li><li><a href="stop-TEC_X316aab.html">TEC:X316aab</a> - Bagimont Eglise 09:39</li><li><a href="stop-TEC_X316abb.html">TEC:X316abb</a> - Bagimont Centre FEDASIL 09:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2505.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

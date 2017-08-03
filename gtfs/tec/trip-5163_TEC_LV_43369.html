@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Eupen - Welkenraedt - Kelmis - 5163:TEC:LV:43369</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eupen - Welkenraedt - Kelmis - 5163:TEC:LV:43369</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LkEbbl-1.html">TEC:LkEbbl-1</a> - Kelmis B.B.L. (Knauf) 07:05</li><li><a href="stop-TEC_LkEcoop1.html">TEC:LkEcoop1</a> - Kelmis Coopérative 07:06</li><li><a href="stop-TEC_LkEwolf1.html">TEC:LkEwolf1</a> - Kelmis Wolfsweg 07:07</li><li><a href="stop-TEC_LkEbran1.html">TEC:LkEbran1</a> - Kelmis Brandenhövel 07:08</li><li><a href="stop-TEC_LMsbusc1.html">TEC:LMsbusc1</a> - Moresnet Buschhausen pont 07:08</li><li><a href="stop-TEC_LMsgara1.html">TEC:LMsgara1</a> - Moresnet Garage 07:09</li><li><a href="stop-TEC_LMschap1.html">TEC:LMschap1</a> - Moresnet Chapelle 07:10</li><li><a href="stop-TEC_LGemari1.html">TEC:LGemari1</a> - Gemmenich Maria Hilf 07:12</li><li><a href="stop-TEC_LGevygh1.html">TEC:LGevygh1</a> - Gemmenich Maison Vyghen 07:13</li><li><a href="stop-TEC_LGesent1.html">TEC:LGesent1</a> - Gemmenich Sentier des Cendres 07:14</li><li><a href="stop-TEC_LGeforg1.html">TEC:LGeforg1</a> - Gemmenich La Forge 07:14</li><li><a href="stop-TEC_LGepeck1.html">TEC:LGepeck1</a> - Gemmenich Place Peckham 07:15</li><li><a href="stop-TEC_LGe4bra2.html">TEC:LGe4bra2</a> - Gemmenich 4 Bras 07:16</li><li><a href="stop-TEC_LGecite2.html">TEC:LGecite2</a> - Gemmenich Cité 07:16</li><li><a href="stop-TEC_LGecime2.html">TEC:LGecime2</a> - Gemmenich Cimetière 07:17</li><li><a href="stop-TEC_LVkinst2.html">TEC:LVkinst2</a> - Volkerich Institut 07:18</li><li><a href="stop-TEC_LVkchap2.html">TEC:LVkchap2</a> - Volkerich Chapelle 07:18</li><li><a href="stop-TEC_LPbover2.html">TEC:LPbover2</a> - Volkerich Overloker 07:19</li><li><a href="stop-TEC_LPbchat2.html">TEC:LPbchat2</a> - Plombieres Château des Genêts 07:20</li><li><a href="stop-TEC_LPbeg--2.html">TEC:LPbeg--2</a> - Plombieres Eglise 07:21</li><li><a href="stop-TEC_LPbusin2.html">TEC:LPbusin2</a> - Plombieres Rue de l'Usine 07:22</li><li><a href="stop-TEC_LPbpl--2.html">TEC:LPbpl--2</a> - Plombieres Place 07:23</li><li><a href="stop-TEC_LPbhaut2.html">TEC:LPbhaut2</a> - Plombieres Rue Haute 07:24</li><li><a href="stop-TEC_LPbpeti2.html">TEC:LPbpeti2</a> - Plombieres Petit Spa 07:24</li><li><a href="stop-TEC_LPbtene2.html">TEC:LPbtene2</a> - Plombieres Ten Eycken 07:25</li><li><a href="stop-TEC_LMNjard2.html">TEC:LMNjard2</a> - Montzen rue du Jardinet 07:26</li><li><a href="stop-TEC_LMNcite2.html">TEC:LMNcite2</a> - Montzen Cité 07:27</li><li><a href="stop-TEC_LMNentr2.html">TEC:LMNentr2</a> - Montzen Gare Entrepôt 07:28</li><li><a href="stop-TEC_LMNgare2.html">TEC:LMNgare2</a> - Montzen Rue de la Gare 07:28</li><li><a href="stop-TEC_LMNgend2.html">TEC:LMNgend2</a> - Montzen Gendarmerie 07:29</li><li><a href="stop-TEC_LMNeg--2.html">TEC:LMNeg--2</a> - Montzen Eglise 07:31</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3996.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

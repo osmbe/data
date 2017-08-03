@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Florenville - Arlon - 5163:TEC:LU:7001</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Florenville - Arlon - 5163:TEC:LU:7001</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X601aud.html">TEC:X601aud</a> - Arlon Clinique 13:15</li><li><a href="stop-TEC_X601bbf.html">TEC:X601bbf</a> - Arlon Gare - Quai 2 13:22</li><li><a href="stop-TEC_X601cda.html">TEC:X601cda</a> - Arlon Delhaize 13:25</li><li><a href="stop-TEC_X602aha.html">TEC:X602aha</a> - Stockem Carrefour Rue des Ateliers 13:29</li><li><a href="stop-TEC_X602aga.html">TEC:X602aga</a> - Stockem Centre 13:30</li><li><a href="stop-TEC_X633aca.html">TEC:X633aca</a> - Fouches 4 Chemins 13:34</li><li><a href="stop-TEC_X634aba.html">TEC:X634aba</a> - Vance Carrefour 13:39</li><li><a href="stop-TEC_X636afa.html">TEC:X636afa</a> - Etalle Eglise 13:43</li><li><a href="stop-TEC_X636aka.html">TEC:X636aka</a> - Sainte-Marie N83 (Etalle) 13:47</li><li><a href="stop-TEC_X637aca.html">TEC:X637aca</a> - Tintigny Route de Han 13:50</li><li><a href="stop-TEC_X637aea.html">TEC:X637aea</a> - Tintigny Maison Communale 13:51</li><li><a href="stop-TEC_X638ara.html">TEC:X638ara</a> - Frenois Lavoir 13:54</li><li><a href="stop-TEC_X639aka.html">TEC:X639aka</a> - Jamoigne Centre 13:57</li><li><a href="stop-TEC_X640ama.html">TEC:X640ama</a> - Pin Eglise 14:01</li><li><a href="stop-TEC_X641afd.html">TEC:X641afd</a> - Florenville Place du Miroir - Quai 3 14:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2914.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

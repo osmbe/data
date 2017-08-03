@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - DINANT - FALAEN - 5163:TEC:NA:10694</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DINANT - FALAEN - 5163:TEC:NA:10694</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N243adb.html">TEC:N243adb</a> - Weillen Ferme 07:15</li><li><a href="stop-TEC_N243acb.html">TEC:N243acb</a> - Weillen Chapelle St-Pierre 07:18</li><li><a href="stop-TEC_N243aeb.html">TEC:N243aeb</a> - Weillen Eglise 07:19</li><li><a href="stop-TEC_N243aab.html">TEC:N243aab</a> - Weillen Haut du village 07:20</li><li><a href="stop-TEC_N242aeb.html">TEC:N242aeb</a> - Sommiere Poste 07:23</li><li><a href="stop-TEC_N242afb.html">TEC:N242afb</a> - Sommiere Quatre bras 07:25</li><li><a href="stop-TEC_N242adc.html">TEC:N242adc</a> - Sommiere Route de Haut-le-Wastia 07:26</li><li><a href="stop-TEC_N242agb.html">TEC:N242agb</a> - Sommiere Ferme de Hontoir 07:28</li><li><a href="stop-TEC_N233aba.html">TEC:N233aba</a> - Haut-le-Wastia Rue du Centre 07:32</li><li><a href="stop-TEC_N233aaa.html">TEC:N233aaa</a> - Haut-le-Wastia Place 07:32</li><li><a href="stop-TEC_N230aib.html">TEC:N230aib</a> - Warnant Moulins 07:37</li><li><a href="stop-TEC_N230ahb.html">TEC:N230ahb</a> - Warnant Rue du Moulin 07:38</li><li><a href="stop-TEC_N231adb.html">TEC:N231adb</a> - Anhee Route de Maredsous 07:40</li><li><a href="stop-TEC_N231abb.html">TEC:N231abb</a> - Anhee Place 07:41</li><li><a href="stop-TEC_N231afb.html">TEC:N231afb</a> - Anhee Rue Ste-Barbe 07:42</li><li><a href="stop-TEC_N231agb.html">TEC:N231agb</a> - Anhee Rue de l'Ecluse 07:43</li><li><a href="stop-TEC_N232cda.html">TEC:N232cda</a> - Bouvignes Station 07:46</li><li><a href="stop-TEC_N232aja.html">TEC:N232aja</a> - Bouvignes Monument 07:47</li><li><a href="stop-TEC_N232aia.html">TEC:N232aia</a> - Bouvignes Garage 07:47</li><li><a href="stop-TEC_N232aqa.html">TEC:N232aqa</a> - Dinant Gare 07:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6037.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

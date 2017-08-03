@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - La Roche - Manhay - Malempré - 5163:TEC:LU:4646</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: La Roche - Manhay - Malempré - 5163:TEC:LU:4646</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X781aca.html">TEC:X781aca</a> - Malempre Centre 07:01</li><li><a href="stop-TEC_X781aeb.html">TEC:X781aeb</a> - Malempre Les Quatre Saisons 07:01</li><li><a href="stop-TEC_X715aqa.html">TEC:X715aqa</a> - Manhay Chemin de Giveur 07:04</li><li><a href="stop-TEC_X715acc.html">TEC:X715acc</a> - Manhay Carrefour 07:07</li><li><a href="stop-TEC_X715apa.html">TEC:X715apa</a> - Manhay Spar 07:07</li><li><a href="stop-TEC_X731abb.html">TEC:X731abb</a> - Grandmenil Route d'Erezée 2 07:08</li><li><a href="stop-TEC_X731acb.html">TEC:X731acb</a> - Grandmenil Tank 07:08</li><li><a href="stop-TEC_X731acc.html">TEC:X731acc</a> - Grandmenil Tank 07:08</li><li><a href="stop-TEC_X731adb.html">TEC:X731adb</a> - Grandmenil Route de La Fosse 07:09</li><li><a href="stop-TEC_X731aea.html">TEC:X731aea</a> - La Fosse Route du Châmont 3 07:10</li><li><a href="stop-TEC_X731afb.html">TEC:X731afb</a> - La Fosse Quatre Bras 07:11</li><li><a href="stop-TEC_X731akb.html">TEC:X731akb</a> - La Fosse Route du Fagnou 07:12</li><li><a href="stop-TEC_X731amb.html">TEC:X731amb</a> - Oster Cimetière 07:13</li><li><a href="stop-TEC_X731agb.html">TEC:X731agb</a> - Oster Eglise 07:14</li><li><a href="stop-TEC_X731ahb.html">TEC:X731ahb</a> - Oster Moulin Crahay 07:17</li><li><a href="stop-TEC_X731aia.html">TEC:X731aia</a> - Odeigne Moulin 07:19</li><li><a href="stop-TEC_X716aaa.html">TEC:X716aaa</a> - Odeigne Centre 07:22</li><li><a href="stop-TEC_X716aba.html">TEC:X716aba</a> - Odeigne Rue de la Jonction 11 07:23</li><li><a href="stop-TEC_X731aib.html">TEC:X731aib</a> - Odeigne Moulin 07:25</li><li><a href="stop-TEC_X730aga.html">TEC:X730aga</a> - Freyneux Route du Moulin Crahay 4 07:26</li><li><a href="stop-TEC_X730afb.html">TEC:X730afb</a> - Freyneux Quatre Bras 07:26</li><li><a href="stop-TEC_X730aeb.html">TEC:X730aeb</a> - Lamormenil Route de Freyneux 25 07:28</li><li><a href="stop-TEC_X730adb.html">TEC:X730adb</a> - Lamormenil Ecole 07:29</li><li><a href="stop-TEC_X730acb.html">TEC:X730acb</a> - Lamormenil Route de Dochamps 24 07:30</li><li><a href="stop-TEC_X730abb.html">TEC:X730abb</a> - Lamormenil Euro Camping 07:30</li><li><a href="stop-TEC_X730aab.html">TEC:X730aab</a> - Lamormenil Poteau 07:31</li><li><a href="stop-TEC_X753abd.html">TEC:X753abd</a> - Dochamps Carrefour 07:35</li><li><a href="stop-TEC_X753abc.html">TEC:X753abc</a> - Dochamps Carrefour 07:35</li><li><a href="stop-TEC_X736agb.html">TEC:X736agb</a> - Samree Route de Dochamps 07:39</li><li><a href="stop-TEC_X736aea.html">TEC:X736aea</a> - Samree Eglise 07:41</li><li><a href="stop-TEC_X736aja.html">TEC:X736aja</a> - Samree Chocolaterie 07:41</li><li><a href="stop-TEC_X736afa.html">TEC:X736afa</a> - Samree Route de Vielsalm 07:42</li><li><a href="stop-TEC_X937afa.html">TEC:X937afa</a> - La Roche Quai du Gravier 07:49</li><li><a href="stop-TEC_X937aca.html">TEC:X937aca</a> - La Roche Athénée 07:51</li><li><a href="stop-TEC_X937aeb.html">TEC:X937aeb</a> - La Roche Quai de l'Ourthe 07:53</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3270.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

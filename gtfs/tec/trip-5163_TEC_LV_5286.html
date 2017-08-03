@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Visé - Aubel - Montzen - Welkenraedt - 5163:TEC:LV:5286</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Visé - Aubel - Montzen - Welkenraedt - 5163:TEC:LV:5286</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LFPkape4.html">TEC:LFPkape4</a> - St-Pieters-Voeren Sint-Annakapel / Chap. Ste Anne 13:40</li><li><a href="stop-TEC_LFPknap2.html">TEC:LFPknap2</a> - St-Pieters-Voeren Knap 13:41</li><li><a href="stop-TEC_LFMstat2.html">TEC:LFMstat2</a> - St-Martens-Voeren Station 13:41</li><li><a href="stop-TEC_LFMvoge2.html">TEC:LFMvoge2</a> - St-Martens-Voeren Vogelstang 13:41</li><li><a href="stop-TEC_LFMrijk2.html">TEC:LFMrijk2</a> - St-Martens-Voeren Rijkswacht / Gendarmerie 13:42</li><li><a href="stop-TEC_LFCotte2.html">TEC:LFCotte2</a> - S Gravenvoeren Ottegraeven 13:43</li><li><a href="stop-TEC_LFCscho2.html">TEC:LFCscho2</a> - S Gravenvoeren Schophem 13:44</li><li><a href="stop-TEC_LFCvoge4.html">TEC:LFCvoge4</a> - S Gravenvoeren Vogelgats 13:45</li><li><a href="stop-TEC_LFCkett2.html">TEC:LFCkett2</a> - S Gravenvoeren Ketten 13:45</li><li><a href="stop-TEC_LFCvoer2.html">TEC:LFCvoer2</a> - S Gravenvoeren Voerenberg 13:46</li><li><a href="stop-TEC_LFCalte2.html">TEC:LFCalte2</a> - S Gravenvoeren Weg Op Altenbroek 13:46</li><li><a href="stop-TEC_LFCkerk2.html">TEC:LFCkerk2</a> - S Gravenvoeren Kerk 13:47</li><li><a href="stop-TEC_LFChuis2.html">TEC:LFChuis2</a> - S Gravenvoeren Huis 168 13:48</li><li><a href="stop-TEC_LWRgare2.html">TEC:LWRgare2</a> - Warsage Rue de la Gare 13:50</li><li><a href="stop-TEC_LWRpl--2.html">TEC:LWRpl--2</a> - Warsage Place 13:52</li><li><a href="stop-TEC_LWRbomb2.html">TEC:LWRbomb2</a> - Warsage Route de Bombaye 13:53</li><li><a href="stop-TEC_LBOande2.html">TEC:LBOande2</a> - Bombaye Chemin de l'Andelaine 13:54</li><li><a href="stop-TEC_LBOholt2.html">TEC:LBOholt2</a> - Bombaye Holtrée 13:55</li><li><a href="stop-TEC_LBOec--2.html">TEC:LBOec--2</a> - Bombaye Ecole 13:56</li><li><a href="stop-TEC_LBWbatt2.html">TEC:LBWbatt2</a> - Berneau Chaussée de Battice 13:57</li><li><a href="stop-TEC_LBWeg--2.html">TEC:LBWeg--2</a> - Berneau Eglise 13:58</li><li><a href="stop-TEC_LBWviad2.html">TEC:LBWviad2</a> - Berneau Viaduc 13:59</li><li><a href="stop-TEC_LVImons2.html">TEC:LVImons2</a> - Vise Route de Mons 14:00</li><li><a href="stop-TEC_LVIferm2.html">TEC:LVIferm2</a> - Vise Ferme des Trois Rois 14:01</li><li><a href="stop-TEC_LVIhall2.html">TEC:LVIhall2</a> - Vise Hall Omnisport 14:02</li><li><a href="stop-TEC_LVIjacq2.html">TEC:LVIjacq2</a> - Vise Ecole Lieutenant Jacquemin 14:03</li><li><a href="stop-TEC_LVIsacr2.html">TEC:LVIsacr2</a> - Vise Institut du Sacré-Coeur 14:04</li><li><a href="stop-TEC_LVIastr1.html">TEC:LVIastr1</a> - Vise Place Reine Astrid 14:05</li><li><a href="stop-TEC_LVIacac1.html">TEC:LVIacac1</a> - Vise Rue des Acacias 14:06</li><li><a href="stop-TEC_LVItcm-1.html">TEC:LVItcm-1</a> - Vise Garage T.C.M. 14:06</li><li><a href="stop-TEC_LVIdepo2.html">TEC:LVIdepo2</a> - Vise Place des Déportés 14:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4962.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Verviers Gare - Plenesses zi - 5163:TEC:LV:25139</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Verviers Gare - Plenesses zi - 5163:TEC:LV:25139</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Ladplen_.html">TEC:Ladplen*</a> - Andrimont Plenesses zi 15:10</li><li><a href="stop-TEC_Ladarev2.html">TEC:Ladarev2</a> - Andrimont AREVA 15:12</li><li><a href="stop-TEC_Ladxhen2.html">TEC:Ladxhen2</a> - Andrimont Chemin de Xhénorie 15:13</li><li><a href="stop-TEC_Ladwooz2.html">TEC:Ladwooz2</a> - Andrimont Chemin de Wooz 15:14</li><li><a href="stop-TEC_Ladlaur2.html">TEC:Ladlaur2</a> - Andrimont St-Laurent 15:14</li><li><a href="stop-TEC_Ladjuif2.html">TEC:Ladjuif2</a> - Andrimont Ruelle des Juifs 15:15</li><li><a href="stop-TEC_Ladegli2.html">TEC:Ladegli2</a> - Andrimont Eglise 15:15</li><li><a href="stop-TEC_Ladfoot2.html">TEC:Ladfoot2</a> - Andrimont Terrain de Football 15:15</li><li><a href="stop-TEC_Ladhomb2.html">TEC:Ladhomb2</a> - Andrimont Hombiet 15:16</li><li><a href="stop-TEC_Ladmoul2.html">TEC:Ladmoul2</a> - Andrimont Petit Moulin 15:17</li><li><a href="stop-TEC_Ladotto2.html">TEC:Ladotto2</a> - Andrimont Ottomont 15:18</li><li><a href="stop-TEC_Ladjaur2.html">TEC:Ladjaur2</a> - Andrimont Rue J. Jaurès 15:18</li><li><a href="stop-TEC_Ladpire2.html">TEC:Ladpire2</a> - Andrimont Rue M. Pire 15:19</li><li><a href="stop-TEC_Ladverv2.html">TEC:Ladverv2</a> - Andrimont Rue de Verviers 15:20</li><li><a href="stop-TEC_Ladloup2.html">TEC:Ladloup2</a> - Andrimont Rue fonds de Loup 15:21</li><li><a href="stop-TEC_Lvelimi2.html">TEC:Lvelimi2</a> - Verviers Rue de la Limite 15:21</li><li><a href="stop-TEC_Lvefabr2.html">TEC:Lvefabr2</a> - Verviers Rue des Fabriques 15:22</li><li><a href="stop-TEC_Lvehodi4.html">TEC:Lvehodi4</a> - Verviers Rue de Hodimont 15:23</li><li><a href="stop-TEC_Lveharm2.html">TEC:Lveharm2</a> - Verviers Harmonie 15:25</li><li><a href="stop-TEC_Lvegc-1_.html">TEC:Lvegc-1*</a> - Verviers Gare Centrale 15:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5053.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

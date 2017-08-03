@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Pt d'Avroy - Ste-Walburge - Citadelle - 5163:TEC:LV:12364</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Pt d'Avroy - Ste-Walburge - Citadelle - 5163:TEC:LV:12364</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LlgPTAV6.html">TEC:LlgPTAV6</a> - Liege Pont d'Avroy (débarquement) 09:20</li><li><a href="stop-TEC_LlgPTAV4.html">TEC:LlgPTAV4</a> - Liege Pont d'Avroy (Hazinelle) 09:20</li><li><a href="stop-TEC_Llghec-1.html">TEC:Llghec-1</a> - Liege H.E.C. 09:23</li><li><a href="stop-TEC_Llgreyn1.html">TEC:Llgreyn1</a> - Liege Rue Reynier 09:23</li><li><a href="stop-TEC_Llgcfra1.html">TEC:Llgcfra1</a> - Liege Rue C. Franck 09:25</li><li><a href="stop-TEC_Llghlau1.html">TEC:Llghlau1</a> - Liege Hôpital St-Laurent 09:26</li><li><a href="stop-TEC_Llgbida1.html">TEC:Llgbida1</a> - Liege Rue Bidaut 09:27</li><li><a href="stop-TEC_Llgware2.html">TEC:Llgware2</a> - Liege Rue de Waremme 09:28</li><li><a href="stop-TEC_Llgbaro2.html">TEC:Llgbaro2</a> - Liege Rue H. Baron 09:28</li><li><a href="stop-TEC_Llghesb1.html">TEC:Llghesb1</a> - Liege Rue de Hesbaye 09:29</li><li><a href="stop-TEC_Llgpere1.html">TEC:Llgpere1</a> - Liege Chapelle des Pères 09:30</li><li><a href="stop-TEC_Llgoeil1.html">TEC:Llgoeil1</a> - Liege Rue des Oeillets 09:31</li><li><a href="stop-TEC_Llglaha1.html">TEC:Llglaha1</a> - Liege Rue J. Lahaut 09:31</li><li><a href="stop-TEC_Llglys-1.html">TEC:Llglys-1</a> - Liege Rue des Lys 09:32</li><li><a href="stop-TEC_Llgnaim1.html">TEC:Llgnaim1</a> - Liege R. Naimette (Egl. Ste-Julienne) 09:32</li><li><a href="stop-TEC_Llgnani1.html">TEC:Llgnani1</a> - Liege R. Naniot 09:33</li><li><a href="stop-TEC_Llgnaes1.html">TEC:Llgnaes1</a> - Liege R. Cdt Naessens 09:34</li><li><a href="stop-TEC_Llgseel1.html">TEC:Llgseel1</a> - Liege Place Seeliger 09:34</li><li><a href="stop-TEC_Llgwesp1.html">TEC:Llgwesp1</a> - Liege Rue Wesphal 09:35</li><li><a href="stop-TEC_Llghaut1.html">TEC:Llghaut1</a> - Liege Boulevard des Hauteurs 09:36</li><li><a href="stop-TEC_Llgwild8.html">TEC:Llgwild8</a> - Liege Place J. de Wilde 09:37</li><li><a href="stop-TEC_Llglimb2.html">TEC:Llglimb2</a> - Liege Rue du Limbourg 09:38</li><li><a href="stop-TEC_Llghugo2.html">TEC:Llghugo2</a> - Liege Avenue V. Hugo 09:38</li><li><a href="stop-TEC_Llgchal1.html">TEC:Llgchal1</a> - Liege Chalet 09:40</li><li><a href="stop-TEC_Llgcita2.html">TEC:Llgcita2</a> - Liege Hôpital de la Citadelle 09:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3887.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

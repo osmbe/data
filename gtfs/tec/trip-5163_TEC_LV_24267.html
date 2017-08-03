@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bilstain - Dolhain - Goé - Membach - Welkenraedt - 5163:TEC:LV:24267</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bilstain - Dolhain - Goé - Membach - Welkenraedt - 5163:TEC:LV:24267</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LWEgare1.html">TEC:LWEgare1</a> - Welkenraedt Gare SNCB 16:35</li><li><a href="stop-TEC_LWEpl--1.html">TEC:LWEpl--1</a> - Welkenraedt Place des Combattants 16:36</li><li><a href="stop-TEC_LWEeg--1.html">TEC:LWEeg--1</a> - Welkenraedt Eglise 16:37</li><li><a href="stop-TEC_LWEmerm1.html">TEC:LWEmerm1</a> - Welkenraedt Rue Mermer 16:38</li><li><a href="stop-TEC_LWElanc2.html">TEC:LWElanc2</a> - Welkenraedt Lançaumont 16:40</li><li><a href="stop-TEC_LBNauto2.html">TEC:LBNauto2</a> - Baelen Pont de l'Autoroute 16:42</li><li><a href="stop-TEC_LBNhegg2.html">TEC:LBNhegg2</a> - Baelen Heggen 16:43</li><li><a href="stop-TEC_LBNplei2.html">TEC:LBNplei2</a> - Baelen Plein-Vent 45 16:44</li><li><a href="stop-TEC_LBNpleg2.html">TEC:LBNpleg2</a> - Baelen Place de l'Eglise 16:46</li><li><a href="stop-TEC_LBNvill6.html">TEC:LBNvill6</a> - Baelen Village 16:46</li><li><a href="stop-TEC_LMemaza2.html">TEC:LMemaza2</a> - Membach Mazarinen 16:49</li><li><a href="stop-TEC_LMeeg--1.html">TEC:LMeeg--1</a> - Membach Eglise 16:52</li><li><a href="stop-TEC_LMebove2.html">TEC:LMebove2</a> - Membach Boveroth 16:53</li><li><a href="stop-TEC_LMechpl2.html">TEC:LMechpl2</a> - Membach Chapelle 16:54</li><li><a href="stop-TEC_LMeperk2.html">TEC:LMeperk2</a> - Membach Perkiets 16:55</li><li><a href="stop-TEC_LBHinva2.html">TEC:LBHinva2</a> - Bethane Rue de l'Invasion 80 16:56</li><li><a href="stop-TEC_LBHhuyn2.html">TEC:LBHhuyn2</a> - Bethane Ferme Huynen 16:57</li><li><a href="stop-TEC_LBHgile2.html">TEC:LBHgile2</a> - Bethane Route de la Gileppe 16:58</li><li><a href="stop-TEC_LGObeth2.html">TEC:LGObeth2</a> - Goe Route de Béthane 16:59</li><li><a href="stop-TEC_LGOvill1.html">TEC:LGOvill1</a> - Goe Village 17:00</li><li><a href="stop-TEC_LGOmous1.html">TEC:LGOmous1</a> - Goe Sous le Moustier 17:01</li><li><a href="stop-TEC_LDOordi1.html">TEC:LDOordi1</a> - Dolhain Firme Ordibel 17:02</li><li><a href="stop-TEC_LDOanes1.html">TEC:LDOanes1</a> - Dolhain Pont des Anes 17:03</li><li><a href="stop-TEC_LDOdavi1.html">TEC:LDOdavi1</a> - Dolhain Avenue David 17:05</li><li><a href="stop-TEC_LDOandr3.html">TEC:LDOandr3</a> - Dolhain Place d'Andrimont 17:06</li><li><a href="stop-TEC_LBiberg2.html">TEC:LBiberg2</a> - Bilstain Bergerie 17:07</li><li><a href="stop-TEC_LBiroch2.html">TEC:LBiroch2</a> - Bilstain Saint-Roch 17:08</li><li><a href="stop-TEC_LBichen2.html">TEC:LBichen2</a> - Bilstain Chenay 17:09</li><li><a href="stop-TEC_LBivill2.html">TEC:LBivill2</a> - Bilstain Village 17:10</li><li><a href="stop-TEC_LBieg--4.html">TEC:LBieg--4</a> - Bilstain Eglise 17:11</li><li><a href="stop-TEC_LBichat2.html">TEC:LBichat2</a> - Bilstain Château d'Eau 17:12</li><li><a href="stop-TEC_LBivi--2.html">TEC:LBivi--2</a> - Bilstain Route de Villers 17:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4905.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

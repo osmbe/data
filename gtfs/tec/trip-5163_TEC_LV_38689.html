@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Bierset - Stockay - Amay - Huy - 5163:TEC:LV:38689</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Bierset - Stockay - Amay - Huy - 5163:TEC:LV:38689</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LBIvill1.html">TEC:LBIvill1</a> - Bierset Village 07:38</li><li><a href="stop-TEC_LBImili1.html">TEC:LBImili1</a> - Bierset Base Militaire 07:39</li><li><a href="stop-TEC_LVevill1.html">TEC:LVevill1</a> - Velroux Village 07:42</li><li><a href="stop-TEC_LVeeg--1.html">TEC:LVeeg--1</a> - Velroux Eglise 07:43</li><li><a href="stop-TEC_LVGeg--1.html">TEC:LVGeg--1</a> - Voroux-Goreux Eglise 07:45</li><li><a href="stop-TEC_LFHjamo1.html">TEC:LFHjamo1</a> - Fexhe-le-Haut-Clocher Ferme Jamoulle 07:46</li><li><a href="stop-TEC_LFHsucr1.html">TEC:LFHsucr1</a> - Fexhe-le-Haut-Clocher Sucrerie 07:48</li><li><a href="stop-TEC_LNvrout1.html">TEC:LNvrout1</a> - Noville Rue Principale 07:50</li><li><a href="stop-TEC_LJelava1.html">TEC:LJelava1</a> - Jeneffe Rue Lavaulx 10 07:53</li><li><a href="stop-TEC_LJeeg--1.html">TEC:LJeeg--1</a> - Jeneffe Eglise 07:54</li><li><a href="stop-TEC_LJedonc4.html">TEC:LJedonc4</a> - Jeneffe rue de Donceel 07:55</li><li><a href="stop-TEC_LJetrih2.html">TEC:LJetrih2</a> - Jeneffe Le Trixhe 07:55</li><li><a href="stop-TEC_LJesole2.html">TEC:LJesole2</a> - Jeneffe Soleil 07:56</li><li><a href="stop-TEC_LDmdegi1.html">TEC:LDmdegi1</a> - Dommartin Ferme Degive 08:00</li><li><a href="stop-TEC_LDmcruc1.html">TEC:LDmcruc1</a> - Dommartin Crucifix 08:00</li><li><a href="stop-TEC_LDmeg--1.html">TEC:LDmeg--1</a> - Dommartin Eglise 08:02</li><li><a href="stop-TEC_LDmdomm1.html">TEC:LDmdomm1</a> - Dommartin Rue Dommartin 08:03</li><li><a href="stop-TEC_LDmwarf1.html">TEC:LDmwarf1</a> - Dommartin Warfée 08:04</li><li><a href="stop-TEC_LSGmale1.html">TEC:LSGmale1</a> - Saint-Georges Rue Rodge Male 08:06</li><li><a href="stop-TEC_LSGhagn1.html">TEC:LSGhagn1</a> - Saint-Georges Rue des Hagnas 08:07</li><li><a href="stop-TEC_LSGsolo1.html">TEC:LSGsolo1</a> - Saint-Georges Rue Solovaz 08:08</li><li><a href="stop-TEC_LSGeg--1.html">TEC:LSGeg--1</a> - Saint-Georges Eglise 08:09</li><li><a href="stop-TEC_LSGcent1.html">TEC:LSGcent1</a> - Saint-Georges Rue du Centre 08:10</li><li><a href="stop-TEC_LSGbail1.html">TEC:LSGbail1</a> - Saint-Georges Rue Bailesse 08:11</li><li><a href="stop-TEC_LSGfoua1.html">TEC:LSGfoua1</a> - Saint-Georges Rue Fouarge 08:13</li><li><a href="stop-TEC_LSkathe1.html">TEC:LSkathe1</a> - Stockay Athénée 08:14</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4798.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

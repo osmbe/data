@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Gouvy - Tavigny - Bastogne - 5163:TEC:LU:6027</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gouvy - Tavigny - Bastogne - 5163:TEC:LU:6027</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X725afe.html">TEC:X725afe</a> - Bastogne Gare du Sud - Quai 3 12:25</li><li><a href="stop-TEC_X725aed.html">TEC:X725aed</a> - Bastogne Pépinière - Quai 4 12:30</li><li><a href="stop-TEC_X725beb.html">TEC:X725beb</a> - Bastogne Complexe Sportif 12:32</li><li><a href="stop-TEC_X725ava.html">TEC:X725ava</a> - Bastogne Route du Mardasson 12:33</li><li><a href="stop-TEC_X725aua.html">TEC:X725aua</a> - Bastogne Rue du Petit Moulin 12:34</li><li><a href="stop-TEC_X767aia.html">TEC:X767aia</a> - Neffe Route de Bastogne 12:36</li><li><a href="stop-TEC_X767aab.html">TEC:X767aab</a> - Neffe Chapelle 12:37</li><li><a href="stop-TEC_X768aca.html">TEC:X768aca</a> - Mageret Grand Route 250 12:40</li><li><a href="stop-TEC_X768ada.html">TEC:X768ada</a> - Mageret Grand Route 30 12:41</li><li><a href="stop-TEC_X768aed.html">TEC:X768aed</a> - Mageret Carrefour 12:42</li><li><a href="stop-TEC_X768aia.html">TEC:X768aia</a> - Arloncourt Chapelle 12:46</li><li><a href="stop-TEC_X768aja.html">TEC:X768aja</a> - Arloncourt Eglise 12:46</li><li><a href="stop-TEC_X768aka.html">TEC:X768aka</a> - Arloncourt Carrefour de Al'Hez 12:47</li><li><a href="stop-TEC_X766aab.html">TEC:X766aab</a> - Michamps Route d'Oubourcy 12:51</li><li><a href="stop-TEC_X766abb.html">TEC:X766abb</a> - Michamps Eglise 12:53</li><li><a href="stop-TEC_X766agb.html">TEC:X766agb</a> - Bourcy Ecole 12:57</li><li><a href="stop-TEC_X766ajb.html">TEC:X766ajb</a> - Bourcy Centre 74 12:58</li><li><a href="stop-TEC_X766ada.html">TEC:X766ada</a> - Bourcy Route de Tavigny 12:58</li><li><a href="stop-TEC_X766afa.html">TEC:X766afa</a> - Bourcy Terrain de Football 12:59</li><li><a href="stop-TEC_X723aeb.html">TEC:X723aeb</a> - Hardigny Centre 13:03</li><li><a href="stop-TEC_X723adb.html">TEC:X723adb</a> - Rachamps Carrefour 13:06</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3439.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - MEEFFE - 5163:TEC:NA:10276</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - MEEFFE - 5163:TEC:NA:10276</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N507agb.html">TEC:N507agb</a> - Forville Av. de la Libération 18:31</li><li><a href="stop-TEC_N508acb.html">TEC:N508acb</a> - Noville-les-Bois Quatre vents 18:33</li><li><a href="stop-TEC_N508abb.html">TEC:N508abb</a> - Noville-les-Bois Pont 18:34</li><li><a href="stop-TEC_N508aeb.html">TEC:N508aeb</a> - Noville-les-Bois Place communale 18:34</li><li><a href="stop-TEC_N508adb.html">TEC:N508adb</a> - Noville-les-Bois Rue des Combattants 18:35</li><li><a href="stop-TEC_N508aab.html">TEC:N508aab</a> - Noville-les-Bois Rue Général Piron 18:36</li><li><a href="stop-TEC_N508afb.html">TEC:N508afb</a> - Noville-les-Bois Cimetière 18:37</li><li><a href="stop-TEC_N508ajb.html">TEC:N508ajb</a> - Avril Rue Dachelet 18:38</li><li><a href="stop-TEC_N508alb.html">TEC:N508alb</a> - Avril Rue des écoles 18:39</li><li><a href="stop-TEC_N508amb.html">TEC:N508amb</a> - Avril Ferme 18:39</li><li><a href="stop-TEC_N508aob.html">TEC:N508aob</a> - Avril Zoning 18:40</li><li><a href="stop-TEC_N509aab.html">TEC:N509aab</a> - Franc-Waret Autoroute 18:41</li><li><a href="stop-TEC_N509aeb.html">TEC:N509aeb</a> - Franc-Waret Calvaire 18:43</li><li><a href="stop-TEC_N509afb.html">TEC:N509afb</a> - Franc-Waret Route de Namêche 18:43</li><li><a href="stop-TEC_N509agb.html">TEC:N509agb</a> - Franc-Waret Château 18:44</li><li><a href="stop-TEC_N510adb.html">TEC:N510adb</a> - Marchovelette Lotissement Capelle 18:47</li><li><a href="stop-TEC_N510aeb.html">TEC:N510aeb</a> - Marchovelette Route de Gelbressée 18:48</li><li><a href="stop-TEC_N510acb.html">TEC:N510acb</a> - Marchovelette Maison communale 18:49</li><li><a href="stop-TEC_N510aab.html">TEC:N510aab</a> - Marchovelette Rue de la chasse 18:50</li><li><a href="stop-TEC_N510abb.html">TEC:N510abb</a> - Marchovelette Gare 18:50</li><li><a href="stop-TEC_N501ccb.html">TEC:N501ccb</a> - Champion Chemin du fort 18:53</li><li><a href="stop-TEC_N501bzb.html">TEC:N501bzb</a> - Champion Rue Davreux 18:54</li><li><a href="stop-TEC_N501cab.html">TEC:N501cab</a> - Champion Campagne 18:54</li><li><a href="stop-TEC_N501cgb.html">TEC:N501cgb</a> - Champion Gare 18:55</li><li><a href="stop-TEC_N501chf.html">TEC:N501chf</a> - Champion Wilmart 18:56</li><li><a href="stop-TEC_N501boa.html">TEC:N501boa</a> - Bouge Bois de Bouge 18:57</li><li><a href="stop-TEC_N501bpa.html">TEC:N501bpa</a> - Bouge Rue Lambert 18:57</li><li><a href="stop-TEC_N501bja.html">TEC:N501bja</a> - Bouge Rue Saint-Luc 18:58</li><li><a href="stop-TEC_N501bra.html">TEC:N501bra</a> - Bouge Moulin-à-vent 18:59</li><li><a href="stop-TEC_N501lca.html">TEC:N501lca</a> - Namur IATA 19:01</li><li><a href="stop-TEC_N501lba.html">TEC:N501lba</a> - Namur Heuvy 19:03</li><li><a href="stop-TEC_N501zda.html">TEC:N501zda</a> - Namur Pl. de la Station - Quai E 19:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5828.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

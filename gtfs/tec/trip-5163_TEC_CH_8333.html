@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHARLEROI- BEAUMONT-CHIMAY - 5163:TEC:CH:8333</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHARLEROI- BEAUMONT-CHIMAY - 5163:TEC:CH:8333</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Crcgare1.html">TEC:Crcgare1</a> - Rance Gare 16:45</li><li><a href="stop-TEC_Crcplac3.html">TEC:Crcplac3</a> - Rance Place François 16:47</li><li><a href="stop-TEC_Crcpcom1.html">TEC:Crcpcom1</a> - Rance Place Communale 16:48</li><li><a href="stop-TEC_Crcegli1.html">TEC:Crcegli1</a> - Rance Eglise 16:48</li><li><a href="stop-TEC_Crcverr1.html">TEC:Crcverr1</a> - Rance Verrerie 16:49</li><li><a href="stop-TEC_Crcfdom1.html">TEC:Crcfdom1</a> - Rance Forêt Domaniale 16:51</li><li><a href="stop-TEC_Csurela1.html">TEC:Csurela1</a> - Sautin Café Relais 16:52</li><li><a href="stop-TEC_Csygare1.html">TEC:Csygare1</a> - Sivry Gare 16:54</li><li><a href="stop-TEC_Csslesc1.html">TEC:Csslesc1</a> - Solre-Saint-Gery Lescaille 16:56</li><li><a href="stop-TEC_Csshouy1.html">TEC:Csshouy1</a> - Solre-Saint-Gery Houyeux 16:57</li><li><a href="stop-TEC_Csscrot1.html">TEC:Csscrot1</a> - Solre-Saint-Gery Pont Crotté 17:00</li><li><a href="stop-TEC_Clcfall1.html">TEC:Clcfall1</a> - Leval-Chaudeville Fallin 17:01</li><li><a href="stop-TEC_Cbmpopr1.html">TEC:Cbmpopr1</a> - Beaumont Pont du prince 17:02</li><li><a href="stop-TEC_Cbmmafr1.html">TEC:Cbmmafr1</a> - Beaumont Home Marie-France 17:02</li><li><a href="stop-TEC_Cbmind1.html">TEC:Cbmind1</a> - Beaumont Athénée 17:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1194.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

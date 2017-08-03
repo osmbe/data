@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Libramont - Jemelle - 5163:TEC:LU:5040</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Libramont - Jemelle - 5163:TEC:LU:5040</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X897alc.html">TEC:X897alc</a> - Saint-Hubert Place de la Libération 16:02</li><li><a href="stop-TEC_X897aic.html">TEC:X897aic</a> - Saint-Hubert IND - Quai 1 16:05</li><li><a href="stop-TEC_X897ada.html">TEC:X897ada</a> - Saint-Hubert Rue du Mont 132 16:06</li><li><a href="stop-TEC_X897aeb.html">TEC:X897aeb</a> - Saint-Hubert Chapelle St-Roch 16:06</li><li><a href="stop-TEC_X888aab.html">TEC:X888aab</a> - Vesqueville Rouges Fosses 16:08</li><li><a href="stop-TEC_X899aab.html">TEC:X899aab</a> - Bras Haut N89 16:09</li><li><a href="stop-TEC_X801aaa.html">TEC:X801aaa</a> - Libramont L'Oréal 16:17</li><li><a href="stop-TEC_X802aub.html">TEC:X802aub</a> - Recogne Route de Saint-Hubert - N89 16:18</li><li><a href="stop-TEC_X802aya.html">TEC:X802aya</a> - Recogne Carrefour 16:19</li><li><a href="stop-TEC_X801bwa.html">TEC:X801bwa</a> - Libramont Le Blancheau 16:21</li><li><a href="stop-TEC_X801bxa.html">TEC:X801bxa</a> - Libramont Gendarmerie 16:22</li><li><a href="stop-TEC_X801bzb.html">TEC:X801bzb</a> - Libramont Outigros 16:23</li><li><a href="stop-TEC_X801clb.html">TEC:X801clb</a> - Libramont Avenue de Bouillon 59 16:24</li><li><a href="stop-TEC_X801bma.html">TEC:X801bma</a> - Libramont Avenue de Bouillon 13 16:25</li><li><a href="stop-TEC_X801bde.html">TEC:X801bde</a> - Libramont Gare - Quai 3 16:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3493.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

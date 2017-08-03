@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Momalle - Waremme - 5163:TEC:LV:41185</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Momalle - Waremme - 5163:TEC:LV:41185</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LWAgare_.html">TEC:LWAgare*</a> - Waremme Gare 12:08</li><li><a href="stop-TEC_LWAlong5.html">TEC:LWAlong5</a> - Waremme Place Longchamps 12:10</li><li><a href="stop-TEC_LWAloui1.html">TEC:LWAloui1</a> - Waremme Collège St-Louis 12:11</li><li><a href="stop-TEC_LWArege1.html">TEC:LWArege1</a> - Waremme Avenue du Prince Régent 12:12</li><li><a href="stop-TEC_LWAfabr1.html">TEC:LWAfabr1</a> - Waremme Rue des Fabriques 12:12</li><li><a href="stop-TEC_LWAathe1.html">TEC:LWAathe1</a> - Waremme Athénée 12:14</li><li><a href="stop-TEC_LWAvand1.html">TEC:LWAvand1</a> - Waremme Avenue E. Vandervelde 12:14</li><li><a href="stop-TEC_LWAlieg1.html">TEC:LWAlieg1</a> - Waremme Porte de Liège 12:15</li><li><a href="stop-TEC_LWAor--2.html">TEC:LWAor--2</a> - Waremme Rue Fond d'Or 12:15</li><li><a href="stop-TEC_LWAclos2.html">TEC:LWAclos2</a> - Waremme Clos de Hesbaye 12:16</li><li><a href="stop-TEC_LWAeloi2.html">TEC:LWAeloi2</a> - Waremme Chapelle St-Eloi 12:17</li><li><a href="stop-TEC_LBKmoes2.html">TEC:LBKmoes2</a> - Bleret Ferme Moës 12:18</li><li><a href="stop-TEC_LBKmare2.html">TEC:LBKmare2</a> - Bleret Rue L. Maréchal 12:20</li><li><a href="stop-TEC_LPUlecl2.html">TEC:LPUlecl2</a> - Pousset Ferme Leclercq 12:22</li><li><a href="stop-TEC_LPUalbe2.html">TEC:LPUalbe2</a> - Pousset Place du Roi Albert 12:23</li><li><a href="stop-TEC_LPUmer-2.html">TEC:LPUmer-2</a> - Pousset Rue de la Mer 12:23</li><li><a href="stop-TEC_LPUmang2.html">TEC:LPUmang2</a> - Pousset Rue Mangon 12:24</li><li><a href="stop-TEC_LPUchpl2.html">TEC:LPUchpl2</a> - Pousset Chapelle 12:25</li><li><a href="stop-TEC_LRepous2.html">TEC:LRepous2</a> - Remicourt Rue de Pousset 12:26</li><li><a href="stop-TEC_LRemorr2.html">TEC:LRemorr2</a> - Remicourt Meubles Morren 12:27</li><li><a href="stop-TEC_LLmwaut1.html">TEC:LLmwaut1</a> - Lamine Rue J. Wauters 12:28</li><li><a href="stop-TEC_LLmcarr1.html">TEC:LLmcarr1</a> - Lamine Carrefour 12:29</li><li><a href="stop-TEC_LLmetat1.html">TEC:LLmetat1</a> - Lamine Rue de l'Etat 84 12:30</li><li><a href="stop-TEC_LHDpota2.html">TEC:LHDpota2</a> - Hodeige Potale 12:30</li><li><a href="stop-TEC_LHDmc--2.html">TEC:LHDmc--2</a> - Hodeige Maison Communale 12:31</li><li><a href="stop-TEC_LHDlibi2.html">TEC:LHDlibi2</a> - Hodeige Magasin Libioulle 12:32</li><li><a href="stop-TEC_LHDchar4.html">TEC:LHDchar4</a> - Hodeige rue A. Charlier 12:32</li><li><a href="stop-TEC_LMOpiss2.html">TEC:LMOpiss2</a> - Momalle Carrefour Pissoule 12:35</li><li><a href="stop-TEC_LMOlens2.html">TEC:LMOlens2</a> - Momalle Rue de Lens 12:35</li><li><a href="stop-TEC_LMOeg--2.html">TEC:LMOeg--2</a> - Momalle Eglise 12:36</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4482.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

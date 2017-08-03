@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - MALONNE (Malpas) - 5163:TEC:NA:7954</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - MALONNE (Malpas) - 5163:TEC:NA:7954</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N528adb.html">TEC:N528adb</a> - Malonne Malpas place 08:43</li><li><a href="stop-TEC_N528acb.html">TEC:N528acb</a> - Malonne Ecole communale 08:45</li><li><a href="stop-TEC_N528aeb.html">TEC:N528aeb</a> - Malonne La Navinne 08:46</li><li><a href="stop-TEC_N528aab.html">TEC:N528aab</a> - Malonne Pensionnat 08:47</li><li><a href="stop-TEC_N528abb.html">TEC:N528abb</a> - Malonne Fond place 08:48</li><li><a href="stop-TEC_N528afb.html">TEC:N528afb</a> - Malonne Port 08:50</li><li><a href="stop-TEC_N528ajb.html">TEC:N528ajb</a> - Malonne Zoning industriel 08:52</li><li><a href="stop-TEC_N528akb.html">TEC:N528akb</a> - Malonne Bauce ferme 08:54</li><li><a href="stop-TEC_N528aib.html">TEC:N528aib</a> - Malonne Bauce pont 08:54</li><li><a href="stop-TEC_N528agb.html">TEC:N528agb</a> - Malonne Bauce garage 08:55</li><li><a href="stop-TEC_N528ahb.html">TEC:N528ahb</a> - Malonne Gueule du loup 08:56</li><li><a href="stop-TEC_N501gbb.html">TEC:N501gbb</a> - Namur Café du tir 08:56</li><li><a href="stop-TEC_N501lxb.html">TEC:N501lxb</a> - Namur Salzinnes dépôt bus 08:57</li><li><a href="stop-TEC_N501fgb.html">TEC:N501fgb</a> - Salzinnes Rue Fontaine des Prés 08:58</li><li><a href="stop-TEC_N501lyb.html">TEC:N501lyb</a> - Salzinnes Maternité provinciale 08:58</li><li><a href="stop-TEC_N501fqd.html">TEC:N501fqd</a> - Salzinnes Eglise Ste Julienne 08:58</li><li><a href="stop-TEC_N501fdb.html">TEC:N501fdb</a> - Salzinnes Place Wiertz 08:59</li><li><a href="stop-TEC_N501fab.html">TEC:N501fab</a> - Salzinnes Place Falmagne 09:00</li><li><a href="stop-TEC_N501gpd.html">TEC:N501gpd</a> - Namur Omalius 09:02</li><li><a href="stop-TEC_N501grf.html">TEC:N501grf</a> - Namur Pl. de la Station - Coupole 09:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5743.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

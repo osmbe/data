@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Florenville - Muno - Bouillon - 5163:TEC:LU:35</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Florenville - Muno - Bouillon - 5163:TEC:LU:35</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X824aed.html">TEC:X824aed</a> - Sainte-Cecile 4 Arbres 07:24</li><li><a href="stop-TEC_X824adb.html">TEC:X824adb</a> - Fontenoille Rue des Otages 07:25</li><li><a href="stop-TEC_X824abb.html">TEC:X824abb</a> - Fontenoille Monument 07:27</li><li><a href="stop-TEC_X824aac.html">TEC:X824aac</a> - Fontenoille 4 Arbres 07:28</li><li><a href="stop-TEC_X825aab.html">TEC:X825aab</a> - Lambermont Route de France 07:29</li><li><a href="stop-TEC_X825abb.html">TEC:X825abb</a> - Lambermont Eglise 07:30</li><li><a href="stop-TEC_X825ada.html">TEC:X825ada</a> - Lambermont Rue de la Petite Scierie 07:30</li><li><a href="stop-TEC_X825aea.html">TEC:X825aea</a> - Lambermont La Platinerie 07:31</li><li><a href="stop-TEC_X826aba.html">TEC:X826aba</a> - Muno Gendarmerie 07:32</li><li><a href="stop-TEC_X826aca.html">TEC:X826aca</a> - Muno Ecole 07:33</li><li><a href="stop-TEC_X826adb.html">TEC:X826adb</a> - Muno Eglise 07:33</li><li><a href="stop-TEC_X826aha.html">TEC:X826aha</a> - Muno Scierie 07:34</li><li><a href="stop-TEC_X826aab.html">TEC:X826aab</a> - Muno Ferme des Blancs-Sarts 07:39</li><li><a href="stop-TEC_X860abb.html">TEC:X860abb</a> - N83 Les 4 Chemins 07:42</li><li><a href="stop-TEC_X860aab.html">TEC:X860aab</a> - N83 Pré Lamquin 07:43</li><li><a href="stop-TEC_X812aca.html">TEC:X812aca</a> - Bouillon Beaubru 07:48</li><li><a href="stop-TEC_X812aea.html">TEC:X812aea</a> - Bouillon Nationale 89 07:50</li><li><a href="stop-TEC_X812afa.html">TEC:X812afa</a> - Bouillon Cimetière 07:50</li><li><a href="stop-TEC_X812aga.html">TEC:X812aga</a> - Bouillon Perimino 07:50</li><li><a href="stop-TEC_X812aja.html">TEC:X812aja</a> - Bouillon Faubourg de France 07:51</li><li><a href="stop-TEC_X812aka.html">TEC:X812aka</a> - Bouillon Rue des Bains 07:51</li><li><a href="stop-TEC_X812ama.html">TEC:X812ama</a> - Bouillon Auberge d'Alsace 07:52</li><li><a href="stop-TEC_X812aqa.html">TEC:X812aqa</a> - Bouillon Athénée 07:52</li><li><a href="stop-TEC_X812ara.html">TEC:X812ara</a> - Bouillon Quai du Rempart 07:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3583.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

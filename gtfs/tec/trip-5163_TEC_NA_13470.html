@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - PESCHE - COUVIN - LE MESNIL - 5163:TEC:NA:13470</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: PESCHE - COUVIN - LE MESNIL - 5163:TEC:NA:13470</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N135adb.html">TEC:N135adb</a> - Couvin Gare SNCB 11:05</li><li><a href="stop-TEC_N135akb.html">TEC:N135akb</a> - Couvin Saint-Joseph 11:06</li><li><a href="stop-TEC_N135aga.html">TEC:N135aga</a> - Couvin Grand'place 11:08</li><li><a href="stop-TEC_N135aqb.html">TEC:N135aqb</a> - Couvin Piège 11:09</li><li><a href="stop-TEC_N135bbb.html">TEC:N135bbb</a> - Petigny Côte de Couvin 11:10</li><li><a href="stop-TEC_N135beb.html">TEC:N135beb</a> - Petigny Village 11:13</li><li><a href="stop-TEC_N135bdb.html">TEC:N135bdb</a> - Petigny Bouvreuils 11:14</li><li><a href="stop-TEC_N127acb.html">TEC:N127acb</a> - Nismes Baty 11:17</li><li><a href="stop-TEC_N127adb.html">TEC:N127adb</a> - Nismes Eglise 11:18</li><li><a href="stop-TEC_N127ada.html">TEC:N127ada</a> - Nismes Eglise 11:18</li><li><a href="stop-TEC_N127aca.html">TEC:N127aca</a> - Nismes Baty 11:19</li><li><a href="stop-TEC_N127aeb.html">TEC:N127aeb</a> - Nismes Saint-Joseph 11:20</li><li><a href="stop-TEC_N111aab.html">TEC:N111aab</a> - Olloy-sur-Viroin Café des pêcheurs 11:23</li><li><a href="stop-TEC_N111abb.html">TEC:N111abb</a> - Olloy-sur-Viroin Ancienne gare 11:24</li><li><a href="stop-TEC_N111afb.html">TEC:N111afb</a> - Olloy-sur-Viroin Village 11:24</li><li><a href="stop-TEC_N111aca.html">TEC:N111aca</a> - Olloy-sur-Viroin Eglise 11:25</li><li><a href="stop-TEC_N111aeb.html">TEC:N111aeb</a> - Olloy-sur-Viroin Pré des velus 11:26</li><li><a href="stop-TEC_N113abb.html">TEC:N113abb</a> - Oignies-en-Thierache Route d'Olloy 11:34</li><li><a href="stop-TEC_N113agb.html">TEC:N113agb</a> - Oignies-en-Thierache Village de vacance 11:35</li><li><a href="stop-TEC_N113acb.html">TEC:N113acb</a> - Oignies-en-Thierache Morboisa 11:36</li><li><a href="stop-TEC_N113adb.html">TEC:N113adb</a> - Oignies-en-Thierache Place communale 11:36</li><li><a href="stop-TEC_N113aea.html">TEC:N113aea</a> - Oignies-en-Thierache Baty 11:37</li><li><a href="stop-TEC_N113aeb.html">TEC:N113aeb</a> - Oignies-en-Thierache Baty 11:38</li><li><a href="stop-TEC_N113afb.html">TEC:N113afb</a> - Oignies-en-Thierache Rue Notre-Dame 11:39</li><li><a href="stop-TEC_N114aab.html">TEC:N114aab</a> - Le Mesnil Centre 11:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6272.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

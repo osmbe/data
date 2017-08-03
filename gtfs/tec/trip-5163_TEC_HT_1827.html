@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Attre - Blaton - 5163:TEC:HT:1827</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Attre - Blaton - 5163:TEC:HT:1827</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H5bl119d.html">TEC:H5bl119d</a> - Blaton SNCB 05:31</li><li><a href="stop-TEC_H5qu182a.html">TEC:H5qu182a</a> - Quevaucamps Avenue de l'Europe 05:33</li><li><a href="stop-TEC_H5qu143d.html">TEC:H5qu143d</a> - Quevaucamps La Bécasse 05:33</li><li><a href="stop-TEC_H5qu156d.html">TEC:H5qu156d</a> - Quevaucamps Stop 05:34</li><li><a href="stop-TEC_H5qu152b.html">TEC:H5qu152b</a> - Quevaucamps Place 05:35</li><li><a href="stop-TEC_H5qu141b.html">TEC:H5qu141b</a> - Quevaucamps Ecoles 05:36</li><li><a href="stop-TEC_H5qu154b.html">TEC:H5qu154b</a> - Quevaucamps Rue de la Gare 05:37</li><li><a href="stop-TEC_H5qu150b.html">TEC:H5qu150b</a> - Quevaucamps Pâturages 05:38</li><li><a href="stop-TEC_H5qu155a.html">TEC:H5qu155a</a> - Quevaucamps Rue Ferrer (Pâturages) 05:38</li><li><a href="stop-TEC_H5qu153a.html">TEC:H5qu153a</a> - Quevaucamps Place Ferrer 05:39</li><li><a href="stop-TEC_H5qu146a.html">TEC:H5qu146a</a> - Quevaucamps Les Pavillons 05:39</li><li><a href="stop-TEC_H5qu140a.html">TEC:H5qu140a</a> - Quevaucamps CabineTéléphonique 05:40</li><li><a href="stop-TEC_H5qu158a.html">TEC:H5qu158a</a> - Quevaucamps Terminus 05:41</li><li><a href="stop-TEC_H5qu147a.html">TEC:H5qu147a</a> - Quevaucamps Lycée 05:42</li><li><a href="stop-TEC_H5qu139b.html">TEC:H5qu139b</a> - Quevaucamps Bonneterie 05:43</li><li><a href="stop-TEC_H5qu145a.html">TEC:H5qu145a</a> - Quevaucamps Le Piquet 05:43</li><li><a href="stop-TEC_H4ea128a.html">TEC:H4ea128a</a> - Ellignies-Ste-Anne Cauchie 05:44</li><li><a href="stop-TEC_H4ea129a.html">TEC:H4ea129a</a> - Ellignies-Ste-Anne Chaussée 05:45</li><li><a href="stop-TEC_H4ea132a.html">TEC:H4ea132a</a> - Ellignies-Ste-Anne Place Communale 05:46</li><li><a href="stop-TEC_H4og210b.html">TEC:H4og210b</a> - Ormeignies Ferme Bricout 05:49</li><li><a href="stop-TEC_H4og216b.html">TEC:H4og216b</a> - Ormeignies Rue du Renard 05:50</li><li><a href="stop-TEC_H4og207b.html">TEC:H4og207b</a> - Ormeignies Carrefour 05:51</li><li><a href="stop-TEC_H4og212b.html">TEC:H4og212b</a> - Ormeignies Place de la Rouge 05:52</li><li><a href="stop-TEC_H4ir164b.html">TEC:H4ir164b</a> - Irchonwelz Chemin de Villers Notre-Dame 05:55</li><li><a href="stop-TEC_H4ir163a.html">TEC:H4ir163a</a> - Irchonwelz Chemin de Moulbaix 05:55</li><li><a href="stop-TEC_H4ir162b.html">TEC:H4ir162b</a> - Irchonwelz Chapelle 05:56</li><li><a href="stop-TEC_H4ir166b.html">TEC:H4ir166b</a> - Irchonwelz Restaurant Lebrun 05:57</li><li><a href="stop-TEC_H4ir165b.html">TEC:H4ir165b</a> - Irchonwelz Institut Ménager 05:58</li><li><a href="stop-TEC_H5at116a.html">TEC:H5at116a</a> - Ath SNCB 06:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1531.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

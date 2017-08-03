@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bus local de Vresse (Bohan) - 5163:TEC:LU:5976</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bus local de Vresse (Bohan) - 5163:TEC:LU:5976</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X371aeb.html">TEC:X371aeb</a> - Vresse Eglise 07:30</li><li><a href="stop-TEC_X371aga.html">TEC:X371aga</a> - Vresse Gendarmerie 07:30</li><li><a href="stop-TEC_X364aab.html">TEC:X364aab</a> - Membre Rue de Vresse 99 07:33</li><li><a href="stop-TEC_X364abb.html">TEC:X364abb</a> - Membre Carrefour 07:34</li><li><a href="stop-TEC_X364ada.html">TEC:X364ada</a> - Membre Ecole 07:34</li><li><a href="stop-TEC_X361afa.html">TEC:X361afa</a> - Herisson Route de Hérissart 07:40</li><li><a href="stop-TEC_X364aba.html">TEC:X364aba</a> - Membre Carrefour 07:45</li><li><a href="stop-TEC_X364aaa.html">TEC:X364aaa</a> - Membre Rue de Vresse 99 07:45</li><li><a href="stop-TEC_X371agb.html">TEC:X371agb</a> - Vresse Gendarmerie 07:47</li><li><a href="stop-TEC_X371aea.html">TEC:X371aea</a> - Vresse Eglise 07:47</li><li><a href="stop-TEC_X371afa.html">TEC:X371afa</a> - Vresse La Chaumière 07:48</li><li><a href="stop-TEC_X361aaa.html">TEC:X361aaa</a> - Orchimont Rue du Château 08:00</li><li><a href="stop-TEC_X361abb.html">TEC:X361abb</a> - Orchimont Salle des Fêtes 08:01</li><li><a href="stop-TEC_X362aab.html">TEC:X362aab</a> - Nafraiture Place 08:08</li><li><a href="stop-TEC_X362aba.html">TEC:X362aba</a> - Nafraiture Ecole Communale 08:09</li><li><a href="stop-TEC_X361acb.html">TEC:X361acb</a> - La Barrière 08:14</li><li><a href="stop-TEC_X371ajb.html">TEC:X371ajb</a> - Conrad Rue de Terne 08:17</li><li><a href="stop-TEC_X371aib.html">TEC:X371aib</a> - Vresse Le Terne 08:22</li><li><a href="stop-TEC_X371aeb.html">TEC:X371aeb</a> - Vresse Eglise 08:25</li><li><a href="stop-TEC_X371ada.html">TEC:X371ada</a> - Laforet Rue Sainte-Agathe 71 08:26</li><li><a href="stop-TEC_X371acb.html">TEC:X371acb</a> - Laforet Rue Sainte-Agathe 2 08:26</li><li><a href="stop-TEC_X371aaa.html">TEC:X371aaa</a> - Laforet Ecole Communale 08:27</li><li><a href="stop-TEC_X371aaa.html">TEC:X371aaa</a> - Laforet Ecole Communale 08:27</li><li><a href="stop-TEC_X371aba.html">TEC:X371aba</a> - Laforet Eglise 08:27</li><li><a href="stop-TEC_X371aca.html">TEC:X371aca</a> - Laforet Rue Sainte-Agathe 2 08:28</li><li><a href="stop-TEC_X371adb.html">TEC:X371adb</a> - Laforet Rue Sainte-Agathe 71 08:30</li><li><a href="stop-TEC_X371aga.html">TEC:X371aga</a> - Vresse Gendarmerie 08:31</li><li><a href="stop-TEC_X364aab.html">TEC:X364aab</a> - Membre Rue de Vresse 99 08:34</li><li><a href="stop-TEC_X364abb.html">TEC:X364abb</a> - Membre Carrefour 08:34</li><li><a href="stop-TEC_X364aca.html">TEC:X364aca</a> - Membre Pont 08:35</li><li><a href="stop-TEC_X318abb.html">TEC:X318abb</a> - Bohan Rue de Membre 92 08:39</li><li><a href="stop-TEC_X318ada.html">TEC:X318ada</a> - Bohan Ecole Communale 08:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2853.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

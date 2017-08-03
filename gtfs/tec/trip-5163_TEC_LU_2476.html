@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Libramont - Habay - Arlon - 5163:TEC:LU:2476</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Libramont - Habay - Arlon - 5163:TEC:LU:2476</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X670aka.html">TEC:X670aka</a> - Habay-la-Neuve Saint-Benoît 16:30</li><li><a href="stop-TEC_X670adb.html">TEC:X670adb</a> - Habay-la-Neuve Place Nothomb 16:32</li><li><a href="stop-TEC_X670adb.html">TEC:X670adb</a> - Habay-la-Neuve Place Nothomb 16:32</li><li><a href="stop-TEC_X670abb.html">TEC:X670abb</a> - Habay-la-Neuve Rue de Luxembourg 16:33</li><li><a href="stop-TEC_X670aab.html">TEC:X670aab</a> - Habay-la-Neuve Route du Fraichebois 16:34</li><li><a href="stop-TEC_X654ahb.html">TEC:X654ahb</a> - Hachy Carrefour 16:36</li><li><a href="stop-TEC_X654agb.html">TEC:X654agb</a> - Hachy Rue du Bois Rond 16:38</li><li><a href="stop-TEC_X654abb.html">TEC:X654abb</a> - Hachy Rue Saint-Amand 16:39</li><li><a href="stop-TEC_X654adb.html">TEC:X654adb</a> - Hachy Place 16:40</li><li><a href="stop-TEC_X654aka.html">TEC:X654aka</a> - Hachy Rue des Aubépines 16:41</li><li><a href="stop-TEC_X654ala.html">TEC:X654ala</a> - Hachy Manège 16:41</li><li><a href="stop-TEC_X654aib.html">TEC:X654aib</a> - Hachy N40 - Carrefour Rue des Aubépines 16:42</li><li><a href="stop-TEC_X653ada.html">TEC:X653ada</a> - Lottert N40 16:44</li><li><a href="stop-TEC_X653aea.html">TEC:X653aea</a> - Lottert Eglise 16:44</li><li><a href="stop-TEC_X653afa.html">TEC:X653afa</a> - Thiaumont Route de Lottert 16:46</li><li><a href="stop-TEC_X653aab.html">TEC:X653aab</a> - Thiaumont Monument 16:47</li><li><a href="stop-TEC_X653abb.html">TEC:X653abb</a> - Tattert Chapelle 16:50</li><li><a href="stop-TEC_X653aca.html">TEC:X653aca</a> - Lischert Eglise 16:53</li><li><a href="stop-TEC_X602aib.html">TEC:X602aib</a> - Heinsch Rue de Thiaumont 16:59</li><li><a href="stop-TEC_X602ajb.html">TEC:X602ajb</a> - Heinsch Monument 17:00</li><li><a href="stop-TEC_X602akb.html">TEC:X602akb</a> - Freylange Rue du Panorama 17:01</li><li><a href="stop-TEC_X602alb.html">TEC:X602alb</a> - Freylange Ecole 17:02</li><li><a href="stop-TEC_X602amb.html">TEC:X602amb</a> - Freylange Avenue de Pforzheim 17:03</li><li><a href="stop-TEC_X602anb.html">TEC:X602anb</a> - Freylange Eglise 17:03</li><li><a href="stop-TEC_X602aob.html">TEC:X602aob</a> - Freylange Rue de Viville 17:03</li><li><a href="stop-TEC_X601cbb.html">TEC:X601cbb</a> - Viville Eglise 17:06</li><li><a href="stop-TEC_X601ccc.html">TEC:X601ccc</a> - Viville Ateliers SNCB - N40 17:08</li><li><a href="stop-TEC_X601cdb.html">TEC:X601cdb</a> - Arlon Delhaize 17:10</li><li><a href="stop-TEC_X601ceb.html">TEC:X601ceb</a> - Arlon Police 17:10</li><li><a href="stop-TEC_X601bhb.html">TEC:X601bhb</a> - Arlon Sq Astrid - R de Neufchâteau 17:11</li><li><a href="stop-TEC_X601bea.html">TEC:X601bea</a> - Arlon Rue Léon Castilhon 17:13</li><li><a href="stop-TEC_X601bbe.html">TEC:X601bbe</a> - Arlon Gare - Quai 5 17:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3187.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Huy - Strée - Ouffet - Hamoir - 5163:TEC:LV:20358</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Huy - Strée - Ouffet - Hamoir - 5163:TEC:LV:20358</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LPOeg--1.html">TEC:LPOeg--1</a> - Poulseur Eglise 07:57</li><li><a href="stop-TEC_LPOwaut1.html">TEC:LPOwaut1</a> - Poulseur Avenue J. Wauters 07:58</li><li><a href="stop-TEC_LPOecol1.html">TEC:LPOecol1</a> - Poulseur Rue des Ecoles 07:59</li><li><a href="stop-TEC_LPOchan1.html">TEC:LPOchan1</a> - Poulseur Pont de Chanxhe 08:00</li><li><a href="stop-TEC_LCPlacr1.html">TEC:LCPlacr1</a> - Comblain-Au-Pont Garage 08:02</li><li><a href="stop-TEC_LCPconf1.html">TEC:LCPconf1</a> - Comblain-Au-Pont Confluent 08:02</li><li><a href="stop-TEC_LCPscay1.html">TEC:LCPscay1</a> - Comblain-Au-Pont Pont de Scay 08:03</li><li><a href="stop-TEC_LCPvign1.html">TEC:LCPvign1</a> - Comblain-Au-Pont Quai du Vignoble 08:04</li><li><a href="stop-TEC_LCPcomb1.html">TEC:LCPcomb1</a> - Comblain-Au-Pont Pont de Comblain 08:04</li><li><a href="stop-TEC_LCPcomp2.html">TEC:LCPcomp2</a> - Comblain-Au-Pont Complexe Communal 08:05</li><li><a href="stop-TEC_LCPbatt2.html">TEC:LCPbatt2</a> - Comblain-Au-Pont Batterie 08:08</li><li><a href="stop-TEC_LCTpt--2.html">TEC:LCTpt--2</a> - Comblain-la-Tour Pont 08:09</li><li><a href="stop-TEC_LCTfair2.html">TEC:LCTfair2</a> - Comblain-la-Tour Rue de Fairon 08:10</li><li><a href="stop-TEC_LCFchir2.html">TEC:LCFchir2</a> - Comblain-Fairon Chirmont 08:12</li><li><a href="stop-TEC_LCFeg--2.html">TEC:LCFeg--2</a> - Comblain-Fairon Eglise 08:13</li><li><a href="stop-TEC_LHaodei2.html">TEC:LHaodei2</a> - Hamoir Château d'Odeigne 08:14</li><li><a href="stop-TEC_LHarenn4.html">TEC:LHarenn4</a> - Hamoir Auberge des Rennes 08:15</li><li><a href="stop-TEC_LOurena2.html">TEC:LOurena2</a> - Ouffet Renal 08:19</li><li><a href="stop-TEC_LOuouff2.html">TEC:LOuouff2</a> - Ouffet Rue du Petit Ouffet 08:22</li><li><a href="stop-TEC_LOuhalb2.html">TEC:LOuhalb2</a> - Ouffet Rue Halbadet 08:22</li><li><a href="stop-TEC_LOuathe1.html">TEC:LOuathe1</a> - Ouffet Athénée 08:23</li><li><a href="stop-TEC_LOucarr4.html">TEC:LOucarr4</a> - Ouffet Carrefour 08:24</li><li><a href="stop-TEC_LOuplac1.html">TEC:LOuplac1</a> - Ouffet Grand-Place 08:25</li><li><a href="stop-TEC_LOuilc-_.html">TEC:LOuilc-*</a> - Ouffet I.L.C. 08:26</li><li><a href="stop-TEC_LOuplac2.html">TEC:LOuplac2</a> - Ouffet Grand-Place 08:26</li><li><a href="stop-TEC_LOucarr3.html">TEC:LOucarr3</a> - Ouffet Carrefour 08:27</li><li><a href="stop-TEC_LWZeg--2.html">TEC:LWZeg--2</a> - Warzee Eglise 08:30</li><li><a href="stop-TEC_LWZdtec2.html">TEC:LWZdtec2</a> - Warzee Dépôt TEC 08:31</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4508.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Visé - Maastricht - 5163:TEC:LV:18756</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Visé - Maastricht - 5163:TEC:LV:18756</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LMastat4.html">TEC:LMastat4</a> - Maastricht Station (Perron K) 18:42</li><li><a href="stop-TEC_LMawilh4.html">TEC:LMawilh4</a> - Maastricht Wilhelminasingel 18:43</li><li><a href="stop-TEC_LMalune4.html">TEC:LMalune4</a> - Maastricht Av. Ceramique / Sphinx Lunet 18:44</li><li><a href="stop-TEC_LMamuse4.html">TEC:LMamuse4</a> - Maastricht Bonnefanten Museum 18:44</li><li><a href="stop-TEC_LMalamb4.html">TEC:LMalamb4</a> - Maastricht Sint-Lambertuslaan 18:47</li><li><a href="stop-TEC_LMaburg4.html">TEC:LMaburg4</a> - Maastricht Burg Ceulenstraat 18:48</li><li><a href="stop-TEC_LMazonn4.html">TEC:LMazonn4</a> - Maastricht Zonneberg 18:49</li><li><a href="stop-TEC_LMaslav4.html">TEC:LMaslav4</a> - Maastricht Slavante 18:50</li><li><a href="stop-TEC_LMalarg4.html">TEC:LMalarg4</a> - Maastricht Lage Kanaaldijk 18:52</li><li><a href="stop-TEC_LPldoua4.html">TEC:LPldoua4</a> - Petit-Lanaye Douane 18:53</li><li><a href="stop-TEC_LPlchpl2.html">TEC:LPlchpl2</a> - Petit-Lanaye Chapelle 18:54</li><li><a href="stop-TEC_LPlpomp2.html">TEC:LPlpomp2</a> - Petit-Lanaye La Pompe 18:55</li><li><a href="stop-TEC_LPleclu2.html">TEC:LPleclu2</a> - Petit-Lanaye Ecluse 18:56</li><li><a href="stop-TEC_LLAbure2.html">TEC:LLAbure2</a> - Lanaye Bureau du Canal 18:57</li><li><a href="stop-TEC_LLAchpl2.html">TEC:LLAchpl2</a> - Lanaye Chapelle 18:58</li><li><a href="stop-TEC_LLAvi652.html">TEC:LLAvi652</a> - Lanaye Rue du Village 65 18:58</li><li><a href="stop-TEC_LLAeg--2.html">TEC:LLAeg--2</a> - Lanaye Eglise 18:59</li><li><a href="stop-TEC_LLAcalv2.html">TEC:LLAcalv2</a> - Lanaye Calvaire 19:00</li><li><a href="stop-TEC_LLApavi2.html">TEC:LLApavi2</a> - Lanaye Pavillon 19:00</li><li><a href="stop-TEC_Llxcite2.html">TEC:Llxcite2</a> - Lixhe Cité 19:02</li><li><a href="stop-TEC_LLxcrem2.html">TEC:LLxcrem2</a> - Lixhe Garage Cremers 19:02</li><li><a href="stop-TEC_LLxnive2.html">TEC:LLxnive2</a> - Lixhe Place du Tige 19:03</li><li><a href="stop-TEC_LLxcbr-2.html">TEC:LLxcbr-2</a> - Lixhe Usine CBR 19:04</li><li><a href="stop-TEC_LLxconj2.html">TEC:LLxconj2</a> - Lixhe Conjaert 19:05</li><li><a href="stop-TEC_LLxmonu2.html">TEC:LLxmonu2</a> - Lixhe Monument 19:05</li><li><a href="stop-TEC_LLxcana2.html">TEC:LLxcana2</a> - Lixhe Pont du Canal 19:06</li><li><a href="stop-TEC_LLxalle2.html">TEC:LLxalle2</a> - Lixhe Pont des Allemands 19:07</li><li><a href="stop-TEC_LLxeclu2.html">TEC:LLxeclu2</a> - Lixhe Ecluse 19:08</li><li><a href="stop-TEC_LVIcarm2.html">TEC:LVIcarm2</a> - Vise Rue des Carmes 19:09</li><li><a href="stop-TEC_LVIecol2.html">TEC:LVIecol2</a> - Vise Rue des Ecoles 19:10</li><li><a href="stop-TEC_LVIdeva2.html">TEC:LVIdeva2</a> - Vise Devant-le-Pont RG 19:10</li><li><a href="stop-TEC_LVIgare1.html">TEC:LVIgare1</a> - Vise Gare SNCB 19:11</li><li><a href="stop-TEC_LVIdepo3.html">TEC:LVIdepo3</a> - Vise Place des Déportés 19:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3983.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

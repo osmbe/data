@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ningloheid - Thiervaux - Place Verte - Andrimont - 5163:TEC:LV:7130</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ningloheid - Thiervaux - Place Verte - Andrimont - 5163:TEC:LV:7130</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lhubriq1.html">TEC:Lhubriq1</a> - Heusy Briqueterie 11:45</li><li><a href="stop-TEC_Lhuecol1.html">TEC:Lhuecol1</a> - Heusy Ecole Notre-Dame 11:46</li><li><a href="stop-TEC_Lhurigu1.html">TEC:Lhurigu1</a> - Heusy Rigutto 11:47</li><li><a href="stop-TEC_Lvewaut1.html">TEC:Lvewaut1</a> - Verviers Rue J. Wauters 11:48</li><li><a href="stop-TEC_Lvelobe1.html">TEC:Lvelobe1</a> - Verviers Rue S. Lobet 11:49</li><li><a href="stop-TEC_Lvepire1.html">TEC:Lvepire1</a> - Verviers Rue H. Pirenne 11:49</li><li><a href="stop-TEC_Lvearle1.html">TEC:Lvearle1</a> - Verviers Place d'Arles 11:50</li><li><a href="stop-TEC_Lmnhorl3.html">TEC:Lmnhorl3</a> - Mangombroux Horloge 11:51</li><li><a href="stop-TEC_Lvescie1.html">TEC:Lvescie1</a> - Verviers Scierie Leroy 11:52</li><li><a href="stop-TEC_Lveabat1.html">TEC:Lveabat1</a> - Verviers Place de l'Abattoir 11:54</li><li><a href="stop-TEC_Lvepala2.html">TEC:Lvepala2</a> - Verviers Palais 11:55</li><li><a href="stop-TEC_Lvehv--1.html">TEC:Lvehv--1</a> - Verviers Hôtel de Ville 11:55</li><li><a href="stop-TEC_Lvevert1.html">TEC:Lvevert1</a> - Verviers Place Verte 11:56</li><li><a href="stop-TEC_Lvexhav1.html">TEC:Lvexhav1</a> - Verviers Rue Xhavée 11:58</li><li><a href="stop-TEC_Lvethea1.html">TEC:Lvethea1</a> - Verviers Théâtre 11:59</li><li><a href="stop-TEC_Lveharm1.html">TEC:Lveharm1</a> - Verviers Harmonie 12:00</li><li><a href="stop-TEC_Lveanto1.html">TEC:Lveanto1</a> - Verviers Eglise St-Antoine 12:01</li><li><a href="stop-TEC_Ladfran1.html">TEC:Ladfran1</a> - Andrimont Rue des Franchimontois 12:02</li><li><a href="stop-TEC_Ladlimi1.html">TEC:Ladlimi1</a> - Andrimont Rue de la Limite 12:03</li><li><a href="stop-TEC_Ladgath1.html">TEC:Ladgath1</a> - Andrimont Place S. Gathoye 12:04</li><li><a href="stop-TEC_Ladclem1.html">TEC:Ladclem1</a> - Andrimont Rue Clément XIV 12:05</li><li><a href="stop-TEC_Ladpire1.html">TEC:Ladpire1</a> - Andrimont Rue M. Pire 12:06</li><li><a href="stop-TEC_Ladjaur1.html">TEC:Ladjaur1</a> - Andrimont Rue J. Jaurès 12:06</li><li><a href="stop-TEC_Ladotto1.html">TEC:Ladotto1</a> - Andrimont Ottomont 12:07</li><li><a href="stop-TEC_Ladmoul1.html">TEC:Ladmoul1</a> - Andrimont Petit Moulin 12:08</li><li><a href="stop-TEC_Ladhomb1.html">TEC:Ladhomb1</a> - Andrimont Hombiet 12:08</li><li><a href="stop-TEC_Ladfoot1.html">TEC:Ladfoot1</a> - Andrimont Terrain de Football 12:09</li><li><a href="stop-TEC_Ladegli1.html">TEC:Ladegli1</a> - Andrimont Eglise 12:10</li><li><a href="stop-TEC_Ladlaur1.html">TEC:Ladlaur1</a> - Andrimont St-Laurent 12:10</li><li><a href="stop-TEC_Ladneuv1.html">TEC:Ladneuv1</a> - Andrimont Neuville Terminus 12:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4265.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

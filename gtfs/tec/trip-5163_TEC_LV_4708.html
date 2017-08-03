@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Vielsalm - St-Vith - Manderfeld - Losheimergraben - 5163:TEC:LV:4708</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Vielsalm - St-Vith - Manderfeld - Losheimergraben - 5163:TEC:LV:4708</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X750ama.html">TEC:X750ama</a> - Vielsalm Gare 16:50</li><li><a href="stop-TEC_X750bfb.html">TEC:X750bfb</a> - Vielsalm Route de Saint-Vith 16:51</li><li><a href="stop-TEC_X750beb.html">TEC:X750beb</a> - Vielsalm Hôtel des 4 Coins 16:52</li><li><a href="stop-TEC_X750axb.html">TEC:X750axb</a> - Ville-Du-Bois Hermamont 16:53</li><li><a href="stop-TEC_X750aya.html">TEC:X750aya</a> - Ville-Du-Bois Eglise 16:54</li><li><a href="stop-TEC_X750azb.html">TEC:X750azb</a> - Ville-Du-Bois Beaufays 16:56</li><li><a href="stop-TEC_X794aab.html">TEC:X794aab</a> - Petit-Thier Le Cheneux 16:58</li><li><a href="stop-TEC_LPTeg--1.html">TEC:LPTeg--1</a> - Petit-Thier Eglise 17:00</li><li><a href="stop-TEC_LPTblan1.html">TEC:LPTblan1</a> - Petit-Thier Blanche Fontaine 17:01</li><li><a href="stop-TEC_LPTgran1.html">TEC:LPTgran1</a> - Petit-Thier Grand Fond 17:02</li><li><a href="stop-TEC_LPT97--1.html">TEC:LPT97--1</a> - Poteau 97 17:02</li><li><a href="stop-TEC_LPurech1.html">TEC:LPurech1</a> - Poteau Route de Recht 17:04</li><li><a href="stop-TEC_LPutins1.html">TEC:LPutins1</a> - Poteau Chemin de Tinseu Bois 17:05</li><li><a href="stop-TEC_LrDschl1.html">TEC:LrDschl1</a> - Rodt Schlommerfurth 17:07</li><li><a href="stop-TEC_LrDsage1.html">TEC:LrDsage1</a> - Rodt Alte Sägemühle 17:08</li><li><a href="stop-TEC_LrDzoll3.html">TEC:LrDzoll3</a> - Rodt Altes Zollhaus 17:10</li><li><a href="stop-TEC_LrDrose3.html">TEC:LrDrose3</a> - Rodt Rosengarten 17:11</li><li><a href="stop-TEC_LrDneun2.html">TEC:LrDneun2</a> - Rodt Neundorfer Strasse 17:12</li><li><a href="stop-TEC_LhIfrie2.html">TEC:LhIfrie2</a> - Hinderhausen Friedhof 17:13</li><li><a href="stop-TEC_LhIkirc_.html">TEC:LhIkirc*</a> - Hinderhausen Kirche 17:14</li><li><a href="stop-TEC_LhIfrie1.html">TEC:LhIfrie1</a> - Hinderhausen Friedhof 17:15</li><li><a href="stop-TEC_LrDneun1.html">TEC:LrDneun1</a> - Rodt Neundorfer Strasse 17:17</li><li><a href="stop-TEC_LrDhind1.html">TEC:LrDhind1</a> - Rodt Hinderhausener Strasse 17:18</li><li><a href="stop-TEC_LrDkirc1.html">TEC:LrDkirc1</a> - Rodt Kirche 17:19</li><li><a href="stop-TEC_LrD28--1.html">TEC:LrD28--1</a> - Rodt Haus 28 17:20</li><li><a href="stop-TEC_LrDhund1.html">TEC:LrDhund1</a> - Rodt Hundheim 17:21</li><li><a href="stop-TEC_LsVgils1.html">TEC:LsVgils1</a> - Sankt-Vith Cafe Gilson 17:24</li><li><a href="stop-TEC_LsVrodt2.html">TEC:LsVrodt2</a> - Sankt-Vith Rodter Strasse 17:26</li><li><a href="stop-TEC_LsVviel1.html">TEC:LsVviel1</a> - Sankt-Vith Vielsalmer Strasse 17:27</li><li><a href="stop-TEC_LsVlind_.html">TEC:LsVlind*</a> - Sankt-Vith An den Linden 17:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5096.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - GEMBLOUX - 5163:TEC:NA:11699</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - GEMBLOUX - 5163:TEC:NA:11699</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N525aec.html">TEC:N525aec</a> - Meux Eglise 07:36</li><li><a href="stop-TEC_N525afa.html">TEC:N525afa</a> - Meux Rue Alvaux 07:38</li><li><a href="stop-TEC_N525aga.html">TEC:N525aga</a> - Meux Ferme de Sclef 07:39</li><li><a href="stop-TEC_N525aka.html">TEC:N525aka</a> - Meux Laid Pachis 07:40</li><li><a href="stop-TEC_N525aha.html">TEC:N525aha</a> - Meux Route de Liernu 07:40</li><li><a href="stop-TEC_N525aia.html">TEC:N525aia</a> - Meux Six chemins 07:41</li><li><a href="stop-TEC_N525aza.html">TEC:N525aza</a> - Meux Rue du Chaînia 07:43</li><li><a href="stop-TEC_N525aja.html">TEC:N525aja</a> - Meux Ferme Montfort 07:44</li><li><a href="stop-TEC_N524aaa.html">TEC:N524aaa</a> - Grand-Leez Rue au café 07:45</li><li><a href="stop-TEC_N524aba.html">TEC:N524aba</a> - Grand-Leez Petit-Leez 07:46</li><li><a href="stop-TEC_N524afa.html">TEC:N524afa</a> - Grand-Leez Scierie 07:47</li><li><a href="stop-TEC_N524aia.html">TEC:N524aia</a> - Grand-Leez Cabine électrique 07:48</li><li><a href="stop-TEC_N524aha.html">TEC:N524aha</a> - Grand-Leez Rue Warichet 07:48</li><li><a href="stop-TEC_N524aja.html">TEC:N524aja</a> - Grand-Leez Etang 07:49</li><li><a href="stop-TEC_N524ala.html">TEC:N524ala</a> - Grand-Leez Rue de Perwez 7 07:50</li><li><a href="stop-TEC_N524aka.html">TEC:N524aka</a> - Grand-Leez Taille Antoine 07:51</li><li><a href="stop-TEC_N524ama.html">TEC:N524ama</a> - Grand-Leez Place 07:53</li><li><a href="stop-TEC_N524ada.html">TEC:N524ada</a> - Grand-Leez Maison Loise 07:54</li><li><a href="stop-TEC_N524aca.html">TEC:N524aca</a> - Grand-Leez Maison Descampe 07:55</li><li><a href="stop-TEC_N541ada.html">TEC:N541ada</a> - Sauveniere Pont des Pages 07:56</li><li><a href="stop-TEC_N541aea.html">TEC:N541aea</a> - Sauveniere Répeumont 07:57</li><li><a href="stop-TEC_N541aba.html">TEC:N541aba</a> - Sauveniere Moulin Michaux 07:58</li><li><a href="stop-TEC_N541aaa.html">TEC:N541aaa</a> - Sauveniere Bifurcation 08:00</li><li><a href="stop-TEC_N541aca.html">TEC:N541aca</a> - Sauveniere Ferme Simon 08:02</li><li><a href="stop-TEC_N522aca.html">TEC:N522aca</a> - Gembloux Petite Vette 08:02</li><li><a href="stop-TEC_N522afa.html">TEC:N522afa</a> - Gembloux Station de sélection 08:04</li><li><a href="stop-TEC_N522aba.html">TEC:N522aba</a> - Gembloux Quatre coins 08:05</li><li><a href="stop-TEC_N522aea.html">TEC:N522aea</a> - Gembloux Rue des Volontaires 08:07</li><li><a href="stop-TEC_N522ada.html">TEC:N522ada</a> - Gembloux Gare 08:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6244.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

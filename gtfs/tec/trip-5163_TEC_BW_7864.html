@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Jodoigne - Gembloux - 5163:TEC:BW:7864</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jodoigne - Gembloux - 5163:TEC:BW:7864</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bgemga09.html">TEC:Bgemga09</a> - Gembloux Gare 12:11</li><li><a href="stop-TEC_Bgemga08.html">TEC:Bgemga08</a> - Gembloux Gare 12:11</li><li><a href="stop-TEC_Bgemga07.html">TEC:Bgemga07</a> - Gembloux Gare 12:11</li><li><a href="stop-TEC_N522aeb.html">TEC:N522aeb</a> - Gembloux Rue des Volontaires 12:15</li><li><a href="stop-TEC_N522apb.html">TEC:N522apb</a> - Gembloux Place de l'Orneau 12:19</li><li><a href="stop-TEC_Bgrmver3.html">TEC:Bgrmver3</a> - Grand-Manil Rue Verlaine 12:21</li><li><a href="stop-TEC_N522aka.html">TEC:N522aka</a> - Gembloux Le Rallye 12:22</li><li><a href="stop-TEC_N522aja.html">TEC:N522aja</a> - Gembloux Distillerie Descamps 12:24</li><li><a href="stop-TEC_Bgembsg2.html">TEC:Bgembsg2</a> - Gembloux Buisson Saint-Guibert 12:25</li><li><a href="stop-TEC_Bgemfbo2.html">TEC:Bgemfbo2</a> - Gembloux Rue F. Bovesse 12:26</li><li><a href="stop-TEC_Bgemrom4.html">TEC:Bgemrom4</a> - Gembloux Chaussée Romaine 12:27</li><li><a href="stop-TEC_Bernpon2.html">TEC:Bernpon2</a> - Ernage Pont 12:31</li><li><a href="stop-TEC_Bernrar2.html">TEC:Bernrar2</a> - Ernage Rue Auguste Romain 12:33</li><li><a href="stop-TEC_Bernpla2.html">TEC:Bernpla2</a> - Ernage Place 12:34</li><li><a href="stop-TEC_Bernegl4.html">TEC:Bernegl4</a> - Ernage Eglise 12:36</li><li><a href="stop-TEC_Berncim4.html">TEC:Berncim4</a> - Ernage Cimetière 12:36</li><li><a href="stop-TEC_Berncim2.html">TEC:Berncim2</a> - Ernage Cimetière 12:36</li><li><a href="stop-TEC_Bwlhpmt3.html">TEC:Bwlhpmt3</a> - Walhain Maugré To 12:39</li><li><a href="stop-TEC_Bwlhpec2.html">TEC:Bwlhpec2</a> - Perbais Ecoles 12:40</li><li><a href="stop-TEC_Bwlhpma2.html">TEC:Bwlhpma2</a> - Perbais Moulin Art 12:41</li><li><a href="stop-TEC_Bwlhppg2.html">TEC:Bwlhppg2</a> - Perbais Place de la Gare 12:41</li><li><a href="stop-TEC_Bchadpt1.html">TEC:Bchadpt1</a> - Chastre Dépôt 12:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./656.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Jodoigne - Louvain-la-Neuve - Ottignies (Express) - 5163:TEC:BW:9071</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jodoigne - Louvain-la-Neuve - Ottignies (Express) - 5163:TEC:BW:9071</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bottgar8.html">TEC:Bottgar8</a> - Ottignies Gare 08:55</li><li><a href="stop-TEC_Bllngar1.html">TEC:Bllngar1</a> - Louvain-la-Neuve Gare d'Autobus 09:03</li><li><a href="stop-TEC_Bllnmet2.html">TEC:Bllnmet2</a> - Louvain-la-Neuve Météo 09:06</li><li><a href="stop-TEC_Bllncyc2.html">TEC:Bllncyc2</a> - Louvain-la-Neuve Cyclotron 09:07</li><li><a href="stop-TEC_Bllnpsc2.html">TEC:Bllnpsc2</a> - Louvain-la-Neuve Parc Scientifique 09:08</li><li><a href="stop-TEC_Btstbes2.html">TEC:Btstbes2</a> - Thorembais-Saint-Trond Bonne Espérance 09:19</li><li><a href="stop-TEC_Btstcar4.html">TEC:Btstcar4</a> - Thorembais-Saint-Trond Carrefour 09:21</li><li><a href="stop-TEC_Btlbcul2.html">TEC:Btlbcul2</a> - Thorembais-les-Beguines Culina 09:24</li><li><a href="stop-TEC_Btlbcha2.html">TEC:Btlbcha2</a> - Thorembais-les-Beguines Route de la Chapelle 09:25</li><li><a href="stop-TEC_Btlbtbe2.html">TEC:Btlbtbe2</a> - Thorembais-les-Beguines Rte de T-L-Bég. 09:27</li><li><a href="stop-TEC_Bglicsm2.html">TEC:Bglicsm2</a> - Glimes Carrefour Saint-Michel 09:29</li><li><a href="stop-TEC_Bgligli2.html">TEC:Bgligli2</a> - Glimes Route de Glimes 09:31</li><li><a href="stop-TEC_Bjcljau2.html">TEC:Bjcljau2</a> - Jauchelette Route de Jauchelette 09:32</li><li><a href="stop-TEC_Bjdsjso2.html">TEC:Bjdsjso2</a> - Jodoigne Rte de Jodoigne-Souveraine 09:34</li><li><a href="stop-TEC_Bjodpce2.html">TEC:Bjodpce2</a> - Jodoigne Pharmacie Centrale 09:36</li><li><a href="stop-TEC_Bjodsme2.html">TEC:Bjodsme2</a> - Jodoigne Saint-Médard 09:38</li><li><a href="stop-TEC_Bjodgar1.html">TEC:Bjodgar1</a> - Jodoigne Gare d'Autobus 09:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./550.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

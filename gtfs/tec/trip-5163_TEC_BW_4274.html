@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Nivelles - Braine-le-Château - 5163:TEC:BW:4274</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Nivelles - Braine-le-Château - 5163:TEC:BW:4274</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bhtipir2.html">TEC:Bhtipir2</a> - Haut-Ittre Boulevard Piron 07:23</li><li><a href="stop-TEC_Bbchsac1.html">TEC:Bbchsac1</a> - Braine-le-Chateau Rue du Sacrement 07:24</li><li><a href="stop-TEC_Bbchboi1.html">TEC:Bbchboi1</a> - Braine-le-Chateau Les Boignées 07:25</li><li><a href="stop-TEC_Bbchtry1.html">TEC:Bbchtry1</a> - Wauthier-Braine Rue du Try 07:26</li><li><a href="stop-TEC_Bwaurge1.html">TEC:Bwaurge1</a> - Wauthier-Braine Rue Gérard 07:26</li><li><a href="stop-TEC_Bbchdra1.html">TEC:Bbchdra1</a> - Braine-le-Chateau Le Drabbe 07:29</li><li><a href="stop-TEC_Bbchrra3.html">TEC:Bbchrra3</a> - Braine-le-Chateau Rue des Radoux 07:31</li><li><a href="stop-TEC_Bbch4br6.html">TEC:Bbch4br6</a> - Braine-le-Chateau Quatre Bras 07:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./578.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

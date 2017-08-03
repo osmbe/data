@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - DINANT - BEAURAING - 5163:TEC:NA:6774</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DINANT - BEAURAING - 5163:TEC:NA:6774</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N218aca.html">TEC:N218aca</a> - Mesnil-Saint-Blaise Eglise 07:59</li><li><a href="stop-TEC_N218aba.html">TEC:N218aba</a> - Mesnil-Saint-Blaise Ecole 08:00</li><li><a href="stop-TEC_N218ada.html">TEC:N218ada</a> - Mesnil-Saint-Blaise Le Chaurnia 08:01</li><li><a href="stop-TEC_N218aab.html">TEC:N218aab</a> - Mesnil-Saint-Blaise Carrefour Noël 08:03</li><li><a href="stop-TEC_N385abb.html">TEC:N385abb</a> - Feschaux Route de Mahaux 08:04</li><li><a href="stop-TEC_N385aad.html">TEC:N385aad</a> - Feschaux Route de Houyet 08:05</li><li><a href="stop-TEC_N385acb.html">TEC:N385acb</a> - Feschaux Village 08:06</li><li><a href="stop-TEC_N385aeb.html">TEC:N385aeb</a> - Feschaux Ferme Sovet 08:07</li><li><a href="stop-TEC_N385adb.html">TEC:N385adb</a> - Feschaux Ferme Dubois 08:08</li><li><a href="stop-TEC_N308abb.html">TEC:N308abb</a> - Baronville Route de Wiesme 08:10</li><li><a href="stop-TEC_N308aab.html">TEC:N308aab</a> - Baronville Ma campagne 08:11</li><li><a href="stop-TEC_N308acb.html">TEC:N308acb</a> - Baronville Dessus du village 08:12</li><li><a href="stop-TEC_N308alb.html">TEC:N308alb</a> - Beauraing Quartier des Ardennes 08:12</li><li><a href="stop-TEC_N308aib.html">TEC:N308aib</a> - Beauraing Rond-point 08:13</li><li><a href="stop-TEC_N308aja.html">TEC:N308aja</a> - Beauraing Route de la gare 08:14</li><li><a href="stop-TEC_N308aha.html">TEC:N308aha</a> - Beauraing Place Berry 08:14</li><li><a href="stop-TEC_N308ama.html">TEC:N308ama</a> - Beauraing Athénée 08:15</li><li><a href="stop-TEC_N308aka.html">TEC:N308aka</a> - Beauraing Institut 08:17</li><li><a href="stop-TEC_N308aga.html">TEC:N308aga</a> - Beauraing Place St-Roch 08:19</li><li><a href="stop-TEC_N308afc.html">TEC:N308afc</a> - Beauraing INDSC 08:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5834.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

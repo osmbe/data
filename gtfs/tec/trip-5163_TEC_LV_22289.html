@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Boucle urbaine de Liège - 5163:TEC:LV:22289</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boucle urbaine de Liège - 5163:TEC:LV:22289</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Llgbavi0.html">TEC:Llgbavi0</a> - Liege Bavière 22:12</li><li><a href="stop-TEC_Llgongr2.html">TEC:Llgongr2</a> - Liege Place du Congrès 22:13</li><li><a href="stop-TEC_Llgoutr2.html">TEC:Llgoutr2</a> - Liege Rue J. d'Outremeuse 22:14</li><li><a href="stop-TEC_Llgcour2.html">TEC:Llgcour2</a> - Liege Place Delcour 22:15</li><li><a href="stop-TEC_Llgmean2.html">TEC:Llgmean2</a> - Liege Rue Méan 22:16</li><li><a href="stop-TEC_Llglibo3.html">TEC:Llglibo3</a> - Liege Rue Libotte 22:17</li><li><a href="stop-TEC_Llgmédi1.html">TEC:Llgmédi1</a> - Liege Médiacité 22:18</li><li><a href="stop-TEC_Llgnata4.html">TEC:Llgnata4</a> - Liege Rue Natalis 22:19</li><li><a href="stop-TEC_Llghopo1.html">TEC:Llghopo1</a> - Liege Hôtel de Police 22:20</li><li><a href="stop-TEC_Llgguer1.html">TEC:Llgguer1</a> - Liege Rue des Croix de Guerre 22:21</li><li><a href="stop-TEC_Llgvinc2.html">TEC:Llgvinc2</a> - Liege Rue St-Vincent 22:22</li><li><a href="stop-TEC_Llgbrab1.html">TEC:Llgbrab1</a> - Liege Brabançons 22:23</li><li><a href="stop-TEC_Llgstvi1.html">TEC:Llgstvi1</a> - Liege Eglise St-Vincent 22:24</li><li><a href="stop-TEC_Llggram2.html">TEC:Llggram2</a> - Liege Monument Gramme 22:25</li><li><a href="stop-TEC_Llgrome2.html">TEC:Llgrome2</a> - Liege Quai de Rome 22:26</li><li><a href="stop-TEC_Llglema2.html">TEC:Llglema2</a> - Liege Place Général Leman 22:27</li><li><a href="stop-TEC_Llgfran2.html">TEC:Llgfran2</a> - Liege Place des Franchises 22:28</li><li><a href="stop-TEC_LlgguilA.html">TEC:LlgguilA</a> - Liege Gare des Guillemins Quai A 22:30</li><li><a href="stop-TEC_Llgdart2.html">TEC:Llgdart2</a> - Liege Rue Dartois 22:31</li><li><a href="stop-TEC_Llgblon4.html">TEC:Llgblon4</a> - Liege Avenue Blonden 22:33</li><li><a href="stop-TEC_Llgvero4.html">TEC:Llgvero4</a> - Liege Rue Ste-Véronique 22:34</li><li><a href="stop-TEC_Llgchar2.html">TEC:Llgchar2</a> - Liege Charlemagne 22:35</li><li><a href="stop-TEC_Llgdarc2.html">TEC:Llgdarc2</a> - Liege Rue Darchis 22:36</li><li><a href="stop-TEC_LlgPTAV2.html">TEC:LlgPTAV2</a> - Liege Pont d'Avroy 22:37</li><li><a href="stop-TEC_Llglonh1.html">TEC:Llglonh1</a> - Liege Rue Lonhienne 22:38</li><li><a href="stop-TEC_LlgOPER6.html">TEC:LlgOPER6</a> - Liege Opéra 22:39</li><li><a href="stop-TEC_LlgLAMB1.html">TEC:LlgLAMB1</a> - Liege Place St-Lambert 22:41</li><li><a href="stop-TEC_Llgmarc1.html">TEC:Llgmarc1</a> - Liege Place du Marché 22:42</li><li><a href="stop-TEC_Llgjean1.html">TEC:Llgjean1</a> - Liege Rue St-Jean Baptiste 22:43</li><li><a href="stop-TEC_Llgcurt1.html">TEC:Llgcurt1</a> - Liege Grand Curtius 22:44</li><li><a href="stop-TEC_Llgbavi2.html">TEC:Llgbavi2</a> - Liege Bavière 22:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4138.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

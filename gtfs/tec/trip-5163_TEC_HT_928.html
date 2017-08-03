@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tournai - Renaix/Ronse - 5163:TEC:HT:928</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tournai - Renaix/Ronse - 5163:TEC:HT:928</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4ef113a.html">TEC:H4ef113a</a> - Escanaffles Village 05:23</li><li><a href="stop-TEC_H4ef138a.html">TEC:H4ef138a</a> - Escanaffles Pont à l'Haies 05:24</li><li><a href="stop-TEC_H4ef109a.html">TEC:H4ef109a</a> - Escanaffles Arbre Vert 05:24</li><li><a href="stop-TEC_H4ef111a.html">TEC:H4ef111a</a> - Escanaffles Mouton d' Or 05:25</li><li><a href="stop-TEC_H4po127a.html">TEC:H4po127a</a> - Pottes Petit Marais 05:27</li><li><a href="stop-TEC_H4po128a.html">TEC:H4po128a</a> - Pottes Place 05:28</li><li><a href="stop-TEC_H4po125a.html">TEC:H4po125a</a> - Pottes Cité 05:29</li><li><a href="stop-TEC_H4po129a.html">TEC:H4po129a</a> - Pottes Route d'Helchin 05:30</li><li><a href="stop-TEC_H4po124a.html">TEC:H4po124a</a> - Pottes Café Laebens 05:31</li><li><a href="stop-TEC_H4po126a.html">TEC:H4po126a</a> - Pottes Marais de Lannoy 05:32</li><li><a href="stop-TEC_H4po130a.html">TEC:H4po130a</a> - Pottes Terrain de Football 05:32</li><li><a href="stop-TEC_H4he101b.html">TEC:H4he101b</a> - Herinnes Cavrinnes 05:33</li><li><a href="stop-TEC_H4he104b.html">TEC:H4he104b</a> - Herinnes Eglise 05:35</li><li><a href="stop-TEC_H4he107b.html">TEC:H4he107b</a> - Herinnes Route de  Molenbaix 05:36</li><li><a href="stop-TEC_H4he103b.html">TEC:H4he103b</a> - Herinnes Corps de Garde 05:37</li><li><a href="stop-TEC_H4he105b.html">TEC:H4he105b</a> - Herinnes Gare 05:38</li><li><a href="stop-TEC_H4he102b.html">TEC:H4he102b</a> - Herinnes Charron 05:39</li><li><a href="stop-TEC_H4he106b.html">TEC:H4he106b</a> - Herinnes Léaucourt 05:40</li><li><a href="stop-TEC_H4ob124b.html">TEC:H4ob124b</a> - Obigies Eglise 05:42</li><li><a href="stop-TEC_H4ob109b.html">TEC:H4ob109b</a> - Obigies Halte 05:43</li><li><a href="stop-TEC_H4ob110b.html">TEC:H4ob110b</a> - Obigies Havron 05:44</li><li><a href="stop-TEC_H4ob108b.html">TEC:H4ob108b</a> - Obigies Bruyères 05:44</li><li><a href="stop-TEC_H4ka175b.html">TEC:H4ka175b</a> - Kain Au Français 05:45</li><li><a href="stop-TEC_H4ka183b.html">TEC:H4ka183b</a> - Kain Clos de l'Espinette 05:46</li><li><a href="stop-TEC_H4ka182b.html">TEC:H4ka182b</a> - Kain Cité 05:46</li><li><a href="stop-TEC_H4ka188b.html">TEC:H4ka188b</a> - Kain Place Renard 05:47</li><li><a href="stop-TEC_H4ka176b.html">TEC:H4ka176b</a> - Kain Au Musicien 05:49</li><li><a href="stop-TEC_H4ka181b.html">TEC:H4ka181b</a> - Kain Champ des Oiseaux 05:50</li><li><a href="stop-TEC_H4ty270b.html">TEC:H4ty270b</a> - Tournai Avenue Elisabeth 05:51</li><li><a href="stop-TEC_H4ty295b.html">TEC:H4ty295b</a> - Tournai Ecole du Château 05:52</li><li><a href="stop-TEC_H4ty305a.html">TEC:H4ty305a</a> - Tournai SNCB 05:53</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1596.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

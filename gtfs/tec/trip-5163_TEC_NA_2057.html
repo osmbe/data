@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - BEAURAING - WELLIN - 5163:TEC:NA:2057</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: BEAURAING - WELLIN - 5163:TEC:NA:2057</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N308aib.html">TEC:N308aib</a> - Beauraing Rond-point 10:53</li><li><a href="stop-TEC_N308aja.html">TEC:N308aja</a> - Beauraing Route de la gare 10:54</li><li><a href="stop-TEC_N308aha.html">TEC:N308aha</a> - Beauraing Place Berry 10:55</li><li><a href="stop-TEC_N308aga.html">TEC:N308aga</a> - Beauraing Place St-Roch 10:57</li><li><a href="stop-TEC_N308afc.html">TEC:N308afc</a> - Beauraing INDSC 10:58</li><li><a href="stop-TEC_N308agb.html">TEC:N308agb</a> - Beauraing Place St-Roch 11:00</li><li><a href="stop-TEC_N308ada.html">TEC:N308ada</a> - Beauraing Point de vue 11:01</li><li><a href="stop-TEC_N311aga.html">TEC:N311aga</a> - Pondrome Rue de Malakoff 11:02</li><li><a href="stop-TEC_N311aeb.html">TEC:N311aeb</a> - Pondrome Tilleul 11:04</li><li><a href="stop-TEC_N311ada.html">TEC:N311ada</a> - Pondrome Ecoles 11:06</li><li><a href="stop-TEC_N311aaa.html">TEC:N311aaa</a> - Pondrome Village 11:06</li><li><a href="stop-TEC_N311aba.html">TEC:N311aba</a> - Pondrome Route de Wellin 11:07</li><li><a href="stop-TEC_N311aca.html">TEC:N311aca</a> - Pondrome Scierie 11:08</li><li><a href="stop-TEC_N360aaa.html">TEC:N360aaa</a> - Honnay Quatre bras 11:09</li><li><a href="stop-TEC_N360aca.html">TEC:N360aca</a> - Honnay Rue du château 11:10</li><li><a href="stop-TEC_N360aea.html">TEC:N360aea</a> - Honnay Rue de la forge 11:11</li><li><a href="stop-TEC_N360adc.html">TEC:N360adc</a> - Honnay Chapelle 11:12</li><li><a href="stop-TEC_N894ada.html">TEC:N894ada</a> - Froidlieu Centre 11:14</li><li><a href="stop-TEC_N894agc.html">TEC:N894agc</a> - Froidlieu La Croisette 11:14</li><li><a href="stop-TEC_N894aea.html">TEC:N894aea</a> - Sohier Eglise 11:17</li><li><a href="stop-TEC_N894aba.html">TEC:N894aba</a> - Lomprez Barzin 11:19</li><li><a href="stop-TEC_N894aaa.html">TEC:N894aaa</a> - Lomprez Ecole 11:20</li><li><a href="stop-TEC_N894aca.html">TEC:N894aca</a> - Lomprez Eglise 11:21</li><li><a href="stop-TEC_N874aca.html">TEC:N874aca</a> - Wellin Cimetière 11:24</li><li><a href="stop-TEC_N874aeb.html">TEC:N874aeb</a> - Wellin Place 11:25</li><li><a href="stop-TEC_N874aba.html">TEC:N874aba</a> - Wellin Dépôt TEC 11:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5800.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

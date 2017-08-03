@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Jodoigne - Wavre - 5163:TEC:BW:1222</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jodoigne - Wavre - 5163:TEC:BW:1222</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bptblma2.html">TEC:Bptblma2</a> - Pietrebais Rue Louis Marcel 09:08</li><li><a href="stop-TEC_Bptbmco2.html">TEC:Bptbmco2</a> - Pietrebais Maison Communale 09:09</li><li><a href="stop-TEC_Bptbbie2.html">TEC:Bptbbie2</a> - Pietrebais Bienvenu 09:11</li><li><a href="stop-TEC_Brxmcna2.html">TEC:Brxmcna2</a> - Roux-Miroir Chaussée de Namur 09:13</li><li><a href="stop-TEC_Brxmhai4.html">TEC:Brxmhai4</a> - Roux-Miroir La Haie 09:14</li><li><a href="stop-TEC_Brxmcha2.html">TEC:Brxmcha2</a> - Roux-Miroir Rue de Chaumont 09:14</li><li><a href="stop-TEC_Brxmbos2.html">TEC:Brxmbos2</a> - Roux-Miroir Bosquet 09:15</li><li><a href="stop-TEC_Binccha2.html">TEC:Binccha2</a> - Incourt Rue des Charrous 09:16</li><li><a href="stop-TEC_Bincbbo4.html">TEC:Bincbbo4</a> - Incourt Rue Baron Bouvier 09:16</li><li><a href="stop-TEC_Bincdon2.html">TEC:Bincdon2</a> - Incourt Route de Dongelberg 09:17</li><li><a href="stop-TEC_Bdoncar2.html">TEC:Bdoncar2</a> - Dongelberg Carrières 09:18</li><li><a href="stop-TEC_Bdoncen2.html">TEC:Bdoncen2</a> - Dongelberg Centre 09:20</li><li><a href="stop-TEC_Bdonlat2.html">TEC:Bdonlat2</a> - Dongelberg Route de Lathuy 09:21</li><li><a href="stop-TEC_Bjdsbro2.html">TEC:Bjdsbro2</a> - Jodoigne-Souveraine Chemin de Brocuy 09:22</li><li><a href="stop-TEC_Bjdssta2.html">TEC:Bjdssta2</a> - Jodoigne-Souveraine Stade 09:23</li><li><a href="stop-TEC_Bjdscnd2.html">TEC:Bjdscnd2</a> - Jodoigne-Souveraine Chapelle Notre-Dame 09:24</li><li><a href="stop-TEC_Bjodmal2.html">TEC:Bjodmal2</a> - Jodoigne La Maladrerie 09:25</li><li><a href="stop-TEC_Bjodppe1.html">TEC:Bjodppe1</a> - Jodoigne Place du Peuple 09:26</li><li><a href="stop-TEC_Bjodpvi1.html">TEC:Bjodpvi1</a> - Jodoigne Place de la Victoire 09:27</li><li><a href="stop-TEC_Bjodcad1.html">TEC:Bjodcad1</a> - Jodoigne Centre Administratif 09:28</li><li><a href="stop-TEC_Bjodgar1.html">TEC:Bjodgar1</a> - Jodoigne Gare d'Autobus 09:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./93.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

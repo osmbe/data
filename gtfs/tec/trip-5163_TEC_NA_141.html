@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - ANDENNE-SEILLES - CINEY - 5163:TEC:NA:141</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: ANDENNE-SEILLES - CINEY - 5163:TEC:NA:141</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N557aca.html">TEC:N557aca</a> - Ohey Dépôt 05:39</li><li><a href="stop-TEC_N557aea.html">TEC:N557aea</a> - Ohey Sapinière 05:42</li><li><a href="stop-TEC_N560adb.html">TEC:N560adb</a> - Soree Gare 05:43</li><li><a href="stop-TEC_N560aaa.html">TEC:N560aaa</a> - Soree Village 05:43</li><li><a href="stop-TEC_N203aca.html">TEC:N203aca</a> - Schaltin Route de Gramptinne 05:46</li><li><a href="stop-TEC_N203aba.html">TEC:N203aba</a> - Schaltin Fonds de Frisée 05:46</li><li><a href="stop-TEC_N203aaa.html">TEC:N203aaa</a> - Schaltin Frisée 05:47</li><li><a href="stop-TEC_N203afa.html">TEC:N203afa</a> - Schaltin Ferme Famerée 05:49</li><li><a href="stop-TEC_N203aea.html">TEC:N203aea</a> - Schaltin Village 05:51</li><li><a href="stop-TEC_N203ada.html">TEC:N203ada</a> - Schaltin Route de l'institut 05:51</li><li><a href="stop-TEC_N202aaa.html">TEC:N202aaa</a> - Emptinne Champion 05:53</li><li><a href="stop-TEC_N202aea.html">TEC:N202aea</a> - Emptinne Route de Champion 05:54</li><li><a href="stop-TEC_N202aba.html">TEC:N202aba</a> - Emptinne Belle-maison 05:57</li><li><a href="stop-TEC_N202aca.html">TEC:N202aca</a> - Emptinne Emptinnal 05:59</li><li><a href="stop-TEC_N201aga.html">TEC:N201aga</a> - Ciney Champs-Elysées 06:01</li><li><a href="stop-TEC_N201aha.html">TEC:N201aha</a> - Ciney Rue du Cimetière 06:03</li><li><a href="stop-TEC_N201ada.html">TEC:N201ada</a> - Ciney Hôtel de ville 06:05</li><li><a href="stop-TEC_N201aca.html">TEC:N201aca</a> - Ciney Centre médical 06:06</li><li><a href="stop-TEC_N201ava.html">TEC:N201ava</a> - Ciney Place de la Gare 06:07</li><li><a href="stop-TEC_N201aee.html">TEC:N201aee</a> - Ciney Gare d'autobus 06:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6374.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

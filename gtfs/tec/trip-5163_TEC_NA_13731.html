@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - GEMBLOUX - 5163:TEC:NA:13731</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - GEMBLOUX - 5163:TEC:NA:13731</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N522ada.html">TEC:N522ada</a> - Gembloux Gare 18:07</li><li><a href="stop-TEC_N522aeb.html">TEC:N522aeb</a> - Gembloux Rue des Volontaires 18:09</li><li><a href="stop-TEC_N522abb.html">TEC:N522abb</a> - Gembloux Quatre coins 18:11</li><li><a href="stop-TEC_N522afb.html">TEC:N522afb</a> - Gembloux Station de sélection 18:12</li><li><a href="stop-TEC_N522acb.html">TEC:N522acb</a> - Gembloux Petite Vette 18:13</li><li><a href="stop-TEC_N541acb.html">TEC:N541acb</a> - Sauveniere Ferme Simon 18:14</li><li><a href="stop-TEC_N541aab.html">TEC:N541aab</a> - Sauveniere Bifurcation 18:15</li><li><a href="stop-TEC_N541abb.html">TEC:N541abb</a> - Sauveniere Moulin Michaux 18:17</li><li><a href="stop-TEC_N541aeb.html">TEC:N541aeb</a> - Sauveniere Répeumont 18:18</li><li><a href="stop-TEC_N541adb.html">TEC:N541adb</a> - Sauveniere Pont des Pages 18:19</li><li><a href="stop-TEC_N524acb.html">TEC:N524acb</a> - Grand-Leez Maison Descampe 18:19</li><li><a href="stop-TEC_N524adb.html">TEC:N524adb</a> - Grand-Leez Maison Loise 18:20</li><li><a href="stop-TEC_N524amb.html">TEC:N524amb</a> - Grand-Leez Place 18:21</li><li><a href="stop-TEC_N524akb.html">TEC:N524akb</a> - Grand-Leez Taille Antoine 18:22</li><li><a href="stop-TEC_N524alb.html">TEC:N524alb</a> - Grand-Leez Rue de Perwez 7 18:23</li><li><a href="stop-TEC_N524ajb.html">TEC:N524ajb</a> - Grand-Leez Etang 18:24</li><li><a href="stop-TEC_N524ahb.html">TEC:N524ahb</a> - Grand-Leez Rue Warichet 18:25</li><li><a href="stop-TEC_N524aid.html">TEC:N524aid</a> - Grand-Leez Cabine électrique 18:25</li><li><a href="stop-TEC_N524afb.html">TEC:N524afb</a> - Grand-Leez Scierie 18:26</li><li><a href="stop-TEC_N524abb.html">TEC:N524abb</a> - Grand-Leez Petit-Leez 18:27</li><li><a href="stop-TEC_N524aab.html">TEC:N524aab</a> - Grand-Leez Rue au café 18:28</li><li><a href="stop-TEC_N525ajb.html">TEC:N525ajb</a> - Meux Ferme Montfort 18:29</li><li><a href="stop-TEC_N525azb.html">TEC:N525azb</a> - Meux Rue du Chaînia 18:30</li><li><a href="stop-TEC_N525aib.html">TEC:N525aib</a> - Meux Six chemins 18:32</li><li><a href="stop-TEC_N525ahb.html">TEC:N525ahb</a> - Meux Route de Liernu 18:33</li><li><a href="stop-TEC_N525akb.html">TEC:N525akb</a> - Meux Laid Pachis 18:33</li><li><a href="stop-TEC_N525agb.html">TEC:N525agb</a> - Meux Ferme de Sclef 18:34</li><li><a href="stop-TEC_N525afb.html">TEC:N525afb</a> - Meux Rue Alvaux 18:35</li><li><a href="stop-TEC_N525aeb.html">TEC:N525aeb</a> - Meux Eglise 18:37</li><li><a href="stop-TEC_N525adb.html">TEC:N525adb</a> - Meux Poste 18:38</li><li><a href="stop-TEC_N525bab.html">TEC:N525bab</a> - Meux Village 18:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6416.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

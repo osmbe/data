@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Huy - Strée - Ouffet - Hamoir - 5163:TEC:LV:21414</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Huy - Strée - Ouffet - Hamoir - 5163:TEC:LV:21414</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LOuplac1.html">TEC:LOuplac1</a> - Ouffet Grand-Place 16:29</li><li><a href="stop-TEC_LOuilc-_.html">TEC:LOuilc-*</a> - Ouffet I.L.C. 16:31</li><li><a href="stop-TEC_LOucuve1.html">TEC:LOucuve1</a> - Ouffet Rue Cuvelier 16:32</li><li><a href="stop-TEC_LOuathe1.html">TEC:LOuathe1</a> - Ouffet Athénée 16:33</li><li><a href="stop-TEC_LOucarr4.html">TEC:LOucarr4</a> - Ouffet Carrefour 16:35</li><li><a href="stop-TEC_LElgerd6.html">TEC:LElgerd6</a> - Ellemelle Garage Gerday 16:38</li><li><a href="stop-TEC_LElcent2.html">TEC:LElcent2</a> - Ellemelle Centre 16:39</li><li><a href="stop-TEC_LFTeg--2.html">TEC:LFTeg--2</a> - Fraiture Eglise 16:44</li><li><a href="stop-TEC_LFTcroi2.html">TEC:LFTcroi2</a> - Fraiture Rue de la Croix-Rouge 16:45</li><li><a href="stop-TEC_LNAbois2.html">TEC:LNAbois2</a> - Nandrin Bois de la Bouhaye 16:47</li><li><a href="stop-TEC_LNAbouh2.html">TEC:LNAbouh2</a> - Nandrin La Bouhaye 16:48</li><li><a href="stop-TEC_LNAbass2.html">TEC:LNAbass2</a> - Nandrin La Basse 16:49</li><li><a href="stop-TEC_LNAmart2.html">TEC:LNAmart2</a> - Nandrin Ecole St-Martin 16:49</li><li><a href="stop-TEC_LNAplac2.html">TEC:LNAplac2</a> - Nandrin Place A. Botty 16:50</li><li><a href="stop-TEC_LNAanne2.html">TEC:LNAanne2</a> - Nandrin Chapelle Ste-Anne 16:51</li><li><a href="stop-TEC_LNAdemo2.html">TEC:LNAdemo2</a> - Nandrin Maison Demoulin 16:52</li><li><a href="stop-TEC_LNAbras2.html">TEC:LNAbras2</a> - Nandrin Quatre Bras 16:54</li><li><a href="stop-TEC_LNAbras3.html">TEC:LNAbras3</a> - Nandrin Quatre Bras 16:54</li><li><a href="stop-TEC_LScgore1.html">TEC:LScgore1</a> - Scry Bois Goreux 16:55</li><li><a href="stop-TEC_LScread1.html">TEC:LScread1</a> - Scry Centre de réadaptation 16:56</li><li><a href="stop-TEC_LSceg--2.html">TEC:LSceg--2</a> - Scry Eglise 16:58</li><li><a href="stop-TEC_LScread2.html">TEC:LScread2</a> - Scry Centre de réadaptation 16:59</li><li><a href="stop-TEC_LVTtrou1.html">TEC:LVTtrou1</a> - Villers-le-Temple Trou de Gottes 17:01</li><li><a href="stop-TEC_LVTeg--1.html">TEC:LVTeg--1</a> - Villers-le-Temple Eglise 17:02</li><li><a href="stop-TEC_LVTforg1.html">TEC:LVTforg1</a> - Villers-le-Temple La Forge 17:04</li><li><a href="stop-TEC_LOljean1.html">TEC:LOljean1</a> - Outrelouxhe St-Jean-Sart 17:06</li><li><a href="stop-TEC_LOltill1.html">TEC:LOltill1</a> - Outrelouxhe Aux Tilleuls 17:07</li><li><a href="stop-TEC_LOlvill1.html">TEC:LOlvill1</a> - Outrelouxhe Chemin du Village 17:08</li><li><a href="stop-TEC_LRuegli1.html">TEC:LRuegli1</a> - Rausa Chemin de l'Eglise 17:09</li><li><a href="stop-TEC_LSegott1.html">TEC:LSegott1</a> - Stree Les Gottes 168 17:10</li><li><a href="stop-TEC_LSeec--1.html">TEC:LSeec--1</a> - Stree Les Gottes (Ecoles) 17:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4606.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

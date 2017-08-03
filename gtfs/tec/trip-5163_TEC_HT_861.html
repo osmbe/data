@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tournai - Renaix/Ronse - 5163:TEC:HT:861</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tournai - Renaix/Ronse - 5163:TEC:HT:861</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4ty305d.html">TEC:H4ty305d</a> - Tournai SNCB 06:34</li><li><a href="stop-TEC_H4ty295a.html">TEC:H4ty295a</a> - Tournai Boulevard des Nerviens 06:35</li><li><a href="stop-TEC_H4ty359b.html">TEC:H4ty359b</a> - Tournai Viaduc 06:36</li><li><a href="stop-TEC_H4ty270a.html">TEC:H4ty270a</a> - Tournai Avenue Elisabeth 06:36</li><li><a href="stop-TEC_H4ka181a.html">TEC:H4ka181a</a> - Kain Champ des Oiseaux 06:37</li><li><a href="stop-TEC_H4ka176a.html">TEC:H4ka176a</a> - Kain Au Musicien 06:39</li><li><a href="stop-TEC_H4ka188a.html">TEC:H4ka188a</a> - Kain Place Renard 06:40</li><li><a href="stop-TEC_H4ka182a.html">TEC:H4ka182a</a> - Kain Cité 06:41</li><li><a href="stop-TEC_H4ka183a.html">TEC:H4ka183a</a> - Kain Clos de l'Espinette 06:42</li><li><a href="stop-TEC_H4ka175a.html">TEC:H4ka175a</a> - Kain Au Français 06:42</li><li><a href="stop-TEC_H4ob108a.html">TEC:H4ob108a</a> - Obigies Bruyères 06:43</li><li><a href="stop-TEC_H4ob110a.html">TEC:H4ob110a</a> - Obigies Havron 06:43</li><li><a href="stop-TEC_H4ob109a.html">TEC:H4ob109a</a> - Obigies Halte 06:44</li><li><a href="stop-TEC_H4ob124a.html">TEC:H4ob124a</a> - Obigies Eglise 06:45</li><li><a href="stop-TEC_H4he106a.html">TEC:H4he106a</a> - Herinnes Léaucourt 06:47</li><li><a href="stop-TEC_H4he102a.html">TEC:H4he102a</a> - Herinnes Charron 06:48</li><li><a href="stop-TEC_H4he105a.html">TEC:H4he105a</a> - Herinnes Gare 06:49</li><li><a href="stop-TEC_H4he103a.html">TEC:H4he103a</a> - Herinnes Corps de Garde 06:50</li><li><a href="stop-TEC_H4he107a.html">TEC:H4he107a</a> - Herinnes Route de  Molenbaix 06:51</li><li><a href="stop-TEC_H4he104a.html">TEC:H4he104a</a> - Herinnes Eglise 06:52</li><li><a href="stop-TEC_H4he101a.html">TEC:H4he101a</a> - Herinnes Cavrinnes 06:54</li><li><a href="stop-TEC_H4po130b.html">TEC:H4po130b</a> - Pottes Terrain de Football 06:55</li><li><a href="stop-TEC_H4po126b.html">TEC:H4po126b</a> - Pottes Marais de Lannoy 06:55</li><li><a href="stop-TEC_H4po124b.html">TEC:H4po124b</a> - Pottes Café Laebens 06:56</li><li><a href="stop-TEC_H4po129b.html">TEC:H4po129b</a> - Pottes Route d'Helchin 06:57</li><li><a href="stop-TEC_H4po125b.html">TEC:H4po125b</a> - Pottes Cité 06:58</li><li><a href="stop-TEC_H4po128b.html">TEC:H4po128b</a> - Pottes Place 06:59</li><li><a href="stop-TEC_H4po127b.html">TEC:H4po127b</a> - Pottes Petit Marais 07:00</li><li><a href="stop-TEC_H4ef111b.html">TEC:H4ef111b</a> - Escanaffles Mouton d' Or 07:02</li><li><a href="stop-TEC_H4ef109b.html">TEC:H4ef109b</a> - Escanaffles Arbre Vert 07:02</li><li><a href="stop-TEC_H4ef138b.html">TEC:H4ef138b</a> - Escanaffles Pont à l'Haies 07:03</li><li><a href="stop-TEC_H4ef113d.html">TEC:H4ef113d</a> - Escanaffles Village 07:04</li><li><a href="stop-TEC_H4ae101b.html">TEC:H4ae101b</a> - Avelgem Nijverheidslaan/Avenue de l'Industrie 07:06</li><li><a href="stop-TEC_H4ae100b.html">TEC:H4ae100b</a> - Avelgem Centre Sportif/Sportcentrum 07:07</li><li><a href="stop-TEC_H4ae102a.html">TEC:H4ae102a</a> - Avelgem Station (aankomst)/SNCB (arrivée) 07:08</li><li><a href="stop-TEC_H4ae102b.html">TEC:H4ae102b</a> - Avelgem Station (vertrek)/SNCB(départ) 07:08</li><li><a href="stop-TEC_H4ae100a.html">TEC:H4ae100a</a> - Avelgem Centre Sportif/Sportcentrum 07:09</li><li><a href="stop-TEC_H4ae101a.html">TEC:H4ae101a</a> - Avelgem Nijverheidslaan/Avenue de l'Industrie 07:10</li><li><a href="stop-TEC_H4ef113b.html">TEC:H4ef113b</a> - Escanaffles Village 07:11</li><li><a href="stop-TEC_H4or114a.html">TEC:H4or114a</a> - Orroir Passage à Niveau 07:12</li><li><a href="stop-TEC_H4or116a.html">TEC:H4or116a</a> - Orroir Rue de l'Alouette 07:13</li><li><a href="stop-TEC_H4or113a.html">TEC:H4or113a</a> - Orroir Institut Saint-Joseph 07:14</li><li><a href="stop-TEC_H4or115a.html">TEC:H4or115a</a> - Orroir Place 07:15</li><li><a href="stop-TEC_H4am100a.html">TEC:H4am100a</a> - Amougies Cabine 07:16</li><li><a href="stop-TEC_H4am101a.html">TEC:H4am101a</a> - Amougies Docteur 07:17</li><li><a href="stop-TEC_H4am113b.html">TEC:H4am113b</a> - Amougies Poste 07:18</li><li><a href="stop-TEC_H4rs118a.html">TEC:H4rs118a</a> - Russeignies Couvent 07:20</li><li><a href="stop-TEC_H4rs119a.html">TEC:H4rs119a</a> - Russeignies Eglise 07:21</li><li><a href="stop-TEC_H4rs117a.html">TEC:H4rs117a</a> - Russeignies Chemin N° 14 07:22</li><li><a href="stop-TEC_H5rx112b.html">TEC:H5rx112b</a> - Renaix Zomerij/Façade Blanche 07:23</li><li><a href="stop-TEC_H5rx128b.html">TEC:H5rx128b</a> - Renaix Klijpestraat/Rue du Clipet 07:24</li><li><a href="stop-TEC_H5rx110b.html">TEC:H5rx110b</a> - Renaix Klijpe Kerk/Eglise du Clipet 07:25</li><li><a href="stop-TEC_H5rx146b.html">TEC:H5rx146b</a> - Renaix Steenveldstraat/Rue Steenveld 07:26</li><li><a href="stop-TEC_H5rx140b.html">TEC:H5rx140b</a> - Renaix Molekenst./Rue des Petits Moulins 07:26</li><li><a href="stop-TEC_H5rx139b.html">TEC:H5rx139b</a> - Renaix Kapellestraat/Rue de La Chapelle 07:27</li><li><a href="stop-TEC_H5rx145a.html">TEC:H5rx145a</a> - Renaix J.V Nassaustraat/Rue J.V Nassau 07:28</li><li><a href="stop-TEC_H5rx138b.html">TEC:H5rx138b</a> - Renaix Lange Haagstraat/Rue Longue Haie 07:28</li><li><a href="stop-TEC_H5rx143b.html">TEC:H5rx143b</a> - Renaix Kasteelstraat/Rue du château 07:29</li><li><a href="stop-TEC_H5rx129b.html">TEC:H5rx129b</a> - Renaix Hoogstraat/Rue Haute 07:29</li><li><a href="stop-TEC_H5rx144b.html">TEC:H5rx144b</a> - Renaix Sturbautstraat 07:30</li><li><a href="stop-TEC_H5rx115a.html">TEC:H5rx115a</a> - Renaix Station/SNCB 07:31</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1518.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

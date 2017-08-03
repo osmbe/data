@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Arlon - Athus - Virton - 5163:TEC:LU:4271</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Arlon - Athus - Virton - 5163:TEC:LU:4271</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X619akb.html">TEC:X619akb</a> - Saint-Remy Rue de l'Eglise 07:05</li><li><a href="stop-TEC_X622aab.html">TEC:X622aab</a> - Grandcourt Rue de Deubry 07:08</li><li><a href="stop-TEC_X622aca.html">TEC:X622aca</a> - Ruette Ecole 07:11</li><li><a href="stop-TEC_X622ada.html">TEC:X622ada</a> - Ruette Rue Abbé Dorion 07:12</li><li><a href="stop-TEC_X622aea.html">TEC:X622aea</a> - Ruette Rue de Longuyon 07:13</li><li><a href="stop-TEC_X622afa.html">TEC:X622afa</a> - Ruette Route de la Gare 07:14</li><li><a href="stop-TEC_X620ada.html">TEC:X620ada</a> - Gomery 4 Chemins 07:15</li><li><a href="stop-TEC_X621aaa.html">TEC:X621aaa</a> - Latour Rue Baillet Latour 07:18</li><li><a href="stop-TEC_X621aba.html">TEC:X621aba</a> - Latour Eglise 07:19</li><li><a href="stop-TEC_X621aca.html">TEC:X621aca</a> - Chenois Rue de la Vire 131 07:20</li><li><a href="stop-TEC_X621ada.html">TEC:X621ada</a> - Chenois Rue de la Vire 93 07:21</li><li><a href="stop-TEC_X621aea.html">TEC:X621aea</a> - Chenois Eglise 07:21</li><li><a href="stop-TEC_X608asa.html">TEC:X608asa</a> - Saint-Mard Passage à Niveau 07:22</li><li><a href="stop-TEC_X608ara.html">TEC:X608ara</a> - Saint-Mard Avenue Wauters 07:23</li><li><a href="stop-TEC_X608ata.html">TEC:X608ata</a> - Saint-Mard Eglise 07:24</li><li><a href="stop-TEC_X608aja.html">TEC:X608aja</a> - Saint-Mard Rue de la Station 07:25</li><li><a href="stop-TEC_X608aaa.html">TEC:X608aaa</a> - Saint-Mard Gare 07:26</li><li><a href="stop-TEC_X608aba.html">TEC:X608aba</a> - Virton Carrefour Avenue Bouvier 07:26</li><li><a href="stop-TEC_X608aca.html">TEC:X608aca</a> - Virton Paradis des Enfants 07:27</li><li><a href="stop-TEC_X608ada.html">TEC:X608ada</a> - Virton CNDB 07:27</li><li><a href="stop-TEC_X608aea.html">TEC:X608aea</a> - Virton Arcades 07:28</li><li><a href="stop-TEC_X608aga.html">TEC:X608aga</a> - Virton Carmel 07:29</li><li><a href="stop-TEC_X608aha.html">TEC:X608aha</a> - Virton Delhaize 07:30</li><li><a href="stop-TEC_X608aqa.html">TEC:X608aqa</a> - Virton Pierrard 07:31</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3025.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

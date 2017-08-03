@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Attre - Blaton - 5163:TEC:HT:5232</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Attre - Blaton - 5163:TEC:HT:5232</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4ab100b.html">TEC:H4ab100b</a> - Arbre Chapelle 09:15</li><li><a href="stop-TEC_H4ab102a.html">TEC:H4ab102a</a> - Arbre Place 09:17</li><li><a href="stop-TEC_H4ab103a.html">TEC:H4ab103a</a> - Arbre Rue Mazette 09:18</li><li><a href="stop-TEC_H5ma180a.html">TEC:H5ma180a</a> - Maffle Centre 09:20</li><li><a href="stop-TEC_H5ma185b.html">TEC:H5ma185b</a> - Maffle Pont du Chemin de Fer 09:21</li><li><a href="stop-TEC_H5at132b.html">TEC:H5at132b</a> - Ath Rue de Soignies 09:23</li><li><a href="stop-TEC_H5at110b.html">TEC:H5at110b</a> - Ath Cimetière 09:23</li><li><a href="stop-TEC_H5at137a.html">TEC:H5at137a</a> - Ath Shopping Center 09:24</li><li><a href="stop-TEC_H5at123a.html">TEC:H5at123a</a> - Ath Match 09:25</li><li><a href="stop-TEC_H5at105a.html">TEC:H5at105a</a> - Ath Aldi 09:25</li><li><a href="stop-TEC_H5at113a.html">TEC:H5at113a</a> - Ath Colruyt 09:25</li><li><a href="stop-TEC_H5at114a.html">TEC:H5at114a</a> - Ath Delhaize - Lorette 09:25</li><li><a href="stop-TEC_H5at107a.html">TEC:H5at107a</a> - Ath Avenue Jouret 09:26</li><li><a href="stop-TEC_H5at134a.html">TEC:H5at134a</a> - Ath Rue du Centenaire 09:26</li><li><a href="stop-TEC_H5at118a.html">TEC:H5at118a</a> - Ath Ch EpiCURA 09:27</li><li><a href="stop-TEC_H5at120b.html">TEC:H5at120b</a> - Ath Institut Technique 09:29</li><li><a href="stop-TEC_H5at116a.html">TEC:H5at116a</a> - Ath SNCB 09:33</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2182.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Nivelles - Rosseignies - Buzet - 5163:TEC:BW:5598</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Nivelles - Rosseignies - Buzet - 5163:TEC:BW:5598</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bnivga12.html">TEC:Bnivga12</a> - Nivelles Gare 12:42</li><li><a href="stop-TEC_Bnivga11.html">TEC:Bnivga11</a> - Nivelles Gare 12:42</li><li><a href="stop-TEC_Bnivsse1.html">TEC:Bnivsse1</a> - Nivelles Saint-Sépulcre 12:43</li><li><a href="stop-TEC_Bnivbxl2.html">TEC:Bnivbxl2</a> - Nivelles Rue de Bruxelles 12:45</li><li><a href="stop-TEC_Bnivpla1.html">TEC:Bnivpla1</a> - Nivelles Place de Lalieux 12:46</li><li><a href="stop-TEC_Bnivpso2.html">TEC:Bnivpso2</a> - Nivelles Place du Souvenir 12:48</li><li><a href="stop-TEC_Bnivgpl3.html">TEC:Bnivgpl3</a> - Nivelles Grand Place 12:49</li><li><a href="stop-TEC_Bnivcol1.html">TEC:Bnivcol1</a> - Nivelles Collège 12:50</li><li><a href="stop-TEC_Bnivasa1.html">TEC:Bnivasa1</a> - Nivelles Allée du Sablon 12:51</li><li><a href="stop-TEC_Bnivplt2.html">TEC:Bnivplt2</a> - Nivelles La Palette 12:53</li><li><a href="stop-TEC_Bnivbpe2.html">TEC:Bnivbpe2</a> - Nivelles Barrière Péton 12:55</li><li><a href="stop-TEC_Bnivbpe3.html">TEC:Bnivbpe3</a> - Nivelles Barrière Péton 12:56</li><li><a href="stop-TEC_Bptrlux2.html">TEC:Bptrlux2</a> - Petit-Roeulx-Lez-Nivelles Luxensart 13:00</li><li><a href="stop-TEC_Bptrcra2.html">TEC:Bptrcra2</a> - Petit-Roeulx-Lez-Nivelles Cramat 13:01</li><li><a href="stop-TEC_Bptrvil2.html">TEC:Bptrvil2</a> - Petit-Roeulx-Lez-Nivelles Rue du Village 13:02</li><li><a href="stop-TEC_Bptrgri2.html">TEC:Bptrgri2</a> - Petit-Roeulx-Lez-Nivelles Grinfaux 13:03</li><li><a href="stop-TEC_Bptrpla2.html">TEC:Bptrpla2</a> - Petit-Roeulx-Lez-Nivelles Place 13:04</li><li><a href="stop-TEC_Bptrman2.html">TEC:Bptrman2</a> - Petit-Roeulx-Lez-Nivelles Mansart 13:05</li><li><a href="stop-TEC_Bptrmar2.html">TEC:Bptrmar2</a> - Petit-Roeulx Rue du Marais 13:06</li><li><a href="stop-TEC_Bobacar2.html">TEC:Bobacar2</a> - Rosseignies Carrefour 13:08</li><li><a href="stop-TEC_Brosegl1.html">TEC:Brosegl1</a> - Rosseignies Eglise 13:09</li><li><a href="stop-TEC_Broscha1.html">TEC:Broscha1</a> - Rosseignies Chapelle 13:10</li><li><a href="stop-TEC_Bobacou1.html">TEC:Bobacou1</a> - Obaix Couturelles 13:14</li><li><a href="stop-TEC_Cobcent2.html">TEC:Cobcent2</a> - Obaix Centre 13:15</li><li><a href="stop-TEC_Cobmven2.html">TEC:Cobmven2</a> - Obaix Rue Moulin à Vent 13:16</li><li><a href="stop-TEC_Cobbusc2.html">TEC:Cobbusc2</a> - Obaix Rue Buscaille 13:16</li><li><a href="stop-TEC_Cobmara2.html">TEC:Cobmara2</a> - Buzet Rue du Marais 13:16</li><li><a href="stop-TEC_Cobbuze2.html">TEC:Cobbuze2</a> - Buzet Place de Buzet 13:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./304.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - JAMBES (Amée) - FLAWINNE - 5163:TEC:NA:745</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: JAMBES (Amée) - FLAWINNE - 5163:TEC:NA:745</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501dbb.html">TEC:N501dbb</a> - Flawinne Quatre Seigneurs 18:35</li><li><a href="stop-TEC_N501ddb.html">TEC:N501ddb</a> - Flawinne Rue Denis 18:36</li><li><a href="stop-TEC_N501deb.html">TEC:N501deb</a> - Flawinne Comognes 18:37</li><li><a href="stop-TEC_N501dab.html">TEC:N501dab</a> - Flawinne Rue Hennuy 18:38</li><li><a href="stop-TEC_N501cwb.html">TEC:N501cwb</a> - Flawinne Rue Vandervelde 18:39</li><li><a href="stop-TEC_N501cvb.html">TEC:N501cvb</a> - Flawinne Maison communale 18:40</li><li><a href="stop-TEC_N501cxb.html">TEC:N501cxb</a> - Flawinne Eglise 18:41</li><li><a href="stop-TEC_N501czb.html">TEC:N501czb</a> - Flawinne Fond de Ronet 18:42</li><li><a href="stop-TEC_N501cyb.html">TEC:N501cyb</a> - Flawinne Jeu de balle 18:42</li><li><a href="stop-TEC_N501amb.html">TEC:N501amb</a> - Belgrade Rue Arnould 18:43</li><li><a href="stop-TEC_N501bcb.html">TEC:N501bcb</a> - Belgrade Rue Delhaye 18:44</li><li><a href="stop-TEC_N501apb.html">TEC:N501apb</a> - Belgrade Rue Godefroid 18:45</li><li><a href="stop-TEC_N501aob.html">TEC:N501aob</a> - Belgrade Avenue Gourdin 18:46</li><li><a href="stop-TEC_N501bdb.html">TEC:N501bdb</a> - Belgrade Rue laide Coupe 18:47</li><li><a href="stop-TEC_N501hab.html">TEC:N501hab</a> - Namur Rue Salzinnes-les-Moulins 18:49</li><li><a href="stop-TEC_N501lsb.html">TEC:N501lsb</a> - Namur Pn d'Hastedon 18:51</li><li><a href="stop-TEC_N501gpb.html">TEC:N501gpb</a> - Namur Omalius 18:53</li><li><a href="stop-TEC_N501grc.html">TEC:N501grc</a> - Namur Pl. de la Station - Quai C 18:55</li><li><a href="stop-TEC_N501heb.html">TEC:N501heb</a> - Namur Rue de Fer 18:57</li><li><a href="stop-TEC_N501hhb.html">TEC:N501hhb</a> - Namur Rue de l'Ange 18:58</li><li><a href="stop-TEC_N501gnb.html">TEC:N501gnb</a> - Namur Place d'Armes 18:59</li><li><a href="stop-TEC_N501fwb.html">TEC:N501fwb</a> - Namur Boulevard Ad Aquam 19:00</li><li><a href="stop-TEC_N501ebb.html">TEC:N501ebb</a> - Jambes Avenue Materne 19:02</li><li><a href="stop-TEC_N501etb.html">TEC:N501etb</a> - Jambes Place de la Wallonie 19:03</li><li><a href="stop-TEC_N501epb.html">TEC:N501epb</a> - Jambes CPAS 19:04</li><li><a href="stop-TEC_N501kqb.html">TEC:N501kqb</a> - Jambes Etablissements Bister 19:05</li><li><a href="stop-TEC_N501eib.html">TEC:N501eib</a> - Jambes Caserne du génie 19:05</li><li><a href="stop-TEC_N501jrb.html">TEC:N501jrb</a> - Jambes Velaine rue va-s-t'y frotte 19:06</li><li><a href="stop-TEC_N501ezb.html">TEC:N501ezb</a> - Jambes Rue Pierre du diable 19:07</li><li><a href="stop-TEC_N501dhb.html">TEC:N501dhb</a> - Jambes Amée chapelle 19:08</li><li><a href="stop-TEC_N501dib.html">TEC:N501dib</a> - Jambes Amée plage 19:09</li><li><a href="stop-TEC_N501dgb.html">TEC:N501dgb</a> - Jambes Amée avenue du Parc 19:09</li><li><a href="stop-TEC_N501dja.html">TEC:N501dja</a> - Jambes Amée terminus 19:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6105.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

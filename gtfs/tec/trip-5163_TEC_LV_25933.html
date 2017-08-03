@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Aywaille - Banneux - Theux - Spa - 5163:TEC:LV:25933</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aywaille - Banneux - Theux - Spa - 5163:TEC:LV:25933</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LTHroch2.html">TEC:LTHroch2</a> - Theux St-Roch 15:38</li><li><a href="stop-TEC_LTHbelv2.html">TEC:LTHbelv2</a> - Theux Belvédère 15:39</li><li><a href="stop-TEC_LTHjevo2.html">TEC:LTHjevo2</a> - Theux Route de Jevoumont 15:40</li><li><a href="stop-TEC_LTHcime2.html">TEC:LTHcime2</a> - Theux Cimetière 15:41</li><li><a href="stop-TEC_LTHmont2.html">TEC:LTHmont2</a> - Theux Mont 15:43</li><li><a href="stop-TEC_LBahaut2.html">TEC:LBahaut2</a> - Banneux Route de Hautregard 15:48</li><li><a href="stop-TEC_LBapeup2.html">TEC:LBapeup2</a> - Banneux Camping des Peupliers 15:50</li><li><a href="stop-TEC_LBapepi5.html">TEC:LBapepi5</a> - Banneux Route de Pepinster 15:52</li><li><a href="stop-TEC_LBaeg--2.html">TEC:LBaeg--2</a> - Banneux Eglise 15:53</li><li><a href="stop-TEC_LBapepi6.html">TEC:LBapepi6</a> - Banneux Route de Pepinster 15:54</li><li><a href="stop-TEC_LBabeco4.html">TEC:LBabeco4</a> - Banneux Garage Beco 15:54</li><li><a href="stop-TEC_LBamate2.html">TEC:LBamate2</a> - Banneux Mater Deï 15:54</li><li><a href="stop-TEC_LBalacr2.html">TEC:LBalacr2</a> - Banneux La Croix 15:55</li><li><a href="stop-TEC_LBahome2.html">TEC:LBahome2</a> - Banneux Home 15:56</li><li><a href="stop-TEC_LLUalou2.html">TEC:LLUalou2</a> - Louveigne Rue des Alouettes 15:56</li><li><a href="stop-TEC_LLUvent4.html">TEC:LLUvent4</a> - Louveigne Plein Vent 15:58</li><li><a href="stop-TEC_LLUtill2.html">TEC:LLUtill2</a> - Louveigne Tilleul 15:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5285.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

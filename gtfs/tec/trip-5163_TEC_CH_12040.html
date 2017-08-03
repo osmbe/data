@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - LUTTRE SNCB - MONCEAU/S/SAMBRE MOULIN - 5163:TEC:CH:12040</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: LUTTRE SNCB - MONCEAU/S/SAMBRE MOULIN - 5163:TEC:CH:12040</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Ctrecol4.html">TEC:Ctrecol4</a> - Trazegnies Les Ecoles 06:35</li><li><a href="stop-TEC_Ctrvert2.html">TEC:Ctrvert2</a> - Trazegnies Rue Verte 06:36</li><li><a href="stop-TEC_Ctrpn2.html">TEC:Ctrpn2</a> - Trazegnies Passage à Niveau 06:36</li><li><a href="stop-TEC_Ccocroi2.html">TEC:Ccocroi2</a> - Courcelles Croisette 06:37</li><li><a href="stop-TEC_Csocime2.html">TEC:Csocime2</a> - Souvret Cimetière 06:38</li><li><a href="stop-TEC_Csoplac2.html">TEC:Csoplac2</a> - Souvret Place 06:39</li><li><a href="stop-TEC_Csoperi2.html">TEC:Csoperi2</a> - Souvret Puits Périer 06:40</li><li><a href="stop-TEC_Csoforr4.html">TEC:Csoforr4</a> - Souvret Forrière 06:41</li><li><a href="stop-TEC_Csobail2.html">TEC:Csobail2</a> - Souvret La Baille 06:42</li><li><a href="stop-TEC_Csostoc2.html">TEC:Csostoc2</a> - Souvret Rue du Stocquy 06:43</li><li><a href="stop-TEC_Csoforc2.html">TEC:Csoforc2</a> - Souvret Rue de Forchies 06:44</li><li><a href="stop-TEC_Csochea2.html">TEC:Csochea2</a> - Souvret Château d'Eau 06:45</li><li><a href="stop-TEC_Csograf4.html">TEC:Csograf4</a> - Souvret Rue des Graffes 06:46</li><li><a href="stop-TEC_Ccobour2.html">TEC:Ccobour2</a> - Courcelles Docteur Bourgeois 06:47</li><li><a href="stop-TEC_Cgxfo142.html">TEC:Cgxfo142</a> - Goutroux Fosse 14 06:48</li><li><a href="stop-TEC_Cgxvvel2.html">TEC:Cgxvvel2</a> - Goutroux Rue Vandervelde 06:49</li><li><a href="stop-TEC_Cgxchea1.html">TEC:Cgxchea1</a> - Goutroux Château d'Eau 06:50</li><li><a href="stop-TEC_Cgxcime1.html">TEC:Cgxcime1</a> - Goutroux Cimetière 06:51</li><li><a href="stop-TEC_Cgxmaco1.html">TEC:Cgxmaco1</a> - Goutroux Maison Communale 06:51</li><li><a href="stop-TEC_Cgxalli1.html">TEC:Cgxalli1</a> - Goutroux Rue des Alliés 06:52</li><li><a href="stop-TEC_Cgxvkho4.html">TEC:Cgxvkho4</a> - Goutroux Rue Vandekerkhove 06:53</li><li><a href="stop-TEC_Cgxptt2.html">TEC:Cgxptt2</a> - Goutroux P.P.T. 06:54</li><li><a href="stop-TEC_Cgxprad4.html">TEC:Cgxprad4</a> - Goutroux Prado 06:55</li><li><a href="stop-TEC_Cgxmorg2.html">TEC:Cgxmorg2</a> - Goutroux Morgnies (M) 06:56</li><li><a href="stop-TEC_Cmoecol2.html">TEC:Cmoecol2</a> - Monceau-sur-Sambre Rue des Ecoles 06:57</li><li><a href="stop-TEC_Cmohame2.html">TEC:Cmohame2</a> - Monceau-sur-Sambre Hameau 06:58</li><li><a href="stop-TEC_Cmorgof2.html">TEC:Cmorgof2</a> - Monceau-sur-Sambre Rue de Goffart 07:00</li><li><a href="stop-TEC_Cmomoul6.html">TEC:Cmomoul6</a> - Monceau-sur-Sambre Moulin (M) 07:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./917.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

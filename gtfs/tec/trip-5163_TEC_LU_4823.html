@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Arlon - Martelange - 5163:TEC:LU:4823</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Arlon - Martelange - 5163:TEC:LU:4823</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X601bba.html">TEC:X601bba</a> - Arlon Gare - Quai 6 11:40</li><li><a href="stop-TEC_X601bda.html">TEC:X601bda</a> - Arlon Xxv Août 11:42</li><li><a href="stop-TEC_X601bfa.html">TEC:X601bfa</a> - Arlon Sq Astrid - R de Bastogne 11:45</li><li><a href="stop-TEC_X601bga.html">TEC:X601bga</a> - Arlon ISMA 11:46</li><li><a href="stop-TEC_X601aca.html">TEC:X601aca</a> - Arlon Tec - Rue Sainte-Croix 11:47</li><li><a href="stop-TEC_X601aqa.html">TEC:X601aqa</a> - Arlon Bon Coin 11:48</li><li><a href="stop-TEC_X601aja.html">TEC:X601aja</a> - Arlon Rue de Viville 11:49</li><li><a href="stop-TEC_X601aia.html">TEC:X601aia</a> - Viville Lavoir 11:51</li><li><a href="stop-TEC_X601aga.html">TEC:X601aga</a> - Viville Cimetière 11:54</li><li><a href="stop-TEC_X662asa.html">TEC:X662asa</a> - Bonnert Rue des 4 Vents 11:56</li><li><a href="stop-TEC_X662ata.html">TEC:X662ata</a> - Arlon Route de Bastogne - N4 11:57</li><li><a href="stop-TEC_X662atb.html">TEC:X662atb</a> - Arlon Route de Bastogne - N4 11:58</li><li><a href="stop-TEC_X662aba.html">TEC:X662aba</a> - Bonnert 4 Vents 11:59</li><li><a href="stop-TEC_X663aga.html">TEC:X663aga</a> - Tontelange Route de Metzert 12:01</li><li><a href="stop-TEC_X663aea.html">TEC:X663aea</a> - Tontelange Ecole 12:01</li><li><a href="stop-TEC_X663afa.html">TEC:X663afa</a> - Tontelange Chapelle 12:01</li><li><a href="stop-TEC_X663adb.html">TEC:X663adb</a> - Grendel Ferme 135 12:03</li><li><a href="stop-TEC_X663aca.html">TEC:X663aca</a> - Grendel Ferme 131 12:04</li><li><a href="stop-TEC_X663aba.html">TEC:X663aba</a> - Grendel Rue de Tontelange 12:05</li><li><a href="stop-TEC_X663aaa.html">TEC:X663aaa</a> - Grendel Chapelle 12:05</li><li><a href="stop-TEC_X664aoa.html">TEC:X664aoa</a> - Nothomb Calvaire 12:09</li><li><a href="stop-TEC_X664apa.html">TEC:X664apa</a> - Nothomb Eglise 12:09</li><li><a href="stop-TEC_X664aqa.html">TEC:X664aqa</a> - Nothomb Ecole 12:09</li><li><a href="stop-TEC_X664ara.html">TEC:X664ara</a> - Nothomb Quartier Esper 12:09</li><li><a href="stop-TEC_X664alc.html">TEC:X664alc</a> - Rodenhoff Route de Nothomb 12:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3042.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

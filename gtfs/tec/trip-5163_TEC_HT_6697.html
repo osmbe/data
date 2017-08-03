@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ronse/Renaix - Enghien/Edingen - 5163:TEC:HT:6697</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ronse/Renaix - Enghien/Edingen - 5163:TEC:HT:6697</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H5rx115d.html">TEC:H5rx115d</a> - Renaix Station/SNCB 11:09</li><li><a href="stop-TEC_H5rx127b.html">TEC:H5rx127b</a> - Renaix Olifant/Eléphant 11:10</li><li><a href="stop-TEC_H5rx126b.html">TEC:H5rx126b</a> - Renaix Nijverheid/Industrie 11:11</li><li><a href="stop-TEC_H5rx114b.html">TEC:H5rx114b</a> - Renaix Conscience 11:11</li><li><a href="stop-TEC_H5rx101b.html">TEC:H5rx101b</a> - Renaix Sint-Antonius/Saint-Antoine 11:13</li><li><a href="stop-TEC_H5rx105b.html">TEC:H5rx105b</a> - Renaix Dopchie 11:14</li><li><a href="stop-TEC_H5rx104b.html">TEC:H5rx104b</a> - Renaix Kleine Heide/Bruyère 11:16</li><li><a href="stop-TEC_H5el111b.html">TEC:H5el111b</a> - Ellezelles Moulin 11:16</li><li><a href="stop-TEC_H5el105b.html">TEC:H5el105b</a> - Ellezelles Crimont 11:17</li><li><a href="stop-TEC_H5el112d.html">TEC:H5el112d</a> - Ellezelles Place 11:20</li><li><a href="stop-TEC_H5el114b.html">TEC:H5el114b</a> - Ellezelles Pont 11:21</li><li><a href="stop-TEC_H5el104b.html">TEC:H5el104b</a> - Ellezelles Chapelle de Paix 11:22</li><li><a href="stop-TEC_H5wo130b.html">TEC:H5wo130b</a> - Wodecq Paradis 11:23</li><li><a href="stop-TEC_H5wo128b.html">TEC:H5wo128b</a> - Wodecq La Planche 11:24</li><li><a href="stop-TEC_H5fl100b.html">TEC:H5fl100b</a> - Vloesberg Briqueterie/Steenbakkerij 11:25</li><li><a href="stop-TEC_H5fl103b.html">TEC:H5fl103b</a> - Vloesberg Place/Markt 11:26</li><li><a href="stop-TEC_H5fl102d.html">TEC:H5fl102d</a> - Vloesberg Marais/Moeras 11:27</li><li><a href="stop-TEC_H5fl104b.html">TEC:H5fl104b</a> - Vloesberg Rue Lt Coton/Lt Cotonstraat 11:27</li><li><a href="stop-TEC_H1og136b.html">TEC:H1og136b</a> - Ogy Wastenne 11:28</li><li><a href="stop-TEC_H1og135b.html">TEC:H1og135b</a> - Ogy Rue Dr Desénépart 11:30</li><li><a href="stop-TEC_H1og132b.html">TEC:H1og132b</a> - Ogy Rue Ponchau 11:30</li><li><a href="stop-TEC_H1og130b.html">TEC:H1og130b</a> - Ogy Parrain Maastricht 11:31</li><li><a href="stop-TEC_H1og133b.html">TEC:H1og133b</a> - Ogy La Blanche 11:32</li><li><a href="stop-TEC_H1le125b.html">TEC:H1le125b</a> - Lessines Pavillon 11:34</li><li><a href="stop-TEC_H1le119b.html">TEC:H1le119b</a> - Lessines Chemin Esquimbreucq 11:35</li><li><a href="stop-TEC_H1le129b.html">TEC:H1le129b</a> - Lessines Rue de la Fraternité 11:36</li><li><a href="stop-TEC_H1le128d.html">TEC:H1le128d</a> - Lessines Rond-Point 11:36</li><li><a href="stop-TEC_H1le124b.html">TEC:H1le124b</a> - Lessines Grand-Place 11:37</li><li><a href="stop-TEC_H1le122a.html">TEC:H1le122a</a> - Lessines SNCB 11:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1249.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

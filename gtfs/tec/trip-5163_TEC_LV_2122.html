@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Fléron - Cerexhe-Heuseux - Soumagne - 5163:TEC:LV:2122</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Fléron - Cerexhe-Heuseux - Soumagne - 5163:TEC:LV:2122</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LSOvoie2.html">TEC:LSOvoie2</a> - Soumagne Voie de l'Eau 19:55</li><li><a href="stop-TEC_LSOferr4.html">TEC:LSOferr4</a> - Soumagne Place Ferrer 19:56</li><li><a href="stop-TEC_LSOladr2.html">TEC:LSOladr2</a> - Soumagne Rue Ladrie 19:57</li><li><a href="stop-TEC_LSOcime2.html">TEC:LSOcime2</a> - Soumagne Cimetière 19:58</li><li><a href="stop-TEC_LSOgard2.html">TEC:LSOgard2</a> - Soumagne Rue Gardier 19:59</li><li><a href="stop-TEC_LSOfech2.html">TEC:LSOfech2</a> - Soumagne Fecher Eglise 19:59</li><li><a href="stop-TEC_LSOathe2.html">TEC:LSOathe2</a> - Soumagne Athénée 20:00</li><li><a href="stop-TEC_LMIgare2.html">TEC:LMIgare2</a> - Micheroux Gare 20:01</li><li><a href="stop-TEC_LMImc--2.html">TEC:LMImc--2</a> - Micheroux Maison Communale 20:02</li><li><a href="stop-TEC_LMIcamp2.html">TEC:LMIcamp2</a> - Micheroux Rue Campagne 20:03</li><li><a href="stop-TEC_LMIpast2.html">TEC:LMIpast2</a> - Micheroux Carrefour Pasteur 20:04</li><li><a href="stop-TEC_LMEcour2.html">TEC:LMEcour2</a> - Melen Rue Cour Lemaire 20:05</li><li><a href="stop-TEC_LMEeg--2.html">TEC:LMEeg--2</a> - Melen Eglise 20:05</li><li><a href="stop-TEC_LMEpech2.html">TEC:LMEpech2</a> - Melen Pêcherie 20:06</li><li><a href="stop-TEC_LCEeg--2.html">TEC:LCEeg--2</a> - Cerexhe-Heuseux Eglise (Cerexhe) 20:07</li><li><a href="stop-TEC_LCEcent2.html">TEC:LCEcent2</a> - Cerexhe-Heuseux Rue du Centenaire 20:08</li><li><a href="stop-TEC_LCEboll2.html">TEC:LCEboll2</a> - Cerexhe-Heuseux Route de Bolland 20:08</li><li><a href="stop-TEC_LCEec--2.html">TEC:LCEec--2</a> - Cerexhe-Heuseux Cerexhe Ecole 20:09</li><li><a href="stop-TEC_LCEinst2.html">TEC:LCEinst2</a> - Cerexhe-Heuseux Institut Notre-Dame 20:09</li><li><a href="stop-TEC_LCEplac2.html">TEC:LCEplac2</a> - Cerexhe-Heuseux Place (Heuseux) 20:10</li><li><a href="stop-TEC_LCEhayo2.html">TEC:LCEhayo2</a> - Cerexhe-Heuseux Rue de la Hayoulle 20:11</li><li><a href="stop-TEC_LETfort2.html">TEC:LETfort2</a> - Evegnee Fort 20:13</li><li><a href="stop-TEC_LETec--2.html">TEC:LETec--2</a> - Evegnee Ecole 20:14</li><li><a href="stop-TEC_LETeg--2.html">TEC:LETeg--2</a> - Evegnee Eglise 20:14</li><li><a href="stop-TEC_LETtemp2.html">TEC:LETtemp2</a> - Evegnee Tempiet 20:15</li><li><a href="stop-TEC_Lremonu1.html">TEC:Lremonu1</a> - Retinne Monument 20:17</li><li><a href="stop-TEC_Lreec--1.html">TEC:Lreec--1</a> - Retinne Ecoles 20:18</li><li><a href="stop-TEC_Lrecomp1.html">TEC:Lrecomp1</a> - Retinne Complexe Sportif 20:19</li><li><a href="stop-TEC_Lrevaul1.html">TEC:Lrevaul1</a> - Retinne Rue de la Vaulx 20:19</li><li><a href="stop-TEC_Lrebriq1.html">TEC:Lrebriq1</a> - Retinne Rue de la Briqueterie 20:20</li><li><a href="stop-TEC_Lrecite1.html">TEC:Lrecite1</a> - Retinne Cité 20:21</li><li><a href="stop-TEC_Lreclou1.html">TEC:Lreclou1</a> - Retinne Rue des Cloutiers 20:21</li><li><a href="stop-TEC_Lrecroi1.html">TEC:Lrecroi1</a> - Retinne Rue Croix Bolette 20:22</li><li><a href="stop-TEC_Lflweri2.html">TEC:Lflweri2</a> - Fleron Place du Wérixhet 20:24</li><li><a href="stop-TEC_Lflec--2.html">TEC:Lflec--2</a> - Fleron Ecoles 20:25</li><li><a href="stop-TEC_Lflmc--2.html">TEC:Lflmc--2</a> - Fleron Maison Communale 20:25</li><li><a href="stop-TEC_Lflgare1.html">TEC:Lflgare1</a> - Fleron Gare 20:26</li><li><a href="stop-TEC_Lflcle-_.html">TEC:Lflcle-*</a> - Fleron La Clé 20:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4254.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

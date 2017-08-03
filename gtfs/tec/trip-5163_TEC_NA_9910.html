@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - DINANT - GIVET - 5163:TEC:NA:9910</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DINANT - GIVET - 5163:TEC:NA:9910</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N232aqb.html">TEC:N232aqb</a> - Dinant Gare 13:07</li><li><a href="stop-TEC_N232bnb.html">TEC:N232bnb</a> - Dinant Polyclinique 13:08</li><li><a href="stop-TEC_N232bob.html">TEC:N232bob</a> - Dinant Neffe 13:09</li><li><a href="stop-TEC_N232bpb.html">TEC:N232bpb</a> - Dinant Charlemagne 13:10</li><li><a href="stop-TEC_N232bqb.html">TEC:N232bqb</a> - Dinant Pont d'Anseremme 13:11</li><li><a href="stop-TEC_N286aab.html">TEC:N286aab</a> - Waulsort Moniat 13:12</li><li><a href="stop-TEC_N286abb.html">TEC:N286abb</a> - Waulsort Château de Freyr 13:15</li><li><a href="stop-TEC_N287aab.html">TEC:N287aab</a> - Waulsort Les Pauquis 13:18</li><li><a href="stop-TEC_N287abb.html">TEC:N287abb</a> - Waulsort La Pergola 13:19</li><li><a href="stop-TEC_N287acb.html">TEC:N287acb</a> - Waulsort Ecluse 13:20</li><li><a href="stop-TEC_N287adb.html">TEC:N287adb</a> - Waulsort Camping 13:21</li><li><a href="stop-TEC_N244abb.html">TEC:N244abb</a> - Hastiere-Lavaux Eglise 13:25</li><li><a href="stop-TEC_N244afa.html">TEC:N244afa</a> - Hastiere-Lavaux Gare 13:26</li><li><a href="stop-TEC_N244adb.html">TEC:N244adb</a> - Hastiere-Lavaux Stade de Brogniez 13:27</li><li><a href="stop-TEC_N244aeb.html">TEC:N244aeb</a> - Hastiere-Lavaux Thylère 13:28</li><li><a href="stop-TEC_N248aab.html">TEC:N248aab</a> - Hermeton-sur-Meuse Pont 13:29</li><li><a href="stop-TEC_N248abb.html">TEC:N248abb</a> - Hermeton-sur-Meuse Gare 13:29</li><li><a href="stop-TEC_N248acb.html">TEC:N248acb</a> - Hermeton-sur-Meuse Bifurcation 13:30</li><li><a href="stop-TEC_N248ada.html">TEC:N248ada</a> - Hermeton-sur-Meuse Le Houria 13:31</li><li><a href="stop-TEC_N248aea.html">TEC:N248aea</a> - Hermeton-sur-Meuse Androssart 13:32</li><li><a href="stop-TEC_N340aga.html">TEC:N340aga</a> - Heer Café de la Meuse 13:33</li><li><a href="stop-TEC_N340ada.html">TEC:N340ada</a> - Heer Pont 13:34</li><li><a href="stop-TEC_N340ada.html">TEC:N340ada</a> - Heer Pont 13:34</li><li><a href="stop-TEC_N340aeb.html">TEC:N340aeb</a> - Heer Hiat 13:35</li><li><a href="stop-TEC_N340afb.html">TEC:N340afb</a> - Heer Place communale 13:36</li><li><a href="stop-TEC_N340ahb.html">TEC:N340ahb</a> - Heer Faubourg 13:37</li><li><a href="stop-TEC_N340aib.html">TEC:N340aib</a> - Heer Au gros caillou 13:38</li><li><a href="stop-TEC_N301aab.html">TEC:N301aab</a> - Givet Cimetière 13:41</li><li><a href="stop-TEC_N301abb.html">TEC:N301abb</a> - Givet Eglise Notre-Dame 13:42</li><li><a href="stop-TEC_N301acb.html">TEC:N301acb</a> - Givet Place de la République 13:42</li><li><a href="stop-TEC_N301adb.html">TEC:N301adb</a> - Givet Pont 13:42</li><li><a href="stop-TEC_N301afb.html">TEC:N301afb</a> - Givet St-Hilaire place Méhul 13:44</li><li><a href="stop-TEC_N301ajb.html">TEC:N301ajb</a> - Givet Gare 13:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5842.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

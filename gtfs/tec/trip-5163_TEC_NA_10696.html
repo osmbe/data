@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CINEY - THYNES - LOYERS - 5163:TEC:NA:10696</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CINEY - THYNES - LOYERS - 5163:TEC:NA:10696</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N260afa.html">TEC:N260afa</a> - Loyers Haut 07:25</li><li><a href="stop-TEC_N260aba.html">TEC:N260aba</a> - Lisogne Freche Try route d'Awagne 07:27</li><li><a href="stop-TEC_N260aca.html">TEC:N260aca</a> - Lisogne Ferme horizon 07:28</li><li><a href="stop-TEC_N260ada.html">TEC:N260ada</a> - Lisogne Eglise 07:29</li><li><a href="stop-TEC_N228aaa.html">TEC:N228aaa</a> - Thynes Eglise 07:31</li><li><a href="stop-TEC_N228acb.html">TEC:N228acb</a> - Thynes Chapelle 07:32</li><li><a href="stop-TEC_N228aba.html">TEC:N228aba</a> - Thynes Barbion 07:33</li><li><a href="stop-TEC_N228aea.html">TEC:N228aea</a> - Thynes Moncia 07:34</li><li><a href="stop-TEC_N236aha.html">TEC:N236aha</a> - Sovet Haute 07:42</li><li><a href="stop-TEC_N236ajb.html">TEC:N236ajb</a> - Sovet Carrefour 07:43</li><li><a href="stop-TEC_N236aib.html">TEC:N236aib</a> - Sovet Basse 07:44</li><li><a href="stop-TEC_N236ama.html">TEC:N236ama</a> - Senenne Point d'arrêt 07:50</li><li><a href="stop-TEC_N235aaa.html">TEC:N235aaa</a> - Spontin Quesval 07:52</li><li><a href="stop-TEC_N235aha.html">TEC:N235aha</a> - Spontin Gare 07:53</li><li><a href="stop-TEC_N235aba.html">TEC:N235aba</a> - Spontin Centre 07:54</li><li><a href="stop-TEC_N235acb.html">TEC:N235acb</a> - Spontin Maison communale 07:54</li><li><a href="stop-TEC_N235adb.html">TEC:N235adb</a> - Spontin Rue du Ry d'Août 07:55</li><li><a href="stop-TEC_N235aca.html">TEC:N235aca</a> - Spontin Maison communale 07:56</li><li><a href="stop-TEC_N235abb.html">TEC:N235abb</a> - Spontin Centre 07:56</li><li><a href="stop-TEC_N235ahb.html">TEC:N235ahb</a> - Spontin Gare 07:57</li><li><a href="stop-TEC_N235aab.html">TEC:N235aab</a> - Spontin Quesval 07:57</li><li><a href="stop-TEC_N236aoa.html">TEC:N236aoa</a> - Sovet Chapelle Notre-Dame de Lourdes 07:58</li><li><a href="stop-TEC_N236ana.html">TEC:N236ana</a> - Senenne Centre 07:59</li><li><a href="stop-TEC_N236afb.html">TEC:N236afb</a> - Reuleau Carrefour 08:00</li><li><a href="stop-TEC_N236aeb.html">TEC:N236aeb</a> - Reuleau Centre 08:00</li><li><a href="stop-TEC_N236alb.html">TEC:N236alb</a> - Sovet Ancienne gare 08:02</li><li><a href="stop-TEC_N236adb.html">TEC:N236adb</a> - Braibant Route de Mont 08:06</li><li><a href="stop-TEC_N236acb.html">TEC:N236acb</a> - Braibant Ecole 08:07</li><li><a href="stop-TEC_N236abb.html">TEC:N236abb</a> - Braibant Halloy centre 08:08</li><li><a href="stop-TEC_N201aub.html">TEC:N201aub</a> - Ciney Aljoux 08:10</li><li><a href="stop-TEC_N201atb.html">TEC:N201atb</a> - Ciney Huit ponts 08:11</li><li><a href="stop-TEC_N201asb.html">TEC:N201asb</a> - Ciney Forges 08:12</li><li><a href="stop-TEC_N201aeb.html">TEC:N201aeb</a> - Ciney Gare d'autobus 08:12</li><li><a href="stop-TEC_N201afb.html">TEC:N201afb</a> - Ciney Place Monseu 08:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6039.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

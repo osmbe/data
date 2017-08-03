@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Athus (express) - 5163:TEC:LU:3536</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Athus (express) - 5163:TEC:LU:3536</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X615aba.html">TEC:X615aba</a> - Athus Gare 12:45</li><li><a href="stop-TEC_X615awa.html">TEC:X615awa</a> - Aubange Place 12:49</li><li><a href="stop-TEC_X614ada.html">TEC:X614ada</a> - Messancy Maison Communale 12:55</li><li><a href="stop-TEC_X614aaa.html">TEC:X614aaa</a> - Differt Cora N81 12:58</li><li><a href="stop-TEC_X612aaa.html">TEC:X612aaa</a> - Weyler Grand-Route 13:05</li><li><a href="stop-TEC_X601aua.html">TEC:X601aua</a> - Arlon Clinique 13:09</li><li><a href="stop-TEC_X601bbf.html">TEC:X601bbf</a> - Arlon Gare - Quai 2 13:13</li><li><a href="stop-TEC_X601bfa.html">TEC:X601bfa</a> - Arlon Sq Astrid - R de Bastogne 13:16</li><li><a href="stop-TEC_X663ara.html">TEC:X663ara</a> - Attert Maison Communale 13:25</li><li><a href="stop-TEC_X666ada.html">TEC:X666ada</a> - Martelange Pont de la Sûre 13:36</li><li><a href="stop-TEC_X729aab.html">TEC:X729aab</a> - Warnach N4 13:40</li><li><a href="stop-TEC_X728adb.html">TEC:X728adb</a> - Malmaison N4 13:44</li><li><a href="stop-TEC_X727ada.html">TEC:X727ada</a> - Sainlez N4 13:47</li><li><a href="stop-TEC_X727aaa.html">TEC:X727aaa</a> - Remoifosse N4 13:51</li><li><a href="stop-TEC_X725aff.html">TEC:X725aff</a> - Bastogne Gare du Sud - Quai 4 13:58</li><li><a href="stop-TEC_X725aec.html">TEC:X725aec</a> - Bastogne Pépinière - Quai 3 14:03</li><li><a href="stop-TEC_X725azb.html">TEC:X725azb</a> - Bastogne Clinique 14:06</li><li><a href="stop-TEC_X724aha.html">TEC:X724aha</a> - Noville (BASTOGNE) Eglise 14:12</li><li><a href="stop-TEC_X721aga.html">TEC:X721aga</a> - Houffalize Place Albert 1er 14:21</li><li><a href="stop-TEC_X721ara.html">TEC:X721ara</a> - Houffalize Aux Cheras 14:28</li><li><a href="stop-TEC_X719aaa.html">TEC:X719aaa</a> - Dinez N30 14:31</li><li><a href="stop-TEC_X718aab.html">TEC:X718aab</a> - Tailles Pisserotte 14:35</li><li><a href="stop-TEC_X717agc.html">TEC:X717agc</a> - Fraiture Baraque 14:40</li><li><a href="stop-TEC_X715aaa.html">TEC:X715aaa</a> - Manhay Bellaire 14:43</li><li><a href="stop-TEC_X715aea.html">TEC:X715aea</a> - Manhay Dépôt TEC 14:46</li><li><a href="stop-TEC_X714abb.html">TEC:X714abb</a> - Chene-Al-Pierre Eglise 14:51</li><li><a href="stop-TEC_X713afa.html">TEC:X713afa</a> - Champ De HARRE Grand Route 35 14:54</li><li><a href="stop-TEC_X512aab.html">TEC:X512aab</a> - Werbomont Route de Bastogne 14:57</li><li><a href="stop-TEC_Lcepont2.html">TEC:Lcepont2</a> - Chenee Pont 15:24</li><li><a href="stop-TEC_Llgpont2.html">TEC:Llgpont2</a> - Liege Pont de Belle-Île 15:27</li><li><a href="stop-TEC_Llglema2.html">TEC:Llglema2</a> - Liege Place Général Leman 15:30</li><li><a href="stop-TEC_LlgguilC.html">TEC:LlgguilC</a> - Liege Gare des Guillemins Quai C 15:33</li><li><a href="stop-TEC_LlgOPER4.html">TEC:LlgOPER4</a> - Liege Opéra 15:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2579.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

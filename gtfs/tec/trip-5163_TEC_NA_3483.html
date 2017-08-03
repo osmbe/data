@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - SPY - ONOZ - VELAINE - 5163:TEC:NA:3483</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - SPY - ONOZ - VELAINE - 5163:TEC:NA:3483</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501zaa.html">TEC:N501zaa</a> - Namur Gare - Boulevard Mélot 22:27</li><li><a href="stop-TEC_N501fty.html">TEC:N501fty</a> - Namur Avenue des Combattants 22:27</li><li><a href="stop-TEC_N501hxy.html">TEC:N501hxy</a> - Saint-Servais Collège St-Servais 22:29</li><li><a href="stop-TEC_N501icy.html">TEC:N501icy</a> - Saint-Servais Polyclinique 22:30</li><li><a href="stop-TEC_N501ihy.html">TEC:N501ihy</a> - Saint-Servais Rue Hicguet 22:31</li><li><a href="stop-TEC_N501iey.html">TEC:N501iey</a> - Saint-Servais Pont des Français 22:32</li><li><a href="stop-TEC_N501hsy.html">TEC:N501hsy</a> - Saint-Servais Cimetière de Namur 22:33</li><li><a href="stop-TEC_N501bfy.html">TEC:N501bfy</a> - Belgrade Rue des Champs 22:34</li><li><a href="stop-TEC_N501ana.html">TEC:N501ana</a> - Belgrade Rue des Renoncules 22:35</li><li><a href="stop-TEC_N501baa.html">TEC:N501baa</a> - Belgrade Chemin de la Plaine 22:36</li><li><a href="stop-TEC_N501awa.html">TEC:N501awa</a> - Belgrade Avenue J. Pochet 22:37</li><li><a href="stop-TEC_N501dca.html">TEC:N501dca</a> - Flawinne La drève 22:37</li><li><a href="stop-TEC_N501mua.html">TEC:N501mua</a> - Flawinne Les lauriers 22:38</li><li><a href="stop-TEC_N501mya.html">TEC:N501mya</a> - Flawinne Jaumaux 22:38</li><li><a href="stop-TEC_N501mxa.html">TEC:N501mxa</a> - Flawinne Superconfex 22:39</li><li><a href="stop-TEC_N533ala.html">TEC:N533ala</a> - Suarlee Marronnier 22:39</li><li><a href="stop-TEC_N533amc.html">TEC:N533amc</a> - Suarlee ITCAA 22:40</li><li><a href="stop-TEC_N533aqa.html">TEC:N533aqa</a> - Suarlee Chemin de Moustier 22:40</li><li><a href="stop-TEC_N532ada.html">TEC:N532ada</a> - Temploux Delchevalerie 22:41</li><li><a href="stop-TEC_N532aea.html">TEC:N532aea</a> - Temploux Village 22:43</li><li><a href="stop-TEC_N532aaa.html">TEC:N532aaa</a> - Temploux Cimetière 22:44</li><li><a href="stop-TEC_N532aba.html">TEC:N532aba</a> - Temploux Ferme Goffaux 22:45</li><li><a href="stop-TEC_N531aua.html">TEC:N531aua</a> - Spy Rue des Hirondelles 22:46</li><li><a href="stop-TEC_N531ala.html">TEC:N531ala</a> - Spy Rue de Soye 22:47</li><li><a href="stop-TEC_N531ama.html">TEC:N531ama</a> - Spy Rue Sauvenière 22:48</li><li><a href="stop-TEC_N531ada.html">TEC:N531ada</a> - Spy Rue des Pirettes 22:48</li><li><a href="stop-TEC_N531aea.html">TEC:N531aea</a> - Spy Rue de Namur 22:49</li><li><a href="stop-TEC_N531aca.html">TEC:N531aca</a> - Spy Rue Bas de la place 22:50</li><li><a href="stop-TEC_N531aib.html">TEC:N531aib</a> - Spy Vieille place 22:51</li><li><a href="stop-TEC_N531aib.html">TEC:N531aib</a> - Spy Vieille place 22:51</li><li><a href="stop-TEC_N531aha.html">TEC:N531aha</a> - Spy Rue Lambert 22:52</li><li><a href="stop-TEC_N531aka.html">TEC:N531aka</a> - Spy Chaufour 22:53</li><li><a href="stop-TEC_N531aja.html">TEC:N531aja</a> - Spy Mégornot 22:54</li><li><a href="stop-TEC_N534bwb.html">TEC:N534bwb</a> - Onoz Gare 22:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6351.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

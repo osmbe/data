@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Soignies - Br.-le-Comte - Rebecq - Tubize - Hal - 5163:TEC:BW:8801</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Soignies - Br.-le-Comte - Rebecq - Tubize - Hal - 5163:TEC:BW:8801</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Btubga03.html">TEC:Btubga03</a> - Tubize Gare 14:53</li><li><a href="stop-TEC_Btubmfa2.html">TEC:Btubmfa2</a> - Tubize Mur Fabelta 14:55</li><li><a href="stop-TEC_Btubpla2.html">TEC:Btubpla2</a> - Tubize Place 14:56</li><li><a href="stop-TEC_Btubind2.html">TEC:Btubind2</a> - Tubize Rue de l'Industrie 14:57</li><li><a href="stop-TEC_Btubmon2.html">TEC:Btubmon2</a> - Tubize Monument 14:57</li><li><a href="stop-TEC_Btubbsc2.html">TEC:Btubbsc2</a> - Tubize Bloc Scolaire 14:58</li><li><a href="stop-TEC_Btubcim2.html">TEC:Btubcim2</a> - Tubize Cimetière 14:59</li><li><a href="stop-TEC_Btubbot2.html">TEC:Btubbot2</a> - Tubize Botman 15:00</li><li><a href="stop-TEC_Btubren2.html">TEC:Btubren2</a> - Tubize Au Renard 15:02</li><li><a href="stop-TEC_Bquevel2.html">TEC:Bquevel2</a> - Quenast Vélodrome 15:04</li><li><a href="stop-TEC_Bqueblo2.html">TEC:Bqueblo2</a> - Quenast Chemin Bloquiau 15:05</li><li><a href="stop-TEC_Bquepos2.html">TEC:Bquepos2</a> - Quenast Postes 15:06</li><li><a href="stop-TEC_Bquesta2.html">TEC:Bquesta2</a> - Quenast Rue de la Station 15:07</li><li><a href="stop-TEC_Bquereb2.html">TEC:Bquereb2</a> - Quenast Rue de Rebecq 15:09</li><li><a href="stop-TEC_Bquecar2.html">TEC:Bquecar2</a> - Quenast Carrières 15:10</li><li><a href="stop-TEC_Bquegob4.html">TEC:Bquegob4</a> - Quenast Le Gobard 15:11</li><li><a href="stop-TEC_Brebraf1.html">TEC:Brebraf1</a> - Rebecq Rafeira 15:13</li><li><a href="stop-TEC_Brebgar1.html">TEC:Brebgar1</a> - Rebecq Gare 15:13</li><li><a href="stop-TEC_Brebraf2.html">TEC:Brebraf2</a> - Rebecq Rafeira 15:14</li><li><a href="stop-TEC_Bquegob2.html">TEC:Bquegob2</a> - Quenast Le Gobard 15:15</li><li><a href="stop-TEC_Bquebut2.html">TEC:Bquebut2</a> - Quenast Les Buts 15:16</li><li><a href="stop-TEC_Bquecge2.html">TEC:Bquecge2</a> - Quenast Cité Germinal 15:17</li><li><a href="stop-TEC_Bquegen2.html">TEC:Bquegen2</a> - Quenast La Genette 15:18</li><li><a href="stop-TEC_Bhenfer2.html">TEC:Bhenfer2</a> - Hennuyeres La Ferme 15:19</li><li><a href="stop-TEC_Bhenfla2.html">TEC:Bhenfla2</a> - Hennuyeres Flament 15:20</li><li><a href="stop-TEC_Bbcoroy2.html">TEC:Bbcoroy2</a> - Braine-le-Comte Chemin Royal 15:21</li><li><a href="stop-TEC_Bbcopre2.html">TEC:Bbcopre2</a> - Braine-le-Comte Prestremont 15:22</li><li><a href="stop-TEC_Bbcoben2.html">TEC:Bbcoben2</a> - Braine-le-Comte Barrière d'Enghien 15:23</li><li><a href="stop-TEC_Bbcolno2.html">TEC:Bbcolno2</a> - Braine-le-Comte Lion Noir 15:24</li><li><a href="stop-TEC_Bbcogpl2.html">TEC:Bbcogpl2</a> - Braine-le-Comte Place 15:24</li><li><a href="stop-TEC_Bbcoeco2.html">TEC:Bbcoeco2</a> - Braine-le-Comte Ecoles 15:25</li><li><a href="stop-TEC_Bbcoeca1.html">TEC:Bbcoeca1</a> - Braine-le-Comte Route d'Ecaussinnes 15:26</li><li><a href="stop-TEC_Bbcogar1.html">TEC:Bbcogar1</a> - Braine-le-Comte Gare 15:27</li><li><a href="stop-TEC_Bbcoser1.html">TEC:Bbcoser1</a> - Braine-le-Comte Rue de Serbie 15:28</li><li><a href="stop-TEC_H3br122a.html">TEC:H3br122a</a> - Braine-le-Comte Poreau 15:30</li><li><a href="stop-TEC_H3so187a.html">TEC:H3so187a</a> - Braine-le-Comte Salmonsart 15:32</li><li><a href="stop-TEC_H3so185a.html">TEC:H3so185a</a> - Soignies MET 15:33</li><li><a href="stop-TEC_H3so184a.html">TEC:H3so184a</a> - Soignies Rond-Point 15:34</li><li><a href="stop-TEC_Bsoihci1.html">TEC:Bsoihci1</a> - Soignies Hôpital 15:35</li><li><a href="stop-TEC_H3so175b.html">TEC:H3so175b</a> - Soignies Place du Jeu de Balle 15:35</li><li><a href="stop-TEC_H3so155b.html">TEC:H3so155b</a> - Soignies Belle Vue 15:36</li><li><a href="stop-TEC_Bsoigar1.html">TEC:Bsoigar1</a> - Soignies Gare 15:37</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./410.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

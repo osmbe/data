@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - GEMBLOUX - 5163:TEC:NA:5890</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - GEMBLOUX - 5163:TEC:NA:5890</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N525aeb.html">TEC:N525aeb</a> - Meux Eglise 07:22</li><li><a href="stop-TEC_N525adb.html">TEC:N525adb</a> - Meux Poste 07:23</li><li><a href="stop-TEC_N525bab.html">TEC:N525bab</a> - Meux Village 07:24</li><li><a href="stop-TEC_N525acb.html">TEC:N525acb</a> - Meux Bawtia 07:26</li><li><a href="stop-TEC_N525abb.html">TEC:N525abb</a> - Meux Brutal 07:27</li><li><a href="stop-TEC_N525aub.html">TEC:N525aub</a> - Saint-Denis Route d'Eghezée 07:28</li><li><a href="stop-TEC_N525anb.html">TEC:N525anb</a> - Saint-Denis Rue Albert 07:29</li><li><a href="stop-TEC_N525aob.html">TEC:N525aob</a> - Saint-Denis Rue Procés 07:30</li><li><a href="stop-TEC_N525atb.html">TEC:N525atb</a> - Saint-Denis Noly 07:31</li><li><a href="stop-TEC_N526abb.html">TEC:N526abb</a> - Bovesse Poste 07:33</li><li><a href="stop-TEC_N526aab.html">TEC:N526aab</a> - Bovesse Route de la station 07:34</li><li><a href="stop-TEC_N526acb.html">TEC:N526acb</a> - Bovesse Place 07:37</li><li><a href="stop-TEC_N526aeb.html">TEC:N526aeb</a> - Bovesse Passage à niveau 07:38</li><li><a href="stop-TEC_N526adb.html">TEC:N526adb</a> - Bovesse Cassart 07:38</li><li><a href="stop-TEC_N527abb.html">TEC:N527abb</a> - Rhisnes La Chaumière 07:39</li><li><a href="stop-TEC_N527aab.html">TEC:N527aab</a> - Rhisnes Rue bois des Broux 07:40</li><li><a href="stop-TEC_N527agb.html">TEC:N527agb</a> - Rhisnes Chemin de Temploux 07:41</li><li><a href="stop-TEC_N527afb.html">TEC:N527afb</a> - Rhisnes Chemin de la gare 07:42</li><li><a href="stop-TEC_N527acb.html">TEC:N527acb</a> - Rhisnes Zoning industriel 07:43</li><li><a href="stop-TEC_N527adb.html">TEC:N527adb</a> - Rhisnes Pont d'Arthey 07:43</li><li><a href="stop-TEC_N527aeb.html">TEC:N527aeb</a> - Rhisnes Côte d'Arthey 07:44</li><li><a href="stop-TEC_N501jub.html">TEC:N501jub</a> - Saint-Servais Bois de Néverlée 07:45</li><li><a href="stop-TEC_N501hnb.html">TEC:N501hnb</a> - Saint-Servais Bricgniot grottes 07:46</li><li><a href="stop-TEC_N501hmb.html">TEC:N501hmb</a> - Saint-Servais Bricgniot cimetière 07:47</li><li><a href="stop-TEC_N501iab.html">TEC:N501iab</a> - Saint-Servais Papeterie 07:48</li><li><a href="stop-TEC_N501ibb.html">TEC:N501ibb</a> - Saint-Servais Place de la chapelle 07:49</li><li><a href="stop-TEC_N501hzb.html">TEC:N501hzb</a> - Saint-Servais Hall omnisports 07:50</li><li><a href="stop-TEC_N501ikb.html">TEC:N501ikb</a> - Saint-Servais Rue Saint-Donat 07:51</li><li><a href="stop-TEC_N501fub.html">TEC:N501fub</a> - Namur Avenue des croix du feu 07:53</li><li><a href="stop-TEC_N501gpb.html">TEC:N501gpb</a> - Namur Omalius 07:54</li><li><a href="stop-TEC_N501grf.html">TEC:N501grf</a> - Namur Pl. de la Station - Coupole 07:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6207.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

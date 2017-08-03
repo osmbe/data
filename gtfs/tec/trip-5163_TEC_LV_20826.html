@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Lambert - Montegnée - Grâce-Hollogne - Mons - 5163:TEC:LV:20826</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Lambert - Montegnée - Grâce-Hollogne - Mons - 5163:TEC:LV:20826</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LlgLAMB5.html">TEC:LlgLAMB5</a> - Liege Place St-Lambert 12:30</li><li><a href="stop-TEC_Llgcadr3.html">TEC:Llgcadr3</a> - Liege Cadran 12:32</li><li><a href="stop-TEC_Llghoch1.html">TEC:Llghoch1</a> - Liege Hocheporte 12:33</li><li><a href="stop-TEC_Llgfont1.html">TEC:Llgfont1</a> - Liege Fontainebleau 12:34</li><li><a href="stop-TEC_Llgbaro1.html">TEC:Llgbaro1</a> - Liege Rue H. Baron 12:36</li><li><a href="stop-TEC_Llgbago1.html">TEC:Llgbago1</a> - Liege Rue Bagolet 12:38</li><li><a href="stop-TEC_Llgjenn3.html">TEC:Llgjenn3</a> - Liege Avenue E. Jennissen 12:41</li><li><a href="stop-TEC_Llgrame1.html">TEC:Llgrame1</a> - Liege Rue J. Ramey 12:41</li><li><a href="stop-TEC_Llgavoc1.html">TEC:Llgavoc1</a> - Liege Rue de l'Avocat 12:42</li><li><a href="stop-TEC_Llgnico5.html">TEC:Llgnico5</a> - Liege Place St-Nicolas 12:43</li><li><a href="stop-TEC_Llgdelc1.html">TEC:Llgdelc1</a> - Liege Rue Delchef 12:43</li><li><a href="stop-TEC_Llgbobu1.html">TEC:Llgbobu1</a> - Liege Rue des Bons Buveurs 12:44</li><li><a href="stop-TEC_Lmocail1.html">TEC:Lmocail1</a> - Montegnee Rue des Cailloux 12:45</li><li><a href="stop-TEC_Lmodeja1.html">TEC:Lmodeja1</a> - Montegnee Rue J. Dejardin 12:46</li><li><a href="stop-TEC_Lmoknae1.html">TEC:Lmoknae1</a> - Montegnee Rue J. J. Knaepen 12:46</li><li><a href="stop-TEC_Lmodeni1.html">TEC:Lmodeni1</a> - Montenee Hector Denis 12:47</li><li><a href="stop-TEC_Lmopast1.html">TEC:Lmopast1</a> - Montegnee Rue Pasteur 12:48</li><li><a href="stop-TEC_Lmoweri1.html">TEC:Lmoweri1</a> - Montegnee Place Wérixhas 12:49</li><li><a href="stop-TEC_Lmojans1.html">TEC:Lmojans1</a> - Montegnee Rue P. Janson 12:50</li><li><a href="stop-TEC_Lmopota1.html">TEC:Lmopota1</a> - Montegnee Potay 12:51</li><li><a href="stop-TEC_Lmopeup1.html">TEC:Lmopeup1</a> - Montegnee Rue des Peupliers 12:52</li><li><a href="stop-TEC_Lghcise1.html">TEC:Lghcise1</a> - Grace-Hollogne Rue des Ciseleux 12:53</li><li><a href="stop-TEC_Lghmont1.html">TEC:Lghmont1</a> - Grace-Hollogne Rue de Montegnée 12:54</li><li><a href="stop-TEC_Lghferr1.html">TEC:Lghferr1</a> - Grace-Hollogne Place Ferrer 12:55</li><li><a href="stop-TEC_Lghchap1.html">TEC:Lghchap1</a> - Grace-Hollogne Rue Chapuis 12:56</li><li><a href="stop-TEC_Lghhoco1.html">TEC:Lghhoco1</a> - Grace-Hollogne Hôtel Communal 12:57</li><li><a href="stop-TEC_Lghmavi1.html">TEC:Lghmavi1</a> - Grace-Hollogne Rue Mavis 12:58</li><li><a href="stop-TEC_Lghpero2.html">TEC:Lghpero2</a> - Grace-Hollogne Pérou 12:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3899.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - JUMET MADELEINE-RANSART-GILLY-MONT/S/SAMBRE PLACE - 5163:TEC:CH:1441</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: JUMET MADELEINE-RANSART-GILLY-MONT/S/SAMBRE PLACE - 5163:TEC:CH:1441</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cgygazo6.html">TEC:Cgygazo6</a> - Gilly Gazomètre 05:33</li><li><a href="stop-TEC_Cgy4bra2.html">TEC:Cgy4bra2</a> - Gilly 4 Bras 05:33</li><li><a href="stop-TEC_Cgyplvi2.html">TEC:Cgyplvi2</a> - Gilly Place du Village 05:35</li><li><a href="stop-TEC_Cgyplst2.html">TEC:Cgyplst2</a> - Gilly Place Saint-Pierre 05:36</li><li><a href="stop-TEC_Cgywaut4.html">TEC:Cgywaut4</a> - Gilly Rue Wautelet 05:36</li><li><a href="stop-TEC_Cgymara2.html">TEC:Cgymara2</a> - Gilly Marabout 05:37</li><li><a href="stop-TEC_Cgythio2.html">TEC:Cgythio2</a> - Gilly Thiot 05:38</li><li><a href="stop-TEC_Cgytrie2.html">TEC:Cgytrie2</a> - Gilly Trieux 05:39</li><li><a href="stop-TEC_Cgycime2.html">TEC:Cgycime2</a> - Gilly Cimetière 05:40</li><li><a href="stop-TEC_Cgysarr2.html">TEC:Cgysarr2</a> - Gilly Sarrasins 05:42</li><li><a href="stop-TEC_Cracave2.html">TEC:Cracave2</a> - Ransart Cave 05:43</li><li><a href="stop-TEC_Craferr2.html">TEC:Craferr2</a> - Ransart Place Ferrer (Bois) 05:44</li><li><a href="stop-TEC_Crajasm4.html">TEC:Crajasm4</a> - Ransart Rue Louis Jasmes 05:45</li><li><a href="stop-TEC_Cradado2.html">TEC:Cradado2</a> - Ransart Rue Dandois 05:46</li><li><a href="stop-TEC_Craappa1.html">TEC:Craappa1</a> - Ransart Appaumée 05:46</li><li><a href="stop-TEC_Cravold1.html">TEC:Cravold1</a> - Ransart Rue Volders 05:48</li><li><a href="stop-TEC_Cradest1.html">TEC:Cradest1</a> - Ransart Rue Destrée 05:49</li><li><a href="stop-TEC_Crasabl1.html">TEC:Crasabl1</a> - Ransart Rue du Petit Sablon 05:49</li><li><a href="stop-TEC_Crasocq1.html">TEC:Crasocq1</a> - Ransart Rue du Socquoy 05:50</li><li><a href="stop-TEC_Craplac1.html">TEC:Craplac1</a> - Ransart Place Communale 05:51</li><li><a href="stop-TEC_Cragoss1.html">TEC:Cragoss1</a> - Ransart Rue de Gosselies 05:52</li><li><a href="stop-TEC_Cravign1.html">TEC:Cravign1</a> - Ransart Rue du Vigneron 05:53</li><li><a href="stop-TEC_Crarmas1.html">TEC:Crarmas1</a> - Ransart Rue Eau-sur-Elle 05:53</li><li><a href="stop-TEC_Cjuphil1.html">TEC:Cjuphil1</a> - Jumet Rue du Philosophe 05:54</li><li><a href="stop-TEC_Cjudaxi1.html">TEC:Cjudaxi1</a> - Jumet Daxi 05:55</li><li><a href="stop-TEC_Cjuaero1.html">TEC:Cjuaero1</a> - Jumet Monument 05:56</li><li><a href="stop-TEC_Cjumade0.html">TEC:Cjumade0</a> - Jumet Madeleine 05:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./856.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

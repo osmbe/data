@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Heyd Centre</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Heyd Centre</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-5163_TEC_LU_1432.html">5163:TEC:LU:1432</a> - 5163:TEC:LU:1432 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_1434.html">5163:TEC:LU:1434</a> - 5163:TEC:LU:1434 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_1563.html">5163:TEC:LU:1563</a> - 5163:TEC:LU:1563 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_1565.html">5163:TEC:LU:1565</a> - 5163:TEC:LU:1565 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_3067.html">5163:TEC:LU:3067</a> - 5163:TEC:LU:3067 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_3068.html">5163:TEC:LU:3068</a> - 5163:TEC:LU:3068 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_3084.html">5163:TEC:LU:3084</a> - 5163:TEC:LU:3084 - Melreux - Heyd - Bomal - Petithan</li><li><a href="trip-5163_TEC_LU_3108.html">5163:TEC:LU:3108</a> - 5163:TEC:LU:3108 - Barvaux - Oppagne - Heyd - Bomal</li><li><a href="trip-5163_TEC_LU_3634.html">5163:TEC:LU:3634</a> - 5163:TEC:LU:3634 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_3636.html">5163:TEC:LU:3636</a> - 5163:TEC:LU:3636 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_5072.html">5163:TEC:LU:5072</a> - 5163:TEC:LU:5072 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_5073.html">5163:TEC:LU:5073</a> - 5163:TEC:LU:5073 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_5089.html">5163:TEC:LU:5089</a> - 5163:TEC:LU:5089 - Melreux - Heyd - Bomal - Petithan</li><li><a href="trip-5163_TEC_LU_5113.html">5163:TEC:LU:5113</a> - 5163:TEC:LU:5113 - Barvaux - Oppagne - Heyd - Bomal</li><li><a href="trip-5163_TEC_LU_6503.html">5163:TEC:LU:6503</a> - 5163:TEC:LU:6503 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_6505.html">5163:TEC:LU:6505</a> - 5163:TEC:LU:6505 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_6509.html">5163:TEC:LU:6509</a> - 5163:TEC:LU:6509 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_6538.html">5163:TEC:LU:6538</a> - 5163:TEC:LU:6538 - Melreux - Heyd - Bomal - Petithan</li><li><a href="trip-5163_TEC_LU_6553.html">5163:TEC:LU:6553</a> - 5163:TEC:LU:6553 - Barvaux - Oppagne - Heyd - Bomal</li><li><a href="trip-5163_TEC_LU_6561.html">5163:TEC:LU:6561</a> - 5163:TEC:LU:6561 - Melreux - Heyd - Bomal - Petithan</li><li><a href="trip-5163_TEC_LU_7571.html">5163:TEC:LU:7571</a> - 5163:TEC:LU:7571 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_7573.html">5163:TEC:LU:7573</a> - 5163:TEC:LU:7573 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_7577.html">5163:TEC:LU:7577</a> - 5163:TEC:LU:7577 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_904.html">5163:TEC:LU:904</a> - 5163:TEC:LU:904 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_906.html">5163:TEC:LU:906</a> - 5163:TEC:LU:906 - Proxibus de Durbuy</li><li><a href="trip-5163_TEC_LU_910.html">5163:TEC:LU:910</a> - 5163:TEC:LU:910 - Proxibus de Durbuy</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.347104, 5.561573], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.347104, 5.561573]).addTo(map);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Hamme-Mille - Wavre - 5163:TEC:BW:1232</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Hamme-Mille - Wavre - 5163:TEC:BW:1232</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bwavgar6.html">TEC:Bwavgar6</a> - Wavre Gare 12:03</li><li><a href="stop-TEC_Bwavgar7.html">TEC:Bwavgar7</a> - Wavre Gare 12:03</li><li><a href="stop-TEC_Bwaveur1.html">TEC:Bwaveur1</a> - Wavre Boulevard de l'Europe 12:05</li><li><a href="stop-TEC_Bwavpao2.html">TEC:Bwavpao2</a> - Wavre Place A. Bosch 12:08</li><li><a href="stop-TEC_Bwavfbe2.html">TEC:Bwavfbe2</a> - Wavre Fin Bec 12:09</li><li><a href="stop-TEC_Bwavdel2.html">TEC:Bwavdel2</a> - Wavre Delhaize 12:10</li><li><a href="stop-TEC_Bwavbwa2.html">TEC:Bwavbwa2</a> - Wavre Basse-Wavre 12:12</li><li><a href="stop-TEC_Bwavlon2.html">TEC:Bwavlon2</a> - Wavre Lonchamps 12:13</li><li><a href="stop-TEC_Bgzdgpa2.html">TEC:Bgzdgpa2</a> - Gastuche Papeteries 12:15</li><li><a href="stop-TEC_Bgzdgst2.html">TEC:Bgzdgst2</a> - Gastuche Rue de la Station 12:16</li><li><a href="stop-TEC_Bgzdgth2.html">TEC:Bgzdgth2</a> - Gastuche La Thermogène 12:17</li><li><a href="stop-TEC_Bgzddge2.html">TEC:Bgzddge2</a> - Doiceau Rue des Genêts 12:18</li><li><a href="stop-TEC_Bgzddmo2.html">TEC:Bgzddmo2</a> - Doiceau Chemin des Monts 12:19</li><li><a href="stop-TEC_Bgzdgli2.html">TEC:Bgzdgli2</a> - Grez-Doiceau Garage Libouton 12:20</li><li><a href="stop-TEC_Bgzdn252.html">TEC:Bgzdn252</a> - Grez-Doiceau N25 12:22</li><li><a href="stop-TEC_Bgzdsta2.html">TEC:Bgzdsta2</a> - Grez-Doiceau Rue du Stampia 12:22</li><li><a href="stop-TEC_Bgzdpos2.html">TEC:Bgzdpos2</a> - Grez-Doiceau Poste 12:23</li><li><a href="stop-TEC_Bgzdpco1.html">TEC:Bgzdpco1</a> - Grez-Doiceau Place Communale 12:23</li><li><a href="stop-TEC_Bgzdcen1.html">TEC:Bgzdcen1</a> - Grez-Doiceau Centry 12:24</li><li><a href="stop-TEC_Bbsgbos3.html">TEC:Bbsgbos3</a> - Bossut-Gottechain Bossut 12:28</li><li><a href="stop-TEC_Bbsggot2.html">TEC:Bbsggot2</a> - Bossut-Gottechain Gottechain 12:29</li><li><a href="stop-TEC_Bhmmcge2.html">TEC:Bhmmcge2</a> - Hamme-Mille Château de Guertechain 12:30</li><li><a href="stop-TEC_Bhmmgar1.html">TEC:Bhmmgar1</a> - Hamme-Mille Gare d'Autobus 12:31</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./60.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

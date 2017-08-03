@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Eupen - Raeren - Eynatten - Köpfchen/Lichtenbusch - 5163:TEC:LV:2588</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eupen - Raeren - Eynatten - Köpfchen/Lichtenbusch - 5163:TEC:LV:2588</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LlCgren1.html">TEC:LlCgren1</a> - Lichtenbusch Grenze 19:00</li><li><a href="stop-TEC_LlCauto2.html">TEC:LlCauto2</a> - Lichtenbusch Autobahnbrücke 19:01</li><li><a href="stop-TEC_LlChebs2.html">TEC:LlChebs2</a> - Lichtenbusch Hebscheiderheide 19:02</li><li><a href="stop-TEC_LlCland2.html">TEC:LlCland2</a> - Lichtenbusch Landwehring 19:03</li><li><a href="stop-TEC_LeYwess2.html">TEC:LeYwess2</a> - Eynatten Wesselbend 19:04</li><li><a href="stop-TEC_LeYberl2.html">TEC:LeYberl2</a> - Eynatten Berlotte 19:06</li><li><a href="stop-TEC_LeYraaf2.html">TEC:LeYraaf2</a> - Eynatten Raafstrasse 19:08</li><li><a href="stop-TEC_LeYmosc2.html">TEC:LeYmosc2</a> - Eynatten Möschenberg 19:09</li><li><a href="stop-TEC_LeYdorf2.html">TEC:LeYdorf2</a> - Eynatten Dorf 19:10</li><li><a href="stop-TEC_LeYauss2.html">TEC:LeYauss2</a> - Eynatten Schöne Aussicht 19:11</li><li><a href="stop-TEC_LeYvoge2.html">TEC:LeYvoge2</a> - Eynatten Vogelsang 19:12</li><li><a href="stop-TEC_LrAalte2.html">TEC:LrAalte2</a> - Raeren Altenbau 19:13</li><li><a href="stop-TEC_LrAneue2.html">TEC:LrAneue2</a> - Raeren Neuenbau 19:14</li><li><a href="stop-TEC_LrAdrie4.html">TEC:LrAdrie4</a> - Raeren Driesch (Hauptstrasse) 19:15</li><li><a href="stop-TEC_LrAtitf2.html">TEC:LrAtitf2</a> - Raeren Titfeld 19:15</li><li><a href="stop-TEC_LrAberg2.html">TEC:LrAberg2</a> - Raeren Bergscheid 19:16</li><li><a href="stop-TEC_LrAbotz2.html">TEC:LrAbotz2</a> - Raeren Botz 19:18</li><li><a href="stop-TEC_LrApley2.html">TEC:LrApley2</a> - Raeren Pley 19:19</li><li><a href="stop-TEC_LrAneud2.html">TEC:LrAneud2</a> - Raeren Neudorf 19:21</li><li><a href="stop-TEC_LrAknop2.html">TEC:LrAknop2</a> - Raeren Knoppenburg 19:22</li><li><a href="stop-TEC_LrAneus2.html">TEC:LrAneus2</a> - Raeren Neustrasse 19:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4446.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

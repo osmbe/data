@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Anderlues - La Hestre - 5163:TEC:HT:1623</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Anderlues - La Hestre - 5163:TEC:HT:1623</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H2ll180b.html">TEC:H2ll180b</a> - La Louviere Gazomètre 21:59</li><li><a href="stop-TEC_H2ll192b.html">TEC:H2ll192b</a> - La Louviere Pont de l'Olive 22:00</li><li><a href="stop-TEC_H2ll191b.html">TEC:H2ll191b</a> - La Louviere Plaine de Jeux 22:01</li><li><a href="stop-TEC_H2ll173b.html">TEC:H2ll173b</a> - La Louviere Ancienne Gare de Bouvy 22:01</li><li><a href="stop-TEC_H2sv216b.html">TEC:H2sv216b</a> - Saint-Vaast Evitement 22:03</li><li><a href="stop-TEC_H2sv211b.html">TEC:H2sv211b</a> - Saint-Vaast Avenue de l'Europe 22:04</li><li><a href="stop-TEC_H2sv220b.html">TEC:H2sv220b</a> - Saint-Vaast Wazoir 22:05</li><li><a href="stop-TEC_H2sv219b.html">TEC:H2sv219b</a> - Saint-Vaast Station Vicinale 22:07</li><li><a href="stop-TEC_H2sv212b.html">TEC:H2sv212b</a> - Saint-Vaast Caissier 22:07</li><li><a href="stop-TEC_H2tr257b.html">TEC:H2tr257b</a> - Trivieres Tondrée 22:08</li><li><a href="stop-TEC_H2tr252b.html">TEC:H2tr252b</a> - Trivieres Quartier du Pont 22:09</li><li><a href="stop-TEC_H2tr256b.html">TEC:H2tr256b</a> - Trivieres Rue Quertinmont 22:09</li><li><a href="stop-TEC_H2tr251b.html">TEC:H2tr251b</a> - Trivieres Place 22:10</li><li><a href="stop-TEC_H2tr253b.html">TEC:H2tr253b</a> - Trivieres Rue de Chapelle 22:11</li><li><a href="stop-TEC_H2pe161b.html">TEC:H2pe161b</a> - PERONNES(-LEZ-BINCHE) Place 22:13</li><li><a href="stop-TEC_H2pe163b.html">TEC:H2pe163b</a> - Peronnes Leopold III 22:14</li><li><a href="stop-TEC_H2pe162b.html">TEC:H2pe162b</a> - PERONNES(-LEZ-BINCHE) Ste Marguerite 22:16</li><li><a href="stop-TEC_H3bi118b.html">TEC:H3bi118b</a> - Binche Rue Z. Fontaine 22:20</li><li><a href="stop-TEC_H3bi112b.html">TEC:H3bi112b</a> - Binche Place de Battignies 22:21</li><li><a href="stop-TEC_H3bi107b.html">TEC:H3bi107b</a> - Binche Grand-Rue 22:23</li><li><a href="stop-TEC_H3bi110b.html">TEC:H3bi110b</a> - Binche Kursaal - Postes 22:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2148.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

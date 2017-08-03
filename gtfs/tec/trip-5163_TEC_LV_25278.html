@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Büllingen - Manderfeld - 5163:TEC:LV:25278</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Büllingen - Manderfeld - 5163:TEC:LV:25278</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LhZkape2.html">TEC:LhZkape2</a> - Holzheim Kapelle 07:28</li><li><a href="stop-TEC_LhOokat2.html">TEC:LhOokat2</a> - Honsfeld Auf Oberst Katzelder 07:35</li><li><a href="stop-TEC_LhOukat2.html">TEC:LhOukat2</a> - Honsfeld Auf Unterst Katzelder 07:36</li><li><a href="stop-TEC_LhOzent2.html">TEC:LhOzent2</a> - Honsfeld Zentrum 07:37</li><li><a href="stop-TEC_LhOfrie2.html">TEC:LhOfrie2</a> - Honsfeld Friedhof 07:38</li><li><a href="stop-TEC_LhObull2.html">TEC:LhObull2</a> - Honsfeld Büllingerstrasse 55b 07:39</li><li><a href="stop-TEC_LbUverb2.html">TEC:LbUverb2</a> - Bullingen Verbindungsstrasse 07:43</li><li><a href="stop-TEC_LbUhuge2.html">TEC:LbUhuge2</a> - Bullingen Am Hügel 07:44</li><li><a href="stop-TEC_LbUhons2.html">TEC:LbUhons2</a> - Bullingen Honsfelder Strasse 07:44</li><li><a href="stop-TEC_LbUpost2.html">TEC:LbUpost2</a> - Bullingen Alte Post 07:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5102.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

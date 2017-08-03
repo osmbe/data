@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bastogne - Houffalize - Gouvy - Vielsalm - 5163:TEC:LU:733</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bastogne - Houffalize - Gouvy - Vielsalm - 5163:TEC:LU:733</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X750apa.html">TEC:X750apa</a> - Vielsalm Eglise 06:10</li><li><a href="stop-TEC_X750bfa.html">TEC:X750bfa</a> - Vielsalm Route de Saint-Vith 06:11</li><li><a href="stop-TEC_X750aga.html">TEC:X750aga</a> - Vielsalm Route de la Gare 06:12</li><li><a href="stop-TEC_X750ahb.html">TEC:X750ahb</a> - Salmchateau Eglise 06:14</li><li><a href="stop-TEC_X780aha.html">TEC:X780aha</a> - Cierreux Gare 06:17</li><li><a href="stop-TEC_X780aga.html">TEC:X780aga</a> - Honvelez Grand Route 06:18</li><li><a href="stop-TEC_X780aea.html">TEC:X780aea</a> - Bovigny Eglise 06:20</li><li><a href="stop-TEC_X780aca.html">TEC:X780aca</a> - Courtil Eglise 06:22</li><li><a href="stop-TEC_X790aab.html">TEC:X790aab</a> - Halconreux Centre 06:26</li><li><a href="stop-TEC_X790afa.html">TEC:X790afa</a> - Gouvy Eglise 06:28</li><li><a href="stop-TEC_X790aka.html">TEC:X790aka</a> - Gouvy Gare 06:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2938.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHARLEROI- BEAUMONT-CHIMAY - 5163:TEC:CH:217</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHARLEROI- BEAUMONT-CHIMAY - 5163:TEC:CH:217</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Ctubpos3.html">TEC:Ctubpos3</a> - Thuillies Postes 09:37</li><li><a href="stop-TEC_Cturoge1.html">TEC:Cturoge1</a> - Thuillies La Rogère 09:38</li><li><a href="stop-TEC_Ctupont4.html">TEC:Ctupont4</a> - Thuillies Pont 09:39</li><li><a href="stop-TEC_Cbicamp2.html">TEC:Cbicamp2</a> - Biesme-Sous-Thuin Camping 09:40</li><li><a href="stop-TEC_Cbiseur2.html">TEC:Cbiseur2</a> - Biesme-Sous-Thuin Le Seurus 09:41</li><li><a href="stop-TEC_Cbimonu2.html">TEC:Cbimonu2</a> - Biesme-Sous-Thuin Monument 09:43</li><li><a href="stop-TEC_Cthbifu2.html">TEC:Cthbifu2</a> - Thuin Bifurcation 09:46</li><li><a href="stop-TEC_Cthgend1.html">TEC:Cthgend1</a> - Thuin Gendarmerie 09:47</li><li><a href="stop-TEC_Cthalli1.html">TEC:Cthalli1</a> - Thuin Drève des Alliés 09:48</li><li><a href="stop-TEC_Cthathe1.html">TEC:Cthathe1</a> - Thuin Athénée 09:48</li><li><a href="stop-TEC_Cthhvil1.html">TEC:Cthhvil1</a> - Thuin Hôtel de Ville 09:49</li><li><a href="stop-TEC_Cthbeff1.html">TEC:Cthbeff1</a> - Thuin Place du Beffroi 09:50</li><li><a href="stop-TEC_Cthvbas1.html">TEC:Cthvbas1</a> - Thuin Ville Basse 09:51</li><li><a href="stop-TEC_Cthvbas3.html">TEC:Cthvbas3</a> - Thuin Ville Basse 09:52</li><li><a href="stop-TEC_Cthvbas2.html">TEC:Cthvbas2</a> - Thuin Ville Basse 09:52</li><li><a href="stop-TEC_Cthoues1.html">TEC:Cthoues1</a> - Thuin Ouest S.N.C.B. 09:53</li><li><a href="stop-TEC_Cthpano1.html">TEC:Cthpano1</a> - Thuin Panorama 09:54</li><li><a href="stop-TEC_Cthgrat1.html">TEC:Cthgrat1</a> - Thuin Grattière 09:55</li><li><a href="stop-TEC_Clbptno3.html">TEC:Clbptno3</a> - Lobbes Pont du Nord 09:57</li><li><a href="stop-TEC_Clbgare1.html">TEC:Clbgare1</a> - Lobbes SNCB 09:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1020.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

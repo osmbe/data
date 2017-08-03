@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Arlon - Ethe  - Virton - 5163:TEC:LU:2132</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Arlon - Ethe  - Virton - 5163:TEC:LU:2132</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X605afb.html">TEC:X605afb</a> - Saint-Leger Rue d'Arlon 45 07:12</li><li><a href="stop-TEC_X605aeb.html">TEC:X605aeb</a> - Saint-Leger Rue d'Arlon 33 07:13</li><li><a href="stop-TEC_X605adb.html">TEC:X605adb</a> - Saint-Leger Rue du 5 Septembre 07:14</li><li><a href="stop-TEC_X605acb.html">TEC:X605acb</a> - Saint-Leger Complexe Sportif 07:16</li><li><a href="stop-TEC_X605abb.html">TEC:X605abb</a> - Saint-Leger Rue de Virton 07:16</li><li><a href="stop-TEC_X605aab.html">TEC:X605aab</a> - N82 La Barrière - Baudrux 07:17</li><li><a href="stop-TEC_X606aba.html">TEC:X606aba</a> - Bakèse 07:20</li><li><a href="stop-TEC_X606aaa.html">TEC:X606aaa</a> - Hamawé 07:21</li><li><a href="stop-TEC_X607aha.html">TEC:X607aha</a> - Ethe Rue de la 7ème DF 07:22</li><li><a href="stop-TEC_X607aga.html">TEC:X607aga</a> - Ethe Rue Dr Hustin 07:24</li><li><a href="stop-TEC_X608aqa.html">TEC:X608aqa</a> - Virton Pierrard 07:29</li><li><a href="stop-TEC_X608ahb.html">TEC:X608ahb</a> - Virton Delhaize 07:31</li><li><a href="stop-TEC_X608agb.html">TEC:X608agb</a> - Virton Carmel 07:32</li><li><a href="stop-TEC_X608aua.html">TEC:X608aua</a> - Virton Rue des Fossés 07:33</li><li><a href="stop-TEC_X608aeb.html">TEC:X608aeb</a> - Virton Arcades 07:34</li><li><a href="stop-TEC_X608adb.html">TEC:X608adb</a> - Virton CNDB 07:35</li><li><a href="stop-TEC_X608acb.html">TEC:X608acb</a> - Virton Paradis des Enfants 07:36</li><li><a href="stop-TEC_X608abb.html">TEC:X608abb</a> - Virton Carrefour Avenue Bouvier 07:37</li><li><a href="stop-TEC_X608aaa.html">TEC:X608aaa</a> - Saint-Mard Gare 07:37</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2942.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

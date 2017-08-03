@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Huy - Couthuin - Andenne - 5163:TEC:LV:48723</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Huy - Couthuin - Andenne - 5163:TEC:LV:48723</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LHUlebe5.html">TEC:LHUlebe5</a> - Huy Place Lebeau 18:29</li><li><a href="stop-TEC_LHUecte2.html">TEC:LHUecte2</a> - Huy Ecole Technique 18:32</li><li><a href="stop-TEC_LHUneuv1.html">TEC:LHUneuv1</a> - Huy Rue Neuve 18:32</li><li><a href="stop-TEC_LHUaveu1.html">TEC:LHUaveu1</a> - Huy Porte des Aveugles 18:33</li><li><a href="stop-TEC_LSteg--1.html">TEC:LSteg--1</a> - Statte Eglise 18:35</li><li><a href="stop-TEC_LStroch1.html">TEC:LStroch1</a> - Statte Sous les Roches 18:36</li><li><a href="stop-TEC_LWNwavr5.html">TEC:LWNwavr5</a> - Wanze Chaussée de Wavre 18:37</li><li><a href="stop-TEC_LWNfani1.html">TEC:LWNfani1</a> - Wanze Place Faniel 18:38</li><li><a href="stop-TEC_LWNberg1.html">TEC:LWNberg1</a> - Wanze A la Bergère 18:40</li><li><a href="stop-TEC_LWNchar1.html">TEC:LWNchar1</a> - Wanze Rue L. Charlier 18:41</li><li><a href="stop-TEC_LBssucr1.html">TEC:LBssucr1</a> - Bas-Oha Rue des Sucreries 18:42</li><li><a href="stop-TEC_LBspiet1.html">TEC:LBspiet1</a> - Bas-Oha Rue F. Piette 18:43</li><li><a href="stop-TEC_LBscasi1.html">TEC:LBscasi1</a> - Bas-Oha Casino 18:44</li><li><a href="stop-TEC_LBsfer-1.html">TEC:LBsfer-1</a> - Bas-Oha Pont du chemin de fer 18:44</li><li><a href="stop-TEC_LBseg--1.html">TEC:LBseg--1</a> - Bas-Oha Eglise 18:46</li><li><a href="stop-TEC_LBscime1.html">TEC:LBscime1</a> - Bas-Oha Cimetière 18:46</li><li><a href="stop-TEC_LBsoha-1.html">TEC:LBsoha-1</a> - Bas-Oha Chemin d'Oha 18:48</li><li><a href="stop-TEC_LBslama1.html">TEC:LBslama1</a> - Bas-Oha Lamalle 18:49</li><li><a href="stop-TEC_LEnchan1.html">TEC:LEnchan1</a> - Envoz Château de Changy 18:52</li><li><a href="stop-TEC_LEntrix1.html">TEC:LEntrix1</a> - Envoz Rue Basses Trixhes 18:54</li><li><a href="stop-TEC_LCUmonu1.html">TEC:LCUmonu1</a> - Couthuin Monument 18:55</li><li><a href="stop-TEC_LCUthie1.html">TEC:LCUthie1</a> - Couthuin Rue Pied du Thier 18:56</li><li><a href="stop-TEC_LCUmars1.html">TEC:LCUmars1</a> - Couthuin Rue de Marsinne 18:57</li><li><a href="stop-TEC_LSzcoop1.html">TEC:LSzcoop1</a> - Surlemez Coopérative 18:59</li><li><a href="stop-TEC_LSzsurl1.html">TEC:LSzsurl1</a> - Surlemez rue de Surlemez 19:00</li><li><a href="stop-TEC_LSzeg--1.html">TEC:LSzeg--1</a> - Surlemez Eglise 19:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4303.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - MARIEMBOURG - DOISCHE - 5163:TEC:NA:9902</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: MARIEMBOURG - DOISCHE - 5163:TEC:NA:9902</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N121aea.html">TEC:N121aea</a> - Doische Ecoles 12:15</li><li><a href="stop-TEC_N121aba.html">TEC:N121aba</a> - Doische Cimetière 12:16</li><li><a href="stop-TEC_N122aia.html">TEC:N122aia</a> - Gimnee Fonds Marie 12:18</li><li><a href="stop-TEC_N122ada.html">TEC:N122ada</a> - Gimnee Ecole 12:19</li><li><a href="stop-TEC_N122aca.html">TEC:N122aca</a> - Gimnee Village 12:19</li><li><a href="stop-TEC_N122aba.html">TEC:N122aba</a> - Gimnee Eglise 12:20</li><li><a href="stop-TEC_N123ada.html">TEC:N123ada</a> - Romeree Chapelle 12:23</li><li><a href="stop-TEC_N123aca.html">TEC:N123aca</a> - Romeree Eglise 12:24</li><li><a href="stop-TEC_N124acb.html">TEC:N124acb</a> - Matagne-la-Petite Rue de Romerée 12:26</li><li><a href="stop-TEC_N124aaa.html">TEC:N124aaa</a> - Matagne-la-Petite Eglise 12:28</li><li><a href="stop-TEC_N125aaa.html">TEC:N125aaa</a> - Matagne-la-Grande Rue de la Gare 12:31</li><li><a href="stop-TEC_N134aga.html">TEC:N134aga</a> - Fagnolle Rue Bois du mont 12:36</li><li><a href="stop-TEC_N134aha.html">TEC:N134aha</a> - Fagnolle Place 12:36</li><li><a href="stop-TEC_N134afa.html">TEC:N134afa</a> - Fagnolle Ferme Belleflamme 12:38</li><li><a href="stop-TEC_N134aea.html">TEC:N134aea</a> - Mariembourg Passerelle 12:40</li><li><a href="stop-TEC_N134aab.html">TEC:N134aab</a> - Mariembourg Chez l'Fagne 12:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6123.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

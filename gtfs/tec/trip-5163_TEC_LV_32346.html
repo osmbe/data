@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Verviers-Battice-Thimister-Aubel - 5163:TEC:LV:32346</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Verviers-Battice-Thimister-Aubel - 5163:TEC:LV:32346</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LBTcarr1.html">TEC:LBTcarr1</a> - Battice Carrefour 14:15</li><li><a href="stop-TEC_LBTfoot1.html">TEC:LBTfoot1</a> - Battice Terrain de Football 14:16</li><li><a href="stop-TEC_LBTwauc1.html">TEC:LBTwauc1</a> - Battice Hameau de Waucomont 14:16</li><li><a href="stop-TEC_LThpoli1.html">TEC:LThpoli1</a> - Thimister Croix Polinard 14:18</li><li><a href="stop-TEC_LThbatt1.html">TEC:LThbatt1</a> - Thimister Route de Battice 14:19</li><li><a href="stop-TEC_LTheg--1.html">TEC:LTheg--1</a> - Thimister Eglise 14:20</li><li><a href="stop-TEC_LThelse1.html">TEC:LThelse1</a> - Thimister Rue Elseroux 14:22</li><li><a href="stop-TEC_LLMjacq1.html">TEC:LLMjacq1</a> - La Minerie Croix Henri-Jacques 14:23</li><li><a href="stop-TEC_LLMcouv1.html">TEC:LLMcouv1</a> - La Minerie Couvent de Befve 14:24</li><li><a href="stop-TEC_LLMeg--1.html">TEC:LLMeg--1</a> - La Minerie Eglise 14:25</li><li><a href="stop-TEC_LLM4rou1.html">TEC:LLM4rou1</a> - La Minerie 4 Routes 14:26</li><li><a href="stop-TEC_LLMfond1.html">TEC:LLMfond1</a> - La Minerie Fond Jowa 14:28</li><li><a href="stop-TEC_LFdchau3.html">TEC:LFdchau3</a> - Froidthier Chaussée 14:30</li><li><a href="stop-TEC_LAUcarr1.html">TEC:LAUcarr1</a> - Aubel La Carrière 14:32</li><li><a href="stop-TEC_LAUpind1.html">TEC:LAUpind1</a> - Aubel Parc Industriel 14:32</li><li><a href="stop-TEC_LAUhost1.html">TEC:LAUhost1</a> - Aubel Hostert 14:33</li><li><a href="stop-TEC_LAUtism1.html">TEC:LAUtism1</a> - Aubel Rue Tisman 14:34</li><li><a href="stop-TEC_LAUnico1.html">TEC:LAUnico1</a> - Aubel Place Antoine Ernst 14:34</li><li><a href="stop-TEC_LAUvict3.html">TEC:LAUvict3</a> - Aubel Place de la Victoire 14:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4004.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

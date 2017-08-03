@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tournai City : Tournai - Kain - 5163:TEC:HT:10288</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tournai City : Tournai - Kain - 5163:TEC:HT:10288</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4bd108a.html">TEC:H4bd108a</a> - Blandain Ancienne Gare 06:33</li><li><a href="stop-TEC_H4bd110b.html">TEC:H4bd110b</a> - Blandain Passage à Niveau 06:34</li><li><a href="stop-TEC_H4ht172b.html">TEC:H4ht172b</a> - Hertain Carrefour-Village 06:36</li><li><a href="stop-TEC_H4la198a.html">TEC:H4la198a</a> - Hertain St Joseph 06:37</li><li><a href="stop-TEC_H4ma203b.html">TEC:H4ma203b</a> - Marquain La Montagne 06:38</li><li><a href="stop-TEC_H4ma200b.html">TEC:H4ma200b</a> - Marquain Alène d' Or 06:39</li><li><a href="stop-TEC_H4ma205b.html">TEC:H4ma205b</a> - Marquain Village 06:40</li><li><a href="stop-TEC_H4ma204b.html">TEC:H4ma204b</a> - Marquain Quennelet 06:41</li><li><a href="stop-TEC_H4oq229b.html">TEC:H4oq229b</a> - Orcq Zoning 06:41</li><li><a href="stop-TEC_H4oq225b.html">TEC:H4oq225b</a> - Orcq Bourg 06:42</li><li><a href="stop-TEC_H4oq228a.html">TEC:H4oq228a</a> - Orcq Village 06:42</li><li><a href="stop-TEC_H4oq223a.html">TEC:H4oq223a</a> - Orcq 3 Suisses 06:43</li><li><a href="stop-TEC_H4oq224a.html">TEC:H4oq224a</a> - Orcq Barrière 06:43</li><li><a href="stop-TEC_H4ty350b.html">TEC:H4ty350b</a> - Tournai Saint Lazare 06:44</li><li><a href="stop-TEC_H4ty356d.html">TEC:H4ty356d</a> - Tournai Tir National 06:45</li><li><a href="stop-TEC_H4ty345a.html">TEC:H4ty345a</a> - Tournai Rue Mauroy 06:46</li><li><a href="stop-TEC_H4ty334a.html">TEC:H4ty334a</a> - Tournai Rue Cousin 06:47</li><li><a href="stop-TEC_H4ty281b.html">TEC:H4ty281b</a> - Tournai Chaussée de Willemeau 06:49</li><li><a href="stop-TEC_H4ty339b.html">TEC:H4ty339b</a> - Tournai Rue Doublet 06:50</li><li><a href="stop-TEC_H4ty282a.html">TEC:H4ty282a</a> - Tournai Chemin d' Ere 06:51</li><li><a href="stop-TEC_H4ty332b.html">TEC:H4ty332b</a> - Tournai Rue Allard l'Olivier 06:52</li><li><a href="stop-TEC_H4ty338b.html">TEC:H4ty338b</a> - Tournai Chwapi Union 06:53</li><li><a href="stop-TEC_H4ty309a.html">TEC:H4ty309a</a> - Tournai Chwapi Barges 06:53</li><li><a href="stop-TEC_H4ty317a.html">TEC:H4ty317a</a> - Tournai Palais de Justice 06:55</li><li><a href="stop-TEC_H4ty274a.html">TEC:H4ty274a</a> - Tournai Beffroi 06:57</li><li><a href="stop-TEC_H4ty291a.html">TEC:H4ty291a</a> - Tournai Dôme 06:58</li><li><a href="stop-TEC_H4ty351b.html">TEC:H4ty351b</a> - Tournai Saint-Brice 06:59</li><li><a href="stop-TEC_H4ty347a.html">TEC:H4ty347a</a> - Tournai Rue Royale 07:00</li><li><a href="stop-TEC_H4ty305a.html">TEC:H4ty305a</a> - Tournai SNCB 07:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1412.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - PROXIBUS PROFONDEVILLE - 5163:TEC:NA:5603</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: PROXIBUS PROFONDEVILLE - 5163:TEC:NA:5603</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N539agb.html">TEC:N539agb</a> - Profondeville Hôtel de ville 16:20</li><li><a href="stop-TEC_N539ahb.html">TEC:N539ahb</a> - Profondeville Chaussée de Dinant 16:21</li><li><a href="stop-TEC_N539afb.html">TEC:N539afb</a> - Profondeville Pont de Lustin 16:23</li><li><a href="stop-TEC_N540agb.html">TEC:N540agb</a> - Profondeville Burnot 16:24</li><li><a href="stop-TEC_N540aha.html">TEC:N540aha</a> - Profondeville Burnot collège S.-C. 16:26</li><li><a href="stop-TEC_N540aeb.html">TEC:N540aeb</a> - Profondeville L'eau vive 16:27</li><li><a href="stop-TEC_N578acb.html">TEC:N578acb</a> - Arbre Route Du Fond 16:29</li><li><a href="stop-TEC_N578abb.html">TEC:N578abb</a> - Arbre Fond Des Rivaux 16:31</li><li><a href="stop-TEC_N578aab.html">TEC:N578aab</a> - Arbre Rue de Besinne 16:32</li><li><a href="stop-TEC_N577akb.html">TEC:N577akb</a> - Lesve Football 16:35</li><li><a href="stop-TEC_N577ajb.html">TEC:N577ajb</a> - Lesve Rue Biernostet 16:38</li><li><a href="stop-TEC_N577aib.html">TEC:N577aib</a> - Lesve Rue Joseph Misson 16:39</li><li><a href="stop-TEC_N577aba.html">TEC:N577aba</a> - Lesve Chapelle 16:41</li><li><a href="stop-TEC_N577ada.html">TEC:N577ada</a> - Lesve Ecole 16:43</li><li><a href="stop-TEC_N577aeb.html">TEC:N577aeb</a> - Lesve Place 16:44</li><li><a href="stop-TEC_N577acb.html">TEC:N577acb</a> - Lesve Rue Baty Des Foulons 16:46</li><li><a href="stop-TEC_N577ahb.html">TEC:N577ahb</a> - Lesve Pichelotte 16:49</li><li><a href="stop-TEC_N577afb.html">TEC:N577afb</a> - Lesve Gilet-ville 16:50</li><li><a href="stop-TEC_N542adb.html">TEC:N542adb</a> - Bois-de-Villers Six-bras 16:52</li><li><a href="stop-TEC_N542aeb.html">TEC:N542aeb</a> - Bois-de-Villers Rue Fosséprez 16:53</li><li><a href="stop-TEC_N542asb.html">TEC:N542asb</a> - Bois-de-Villers Delhaize 16:54</li><li><a href="stop-TEC_N542aaa.html">TEC:N542aaa</a> - Bois-de-Villers Village 16:56</li><li><a href="stop-TEC_N542aca.html">TEC:N542aca</a> - Bois-de-Villers Eglise 16:57</li><li><a href="stop-TEC_N542alb.html">TEC:N542alb</a> - Bois-de-Villers Rue Elie Bertrand 16:59</li><li><a href="stop-TEC_N542arb.html">TEC:N542arb</a> - Bois-de-Villers Rue Alfred Barré 16:59</li><li><a href="stop-TEC_N542akb.html">TEC:N542akb</a> - Bois-de-Villers Binamé 17:01</li><li><a href="stop-TEC_N539ajb.html">TEC:N539ajb</a> - Profondeville Fosse aux chats 17:02</li><li><a href="stop-TEC_N539akb.html">TEC:N539akb</a> - Profondeville Route des Crêtes 17:03</li><li><a href="stop-TEC_N539aja.html">TEC:N539aja</a> - Profondeville Fosse aux chats 17:04</li><li><a href="stop-TEC_N539adb.html">TEC:N539adb</a> - Profondeville Rue A. Gemenne 17:07</li><li><a href="stop-TEC_N539agb.html">TEC:N539agb</a> - Profondeville Hôtel de ville 17:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6696.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

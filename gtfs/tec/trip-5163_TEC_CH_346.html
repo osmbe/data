@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - FLEURUS-CHARLEROI - 5163:TEC:CH:346</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: FLEURUS-CHARLEROI - 5163:TEC:CH:346</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cflchel1.html">TEC:Cflchel1</a> - Fleurus Champs Elysées 23:16</li><li><a href="stop-TEC_Cflcent1.html">TEC:Cflcent1</a> - Fleurus Centre 23:18</li><li><a href="stop-TEC_Cflstan1.html">TEC:Cflstan1</a> - Fleurus Rue Sainte-Anne 23:18</li><li><a href="stop-TEC_Cflathe1.html">TEC:Cflathe1</a> - Fleurus Athénée 23:19</li><li><a href="stop-TEC_Cflfaub1.html">TEC:Cflfaub1</a> - Fleurus Faubourg 23:20</li><li><a href="stop-TEC_Cfldand1.html">TEC:Cfldand1</a> - Fleurus Camp Dandois 23:20</li><li><a href="stop-TEC_Cflmart1.html">TEC:Cflmart1</a> - Fleurus Martinroux 23:22</li><li><a href="stop-TEC_Cflcoro1.html">TEC:Cflcoro1</a> - Fleurus Coron du Marquis 23:23</li><li><a href="stop-TEC_Cflglav1.html">TEC:Cflglav1</a> - Fleurus Glaverbel 23:23</li><li><a href="stop-TEC_Cflvxca1.html">TEC:Cflvxca1</a> - Fleurus Vieux Campinaire 23:24</li><li><a href="stop-TEC_Cflecga1.html">TEC:Cflecga1</a> - Fleurus Ecoles des Garçons 23:25</li><li><a href="stop-TEC_Cflsabl1.html">TEC:Cflsabl1</a> - Fleurus Sablonnière 23:26</li><li><a href="stop-TEC_Cflvxsa1.html">TEC:Cflvxsa1</a> - Fleurus Vieux Saule 23:26</li><li><a href="stop-TEC_Ccugilb1.html">TEC:Ccugilb1</a> - Chatelineau Avenue Gilbert 23:27</li><li><a href="stop-TEC_Ccutail1.html">TEC:Ccutail1</a> - Chatelineau Taillis Prés 23:27</li><li><a href="stop-TEC_Ccuplai1.html">TEC:Ccuplai1</a> - Chatelineau Rue de la Plaine 23:28</li><li><a href="stop-TEC_Ccunove1.html">TEC:Ccunove1</a> - Chatelineau 11 Novembre 23:29</li><li><a href="stop-TEC_Ccugrtr1.html">TEC:Ccugrtr1</a> - Chatelineau Grand Trieu 23:30</li><li><a href="stop-TEC_Ccumasu1.html">TEC:Ccumasu1</a> - Chatelineau Rue des Masuirs 23:31</li><li><a href="stop-TEC_Ccupdes1.html">TEC:Ccupdes1</a> - Chatelineau Place Destrée 23:32</li><li><a href="stop-TEC_Ccutill1.html">TEC:Ccutill1</a> - Chatelineau Tillemans 23:34</li><li><a href="stop-TEC_Ccusole1.html">TEC:Ccusole1</a> - Gilly Soleilmont 23:37</li><li><a href="stop-TEC_Ccuwain1.html">TEC:Ccuwain1</a> - Gilly Rue du Wainage 23:38</li><li><a href="stop-TEC_Cgyruis1.html">TEC:Cgyruis1</a> - Gilly Ruisseau 23:39</li><li><a href="stop-TEC_Cgywaut1.html">TEC:Cgywaut1</a> - Gilly Rue Wautelet 23:40</li><li><a href="stop-TEC_Cgyplst1.html">TEC:Cgyplst1</a> - Gilly Place Saint-Pierre 23:41</li><li><a href="stop-TEC_Cgyplvi1.html">TEC:Cgyplvi1</a> - Gilly Place du Village 23:41</li><li><a href="stop-TEC_Cgymetr1.html">TEC:Cgymetr1</a> - Gilly Métro 23:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./736.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

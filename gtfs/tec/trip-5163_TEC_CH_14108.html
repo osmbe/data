@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHATELET-VELAINE-TAMINES-CHATELET-GILLY - 5163:TEC:CH:14108</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHATELET-VELAINE-TAMINES-CHATELET-GILLY - 5163:TEC:CH:14108</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Ctaathe2.html">TEC:Ctaathe2</a> - Tamines Athénée 12:15</li><li><a href="stop-TEC_N543cbb.html">TEC:N543cbb</a> - Tamines Gare SNCB 12:17</li><li><a href="stop-TEC_Ctaphaz1.html">TEC:Ctaphaz1</a> - Tamines Pré des Haz 12:18</li><li><a href="stop-TEC_N543bkb.html">TEC:N543bkb</a> - Tamines Place St-Martin 12:19</li><li><a href="stop-TEC_Ctafran2.html">TEC:Ctafran2</a> - Tamines Rue des Français 12:19</li><li><a href="stop-TEC_Caih1632.html">TEC:Caih1632</a> - Aiseau Habitation n° 163 12:20</li><li><a href="stop-TEC_Cairous2.html">TEC:Cairous2</a> - Aiseau Rue Rousselle 12:21</li><li><a href="stop-TEC_Caibino2.html">TEC:Caibino2</a> - Aiseau Ruelle Binon 12:22</li><li><a href="stop-TEC_Caioign4.html">TEC:Caioign4</a> - Aiseau Oignies Eglise 12:23</li><li><a href="stop-TEC_Caiecol2.html">TEC:Caiecol2</a> - Aiseau Rue des Ecoles 12:24</li><li><a href="stop-TEC_Caibras2.html">TEC:Caibras2</a> - Aiseau Brasserie Scavée 12:25</li><li><a href="stop-TEC_Caimeno4.html">TEC:Caimeno4</a> - Aiseau Menonry 12:26</li><li><a href="stop-TEC_Caihai82.html">TEC:Caihai82</a> - Aiseau Habitation n° 8 12:27</li><li><a href="stop-TEC_Caistro2.html">TEC:Caistro2</a> - Aiseau Chapelle St-Roch 12:27</li><li><a href="stop-TEC_Caindsa2.html">TEC:Caindsa2</a> - Aiseau Notre-Dame de la Salette 12:28</li><li><a href="stop-TEC_Caiegli2.html">TEC:Caiegli2</a> - Aiseau Place de l'Eglise 12:29</li><li><a href="stop-TEC_Caircen2.html">TEC:Caircen2</a> - Aiseau Rue du Centre 12:30</li><li><a href="stop-TEC_Caicalv2.html">TEC:Caicalv2</a> - Aiseau Calvaire 12:31</li><li><a href="stop-TEC_Caigibe2.html">TEC:Caigibe2</a> - Aiseau Le Gibet 12:32</li><li><a href="stop-TEC_Crspair2.html">TEC:Crspair2</a> - Roselies Rue de la Pairelle 12:34</li><li><a href="stop-TEC_Crspana1.html">TEC:Crspana1</a> - Roselies Panama 12:36</li><li><a href="stop-TEC_Crseuro1.html">TEC:Crseuro1</a> - Roselies Rue de l'Europe 12:37</li><li><a href="stop-TEC_Crs74em1.html">TEC:Crs74em1</a> - Roselies Place du 74ème 12:37</li><li><a href="stop-TEC_Crsprai3.html">TEC:Crsprai3</a> - Roselies Rue de la Praile 12:38</li><li><a href="stop-TEC_Crsrose1.html">TEC:Crsrose1</a> - Roselies La Roseraie 12:39</li><li><a href="stop-TEC_Crsaise1.html">TEC:Crsaise1</a> - Roselies Rue d'Aiseau 12:40</li><li><a href="stop-TEC_Crswaut1.html">TEC:Crswaut1</a> - Roselies Rue Wauters 12:42</li><li><a href="stop-TEC_Crsmonu2.html">TEC:Crsmonu2</a> - Roselies Monument 12:44</li><li><a href="stop-TEC_Crsapol2.html">TEC:Crsapol2</a> - Roselies Rue Abbé Polart 12:45</li><li><a href="stop-TEC_Cfaterg6.html">TEC:Cfaterg6</a> - Farciennes Cité Tergnée 12:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1047.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

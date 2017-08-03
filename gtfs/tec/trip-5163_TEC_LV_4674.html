@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Eupen - Kelmis - Vaals - 5163:TEC:LV:4674</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eupen - Kelmis - Vaals - 5163:TEC:LV:4674</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LeUbush1.html">TEC:LeUbush1</a> - Eupen Bushof 06:55</li><li><a href="stop-TEC_LeUbahn5.html">TEC:LeUbahn5</a> - Eupen Bahnhof 06:56</li><li><a href="stop-TEC_LeUschn1.html">TEC:LeUschn1</a> - Eupen Schnellewindgasse 06:57</li><li><a href="stop-TEC_LkTschö1.html">TEC:LkTschö1</a> - Kettenis Schöne Aussicht 06:57</li><li><a href="stop-TEC_LkTtal-1.html">TEC:LkTtal-1</a> - Kettenis Tal 06:58</li><li><a href="stop-TEC_LkTdorf1.html">TEC:LkTdorf1</a> - Kettenis Dorf 06:59</li><li><a href="stop-TEC_LkTkabi1.html">TEC:LkTkabi1</a> - Kettenis Elektrische Kabine 07:00</li><li><a href="stop-TEC_LwAkett1.html">TEC:LwAkett1</a> - Walhorn Ketteniser Strasse 07:01</li><li><a href="stop-TEC_LwAstum1.html">TEC:LwAstum1</a> - Walhorn Stumpfenkreuz 07:01</li><li><a href="stop-TEC_LwAschu1.html">TEC:LwAschu1</a> - Walhorn Schule 07:02</li><li><a href="stop-TEC_LwAlont1.html">TEC:LwAlont1</a> - Walhorn Lontzener Strasse 07:03</li><li><a href="stop-TEC_LwAprei1.html">TEC:LwAprei1</a> - Walhorn Preismühle 07:04</li><li><a href="stop-TEC_LaSbahn1.html">TEC:LaSbahn1</a> - Astenet Bahnhof 07:05</li><li><a href="stop-TEC_LaSkape1.html">TEC:LaSkape1</a> - Astenet Kapelle 07:06</li><li><a href="stop-TEC_LaSneuh1.html">TEC:LaSneuh1</a> - Astenet Neuhaus (Katherina von Sienna) 07:07</li><li><a href="stop-TEC_LhGlang1.html">TEC:LhGlang1</a> - Hergenrath Langhor 07:08</li><li><a href="stop-TEC_LhGkirc1.html">TEC:LhGkirc1</a> - Hergenrath Kirche 07:09</li><li><a href="stop-TEC_LhGgeme1.html">TEC:LhGgeme1</a> - Hergenrath Gemeindeschule 07:10</li><li><a href="stop-TEC_LhGfrie1.html">TEC:LhGfrie1</a> - Hergenrath Friedhof 07:10</li><li><a href="stop-TEC_LhGcasi1.html">TEC:LhGcasi1</a> - Hergenrath Casinostrasse 07:11</li><li><a href="stop-TEC_LkEmax-1.html">TEC:LkEmax-1</a> - Kelmis Maxstrasse 07:12</li><li><a href="stop-TEC_LkEbbl-1.html">TEC:LkEbbl-1</a> - Kelmis B.B.L. (Knauf) 07:13</li><li><a href="stop-TEC_LkEcoop1.html">TEC:LkEcoop1</a> - Kelmis Coopérative 07:14</li><li><a href="stop-TEC_LkEwolf1.html">TEC:LkEwolf1</a> - Kelmis Wolfsweg 07:15</li><li><a href="stop-TEC_LkEbran1.html">TEC:LkEbran1</a> - Kelmis Brandenhövel 07:16</li><li><a href="stop-TEC_LMsbusc1.html">TEC:LMsbusc1</a> - Moresnet Buschhausen pont 07:16</li><li><a href="stop-TEC_LMsgara1.html">TEC:LMsgara1</a> - Moresnet Garage 07:17</li><li><a href="stop-TEC_LMschap1.html">TEC:LMschap1</a> - Moresnet Chapelle 07:18</li><li><a href="stop-TEC_LGemari1.html">TEC:LGemari1</a> - Gemmenich Maria Hilf 07:19</li><li><a href="stop-TEC_LGevygh1.html">TEC:LGevygh1</a> - Gemmenich Maison Vyghen 07:20</li><li><a href="stop-TEC_LGesent1.html">TEC:LGesent1</a> - Gemmenich Sentier des Cendres 07:21</li><li><a href="stop-TEC_LGeforg1.html">TEC:LGeforg1</a> - Gemmenich La Forge 07:22</li><li><a href="stop-TEC_LGepeck1.html">TEC:LGepeck1</a> - Gemmenich Place Peckham 07:22</li><li><a href="stop-TEC_LGeborn1.html">TEC:LGeborn1</a> - Gemmenich Aux Trois Bornes 07:23</li><li><a href="stop-TEC_LGegare1.html">TEC:LGegare1</a> - Gemmenich Ancienne gare 07:23</li><li><a href="stop-TEC_LGeduc-1.html">TEC:LGeduc-1</a> - Gemmenich Chemin du Duc 07:24</li><li><a href="stop-TEC_LGefron1.html">TEC:LGefron1</a> - Gemmenich Frontière 07:25</li><li><a href="stop-TEC_LVAwolf1.html">TEC:LVAwolf1</a> - Vaals Wolfhaag 07:26</li><li><a href="stop-TEC_LVAgemm1.html">TEC:LVAgemm1</a> - Vaals Gemmenicherweg 07:29</li><li><a href="stop-TEC_LVAflat1.html">TEC:LVAflat1</a> - Vaals Flat 07:30</li><li><a href="stop-TEC_LVAakke1.html">TEC:LVAakke1</a> - Vaals De Lange Akker 07:31</li><li><a href="stop-TEC_LVApark1.html">TEC:LVApark1</a> - Vaals Parklaan 07:32</li><li><a href="stop-TEC_LVAbloe1.html">TEC:LVAbloe1</a> - Vaals Bloemendael 07:32</li><li><a href="stop-TEC_LVAmaas1.html">TEC:LVAmaas1</a> - Vaals Maastrichterlaan 07:34</li><li><a href="stop-TEC_LVAbuss1.html">TEC:LVAbuss1</a> - Vaals Busstation 07:34</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3964.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Athus - Longwy - 5163:TEC:LU:4613</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Athus - Longwy - 5163:TEC:LU:4613</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X696aaa.html">TEC:X696aaa</a> - Longwy Place Darche Mercy 06:50</li><li><a href="stop-TEC_X696aka.html">TEC:X696aka</a> - Longwy Stade 06:52</li><li><a href="stop-TEC_X696ala.html">TEC:X696ala</a> - Longwy Vauban 06:54</li><li><a href="stop-TEC_X695ada.html">TEC:X695ada</a> - Mont-Saint-Martin Cité Latarse 06:56</li><li><a href="stop-TEC_X695aca.html">TEC:X695aca</a> - Mont-Saint-Martin Résistance Hôpital 06:58</li><li><a href="stop-TEC_X695aba.html">TEC:X695aba</a> - Mont-Saint-Martin Foch 06:59</li><li><a href="stop-TEC_X695aia.html">TEC:X695aia</a> - Mont-Saint-Martin Jean Jaurès 07:01</li><li><a href="stop-TEC_X695aab.html">TEC:X695aab</a> - Mont-Saint-Martin Bureau Douane 07:02</li><li><a href="stop-TEC_X615bea.html">TEC:X615bea</a> - Aubange Rue Nizette 07:03</li><li><a href="stop-TEC_X615bda.html">TEC:X615bda</a> - Aubange Route du Zoning 07:04</li><li><a href="stop-TEC_X615bca.html">TEC:X615bca</a> - Aubange Gare 07:05</li><li><a href="stop-TEC_X615bba.html">TEC:X615bba</a> - Aubange Ecole Communale 07:05</li><li><a href="stop-TEC_X615ava.html">TEC:X615ava</a> - Aubange Rue du Village 07:06</li><li><a href="stop-TEC_X615awa.html">TEC:X615awa</a> - Aubange Place 07:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3252.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

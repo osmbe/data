@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Recht - Rodt - St-Vith - 5163:TEC:LV:43133</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Recht - Rodt - St-Vith - 5163:TEC:LV:43133</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LsVlind_.html">TEC:LsVlind*</a> - Sankt-Vith An den Linden 12:45</li><li><a href="stop-TEC_LsVbs--_.html">TEC:LsVbs--*</a> - Sankt-Vith Bischöfliche Schule 12:47</li><li><a href="stop-TEC_LsVgore1.html">TEC:LsVgore1</a> - Sankt-Vith Maria Goretti 12:50</li><li><a href="stop-TEC_LsVgore2.html">TEC:LsVgore2</a> - Sankt-Vith Maria Goretti 12:51</li><li><a href="stop-TEC_LsVviel2.html">TEC:LsVviel2</a> - Sankt-Vith Vielsalmer Strasse 12:52</li><li><a href="stop-TEC_LsVrodt1.html">TEC:LsVrodt1</a> - Sankt-Vith Rodter Strasse 12:53</li><li><a href="stop-TEC_LsVgils2.html">TEC:LsVgils2</a> - Sankt-Vith Cafe Gilson 12:55</li><li><a href="stop-TEC_LrDhund2.html">TEC:LrDhund2</a> - Rodt Hundheim 12:58</li><li><a href="stop-TEC_LrD28--2.html">TEC:LrD28--2</a> - Rodt Haus 28 12:59</li><li><a href="stop-TEC_LrDkirc2.html">TEC:LrDkirc2</a> - Rodt Kirche 13:00</li><li><a href="stop-TEC_LrDhind2.html">TEC:LrDhind2</a> - Rodt Hinderhausener Strasse 13:01</li><li><a href="stop-TEC_LrDrose4.html">TEC:LrDrose4</a> - Rodt Rosengarten 13:01</li><li><a href="stop-TEC_LrDzoll4.html">TEC:LrDzoll4</a> - Rodt Altes Zollhaus 13:02</li><li><a href="stop-TEC_LoEauto2.html">TEC:LoEauto2</a> - Ober-Emmels Autobahn 13:08</li><li><a href="stop-TEC_LoEbach2.html">TEC:LoEbach2</a> - Ober-Emmels Emmelser Bach 13:09</li><li><a href="stop-TEC_LnEfrie2.html">TEC:LnEfrie2</a> - Nieder-Emmels Friedhof 13:10</li><li><a href="stop-TEC_LnEkirc4.html">TEC:LnEkirc4</a> - Nieder-Emmels Kirche 13:11</li><li><a href="stop-TEC_LnE79--2.html">TEC:LnE79--2</a> - Nieder-Emmels 79 13:12</li><li><a href="stop-TEC_LnErech2.html">TEC:LnErech2</a> - Nieder-Emmels Rechterstrasse 13:13</li><li><a href="stop-TEC_LrEfeck2.html">TEC:LrEfeck2</a> - Recht Feckelsborn 13:18</li><li><a href="stop-TEC_LrEkape2.html">TEC:LrEkape2</a> - Recht Kapelle 13:20</li><li><a href="stop-TEC_LrEkirc2.html">TEC:LrEkirc2</a> - Recht Kirche 13:21</li><li><a href="stop-TEC_LrEmeil1.html">TEC:LrEmeil1</a> - Recht Unter Meilvenn 13:22</li><li><a href="stop-TEC_LrEdic71.html">TEC:LrEdic71</a> - Recht Dichrod 7 13:24</li><li><a href="stop-TEC_LrEdic11.html">TEC:LrEdic11</a> - Recht Dichrod 1 13:25</li><li><a href="stop-TEC_LrEviel2.html">TEC:LrEviel2</a> - Recht Vielsalmer Strasse 13:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5195.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

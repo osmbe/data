@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Arlon - Luxembourg - 5163:TEC:LU:5880</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Arlon - Luxembourg - 5163:TEC:LU:5880</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X685acb.html">TEC:X685acb</a> - Luxembourg Heentze Park 12:03</li><li><a href="stop-TEC_X685ajb.html">TEC:X685ajb</a> - Luxembourg Rheinsheim 12:08</li><li><a href="stop-TEC_X685aaa.html">TEC:X685aaa</a> - Luxembourg Charly's Gare 12:12</li><li><a href="stop-TEC_X685agb.html">TEC:X685agb</a> - Luxembourg Wandmillen 12:16</li><li><a href="stop-TEC_X685afb.html">TEC:X685afb</a> - Strassen Kesseler 12:18</li><li><a href="stop-TEC_X684abb.html">TEC:X684abb</a> - Bertrange Belle Etoile 12:22</li><li><a href="stop-TEC_X684aab.html">TEC:X684aab</a> - Mamer Mambra 12:26</li><li><a href="stop-TEC_X626ala.html">TEC:X626ala</a> - Sterpenich IKEA 12:36</li><li><a href="stop-TEC_X626ada.html">TEC:X626ada</a> - Sterpenich Passage à Niveau 12:38</li><li><a href="stop-TEC_X626aca.html">TEC:X626aca</a> - Sterpenich Eglise 12:39</li><li><a href="stop-TEC_X626anb.html">TEC:X626anb</a> - Barnich Ecole 12:41</li><li><a href="stop-TEC_X626abb.html">TEC:X626abb</a> - Barnich Eglise 12:41</li><li><a href="stop-TEC_X626aaa.html">TEC:X626aaa</a> - Autelbas Centre 12:42</li><li><a href="stop-TEC_X626aka.html">TEC:X626aka</a> - Autelbas Rue d'Autelhaut 12:43</li><li><a href="stop-TEC_X612afb.html">TEC:X612afb</a> - Autelhaut Eglise 12:46</li><li><a href="stop-TEC_X612aea.html">TEC:X612aea</a> - Hondelange Chemin des Mines 12:48</li><li><a href="stop-TEC_X613adb.html">TEC:X613adb</a> - Hondelange Rue de la Biff 12:49</li><li><a href="stop-TEC_X613aba.html">TEC:X613aba</a> - Hondelange Centre 12:50</li><li><a href="stop-TEC_X613aaa.html">TEC:X613aaa</a> - Hondelange Rue de la Chapelle 12:51</li><li><a href="stop-TEC_X623aka.html">TEC:X623aka</a> - Hondelange Chapelle 12:52</li><li><a href="stop-TEC_X623aaa.html">TEC:X623aaa</a> - Wolkrange Chapelle N81 12:53</li><li><a href="stop-TEC_X612aaa.html">TEC:X612aaa</a> - Weyler Grand-Route 12:56</li><li><a href="stop-TEC_X601awa.html">TEC:X601awa</a> - Arlon Av de Longwy - Patton 12:59</li><li><a href="stop-TEC_X601aua.html">TEC:X601aua</a> - Arlon Clinique 13:00</li><li><a href="stop-TEC_X601bba.html">TEC:X601bba</a> - Arlon Gare - Quai 6 13:05</li><li><a href="stop-TEC_X601bda.html">TEC:X601bda</a> - Arlon Xxv Août 13:07</li><li><a href="stop-TEC_X601bfa.html">TEC:X601bfa</a> - Arlon Sq Astrid - R de Bastogne 13:10</li><li><a href="stop-TEC_X601bga.html">TEC:X601bga</a> - Arlon ISMA 13:10</li><li><a href="stop-TEC_X601abb.html">TEC:X601abb</a> - Arlon Tec - Rue des Genêts 13:11</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3592.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

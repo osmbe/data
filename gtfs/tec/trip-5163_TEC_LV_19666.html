@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Longdoz - Robermont - Centre Funéraire - 5163:TEC:LV:19666</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Longdoz - Robermont - Centre Funéraire - 5163:TEC:LV:19666</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LlgR-F1_.html">TEC:LlgR-F1*</a> - Liege République Française 16:30</li><li><a href="stop-TEC_Llg20ao1.html">TEC:Llg20ao1</a> - Liege Place du 20 Août 16:33</li><li><a href="stop-TEC_Llgcroi1.html">TEC:Llgcroi1</a> - Liege Rue des Croisiers 16:36</li><li><a href="stop-TEC_Llgptlo5.html">TEC:Llgptlo5</a> - Liege Pont de Longdoz 16:38</li><li><a href="stop-TEC_Llglibo3.html">TEC:Llglibo3</a> - Liege Rue Libotte 16:39</li><li><a href="stop-TEC_Llgmédi1.html">TEC:Llgmédi1</a> - Liege Médiacité 16:40</li><li><a href="stop-TEC_Llgcham7.html">TEC:Llgcham7</a> - Liege Rue des Champs 16:42</li><li><a href="stop-TEC_Lgrlimi1.html">TEC:Lgrlimi1</a> - Grivegnee Rue de la Limite 16:44</li><li><a href="stop-TEC_Lgrbonn1.html">TEC:Lgrbonn1</a> - Grivegnee Bonne Femme 16:45</li><li><a href="stop-TEC_Lgrbill1.html">TEC:Lgrbill1</a> - Grivegnee Rue Billy 16:46</li><li><a href="stop-TEC_Lgrcoll1.html">TEC:Lgrcoll1</a> - Grivegnee Rue Collard 16:47</li><li><a href="stop-TEC_Lgrclas1.html">TEC:Lgrclas1</a> - Grivegnee Rue Claskin 16:48</li><li><a href="stop-TEC_Lgrcour1.html">TEC:Lgrcour1</a> - Grivegnee Rue Courte 16:48</li><li><a href="stop-TEC_Lgrmagd1.html">TEC:Lgrmagd1</a> - Grivegnee Rue de Magdebourg 16:49</li><li><a href="stop-TEC_Lgrecpe1.html">TEC:Lgrecpe1</a> - Grivegnee Ecole de Péville 16:50</li><li><a href="stop-TEC_Lgrfort1.html">TEC:Lgrfort1</a> - Grivegnee Rue des Fortifications 16:51</li><li><a href="stop-TEC_Lbrrobe3.html">TEC:Lbrrobe3</a> - Bressoux Robermont Cimetière 16:52</li><li><a href="stop-TEC_Lgrfrai1.html">TEC:Lgrfrai1</a> - Grivegnee Rue Fraischamps 16:53</li><li><a href="stop-TEC_Lbrbass1.html">TEC:Lbrbass1</a> - Bressoux Rue du Bassin 16:54</li><li><a href="stop-TEC_Lbrdepo1.html">TEC:Lbrdepo1</a> - Bressoux Dépôt TEC (Robermont) 16:55</li><li><a href="stop-TEC_Lbrfagn1.html">TEC:Lbrfagn1</a> - Bressoux Rue des Fagnes 16:56</li><li><a href="stop-TEC_Lbrfune_.html">TEC:Lbrfune*</a> - Bressoux Centre Funéraire Robermont 16:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3920.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

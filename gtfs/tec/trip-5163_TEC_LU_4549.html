@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bastogne - Namur (express) - 5163:TEC:LU:4549</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bastogne - Namur (express) - 5163:TEC:LU:4549</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501zca.html">TEC:N501zca</a> - Namur Gare - Rue Rogier 16:45</li><li><a href="stop-TEC_X501esb.html">TEC:X501esb</a> - Jambes Place Joséphine-Charlotte 16:50</li><li><a href="stop-TEC_X224aga.html">TEC:X224aga</a> - Sinsin N4 17:19</li><li><a href="stop-TEC_X901bqb.html">TEC:X901bqb</a> - Marche Carmel 17:28</li><li><a href="stop-TEC_X901aca.html">TEC:X901aca</a> - Marche Place de l'Etang 17:29</li><li><a href="stop-TEC_X904afb.html">TEC:X904afb</a> - Bande N4 17:38</li><li><a href="stop-TEC_X907aca.html">TEC:X907aca</a> - Champlon Place de la Gare 17:45</li><li><a href="stop-TEC_X908aob.html">TEC:X908aob</a> - Tenneville Maison Communale 17:51</li><li><a href="stop-TEC_X911aab.html">TEC:X911aab</a> - Aviscourt N4 17:57</li><li><a href="stop-TEC_X725afh.html">TEC:X725afh</a> - Bastogne Gare du Sud - Quai 6 18:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2902.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

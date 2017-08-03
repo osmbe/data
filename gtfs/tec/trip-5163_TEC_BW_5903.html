@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Sint-Pieters-Kapelle - Enghien - Hal - 5163:TEC:BW:5903</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Sint-Pieters-Kapelle - Enghien - Hal - 5163:TEC:BW:5903</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bhalgar2.html">TEC:Bhalgar2</a> - Halle Station 20:45</li><li><a href="stop-TEC_Bhalgar1.html">TEC:Bhalgar1</a> - Halle Station 20:45</li><li><a href="stop-TEC_Bhalpar2.html">TEC:Bhalpar2</a> - Halle Park 20:46</li><li><a href="stop-TEC_Bhalark2.html">TEC:Bhalark2</a> - Halle Arkenvest 20:47</li><li><a href="stop-TEC_Bhalber2.html">TEC:Bhalber2</a> - Halle Bergensepoort 20:47</li><li><a href="stop-TEC_Bhalh312.html">TEC:Bhalh312</a> - Halle Huis 31 20:49</li><li><a href="stop-TEC_Bhalgja2.html">TEC:Bhalgja2</a> - Halle Groene Jager 20:50</li><li><a href="stop-TEC_Blemwro2.html">TEC:Blemwro2</a> - Lembeek Witte Roos 20:52</li><li><a href="stop-TEC_Blempuc2.html">TEC:Blempuc2</a> - Lembeek Puestraat 20:53</li><li><a href="stop-TEC_Blemhon2.html">TEC:Blemhon2</a> - Lembeek Hondzocht 20:54</li><li><a href="stop-TEC_Blemmar2.html">TEC:Blemmar2</a> - Lembeek Margaille 20:55</li><li><a href="stop-TEC_Blemwob2.html">TEC:Blemwob2</a> - Lembeek Weg op Bellingen 20:56</li><li><a href="stop-TEC_Bstecal2.html">TEC:Bstecal2</a> - Saintes Calvaire 20:57</li><li><a href="stop-TEC_Bstetre2.html">TEC:Bstetre2</a> - Saintes Treullemans 20:58</li><li><a href="stop-TEC_Bstemco2.html">TEC:Bstemco2</a> - Saintes Maison Communale 20:59</li><li><a href="stop-TEC_Bstecou2.html">TEC:Bstecou2</a> - Saintes Couvoir 21:00</li><li><a href="stop-TEC_Bbghepi2.html">TEC:Bbghepi2</a> - Bierghes Epine 21:01</li><li><a href="stop-TEC_Bbghsar2.html">TEC:Bbghsar2</a> - Bierghes Rue du Sartiau 21:01</li><li><a href="stop-TEC_Bbghsta2.html">TEC:Bbghsta2</a> - Bierghes Rue de la Station 21:02</li><li><a href="stop-TEC_Bbghgli2.html">TEC:Bbghgli2</a> - Bierghes Garage Limbourg 21:03</li><li><a href="stop-TEC_Bbghcar2.html">TEC:Bbghcar2</a> - Bierghes Carrière 21:04</li><li><a href="stop-TEC_Bpte1ma2.html">TEC:Bpte1ma2</a> - Petit-Enghien 12 Maisons 21:05</li><li><a href="stop-TEC_Bptecar2.html">TEC:Bptecar2</a> - Petit-Enghien Carrefour 21:07</li><li><a href="stop-TEC_Bptegna2.html">TEC:Bptegna2</a> - Petit-Enghien Garage Naway 21:08</li><li><a href="stop-TEC_Bptecal2.html">TEC:Bptecal2</a> - Petit-Enghien Calvaire 21:10</li><li><a href="stop-TEC_Bptemch2.html">TEC:Bptemch2</a> - Petit-Enghien Mur du Château 21:11</li><li><a href="stop-TEC_Bengvma2.html">TEC:Bengvma2</a> - Enghien Vieux Marché 21:13</li><li><a href="stop-TEC_Benggar1.html">TEC:Benggar1</a> - Enghien Gare 21:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./36.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

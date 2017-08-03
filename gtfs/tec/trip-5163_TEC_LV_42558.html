@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Charneux - Herve - 5163:TEC:LV:42558</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Charneux - Herve - 5163:TEC:LV:42558</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LHEnaza1.html">TEC:LHEnaza1</a> - Herve Nazareth 12:23</li><li><a href="stop-TEC_LHEecmo1.html">TEC:LHEecmo1</a> - Herve Ecole Moyenne 12:24</li><li><a href="stop-TEC_LHEches4.html">TEC:LHEches4</a> - Herve Rue de Chesseroux 12:24</li><li><a href="stop-TEC_LHEchex2.html">TEC:LHEchex2</a> - Herve Chesseroux 12:25</li><li><a href="stop-TEC_LCxwarr2.html">TEC:LCxwarr2</a> - Charneux Warrimont 12:28</li><li><a href="stop-TEC_LCxbeau2.html">TEC:LCxbeau2</a> - Charneux Beauregard 12:29</li><li><a href="stop-TEC_LCxeg--2.html">TEC:LCxeg--2</a> - Charneux Eglise 12:30</li><li><a href="stop-TEC_LCxfawe2.html">TEC:LCxfawe2</a> - Charneux Fawes 12:31</li><li><a href="stop-TEC_LCxcouv2.html">TEC:LCxcouv2</a> - Charneux Couvent 12:32</li><li><a href="stop-TEC_LCxwade2.html">TEC:LCxwade2</a> - Charneux Wadeleux 12:33</li><li><a href="stop-TEC_LCxross2.html">TEC:LCxross2</a> - Charneux Route de Rossenfosse 12:35</li><li><a href="stop-TEC_LCxc6192.html">TEC:LCxc6192</a> - Charneux Cerfontaine 619 12:36</li><li><a href="stop-TEC_LCxcour2.html">TEC:LCxcour2</a> - Charneux La Cour 12:36</li><li><a href="stop-TEC_LCxcham2.html">TEC:LCxcham2</a> - Charneux Champiomont 12:37</li><li><a href="stop-TEC_LCxhall2.html">TEC:LCxhall2</a> - Charneux Chemin de Halleux 12:37</li><li><a href="stop-TEC_LCxhame2.html">TEC:LCxhame2</a> - Charneux Hameval 12:38</li><li><a href="stop-TEC_LCx728-2.html">TEC:LCx728-2</a> - Charneux Maison 728 12:39</li><li><a href="stop-TEC_LCxchal2.html">TEC:LCxchal2</a> - Charneux Chemin de Chalbot 12:39</li><li><a href="stop-TEC_LCxreno2.html">TEC:LCxreno2</a> - Charneux Renouprez 12:39</li><li><a href="stop-TEC_LLM4rou5.html">TEC:LLM4rou5</a> - La Minerie 4 Routes 12:40</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5034.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

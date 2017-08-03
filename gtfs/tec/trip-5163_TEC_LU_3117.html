@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Chevron - Manhay - 5163:TEC:LU:3117</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Chevron - Manhay - 5163:TEC:LU:3117</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LCvmonu1.html">TEC:LCvmonu1</a> - Chevron Monument 06:35</li><li><a href="stop-TEC_LWblesp2.html">TEC:LWblesp2</a> - Werbomont Place Capitaine Lespagnard 06:41</li><li><a href="stop-TEC_X512abb.html">TEC:X512abb</a> - Werbomont Route de Hamoir 06:42</li><li><a href="stop-TEC_X512abb.html">TEC:X512abb</a> - Werbomont Route de Hamoir 06:42</li><li><a href="stop-TEC_X512aba.html">TEC:X512aba</a> - Werbomont Route de Hamoir 06:42</li><li><a href="stop-TEC_X512aaa.html">TEC:X512aaa</a> - Werbomont Route de Bastogne 06:42</li><li><a href="stop-TEC_X512aja.html">TEC:X512aja</a> - Werbomont Contrôle Technique 06:42</li><li><a href="stop-TEC_X713afb.html">TEC:X713afb</a> - Champ De HARRE Grand Route 35 06:43</li><li><a href="stop-TEC_X713agb.html">TEC:X713agb</a> - Champ De HARRE Route de Fays 3 06:44</li><li><a href="stop-TEC_X713aea.html">TEC:X713aea</a> - Harre La Fange 1 06:44</li><li><a href="stop-TEC_X713ada.html">TEC:X713ada</a> - Harre La Fange 49 06:44</li><li><a href="stop-TEC_X713anb.html">TEC:X713anb</a> - Harre Ferme 06:46</li><li><a href="stop-TEC_X713abb.html">TEC:X713abb</a> - Fays Saint-Antoine 06:48</li><li><a href="stop-TEC_X713aab.html">TEC:X713aab</a> - Fays (HARRE) Centre 06:51</li><li><a href="stop-TEC_X713acb.html">TEC:X713acb</a> - Harre Moulin de Harre 06:53</li><li><a href="stop-TEC_X713ajd.html">TEC:X713ajd</a> - Harre Eglise 06:55</li><li><a href="stop-TEC_X713aia.html">TEC:X713aia</a> - Harre Rue de l'Eglise 28 06:56</li><li><a href="stop-TEC_X713alb.html">TEC:X713alb</a> - Harre Massotte 1 06:58</li><li><a href="stop-TEC_X714aaa.html">TEC:X714aaa</a> - Chene-Al-Pierre Maison Latour 06:59</li><li><a href="stop-TEC_X714aba.html">TEC:X714aba</a> - Chene-Al-Pierre Eglise 07:00</li><li><a href="stop-TEC_X714aca.html">TEC:X714aca</a> - Chene-Al-Pierre Chemin de Gotale 07:00</li><li><a href="stop-TEC_X714ada.html">TEC:X714ada</a> - Chene-Al-Pierre Station 07:02</li><li><a href="stop-TEC_X714aea.html">TEC:X714aea</a> - Chene-Al-Pierre Route de Liège 1 07:02</li><li><a href="stop-TEC_X715aha.html">TEC:X715aha</a> - Manhay Garage 07:05</li><li><a href="stop-TEC_X715agb.html">TEC:X715agb</a> - Manhay En Pierreux 21 07:05</li><li><a href="stop-TEC_X715afa.html">TEC:X715afa</a> - Manhay Scierie 07:06</li><li><a href="stop-TEC_X715aca.html">TEC:X715aca</a> - Manhay Carrefour 07:06</li><li><a href="stop-TEC_X715adb.html">TEC:X715adb</a> - Manhay Route de Vaux-Chavanne 07:06</li><li><a href="stop-TEC_X715ala.html">TEC:X715ala</a> - Manhay Athénée 07:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3556.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

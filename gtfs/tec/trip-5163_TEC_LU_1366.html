@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Florenville - Marbehan - 5163:TEC:LU:1366</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Florenville - Marbehan - 5163:TEC:LU:1366</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X641ama.html">TEC:X641ama</a> - Florenville Gare 14:05</li><li><a href="stop-TEC_X641ala.html">TEC:X641ala</a> - Florenville Chemin du Bon Pays 14:07</li><li><a href="stop-TEC_X641akb.html">TEC:X641akb</a> - Florenville Chapelle Sainte-Anne 14:08</li><li><a href="stop-TEC_X641afb.html">TEC:X641afb</a> - Florenville Place du Miroir - Quai 1 14:09</li><li><a href="stop-TEC_X641aea.html">TEC:X641aea</a> - Florenville EPE 14:10</li><li><a href="stop-TEC_X641agb.html">TEC:X641agb</a> - Florenville Gendarmerie 14:11</li><li><a href="stop-TEC_X641ahb.html">TEC:X641ahb</a> - Florenville Zoning II 14:12</li><li><a href="stop-TEC_X641aib.html">TEC:X641aib</a> - Florenville Zoning I 14:13</li><li><a href="stop-TEC_X640aob.html">TEC:X640aob</a> - Pin Passage à Niveau 14:13</li><li><a href="stop-TEC_X640anb.html">TEC:X640anb</a> - Pin Rue Albert 1er 86 14:14</li><li><a href="stop-TEC_X640amb.html">TEC:X640amb</a> - Pin Eglise 14:14</li><li><a href="stop-TEC_X640ala.html">TEC:X640ala</a> - Pin Rue de l'Auwy 14:15</li><li><a href="stop-TEC_X640aka.html">TEC:X640aka</a> - Pin Avenue Gilson 14:15</li><li><a href="stop-TEC_X640afb.html">TEC:X640afb</a> - Izel Centre 14:16</li><li><a href="stop-TEC_X640ahb.html">TEC:X640ahb</a> - Izel Athénée 14:17</li><li><a href="stop-TEC_X640aib.html">TEC:X640aib</a> - Izel 4 Vents 14:18</li><li><a href="stop-TEC_X639ajb.html">TEC:X639ajb</a> - Jamoigne Camping 14:21</li><li><a href="stop-TEC_X639akb.html">TEC:X639akb</a> - Jamoigne Centre 14:21</li><li><a href="stop-TEC_X639ala.html">TEC:X639ala</a> - Jamoigne Pont 14:22</li><li><a href="stop-TEC_X639amb.html">TEC:X639amb</a> - Jamoigne La Hailleule 14:22</li><li><a href="stop-TEC_X639ara.html">TEC:X639ara</a> - Les Bulles Rue du Lieutenant Crépy 14:23</li><li><a href="stop-TEC_X639asb.html">TEC:X639asb</a> - Les Bulles Rue de la Chevrette 14:24</li><li><a href="stop-TEC_X652ahb.html">TEC:X652ahb</a> - Termes Pont Charreau 14:27</li><li><a href="stop-TEC_X652agb.html">TEC:X652agb</a> - Termes Rue Sainte-Anne 14:27</li><li><a href="stop-TEC_X652afb.html">TEC:X652afb</a> - Termes Ecole 14:28</li><li><a href="stop-TEC_X652afd.html">TEC:X652afd</a> - Termes Ecole 14:28</li><li><a href="stop-TEC_X652acb.html">TEC:X652acb</a> - Rossignol Carrefour 14:33</li><li><a href="stop-TEC_X652abb.html">TEC:X652abb</a> - Rossignol Rue de Marbehan 14:33</li><li><a href="stop-TEC_X652aab.html">TEC:X652aab</a> - Rossignol La Civanne 14:34</li><li><a href="stop-TEC_X650anb.html">TEC:X650anb</a> - Orsinfaing Eglise 14:35</li><li><a href="stop-TEC_X650amb.html">TEC:X650amb</a> - Orsinfaing Rue du Moreau 14:36</li><li><a href="stop-TEC_X650aba.html">TEC:X650aba</a> - Marbehan Rectilux 14:37</li><li><a href="stop-TEC_X650aca.html">TEC:X650aca</a> - Marbehan Usine Lambiotte 14:38</li><li><a href="stop-TEC_X650ada.html">TEC:X650ada</a> - Marbehan Le Petit Bénéfice 14:38</li><li><a href="stop-TEC_X650afe.html">TEC:X650afe</a> - Marbehan Gare 14:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2484.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

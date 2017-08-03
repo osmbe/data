@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Florenville - Muno - Bouillon - 5163:TEC:LU:5435</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Florenville - Muno - Bouillon - 5163:TEC:LU:5435</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X812aqa.html">TEC:X812aqa</a> - Bouillon Athénée 06:58</li><li><a href="stop-TEC_X812ara.html">TEC:X812ara</a> - Bouillon Quai du Rempart 07:00</li><li><a href="stop-TEC_X812ala.html">TEC:X812ala</a> - Bouillon Auberge d'Alsace 07:02</li><li><a href="stop-TEC_X812akb.html">TEC:X812akb</a> - Bouillon Rue des Bains 07:02</li><li><a href="stop-TEC_X812ajb.html">TEC:X812ajb</a> - Bouillon Faubourg de France 07:03</li><li><a href="stop-TEC_X812agb.html">TEC:X812agb</a> - Bouillon Perimino 07:04</li><li><a href="stop-TEC_X812afb.html">TEC:X812afb</a> - Bouillon Cimetière 07:04</li><li><a href="stop-TEC_X812acb.html">TEC:X812acb</a> - Bouillon Beaubru 07:05</li><li><a href="stop-TEC_X860aaa.html">TEC:X860aaa</a> - N83 Pré Lamquin 07:10</li><li><a href="stop-TEC_X860aba.html">TEC:X860aba</a> - N83 Les 4 Chemins 07:11</li><li><a href="stop-TEC_X826aaa.html">TEC:X826aaa</a> - Muno Ferme des Blancs-Sarts 07:14</li><li><a href="stop-TEC_X826ahb.html">TEC:X826ahb</a> - Muno Scierie 07:20</li><li><a href="stop-TEC_X826add.html">TEC:X826add</a> - Muno Eglise 07:21</li><li><a href="stop-TEC_X826aea.html">TEC:X826aea</a> - Muno Rue de l'Enfer 18 07:22</li><li><a href="stop-TEC_X826afa.html">TEC:X826afa</a> - Muno Cimetière 07:22</li><li><a href="stop-TEC_X826aga.html">TEC:X826aga</a> - Muno Route de Watrinsart 07:23</li><li><a href="stop-TEC_X824ajb.html">TEC:X824ajb</a> - Ferme de Pérensart 07:25</li><li><a href="stop-TEC_X824ala.html">TEC:X824ala</a> - Sainte-Cecile Route de Muno 07:26</li><li><a href="stop-TEC_X824aia.html">TEC:X824aia</a> - Sainte-Cecile Rue de Muno 27 07:26</li><li><a href="stop-TEC_X824ahb.html">TEC:X824ahb</a> - Sainte-Cecile Eglise 07:27</li><li><a href="stop-TEC_X824aga.html">TEC:X824aga</a> - Sainte-Cecile Rue Neuve 07:27</li><li><a href="stop-TEC_X824afa.html">TEC:X824afa</a> - Sainte-Cecile Hôtel 07:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2754.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

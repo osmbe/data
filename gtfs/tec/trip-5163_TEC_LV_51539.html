@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Eupen - Welkenraedt - Kelmis - 5163:TEC:LV:51539</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eupen - Welkenraedt - Kelmis - 5163:TEC:LV:51539</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LMNeg--1.html">TEC:LMNeg--1</a> - Montzen Eglise 16:10</li><li><a href="stop-TEC_LMNgend1.html">TEC:LMNgend1</a> - Montzen Gendarmerie 16:11</li><li><a href="stop-TEC_LMNgare1.html">TEC:LMNgare1</a> - Montzen Rue de la Gare 16:12</li><li><a href="stop-TEC_LMNentr1.html">TEC:LMNentr1</a> - Montzen Gare Entrepôt 16:13</li><li><a href="stop-TEC_LMNcite1.html">TEC:LMNcite1</a> - Montzen Cité 16:13</li><li><a href="stop-TEC_LMNjard1.html">TEC:LMNjard1</a> - Montzen rue du Jardinet 16:14</li><li><a href="stop-TEC_LPbtene1.html">TEC:LPbtene1</a> - Plombieres Ten Eycken 16:15</li><li><a href="stop-TEC_LPbpeti1.html">TEC:LPbpeti1</a> - Plombieres Petit Spa 16:16</li><li><a href="stop-TEC_LPbhaut1.html">TEC:LPbhaut1</a> - Plombieres Rue Haute 16:17</li><li><a href="stop-TEC_LPbpl--1.html">TEC:LPbpl--1</a> - Plombieres Place 16:18</li><li><a href="stop-TEC_LPbusin1.html">TEC:LPbusin1</a> - Plombieres Rue de l'Usine 16:19</li><li><a href="stop-TEC_LPbeg--1.html">TEC:LPbeg--1</a> - Plombieres Eglise 16:20</li><li><a href="stop-TEC_LPbchat1.html">TEC:LPbchat1</a> - Plombieres Château des Genêts 16:21</li><li><a href="stop-TEC_LPbover1.html">TEC:LPbover1</a> - Volkerich Overloker 16:22</li><li><a href="stop-TEC_LVkchap1.html">TEC:LVkchap1</a> - Volkerich Chapelle 16:23</li><li><a href="stop-TEC_LVkinst1.html">TEC:LVkinst1</a> - Volkerich Institut 16:23</li><li><a href="stop-TEC_LGecime1.html">TEC:LGecime1</a> - Gemmenich Cimetière 16:24</li><li><a href="stop-TEC_LGecite1.html">TEC:LGecite1</a> - Gemmenich Cité 16:25</li><li><a href="stop-TEC_LGe4bra1.html">TEC:LGe4bra1</a> - Gemmenich 4 Bras 16:26</li><li><a href="stop-TEC_LGepeck2.html">TEC:LGepeck2</a> - Gemmenich Place Peckham 16:26</li><li><a href="stop-TEC_LGeforg2.html">TEC:LGeforg2</a> - Gemmenich La Forge 16:27</li><li><a href="stop-TEC_LGesent2.html">TEC:LGesent2</a> - Gemmenich Sentier des Cendres 16:28</li><li><a href="stop-TEC_LGevygh2.html">TEC:LGevygh2</a> - Gemmenich Maison Vyghen 16:29</li><li><a href="stop-TEC_LGemari2.html">TEC:LGemari2</a> - Gemmenich Maria Hilf 16:30</li><li><a href="stop-TEC_LMschap2.html">TEC:LMschap2</a> - Moresnet Chapelle 16:32</li><li><a href="stop-TEC_LMsgara2.html">TEC:LMsgara2</a> - Moresnet Garage 16:32</li><li><a href="stop-TEC_LMsbusc2.html">TEC:LMsbusc2</a> - Moresnet Buschhausen pont 16:34</li><li><a href="stop-TEC_LkEbran2.html">TEC:LkEbran2</a> - Kelmis Brandenhövel 16:34</li><li><a href="stop-TEC_LkEwolf2.html">TEC:LkEwolf2</a> - Kelmis Wolfsweg 16:35</li><li><a href="stop-TEC_LkEcoop2.html">TEC:LkEcoop2</a> - Kelmis Coopérative 16:36</li><li><a href="stop-TEC_LkEgend2.html">TEC:LkEgend2</a> - Kelmis Gendarmerie 16:37</li><li><a href="stop-TEC_LkEkirc2.html">TEC:LkEkirc2</a> - Kelmis Kirchplatz 16:38</li><li><a href="stop-TEC_LkEbbl-_.html">TEC:LkEbbl-*</a> - Kelmis B.B.L. 16:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5011.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

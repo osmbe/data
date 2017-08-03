@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Aye - Jemelle - Nassogne - 5163:TEC:LU:5917</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aye - Jemelle - Nassogne - 5163:TEC:LU:5917</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X901aka.html">TEC:X901aka</a> - Marche Institut St-Laurent 12:15</li><li><a href="stop-TEC_X901aja.html">TEC:X901aja</a> - Marche IND 12:17</li><li><a href="stop-TEC_X901ada.html">TEC:X901ada</a> - Marche Avenue de la Toison d'Or 12:19</li><li><a href="stop-TEC_X901aeb.html">TEC:X901aeb</a> - Marche Athénée 12:21</li><li><a href="stop-TEC_X901aib.html">TEC:X901aib</a> - Marche Pirire 12:23</li><li><a href="stop-TEC_X901ara.html">TEC:X901ara</a> - Marche Maison Médicale 12:25</li><li><a href="stop-TEC_X901amb.html">TEC:X901amb</a> - Marche Clinique 12:26</li><li><a href="stop-TEC_X999aqb.html">TEC:X999aqb</a> - Aye Rue du Vivier 31 12:26</li><li><a href="stop-TEC_X999alb.html">TEC:X999alb</a> - Aye Rue du Vivier 45 12:27</li><li><a href="stop-TEC_X999ata.html">TEC:X999ata</a> - Aye Rue Saulcy 12:28</li><li><a href="stop-TEC_X999aib.html">TEC:X999aib</a> - Aye Gare 12:28</li><li><a href="stop-TEC_X999apa.html">TEC:X999apa</a> - Aye Rue Saumont 12:29</li><li><a href="stop-TEC_X999aja.html">TEC:X999aja</a> - Aye Cité Militaire 12:30</li><li><a href="stop-TEC_X999aoa.html">TEC:X999aoa</a> - Aye Drève des Chevreuils 12:31</li><li><a href="stop-TEC_X999aea.html">TEC:X999aea</a> - Aye Cabine 12:31</li><li><a href="stop-TEC_X999ada.html">TEC:X999ada</a> - Aye Cité Famennoise 12:32</li><li><a href="stop-TEC_X999acc.html">TEC:X999acc</a> - Aye Devant le Bois 12:33</li><li><a href="stop-TEC_X999afc.html">TEC:X999afc</a> - Aye Maison Communale 12:34</li><li><a href="stop-TEC_X999abb.html">TEC:X999abb</a> - Aye Rue Jamodenne 12:34</li><li><a href="stop-TEC_X999aab.html">TEC:X999aab</a> - Aye Vieux Humain 12:35</li><li><a href="stop-TEC_X999amb.html">TEC:X999amb</a> - Aye Carrières 12:36</li><li><a href="stop-TEC_X998aab.html">TEC:X998aab</a> - Humain Place du Jeu de Balles 12:37</li><li><a href="stop-TEC_X998aza.html">TEC:X998aza</a> - Humain Rue de Thys 12:38</li><li><a href="stop-TEC_X349aab.html">TEC:X349aab</a> - Havrenne Rue de Humain 12:41</li><li><a href="stop-TEC_X349aic.html">TEC:X349aic</a> - Havrenne Monument 12:43</li><li><a href="stop-TEC_N349agb.html">TEC:N349agb</a> - Havrenne Calvaire 12:43</li><li><a href="stop-TEC_N351aqa.html">TEC:N351aqa</a> - Rochefort Las Palmas 12:46</li><li><a href="stop-TEC_N351ara.html">TEC:N351ara</a> - Rochefort Zoning industriel 12:48</li><li><a href="stop-TEC_N351asa.html">TEC:N351asa</a> - Rochefort Chemin vers l'abbaye 12:49</li><li><a href="stop-TEC_X351aob.html">TEC:X351aob</a> - Rochefort Cimetière 12:49</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3381.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

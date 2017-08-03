@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Amberloup - Saint-Hubert - Libramont - 5163:TEC:LU:3857</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Amberloup - Saint-Hubert - Libramont - 5163:TEC:LU:3857</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X801bde.html">TEC:X801bde</a> - Libramont Gare - Quai 3 07:19</li><li><a href="stop-TEC_X801aqa.html">TEC:X801aqa</a> - Libramont I.C.A. 07:20</li><li><a href="stop-TEC_X801cka.html">TEC:X801cka</a> - Libramont Avenue Herbofin 07:20</li><li><a href="stop-TEC_X801apb.html">TEC:X801apb</a> - Libramont Clinique 07:20</li><li><a href="stop-TEC_X889aeb.html">TEC:X889aeb</a> - Seviscourt Quatre Bras 07:24</li><li><a href="stop-TEC_X889ada.html">TEC:X889ada</a> - Seviscourt Pont de Rifontaine 07:24</li><li><a href="stop-TEC_X889acb.html">TEC:X889acb</a> - Seviscourt Ecole 07:24</li><li><a href="stop-TEC_X889aba.html">TEC:X889aba</a> - Seviscourt Sur les Bruyères 07:25</li><li><a href="stop-TEC_X889aaa.html">TEC:X889aaa</a> - Seviscourt Station 07:25</li><li><a href="stop-TEC_X899aja.html">TEC:X899aja</a> - Bras Bas Grand'Rue 41 07:26</li><li><a href="stop-TEC_X899aib.html">TEC:X899aib</a> - Bras Bas Eglise 07:27</li><li><a href="stop-TEC_X899aha.html">TEC:X899aha</a> - Bras Bas Rue de la Gernale 17 07:28</li><li><a href="stop-TEC_X899aga.html">TEC:X899aga</a> - Bras Haut Scierie 07:29</li><li><a href="stop-TEC_X899afb.html">TEC:X899afb</a> - Bras Haut Ecole 07:31</li><li><a href="stop-TEC_X899ada.html">TEC:X899ada</a> - Bras Haut Rue Zébo 07:31</li><li><a href="stop-TEC_X899aaa.html">TEC:X899aaa</a> - Bras Haut N89 07:32</li><li><a href="stop-TEC_X888aaa.html">TEC:X888aaa</a> - Vesqueville Rouges Fosses 07:34</li><li><a href="stop-TEC_X888abb.html">TEC:X888abb</a> - Vesqueville Rue du Tronqui 07:34</li><li><a href="stop-TEC_X888aeb.html">TEC:X888aeb</a> - Vesqueville Carrefour 07:35</li><li><a href="stop-TEC_X888ada.html">TEC:X888ada</a> - Vesqueville Eglise 07:35</li><li><a href="stop-TEC_X888aca.html">TEC:X888aca</a> - Vesqueville Route de Freux 16 07:36</li><li><a href="stop-TEC_X888adb.html">TEC:X888adb</a> - Vesqueville Eglise 07:37</li><li><a href="stop-TEC_X888afb.html">TEC:X888afb</a> - Vesqueville Rue Mayavaux 30 07:38</li><li><a href="stop-TEC_X888aga.html">TEC:X888aga</a> - Vesqueville Rue Mayavaux 49 07:38</li><li><a href="stop-TEC_X897aea.html">TEC:X897aea</a> - Saint-Hubert Chapelle St-Roch 07:40</li><li><a href="stop-TEC_X897adb.html">TEC:X897adb</a> - Saint-Hubert Rue du Mont 132 07:41</li><li><a href="stop-TEC_X897aia.html">TEC:X897aia</a> - Saint-Hubert IND - Quai 3 07:44</li><li><a href="stop-TEC_X897ala.html">TEC:X897ala</a> - Saint-Hubert Place de la Libération 07:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2778.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

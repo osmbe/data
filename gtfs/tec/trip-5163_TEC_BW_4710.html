@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Alsemberg - Argenteuil Berlaymont - 5163:TEC:BW:4710</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Alsemberg - Argenteuil Berlaymont - 5163:TEC:BW:4710</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bwatber1.html">TEC:Bwatber1</a> - Waterloo Berlaymont 16:10</li><li><a href="stop-TEC_Bwatrte2.html">TEC:Bwatrte2</a> - Waterloo Chaussée de Tervuren 16:12</li><li><a href="stop-TEC_Bwategb2.html">TEC:Bwategb2</a> - Waterloo G.B. 16:13</li><li><a href="stop-TEC_Bwatnro2.html">TEC:Bwatnro2</a> - Waterloo Boulevard Rolin 16:14</li><li><a href="stop-TEC_Bwatnrs2.html">TEC:Bwatnrs2</a> - Waterloo Roi Soleil 16:14</li><li><a href="stop-TEC_Bwatgib2.html">TEC:Bwatgib2</a> - Waterloo Bon Dieu de Gibloux 16:15</li><li><a href="stop-TEC_Bwatbno2.html">TEC:Bwatbno2</a> - Waterloo Chemin des Noces 16:15</li><li><a href="stop-TEC_Bwatb4s2.html">TEC:Bwatb4s2</a> - Waterloo Quatre Saisons 16:16</li><li><a href="stop-TEC_Bwatifr2.html">TEC:Bwatifr2</a> - Waterloo Fructidor 16:18</li><li><a href="stop-TEC_Bwatgar3.html">TEC:Bwatgar3</a> - Waterloo Place de la Gare 16:19</li><li><a href="stop-TEC_Bwatifr1.html">TEC:Bwatifr1</a> - Waterloo Fructidor 16:21</li><li><a href="stop-TEC_Bwatcro1.html">TEC:Bwatcro1</a> - Waterloo Clos des Roses 16:23</li><li><a href="stop-TEC_Bwatbca1.html">TEC:Bwatbca1</a> - Waterloo Calvaire 16:25</li><li><a href="stop-TEC_Bblamp5.html">TEC:Bblamp5</a> - Alleud Mont-Saint-Pont 16:27</li><li><a href="stop-TEC_Bblaegl1.html">TEC:Bblaegl1</a> - Ermite Eglise 16:29</li><li><a href="stop-TEC_Bblacea1.html">TEC:Bblacea1</a> - Alleud Château d'Eau 16:29</li><li><a href="stop-TEC_Bblaece1.html">TEC:Bblaece1</a> - Ermite Centre 16:30</li><li><a href="stop-TEC_Bblapri1.html">TEC:Bblapri1</a> - Alleud Avenue du Prieuré 16:31</li><li><a href="stop-TEC_Bblapin1.html">TEC:Bblapin1</a> - Alleud Drève des Pins 16:33</li><li><a href="stop-TEC_Brsg7fo1.html">TEC:Brsg7fo1</a> - Rhode-Saint-Genese Sept Fontaines 16:34</li><li><a href="stop-TEC_Balswin3.html">TEC:Balswin3</a> - Alsemberg Winderickxplein 16:36</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./624.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - MONT-GODINNE CHU - 5163:TEC:NA:609</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - MONT-GODINNE CHU - 5163:TEC:NA:609</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501zca.html">TEC:N501zca</a> - Namur Gare - Rue Rogier 19:27</li><li><a href="stop-TEC_N501gza.html">TEC:N501gza</a> - Namur Rue Rogier 19:28</li><li><a href="stop-TEC_N501hlb.html">TEC:N501hlb</a> - Namur Rue du Premier Lanciers 19:29</li><li><a href="stop-TEC_N501fva.html">TEC:N501fva</a> - Namur Boulevard I. Brunell 19:30</li><li><a href="stop-TEC_N501gib.html">TEC:N501gib</a> - Namur Pont de France 19:31</li><li><a href="stop-TEC_N501fwb.html">TEC:N501fwb</a> - Namur Boulevard Ad Aquam 19:33</li><li><a href="stop-TEC_N501gta.html">TEC:N501gta</a> - Namur Pont de Jambes 19:34</li><li><a href="stop-TEC_N501gdb.html">TEC:N501gdb</a> - Namur Casino 19:35</li><li><a href="stop-TEC_N501gkb.html">TEC:N501gkb</a> - Namur Parc de la Plante 19:36</li><li><a href="stop-TEC_N501lib.html">TEC:N501lib</a> - La Plante Marronnier 19:37</li><li><a href="stop-TEC_N501ljb.html">TEC:N501ljb</a> - La Plante Rue Delonnoy 19:38</li><li><a href="stop-TEC_N501gcb.html">TEC:N501gcb</a> - Namur Caracole 19:40</li><li><a href="stop-TEC_N501leb.html">TEC:N501leb</a> - Namur La Pairelle 19:40</li><li><a href="stop-TEC_N538ahb.html">TEC:N538ahb</a> - Wepion Fourneau 19:42</li><li><a href="stop-TEC_N538aib.html">TEC:N538aib</a> - Wepion Rue du Parc 19:44</li><li><a href="stop-TEC_N538ajd.html">TEC:N538ajd</a> - Wepion Carrefour 19:45</li><li><a href="stop-TEC_N538acb.html">TEC:N538acb</a> - Wepion Sentier de la Cure 19:47</li><li><a href="stop-TEC_N538amc.html">TEC:N538amc</a> - Wepion Station 19:48</li><li><a href="stop-TEC_N538akb.html">TEC:N538akb</a> - Wepion Pairybonier 19:49</li><li><a href="stop-TEC_N538apb.html">TEC:N538apb</a> - Wepion Pôle Nord 19:49</li><li><a href="stop-TEC_N538aob.html">TEC:N538aob</a> - Wepion Passage d'eau 19:50</li><li><a href="stop-TEC_N538anb.html">TEC:N538anb</a> - Wepion Fooz 19:51</li><li><a href="stop-TEC_N538agb.html">TEC:N538agb</a> - Wepion Grand'Ry 19:52</li><li><a href="stop-TEC_N538afb.html">TEC:N538afb</a> - Wepion Les Collets 19:53</li><li><a href="stop-TEC_N539alb.html">TEC:N539alb</a> - Profondeville Boreuville 19:54</li><li><a href="stop-TEC_N539aib.html">TEC:N539aib</a> - Profondeville Walgrappe - Chantraine 19:55</li><li><a href="stop-TEC_N539adb.html">TEC:N539adb</a> - Profondeville Rue A. Gemenne 19:56</li><li><a href="stop-TEC_N539agb.html">TEC:N539agb</a> - Profondeville Hôtel de ville 19:58</li><li><a href="stop-TEC_N539ahb.html">TEC:N539ahb</a> - Profondeville Chaussée de Dinant 19:59</li><li><a href="stop-TEC_N539afd.html">TEC:N539afd</a> - Profondeville Pont de Lustin 20:01</li><li><a href="stop-TEC_N539aub.html">TEC:N539aub</a> - Lustin Frappe-Cul 20:01</li><li><a href="stop-TEC_N539bgb.html">TEC:N539bgb</a> - Lustin Tantachaux 20:02</li><li><a href="stop-TEC_N540arb.html">TEC:N540arb</a> - Mont Carrefour Fonds Delvaux 20:04</li><li><a href="stop-TEC_N540aob.html">TEC:N540aob</a> - Mont Route de la clinique 20:05</li><li><a href="stop-TEC_N540aka.html">TEC:N540aka</a> - Mont CHU 20:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5783.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

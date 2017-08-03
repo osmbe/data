@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Arlon - Steinfort - Luxembourg - 5163:TEC:LU:6404</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Arlon - Steinfort - Luxembourg - 5163:TEC:LU:6404</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X601aba.html">TEC:X601aba</a> - Arlon Tec - Rue des Genêts 16:00</li><li><a href="stop-TEC_X601bgb.html">TEC:X601bgb</a> - Arlon ISMA 16:01</li><li><a href="stop-TEC_X601bfb.html">TEC:X601bfb</a> - Arlon Sq Astrid - R de Bastogne 16:02</li><li><a href="stop-TEC_X601bea.html">TEC:X601bea</a> - Arlon Rue Léon Castilhon 16:04</li><li><a href="stop-TEC_X601bba.html">TEC:X601bba</a> - Arlon Gare - Quai 6 16:05</li><li><a href="stop-TEC_X601bda.html">TEC:X601bda</a> - Arlon Xxv Août 16:07</li><li><a href="stop-TEC_X601aza.html">TEC:X601aza</a> - Arlon Espace Semois 16:08</li><li><a href="stop-TEC_X601ayb.html">TEC:X601ayb</a> - Arlon ISI 16:09</li><li><a href="stop-TEC_X601axb.html">TEC:X601axb</a> - Arlon Avenue Patton 16:09</li><li><a href="stop-TEC_X601awa.html">TEC:X601awa</a> - Arlon Av de Longwy - Patton 16:10</li><li><a href="stop-TEC_X601avb.html">TEC:X601avb</a> - Arlon Carrefour de la Spetz 16:11</li><li><a href="stop-TEC_X601dcb.html">TEC:X601dcb</a> - Arlon Royer 16:13</li><li><a href="stop-TEC_X601dbb.html">TEC:X601dbb</a> - Arlon Wolberg 16:15</li><li><a href="stop-TEC_X626aeb.html">TEC:X626aeb</a> - Steinfort Douane 16:19</li><li><a href="stop-TEC_X626afa.html">TEC:X626afa</a> - Steinfort Route de Kleinbettingen 16:20</li><li><a href="stop-TEC_X626aga.html">TEC:X626aga</a> - Hagen Carrefour op Eeschelter 16:20</li><li><a href="stop-TEC_X626aha.html">TEC:X626aha</a> - Hagen Carrefour an der Laach 16:21</li><li><a href="stop-TEC_X626aia.html">TEC:X626aia</a> - Hagen Carrefour Rue Principale 16:21</li><li><a href="stop-TEC_X626aja.html">TEC:X626aja</a> - Hagen Eglise 16:21</li><li><a href="stop-TEC_X688aba.html">TEC:X688aba</a> - Windhof 16:24</li><li><a href="stop-TEC_X688aaa.html">TEC:X688aaa</a> - Capellen Police 16:27</li><li><a href="stop-TEC_X684aaa.html">TEC:X684aaa</a> - Mamer Mambra 16:32</li><li><a href="stop-TEC_X684aba.html">TEC:X684aba</a> - Bertrange Belle Etoile 16:37</li><li><a href="stop-TEC_X685afa.html">TEC:X685afa</a> - Strassen Kesseler 16:40</li><li><a href="stop-TEC_X685aga.html">TEC:X685aga</a> - Luxembourg Wandmillen 16:44</li><li><a href="stop-TEC_X685aca.html">TEC:X685aca</a> - Luxembourg Heentze Park 16:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3463.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

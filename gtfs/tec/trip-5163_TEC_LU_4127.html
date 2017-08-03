@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bus local de Vresse (Sugny) - 5163:TEC:LU:4127</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bus local de Vresse (Sugny) - 5163:TEC:LU:4127</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X307aca.html">TEC:X307aca</a> - Sugny Ecole Communale 07:55</li><li><a href="stop-TEC_X316aca.html">TEC:X316aca</a> - La Bonne IDEE Carrefour 07:58</li><li><a href="stop-TEC_X316aba.html">TEC:X316aba</a> - Bagimont Centre FEDASIL 08:00</li><li><a href="stop-TEC_X316abb.html">TEC:X316abb</a> - Bagimont Centre FEDASIL 08:01</li><li><a href="stop-TEC_X316acb.html">TEC:X316acb</a> - La Bonne IDEE Carrefour 08:04</li><li><a href="stop-TEC_X307adb.html">TEC:X307adb</a> - Sugny Rue de Bagimont 08:06</li><li><a href="stop-TEC_X307aca.html">TEC:X307aca</a> - Sugny Ecole Communale 08:07</li><li><a href="stop-TEC_X317aba.html">TEC:X317aba</a> - Pussemange Ecole 08:12</li><li><a href="stop-TEC_X317aaa.html">TEC:X317aaa</a> - Pussemange Anc. Maison Communale 08:12</li><li><a href="stop-TEC_X307acb.html">TEC:X307acb</a> - Sugny Ecole Communale 08:17</li><li><a href="stop-TEC_X307ada.html">TEC:X307ada</a> - Sugny Rue de Bagimont 08:18</li><li><a href="stop-TEC_X316aca.html">TEC:X316aca</a> - La Bonne IDEE Carrefour 08:19</li><li><a href="stop-TEC_X371aaa.html">TEC:X371aaa</a> - Laforet Ecole Communale 08:28</li><li><a href="stop-TEC_X371aba.html">TEC:X371aba</a> - Laforet Eglise 08:28</li><li><a href="stop-TEC_X371aca.html">TEC:X371aca</a> - Laforet Rue Sainte-Agathe 2 08:29</li><li><a href="stop-TEC_X371adb.html">TEC:X371adb</a> - Laforet Rue Sainte-Agathe 71 08:29</li><li><a href="stop-TEC_X371aea.html">TEC:X371aea</a> - Vresse Eglise 08:30</li><li><a href="stop-TEC_X359aab.html">TEC:X359aab</a> - Chairiere La Haizette 08:33</li><li><a href="stop-TEC_X359abb.html">TEC:X359abb</a> - Chairiere Rue Grande 08:34</li><li><a href="stop-TEC_X359aea.html">TEC:X359aea</a> - Chairiere Ecole 08:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2926.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

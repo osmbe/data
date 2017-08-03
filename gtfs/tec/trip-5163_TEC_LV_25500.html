@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bellevaux - Ligneuville - Stavelot - 5163:TEC:LV:25500</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bellevaux - Ligneuville - Stavelot - 5163:TEC:LV:25500</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LBVplan1.html">TEC:LBVplan1</a> - Bellevaux Rte de Planche 07:22</li><li><a href="stop-TEC_LBVcent1.html">TEC:LBVcent1</a> - Bellevaux Centre 07:23</li><li><a href="stop-TEC_LBVzand3.html">TEC:LBVzand3</a> - Bellevaux Salle Zander 07:24</li><li><a href="stop-TEC_LBVlamo2.html">TEC:LBVlamo2</a> - Bellevaux Route de Lamonriville 07:24</li><li><a href="stop-TEC_LRcsilo2.html">TEC:LRcsilo2</a> - Reculemont Silo 07:26</li><li><a href="stop-TEC_LRccent2.html">TEC:LRccent2</a> - Reculemont Centre 07:27</li><li><a href="stop-TEC_LRchaie2.html">TEC:LRchaie2</a> - Reculemont Haie 07:28</li><li><a href="stop-TEC_LRcjard2.html">TEC:LRcjard2</a> - Reculemont Derrière les Jardins 07:29</li><li><a href="stop-TEC_LLbrecu2.html">TEC:LLbrecu2</a> - Ligneuville Route de Reculémont 07:31</li><li><a href="stop-TEC_LLbquar2.html">TEC:LLbquar2</a> - Ligneuville Quartiers 07:31</li><li><a href="stop-TEC_LLbpt--1.html">TEC:LLbpt--1</a> - Ligneuville Pont de l'Amblève 07:32</li><li><a href="stop-TEC_LLbcafe1.html">TEC:LLbcafe1</a> - Ligneuville Café de l'Amblève 07:34</li><li><a href="stop-TEC_LLbbons1.html">TEC:LLbbons1</a> - Ligneuville Aux Bons Amis 07:35</li><li><a href="stop-TEC_LPtchpl1.html">TEC:LPtchpl1</a> - Pont Chapelle 07:36</li><li><a href="stop-TEC_LPtrefa1.html">TEC:LPtrefa1</a> - Pont Refat 07:39</li><li><a href="stop-TEC_LRfcent1.html">TEC:LRfcent1</a> - Refat Centre 07:43</li><li><a href="stop-TEC_LFreg--2.html">TEC:LFreg--2</a> - Francheville Eglise 07:47</li><li><a href="stop-TEC_LFrcent2.html">TEC:LFrcent2</a> - Francheville Centre 07:48</li><li><a href="stop-TEC_LHvvill_.html">TEC:LHvvill*</a> - Houveigne Village 07:50</li><li><a href="stop-TEC_LFrcent1.html">TEC:LFrcent1</a> - Francheville Centre 07:53</li><li><a href="stop-TEC_LFReg--1.html">TEC:LFReg--1</a> - Francheville Eglise 07:54</li><li><a href="stop-TEC_LRffroi1.html">TEC:LRffroi1</a> - Refat Froidville 07:55</li><li><a href="stop-TEC_LRfbeau1.html">TEC:LRfbeau1</a> - Refat Beaumont 07:57</li><li><a href="stop-TEC_LLz21--1.html">TEC:LLz21--1</a> - Lodomez 21 07:59</li><li><a href="stop-TEC_LLzcruc1.html">TEC:LLzcruc1</a> - Lodomez Crucifix 08:00</li><li><a href="stop-TEC_LSTvaul1.html">TEC:LSTvaul1</a> - Stavelot Vaulx Richard 08:04</li><li><a href="stop-TEC_LSTchat1.html">TEC:LSTchat1</a> - Stavelot Vieux Château 08:06</li><li><a href="stop-TEC_LSTrema1.html">TEC:LSTrema1</a> - Stavelot Institut St-Remacle 08:09</li><li><a href="stop-TEC_LSTec--2.html">TEC:LSTec--2</a> - Stavelot Ecoles 08:10</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5186.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

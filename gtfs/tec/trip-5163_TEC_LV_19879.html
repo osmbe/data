@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bus Local de Seraing - 5163:TEC:LV:19879</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bus Local de Seraing - 5163:TEC:LV:19879</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lbotilf2.html">TEC:Lbotilf2</a> - Boncelles Rue de Tilff 14:50</li><li><a href="stop-TEC_Lbomc--6.html">TEC:Lbomc--6</a> - Boncelles Maison Communale 14:52</li><li><a href="stop-TEC_Lboeg--2.html">TEC:Lboeg--2</a> - Boncelles Eglise 14:52</li><li><a href="stop-TEC_Lbococh2.html">TEC:Lbococh2</a> - Boncelles Rue du Commandant Charlier 14:54</li><li><a href="stop-TEC_Lbotige2.html">TEC:Lbotige2</a> - Boncelles rue du Tige Blanc 14:55</li><li><a href="stop-TEC_Lbocruc2.html">TEC:Lbocruc2</a> - Boncelles Crucifix 14:57</li><li><a href="stop-TEC_Lsechev2.html">TEC:Lsechev2</a> - Seraing rue des Chevaux 15:02</li><li><a href="stop-TEC_Lsefoot2.html">TEC:Lsefoot2</a> - Seraing terrain de foot 15:03</li><li><a href="stop-TEC_Lsestap4.html">TEC:Lsestap4</a> - Seraing rue des Stappes 15:04</li><li><a href="stop-TEC_Lsevecq2.html">TEC:Lsevecq2</a> - Seraing Rue de la Vecquée 15:05</li><li><a href="stop-TEC_Lsepair2.html">TEC:Lsepair2</a> - Seraing Place du Pairay 15:06</li><li><a href="stop-TEC_Lseruis2.html">TEC:Lseruis2</a> - Seraing Rue du Ruisseau 15:08</li><li><a href="stop-TEC_Lsepcha2.html">TEC:Lsepcha2</a> - Seraing Place de la Chatqueue 15:09</li><li><a href="stop-TEC_Lseserv1.html">TEC:Lseserv1</a> - Seraing Rue M. Servet 15:10</li><li><a href="stop-TEC_Lsedese1.html">TEC:Lsedese1</a> - Seraing Rue du Désert 15:11</li><li><a href="stop-TEC_Lsemyrt1.html">TEC:Lsemyrt1</a> - Seraing Rue des Myrtilles 15:11</li><li><a href="stop-TEC_Lseblan_.html">TEC:Lseblan*</a> - Seraing Maison Blanche 15:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4454.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

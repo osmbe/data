@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Gerin Gendarmerie</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Gerin Gendarmerie</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-5163_TEC_NA_1006.html">5163:TEC:NA:1006</a> - 5163:TEC:NA:1006 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_10467.html">5163:TEC:NA:10467</a> - 5163:TEC:NA:10467 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_10838.html">5163:TEC:NA:10838</a> - 5163:TEC:NA:10838 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_10893.html">5163:TEC:NA:10893</a> - 5163:TEC:NA:10893 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_13036.html">5163:TEC:NA:13036</a> - 5163:TEC:NA:13036 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_1307.html">5163:TEC:NA:1307</a> - 5163:TEC:NA:1307 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_1314.html">5163:TEC:NA:1314</a> - 5163:TEC:NA:1314 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_13286.html">5163:TEC:NA:13286</a> - 5163:TEC:NA:13286 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_13587.html">5163:TEC:NA:13587</a> - 5163:TEC:NA:13587 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_13594.html">5163:TEC:NA:13594</a> - 5163:TEC:NA:13594 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_14390.html">5163:TEC:NA:14390</a> - 5163:TEC:NA:14390 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_2121.html">5163:TEC:NA:2121</a> - 5163:TEC:NA:2121 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_2125.html">5163:TEC:NA:2125</a> - 5163:TEC:NA:2125 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_2999.html">5163:TEC:NA:2999</a> - 5163:TEC:NA:2999 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_3004.html">5163:TEC:NA:3004</a> - 5163:TEC:NA:3004 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_3006.html">5163:TEC:NA:3006</a> - 5163:TEC:NA:3006 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_4582.html">5163:TEC:NA:4582</a> - 5163:TEC:NA:4582 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_4585.html">5163:TEC:NA:4585</a> - 5163:TEC:NA:4585 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_4598.html">5163:TEC:NA:4598</a> - 5163:TEC:NA:4598 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_4604.html">5163:TEC:NA:4604</a> - 5163:TEC:NA:4604 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_5156.html">5163:TEC:NA:5156</a> - 5163:TEC:NA:5156 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_5793.html">5163:TEC:NA:5793</a> - 5163:TEC:NA:5793 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_6719.html">5163:TEC:NA:6719</a> - 5163:TEC:NA:6719 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_748.html">5163:TEC:NA:748</a> - 5163:TEC:NA:748 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_751.html">5163:TEC:NA:751</a> - 5163:TEC:NA:751 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_9845.html">5163:TEC:NA:9845</a> - 5163:TEC:NA:9845 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_9850.html">5163:TEC:NA:9850</a> - 5163:TEC:NA:9850 - DINANT - FLORENNES</li><li><a href="trip-5163_TEC_NA_9857.html">5163:TEC:NA:9857</a> - 5163:TEC:NA:9857 - DINANT - FLORENNES</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.246334, 4.818068], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.246334, 4.818068]).addTo(map);
+    </script>
+</body>
+
+</html>

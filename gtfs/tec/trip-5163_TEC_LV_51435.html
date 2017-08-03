@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Verviers - Malmedy - Reuland - 5163:TEC:LV:51435</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Verviers - Malmedy - Reuland - 5163:TEC:LV:51435</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LsVlind_.html">TEC:LsVlind*</a> - Sankt-Vith An den Linden 06:30</li><li><a href="stop-TEC_LsVviel2.html">TEC:LsVviel2</a> - Sankt-Vith Vielsalmer Strasse 06:31</li><li><a href="stop-TEC_LsVfrie2.html">TEC:LsVfrie2</a> - Sankt-Vith Friedhof 06:32</li><li><a href="stop-TEC_LsVbell2.html">TEC:LsVbell2</a> - Sankt-Vith Belle-Vue 06:32</li><li><a href="stop-TEC_LsVhunn2.html">TEC:LsVhunn2</a> - Sankt-Vith Hünningen 4 Wege 06:33</li><li><a href="stop-TEC_LnEmett2.html">TEC:LnEmett2</a> - Nieder-Emmels Haus Mettlen 06:34</li><li><a href="stop-TEC_LnEkirc4.html">TEC:LnEkirc4</a> - Nieder-Emmels Kirche 06:35</li><li><a href="stop-TEC_LnE79--2.html">TEC:LnE79--2</a> - Nieder-Emmels 79 06:36</li><li><a href="stop-TEC_LnErech2.html">TEC:LnErech2</a> - Nieder-Emmels Rechterstrasse 06:36</li><li><a href="stop-TEC_LrEborn2.html">TEC:LrEborn2</a> - Recht Borner Strasse 06:40</li><li><a href="stop-TEC_LrEkais2.html">TEC:LrEkais2</a> - Recht Kaiserbaracke 06:40</li><li><a href="stop-TEC_LrErauw2.html">TEC:LrErauw2</a> - Recht Atelier Rauw 06:42</li><li><a href="stop-TEC_LrEkreu2.html">TEC:LrEkreu2</a> - Recht Kreuzung 06:43</li><li><a href="stop-TEC_LrEviel2.html">TEC:LrEviel2</a> - Recht Vielsalmer Strasse 06:43</li><li><a href="stop-TEC_LrEgend2.html">TEC:LrEgend2</a> - Recht Gendarmerie 06:44</li><li><a href="stop-TEC_LrEochs2.html">TEC:LrEochs2</a> - Recht Ochsenbaracke 06:46</li><li><a href="stop-TEC_LPtrefa2.html">TEC:LPtrefa2</a> - Pont Refat 06:49</li><li><a href="stop-TEC_LPtchpl2.html">TEC:LPtchpl2</a> - Pont Chapelle 06:50</li><li><a href="stop-TEC_LLbbons2.html">TEC:LLbbons2</a> - Ligneuville Aux Bons Amis 06:50</li><li><a href="stop-TEC_LLbcafe2.html">TEC:LLbcafe2</a> - Ligneuville Café de l'Amblève 06:51</li><li><a href="stop-TEC_LLbpt--2.html">TEC:LLbpt--2</a> - Ligneuville Pont de l'Amblève 06:52</li><li><a href="stop-TEC_LLbmalm2.html">TEC:LLbmalm2</a> - Ligneuville Route de Malmedy 06:53</li><li><a href="stop-TEC_LLbvith2.html">TEC:LLbvith2</a> - Ligneuville Route de St-Vith 06:54</li><li><a href="stop-TEC_LBglign2.html">TEC:LBglign2</a> - Baugnez Route de Ligneuville 06:56</li><li><a href="stop-TEC_LBgcroi2.html">TEC:LBgcroi2</a> - Baugnez Croix des Américains 06:57</li><li><a href="stop-TEC_LGmhedo2.html">TEC:LGmhedo2</a> - Geromont Route de Hédomont 06:58</li><li><a href="stop-TEC_LGmeg--2.html">TEC:LGmeg--2</a> - Geromont Eglise 06:59</li><li><a href="stop-TEC_LGmloti2.html">TEC:LGmloti2</a> - Geromont Lotissement Henkes 07:00</li><li><a href="stop-TEC_LMAbell2.html">TEC:LMAbell2</a> - Malmedy Bellevue 07:01</li><li><a href="stop-TEC_LMAbijo2.html">TEC:LMAbijo2</a> - Malmedy Mon Bijou 07:02</li><li><a href="stop-TEC_LMAgb--2.html">TEC:LMAgb--2</a> - Malmedy Super GB 07:02</li><li><a href="stop-TEC_LMArave2.html">TEC:LMArave2</a> - Malmedy Ravel 07:03</li><li><a href="stop-TEC_LMAgare0.html">TEC:LMAgare0</a> - Malmedy gare 07:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5191.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

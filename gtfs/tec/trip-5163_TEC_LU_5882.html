@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Arlon - Waltzing - 5163:TEC:LU:5882</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Arlon - Waltzing - 5163:TEC:LU:5882</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X601aba.html">TEC:X601aba</a> - Arlon Tec - Rue des Genêts 16:05</li><li><a href="stop-TEC_X601bgb.html">TEC:X601bgb</a> - Arlon ISMA 16:06</li><li><a href="stop-TEC_X601bfb.html">TEC:X601bfb</a> - Arlon Sq Astrid - R de Bastogne 16:07</li><li><a href="stop-TEC_X601bea.html">TEC:X601bea</a> - Arlon Rue Léon Castilhon 16:09</li><li><a href="stop-TEC_X601bda.html">TEC:X601bda</a> - Arlon Xxv Août 16:12</li><li><a href="stop-TEC_X601aza.html">TEC:X601aza</a> - Arlon Espace Semois 16:15</li><li><a href="stop-TEC_X601bka.html">TEC:X601bka</a> - Arlon Athénée 16:17</li><li><a href="stop-TEC_X601ayb.html">TEC:X601ayb</a> - Arlon ISI 16:22</li><li><a href="stop-TEC_X601axb.html">TEC:X601axb</a> - Arlon Avenue Patton 16:23</li><li><a href="stop-TEC_X601awa.html">TEC:X601awa</a> - Arlon Av de Longwy - Patton 16:24</li><li><a href="stop-TEC_X601ata.html">TEC:X601ata</a> - Arlon Av de Longwy - Clairefontaine 16:26</li><li><a href="stop-TEC_X601asa.html">TEC:X601asa</a> - Arlon Liedel 16:28</li><li><a href="stop-TEC_X601cga.html">TEC:X601cga</a> - Arlon Route de Mersch 85 16:29</li><li><a href="stop-TEC_X601cha.html">TEC:X601cha</a> - Arlon Route de Mersch 187 16:29</li><li><a href="stop-TEC_X601cia.html">TEC:X601cia</a> - Waltzing Rue de la Petite Gaichel 2 16:30</li><li><a href="stop-TEC_X601cja.html">TEC:X601cja</a> - Waltzing Rue de la Petite Gaichel 25 16:31</li><li><a href="stop-TEC_X601cka.html">TEC:X601cka</a> - Waltzing Chemin de la Rentertkapell 16:32</li><li><a href="stop-TEC_X601cla.html">TEC:X601cla</a> - Waltzing Rue des Fermes 16:33</li><li><a href="stop-TEC_X601cub.html">TEC:X601cub</a> - Waltzing Salle 16:34</li><li><a href="stop-TEC_X601cva.html">TEC:X601cva</a> - Waltzing Rue du Lycia 16:36</li><li><a href="stop-TEC_X601cwa.html">TEC:X601cwa</a> - Waltzing Rue du Lingenthal 16:37</li><li><a href="stop-TEC_X601cua.html">TEC:X601cua</a> - Waltzing Salle 16:38</li><li><a href="stop-TEC_X601cna.html">TEC:X601cna</a> - Waltzing Ecole Gardienne 16:38</li><li><a href="stop-TEC_X601coa.html">TEC:X601coa</a> - Waltzing Ecole Primaire 16:39</li><li><a href="stop-TEC_X601cpa.html">TEC:X601cpa</a> - Waltzing Val-Vert 16:40</li><li><a href="stop-TEC_X601cqa.html">TEC:X601cqa</a> - Waltzing Rue Beau-Site 16:41</li><li><a href="stop-TEC_X601cra.html">TEC:X601cra</a> - Arlon Chemin des Espagnols 269 16:41</li><li><a href="stop-TEC_X601cfa.html">TEC:X601cfa</a> - Arlon Chemin des Espagnols 202 16:42</li><li><a href="stop-TEC_X601csa.html">TEC:X601csa</a> - Arlon Avenue du 10ème de Ligne 16:44</li><li><a href="stop-TEC_X601bwa.html">TEC:X601bwa</a> - Arlon Place des Chasseurs Ardennais 16:47</li><li><a href="stop-TEC_X601bxb.html">TEC:X601bxb</a> - Arlon Espace Didier 16:48</li><li><a href="stop-TEC_X601bfa.html">TEC:X601bfa</a> - Arlon Sq Astrid - R de Bastogne 16:50</li><li><a href="stop-TEC_X601bga.html">TEC:X601bga</a> - Arlon ISMA 16:51</li><li><a href="stop-TEC_X601abb.html">TEC:X601abb</a> - Arlon Tec - Rue des Genêts 16:52</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3332.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

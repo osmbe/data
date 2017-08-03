@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Torgny - Dampicourt - Saint-Mard - 5163:TEC:LU:2403</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Torgny - Dampicourt - Saint-Mard - 5163:TEC:LU:2403</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X610aja.html">TEC:X610aja</a> - Torgny Terrain de football 07:57</li><li><a href="stop-TEC_X610afa.html">TEC:X610afa</a> - Torgny Lavoir 07:58</li><li><a href="stop-TEC_X610aea.html">TEC:X610aea</a> - Torgny Rue de Lamorteau 07:59</li><li><a href="stop-TEC_X610aha.html">TEC:X610aha</a> - Lamorteau Grand-Rue 08:01</li><li><a href="stop-TEC_X610aia.html">TEC:X610aia</a> - Lamorteau Rue du Sauveur 08:02</li><li><a href="stop-TEC_X610adb.html">TEC:X610adb</a> - Lamorteau Eglise 08:02</li><li><a href="stop-TEC_X610aha.html">TEC:X610aha</a> - Lamorteau Grand-Rue 08:03</li><li><a href="stop-TEC_X610aia.html">TEC:X610aia</a> - Lamorteau Rue du Sauveur 08:04</li><li><a href="stop-TEC_X609aka.html">TEC:X609aka</a> - Harnoncourt Ecole 08:08</li><li><a href="stop-TEC_X609ajb.html">TEC:X609ajb</a> - Rouvroy Quartier des Ouyelis 08:10</li><li><a href="stop-TEC_X609aha.html">TEC:X609aha</a> - Montquintin Centre 08:14</li><li><a href="stop-TEC_X609apa.html">TEC:X609apa</a> - Couvreux Centre 08:18</li><li><a href="stop-TEC_X609ara.html">TEC:X609ara</a> - Couvreux Rue des Pignons 08:18</li><li><a href="stop-TEC_X609agb.html">TEC:X609agb</a> - Couvreux Carrefour de Montquintin 08:19</li><li><a href="stop-TEC_X609ana.html">TEC:X609ana</a> - Dampicourt Ecole 08:22</li><li><a href="stop-TEC_X609afa.html">TEC:X609afa</a> - Dampicourt Rue du 8 Septembre 08:24</li><li><a href="stop-TEC_X609adb.html">TEC:X609adb</a> - Dampicourt Rivage 08:24</li><li><a href="stop-TEC_X609aeb.html">TEC:X609aeb</a> - Dampicourt Champé 08:25</li><li><a href="stop-TEC_X608aib.html">TEC:X608aib</a> - Saint-Mard Rue de Dampicourt 08:26</li><li><a href="stop-TEC_X608aaa.html">TEC:X608aaa</a> - Saint-Mard Gare 08:27</li><li><a href="stop-TEC_X608ajb.html">TEC:X608ajb</a> - Saint-Mard Rue de la Station 08:29</li><li><a href="stop-TEC_X608axa.html">TEC:X608axa</a> - Saint-Mard Rue Edmond Jacques 08:31</li><li><a href="stop-TEC_X608aja.html">TEC:X608aja</a> - Saint-Mard Rue de la Station 08:34</li><li><a href="stop-TEC_X608aba.html">TEC:X608aba</a> - Virton Carrefour Avenue Bouvier 08:35</li><li><a href="stop-TEC_X608aca.html">TEC:X608aca</a> - Virton Paradis des Enfants 08:35</li><li><a href="stop-TEC_X608ada.html">TEC:X608ada</a> - Virton CNDB 08:36</li><li><a href="stop-TEC_X608aea.html">TEC:X608aea</a> - Virton Arcades 08:37</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3135.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

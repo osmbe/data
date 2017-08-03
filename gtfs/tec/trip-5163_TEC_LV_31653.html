@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Pt d'Avroy - St-Nicolas - Pansy - Jemeppe GR - 5163:TEC:LV:31653</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Pt d'Avroy - St-Nicolas - Pansy - Jemeppe GR - 5163:TEC:LV:31653</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LlgPTAV6.html">TEC:LlgPTAV6</a> - Liege Pont d'Avroy (débarquement) 19:09</li><li><a href="stop-TEC_LlgPTAV4.html">TEC:LlgPTAV4</a> - Liege Pont d'Avroy (Hazinelle) 19:09</li><li><a href="stop-TEC_Llghec-1.html">TEC:Llghec-1</a> - Liege H.E.C. 19:12</li><li><a href="stop-TEC_Llgreyn1.html">TEC:Llgreyn1</a> - Liege Rue Reynier 19:13</li><li><a href="stop-TEC_Llgcfra1.html">TEC:Llgcfra1</a> - Liege Rue C. Franck 19:15</li><li><a href="stop-TEC_Llghlau1.html">TEC:Llghlau1</a> - Liege Hôpital St-Laurent 19:16</li><li><a href="stop-TEC_Llgbida1.html">TEC:Llgbida1</a> - Liege Rue Bidaut 19:17</li><li><a href="stop-TEC_Llgware2.html">TEC:Llgware2</a> - Liege Rue de Waremme 19:17</li><li><a href="stop-TEC_Llgbago1.html">TEC:Llgbago1</a> - Liege Rue Bagolet 19:18</li><li><a href="stop-TEC_Llgjenn1.html">TEC:Llgjenn1</a> - Liege Avenue E. Jennissen 19:20</li><li><a href="stop-TEC_Llgwiar1.html">TEC:Llgwiar1</a> - Liege Boulevard Carton de Wiart 19:21</li><li><a href="stop-TEC_LlgnicT1.html">TEC:LlgnicT1</a> - Liege Place St-Nicolas (terminus) 19:21</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3885.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

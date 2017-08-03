@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Gembloux - Chastre - Marbais - 5163:TEC:BW:3009</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gembloux - Chastre - Marbais - 5163:TEC:BW:3009</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bgntpla2.html">TEC:Bgntpla2</a> - Gentinnes Place 09:13</li><li><a href="stop-TEC_Bgntcha2.html">TEC:Bgntcha2</a> - Gentinnes Rue Charlemont 09:14</li><li><a href="stop-TEC_Bgntcoo2.html">TEC:Bgntcoo2</a> - Gentinnes Coopérative 09:15</li><li><a href="stop-TEC_Bgntalt2.html">TEC:Bgntalt2</a> - Gentinnes Altiau 09:16</li><li><a href="stop-TEC_Bgnteco2.html">TEC:Bgnteco2</a> - Gentinnes Ecoles 09:17</li><li><a href="stop-TEC_Bgntpos2.html">TEC:Bgntpos2</a> - Gentinnes Poste 09:17</li><li><a href="stop-TEC_Bsgeegl2.html">TEC:Bsgeegl2</a> - Saint-Gery Eglise 09:18</li><li><a href="stop-TEC_Bsgeqpb2.html">TEC:Bsgeqpb2</a> - Saint-Gery Quartier du Petit Baty 09:19</li><li><a href="stop-TEC_Bcrncce2.html">TEC:Bcrncce2</a> - Corsal Centre 09:20</li><li><a href="stop-TEC_Bcrncor2.html">TEC:Bcrncor2</a> - Cortil-Noirmont Rue de Corsal 09:21</li><li><a href="stop-TEC_Bcrngat2.html">TEC:Bcrngat2</a> - Cortil-Noirmont Rue de la Gatte 09:22</li><li><a href="stop-TEC_Bcrnpla4.html">TEC:Bcrnpla4</a> - Cortil Place 09:23</li><li><a href="stop-TEC_Bcrnpla1.html">TEC:Bcrnpla1</a> - Cortil Place 09:23</li><li><a href="stop-TEC_Bcrncen1.html">TEC:Bcrncen1</a> - Cortil Rue du Centre 09:24</li><li><a href="stop-TEC_Bcrnegl2.html">TEC:Bcrnegl2</a> - Cortil Eglise 09:25</li><li><a href="stop-TEC_Bcrncen2.html">TEC:Bcrncen2</a> - Cortil Rue du Centre 09:26</li><li><a href="stop-TEC_Bcrnpla2.html">TEC:Bcrnpla2</a> - Cortil Place 09:27</li><li><a href="stop-TEC_Bcrnvic2.html">TEC:Bcrnvic2</a> - Cortil Rue aux Vichaux 09:28</li><li><a href="stop-TEC_Bcrnrpc2.html">TEC:Bcrnrpc2</a> - Cortil Rond Point Colonie 09:29</li><li><a href="stop-TEC_Bcrntru2.html">TEC:Bcrntru2</a> - Cortil Try des Rudes 09:29</li><li><a href="stop-TEC_Bcrncjo2.html">TEC:Bcrncjo2</a> - Cortil Champ de la Joncquière 09:30</li><li><a href="stop-TEC_Bgrmfga2.html">TEC:Bgrmfga2</a> - Grand-Manil Ferme de la Gatte 09:31</li><li><a href="stop-TEC_Bgrmpsn2.html">TEC:Bgrmpsn2</a> - Grand-Manil Penteville S.N.C.B 09:31</li><li><a href="stop-TEC_Bgrmfon2.html">TEC:Bgrmfon2</a> - Grand-Manil Fontenelle 09:32</li><li><a href="stop-TEC_Bgemcha1.html">TEC:Bgemcha1</a> - Grand-Manil Chaussée de Charleroi 09:32</li><li><a href="stop-TEC_Bgrmver2.html">TEC:Bgrmver2</a> - Grand-Manil Rue Verlaine 09:34</li><li><a href="stop-TEC_N522ana.html">TEC:N522ana</a> - Gembloux Rue Pierquin 09:36</li><li><a href="stop-TEC_N522ama.html">TEC:N522ama</a> - Gembloux Athénée 09:37</li><li><a href="stop-TEC_N522ala.html">TEC:N522ala</a> - Gembloux Rue Sigebert 09:38</li><li><a href="stop-TEC_N522aea.html">TEC:N522aea</a> - Gembloux Rue des Volontaires 09:40</li><li><a href="stop-TEC_Bgemga10.html">TEC:Bgemga10</a> - Gembloux Gare 09:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./47.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

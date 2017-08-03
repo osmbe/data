@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bras - Wardin - Bastogne - 5163:TEC:LU:5747</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bras - Wardin - Bastogne - 5163:TEC:LU:5747</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X725afh.html">TEC:X725afh</a> - Bastogne Gare du Sud - Quai 6 12:06</li><li><a href="stop-TEC_X725aea.html">TEC:X725aea</a> - Bastogne Pépinière - Quai 1 12:16</li><li><a href="stop-TEC_X725apa.html">TEC:X725apa</a> - Bastogne Porte de Trèves 12:17</li><li><a href="stop-TEC_X725aqb.html">TEC:X725aqb</a> - Bastogne Route de Mont 71 12:18</li><li><a href="stop-TEC_X725ara.html">TEC:X725ara</a> - Bastogne Route de Mont 105 12:19</li><li><a href="stop-TEC_X725asb.html">TEC:X725asb</a> - Bastogne Route de Mont 130 12:20</li><li><a href="stop-TEC_X725atb.html">TEC:X725atb</a> - Mont Lavoir 12:21</li><li><a href="stop-TEC_X767aba.html">TEC:X767aba</a> - Neffe Route de Mont 166 12:24</li><li><a href="stop-TEC_X767aac.html">TEC:X767aac</a> - Neffe Chapelle 12:25</li><li><a href="stop-TEC_X768aca.html">TEC:X768aca</a> - Mageret Grand Route 250 12:27</li><li><a href="stop-TEC_X768ada.html">TEC:X768ada</a> - Mageret Grand Route 30 12:28</li><li><a href="stop-TEC_X768aea.html">TEC:X768aea</a> - Mageret Carrefour 12:30</li><li><a href="stop-TEC_X768afb.html">TEC:X768afb</a> - Mageret Ecole 12:31</li><li><a href="stop-TEC_X769ama.html">TEC:X769ama</a> - Benonchamps Route de Mageret 108 12:34</li><li><a href="stop-TEC_X769alb.html">TEC:X769alb</a> - Benonchamps Route de Mageret 2a 12:35</li><li><a href="stop-TEC_X769akb.html">TEC:X769akb</a> - Benonchamps Centre 12:36</li><li><a href="stop-TEC_X769aja.html">TEC:X769aja</a> - Benonchamps 19 12:36</li><li><a href="stop-TEC_X769aia.html">TEC:X769aia</a> - Benonchamps Pont 12:38</li><li><a href="stop-TEC_X769aoa.html">TEC:X769aoa</a> - Harzy Centre 12:40</li><li><a href="stop-TEC_X769apa.html">TEC:X769apa</a> - Wardin Eglise 12:41</li><li><a href="stop-TEC_X769aqa.html">TEC:X769aqa</a> - Wardin Rue de Bastogne 46 12:41</li><li><a href="stop-TEC_X769ata.html">TEC:X769ata</a> - Wardin Rue de Bastogne 22 12:42</li><li><a href="stop-TEC_X769aaa.html">TEC:X769aaa</a> - Wardin Route de Wiltz 5 12:42</li><li><a href="stop-TEC_X769abb.html">TEC:X769abb</a> - Wardin Route de Wiltz 14 12:43</li><li><a href="stop-TEC_X769aca.html">TEC:X769aca</a> - Wardin Route de Wiltz 18 12:43</li><li><a href="stop-TEC_X769aeb.html">TEC:X769aeb</a> - Bras Carrefour 12:44</li><li><a href="stop-TEC_X769afa.html">TEC:X769afa</a> - Bras Route de Wiltz 10 12:45</li><li><a href="stop-TEC_X769arb.html">TEC:X769arb</a> - Bras Pépinière 12:45</li><li><a href="stop-TEC_X769aga.html">TEC:X769aga</a> - Bras Route de Wiltz 12:46</li><li><a href="stop-TEC_X769ahb.html">TEC:X769ahb</a> - Bras Eglise 12:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3746.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

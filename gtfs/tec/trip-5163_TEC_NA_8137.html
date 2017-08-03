@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - HANNUT - FORVILLE - 5163:TEC:NA:8137</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: HANNUT - FORVILLE - 5163:TEC:NA:8137</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_NL74aea.html">TEC:NL74aea</a> - Meeffe Place 09:13</li><li><a href="stop-TEC_NL74afb.html">TEC:NL74afb</a> - Meeffe Eglise 09:14</li><li><a href="stop-TEC_NL74aia.html">TEC:NL74aia</a> - Wasseiges Route de Namur 09:16</li><li><a href="stop-TEC_NL74aha.html">TEC:NL74aha</a> - Wasseiges Place 09:16</li><li><a href="stop-TEC_NL74aga.html">TEC:NL74aga</a> - Wasseiges Gare 09:17</li><li><a href="stop-TEC_NL74aba.html">TEC:NL74aba</a> - Ambresin Gare 09:18</li><li><a href="stop-TEC_NL74aaa.html">TEC:NL74aaa</a> - Ambresin Route de Merdorp 09:19</li><li><a href="stop-TEC_NL75aba.html">TEC:NL75aba</a> - Merdorp Rue de Moxhe 09:24</li><li><a href="stop-TEC_NL75aaa.html">TEC:NL75aaa</a> - Merdorp Mare 09:25</li><li><a href="stop-TEC_NL75ada.html">TEC:NL75ada</a> - Merdorp Gare 09:26</li><li><a href="stop-TEC_NL75aca.html">TEC:NL75aca</a> - Merdorp Chemin des Hougardiers 09:27</li><li><a href="stop-TEC_NL37aja.html">TEC:NL37aja</a> - Thisnes Rue de Merdorp 09:31</li><li><a href="stop-TEC_NL37aia.html">TEC:NL37aia</a> - Thisnes Ferme de la fontaine 09:32</li><li><a href="stop-TEC_NL37aka.html">TEC:NL37aka</a> - Thisnes Eglise 09:33</li><li><a href="stop-TEC_NL37ala.html">TEC:NL37ala</a> - Thisnes Mignawez 09:35</li><li><a href="stop-TEC_NL37aba.html">TEC:NL37aba</a> - Crehen Eglise 09:36</li><li><a href="stop-TEC_NL37aaa.html">TEC:NL37aaa</a> - Crehen La Croisette 09:38</li><li><a href="stop-TEC_NL37aca.html">TEC:NL37aca</a> - Hannut Route de Crehen 09:40</li><li><a href="stop-TEC_LHNecpr4.html">TEC:LHNecpr4</a> - Hannut Ecole Primaire 09:42</li><li><a href="stop-TEC_LHNhall2.html">TEC:LHNhall2</a> - Hannut Place H. Hallet 09:43</li><li><a href="stop-TEC_LHNwaut2.html">TEC:LHNwaut2</a> - Hannut Rue J. Wauters 09:44</li><li><a href="stop-TEC_LHNgare2.html">TEC:LHNgare2</a> - Hannut Gare 09:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5772.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

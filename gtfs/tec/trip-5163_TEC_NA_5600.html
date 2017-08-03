@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - PROXIBUS GESVES - 5163:TEC:NA:5600</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: PROXIBUS GESVES - 5163:TEC:NA:5600</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N562ata.html">TEC:N562ata</a> - Gesves Saint-Hubert 08:45</li><li><a href="stop-TEC_N562aka.html">TEC:N562aka</a> - Gesves Fond 08:47</li><li><a href="stop-TEC_N562ala.html">TEC:N562ala</a> - Gesves Forges 08:48</li><li><a href="stop-TEC_N562aoa.html">TEC:N562aoa</a> - Gesves Route de Namêche 08:48</li><li><a href="stop-TEC_N536apb.html">TEC:N536apb</a> - Faulx-les-Tombes Abbaye 08:52</li><li><a href="stop-TEC_N536aqb.html">TEC:N536aqb</a> - Faulx-les-Tombes Poste 08:53</li><li><a href="stop-TEC_N536agb.html">TEC:N536agb</a> - Faulx-les-Tombes Materne 08:54</li><li><a href="stop-TEC_N536aob.html">TEC:N536aob</a> - Faulx-les-Tombes Fau Sainte-Anne 08:55</li><li><a href="stop-TEC_N562bnb.html">TEC:N562bnb</a> - Gesves Fechaire 08:59</li><li><a href="stop-TEC_N562bob.html">TEC:N562bob</a> - Gesves Pré d'Amite 08:59</li><li><a href="stop-TEC_N562bma.html">TEC:N562bma</a> - Gesves Chapelle 09:00</li><li><a href="stop-TEC_N562bla.html">TEC:N562bla</a> - Gesves Fontaines 09:01</li><li><a href="stop-TEC_N562bqa.html">TEC:N562bqa</a> - Gesves Football 09:02</li><li><a href="stop-TEC_N562bra.html">TEC:N562bra</a> - Gesves Pichelotte 09:02</li><li><a href="stop-TEC_N562bsb.html">TEC:N562bsb</a> - Gesves Sainte-Cécile 09:03</li><li><a href="stop-TEC_N562acb.html">TEC:N562acb</a> - Brionsart Michaux 09:04</li><li><a href="stop-TEC_N562aeb.html">TEC:N562aeb</a> - Brionsart Brionsart 09:05</li><li><a href="stop-TEC_N562afb.html">TEC:N562afb</a> - Brionsart Fond 09:06</li><li><a href="stop-TEC_N562bkb.html">TEC:N562bkb</a> - Haut-Bois Trou Bouquiau 09:08</li><li><a href="stop-TEC_N562bhb.html">TEC:N562bhb</a> - Haut-Bois Entrée 09:09</li><li><a href="stop-TEC_N562bja.html">TEC:N562bja</a> - Haut-Bois Rue des Basses Arches 09:09</li><li><a href="stop-TEC_N562bia.html">TEC:N562bia</a> - Haut-Bois Eglise 09:10</li><li><a href="stop-TEC_N537acb.html">TEC:N537acb</a> - Haltinne Rue du manoir 09:12</li><li><a href="stop-TEC_N537abb.html">TEC:N537abb</a> - Haltinne Là-bas 09:13</li><li><a href="stop-TEC_N537ahb.html">TEC:N537ahb</a> - Strud Garage 09:14</li><li><a href="stop-TEC_N537ajb.html">TEC:N537ajb</a> - Strud Al Cassette 09:14</li><li><a href="stop-TEC_N537akb.html">TEC:N537akb</a> - Haltinne Bellaire 09:18</li><li><a href="stop-TEC_N537alb.html">TEC:N537alb</a> - Haltinne Muache 09:18</li><li><a href="stop-TEC_N506bpa.html">TEC:N506bpa</a> - Andenne Groynne 09:21</li><li><a href="stop-TEC_N506aqa.html">TEC:N506aqa</a> - Andenne Nouveau cimetière 09:22</li><li><a href="stop-TEC_N506ara.html">TEC:N506ara</a> - Andenne Palais de Justice 09:25</li><li><a href="stop-TEC_N506ava.html">TEC:N506ava</a> - Andenne Poste 09:26</li><li><a href="stop-TEC_N506awa.html">TEC:N506awa</a> - Andenne Pré des Dames 09:27</li><li><a href="stop-TEC_N506bad.html">TEC:N506bad</a> - Andenne Ville - 4 coins 09:29</li><li><a href="stop-TEC_N506bqa.html">TEC:N506bqa</a> - Seilles Gare des bus 09:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6693.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

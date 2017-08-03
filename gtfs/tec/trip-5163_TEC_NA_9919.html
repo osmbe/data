@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - JODOIGNE - EGHEZEE - 5163:TEC:NA:9919</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: JODOIGNE - EGHEZEE - 5163:TEC:NA:9919</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_NB33akb.html">TEC:NB33akb</a> - Bomal Maison communale 07:37</li><li><a href="stop-TEC_NB59akb.html">TEC:NB59akb</a> - Bomal Maison communale 07:37</li><li><a href="stop-TEC_NB33ajb.html">TEC:NB33ajb</a> - Mont-Saint-Andre Laloux 07:38</li><li><a href="stop-TEC_NB33aib.html">TEC:NB33aib</a> - Mont-Saint-Andre Grande goyarde 07:39</li><li><a href="stop-TEC_NB33ahb.html">TEC:NB33ahb</a> - Mont-Saint-Andre Petite goyarde 07:40</li><li><a href="stop-TEC_Bmasegl2.html">TEC:Bmasegl2</a> - Mont-Saint-Andre Eglise 07:41</li><li><a href="stop-TEC_NB33afb.html">TEC:NB33afb</a> - Mont-Saint-Andre Route de Geest 07:42</li><li><a href="stop-TEC_NB33aeb.html">TEC:NB33aeb</a> - Petit-Rosiere Notre-Dame de Hal 07:44</li><li><a href="stop-TEC_Bgerprg1.html">TEC:Bgerprg1</a> - Petit-Rosiere Gare 07:46</li><li><a href="stop-TEC_Bgerd321.html">TEC:Bgerd321</a> - Gerompont Avenue des Déportés 32 07:47</li><li><a href="stop-TEC_Bgermco1.html">TEC:Bgermco1</a> - Gerompont Maison Communale 07:47</li><li><a href="stop-TEC_Bgercen1.html">TEC:Bgercen1</a> - Gerompont Centre 07:48</li><li><a href="stop-TEC_Baegd741.html">TEC:Baegd741</a> - Gerompont Avenue des Déportés 74 07:49</li><li><a href="stop-TEC_Bramgar1.html">TEC:Bramgar1</a> - Ramillies Gare 07:50</li><li><a href="stop-TEC_Baegpon3.html">TEC:Baegpon3</a> - Autre-Eglise Pont 07:51</li><li><a href="stop-TEC_Bramcar1.html">TEC:Bramcar1</a> - Ramillies Carrefour Offus 07:52</li><li><a href="stop-TEC_Bramrdf1.html">TEC:Bramrdf1</a> - Ramillies Rue des Fontenelles 07:54</li><li><a href="stop-TEC_Bramcom1.html">TEC:Bramcom1</a> - Ramillies Les Communes 07:55</li><li><a href="stop-TEC_Boffegl2.html">TEC:Boffegl2</a> - Ramillies Eglise 07:56</li><li><a href="stop-TEC_NR27abb.html">TEC:NR27abb</a> - Ramillies Saint-Donat 07:56</li><li><a href="stop-TEC_NR27aab.html">TEC:NR27aab</a> - Ramillies Café Duchêne 07:57</li><li><a href="stop-TEC_N515aob.html">TEC:N515aob</a> - Taviers Bas tige 07:58</li><li><a href="stop-TEC_N515aid.html">TEC:N515aid</a> - Taviers Quatre bras 07:59</li><li><a href="stop-TEC_N515asb.html">TEC:N515asb</a> - Noville-sur-Mehaigne Gare 08:00</li><li><a href="stop-TEC_N515arb.html">TEC:N515arb</a> - Noville-sur-Mehaigne Route de la Gare 08:00</li><li><a href="stop-TEC_N515aqb.html">TEC:N515aqb</a> - Noville-sur-Mehaigne Quatre coins 08:01</li><li><a href="stop-TEC_N515apb.html">TEC:N515apb</a> - Noville-sur-Mehaigne Route de Mehaigne 08:02</li><li><a href="stop-TEC_N514ahb.html">TEC:N514ahb</a> - Eghezee Lycée secondaire 08:03</li><li><a href="stop-TEC_N514anb.html">TEC:N514anb</a> - Eghezee Centre 08:04</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6440.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

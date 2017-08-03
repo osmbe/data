@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Braine-l'Alleud - Wavre - 5163:TEC:BW:7987</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Braine-l'Alleud - Wavre - 5163:TEC:BW:7987</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bohnmes2.html">TEC:Bohnmes2</a> - Ohain Messager 09:20</li><li><a href="stop-TEC_Bohncha2.html">TEC:Bohncha2</a> - Ohain Chemin de Chaubrire 09:21</li><li><a href="stop-TEC_Bohnr732.html">TEC:Bohnr732</a> - Ohain Route de Rénipont n°73 09:22</li><li><a href="stop-TEC_Blasren1.html">TEC:Blasren1</a> - Lasne Renipont 09:24</li><li><a href="stop-TEC_Brixroi1.html">TEC:Brixroi1</a> - Rixensart Rue du Roi 09:25</li><li><a href="stop-TEC_Brixbou1.html">TEC:Brixbou1</a> - Rixensart Bourgeois 09:26</li><li><a href="stop-TEC_Brixdec1.html">TEC:Brixdec1</a> - Rixensart Rue Deceuster 09:27</li><li><a href="stop-TEC_Brixpro1.html">TEC:Brixpro1</a> - Rixensart Route Provinciale 09:28</li><li><a href="stop-TEC_Brixpla1.html">TEC:Brixpla1</a> - Rixensart Place 09:31</li><li><a href="stop-TEC_Brixga12.html">TEC:Brixga12</a> - Rixensart Gare 09:32</li><li><a href="stop-TEC_Brixga11.html">TEC:Brixga11</a> - Rixensart Gare 09:32</li><li><a href="stop-TEC_Brixpje1.html">TEC:Brixpje1</a> - Rixensart Place Jeffreys 09:33</li><li><a href="stop-TEC_Brixcme1.html">TEC:Brixcme1</a> - Rixensart Château de Mérode 09:33</li><li><a href="stop-TEC_Brixpbs1.html">TEC:Brixpbs1</a> - Rixensart Place Beau Site 09:34</li><li><a href="stop-TEC_Blmlbif1.html">TEC:Blmlbif1</a> - Limal Bifurcation 09:36</li><li><a href="stop-TEC_Blmlfau1.html">TEC:Blmlfau1</a> - Limal Avenue des Fauvettes 09:37</li><li><a href="stop-TEC_Blmlbou1.html">TEC:Blmlbou1</a> - Limal Bourse 09:38</li><li><a href="stop-TEC_Blmlcar1.html">TEC:Blmlcar1</a> - Limal Rue des Carmes 09:39</li><li><a href="stop-TEC_Blmlcim1.html">TEC:Blmlcim1</a> - Limal Cimetière 09:39</li><li><a href="stop-TEC_Blmlqlo1.html">TEC:Blmlqlo1</a> - Limal Quartier Louise 09:40</li><li><a href="stop-TEC_Blmlpla1.html">TEC:Blmlpla1</a> - Limal Place 09:41</li><li><a href="stop-TEC_Blmlmco1.html">TEC:Blmlmco1</a> - Limal Maison Communale 09:42</li><li><a href="stop-TEC_Blmlcle1.html">TEC:Blmlcle1</a> - Limal Rue Constant Legrève 09:42</li><li><a href="stop-TEC_Blmldmi1.html">TEC:Blmldmi1</a> - Limal Centre Sportif 09:43</li><li><a href="stop-TEC_Bbgewal1.html">TEC:Bbgewal1</a> - Bierges Walibi 09:44</li><li><a href="stop-TEC_Bbgevil1.html">TEC:Bbgevil1</a> - Bierges Village 09:45</li><li><a href="stop-TEC_Bbgepau1.html">TEC:Bbgepau1</a> - Bierges Pont Autoroute 09:47</li><li><a href="stop-TEC_Bwavgar1.html">TEC:Bwavgar1</a> - Wavre Gare 09:49</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./682.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

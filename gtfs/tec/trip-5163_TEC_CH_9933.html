@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - JUMET MADELEINE - VILLERS-PERWIN TROIS TILLEULS - 5163:TEC:CH:9933</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: JUMET MADELEINE - VILLERS-PERWIN TROIS TILLEULS - 5163:TEC:CH:9933</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cvp3til5.html">TEC:Cvp3til5</a> - Villers-Perwin Trois Tilleuls 07:57</li><li><a href="stop-TEC_Cvp3til1.html">TEC:Cvp3til1</a> - Villers-Perwin Trois Tilleuls 07:57</li><li><a href="stop-TEC_Cvppost2.html">TEC:Cvppost2</a> - Villers-Perwin Bureau des Postes 07:58</li><li><a href="stop-TEC_Cvpsawe2.html">TEC:Cvpsawe2</a> - Villers-Perwin Sang-Wez 07:59</li><li><a href="stop-TEC_Cvpcime2.html">TEC:Cvpcime2</a> - Villers-Perwin Cimetière 07:59</li><li><a href="stop-TEC_Cvpcour2.html">TEC:Cvpcour2</a> - Villers-Perwin La Couronne 08:00</li><li><a href="stop-TEC_Cmesncv3.html">TEC:Cmesncv3</a> - Mellet SNCV 08:02</li><li><a href="stop-TEC_Cmehels2.html">TEC:Cmehels2</a> - Mellet Rue Helsen 08:03</li><li><a href="stop-TEC_Cmecime2.html">TEC:Cmecime2</a> - Mellet Rue du Cimetière 08:04</li><li><a href="stop-TEC_Cmestas2.html">TEC:Cmestas2</a> - Mellet Villa Stassart 08:05</li><li><a href="stop-TEC_Cmeptmi2.html">TEC:Cmeptmi2</a> - Mellet Pont-à-Migneloux 08:06</li><li><a href="stop-TEC_Cmewaya2.html">TEC:Cmewaya2</a> - Mellet Chaussée de Wayaux 08:07</li><li><a href="stop-TEC_Cmeloti2.html">TEC:Cmeloti2</a> - Mellet Lotissement 08:08</li><li><a href="stop-TEC_Cwxplac2.html">TEC:Cwxplac2</a> - Wayaux Place 08:11</li><li><a href="stop-TEC_Cwxchap2.html">TEC:Cwxchap2</a> - Wayaux Chapelle 08:12</li><li><a href="stop-TEC_Cgonvro2.html">TEC:Cgonvro2</a> - Gosselies Nouvelle Route 08:15</li><li><a href="stop-TEC_Cgorobe2.html">TEC:Cgorobe2</a> - Gosselies Robesse 08:15</li><li><a href="stop-TEC_Cgoetun2.html">TEC:Cgoetun2</a> - Gosselies Avenue des Etats-Unis 08:18</li><li><a href="stop-TEC_Cgopier3.html">TEC:Cgopier3</a> - Gosselies Grand Pièrsoû 08:19</li><li><a href="stop-TEC_Cgofbru1.html">TEC:Cgofbru1</a> - Gosselies Faubourg de Bruxelles 08:19</li><li><a href="stop-TEC_Cgobruy1.html">TEC:Cgobruy1</a> - Gosselies Bruyerre 08:21</li><li><a href="stop-TEC_Cgofabr1.html">TEC:Cgofabr1</a> - Gosselies Rue des Fabriques 08:22</li><li><a href="stop-TEC_Cgocalv1.html">TEC:Cgocalv1</a> - Gosselies Calvaire 08:23</li><li><a href="stop-TEC_Cgomart1.html">TEC:Cgomart1</a> - Gosselies Place des Martyrs 08:24</li><li><a href="stop-TEC_Cgoobse1.html">TEC:Cgoobse1</a> - Gosselies Rue de l'Observatoire 08:25</li><li><a href="stop-TEC_Cjucar01.html">TEC:Cjucar01</a> - Jumet Carrosse 08:27</li><li><a href="stop-TEC_Cjumade0.html">TEC:Cjumade0</a> - Jumet Madeleine 08:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./878.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

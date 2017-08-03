@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Gembloux - Ramillies - Landen - 5163:TEC:BW:2363</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gembloux - Ramillies - Landen - 5163:TEC:BW:2363</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bramgar1.html">TEC:Bramgar1</a> - Ramillies Gare 06:08</li><li><a href="stop-TEC_Baegpon1.html">TEC:Baegpon1</a> - Autre-Eglise Pont 06:09</li><li><a href="stop-TEC_Baegm501.html">TEC:Baegm501</a> - Autre-Eglise Rue de la Mêlée 50 06:10</li><li><a href="stop-TEC_Baeggar1.html">TEC:Baeggar1</a> - Autre-Eglise Gare 06:11</li><li><a href="stop-TEC_Baegegl1.html">TEC:Baegegl1</a> - Autre-Eglise Eglise 06:12</li><li><a href="stop-TEC_Bflcneu1.html">TEC:Bflcneu1</a> - Folx-les-Caves Rue Neuve 06:14</li><li><a href="stop-TEC_Bflcpco1.html">TEC:Bflcpco1</a> - Folx-les-Caves Place Communale 06:15</li><li><a href="stop-TEC_Bflccav1.html">TEC:Bflccav1</a> - Folx-les-Caves Les Caves 06:16</li><li><a href="stop-TEC_Bjaufca1.html">TEC:Bjaufca1</a> - Jauche Rue Folx-les-Caves 06:19</li><li><a href="stop-TEC_Bjauwar1.html">TEC:Bjauwar1</a> - Jauche Warichet 06:19</li><li><a href="stop-TEC_Bjaugar1.html">TEC:Bjaugar1</a> - Jauche Gare 06:20</li><li><a href="stop-TEC_Bjaupro1.html">TEC:Bjaupro1</a> - Jauche Place de la Roulette 06:21</li><li><a href="stop-TEC_Bjaurgo1.html">TEC:Bjaurgo1</a> - Jauche Avenue R. Gossia 06:22</li><li><a href="stop-TEC_Bjanegl1.html">TEC:Bjanegl1</a> - Jandrain Eglise 06:24</li><li><a href="stop-TEC_Bjancha1.html">TEC:Bjancha1</a> - Jandrain Rue Chaînaux 06:25</li><li><a href="stop-TEC_Bolppla1.html">TEC:Bolppla1</a> - Orp-le-Petit Place 06:27</li><li><a href="stop-TEC_Bolggar1.html">TEC:Bolggar1</a> - Orp-le-Grand Gare 06:28</li><li><a href="stop-TEC_Bolgsha1.html">TEC:Bolgsha1</a> - Orp-le-Grand Rue Soldat Haccourt 06:29</li><li><a href="stop-TEC_Bolgegl1.html">TEC:Bolgegl1</a> - Orp-le-Grand Eglise 06:29</li><li><a href="stop-TEC_Bolgeva1.html">TEC:Bolgeva1</a> - Orp-le-Grand Rue Emile Vandervelde 06:30</li><li><a href="stop-TEC_Bolgrga1.html">TEC:Bolgrga1</a> - Orp-le-Grand Route de la Gare 06:32</li><li><a href="stop-TEC_Bpelf961.html">TEC:Bpelf961</a> - Pellaines Avenue des Français 96 06:35</li><li><a href="stop-TEC_Bpelegl1.html">TEC:Bpelegl1</a> - Pellaines Eglise 06:36</li><li><a href="stop-TEC_Blsmvan1.html">TEC:Blsmvan1</a> - Linsmeau Vandalle 06:38</li><li><a href="stop-TEC_Blsmcha3.html">TEC:Blsmcha3</a> - Linsmeau Chapelle 06:39</li><li><a href="stop-TEC_Braclin1.html">TEC:Braclin1</a> - Racour Rue de Linsmeau 06:42</li><li><a href="stop-TEC_Braccen1.html">TEC:Braccen1</a> - Racour Centre 06:43</li><li><a href="stop-TEC_Bracgar1.html">TEC:Bracgar1</a> - Racour Rue de la Gare 06:44</li><li><a href="stop-TEC_Brach121.html">TEC:Brach121</a> - Racour Habitation 112 06:44</li><li><a href="stop-TEC_Blanmde1.html">TEC:Blanmde1</a> - Landen Militair Depot 06:47</li><li><a href="stop-TEC_Blanraa1.html">TEC:Blanraa1</a> - Landen Raatshovenstraat 06:48</li><li><a href="stop-TEC_Blankal3.html">TEC:Blankal3</a> - Landen Kalsbergstraat 06:48</li><li><a href="stop-TEC_Blangar1.html">TEC:Blangar1</a> - Landen Station 06:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./274.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Spécial Les Bruyéres - 5163:TEC:CH:9783</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Spécial Les Bruyéres - 5163:TEC:CH:9783</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cchsud08.html">TEC:Cchsud08</a> - Charleroi Sud 08:15</li><li><a href="stop-TEC_Cmlecha1.html">TEC:Cmlecha1</a> - Marcinelle Rue E. Charles 08:18</li><li><a href="stop-TEC_Cmlcent1.html">TEC:Cmlcent1</a> - Marcinelle Centre 08:20</li><li><a href="stop-TEC_Cmlbras1.html">TEC:Cmlbras1</a> - Marcinelle Rue de la Brasserie 08:21</li><li><a href="stop-TEC_Cmlhotv1.html">TEC:Cmlhotv1</a> - Marcinelle Hôtel de Ville 08:21</li><li><a href="stop-TEC_Cmlvpla1.html">TEC:Cmlvpla1</a> - Marcinelle Vieille Place 08:22</li><li><a href="stop-TEC_Cmltemp3.html">TEC:Cmltemp3</a> - Marcinelle Rue du Temple (Avenue Mascaux) 08:23</li><li><a href="stop-TEC_Cmltomb1.html">TEC:Cmltomb1</a> - Marcinelle Rue de la Tombe 08:24</li><li><a href="stop-TEC_Cmlmatc1.html">TEC:Cmlmatc1</a> - Marcinelle Match Center 08:24</li><li><a href="stop-TEC_Cml3fon1.html">TEC:Cml3fon1</a> - Marcinelle 3 Fontaines 08:26</li><li><a href="stop-TEC_Cmlfeba1.html">TEC:Cmlfeba1</a> - Marcinelle Ferme Bal 08:27</li><li><a href="stop-TEC_Cmlipsm3.html">TEC:Cmlipsm3</a> - Marcinelle I.P.S.M.A. 08:29</li><li><a href="stop-TEC_Cmlrbru1.html">TEC:Cmlrbru1</a> - Marcinelle Champ de Course 08:30</li><li><a href="stop-TEC_Cmlbruy1.html">TEC:Cmlbruy1</a> - Marcinelle La Bruyère 08:31</li><li><a href="stop-TEC_Cmlsana1.html">TEC:Cmlsana1</a> - Marcinelle Sanatorium 08:31</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1140.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

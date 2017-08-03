@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Menuchenet - Bouillon - Menuchenet - 5163:TEC:LU:4789</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Menuchenet - Bouillon - Menuchenet - 5163:TEC:LU:4789</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X808aba.html">TEC:X808aba</a> - Menuchenet Dépôt TEC Quai 3 06:33</li><li><a href="stop-TEC_X808abb.html">TEC:X808abb</a> - Menuchenet Dépôt TEC Quai 2 06:33</li><li><a href="stop-TEC_X808abc.html">TEC:X808abc</a> - Menuchenet Dépôt TEC Quai 1 06:33</li><li><a href="stop-TEC_X808aea.html">TEC:X808aea</a> - Menuchenet Parc à Container 06:35</li><li><a href="stop-TEC_X811adb.html">TEC:X811adb</a> - Noirefontaine Les Minières 06:39</li><li><a href="stop-TEC_X811acb.html">TEC:X811acb</a> - Noirefontaine Gare Vicinale 06:40</li><li><a href="stop-TEC_X811alb.html">TEC:X811alb</a> - Noirefontaine Route de Curfoz 06:41</li><li><a href="stop-TEC_X811aoa.html">TEC:X811aoa</a> - Noirefontaine Route de Bouillon 06:42</li><li><a href="stop-TEC_X811apa.html">TEC:X811apa</a> - Curfoz Dépôt Poncin Clébant 06:43</li><li><a href="stop-TEC_X812bbb.html">TEC:X812bbb</a> - Bouillon Le Maroc 06:46</li><li><a href="stop-TEC_X812bab.html">TEC:X812bab</a> - Bouillon Rue de l'Ange Gardien 06:47</li><li><a href="stop-TEC_X812ara.html">TEC:X812ara</a> - Bouillon Quai du Rempart 06:48</li><li><a href="stop-TEC_X812ana.html">TEC:X812ana</a> - Bouillon Tunnel 06:49</li><li><a href="stop-TEC_X812bea.html">TEC:X812bea</a> - Bouillon Camping Halliru 06:51</li><li><a href="stop-TEC_X813abb.html">TEC:X813abb</a> - Corbion Carrefour 06:59</li><li><a href="stop-TEC_X813aaa.html">TEC:X813aaa</a> - Corbion Eglise 06:59</li><li><a href="stop-TEC_X858aea.html">TEC:X858aea</a> - Frahan Rue des Crêtes 18 07:07</li><li><a href="stop-TEC_X858ada.html">TEC:X858ada</a> - Frahan Centre 07:08</li><li><a href="stop-TEC_X858aeb.html">TEC:X858aeb</a> - Frahan Rue des Crêtes 18 07:09</li><li><a href="stop-TEC_X857aba.html">TEC:X857aba</a> - Poupehan Rue de la Grotte 07:13</li><li><a href="stop-TEC_X857aab.html">TEC:X857aab</a> - Poupehan Eglise 07:14</li><li><a href="stop-TEC_X858afb.html">TEC:X858afb</a> - Rochehaut Le Routy 07:20</li><li><a href="stop-TEC_X808aba.html">TEC:X808aba</a> - Menuchenet Dépôt TEC Quai 3 07:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3358.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

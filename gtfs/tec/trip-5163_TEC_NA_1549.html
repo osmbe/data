@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - FLOREFFE (Buzet - Sovimont) - 5163:TEC:NA:1549</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - FLOREFFE (Buzet - Sovimont) - 5163:TEC:NA:1549</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501grb.html">TEC:N501grb</a> - Namur Pl. de la Station - Quai B 16:28</li><li><a href="stop-TEC_N501fsa.html">TEC:N501fsa</a> - Namur Avenue de Stassart 16:30</li><li><a href="stop-TEC_N501faa.html">TEC:N501faa</a> - Salzinnes Place Falmagne 16:32</li><li><a href="stop-TEC_N501fda.html">TEC:N501fda</a> - Salzinnes Place Wiertz 16:33</li><li><a href="stop-TEC_N501fqa.html">TEC:N501fqa</a> - Salzinnes Eglise Ste Julienne 16:34</li><li><a href="stop-TEC_N501fla.html">TEC:N501fla</a> - Salzinnes Rue de la Colline 16:35</li><li><a href="stop-TEC_N501lwa.html">TEC:N501lwa</a> - Salzinnes Chemin des Mélèzes 16:36</li><li><a href="stop-TEC_N501fma.html">TEC:N501fma</a> - Salzinnes Rue del Marmol 16:37</li><li><a href="stop-TEC_N501fpa.html">TEC:N501fpa</a> - Salzinnes Rue du Travail 16:38</li><li><a href="stop-TEC_N501mfa.html">TEC:N501mfa</a> - Namur Citadelle école primaire 16:39</li><li><a href="stop-TEC_N501kuc.html">TEC:N501kuc</a> - Namur Citadelle milieu du monde 16:40</li><li><a href="stop-TEC_N501lna.html">TEC:N501lna</a> - Namur La Vecquée 16:41</li><li><a href="stop-TEC_N501lda.html">TEC:N501lda</a> - Namur La Marlagne 16:43</li><li><a href="stop-TEC_N501loa.html">TEC:N501loa</a> - Namur Notre-Dame au Bois 16:44</li><li><a href="stop-TEC_N528aoa.html">TEC:N528aoa</a> - Malonne Cabacat 16:45</li><li><a href="stop-TEC_N528apa.html">TEC:N528apa</a> - Malonne Gros buisson 16:46</li><li><a href="stop-TEC_N528ana.html">TEC:N528ana</a> - Malonne Haute Fontaine 16:47</li><li><a href="stop-TEC_N528ama.html">TEC:N528ama</a> - Malonne Basse Fontaine 16:48</li><li><a href="stop-TEC_N528aqa.html">TEC:N528aqa</a> - Malonne La rue 16:49</li><li><a href="stop-TEC_N528asa.html">TEC:N528asa</a> - Malonne Petit-Bois 16:50</li><li><a href="stop-TEC_N528aua.html">TEC:N528aua</a> - Malonne Chemin du Piroy 16:51</li><li><a href="stop-TEC_N528ava.html">TEC:N528ava</a> - Malonne Le Piroy cabine 16:52</li><li><a href="stop-TEC_N528awa.html">TEC:N528awa</a> - Malonne Le Piroy église 16:53</li><li><a href="stop-TEC_N528ala.html">TEC:N528ala</a> - Malonne Chemin Pani 16:54</li><li><a href="stop-TEC_N551aca.html">TEC:N551aca</a> - Floreffe La chèvre folle 16:55</li><li><a href="stop-TEC_N551aea.html">TEC:N551aea</a> - Buzet (Nam) Place 16:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5697.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

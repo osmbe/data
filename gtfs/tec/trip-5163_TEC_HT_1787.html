@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ghlin - Blaregnies - 5163:TEC:HT:1787</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ghlin - Blaregnies - 5163:TEC:HT:1787</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1fr107b.html">TEC:H1fr107b</a> - Frameries 4 Pavés 06:11</li><li><a href="stop-TEC_H1fr123b.html">TEC:H1fr123b</a> - Frameries Place 06:12</li><li><a href="stop-TEC_H1fr128b.html">TEC:H1fr128b</a> - Frameries Rue Maury 06:13</li><li><a href="stop-TEC_H1fr109b.html">TEC:H1fr109b</a> - Frameries Ancienne Garde 06:14</li><li><a href="stop-TEC_H1lb134b.html">TEC:H1lb134b</a> - La Bouverie Castillon 06:15</li><li><a href="stop-TEC_H1fl138b.html">TEC:H1fl138b</a> - Flenu Mascaux 06:16</li><li><a href="stop-TEC_H1fl142b.html">TEC:H1fl142b</a> - Flenu Vieux Chemin de Binche 06:18</li><li><a href="stop-TEC_H1fl136c.html">TEC:H1fl136c</a> - Flenu Ancienne Gare 06:19</li><li><a href="stop-TEC_H1fl137b.html">TEC:H1fl137b</a> - Flenu ICET-Maison Communale 06:20</li><li><a href="stop-TEC_H1fl135a.html">TEC:H1fl135a</a> - Flenu Eglise 06:20</li><li><a href="stop-TEC_H1fl133d.html">TEC:H1fl133d</a> - Flenu 4 Pavés 06:21</li><li><a href="stop-TEC_H1je223a.html">TEC:H1je223a</a> - Jemappes Rue Voituron 06:22</li><li><a href="stop-TEC_H1je220d.html">TEC:H1je220d</a> - Jemappes Rue de la Station 06:23</li><li><a href="stop-TEC_H1je213b.html">TEC:H1je213b</a> - Jemappes SNCB 06:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1695.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

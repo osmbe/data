@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Housse - Barchon - Saive - QDB - Retinne - Herve - 5163:TEC:LV:25245</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Housse - Barchon - Saive - QDB - Retinne - Herve - 5163:TEC:LV:25245</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LHEnaza2.html">TEC:LHEnaza2</a> - Herve Nazareth 15:45</li><li><a href="stop-TEC_LMIpatr4.html">TEC:LMIpatr4</a> - Micheroux Patria 15:52</li><li><a href="stop-TEC_LMIbois2.html">TEC:LMIbois2</a> - Micheroux Bois de Micheroux 15:53</li><li><a href="stop-TEC_LMIeg--2.html">TEC:LMIeg--2</a> - Micheroux Eglise 15:55</li><li><a href="stop-TEC_LMIlac-2.html">TEC:LMIlac-2</a> - Micheroux Rue du Lac 15:56</li><li><a href="stop-TEC_Lrechap2.html">TEC:Lrechap2</a> - Retinne Chapelle 15:56</li><li><a href="stop-TEC_Lrevaul2.html">TEC:Lrevaul2</a> - Retinne Rue de la Vaulx 15:57</li><li><a href="stop-TEC_Lrecomp2.html">TEC:Lrecomp2</a> - Retinne Complexe Sportif 15:58</li><li><a href="stop-TEC_Lreec--2.html">TEC:Lreec--2</a> - Retinne Ecoles 15:59</li><li><a href="stop-TEC_Lremonu2.html">TEC:Lremonu2</a> - Retinne Monument 16:00</li><li><a href="stop-TEC_Lretill2.html">TEC:Lretill2</a> - Retinne Rue du Tilleul 16:01</li><li><a href="stop-TEC_Lrelier2.html">TEC:Lrelier2</a> - Retinne Rue de Liéry 16:02</li><li><a href="stop-TEC_Lqbchat2.html">TEC:Lqbchat2</a> - Queue-Du-Bois Château d'Eau 16:03</li><li><a href="stop-TEC_LSAhaye1.html">TEC:LSAhaye1</a> - Saive Voie de la Hayette 16:04</li><li><a href="stop-TEC_LSAtrih1.html">TEC:LSAtrih1</a> - Saive Voie du Trihay 16:05</li><li><a href="stop-TEC_LSAjacq1.html">TEC:LSAjacq1</a> - Saive Rue Maître Jacques 16:06</li><li><a href="stop-TEC_LSAeg--1.html">TEC:LSAeg--1</a> - Saive Eglise 16:08</li><li><a href="stop-TEC_LSAvieu1.html">TEC:LSAvieu1</a> - Saive Vieux Château 16:10</li><li><a href="stop-TEC_LSAchef1.html">TEC:LSAchef1</a> - Saive Chefneux 16:12</li><li><a href="stop-TEC_LBAtign1.html">TEC:LBAtign1</a> - Barchon Rue de Tignée 16:13</li><li><a href="stop-TEC_LBAcarr1.html">TEC:LBAcarr1</a> - Barchon Carrefour 16:14</li><li><a href="stop-TEC_LBAfort1.html">TEC:LBAfort1</a> - Barchon Fort 16:15</li><li><a href="stop-TEC_LHOgymn1.html">TEC:LHOgymn1</a> - Housse Gymnase 16:17</li><li><a href="stop-TEC_LHOmc--1.html">TEC:LHOmc--1</a> - Housse Maison Communale 16:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5073.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

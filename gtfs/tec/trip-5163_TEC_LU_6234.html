@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Aye - Jemelle - Nassogne - 5163:TEC:LU:6234</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aye - Jemelle - Nassogne - 5163:TEC:LU:6234</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X992ada.html">TEC:X992ada</a> - Nassogne Place Communale 18:07</li><li><a href="stop-TEC_X992aga.html">TEC:X992aga</a> - Nassogne Château d'Eau 18:08</li><li><a href="stop-TEC_X992aia.html">TEC:X992aia</a> - Nassogne Terrain de Football 18:09</li><li><a href="stop-TEC_X992acb.html">TEC:X992acb</a> - Nassogne La Pépinette 18:10</li><li><a href="stop-TEC_X992aab.html">TEC:X992aab</a> - Ambly 4 Chemins 18:13</li><li><a href="stop-TEC_X991aka.html">TEC:X991aka</a> - Forrieres Dessus du Village 18:15</li><li><a href="stop-TEC_X991aja.html">TEC:X991aja</a> - Forrieres La Chavée 18:16</li><li><a href="stop-TEC_X991agb.html">TEC:X991agb</a> - Forrieres Carrefour 18:17</li><li><a href="stop-TEC_X991aha.html">TEC:X991aha</a> - Forrieres Gare 18:18</li><li><a href="stop-TEC_X991aga.html">TEC:X991aga</a> - Forrieres Carrefour 18:19</li><li><a href="stop-TEC_X991afa.html">TEC:X991afa</a> - Forrieres Rue du Basteau 18:19</li><li><a href="stop-TEC_X991aea.html">TEC:X991aea</a> - Forrieres Pisciculture 18:20</li><li><a href="stop-TEC_N390ada.html">TEC:N390ada</a> - Rochefort - JEMELLE Gare 18:22</li><li><a href="stop-TEC_N390ada.html">TEC:N390ada</a> - Rochefort - JEMELLE Gare 18:22</li><li><a href="stop-TEC_N390aea.html">TEC:N390aea</a> - Jemelle Tunnel SNCB 18:24</li><li><a href="stop-TEC_N390aca.html">TEC:N390aca</a> - Jemelle Place communale 18:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2903.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

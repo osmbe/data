@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Lambert - Rocourt - Liers - Slins - 5163:TEC:LV:29483</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Lambert - Rocourt - Liers - Slins - 5163:TEC:LV:29483</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LSLeg--2.html">TEC:LSLeg--2</a> - Slins Eglise 19:42</li><li><a href="stop-TEC_LSLstra2.html">TEC:LSLstra2</a> - Slins Rue de Straal 19:43</li><li><a href="stop-TEC_LFsherm2.html">TEC:LFsherm2</a> - Fexhe-Slins Route de Hermée 19:43</li><li><a href="stop-TEC_LFslign2.html">TEC:LFslign2</a> - Fexhe-Slins Rue du 1er de Ligne 19:44</li><li><a href="stop-TEC_LFsphar2.html">TEC:LFsphar2</a> - Fexhe-Slins Pharmacie 19:44</li><li><a href="stop-TEC_LFsbasc2.html">TEC:LFsbasc2</a> - Fexhe-Slins Rue de la Bascule 19:45</li><li><a href="stop-TEC_LFsgend2.html">TEC:LFsgend2</a> - Fexhe-Slins Gendarmerie 19:47</li><li><a href="stop-TEC_Llianix2.html">TEC:Llianix2</a> - Liers Rue d'Anixhe 19:48</li><li><a href="stop-TEC_Lligare2.html">TEC:Lligare2</a> - Liers Gare 19:49</li><li><a href="stop-TEC_Llieg--2.html">TEC:Llieg--2</a> - Liers Eglise 19:50</li><li><a href="stop-TEC_Lvochev2.html">TEC:Lvochev2</a> - Voroux-Lez-Liers Cheval 19:51</li><li><a href="stop-TEC_Lvoplac2.html">TEC:Lvoplac2</a> - Voroux-Lez-Liers Place 19:52</li><li><a href="stop-TEC_Lvoec--2.html">TEC:Lvoec--2</a> - Voroux-Lez-Liers Ecole 19:53</li><li><a href="stop-TEC_Lrcvinc2.html">TEC:Lrcvinc2</a> - Rocourt Clinique St-Vincent 19:53</li><li><a href="stop-TEC_Lrcprin6.html">TEC:Lrcprin6</a> - Rocourt Rue Principale 19:54</li><li><a href="stop-TEC_Lrcarse2.html">TEC:Lrcarse2</a> - Rocourt Arsenal 19:55</li><li><a href="stop-TEC_Lrcastr2.html">TEC:Lrcastr2</a> - Rocourt Place Reine Astrid 19:57</li><li><a href="stop-TEC_Lrclant2.html">TEC:Lrclant2</a> - Rocourt Rue de Lantin 19:57</li><li><a href="stop-TEC_Lrchype2.html">TEC:Lrchype2</a> - Rocourt Hypermarché 19:58</li><li><a href="stop-TEC_Lrctec-2.html">TEC:Lrctec-2</a> - Rocourt Dépôt TEC 20:00</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5361.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

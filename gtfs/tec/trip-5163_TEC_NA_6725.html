@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - DINANT - ERMETON-SUR-BIERT - 5163:TEC:NA:6725</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DINANT - ERMETON-SUR-BIERT - 5163:TEC:NA:6725</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N565afb.html">TEC:N565afb</a> - Ermeton-sur-Biert Gare - dépôt TEC 13:54</li><li><a href="stop-TEC_N565abb.html">TEC:N565abb</a> - Ermeton-sur-Biert Route du couvent 13:55</li><li><a href="stop-TEC_N565acb.html">TEC:N565acb</a> - Ermeton-sur-Biert Château 13:55</li><li><a href="stop-TEC_N565aea.html">TEC:N565aea</a> - Ermeton-sur-Biert Place 13:55</li><li><a href="stop-TEC_N565aab.html">TEC:N565aab</a> - Ermeton-sur-Biert Bonsin 13:57</li><li><a href="stop-TEC_N550amb.html">TEC:N550amb</a> - Maredret Station 14:00</li><li><a href="stop-TEC_N550aab.html">TEC:N550aab</a> - Denee Château Desclée 14:01</li><li><a href="stop-TEC_N550abe.html">TEC:N550abe</a> - Maredsous Carrefour 14:03</li><li><a href="stop-TEC_N550ana.html">TEC:N550ana</a> - Denee Try du Moulin 14:05</li><li><a href="stop-TEC_N550afb.html">TEC:N550afb</a> - Denee Ecole 14:06</li><li><a href="stop-TEC_N549aeb.html">TEC:N549aeb</a> - Bioul La barrière 14:08</li><li><a href="stop-TEC_N549adb.html">TEC:N549adb</a> - Bioul Chafor 14:09</li><li><a href="stop-TEC_N549afb.html">TEC:N549afb</a> - Bioul Place 14:10</li><li><a href="stop-TEC_N549ahb.html">TEC:N549ahb</a> - Bioul Route de Warnant 14:11</li><li><a href="stop-TEC_N549agb.html">TEC:N549agb</a> - Bioul Quatre bras 14:11</li><li><a href="stop-TEC_N549acb.html">TEC:N549acb</a> - Bioul Crucifix 14:12</li><li><a href="stop-TEC_N549aab.html">TEC:N549aab</a> - Bioul Belle-vue 14:12</li><li><a href="stop-TEC_N549abb.html">TEC:N549abb</a> - Bioul Mossiat 14:12</li><li><a href="stop-TEC_N540abb.html">TEC:N540abb</a> - Annevoie Route de Fraire 14:13</li><li><a href="stop-TEC_N540aab.html">TEC:N540aab</a> - Annevoie Chemin de l'église 14:13</li><li><a href="stop-TEC_N540afb.html">TEC:N540afb</a> - Annevoie Jardins d'Annevoie 14:14</li><li><a href="stop-TEC_N540acb.html">TEC:N540acb</a> - Annevoie Route de Dinant 14:14</li><li><a href="stop-TEC_N540acd.html">TEC:N540acd</a> - Annevoie Route de Dinant 14:14</li><li><a href="stop-TEC_N230aab.html">TEC:N230aab</a> - Hun Eglise 14:17</li><li><a href="stop-TEC_N230abb.html">TEC:N230abb</a> - Hun Ecluse 14:18</li><li><a href="stop-TEC_N230acb.html">TEC:N230acb</a> - Hun Rocher de la Praule 14:20</li><li><a href="stop-TEC_N231acb.html">TEC:N231acb</a> - Anhee Pont d'Yvoir 14:21</li><li><a href="stop-TEC_N231adb.html">TEC:N231adb</a> - Anhee Route de Maredsous 14:22</li><li><a href="stop-TEC_N231abb.html">TEC:N231abb</a> - Anhee Place 14:23</li><li><a href="stop-TEC_N231afb.html">TEC:N231afb</a> - Anhee Rue Ste-Barbe 14:24</li><li><a href="stop-TEC_N231agb.html">TEC:N231agb</a> - Anhee Rue de l'Ecluse 14:25</li><li><a href="stop-TEC_N232cda.html">TEC:N232cda</a> - Bouvignes Station 14:27</li><li><a href="stop-TEC_N232aja.html">TEC:N232aja</a> - Bouvignes Monument 14:28</li><li><a href="stop-TEC_N232aia.html">TEC:N232aia</a> - Bouvignes Garage 14:29</li><li><a href="stop-TEC_N232aqa.html">TEC:N232aqa</a> - Dinant Gare 14:32</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6468.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

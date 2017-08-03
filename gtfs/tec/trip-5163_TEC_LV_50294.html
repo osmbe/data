@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Bressoux - Jupille - Les Bruyères - 5163:TEC:LV:50294</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Bressoux - Jupille - Les Bruyères - 5163:TEC:LV:50294</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LlgLEOP3.html">TEC:LlgLEOP3</a> - Liege Gare Léopold 13:22</li><li><a href="stop-TEC_Llgphol3.html">TEC:Llgphol3</a> - Liege Eglise St-Pholien 13:24</li><li><a href="stop-TEC_Llgbavi3.html">TEC:Llgbavi3</a> - Liege Bavière 13:26</li><li><a href="stop-TEC_Lbrptbr3.html">TEC:Lbrptbr3</a> - Bressoux Pont 13:28</li><li><a href="stop-TEC_Lbrfoid3.html">TEC:Lbrfoid3</a> - Bressoux Rue Foidart 13:30</li><li><a href="stop-TEC_Lbrplai1.html">TEC:Lbrplai1</a> - Bressoux Rue de la Plaine 13:31</li><li><a href="stop-TEC_Lbrmour1.html">TEC:Lbrmour1</a> - Bressoux Firme Moury 13:31</li><li><a href="stop-TEC_Lbrddef3.html">TEC:Lbrddef3</a> - Bressoux Rue D. Defrance 13:33</li><li><a href="stop-TEC_Lbrgrot1.html">TEC:Lbrgrot1</a> - Bressoux Grotte 13:34</li><li><a href="stop-TEC_Ljulieg1.html">TEC:Ljulieg1</a> - Jupille Rue de Liège 13:35</li><li><a href="stop-TEC_Ljuchap1.html">TEC:Ljuchap1</a> - Jupille Chapelle Momelette 13:36</li><li><a href="stop-TEC_Ljubois1.html">TEC:Ljubois1</a> - Jupille Rue de Bois-de-Breux 13:37</li><li><a href="stop-TEC_Ljujaur1.html">TEC:Ljujaur1</a> - Jupille Rue J. Jaurès 13:38</li><li><a href="stop-TEC_Ljuathe1.html">TEC:Ljuathe1</a> - Jupille Athénée 13:39</li><li><a href="stop-TEC_Ljucrah1.html">TEC:Ljucrah1</a> - Jupille Rue Crahay 13:40</li><li><a href="stop-TEC_Ljuetie1.html">TEC:Ljuetie1</a> - Jupille Place G. Etienne 13:40</li><li><a href="stop-TEC_Ljucano1.html">TEC:Ljucano1</a> - Jupille Rue des Canonniers 13:41</li><li><a href="stop-TEC_Ljubrec1.html">TEC:Ljubrec1</a> - Jupille Les Bruyères écoles 13:41</li><li><a href="stop-TEC_Ljubruy_.html">TEC:Ljubruy*</a> - Jupille Les Bruyères 13:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4346.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

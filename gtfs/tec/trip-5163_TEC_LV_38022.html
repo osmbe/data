@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Noville - Momalle - Crisnée - 5163:TEC:LV:38022</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Noville - Momalle - Crisnée - 5163:TEC:LV:38022</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LNveg--2.html">TEC:LNveg--2</a> - Noville Eglise 08:13</li><li><a href="stop-TEC_LMOstat1.html">TEC:LMOstat1</a> - Momalle Rue de la Station 104 08:15</li><li><a href="stop-TEC_LMOfleu1.html">TEC:LMOfleu1</a> - Momalle Fleuriste 08:16</li><li><a href="stop-TEC_LMOecsp1.html">TEC:LMOecsp1</a> - Momalle Ecole Spéciale 08:17</li><li><a href="stop-TEC_LMOs45-1.html">TEC:LMOs45-1</a> - Momalle Rue de la Station 45 08:18</li><li><a href="stop-TEC_LMOelva3.html">TEC:LMOelva3</a> - Momalle Rue El'Vau 08:19</li><li><a href="stop-TEC_LMObut-1.html">TEC:LMObut-1</a> - Momalle Café Le But 08:20</li><li><a href="stop-TEC_LMOchen1.html">TEC:LMOchen1</a> - Momalle Carrefour rue du Chêne 08:21</li><li><a href="stop-TEC_LMOc50-1.html">TEC:LMOc50-1</a> - Momalle Rue du Chêne 50 08:22</li><li><a href="stop-TEC_LMOlens3.html">TEC:LMOlens3</a> - Momalle Rue de Lens 08:23</li><li><a href="stop-TEC_LMOford1.html">TEC:LMOford1</a> - Momalle Garage Ford 08:23</li><li><a href="stop-TEC_LMOeg--2.html">TEC:LMOeg--2</a> - Momalle Eglise 08:24</li><li><a href="stop-TEC_LMOhero1.html">TEC:LMOhero1</a> - Momalle Rue des Héros 08:25</li><li><a href="stop-TEC_LMOmome1.html">TEC:LMOmome1</a> - Momalle Rue Momelette 08:25</li><li><a href="stop-TEC_LMOm48-1.html">TEC:LMOm48-1</a> - Momalle Rue Momelette 48 08:27</li><li><a href="stop-TEC_LMOm64-1.html">TEC:LMOm64-1</a> - Momalle Rue Momelette 64 08:28</li><li><a href="stop-TEC_LMOecsp3.html">TEC:LMOecsp3</a> - Momalle Ecole Spéciale 08:30</li><li><a href="stop-TEC_LMOs45-1.html">TEC:LMOs45-1</a> - Momalle Rue de la Station 45 08:31</li><li><a href="stop-TEC_LMOelva3.html">TEC:LMOelva3</a> - Momalle Rue El'Vau 08:32</li><li><a href="stop-TEC_LMOf21-1.html">TEC:LMOf21-1</a> - Momalle Rue de Fexhe 21 08:32</li><li><a href="stop-TEC_LMOf35-1.html">TEC:LMOf35-1</a> - Momalle Rue de Fexhe 35 08:33</li><li><a href="stop-TEC_LMOcorn3.html">TEC:LMOcorn3</a> - Momalle Rue Cornet 08:34</li><li><a href="stop-TEC_LMOchpl2.html">TEC:LMOchpl2</a> - Momalle Chapelle 08:35</li><li><a href="stop-TEC_LMOfrel2.html">TEC:LMOfrel2</a> - Momalle Route de Freloux 08:36</li><li><a href="stop-TEC_LMObouh1.html">TEC:LMObouh1</a> - Momalle Le Bouhet 08:38</li><li><a href="stop-TEC_LFmbure1.html">TEC:LFmbure1</a> - Fize-le-Marsal rue Burette 5 08:39</li><li><a href="stop-TEC_LFmpoin1.html">TEC:LFmpoin1</a> - Fize-le-Marsal Rond-point 08:40</li><li><a href="stop-TEC_LFmlens2.html">TEC:LFmlens2</a> - Fize-le-Marsal rue de Lens 08:40</li><li><a href="stop-TEC_LFmceli2.html">TEC:LFmceli2</a> - Fize-le-Marsal Ecole Libre 08:40</li><li><a href="stop-TEC_LFmpoin2.html">TEC:LFmpoin2</a> - Fize-le-Marsal Rond-point 08:41</li><li><a href="stop-TEC_LCRecmo2.html">TEC:LCRecmo2</a> - Crisnee Ecole moyenne 08:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4524.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

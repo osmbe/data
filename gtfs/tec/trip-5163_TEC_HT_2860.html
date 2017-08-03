@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tournai City : Tournai - Chercq - Vaulx - 5163:TEC:HT:2860</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tournai City : Tournai - Chercq - Vaulx - 5163:TEC:HT:2860</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4vx360a.html">TEC:H4vx360a</a> - Vaulx Ancienne Gare 13:01</li><li><a href="stop-TEC_H4vx366a.html">TEC:H4vx366a</a> - Vaulx Vieux Chemin de Mons 13:02</li><li><a href="stop-TEC_H4vx361a.html">TEC:H4vx361a</a> - Vaulx Avenue des Merisiers 13:03</li><li><a href="stop-TEC_H4vx365a.html">TEC:H4vx365a</a> - Vaulx Résidence Bonne Rencontre 13:03</li><li><a href="stop-TEC_H4vx362b.html">TEC:H4vx362b</a> - Vaulx Brasserie 13:04</li><li><a href="stop-TEC_H4vx363b.html">TEC:H4vx363b</a> - Vaulx Ecoles 13:04</li><li><a href="stop-TEC_H4vx364c.html">TEC:H4vx364c</a> - Vaulx Eglise 13:05</li><li><a href="stop-TEC_H4ch120d.html">TEC:H4ch120d</a> - Chercq Pont de Vaulx 13:06</li><li><a href="stop-TEC_H4ch118a.html">TEC:H4ch118a</a> - Chercq Monument 13:06</li><li><a href="stop-TEC_H4ch119a.html">TEC:H4ch119a</a> - Chercq Place 13:07</li><li><a href="stop-TEC_H4ch116a.html">TEC:H4ch116a</a> - Chercq Cité 13:08</li><li><a href="stop-TEC_H4ch115a.html">TEC:H4ch115a</a> - Chercq Californie 13:08</li><li><a href="stop-TEC_H4ty321a.html">TEC:H4ty321a</a> - Tournai Polyclinique 13:10</li><li><a href="stop-TEC_H4ty318b.html">TEC:H4ty318b</a> - Tournai Pédiatrie 13:11</li><li><a href="stop-TEC_H4ty324c.html">TEC:H4ty324c</a> - Tournai Prison 13:12</li><li><a href="stop-TEC_H4ty293a.html">TEC:H4ty293a</a> - Tournai Dorcas 13:13</li><li><a href="stop-TEC_H4ty354a.html">TEC:H4ty354a</a> - Tournai Bastions Quai 1 13:14</li><li><a href="stop-TEC_H4ty314b.html">TEC:H4ty314b</a> - Tournai Marvis 13:15</li><li><a href="stop-TEC_H4ty296a.html">TEC:H4ty296a</a> - Tournai Ecole Industrielle 13:16</li><li><a href="stop-TEC_H4ty351a.html">TEC:H4ty351a</a> - Tournai Saint-Brice 13:17</li><li><a href="stop-TEC_H4ty291b.html">TEC:H4ty291b</a> - Tournai Dôme 13:18</li><li><a href="stop-TEC_H4ty274b.html">TEC:H4ty274b</a> - Tournai Beffroi 13:19</li><li><a href="stop-TEC_H4ty306b.html">TEC:H4ty306b</a> - Tournai Grand-Place 13:21</li><li><a href="stop-TEC_H4ty264a.html">TEC:H4ty264a</a> - Tournai 4 Coins Saint-Jacques 13:24</li><li><a href="stop-TEC_H4ty302a.html">TEC:H4ty302a</a> - Tournai Floc à Brebis 13:24</li><li><a href="stop-TEC_H4ty330c.html">TEC:H4ty330c</a> - Tournai Rond Point 13:25</li><li><a href="stop-TEC_H4ty290b.html">TEC:H4ty290b</a> - Tournai Dépôt 13:26</li><li><a href="stop-TEC_H4ty295b.html">TEC:H4ty295b</a> - Tournai Ecole du Château 13:28</li><li><a href="stop-TEC_H4ty305a.html">TEC:H4ty305a</a> - Tournai SNCB 13:30</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1410.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

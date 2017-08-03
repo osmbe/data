@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Attre - Blaton - 5163:TEC:HT:1354</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Attre - Blaton - 5163:TEC:HT:1354</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H5at116d.html">TEC:H5at116d</a> - Ath SNCB 16:12</li><li><a href="stop-TEC_H5at106a.html">TEC:H5at106a</a> - Ath Athénée 16:13</li><li><a href="stop-TEC_H5at112a.html">TEC:H5at112a</a> - Ath Clinique de l'Esplanade 16:14</li><li><a href="stop-TEC_H5at124a.html">TEC:H5at124a</a> - Ath Pharmacie 16:15</li><li><a href="stop-TEC_H5at123a.html">TEC:H5at123a</a> - Ath Match 16:15</li><li><a href="stop-TEC_H5at105a.html">TEC:H5at105a</a> - Ath Aldi 16:16</li><li><a href="stop-TEC_H5at113a.html">TEC:H5at113a</a> - Ath Colruyt 16:16</li><li><a href="stop-TEC_H5at114a.html">TEC:H5at114a</a> - Ath Delhaize - Lorette 16:17</li><li><a href="stop-TEC_H5at107a.html">TEC:H5at107a</a> - Ath Avenue Jouret 16:18</li><li><a href="stop-TEC_H5at134a.html">TEC:H5at134a</a> - Ath Rue du Centenaire 16:19</li><li><a href="stop-TEC_H5at118a.html">TEC:H5at118a</a> - Ath Ch EpiCURA 16:20</li><li><a href="stop-TEC_H5at120b.html">TEC:H5at120b</a> - Ath Institut Technique 16:20</li><li><a href="stop-TEC_H5at116a.html">TEC:H5at116a</a> - Ath SNCB 16:27</li><li><a href="stop-TEC_H5at116d.html">TEC:H5at116d</a> - Ath SNCB 16:29</li><li><a href="stop-TEC_H4ir165a.html">TEC:H4ir165a</a> - Irchonwelz Institut Ménager 16:32</li><li><a href="stop-TEC_H4ir166a.html">TEC:H4ir166a</a> - Irchonwelz Restaurant Lebrun 16:33</li><li><a href="stop-TEC_H4ir162a.html">TEC:H4ir162a</a> - Irchonwelz Chapelle 16:34</li><li><a href="stop-TEC_H4ir163d.html">TEC:H4ir163d</a> - Irchonwelz Chemin de Moulbaix 16:35</li><li><a href="stop-TEC_H4ir167a.html">TEC:H4ir167a</a> - Irchonwelz Rue de la Chapelle 16:36</li><li><a href="stop-TEC_H4ir161a.html">TEC:H4ir161a</a> - Irchonwelz Bélicamp 16:37</li><li><a href="stop-TEC_H4vd230a.html">TEC:H4vd230a</a> - Villers-Notre-Dame Eglise 16:38</li><li><a href="stop-TEC_H4va233a.html">TEC:H4va233a</a> - Villers-St-Amand Eglise 16:40</li><li><a href="stop-TEC_H4va234a.html">TEC:H4va234a</a> - Villers-St-Amand Village 16:41</li><li><a href="stop-TEC_H4va231a.html">TEC:H4va231a</a> - Villers-St-Amand Chaussée de Tournai 16:42</li><li><a href="stop-TEC_H4li179a.html">TEC:H4li179a</a> - Ligne Route d' Ath 16:44</li><li><a href="stop-TEC_H4li178a.html">TEC:H4li178a</a> - Ligne Gare 16:45</li><li><a href="stop-TEC_H4li179c.html">TEC:H4li179c</a> - Ligne Route d' Ath 16:46</li><li><a href="stop-TEC_H4mb202a.html">TEC:H4mb202a</a> - Moulbaix Parc 16:47</li><li><a href="stop-TEC_H4mb205a.html">TEC:H4mb205a</a> - Moulbaix Rue de la Place 16:49</li><li><a href="stop-TEC_H4mb204a.html">TEC:H4mb204a</a> - Moulbaix Pont 16:50</li><li><a href="stop-TEC_H4mb203a.html">TEC:H4mb203a</a> - Moulbaix Place 16:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1862.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bus local de Vresse (Bohan) - 5163:TEC:LU:4011</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bus local de Vresse (Bohan) - 5163:TEC:LU:4011</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X318ada.html">TEC:X318ada</a> - Bohan Ecole Communale 16:06</li><li><a href="stop-TEC_X318aba.html">TEC:X318aba</a> - Bohan Rue de Membre 92 16:07</li><li><a href="stop-TEC_X364acb.html">TEC:X364acb</a> - Membre Pont 16:11</li><li><a href="stop-TEC_X364aba.html">TEC:X364aba</a> - Membre Carrefour 16:12</li><li><a href="stop-TEC_X364aaa.html">TEC:X364aaa</a> - Membre Rue de Vresse 99 16:12</li><li><a href="stop-TEC_X371agb.html">TEC:X371agb</a> - Vresse Gendarmerie 16:15</li><li><a href="stop-TEC_X371ada.html">TEC:X371ada</a> - Laforet Rue Sainte-Agathe 71 16:15</li><li><a href="stop-TEC_X371acb.html">TEC:X371acb</a> - Laforet Rue Sainte-Agathe 2 16:16</li><li><a href="stop-TEC_X371aaa.html">TEC:X371aaa</a> - Laforet Ecole Communale 16:19</li><li><a href="stop-TEC_X371aba.html">TEC:X371aba</a> - Laforet Eglise 16:19</li><li><a href="stop-TEC_X371aca.html">TEC:X371aca</a> - Laforet Rue Sainte-Agathe 2 16:20</li><li><a href="stop-TEC_X371adb.html">TEC:X371adb</a> - Laforet Rue Sainte-Agathe 71 16:21</li><li><a href="stop-TEC_X371aeb.html">TEC:X371aeb</a> - Vresse Eglise 16:22</li><li><a href="stop-TEC_X371aia.html">TEC:X371aia</a> - Vresse Le Terne 16:27</li><li><a href="stop-TEC_X371aja.html">TEC:X371aja</a> - Conrad Rue de Terne 16:30</li><li><a href="stop-TEC_X361afa.html">TEC:X361afa</a> - Herisson Route de Hérissart 16:40</li><li><a href="stop-TEC_X364aba.html">TEC:X364aba</a> - Membre Carrefour 16:50</li><li><a href="stop-TEC_X364aaa.html">TEC:X364aaa</a> - Membre Rue de Vresse 99 16:50</li><li><a href="stop-TEC_X371agb.html">TEC:X371agb</a> - Vresse Gendarmerie 16:55</li><li><a href="stop-TEC_X371aea.html">TEC:X371aea</a> - Vresse Eglise 16:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3615.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

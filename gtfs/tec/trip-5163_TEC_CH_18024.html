@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - SOLEILMONT - BEAUX-ARTS - SUD - PARC - SOLEILMONT - 5163:TEC:CH:18024</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: SOLEILMONT - BEAUX-ARTS - SUD - PARC - SOLEILMONT - 5163:TEC:CH:18024</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_CMsud1.html">TEC:CMsud1</a> - Charleroi Sud 14:02</li><li><a href="stop-TEC_CMtirou2.html">TEC:CMtirou2</a> - Charleroi Tirou (M) 14:03</li><li><a href="stop-TEC_CMparc2.html">TEC:CMparc2</a> - Charleroi Parc (M) 14:06</li><li><a href="stop-TEC_CMjans2.html">TEC:CMjans2</a> - Charleroi Janson (M) 14:07</li><li><a href="stop-TEC_CMwate1.html">TEC:CMwate1</a> - Charleroi Waterloo (M) 14:09</li><li><a href="stop-TEC_CMsama2.html">TEC:CMsama2</a> - Charleroi Samaritaine (M) 14:11</li><li><a href="stop-TEC_CMgazo2.html">TEC:CMgazo2</a> - Gilly Gazomètre (M) 14:13</li><li><a href="stop-TEC_CMgill2.html">TEC:CMgill2</a> - Gilly Gilly (M) 14:14</li><li><a href="stop-TEC_CMmarab2.html">TEC:CMmarab2</a> - Gilly Marabout (M) 14:16</li><li><a href="stop-TEC_CMsartc2.html">TEC:CMsartc2</a> - Gilly Sart Culpart (M) 14:17</li><li><a href="stop-TEC_CMsolei2.html">TEC:CMsolei2</a> - Gilly Soleilmont (M) 14:19</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./817.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

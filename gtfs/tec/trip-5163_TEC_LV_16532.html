@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Lambert - Thier à Liège - Vottem - 5163:TEC:LV:16532</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Lambert - Thier à Liège - Vottem - 5163:TEC:LV:16532</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lvteg--2.html">TEC:Lvteg--2</a> - Vottem Eglise 21:21</li><li><a href="stop-TEC_Lvtfrai2.html">TEC:Lvtfrai2</a> - Vottem Rue des Fraisiers 21:22</li><li><a href="stop-TEC_Lvtnico2.html">TEC:Lvtnico2</a> - Vottem Rue F. Nicolay 21:24</li><li><a href="stop-TEC_Llgboux2.html">TEC:Llgboux2</a> - Liege Rue du Bouxthay 21:24</li><li><a href="stop-TEC_Llgherm2.html">TEC:Llgherm2</a> - Liege Rue de l'Ermitage 21:25</li><li><a href="stop-TEC_Llgmair2.html">TEC:Llgmair2</a> - Liege Mairie du thier à Liège 21:25</li><li><a href="stop-TEC_Llgthie2.html">TEC:Llgthie2</a> - Liege Thier à Liège écoles 21:26</li><li><a href="stop-TEC_Llgpiet2.html">TEC:Llgpiet2</a> - Liege Rue N. Pietkin 21:26</li><li><a href="stop-TEC_Llgvolg2.html">TEC:Llgvolg2</a> - Liege Rue de Volgograd 21:27</li><li><a href="stop-TEC_Llghori2.html">TEC:Llghori2</a> - Liege Rue C. Horion 21:28</li><li><a href="stop-TEC_Llgpbay2.html">TEC:Llgpbay2</a> - Liege Pont des Bayards 21:29</li><li><a href="stop-TEC_Llgbaya4.html">TEC:Llgbaya4</a> - Liege Rue des Bayards 21:30</li><li><a href="stop-TEC_Llgbonn2.html">TEC:Llgbonn2</a> - Liege Place Bonne Nouvelle 21:31</li><li><a href="stop-TEC_Llgdony2.html">TEC:Llgdony2</a> - Liege Rue Dony 21:31</li><li><a href="stop-TEC_Llgjonr2.html">TEC:Llgjonr2</a> - Liege Rue Jonruelle 21:32</li><li><a href="stop-TEC_Llgmagh2.html">TEC:Llgmagh2</a> - Liege Rue Maghin 21:33</li><li><a href="stop-TEC_Llgdepo2.html">TEC:Llgdepo2</a> - Liege Place des Déportés 21:34</li><li><a href="stop-TEC_Llgcrev2.html">TEC:Llgcrev2</a> - Liege Place Crève-coeur 21:35</li><li><a href="stop-TEC_Llgvelb2.html">TEC:Llgvelb2</a> - Liege Rue Velbruck 21:35</li><li><a href="stop-TEC_Llgmarc2.html">TEC:Llgmarc2</a> - Liege Place du Marché 21:36</li><li><a href="stop-TEC_LlgLAMB2.html">TEC:LlgLAMB2</a> - Liege Place St-Lambert 21:38</li><li><a href="stop-TEC_LlgLAMB1.html">TEC:LlgLAMB1</a> - Liege Place St-Lambert 21:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4145.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

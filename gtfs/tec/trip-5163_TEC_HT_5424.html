@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tournai - La Glanerie - 5163:TEC:HT:5424</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tournai - La Glanerie - 5163:TEC:HT:5424</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4ty305d.html">TEC:H4ty305d</a> - Tournai SNCB 19:23</li><li><a href="stop-TEC_H4ty295a.html">TEC:H4ty295a</a> - Tournai Boulevard des Nerviens 19:24</li><li><a href="stop-TEC_H4ty295b.html">TEC:H4ty295b</a> - Tournai Ecole du Château 19:25</li><li><a href="stop-TEC_H4ty416a.html">TEC:H4ty416a</a> - Tournai Athénée 19:27</li><li><a href="stop-TEC_H4ty351a.html">TEC:H4ty351a</a> - Tournai Saint-Brice 19:27</li><li><a href="stop-TEC_H4ty291b.html">TEC:H4ty291b</a> - Tournai Dôme 19:28</li><li><a href="stop-TEC_H4ty274b.html">TEC:H4ty274b</a> - Tournai Beffroi 19:29</li><li><a href="stop-TEC_H4ty317b.html">TEC:H4ty317b</a> - Tournai Palais de Justice 19:31</li><li><a href="stop-TEC_H4ty308c.html">TEC:H4ty308c</a> - Tournai Chwapi Lalaing 19:33</li><li><a href="stop-TEC_H4ty272b.html">TEC:H4ty272b</a> - Tournai Bavaro 19:34</li><li><a href="stop-TEC_H4ty344b.html">TEC:H4ty344b</a> - Tournai Rue Hennebicq 19:34</li><li><a href="stop-TEC_H4ty307b.html">TEC:H4ty307b</a> - Tournai Guinguette 19:35</li><li><a href="stop-TEC_H4ty332c.html">TEC:H4ty332c</a> - Tournai Rue Allard l'Olivier 19:36</li><li><a href="stop-TEC_H4ty283b.html">TEC:H4ty283b</a> - Tournai Chemin de Rongy 19:36</li><li><a href="stop-TEC_H4ty322d.html">TEC:H4ty322d</a> - Tournai Pont à Rieu 19:37</li><li><a href="stop-TEC_H4er124b.html">TEC:H4er124b</a> - Tournai Moulin Pesin 19:38</li><li><a href="stop-TEC_H4er122b.html">TEC:H4er122b</a> - Ere Garage 19:39</li><li><a href="stop-TEC_H4er123a.html">TEC:H4er123a</a> - Ere Gare 19:40</li><li><a href="stop-TEC_H4er125a.html">TEC:H4er125a</a> - Ere Pont Merlo 19:41</li><li><a href="stop-TEC_H4wu420a.html">TEC:H4wu420a</a> - Willemeau Rue Moulin à Eau 19:43</li><li><a href="stop-TEC_H4wu377a.html">TEC:H4wu377a</a> - Willemeau Place 19:43</li><li><a href="stop-TEC_H4ft135a.html">TEC:H4ft135a</a> - Froidmont Gare 19:46</li><li><a href="stop-TEC_H4ft133a.html">TEC:H4ft133a</a> - Froidmont Café des Archers 19:47</li><li><a href="stop-TEC_H4ft132a.html">TEC:H4ft132a</a> - Froidmont Cabine 19:47</li><li><a href="stop-TEC_H4ft136a.html">TEC:H4ft136a</a> - Froidmont Place 19:48</li><li><a href="stop-TEC_H4ft134a.html">TEC:H4ft134a</a> - Esplechin Ferme Garin 19:49</li><li><a href="stop-TEC_H4ep127b.html">TEC:H4ep127b</a> - Esplechin Chapelle 19:51</li><li><a href="stop-TEC_H4ep130a.html">TEC:H4ep130a</a> - Esplechin Place 19:51</li><li><a href="stop-TEC_H4ep131b.html">TEC:H4ep131b</a> - Esplechin Rue Bruenne 19:52</li><li><a href="stop-TEC_H4ep126b.html">TEC:H4ep126b</a> - Esplechin Bureau de Douane 19:53</li><li><a href="stop-TEC_H4ep128b.html">TEC:H4ep128b</a> - Esplechin Frontière 19:54</li><li><a href="stop-TEC_H4ep129a.html">TEC:H4ep129a</a> - Esplechin Maraîche 19:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1340.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

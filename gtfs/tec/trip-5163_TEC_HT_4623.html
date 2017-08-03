@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mons - Soignies - 5163:TEC:HT:4623</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mons - Soignies - 5163:TEC:HT:4623</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1ms400d.html">TEC:H1ms400d</a> - Mons SNCB 11:07</li><li><a href="stop-TEC_H1ms256a.html">TEC:H1ms256a</a> - Mons Bd Sainctelette 11:09</li><li><a href="stop-TEC_H1ms296c.html">TEC:H1ms296c</a> - Mons Place des Chasseurs 11:10</li><li><a href="stop-TEC_H1ms276a.html">TEC:H1ms276a</a> - Mons Ecole Normale 11:11</li><li><a href="stop-TEC_H1ms253a.html">TEC:H1ms253a</a> - Mons Banque 11:12</li><li><a href="stop-TEC_H1ms294c.html">TEC:H1ms294c</a> - Mons Place de Flandre 11:14</li><li><a href="stop-TEC_H1ms285a.html">TEC:H1ms285a</a> - Mons Hôpital Civil 11:15</li><li><a href="stop-TEC_H1ms304a.html">TEC:H1ms304a</a> - Mons Rue Valenciennoise 11:16</li><li><a href="stop-TEC_H1ms913a.html">TEC:H1ms913a</a> - Mons Bd JF Kennedy 11:17</li><li><a href="stop-TEC_H1ms267a.html">TEC:H1ms267a</a> - Mons Chemin de la Procession 11:19</li><li><a href="stop-TEC_H1ni322a.html">TEC:H1ni322a</a> - Nimy Rue de la Limite 11:21</li><li><a href="stop-TEC_H1ni323a.html">TEC:H1ni323a</a> - Nimy Rue Gérard 11:23</li><li><a href="stop-TEC_H1ni320a.html">TEC:H1ni320a</a> - Nimy Place 11:25</li><li><a href="stop-TEC_H1ni321a.html">TEC:H1ni321a</a> - Nimy Route d' Ath 11:26</li><li><a href="stop-TEC_H1ni318a.html">TEC:H1ni318a</a> - Nimy Librairie 11:26</li><li><a href="stop-TEC_H1ni317a.html">TEC:H1ni317a</a> - Nimy Château 11:27</li><li><a href="stop-TEC_H1ni316a.html">TEC:H1ni316a</a> - Nimy Chapelle 11:28</li><li><a href="stop-TEC_H1ni319b.html">TEC:H1ni319b</a> - Nimy Limite 11:30</li><li><a href="stop-TEC_H1ni319b.html">TEC:H1ni319b</a> - Nimy Limite 11:30</li><li><a href="stop-TEC_H1ni316b.html">TEC:H1ni316b</a> - Nimy Chapelle 11:31</li><li><a href="stop-TEC_H1ni317b.html">TEC:H1ni317b</a> - Nimy Château 11:32</li><li><a href="stop-TEC_H1ni318b.html">TEC:H1ni318b</a> - Nimy Librairie 11:33</li><li><a href="stop-TEC_H1ni315a.html">TEC:H1ni315a</a> - Nimy Battard 11:33</li><li><a href="stop-TEC_H1ma231a.html">TEC:H1ma231a</a> - Maisieres Chapelle 11:35</li><li><a href="stop-TEC_H1ma234a.html">TEC:H1ma234a</a> - Maisieres Place 11:36</li><li><a href="stop-TEC_H1ma233a.html">TEC:H1ma233a</a> - Maisieres Le Maisières 11:38</li><li><a href="stop-TEC_H1ma237a.html">TEC:H1ma237a</a> - Maisieres Zoé 11:39</li><li><a href="stop-TEC_H1ma230a.html">TEC:H1ma230a</a> - Maisieres Brisée St Denis 11:40</li><li><a href="stop-TEC_H1ca186a.html">TEC:H1ca186a</a> - Casteau Chemin des Princes 11:41</li><li><a href="stop-TEC_H1ca101a.html">TEC:H1ca101a</a> - Casteau Entrée du Village 11:41</li><li><a href="stop-TEC_H1ca109a.html">TEC:H1ca109a</a> - Casteau Village 11:42</li><li><a href="stop-TEC_H1ca104a.html">TEC:H1ca104a</a> - Casteau Monument 11:42</li><li><a href="stop-TEC_H1ca100a.html">TEC:H1ca100a</a> - Casteau Dépôt 11:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2048.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

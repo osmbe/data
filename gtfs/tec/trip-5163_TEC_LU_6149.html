@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Differt - Athus - Dippach - Luxembourg - 5163:TEC:LU:6149</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Differt - Athus - Dippach - Luxembourg - 5163:TEC:LU:6149</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X614aka.html">TEC:X614aka</a> - Differt Institut 13:01</li><li><a href="stop-TEC_X614aab.html">TEC:X614aab</a> - Differt Cora N81 13:02</li><li><a href="stop-TEC_X614agb.html">TEC:X614agb</a> - Messancy La Hard 13:06</li><li><a href="stop-TEC_X615bhb.html">TEC:X615bhb</a> - Aubange Rue de Messancy 120 13:07</li><li><a href="stop-TEC_X615bgb.html">TEC:X615bgb</a> - Aubange Rue de Messancy 70 13:08</li><li><a href="stop-TEC_X615awb.html">TEC:X615awb</a> - Aubange Place 13:10</li><li><a href="stop-TEC_X615avb.html">TEC:X615avb</a> - Aubange Rue du Village 13:11</li><li><a href="stop-TEC_X615aub.html">TEC:X615aub</a> - Aubange Rue d'Athus 13:12</li><li><a href="stop-TEC_X615acb.html">TEC:X615acb</a> - Athus Clinique 13:13</li><li><a href="stop-TEC_X615aba.html">TEC:X615aba</a> - Athus Gare 13:14</li><li><a href="stop-TEC_X615bia.html">TEC:X615bia</a> - Athus IMMA 13:15</li><li><a href="stop-TEC_X615aab.html">TEC:X615aab</a> - Athus Grand-Rue 13:17</li><li><a href="stop-TEC_X615aga.html">TEC:X615aga</a> - Athus Centre - Rue Houillon 13:18</li><li><a href="stop-TEC_X615aha.html">TEC:X615aha</a> - Athus Ecoles 13:19</li><li><a href="stop-TEC_X615aib.html">TEC:X615aib</a> - Athus Rue Houillon 13:20</li><li><a href="stop-TEC_X615agb.html">TEC:X615agb</a> - Athus Centre - Rue Houillon 13:21</li><li><a href="stop-TEC_X615afb.html">TEC:X615afb</a> - Athus Rue de Rodange 13:23</li><li><a href="stop-TEC_X681aaa.html">TEC:X681aaa</a> - Rodange Fonderie 13:28</li><li><a href="stop-TEC_X681abb.html">TEC:X681abb</a> - Rodange Brouckerwee 13:30</li><li><a href="stop-TEC_X681aca.html">TEC:X681aca</a> - Rodange Kiirch 13:32</li><li><a href="stop-TEC_X681ada.html">TEC:X681ada</a> - Lamadelaine Maragole 13:35</li><li><a href="stop-TEC_X681aeb.html">TEC:X681aeb</a> - Lamadelaine Kiirch 13:36</li><li><a href="stop-TEC_X681afa.html">TEC:X681afa</a> - Lamadelaine Schoul 13:37</li><li><a href="stop-TEC_X681agb.html">TEC:X681agb</a> - Lamadelaine Wise Strooss R. Prés 13:39</li><li><a href="stop-TEC_X687akb.html">TEC:X687akb</a> - Petange Porte Lamadelaine 13:40</li><li><a href="stop-TEC_X687ajb.html">TEC:X687ajb</a> - Petange Cactus 13:41</li><li><a href="stop-TEC_X687aia.html">TEC:X687aia</a> - Petange Maartplaz 13:41</li><li><a href="stop-TEC_X687aea.html">TEC:X687aea</a> - Bascharage Place Schuman 13:48</li><li><a href="stop-TEC_X687aaa.html">TEC:X687aaa</a> - Bascharage Prince Henri 13:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3801.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Waremme - Geer - Hannut - 5163:TEC:LV:43052</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Waremme - Geer - Hannut - 5163:TEC:LV:43052</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LHgec--0.html">TEC:LHgec--0</a> - Hollogne-sur-Geer Ecole Primaire 11:59</li><li><a href="stop-TEC_LHgpost1.html">TEC:LHgpost1</a> - Hollogne-sur-Geer Poste 11:59</li><li><a href="stop-TEC_LHgtomb1.html">TEC:LHgtomb1</a> - Hollogne-sur-Geer Place du Tombeux 12:00</li><li><a href="stop-TEC_LHgroso1.html">TEC:LHgroso1</a> - Hollogne-sur-Geer Rue de Rosoux 12:00</li><li><a href="stop-TEC_LBpvue-1.html">TEC:LBpvue-1</a> - Boelhe rue Belle Vue 35 12:03</li><li><a href="stop-TEC_LBpecco2.html">TEC:LBpecco2</a> - Boelhe Ecole communale 12:04</li><li><a href="stop-TEC_LGEhosp2.html">TEC:LGEhosp2</a> - Geer Hospice 12:06</li><li><a href="stop-TEC_LGEcent1.html">TEC:LGEcent1</a> - Geer Centre 12:07</li><li><a href="stop-TEC_LGEvill1.html">TEC:LGEvill1</a> - Geer Village 12:07</li><li><a href="stop-TEC_LGEwalk1.html">TEC:LGEwalk1</a> - Geer Rue G. Walkens 12:07</li><li><a href="stop-TEC_LLStrid3.html">TEC:LLStrid3</a> - Lens-Saint-Servais Rue des Tridaines 12:08</li><li><a href="stop-TEC_LLSba9-1.html">TEC:LLSba9-1</a> - Lens-Saint-Servais Rue du Baulet 9 12:09</li><li><a href="stop-TEC_LLSba6-1.html">TEC:LLSba6-1</a> - Lens-Saint-Servais Rue du Baulet 6 12:10</li><li><a href="stop-TEC_LLSba4-1.html">TEC:LLSba4-1</a> - Lens-Saint-Servais Rue du Baulet 4 12:11</li><li><a href="stop-TEC_LLStour1.html">TEC:LLStour1</a> - Lens-Saint-Servais Rue de Tourinne 12:12</li><li><a href="stop-TEC_LLSbajo2.html">TEC:LLSbajo2</a> - Lens-Saint-Servais Rue H. Bajot 12:13</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5592.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

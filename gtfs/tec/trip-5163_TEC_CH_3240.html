@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - GOUTROUX PAIROTTE - GOZEE - THUILLIES - 5163:TEC:CH:3240</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GOUTROUX PAIROTTE - GOZEE - THUILLIES - 5163:TEC:CH:3240</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cmomoul6.html">TEC:Cmomoul6</a> - Monceau-sur-Sambre Moulin (M) 05:34</li><li><a href="stop-TEC_Cmopn6.html">TEC:Cmopn6</a> - Monceau-sur-Sambre Passage à Niveau 05:36</li><li><a href="stop-TEC_Cmocalv2.html">TEC:Cmocalv2</a> - Monceau-sur-Sambre Calvaire 05:37</li><li><a href="stop-TEC_Cmasncb2.html">TEC:Cmasncb2</a> - Marchienne-Au-Pont S.N.C.B. 05:38</li><li><a href="stop-TEC_Cmamons2.html">TEC:Cmamons2</a> - Marchienne-Au-Pont Route de Mons 05:39</li><li><a href="stop-TEC_Cmadeli2.html">TEC:Cmadeli2</a> - Marchienne-Au-Pont Rue Delire 05:41</li><li><a href="stop-TEC_Cmacart4.html">TEC:Cmacart4</a> - Marchienne-Au-Pont De Cartier 05:42</li><li><a href="stop-TEC_Cmamarc2.html">TEC:Cmamarc2</a> - Marchienne-Au-Pont Puits du Marché 05:42</li><li><a href="stop-TEC_Cmazone2.html">TEC:Cmazone2</a> - Marchienne-Au-Pont Rue de Zone 05:43</li><li><a href="stop-TEC_Cmazsnc2.html">TEC:Cmazsnc2</a> - Marchienne-Au-Pont Zone SNCB 05:44</li><li><a href="stop-TEC_Cmastma2.html">TEC:Cmastma2</a> - Marchienne-Au-Pont Saint-Martin 05:45</li><li><a href="stop-TEC_Cmamonu2.html">TEC:Cmamonu2</a> - Marchienne-Au-Pont Monument 05:46</li><li><a href="stop-TEC_Cmychap4.html">TEC:Cmychap4</a> - Montigny-le-Tilleul Chapelle 05:47</li><li><a href="stop-TEC_Cmychau2.html">TEC:Cmychau2</a> - Montigny-le-Tilleul Rue E. Chaudron 05:48</li><li><a href="stop-TEC_Cmychpl2.html">TEC:Cmychpl2</a> - Montigny-le-Tilleul Chemin de la Place 05:49</li><li><a href="stop-TEC_Cmyland2.html">TEC:Cmyland2</a> - Montigny-le-Tilleul Rue de Landelies 05:50</li><li><a href="stop-TEC_Cmymarb2.html">TEC:Cmymarb2</a> - Montigny-le-Tilleul Rue de Marbaix 05:51</li><li><a href="stop-TEC_Cmyedpa2.html">TEC:Cmyedpa2</a> - Montigny-le-Tilleul Eden Parc 05:52</li><li><a href="stop-TEC_Cmygrbr2.html">TEC:Cmygrbr2</a> - Montigny-le-Tilleul Grand-Bry 05:54</li><li><a href="stop-TEC_Cmyrays2.html">TEC:Cmyrays2</a> - Montigny-le-Tilleul Rayon de Soleil 05:54</li><li><a href="stop-TEC_Cmyvesa2.html">TEC:Cmyvesa2</a> - Montigny-le-Tilleul Vésale 05:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./887.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

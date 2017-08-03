@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - BEAURAING - GIVET - DOISCHE - 5163:TEC:NA:4864</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: BEAURAING - GIVET - DOISCHE - 5163:TEC:NA:4864</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N121abb.html">TEC:N121abb</a> - Doische Cimetière 17:31</li><li><a href="stop-TEC_N121aeb.html">TEC:N121aeb</a> - Doische Ecoles 17:32</li><li><a href="stop-TEC_N121ajc.html">TEC:N121ajc</a> - Doische Bois du Fir 17:32</li><li><a href="stop-TEC_N121acb.html">TEC:N121acb</a> - Doische Poste 17:33</li><li><a href="stop-TEC_N121adb.html">TEC:N121adb</a> - Doische Calvaire 17:34</li><li><a href="stop-TEC_N121afb.html">TEC:N121afb</a> - Doische La Jonquiere 17:34</li><li><a href="stop-TEC_N121agb.html">TEC:N121agb</a> - Doische Passage à niveau 17:35</li><li><a href="stop-TEC_N121ahb.html">TEC:N121ahb</a> - Doische Quatre coins 17:36</li><li><a href="stop-TEC_N120aab.html">TEC:N120aab</a> - Agimont Bois des fagnes 17:38</li><li><a href="stop-TEC_N120abc.html">TEC:N120abc</a> - Agimont Hôtel des tilleuls 17:40</li><li><a href="stop-TEC_N301afb.html">TEC:N301afb</a> - Givet St-Hilaire place Méhul 17:44</li><li><a href="stop-TEC_N301ajb.html">TEC:N301ajb</a> - Givet Gare 17:44</li><li><a href="stop-TEC_N301ajb.html">TEC:N301ajb</a> - Givet Gare 17:44</li><li><a href="stop-TEC_N301afc.html">TEC:N301afc</a> - Givet St-Hilaire place Méhul 17:45</li><li><a href="stop-TEC_N301ada.html">TEC:N301ada</a> - Givet Pont 17:46</li><li><a href="stop-TEC_N301aca.html">TEC:N301aca</a> - Givet Place de la République 17:46</li><li><a href="stop-TEC_N301abd.html">TEC:N301abd</a> - Givet Eglise Notre-Dame 17:47</li><li><a href="stop-TEC_N301apa.html">TEC:N301apa</a> - Givet Pont d'Houille 17:48</li><li><a href="stop-TEC_N301aob.html">TEC:N301aob</a> - Fromelennes Cité la Presle 17:48</li><li><a href="stop-TEC_N301anb.html">TEC:N301anb</a> - Fromelennes Ripel 17:49</li><li><a href="stop-TEC_N301amb.html">TEC:N301amb</a> - Fromelennes Place des Rentiers 17:50</li><li><a href="stop-TEC_N302afa.html">TEC:N302afa</a> - Flohimont Place des Vieilles Forges 17:52</li><li><a href="stop-TEC_N301ama.html">TEC:N301ama</a> - Fromelennes Place des Rentiers 17:54</li><li><a href="stop-TEC_N301ana.html">TEC:N301ana</a> - Fromelennes Ripel 17:55</li><li><a href="stop-TEC_N301aoa.html">TEC:N301aoa</a> - Fromelennes Cité la Presle 17:56</li><li><a href="stop-TEC_N301asb.html">TEC:N301asb</a> - Givet Rives d'Europe 17:57</li><li><a href="stop-TEC_N301akb.html">TEC:N301akb</a> - Fromelennes Pavillons 17:58</li><li><a href="stop-TEC_N331aeb.html">TEC:N331aeb</a> - Dion Douane belge 17:59</li><li><a href="stop-TEC_N331adb.html">TEC:N331adb</a> - Dion Petit caporal 18:00</li><li><a href="stop-TEC_N308bcb.html">TEC:N308bcb</a> - Baronville Route de Baronville 18:04</li><li><a href="stop-TEC_N308aib.html">TEC:N308aib</a> - Beauraing Rond-point 18:07</li><li><a href="stop-TEC_N308aja.html">TEC:N308aja</a> - Beauraing Route de la gare 18:08</li><li><a href="stop-TEC_N308aha.html">TEC:N308aha</a> - Beauraing Place Berry 18:09</li><li><a href="stop-TEC_N308aga.html">TEC:N308aga</a> - Beauraing Place St-Roch 18:11</li><li><a href="stop-TEC_N308afc.html">TEC:N308afc</a> - Beauraing INDSC 18:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6432.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

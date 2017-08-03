@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Reuland Kulturhaus</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Reuland Kulturhaus</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-5163_TEC_LV_10674.html">5163:TEC:LV:10674</a> - 5163:TEC:LV:10674 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_10689.html">5163:TEC:LV:10689</a> - 5163:TEC:LV:10689 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_25504.html">5163:TEC:LV:25504</a> - 5163:TEC:LV:25504 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_27153.html">5163:TEC:LV:27153</a> - 5163:TEC:LV:27153 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_27163.html">5163:TEC:LV:27163</a> - 5163:TEC:LV:27163 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_27169.html">5163:TEC:LV:27169</a> - 5163:TEC:LV:27169 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_27239.html">5163:TEC:LV:27239</a> - 5163:TEC:LV:27239 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_27248.html">5163:TEC:LV:27248</a> - 5163:TEC:LV:27248 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_32275.html">5163:TEC:LV:32275</a> - 5163:TEC:LV:32275 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_32290.html">5163:TEC:LV:32290</a> - 5163:TEC:LV:32290 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_42997.html">5163:TEC:LV:42997</a> - 5163:TEC:LV:42997 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_44942.html">5163:TEC:LV:44942</a> - 5163:TEC:LV:44942 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_44947.html">5163:TEC:LV:44947</a> - 5163:TEC:LV:44947 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_45043.html">5163:TEC:LV:45043</a> - 5163:TEC:LV:45043 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_45066.html">5163:TEC:LV:45066</a> - 5163:TEC:LV:45066 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_45072.html">5163:TEC:LV:45072</a> - 5163:TEC:LV:45072 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_51428.html">5163:TEC:LV:51428</a> - 5163:TEC:LV:51428 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_51434.html">5163:TEC:LV:51434</a> - 5163:TEC:LV:51434 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_51447.html">5163:TEC:LV:51447</a> - 5163:TEC:LV:51447 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_51453.html">5163:TEC:LV:51453</a> - 5163:TEC:LV:51453 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_5213.html">5163:TEC:LV:5213</a> - 5163:TEC:LV:5213 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_5219.html">5163:TEC:LV:5219</a> - 5163:TEC:LV:5219 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_5232.html">5163:TEC:LV:5232</a> - 5163:TEC:LV:5232 - Verviers - Malmedy - Reuland</li><li><a href="trip-5163_TEC_LV_5238.html">5163:TEC:LV:5238</a> - 5163:TEC:LV:5238 - Verviers - Malmedy - Reuland</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([50.19591, 6.138388], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([50.19591, 6.138388]).addTo(map);
+    </script>
+</body>
+
+</html>

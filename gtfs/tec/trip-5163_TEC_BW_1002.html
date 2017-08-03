@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Nivelles - Zoning Sud - 5163:TEC:BW:1002</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Nivelles - Zoning Sud - 5163:TEC:BW:1002</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bnivga71.html">TEC:Bnivga71</a> - Nivelles Gare 09:17</li><li><a href="stop-TEC_Bnivcma2.html">TEC:Bnivcma2</a> - Nivelles Cité Maillebotte 09:19</li><li><a href="stop-TEC_Bnivvri2.html">TEC:Bnivvri2</a> - Nivelles Val Riant 09:19</li><li><a href="stop-TEC_Bnivphm2.html">TEC:Bnivphm2</a> - Nivelles Pharmacie Militaire 09:20</li><li><a href="stop-TEC_Bnivari2.html">TEC:Bnivari2</a> - Nivelles Artisanat 09:21</li><li><a href="stop-TEC_Bnivpgr1.html">TEC:Bnivpgr1</a> - Nivelles Progrès 09:22</li><li><a href="stop-TEC_Bnivcom1.html">TEC:Bnivcom1</a> - Nivelles Commerce 09:24</li><li><a href="stop-TEC_Bnivtra2.html">TEC:Bnivtra2</a> - Nivelles Travail 09:25</li><li><a href="stop-TEC_Bnivind2.html">TEC:Bnivind2</a> - Nivelles Industrie 09:26</li><li><a href="stop-TEC_Bnivrec2.html">TEC:Bnivrec2</a> - Nivelles Recherche 09:26</li><li><a href="stop-TEC_Bnivsci2.html">TEC:Bnivsci2</a> - Nivelles Science 09:28</li><li><a href="stop-TEC_Bnivbos2.html">TEC:Bnivbos2</a> - Nivelles Bosquet 09:29</li><li><a href="stop-TEC_Bnivvco2.html">TEC:Bnivvco2</a> - Nivelles Chemin Vieille Cour 09:30</li><li><a href="stop-TEC_Bnivvai2.html">TEC:Bnivvai2</a> - Nivelles Vailampont 09:31</li><li><a href="stop-TEC_Bnivtec2.html">TEC:Bnivtec2</a> - Nivelles Technique 09:31</li><li><a href="stop-TEC_Bnivmat1.html">TEC:Bnivmat1</a> - Nivelles Maîtrise 09:31</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Amberloup - Saint-Hubert - Libramont - 5163:TEC:LU:2409</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Amberloup - Saint-Hubert - Libramont - 5163:TEC:LU:2409</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X882aca.html">TEC:X882aca</a> - Ochamps Congo - Chapelle 07:17</li><li><a href="stop-TEC_X882ada.html">TEC:X882ada</a> - Ochamps Congo 07:18</li><li><a href="stop-TEC_X882aea.html">TEC:X882aea</a> - Ochamps Congo 6 07:18</li><li><a href="stop-TEC_X882afa.html">TEC:X882afa</a> - Ochamps La Riviera 07:20</li><li><a href="stop-TEC_X882amb.html">TEC:X882amb</a> - Ochamps Eglise 07:20</li><li><a href="stop-TEC_X882ama.html">TEC:X882ama</a> - Ochamps Eglise 07:20</li><li><a href="stop-TEC_X882afb.html">TEC:X882afb</a> - Ochamps La Riviera 07:21</li><li><a href="stop-TEC_X882alb.html">TEC:X882alb</a> - Ochamps La Speche 07:23</li><li><a href="stop-TEC_X802asa.html">TEC:X802asa</a> - Recogne Route de Libin 30 07:26</li><li><a href="stop-TEC_X802aya.html">TEC:X802aya</a> - Recogne Carrefour 07:27</li><li><a href="stop-TEC_X801bwa.html">TEC:X801bwa</a> - Libramont Le Blancheau 07:28</li><li><a href="stop-TEC_X801bxa.html">TEC:X801bxa</a> - Libramont Gendarmerie 07:28</li><li><a href="stop-TEC_X801bzb.html">TEC:X801bzb</a> - Libramont Outigros 07:29</li><li><a href="stop-TEC_X801clb.html">TEC:X801clb</a> - Libramont Avenue de Bouillon 59 07:30</li><li><a href="stop-TEC_X801bma.html">TEC:X801bma</a> - Libramont Avenue de Bouillon 13 07:30</li><li><a href="stop-TEC_X801bde.html">TEC:X801bde</a> - Libramont Gare - Quai 3 07:33</li><li><a href="stop-TEC_X801bbb.html">TEC:X801bbb</a> - Libramont Sodelux 07:34</li><li><a href="stop-TEC_X801baa.html">TEC:X801baa</a> - Libramont Rue des Alliés 57 07:34</li><li><a href="stop-TEC_X801bia.html">TEC:X801bia</a> - Libramont Rue du Village 35 07:35</li><li><a href="stop-TEC_X801bfa.html">TEC:X801bfa</a> - Libramont Maison Communale 07:36</li><li><a href="stop-TEC_X801bea.html">TEC:X801bea</a> - Libramont I.S.J. - Grand'Rue 07:37</li><li><a href="stop-TEC_X801aja.html">TEC:X801aja</a> - Libramont Rue du Serpont 22 07:39</li><li><a href="stop-TEC_X801aib.html">TEC:X801aib</a> - Libramont Frantz Bouillon 07:39</li><li><a href="stop-TEC_X801ahb.html">TEC:X801ahb</a> - Libramont Rue du Serpont 75 07:40</li><li><a href="stop-TEC_X801agb.html">TEC:X801agb</a> - Libramont Rue du Serpont 89 07:40</li><li><a href="stop-TEC_X801aab.html">TEC:X801aab</a> - Libramont L'Oréal 07:42</li><li><a href="stop-TEC_X899aba.html">TEC:X899aba</a> - Bras Haut Escale 07:48</li><li><a href="stop-TEC_X899aca.html">TEC:X899aca</a> - Bras Haut Rue de Mochamps 07:48</li><li><a href="stop-TEC_X899aaa.html">TEC:X899aaa</a> - Bras Haut N89 07:49</li><li><a href="stop-TEC_X888aaa.html">TEC:X888aaa</a> - Vesqueville Rouges Fosses 07:51</li><li><a href="stop-TEC_X897adb.html">TEC:X897adb</a> - Saint-Hubert Rue du Mont 132 07:56</li><li><a href="stop-TEC_X897aia.html">TEC:X897aia</a> - Saint-Hubert IND - Quai 3 07:57</li><li><a href="stop-TEC_X897ala.html">TEC:X897ala</a> - Saint-Hubert Place de la Libération 07:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3141.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

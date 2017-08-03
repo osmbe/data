@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - DINANT - FLORENNES - 5163:TEC:NA:9857</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: DINANT - FLORENNES - 5163:TEC:NA:9857</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N232aqb.html">TEC:N232aqb</a> - Dinant Gare 07:20</li><li><a href="stop-TEC_N232anb.html">TEC:N232anb</a> - Dinant Grottes 07:22</li><li><a href="stop-TEC_N232aoa.html">TEC:N232aoa</a> - Dinant Cimetière 07:24</li><li><a href="stop-TEC_N251aaa.html">TEC:N251aaa</a> - Onhaye Fond de Foqueux 07:25</li><li><a href="stop-TEC_N251aba.html">TEC:N251aba</a> - Onhaye Fours à chaux 07:26</li><li><a href="stop-TEC_N251ada.html">TEC:N251ada</a> - Onhaye Centre 07:27</li><li><a href="stop-TEC_N252aaa.html">TEC:N252aaa</a> - Gerin Lamiroy 07:30</li><li><a href="stop-TEC_N252aba.html">TEC:N252aba</a> - Gerin Gendarmerie 07:31</li><li><a href="stop-TEC_N252ada.html">TEC:N252ada</a> - Gerin Place 07:32</li><li><a href="stop-TEC_N252acd.html">TEC:N252acd</a> - Gerin Chemin du centre 07:34</li><li><a href="stop-TEC_N167aba.html">TEC:N167aba</a> - Anthee Ancienne gare vicinale 07:38</li><li><a href="stop-TEC_N167aaa.html">TEC:N167aaa</a> - Anthee Eglise 07:39</li><li><a href="stop-TEC_N167aea.html">TEC:N167aea</a> - Morville Rue des Meuniers 07:43</li><li><a href="stop-TEC_N167aha.html">TEC:N167aha</a> - Morville Eglise 07:43</li><li><a href="stop-TEC_N167adc.html">TEC:N167adc</a> - Morville Assurance 07:44</li><li><a href="stop-TEC_N167aga.html">TEC:N167aga</a> - Morville Forges 07:45</li><li><a href="stop-TEC_N166aaa.html">TEC:N166aaa</a> - Flavion Route de Falaën 07:47</li><li><a href="stop-TEC_N166ada.html">TEC:N166ada</a> - Flavion Rue du Caillou 07:48</li><li><a href="stop-TEC_N166aea.html">TEC:N166aea</a> - Flavion La corne 07:49</li><li><a href="stop-TEC_N166aba.html">TEC:N166aba</a> - Flavion Place 07:49</li><li><a href="stop-TEC_N166aca.html">TEC:N166aca</a> - Flavion Ancienne gare vicinale 07:50</li><li><a href="stop-TEC_N165aba.html">TEC:N165aba</a> - Rosee La cure 07:53</li><li><a href="stop-TEC_N165aaa.html">TEC:N165aaa</a> - Rosee Eglise 07:54</li><li><a href="stop-TEC_N165aca.html">TEC:N165aca</a> - Rosee Gendarmerie 07:55</li><li><a href="stop-TEC_N163aab.html">TEC:N163aab</a> - Corenne Eglise 07:59</li><li><a href="stop-TEC_N163aba.html">TEC:N163aba</a> - Corenne Centre 07:59</li><li><a href="stop-TEC_N117aga.html">TEC:N117aga</a> - Florennes Carrières Berthe 08:03</li><li><a href="stop-TEC_N117aka.html">TEC:N117aka</a> - Florennes Dépôt TEC 08:04</li><li><a href="stop-TEC_N117ana.html">TEC:N117ana</a> - Florennes Rue de Corenne 08:05</li><li><a href="stop-TEC_N117aoc.html">TEC:N117aoc</a> - Florennes Place verte 08:05</li><li><a href="stop-TEC_N117bca.html">TEC:N117bca</a> - Florennes Place de la Chapelle 08:06</li><li><a href="stop-TEC_N117ama.html">TEC:N117ama</a> - Florennes Gare d'autobus 08:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5718.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

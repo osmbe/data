@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR (La Plante) - NAMUR (Citadelle) - 5163:TEC:NA:14737</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR (La Plante) - NAMUR (Citadelle) - 5163:TEC:NA:14737</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501kwb.html">TEC:N501kwb</a> - Namur Citadelle Rond-point Thonar 18:29</li><li><a href="stop-TEC_N501kxb.html">TEC:N501kxb</a> - Namur Citadelle théâtre de verdure 18:29</li><li><a href="stop-TEC_N501ksb.html">TEC:N501ksb</a> - Namur Citadelle château de Namur 18:30</li><li><a href="stop-TEC_N501kzb.html">TEC:N501kzb</a> - Namur Citadelle école hôtelière 18:30</li><li><a href="stop-TEC_N501kvb.html">TEC:N501kvb</a> - Namur Citadelle motte Bel-air 18:31</li><li><a href="stop-TEC_N501kud.html">TEC:N501kud</a> - Namur Citadelle milieu du monde 18:31</li><li><a href="stop-TEC_N501mfb.html">TEC:N501mfb</a> - Namur Citadelle école primaire 18:32</li><li><a href="stop-TEC_N501fpb.html">TEC:N501fpb</a> - Salzinnes Rue du Travail 18:33</li><li><a href="stop-TEC_N501fmb.html">TEC:N501fmb</a> - Salzinnes Rue del Marmol 18:34</li><li><a href="stop-TEC_N501lwb.html">TEC:N501lwb</a> - Salzinnes Chemin des Mélèzes 18:34</li><li><a href="stop-TEC_N501flb.html">TEC:N501flb</a> - Salzinnes Rue de la Colline 18:35</li><li><a href="stop-TEC_N501fdb.html">TEC:N501fdb</a> - Salzinnes Place Wiertz 18:36</li><li><a href="stop-TEC_N501fab.html">TEC:N501fab</a> - Salzinnes Place Falmagne 18:37</li><li><a href="stop-TEC_N501gpd.html">TEC:N501gpd</a> - Namur Omalius 18:38</li><li><a href="stop-TEC_N501grg.html">TEC:N501grg</a> - Namur Pl. de la Station - Quai D 18:40</li><li><a href="stop-TEC_N501heb.html">TEC:N501heb</a> - Namur Rue de Fer 18:41</li><li><a href="stop-TEC_N501hhb.html">TEC:N501hhb</a> - Namur Rue de l'Ange 18:43</li><li><a href="stop-TEC_N501gnb.html">TEC:N501gnb</a> - Namur Place d'Armes 18:44</li><li><a href="stop-TEC_N501fwb.html">TEC:N501fwb</a> - Namur Boulevard Ad Aquam 18:45</li><li><a href="stop-TEC_N501gta.html">TEC:N501gta</a> - Namur Pont de Jambes 18:45</li><li><a href="stop-TEC_N501gdb.html">TEC:N501gdb</a> - Namur Casino 18:46</li><li><a href="stop-TEC_N501gkb.html">TEC:N501gkb</a> - Namur Parc de la Plante 18:47</li><li><a href="stop-TEC_N501lib.html">TEC:N501lib</a> - La Plante Marronnier 18:48</li><li><a href="stop-TEC_N501llb.html">TEC:N501llb</a> - La Plante Rue J. Hamoir 18:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5976.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

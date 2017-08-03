@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ronse/Renaix - Enghien/Edingen - 5163:TEC:HT:6557</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ronse/Renaix - Enghien/Edingen - 5163:TEC:HT:6557</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1en104d.html">TEC:H1en104d</a> - Edingen Gare/Station 17:20</li><li><a href="stop-TEC_H1en106b.html">TEC:H1en106b</a> - Edingen Vieux Marché/Oude Markt 17:20</li><li><a href="stop-TEC_H1en105a.html">TEC:H1en105a</a> - Edingen Reine Astrid/Koningin Astrid 17:21</li><li><a href="stop-TEC_H1en103a.html">TEC:H1en103a</a> - Edingen Gare Vicinale/Buurtspoorwegstation 17:21</li><li><a href="stop-TEC_H1en101b.html">TEC:H1en101b</a> - Edingen Dodane 17:22</li><li><a href="stop-TEC_H1mk112b.html">TEC:H1mk112b</a> - Edingen Collège/College 17:23</li><li><a href="stop-TEC_H1mk108b.html">TEC:H1mk108b</a> - Mark Bois Blanc 17:24</li><li><a href="stop-TEC_H1le128a.html">TEC:H1le128a</a> - Lessines Rond Point 17:35</li><li><a href="stop-TEC_H1le129a.html">TEC:H1le129a</a> - Lessines Rue de la Fraternité 17:35</li><li><a href="stop-TEC_H1le119a.html">TEC:H1le119a</a> - Lessines Chemin Esquimbreucq 17:35</li><li><a href="stop-TEC_H1le125a.html">TEC:H1le125a</a> - Lessines Pavillon 17:36</li><li><a href="stop-TEC_H1og133a.html">TEC:H1og133a</a> - Ogy La Blanche 17:37</li><li><a href="stop-TEC_H1og130a.html">TEC:H1og130a</a> - Ogy Parrain Maastricht 17:37</li><li><a href="stop-TEC_H1og132a.html">TEC:H1og132a</a> - Ogy Rue Ponchau 17:38</li><li><a href="stop-TEC_H1og135a.html">TEC:H1og135a</a> - Ogy Rue Dr Desénépart 17:39</li><li><a href="stop-TEC_H1og136a.html">TEC:H1og136a</a> - Ogy Wastenne 17:40</li><li><a href="stop-TEC_H5fl104a.html">TEC:H5fl104a</a> - Vloesberg Rue Lt Coton/Lt Cotonstraat 17:42</li><li><a href="stop-TEC_H5fl102c.html">TEC:H5fl102c</a> - Vloesberg Marais/Moeras 17:42</li><li><a href="stop-TEC_H5fl103a.html">TEC:H5fl103a</a> - Vloesberg Place/Markt 17:43</li><li><a href="stop-TEC_H5fl100a.html">TEC:H5fl100a</a> - Vloesberg Briqueterie/Steenbakkerij 17:44</li><li><a href="stop-TEC_H5wo128a.html">TEC:H5wo128a</a> - Wodecq La Planche 17:44</li><li><a href="stop-TEC_H5wo130a.html">TEC:H5wo130a</a> - Wodecq Paradis 17:45</li><li><a href="stop-TEC_H5el104a.html">TEC:H5el104a</a> - Ellezelles Chapelle de Paix 17:45</li><li><a href="stop-TEC_H5el114a.html">TEC:H5el114a</a> - Ellezelles Pont 17:46</li><li><a href="stop-TEC_H5el112a.html">TEC:H5el112a</a> - Ellezelles Place 17:49</li><li><a href="stop-TEC_H5el116a.html">TEC:H5el116a</a> - Ellezelles Guinaumont 17:50</li><li><a href="stop-TEC_H5el117a.html">TEC:H5el117a</a> - Ellezelles Rue Dr André 17:51</li><li><a href="stop-TEC_H5el107a.html">TEC:H5el107a</a> - Ellezelles Ancienne Gare 17:52</li><li><a href="stop-TEC_H5el102a.html">TEC:H5el102a</a> - Ellezelles Café Elza 17:52</li><li><a href="stop-TEC_H5el110a.html">TEC:H5el110a</a> - Ellezelles Mont d'Ellezelles 17:53</li><li><a href="stop-TEC_H5el100a.html">TEC:H5el100a</a> - Ellezelles 4 Vents 17:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1660.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Liège - Wihogne - 5163:TEC:LV:26359</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Liège - Wihogne - 5163:TEC:LV:26359</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lrctec-1.html">TEC:Lrctec-1</a> - Rocourt Dépôt TEC 07:03</li><li><a href="stop-TEC_Lrchype1.html">TEC:Lrchype1</a> - Rocourt Hypermarché 07:03</li><li><a href="stop-TEC_Lrclant1.html">TEC:Lrclant1</a> - Rocourt Rue de Lantin 07:04</li><li><a href="stop-TEC_Lrcastr1.html">TEC:Lrcastr1</a> - Rocourt Place Reine Astrid 07:05</li><li><a href="stop-TEC_Lrclohe1.html">TEC:Lrclohe1</a> - Rocourt Rue Lohest 07:06</li><li><a href="stop-TEC_Lrc594-1.html">TEC:Lrc594-1</a> - Rocourt Chaussée de Tongres 594 07:07</li><li><a href="stop-TEC_Lvo60--1.html">TEC:Lvo60--1</a> - Voroux-Lez-Liers Chaussée de Tongres 60 07:08</li><li><a href="stop-TEC_Lvovent1.html">TEC:Lvovent1</a> - Voroux-Lez-Liers Café Plein Vent 07:09</li><li><a href="stop-TEC_Llabriq1.html">TEC:Llabriq1</a> - Lantin Briqueterie 07:09</li><li><a href="stop-TEC_LJUfort1.html">TEC:LJUfort1</a> - Juprelle Route du Fort de Lantin 07:11</li><li><a href="stop-TEC_LJU51--1.html">TEC:LJU51--1</a> - Juprelle Chaussée de Tongres 51 07:11</li><li><a href="stop-TEC_LJUmate1.html">TEC:LJUmate1</a> - Juprelle Maison Materne 07:12</li><li><a href="stop-TEC_LJUxhen1.html">TEC:LJUxhen1</a> - Juprelle Route de Xhendremael 07:13</li><li><a href="stop-TEC_LJU493-1.html">TEC:LJU493-1</a> - Juprelle Chaussée de Tongres 493 07:14</li><li><a href="stop-TEC_LWinavi1.html">TEC:LWinavi1</a> - Wihogne Villa La Navicelle 07:15</li><li><a href="stop-TEC_LWipaif1.html">TEC:LWipaif1</a> - Wihogne Route de Paifve 07:16</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5353.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

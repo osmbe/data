@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Eupen - Welkenraedt - 5163:TEC:LV:32453</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Eupen - Welkenraedt - 5163:TEC:LV:32453</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LWEbruy2.html">TEC:LWEbruy2</a> - Welkenraedt La Bruyère 16:24</li><li><a href="stop-TEC_LWEpaul2.html">TEC:LWEpaul2</a> - Welkenraedt Rue St-Paul 16:25</li><li><a href="stop-TEC_LWEhosp2.html">TEC:LWEhosp2</a> - Welkenraedt Hospice 16:26</li><li><a href="stop-TEC_LWEchat2.html">TEC:LWEchat2</a> - Welkenraedt Rue des Châteaux 16:27</li><li><a href="stop-TEC_LWEmerm2.html">TEC:LWEmerm2</a> - Welkenraedt Rue Mermer 16:28</li><li><a href="stop-TEC_LWEeg--2.html">TEC:LWEeg--2</a> - Welkenraedt Eglise 16:30</li><li><a href="stop-TEC_LWEpl--2.html">TEC:LWEpl--2</a> - Welkenraedt Place des Combattants 16:31</li><li><a href="stop-TEC_LWEcool2.html">TEC:LWEcool2</a> - Welkenraedt Rue J-H Cool 16:33</li><li><a href="stop-TEC_LhEbruc2.html">TEC:LhEbruc2</a> - Herbesthal Brücke 16:34</li><li><a href="stop-TEC_LhEcolo2.html">TEC:LhEcolo2</a> - Herbesthal Colonie 16:35</li><li><a href="stop-TEC_LhElont2.html">TEC:LhElont2</a> - Herbesthal Lontzenerweg 16:35</li><li><a href="stop-TEC_LhEherb2.html">TEC:LhEherb2</a> - Herbesthal Herbesthalerbaum 16:36</li><li><a href="stop-TEC_LhEauto2.html">TEC:LhEauto2</a> - Herbesthal Autobahn 16:36</li><li><a href="stop-TEC_LeUbael2.html">TEC:LeUbael2</a> - Eupen Baelenerweg 16:37</li><li><a href="stop-TEC_LeUgeme2.html">TEC:LeUgeme2</a> - Eupen Gemehret 16:38</li><li><a href="stop-TEC_LeUindu2.html">TEC:LeUindu2</a> - Eupen Industriestrasse 16:39</li><li><a href="stop-TEC_LeUgutl2.html">TEC:LeUgutl2</a> - Eupen Gut Lommerich 16:40</li><li><a href="stop-TEC_LeUgb--2.html">TEC:LeUgb--2</a> - Eupen GB 16:41</li><li><a href="stop-TEC_LeUdepo2.html">TEC:LeUdepo2</a> - Eupen Busdepot 16:43</li><li><a href="stop-TEC_LeUgend2.html">TEC:LeUgend2</a> - Eupen Gendarmerie 16:43</li><li><a href="stop-TEC_LeUrath1.html">TEC:LeUrath1</a> - Eupen Rathaus 16:44</li><li><a href="stop-TEC_LeUbush1.html">TEC:LeUbush1</a> - Eupen Bushof 16:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4022.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Lambert - Citadelle - Vottem - Milmort - 5163:TEC:LV:17959</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Lambert - Citadelle - Vottem - Milmort - 5163:TEC:LV:17959</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lvteg--2.html">TEC:Lvteg--2</a> - Vottem Eglise 14:41</li><li><a href="stop-TEC_Lvtcalv2.html">TEC:Lvtcalv2</a> - Vottem Calvaire 14:42</li><li><a href="stop-TEC_Lvtchpl2.html">TEC:Lvtchpl2</a> - Vottem Chapelle 14:43</li><li><a href="stop-TEC_Llgplop2.html">TEC:Llgplop2</a> - Liege Rue du Plope 14:44</li><li><a href="stop-TEC_Llggerm2.html">TEC:Llggerm2</a> - Liege Germeau 14:44</li><li><a href="stop-TEC_Llgcime2.html">TEC:Llgcime2</a> - Liege Cimetière Ste-Walburge 14:45</li><li><a href="stop-TEC_Llgcrah2.html">TEC:Llgcrah2</a> - Liege Rue Fosse Crahay 14:46</li><li><a href="stop-TEC_Llgwild8.html">TEC:Llgwild8</a> - Liege Place J. de Wilde 14:47</li><li><a href="stop-TEC_Llglimb2.html">TEC:Llglimb2</a> - Liege Rue du Limbourg 14:48</li><li><a href="stop-TEC_Llghugo2.html">TEC:Llghugo2</a> - Liege Avenue V. Hugo 14:48</li><li><a href="stop-TEC_Llgchal1.html">TEC:Llgchal1</a> - Liege Chalet 14:50</li><li><a href="stop-TEC_Llgcita2.html">TEC:Llgcita2</a> - Liege Hôpital de la Citadelle 14:51</li><li><a href="stop-TEC_Llgelis2.html">TEC:Llgelis2</a> - Liege Clinique Ste-Elisabeth 14:54</li><li><a href="stop-TEC_Llgangl2.html">TEC:Llgangl2</a> - Liege Rue des Anglais 14:55</li><li><a href="stop-TEC_Llghoch4.html">TEC:Llghoch4</a> - Liege Hocheporte 14:56</li><li><a href="stop-TEC_Llgcadr4.html">TEC:Llgcadr4</a> - Liege Cadran 14:56</li><li><a href="stop-TEC_LlgLAMB7.html">TEC:LlgLAMB7</a> - Liege Place St-Lambert 14:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4339.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - PESCHE - COUVIN - DOURBES - MARIEMBOURG - 5163:TEC:NA:9998</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: PESCHE - COUVIN - DOURBES - MARIEMBOURG - 5163:TEC:NA:9998</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N135add.html">TEC:N135add</a> - Couvin Gare SNCB 11:05</li><li><a href="stop-TEC_N135akb.html">TEC:N135akb</a> - Couvin Saint-Joseph 11:06</li><li><a href="stop-TEC_N135aga.html">TEC:N135aga</a> - Couvin Grand'place 11:07</li><li><a href="stop-TEC_N135aqb.html">TEC:N135aqb</a> - Couvin Piège 11:08</li><li><a href="stop-TEC_N135bbb.html">TEC:N135bbb</a> - Petigny Côte de Couvin 11:09</li><li><a href="stop-TEC_N135beb.html">TEC:N135beb</a> - Petigny Village 11:12</li><li><a href="stop-TEC_N135bdb.html">TEC:N135bdb</a> - Petigny Bouvreuils 11:13</li><li><a href="stop-TEC_N127acb.html">TEC:N127acb</a> - Nismes Baty 11:15</li><li><a href="stop-TEC_N127adb.html">TEC:N127adb</a> - Nismes Eglise 11:16</li><li><a href="stop-TEC_N127aib.html">TEC:N127aib</a> - Nismes Allée des Orchidées 11:17</li><li><a href="stop-TEC_N134ala.html">TEC:N134ala</a> - Mariembourg Moulin rouge 11:22</li><li><a href="stop-TEC_N134ada.html">TEC:N134ada</a> - Mariembourg Dépôt TEC 11:23</li><li><a href="stop-TEC_N134aaa.html">TEC:N134aaa</a> - Mariembourg Chez l'Fagne 11:24</li><li><a href="stop-TEC_N134aeb.html">TEC:N134aeb</a> - Mariembourg Passerelle 11:25</li><li><a href="stop-TEC_N134afb.html">TEC:N134afb</a> - Fagnolle Ferme Belleflamme 11:27</li><li><a href="stop-TEC_N134ahb.html">TEC:N134ahb</a> - Fagnolle Place 11:29</li><li><a href="stop-TEC_N134agb.html">TEC:N134agb</a> - Fagnolle Rue Bois du mont 11:29</li><li><a href="stop-TEC_N125aab.html">TEC:N125aab</a> - Matagne-la-Grande Rue de la Gare 11:34</li><li><a href="stop-TEC_N124aab.html">TEC:N124aab</a> - Matagne-la-Petite Eglise 11:37</li><li><a href="stop-TEC_N124aca.html">TEC:N124aca</a> - Matagne-la-Petite Rue de Romerée 11:38</li><li><a href="stop-TEC_N123aca.html">TEC:N123aca</a> - Romeree Eglise 11:41</li><li><a href="stop-TEC_N124acb.html">TEC:N124acb</a> - Matagne-la-Petite Rue de Romerée 11:43</li><li><a href="stop-TEC_N124aaa.html">TEC:N124aaa</a> - Matagne-la-Petite Eglise 11:45</li><li><a href="stop-TEC_N125aac.html">TEC:N125aac</a> - Matagne-la-Grande Rue de la Gare 11:48</li><li><a href="stop-TEC_N127aha.html">TEC:N127aha</a> - Dourbes Centre 11:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5673.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

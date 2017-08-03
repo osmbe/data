@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mouscr./Moeskr.-Tourcoing ( Risqu. Tout-Hôp. Dron) - 5163:TEC:HT:92</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mouscr./Moeskr.-Tourcoing ( Risqu. Tout-Hôp. Dron) - 5163:TEC:HT:92</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4tg163a.html">TEC:H4tg163a</a> - Tourcoing Hôpital Dron 07:49</li><li><a href="stop-TEC_H4tg170b.html">TEC:H4tg170b</a> - Tourcoing Forgette 07:51</li><li><a href="stop-TEC_H4tg162b.html">TEC:H4tg162b</a> - Tourcoing Risquons Tout 07:52</li><li><a href="stop-TEC_H4mo164a.html">TEC:H4mo164a</a> - Moeskroen Place Sergent Ghiersplein 07:55</li><li><a href="stop-TEC_H4mo171a.html">TEC:H4mo171a</a> - Moeskroen Rue de Neuville/Neuvillestraat 07:57</li><li><a href="stop-TEC_H4mo181b.html">TEC:H4mo181b</a> - Moeskroen Rue du Printemps/Lentestraat 07:59</li><li><a href="stop-TEC_H4mo175b.html">TEC:H4mo175b</a> - Moeskroen Rue du Castert/Castertstraat 08:00</li><li><a href="stop-TEC_H4mo165b.html">TEC:H4mo165b</a> - Moeskroen Rue du  Blanc Pignonstraat 08:01</li><li><a href="stop-TEC_H4mo140b.html">TEC:H4mo140b</a> - Moeskroen Eglise du Nouveau Monde Kerk 08:03</li><li><a href="stop-TEC_H4mo138a.html">TEC:H4mo138a</a> - Moeskroen Cimetière Nouveau Monde Kerkhof 08:04</li><li><a href="stop-TEC_H4mo153d.html">TEC:H4mo153d</a> - Moeskroen L'Ours 08:06</li><li><a href="stop-TEC_H4mo163a.html">TEC:H4mo163a</a> - Moeskroen Place de Picardie/Picardieplein 08:08</li><li><a href="stop-TEC_H4mo136a.html">TEC:H4mo136a</a> - Moeskroen Casino 08:10</li><li><a href="stop-TEC_H4mo161a.html">TEC:H4mo161a</a> - Moeskroen Place de la Justice/Justitiepl. 08:12</li><li><a href="stop-TEC_H4mo160a.html">TEC:H4mo160a</a> - Moeskroen Phénix 08:13</li><li><a href="stop-TEC_H4mo142a.html">TEC:H4mo142a</a> - Moeskroen SNCB/Station 08:16</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1427.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

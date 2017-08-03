@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Circuit des Rocailles et IMP de Marloie - 5163:TEC:LU:5821</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Circuit des Rocailles et IMP de Marloie - 5163:TEC:LU:5821</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X902afa.html">TEC:X902afa</a> - Marloie Gare - Quai 1 08:10</li><li><a href="stop-TEC_X902aab.html">TEC:X902aab</a> - Marloie Eglise 08:11</li><li><a href="stop-TEC_X902aqa.html">TEC:X902aqa</a> - Marloie Rue de l'Aurore 08:14</li><li><a href="stop-TEC_X902ara.html">TEC:X902ara</a> - Marloie Rue Chantevent 08:14</li><li><a href="stop-TEC_X902asa.html">TEC:X902asa</a> - Marloie Cité des Rocailles 08:15</li><li><a href="stop-TEC_X902aea.html">TEC:X902aea</a> - Marloie Rue des Sinistrés 08:19</li><li><a href="stop-TEC_X902ala.html">TEC:X902ala</a> - Marloie Cité Famennoise 08:19</li><li><a href="stop-TEC_X902ama.html">TEC:X902ama</a> - Marloie IMP-Famennoise 08:20</li><li><a href="stop-TEC_X902aoa.html">TEC:X902aoa</a> - Marloie Rue de la Fontaine 08:23</li><li><a href="stop-TEC_X902apa.html">TEC:X902apa</a> - Marloie Ecole 08:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3398.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - BRUXELLES-CHARLEROI - 5163:TEC:CH:9160</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: BRUXELLES-CHARLEROI - 5163:TEC:CH:9160</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bgnpegl4.html">TEC:Bgnpegl4</a> - Genappe Eglise 06:37</li><li><a href="stop-TEC_Bgnpjbe1.html">TEC:Bgnpjbe1</a> - Genappe Rue Joseph Berger 06:38</li><li><a href="stop-TEC_Bgnpgar1.html">TEC:Bgnpgar1</a> - Genappe Gare 06:40</li><li><a href="stop-TEC_Cgnbast1.html">TEC:Cgnbast1</a> - Genappe La Bastide 06:41</li><li><a href="stop-TEC_Cbtstac1.html">TEC:Cbtstac1</a> - Baisy-Thy Staca 06:42</li><li><a href="stop-TEC_Bbstcha1.html">TEC:Bbstcha1</a> - Baisy-Thy Chemin Sainte-Anne 06:43</li><li><a href="stop-TEC_Bbstdpa1.html">TEC:Bbstdpa1</a> - Baisy-Thy Dernier Patard 06:44</li><li><a href="stop-TEC_Bbststa1.html">TEC:Bbststa1</a> - Baisy-Thy Stock Américain 06:44</li><li><a href="stop-TEC_Bbstpon1.html">TEC:Bbstpon1</a> - Baisy-Thy Chemin du Pontail 06:45</li><li><a href="stop-TEC_Cbtbras1.html">TEC:Cbtbras1</a> - Baisy-Thy Quatre Bras 06:46</li><li><a href="stop-TEC_Cfrcoqu1.html">TEC:Cfrcoqu1</a> - Frasnes-Lez-Gosselies La Coquinette 06:49</li><li><a href="stop-TEC_Cfrcoqu3.html">TEC:Cfrcoqu3</a> - Frasnes-Lez-Gosselies Pierpont 06:49</li><li><a href="stop-TEC_Cfrgare1.html">TEC:Cfrgare1</a> - Frasnes-Lez-Gosselies Gare 06:50</li><li><a href="stop-TEC_Cfrmonu1.html">TEC:Cfrmonu1</a> - Frasnes-Lez-Gosselies Monument 06:51</li><li><a href="stop-TEC_Cfrempe1.html">TEC:Cfrempe1</a> - Frasnes-Lez-Gosselies Sentier de l'Empereur 06:52</li><li><a href="stop-TEC_Cfrfaub1.html">TEC:Cfrfaub1</a> - Frasnes-Lez-Gosselies Faubourg 06:52</li><li><a href="stop-TEC_Cfrcham1.html">TEC:Cfrcham1</a> - Frasnes-Lez-Gosselies Grand Champ 06:54</li><li><a href="stop-TEC_Cmeptmi3.html">TEC:Cmeptmi3</a> - Mellet Pont-à-Migneloux 06:56</li><li><a href="stop-TEC_Cmehame1.html">TEC:Cmehame1</a> - Mellet Hameau 06:57</li><li><a href="stop-TEC_Cgonvro2.html">TEC:Cgonvro2</a> - Gosselies Nouvelle Route 06:58</li><li><a href="stop-TEC_Cgorobe2.html">TEC:Cgorobe2</a> - Gosselies Robesse 06:58</li><li><a href="stop-TEC_Cgoetun2.html">TEC:Cgoetun2</a> - Gosselies Avenue des Etats-Unis 07:00</li><li><a href="stop-TEC_Cgopier3.html">TEC:Cgopier3</a> - Gosselies Grand Pièrsoû 07:01</li><li><a href="stop-TEC_Cgofbru1.html">TEC:Cgofbru1</a> - Gosselies Faubourg de Bruxelles 07:01</li><li><a href="stop-TEC_Cgobruy1.html">TEC:Cgobruy1</a> - Gosselies Bruyerre 07:03</li><li><a href="stop-TEC_Cgofabr1.html">TEC:Cgofabr1</a> - Gosselies Rue des Fabriques 07:04</li><li><a href="stop-TEC_Cgocalv1.html">TEC:Cgocalv1</a> - Gosselies Calvaire 07:05</li><li><a href="stop-TEC_Cgomart1.html">TEC:Cgomart1</a> - Gosselies Place des Martyrs 07:06</li><li><a href="stop-TEC_Cgoobse1.html">TEC:Cgoobse1</a> - Gosselies Rue de l'Observatoire 07:07</li><li><a href="stop-TEC_Cjucar01.html">TEC:Cjucar01</a> - Jumet Carrosse 07:09</li><li><a href="stop-TEC_Cjumade3.html">TEC:Cjumade3</a> - Jumet Madeleine 07:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./825.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

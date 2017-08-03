@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Guillemins - Droixhe - Marché Couvert - 5163:TEC:LV:22107</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Guillemins - Droixhe - Marché Couvert - 5163:TEC:LV:22107</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Llggeer2.html">TEC:Llggeer2</a> - Liege Place L. de Geer 17:43</li><li><a href="stop-TEC_Llgddef2.html">TEC:Llgddef2</a> - Liege Rue D. Defrance 17:44</li><li><a href="stop-TEC_Llgrull2.html">TEC:Llgrull2</a> - Liege Ruelle 17:44</li><li><a href="stop-TEC_Llgplai2.html">TEC:Llgplai2</a> - Liege Rue de la Plaine 17:45</li><li><a href="stop-TEC_Lbrnanc2.html">TEC:Lbrnanc2</a> - Bressoux Avenue de Nancy 17:46</li><li><a href="stop-TEC_Lbrresi2.html">TEC:Lbrresi2</a> - Bressoux Place de la Résistance 17:47</li><li><a href="stop-TEC_Lbrmc--2.html">TEC:Lbrmc--2</a> - Bressoux Maison Communale 17:47</li><li><a href="stop-TEC_Lbrptbr2.html">TEC:Lbrptbr2</a> - Bressoux Pont 17:48</li><li><a href="stop-TEC_Llgmara2.html">TEC:Llgmara2</a> - Liege Rue des Maraîchers 17:50</li><li><a href="stop-TEC_Llgnyst2.html">TEC:Llgnyst2</a> - Liege Rue F. Nyst 17:51</li><li><a href="stop-TEC_Llgbwez2.html">TEC:Llgbwez2</a> - Liege Rue Basse-Wez 17:53</li><li><a href="stop-TEC_Llgcham6.html">TEC:Llgcham6</a> - Liege Rue des Champs 17:54</li><li><a href="stop-TEC_Llgmédi2.html">TEC:Llgmédi2</a> - Liege Médiacité 17:55</li><li><a href="stop-TEC_Llglibo4.html">TEC:Llglibo4</a> - Liege Rue Libotte 17:56</li><li><a href="stop-TEC_Llgptlo4.html">TEC:Llgptlo4</a> - Liege Pont de Longdoz 17:58</li><li><a href="stop-TEC_Llgcong2.html">TEC:Llgcong2</a> - Liege Palais des Congrès 18:00</li><li><a href="stop-TEC_Llgterr1.html">TEC:Llgterr1</a> - Liege Terrasses 18:02</li><li><a href="stop-TEC_Llgcont1.html">TEC:Llgcont1</a> - Liege Contributions 18:05</li><li><a href="stop-TEC_LlgguilA.html">TEC:LlgguilA</a> - Liege Gare des Guillemins Quai A 18:06</li><li><a href="stop-TEC_LlgguilC.html">TEC:LlgguilC</a> - Liege Gare des Guillemins Quai C 18:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4278.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

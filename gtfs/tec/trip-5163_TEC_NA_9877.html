@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - FLOREFFE (Buzet - Sovimont) - 5163:TEC:NA:9877</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - FLOREFFE (Buzet - Sovimont) - 5163:TEC:NA:9877</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N551aib.html">TEC:N551aib</a> - Floreffe Séminaire 05:30</li><li><a href="stop-TEC_N551agc.html">TEC:N551agc</a> - Floreffe Grottes 05:31</li><li><a href="stop-TEC_N551arb.html">TEC:N551arb</a> - Sovimont Eglise 05:33</li><li><a href="stop-TEC_N551apb.html">TEC:N551apb</a> - Sovimont Place 05:34</li><li><a href="stop-TEC_N551anb.html">TEC:N551anb</a> - Sovimont Tienne Jean-Pierre 05:35</li><li><a href="stop-TEC_N551aob.html">TEC:N551aob</a> - Buzet Jonction 05:36</li><li><a href="stop-TEC_N551alb.html">TEC:N551alb</a> - Buzet Carrefour 05:37</li><li><a href="stop-TEC_N551adb.html">TEC:N551adb</a> - Buzet Chapelle 05:37</li><li><a href="stop-TEC_N551aeb.html">TEC:N551aeb</a> - Buzet (Nam) Place 05:38</li><li><a href="stop-TEC_N551acb.html">TEC:N551acb</a> - Floreffe La chèvre folle 05:39</li><li><a href="stop-TEC_N528alb.html">TEC:N528alb</a> - Malonne Chemin Pani 05:40</li><li><a href="stop-TEC_N528awb.html">TEC:N528awb</a> - Malonne Le Piroy église 05:41</li><li><a href="stop-TEC_N528avb.html">TEC:N528avb</a> - Malonne Le Piroy cabine 05:42</li><li><a href="stop-TEC_N528aub.html">TEC:N528aub</a> - Malonne Chemin du Piroy 05:43</li><li><a href="stop-TEC_N528asb.html">TEC:N528asb</a> - Malonne Petit-Bois 05:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6375.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

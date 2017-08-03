@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - CHATELINEAU - 5163:TEC:NA:3075</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - CHATELINEAU - 5163:TEC:NA:3075</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_NC02aoc.html">TEC:NC02aoc</a> - Chatelineau SNCB 11:54</li><li><a href="stop-TEC_Cctptsa1.html">TEC:Cctptsa1</a> - Chatelet Pont de Sambre 11:56</li><li><a href="stop-TEC_Cctvand2.html">TEC:Cctvand2</a> - Chatelet Av. Vandervelde 11:58</li><li><a href="stop-TEC_Cctrobe1.html">TEC:Cctrobe1</a> - Chatelet Tienne Robau 11:58</li><li><a href="stop-TEC_Cctfrbe2.html">TEC:Cctfrbe2</a> - Chatelet Place Franco-Belge 11:59</li><li><a href="stop-TEC_Cctrjus2.html">TEC:Cctrjus2</a> - Chatelet Rue de la Justice 11:59</li><li><a href="stop-TEC_NC11ahb.html">TEC:NC11ahb</a> - Chatelet Rue des Lorrains 12:00</li><li><a href="stop-TEC_NC11agb.html">TEC:NC11agb</a> - Chatelet Ormont 12:00</li><li><a href="stop-TEC_NC11afb.html">TEC:NC11afb</a> - Chatelet Rue de Carnelle 12:02</li><li><a href="stop-TEC_NC11amb.html">TEC:NC11amb</a> - Presles La Drève 12:02</li><li><a href="stop-TEC_NC11aob.html">TEC:NC11aob</a> - Presles Sentier de Presles 12:03</li><li><a href="stop-TEC_NC11anb.html">TEC:NC11anb</a> - Presles Village 12:04</li><li><a href="stop-TEC_Cprsapv2.html">TEC:Cprsapv2</a> - Presles Sapins Verts 12:04</li><li><a href="stop-TEC_Cprlpre2.html">TEC:Cprlpre2</a> - Presles Hôtel des Longs Prés 12:05</li><li><a href="stop-TEC_NC11arb.html">TEC:NC11arb</a> - Sart-Eustache Rue du Village 12:06</li><li><a href="stop-TEC_N555acb.html">TEC:N555acb</a> - Sart-Eustache Cimetière 12:07</li><li><a href="stop-TEC_N555aba.html">TEC:N555aba</a> - Sart-Eustache Place 12:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6143.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

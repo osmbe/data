@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Quiévrain - Dour - 5163:TEC:HT:9970</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Quiévrain - Dour - 5163:TEC:HT:9970</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1do131d.html">TEC:H1do131d</a> - Dour Trichères 12:50</li><li><a href="stop-TEC_H1do113a.html">TEC:H1do113a</a> - Dour Grand-Rue 12:51</li><li><a href="stop-TEC_H1do117a.html">TEC:H1do117a</a> - Dour Place 12:52</li><li><a href="stop-TEC_H1do108a.html">TEC:H1do108a</a> - Dour Belvédère 12:53</li><li><a href="stop-TEC_H1do114a.html">TEC:H1do114a</a> - Dour Hôme Bon Repos 12:54</li><li><a href="stop-TEC_H1do121a.html">TEC:H1do121a</a> - Dour Rue d' Elouges 12:54</li><li><a href="stop-TEC_H1el137a.html">TEC:H1el137a</a> - Elouges Rue des Chauffours 12:55</li><li><a href="stop-TEC_H1tl121b.html">TEC:H1tl121b</a> - Thulin Saint-Homme 12:59</li><li><a href="stop-TEC_H1hi124b.html">TEC:H1hi124b</a> - Hainin Souvenir 13:02</li><li><a href="stop-TEC_H1hi123b.html">TEC:H1hi123b</a> - Hainin SNCB 13:03</li><li><a href="stop-TEC_H1hi122b.html">TEC:H1hi122b</a> - Hainin Leblanc 13:04</li><li><a href="stop-TEC_H1tl120b.html">TEC:H1tl120b</a> - Thulin Prince Charles 13:07</li><li><a href="stop-TEC_H1tl119b.html">TEC:H1tl119b</a> - Thulin Place 13:08</li><li><a href="stop-TEC_H1tl122a.html">TEC:H1tl122a</a> - Thulin Lecomte 13:08</li><li><a href="stop-TEC_H1mh115a.html">TEC:H1mh115a</a> - Montroeul-sur-Haine Point du Jour 13:15</li><li><a href="stop-TEC_H1mh113b.html">TEC:H1mh113b</a> - Montroeul-sur-Haine Eglise 13:16</li><li><a href="stop-TEC_H1he105a.html">TEC:H1he105a</a> - Hensies Les Ebéarts 13:19</li><li><a href="stop-TEC_H1he101a.html">TEC:H1he101a</a> - Hensies Avenue de l'Europe 13:20</li><li><a href="stop-TEC_H1he108b.html">TEC:H1he108b</a> - Hensies Rue Haute 13:21</li><li><a href="stop-TEC_H1he106b.html">TEC:H1he106b</a> - Hensies Place 13:23</li><li><a href="stop-TEC_H1he104b.html">TEC:H1he104b</a> - Hensies Entrée du Village 13:23</li><li><a href="stop-TEC_H1he110b.html">TEC:H1he110b</a> - Hensies Square la Fontaine 13:24</li><li><a href="stop-TEC_H1he109b.html">TEC:H1he109b</a> - Hensies Séminaire 13:25</li><li><a href="stop-TEC_H1qv116b.html">TEC:H1qv116b</a> - Quievrain Séchoir Meyskens 13:26</li><li><a href="stop-TEC_H1qv112b.html">TEC:H1qv112b</a> - Quievrain Passage à Niveau 13:27</li><li><a href="stop-TEC_H1qv111a.html">TEC:H1qv111a</a> - Quievrain Gare SNCB 13:28</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2410.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

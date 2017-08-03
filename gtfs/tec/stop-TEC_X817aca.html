@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Grapfontaine Ecole</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
+</head>
+
+<body>
+    <h1>Stop: Grapfontaine Ecole</h1>
+    <div style="height: 180px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="trip-5163_TEC_LU_2180.html">5163:TEC:LU:2180</a> - 5163:TEC:LU:2180 - Florenville - Neufchâteau</li><li><a href="trip-5163_TEC_LU_2708.html">5163:TEC:LU:2708</a> - 5163:TEC:LU:2708 - Longlier - Neufchâteau - Bertrix</li><li><a href="trip-5163_TEC_LU_3051.html">5163:TEC:LU:3051</a> - 5163:TEC:LU:3051 - Florenville - Neufchâteau</li><li><a href="trip-5163_TEC_LU_4201.html">5163:TEC:LU:4201</a> - 5163:TEC:LU:4201 - Florenville - Neufchâteau</li><li><a href="trip-5163_TEC_LU_4729.html">5163:TEC:LU:4729</a> - 5163:TEC:LU:4729 - Longlier - Neufchâteau - Bertrix</li><li><a href="trip-5163_TEC_LU_5057.html">5163:TEC:LU:5057</a> - 5163:TEC:LU:5057 - Florenville - Neufchâteau</li><li><a href="trip-5163_TEC_LU_5567.html">5163:TEC:LU:5567</a> - 5163:TEC:LU:5567 - Longlier - Neufchâteau - Bertrix</li><li><a href="trip-5163_TEC_LU_5624.html">5163:TEC:LU:5624</a> - 5163:TEC:LU:5624 - Florenville - Neufchâteau</li><li><a href="trip-5163_TEC_LU_5631.html">5163:TEC:LU:5631</a> - 5163:TEC:LU:5631 - Florenville - Neufchâteau</li><li><a href="trip-5163_TEC_LU_6501.html">5163:TEC:LU:6501</a> - 5163:TEC:LU:6501 - Florenville - Neufchâteau</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([49.821219, 5.413392], 15);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([49.821219, 5.413392]).addTo(map);
+    </script>
+</body>
+
+</html>

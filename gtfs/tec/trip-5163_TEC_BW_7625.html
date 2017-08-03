@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Nil - Chastre - Court-St-Etienne - Ottignies - 5163:TEC:BW:7625</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Nil - Chastre - Court-St-Etienne - Ottignies - 5163:TEC:BW:7625</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bchadpt1.html">TEC:Bchadpt1</a> - Chastre Dépôt 06:31</li><li><a href="stop-TEC_Bwlhppg4.html">TEC:Bwlhppg4</a> - Perbais Place de la Gare 06:33</li><li><a href="stop-TEC_Bblmwm1.html">TEC:Bblmwm1</a> - Blanmont Av. Werner Marchand 06:34</li><li><a href="stop-TEC_Bblmpro1.html">TEC:Bblmpro1</a> - Blanmont Route Provinciale 06:35</li><li><a href="stop-TEC_Bblmcel1.html">TEC:Bblmcel1</a> - Blanmont Cabine Electrique 06:36</li><li><a href="stop-TEC_Bhvltol1.html">TEC:Bhvltol1</a> - Hevillers Tollet 06:38</li><li><a href="stop-TEC_Bhvlpla1.html">TEC:Bhvlpla1</a> - Hevillers Place 06:39</li><li><a href="stop-TEC_Bhvlbet1.html">TEC:Bhvlbet1</a> - Hevillers Bien-Être 06:40</li><li><a href="stop-TEC_Bmsgbay2.html">TEC:Bmsgbay2</a> - Mont-Saint-Guibert Rue Bayaux 06:40</li><li><a href="stop-TEC_Bmsgpfo2.html">TEC:Bmsgpfo2</a> - Mont-Saint-Guibert Place de la Fosse 06:41</li><li><a href="stop-TEC_Bmsgstj1.html">TEC:Bmsgstj1</a> - Mont-Saint-Guibert Gare (Saint-Jean) 06:42</li><li><a href="stop-TEC_Bmsgeco1.html">TEC:Bmsgeco1</a> - Mont-Saint-Guibert Rue des Ecoles 06:44</li><li><a href="stop-TEC_Bmsgmon1.html">TEC:Bmsgmon1</a> - Mont-Saint-Guibert Monument 06:45</li><li><a href="stop-TEC_Bmsgpap1.html">TEC:Bmsgpap1</a> - Mont-Saint-Guibert Papeteries 06:46</li><li><a href="stop-TEC_Bcsebea1.html">TEC:Bcsebea1</a> - Court-Saint-Etienne Beaurieux 06:47</li><li><a href="stop-TEC_Bcsen251.html">TEC:Bcsen251</a> - Court-Saint-Etienne N25 06:48</li><li><a href="stop-TEC_Bcseaba1.html">TEC:Bcseaba1</a> - Court-Saint-Etienne Abattoir 06:49</li><li><a href="stop-TEC_Bcsemon1.html">TEC:Bcsemon1</a> - Court-Saint-Etienne Monument 06:51</li><li><a href="stop-TEC_Bcsegar1.html">TEC:Bcsegar1</a> - Court-Saint-Etienne Gare 06:53</li><li><a href="stop-TEC_Bcseeco2.html">TEC:Bcseeco2</a> - Court-Saint-Etienne Ecole Provinciale 06:55</li><li><a href="stop-TEC_Bmoufil2.html">TEC:Bmoufil2</a> - Mousty Filatures 06:56</li><li><a href="stop-TEC_Bmoucnd2.html">TEC:Bmoucnd2</a> - Mousty Rue Chapelle Notre-Dame 06:57</li><li><a href="stop-TEC_Bmouegl2.html">TEC:Bmouegl2</a> - Mousty Eglise 06:58</li><li><a href="stop-TEC_Bottegl2.html">TEC:Bottegl2</a> - Ottignies Eglise 06:59</li><li><a href="stop-TEC_Bottcco2.html">TEC:Bottcco2</a> - Ottignies Av. des Combattants 07:00</li><li><a href="stop-TEC_Bottgar5.html">TEC:Bottgar5</a> - Ottignies Gare 07:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./655.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

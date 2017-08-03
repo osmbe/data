@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Etienne-au-Mont - Huy - Tihange Vieux Floricots - 5163:TEC:LV:3497</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Etienne-au-Mont - Huy - Tihange Vieux Floricots - 5163:TEC:LV:3497</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LTiflor_.html">TEC:LTiflor*</a> - Tihange Cité Vieux Floricots 07:51</li><li><a href="stop-TEC_LTiruel2.html">TEC:LTiruel2</a> - Tihange Longue Ruelle 07:52</li><li><a href="stop-TEC_LTiespe4.html">TEC:LTiespe4</a> - Tihange Bonne Espérance 07:53</li><li><a href="stop-TEC_LTicime2.html">TEC:LTicime2</a> - Tihange Cimetière 07:56</li><li><a href="stop-TEC_LTiec--2.html">TEC:LTiec--2</a> - Tihange Ecole 07:57</li><li><a href="stop-TEC_LTicent2.html">TEC:LTicent2</a> - Tihange Rue du Centre 07:58</li><li><a href="stop-TEC_LHUfonc2.html">TEC:LHUfonc2</a> - Huy Rue A. Foncoux 07:59</li><li><a href="stop-TEC_LHUeuro4.html">TEC:LHUeuro4</a> - Huy Pont de l'Europe 08:00</li><li><a href="stop-TEC_LHUlebe8.html">TEC:LHUlebe8</a> - Huy Place Lebeau 08:01</li><li><a href="stop-TEC_LHUdelc3.html">TEC:LHUdelc3</a> - Huy Avenue Delchambre 08:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4730.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

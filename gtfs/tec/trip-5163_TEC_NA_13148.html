@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CINEY - DORINNE - YVOIR - 5163:TEC:NA:13148</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CINEY - DORINNE - YVOIR - 5163:TEC:NA:13148</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N201afb.html">TEC:N201afb</a> - Ciney Place Monseu 16:43</li><li><a href="stop-TEC_N201ada.html">TEC:N201ada</a> - Ciney Hôtel de ville 16:46</li><li><a href="stop-TEC_N201aca.html">TEC:N201aca</a> - Ciney Centre médical 16:48</li><li><a href="stop-TEC_N201aee.html">TEC:N201aee</a> - Ciney Gare d'autobus 16:51</li><li><a href="stop-TEC_N201asa.html">TEC:N201asa</a> - Ciney Forges 16:51</li><li><a href="stop-TEC_N201ata.html">TEC:N201ata</a> - Ciney Huit ponts 16:52</li><li><a href="stop-TEC_N201aua.html">TEC:N201aua</a> - Ciney Aljoux 16:53</li><li><a href="stop-TEC_N236aba.html">TEC:N236aba</a> - Braibant Halloy centre 16:55</li><li><a href="stop-TEC_N236aca.html">TEC:N236aca</a> - Braibant Ecole 16:56</li><li><a href="stop-TEC_N236ada.html">TEC:N236ada</a> - Braibant Route de Mont 16:57</li><li><a href="stop-TEC_N236apa.html">TEC:N236apa</a> - Sovet Route de Sovet 16:59</li><li><a href="stop-TEC_N236ama.html">TEC:N236ama</a> - Senenne Point d'arrêt 17:01</li><li><a href="stop-TEC_N235aaa.html">TEC:N235aaa</a> - Spontin Quesval 17:03</li><li><a href="stop-TEC_N235aha.html">TEC:N235aha</a> - Spontin Gare 17:04</li><li><a href="stop-TEC_N235aba.html">TEC:N235aba</a> - Spontin Centre 17:05</li><li><a href="stop-TEC_N235acb.html">TEC:N235acb</a> - Spontin Maison communale 17:05</li><li><a href="stop-TEC_N235adb.html">TEC:N235adb</a> - Spontin Rue du Ry d'Août 17:06</li><li><a href="stop-TEC_N235aeb.html">TEC:N235aeb</a> - Spontin Terre madame 17:07</li><li><a href="stop-TEC_N270aab.html">TEC:N270aab</a> - Dorinne Carrefour 17:10</li><li><a href="stop-TEC_N270abb.html">TEC:N270abb</a> - Dorinne Place communale 17:11</li><li><a href="stop-TEC_N270acb.html">TEC:N270acb</a> - Dorinne Château d'eau 17:12</li><li><a href="stop-TEC_N270adb.html">TEC:N270adb</a> - Purnode Chapelle 17:15</li><li><a href="stop-TEC_N270aea.html">TEC:N270aea</a> - Purnode Eglise 17:17</li><li><a href="stop-TEC_N270afc.html">TEC:N270afc</a> - Purnode Centre 17:17</li><li><a href="stop-TEC_N270agb.html">TEC:N270agb</a> - Purnode Bout du village 17:18</li><li><a href="stop-TEC_N229aab.html">TEC:N229aab</a> - Evrehailles Petery 17:19</li><li><a href="stop-TEC_N229aca.html">TEC:N229aca</a> - Evrehailles Centre 17:21</li><li><a href="stop-TEC_N229aqb.html">TEC:N229aqb</a> - Evrehailles Jauviat 17:22</li><li><a href="stop-TEC_N229ada.html">TEC:N229ada</a> - Evrehailles Eglise 17:22</li><li><a href="stop-TEC_N229agb.html">TEC:N229agb</a> - Yvoir Rue de la sapinière 17:24</li><li><a href="stop-TEC_N229ahb.html">TEC:N229ahb</a> - Yvoir Ferme du charreau 17:25</li><li><a href="stop-TEC_N229aia.html">TEC:N229aia</a> - Yvoir Route d'Evrehailles 17:26</li><li><a href="stop-TEC_N229aja.html">TEC:N229aja</a> - Yvoir Pied du charreau 17:28</li><li><a href="stop-TEC_N229akc.html">TEC:N229akc</a> - Yvoir Gare SNCB 17:29</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5910.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

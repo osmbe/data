@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Verviers - Malmedy - Reuland - 5163:TEC:LV:27135</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Verviers - Malmedy - Reuland - 5163:TEC:LV:27135</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LMAgare0.html">TEC:LMAgare0</a> - Malmedy gare 16:20</li><li><a href="stop-TEC_LMApl--2.html">TEC:LMApl--2</a> - Malmedy Place Albert 1er 16:23</li><li><a href="stop-TEC_LMAalli2.html">TEC:LMAalli2</a> - Malmedy avenue des Alliés 16:24</li><li><a href="stop-TEC_LMAcomm2.html">TEC:LMAcomm2</a> - Malmedy complexe commercial 16:25</li><li><a href="stop-TEC_LMAcite2.html">TEC:LMAcite2</a> - Malmedy Cité des Grands Prés 16:26</li><li><a href="stop-TEC_LMAhall2.html">TEC:LMAhall2</a> - Malmedy Hall des Sports 16:26</li><li><a href="stop-TEC_LMApape2.html">TEC:LMApape2</a> - Malmedy Papeterie 16:28</li><li><a href="stop-TEC_LMAwavr2.html">TEC:LMAwavr2</a> - Malmedy Route de Wavreumont 16:30</li><li><a href="stop-TEC_LBrneli1.html">TEC:LBrneli1</a> - Burnenville Café Nélis 16:32</li><li><a href="stop-TEC_LBrec--2.html">TEC:LBrec--2</a> - Burnenville Ecole 16:33</li><li><a href="stop-TEC_LBrbern1.html">TEC:LBrbern1</a> - Burnenville Route de Bernister 16:33</li><li><a href="stop-TEC_LBrmeiz2.html">TEC:LBrmeiz2</a> - Burnenville Chemin de Meiz 16:35</li><li><a href="stop-TEC_LFRfagn2.html">TEC:LFRfagn2</a> - Francorchamps Route de Fagnou 16:40</li><li><a href="stop-TEC_LFRrohe2.html">TEC:LFRrohe2</a> - Francorchamps Hôtel Rohenval 16:43</li><li><a href="stop-TEC_LFRgode2.html">TEC:LFRgode2</a> - Francorchamps Maison Godefroid 16:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5402.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

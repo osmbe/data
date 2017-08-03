@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ath - Ellezelles - 5163:TEC:HT:726</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ath - Ellezelles - 5163:TEC:HT:726</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H5el107b.html">TEC:H5el107b</a> - Ellezelles Ancienne Gare 07:22</li><li><a href="stop-TEC_H5el117b.html">TEC:H5el117b</a> - Ellezelles Rue Dr André 07:23</li><li><a href="stop-TEC_H5el116b.html">TEC:H5el116b</a> - Ellezelles Guinaumont 07:23</li><li><a href="stop-TEC_H5el112b.html">TEC:H5el112b</a> - Ellezelles Place 07:24</li><li><a href="stop-TEC_H5el114b.html">TEC:H5el114b</a> - Ellezelles Pont 07:24</li><li><a href="stop-TEC_H5el104b.html">TEC:H5el104b</a> - Ellezelles Chapelle de Paix 07:26</li><li><a href="stop-TEC_H5wo130b.html">TEC:H5wo130b</a> - Wodecq Paradis 07:27</li><li><a href="stop-TEC_H5wo128b.html">TEC:H5wo128b</a> - Wodecq La Planche 07:28</li><li><a href="stop-TEC_H5fl100b.html">TEC:H5fl100b</a> - Vloesberg Briqueterie/Steenbakkerij 07:29</li><li><a href="stop-TEC_H5fl103b.html">TEC:H5fl103b</a> - Vloesberg Place/Markt 07:30</li><li><a href="stop-TEC_H5fl102d.html">TEC:H5fl102d</a> - Vloesberg Marais/Moeras 07:31</li><li><a href="stop-TEC_H5fl104b.html">TEC:H5fl104b</a> - Vloesberg Rue Lt Coton/Lt Cotonstraat 07:31</li><li><a href="stop-TEC_H5wo124b.html">TEC:H5wo124b</a> - Wodecq Eglise 07:35</li><li><a href="stop-TEC_H5wo133b.html">TEC:H5wo133b</a> - Wodecq Rue Marloyau 07:37</li><li><a href="stop-TEC_H5wo122b.html">TEC:H5wo122b</a> - Wodecq Carrefour d'Ostiches 07:38</li><li><a href="stop-TEC_H5wo132b.html">TEC:H5wo132b</a> - Wodecq Rue de Flobecq 07:40</li><li><a href="stop-TEC_H4os221b.html">TEC:H4os221b</a> - Ostiches Place Eglise 07:42</li><li><a href="stop-TEC_H4os217b.html">TEC:H4os217b</a> - Ostiches Chapelle 07:43</li><li><a href="stop-TEC_H4os222b.html">TEC:H4os222b</a> - Ostiches Rue Pidebecq 07:44</li><li><a href="stop-TEC_H4re226b.html">TEC:H4re226b</a> - Rebaix Porte de Gand 07:46</li><li><a href="stop-TEC_H4re225b.html">TEC:H4re225b</a> - Rebaix Place 07:47</li><li><a href="stop-TEC_H4re228b.html">TEC:H4re228b</a> - Rebaix Rue du 7 Juillet 07:48</li><li><a href="stop-TEC_H4bv145b.html">TEC:H4bv145b</a> - Bouvignies Goberwelz 07:49</li><li><a href="stop-TEC_H4bv146b.html">TEC:H4bv146b</a> - Bouvignies Rue Delsaut 07:50</li><li><a href="stop-TEC_H5at111b.html">TEC:H5at111b</a> - Ath Cité 07:51</li><li><a href="stop-TEC_H5at235b.html">TEC:H5at235b</a> - Ath Rue de la Musique 07:51</li><li><a href="stop-TEC_H5at115b.html">TEC:H5at115b</a> - Ath Faubourg de Tournai 07:53</li><li><a href="stop-TEC_H5at120b.html">TEC:H5at120b</a> - Ath Institut Technique 07:54</li><li><a href="stop-TEC_H5at116a.html">TEC:H5at116a</a> - Ath SNCB 07:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2083.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

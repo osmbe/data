@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Proxibus Perwez - 5163:TEC:BW:10064</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Proxibus Perwez - 5163:TEC:BW:10064</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bperpla2.html">TEC:Bperpla2</a> - Perwez Place 16:27</li><li><a href="stop-TEC_Bperrcr2.html">TEC:Bperrcr2</a> - Perwez Rue Creybeck 16:28</li><li><a href="stop-TEC_Bpermon2.html">TEC:Bpermon2</a> - Perwez Le Mont 16:29</li><li><a href="stop-TEC_Bpertre2.html">TEC:Bpertre2</a> - Perwez Général Jadot 16:30</li><li><a href="stop-TEC_Bpercsp2.html">TEC:Bpercsp2</a> - Perwez Centre Sportif 16:31</li><li><a href="stop-TEC_Bperrma2.html">TEC:Bperrma2</a> - Perwez Rue des Marronniers 16:32</li><li><a href="stop-TEC_Bpersyn2.html">TEC:Bpersyn2</a> - Perwez Syndicat 16:32</li><li><a href="stop-TEC_Btstw752.html">TEC:Btstw752</a> - Thorembais-Saint-Trond Chaussée de Wavre 75 16:33</li><li><a href="stop-TEC_Btstcar1.html">TEC:Btstcar1</a> - Thorembais-Saint-Trond Carrefour 16:35</li><li><a href="stop-TEC_Borbtre1.html">TEC:Borbtre1</a> - Orbais Tremouroux 16:38</li><li><a href="stop-TEC_Borborb2.html">TEC:Borborb2</a> - Orbais Route d'Orbais 16:40</li><li><a href="stop-TEC_Borbode2.html">TEC:Borbode2</a> - Orbais Odenge 16:41</li><li><a href="stop-TEC_Borbod92.html">TEC:Borbod92</a> - Orbais Rue d'Odenge N° 9 16:42</li><li><a href="stop-TEC_Bmalper2.html">TEC:Bmalper2</a> - Wastines Rte de Perwez 16:43</li><li><a href="stop-TEC_Bmalcar2.html">TEC:Bmalcar2</a> - Maleves-Sainte-Marie Carrefour 16:44</li><li><a href="stop-TEC_Bmalsme2.html">TEC:Bmalsme2</a> - Maleves-Sainte-Marie Rue de l'Eglise 16:45</li><li><a href="stop-TEC_Bmalsmc2.html">TEC:Bmalsmc2</a> - Maleves-Sainte-Marie Chapelle 16:46</li><li><a href="stop-TEC_Bmalwop2.html">TEC:Bmalwop2</a> - Wastines Rte d'Opprebais 16:47</li><li><a href="stop-TEC_Bmalwvi2.html">TEC:Bmalwvi2</a> - Wastines Village 16:48</li><li><a href="stop-TEC_Btlbtbe4.html">TEC:Btlbtbe4</a> - Thorembais-les-Beguines Rte de Thor.-les-Béguines 16:50</li><li><a href="stop-TEC_Btlbegl3.html">TEC:Btlbegl3</a> - Thorembais-les-Beguines Eglise 16:51</li><li><a href="stop-TEC_Btlbmel2.html">TEC:Btlbmel2</a> - Thorembais-les-Beguines Mellemont 16:53</li><li><a href="stop-TEC_Bperalv2.html">TEC:Bperalv2</a> - Perwez Alvaux 16:56</li><li><a href="stop-TEC_Bpergar3.html">TEC:Bpergar3</a> - Perwez Gare 16:57</li><li><a href="stop-TEC_Bperpla2.html">TEC:Bperpla2</a> - Perwez Place 16:58</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./12.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

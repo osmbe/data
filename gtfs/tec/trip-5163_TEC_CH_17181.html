@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHARLEROI- BEAUMONT-CHIMAY - 5163:TEC:CH:17181</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHARLEROI- BEAUMONT-CHIMAY - 5163:TEC:CH:17181</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cbmind2.html">TEC:Cbmind2</a> - Beaumont Athénée 18:21</li><li><a href="stop-TEC_Cbmpano2.html">TEC:Cbmpano2</a> - Beaumont Panorama 18:22</li><li><a href="stop-TEC_Cbmmafr2.html">TEC:Cbmmafr2</a> - Beaumont Home Marie-France 18:22</li><li><a href="stop-TEC_Cbmpopr2.html">TEC:Cbmpopr2</a> - Beaumont Pont du prince 18:23</li><li><a href="stop-TEC_Clcfall4.html">TEC:Clcfall4</a> - Leval-Chaudeville Fallin 18:24</li><li><a href="stop-TEC_Clgrsoc2.html">TEC:Clgrsoc2</a> - Leugnies Route de Solre-le-Château 18:25</li><li><a href="stop-TEC_Clgmaco2.html">TEC:Clgmaco2</a> - Leugnies Maison communale 18:27</li><li><a href="stop-TEC_Clggrfe2.html">TEC:Clggrfe2</a> - Leugnies Grosse Ferme 18:28</li><li><a href="stop-TEC_Clgpavi2.html">TEC:Clgpavi2</a> - Leugnies Les Pavillons 18:29</li><li><a href="stop-TEC_Cgd4ven2.html">TEC:Cgd4ven2</a> - Grandrieu 4 Vents 18:30</li><li><a href="stop-TEC_Cgdrhau2.html">TEC:Cgdrhau2</a> - Grandrieu Route de la Haut 18:33</li><li><a href="stop-TEC_Cgdcent2.html">TEC:Cgdcent2</a> - Grandrieu Centre 18:33</li><li><a href="stop-TEC_Cgdberl2.html">TEC:Cgdberl2</a> - Grandrieu Berlique 18:34</li><li><a href="stop-TEC_Cgdfras2.html">TEC:Cgdfras2</a> - Grandrieu Frasies 18:36</li><li><a href="stop-TEC_Cgdfoca2.html">TEC:Cgdfoca2</a> - Grandrieu Focant 18:37</li><li><a href="stop-TEC_Csylaha2.html">TEC:Csylaha2</a> - Sivry Rue de la Haut 18:38</li><li><a href="stop-TEC_Csystan2.html">TEC:Csystan2</a> - Sivry Sainte-Anne 18:38</li><li><a href="stop-TEC_Csyplac2.html">TEC:Csyplac2</a> - Sivry Place 18:39</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1059.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tournai City : Tournai - Warchin - Rumillies - 5163:TEC:HT:8777</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tournai City : Tournai - Warchin - Rumillies - 5163:TEC:HT:8777</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4ty305d.html">TEC:H4ty305d</a> - Tournai SNCB 12:50</li><li><a href="stop-TEC_H4ty295a.html">TEC:H4ty295a</a> - Tournai Boulevard des Nerviens 12:51</li><li><a href="stop-TEC_H4ty290a.html">TEC:H4ty290a</a> - Tournai Dépôt 12:53</li><li><a href="stop-TEC_H4ty330b.html">TEC:H4ty330b</a> - Tournai Rond Point 12:54</li><li><a href="stop-TEC_H4ty302b.html">TEC:H4ty302b</a> - Tournai Floc à Brebis 12:54</li><li><a href="stop-TEC_H4ty264b.html">TEC:H4ty264b</a> - Tournai 4 Coins Saint-Jacques 12:55</li><li><a href="stop-TEC_H4ty320b.html">TEC:H4ty320b</a> - Tournai Rue Perdue 12:57</li><li><a href="stop-TEC_H4ty306a.html">TEC:H4ty306a</a> - Tournai Grand-Place 12:58</li><li><a href="stop-TEC_H4ty274a.html">TEC:H4ty274a</a> - Tournai Beffroi 13:00</li><li><a href="stop-TEC_H4ty291c.html">TEC:H4ty291c</a> - Tournai Dôme 13:01</li><li><a href="stop-TEC_H4ty310a.html">TEC:H4ty310a</a> - Tournai Hospice 13:02</li><li><a href="stop-TEC_H4ty324a.html">TEC:H4ty324a</a> - Tournai Prison 13:04</li><li><a href="stop-TEC_H4ty293a.html">TEC:H4ty293a</a> - Tournai Dorcas 13:05</li><li><a href="stop-TEC_H4ty354a.html">TEC:H4ty354a</a> - Tournai Bastions Quai 1 13:06</li><li><a href="stop-TEC_H4ty314d.html">TEC:H4ty314d</a> - Tournai Marvis 13:07</li><li><a href="stop-TEC_H4ty280a.html">TEC:H4ty280a</a> - Tournai Chaussée de Bruxelles 13:08</li><li><a href="stop-TEC_H4ty278a.html">TEC:H4ty278a</a> - Tournai Aqua-Tournai 13:11</li><li><a href="stop-TEC_H4ty299f.html">TEC:H4ty299f</a> - Tournai Rue de l'Orient 13:12</li><li><a href="stop-TEC_H4ty315a.html">TEC:H4ty315a</a> - Tournai Meura 13:13</li><li><a href="stop-TEC_H4ty275a.html">TEC:H4ty275a</a> - Tournai Belle-Vue 13:14</li><li><a href="stop-TEC_H4wc372b.html">TEC:H4wc372b</a> - Warchin Place 13:16</li><li><a href="stop-TEC_H4wc374a.html">TEC:H4wc374a</a> - Warchin Tannerie 13:17</li><li><a href="stop-TEC_H4ru240b.html">TEC:H4ru240b</a> - Rumillies Rieu d'Amour 13:18</li><li><a href="stop-TEC_H4ru246a.html">TEC:H4ru246a</a> - Tournai Verte Feuille 13:19</li><li><a href="stop-TEC_H4ty349b.html">TEC:H4ty349b</a> - Tournai Sacré Coeur 13:20</li><li><a href="stop-TEC_H4ty342b.html">TEC:H4ty342b</a> - Tournai Rue du Nord 13:21</li><li><a href="stop-TEC_H4ty305a.html">TEC:H4ty305a</a> - Tournai SNCB 13:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1378.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

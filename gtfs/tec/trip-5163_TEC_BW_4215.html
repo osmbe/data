@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Manage/Nivelles - Soignies - 5163:TEC:BW:4215</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Manage/Nivelles - Soignies - 5163:TEC:BW:4215</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bsoihci1.html">TEC:Bsoihci1</a> - Soignies Hôpital 16:30</li><li><a href="stop-TEC_H3so175b.html">TEC:H3so175b</a> - Soignies Place du Jeu de Balle 16:32</li><li><a href="stop-TEC_H3so155b.html">TEC:H3so155b</a> - Soignies Belle Vue 16:34</li><li><a href="stop-TEC_Bsoigar2.html">TEC:Bsoigar2</a> - Soignies Gare 16:37</li><li><a href="stop-TEC_H3so163b.html">TEC:H3so163b</a> - Soignies Eglise des Carmes 16:39</li><li><a href="stop-TEC_H3so172b.html">TEC:H3so172b</a> - Soignies Les Trois Tilleuls 16:42</li><li><a href="stop-TEC_H3so169b.html">TEC:H3so169b</a> - Soignies Habitation N° 379 16:43</li><li><a href="stop-TEC_H2na135b.html">TEC:H2na135b</a> - Naast Escarmotte 16:45</li><li><a href="stop-TEC_H2na134b.html">TEC:H2na134b</a> - Naast Château Baillon 16:47</li><li><a href="stop-TEC_H2na136b.html">TEC:H2na136b</a> - Naast Monument 16:48</li><li><a href="stop-TEC_Bnstpla1.html">TEC:Bnstpla1</a> - Naast Place 16:49</li><li><a href="stop-TEC_Bnstgar1.html">TEC:Bnstgar1</a> - Naast Station 16:50</li><li><a href="stop-TEC_Bnstmig1.html">TEC:Bnstmig1</a> - Naast Chemin de Mignault 16:51</li><li><a href="stop-TEC_Bnstver1.html">TEC:Bnstver1</a> - Naast Rue Verte 16:52</li><li><a href="stop-TEC_Bnstlna1.html">TEC:Bnstlna1</a> - Naast Limite de Naast 16:53</li><li><a href="stop-TEC_Becebju1.html">TEC:Becebju1</a> - Enghien La Belle Julie 16:54</li><li><a href="stop-TEC_Beceres1.html">TEC:Beceres1</a> - Enghien Restaumont 16:55</li><li><a href="stop-TEC_Becepro1.html">TEC:Becepro1</a> - Enghien Rue du Profondrieux 16:56</li><li><a href="stop-TEC_Becesbo1.html">TEC:Becesbo1</a> - Enghien Scierie au Bois 16:56</li><li><a href="stop-TEC_Becepco1.html">TEC:Becepco1</a> - Enghien Place Cousin 16:57</li><li><a href="stop-TEC_Becepon1.html">TEC:Becepon1</a> - Enghien Pont 16:58</li><li><a href="stop-TEC_Becegar1.html">TEC:Becegar1</a> - Ecaussinnes Gare 16:59</li><li><a href="stop-TEC_Becepri1.html">TEC:Becepri1</a> - Enghien Rue des Primevères 17:00</li><li><a href="stop-TEC_H2ec108b.html">TEC:H2ec108b</a> - Ecaussinnes Quartier Central 17:01</li><li><a href="stop-TEC_H2ec101a.html">TEC:H2ec101a</a> - Ecaussinnes Carrière 17:02</li><li><a href="stop-TEC_Beclpla1.html">TEC:Beclpla1</a> - Ecaussinnes Place 17:03</li><li><a href="stop-TEC_Beclbse2.html">TEC:Beclbse2</a> - Ecaussinnes-Lalaing Bd de la Sennette 17:04</li><li><a href="stop-TEC_Beclpma2.html">TEC:Beclpma2</a> - Ecaussinnes-Lalaing Petit Maquis 17:06</li><li><a href="stop-TEC_Beclesp2.html">TEC:Beclesp2</a> - Ecaussinnes-Lalaing L'Espinette 17:06</li><li><a href="stop-TEC_Beclaub2.html">TEC:Beclaub2</a> - Ecaussinnes-Lalaing Les Aubéries 17:08</li><li><a href="stop-TEC_Beclron2.html">TEC:Beclron2</a> - Ecaussinnes-Lalaing Chemin de Ronquières 17:10</li><li><a href="stop-TEC_Becltri2.html">TEC:Becltri2</a> - Ecaussinnes-Lalaing Triboureau 17:12</li><li><a href="stop-TEC_Beclbar2.html">TEC:Beclbar2</a> - Ecaussinnes-Lalaing Barouche 17:13</li><li><a href="stop-TEC_Beclfde2.html">TEC:Beclfde2</a> - Ecaussinnes-Lalaing Ferme Debrichy 17:14</li><li><a href="stop-TEC_Bfelfde2.html">TEC:Bfelfde2</a> - Feluy Ferme Dehaye 17:15</li><li><a href="stop-TEC_Bfelcsa2.html">TEC:Bfelcsa2</a> - Feluy Chapelle Sainte-Anne 17:16</li><li><a href="stop-TEC_Bfelpla2.html">TEC:Bfelpla2</a> - Feluy Place 17:17</li><li><a href="stop-TEC_Bfelcen2.html">TEC:Bfelcen2</a> - Feluy Centenaire 17:18</li><li><a href="stop-TEC_Bfelpmo2.html">TEC:Bfelpmo2</a> - Feluy Petit Moulin 17:19</li><li><a href="stop-TEC_Bfelgar2.html">TEC:Bfelgar2</a> - Feluy Gare 17:21</li><li><a href="stop-TEC_Bfelbri1.html">TEC:Bfelbri1</a> - Feluy La Bride 17:21</li><li><a href="stop-TEC_Barqhro1.html">TEC:Barqhro1</a> - Arquennes Hameau Roland 17:22</li><li><a href="stop-TEC_Bfelada1.html">TEC:Bfelada1</a> - Feluy Auberge du Dauphin 17:23</li><li><a href="stop-TEC_Bfelrav1.html">TEC:Bfelrav1</a> - Feluy La Ravisée 17:24</li><li><a href="stop-TEC_Bsengma1.html">TEC:Bsengma1</a> - Seneffe Grande Marie 17:25</li><li><a href="stop-TEC_Bsenpeu1.html">TEC:Bsenpeu1</a> - Seneffe Les Peupliers 17:26</li><li><a href="stop-TEC_Bsences1.html">TEC:Bsences1</a> - Seneffe Château de l'Espinette 17:26</li><li><a href="stop-TEC_Bsencen1.html">TEC:Bsencen1</a> - Seneffe Centre 17:27</li><li><a href="stop-TEC_Bsensab1.html">TEC:Bsensab1</a> - Seneffe Sabotier 17:28</li><li><a href="stop-TEC_Bsenpbi1.html">TEC:Bsenpbi1</a> - Seneffe Pont de Binche 17:29</li><li><a href="stop-TEC_Bsenbmc1.html">TEC:Bsenbmc1</a> - Seneffe BMC 17:30</li><li><a href="stop-TEC_Bmanati1.html">TEC:Bmanati1</a> - Manage ATI 17:31</li><li><a href="stop-TEC_Bmangen1.html">TEC:Bmangen1</a> - Manage Gendarmerie 17:32</li><li><a href="stop-TEC_Bmanfbg1.html">TEC:Bmanfbg1</a> - Manage Faubourg 17:33</li><li><a href="stop-TEC_Bmangar1.html">TEC:Bmangar1</a> - Manage Gare 17:34</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./569.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - EGHEZEE - MARCHOVELETTE - 5163:TEC:NA:10256</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: EGHEZEE - MARCHOVELETTE - 5163:TEC:NA:10256</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N514ahb.html">TEC:N514ahb</a> - Eghezee Lycée secondaire 12:14</li><li><a href="stop-TEC_N514anb.html">TEC:N514anb</a> - Eghezee Centre 12:16</li><li><a href="stop-TEC_N514acb.html">TEC:N514acb</a> - Eghezee Route d'Andenne 12:17</li><li><a href="stop-TEC_N516aoc.html">TEC:N516aoc</a> - Hanret Renaissance 12:22</li><li><a href="stop-TEC_N516ajb.html">TEC:N516ajb</a> - Hanret Route de Wasseiges 12:23</li><li><a href="stop-TEC_N516aib.html">TEC:N516aib</a> - Hanret Vallée 12:24</li><li><a href="stop-TEC_N516ahb.html">TEC:N516ahb</a> - Hanret Rue de Montigny 12:25</li><li><a href="stop-TEC_N516apb.html">TEC:N516apb</a> - Hanret Route d'Andenne 12:26</li><li><a href="stop-TEC_N516amb.html">TEC:N516amb</a> - Hambraine Centre 12:27</li><li><a href="stop-TEC_N516aqb.html">TEC:N516aqb</a> - Hambraine Pelaki 12:28</li><li><a href="stop-TEC_N507aga.html">TEC:N507aga</a> - Forville Av. de la Libération 12:30</li><li><a href="stop-TEC_N507aia.html">TEC:N507aia</a> - Forville Route de Gochenée 12:31</li><li><a href="stop-TEC_N507adb.html">TEC:N507adb</a> - Bierwart Eglise 12:35</li><li><a href="stop-TEC_N507abb.html">TEC:N507abb</a> - Bierwart Carrefour 12:36</li><li><a href="stop-TEC_N507ald.html">TEC:N507ald</a> - Pontillas Masoin 12:38</li><li><a href="stop-TEC_N507akb.html">TEC:N507akb</a> - Pontillas Rue du Vert bois 12:39</li><li><a href="stop-TEC_N509aob.html">TEC:N509aob</a> - Hingeon Rue Delbrouck 12:42</li><li><a href="stop-TEC_N509asb.html">TEC:N509asb</a> - Hingeon Rue des grands Pachis 12:43</li><li><a href="stop-TEC_N509atb.html">TEC:N509atb</a> - Hingeon Rue des frères Stasse 12:44</li><li><a href="stop-TEC_N509aub.html">TEC:N509aub</a> - Hingeon Rue de la maladerie 12:45</li><li><a href="stop-TEC_N509avb.html">TEC:N509avb</a> - Hingeon Rue des Réfractaires 12:46</li><li><a href="stop-TEC_N509aqb.html">TEC:N509aqb</a> - Hingeon Route de Hannut 12:47</li><li><a href="stop-TEC_N509acc.html">TEC:N509acc</a> - Franc-Waret Carrefour 12:48</li><li><a href="stop-TEC_N509afb.html">TEC:N509afb</a> - Franc-Waret Route de Namêche 12:49</li><li><a href="stop-TEC_N509agb.html">TEC:N509agb</a> - Franc-Waret Château 12:50</li><li><a href="stop-TEC_N510adb.html">TEC:N510adb</a> - Marchovelette Lotissement Capelle 12:54</li><li><a href="stop-TEC_N510aeb.html">TEC:N510aeb</a> - Marchovelette Route de Gelbressée 12:55</li><li><a href="stop-TEC_N510afb.html">TEC:N510afb</a> - Marchovelette Eglise 12:56</li><li><a href="stop-TEC_N510aca.html">TEC:N510aca</a> - Marchovelette Maison communale 12:57</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5813.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - JODOIGNE - EGHEZEE - 5163:TEC:NA:10012</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: JODOIGNE - EGHEZEE - 5163:TEC:NA:10012</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N514ana.html">TEC:N514ana</a> - Eghezee Centre 13:10</li><li><a href="stop-TEC_N514aha.html">TEC:N514aha</a> - Eghezee Lycée secondaire 13:11</li><li><a href="stop-TEC_N515apa.html">TEC:N515apa</a> - Noville-sur-Mehaigne Route de Mehaigne 13:12</li><li><a href="stop-TEC_N515aqa.html">TEC:N515aqa</a> - Noville-sur-Mehaigne Quatre coins 13:13</li><li><a href="stop-TEC_N515ara.html">TEC:N515ara</a> - Noville-sur-Mehaigne Route de la Gare 13:14</li><li><a href="stop-TEC_N515asa.html">TEC:N515asa</a> - Noville-sur-Mehaigne Gare 13:14</li><li><a href="stop-TEC_N515aia.html">TEC:N515aia</a> - Taviers Quatre bras 13:15</li><li><a href="stop-TEC_N515aoa.html">TEC:N515aoa</a> - Taviers Bas tige 13:16</li><li><a href="stop-TEC_NR27aaa.html">TEC:NR27aaa</a> - Ramillies Café Duchêne 13:18</li><li><a href="stop-TEC_NR27aba.html">TEC:NR27aba</a> - Ramillies Saint-Donat 13:18</li><li><a href="stop-TEC_Boffegl1.html">TEC:Boffegl1</a> - Ramillies Eglise 13:19</li><li><a href="stop-TEC_Bramcom2.html">TEC:Bramcom2</a> - Ramillies Les Communes 13:20</li><li><a href="stop-TEC_Bramrdf2.html">TEC:Bramrdf2</a> - Ramillies Rue des Fontenelles 13:21</li><li><a href="stop-TEC_Bramcar2.html">TEC:Bramcar2</a> - Ramillies Carrefour Offus 13:23</li><li><a href="stop-TEC_Baegpon4.html">TEC:Baegpon4</a> - Autre-Eglise Pont 13:24</li><li><a href="stop-TEC_Bramgar1.html">TEC:Bramgar1</a> - Ramillies Gare 13:25</li><li><a href="stop-TEC_Baegd742.html">TEC:Baegd742</a> - Gerompont Avenue des Déportés 74 13:26</li><li><a href="stop-TEC_Bgercen2.html">TEC:Bgercen2</a> - Gerompont Centre 13:27</li><li><a href="stop-TEC_Bgermco2.html">TEC:Bgermco2</a> - Gerompont Maison Communale 13:28</li><li><a href="stop-TEC_Bgerd322.html">TEC:Bgerd322</a> - Gerompont Avenue des Déportés 32 13:28</li><li><a href="stop-TEC_Bgerprg2.html">TEC:Bgerprg2</a> - Petit-Rosiere Gare 13:29</li><li><a href="stop-TEC_NB33aea.html">TEC:NB33aea</a> - Petit-Rosiere Notre-Dame de Hal 13:31</li><li><a href="stop-TEC_NB33afa.html">TEC:NB33afa</a> - Mont-Saint-Andre Route de Geest 13:33</li><li><a href="stop-TEC_Bmsaegl1.html">TEC:Bmsaegl1</a> - Mont-Saint-Andre Eglise 13:34</li><li><a href="stop-TEC_NB33aha.html">TEC:NB33aha</a> - Mont-Saint-Andre Petite goyarde 13:35</li><li><a href="stop-TEC_NB33aia.html">TEC:NB33aia</a> - Mont-Saint-Andre Grande goyarde 13:36</li><li><a href="stop-TEC_NB33aja.html">TEC:NB33aja</a> - Mont-Saint-Andre Laloux 13:37</li><li><a href="stop-TEC_NB33aka.html">TEC:NB33aka</a> - Bomal Maison communale 13:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5682.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

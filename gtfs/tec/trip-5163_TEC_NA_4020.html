@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - JEMELLE - WELLIN - GRUPONT - 5163:TEC:NA:4020</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: JEMELLE - WELLIN - GRUPONT - 5163:TEC:NA:4020</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N874abb.html">TEC:N874abb</a> - Wellin Dépôt TEC 11:08</li><li><a href="stop-TEC_N874aeb.html">TEC:N874aeb</a> - Wellin Place 11:09</li><li><a href="stop-TEC_N874afa.html">TEC:N874afa</a> - Wellin Route de Rochefort 11:09</li><li><a href="stop-TEC_N874aha.html">TEC:N874aha</a> - Wellin Fond des Vaux 11:10</li><li><a href="stop-TEC_N874aga.html">TEC:N874aga</a> - Wellin Carrières 11:11</li><li><a href="stop-TEC_N383aea.html">TEC:N383aea</a> - Ave-et-Auffe Sourd d'Ave 11:13</li><li><a href="stop-TEC_N383aca.html">TEC:N383aca</a> - Ave-et-Auffe Cimetière 11:14</li><li><a href="stop-TEC_N383ada.html">TEC:N383ada</a> - Ave-et-Auffe Monument 11:14</li><li><a href="stop-TEC_N383afa.html">TEC:N383afa</a> - Ave-et-Auffe Ecoles 11:15</li><li><a href="stop-TEC_N383aba.html">TEC:N383aba</a> - Ave-et-Auffe Route de Rochefort 11:16</li><li><a href="stop-TEC_N383aaa.html">TEC:N383aaa</a> - Ave-et-Auffe Quatre bras 11:18</li><li><a href="stop-TEC_N357aba.html">TEC:N357aba</a> - Han-sur-Lesse Ry d'Ave 11:21</li><li><a href="stop-TEC_N357aaa.html">TEC:N357aaa</a> - Han-sur-Lesse Chemin de Belvaux 11:22</li><li><a href="stop-TEC_N357aea.html">TEC:N357aea</a> - Han-sur-Lesse Eglise 11:23</li><li><a href="stop-TEC_N357aca.html">TEC:N357aca</a> - Han-sur-Lesse Cimetière 11:23</li><li><a href="stop-TEC_N357afa.html">TEC:N357afa</a> - Han-sur-Lesse Domaine des Masures 11:24</li><li><a href="stop-TEC_N357ada.html">TEC:N357ada</a> - Han-sur-Lesse Beau Séjour 11:25</li><li><a href="stop-TEC_N351aga.html">TEC:N351aga</a> - Rochefort Rue des Falizes 11:30</li><li><a href="stop-TEC_N351aha.html">TEC:N351aha</a> - Rochefort Square Crépin 11:30</li><li><a href="stop-TEC_N351afb.html">TEC:N351afb</a> - Rochefort Camping 11:31</li><li><a href="stop-TEC_N351atb.html">TEC:N351atb</a> - Rochefort Lidl 11:33</li><li><a href="stop-TEC_N390amb.html">TEC:N390amb</a> - Jemelle Hall Omnisports 11:33</li><li><a href="stop-TEC_N390afb.html">TEC:N390afb</a> - Jemelle Rue de la Vallée 11:34</li><li><a href="stop-TEC_N390abb.html">TEC:N390abb</a> - Jemelle Rue Salvé 11:34</li><li><a href="stop-TEC_N390aab.html">TEC:N390aab</a> - Jemelle Rue du Centenaire 11:34</li><li><a href="stop-TEC_N390acb.html">TEC:N390acb</a> - Jemelle Place communale 11:35</li><li><a href="stop-TEC_N390aeb.html">TEC:N390aeb</a> - Jemelle Tunnel SNCB 11:36</li><li><a href="stop-TEC_N390adb.html">TEC:N390adb</a> - Rochefort - JEMELLE Gare 11:37</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5734.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

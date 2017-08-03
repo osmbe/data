@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Aywaille - Hamoir - 5163:TEC:LV:43749</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Aywaille - Hamoir - 5163:TEC:LV:43749</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LAYgare1.html">TEC:LAYgare1</a> - Aywaille Gare SNCB 13:31</li><li><a href="stop-TEC_LAYpl--1.html">TEC:LAYpl--1</a> - Aywaille Place 13:32</li><li><a href="stop-TEC_LAYchal1.html">TEC:LAYchal1</a> - Aywaille Rue du Chalet 14 13:32</li><li><a href="stop-TEC_LAYcont1.html">TEC:LAYcont1</a> - Aywaille Bureau des Contributions 13:33</li><li><a href="stop-TEC_LAYwerb1.html">TEC:LAYwerb1</a> - Aywaille Route de Werbomont 13:34</li><li><a href="stop-TEC_LAYambl1.html">TEC:LAYambl1</a> - Aywaille Mont d'Amblève 13:36</li><li><a href="stop-TEC_LAYlieg1.html">TEC:LAYlieg1</a> - Aywaille Rue des Liégeois 13:37</li><li><a href="stop-TEC_LAweg--1.html">TEC:LAweg--1</a> - Awan Eglise 13:38</li><li><a href="stop-TEC_LAwec--1.html">TEC:LAwec--1</a> - Awan Ecole 13:38</li><li><a href="stop-TEC_LAwfans1.html">TEC:LAwfans1</a> - Awan Laiterie de Fanson 13:40</li><li><a href="stop-TEC_LXoharz3.html">TEC:LXoharz3</a> - Xhoris Chemin de Harzé 13:42</li><li><a href="stop-TEC_LXofans1.html">TEC:LXofans1</a> - Xhoris Chemin de Fanson 13:43</li><li><a href="stop-TEC_LXomc--3.html">TEC:LXomc--3</a> - Xhoris Maison Communale 13:45</li><li><a href="stop-TEC_LXopier1.html">TEC:LXopier1</a> - Xhoris Pierreux 13:47</li><li><a href="stop-TEC_LXocomb1.html">TEC:LXocomb1</a> - Xhoris Rue de Comblain 3a 13:48</li><li><a href="stop-TEC_LCTcret1.html">TEC:LCTcret1</a> - Comblain-la-Tour Crétalles 13:50</li><li><a href="stop-TEC_LCTmonu1.html">TEC:LCTmonu1</a> - Comblain-la-Tour Monument 13:52</li><li><a href="stop-TEC_LCTgare3.html">TEC:LCTgare3</a> - Comblain-la-Tour Gare 13:53</li><li><a href="stop-TEC_LCTfair2.html">TEC:LCTfair2</a> - Comblain-la-Tour Rue de Fairon 13:54</li><li><a href="stop-TEC_LCFchir2.html">TEC:LCFchir2</a> - Comblain-Fairon Chirmont 13:57</li><li><a href="stop-TEC_LCFeg--2.html">TEC:LCFeg--2</a> - Comblain-Fairon Eglise 13:58</li><li><a href="stop-TEC_LHaodei2.html">TEC:LHaodei2</a> - Hamoir Château d'Odeigne 14:00</li><li><a href="stop-TEC_LHarenn1.html">TEC:LHarenn1</a> - Hamoir Auberge des Rennes 14:01</li><li><a href="stop-TEC_LHanest1.html">TEC:LHanest1</a> - Hamoir Usine Nestlé 14:02</li><li><a href="stop-TEC_LHaeg--1.html">TEC:LHaeg--1</a> - Hamoir Eglise 14:03</li><li><a href="stop-TEC_LHaxhig1.html">TEC:LHaxhig1</a> - Hamoir route de Xhignesse 14:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4116.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

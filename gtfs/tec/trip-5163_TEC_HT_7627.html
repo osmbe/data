@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mouscron/Moeskroen - Comines/Komen - 5163:TEC:HT:7627</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mouscron/Moeskroen - Comines/Komen - 5163:TEC:HT:7627</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4co104a.html">TEC:H4co104a</a> - Komen Collège Saint-Henri 07:46</li><li><a href="stop-TEC_H4co106d.html">TEC:H4co106d</a> - Komen SNCB/Station 07:47</li><li><a href="stop-TEC_H4co110a.html">TEC:H4co110a</a> - Komen Place Sainte-Anne/Sint-Annaplein 07:49</li><li><a href="stop-TEC_H4co109b.html">TEC:H4co109b</a> - Komen Rue de la Victoire/Overwinningstraat 07:50</li><li><a href="stop-TEC_H4co144b.html">TEC:H4co144b</a> - Komen Au bord de la Lys 07:51</li><li><a href="stop-TEC_H4co107b.html">TEC:H4co107b</a> - Komen Hospice/Bejaardenteheuis 07:52</li><li><a href="stop-TEC_H4co108b.html">TEC:H4co108b</a> - Komen Chaussée de Wervicq/Werviksesteenweg 07:53</li><li><a href="stop-TEC_H4co133b.html">TEC:H4co133b</a> - Komen La Haute Planche 07:54</li><li><a href="stop-TEC_H4mn100a.html">TEC:H4mn100a</a> - Menin Station/SNC 08:08</li><li><a href="stop-TEC_H4mn100d.html">TEC:H4mn100d</a> - Menin Station/SNCB 08:08</li><li><a href="stop-TEC_H4rk101a.html">TEC:H4rk101a</a> - Rekkem De Schapper 08:18</li><li><a href="stop-TEC_H4mo133a.html">TEC:H4mo133a</a> - Moeskroen Belle-Vue 08:19</li><li><a href="stop-TEC_H4mo145a.html">TEC:H4mo145a</a> - Moeskroen Hall-Expo 08:21</li><li><a href="stop-TEC_H4mo158a.html">TEC:H4mo158a</a> - Moeskroen Nouveau Monde 08:25</li><li><a href="stop-TEC_H4mo138a.html">TEC:H4mo138a</a> - Moeskroen Cimetière Nouveau Monde Kerkhof 08:27</li><li><a href="stop-TEC_H4mo153d.html">TEC:H4mo153d</a> - Moeskroen L'Ours 08:29</li><li><a href="stop-TEC_H4mo163a.html">TEC:H4mo163a</a> - Moeskroen Place de Picardie/Picardieplein 08:32</li><li><a href="stop-TEC_H4mo136a.html">TEC:H4mo136a</a> - Moeskroen Casino 08:33</li><li><a href="stop-TEC_H4mo161a.html">TEC:H4mo161a</a> - Moeskroen Place de la Justice/Justitiepl. 08:34</li><li><a href="stop-TEC_H4mo160a.html">TEC:H4mo160a</a> - Moeskroen Phénix 08:35</li><li><a href="stop-TEC_H4mo142a.html">TEC:H4mo142a</a> - Moeskroen SNCB/Station 08:37</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1994.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

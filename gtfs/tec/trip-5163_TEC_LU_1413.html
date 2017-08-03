@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Libramont - Jemelle - 5163:TEC:LU:1413</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Libramont - Jemelle - 5163:TEC:LU:1413</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X801bde.html">TEC:X801bde</a> - Libramont Gare - Quai 3 14:15</li><li><a href="stop-TEC_X801bbb.html">TEC:X801bbb</a> - Libramont Sodelux 14:17</li><li><a href="stop-TEC_X801baa.html">TEC:X801baa</a> - Libramont Rue des Alliés 57 14:17</li><li><a href="stop-TEC_X801bia.html">TEC:X801bia</a> - Libramont Rue du Village 35 14:19</li><li><a href="stop-TEC_X801bfa.html">TEC:X801bfa</a> - Libramont Maison Communale 14:20</li><li><a href="stop-TEC_X801cla.html">TEC:X801cla</a> - Libramont Rue du Monument 14:21</li><li><a href="stop-TEC_X801bza.html">TEC:X801bza</a> - Libramont Outigros 14:21</li><li><a href="stop-TEC_X801bxb.html">TEC:X801bxb</a> - Libramont Gendarmerie 14:22</li><li><a href="stop-TEC_X801bwb.html">TEC:X801bwb</a> - Libramont Le Blancheau 14:22</li><li><a href="stop-TEC_X802ayb.html">TEC:X802ayb</a> - Recogne Carrefour 14:23</li><li><a href="stop-TEC_X802aua.html">TEC:X802aua</a> - Recogne Route de Saint-Hubert - N89 14:24</li><li><a href="stop-TEC_X801aab.html">TEC:X801aab</a> - Libramont L'Oréal 14:25</li><li><a href="stop-TEC_X899aba.html">TEC:X899aba</a> - Bras Haut Escale 14:30</li><li><a href="stop-TEC_X899aca.html">TEC:X899aca</a> - Bras Haut Rue de Mochamps 14:30</li><li><a href="stop-TEC_X899aeb.html">TEC:X899aeb</a> - Bras Haut Route d'Hatrival 14:32</li><li><a href="stop-TEC_X898ama.html">TEC:X898ama</a> - Hatrival Rue de Bras 44 14:34</li><li><a href="stop-TEC_X898anb.html">TEC:X898anb</a> - Hatrival Rue de Bras 19 14:35</li><li><a href="stop-TEC_X898aja.html">TEC:X898aja</a> - Hatrival Ecole 14:35</li><li><a href="stop-TEC_X898aib.html">TEC:X898aib</a> - Hatrival Rue de Saint-Hubert 13 14:36</li><li><a href="stop-TEC_X898ahb.html">TEC:X898ahb</a> - Hatrival Rue de Saint-Hubert 42 14:36</li><li><a href="stop-TEC_X897aaa.html">TEC:X897aaa</a> - Saint-Hubert Moulin d'en Haut 14:37</li><li><a href="stop-TEC_X897aba.html">TEC:X897aba</a> - Saint-Hubert Rue d'Hatrival 30 14:39</li><li><a href="stop-TEC_X897acb.html">TEC:X897acb</a> - Saint-Hubert Rue d'Hatrival 1 14:39</li><li><a href="stop-TEC_X897aic.html">TEC:X897aic</a> - Saint-Hubert IND - Quai 1 14:40</li><li><a href="stop-TEC_X897ala.html">TEC:X897ala</a> - Saint-Hubert Place de la Libération 14:41</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2528.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - ACOSSE - 5163:TEC:NA:5760</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - ACOSSE - 5163:TEC:NA:5760</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N501zea.html">TEC:N501zea</a> - Namur Gare - Porte de Fer 16:33</li><li><a href="stop-TEC_N501gza.html">TEC:N501gza</a> - Namur Rue Rogier 16:35</li><li><a href="stop-TEC_N501ndb.html">TEC:N501ndb</a> - Namur Rue des Bourgeois 16:37</li><li><a href="stop-TEC_N501hcc.html">TEC:N501hcc</a> - Namur Rue de Balart 16:39</li><li><a href="stop-TEC_N501geb.html">TEC:N501geb</a> - Namur CHR 16:41</li><li><a href="stop-TEC_N501ggb.html">TEC:N501ggb</a> - Namur Faubourg St-Nicolas 16:42</li><li><a href="stop-TEC_N501bub.html">TEC:N501bub</a> - Bouge Sentier Somal 16:44</li><li><a href="stop-TEC_N501bka.html">TEC:N501bka</a> - Bouge Route de Forêt-Beez 16:45</li><li><a href="stop-TEC_N502ada.html">TEC:N502ada</a> - Boninne Domaine du Long Sart 16:46</li><li><a href="stop-TEC_N502aca.html">TEC:N502aca</a> - Boninne Maison communale 16:49</li><li><a href="stop-TEC_N502aaa.html">TEC:N502aaa</a> - Boninne Forges 16:49</li><li><a href="stop-TEC_N502aba.html">TEC:N502aba</a> - Boninne Bois d'Esneux 16:50</li><li><a href="stop-TEC_N509aja.html">TEC:N509aja</a> - Gelbressee Route de Marche-les-Dames 16:52</li><li><a href="stop-TEC_N509aia.html">TEC:N509aia</a> - Gelbressee Comognes la Bourgogne 16:53</li><li><a href="stop-TEC_N509aka.html">TEC:N509aka</a> - Gelbressee Blanches barrières 16:54</li><li><a href="stop-TEC_N509ada.html">TEC:N509ada</a> - Franc-Waret Rue de la Sauvenière 16:55</li><li><a href="stop-TEC_N509aca.html">TEC:N509aca</a> - Franc-Waret Carrefour 16:56</li><li><a href="stop-TEC_N509aqa.html">TEC:N509aqa</a> - Hingeon Route de Hannut 16:57</li><li><a href="stop-TEC_N509ara.html">TEC:N509ara</a> - Hingeon Ferme des 4 saisons 16:58</li><li><a href="stop-TEC_N509aoa.html">TEC:N509aoa</a> - Hingeon Rue Delbrouck 16:59</li><li><a href="stop-TEC_N507aka.html">TEC:N507aka</a> - Pontillas Rue du Vert bois 17:01</li><li><a href="stop-TEC_N507alc.html">TEC:N507alc</a> - Pontillas Masoin 17:02</li><li><a href="stop-TEC_N507aba.html">TEC:N507aba</a> - Bierwart Carrefour 17:04</li><li><a href="stop-TEC_NL30aka.html">TEC:NL30aka</a> - Hanneche Au buisson 17:06</li><li><a href="stop-TEC_LHhmohe2.html">TEC:LHhmohe2</a> - Hanneche Mohéry 17:08</li><li><a href="stop-TEC_LHhchau2.html">TEC:LHhchau2</a> - Hanneche Château 17:08</li><li><a href="stop-TEC_LHheg--2.html">TEC:LHheg--2</a> - Hanneche Eglise 17:09</li><li><a href="stop-TEC_NL30aja.html">TEC:NL30aja</a> - Hanneche Rue du vivier 17:11</li><li><a href="stop-TEC_LBUmara1.html">TEC:LBUmara1</a> - Burdinne Rue du Marais 17:12</li><li><a href="stop-TEC_LBUchpl1.html">TEC:LBUchpl1</a> - Burdinne Chapelle 17:13</li><li><a href="stop-TEC_NL30afa.html">TEC:NL30afa</a> - Burdinne Grand-Place 17:14</li><li><a href="stop-TEC_LBUrout1.html">TEC:LBUrout1</a> - Burdinne Grand-Route 17:15</li><li><a href="stop-TEC_LACwass1.html">TEC:LACwass1</a> - Acosse Route de Wasseiges 17:17</li><li><a href="stop-TEC_LACeg--2.html">TEC:LACeg--2</a> - Acosse Eglise 17:18</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5711.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

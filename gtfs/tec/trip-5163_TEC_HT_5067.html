@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Tournai - Baisieux - 5163:TEC:HT:5067</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Tournai - Baisieux - 5163:TEC:HT:5067</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4ty305d.html">TEC:H4ty305d</a> - Tournai SNCB 07:20</li><li><a href="stop-TEC_H4ty295a.html">TEC:H4ty295a</a> - Tournai Boulevard des Nerviens 07:21</li><li><a href="stop-TEC_H4ty290a.html">TEC:H4ty290a</a> - Tournai Dépôt 07:23</li><li><a href="stop-TEC_H4ty294a.html">TEC:H4ty294a</a> - Tournai Ecole d'Horticulture 07:24</li><li><a href="stop-TEC_H4ty269a.html">TEC:H4ty269a</a> - Tournai Avenue des Sorbiers 07:24</li><li><a href="stop-TEC_H4ty323a.html">TEC:H4ty323a</a> - Tournai Porte de Lille 07:25</li><li><a href="stop-TEC_H4ty405a.html">TEC:H4ty405a</a> - Tournai Avenue De Gaulle 07:26</li><li><a href="stop-TEC_H4ty319a.html">TEC:H4ty319a</a> - Tournai Pensionnat 07:27</li><li><a href="stop-TEC_H4ty356a.html">TEC:H4ty356a</a> - Tournai Tir National 07:27</li><li><a href="stop-TEC_H4ty350a.html">TEC:H4ty350a</a> - Tournai Saint Lazare 07:28</li><li><a href="stop-TEC_H4oq224b.html">TEC:H4oq224b</a> - Orcq Barrière 07:28</li><li><a href="stop-TEC_H4oq223b.html">TEC:H4oq223b</a> - Orcq 3 Suisses 07:29</li><li><a href="stop-TEC_H4oq228b.html">TEC:H4oq228b</a> - Orcq Village 07:30</li><li><a href="stop-TEC_H4oq225a.html">TEC:H4oq225a</a> - Orcq Bourg 07:31</li><li><a href="stop-TEC_H4oq229a.html">TEC:H4oq229a</a> - Orcq Zoning 07:32</li><li><a href="stop-TEC_H4oq226c.html">TEC:H4oq226c</a> - Orcq Planacord 07:34</li><li><a href="stop-TEC_H4oq409b.html">TEC:H4oq409b</a> - Orcq Potence 07:35</li><li><a href="stop-TEC_H4ma418a.html">TEC:H4ma418a</a> - Marquain E-CAMPUS 07:36</li><li><a href="stop-TEC_H4ma420a.html">TEC:H4ma420a</a> - Marquain Negundo SPORTS 07:37</li><li><a href="stop-TEC_H4ma419a.html">TEC:H4ma419a</a> - Marquain Grande Couture 07:38</li><li><a href="stop-TEC_H4ma400b.html">TEC:H4ma400b</a> - Marquain Ets Inch 07:39</li><li><a href="stop-TEC_H4ma411b.html">TEC:H4ma411b</a> - Marquain Ets COBRA 07:40</li><li><a href="stop-TEC_H4ma417b.html">TEC:H4ma417b</a> - Marquain Hospices 07:40</li><li><a href="stop-TEC_H4ma401a.html">TEC:H4ma401a</a> - Marquain Ets Dubois 07:41</li><li><a href="stop-TEC_H4ma399a.html">TEC:H4ma399a</a> - Marquain Ets Holvoet Chimie 07:42</li><li><a href="stop-TEC_H4ma398a.html">TEC:H4ma398a</a> - Marquain Moto 1 07:43</li><li><a href="stop-TEC_H4oq226b.html">TEC:H4oq226b</a> - Orcq Planacord 07:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1462.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

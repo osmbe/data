@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - PROXIBUS ANHEE - 5163:TEC:NA:5587</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: PROXIBUS ANHEE - 5163:TEC:NA:5587</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N232bea.html">TEC:N232bea</a> - Dinant Hôpital Saint-Vincent 11:25</li><li><a href="stop-TEC_N232bda.html">TEC:N232bda</a> - Dinant Arsenal 11:26</li><li><a href="stop-TEC_N232bca.html">TEC:N232bca</a> - Dinant Grand champ 11:30</li><li><a href="stop-TEC_N232bba.html">TEC:N232bba</a> - Dinant Pont d'Amour 11:31</li><li><a href="stop-TEC_N232baa.html">TEC:N232baa</a> - Dinant Rue Saint-Jacques 11:34</li><li><a href="stop-TEC_N232bma.html">TEC:N232bma</a> - Dinant Boulevard Sasserath 11:35</li><li><a href="stop-TEC_N232aqb.html">TEC:N232aqb</a> - Dinant Gare 11:40</li><li><a href="stop-TEC_N232aib.html">TEC:N232aib</a> - Bouvignes Garage 11:42</li><li><a href="stop-TEC_N232ajb.html">TEC:N232ajb</a> - Bouvignes Monument 11:43</li><li><a href="stop-TEC_N232cdb.html">TEC:N232cdb</a> - Bouvignes Station 11:43</li><li><a href="stop-TEC_N231aga.html">TEC:N231aga</a> - Anhee Rue de l'Ecluse 11:48</li><li><a href="stop-TEC_N231afa.html">TEC:N231afa</a> - Anhee Rue Ste-Barbe 11:49</li><li><a href="stop-TEC_N231aba.html">TEC:N231aba</a> - Anhee Place 11:50</li><li><a href="stop-TEC_N231ada.html">TEC:N231ada</a> - Anhee Route de Maredsous 11:50</li><li><a href="stop-TEC_N230aha.html">TEC:N230aha</a> - Warnant Rue du Moulin 11:51</li><li><a href="stop-TEC_N230aia.html">TEC:N230aia</a> - Warnant Moulins 11:52</li><li><a href="stop-TEC_N233aba.html">TEC:N233aba</a> - Haut-le-Wastia Rue du Centre 11:55</li><li><a href="stop-TEC_N233aaa.html">TEC:N233aaa</a> - Haut-le-Wastia Place 11:55</li><li><a href="stop-TEC_N230aja.html">TEC:N230aja</a> - Warnant La rosière 12:00</li><li><a href="stop-TEC_N230aga.html">TEC:N230aga</a> - Warnant Maison de pierres 12:00</li><li><a href="stop-TEC_N230aka.html">TEC:N230aka</a> - Warnant Rue du Fond 12:01</li><li><a href="stop-TEC_N230ama.html">TEC:N230ama</a> - Warnant Eglise 12:01</li><li><a href="stop-TEC_N230ada.html">TEC:N230ada</a> - Warnant Station 12:02</li><li><a href="stop-TEC_N230ala.html">TEC:N230ala</a> - Salet Eglise 12:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6371.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bertrix - Muno - Lambermont - 5163:TEC:LU:5839</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bertrix - Muno - Lambermont - 5163:TEC:LU:5839</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X829aca.html">TEC:X829aca</a> - Herbeumont Grand-Place 10:00</li><li><a href="stop-TEC_X829aba.html">TEC:X829aba</a> - Herbeumont Rue Champs Simon 10:01</li><li><a href="stop-TEC_X829aab.html">TEC:X829aab</a> - Herbeumont Linglé 10:05</li><li><a href="stop-TEC_X828aaa.html">TEC:X828aaa</a> - Orgeo Les Ardoisières - Musée 10:12</li><li><a href="stop-TEC_X827aaa.html">TEC:X827aaa</a> - Orgeo Les Ardoisières 10:13</li><li><a href="stop-TEC_X818ata.html">TEC:X818ata</a> - Saint-Medard Gare 10:16</li><li><a href="stop-TEC_X818awa.html">TEC:X818awa</a> - Saint-Medard Pont SNCB 10:17</li><li><a href="stop-TEC_X818ara.html">TEC:X818ara</a> - Saint-Medard Cimetière 10:18</li><li><a href="stop-TEC_X818asd.html">TEC:X818asd</a> - Gribomont Place 10:19</li><li><a href="stop-TEC_X818aub.html">TEC:X818aub</a> - Gribomont Rue d'Orgeo 12 10:19</li><li><a href="stop-TEC_X818afa.html">TEC:X818afa</a> - Orgeo Rue de la Vierre 26 10:21</li><li><a href="stop-TEC_X818aeb.html">TEC:X818aeb</a> - Orgeo Rue du Briga 8 10:22</li><li><a href="stop-TEC_X818adb.html">TEC:X818adb</a> - Orgeo Rue du Briga 32 10:22</li><li><a href="stop-TEC_X818acb.html">TEC:X818acb</a> - Orgeo Rue de Minimpré 6 10:24</li><li><a href="stop-TEC_X818abb.html">TEC:X818abb</a> - Orgeo Les Ferrues 10:26</li><li><a href="stop-TEC_X818aab.html">TEC:X818aab</a> - Orgeo Rue d'Orgeo 37 10:26</li><li><a href="stop-TEC_X804bta.html">TEC:X804bta</a> - Bertrix Rue du Wahy 13 10:28</li><li><a href="stop-TEC_X804anb.html">TEC:X804anb</a> - Bertrix Rue de la Gare 252 10:28</li><li><a href="stop-TEC_X804alc.html">TEC:X804alc</a> - Bertrix Gare - Quai 2 10:29</li><li><a href="stop-TEC_X804akb.html">TEC:X804akb</a> - Bertrix Athénée 10:31</li><li><a href="stop-TEC_X804ajb.html">TEC:X804ajb</a> - Bertrix Rue des Chasseurs Ardennais 10:32</li><li><a href="stop-TEC_X804aia.html">TEC:X804aia</a> - Bertrix IND 10:33</li><li><a href="stop-TEC_X804aga.html">TEC:X804aga</a> - Bertrix Grand'Place 10:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3155.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

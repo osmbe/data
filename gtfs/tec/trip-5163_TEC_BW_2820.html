@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Gembloux - Ramillies - Landen - 5163:TEC:BW:2820</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gembloux - Ramillies - Landen - 5163:TEC:BW:2820</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bjaugar1.html">TEC:Bjaugar1</a> - Jauche Gare 06:13</li><li><a href="stop-TEC_Bjaupro1.html">TEC:Bjaupro1</a> - Jauche Place de la Roulette 06:14</li><li><a href="stop-TEC_Bjaurgo1.html">TEC:Bjaurgo1</a> - Jauche Avenue R. Gossia 06:15</li><li><a href="stop-TEC_Bjanegl1.html">TEC:Bjanegl1</a> - Jandrain Eglise 06:17</li><li><a href="stop-TEC_Bjancha1.html">TEC:Bjancha1</a> - Jandrain Rue Chaînaux 06:18</li><li><a href="stop-TEC_Bolppla1.html">TEC:Bolppla1</a> - Orp-le-Petit Place 06:20</li><li><a href="stop-TEC_Bolppla4.html">TEC:Bolppla4</a> - Orp-le-Petit Place 06:20</li><li><a href="stop-TEC_Bolpmre1.html">TEC:Bolpmre1</a> - Orp-le-Petit Moulin Renson 06:21</li><li><a href="stop-TEC_Bpthcai1.html">TEC:Bpthcai1</a> - Petit-Hallet Caiade 06:22</li><li><a href="stop-TEC_Bpthcgo1.html">TEC:Bpthcgo1</a> - Petit-Hallet Café Gourmand 06:23</li><li><a href="stop-TEC_Bpthfus1.html">TEC:Bpthfus1</a> - Petit-Hallet Rue de la Fusion 06:24</li><li><a href="stop-TEC_Bgdhpco1.html">TEC:Bgdhpco1</a> - Grand-Hallet Place Communale 06:25</li><li><a href="stop-TEC_Bgdhlai1.html">TEC:Bgdhlai1</a> - Grand-Hallet Laiterie 06:26</li><li><a href="stop-TEC_Bgdhcsh1.html">TEC:Bgdhcsh1</a> - Grand-Hallet Café Saint-Honoré 06:27</li><li><a href="stop-TEC_Bgdhmet1.html">TEC:Bgdhmet1</a> - Grand-Hallet Métalchimex 06:27</li><li><a href="stop-TEC_Bgdhdet1.html">TEC:Bgdhdet1</a> - Grand-Hallet Detiste 06:28</li><li><a href="stop-TEC_Blinhue1.html">TEC:Blinhue1</a> - Lincent Route de Huez 06:30</li><li><a href="stop-TEC_Blindel3.html">TEC:Blindel3</a> - Lincent Delvaux 06:30</li><li><a href="stop-TEC_Blingar1.html">TEC:Blingar1</a> - Lincent Gare 06:32</li><li><a href="stop-TEC_Blingar3.html">TEC:Blingar3</a> - Lincent Gare 06:32</li><li><a href="stop-TEC_Blincal1.html">TEC:Blincal1</a> - Lincent Calvaire 06:33</li><li><a href="stop-TEC_Blincoo1.html">TEC:Blincoo1</a> - Lincent Coopérative 06:34</li><li><a href="stop-TEC_Blineco1.html">TEC:Blineco1</a> - Lincent Rue des Ecoles 06:35</li><li><a href="stop-TEC_Blindel5.html">TEC:Blindel5</a> - Lincent Delvaux 06:36</li><li><a href="stop-TEC_Blindel1.html">TEC:Blindel1</a> - Lincent Delvaux 06:36</li><li><a href="stop-TEC_Blinbru1.html">TEC:Blinbru1</a> - Lincent La Bruyère 06:37</li><li><a href="stop-TEC_Bwaak101.html">TEC:Bwaak101</a> - Waasmont Bosstraat 06:40</li><li><a href="stop-TEC_Bwaab121.html">TEC:Bwaab121</a> - Waasmont Broekstraat 12 06:40</li><li><a href="stop-TEC_Bwaakap1.html">TEC:Bwaakap1</a> - Waasmont Kapel 06:41</li><li><a href="stop-TEC_Bwaanwi1.html">TEC:Bwaanwi1</a> - Waasmont Nieuwe Wijk 06:42</li><li><a href="stop-TEC_Blaneli1.html">TEC:Blaneli1</a> - Landen Elisabethsquare 06:44</li><li><a href="stop-TEC_Blanove1.html">TEC:Blanove1</a> - Landen Overweg 06:45</li><li><a href="stop-TEC_Blangar1.html">TEC:Blangar1</a> - Landen Station 06:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./237.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bouillon - Bertrix - 5163:TEC:LU:1680</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bouillon - Bertrix - 5163:TEC:LU:1680</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X812aua.html">TEC:X812aua</a> - Bouillon Ecole communale 16:35</li><li><a href="stop-TEC_X812asa.html">TEC:X812asa</a> - Bouillon Ecole Sainte-Marie 16:36</li><li><a href="stop-TEC_X812ara.html">TEC:X812ara</a> - Bouillon Quai du Rempart 16:37</li><li><a href="stop-TEC_X812aqa.html">TEC:X812aqa</a> - Bouillon Athénée 16:39</li><li><a href="stop-TEC_X812aaa.html">TEC:X812aaa</a> - Bouillon La Maladrerie 16:39</li><li><a href="stop-TEC_X812baa.html">TEC:X812baa</a> - Bouillon Rue de l'Ange Gardien 16:40</li><li><a href="stop-TEC_X812bba.html">TEC:X812bba</a> - Bouillon Le Maroc 16:40</li><li><a href="stop-TEC_X811apb.html">TEC:X811apb</a> - Curfoz Dépôt Poncin Clébant 16:42</li><li><a href="stop-TEC_X811aob.html">TEC:X811aob</a> - Noirefontaine Route de Bouillon 16:43</li><li><a href="stop-TEC_X811ala.html">TEC:X811ala</a> - Noirefontaine Route de Curfoz 16:44</li><li><a href="stop-TEC_X811aca.html">TEC:X811aca</a> - Noirefontaine Gare Vicinale 16:44</li><li><a href="stop-TEC_X811aib.html">TEC:X811aib</a> - Noirefontaine Ecole 16:45</li><li><a href="stop-TEC_X811ahb.html">TEC:X811ahb</a> - Noirefontaine Eglise 16:45</li><li><a href="stop-TEC_X834abb.html">TEC:X834abb</a> - Dohan Voie du Terme 22 16:53</li><li><a href="stop-TEC_X834aab.html">TEC:X834aab</a> - Dohan Eglise 16:54</li><li><a href="stop-TEC_X834aba.html">TEC:X834aba</a> - Dohan Voie du Terme 22 16:55</li><li><a href="stop-TEC_X834acb.html">TEC:X834acb</a> - Les Hayons Eglise 17:00</li><li><a href="stop-TEC_X834ada.html">TEC:X834ada</a> - La Cornette Carrefour 17:04</li><li><a href="stop-TEC_X833aab.html">TEC:X833aab</a> - Auby-sur-Semois Cimetière 17:08</li><li><a href="stop-TEC_X833abb.html">TEC:X833abb</a> - Auby-sur-Semois Eglise 17:08</li><li><a href="stop-TEC_X833aca.html">TEC:X833aca</a> - Auby-sur-Semois Rue des Hautes Voies 87 17:08</li><li><a href="stop-TEC_X804afa.html">TEC:X804afa</a> - Bertrix Rue de Renaumont 17:16</li><li><a href="stop-TEC_X804aga.html">TEC:X804aga</a> - Bertrix Grand'Place 17:17</li><li><a href="stop-TEC_X804ala.html">TEC:X804ala</a> - Bertrix Gare - Quai 4 17:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2715.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

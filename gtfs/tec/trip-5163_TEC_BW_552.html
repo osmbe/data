@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ottignies - Clinique- Petit-Ry - 5163:TEC:BW:552</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ottignies - Clinique- Petit-Ry - 5163:TEC:BW:552</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bottgar1.html">TEC:Bottgar1</a> - Ottignies Gare 10:22</li><li><a href="stop-TEC_Bottcco1.html">TEC:Bottcco1</a> - Ottignies Av. des Combattants 10:24</li><li><a href="stop-TEC_Bottegl4.html">TEC:Bottegl4</a> - Ottignies Eglise 10:25</li><li><a href="stop-TEC_Bottrfa4.html">TEC:Bottrfa4</a> - Ottignies Avenue Reine Fabiola 10:27</li><li><a href="stop-TEC_Bottcli4.html">TEC:Bottcli4</a> - Ottignies Rond-Point Urgences 10:29</li><li><a href="stop-TEC_Bottcli1.html">TEC:Bottcli1</a> - Ottignies Clinique 10:30</li><li><a href="stop-TEC_Bottcli2.html">TEC:Bottcli2</a> - Ottignies Cimetière 10:31</li><li><a href="stop-TEC_Bottath1.html">TEC:Bottath1</a> - Ottignies Athénée 10:32</li><li><a href="stop-TEC_Bottvil2.html">TEC:Bottvil2</a> - Ottignies Avenue des Villas 10:32</li><li><a href="stop-TEC_Blimmer2.html">TEC:Blimmer2</a> - Limelette Avenue des Merisiers 10:33</li><li><a href="stop-TEC_Blimd672.html">TEC:Blimd672</a> - Limelette Avenue Demolder 67 10:34</li><li><a href="stop-TEC_Blimbet3.html">TEC:Blimbet3</a> - Limelette Buston Etang 10:34</li><li><a href="stop-TEC_Blimsob2.html">TEC:Blimsob2</a> - Limelette Sorbiers 10:35</li><li><a href="stop-TEC_Blimvcg2.html">TEC:Blimvcg2</a> - Limelette Vieux Chemin de Genappe 10:36</li><li><a href="stop-TEC_Bottpre2.html">TEC:Bottpre2</a> - Petit Ry Eglise 10:37</li><li><a href="stop-TEC_Bottcpl2.html">TEC:Bottcpl2</a> - Ottignies Rue Ch. Plantin 10:38</li><li><a href="stop-TEC_Bottra91.html">TEC:Bottra91</a> - Ottignies Avenue du Roi Albert n° 9 10:39</li><li><a href="stop-TEC_Bottcli3.html">TEC:Bottcli3</a> - Ottignies Rond-Point Urgences 10:40</li><li><a href="stop-TEC_Bottrfa1.html">TEC:Bottrfa1</a> - Ottignies Avenue Reine Fabiola 10:41</li><li><a href="stop-TEC_Bottegl3.html">TEC:Bottegl3</a> - Ottignies Eglise 10:42</li><li><a href="stop-TEC_Bottcco2.html">TEC:Bottcco2</a> - Ottignies Av. des Combattants 10:44</li><li><a href="stop-TEC_Bottgar1.html">TEC:Bottgar1</a> - Ottignies Gare 10:45</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./131.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

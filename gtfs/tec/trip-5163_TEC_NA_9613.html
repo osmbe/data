@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - FLORENNES - DOISCHE - 5163:TEC:NA:9613</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: FLORENNES - DOISCHE - 5163:TEC:NA:9613</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N121aga.html">TEC:N121aga</a> - Doische Passage à niveau 07:25</li><li><a href="stop-TEC_N121afa.html">TEC:N121afa</a> - Doische La Jonquiere 07:26</li><li><a href="stop-TEC_N121ada.html">TEC:N121ada</a> - Doische Calvaire 07:27</li><li><a href="stop-TEC_N121aca.html">TEC:N121aca</a> - Doische Poste 07:29</li><li><a href="stop-TEC_N121aja.html">TEC:N121aja</a> - Doische Bois du Fir 07:29</li><li><a href="stop-TEC_N121aea.html">TEC:N121aea</a> - Doische Ecoles 07:30</li><li><a href="stop-TEC_N121aba.html">TEC:N121aba</a> - Doische Cimetière 07:31</li><li><a href="stop-TEC_N122aia.html">TEC:N122aia</a> - Gimnee Fonds Marie 07:32</li><li><a href="stop-TEC_N122ada.html">TEC:N122ada</a> - Gimnee Ecole 07:32</li><li><a href="stop-TEC_N122aca.html">TEC:N122aca</a> - Gimnee Village 07:33</li><li><a href="stop-TEC_N122aba.html">TEC:N122aba</a> - Gimnee Eglise 07:33</li><li><a href="stop-TEC_N123ada.html">TEC:N123ada</a> - Romeree Chapelle 07:37</li><li><a href="stop-TEC_N123aca.html">TEC:N123aca</a> - Romeree Eglise 07:38</li><li><a href="stop-TEC_N123aba.html">TEC:N123aba</a> - Romeree Gare 07:39</li><li><a href="stop-TEC_N123aaa.html">TEC:N123aaa</a> - Romeree Bois licot 07:40</li><li><a href="stop-TEC_N150aed.html">TEC:N150aed</a> - Romedenne Barrière 07:42</li><li><a href="stop-TEC_N150afa.html">TEC:N150afa</a> - Romedenne Gare 07:43</li><li><a href="stop-TEC_N150aia.html">TEC:N150aia</a> - Romedenne Rue du Moulin de Romedenne 07:45</li><li><a href="stop-TEC_N150aha.html">TEC:N150aha</a> - Romedenne Eglise 07:46</li><li><a href="stop-TEC_N150aib.html">TEC:N150aib</a> - Romedenne Rue du Moulin de Romedenne 07:47</li><li><a href="stop-TEC_N150afb.html">TEC:N150afb</a> - Romedenne Gare 07:48</li><li><a href="stop-TEC_N150aeb.html">TEC:N150aeb</a> - Romedenne Barrière 07:49</li><li><a href="stop-TEC_N150acb.html">TEC:N150acb</a> - Romedenne Bois du Four 07:50</li><li><a href="stop-TEC_N150abb.html">TEC:N150abb</a> - Merlemont Ferme lebrun 07:50</li><li><a href="stop-TEC_N150aab.html">TEC:N150aab</a> - Merlemont Malplaqué 07:52</li><li><a href="stop-TEC_N149aab.html">TEC:N149aab</a> - Merlemont Carrières 07:54</li><li><a href="stop-TEC_N145adb.html">TEC:N145adb</a> - Villers-le-Gambon Place 07:55</li><li><a href="stop-TEC_N145aec.html">TEC:N145aec</a> - Vodecee Route de Givet 07:58</li><li><a href="stop-TEC_N145acb.html">TEC:N145acb</a> - Vodecee Place 07:59</li><li><a href="stop-TEC_N117bdd.html">TEC:N117bdd</a> - Chaumont Barrière Luc 08:00</li><li><a href="stop-TEC_N117aba.html">TEC:N117aba</a> - Chaumont Eglise 08:05</li><li><a href="stop-TEC_N117aja.html">TEC:N117aja</a> - Florennes Rue des Houillières 08:09</li><li><a href="stop-TEC_N117bbb.html">TEC:N117bbb</a> - Florennes Quartier Saint-Paul 08:09</li><li><a href="stop-TEC_N117aoc.html">TEC:N117aoc</a> - Florennes Place verte 08:10</li><li><a href="stop-TEC_N117bca.html">TEC:N117bca</a> - Florennes Place de la Chapelle 08:11</li><li><a href="stop-TEC_N117ama.html">TEC:N117ama</a> - Florennes Gare d'autobus 08:12</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6418.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

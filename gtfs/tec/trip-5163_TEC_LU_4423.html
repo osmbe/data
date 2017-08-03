@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Torgny - Dampicourt - Saint-Mard - 5163:TEC:LU:4423</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Torgny - Dampicourt - Saint-Mard - 5163:TEC:LU:4423</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X608aeb.html">TEC:X608aeb</a> - Virton Arcades 07:35</li><li><a href="stop-TEC_X608adb.html">TEC:X608adb</a> - Virton CNDB 07:36</li><li><a href="stop-TEC_X608acb.html">TEC:X608acb</a> - Virton Paradis des Enfants 07:37</li><li><a href="stop-TEC_X608abb.html">TEC:X608abb</a> - Virton Carrefour Avenue Bouvier 07:38</li><li><a href="stop-TEC_X608aaa.html">TEC:X608aaa</a> - Saint-Mard Gare 07:39</li><li><a href="stop-TEC_X608aia.html">TEC:X608aia</a> - Saint-Mard Rue de Dampicourt 07:41</li><li><a href="stop-TEC_X609aea.html">TEC:X609aea</a> - Dampicourt Champé 07:42</li><li><a href="stop-TEC_X609afb.html">TEC:X609afb</a> - Dampicourt Rue du 8 Septembre 07:44</li><li><a href="stop-TEC_X609ana.html">TEC:X609ana</a> - Dampicourt Ecole 07:45</li><li><a href="stop-TEC_X609alb.html">TEC:X609alb</a> - Dampicourt Zoning 07:46</li><li><a href="stop-TEC_X609aib.html">TEC:X609aib</a> - Rouvroy Cimetière 07:48</li><li><a href="stop-TEC_X610aaa.html">TEC:X610aaa</a> - Lamorteau Cimetière 07:51</li><li><a href="stop-TEC_X610aca.html">TEC:X610aca</a> - Lamorteau Ecole 07:51</li><li><a href="stop-TEC_X610adb.html">TEC:X610adb</a> - Lamorteau Eglise 07:51</li><li><a href="stop-TEC_X610aeb.html">TEC:X610aeb</a> - Torgny Rue de Lamorteau 07:54</li><li><a href="stop-TEC_X610aja.html">TEC:X610aja</a> - Torgny Terrain de football 07:55</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3134.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

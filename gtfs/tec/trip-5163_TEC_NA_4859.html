@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - BEAURAING - GIVET - DOISCHE - 5163:TEC:NA:4859</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: BEAURAING - GIVET - DOISCHE - 5163:TEC:NA:4859</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N122aab.html">TEC:N122aab</a> - Gimnee Chapelle hermitage 07:31</li><li><a href="stop-TEC_N122abb.html">TEC:N122abb</a> - Gimnee Eglise 07:32</li><li><a href="stop-TEC_N122acb.html">TEC:N122acb</a> - Gimnee Village 07:32</li><li><a href="stop-TEC_N122adb.html">TEC:N122adb</a> - Gimnee Ecole 07:33</li><li><a href="stop-TEC_N122aib.html">TEC:N122aib</a> - Gimnee Fonds Marie 07:34</li><li><a href="stop-TEC_N121abb.html">TEC:N121abb</a> - Doische Cimetière 07:36</li><li><a href="stop-TEC_N121aeb.html">TEC:N121aeb</a> - Doische Ecoles 07:37</li><li><a href="stop-TEC_N121ajc.html">TEC:N121ajc</a> - Doische Bois du Fir 07:37</li><li><a href="stop-TEC_N121acb.html">TEC:N121acb</a> - Doische Poste 07:38</li><li><a href="stop-TEC_N121adb.html">TEC:N121adb</a> - Doische Calvaire 07:39</li><li><a href="stop-TEC_N121afb.html">TEC:N121afb</a> - Doische La Jonquiere 07:39</li><li><a href="stop-TEC_N121agb.html">TEC:N121agb</a> - Doische Passage à niveau 07:40</li><li><a href="stop-TEC_N121ahb.html">TEC:N121ahb</a> - Doische Quatre coins 07:41</li><li><a href="stop-TEC_N120aab.html">TEC:N120aab</a> - Agimont Bois des fagnes 07:43</li><li><a href="stop-TEC_N120abb.html">TEC:N120abb</a> - Agimont Hôtel des tilleuls 07:45</li><li><a href="stop-TEC_N120acb.html">TEC:N120acb</a> - Agimont Paradou 07:46</li><li><a href="stop-TEC_N120add.html">TEC:N120add</a> - Agimont Au gros sabot 07:47</li><li><a href="stop-TEC_N120aeb.html">TEC:N120aeb</a> - Agimont Ancienne gare 07:49</li><li><a href="stop-TEC_N120afb.html">TEC:N120afb</a> - Agimont Monument 07:50</li><li><a href="stop-TEC_N120aga.html">TEC:N120aga</a> - Agimont Café St-Georges 07:50</li><li><a href="stop-TEC_N120aha.html">TEC:N120aha</a> - Agimont Bois Lambot 07:51</li><li><a href="stop-TEC_N120aoc.html">TEC:N120aoc</a> - Agimont Route de Rosée 07:52</li><li><a href="stop-TEC_N340abb.html">TEC:N340abb</a> - Agimont Grand'route 07:53</li><li><a href="stop-TEC_N340acb.html">TEC:N340acb</a> - Heer Passage à niveau 07:54</li><li><a href="stop-TEC_N340adb.html">TEC:N340adb</a> - Heer Pont 07:54</li><li><a href="stop-TEC_N340aeb.html">TEC:N340aeb</a> - Heer Hiat 07:56</li><li><a href="stop-TEC_N340afb.html">TEC:N340afb</a> - Heer Place communale 07:57</li><li><a href="stop-TEC_N308aib.html">TEC:N308aib</a> - Beauraing Rond-point 08:14</li><li><a href="stop-TEC_N308aja.html">TEC:N308aja</a> - Beauraing Route de la gare 08:15</li><li><a href="stop-TEC_N308aha.html">TEC:N308aha</a> - Beauraing Place Berry 08:16</li><li><a href="stop-TEC_N308ama.html">TEC:N308ama</a> - Beauraing Athénée 08:17</li><li><a href="stop-TEC_N308aka.html">TEC:N308aka</a> - Beauraing Institut 08:19</li><li><a href="stop-TEC_N308aga.html">TEC:N308aga</a> - Beauraing Place St-Roch 08:21</li><li><a href="stop-TEC_N308afc.html">TEC:N308afc</a> - Beauraing INDSC 08:22</li><li><a href="stop-TEC_N308aya.html">TEC:N308aya</a> - Beauraing Atelier protégé 08:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6634.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Enghien/Edingen - Braine-le-Comte - 5163:TEC:HT:11491</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Enghien/Edingen - Braine-le-Comte - 5163:TEC:HT:11491</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1en104d.html">TEC:H1en104d</a> - Edingen Gare/Station 13:07</li><li><a href="stop-TEC_H1en106b.html">TEC:H1en106b</a> - Edingen Vieux Marché/Oude Markt 13:08</li><li><a href="stop-TEC_H1en105a.html">TEC:H1en105a</a> - Edingen Reine Astrid/Koningin Astrid 13:08</li><li><a href="stop-TEC_H1en103a.html">TEC:H1en103a</a> - Edingen Gare Vicinale/Buurtspoorwegstation 13:09</li><li><a href="stop-TEC_H1en101b.html">TEC:H1en101b</a> - Edingen Dodane 13:10</li><li><a href="stop-TEC_H1en100a.html">TEC:H1en100a</a> - Edingen Collège/College 13:11</li><li><a href="stop-TEC_H1mk107b.html">TEC:H1mk107b</a> - Mark Bassin de Natation/Zwembad 13:12</li><li><a href="stop-TEC_H1mk123b.html">TEC:H1mk123b</a> - Mark Pont 13:13</li><li><a href="stop-TEC_H1hv135b.html">TEC:H1hv135b</a> - Hoves Place 13:15</li><li><a href="stop-TEC_H1hv131b.html">TEC:H1hv131b</a> - Hoves Cité Beau Site 13:15</li><li><a href="stop-TEC_H1hv134b.html">TEC:H1hv134b</a> - Hoves Paradis 13:16</li><li><a href="stop-TEC_H1hv156b.html">TEC:H1hv156b</a> - Hoves Hoviplast 13:17</li><li><a href="stop-TEC_H1hv130b.html">TEC:H1hv130b</a> - Hoves Chemin du Castelet 13:18</li><li><a href="stop-TEC_H1hv157b.html">TEC:H1hv157b</a> - Steenkerque Horbelec 13:19</li><li><a href="stop-TEC_H1st123b.html">TEC:H1st123b</a> - Steenkerque Croix 13:20</li><li><a href="stop-TEC_H1hr116b.html">TEC:H1hr116b</a> - Horrues Au L'Hoir 13:21</li><li><a href="stop-TEC_H1hr125b.html">TEC:H1hr125b</a> - Horrues La Turbine 13:23</li><li><a href="stop-TEC_H1hr121c.html">TEC:H1hr121c</a> - Horrues Ferme de l'Aire 13:24</li><li><a href="stop-TEC_H3so171b.html">TEC:H3so171b</a> - Soignies Le Rouge 13:25</li><li><a href="stop-TEC_H3so174b.html">TEC:H3so174b</a> - Soignies Moulin Brûlé 13:25</li><li><a href="stop-TEC_H3so168b.html">TEC:H3so168b</a> - Soignies Gendarmerie 13:27</li><li><a href="stop-TEC_H3so154b.html">TEC:H3so154b</a> - Soignies Au Vivier 13:28</li><li><a href="stop-TEC_H3so179a.html">TEC:H3so179a</a> - Soignies Vilette 13:29</li><li><a href="stop-TEC_H3so161b.html">TEC:H3so161b</a> - Soignies Clinique Saint-Vincent 13:30</li><li><a href="stop-TEC_H3so166a.html">TEC:H3so166a</a> - Soignies Gare 13:32</li><li><a href="stop-TEC_H3so166d.html">TEC:H3so166d</a> - Soignies Gare 13:32</li><li><a href="stop-TEC_H3so155a.html">TEC:H3so155a</a> - Soignies Belle Vue 13:34</li><li><a href="stop-TEC_H3so175a.html">TEC:H3so175a</a> - Soignies Place du Jeu de Balle 13:35</li><li><a href="stop-TEC_H3so170a.html">TEC:H3so170a</a> - Soignies Hôpital 13:36</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1905.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

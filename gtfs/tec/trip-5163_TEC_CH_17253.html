@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHIMAY-MOMIGNIES - 5163:TEC:CH:17253</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHIMAY-MOMIGNIES - 5163:TEC:CH:17253</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Ccyga05.html">TEC:Ccyga05</a> - Chimay Gare Quai 05 10:19</li><li><a href="stop-TEC_Ccyfroi2.html">TEC:Ccyfroi2</a> - Chimay Place Froissart 10:20</li><li><a href="stop-TEC_Ccybouc2.html">TEC:Ccybouc2</a> - Chimay La Bouchère 10:21</li><li><a href="stop-TEC_Ccypn2.html">TEC:Ccypn2</a> - Chimay P.N. 10:22</li><li><a href="stop-TEC_Csregli2.html">TEC:Csregli2</a> - Saint-Remy Eglise 10:23</li><li><a href="stop-TEC_Csrcant2.html">TEC:Csrcant2</a> - Saint-Remy Petit Canton 10:25</li><li><a href="stop-TEC_Cvtvois2.html">TEC:Cvtvois2</a> - Villers-la-Tour Terre Voissière 10:26</li><li><a href="stop-TEC_Cvtgsar2.html">TEC:Cvtgsar2</a> - Villers-la-Tour Grands Sarts 10:27</li><li><a href="stop-TEC_Cvtegli1.html">TEC:Cvtegli1</a> - Villers-la-Tour Eglise 10:28</li><li><a href="stop-TEC_Cvtgsar3.html">TEC:Cvtgsar3</a> - Villers-la-Tour Grands Sarts 10:29</li><li><a href="stop-TEC_Cvthoeu2.html">TEC:Cvthoeu2</a> - Villers-la-Tour Les Hoeulles 10:30</li><li><a href="stop-TEC_Cvtndam2.html">TEC:Cvtndam2</a> - Villers-la-Tour Chêne Notre-Dame 10:31</li><li><a href="stop-TEC_Csepost2.html">TEC:Csepost2</a> - Seloignes Postes 10:33</li><li><a href="stop-TEC_Csecout2.html">TEC:Csecout2</a> - Seloignes Rue Couture 10:34</li><li><a href="stop-TEC_Csemacq2.html">TEC:Csemacq2</a> - Seloignes Route de Macquenoise 10:34</li><li><a href="stop-TEC_Cselibe2.html">TEC:Cselibe2</a> - Seloignes Le Liberty 10:35</li><li><a href="stop-TEC_Csebasc2.html">TEC:Csebasc2</a> - Seloignes Bascule 10:35</li><li><a href="stop-TEC_Csequew2.html">TEC:Csequew2</a> - Seloignes Les Quewettes 10:36</li><li><a href="stop-TEC_Csecroi2.html">TEC:Csecroi2</a> - Seloignes Croisement 10:38</li><li><a href="stop-TEC_Cmgpthi2.html">TEC:Cmgpthi2</a> - Momignies Petite Thiérache 10:38</li><li><a href="stop-TEC_Cmgtour2.html">TEC:Cmgtour2</a> - Momignies La Tourette 10:39</li><li><a href="stop-TEC_Cmggthi2.html">TEC:Cmggthi2</a> - Momignies La Grande Thiérache 10:40</li><li><a href="stop-TEC_Cmgcabi2.html">TEC:Cmgcabi2</a> - Momignies Martignon Cabine 10:41</li><li><a href="stop-TEC_Cmg4bra2.html">TEC:Cmg4bra2</a> - Momignies Martignon 4 Bras 10:41</li><li><a href="stop-TEC_Cmgarsi2.html">TEC:Cmgarsi2</a> - Momignies Arsillières 10:42</li><li><a href="stop-TEC_Cmgpla2.html">TEC:Cmgpla2</a> - Momignies Place 10:44</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1052.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

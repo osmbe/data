@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Le Roeulx - Maurage - 5163:TEC:HT:6603</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Le Roeulx - Maurage - 5163:TEC:HT:6603</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H3lr109b.html">TEC:H3lr109b</a> - Le Roeulx Centre 15:52</li><li><a href="stop-TEC_H3lr121a.html">TEC:H3lr121a</a> - Le Roeulx Saint Jacques 15:53</li><li><a href="stop-TEC_H3lr113a.html">TEC:H3lr113a</a> - Le Roeulx Faubourg de Binche 15:53</li><li><a href="stop-TEC_H3lr132b.html">TEC:H3lr132b</a> - Strepy-Bracquegnies Coron de Thieu 15:55</li><li><a href="stop-TEC_H2sb259a.html">TEC:H2sb259a</a> - Strepy-Bracquegnies Technofutur 15:56</li><li><a href="stop-TEC_H2sb227b.html">TEC:H2sb227b</a> - Strepy-Bracquegnies Cité 15:58</li><li><a href="stop-TEC_H2sb243d.html">TEC:H2sb243d</a> - Strepy-Bracquegnies Vieille Place 15:59</li><li><a href="stop-TEC_H2sb225b.html">TEC:H2sb225b</a> - Strepy-Bracquegnies Chapelle Bertrand 16:01</li><li><a href="stop-TEC_H3th134a.html">TEC:H3th134a</a> - Thieu Ascenseur 16:02</li><li><a href="stop-TEC_H3th133a.html">TEC:H3th133a</a> - Thieu SNCV 16:04</li><li><a href="stop-TEC_H3th129a.html">TEC:H3th129a</a> - Thieu Rue  Aulnois 16:06</li><li><a href="stop-TEC_H3th127a.html">TEC:H3th127a</a> - Thieu Eglise 16:06</li><li><a href="stop-TEC_H3th130a.html">TEC:H3th130a</a> - Thieu Traversée à Niveau 16:08</li><li><a href="stop-TEC_H3th131a.html">TEC:H3th131a</a> - Thieu Saint-Jean 16:09</li><li><a href="stop-TEC_H2ma204b.html">TEC:H2ma204b</a> - Maurage Reine Astrid 16:10</li><li><a href="stop-TEC_H2ma206b.html">TEC:H2ma206b</a> - Maurage Rue des Garennes 16:11</li><li><a href="stop-TEC_H2ma203b.html">TEC:H2ma203b</a> - Maurage Place 16:12</li><li><a href="stop-TEC_H2ma205b.html">TEC:H2ma205b</a> - Maurage Rue de Bray 16:14</li><li><a href="stop-TEC_H2ma202b.html">TEC:H2ma202b</a> - Maurage Cité Marie-José 16:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1827.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

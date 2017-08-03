@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - GOSSELIES FAUBOURG DE BRUXELLES - CHARLEROI SUD - 5163:TEC:CH:13787</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GOSSELIES FAUBOURG DE BRUXELLES - CHARLEROI SUD - 5163:TEC:CH:13787</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cgofbru1.html">TEC:Cgofbru1</a> - Gosselies Faubourg de Bruxelles 21:10</li><li><a href="stop-TEC_Cgochfe1.html">TEC:Cgochfe1</a> - Gosselies Rue du Chemin de Fer (M) 21:11</li><li><a href="stop-TEC_Cgoemai1.html">TEC:Cgoemai1</a> - Gosselies Emailleries (M) 21:11</li><li><a href="stop-TEC_Cgocitn1.html">TEC:Cgocitn1</a> - Gosselies City Nord 21:12</li><li><a href="stop-TEC_Cgofleu2.html">TEC:Cgofleu2</a> - Gosselies Chaussée de Fleurus 21:14</li><li><a href="stop-TEC_Cgogb2.html">TEC:Cgogb2</a> - Gosselies G.B. 21:15</li><li><a href="stop-TEC_Cjumade3.html">TEC:Cjumade3</a> - Jumet Madeleine 21:17</li><li><a href="stop-TEC_Cjubert1.html">TEC:Cjubert1</a> - Jumet Rue Bertaux 21:18</li><li><a href="stop-TEC_Cjugill1.html">TEC:Cjugill1</a> - Jumet Chaussée de Gilly 21:19</li><li><a href="stop-TEC_Cjupui01.html">TEC:Cjupui01</a> - Jumet Puissant 21:20</li><li><a href="stop-TEC_Clostan1.html">TEC:Clostan1</a> - Lodelinsart Saint-Antoine 21:21</li><li><a href="stop-TEC_Clomari1.html">TEC:Clomari1</a> - Lodelinsart Marie Curie 21:22</li><li><a href="stop-TEC_Clodesc1.html">TEC:Clodesc1</a> - Lodelinsart Deschassis 21:23</li><li><a href="stop-TEC_Cdalpla1.html">TEC:Cdalpla1</a> - Dampremy La Planche 21:24</li><li><a href="stop-TEC_Cdasama1.html">TEC:Cdasama1</a> - Dampremy Sacré-Madame 21:24</li><li><a href="stop-TEC_Cdapige1.html">TEC:Cdapige1</a> - Dampremy Piges (M) 21:25</li><li><a href="stop-TEC_Cchoues5.html">TEC:Cchoues5</a> - Charleroi Ouest (M) 21:27</li><li><a href="stop-TEC_Ccheden1.html">TEC:Ccheden1</a> - Charleroi Eden 21:28</li><li><a href="stop-TEC_Cchba12.html">TEC:Cchba12</a> - Charleroi Beaux-Arts Quai 12 21:30</li><li><a href="stop-TEC_Cchmonu3.html">TEC:Cchmonu3</a> - Charleroi Monument 21:32</li><li><a href="stop-TEC_Cchhopi1.html">TEC:Cchhopi1</a> - Charleroi Hôpital Civil 21:33</li><li><a href="stop-TEC_Cchcase3.html">TEC:Cchcase3</a> - Charleroi Casernes 21:34</li><li><a href="stop-TEC_Cchparc3.html">TEC:Cchparc3</a> - Charleroi Parc (M) 21:35</li><li><a href="stop-TEC_Cchtiro3.html">TEC:Cchtiro3</a> - Charleroi Tirou (M) 21:36</li><li><a href="stop-TEC_Cchsud0.html">TEC:Cchsud0</a> - Charleroi Sud 21:38</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./747.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

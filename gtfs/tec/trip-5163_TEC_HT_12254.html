@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Comines/Komen - Houplines - 5163:TEC:HT:12254</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Comines/Komen - Houplines - 5163:TEC:HT:12254</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4ho119b.html">TEC:H4ho119b</a> - Houplines Hôtel de Ville 07:03</li><li><a href="stop-TEC_H4ho121b.html">TEC:H4ho121b</a> - Houplines République 07:04</li><li><a href="stop-TEC_H4ho120b.html">TEC:H4ho120b</a> - Houplines L'Octroi 07:05</li><li><a href="stop-TEC_H4ar103b.html">TEC:H4ar103b</a> - Armentieres Place Chanzy 07:06</li><li><a href="stop-TEC_H4ar101b.html">TEC:H4ar101b</a> - Armentieres Jean-Jaurès 07:07</li><li><a href="stop-TEC_H4ar100b.html">TEC:H4ar100b</a> - Armentieres Hôtel de Ville 07:08</li><li><a href="stop-TEC_H4ar104b.html">TEC:H4ar104b</a> - Armentieres Place du Marché aux Toiles 07:09</li><li><a href="stop-TEC_H4ar173b.html">TEC:H4ar173b</a> - Armentieres Aristide Briand 07:10</li><li><a href="stop-TEC_H4ar172b.html">TEC:H4ar172b</a> - Armentieres Léo Lagrange 07:10</li><li><a href="stop-TEC_H4ar178b.html">TEC:H4ar178b</a> - Armentieres Prés du Hem 07:11</li><li><a href="stop-TEC_H4ar177b.html">TEC:H4ar177b</a> - Armentieres Marc Sangnier 07:12</li><li><a href="stop-TEC_H4ar107b.html">TEC:H4ar107b</a> - Armentieres Renan Buisson 07:13</li><li><a href="stop-TEC_H4ar102b.html">TEC:H4ar102b</a> - Armentieres Le Bizet 07:14</li><li><a href="stop-TEC_H4pl120a.html">TEC:H4pl120a</a> - Le Bizet Rue des Trois Evêchés 07:16</li><li><a href="stop-TEC_H4pl114b.html">TEC:H4pl114b</a> - Ploegsteert Château Nonet Kasteel 07:17</li><li><a href="stop-TEC_H4wn126b.html">TEC:H4wn126b</a> - Ploegsteert Le Gheer 07:26</li><li><a href="stop-TEC_H4wn129b.html">TEC:H4wn129b</a> - Waasten Pont Rouge 07:29</li><li><a href="stop-TEC_H4wn123b.html">TEC:H4wn123b</a> - Waasten Au Bon Fermier 07:30</li><li><a href="stop-TEC_H4wn138b.html">TEC:H4wn138b</a> - Waasten Home La Sérénité 07:30</li><li><a href="stop-TEC_H4wn130b.html">TEC:H4wn130b</a> - Waasten Route de Messines/Messinesweg 07:31</li><li><a href="stop-TEC_H4wn128b.html">TEC:H4wn128b</a> - Waasten Place/Markt 07:32</li><li><a href="stop-TEC_H4wn124a.html">TEC:H4wn124a</a> - Waasten Ancienne Gare/Station 07:33</li><li><a href="stop-TEC_H4wn124d.html">TEC:H4wn124d</a> - Waasten Ancienne Gare/Station 07:33</li><li><a href="stop-TEC_H4wn131b.html">TEC:H4wn131b</a> - Waasten Villa Blanche 07:34</li><li><a href="stop-TEC_H4bw102b.html">TEC:H4bw102b</a> - Neerwaasten Place/Markt 07:35</li><li><a href="stop-TEC_H4bw101b.html">TEC:H4bw101b</a> - Neerwaasten Chaussée de Warneton 07:36</li><li><a href="stop-TEC_H4bw100b.html">TEC:H4bw100b</a> - Neerwaasten Mai Cornet 07:37</li><li><a href="stop-TEC_H4co103b.html">TEC:H4co103b</a> - Komen Athénée Royal 07:39</li><li><a href="stop-TEC_H4co110b.html">TEC:H4co110b</a> - Komen Place Sainte-Anne/Sint-Annaplein 07:40</li><li><a href="stop-TEC_H4co106a.html">TEC:H4co106a</a> - Komen SNCB/Station 07:42</li><li><a href="stop-TEC_H4co106d.html">TEC:H4co106d</a> - Komen SNCB/Station 07:43</li><li><a href="stop-TEC_H4co104a.html">TEC:H4co104a</a> - Komen Collège Saint-Henri 07:44</li><li><a href="stop-TEC_H4co105a.html">TEC:H4co105a</a> - Komen Collège Saint-Joseph 07:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2074.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

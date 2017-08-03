@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ensival - Place Verte - Heusy - Jehanster - 5163:TEC:LV:40074</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ensival - Place Verte - Heusy - Jehanster - 5163:TEC:LV:40074</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Lenmivi_.html">TEC:Lenmivi*</a> - Ensival En Mi-Ville 13:00</li><li><a href="stop-TEC_Lengran1.html">TEC:Lengran1</a> - Ensival Rue Grand'Ville 13:01</li><li><a href="stop-TEC_Lveoctr1.html">TEC:Lveoctr1</a> - Verviers Octroi 13:02</li><li><a href="stop-TEC_Lveensi1.html">TEC:Lveensi1</a> - Verviers Rue d'Ensival 13:03</li><li><a href="stop-TEC_Lvegc--3.html">TEC:Lvegc--3</a> - Verviers Gare Centrale 13:04</li><li><a href="stop-TEC_Lvethea2.html">TEC:Lvethea2</a> - Verviers Théâtre 13:05</li><li><a href="stop-TEC_Lvevert4.html">TEC:Lvevert4</a> - Verviers Place Verte 13:07</li><li><a href="stop-TEC_Lvehv--4.html">TEC:Lvehv--4</a> - Verviers Hôtel de Ville 13:09</li><li><a href="stop-TEC_Lvepala9.html">TEC:Lvepala9</a> - Verviers Palais 13:09</li><li><a href="stop-TEC_Lvepris1.html">TEC:Lvepris1</a> - Verviers Prison 13:11</li><li><a href="stop-TEC_Lve-isi1.html">TEC:Lve-isi1</a> - Verviers I.S.I. 13:12</li><li><a href="stop-TEC_Lvegend1.html">TEC:Lvegend1</a> - Verviers Gendarmerie 13:13</li><li><a href="stop-TEC_Lhuleke1.html">TEC:Lhuleke1</a> - Heusy Rue G. Lekeu 13:14</li><li><a href="stop-TEC_Lhuderu1.html">TEC:Lhuderu1</a> - Heusy Place A. Deru 13:14</li><li><a href="stop-TEC_Lhueg--1.html">TEC:Lhueg--1</a> - Heusy Eglise 13:15</li><li><a href="stop-TEC_Lhubouq1.html">TEC:Lhubouq1</a> - Heusy Bouquette 13:16</li><li><a href="stop-TEC_Lhulibe1.html">TEC:Lhulibe1</a> - Heusy Rue de la Libération 13:18</li><li><a href="stop-TEC_Lhuchev1.html">TEC:Lhuchev1</a> - Heusy Cheval Blanc 13:19</li><li><a href="stop-TEC_Lhuferm1.html">TEC:Lhuferm1</a> - Heusy Fays Ferme 13:20</li><li><a href="stop-TEC_Lhurfay1.html">TEC:Lhurfay1</a> - Heusy Route de Fays 13:21</li><li><a href="stop-TEC_Lhufays1.html">TEC:Lhufays1</a> - Heusy Fays 13:21</li><li><a href="stop-TEC_Lhujonc1.html">TEC:Lhujonc1</a> - Heusy Petit Jonckeu 13:22</li><li><a href="stop-TEC_Lhutran1.html">TEC:Lhutran1</a> - Heusy Transvaal 13:22</li><li><a href="stop-TEC_Lhufila1.html">TEC:Lhufila1</a> - Heusy Rue Filanneux 13:23</li><li><a href="stop-TEC_Lhubarl1.html">TEC:Lhubarl1</a> - Heusy Rue Barla 13:24</li><li><a href="stop-TEC_Ljhcarr1.html">TEC:Ljhcarr1</a> - Jehanster Carrefour de Jehanster 13:25</li><li><a href="stop-TEC_Ljhjeha_.html">TEC:Ljhjeha*</a> - Jehanster Terminus 13:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4217.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

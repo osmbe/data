@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - CHIMAY-MOMIGNIES - 5163:TEC:CH:5395</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: CHIMAY-MOMIGNIES - 5163:TEC:CH:5395</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Ccyga6.html">TEC:Ccyga6</a> - Chimay Gare Quai 06 13:30</li><li><a href="stop-TEC_Ccyfroi2.html">TEC:Ccyfroi2</a> - Chimay Place Froissart 13:31</li><li><a href="stop-TEC_Ccybouc2.html">TEC:Ccybouc2</a> - Chimay La Bouchère 13:32</li><li><a href="stop-TEC_Ccypn2.html">TEC:Ccypn2</a> - Chimay P.N. 13:33</li><li><a href="stop-TEC_Csregli2.html">TEC:Csregli2</a> - Saint-Remy Eglise 13:34</li><li><a href="stop-TEC_Csrcarr2.html">TEC:Csrcarr2</a> - Saint-Remy Rue des Carrières 13:34</li><li><a href="stop-TEC_Ccymabo2.html">TEC:Ccymabo2</a> - Chimay Maison Bouchez 13:35</li><li><a href="stop-TEC_Ccyfede2.html">TEC:Ccyfede2</a> - Chimay Ferme Dehant 13:36</li><li><a href="stop-TEC_Cslbhau2.html">TEC:Cslbhau2</a> - Salles Bout de la Haut 13:38</li><li><a href="stop-TEC_Cslegli2.html">TEC:Cslegli2</a> - Salles Eglise 13:39</li><li><a href="stop-TEC_Cblsall2.html">TEC:Cblsall2</a> - Bailievre Route de Salles 13:43</li><li><a href="stop-TEC_Cblcent2.html">TEC:Cblcent2</a> - Bailievre Eglise 13:44</li><li><a href="stop-TEC_Cblbaiv2.html">TEC:Cblbaiv2</a> - Bailievre Route de Baives 13:45</li><li><a href="stop-TEC_Cmcegli2.html">TEC:Cmcegli2</a> - Macon Eglise 13:49</li><li><a href="stop-TEC_Cmcwir2.html">TEC:Cmcwir2</a> - Macon Wicher 13:51</li><li><a href="stop-TEC_Cmccet2.html">TEC:Cmccet2</a> - Macon Café Etang 13:52</li><li><a href="stop-TEC_Cmcbriq2.html">TEC:Cmcbriq2</a> - Macon Briqueteries 13:54</li><li><a href="stop-TEC_Cmcgoch2.html">TEC:Cmcgoch2</a> - Macon Gochenie 13:56</li><li><a href="stop-TEC_Cmgslo2.html">TEC:Cmgslo2</a> - Momignies Garage Sloos 13:57</li><li><a href="stop-TEC_Cmgbrou2.html">TEC:Cmgbrou2</a> - Momignies Cité P. Broucke 13:57</li><li><a href="stop-TEC_Cmghay2.html">TEC:Cmghay2</a> - Momignies Rue des Hayettes 13:58</li><li><a href="stop-TEC_Cmgpla2.html">TEC:Cmgpla2</a> - Momignies Place 13:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1117.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

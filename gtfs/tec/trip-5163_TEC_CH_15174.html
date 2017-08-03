@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - JUMET MADELEINE - PONT-A-CELLES PLACE - 5163:TEC:CH:15174</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: JUMET MADELEINE - PONT-A-CELLES PLACE - 5163:TEC:CH:15174</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cpcplac3.html">TEC:Cpcplac3</a> - Pont-A-Celles Place Communale 08:05</li><li><a href="stop-TEC_Cpcegli1.html">TEC:Cpcegli1</a> - Pont-A-Celles Rue de l'Eglise 08:06</li><li><a href="stop-TEC_Cpcathe1.html">TEC:Cpcathe1</a> - Pont-A-Celles Athénée Royal 08:07</li><li><a href="stop-TEC_Cpctrau1.html">TEC:Cpctrau1</a> - Pont-A-Celles Traulée 08:08</li><li><a href="stop-TEC_Cpcarse1.html">TEC:Cpcarse1</a> - Pont-A-Celles Arsenal 08:09</li><li><a href="stop-TEC_Cpcbrig1.html">TEC:Cpcbrig1</a> - Pont-A-Celles Rue Brigode 08:10</li><li><a href="stop-TEC_Cpcwaut1.html">TEC:Cpcwaut1</a> - Pont-A-Celles Rue Wauters 08:11</li><li><a href="stop-TEC_Cpctunn1.html">TEC:Cpctunn1</a> - Pont-A-Celles Tunnel 08:12</li><li><a href="stop-TEC_Clusncb1.html">TEC:Clusncb1</a> - Luttre Gare 08:14</li><li><a href="stop-TEC_Clusncb3.html">TEC:Clusncb3</a> - Luttre Gare 08:14</li><li><a href="stop-TEC_Cluchbl1.html">TEC:Cluchbl1</a> - Luttre Rue du Cheval Blanc 08:15</li><li><a href="stop-TEC_Cluplve3.html">TEC:Cluplve3</a> - Luttre Place Verte (Rue Picolomé) 08:17</li><li><a href="stop-TEC_Cluberl1.html">TEC:Cluberl1</a> - Luttre Rue Berlingin 08:18</li><li><a href="stop-TEC_Clulidl1.html">TEC:Clulidl1</a> - Luttre Lidl 08:19</li><li><a href="stop-TEC_Cli4bra1.html">TEC:Cli4bra1</a> - Liberchies 4 Bras 08:20</li><li><a href="stop-TEC_Cliegli1.html">TEC:Cliegli1</a> - Liberchies Eglise 08:23</li><li><a href="stop-TEC_Cliburl1.html">TEC:Cliburl1</a> - Liberchies Rue M. Burlet 08:24</li><li><a href="stop-TEC_Clihame1.html">TEC:Clihame1</a> - Liberchies Hameau 08:25</li><li><a href="stop-TEC_Clibrun1.html">TEC:Clibrun1</a> - Liberchies Chaussée Brunehault 08:27</li><li><a href="stop-TEC_Ctmwaut1.html">TEC:Ctmwaut1</a> - Thimeon Ferme Wauthier 08:28</li><li><a href="stop-TEC_Ctmdema1.html">TEC:Ctmdema1</a> - Thimeon Ferme Demaret 08:29</li><li><a href="stop-TEC_Ctmmonu1.html">TEC:Ctmmonu1</a> - Thimeon Monument 08:30</li><li><a href="stop-TEC_Ctmmath1.html">TEC:Ctmmath1</a> - Thimeon Docteur Mathy 08:31</li><li><a href="stop-TEC_Ctmsncb1.html">TEC:Ctmsncb1</a> - Thimeon S.N.C.B. 08:33</li><li><a href="stop-TEC_Cgohnda1.html">TEC:Cgohnda1</a> - Gosselies Hôpital Notre-Dame 08:34</li><li><a href="stop-TEC_Cgofabr1.html">TEC:Cgofabr1</a> - Gosselies Rue des Fabriques 08:35</li><li><a href="stop-TEC_Cgocalv1.html">TEC:Cgocalv1</a> - Gosselies Calvaire 08:36</li><li><a href="stop-TEC_Cgomart1.html">TEC:Cgomart1</a> - Gosselies Place des Martyrs 08:37</li><li><a href="stop-TEC_Cgoobse1.html">TEC:Cgoobse1</a> - Gosselies Rue de l'Observatoire 08:38</li><li><a href="stop-TEC_Cjucar01.html">TEC:Cjucar01</a> - Jumet Carrosse 08:40</li><li><a href="stop-TEC_Cjumade0.html">TEC:Cjumade0</a> - Jumet Madeleine 08:43</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./945.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

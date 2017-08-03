@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Vith - Steinebrück - Rödgen - 5163:TEC:LV:42913</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Vith - Steinebrück - Rödgen - 5163:TEC:LV:42913</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LsVlind_.html">TEC:LsVlind*</a> - Sankt-Vith An den Linden 12:35</li><li><a href="stop-TEC_LsVbs--_.html">TEC:LsVbs--*</a> - Sankt-Vith Bischöfliche Schule 12:37</li><li><a href="stop-TEC_LsVgore1.html">TEC:LsVgore1</a> - Sankt-Vith Maria Goretti 12:40</li><li><a href="stop-TEC_LsVgore2.html">TEC:LsVgore2</a> - Sankt-Vith Maria Goretti 12:41</li><li><a href="stop-TEC_LsVsage1.html">TEC:LsVsage1</a> - Sankt-Vith Sägerei 12:42</li><li><a href="stop-TEC_LwSschw1.html">TEC:LwSschw1</a> - Wiesenbach Schwimmbad 12:43</li><li><a href="stop-TEC_LwSgeme1.html">TEC:LwSgeme1</a> - Wiesenbach Gemeindehaus 12:44</li><li><a href="stop-TEC_LwSbrei1.html">TEC:LwSbrei1</a> - Wiesenbach Breitfeld 12:45</li><li><a href="stop-TEC_LnDkreu1.html">TEC:LnDkreu1</a> - Neidingen Kreuzung 12:46</li><li><a href="stop-TEC_LnDthel1.html">TEC:LnDthel1</a> - Neidingen Haus Thelen 12:47</li><li><a href="stop-TEC_LnDrund1.html">TEC:LnDrund1</a> - Neidingen Runder Platz 12:49</li><li><a href="stop-TEC_LnDdorf1.html">TEC:LnDdorf1</a> - Neidingen Dorf 12:49</li><li><a href="stop-TEC_LnDrund2.html">TEC:LnDrund2</a> - Neidingen Runder Platz 12:49</li><li><a href="stop-TEC_LnDthel2.html">TEC:LnDthel2</a> - Neidingen Haus Thelen 12:51</li><li><a href="stop-TEC_LlOdrei1.html">TEC:LlOdrei1</a> - Lommersweiler Dreihütten 12:55</li><li><a href="stop-TEC_LlOkreu1.html">TEC:LlOkreu1</a> - Lommersweiler Kreuz 12:57</li><li><a href="stop-TEC_LlOpfar1.html">TEC:LlOpfar1</a> - Lommersweiler Pfarrhaus 12:58</li><li><a href="stop-TEC_LlOkreu2.html">TEC:LlOkreu2</a> - Lommersweiler Kreuz 12:59</li><li><a href="stop-TEC_LsTgren1.html">TEC:LsTgren1</a> - Steinebruck Grenze 13:06</li><li><a href="stop-TEC_LwPdorf1.html">TEC:LwPdorf1</a> - Weppeler Dorf 13:09</li><li><a href="stop-TEC_LaFbruc1.html">TEC:LaFbruc1</a> - Alfersteg Brücke 13:12</li><li><a href="stop-TEC_LrGzent1.html">TEC:LrGzent1</a> - Rodgen Zentrum 13:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5211.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

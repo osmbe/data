@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - MONTIGNY-THUIN-ANDERLUES-PIETON-CHAPELLE - 5163:TEC:CH:14047</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: MONTIGNY-THUIN-ANDERLUES-PIETON-CHAPELLE - 5163:TEC:CH:14047</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cthhttr3.html">TEC:Cthhttr3</a> - Thuin Hauts Trieux 11:54</li><li><a href="stop-TEC_Cthalli1.html">TEC:Cthalli1</a> - Thuin Drève des Alliés 11:55</li><li><a href="stop-TEC_Cthathe1.html">TEC:Cthathe1</a> - Thuin Athénée 11:56</li><li><a href="stop-TEC_Cthhvil1.html">TEC:Cthhvil1</a> - Thuin Hôtel de Ville 11:57</li><li><a href="stop-TEC_Cthbeff1.html">TEC:Cthbeff1</a> - Thuin Place du Beffroi 11:59</li><li><a href="stop-TEC_Cthvbas1.html">TEC:Cthvbas1</a> - Thuin Ville Basse 12:01</li><li><a href="stop-TEC_Cthvbas3.html">TEC:Cthvbas3</a> - Thuin Ville Basse 12:01</li><li><a href="stop-TEC_Cthvbas2.html">TEC:Cthvbas2</a> - Thuin Ville Basse 12:02</li><li><a href="stop-TEC_Cthoues1.html">TEC:Cthoues1</a> - Thuin Ouest S.N.C.B. 12:03</li><li><a href="stop-TEC_Cthpano1.html">TEC:Cthpano1</a> - Thuin Panorama 12:04</li><li><a href="stop-TEC_Cthgrat1.html">TEC:Cthgrat1</a> - Thuin Grattière 12:05</li><li><a href="stop-TEC_Clbptno3.html">TEC:Clbptno3</a> - Lobbes Pont du Nord 12:07</li><li><a href="stop-TEC_Clbgare1.html">TEC:Clbgare1</a> - Lobbes SNCB 12:07</li><li><a href="stop-TEC_Clbptno1.html">TEC:Clbptno1</a> - Lobbes Pont du Nord 12:08</li><li><a href="stop-TEC_Clbhvil1.html">TEC:Clbhvil1</a> - Lobbes Hôtel de Ville 12:09</li><li><a href="stop-TEC_Clbentr1.html">TEC:Clbentr1</a> - Lobbes Entreville 12:10</li><li><a href="stop-TEC_Clb4bra1.html">TEC:Clb4bra1</a> - Lobbes 4 Bras 12:11</li><li><a href="stop-TEC_Clbecol1.html">TEC:Clbecol1</a> - Lobbes Ecoles 12:12</li><li><a href="stop-TEC_Clbbonn1.html">TEC:Clbbonn1</a> - Lobbes Bonniers 12:12</li><li><a href="stop-TEC_Clbchar2.html">TEC:Clbchar2</a> - Lobbes Chapelle aux Charmes 12:13</li><li><a href="stop-TEC_Clbhour1.html">TEC:Clbhour1</a> - Lobbes Chemin d'Hourpes 12:13</li><li><a href="stop-TEC_Canplch3.html">TEC:Canplch3</a> - Anderlues Plein de Chênes 12:16</li><li><a href="stop-TEC_Canboni1.html">TEC:Canboni1</a> - Anderlues Rue Boniface 12:17</li><li><a href="stop-TEC_Canchbr1.html">TEC:Canchbr1</a> - Anderlues Chemin des Bruyères 12:18</li><li><a href="stop-TEC_Canstat1.html">TEC:Canstat1</a> - Anderlues Rue de la Station 12:18</li><li><a href="stop-TEC_Canjonc1.html">TEC:Canjonc1</a> - Anderlues Jonction 12:19</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1039.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

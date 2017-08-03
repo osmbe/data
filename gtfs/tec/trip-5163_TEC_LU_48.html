@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Gedinne - Paliseul - Bertrix - 5163:TEC:LU:48</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gedinne - Paliseul - Bertrix - 5163:TEC:LU:48</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X804bua.html">TEC:X804bua</a> - Bertrix Clairière 08:18</li><li><a href="stop-TEC_X804aoa.html">TEC:X804aoa</a> - Bertrix Sprumont 08:19</li><li><a href="stop-TEC_X804anb.html">TEC:X804anb</a> - Bertrix Rue de la Gare 252 08:20</li><li><a href="stop-TEC_X804alc.html">TEC:X804alc</a> - Bertrix Gare - Quai 2 08:21</li><li><a href="stop-TEC_X804akb.html">TEC:X804akb</a> - Bertrix Athénée 08:23</li><li><a href="stop-TEC_X804ajb.html">TEC:X804ajb</a> - Bertrix Rue des Chasseurs Ardennais 08:24</li><li><a href="stop-TEC_X804aia.html">TEC:X804aia</a> - Bertrix IND 08:25</li><li><a href="stop-TEC_X804aga.html">TEC:X804aga</a> - Bertrix Grand'Place 08:29</li><li><a href="stop-TEC_X804afb.html">TEC:X804afb</a> - Bertrix Rue de Renaumont 08:30</li><li><a href="stop-TEC_X804aea.html">TEC:X804aea</a> - Bertrix Rue de la Fontinelle 08:30</li><li><a href="stop-TEC_X804ada.html">TEC:X804ada</a> - Bertrix Rue de la Fèche 8 08:30</li><li><a href="stop-TEC_X804bza.html">TEC:X804bza</a> - Bertrix Rue de La Flèche 44 08:31</li><li><a href="stop-TEC_X805aba.html">TEC:X805aba</a> - La Flèche 08:32</li><li><a href="stop-TEC_X805aca.html">TEC:X805aca</a> - Glaumont Passage à Niveau 08:34</li><li><a href="stop-TEC_X805ada.html">TEC:X805ada</a> - Assenois Ecole Communale (Bertrix) 08:35</li><li><a href="stop-TEC_X805aeb.html">TEC:X805aeb</a> - Assenois Route d'Offagne (Bertrix) 08:36</li><li><a href="stop-TEC_X805aha.html">TEC:X805aha</a> - Offagne Route de Bertrix 08:39</li><li><a href="stop-TEC_X805agb.html">TEC:X805agb</a> - Offagne Abreuvoir 08:39</li><li><a href="stop-TEC_X805aac.html">TEC:X805aac</a> - Offagne Route de Paliseul 08:40</li><li><a href="stop-TEC_X805akb.html">TEC:X805akb</a> - Offagne Rue de Solmon 43 08:41</li><li><a href="stop-TEC_X806aha.html">TEC:X806aha</a> - Paliseul Route d'Offagne 08:43</li><li><a href="stop-TEC_X806aea.html">TEC:X806aea</a> - Paliseul Chapelle Saint-Roch 08:44</li><li><a href="stop-TEC_X806adb.html">TEC:X806adb</a> - Paliseul Eglise 08:44</li><li><a href="stop-TEC_X806acb.html">TEC:X806acb</a> - Paliseul Gendarmerie 08:45</li><li><a href="stop-TEC_X806abb.html">TEC:X806abb</a> - Paliseul Hutte Lurette 08:45</li><li><a href="stop-TEC_X806aab.html">TEC:X806aab</a> - Paliseul Gare 08:46</li><li><a href="stop-TEC_X806aac.html">TEC:X806aac</a> - Paliseul Gare 08:46</li><li><a href="stop-TEC_X850ama.html">TEC:X850ama</a> - Merny Route de Paliseul Gare 08:48</li><li><a href="stop-TEC_X850ana.html">TEC:X850ana</a> - Merny Rue J. Hazard 29 08:48</li><li><a href="stop-TEC_X850aha.html">TEC:X850aha</a> - Merny Centre 08:49</li><li><a href="stop-TEC_X850aga.html">TEC:X850aga</a> - Merny Grand-Rue 76 08:50</li><li><a href="stop-TEC_X850afa.html">TEC:X850afa</a> - Carlsbourg Grand-Rue 51 08:50</li><li><a href="stop-TEC_X850ada.html">TEC:X850ada</a> - Carlsbourg Eglise 08:51</li><li><a href="stop-TEC_X850aca.html">TEC:X850aca</a> - Carlsbourg Institut 08:51</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3661.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

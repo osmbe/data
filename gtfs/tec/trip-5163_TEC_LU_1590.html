@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Arlon - Martelange - 5163:TEC:LU:1590</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Arlon - Martelange - 5163:TEC:LU:1590</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X601bba.html">TEC:X601bba</a> - Arlon Gare - Quai 6 07:41</li><li><a href="stop-TEC_X601bda.html">TEC:X601bda</a> - Arlon Xxv Août 07:43</li><li><a href="stop-TEC_X601bfa.html">TEC:X601bfa</a> - Arlon Sq Astrid - R de Bastogne 07:47</li><li><a href="stop-TEC_X601bga.html">TEC:X601bga</a> - Arlon ISMA 07:47</li><li><a href="stop-TEC_X601ada.html">TEC:X601ada</a> - Arlon Tec - Rue de Bastogne 07:48</li><li><a href="stop-TEC_X601aea.html">TEC:X601aea</a> - Arlon Rue de Bastogne 07:48</li><li><a href="stop-TEC_X662atb.html">TEC:X662atb</a> - Arlon Route de Bastogne - N4 07:49</li><li><a href="stop-TEC_X662aba.html">TEC:X662aba</a> - Bonnert 4 Vents 07:50</li><li><a href="stop-TEC_X663aia.html">TEC:X663aia</a> - Metzert N4 07:52</li><li><a href="stop-TEC_X663aoa.html">TEC:X663aoa</a> - Attert Spetz 07:55</li><li><a href="stop-TEC_X663apa.html">TEC:X663apa</a> - Attert Voie de la Liberté 8 07:56</li><li><a href="stop-TEC_X663aqa.html">TEC:X663aqa</a> - Attert Camping 07:56</li><li><a href="stop-TEC_X663aqb.html">TEC:X663aqb</a> - Attert Camping 07:56</li><li><a href="stop-TEC_X663awa.html">TEC:X663awa</a> - Schadeck Bretelle N4 07:57</li><li><a href="stop-TEC_X663axa.html">TEC:X663axa</a> - Schadeck R de l'Inst Molitor 58 07:58</li><li><a href="stop-TEC_X663aya.html">TEC:X663aya</a> - Post Ferme Rose 07:59</li><li><a href="stop-TEC_X663aua.html">TEC:X663aua</a> - Post Ecole 08:00</li><li><a href="stop-TEC_X663avb.html">TEC:X663avb</a> - Post Route de Nobressart 08:01</li><li><a href="stop-TEC_X667aaa.html">TEC:X667aaa</a> - Louchert Centre 08:03</li><li><a href="stop-TEC_X667ada.html">TEC:X667ada</a> - Nobressart Almeroth 08:05</li><li><a href="stop-TEC_X667aca.html">TEC:X667aca</a> - Nobressart Eglise 08:06</li><li><a href="stop-TEC_X667abb.html">TEC:X667abb</a> - Nobressart Calvaire 08:07</li><li><a href="stop-TEC_X664aca.html">TEC:X664aca</a> - Heinstert Route de Nobressart 08:10</li><li><a href="stop-TEC_X664add.html">TEC:X664add</a> - Heinstert Eglise 08:10</li><li><a href="stop-TEC_X664aba.html">TEC:X664aba</a> - Heinstert Rue de Vlessart 08:10</li><li><a href="stop-TEC_X664aea.html">TEC:X664aea</a> - Heinstert Hohenbusch 08:11</li><li><a href="stop-TEC_X664afa.html">TEC:X664afa</a> - Heinstert Grand-Rue 08:11</li><li><a href="stop-TEC_X664aga.html">TEC:X664aga</a> - Heinstert Route de Post 08:11</li><li><a href="stop-TEC_X664aia.html">TEC:X664aia</a> - La Corne du Bois des Pendus 08:13</li><li><a href="stop-TEC_X665aaa.html">TEC:X665aaa</a> - La Folie 08:15</li><li><a href="stop-TEC_X665aba.html">TEC:X665aba</a> - Chemin de Perlé 08:17</li><li><a href="stop-TEC_X666aaa.html">TEC:X666aaa</a> - Martelange Rue de la Frontière 08:18</li><li><a href="stop-TEC_X666aba.html">TEC:X666aba</a> - Martelange Total - Route d'Arlon 08:18</li><li><a href="stop-TEC_X666aca.html">TEC:X666aca</a> - Martelange Texaco 08:19</li><li><a href="stop-TEC_X666ama.html">TEC:X666ama</a> - Martelange Dépôt TEC 08:20</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2649.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

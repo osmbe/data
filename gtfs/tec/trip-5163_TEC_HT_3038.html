@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Comines/Komen - Houplines - 5163:TEC:HT:3038</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Comines/Komen - Houplines - 5163:TEC:HT:3038</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4co106d.html">TEC:H4co106d</a> - Komen SNCB/Station 10:35</li><li><a href="stop-TEC_H4co110a.html">TEC:H4co110a</a> - Komen Place Sainte-Anne/Sint-Annaplein 10:37</li><li><a href="stop-TEC_H4co103a.html">TEC:H4co103a</a> - Komen Athénée Royal 10:38</li><li><a href="stop-TEC_H4bw100a.html">TEC:H4bw100a</a> - Neerwaasten Mai Cornet 10:40</li><li><a href="stop-TEC_H4bw101a.html">TEC:H4bw101a</a> - Neerwaasten Chaussée de Warneton 10:41</li><li><a href="stop-TEC_H4bw102a.html">TEC:H4bw102a</a> - Neerwaasten Place/Markt 10:42</li><li><a href="stop-TEC_H4wn131a.html">TEC:H4wn131a</a> - Waasten Villa Blanche 10:43</li><li><a href="stop-TEC_H4wn124a.html">TEC:H4wn124a</a> - Waasten Ancienne Gare/Station 10:44</li><li><a href="stop-TEC_H4wn124d.html">TEC:H4wn124d</a> - Waasten Ancienne Gare/Station 10:44</li><li><a href="stop-TEC_H4wn128a.html">TEC:H4wn128a</a> - Waasten Place/Markt 10:45</li><li><a href="stop-TEC_H4wn130a.html">TEC:H4wn130a</a> - Waasten Route de Messines/Messinesweg 10:46</li><li><a href="stop-TEC_H4wn138a.html">TEC:H4wn138a</a> - Waasten Home La Sérénité 10:46</li><li><a href="stop-TEC_H4wn123a.html">TEC:H4wn123a</a> - Waasten Au Bon Fermier 10:47</li><li><a href="stop-TEC_H4wn129a.html">TEC:H4wn129a</a> - Waasten Pont Rouge 10:48</li><li><a href="stop-TEC_H4wn126a.html">TEC:H4wn126a</a> - Ploegsteert Le Gheer 10:50</li><li><a href="stop-TEC_H4pl112a.html">TEC:H4pl112a</a> - Ploegsteert Belle promenade/Schone Wandeling 10:51</li><li><a href="stop-TEC_H4pl121a.html">TEC:H4pl121a</a> - Ploegsteert Résidence Beau Site 10:52</li><li><a href="stop-TEC_H4pl137b.html">TEC:H4pl137b</a> - Ploegsteert Home CPAS/OCMW 10:53</li><li><a href="stop-TEC_H4pl116a.html">TEC:H4pl116a</a> - Ploegsteert Eglise / Kerk 10:53</li><li><a href="stop-TEC_H4pl122a.html">TEC:H4pl122a</a> - Ploegsteert Palais des Meubles/Meubelpaleis 10:54</li><li><a href="stop-TEC_H4pl115a.html">TEC:H4pl115a</a> - Ploegsteert Ecole de l'Etat/Rijksschool 10:56</li><li><a href="stop-TEC_H4pl114a.html">TEC:H4pl114a</a> - Ploegsteert Château Nonet Kasteel 10:57</li><li><a href="stop-TEC_H4pl132a.html">TEC:H4pl132a</a> - Le Bizet Rue du Touquet 10:59</li><li><a href="stop-TEC_H4pl117a.html">TEC:H4pl117a</a> - Ploegsteert Epine Indépendante 11:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2065.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

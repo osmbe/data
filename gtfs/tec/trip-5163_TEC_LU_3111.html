@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Barvaux - Oppagne - Heyd - Bomal - 5163:TEC:LU:3111</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Barvaux - Oppagne - Heyd - Bomal - 5163:TEC:LU:3111</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X982beb.html">TEC:X982beb</a> - Bomal Athénée 08:19</li><li><a href="stop-TEC_X982bga.html">TEC:X982bga</a> - Bomal La Rote 08:20</li><li><a href="stop-TEC_X982bdb.html">TEC:X982bdb</a> - Bomal Route de Barvaux 92 08:21</li><li><a href="stop-TEC_X982bca.html">TEC:X982bca</a> - Bomal Route de Barvaux 127 08:22</li><li><a href="stop-TEC_X982cab.html">TEC:X982cab</a> - Barvaux Camping 08:25</li><li><a href="stop-TEC_X982aub.html">TEC:X982aub</a> - Barvaux Station 08:25</li><li><a href="stop-TEC_X982axb.html">TEC:X982axb</a> - Barvaux Route de Bomal 08:26</li><li><a href="stop-TEC_X982aza.html">TEC:X982aza</a> - Barvaux Eglise 08:26</li><li><a href="stop-TEC_X982bba.html">TEC:X982bba</a> - Barvaux Poste 08:27</li><li><a href="stop-TEC_X982asb.html">TEC:X982asb</a> - Barvaux Rue du Marais 08:28</li><li><a href="stop-TEC_X982ayb.html">TEC:X982ayb</a> - Barvaux Vieux Chemin de Petithan 08:29</li><li><a href="stop-TEC_X982azb.html">TEC:X982azb</a> - Barvaux Eglise 08:29</li><li><a href="stop-TEC_X982atb.html">TEC:X982atb</a> - Barvaux Gare 08:30</li><li><a href="stop-TEC_X982baa.html">TEC:X982baa</a> - Barvaux Golf 08:31</li><li><a href="stop-TEC_X996agb.html">TEC:X996agb</a> - Pas-Bayard Carrefour 08:36</li><li><a href="stop-TEC_X996ada.html">TEC:X996ada</a> - Wenin Rue de Wéris 45 08:36</li><li><a href="stop-TEC_X996acb.html">TEC:X996acb</a> - Oppagne Rue de Wéris 21 08:37</li><li><a href="stop-TEC_X996aaa.html">TEC:X996aaa</a> - Oppagne Eglise 08:37</li><li><a href="stop-TEC_X996aba.html">TEC:X996aba</a> - Oppagne Grand Route 08:38</li><li><a href="stop-TEC_X983aea.html">TEC:X983aea</a> - Weris Rue d'Oppagne 5 08:41</li><li><a href="stop-TEC_X983ada.html">TEC:X983ada</a> - Weris Rue des Combattants 08:41</li><li><a href="stop-TEC_X983agb.html">TEC:X983agb</a> - Weris Eglise 08:42</li><li><a href="stop-TEC_X983aca.html">TEC:X983aca</a> - Weris Route de Heyd 16 08:42</li><li><a href="stop-TEC_X983aba.html">TEC:X983aba</a> - Morville Route de Wéris 2 08:44</li><li><a href="stop-TEC_X983aaa.html">TEC:X983aaa</a> - Morville Centre 29 08:45</li><li><a href="stop-TEC_X986aia.html">TEC:X986aia</a> - Heyd El Cwène 08:48</li><li><a href="stop-TEC_X986afa.html">TEC:X986afa</a> - Heyd Centre 08:49</li><li><a href="stop-TEC_X986asa.html">TEC:X986asa</a> - Heyd Ecole 08:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3551.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

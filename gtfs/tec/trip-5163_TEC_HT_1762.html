@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Dour - Erquennes - 5163:TEC:HT:1762</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Dour - Erquennes - 5163:TEC:HT:1762</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1do131c.html">TEC:H1do131c</a> - Dour Trichères 16:28</li><li><a href="stop-TEC_H1do127a.html">TEC:H1do127a</a> - Dour Ste-Catherine 16:29</li><li><a href="stop-TEC_H1do130a.html">TEC:H1do130a</a> - Dour Terrain de Football 16:30</li><li><a href="stop-TEC_H1do126a.html">TEC:H1do126a</a> - Dour St-Charles 16:31</li><li><a href="stop-TEC_H1do116a.html">TEC:H1do116a</a> - Dour Pavé de Warquignies 16:32</li><li><a href="stop-TEC_H1pd141a.html">TEC:H1pd141a</a> - Petit-Dour Cauderloo 16:33</li><li><a href="stop-TEC_H1pd144a.html">TEC:H1pd144a</a> - Petit-Dour Rouge Bonnet 16:34</li><li><a href="stop-TEC_H1pd143a.html">TEC:H1pd143a</a> - Petit-Dour La Saline 16:35</li><li><a href="stop-TEC_H1pd142a.html">TEC:H1pd142a</a> - Petit-Dour Eglise 16:36</li><li><a href="stop-TEC_H1pd146a.html">TEC:H1pd146a</a> - Petit-Dour Rue de Wasmes 16:37</li><li><a href="stop-TEC_H1pd145a.html">TEC:H1pd145a</a> - Petit-Dour Rue de Sars 16:38</li><li><a href="stop-TEC_H1bl106a.html">TEC:H1bl106a</a> - Blaugies Rue des Vainqueurs 16:39</li><li><a href="stop-TEC_H1bl100a.html">TEC:H1bl100a</a> - Blaugies Coron 16:40</li><li><a href="stop-TEC_H1bl103a.html">TEC:H1bl103a</a> - Blaugies Place du Joncquois 16:41</li><li><a href="stop-TEC_H1bl107a.html">TEC:H1bl107a</a> - Blaugies Rue Grande 16:42</li><li><a href="stop-TEC_H1bl101a.html">TEC:H1bl101a</a> - Blaugies Hôme 16:43</li><li><a href="stop-TEC_H1bl102a.html">TEC:H1bl102a</a> - Blaugies Place 16:43</li><li><a href="stop-TEC_H1bl104c.html">TEC:H1bl104c</a> - Blaugies Rond Point 16:44</li><li><a href="stop-TEC_H1bl105a.html">TEC:H1bl105a</a> - Blaugies Route Verte 16:45</li><li><a href="stop-TEC_H1at108b.html">TEC:H1at108b</a> - Athis Croix des Muets 16:47</li><li><a href="stop-TEC_H1eq115b.html">TEC:H1eq115b</a> - Erquennes Carrefour 16:47</li><li><a href="stop-TEC_H1eq116b.html">TEC:H1eq116b</a> - Erquennes Eglise 16:48</li><li><a href="stop-TEC_H1eq117a.html">TEC:H1eq117a</a> - Erquennes Place 16:48</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2158.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Waremme - Oreye - 5163:TEC:LV:38379</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Waremme - Oreye - 5163:TEC:LV:38379</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LWAgare_.html">TEC:LWAgare*</a> - Waremme Gare 08:07</li><li><a href="stop-TEC_LWAlong3.html">TEC:LWAlong3</a> - Waremme Place Longchamps 08:09</li><li><a href="stop-TEC_LWAloui1.html">TEC:LWAloui1</a> - Waremme Collège St-Louis 08:09</li><li><a href="stop-TEC_LWArege1.html">TEC:LWArege1</a> - Waremme Avenue du Prince Régent 08:10</li><li><a href="stop-TEC_LWAfabr1.html">TEC:LWAfabr1</a> - Waremme Rue des Fabriques 08:11</li><li><a href="stop-TEC_LWAathe1.html">TEC:LWAathe1</a> - Waremme Athénée 08:12</li><li><a href="stop-TEC_LWAvand1.html">TEC:LWAvand1</a> - Waremme Avenue E. Vandervelde 08:12</li><li><a href="stop-TEC_LWAlieg1.html">TEC:LWAlieg1</a> - Waremme Porte de Liège 08:13</li><li><a href="stop-TEC_LWAmois1.html">TEC:LWAmois1</a> - Waremme Rue des Moissons 08:14</li><li><a href="stop-TEC_LWAlpre1.html">TEC:LWAlpre1</a> - Waremme Cité des longs prés 08:14</li><li><a href="stop-TEC_LOehart1.html">TEC:LOehart1</a> - Oleye Rue de Hartenge 08:15</li><li><a href="stop-TEC_LOesour1.html">TEC:LOesour1</a> - Oleye Rue de la Source 08:16</li><li><a href="stop-TEC_LOewaut1.html">TEC:LOewaut1</a> - Oleye Place J. Wauters 08:17</li><li><a href="stop-TEC_LOeelbe1.html">TEC:LOeelbe1</a> - Oleye Rue d'Elbeck 16 08:18</li><li><a href="stop-TEC_LLnlimb1.html">TEC:LLnlimb1</a> - Lantremange Rue du Limbourg 08:21</li><li><a href="stop-TEC_LLnec--1.html">TEC:LLnec--1</a> - Lantremange Ecole Communale 08:22</li><li><a href="stop-TEC_LLnpomp1.html">TEC:LLnpomp1</a> - Lantremange La Pompe 08:22</li><li><a href="stop-TEC_LLncime1.html">TEC:LLncime1</a> - Lantremange Cimetière 08:23</li><li><a href="stop-TEC_LBGroma1.html">TEC:LBGroma1</a> - Bergilers Chaussée Romaine 08:24</li><li><a href="stop-TEC_LBGvill1.html">TEC:LBGvill1</a> - Bergilers Chemin vers le Village 08:25</li><li><a href="stop-TEC_LBGjacq1.html">TEC:LBGjacq1</a> - Bergilers rue des Jacques 22 08:25</li><li><a href="stop-TEC_LBGcent1.html">TEC:LBGcent1</a> - Bergilers Centre 08:26</li><li><a href="stop-TEC_LBGgeer1.html">TEC:LBGgeer1</a> - Bergilers Rue du Geer 08:27</li><li><a href="stop-TEC_LGrchpl1.html">TEC:LGrchpl1</a> - Granville Chapelle 08:28</li><li><a href="stop-TEC_LGreg--1.html">TEC:LGreg--1</a> - Granville Eglise 08:29</li><li><a href="stop-TEC_LGrfont1.html">TEC:LGrfont1</a> - Granville Rue des Fontaines 08:29</li><li><a href="stop-TEC_LLGcarr1.html">TEC:LLGcarr1</a> - Lens-sur-Geer Carrefour 08:30</li><li><a href="stop-TEC_LLGramk1.html">TEC:LLGramk1</a> - Lens-sur-Geer Rue Ramkin 08:31</li><li><a href="stop-TEC_LORec--_.html">TEC:LORec--*</a> - Oreye Ecole 08:34</li><li><a href="stop-TEC_LORdtec_.html">TEC:LORdtec*</a> - Oreye Dépôt TEC 08:37</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4736.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

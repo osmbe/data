@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Verviers-Battice-Thimister-Aubel - 5163:TEC:LV:24775</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Verviers-Battice-Thimister-Aubel - 5163:TEC:LV:24775</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LAUvict4.html">TEC:LAUvict4</a> - Aubel Place de la Victoire 07:20</li><li><a href="stop-TEC_LAUbour2.html">TEC:LAUbour2</a> - Aubel Croix de Bourgogne 07:21</li><li><a href="stop-TEC_LAUcose2.html">TEC:LAUcose2</a> - Aubel Cosenberg 95 07:22</li><li><a href="stop-TEC_LAUberg2.html">TEC:LAUberg2</a> - Aubel Chemin de Berg 07:22</li><li><a href="stop-TEC_LLC170-2.html">TEC:LLC170-2</a> - La Clouse 170 07:24</li><li><a href="stop-TEC_LLCeg--2.html">TEC:LLCeg--2</a> - La Clouse Eglise 07:25</li><li><a href="stop-TEC_LClberw2.html">TEC:LClberw2</a> - Clermont La Berwinne 07:27</li><li><a href="stop-TEC_LClflor2.html">TEC:LClflor2</a> - Clermont La Florence 07:30</li><li><a href="stop-TEC_LFdbagu2.html">TEC:LFdbagu2</a> - Froidthier Entreprise Baguette 07:32</li><li><a href="stop-TEC_LFdbruy2.html">TEC:LFdbruy2</a> - Froidthier Bruyères 3 07:33</li><li><a href="stop-TEC_LFdeg--4.html">TEC:LFdeg--4</a> - Froidthier Eglise 07:35</li><li><a href="stop-TEC_LFdchau3.html">TEC:LFdchau3</a> - Froidthier Chaussée 07:35</li><li><a href="stop-TEC_LFdchau2.html">TEC:LFdchau2</a> - Froidthier Chaussée 07:35</li><li><a href="stop-TEC_LLMfond2.html">TEC:LLMfond2</a> - La Minerie Fond Jowa 07:37</li><li><a href="stop-TEC_LLM4rou2.html">TEC:LLM4rou2</a> - La Minerie 4 Routes 07:39</li><li><a href="stop-TEC_LLMeg--2.html">TEC:LLMeg--2</a> - La Minerie Eglise 07:40</li><li><a href="stop-TEC_LLMcouv2.html">TEC:LLMcouv2</a> - La Minerie Couvent de Befve 07:41</li><li><a href="stop-TEC_LLMjacq2.html">TEC:LLMjacq2</a> - La Minerie Croix Henri-Jacques 07:43</li><li><a href="stop-TEC_LThelse2.html">TEC:LThelse2</a> - Thimister Rue Elseroux 07:43</li><li><a href="stop-TEC_LTheg--2.html">TEC:LTheg--2</a> - Thimister Eglise 07:45</li><li><a href="stop-TEC_LThbatt2.html">TEC:LThbatt2</a> - Thimister Route de Battice 07:46</li><li><a href="stop-TEC_LThpoli2.html">TEC:LThpoli2</a> - Thimister Croix Polinard 07:48</li><li><a href="stop-TEC_LBTwauc2.html">TEC:LBTwauc2</a> - Battice Hameau de Waucomont 07:50</li><li><a href="stop-TEC_LBTfoot2.html">TEC:LBTfoot2</a> - Battice Terrain de Football 07:50</li><li><a href="stop-TEC_LBTcarr4.html">TEC:LBTcarr4</a> - Battice Carrefour 07:51</li><li><a href="stop-TEC_LHEbeau2.html">TEC:LHEbeau2</a> - Herve Beau Vallon 07:52</li><li><a href="stop-TEC_LHEches2.html">TEC:LHEches2</a> - Herve Rue de Chesseroux 07:53</li><li><a href="stop-TEC_LHEecmo2.html">TEC:LHEecmo2</a> - Herve Ecole Moyenne 07:54</li><li><a href="stop-TEC_LHEnaza2.html">TEC:LHEnaza2</a> - Herve Nazareth 07:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4971.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

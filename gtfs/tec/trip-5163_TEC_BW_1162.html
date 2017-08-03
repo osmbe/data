@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Jodoigne - Wavre - 5163:TEC:BW:1162</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Jodoigne - Wavre - 5163:TEC:BW:1162</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Brxmbos1.html">TEC:Brxmbos1</a> - Roux-Miroir Bosquet 08:49</li><li><a href="stop-TEC_Brxmcha1.html">TEC:Brxmcha1</a> - Roux-Miroir Rue de Chaumont 08:50</li><li><a href="stop-TEC_Brxmhai3.html">TEC:Brxmhai3</a> - Roux-Miroir La Haie 08:50</li><li><a href="stop-TEC_Brxmcna1.html">TEC:Brxmcna1</a> - Roux-Miroir Chaussée de Namur 08:51</li><li><a href="stop-TEC_Bptbbie1.html">TEC:Bptbbie1</a> - Pietrebais Bienvenu 08:53</li><li><a href="stop-TEC_Bptbmco1.html">TEC:Bptbmco1</a> - Pietrebais Maison Communale 08:54</li><li><a href="stop-TEC_Bptblma1.html">TEC:Bptblma1</a> - Pietrebais Rue Louis Marcel 08:55</li><li><a href="stop-TEC_Bptbsar1.html">TEC:Bptbsar1</a> - Pietrebais Rue de Sart 08:57</li><li><a href="stop-TEC_Bbiesbi1.html">TEC:Bbiesbi1</a> - Biez Sart-Biez 08:58</li><li><a href="stop-TEC_Bbiefon1.html">TEC:Bbiefon1</a> - Biez Rue du Fond 09:00</li><li><a href="stop-TEC_Bbiecoc1.html">TEC:Bbiecoc1</a> - Biez Cocrou 09:01</li><li><a href="stop-TEC_Bbiemor2.html">TEC:Bbiemor2</a> - Biez Route de Morsaint 09:05</li><li><a href="stop-TEC_Bbiepon1.html">TEC:Bbiepon1</a> - Biez Pont 09:07</li><li><a href="stop-TEC_Bbiemse1.html">TEC:Bbiemse1</a> - Biez Morsaint St-Eloy 09:08</li><li><a href="stop-TEC_Bboneta1.html">TEC:Bboneta1</a> - Bonlez Etangs 09:09</li><li><a href="stop-TEC_Bboncha1.html">TEC:Bboncha1</a> - Bonlez Château 09:11</li><li><a href="stop-TEC_Bbonbcr1.html">TEC:Bbonbcr1</a> - Bonlez Chemin Bernard Croix 09:12</li><li><a href="stop-TEC_Bbonegl1.html">TEC:Bbonegl1</a> - Bonlez Eglise 09:13</li><li><a href="stop-TEC_Bdvm4ca3.html">TEC:Bdvm4ca3</a> - Dion-Valmont Quatre Carrés 09:14</li><li><a href="stop-TEC_Bdvmsar1.html">TEC:Bdvmsar1</a> - Dion-Valmont Sarthe 09:16</li><li><a href="stop-TEC_Bdvmccu1.html">TEC:Bdvmccu1</a> - Dion-Valmont Café Cumps 09:16</li><li><a href="stop-TEC_Bwavbva1.html">TEC:Bwavbva1</a> - Wavre Bois du Val 09:17</li><li><a href="stop-TEC_Bwav4sa1.html">TEC:Bwav4sa1</a> - Wavre Quatre Sapins 09:18</li><li><a href="stop-TEC_Bwavche1.html">TEC:Bwavche1</a> - Wavre Avenue de Chèremont 09:18</li><li><a href="stop-TEC_Bwavnam3.html">TEC:Bwavnam3</a> - Wavre Chaussée de Namur 09:19</li><li><a href="stop-TEC_Bwavfbe1.html">TEC:Bwavfbe1</a> - Wavre Fin Bec 09:20</li><li><a href="stop-TEC_Bwavpao1.html">TEC:Bwavpao1</a> - Wavre Place A. Bosch 09:20</li><li><a href="stop-TEC_Bwavgar6.html">TEC:Bwavgar6</a> - Wavre Gare 09:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./73.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

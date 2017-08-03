@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Boucle Urbaine - AYE - 5163:TEC:LU:6511</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Boucle Urbaine - AYE - 5163:TEC:LU:6511</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X902afd.html">TEC:X902afd</a> - Marloie Gare - Quai 4 09:40</li><li><a href="stop-TEC_X902bca.html">TEC:X902bca</a> - Marloie Dépôt TEC 09:40</li><li><a href="stop-TEC_X902bea.html">TEC:X902bea</a> - Marloie FOREM 09:41</li><li><a href="stop-TEC_X902bdb.html">TEC:X902bdb</a> - Marloie Route du Gerny 09:42</li><li><a href="stop-TEC_X901bdb.html">TEC:X901bdb</a> - Marche Rue du Parc Industriel 09:45</li><li><a href="stop-TEC_X901ara.html">TEC:X901ara</a> - Marche Maison Médicale 09:46</li><li><a href="stop-TEC_X901amb.html">TEC:X901amb</a> - Marche Clinique 09:47</li><li><a href="stop-TEC_X999aqb.html">TEC:X999aqb</a> - Aye Rue du Vivier 31 09:47</li><li><a href="stop-TEC_X999alb.html">TEC:X999alb</a> - Aye Rue du Vivier 45 09:48</li><li><a href="stop-TEC_X999ata.html">TEC:X999ata</a> - Aye Rue Saulcy 09:49</li><li><a href="stop-TEC_X999aib.html">TEC:X999aib</a> - Aye Gare 09:49</li><li><a href="stop-TEC_X999agb.html">TEC:X999agb</a> - Aye Monument 09:50</li><li><a href="stop-TEC_X999afb.html">TEC:X999afb</a> - Aye Maison Communale 09:51</li><li><a href="stop-TEC_X999abb.html">TEC:X999abb</a> - Aye Rue Jamodenne 09:52</li><li><a href="stop-TEC_X999acb.html">TEC:X999acb</a> - Aye Devant le Bois 09:53</li><li><a href="stop-TEC_X999adb.html">TEC:X999adb</a> - Aye Cité Famennoise 09:54</li><li><a href="stop-TEC_X999aeb.html">TEC:X999aeb</a> - Aye Cabine 09:54</li><li><a href="stop-TEC_X999aob.html">TEC:X999aob</a> - Aye Drève des Chevreuils 09:55</li><li><a href="stop-TEC_X999ajb.html">TEC:X999ajb</a> - Aye Cité Militaire 09:55</li><li><a href="stop-TEC_X999asa.html">TEC:X999asa</a> - Aye Carrefour Rue Chantemerle 09:57</li><li><a href="stop-TEC_X999ana.html">TEC:X999ana</a> - Aye Hôme 09:58</li><li><a href="stop-TEC_X999aua.html">TEC:X999aua</a> - Aye Novalis 09:59</li><li><a href="stop-TEC_X999aha.html">TEC:X999aha</a> - Aye Parc Scientifique 10:00</li><li><a href="stop-TEC_X999ara.html">TEC:X999ara</a> - Aye Contrôle Technique 10:01</li><li><a href="stop-TEC_X999aub.html">TEC:X999aub</a> - Aye Novalis 10:01</li><li><a href="stop-TEC_X901aaa.html">TEC:X901aaa</a> - Marche Inst des Pères Franciscains 10:05</li><li><a href="stop-TEC_X901aba.html">TEC:X901aba</a> - Marche Palais de Justice 10:05</li><li><a href="stop-TEC_X901bra.html">TEC:X901bra</a> - Marche Boulevard - Palace 10:06</li><li><a href="stop-TEC_X901aha.html">TEC:X901aha</a> - Marche Boulevard du Nord 10:07</li><li><a href="stop-TEC_X901bna.html">TEC:X901bna</a> - Marche Porte Basse 10:08</li><li><a href="stop-TEC_X901ana.html">TEC:X901ana</a> - Marche Route de Liège 10:09</li><li><a href="stop-TEC_X901bqa.html">TEC:X901bqa</a> - Marche Carmel 10:10</li><li><a href="stop-TEC_X901aua.html">TEC:X901aua</a> - Marche Cabine Electrique 10:10</li><li><a href="stop-TEC_X901apb.html">TEC:X901apb</a> - Marche Centre Sportif 10:13</li><li><a href="stop-TEC_X901aoa.html">TEC:X901aoa</a> - Marche Cimetière 10:14</li><li><a href="stop-TEC_X901acb.html">TEC:X901acb</a> - Marche Place de l'Etang 10:15</li><li><a href="stop-TEC_X901bra.html">TEC:X901bra</a> - Marche Boulevard - Palace 10:16</li><li><a href="stop-TEC_X901ada.html">TEC:X901ada</a> - Marche Avenue de la Toison d'Or 10:18</li><li><a href="stop-TEC_X901aeb.html">TEC:X901aeb</a> - Marche Athénée 10:19</li><li><a href="stop-TEC_X901afa.html">TEC:X901afa</a> - Marche Rue Pierre Saint-Hubert 10:19</li><li><a href="stop-TEC_X901aga.html">TEC:X901aga</a> - Marche Les His 10:20</li><li><a href="stop-TEC_X902bbb.html">TEC:X902bbb</a> - Marloie Ma Campagne 10:20</li><li><a href="stop-TEC_X902aba.html">TEC:X902aba</a> - Marloie Point du Jour 10:21</li><li><a href="stop-TEC_X902aca.html">TEC:X902aca</a> - Marloie Maison Glatigny 10:21</li><li><a href="stop-TEC_X902ana.html">TEC:X902ana</a> - Marloie Spar 10:22</li><li><a href="stop-TEC_X902aaa.html">TEC:X902aaa</a> - Marloie Eglise 10:22</li><li><a href="stop-TEC_X902afd.html">TEC:X902afd</a> - Marloie Gare - Quai 4 10:23</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2595.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

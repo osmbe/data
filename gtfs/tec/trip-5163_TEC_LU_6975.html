@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Florenville - Arlon - 5163:TEC:LU:6975</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Florenville - Arlon - 5163:TEC:LU:6975</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X641afd.html">TEC:X641afd</a> - Florenville Place du Miroir - Quai 3 06:19</li><li><a href="stop-TEC_X640amb.html">TEC:X640amb</a> - Pin Eglise 06:25</li><li><a href="stop-TEC_X639akb.html">TEC:X639akb</a> - Jamoigne Centre 06:28</li><li><a href="stop-TEC_X638arb.html">TEC:X638arb</a> - Frenois Lavoir 06:31</li><li><a href="stop-TEC_X637aeb.html">TEC:X637aeb</a> - Tintigny Maison Communale 06:34</li><li><a href="stop-TEC_X637acb.html">TEC:X637acb</a> - Tintigny Route de Han 06:35</li><li><a href="stop-TEC_X636akb.html">TEC:X636akb</a> - Sainte-Marie N83 (Etalle) 06:38</li><li><a href="stop-TEC_X636afb.html">TEC:X636afb</a> - Etalle Eglise 06:42</li><li><a href="stop-TEC_X634abb.html">TEC:X634abb</a> - Vance Carrefour 06:46</li><li><a href="stop-TEC_X633acb.html">TEC:X633acb</a> - Fouches 4 Chemins 06:50</li><li><a href="stop-TEC_X602agb.html">TEC:X602agb</a> - Stockem Centre 06:54</li><li><a href="stop-TEC_X602ahb.html">TEC:X602ahb</a> - Stockem Carrefour Rue des Ateliers 06:55</li><li><a href="stop-TEC_X601cdb.html">TEC:X601cdb</a> - Arlon Delhaize 06:57</li><li><a href="stop-TEC_X601bbf.html">TEC:X601bbf</a> - Arlon Gare - Quai 2 06:59</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2863.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

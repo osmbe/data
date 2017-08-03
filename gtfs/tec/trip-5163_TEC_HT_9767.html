@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Circuits du Borinage (Wasmes, Warquignies,...) - 5163:TEC:HT:9767</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Circuits du Borinage (Wasmes, Warquignies,...) - 5163:TEC:HT:9767</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1wa147a.html">TEC:H1wa147a</a> - Wasmes Place 08:02</li><li><a href="stop-TEC_H1wa141a.html">TEC:H1wa141a</a> - Wasmes Groseillers 08:04</li><li><a href="stop-TEC_H1wa145a.html">TEC:H1wa145a</a> - Wasmes Orphéon 08:05</li><li><a href="stop-TEC_H1wa132a.html">TEC:H1wa132a</a> - Wasmes Place du Quesnoy (Caméo) 08:06</li><li><a href="stop-TEC_H1wa155a.html">TEC:H1wa155a</a> - Wasmes Rue de Maubeuge 08:08</li><li><a href="stop-TEC_H1wa151a.html">TEC:H1wa151a</a> - Wasmes Rue  Clément 08:09</li><li><a href="stop-TEC_H1wa160b.html">TEC:H1wa160b</a> - Wasmes Rue Jean Jean 08:10</li><li><a href="stop-TEC_H1wa156b.html">TEC:H1wa156b</a> - Wasmes Rue Delhaye 08:10</li><li><a href="stop-TEC_H1wa163b.html">TEC:H1wa163b</a> - Wasmes Ruelle Giquebon 08:11</li><li><a href="stop-TEC_H1wa138b.html">TEC:H1wa138b</a> - Wasmes Cité Maréchal Joffre 08:12</li><li><a href="stop-TEC_H1wa159a.html">TEC:H1wa159a</a> - Wasmes Rue du Rossignol 08:13</li><li><a href="stop-TEC_H1wa158b.html">TEC:H1wa158b</a> - Wasmes Rue du Bois 08:15</li><li><a href="stop-TEC_H1wa152b.html">TEC:H1wa152b</a> - Wasmes Rue Artus 08:16</li><li><a href="stop-TEC_H1wa149c.html">TEC:H1wa149c</a> - Wasmes Place St Pierre 08:17</li><li><a href="stop-TEC_H1wa153a.html">TEC:H1wa153a</a> - Wasmes Rue Clémenceau 08:19</li><li><a href="stop-TEC_H1wa140a.html">TEC:H1wa140a</a> - Wasmes Garage Adamo 08:20</li><li><a href="stop-TEC_H1wa136a.html">TEC:H1wa136a</a> - Wasmes Cité de l' Abbaye 08:21</li><li><a href="stop-TEC_H1wa164a.html">TEC:H1wa164a</a> - Wasmes Stade 08:23</li><li><a href="stop-TEC_H1wa142b.html">TEC:H1wa142b</a> - Wasmes Hornu-Wasmes 08:24</li><li><a href="stop-TEC_H1wa147a.html">TEC:H1wa147a</a> - Wasmes Place 08:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2415.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

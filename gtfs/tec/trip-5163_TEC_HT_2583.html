@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mons centre-ville - 5163:TEC:HT:2583</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mons centre-ville - 5163:TEC:HT:2583</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1ms280d.html">TEC:H1ms280d</a> - Mons SNCB 08:15</li><li><a href="stop-TEC_H1ms303a.html">TEC:H1ms303a</a> - Mons Rogier 08:16</li><li><a href="stop-TEC_H1ms901a.html">TEC:H1ms901a</a> - Mons Petite Guirlande 08:17</li><li><a href="stop-TEC_H1ms902a.html">TEC:H1ms902a</a> - Mons Capucins 08:18</li><li><a href="stop-TEC_H1ms284a.html">TEC:H1ms284a</a> - Mons Grand-Rue 08:19</li><li><a href="stop-TEC_H1ms903a.html">TEC:H1ms903a</a> - Mons Bertaimont 08:20</li><li><a href="stop-TEC_H1ms296b.html">TEC:H1ms296b</a> - Mons Place des Chasseurs 08:21</li><li><a href="stop-TEC_H1ms904a.html">TEC:H1ms904a</a> - Mons Bd Elisabeth 08:23</li><li><a href="stop-TEC_H1ms905a.html">TEC:H1ms905a</a> - Mons Thirimont 08:24</li><li><a href="stop-TEC_H1ms906a.html">TEC:H1ms906a</a> - Mons Polytechnique 08:26</li><li><a href="stop-TEC_H1ms907a.html">TEC:H1ms907a</a> - Mons Machine à eau 08:27</li><li><a href="stop-TEC_H1ms908a.html">TEC:H1ms908a</a> - Mons Brisselot 08:29</li><li><a href="stop-TEC_H1ms294c.html">TEC:H1ms294c</a> - Mons Place de Flandre 08:31</li><li><a href="stop-TEC_H1ms285a.html">TEC:H1ms285a</a> - Mons Hôpital Civil 08:32</li><li><a href="stop-TEC_H1ms304a.html">TEC:H1ms304a</a> - Mons Rue Valenciennoise 08:33</li><li><a href="stop-TEC_H1ms913a.html">TEC:H1ms913a</a> - Mons Bd JF Kennedy 08:34</li><li><a href="stop-TEC_H1ms289b.html">TEC:H1ms289b</a> - Mons Lido 08:35</li><li><a href="stop-TEC_H1ms273a.html">TEC:H1ms273a</a> - Mons Delhaize 08:36</li><li><a href="stop-TEC_H1ms914a.html">TEC:H1ms914a</a> - Mons Rue de Nimy 08:37</li><li><a href="stop-TEC_H1ms292a.html">TEC:H1ms292a</a> - Mons Palais de Justice 08:38</li><li><a href="stop-TEC_H1ms283a.html">TEC:H1ms283a</a> - Mons Grand-Place 08:39</li><li><a href="stop-TEC_H1ms915b.html">TEC:H1ms915b</a> - Mons Clercs 08:40</li><li><a href="stop-TEC_H1ms307a.html">TEC:H1ms307a</a> - Mons Ste-Waudru 08:41</li><li><a href="stop-TEC_H1ms300a.html">TEC:H1ms300a</a> - Mons Houssière 08:42</li><li><a href="stop-TEC_H1ms280a.html">TEC:H1ms280a</a> - Mons SNCB 08:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2103.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

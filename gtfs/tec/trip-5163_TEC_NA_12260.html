@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - HANNUT - FORVILLE - 5163:TEC:NA:12260</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: HANNUT - FORVILLE - 5163:TEC:NA:12260</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N507aga.html">TEC:N507aga</a> - Forville Av. de la Libération 13:01</li><li><a href="stop-TEC_N507afa.html">TEC:N507afa</a> - Forville Eglise 13:01</li><li><a href="stop-TEC_N507aja.html">TEC:N507aja</a> - Forville Carrefour 13:02</li><li><a href="stop-TEC_N507aea.html">TEC:N507aea</a> - Seressia Séressia 13:04</li><li><a href="stop-TEC_N507apa.html">TEC:N507apa</a> - Seron Eglise 13:06</li><li><a href="stop-TEC_N507aoa.html">TEC:N507aoa</a> - Seron Ecole 13:07</li><li><a href="stop-TEC_N507aqa.html">TEC:N507aqa</a> - Seron Chapelle 13:08</li><li><a href="stop-TEC_N581aca.html">TEC:N581aca</a> - Hemptinne Ruelle de Meeffe 13:10</li><li><a href="stop-TEC_N581aba.html">TEC:N581aba</a> - Hemptinne Place communale 13:10</li><li><a href="stop-TEC_N581aaa.html">TEC:N581aaa</a> - Hemptinne Gare 13:11</li><li><a href="stop-TEC_NL74aca.html">TEC:NL74aca</a> - Meeffe Ferme Moulin 13:13</li><li><a href="stop-TEC_NL74ada.html">TEC:NL74ada</a> - Meeffe Route d'Acosse 13:13</li><li><a href="stop-TEC_NL74afa.html">TEC:NL74afa</a> - Meeffe Eglise 13:14</li><li><a href="stop-TEC_NL74aea.html">TEC:NL74aea</a> - Meeffe Place 13:14</li><li><a href="stop-TEC_NL74afb.html">TEC:NL74afb</a> - Meeffe Eglise 13:15</li><li><a href="stop-TEC_NL74aia.html">TEC:NL74aia</a> - Wasseiges Route de Namur 13:17</li><li><a href="stop-TEC_NL74aha.html">TEC:NL74aha</a> - Wasseiges Place 13:17</li><li><a href="stop-TEC_NL74aga.html">TEC:NL74aga</a> - Wasseiges Gare 13:18</li><li><a href="stop-TEC_NL74aba.html">TEC:NL74aba</a> - Ambresin Gare 13:19</li><li><a href="stop-TEC_NL74aaa.html">TEC:NL74aaa</a> - Ambresin Route de Merdorp 13:20</li><li><a href="stop-TEC_NL75aba.html">TEC:NL75aba</a> - Merdorp Rue de Moxhe 13:25</li><li><a href="stop-TEC_NL75aaa.html">TEC:NL75aaa</a> - Merdorp Mare 13:26</li><li><a href="stop-TEC_NL75ada.html">TEC:NL75ada</a> - Merdorp Gare 13:27</li><li><a href="stop-TEC_NL75aca.html">TEC:NL75aca</a> - Merdorp Chemin des Hougardiers 13:28</li><li><a href="stop-TEC_NL37aja.html">TEC:NL37aja</a> - Thisnes Rue de Merdorp 13:32</li><li><a href="stop-TEC_NL37aia.html">TEC:NL37aia</a> - Thisnes Ferme de la fontaine 13:33</li><li><a href="stop-TEC_NL37aka.html">TEC:NL37aka</a> - Thisnes Eglise 13:34</li><li><a href="stop-TEC_NL37ala.html">TEC:NL37ala</a> - Thisnes Mignawez 13:36</li><li><a href="stop-TEC_NL37aba.html">TEC:NL37aba</a> - Crehen Eglise 13:37</li><li><a href="stop-TEC_NL37aaa.html">TEC:NL37aaa</a> - Crehen La Croisette 13:39</li><li><a href="stop-TEC_NL37aca.html">TEC:NL37aca</a> - Hannut Route de Crehen 13:41</li><li><a href="stop-TEC_LHNecpr4.html">TEC:LHNecpr4</a> - Hannut Ecole Primaire 13:43</li><li><a href="stop-TEC_LHNhall2.html">TEC:LHNhall2</a> - Hannut Place H. Hallet 13:44</li><li><a href="stop-TEC_LHNwaut2.html">TEC:LHNwaut2</a> - Hannut Rue J. Wauters 13:45</li><li><a href="stop-TEC_LHNgare2.html">TEC:LHNgare2</a> - Hannut Gare 13:46</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5665.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

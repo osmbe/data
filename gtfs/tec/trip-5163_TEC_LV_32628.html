@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Verviers - Soiron - 5163:TEC:LV:32628</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Verviers - Soiron - 5163:TEC:LV:32628</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LSNmoul1.html">TEC:LSNmoul1</a> - Soiron Moulin 08:45</li><li><a href="stop-TEC_LSNbouh3.html">TEC:LSNbouh3</a> - Soiron Haute-Bouhaye 08:46</li><li><a href="stop-TEC_LSNfays1.html">TEC:LSNfays1</a> - Soiron Fays 08:47</li><li><a href="stop-TEC_LSNchen2.html">TEC:LSNchen2</a> - Soiron Le Chêne 08:47</li><li><a href="stop-TEC_LCOcrom2.html">TEC:LCOcrom2</a> - Cornesse Cromhaise 08:48</li><li><a href="stop-TEC_LCOcarr2.html">TEC:LCOcarr2</a> - Cornesse Carrefour 08:49</li><li><a href="stop-TEC_LCOeg--2.html">TEC:LCOeg--2</a> - Cornesse Eglise 08:50</li><li><a href="stop-TEC_LCObouh2.html">TEC:LCObouh2</a> - Cornesse rue Bouhais 08:50</li><li><a href="stop-TEC_LCOdrol2.html">TEC:LCOdrol2</a> - Cornesse Route de Drolenval 08:51</li><li><a href="stop-TEC_LWerola2.html">TEC:LWerola2</a> - Wegnez Chemin de Rolays 08:51</li><li><a href="stop-TEC_LWecorn1.html">TEC:LWecorn1</a> - Wegnez Route de Cornesse 08:53</li><li><a href="stop-TEC_Lpegole1.html">TEC:Lpegole1</a> - Pepinster Golettes 08:54</li><li><a href="stop-TEC_Lpeeg--1.html">TEC:Lpeeg--1</a> - Pepinster Eglise 08:55</li><li><a href="stop-TEC_Lpeathe_.html">TEC:Lpeathe*</a> - Pepinster Athénée 08:56</li><li><a href="stop-TEC_Lpeeg--2.html">TEC:Lpeeg--2</a> - Pepinster Eglise 08:57</li><li><a href="stop-TEC_Lpegole4.html">TEC:Lpegole4</a> - Pepinster Golettes 08:58</li><li><a href="stop-TEC_LWecorn2.html">TEC:LWecorn2</a> - Wegnez Route de Cornesse 08:59</li><li><a href="stop-TEC_LWegdry2.html">TEC:LWegdry2</a> - Wegnez Rue Grand Ry 09:00</li><li><a href="stop-TEC_LWeatel2.html">TEC:LWeatel2</a> - Wegnez Ateliers mécanique 09:00</li><li><a href="stop-TEC_LWeec--2.html">TEC:LWeec--2</a> - Wegnez Ecole 09:01</li><li><a href="stop-TEC_LWepost2.html">TEC:LWepost2</a> - Wegnez Postay 09:02</li><li><a href="stop-TEC_LWevand2.html">TEC:LWevand2</a> - Wegnez Rue Vandervelde 09:03</li><li><a href="stop-TEC_LWenouv2.html">TEC:LWenouv2</a> - Wegnez Rue Nouvelle 09:04</li><li><a href="stop-TEC_Lpecroi2.html">TEC:Lpecroi2</a> - Pepinster Croix Rouge 09:05</li><li><a href="stop-TEC_Lenhosp2.html">TEC:Lenhosp2</a> - Ensival Hospice 09:06</li><li><a href="stop-TEC_Lengran1.html">TEC:Lengran1</a> - Ensival Rue Grand'Ville 09:07</li><li><a href="stop-TEC_Lveoctr1.html">TEC:Lveoctr1</a> - Verviers Octroi 09:08</li><li><a href="stop-TEC_Lvegc--3.html">TEC:Lvegc--3</a> - Verviers Gare Centrale 09:09</li><li><a href="stop-TEC_Lvevert2.html">TEC:Lvevert2</a> - Verviers Place Verte 09:11</li><li><a href="stop-TEC_Lvehv--4.html">TEC:Lvehv--4</a> - Verviers Hôtel de Ville 09:13</li><li><a href="stop-TEC_Lvepala1.html">TEC:Lvepala1</a> - Verviers Palais 09:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4055.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

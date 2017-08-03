@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Leuze - Péruwelz - 5163:TEC:HT:2397</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Leuze - Péruwelz - 5163:TEC:HT:2397</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4bq100b.html">TEC:H4bq100b</a> - Blicquy Chapelle 16:48</li><li><a href="stop-TEC_H4bq102b.html">TEC:H4bq102b</a> - Blicquy Eglise 16:49</li><li><a href="stop-TEC_H4bq154b.html">TEC:H4bq154b</a> - Blicquy Institut Porte Ouverte 16:49</li><li><a href="stop-TEC_H4cp103b.html">TEC:H4cp103b</a> - Chapelle-A-Oie Eglise 16:51</li><li><a href="stop-TEC_H4lz161b.html">TEC:H4lz161b</a> - Leuze-en-Hainaut Héros Leuzois 16:55</li><li><a href="stop-TEC_H4lz125b.html">TEC:H4lz125b</a> - Leuze-en-Hainaut Le Tiercé 16:56</li><li><a href="stop-TEC_H4lz156b.html">TEC:H4lz156b</a> - Leuze-en-Hainaut Institut Technique 16:57</li><li><a href="stop-TEC_H4lz160a.html">TEC:H4lz160a</a> - Leuze-en-Hainaut Collégiale Saint-Pierre 16:58</li><li><a href="stop-TEC_H4lz121a.html">TEC:H4lz121a</a> - Leuze-en-Hainaut SNCB 17:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1547.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

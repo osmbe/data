@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - GEMBLOUX - JEMEPPE-SUR-SAMBRE - 5163:TEC:NA:7177</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: GEMBLOUX - JEMEPPE-SUR-SAMBRE - 5163:TEC:NA:7177</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N534caa.html">TEC:N534caa</a> - Jemeppe Gare 15:17</li><li><a href="stop-TEC_N534awc.html">TEC:N534awc</a> - Jemeppe Athénée 15:18</li><li><a href="stop-TEC_N534axb.html">TEC:N534axb</a> - Jemeppe Saint-Roch 15:19</li><li><a href="stop-TEC_N534ayb.html">TEC:N534ayb</a> - Jemeppe Froidmont 15:20</li><li><a href="stop-TEC_N534byb.html">TEC:N534byb</a> - Jemeppe Route d'Onoz 15:21</li><li><a href="stop-TEC_N534bwa.html">TEC:N534bwa</a> - Onoz Gare 15:25</li><li><a href="stop-TEC_N534bxa.html">TEC:N534bxa</a> - Onoz Village 15:27</li><li><a href="stop-TEC_N531asa.html">TEC:N531asa</a> - Mazy Golf 15:30</li><li><a href="stop-TEC_N531aqa.html">TEC:N531aqa</a> - Mazy Place du Ranil 15:31</li><li><a href="stop-TEC_N531apa.html">TEC:N531apa</a> - Mazy Station 15:32</li><li><a href="stop-TEC_N531aoa.html">TEC:N531aoa</a> - Mazy Village 15:33</li><li><a href="stop-TEC_N531ana.html">TEC:N531ana</a> - Mazy Le monceau 15:34</li><li><a href="stop-TEC_N576aia.html">TEC:N576aia</a> - Bossiere Place 15:37</li><li><a href="stop-TEC_N576aha.html">TEC:N576aha</a> - Bossiere Croix-Rouge 15:38</li><li><a href="stop-TEC_N576aga.html">TEC:N576aga</a> - Bossiere Mautienne 15:39</li><li><a href="stop-TEC_N576afa.html">TEC:N576afa</a> - Bossiere Vichenet Station 15:41</li><li><a href="stop-TEC_N576ama.html">TEC:N576ama</a> - Bossiere Trois Ponts 15:42</li><li><a href="stop-TEC_N522aia.html">TEC:N522aia</a> - Gembloux A tout vent 15:44</li><li><a href="stop-TEC_N522aha.html">TEC:N522aha</a> - Gembloux Rue du Bois 15:45</li><li><a href="stop-TEC_N522aga.html">TEC:N522aga</a> - Gembloux Chapelle Dieu 15:46</li><li><a href="stop-TEC_N522abc.html">TEC:N522abc</a> - Gembloux Quatre coins 15:47</li><li><a href="stop-TEC_N522aea.html">TEC:N522aea</a> - Gembloux Rue des Volontaires 15:48</li><li><a href="stop-TEC_N522ada.html">TEC:N522ada</a> - Gembloux Gare 15:50</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6313.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

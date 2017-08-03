@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bohan - Alle - Menuchenet - 5163:TEC:LU:2761</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bohan - Alle - Menuchenet - 5163:TEC:LU:2761</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X359aga.html">TEC:X359aga</a> - Alle Ancien Dépôt TEC 07:08</li><li><a href="stop-TEC_X359ahb.html">TEC:X359ahb</a> - Alle Hôme 07:09</li><li><a href="stop-TEC_X359aib.html">TEC:X359aib</a> - Alle Route de Liboichamps 15 07:10</li><li><a href="stop-TEC_X359ala.html">TEC:X359ala</a> - Mouzaive Passerelle 07:11</li><li><a href="stop-TEC_X359ada.html">TEC:X359ada</a> - Chairiere Route de Alle 07:13</li><li><a href="stop-TEC_X359aca.html">TEC:X359aca</a> - Chairiere Centre 07:14</li><li><a href="stop-TEC_X359aba.html">TEC:X359aba</a> - Chairiere Rue Grande 07:14</li><li><a href="stop-TEC_X359aad.html">TEC:X359aad</a> - Chairiere La Haizette 07:16</li><li><a href="stop-TEC_X354aea.html">TEC:X354aea</a> - Six Planes Maltournée 07:19</li><li><a href="stop-TEC_X354abb.html">TEC:X354abb</a> - Oizy Ecole 07:24</li><li><a href="stop-TEC_X354aaa.html">TEC:X354aaa</a> - Oizy Rue de la Chapelle 07:25</li><li><a href="stop-TEC_X369aaa.html">TEC:X369aaa</a> - Baillamont Eglise 07:28</li><li><a href="stop-TEC_X369aba.html">TEC:X369aba</a> - Baillamont Rue de Sedan 07:28</li><li><a href="stop-TEC_X369aca.html">TEC:X369aca</a> - Baillamont Ramelot 07:29</li><li><a href="stop-TEC_X808aba.html">TEC:X808aba</a> - Menuchenet Dépôt TEC Quai 3 07:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3348.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

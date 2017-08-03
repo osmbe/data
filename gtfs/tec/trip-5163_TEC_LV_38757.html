@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bressoux - Jupille - 5163:TEC:LV:38757</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bressoux - Jupille - 5163:TEC:LV:38757</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Ljubrec3.html">TEC:Ljubrec3</a> - Jupille Les Bruyères écoles 12:20</li><li><a href="stop-TEC_Ljucano2.html">TEC:Ljucano2</a> - Jupille Rue des Canonniers 12:21</li><li><a href="stop-TEC_Ljuetie3.html">TEC:Ljuetie3</a> - Jupille Place G. Etienne 12:22</li><li><a href="stop-TEC_Ljucrah2.html">TEC:Ljucrah2</a> - Jupille Rue Crahay 12:23</li><li><a href="stop-TEC_Ljuathe2.html">TEC:Ljuathe2</a> - Jupille Athénée 12:23</li><li><a href="stop-TEC_Ljujaur2.html">TEC:Ljujaur2</a> - Jupille Rue J. Jaurès 12:25</li><li><a href="stop-TEC_Ljucomb1.html">TEC:Ljucomb1</a> - Jupille Place des Combattants 12:27</li><li><a href="stop-TEC_Ljuargi1.html">TEC:Ljuargi1</a> - Jupille Rue des Argilières 12:28</li><li><a href="stop-TEC_Ljuplpr2.html">TEC:Ljuplpr2</a> - Jupille Place Prévers 12:29</li><li><a href="stop-TEC_Ljugode1.html">TEC:Ljugode1</a> - Jupille Rue des Godets 12:30</li><li><a href="stop-TEC_Ljumiux1.html">TEC:Ljumiux1</a> - Jupille Rue A. Michaux 12:31</li><li><a href="stop-TEC_Ljubods1.html">TEC:Ljubods1</a> - Jupille Place Bodson 12:32</li><li><a href="stop-TEC_Ljubeyn1.html">TEC:Ljubeyn1</a> - Jupille Rue de Beyne 12:34</li><li><a href="stop-TEC_Ljuvert1.html">TEC:Ljuvert1</a> - Jupille Rue du Vert Buisson 12:34</li><li><a href="stop-TEC_Ljucaba1.html">TEC:Ljucaba1</a> - Jupille Rue des Cabayes 12:35</li><li><a href="stop-TEC_Ljumart1.html">TEC:Ljumart1</a> - Jupille Place des Martyrs 12:36</li><li><a href="stop-TEC_Ljupiet1.html">TEC:Ljupiet1</a> - Jupille Rue des Piétresses 12:38</li><li><a href="stop-TEC_Ljumesa1.html">TEC:Ljumesa1</a> - Jupille Rue des Mésanges 12:39</li><li><a href="stop-TEC_Ljufler2.html">TEC:Ljufler2</a> - Jupille Rue de Fléron 12:40</li><li><a href="stop-TEC_Ljuroch2.html">TEC:Ljuroch2</a> - Jupille Chapelle St-Roch 12:41</li><li><a href="stop-TEC_Ljubods2.html">TEC:Ljubods2</a> - Jupille Place Bodson 12:42</li><li><a href="stop-TEC_Ljuchaf2.html">TEC:Ljuchaf2</a> - Jupille Rue Chafnay 12:42</li><li><a href="stop-TEC_Ljuhava2.html">TEC:Ljuhava2</a> - Jupille Place Havart 12:43</li><li><a href="stop-TEC_Ljudeme2.html">TEC:Ljudeme2</a> - Jupille Rue Demeuse 12:43</li><li><a href="stop-TEC_Ljuinte2.html">TEC:Ljuinte2</a> - Jupille Interbrew 12:44</li><li><a href="stop-TEC_Ljuprev2.html">TEC:Ljuprev2</a> - Jupille Avenue Prévers 12:45</li><li><a href="stop-TEC_Ljuchap2.html">TEC:Ljuchap2</a> - Jupille Chapelle Momelette 12:46</li><li><a href="stop-TEC_Ljulieg2.html">TEC:Ljulieg2</a> - Jupille Rue de Liège 12:46</li><li><a href="stop-TEC_Lbrgrot2.html">TEC:Lbrgrot2</a> - Bressoux Grotte 12:47</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./4883.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

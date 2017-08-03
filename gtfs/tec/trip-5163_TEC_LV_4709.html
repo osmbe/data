@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Vielsalm - St-Vith - Manderfeld - Losheimergraben - 5163:TEC:LV:4709</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Vielsalm - St-Vith - Manderfeld - Losheimergraben - 5163:TEC:LV:4709</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LsVlind_.html">TEC:LsVlind*</a> - Sankt-Vith An den Linden 18:26</li><li><a href="stop-TEC_LsVgore1.html">TEC:LsVgore1</a> - Sankt-Vith Maria Goretti 18:28</li><li><a href="stop-TEC_LsVmolk1.html">TEC:LsVmolk1</a> - Sankt-Vith Molkerei 18:29</li><li><a href="stop-TEC_LsVprum1.html">TEC:LsVprum1</a> - Sankt-Vith Prümerberg 18:31</li><li><a href="stop-TEC_LsVeite2.html">TEC:LsVeite2</a> - Sankt-Vith Eiterbach 18:32</li><li><a href="stop-TEC_LsVfeye2.html">TEC:LsVfeye2</a> - Sankt-Vith Haus Feyen 18:35</li><li><a href="stop-TEC_LsEdorf2.html">TEC:LsEdorf2</a> - Setz Dorf 18:38</li><li><a href="stop-TEC_LaTcolo2.html">TEC:LaTcolo2</a> - Atzerath Colonerus 18:39</li><li><a href="stop-TEC_LmCkirc2.html">TEC:LmCkirc2</a> - Mackenbach Kirche 18:40</li><li><a href="stop-TEC_LhM07--2.html">TEC:LhM07--2</a> - Heuem Haus 7 18:40</li><li><a href="stop-TEC_LhMdorf2.html">TEC:LhMdorf2</a> - Heuem Dorf 18:41</li><li><a href="stop-TEC_LhMmeil2.html">TEC:LhMmeil2</a> - Heuem Cafe Meilust 18:42</li><li><a href="stop-TEC_LhMwing2.html">TEC:LhMwing2</a> - Heuem Wingersheid 18:42</li><li><a href="stop-TEC_LsCbrau2.html">TEC:LsCbrau2</a> - Schonberg Haus Braun 18:44</li><li><a href="stop-TEC_LsCkirc2.html">TEC:LsCkirc2</a> - Schonberg Kirche 18:45</li><li><a href="stop-TEC_LsCback2.html">TEC:LsCback2</a> - Schonberg Bäckerei 18:46</li><li><a href="stop-TEC_LsC216-2.html">TEC:LsC216-2</a> - Schonberg Haus 216 18:47</li><li><a href="stop-TEC_LaNdorf2.html">TEC:LaNdorf2</a> - Andler Dorf 18:49</li><li><a href="stop-TEC_LaNmuhl2.html">TEC:LaNmuhl2</a> - Andler Mühle 18:50</li><li><a href="stop-TEC_LmNbirt1.html">TEC:LmNbirt1</a> - Manderfeld Birt 18:54</li><li><a href="stop-TEC_LmNsv871.html">TEC:LmNsv871</a> - Manderfeld Sankt-Vither Strasse 87 18:55</li><li><a href="stop-TEC_LmNstaa1.html">TEC:LmNstaa1</a> - Manderfeld Staatliche Schule 18:56</li><li><a href="stop-TEC_LmNpost1.html">TEC:LmNpost1</a> - Manderfeld Post 18:57</li><li><a href="stop-TEC_LmNkirc1.html">TEC:LmNkirc1</a> - Manderfeld Kirche 18:57</li><li><a href="stop-TEC_LmNelis1.html">TEC:LmNelis1</a> - Manderfeld St-Elisabeth 18:58</li><li><a href="stop-TEC_LmNkess1.html">TEC:LmNkess1</a> - Manderfeld Garage Kessler 18:58</li><li><a href="stop-TEC_LmNkrew1.html">TEC:LmNkrew1</a> - Manderfeld Krewinkeler Strasse 18:59</li><li><a href="stop-TEC_LmNlieb1.html">TEC:LmNlieb1</a> - Manderfeld An der Liebach 19:00</li><li><a href="stop-TEC_LmNsied1.html">TEC:LmNsied1</a> - Manderfeld Siedlung 14 19:00</li><li><a href="stop-TEC_LbAhenk1.html">TEC:LbAhenk1</a> - Berterath Cafe Henkes 19:02</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5100.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

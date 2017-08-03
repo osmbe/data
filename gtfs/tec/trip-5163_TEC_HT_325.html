@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ghlin - Blaregnies - 5163:TEC:HT:325</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ghlin - Blaregnies - 5163:TEC:HT:325</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1fr133a.html">TEC:H1fr133a</a> - Frameries Zoning - Warner 16:42</li><li><a href="stop-TEC_H1fr131a.html">TEC:H1fr131a</a> - Frameries Sica 16:42</li><li><a href="stop-TEC_H1fr116a.html">TEC:H1fr116a</a> - Frameries Dépôt Jupiler 16:43</li><li><a href="stop-TEC_H1fr122a.html">TEC:H1fr122a</a> - Frameries Opticable 16:43</li><li><a href="stop-TEC_H1fr115a.html">TEC:H1fr115a</a> - Frameries Zoning-Dépôt Communal 16:44</li><li><a href="stop-TEC_H1fr151a.html">TEC:H1fr151a</a> - Frameries Thompson 16:44</li><li><a href="stop-TEC_H1fr117a.html">TEC:H1fr117a</a> - Frameries Dimequip 16:44</li><li><a href="stop-TEC_H1fr119a.html">TEC:H1fr119a</a> - Frameries Gardinal 16:45</li><li><a href="stop-TEC_H1fr118b.html">TEC:H1fr118b</a> - Frameries Zoning-Forem 16:45</li><li><a href="stop-TEC_H1fr112a.html">TEC:H1fr112a</a> - Frameries Cité Floréal 16:47</li><li><a href="stop-TEC_H1fr124a.html">TEC:H1fr124a</a> - Frameries Pont du Berger 16:48</li><li><a href="stop-TEC_H1fr130a.html">TEC:H1fr130a</a> - Frameries Sacré Coeur 16:49</li><li><a href="stop-TEC_H1fr107b.html">TEC:H1fr107b</a> - Frameries 4 Pavés 16:51</li><li><a href="stop-TEC_H1fr123b.html">TEC:H1fr123b</a> - Frameries Place 16:52</li><li><a href="stop-TEC_H1fr128b.html">TEC:H1fr128b</a> - Frameries Rue Maury 16:53</li><li><a href="stop-TEC_H1fr109b.html">TEC:H1fr109b</a> - Frameries Ancienne Garde 16:54</li><li><a href="stop-TEC_H1lb134b.html">TEC:H1lb134b</a> - La Bouverie Castillon 16:55</li><li><a href="stop-TEC_H1fl138b.html">TEC:H1fl138b</a> - Flenu Mascaux 16:56</li><li><a href="stop-TEC_H1fl142b.html">TEC:H1fl142b</a> - Flenu Vieux Chemin de Binche 16:58</li><li><a href="stop-TEC_H1fl136c.html">TEC:H1fl136c</a> - Flenu Ancienne Gare 16:59</li><li><a href="stop-TEC_H1fl137b.html">TEC:H1fl137b</a> - Flenu ICET-Maison Communale 17:00</li><li><a href="stop-TEC_H1fl135a.html">TEC:H1fl135a</a> - Flenu Eglise 17:00</li><li><a href="stop-TEC_H1fl133d.html">TEC:H1fl133d</a> - Flenu 4 Pavés 17:01</li><li><a href="stop-TEC_H1je223a.html">TEC:H1je223a</a> - Jemappes Rue Voituron 17:02</li><li><a href="stop-TEC_H1je220d.html">TEC:H1je220d</a> - Jemappes Rue de la Station 17:03</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2269.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

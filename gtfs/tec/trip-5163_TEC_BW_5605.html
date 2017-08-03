@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ottignies - Louvain-la-Neuve - Wavre - 5163:TEC:BW:5605</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ottignies - Louvain-la-Neuve - Wavre - 5163:TEC:BW:5605</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bwavgar4.html">TEC:Bwavgar4</a> - Wavre Gare 15:34</li><li><a href="stop-TEC_Bwaveur1.html">TEC:Bwaveur1</a> - Wavre Boulevard de l'Europe 15:35</li><li><a href="stop-TEC_Bwavpao2.html">TEC:Bwavpao2</a> - Wavre Place A. Bosch 15:37</li><li><a href="stop-TEC_Bwavfbe2.html">TEC:Bwavfbe2</a> - Wavre Fin Bec 15:38</li><li><a href="stop-TEC_Bwavnam2.html">TEC:Bwavnam2</a> - Wavre Chaussée de Namur 15:40</li><li><a href="stop-TEC_Bwavbmo2.html">TEC:Bwavbmo2</a> - Wavre Rue Barrière Moye 15:41</li><li><a href="stop-TEC_Bbgelre2.html">TEC:Bbgelre2</a> - Bierges La Réserve 15:42</li><li><a href="stop-TEC_Bwavbpi2.html">TEC:Bwavbpi2</a> - Wavre Bois de la Pierre 15:43</li><li><a href="stop-TEC_Bwavtas2.html">TEC:Bwavtas2</a> - Wavre Tasnier 15:45</li><li><a href="stop-TEC_Bllnfla2.html">TEC:Bllnfla2</a> - Louvain-la-Neuve Ferme de Lauzelle 15:47</li><li><a href="stop-TEC_Bllncom1.html">TEC:Bllncom1</a> - Louvain-la-Neuve Centre Commercial 15:49</li><li><a href="stop-TEC_Bllngar8.html">TEC:Bllngar8</a> - Louvain-la-Neuve Gare d'Autobus 15:50</li><li><a href="stop-TEC_Bllnchv2.html">TEC:Bllnchv2</a> - Lln Champ Vallée 15:53</li><li><a href="stop-TEC_Bllnhoc2.html">TEC:Bllnhoc2</a> - Louvain-la-Neuve Hocaille 15:54</li><li><a href="stop-TEC_Bottppa4.html">TEC:Bottppa4</a> - Ottignies Pont du Pape 15:57</li><li><a href="stop-TEC_Bottbou2.html">TEC:Bottbou2</a> - Ottignies Avenue des Bouvreuils 15:58</li><li><a href="stop-TEC_Bottcbp2.html">TEC:Bottcbp2</a> - Ottignies Chenil du Bois Papa 15:58</li><li><a href="stop-TEC_Botteco2.html">TEC:Botteco2</a> - Ottignies Ecoles de la Croix 15:59</li><li><a href="stop-TEC_Bottcro2.html">TEC:Bottcro2</a> - Ottignies Chaussée de la Croix 16:00</li><li><a href="stop-TEC_Bottpma2.html">TEC:Bottpma2</a> - Ottignies Place du Marché 16:02</li><li><a href="stop-TEC_Bottcco2.html">TEC:Bottcco2</a> - Ottignies Av. des Combattants 16:03</li><li><a href="stop-TEC_Bottgar3.html">TEC:Bottgar3</a> - Ottignies Gare 16:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./344.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

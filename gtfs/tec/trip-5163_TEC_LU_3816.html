@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bouillon - Libramont - 5163:TEC:LU:3816</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bouillon - Libramont - 5163:TEC:LU:3816</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X812ata.html">TEC:X812ata</a> - Bouillon Pont de Germauchamps 07:11</li><li><a href="stop-TEC_X812aga.html">TEC:X812aga</a> - Bouillon Perimino 07:11</li><li><a href="stop-TEC_X812aja.html">TEC:X812aja</a> - Bouillon Faubourg de France 07:13</li><li><a href="stop-TEC_X812aka.html">TEC:X812aka</a> - Bouillon Rue des Bains 07:13</li><li><a href="stop-TEC_X812ama.html">TEC:X812ama</a> - Bouillon Auberge d'Alsace 07:13</li><li><a href="stop-TEC_X812aqa.html">TEC:X812aqa</a> - Bouillon Athénée 07:14</li><li><a href="stop-TEC_X812aaa.html">TEC:X812aaa</a> - Bouillon La Maladrerie 07:15</li><li><a href="stop-TEC_X812baa.html">TEC:X812baa</a> - Bouillon Rue de l'Ange Gardien 07:16</li><li><a href="stop-TEC_X812bba.html">TEC:X812bba</a> - Bouillon Le Maroc 07:17</li><li><a href="stop-TEC_X811apb.html">TEC:X811apb</a> - Curfoz Dépôt Poncin Clébant 07:20</li><li><a href="stop-TEC_X811aob.html">TEC:X811aob</a> - Noirefontaine Route de Bouillon 07:21</li><li><a href="stop-TEC_X811ala.html">TEC:X811ala</a> - Noirefontaine Route de Curfoz 07:22</li><li><a href="stop-TEC_X811aca.html">TEC:X811aca</a> - Noirefontaine Gare Vicinale 07:23</li><li><a href="stop-TEC_X811aib.html">TEC:X811aib</a> - Noirefontaine Ecole 07:24</li><li><a href="stop-TEC_X811ahb.html">TEC:X811ahb</a> - Noirefontaine Eglise 07:24</li><li><a href="stop-TEC_X811aga.html">TEC:X811aga</a> - Noirefontaine Rue de la Haige 24 07:25</li><li><a href="stop-TEC_X811afa.html">TEC:X811afa</a> - Noirefontaine Rue de la Haige 50 07:25</li><li><a href="stop-TEC_X808aga.html">TEC:X808aga</a> - Bellevaux Route de Noirefontaine 32 07:29</li><li><a href="stop-TEC_X808afa.html">TEC:X808afa</a> - Bellevaux Eglise 07:30</li><li><a href="stop-TEC_X808ada.html">TEC:X808ada</a> - Bellevaux Ferme Arnould 07:33</li><li><a href="stop-TEC_X808aba.html">TEC:X808aba</a> - Menuchenet Dépôt TEC Quai 3 07:35</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2761.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

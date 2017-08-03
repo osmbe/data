@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Nivelles - Ronquières - Braine-le-Comte - 5163:TEC:BW:1276</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Nivelles - Ronquières - Braine-le-Comte - 5163:TEC:BW:1276</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bbcogar2.html">TEC:Bbcogar2</a> - Braine-le-Comte Gare 15:10</li><li><a href="stop-TEC_Bbcoubo2.html">TEC:Bbcoubo2</a> - Braine-le-Comte Bourleau 15:11</li><li><a href="stop-TEC_Bbcodam4.html">TEC:Bbcodam4</a> - Braine-le-Comte Chemin des Dames 15:13</li><li><a href="stop-TEC_Bbcohou4.html">TEC:Bbcohou4</a> - Braine-le-Comte Houssière 15:15</li><li><a href="stop-TEC_Bbcomar2.html">TEC:Bbcomar2</a> - Braine-le-Comte Marouset 15:15</li><li><a href="stop-TEC_Bbcocvb2.html">TEC:Bbcocvb2</a> - Braine-le-Comte Clos du Vert Bois 15:17</li><li><a href="stop-TEC_Bhptpla2.html">TEC:Bhptpla2</a> - Henripont Place 15:18</li><li><a href="stop-TEC_Bhptegl2.html">TEC:Bhptegl2</a> - Henripont Eglise 15:19</li><li><a href="stop-TEC_Bhptcha2.html">TEC:Bhptcha2</a> - Henripont La Chapelle 15:19</li><li><a href="stop-TEC_Broncli2.html">TEC:Broncli2</a> - Ronquieres Clipotia 15:21</li><li><a href="stop-TEC_Bronfou2.html">TEC:Bronfou2</a> - Ronquieres Foubert 15:23</li><li><a href="stop-TEC_Broneco2.html">TEC:Broneco2</a> - Ronquieres Ecole 15:24</li><li><a href="stop-TEC_Bronrch2.html">TEC:Bronrch2</a> - Ronquieres Rue de Chenu 15:24</li><li><a href="stop-TEC_Broncan2.html">TEC:Broncan2</a> - Ronquieres Canal 15:25</li><li><a href="stop-TEC_Bronn392.html">TEC:Bronn392</a> - Ronquieres Rue de Nivelles 39 15:26</li><li><a href="stop-TEC_Bronpfe2.html">TEC:Bronpfe2</a> - Ronquieres Pont de Fer 15:27</li><li><a href="stop-TEC_Bborcro2.html">TEC:Bborcro2</a> - Bornival Croiseau 15:28</li><li><a href="stop-TEC_Bborppa2.html">TEC:Bborppa2</a> - Bornival Petit Paradis 15:29</li><li><a href="stop-TEC_Bborbif2.html">TEC:Bborbif2</a> - Bornival Bifurcation 15:30</li><li><a href="stop-TEC_Bborche2.html">TEC:Bborche2</a> - Bornival Le Chêne 15:30</li><li><a href="stop-TEC_Bmoncab2.html">TEC:Bmoncab2</a> - Monstreux Cabine 15:32</li><li><a href="stop-TEC_Bmonbor2.html">TEC:Bmonbor2</a> - Monstreux Borne 15:32</li><li><a href="stop-TEC_Bmonbri2.html">TEC:Bmonbri2</a> - Monstreux Briqueterie 15:33</li><li><a href="stop-TEC_Bnivlai2.html">TEC:Bnivlai2</a> - Nivelles Laiterie 15:34</li><li><a href="stop-TEC_Bnivaba2.html">TEC:Bnivaba2</a> - Nivelles Abattoir 15:35</li><li><a href="stop-TEC_Bnivsoi2.html">TEC:Bnivsoi2</a> - Nivelles Rue de Soignies 15:36</li><li><a href="stop-TEC_Bnivgpl2.html">TEC:Bnivgpl2</a> - Nivelles Grand Place 15:37</li><li><a href="stop-TEC_Bnivpso1.html">TEC:Bnivpso1</a> - Nivelles Place du Souvenir 15:38</li><li><a href="stop-TEC_Bnivpla2.html">TEC:Bnivpla2</a> - Nivelles Place de Lalieux 15:39</li><li><a href="stop-TEC_Bnivga31.html">TEC:Bnivga31</a> - Nivelles Gare 15:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./113.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

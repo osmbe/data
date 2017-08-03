@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR (Gare) - DAUSSOULX - 5163:TEC:NA:4318</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR (Gare) - DAUSSOULX - 5163:TEC:NA:4318</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N521abb.html">TEC:N521abb</a> - Daussoulx Moulin 10:32</li><li><a href="stop-TEC_N521adb.html">TEC:N521adb</a> - Daussoulx Pn 81 10:33</li><li><a href="stop-TEC_N521afb.html">TEC:N521afb</a> - Daussoulx Autoroute 10:33</li><li><a href="stop-TEC_N521aeb.html">TEC:N521aeb</a> - Daussoulx Eglise 10:34</li><li><a href="stop-TEC_N521acb.html">TEC:N521acb</a> - Daussoulx Rue de la Carrière 10:35</li><li><a href="stop-TEC_N501jgb.html">TEC:N501jgb</a> - Vedrin Pont SNCB 10:36</li><li><a href="stop-TEC_N501jfb.html">TEC:N501jfb</a> - Vedrin Route de la gare 10:37</li><li><a href="stop-TEC_N501jdb.html">TEC:N501jdb</a> - Vedrin Rue Delcarte 10:38</li><li><a href="stop-TEC_N501jeb.html">TEC:N501jeb</a> - Vedrin Eglise du centre 10:38</li><li><a href="stop-TEC_N501jjb.html">TEC:N501jjb</a> - Vedrin Rue du Blanc Bois 10:39</li><li><a href="stop-TEC_N501jkb.html">TEC:N501jkb</a> - Vedrin La Sitrée 10:39</li><li><a href="stop-TEC_N501jhb.html">TEC:N501jhb</a> - Vedrin Gueulette 10:40</li><li><a href="stop-TEC_N501jib.html">TEC:N501jib</a> - Vedrin Chemin de Frizet 10:40</li><li><a href="stop-TEC_N501jbb.html">TEC:N501jbb</a> - Vedrin Rond-chêne 10:41</li><li><a href="stop-TEC_N501izb.html">TEC:N501izb</a> - Vedrin Cité du Transvaal 10:42</li><li><a href="stop-TEC_N501jcb.html">TEC:N501jcb</a> - Vedrin Place Dieudonné - Transvaal 10:43</li><li><a href="stop-TEC_N501jab.html">TEC:N501jab</a> - Vedrin Haut de Bomel 10:45</li><li><a href="stop-TEC_N501gfb.html">TEC:N501gfb</a> - Namur Couvent de Bomel 10:46</li><li><a href="stop-TEC_N501hdb.html">TEC:N501hdb</a> - Namur Rue de Bomel 10:47</li><li><a href="stop-TEC_N501gre.html">TEC:N501gre</a> - Namur Pl. de la Station - Quai E 10:49</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5714.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

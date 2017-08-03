@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Ronse/Renaix - Enghien/Edingen - 5163:TEC:HT:10109</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Ronse/Renaix - Enghien/Edingen - 5163:TEC:HT:10109</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H1le122d.html">TEC:H1le122d</a> - Lessines SNCB 12:02</li><li><a href="stop-TEC_H1le121b.html">TEC:H1le121b</a> - Lessines Cordant 12:03</li><li><a href="stop-TEC_H1le120b.html">TEC:H1le120b</a> - Lessines Caillou Hubin 12:04</li><li><a href="stop-TEC_H1le118b.html">TEC:H1le118b</a> - Lessines Carrières 12:05</li><li><a href="stop-TEC_H1ol143b.html">TEC:H1ol143b</a> - Ollignies Le Pont 12:07</li><li><a href="stop-TEC_H1ol145b.html">TEC:H1ol145b</a> - Ollignies Place du Jeu de Balle 12:08</li><li><a href="stop-TEC_H1ol146b.html">TEC:H1ol146b</a> - Ollignies Verte Louche 12:09</li><li><a href="stop-TEC_H1ol144b.html">TEC:H1ol144b</a> - Ollignies Place Communale 12:10</li><li><a href="stop-TEC_H1ol142b.html">TEC:H1ol142b</a> - Ollignies Ancienne Gare 12:10</li><li><a href="stop-TEC_H1ol140b.html">TEC:H1ol140b</a> - Ollignies Hameau d'En-Haut 12:11</li><li><a href="stop-TEC_H1bd100b.html">TEC:H1bd100b</a> - Bois-de-Lessines Petit Bruxelles 12:13</li><li><a href="stop-TEC_H1bd102b.html">TEC:H1bd102b</a> - Bois-de-Lessines Rond Point 12:13</li><li><a href="stop-TEC_H1bd101b.html">TEC:H1bd101b</a> - Bois-de-Lessines Petit Chemin 12:14</li><li><a href="stop-TEC_H1bd103b.html">TEC:H1bd103b</a> - Bois-de-Lessines Rue du Bois 12:15</li><li><a href="stop-TEC_H1hq127a.html">TEC:H1hq127a</a> - Hellebecq Point d' arrêt 12:16</li><li><a href="stop-TEC_H1by109a.html">TEC:H1by109a</a> - Bassilly Warissart 12:18</li><li><a href="stop-TEC_H1by101a.html">TEC:H1by101a</a> - Bassilly Diable de Wasmes 12:18</li><li><a href="stop-TEC_H1by107a.html">TEC:H1by107a</a> - Bassilly Rue de Paris 12:19</li><li><a href="stop-TEC_H1by100a.html">TEC:H1by100a</a> - Bassilly Bas Chemin 12:20</li><li><a href="stop-TEC_H1by102b.html">TEC:H1by102b</a> - Bassilly Ancienne Gare 12:22</li><li><a href="stop-TEC_H1by103b.html">TEC:H1by103b</a> - Bassilly Place 12:22</li><li><a href="stop-TEC_H1by108b.html">TEC:H1by108b</a> - Bassilly Rue des Ecoles 12:23</li><li><a href="stop-TEC_H1sy143a.html">TEC:H1sy143a</a> - Silly SNCB 12:25</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1250.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

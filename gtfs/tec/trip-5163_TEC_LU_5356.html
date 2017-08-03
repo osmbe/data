@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Saint-Hubert - Champlon - Saint-Hubert - 5163:TEC:LU:5356</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Saint-Hubert - Champlon - Saint-Hubert - 5163:TEC:LU:5356</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X897ajb.html">TEC:X897ajb</a> - Saint-Hubert Centre Administratif 13:16</li><li><a href="stop-TEC_X897ala.html">TEC:X897ala</a> - Saint-Hubert Place de la Libération 13:18</li><li><a href="stop-TEC_X897aua.html">TEC:X897aua</a> - Saint-Hubert Piscine 13:20</li><li><a href="stop-TEC_X897ava.html">TEC:X897ava</a> - Saint-Hubert Route de Champlon 55 13:20</li><li><a href="stop-TEC_X897axa.html">TEC:X897axa</a> - Saint-Hubert Centre de Détention - N89 13:24</li><li><a href="stop-TEC_X951aaa.html">TEC:X951aaa</a> - Laneuville-Au-Bois La Converserie 13:28</li><li><a href="stop-TEC_X907aba.html">TEC:X907aba</a> - Champlon Barrière 13:30</li><li><a href="stop-TEC_X907aca.html">TEC:X907aca</a> - Champlon Place de la Gare 13:32</li><li><a href="stop-TEC_X907ada.html">TEC:X907ada</a> - Champlon Rue de la Cité 95 13:32</li><li><a href="stop-TEC_X907aeb.html">TEC:X907aeb</a> - Champlon Monument 13:33</li><li><a href="stop-TEC_X907afb.html">TEC:X907afb</a> - Champlon (Ardenne) Eglise 13:33</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3703.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

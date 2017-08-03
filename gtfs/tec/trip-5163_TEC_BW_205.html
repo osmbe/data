@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Gembloux - Ramillies - Landen - 5163:TEC:BW:205</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Gembloux - Ramillies - Landen - 5163:TEC:BW:205</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Bolppla1.html">TEC:Bolppla1</a> - Orp-le-Petit Place 15:03</li><li><a href="stop-TEC_Bolggar1.html">TEC:Bolggar1</a> - Orp-le-Grand Gare 15:04</li><li><a href="stop-TEC_Bolgsha1.html">TEC:Bolgsha1</a> - Orp-le-Grand Rue Soldat Haccourt 15:05</li><li><a href="stop-TEC_Bolgegl1.html">TEC:Bolgegl1</a> - Orp-le-Grand Eglise 15:05</li><li><a href="stop-TEC_Bolgeva1.html">TEC:Bolgeva1</a> - Orp-le-Grand Rue Emile Vandervelde 15:06</li><li><a href="stop-TEC_Bolgrga1.html">TEC:Bolgrga1</a> - Orp-le-Grand Route de la Gare 15:08</li><li><a href="stop-TEC_Bpelf961.html">TEC:Bpelf961</a> - Pellaines Avenue des Français 96 15:11</li><li><a href="stop-TEC_Bpelegl1.html">TEC:Bpelegl1</a> - Pellaines Eglise 15:12</li><li><a href="stop-TEC_Blsmvan1.html">TEC:Blsmvan1</a> - Linsmeau Vandalle 15:14</li><li><a href="stop-TEC_Blsmcha3.html">TEC:Blsmcha3</a> - Linsmeau Chapelle 15:15</li><li><a href="stop-TEC_Braclin1.html">TEC:Braclin1</a> - Racour Rue de Linsmeau 15:18</li><li><a href="stop-TEC_Braccen1.html">TEC:Braccen1</a> - Racour Centre 15:19</li><li><a href="stop-TEC_Bracgar1.html">TEC:Bracgar1</a> - Racour Rue de la Gare 15:20</li><li><a href="stop-TEC_Brach121.html">TEC:Brach121</a> - Racour Habitation 112 15:20</li><li><a href="stop-TEC_Blanmde1.html">TEC:Blanmde1</a> - Landen Militair Depot 15:23</li><li><a href="stop-TEC_Blanraa1.html">TEC:Blanraa1</a> - Landen Raatshovenstraat 15:24</li><li><a href="stop-TEC_Blankal3.html">TEC:Blankal3</a> - Landen Kalsbergstraat 15:24</li><li><a href="stop-TEC_Blangar1.html">TEC:Blangar1</a> - Landen Station 15:26</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./252.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

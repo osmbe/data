@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mons - Beaumont - 5163:TEC:HT:6530</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mons - Beaumont - 5163:TEC:HT:6530</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_Cbmind2.html">TEC:Cbmind2</a> - Beaumont Athénée 07:48</li><li><a href="stop-TEC_Cbmplac2.html">TEC:Cbmplac2</a> - Beaumont Grand Place 07:49</li><li><a href="stop-TEC_H1tt106a.html">TEC:H1tt106a</a> - Thirimont Rue d'Hurimont 07:51</li><li><a href="stop-TEC_H1tt109b.html">TEC:H1tt109b</a> - Thirimont Trieu Flamine 07:54</li><li><a href="stop-TEC_H1tt104b.html">TEC:H1tt104b</a> - Thirimont Eglise 07:54</li><li><a href="stop-TEC_H1tt103b.html">TEC:H1tt103b</a> - Thirimont Centre 07:55</li><li><a href="stop-TEC_H1tt107b.html">TEC:H1tt107b</a> - Thirimont Rue des Pouilleux 07:56</li><li><a href="stop-TEC_Ctisart1.html">TEC:Ctisart1</a> - Thirimont Petit Sartiau 07:57</li><li><a href="stop-TEC_Ctisar1.html">TEC:Ctisar1</a> - Thirimont Sartiaux 07:59</li><li><a href="stop-TEC_Ctilobb1.html">TEC:Ctilobb1</a> - Thirimont Route de Lobbes 07:59</li><li><a href="stop-TEC_H1mc128a.html">TEC:H1mc128a</a> - Montignies-St-Christophe Place Sturbois 08:02</li><li><a href="stop-TEC_H1mc127a.html">TEC:H1mc127a</a> - Montignies-St-Christophe Place Herment 08:03</li><li><a href="stop-TEC_H1mc129b.html">TEC:H1mc129b</a> - Montignies-Saint-Christophe Pont Romain 08:04</li><li><a href="stop-TEC_H1hw118a.html">TEC:H1hw118a</a> - Hantes-Wiheries Damier 08:06</li><li><a href="stop-TEC_H1hw121a.html">TEC:H1hw121a</a> - Hantes-Wiheries Hameau 08:06</li><li><a href="stop-TEC_H1hw123b.html">TEC:H1hw123b</a> - Hantes-Wiheries N-D. de Lourdes 08:08</li><li><a href="stop-TEC_H1hw120a.html">TEC:H1hw120a</a> - Hantes-Wiheries Ferme Ponsac 08:08</li><li><a href="stop-TEC_H1hw124b.html">TEC:H1hw124b</a> - Hantes-Wiheries Place du Jeu de Balle 08:09</li><li><a href="stop-TEC_H1hw119b.html">TEC:H1hw119b</a> - Hantes-Wiheries Eglise 08:09</li><li><a href="stop-TEC_H1hw122b.html">TEC:H1hw122b</a> - Hantes-Wiheries Maison Communale 08:10</li><li><a href="stop-TEC_H1hw125b.html">TEC:H1hw125b</a> - Hantes-Wiheries Pont 08:11</li><li><a href="stop-TEC_H1so135c.html">TEC:H1so135c</a> - Solre-sur-Sambre La Cavée 08:12</li><li><a href="stop-TEC_H1so145b.html">TEC:H1so145b</a> - Solre-sur-Sambre Nouvelle Cité 08:12</li><li><a href="stop-TEC_H1so136d.html">TEC:H1so136d</a> - Solre-sur-Sambre La Poule 08:13</li><li><a href="stop-TEC_H1so143b.html">TEC:H1so143b</a> - Solre-sur-Sambre Rue Sole Godeau 08:14</li><li><a href="stop-TEC_H1so146b.html">TEC:H1so146b</a> - Solre-sur-Sambre Nicolas Ier 08:14</li><li><a href="stop-TEC_H1so131e.html">TEC:H1so131e</a> - Solre-sur-Sambre Calvaire 08:15</li><li><a href="stop-TEC_H1er109b.html">TEC:H1er109b</a> - Erquelinnes Monument 08:18</li><li><a href="stop-TEC_H1er110b.html">TEC:H1er110b</a> - Erquelinnes Place 08:19</li><li><a href="stop-TEC_H1er111a.html">TEC:H1er111a</a> - Erquelinnes Pont du Chemin de Fer 08:20</li><li><a href="stop-TEC_H1er113a.html">TEC:H1er113a</a> - Erquelinnes Rue Warocquier 08:21</li><li><a href="stop-TEC_H1er108a.html">TEC:H1er108a</a> - Erquelinnes SNCB 08:22</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2398.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

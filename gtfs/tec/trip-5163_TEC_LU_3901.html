@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Florenville - Marbehan - 5163:TEC:LU:3901</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Florenville - Marbehan - 5163:TEC:LU:3901</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X650afe.html">TEC:X650afe</a> - Marbehan Gare 18:24</li><li><a href="stop-TEC_X650aeb.html">TEC:X650aeb</a> - Marbehan Carrefour 18:25</li><li><a href="stop-TEC_X650adb.html">TEC:X650adb</a> - Marbehan Le Petit Bénéfice 18:25</li><li><a href="stop-TEC_X650acb.html">TEC:X650acb</a> - Marbehan Usine Lambiotte 18:25</li><li><a href="stop-TEC_X650abb.html">TEC:X650abb</a> - Marbehan Rectilux 18:26</li><li><a href="stop-TEC_X650ama.html">TEC:X650ama</a> - Orsinfaing Rue du Moreau 18:27</li><li><a href="stop-TEC_X650ana.html">TEC:X650ana</a> - Orsinfaing Eglise 18:28</li><li><a href="stop-TEC_X652aaa.html">TEC:X652aaa</a> - Rossignol La Civanne 18:29</li><li><a href="stop-TEC_X652aba.html">TEC:X652aba</a> - Rossignol Rue de Marbehan 18:30</li><li><a href="stop-TEC_X652aca.html">TEC:X652aca</a> - Rossignol Carrefour 18:30</li><li><a href="stop-TEC_X652afc.html">TEC:X652afc</a> - Termes Ecole 18:34</li><li><a href="stop-TEC_X652afa.html">TEC:X652afa</a> - Termes Ecole 18:34</li><li><a href="stop-TEC_X652aga.html">TEC:X652aga</a> - Termes Rue Sainte-Anne 18:35</li><li><a href="stop-TEC_X652aha.html">TEC:X652aha</a> - Termes Pont Charreau 18:35</li><li><a href="stop-TEC_X639asa.html">TEC:X639asa</a> - Les Bulles Rue de la Chevrette 18:37</li><li><a href="stop-TEC_X639arb.html">TEC:X639arb</a> - Les Bulles Rue du Lieutenant Crépy 18:38</li><li><a href="stop-TEC_X639ama.html">TEC:X639ama</a> - Jamoigne La Hailleule 18:39</li><li><a href="stop-TEC_X639alb.html">TEC:X639alb</a> - Jamoigne Pont 18:40</li><li><a href="stop-TEC_X639aka.html">TEC:X639aka</a> - Jamoigne Centre 18:40</li><li><a href="stop-TEC_X639aja.html">TEC:X639aja</a> - Jamoigne Camping 18:40</li><li><a href="stop-TEC_X640aia.html">TEC:X640aia</a> - Izel 4 Vents 18:43</li><li><a href="stop-TEC_X640aha.html">TEC:X640aha</a> - Izel Athénée 18:43</li><li><a href="stop-TEC_X640afa.html">TEC:X640afa</a> - Izel Centre 18:44</li><li><a href="stop-TEC_X640akb.html">TEC:X640akb</a> - Pin Avenue Gilson 18:45</li><li><a href="stop-TEC_X640alb.html">TEC:X640alb</a> - Pin Rue de l'Auwy 18:45</li><li><a href="stop-TEC_X640ama.html">TEC:X640ama</a> - Pin Eglise 18:46</li><li><a href="stop-TEC_X640ana.html">TEC:X640ana</a> - Pin Rue Albert 1er 86 18:46</li><li><a href="stop-TEC_X640aoa.html">TEC:X640aoa</a> - Pin Passage à Niveau 18:47</li><li><a href="stop-TEC_X641aia.html">TEC:X641aia</a> - Florenville Zoning I 18:47</li><li><a href="stop-TEC_X641aha.html">TEC:X641aha</a> - Florenville Zoning II 18:48</li><li><a href="stop-TEC_X641aga.html">TEC:X641aga</a> - Florenville Gendarmerie 18:49</li><li><a href="stop-TEC_X641afb.html">TEC:X641afb</a> - Florenville Place du Miroir - Quai 1 18:50</li><li><a href="stop-TEC_X641aea.html">TEC:X641aea</a> - Florenville EPE 18:51</li><li><a href="stop-TEC_X641aka.html">TEC:X641aka</a> - Florenville Chapelle Sainte-Anne 18:53</li><li><a href="stop-TEC_X641alb.html">TEC:X641alb</a> - Florenville Chemin du Bon Pays 18:54</li><li><a href="stop-TEC_X641amb.html">TEC:X641amb</a> - Florenville Gare 18:56</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2574.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

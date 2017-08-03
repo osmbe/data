@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Mouscron/Moeskroen - Roubaix - 5163:TEC:HT:2799</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Mouscron/Moeskroen - Roubaix - 5163:TEC:HT:2799</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_H4rx142b.html">TEC:H4rx142b</a> - Roubaix Eurotéléport 12:37</li><li><a href="stop-TEC_H4rx175b.html">TEC:H4rx175b</a> - Roubaix Nations Unies 12:39</li><li><a href="stop-TEC_H4rx143b.html">TEC:H4rx143b</a> - Roubaix Galon d'eau 12:40</li><li><a href="stop-TEC_H4rx141b.html">TEC:H4rx141b</a> - Roubaix Place Chaptal 12:41</li><li><a href="stop-TEC_H4rx176b.html">TEC:H4rx176b</a> - Roubaix Avelghem 12:43</li><li><a href="stop-TEC_H4wa148b.html">TEC:H4wa148b</a> - Wattrelos Carnot 12:45</li><li><a href="stop-TEC_H4wa156b.html">TEC:H4wa156b</a> - Wattrelos République 12:46</li><li><a href="stop-TEC_H4wa155b.html">TEC:H4wa155b</a> - Wattrelos Centre Commercial 12:47</li><li><a href="stop-TEC_H4wa161b.html">TEC:H4wa161b</a> - Wattrelos Place 12:49</li><li><a href="stop-TEC_H4wa150b.html">TEC:H4wa150b</a> - Wattrelos De Gaulle 12:50</li><li><a href="stop-TEC_H4wa159b.html">TEC:H4wa159b</a> - Wattrelos Saint Liévin 12:51</li><li><a href="stop-TEC_H4wa151b.html">TEC:H4wa151b</a> - Wattrelos Flandre 12:53</li><li><a href="stop-TEC_H4wa149b.html">TEC:H4wa149b</a> - Wattrelos Carrière André 12:53</li><li><a href="stop-TEC_H4wa153b.html">TEC:H4wa153b</a> - Wattrelos La Houzarde 12:54</li><li><a href="stop-TEC_H4hx114a.html">TEC:H4hx114a</a> - Herseaux Citadelle 12:55</li><li><a href="stop-TEC_H4hx120b.html">TEC:H4hx120b</a> - Herseaux Les Glycines 12:56</li><li><a href="stop-TEC_H4hx117a.html">TEC:H4hx117a</a> - Herseaux Ferme Lassus 12:58</li><li><a href="stop-TEC_H4hx122b.html">TEC:H4hx122b</a> - Herseaux Place/Plaats 13:00</li><li><a href="stop-TEC_H4hx113b.html">TEC:H4hx113b</a> - Herseaux Chapelle/Kapel 13:01</li><li><a href="stop-TEC_H4lu125b.html">TEC:H4lu125b</a> - Luingne Au Chevalier/De Ridder 13:03</li><li><a href="stop-TEC_H4lu126b.html">TEC:H4lu126b</a> - Luingne Eglise St Amand/Kerk 13:04</li><li><a href="stop-TEC_H4lu128a.html">TEC:H4lu128a</a> - Luingne Rue de la Liessestraat 13:05</li><li><a href="stop-TEC_H4mo193a.html">TEC:H4mo193a</a> - Moeskroen Rue du Boclé/Bocléstraat 13:06</li><li><a href="stop-TEC_H4mo142a.html">TEC:H4mo142a</a> - Moeskroen SNCB/Station 13:07</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./1984.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

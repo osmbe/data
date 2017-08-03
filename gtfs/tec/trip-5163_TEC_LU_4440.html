@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Circuit scolaire de Bertrix (Zoning) - 5163:TEC:LU:4440</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Circuit scolaire de Bertrix (Zoning) - 5163:TEC:LU:4440</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X804bma.html">TEC:X804bma</a> - Bertrix Ecole des Pères 15:45</li><li><a href="stop-TEC_X804ald.html">TEC:X804ald</a> - Bertrix Gare - Quai 1 15:45</li><li><a href="stop-TEC_X804akb.html">TEC:X804akb</a> - Bertrix Athénée 15:46</li><li><a href="stop-TEC_X804ajb.html">TEC:X804ajb</a> - Bertrix Rue des Chasseurs Ardennais 15:47</li><li><a href="stop-TEC_X804aia.html">TEC:X804aia</a> - Bertrix IND 15:47</li><li><a href="stop-TEC_X804aga.html">TEC:X804aga</a> - Bertrix Grand'Place 15:48</li><li><a href="stop-TEC_X804afb.html">TEC:X804afb</a> - Bertrix Rue de Renaumont 15:49</li><li><a href="stop-TEC_X804aea.html">TEC:X804aea</a> - Bertrix Rue de la Fontinelle 15:50</li><li><a href="stop-TEC_X804azb.html">TEC:X804azb</a> - Bertrix Rue de l'Aumonerie 15:52</li><li><a href="stop-TEC_X804bab.html">TEC:X804bab</a> - Bertrix Rue du Géraud-Pré 20 15:53</li><li><a href="stop-TEC_X804aya.html">TEC:X804aya</a> - Bertrix Rue de la Brasserie 22 15:54</li><li><a href="stop-TEC_X804arb.html">TEC:X804arb</a> - Bertrix Dépôt Mernier 15:54</li><li><a href="stop-TEC_X804aja.html">TEC:X804aja</a> - Bertrix Rue des Chasseurs Ardennais 15:55</li><li><a href="stop-TEC_X804aka.html">TEC:X804aka</a> - Bertrix Athénée 15:56</li><li><a href="stop-TEC_X804bja.html">TEC:X804bja</a> - Bertrix La Bruyère 15:58</li><li><a href="stop-TEC_X804bka.html">TEC:X804bka</a> - Bertrix Rue Belle-Vue - Rond-Point 15:59</li><li><a href="stop-TEC_X804bya.html">TEC:X804bya</a> - Bertrix Rue du Progrès 35 16:00</li><li><a href="stop-TEC_X804abb.html">TEC:X804abb</a> - Bertrix Zoning-Carrefour 16:02</li><li><a href="stop-TEC_X804aaa.html">TEC:X804aaa</a> - Bertrix Zoning-Parking 16:03</li><li><a href="stop-TEC_X804cbb.html">TEC:X804cbb</a> - Bertrix Saupont Pont 16:05</li><li><a href="stop-TEC_X804bwb.html">TEC:X804bwb</a> - Bertrix Rue du Saupont 8b 16:06</li><li><a href="stop-TEC_X804ald.html">TEC:X804ald</a> - Bertrix Gare - Quai 1 16:09</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3149.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

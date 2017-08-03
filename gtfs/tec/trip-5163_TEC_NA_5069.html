@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - GELBRESSEE - VEZIN - 5163:TEC:NA:5069</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - GELBRESSEE - VEZIN - 5163:TEC:NA:5069</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N511aja.html">TEC:N511aja</a> - Vezin Eglise 10:34</li><li><a href="stop-TEC_N511aka.html">TEC:N511aka</a> - Vezin Garage 10:34</li><li><a href="stop-TEC_N511ala.html">TEC:N511ala</a> - Vezin Boucher 10:35</li><li><a href="stop-TEC_N511ama.html">TEC:N511ama</a> - Vezin Bellaire 10:36</li><li><a href="stop-TEC_N511ana.html">TEC:N511ana</a> - Vezin Ferme d'Ans 10:37</li><li><a href="stop-TEC_N511aob.html">TEC:N511aob</a> - Vezin Château d'eau 10:37</li><li><a href="stop-TEC_N511apa.html">TEC:N511apa</a> - Vezin Hautes Communes 10:38</li><li><a href="stop-TEC_N511aqa.html">TEC:N511aqa</a> - Vezin Bois Gillet 10:38</li><li><a href="stop-TEC_N511aoc.html">TEC:N511aoc</a> - Vezin Château d'eau 10:39</li><li><a href="stop-TEC_N511ara.html">TEC:N511ara</a> - Vezin Boulanger 10:40</li><li><a href="stop-TEC_N511ata.html">TEC:N511ata</a> - Vezin Houssoy 10:41</li><li><a href="stop-TEC_N511aua.html">TEC:N511aua</a> - Ville-en-Waret Eglise 10:43</li><li><a href="stop-TEC_N511ava.html">TEC:N511ava</a> - Ville-en-Waret Place 10:44</li><li><a href="stop-TEC_N509awa.html">TEC:N509awa</a> - Wartet Fond des Maréchaux 10:45</li><li><a href="stop-TEC_N509axa.html">TEC:N509axa</a> - Wartet Pont 10:46</li><li><a href="stop-TEC_N509bgb.html">TEC:N509bgb</a> - Wartet Eglise 10:47</li><li><a href="stop-TEC_N509bfb.html">TEC:N509bfb</a> - Wartet Bigarreaux 10:48</li><li><a href="stop-TEC_N509beb.html">TEC:N509beb</a> - Marche-les-Dames Les cailloux 10:49</li><li><a href="stop-TEC_N509bdb.html">TEC:N509bdb</a> - Marche-les-Dames Les 10 bonniers 10:50</li><li><a href="stop-TEC_N509ajb.html">TEC:N509ajb</a> - Gelbressee Route de Marche-les-Dames 10:52</li><li><a href="stop-TEC_N502abb.html">TEC:N502abb</a> - Boninne Bois d'Esneux 10:53</li><li><a href="stop-TEC_N502aab.html">TEC:N502aab</a> - Boninne Forges 10:54</li><li><a href="stop-TEC_N502acb.html">TEC:N502acb</a> - Boninne Maison communale 10:54</li><li><a href="stop-TEC_N502adb.html">TEC:N502adb</a> - Boninne Domaine du Long Sart 10:56</li><li><a href="stop-TEC_N501bkb.html">TEC:N501bkb</a> - Bouge Route de Forêt-Beez 10:57</li><li><a href="stop-TEC_N501bua.html">TEC:N501bua</a> - Bouge Sentier Somal 10:58</li><li><a href="stop-TEC_N501gga.html">TEC:N501gga</a> - Namur Faubourg St-Nicolas 11:00</li><li><a href="stop-TEC_N501gea.html">TEC:N501gea</a> - Namur CHR 11:01</li><li><a href="stop-TEC_N501nda.html">TEC:N501nda</a> - Namur Rue des Bourgeois 11:04</li><li><a href="stop-TEC_N501hla.html">TEC:N501hla</a> - Namur Rue du Premier Lanciers 11:05</li><li><a href="stop-TEC_N501zda.html">TEC:N501zda</a> - Namur Pl. de la Station - Quai E 11:08</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5716.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Visé - Aubel - Montzen - Welkenraedt - 5163:TEC:LV:24988</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Visé - Aubel - Montzen - Welkenraedt - 5163:TEC:LV:24988</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LVIdepo2.html">TEC:LVIdepo2</a> - Vise Place des Déportés 15:40</li><li><a href="stop-TEC_LVIsacr1.html">TEC:LVIsacr1</a> - Vise Institut du Sacré-Coeur 15:41</li><li><a href="stop-TEC_LVIjacq1.html">TEC:LVIjacq1</a> - Vise Ecole Lieutenant Jacquemin 15:43</li><li><a href="stop-TEC_LVIhall1.html">TEC:LVIhall1</a> - Vise Hall Omnisport 15:43</li><li><a href="stop-TEC_LVIferm1.html">TEC:LVIferm1</a> - Vise Ferme des Trois Rois 15:44</li><li><a href="stop-TEC_LVImons1.html">TEC:LVImons1</a> - Vise Route de Mons 15:45</li><li><a href="stop-TEC_LBWviad1.html">TEC:LBWviad1</a> - Berneau Viaduc 15:46</li><li><a href="stop-TEC_LBWeg--1.html">TEC:LBWeg--1</a> - Berneau Eglise 15:47</li><li><a href="stop-TEC_LBWfusi1.html">TEC:LBWfusi1</a> - Berneau Rue des Fusillés 10 15:48</li><li><a href="stop-TEC_LWRbomb3.html">TEC:LWRbomb3</a> - Warsage Route de Bombaye 15:50</li><li><a href="stop-TEC_LWRpl--1.html">TEC:LWRpl--1</a> - Warsage Place 15:51</li><li><a href="stop-TEC_LWRcruc1.html">TEC:LWRcruc1</a> - Warsage Crucifix Bouillon 15:52</li><li><a href="stop-TEC_LWRchem1.html">TEC:LWRchem1</a> - Warsage Chemin du bois du Roi 8 15:54</li><li><a href="stop-TEC_LWRvert1.html">TEC:LWRvert1</a> - Warsage Verte Haie 15:55</li><li><a href="stop-TEC_LWRbois1.html">TEC:LWRbois1</a> - Warsage Bois du Roi 15:56</li><li><a href="stop-TEC_LWRheyd1.html">TEC:LWRheyd1</a> - Warsage La Heydt 15:57</li><li><a href="stop-TEC_LWRferm1.html">TEC:LWRferm1</a> - Warsage Ferme d'Als 15:58</li><li><a href="stop-TEC_LWRtroi1.html">TEC:LWRtroi1</a> - Warsage Trois Cheminées 15:59</li><li><a href="stop-TEC_LSJgrae1.html">TEC:LSJgrae1</a> - St-Jean-Sart Graedt 16:03</li><li><a href="stop-TEC_LSJ38--1.html">TEC:LSJ38--1</a> - St-Jean-Sart 38 16:04</li><li><a href="stop-TEC_LSJeg--1.html">TEC:LSJeg--1</a> - St-Jean-Sart Eglise 16:05</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5008.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Menuchenet - Carlsbourg - Paliseul - 5163:TEC:LU:1675</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Menuchenet - Carlsbourg - Paliseul - 5163:TEC:LU:1675</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X850acb.html">TEC:X850acb</a> - Carlsbourg Institut 16:25</li><li><a href="stop-TEC_X850adb.html">TEC:X850adb</a> - Carlsbourg Eglise 16:25</li><li><a href="stop-TEC_X850aea.html">TEC:X850aea</a> - Carlsbourg Rue Joseph Jacques 16:26</li><li><a href="stop-TEC_X850alb.html">TEC:X850alb</a> - Carlsbourg Rue des Socquettes 16:26</li><li><a href="stop-TEC_X850amb.html">TEC:X850amb</a> - Merny Route de Paliseul Gare 16:27</li><li><a href="stop-TEC_X806aab.html">TEC:X806aab</a> - Paliseul Gare 16:29</li><li><a href="stop-TEC_X806aac.html">TEC:X806aac</a> - Paliseul Gare 16:29</li><li><a href="stop-TEC_X806aka.html">TEC:X806aka</a> - Paliseul Athénée - Quai 1 16:32</li><li><a href="stop-TEC_X806aca.html">TEC:X806aca</a> - Paliseul Gendarmerie 16:33</li><li><a href="stop-TEC_X806ala.html">TEC:X806ala</a> - Paliseul Route de Launoy 16:33</li><li><a href="stop-TEC_X806ajb.html">TEC:X806ajb</a> - Launoy Centre 16:37</li><li><a href="stop-TEC_X807ada.html">TEC:X807ada</a> - Fays-les-Veneurs Rte de Launoy 16:41</li><li><a href="stop-TEC_X807aaa.html">TEC:X807aaa</a> - Fays-les-Veneurs Eglise 16:42</li><li><a href="stop-TEC_X808ahb.html">TEC:X808ahb</a> - Nollevaux Eglise 16:47</li><li><a href="stop-TEC_X808alb.html">TEC:X808alb</a> - Plainevaux Eglise 16:50</li><li><a href="stop-TEC_X808ama.html">TEC:X808ama</a> - Plainevaux Quatre Bras 16:51</li><li><a href="stop-TEC_X808aab.html">TEC:X808aab</a> - Menuchenet Carrefour 16:53</li><li><a href="stop-TEC_X808aba.html">TEC:X808aba</a> - Menuchenet Dépôt TEC Quai 3 16:54</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2709.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

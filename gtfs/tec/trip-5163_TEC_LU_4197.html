@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Havelange - Marche - 5163:TEC:LU:4197</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Havelange - Marche - 5163:TEC:LU:4197</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X901aob.html">TEC:X901aob</a> - Marche Cimetière 16:14</li><li><a href="stop-TEC_X901aka.html">TEC:X901aka</a> - Marche Institut St-Laurent 16:15</li><li><a href="stop-TEC_X901aja.html">TEC:X901aja</a> - Marche IND 16:17</li><li><a href="stop-TEC_X901aeb.html">TEC:X901aeb</a> - Marche Athénée 16:21</li><li><a href="stop-TEC_X901aib.html">TEC:X901aib</a> - Marche Pirire 16:23</li><li><a href="stop-TEC_X901bsa.html">TEC:X901bsa</a> - Marche Pont N4 16:23</li><li><a href="stop-TEC_X901boa.html">TEC:X901boa</a> - Marche Boulevard - Hôtel de Ville 16:24</li><li><a href="stop-TEC_X901bra.html">TEC:X901bra</a> - Marche Boulevard - Palace 16:24</li><li><a href="stop-TEC_X901aha.html">TEC:X901aha</a> - Marche Boulevard du Nord 16:24</li><li><a href="stop-TEC_X901bna.html">TEC:X901bna</a> - Marche Porte Basse 16:25</li><li><a href="stop-TEC_X901ana.html">TEC:X901ana</a> - Marche Route de Liège 16:26</li><li><a href="stop-TEC_X901bqa.html">TEC:X901bqa</a> - Marche Carmel 16:26</li><li><a href="stop-TEC_X222afa.html">TEC:X222afa</a> - Maffe Route de Marche 16:41</li><li><a href="stop-TEC_N210aaa.html">TEC:N210aaa</a> - Verlee Ferme Deville 16:43</li><li><a href="stop-TEC_NL82aga.html">TEC:NL82aga</a> - Bois-et-Borsu Fontenoy 16:45</li><li><a href="stop-TEC_LBBodet2.html">TEC:LBBodet2</a> - Bois-et-Borsu Odet 16:47</li><li><a href="stop-TEC_LBBlaga2.html">TEC:LBBlaga2</a> - Bois-et-Borsu Rue de l'Agauche 16:48</li><li><a href="stop-TEC_LBBmc--2.html">TEC:LBBmc--2</a> - Bois-et-Borsu Eglise 16:48</li><li><a href="stop-TEC_LBBpech2.html">TEC:LBBpech2</a> - Bois-et-Borsu Pêcherie 16:49</li><li><a href="stop-TEC_LBBabat2.html">TEC:LBBabat2</a> - Bois-et-Borsu Abattoir 16:50</li><li><a href="stop-TEC_LBBcarr2.html">TEC:LBBcarr2</a> - Bois-et-Borsu Carrefour 16:50</li><li><a href="stop-TEC_NL35aga.html">TEC:NL35aga</a> - Clavier Maison communale 16:53</li><li><a href="stop-TEC_NL35aca.html">TEC:NL35aca</a> - Atrin Centre 16:54</li><li><a href="stop-TEC_NL35aba.html">TEC:NL35aba</a> - Atrin Auberge 16:54</li><li><a href="stop-TEC_LOchalo2.html">TEC:LOchalo2</a> - Ochain Rue du Hâlon 16:55</li><li><a href="stop-TEC_LOcgdro4.html">TEC:LOcgdro4</a> - Ochain Grand-Route 16:56</li><li><a href="stop-TEC_LOccarr2.html">TEC:LOccarr2</a> - Ochain Carrefour 16:57</li><li><a href="stop-TEC_NL35add.html">TEC:NL35add</a> - Clavier Gendarmerie 16:58</li><li><a href="stop-TEC_LCLgend1.html">TEC:LCLgend1</a> - Clavier Gendarmerie 16:58</li><li><a href="stop-TEC_LCLstat1.html">TEC:LCLstat1</a> - Clavier Station 16:59</li><li><a href="stop-TEC_LCLacbi2.html">TEC:LCLacbi2</a> - Clavier ACBI 17:00</li><li><a href="stop-TEC_LCLscie2.html">TEC:LCLscie2</a> - Clavier Scierie 17:01</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./2974.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

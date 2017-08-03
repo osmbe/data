@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - Bastogne - Marvie - Bastogne - 5163:TEC:LU:4856</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: Bastogne - Marvie - Bastogne - 5163:TEC:LU:4856</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_X725afc.html">TEC:X725afc</a> - Bastogne Gare du Sud - Quai 1 07:51</li><li><a href="stop-TEC_X725ala.html">TEC:X725ala</a> - Bastogne Home Market 07:54</li><li><a href="stop-TEC_X725aka.html">TEC:X725aka</a> - Bastogne Route de Marvie 41 07:55</li><li><a href="stop-TEC_X767afa.html">TEC:X767afa</a> - Marvie Village 197 07:58</li><li><a href="stop-TEC_X767aea.html">TEC:X767aea</a> - Marvie Chapelle 07:58</li><li><a href="stop-TEC_X767ada.html">TEC:X767ada</a> - Marvie Eglise 07:59</li><li><a href="stop-TEC_X767aca.html">TEC:X767aca</a> - Marvie Grand Route 08:01</li><li><a href="stop-TEC_X725bia.html">TEC:X725bia</a> - Bastogne Route de Wiltz 180 08:02</li><li><a href="stop-TEC_X725ama.html">TEC:X725ama</a> - Bastogne American Légion 38 08:04</li><li><a href="stop-TEC_X725ana.html">TEC:X725ana</a> - Bastogne American Légion 34 08:04</li><li><a href="stop-TEC_X725apb.html">TEC:X725apb</a> - Bastogne Porte de Trèves 08:05</li><li><a href="stop-TEC_X725aee.html">TEC:X725aee</a> - Bastogne Pépinière - Quai 5 08:06</li><li><a href="stop-TEC_X725afc.html">TEC:X725afc</a> - Bastogne Gare du Sud - Quai 1 08:11</li><li><a href="stop-TEC_X725bga.html">TEC:X725bga</a> - Bastogne Avenue de la Gare 08:12</li><li><a href="stop-TEC_X725ada.html">TEC:X725ada</a> - Bastogne Route de Neufchâteau 101 08:13</li><li><a href="stop-TEC_X725aga.html">TEC:X725aga</a> - Bastogne Zoning Industriel 08:17</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3393.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

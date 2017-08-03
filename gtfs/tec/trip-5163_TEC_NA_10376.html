@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - NAMUR - EGHEZEE - 5163:TEC:NA:10376</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: NAMUR - EGHEZEE - 5163:TEC:NA:10376</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N514anb.html">TEC:N514anb</a> - Eghezee Centre 14:55</li><li><a href="stop-TEC_N514akb.html">TEC:N514akb</a> - Eghezee Cheval Blanc 14:56</li><li><a href="stop-TEC_N514ajb.html">TEC:N514ajb</a> - Eghezee Château d'eau 14:56</li><li><a href="stop-TEC_N513avb.html">TEC:N513avb</a> - Longchamps Râperie - Home Jours heureux 14:58</li><li><a href="stop-TEC_N513aub.html">TEC:N513aub</a> - Longchamps Place 14:59</li><li><a href="stop-TEC_N513atb.html">TEC:N513atb</a> - Longchamps Chapelle Notre-Dame 15:00</li><li><a href="stop-TEC_N513asb.html">TEC:N513asb</a> - Longchamps Route de Leuze 15:00</li><li><a href="stop-TEC_N513arb.html">TEC:N513arb</a> - Leuze Rue des Pralettes 15:02</li><li><a href="stop-TEC_N513alb.html">TEC:N513alb</a> - Leuze Pharmacie 15:03</li><li><a href="stop-TEC_N513apa.html">TEC:N513apa</a> - Leuze Rue des bruyères 15:04</li><li><a href="stop-TEC_N513aob.html">TEC:N513aob</a> - Leuze Rue des Chardonnerets 15:05</li><li><a href="stop-TEC_N513anb.html">TEC:N513anb</a> - Leuze Rue du buisson 15:05</li><li><a href="stop-TEC_N513axb.html">TEC:N513axb</a> - Dhuy Rue de Leuze 15:06</li><li><a href="stop-TEC_N513awb.html">TEC:N513awb</a> - Dhuy Les boscailles 15:07</li><li><a href="stop-TEC_N513ahb.html">TEC:N513ahb</a> - Waret-la-Chaussee Gare 15:09</li><li><a href="stop-TEC_N513aab.html">TEC:N513aab</a> - Waret-la-Chaussee Route des Boscailles 15:10</li><li><a href="stop-TEC_N521atb.html">TEC:N521atb</a> - Cognelee Poste 15:11</li><li><a href="stop-TEC_N521asb.html">TEC:N521asb</a> - Cognelee Route de la gare 15:11</li><li><a href="stop-TEC_N521arb.html">TEC:N521arb</a> - Cognelee Père Clément 15:13</li><li><a href="stop-TEC_N521avb.html">TEC:N521avb</a> - Cognelee Village 15:14</li><li><a href="stop-TEC_N521aub.html">TEC:N521aub</a> - Cognelee Ferme 15:15</li><li><a href="stop-TEC_N501cfb.html">TEC:N501cfb</a> - Champion Route de Vedrin 15:17</li><li><a href="stop-TEC_N501ckb.html">TEC:N501ckb</a> - Champion Rue Notre-Dame 15:18</li><li><a href="stop-TEC_N501byb.html">TEC:N501byb</a> - Champion Rue Fontaine 15:19</li><li><a href="stop-TEC_N501chf.html">TEC:N501chf</a> - Champion Wilmart 15:19</li><li><a href="stop-TEC_N501boa.html">TEC:N501boa</a> - Bouge Bois de Bouge 15:20</li><li><a href="stop-TEC_N501bpa.html">TEC:N501bpa</a> - Bouge Rue Lambert 15:20</li><li><a href="stop-TEC_N501bja.html">TEC:N501bja</a> - Bouge Rue Saint-Luc 15:21</li><li><a href="stop-TEC_N501bra.html">TEC:N501bra</a> - Bouge Moulin-à-vent 15:22</li><li><a href="stop-TEC_N501lca.html">TEC:N501lca</a> - Namur IATA 15:24</li><li><a href="stop-TEC_N501lba.html">TEC:N501lba</a> - Namur Heuvy 15:25</li><li><a href="stop-TEC_N501zda.html">TEC:N501zda</a> - Namur Pl. de la Station - Quai E 15:27</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./5678.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

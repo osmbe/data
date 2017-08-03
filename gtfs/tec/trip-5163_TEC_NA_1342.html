@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - MOIGNELEE - SAINT-MARTIN / SPY - 5163:TEC:NA:1342</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: MOIGNELEE - SAINT-MARTIN / SPY - 5163:TEC:NA:1342</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_N534aya.html">TEC:N534aya</a> - Jemeppe Froidmont 06:48</li><li><a href="stop-TEC_N534axa.html">TEC:N534axa</a> - Jemeppe Saint-Roch 06:49</li><li><a href="stop-TEC_N534awb.html">TEC:N534awb</a> - Jemeppe Athénée 06:50</li><li><a href="stop-TEC_N534apg.html">TEC:N534apg</a> - Jemeppe Rue de la gare 06:53</li><li><a href="stop-TEC_N534amg.html">TEC:N534amg</a> - Jemeppe Rue du Brûlé 06:55</li><li><a href="stop-TEC_N543cka.html">TEC:N543cka</a> - Auvelais Cité du Brûlé 06:56</li><li><a href="stop-TEC_N543cla.html">TEC:N543cla</a> - Auvelais Bois Sainte-Marie 06:58</li><li><a href="stop-TEC_N543cqb.html">TEC:N543cqb</a> - Auvelais Trieu des Cannes 06:59</li><li><a href="stop-TEC_N543coa.html">TEC:N543coa</a> - Auvelais Chaussée de Charleroi 07:00</li><li><a href="stop-TEC_N543avg.html">TEC:N543avg</a> - Auvelais Rue d'Eghezée 07:00</li><li><a href="stop-TEC_N543ang.html">TEC:N543ang</a> - Auvelais Rue du Rominet 07:01</li><li><a href="stop-TEC_N543awg.html">TEC:N543awg</a> - Auvelais Rue Dr Romedenne - Gare SNCB 07:02</li><li><a href="stop-TEC_N543aza.html">TEC:N543aza</a> - Auvelais Rue des Auges 07:03</li><li><a href="stop-TEC_N543aua.html">TEC:N543aua</a> - Auvelais Rue St-Sang 07:05</li><li><a href="stop-TEC_N543aha.html">TEC:N543aha</a> - Auvelais Rue des Sorbiers 07:06</li><li><a href="stop-TEC_N543aya.html">TEC:N543aya</a> - Auvelais Chr Val de Sambre 07:07</li><li><a href="stop-TEC_N543axa.html">TEC:N543axa</a> - Auvelais Pont SNCB 07:08</li><li><a href="stop-TEC_N543bta.html">TEC:N543bta</a> - Auvelais Ecole industrielle 07:10</li><li><a href="stop-TEC_N543bia.html">TEC:N543bia</a> - Falisolle Delhaize 07:11</li><li><a href="stop-TEC_N543cpa.html">TEC:N543cpa</a> - Tamines Avenue des Français 07:13</li><li><a href="stop-TEC_N543bka.html">TEC:N543bka</a> - Tamines Place St-Martin 07:14</li><li><a href="stop-TEC_N543cbc.html">TEC:N543cbc</a> - Tamines Gare SNCB 07:15</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./6326.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>TEC - St-Lambert - Grâce-Hollogne - Jemeppe - 5163:TEC:LV:17081</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Trip: St-Lambert - Grâce-Hollogne - Jemeppe - 5163:TEC:LV:17081</h1>
+    <div style="height: 500px;" id="map"></div>
+    <div class="nav-box">
+        <ul class="nav-list">
+            <li><a href="stop-TEC_LlgLAMB5.html">TEC:LlgLAMB5</a> - Liege Place St-Lambert 19:01</li><li><a href="stop-TEC_Llgcadr3.html">TEC:Llgcadr3</a> - Liege Cadran 19:03</li><li><a href="stop-TEC_Llgmart1.html">TEC:Llgmart1</a> - Liege Mont St-Martin 19:04</li><li><a href="stop-TEC_Llgfoss1.html">TEC:Llgfoss1</a> - Liege Rue des Fossés 19:05</li><li><a href="stop-TEC_Llgerac1.html">TEC:Llgerac1</a> - Liege Rue Eracle 19:06</li><li><a href="stop-TEC_Llglaur1.html">TEC:Llglaur1</a> - Liege St-Laurent carrefour 19:07</li><li><a href="stop-TEC_Llgmass1.html">TEC:Llgmass1</a> - Liege Rue château Massart 19:09</li><li><a href="stop-TEC_Llgsorb1.html">TEC:Llgsorb1</a> - Liege Rue des Sorbiers 19:10</li><li><a href="stop-TEC_Llghaye1.html">TEC:Llghaye1</a> - Liege Rue de La Haye 19:10</li><li><a href="stop-TEC_Llggill1.html">TEC:Llggill1</a> - Liege St-Gilles carrefour 19:11</li><li><a href="stop-TEC_Llgform1.html">TEC:Llgform1</a> - Liege Formation P.M.E. 19:12</li><li><a href="stop-TEC_Llgsnap1.html">TEC:Llgsnap1</a> - Liege Rue du Snapeux 19:13</li><li><a href="stop-TEC_Llgnico1.html">TEC:Llgnico1</a> - Liege Place St-Nicolas 19:13</li><li><a href="stop-TEC_Llgdelc1.html">TEC:Llgdelc1</a> - Liege Rue Delchef 19:14</li><li><a href="stop-TEC_Llgbobu1.html">TEC:Llgbobu1</a> - Liege Rue des Bons Buveurs 19:15</li><li><a href="stop-TEC_Lmochar1.html">TEC:Lmochar1</a> - Montegnee Charbonnage de l'Espérance 19:16</li><li><a href="stop-TEC_Lmomarr1.html">TEC:Lmomarr1</a> - Montegnee Place des Marronniers 19:17</li><li><a href="stop-TEC_Lmoboeu1.html">TEC:Lmoboeu1</a> - Montegnee Tête de Boeuf 19:17</li><li><a href="stop-TEC_Lmochpl1.html">TEC:Lmochpl1</a> - Montegnee Chapelle 19:18</li><li><a href="stop-TEC_Lmobras1.html">TEC:Lmobras1</a> - Montegnee Brasserie Nizet 19:19</li><li><a href="stop-TEC_Lmopech1.html">TEC:Lmopech1</a> - Montegnee Péchalle 19:19</li><li><a href="stop-TEC_Lmolagu1.html">TEC:Lmolagu1</a> - Montegnee Laguesse 19:20</li><li><a href="stop-TEC_Lghsimo1.html">TEC:Lghsimo1</a> - Grace-Hollogne Rue Simon 19:21</li><li><a href="stop-TEC_Lghpero1.html">TEC:Lghpero1</a> - Grace-Hollogne Pérou 19:22</li><li><a href="stop-TEC_Lghremy1.html">TEC:Lghremy1</a> - Grace-Hollogne Eglise St-Remy 19:23</li><li><a href="stop-TEC_Lghbonn1.html">TEC:Lghbonn1</a> - Grace-Hollogne Charbonnage du Bonnier 19:23</li><li><a href="stop-TEC_Lghflot1.html">TEC:Lghflot1</a> - Grace-Hollogne Cité du Flot 19:24</li><li><a href="stop-TEC_Lghcham1.html">TEC:Lghcham1</a> - Grace-Hollogne Rue des Champs 19:26</li><li><a href="stop-TEC_Lghwass1.html">TEC:Lghwass1</a> - Grace-Hollogne Wasseige 19:27</li><li><a href="stop-TEC_Lghhaut1.html">TEC:Lghhaut1</a> - Grace-Hollogne Haute Claire 19:28</li><li><a href="stop-TEC_Lghgros1.html">TEC:Lghgros1</a> - Grace-Hollogne Grosses Pierres 19:28</li><li><a href="stop-TEC_Lghmaha1.html">TEC:Lghmaha1</a> - Grace-Hollogne Mahay 19:30</li><li><a href="stop-TEC_Lghpier1.html">TEC:Lghpier1</a> - Grace-Hollogne Eglise St-Pierre 19:31</li><li><a href="stop-TEC_Lghcoqs1.html">TEC:Lghcoqs1</a> - Grace-Hollogne Rue des Coqs 19:32</li><li><a href="stop-TEC_Lghprea1.html">TEC:Lghprea1</a> - Grace-Hollogne Préalles 19:33</li><li><a href="stop-TEC_Lghgoll1.html">TEC:Lghgoll1</a> - Grace-Hollogne Rue Golet 19:34</li><li><a href="stop-TEC_Lghgend1.html">TEC:Lghgend1</a> - Grace-Hollogne Gendarmerie 19:35</li><li><a href="stop-TEC_Ljemake1.html">TEC:Ljemake1</a> - Jemeppe Rue des Makets 19:36</li><li><a href="stop-TEC_Ljerouy1.html">TEC:Ljerouy1</a> - Jemeppe Rue Rouyer 19:36</li><li><a href="stop-TEC_Ljetout1.html">TEC:Ljetout1</a> - Jemeppe Rue Toute-Voie 19:38</li><li><a href="stop-TEC_Ljegare1.html">TEC:Ljegare1</a> - Jemeppe Gare S.N.C.B. 19:38</li><li><a href="stop-TEC_Ljelexh1.html">TEC:Ljelexh1</a> - Jemeppe Rue A. de Lexhy 19:39</li><li><a href="stop-TEC_Ljeegli6.html">TEC:Ljeegli6</a> - Jemeppe Eglise 19:40</li><li><a href="stop-TEC_Ljelamb1.html">TEC:Ljelamb1</a> - Jemeppe Lambotte 19:41</li><li><a href="stop-TEC_LjeGRPME.html">TEC:LjeGRPME</a> - Jemeppe gare routière 19:42</li>
+        </ul>
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $.getJSON("./3895.geojson", function (data) {
+            var geojson = L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            });
+            map.fitBounds(geojson.getBounds());
+            geojson.addTo(map);
+        });
+    </script>
+</body>
+
+</html>
